@@ -25,4 +25,4 @@
 
 ## Version履歴
 
-+　R2 : ver1.0
++ R2 : ver1.0
