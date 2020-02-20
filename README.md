@@ -1,0 +1,2 @@
+# psychometrtics_syllabus
+心理統計教育の授業シラバス
