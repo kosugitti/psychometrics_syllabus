@@ -3,10 +3,6 @@
 心理統計教育の授業シラバス（コマシラバス）です。
 [最新版はこちら](syllabus.pdf)です。
 
-## 書いた人
-
-小杉考司（専修大学人間科学部）
-
 ## 想定している教育環境等
 
 + 通年の授業(30回)で，前期・後期にそれぞれ授業時間内テストを行うために1コマ使います。
@@ -37,6 +33,9 @@
 
 + R2年度 : ver1.0
 
-## ライセンス
+
+## ライセンス等
+
+[Written by Kosugitti](https://researchmap.jp/kosugitti)
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" /></a><br />この 作品 は <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">クリエイティブ・コモンズ 表示 - 改変禁止 4.0 国際 ライセンス</a>の下に提供されています。
