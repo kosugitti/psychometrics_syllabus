@@ -1,7 +1,7 @@
 \documentclass[uplatex]{jsreport}
 \usepackage{docmute}
 \usepackage{myStyle}
-
+\label{chapter16}
 \begin{document}
 \chapter{確率と統計的推論}
 さて、授業は後半のほうに入って行きます。
@@ -34,7 +34,7 @@ $$ (165+173+182)/3=173.33\cdots$$
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,height=12cm]{slide16_01.png}
+    \includegraphics[keepaspectratio,height=12cm]{images/text16/slide16_01.png}
     \caption{母集団と標本}
     \label{fig::16_01}
 \end{figure}
@@ -57,7 +57,7 @@ $$ (165+173+182)/3=173.33\cdots$$
 ここで誤解しやすい2つの言葉について解説を追加します。1つは標本の大きさと数についてのお話です。図\ref{fig::16_02}を見てください。先程のとある学校での標本についての話ですが、そこでは3年の児童生徒を取り出したのでした。この時サンプルの大きさ、つまり標本に含まれる人数(観測度数)は\keyterm{サンプルサイズ}と呼ばれます。このサイズの調査を他でも行ったとしましょう。つまりA校，B校，C校...といろいろな学校で3人ずつ調査を繰り返していくのです。この時，得られた標本の数は\keyterm{サンプル数}といいます。誤用がおおいのは，このサンプルサイズとサンプル数の取り違えです。「人数$n$のサンプルを取りました」というべきところを，「サンプル数$n$です」というと，「で，何人取ったの？」とか「そんなに繰り返し調査したの？」という返事が帰ってきて，混乱することにもなりますので注意してください。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,height=12cm]{slide16_02.png}
+    \includegraphics[keepaspectratio,height=12cm]{images/text16/slide16_02.png}
     \caption{サンプルサイズとサンプル数}
     \label{fig::16_02}
 \end{figure}
@@ -110,7 +110,7 @@ $$ (165+173+182)/3=173.33\cdots$$
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,height=5cm]{Rplot16_01.png}
+    \includegraphics[keepaspectratio,height=5cm]{images/text16/Rplot16_01.png}
     \caption{100人村のデータ}
     \label{fig::16_3}
 \end{figure}
@@ -197,13 +197,20 @@ $X_2 = \{    63, 61, 52, 31, 62\}$
 
 この標本平均のばらつきのことを表す言葉があります。標本平均は正規分布に従うのですから，この幅，つまり標準偏差がそのばらつきを表すことになります。標本平均{\bf の標準偏差}は特に\keyterm{標準誤差}standard errorと呼ばれ，推定値としての標本平均の精度を表す数字になります。今回，表\ref{tbl::16_02}にあるサンプルサイズ5の場合の標準誤差は2.92，同じく表\ref{tbl::16_03}にあるサンプルサイズ10では2.48です。サンプルサイズを大きくすると，標準誤差が小さくなる，つまり測定の精度が上がるわけですね。
 
-具体的には，標本分布の分散は母分散$\sigma^2$をサンプルサイズ$n$で割ったものに一致することがわかっています。標本分布の標準偏差，つまり標準誤差は，$\frac{\sigma}{\sqrt{n}}$に一致することになります。分母にサンプルサイズが入っているので，これが大きくなると標準誤差が小さくなることがわかります。
+具体的には，標本分布の分散は母分散$\sigma^2$をサンプルサイズ$n$で割ったものに一致することがわかっています。標本分布の標準偏差，つまり標準誤差は，$\frac{\sigma}{\sqrt{n}}$に一致することになります。分母にサンプルサイズが入っているので，これが大きくなると標準誤差が小さくなることがわかります(図\ref{fig::16_5})。
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[keepaspectratio,height=12cm]{images/text16/slide16_03.png}
+    \caption{標本，標本統計量，標本分布と統計的推測。母集団からサイズ$n$の標本を得る。個々のデータ(標本1の中にいる人物フィギュア)は，母集団と標本の枠組みの中で捉える。標本統計量は標本をたくさん取ると($1,2,\cdots k$,このときサンプル数$k$),毎回異なる値を出すが，標本分布に従っている。標本分布の期待値は母平均に一致するし，ある標本平均の精度は標準誤差で評価できる。}
+    \label{fig::16_05}
+\end{figure}
 
 このことを数値シミュレーションでみてみましょう。先ほどと同じように，仮想的な数字を使って検討します。今度は一気に100万点のデータを作り，そこからランダムサンプリングをするようにしました。こうすることで，複数回無作為抽出しても，たまたま同じものがかぶる(再サンプリングされてしまう)ような危険性を回避することができます。
 さて，図\ref{fig::16_4}をみてください。まず，100万点のデータセットから無作為にサンプルサイズ3,5,10,50の標本を100回(サンプル数100)とりました。それらの標本平均も100あるわけですが，標本1の標本平均，標本1と2の平均，標本1,2,3の平均・・・と標本平均を一つずつ増やしていったときに，母集団の平均$\mu$(青の点線)に本当に近づいていくかどうかを検証したものです。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,height=8cm]{Rplot16_03.png}
+    \includegraphics[keepaspectratio,height=8cm]{images/text16/Rplot16_03.png}
     \caption{サンプリングを繰り返し，標本平均の平均を求めると，母平均に近づく}
     \label{fig::16_4}
 \end{figure}
@@ -226,7 +233,7 @@ $X_2 = \{    63, 61, 52, 31, 62\}$
 母分散の推定値として，平均の時と同じように，標本分散をあてがうというのは一つのアイデアです。ですが，残念ながらこの方法だとうまく推定できません。図\ref{fig::16_5}をみてください。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,height=8cm]{Rplot16_04.png}
+    \includegraphics[keepaspectratio,height=8cm]{images/text16/Rplot16_04.png}
     \caption{サンプリングを繰り返し，標本分散の平均を求めると，母分散から少しずれる}
     \label{fig::16_5}
 \end{figure}
@@ -257,7 +264,7 @@ $X_2 = \{    63, 61, 52, 31, 62\}$
 先ほどのシミュレーションを，不偏分散の式を使って行ったのが図\ref{fig::16_6}です。補正してある不偏分散だと，母分散に近づいているのがわかりますね。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,height=8cm]{Rplot16_05.png}
+    \includegraphics[keepaspectratio,height=8cm]{images/text16/Rplot16_05.png}
     \caption{サンプリングを繰り返し，標本分散と不偏分散の期待値を求めたもの}
     \label{fig::16_6}
 \end{figure}
