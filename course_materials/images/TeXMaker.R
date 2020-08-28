@@ -6,7 +6,7 @@ dirName <- list.files() %>%
 
 gwd <- getwd()
 
-for(l in 1:NROW(dirName)){
+for(l in 1:11){
     setwd(dirName$value[l])
     FN <- list.files() %>% as_tibble %>% 
         dplyr::mutate(section = str_split_fixed(.$value,pattern = "\\.",3)[,1]) %>% 
@@ -25,9 +25,14 @@ for(l in 1:NROW(dirName)){
     word = paste0("\\label{chapter",l,"}")
     cat(file=openFN,word,"\n",append = T)
     cat(file=openFN,"\\begin{document}","\n",append = T)
+    word = paste0("\\chapter{第",l,"講}")
+    cat(file=openFN,word,"\n",append = T)
+    
     ### セクションごとに図を挿入していく
     for(SEC in 1:NROW(FN)){
         word = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+        cat(file=openFN,word,"\n",append = T)
+        word = "\\clearpage"
         cat(file=openFN,word,"\n",append = T)
         word = paste0("\\section{資料",LETTERS[SEC],"}")
         cat(file=openFN,word,"\n",append = T)
