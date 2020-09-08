@@ -12,11 +12,21 @@
 \usepackage{pxjahyper}
 \usepackage{epsdice}
 % ソースコード用のパッケージと設定
+\usepackage{color}
 \usepackage{listings}
+% ソースコードのフォントを変えたい
+\usepackage{inconsolata}
 \lstset{
     frame=single,
     numbers=none,
-    tabsize=2
+    tabsize=2,
+    numbers=left,
+    numberstyle={\scriptsize},
+    xrightmargin=0zw,
+    xleftmargin=5zw,
+    stepnumber=1,
+    numbersep=1zw,
+    basicstyle=\footnotesize\ttfamily
 }
 
 % Hyper Linkを目立たせない呪文
@@ -28,6 +38,8 @@ setpagesize=false,
  linkcolor=black,
  citecolor=black,
 }
+% 図の周りに文章を配置する
+\usepackage{wrapfig}
 
 % 強調表現
 \newcommand\keyterm[1]{\textbf{#1}}
