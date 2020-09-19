@@ -1,7 +1,7 @@
 \documentclass[uplatex]{jsreport}
 \usepackage{docmute}
 \usepackage{myStyle}
-\label{chapter27}
+
 \setcounter{chapter}{26}
 % \begin{lstlisting}[language=c++]
 % \end{lstlisting}
@@ -14,6 +14,7 @@
 \begin{document}
 
 \chapter{Rによるベイズ推定}
+\label{chapter27}
 ベイズ推定が良さそうだと思っても，実際に手元で計算できなければ絵に描いた餅。ということで最後にベイズ推定の実践例を説明します。
 簡単なモデルであれば確率分布の計算から解析的に答えを出すことはできますが，今後のことも考えてMCMC法による方法を説明します。これはRの\texttt{brms}パッケージで提供されています。
 Rパッケージの\texttt{brms}を使うと，一般線形モデルが簡単に実装できます。関数名が\texttt{lm}から\texttt{brm}に変わるだけで，MCMCをつかった線形モデルのベイズ推定を行うことができ，またその結果の可視化も簡単に行えます。\texttt{lm}関数と同じく，説明変数を離散型(factor型)にしておくと，要因の効果の大きさが推定でき，\texttt{brms}パッケージの\verb|conditional_effects|関数を使うと要因ごとに周辺化された結果も図示されます。
