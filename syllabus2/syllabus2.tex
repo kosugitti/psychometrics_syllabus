@@ -1,0 +1,78 @@
+\documentclass[uplatex]{jsarticle}
+\usepackage[uplatex]{otf}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{url}
+\usepackage{ascmac}
+\renewcommand{\refname}{引用文献}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+
+% Hyper Linkを目立たせない呪文
+\hypersetup{
+setpagesize=false,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=black,
+ citecolor=black,
+}
+
+\begin{document}
+\title{心理学データ解析応用1/2 詳細シラバス}
+\author{担当：小杉考司}
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+\newpage
+\section*{はじめに}
+\subsection*{授業のテーマ}
+
+データから意味のある情報を取り出すための，様々な分析法を習熟するにあたって，その背後にあって語られることのない「発想」の観点から理解する。
+
+\subsection*{一年を通じて伝えたいポイント}
+\begin{description}
+    \item[心を測る] 心理学で行われるアンケート調査やその後の分析はどういう原理があって「心を測定した」といえるのか。
+    \item[情報圧縮と内部構造] データから意味のある情報を取り出すということは，有意味な情報と無意味な情報とを区分することであり，エッセンスを絞り出すことである。
+    \item[外的な基準に当てはめて理解する] データは何かの目的があって使うこともあり，その害的な基準に照らし合わせた時にデータが何を語るのか，で理解するという道もある。
+    \item[データ生成メカニズムを考える] そもそもそのデータはいかにして生まれたか。そのメカニズムを理解することは，現象のより精確な描写にもなるし，未来予測にも繋がる。
+    \item[統計環境Rによる実践] 統計環境Rと確率的プログラミング言語Stanに習熟することで実際に計算し，確認しながら分析を進めることができる。
+\end{description}
+
+
+%%%%% 前期　測定することにこだわる/座学
+% \include{lessonII01}イントロダクション；尺度の四水準・平均と分散・共分散と相関係数
+% \include{lessonII02}古典的テスト理論・平均と分散・尺度の信頼性と妥当性
+% \include{lessonII03}心理尺度を作る；サーストンの等現間隔法，リッカーとのシグマ法，IT相関，内的整合性信頼性
+% \include{lessonII04}現代テスト理論；1-2-3PLモデル・被験者母数の推定(FIML)
+% \include{lessonII05}現代テスト理論；信頼性の新しい考え方・段階反応理論
+% \include{lessonII06}因子分析モデル；第1定理と第2定理
+% \include{lessonII07}双対尺度法；カテゴリーに適切な数字を割り当てる
+% \include{lessonII08}多次元尺度構成法；心の地図を描く
+% \include{lessonII09}行列計算の基礎
+% \include{lessonII10}行列による関係の表現；分散共分散行列，相関行列，距離行列
+% \include{lessonII11}行列によるモデルの表現；回帰分析モデル，線形モデルとデザイン行列
+% \include{lessonII12}行列によるモデルの表現；因子分析モデル
+% \include{lessonII13}因子分析モデルの行列表現，固有値分解とその幾何学的意味
+% \include{lessonII14}構造方程式モデリング・モデルの識別について
+% \include{lessonII15}授業時間内テスト
+%%%%% 後期　データから情報を取り出すことにこだわる/パソコンを使った演習が半分
+% \include{lessonII16}多変量解析の世界
+% \include{lessonII17}クラスター分析
+% \include{lessonII18}多次元尺度構成法
+% \include{lessonII19}因子分析のQとR
+% \include{lessonII20}データ生成メカニズム；モデリングとそのツールの導入
+% \include{lessonII21}ベイジアンアプローチと確率的プログラミング；三つの推定法との比較
+% \include{lessonII22}ベイジアンアプローチと確率的プログラミング2；7人の科学者
+% \include{lessonII23}モデリングの目から見た検定1
+% \include{lessonII24}モデリングの目から見た検定2
+% \include{lessonII25}生成量をつかった検証
+% \include{lessonII26}モデルの比較；ベイズファクターとサベージ・ディッキー法
+% \include{lessonII27}線形モデルの展開(一般化線形モデル)
+% \include{lessonII28}線形モデルの展開(階層線形モデル)
+% \include{lessonII29}項目反応理論のモデリング
+% \include{lessonII30}授業時間内テスト
+
+
+\bibliographystyle{jecon_jpa}
+\bibliography{sbib}
+\end{document}

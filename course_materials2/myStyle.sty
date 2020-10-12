@@ -1,0 +1,67 @@
+\usepackage[uplatex]{otf} 
+\usepackage[longnamesfirst]{natbib}
+% 1行49文字。200行で一万文字程度(目安)
+\usepackage[left=25mm,right=25mm,top=30mm,bottom=30mm]{geometry}
+\usepackage{url}
+\usepackage{ascmac}
+\usepackage[dvipdfmx]{graphicx} 
+\renewcommand{\refname}{引用文献}
+\usepackage{lineno}
+\linenumbers
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\usepackage{epsdice}
+% ソースコード用のパッケージと設定
+\usepackage{color}
+\usepackage{listings}
+% ソースコードのフォントを変えたい
+\usepackage{inconsolata}
+\lstset{
+    frame=single,
+    numbers=none,
+    tabsize=2,
+    numbers=left,
+    numberstyle={\scriptsize},
+    xrightmargin=0zw,
+    xleftmargin=5zw,
+    stepnumber=1,
+    numbersep=1zw,
+    basicstyle=\footnotesize\ttfamily
+}
+
+% Hyper Linkを目立たせない呪文
+\hypersetup{
+setpagesize=false,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=black,
+ citecolor=black,
+}
+% 図の周りに文章を配置する
+\usepackage{wrapfig}
+% 表の縦結合
+\usepackage{multirow}
+% 強調表現
+\newcommand\keyterm[1]{\textbf{#1}}
+
+%Font Shapeの警告を消す
+\DeclareFontShape{JY2}{mc}{m}{it}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY2}{mc}{m}{sl}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY2}{mc}{m}{sc}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY2}{gt}{m}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY2}{gt}{m}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY2}{mc}{bx}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY2}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT2}{mc}{m}{it}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JT2}{mc}{m}{sl}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JT2}{mc}{m}{sc}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JT2}{gt}{m}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT2}{gt}{m}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT2}{mc}{bx}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT2}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY2}{hmc}{m}{it}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY2}{hmc}{m}{sl}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY2}{hmc}{m}{sc}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY2}{hmc}{bx}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY2}{hmc}{bx}{sl}{<->ssub*gt/m/n}{}
