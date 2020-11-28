@@ -25,17 +25,18 @@ Rパッケージの\texttt{brms}を使うと，一般線形モデルが簡単に
 \paragraph{Rスクリプトを開く}今日のコードを書くためのRスクリプトファイルを準備します。File > NewFile > R Scriptと進み，何も書いてないRスクリプトの画面を表示させてください。真っ白いファイルが開いたら問題ありません。
 
 続いて，ベイズ推定用のパッケージを準備します。\texttt{brms}パッケージ\footnote{ベイズで(Bayesian),回帰モデルを(Regression Mode)実行する，Stanを使ってね(using Stan)，という意味です。Stanとは確率的プログラミング言語といい，要するに乱数発生器を作ってくれるソフトウェアのことです。}をインストールするのですが，このパッケージをインストールする\textbf{前に}，このパッケージが必要とするコンパイラを用意する必要があります。
-詳しくは \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}のサイトに説明がありますが\footnote{「RStan Getting Started (Japanese)」でググると出てきます。}\footnote{\citep{馬場201907}にも導入についての詳しい説明があります。}，Windowsユーザの場合はまず，
+詳しくは \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}のサイトに説明がありますが\footnote{「RStan Getting Started (Japanese)」でググると出てきます。}\footnote{\citet{馬場201907}にも導入についての詳しい説明があります。}，Windowsユーザの場合はまず，
 \begin{lstlisting}[language=c++]
 pkgbuild::has_build_tools(debug = TRUE)
 \end{lstlisting}
 と実行してください。コンパイラであるRtoolsが環境にない場合には，ポップアップウィンドウが出てきてRtoolsをインストールするか聞いてくるでしょう。Yesをクリックして1分ぐらいインストールが終わるのを待って下さい。
 
-Macユーザの場合は，\url{https://github.com/rmacoslib/r-macos-rtools}にいき，Release page から\texttt{macos-rtools-4.0.0.pkg}を選択してインストールします\footnote{2020年9月20日段階での状況です。}。OSがCatalinaであれば，さらに
-\begin{lstlisting}[language=c++]
-install.packages("Rcpp", repos = "https://rcppcore.github.io/drat")
-\end{lstlisting}
-とする必要があります。
+Macユーザの場合は，\url{https://github.com/rmacoslib/r-macos-rtools}にいき，Release page から\texttt{macos-rtools-4.0.0.pkg}を選択してインストールします\footnote{2020年11月28日段階での状況です。}。
+% OSがCatalinaであれば，さらに
+% \begin{lstlisting}[language=c++]
+% install.packages("Rcpp", repos = "https://rcppcore.github.io/drat")
+% \end{lstlisting}
+% とする必要があります。
 
 これで準備OKで，これではじめて\texttt{brms}パッケージをインストールすることができるようになりました\footnote{この環境構築は初心者にはとっても荷が重いところですね。困ったらいつでも連絡してきてください。どうしても難しい場合は，サーバが利用できますのでこれまた連絡してください。}。
 RStudioのパッケージのところから\texttt{brms}を入力してインストール，あるいはRのスクリプトとして
@@ -336,5 +337,49 @@ scale reduction factor on split chains (at convergence, Rhat = 1).
 固定効果の見方は，群間要因の時と同じです。第一期(Time1)に比べて，第二期は平均点が$-3.99$，第三期は$-2.00$となっています。この区間幅をみると，第一期よりも下がっているというところですが，第一期と第三期の下り幅はギリギリ0でない，というぐらいであってもう少し慎重にデータを追加して検証した方が良いかもしれませんね。\\
 
 \section{課題}
+第\ref{chapter23}講でやった三つの課題それぞれを，\texttt{brms}パッケージを使って実行してください。念の為，以下に簡単な問題設定を再掲いたします。
+\paragraph{課題1 線形モデルとしての分析}
+ある学校の国語の授業で，ある教師が4つのクラスそれぞれに対して個別のテキストを使って授業を行い，同一のテストを行うことでテキストの効果があるかどうかを検証したとします。
+各クラスには10人の生徒がいて，それぞれのテスト結果は表\ref{L23::exe1}の通りです。このデータについて，回帰分析のベイズ推定を行った上で，次の各問いに答えてください。
+
+\begin{enumerate}
+  \item 切片の推定値はいくらになりましたか。おおよそで結構ですので，EAP推定値を答えてください。
+  \item 回帰分析を行った結果，テキストAにくらべてテキストBの平均値はどれぐらい違うと思われますか。おおよそで結構ですので，95\%区間を答えてください。
+  \item 回帰分析を行った結果，テキストAにくらべてテキストCの平均値はどれぐらい違うと思われますか。おおよそで結構ですので，95\%区間を答えてください。
+  \item 回帰分析を行った結果，テキストAにくらべてテキストDの平均値に違いがあると断言しても良いでしょうか。\texttt{conditional_effects}の図をみて判断してください。
+  nd{enumerate}
+
+
+\paragraph{課題2 Betweenデザインの分散分析}
+別の学校では，テキストをA,B,Cの3種類とし，教員が二人がそれぞれのテキストを使って教えることにしました。1クラス12人，一学年6クラスを使っての実験です。
+授業後のテストの点数が表\ref{L23::exe2}の通りです。このデータに対して回帰分析のベイズ推定を行った上で，その結果について回答してください。
+
+\begin{enumerate}
+    \item 切片の推定値はいくらになりましたか。おおよそで結構ですので，EAP推定値を答えてください。
+    \item テキストA,B,Cの効果はどのように判断すれば良いでしょうか。\texttt{conditional_effects}の図をみて考察してください。
+    \item 教員A,Bの効果ははどのように判断すれば良いでしょうか。\texttt{conditional_effects}の図をみて考察してください。
+    \item 交互作用として，どのような特徴があるでしょうか。\texttt{conditional_effects}の図をみて考察してください。
+\end{enumerate}
+
+\paragraph{課題3 Withinデザインの分散分析}
+さらに別の学校では，テキスト・教員は一種類・一人なのですが，4つの時期において成績が変化するかどうかを追跡調査しました。
+各時期のテストの点数は表\ref{L23::exe3}の通りです。次の各指示に従い，その結果について回答してください。
+
+なお，このデータセットは\texttt{Lesson8exe3.csv}ファイルに入っていますが，分析に際しては次のコードを実行して，整理しなおしたデータセットを使ってください。
+\begin{lstlisting}[language=c++]
+dat3 <- read_csv("Lesson8exe3.csv") %>% 
+    pivot_longer(-id,names_to="period") %>% 
+    print
+\end{lstlisting}
+\paragraph{コード解説}
+\begin{description}
+    \item[1行目] データファイル\texttt{Lesson8exe3.csv}を読み込んでいます
+    \item[2行目] id列をキーにデータを縦型にしています
+    \item[3行目] データを表示させています
+\end{description}
+\begin{enumerate}
+    \item 個人差について正しく述べている文章を選んでください。
+    \item 時期の効果について正しく述べている文章を選んでください。
+\end{enumerate}
 
 \end{document}
