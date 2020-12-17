@@ -1,10 +1,8 @@
 #!/usr/bin/bash
-cd `dirname $0`
-uplatex syllabus.tex
+lualatex syllabus.tex
 upbibtex syllabus
-uplatex syllabus.tex
-uplatex syllabus.tex
-dvipdfmx syllabus.dvi
+lualatex syllabus.tex
+lualatex syllabus.tex
 rm *.aux
 rm *.log
 rm *.dvi
@@ -14,4 +12,3 @@ rm *.blg
 rm *.out
 rm *.fls
 rm *.fdb_latexmk
-mv -f syllabus.pdf ../syllabus.pdf

@@ -1,11 +1,12 @@
-\documentclass[uplatex]{jsreport}
-\usepackage{docmute}
-\usepackage{myStyle}
-
-\setcounter{chapter}{19}
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{myStyle} 
 
 \begin{document}
 \chapter{Rによる帰無仮説検定}
+\label{chapter10} 
+
+
 \label{chapter20}
 ここまで様々な統計的仮説検定を学んできましたが，実践上はどのように行うのかを知らなければ絵に描いた餅になります。今回は統計環境Rで帰無仮説検定を行う方法について，実際に手を動かして理解を深めてください。統計環境はRを，その補助としてRStudioを用います。
 統計パッケージは以外にも色々ありますが，どのようなパッケージ，ソフトを使っても同様の出力が得られます。大事なことは，出力画面の位置で内容を覚えるのではなく，意味的な理解をしておくことです。
@@ -27,6 +28,7 @@
 \subsection{データセットを作る}
 \paragraph{データに変数を代入}
 第\ref{chapter16}講でやったように，小さなサイズの母集団を作ってそこから標本をいくつも取り出す練習をしてみましょう。次のようにコードを入力してください\footnote{\#はコメントアウトで「この行で何を計算しているか」を説明している箇所です。みなさんが必ずしも入力する必要はありません。ただ，コメントアウトをつけておくと後で読み返しやすくなります。}。
+
 \begin{lstlisting}[language=c++]
 # Clear workspace
 rm(list=ls())

@@ -1,0 +1,31 @@
+\documentclass{ltjsarticle}
+%\usepackage[no-math,sourcehan]{luatexja-preset} % Japanese fonts
+ \usepackage{myStyle} 
+%  \usepackage{graphicx,xcolor}
+%  \usepackage{listings}
+% %\usepackage{listings-golang} % import this package after listings
+\lstset{
+    frame=single,
+    basicstyle=\small\ttfamily,
+    tabsize=4,
+    keywordstyle=\color{red},
+    stringstyle=\color{blue}
+}
+
+\begin{document}
+
+\section{Go 言語による Hello World}
+
+\begin{lstlisting}[language=c++]
+package main
+## ここにコメントアウト
+import "fmt"
+
+func main() {
+    for i := 0; i < 10; i++ {
+        fmt.Println("Hello, world")
+    }
+}
+\end{lstlisting}
+
+\end{document}

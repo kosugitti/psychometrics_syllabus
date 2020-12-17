@@ -1,11 +1,10 @@
 #!/usr/bin/bash
 rm *.pdf
-uplatex -src-special -interaction=nonstopmode -shell-escape textbook.tex
-uplatex -src-special -interaction=nonstopmode -shell-escape textbook.tex
+lualatex textbook
 upbibtex textbook
-uplatex -src-special -interaction=nonstopmode -shell-escape textbook.tex
-uplatex -src-special -interaction=nonstopmode -shell-escape textbook.tex
-dvipdfmx textbook.dvi
+lualatex textbook
+lualatex textbook
+
 rm *.aux
 rm *.log
 rm *.dvi
