@@ -1,8 +1,9 @@
+\usepackage{ascmac}
 \usepackage[longnamesfirst]{natbib}
 % 1行49文字。200行で一万文字程度(目安)
 \usepackage[left=25mm,right=25mm,top=30mm,bottom=30mm]{geometry}
+
 \usepackage{url}
-\usepackage{ascmac}
 \usepackage{graphicx} 
 \renewcommand{\refname}{引用文献}
 \usepackage{lineno}
@@ -42,4 +43,7 @@ setpagesize=false,
 \usepackage{multirow}
 % 強調表現
 \newcommand\keyterm[1]{\textbf{#1}}
+% 枠囲いのパッケージ
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins, theorems}
 
