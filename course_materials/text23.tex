@@ -49,7 +49,7 @@ str(obj)
 \end{description}
 
 さて，最後の7行目を実行すると，コンソールに次のように出力されていると思います。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 > str(obj)
 'data.frame':	3 obs. of  4 variables:
@@ -57,13 +57,13 @@ str(obj)
  $ gender: num  1 2 1
  $ height: num  167 170 180
  $ weight: num  60 70 80\end{verbatim}
-\end{screen}
+\end{tcolorbox}
 ここにあるように，\texttt{obj}オブジェクトの\texttt{name}変数はchr型で，他の三つの変数は数値型(numeric)である，というのが示されています。ここで性別\texttt{gender}を因子型にしてみましょう。
 \begin{lstlisting}[language=c++]
 obj$gender <- factor(obj$gender,label=c('male','female'))
 \end{lstlisting}
 こうすると，
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 > str(obj)
 'data.frame':	3 obs. of  4 variables:
@@ -71,7 +71,7 @@ $ name  : chr  "kosugi" "yamada" "ueda"
 $ gender: Factor w/ 2 levels "male","female": 1 2 1
 $ height: num  167 170 180
 $ weight: num  60 70 80\end{verbatim}
-\end{screen}
+\end{tcolorbox}
 ここに示されているように，性別がファクター型になり，それは2つの水準を持っている。それぞれに「male」「female」というラベルがついている，ということがわかります。
 
 このfactor型にしておくというのは，Rが名義尺度水準の変数なんだなと理解したことになりますので，これで回帰分析をするとOKということになります。逆にfactor型にしておかないと，量的変数として普通の回帰分析をしてしまうので，正しくない結果になります\footnote{具体的には，3水準に1,2,3という量的な数字を割り振って分析するということは，$1<2<3$という順序性と2-1=3-2という等間隔性を持たせたことになります。要因計画の可視化の時に，横軸は入れ替え可能(順序性がない)だったことを思い出してください。}。
@@ -147,7 +147,7 @@ result.lm1 <- lm(value~condition,data=Example1)
 summary(result.lm1)\end{lstlisting}
 1行目が\texttt{lm}関数を使っていて，結果を\texttt{result.lm1}オブジェクトに入れているところです。従属変数と独立変数をチルダ\verb|~|で繋げているところ，思い出してください。2行目はこの結果の出力になります。結果は次のように示されているはずです。
 
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 Call:
 lm(formula = value ~ condition, data = Example1)
@@ -168,7 +168,7 @@ Residual standard error: 1.143 on 9 degrees of freedom
 Multiple R-squared:  0.3562,	Adjusted R-squared:  0.2131 
 F-statistic: 2.489 on 2 and 9 DF,  p-value: 0.1379
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 これを見ると，切片\texttt{(Intercept)}の推定値が5.5，次に2つの説明変数の係数が書いてあります。文字が連なっているのでわかりにくいかもしれませんが，それぞれ\texttt{condition}と\texttt{exp1}の関係，\texttt{condition}と\texttt{exp2}の関係を表しています。図\ref{fig::23_02}を見ると結果の意味は分かり易いと思います。
 \begin{figure}[ht]
     \centering
@@ -190,7 +190,7 @@ $$ X_{ij} = \bar{X}_1 + \beta_j + \epsilon_{ij}$$
 anova(result.lm1)
 \end{lstlisting}
 とすると，分散分析表が次のように示されます。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 Analysis of Variance Table
 
@@ -199,7 +199,7 @@ Response: value
 condition  2   6.50  3.2500  2.4894 0.1379
 Residuals  9  11.75  1.3056   
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 ここから，$F(2,9)=2.4894,p=0.1379$で統計的に有意な差はみられなかった，と判断することができます。これらの数字，どこをどう読み取ったのか確認してください。
 
 これだけですから，\texttt{lm}関数だけでいいじゃないかと考える人もいるかもしれません。基本的には問題ないのですが，分散分析は「群のサンプルサイズが違う場合」や，「分散の計算」においていくつかの計算バリエーションがあり，Rデフォルトの\texttt{lm}関数では十分対応できなくなるシーンが出てきます。
@@ -211,7 +211,7 @@ anovakun(Example1[,2:3],"As",3,eps=T)
 
 まず，\texttt{anovakun}には分散分析に必要なデータだけを与える必要があります。今回のデータフレームにあるid列は入りませんので，\texttt{Example1[,2:3]}としてデータの2列目と3列目だけ(2列目から3列目まで)に限定しています\footnote{大括弧$\left[, \right]$は，データフレームの行および列を指定するのに使います。 一行目だけを指定したい場合は\texttt{Example1[1,]}，一列目だけ指定したい場合は\texttt{Example1[,1]}，1行1列目の要素だけアクセスしたい場合は\texttt{Example1[1,1]}のようにします。}。次に書いてある\texttt{As}は，\texttt{anovakun}独特の記法です。ここでの\texttt{s}は被験者subjectを意味しており，これの左側に群間要因を，右側に群内要因を書きます。今回は一要因の群間デザインですので，左側に一つ要因Aをおく，という書き方になっています。これを\texttt{sA}のようにすると一要因群内デザイン，\texttt{AsB}とすると，要因Aは群間で要因Bは群内の混合計画を表すことになります。最後に，今回の一要因Aの水準数を入力すれば，\texttt{anovakun}関数は全ての分析を実行してくれます。オプションとして，効果量$\epsilon^2$を表示するスイッチをオン(\texttt{eps=T})とすると，効果量も出してくれます。
 
-\begin{screen}
+\begin{tcolorbox}
     \begin{verbatim}
 [ As-Type Design ]
 
@@ -243,7 +243,7 @@ Source      SS  df     MS  F-ratio  p-value      epsilon^2
 
 output is over --------------------///
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 各群の平均値，標準偏差および，分散分析表が表示されていますね。これを見て，どことどこの数字を参照すれば良いか等，確認しておいてください。
 
 これだけだと，特に\texttt{anovakun}が便利そうに思えないかもしれません。が，以下様々な要因計画に対応しているので，徐々にその良さがわかってくると思います。
@@ -295,7 +295,7 @@ summary(result.lm2)
 \end{lstlisting}
 ここで，説明変数が$\ast$でつなげられています。これで主効果と交互作用の両方をモデルの中に入れたことになります。結果は次のように表示されるはずです。
 
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
  > summary(result.lm2)
 
@@ -319,7 +319,7 @@ Residual standard error: 1.225 on 8 degrees of freedom
 Multiple R-squared:  0.7867,	Adjusted R-squared:  0.7067 
 F-statistic: 9.833 on 3 and 8 DF,  p-value: 0.004641
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 ここに示されているのは，温度\texttt{temp}変数の第一水準(Hot)かつメーカー\texttt{maker}変数の第一水準(銘柄A)を基準にした時に，\texttt{tempCold}つまりメーカーは同じ(銘柄A)で温度だけ違う群は平均値が$-3.0$，次にメーカーをBで\texttt{makerB}温度はHotの群と比べるとその平均値は$-5.0$，両方変えると$+7.0$になる，ということです。それぞれ標準誤差や$t$値が出ていますが，これは傾きが0である，という帰無仮説を棄却しているだけであって，効果の大きさについてはわかりません。
 
 また，最後に$F$統計量が出ています。自由度が$(3,8)$の時に$p=0.004641$ですが，これは線形モデル全体としてみた時に横一線の帰無仮説モデルとは違うね，というだけであって，具体的にどこがどう違うのか，というのがわかりにくくなっています。
@@ -332,7 +332,7 @@ anova(result.lm2)
 \end{lstlisting}
 
 次のようになります。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 > anova(result.lm2)
 Analysis of Variance Table
@@ -346,7 +346,7 @@ Residuals   8  12.00    1.50
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 分散分析表だけでなく，ご丁寧に有意かどうかわかりやすいような記号(\verb|.|や\verb|*|など)をつけてくれています。最後の一行には\texttt{Signif. codes}とあって，米印が一つなら5\%，二つなら1\%，三つなら0.1\%水準で有意である，という読み方が書いてあります\footnote{おそらくこれが諸悪の根源で，なんとなく星の数が多い方が「良い結果」のような印象を持ちますし，分析したらとりあえず星を探す，という仕草が生まれるようになっていますよね。帰無仮説検定はあくまでもモデル比較の判定であって，判定基準が厳しいほど「良い」とか，基準をクリアできなかったから「惜しい(残念)」という評価を伴うものではないはずなのに，です。有意差がなかったら，そういう結果が得られた，というだけですし，星の数が小さくてもえらいとかすごい，ということにはならない，ということを再確認してください。「心理学者は星を探して喜んでるんだ」というようなジョークの的にならないように，適切な分析的素養を身に付けましょう。}。これを見ると，\texttt{maker}水準は5\%水準で有意にはならず\footnote{世の中には「有意傾向」という変な言葉があります。今回の$p$値は6\%でしたが，これは5\%水準ではアウトですよね。こういった5\%をちょっとだけ上回っちゃった，惜しい！という時に，「有意になりそうな傾向があった」略して「有意傾向があった」という表現がされることがあるのです。あるいは「傾向差があった」という言葉もまことしやかに使われていたりします。が，これらは心理学独自の間違った表現であり，決して使うべきではありません。なぜなら，5\%だろうが6\%だろうが，任意に決めた判定基準であって，$p$ 値の大小関係は現実の効果の大きさとは関係がないからです。}，交互作用項(\texttt{temp:maker})は有意になっていることがわかります。
 
 ただ，このままだと「交互作用は有意だけど，どこがどう違うのかわからない」という状況ですね。4つの母平均が同じである($\mu_{11}=\mu_{12}=\mu_{21}=\mu_{22}$)という帰無仮説が棄却されただけで，どこがどう違うのかについては事後の検定を追加しなければならないからです。
@@ -358,7 +358,7 @@ anovakun(Example2[,3:5],"ABs",2,2,eps = T)
 先ほどと同様，\texttt{anovakun}にはid列やnum列は必要ありませんので，3行目から5行目まで，要因A,Bと従属変数だけを与えます。要因計画は間$\times$間ですので，被験者\texttt{s}の左側にA,Bとしています。二つの要因はそれぞれ2水準ですので，水準数を二つ書いています。最後の\texttt{eps=T}は，効果量である$\epsilon^2$を表示するスイッチをオン(TRUE)，ということです。
 
 結果は次のように表示されます。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 [ ABs-Type Design ]
 
@@ -406,7 +406,7 @@ B at a2  6.0000   1  6.0000   4.0000   0.0805 +       0.0800
 
 output is over --------------------///
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 
 最初に，水準ごとの平均値と標準偏差が表示され，続いて分散分析表が示されています。
 これを見ると，要因A(温度)の主効果はなく($F(1,8)=0.500,p=0.4996$)\footnote{米印があるべきところに$ns$とありますが，これはnot significant，つまり有意ではないという意味です。}，ついで要因Bの効果も5\%水準では認められない(10\%水準で有意，その記号として$+$が使われています。)，交互作用は5\%水準で有意という結果になりました。ここまでは当然，先ほどと同じですね。効果量$\epsilon^2$の列を見ると，交互作用は全体の62\%の分散を説明したことになりますから，これはかなり大きな効果だったようだ，ということがわかります。
@@ -460,7 +460,7 @@ anovakun(Example3[, 2:4], "sA", 3, eps = T)
 データセットや変数の指定，効果量オプションの指定は特に追記することはありません。デザインの指定が\texttt{"sA"}と\texttt{s}の右側に来ているところがポイントです。これを実行すると，次のような結果が示されます。
 
 まず群ごとの記述統計量が計算されています。その次に\verb|<< SPHERICITY INDICES >>|とありますね。これは\keyterm{球面性の検定}と訳されます。$t$検定の時にWelchの補正をしたのを思い出して欲しいのですが，分散分析の時も基本的に母分散が同じである，という仮定があります。この仮定が満たされない場合は補正をしなければなりません。特にWithin計画の場合は，全部の分散(共分散)が等しいという仮定を置くのではなく，少なくとも全方向に等しく広がっている空間であるはずだ，という仮定をおいています\footnote{Within計画の時にややこしいのは，モデルでいうと個々人に線形モデルを仮定して，個人差＝切片が異なるような階層的なモデルになっているということです。個々人の分散が同じ，というのはなかなか厳しい仮定だと思われますが，水準同士の相関関係(共分散)も考慮に入れて，分散共分散行列(対角要素に分散，非対角要素に共分散が入っている正方行列)が均質である，という仮定ぐらいはせめて保持したいわけです。水準数が増えるとこの相関関係を表現するする世界は多次元空間に広がっていくので，究極的には丸くなる，球面性の検定といわれる所以です。 }。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 [ sA-Type Design ]
 
@@ -505,10 +505,10 @@ It was executed on Tue Sep 15 13:50:06 2020.
   Total 77.0000  11  7.0000                                  
                    +p < .10, *p < .05, **p < .01, ***p < .001
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 これが満たされない場合は，Greenhouse-Geisserの補正やHuynh-Feldt-Lecoutreなどの補正をしなければならないが，どうでしょうね？というのを確認するのがこの箇所です。今回は$p$が1.000で$ns$，つまりnot significant=有意に歪んでいるとは言えない，ということなので補正は不要です。もしここが有意である，つまり丸いという状況から異なっている現状があると思われるのであれば，自由度などの補正が必要で，その時\texttt{anovakun}はオプションで補正を指定できます。ともかく今回は，このまま先に進めそうです\footnote{まったく！検定の多重性が問題だとかなんとか言いながら，そもそも前提が満たされているかどうかの検定は挟まないといけないし，ここでは有意差がでると補正，出ないとOKってなんかいつもとは違う判断をしないといけない。分散分析とか帰無仮説検定というのは，とても厳密な手続きが必要なのですが，こんな感じであちこちに補正，修正などが入ってきて，正直嫌になりますよね。私は嫌なのでそういう悩みのないベイズ統計的アプローチの方がいいと思うんですが，みんなよくこんなの真面目にやってきたなあと思いますよ。}。
 
-\begin{screen}
+\begin{tcolorbox}
     \begin{verbatim}
 << POST ANALYSES >>
 
@@ -538,7 +538,7 @@ It was executed on Tue Sep 15 13:50:06 2020.
 output is over --------------------///
 
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 その先にはやっと分散分析表が出てきました。これを見ると\texttt{Source}列の\texttt{s}とあるところ，これが個人差です。ここについては検定の対象外なので，$F$値などの計算は行われていません。その下の\texttt{A}からが要因の効果で，\texttt{s x A}とあるところ，つまりAに伴って生じる個人差，のところが比較対象となる誤差のところです。この$F$値が16.00，$p=0.0039$で統計的に有意(ちなみに効果量$\epsilon^2=0.3896$)なので，水準間のどこかには差があるということがわかります。
 
 続く\verb|<< POST ANALYSES >>|のところに，Shefferの方法を使った事後の検定があります。これによると，a1-a2のペアは$a1 > a2$の関係にあって有意で，そのほかのペアは有意ではない，ということがわかります。

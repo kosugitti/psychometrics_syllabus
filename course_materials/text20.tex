@@ -128,7 +128,7 @@ qnorm(0.975, mean = 0, sd = 1)
     t.test(s1,mu=5,conf.level = 0.95)
 \end{lstlisting}
 これは，母平均が5である母集団から得られた標本の平均が，母集団から有意に離れているかどうかを検定するという検定方法になります。これを実行すると，私の環境では次のような結果が得られました\footnote{繰り返しになりますがs1のサンプルは実行環境によって違うと思いますので，結果はみなさんの手元の数字と異なると思います。出力のどこがどういう意味であるかを見ることが肝要です。}。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
     > t.test(s1,mu=5,conf.level = 0.95)
 
@@ -142,7 +142,7 @@ alternative hypothesis: true mean is not equal to 5
 sample estimates:
 mean of x 
  5.422078\end{verbatim}
-\end{screen}
+\end{tcolorbox}
 いろいろ出力されていますが，下から5行目に95\%信頼区間(95 percent confidence interval)とあり，\texttt{CI[4.154629,6.689527}]と先ほどの計算結果と同じものが示されているはずです。その下，標本平均\texttt{5.422078}も，\texttt{mean(s1)}と同じ結果になっていることを確認してください。
 
 ちなみにこの関数\texttt{t.test}は，デフォルトで\texttt{mean=0,conf.level=0.95}の設定になっています。
@@ -178,16 +178,16 @@ t.test(value ~ condition, data = dat, paired = T, alternative = "less")
 これは1，2行目は先ほどと同じですが，
 \begin{description}
     \item[3行目] オブジェクトからデータフレームを作成。データの値は変数\texttt{value}に，これを条件ごとに区別する条件変数\texttt{condition}と共に作ります。\texttt{condition}の中にある\texttt{rep}関数は，ある文字・数字を繰り返すもので，ここでは\texttt{rep(1,10)}で1を10個作っています。ここだけ実行するとその動作がよくわかりますよ。
-    \begin{screen}
+    \begin{tcolorbox}
         \begin{verbatim}
 > rep(1,10)
 [1] 1 1 1 1 1 1 1 1 1 1\end{verbatim}
-        \end{screen}
+        \end{tcolorbox}
     \item[4行目] 先ほど作った\texttt{condition}変数をファクター型(要因型，ラベル付き名義尺度水準)に置き換えています。
     \item[5行目] t検定ですが，書式が変わっています。チルダ\texttt{\~}を使って，従属変数\verb|~|独立変数という書き方に変えています。
 \end{description}
 こちらはデータフレームを作った書き方ですから，データフレームがどういう形なのかみておくと良いでしょう。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 > dat
    condition value
@@ -200,11 +200,11 @@ t.test(value ~ condition, data = dat, paired = T, alternative = "less")
 13      post    16
 (後略)
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 実際のデータ分析の時は、外部からデータファイルを読み込んだり，既にデータフレームに整形されたものを分析することが多いかと思います。このチルダを使って独立変数，従属変数の形に表すのがRでは一般的な関数関係の表現形ですから，これを機にどちらの使い方でもできるように解説しました。
 
 さて，こうして得られる結果は次の通りです。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
     Paired t-test
     data:  value by condition
@@ -216,7 +216,7 @@ t.test(value ~ condition, data = dat, paired = T, alternative = "less")
     mean of the differences 
                        -2.4 
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 
 上から三行目に$t$値が出ていますね。帰無仮説の下での$t$統計量の実現値は$t(9)=-2.4783$であり，これが出現する確率は$p=0.01754$です。対立仮説は，平均値の差が0より小さい(true difference in means is less than 0)という対立仮説になっています\footnote{Rでは前の変数が後ろの変数に比べて大か，小かを表現します。}。これが片側検定になっているのは，\texttt{t.test}関数の引数に\texttt{alternative="less"}と書いたからで，これを\texttt{alternative="greater"}とすれば逆の片側検定(事前データのスコアの方が事後データのスコアより大きい)を検定することになり，特に何も書かないか\texttt{alternative="two.sided"}とすれば両側検定になります。
 
@@ -234,7 +234,7 @@ t.test(value ~ condition, data = dat)
 スクリプトの内容については、先ほどとほぼ同じです。大きな違いは，\texttt{t.test}関数の引数がなくなったところで，\texttt{paired}オプションもなければ，\texttt{alternative}オプションもありません。ないのは、デフォルトの状態を使っているからで，Rの\texttt{t.test}関数はデフォルトで対応のない，両側検定の$t$検定をやってくれるのです。
 
 結果は次のように表示されるはずです。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 Welch Two Sample t-test
 
@@ -247,7 +247,7 @@ sample estimates:
      mean in group control mean in group experimental 
                       20.6                       25.2 
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 前回，手計算した結果と同じになっているかどうか確認してください。
 
 んん？自由度が7.195？自由度って8になるんじゃなかったでしたっけ(実験群の自由度が$5-1=4$，統制群の自由度も$5-1=4$，足して二つで$4+4=8$)。
@@ -273,7 +273,7 @@ Rの\texttt{t.test}関数は，より仮定の緩やかな，Welchの補正を�
 t.test(value ~ condition, data = dat,var.equal = T)
 \end{lstlisting}
 とすることで，次のような結果を得ることができます。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 	Two Sample t-test
 
@@ -285,7 +285,7 @@ alternative hypothesis: true difference in means is not equal to 0
 sample estimates:
      mean in group control mean in group experimental 
                       20.6                       25.2 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 このやり方ですと，自由度も整数になっていますね(判定結果は変わりませんが)。
 
 \subsection{事後的な効果量の検証}
@@ -301,7 +301,7 @@ cohen.d(value ~ condition, data = dat, hedges.correction = T)
 ここではまず2行目でパッケージを読み込み\footnote{このパッケージを持っていない場合は，当然インターネットからダウンロードしてローカル(手元のPC)に保存しておく必要があります。このダウンロードは「パッケージのインストール」と呼ばれ，\texttt{install.packages}関数で行うことができます。今回パッケージのインストールを行う場合は，\texttt{install.packages("effsize")}と入力し，実行してください。大文字小文字の違いにも気を付けて！また，これは一度ダウンロードすれば，毎回する必要はありません。}，次の行でcohenのdをHedgesの補正をかけて算出せよ，としています。
 
 結果は次のように示されます。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
     Hedges's g
 
@@ -310,7 +310,7 @@ cohen.d(value ~ condition, data = dat, hedges.correction = T)
          lower      upper 
     -2.1369693  0.5939009 
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 
 \texttt{g estimate: -0.7715342 (medium)}とあるように，推定値は0.77で，これは中ぐらい(medium)の大きさだよ，ということです。中程度の違いがありそうなのに，今回有意にならなかったのは、サンプルサイズが小さかったからかもしれません。事前にきちんと設計してやっておけば，実験手続きとしてより良くなったでしょう。
 
@@ -332,7 +332,7 @@ cohen.d(X,Y,paired = TRUE)
 cohen.d(value ~ condition, data = dat, paired = TRUE)
 \end{lstlisting}
 とすると，出力に次のような警告が付されます。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
     Cohen's d
 
@@ -346,7 +346,7 @@ cohen.d(value ~ condition, data = dat, paired = TRUE)
       Trying to compute paired samples Cohen's d using formula input. Results may be incorrect
       if cases do not appear in the same order for both levels of the grouping factor. Use the
       format 'value ~ treatment | Subject(id)' to specify a subject id variable.\end{verbatim}
-\end{screen}
+\end{tcolorbox}
 この警告は，「対応のある個々人を識別する変数がデータセットに入ってないので，間違った結果になっているかもしれませんよ。次の書式を使ってください」と言ってます。これに対応するためには、次のようにします。
 \begin{lstlisting}
 X <- c(34, 25, 13, 21, 13, 26, 19, 12, 19, 19)
@@ -366,7 +366,7 @@ power.t.test(power = 0.8, delta = 0.7, sig.level = 0.05)
 ここで，\texttt{delta=0.7}としたのは，標準化された平均値差が0.7あるとして，という考え方です。これは先ほどの事後的検定力分析の結果，それぐらいあったんじゃないの？と思われたのでその値を使いました。もっと小さく見積もったり，逆にもう少し大きく見積もったりしても構いません。また，\texttt{power=0.8}としましたが，これは\keyterm{検定力}powerで，セクション\ref{sec::18_05}で出てきたものです。Type II Error，つまり差があるのにあると言えない間違い($\beta$)を20\%ぐらいに抑え，80\%の確率で当てたいとしました($1-\beta=0.8$)。また，有意水準は5\%です($\alpha=0.05$,スクリプトの中では\texttt{sig.level=0.05}としています)。
 
 さて，これの出力結果を見ると，次のように示されました。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
     Two-sample t test power calculation 
 
@@ -378,13 +378,13 @@ power = 0.8
 alternative = two.sided
 
 NOTE: n is number in *each* group\end{verbatim}
-\end{screen}
+\end{tcolorbox}
 ここの$n$にあるように，効果量0.7，検定力0.8で研究するのであれば，33か34人は集めたいところ，だったわけです。逆に今回は5人しか集めていませんでしたが，これを使って，
 \begin{lstlisting}
 power.t.test(n = 5, delta = 0.7, sig.level = 0.05)
 \end{lstlisting}
 とすると，次のように示されます。
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
     Two-sample t test power calculation 
 
@@ -396,7 +396,7 @@ power = 0.16318
 alternative = two.sided
 
 NOTE: n is number in *each* group\end{verbatim}
-\end{screen}
+\end{tcolorbox}
 ここにあるように，検定力は0.16，つまりサンプルサイズ$n=5$であれば，この研究は100回やっても「有意差あり」と正しく判断できるのは16回ほどしかなかった，ということになります。分の悪い勝負に出たというところでしょうか。
 \section{課題}
 \paragraph{課題1 標本統計量と一標本検定}

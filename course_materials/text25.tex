@@ -190,14 +190,14 @@ length(X[X>1])/100000
         \item[4行目] 理論値による検算。確率点1までの累積確率を総面積1から引くことで，該当箇所の面積を求める
     \end{description}
 
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 > X <- rnorm(100000,mean=0,sd=1)
 > length(X[X>1])/100000
 [1] 0.15886
 > 1-pnorm(1,mean=0,sd=1)
 [1] 0.1586553\end{verbatim}
-\end{screen}
+\end{tcolorbox}
 \section{課題}
 
 \end{document}

@@ -70,7 +70,7 @@ summary(fit)
 
 これの結果は次のようなものでした。
 
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 > summary(fit)
 
@@ -92,7 +92,7 @@ Residual standard error: 34.36 on 13 degrees of freedom
 Multiple R-squared:  0.754,	Adjusted R-squared:  0.7351 
 F-statistic: 39.85 on 1 and 13 DF,  p-value: 2.688e-05
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 回帰係数は切片が288.74，傾きが93.72と推定され，それらが0ではないと帰無仮説に対する検定結果が示されています。またモデル全体の適合について，$F(1,13)=39.85,p=0.000002688$という結果や，$R^2=0.754$などが示されています\footnote{少し補足。$p$値は$2.688\times 10^{-5}$という意味です。桁数の表示が長くなりすぎるので，機械はこのような省略記号を書きます。また適合度を表す$R^2$の値ですが，ここではMultiple R-squaredの値をそのまま書いています。この値はサンプルサイズによって過大評価されることがあるので，論文などではそれを補正した「自由度調節済み$R^2$」が使われることもあります。}
 
 早速これをベイズ推定していきましょう。何がどう変わるのでしょうか。
@@ -113,7 +113,7 @@ print(fit.brm)
 最後にもう一つの推定値，$\sigma$が\texttt{Family Specific Parameters}のところに現れています\footnote{線形回帰は$Y_i \sim N(\beta_0 + \beta_1 X_i , \sigma)$で，未知数は$\beta_0,\beta_1,\sigma$の三つであったことを思い出してください。}。
 
 これが基本的な結果の情報です。\texttt{lm}関数を使った最尤推定の結果とほとんど同じ数字になっていることがわかります。結果はそれほど変わらないのですが，推定値が分布として得られていることが大きく異なる点です。
-\begin{screen}
+\begin{tcolorbox}
     \begin{verbatim}
 Family: gaussian 
 Links: mu = identity; sigma = identity 
@@ -135,7 +135,7 @@ Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 このことをわかりやすく表示するために，\texttt{plot(fit.brm)}としてみましょう。図\ref{fig::27_01}のように，分析結果がプロットされます。
 \begin{figure}[ht]
     \centering
@@ -160,12 +160,12 @@ map_estimate(fit.brm)
 最小二乗法や最尤法と違って，結果が分布で表されるという感覚が掴めてきたでしょうか。続いてはこの分布が乱数によって生成されていることに注目してみたいと思います。
 \subsection{MCMC法の評価}
 既に述べたように，MCMCは乱数発生法であり，事後分布からのサンプリングでもって結果のヒストグラムを描くのでした。ヒストグラムが確率分布の稜線を描いてくれるからです。ただし，乱数ですから毎回違う結果が出ます。乱数がちゃんと事後分布からのものであるかどうかも，チェックしなければなりません。それらの情報について書いてあるのが，結果の6行目，
-\begin{screen}
+\begin{tcolorbox}
     \begin{verbatim}
 Samples: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
     total post-warmup samples = 4000
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 のあたりにあるのです。これを読み解いていきましょう。
 
 MCMC法はステップ・バイ・ステップで，一歩ずつ次の乱数を生み出していってます。このMCMCサンプルは，推定したいパラメータの代表候補たちです。内部に保存されているデータを抜き出したのが図\ref{fig::27_02}です。今回は切片(\verb|b_intercept|)と傾き(\texttt{b})と誤差の散らばり度(\texttt{sigma})について，毎回のステップで得られた乱数の値が書かれています。例えば傾きは$77.55104 \to 100.42599 \to 133.46551 \to 77.90979 \to \cdots$というように，前回の値を軸にしながら次々と乱数を生み出していってるのです。正確には，ここには3つの変数があり，赤枠で囲んでいるようにこの3つの変数からなる同時確率空間からサンプリングしてきます。つまり$(336.0793,77.55104,32.49790)\to (283.5139,100.42599,41.52797) \to \cdots$というように，3つずつセットでステップを踏んでいることになります。これがどんどん積み重なっていく，ステップの様子を示したのが図の中頃にあるギザギザの折れ線であり，これをまとめ上げて積み重ねたヒストグラムが最後に事後分布として得られる，というのが基本原理です。
@@ -190,11 +190,11 @@ MCMC法はステップ・バイ・ステップで，一歩ずつ次の乱数を�
     \label{fig::27_03}
 \end{figure}
 このように，結果が出力された後でMCMCの挙動をチェックすることが必要です。出力画面には最後に，
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 and Rhat is the potential scale reduction factor on split chains (at convergence, Rhat = 1).
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 とありましたが，これはチェインの絡み具合をし評価した$\hat{R}$(Rhat)が1であれば収束している，ということを書いていて\footnote{ひとところに集まってきているという意味のconvergeを収束，といいます。コロナウイルスの蔓延が終わる，という意味でのしゅうそくは「終息」と書きます。}，今回の結果のRhatの列にはいずれも1.00とありますから，MCMCは問題なく事後分布からの代表値を取り出している，と診断することができます。
 \section{要因計画の推定}
 続いて要因計画の例にいきましょう。既に線形モデルで推定する方法については説明してありますから，これの関数を\texttt{lm}から\texttt{brm}に変えるだけでオッケーです。二要因の例を使って説明してみましょう。
@@ -225,7 +225,7 @@ result.brm2
 \end{description}
 これを実行した結果が次のようになります。
 
-\begin{screen}
+\begin{tcolorbox}
 \begin{verbatim}
 Family: gaussian 
 Links: mu = identity; sigma = identity 
@@ -249,7 +249,7 @@ Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 データの生成に正規分布を仮定していること(\texttt{Family: gaussian})，モデル式やMCMCサンプルの特徴を描いた後に，推定値が出ています。推定値の見方は\texttt{lm}の時と同じですが，95\%区間が示されていること，MCMCの収束を判定する\texttt{Rhat}などがあるところが違うところですね。この95\%区間が狭いと自信を持って結果を言える，広いと確信度が低くまだまだデータが足りない，というところでしょうか。また今回は主効果にあたるところの95\%区間が0を跨いでいるので，傾きが0であるという帰無仮説を考えるのであれば，これは棄却できないということになります。交互作用は少なくとも3.69，大きければ10.42ポイントも動かすのですから，これは大きな効果があると言っていいでしょう。
 
 このように直接的に大きさを評価することもできますが，次のようなプロットを描くと特にわかりやすいでしょう。
@@ -296,7 +296,7 @@ conditional_effects(result.brm3)
 線形モデルの書き方が変わったことに注意してください。従属変数と独立変数をチルダで繋ぐのはこれまでと同じなのですが，これに加えて\texttt{(1|ID)}という表記があります。このカッコの中身は1が切片を表しており，それが変数\texttt{ID}ごとに変わるよ，ということを意味しています。
 
 これを実行した結果が次のようになります。
-\begin{screen}
+\begin{tcolorbox}
     \begin{verbatim}
 Family: gaussian 
 Links: mu = identity; sigma = identity 
@@ -324,7 +324,7 @@ Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
 \end{verbatim}
-\end{screen}
+\end{tcolorbox}
 結果のところに大きく分けて，\texttt{Group-Level Effects}と\texttt{Population-Level Effects}の2つがあることみてください。群間要因の場合は\texttt{Population-Level Effects}の要素しかありませんでした。これは\keyterm{固定効果}fixed effectと呼ばれ，どの個人にも共通の効果があることを表しています。これに対して\texttt{Group-Level Effects}は\keyterm{変量効果}random effectと呼ばれ，人ごと，ケースごとに確率的に変わりうるところを意味しています。今回は最初の個人差(スタート地点，切片)が人ごとに変わるので\texttt{sd(Intercept)}とあります。スタート地点が人によって2点ぐらいは左右するよ，ということがここでみて取れるのです。
 
 固定効果の見方は，群間要因の時と同じです。第一期(Time1)に比べて，第二期は平均点が$-3.99$，第三期は$-2.00$となっています。この区間幅をみると，第一期よりも下がっているというところですが，第一期と第三期の下り幅はギリギリ0でない，というぐらいであってもう少し慎重にデータを追加して検証した方が良いかもしれませんね。\\
