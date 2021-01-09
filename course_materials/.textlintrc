@@ -1,8 +1,11 @@
-
 {
-  "rules": {
-    "preset-japanese": true,
-    "preset-ja-technical-writing": true
-  },
-  "plugins": ["latex2e"]
+  "plugins": ["latex2e"],
+    "rules": {
+        "preset-ja-spacing": true,
+        "ja-no-mixed-period": true,
+        "max-kanji-continuous-len": false,
+        "sentence-length": false,
+        "preset-ja-technical-writing": true,
+        "spellcheck-tech-word": true
+        },
 }
