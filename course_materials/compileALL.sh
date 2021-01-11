@@ -1,9 +1,9 @@
 #!/usr/bin/bash
 rm *.pdf
-lualatex textbook
-upbibtex textbook
-lualatex textbook
-lualatex textbook
+lualatex Dkiso1_book
+upbibtex Dkiso1_book
+lualatex Dkiso1_book
+lualatex Dkiso1_book
 
 rm *.aux
 rm *.log
