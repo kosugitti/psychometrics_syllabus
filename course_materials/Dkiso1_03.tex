@@ -1,661 +1,77 @@
 \documentclass{ltjsarticle}
 \usepackage{docmute} 
-\usepackage{myStyle} 
+\usepackage{../myStyle} 
 
 \begin{document} 
-\chapter{第3講} 
+\chapter{数値データの種類} 
 \label{chapter3} 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\clearpage 
-\section{資料A} 
-\label{sec::3a} 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.001.png} 
-		\label{fig::ch03A_1} 
-	\end{figure} 
- 
+前回は電子計算機の機能や使い方などについて解説する寄り道でしたが，今回は本来のルートに戻って，心理統計学の内容に入っていきたいと思います。第一回に科学としての心理学なので，数量的なデータを扱って研究が進められる，という話をしました。今回は，何をどのようにデータにするか，データの種類と言った点についてお話しします。
+\section{データと変数}
+心理学では目に見えないものを研究対象とするため，心を持つと考えられる主体にたいして刺激を与え，その反応を見て「こうすれば(刺激)$\to$心のせいで$\to$こうなる(反応)」という因果を説明するためのモデルとして研究するのだ，ということでした。ここで刺激と反応は，研究対象である「心」の外にあって，観測できるものです。これをデータにしていきます。
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.002.png} 
-		\label{fig::ch03A_3} 
-	\end{figure} 
- 
+図\ref{fig::03_01}は心理学研究の流れを説明したものです。ここで述べている「刺激と反応からデータを作る」というところは心理測定法と呼ばれます。何をどのようにデータにするか，ということを考えるところであり，それぞれの心理学領域によって様々なバリエーションがあります。神経生理のような領域での研究であれば，データは計測機から得られる電気反応の強さ，間隔などになるでしょうし，認知・知覚・学習心理学のような領域であれば，例えば被験者のキー反応の早さなどをPCで計測してデータとするでしょう。社会・学習・臨床心理学のような応用的領域であれば，被験者の発話，調査票への回答パターンなどがデータになるでしょう。いずれの領域でデータを取るにしても，ここで重要なのはそのデータの\textbf{信頼性reliability}と\textbf{妥当性validity}です\footnote{詳しくは第\ref{chapter6}講で触れます。}。
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.003.png} 
-		\label{fig::ch03A_5} 
-	\end{figure} 
- 
+\begin{figure}[ht]
+    \centering
+	\includegraphics[keepaspectratio,width=12cm]{images/text03/slide03_01.png}
+    \caption{心理学研究のプロセス}
+    \label{fig::03_01}
+\end{figure}
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.004.png} 
-		\label{fig::ch03A_7} 
-	\end{figure} 
- 
+それに対して，この講義で特に重点的に議論するのは後半のデータ解析のところになります。つまりデータが得られた後で，それをどのように分析していくか，という点です。これについては前回の最後にも触れたように\footnote{$\to$第\ref{chapter2}講\ref{reproductibity}節}，\textbf{客観性}や\textbf{再現性}が重要になってきます。同じデータであれば誰でも同じ結果に到達できる，ということが重要ですし，言い方を変えると数学的に正誤の判断がついてしまう領域でもありますので，正しく理解し利用できるように学んでいきましょう。
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.005.png} 
-		\label{fig::ch03A_9} 
-	\end{figure} 
- 
+\begin{figure}[ht]
+    \centering
+	\includegraphics[keepaspectratio,width=12cm]{images/text03/slide03_02.png}
+    \caption{データって何?}
+    \label{fig::03_02}
+\end{figure}
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.006.png} 
-		\label{fig::ch03A_11} 
-	\end{figure} 
- 
+さてこれからデータを分析していく話をするのですが，改めてデータとは何でしょうか。図\ref{fig::03_02}を見てください。ここには4人の研究対象者がいて，色々な情報を集めています。この中でデータとはいったい何を表すでしょうか。所持金は数字ですので，これだけがデータだ，と思ったら大間違いです。実は名前や性別もデータです。これらは全て数値化し，データとして扱えるものです。
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.007.png} 
-		\label{fig::ch03A_13} 
-	\end{figure} 
- 
+少し用語の説明をしておきますと，名前，性別，所持金などは人によって\footnote{心理学でも研究対象が人でない場合がありますから，他にも「個体」「ケース」などということがあります。英語のObservationを略してObs.と書かれることもあります。}変わる数字です。人によって変わる数字のことを変数variablesと言います。名前・性別・所持金は変数名であり，それがケースごとに「Aさん」「男性male」「15円」と変わるのです。ここで15円はともかく，名前や性別は数字じゃないぞ?と思われるかもしれません。先にも述べたように，数字じゃないような実体であっても，これに数字を割り振るルールを決めて数字に置き換えていきます。このルールを決めることを\textbf{尺度化scaling}と言います。
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.008.png} 
-		\label{fig::ch03A_15} 
-	\end{figure} 
- 
+\begin{figure}[ht]
+    \centering
+	\includegraphics[keepaspectratio,width=12cm]{images/text03/slide03_03.png}
+    \caption{尺度化＝数値に置き換える}
+    \label{fig::03_03}
+\end{figure}
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.009.png} 
-		\label{fig::ch03A_17} 
-	\end{figure} 
- 
+図\ref{fig::03_03}に数値化した例を挙げました。上の段にあるのが本来の情報であり，数値化されたのが下の段にあります。下の段は全て数字になっていますね。どこがどう変わっているのか，よく見ておきましょう。実際の統計的な分析をするときは電子計算機を使いますが，電子計算機にデータを与えるときは下の段にあるように数字だけにするのだ，と理解してください\footnote{ExcelやNumbersなどの表計算ソフトでは，その枠の中に日本語を書き込むことができます。しかし統計ソフトで扱う場合は，機械が内部では下段のような数字に置き換えているのだと思っておいてください。電子計算機の中では日本語も0/1の数列にすぎませんが。}。
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.010.png} 
-		\label{fig::ch03A_19} 
-	\end{figure} 
- 
+こうしてみていても，数字には2種類あることがわかります。まず所持金を見てください。これは最初から数字でしたので，そのまま数字として扱っていきます\footnote{単位の「円」という文字は取れています。表計算ソフトに入力するときはこのように，数字以外のものは削ぎ落とすようにしてください。文字が入っていると数字として計算できないからです。ましてや2バイト文字なんて!}。このように本来の数字としての意味を持っているものは\textbf{量的変数numeric variables}と呼ばれます。一方で，性別は「女性female」を1に，「男性male」を2に置き換えています。名前に至っては，「Aさん」を1に，「Bさん」を2に，「Cさん」を3に，「Dさん」を4に置き換えています。これらの数字は人や性質を分類するためのものであって，数字に大小関係など量的な違いを表すものではありません。いわば質的な違いを表すための数字で，こうした変数は\textbf{質的変数 categorical variables}と呼ばれます。
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.011.png} 
-		\label{fig::ch03A_21} 
-	\end{figure} 
- 
+このことからわかるように，「なんでも数字にして扱うが，数字には種類がある」ということに注意が必要です。なんでも数字にする，というと眉をひそめる人がいるかもしれません。心・気持ち・想いは数字にできない！と直観的に反論したくなる人もいるでしょう。しかし全くできないわけではないのです。というのも，言葉にできるのであればそれに適当な数字を割り振ることは可能だからです。数字が必ずしも大小関係を表すものばかりではないこともあるのですから。言葉にできるということは，質的に異なって分類できるということであり，それに数字のラベルを貼ることは可能です。一方，言葉にできない気持ちというのもあるでしょう。しかし，適切に言葉にできないのであれば，科学的な研究対象にはならないと言わざるを得ません。なぜなら「私だけが知りうる本当の気持ち」というのは，私秘性を徹底的に排除するという科学の基本姿勢に反するからです\footnote{言葉に言えないなんとも表現できない気持ちがない，と言ってるわけではないのです。科学的に研究できない，というだけで，私個人も色々な心の動きを経験しています。ただそれは私一人の思い出であって，研究対象にならないと言っているだけです。}\footnote{言葉にして数値化するというのは，心の一側面を捉えているにすぎない，という指摘も当然ありましょう。しかしだからと言って数字を使わない，というのは持ったいないのです。また数字で表すことによって，どこまで表現できてどこまで表現できないか，というのも表現できたりします(正確には誤差の大きさを見積もる，という話で本講義の第\ref{chapter6}講ごろから触れていきます)。表現できるところはし尽くし，できないところについては黙って味わえば良いのであって，表現することを禁じるのは建設的な態度ではありません。}。
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.012.png} 
-		\label{fig::ch03A_23} 
-	\end{figure} 
- 
+心理学の研究法の一つに，質問紙法というものがあります。複数の項目が並んでいて，それぞれに対して「当てはまる」「どちらかと言えば当てはまる」「どちらとも言えない」「どちらかと言えば当てはまらない」「全く当てはまらない」のどこかに丸をつけてください，という聞き方をするものが一般的です。たとえば「Q.この世の中では，努力がいつか報われるようになっていると思う。」という問いに対して「自分の考え（気持ち，意見，態度）に最も近いところに丸をしてください。」と言われ，ある人は「当てはまる」に丸を，別の人は「どちらかと言えば当てはまらない」に丸をつけたとしましょう。ここで「当てはまる」を5点，「どちらかと言えば当てはまらない」を3点，といった形で数値化すれば，大小関係は比較できるので量的変数として扱うことができます。この時ここで測りたいのは，「世界は公平だと思うか」というその人の心理的態度(信念)を測定していると考えられます。
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.013.png} 
-		\label{fig::ch03A_25} 
-	\end{figure} 
- 
+このように回答のパターンを見ることで，目に見えない心の状態を数値化することもできます。見たいものは目に見えない心の状態ですが，測定して，点数をつけたりします。他にも，行動や振る舞いの記録など，知りたいことについて集められる情報は全てデータであり，分析対象になります。
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.014.png} 
-		\label{fig::ch03A_27} 
-	\end{figure} 
- 
+\section{変数の分類}
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.015.png} 
-		\label{fig::ch03A_29} 
-	\end{figure} 
- 
+実際に心理学ではどのようなものを研究対象としているかの事例をいくつか見ることで，何が変数として使われているか，それがどういう枠組みで使われているかを理解する。心理学研究のほとんどが，予測変数/被予測変数の関係で議論されていることから明らかなように，心理学での研究関心の多くは因果的効果の検証にある。ただし，相関関係と因果関係は異なることに注意が必要である。
+\begin{flushright}
+    $\to$ 使い方による変数の分類は,\citet{山内201001}のP.4-5,因果関係と相関関係の区別については\citet{三浦201705}のP.30--34，より詳細には\citet{豊田1992}のP.24-66に詳しい。
+\end{flushright}
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.016.png} 
-		\label{fig::ch03A_31} 
-	\end{figure} 
- 
+\section{尺度水準による分類}
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.017.png} 
-		\label{fig::ch03A_33} 
-	\end{figure} 
- 
+全ての数字が四則演算が可能かと言われると，そうではない。尺度水準とは，数値が持つ情報や性質の段階を表す言葉であり，Steavens,S.が提唱した4段階の区別が特に重要である。この尺度の四水準について理解し，得られた数字データがどの水準に該当するかを判別することができるようにならなければ，誤った統計処理をすることになるため注意が必要である。
+\begin{flushright}
+    $\to$\citet{川端201408}のP.9--16，あるいは\citet{Yamada2004}のP.22-25.
+\end{flushright}
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.018.png} 
-		\label{fig::ch03A_35} 
-	\end{figure} 
- 
+\section{データの可視化}
+ 数量化されたデータは可視化することでその全体像がわかりやすくなる。他に，数字を見ていただけでは気づかない変数間関係が可視化されることで理解されることも少なくない。得られたデータは基本的に可視化しなければならず，その重要性および可視化に当たっても再現性を担保するため，グラフ描画の文法があることを理解する。ただし，ここでは統計環境Rのパッケージ，ggplot2の用法に限定的に言及している。可視化の文法については，心理学業界ではまだ広く浸透した概念とは言い難いが，見た目の美しさのみならず，論理的な美しさや再現可能性の観点から考えて重要である。
+\begin{flushright}
+    $\to$\citet{紀ノ定201806}の4章に詳しい。またインターネット上には様々な資料が公開されている。
+\end{flushright}
 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.019.png} 
-		\label{fig::ch03A_37} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.020.png} 
-		\label{fig::ch03A_39} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.021.png} 
-		\label{fig::ch03A_41} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.022.png} 
-		\label{fig::ch03A_43} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.023.png} 
-		\label{fig::ch03A_45} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.024.png} 
-		\label{fig::ch03A_47} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.025.png} 
-		\label{fig::ch03A_49} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03A.026.png} 
-		\label{fig::ch03A_51} 
-	\end{figure} 
- 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\clearpage 
-\section{資料B} 
-\label{sec::3b} 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.001.png} 
-		\label{fig::ch03B_53} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.002.png} 
-		\label{fig::ch03B_55} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.003.png} 
-		\label{fig::ch03B_57} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.004.png} 
-		\label{fig::ch03B_59} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.005.png} 
-		\label{fig::ch03B_61} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.006.png} 
-		\label{fig::ch03B_63} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.007.png} 
-		\label{fig::ch03B_65} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.008.png} 
-		\label{fig::ch03B_67} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.009.png} 
-		\label{fig::ch03B_69} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.010.png} 
-		\label{fig::ch03B_71} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.011.png} 
-		\label{fig::ch03B_73} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.012.png} 
-		\label{fig::ch03B_75} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.013.png} 
-		\label{fig::ch03B_77} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.014.png} 
-		\label{fig::ch03B_79} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.015.png} 
-		\label{fig::ch03B_81} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.016.png} 
-		\label{fig::ch03B_83} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.017.png} 
-		\label{fig::ch03B_85} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.018.png} 
-		\label{fig::ch03B_87} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.019.png} 
-		\label{fig::ch03B_89} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03B.020.png} 
-		\label{fig::ch03B_91} 
-	\end{figure} 
- 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\clearpage 
-\section{資料C} 
-\label{sec::3c} 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.001.png} 
-		\label{fig::ch03C_93} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.002.png} 
-		\label{fig::ch03C_95} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.003.png} 
-		\label{fig::ch03C_97} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.004.png} 
-		\label{fig::ch03C_99} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.005.png} 
-		\label{fig::ch03C_101} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.006.png} 
-		\label{fig::ch03C_103} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.007.png} 
-		\label{fig::ch03C_105} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.008.png} 
-		\label{fig::ch03C_107} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.009.png} 
-		\label{fig::ch03C_109} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.010.png} 
-		\label{fig::ch03C_111} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.011.png} 
-		\label{fig::ch03C_113} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.012.png} 
-		\label{fig::ch03C_115} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.013.png} 
-		\label{fig::ch03C_117} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.014.png} 
-		\label{fig::ch03C_119} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.015.png} 
-		\label{fig::ch03C_121} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03C.016.png} 
-		\label{fig::ch03C_123} 
-	\end{figure} 
- 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\clearpage 
-\section{資料D} 
-\label{sec::3d} 
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.001.png} 
-		\label{fig::ch03D_125} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.002.png} 
-		\label{fig::ch03D_127} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.003.png} 
-		\label{fig::ch03D_129} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.004.png} 
-		\label{fig::ch03D_131} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.005.png} 
-		\label{fig::ch03D_133} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.006.png} 
-		\label{fig::ch03D_135} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.007.png} 
-		\label{fig::ch03D_137} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.008.png} 
-		\label{fig::ch03D_139} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.009.png} 
-		\label{fig::ch03D_141} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.010.png} 
-		\label{fig::ch03D_143} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.011.png} 
-		\label{fig::ch03D_145} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.012.png} 
-		\label{fig::ch03D_147} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.013.png} 
-		\label{fig::ch03D_149} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.014.png} 
-		\label{fig::ch03D_151} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.015.png} 
-		\label{fig::ch03D_153} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.016.png} 
-		\label{fig::ch03D_155} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.017.png} 
-		\label{fig::ch03D_157} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.018.png} 
-		\label{fig::ch03D_159} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.019.png} 
-		\label{fig::ch03D_161} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.020.png} 
-		\label{fig::ch03D_163} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.021.png} 
-		\label{fig::ch03D_165} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.022.png} 
-		\label{fig::ch03D_167} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.023.png} 
-		\label{fig::ch03D_169} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.024.png} 
-		\label{fig::ch03D_171} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.025.png} 
-		\label{fig::ch03D_173} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.026.png} 
-		\label{fig::ch03D_175} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.027.png} 
-		\label{fig::ch03D_177} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.028.png} 
-		\label{fig::ch03D_179} 
-	\end{figure} 
- 
-
-	\begin{figure}[ht] 
-		\centering 
-		\includegraphics[keepaspectratio,height=12cm]{images/text03/ch03D.029.png} 
-		\label{fig::ch03D_181} 
-	\end{figure} 
- 
+\section{可視化の悪用}
+ データは可視化することでその特徴を把握しやすくなるが，逆に視覚的特徴に引っ張られることで異なった印象を持つことがある。悪用すれば，議論をミスリードするために可視化の技術を用いることができる。いくつかの典型的な悪用例を見ながらその原因と想定された効果，看破するために注目すべき点などについて議論する。
+\begin{flushright}
+    $\to$古典的ではあるが\citet{高木196807}，社会調査の問題点については\citet{谷岡200006}を参考に。
+\end{flushright}
 
 \end{document} 
