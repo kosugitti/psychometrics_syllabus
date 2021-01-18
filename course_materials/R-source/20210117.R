@@ -32,8 +32,18 @@ g7 <- weight %>% ggplot(aes(x=date,y=weight))+geom_point()+geom_line()
 gX <- gridExtra::grid.arrange(g1,g2, g3, g4,g5,layout_matrix = rbind(c(1, 2),
                                                                c(3, 4),5))
 
-ggsave(gX,filename = "Rplot03_01.png", dpi = 600, width = 12, height = 12)
+ggsave(gX,filename = "../images/text03/Rplot03_01.png", dpi = 600, width = 12, height = 12)
 
-ggsave(g6,filename = "Rplot03_02.png", dpi = 600, width = 12, height = 6)
+ggsave(g6,filename = "../images/text03/Rplot03_02.png", dpi = 600, width = 12, height = 6)
 
-ggsave(g7,filename = "Rplot03_03.png", dpi = 600, width = 12, height = 6)
+ggsave(g7,filename = "../images/text03/Rplot03_03.png", dpi = 600, width = 12, height = 6)
+
+# 離散と連続
+g8 <- sample %>% select(height,weight) %>% 
+    na.omit %>% 
+    ggplot(aes(x=weight,y=height))+geom_point()
+g9 <- sample %>% select(height,position) %>% 
+    na.omit %>% 
+    ggplot(aes(x=position,y=height))+geom_point()
+
+ggsave(gridExtra::grid.arrange(g8,g9,ncol=2),filename = "../images/text03/Rplot03_04.png", dpi = 600, width = 12, height = 6)
