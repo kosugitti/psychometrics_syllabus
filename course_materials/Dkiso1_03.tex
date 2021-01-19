@@ -1,4 +1,4 @@
-\documentclass{ltjsarticle}
+\documentclass{ltjsbook}
 \usepackage{docmute} 
 \usepackage{../myStyle} 
 
@@ -58,7 +58,7 @@
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=12cm]{images/text03/slide03_04.png}
+	\includegraphics[keepaspectratio,width=6cm]{images/text03/slide03_04.png}
     \caption{尺度化による数字への置き換え}
     \label{fig::03_04}
 \end{figure}
@@ -132,13 +132,12 @@
 \begin{table}
     \centering
     \caption{尺度水準のまとめ}
-    \end{center}
 \begin{tabular}{cccc}
-   尺度水準 & 基本的な操作 & 数学的な群構造 & 可能な統計量 \\\hline
-   名義 Nominal & 同質性の判定 & 置換群  $x'$=f(x)$ $f(x)$は一対一対応 & ケース数 , 最頻値,   一致係数 \\
-   順序 Ordinal & 大小関係の判定 & 同調群   $x'$=f(x)$ $f(x)$は単調増加関数 & 中央値, パーセンタイル \\
-   間隔 Interval & 間隔や差分の等しさの判定 & 一般線形群 $x' = ax + b$  & 平均値 , 標準偏差,  順序相関,積率相関 \\
-   比率 Ratio & 比率の等しさの判定 & 類似性群 $x'=ax$ & 変動係数 \\\hline
+   尺度水準 & 基本的な操作 & 数学的な群構造 & 可能な統計量 \\\hline\hline
+   名義 Nominal & 同質性の判定 &  \begin{tabular}{c} 置換群 \\ $x'=f(x)$\\$f(x)$は一対一対応  \end{tabular}& ケース数 , 最頻値,   一致係数 \\\hline
+   順序 Ordinal & 大小関係の判定 & \begin{tabular}{c} 同調群 \\  $x'=f(x)$\\$f(x)$は単調増加関数 \end{tabular} & 中央値, パーセンタイル \\\hline
+   間隔 Interval & 間隔や差分の等しさの判定 & \begin{tabular}{c} 一般線形群\\$x' = ax + b$ \end{tabular}& 平均値 , 標準偏差,  順序相関,積率相関 \\\hline
+   比率 Ratio & 比率の等しさの判定 & \begin{tabular}{c} 類似性群\\$x'=ax$ \end{tabular} & 変動係数 \\\hline
 \end{tabular}
 \label{tab::03_01}
 \end{table}
@@ -156,20 +155,20 @@
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=12cm]{images/text03/Rplot03_01.png.png}
+	\includegraphics[keepaspectratio,width=12cm]{images/text03/Rplot03_01.png}
     \caption{ggplot2による出力例1}
     \label{fig::03_06}
 \end{figure}
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=12cm]{images/text03/Rplot03_02.png.png}
+	\includegraphics[keepaspectratio,width=12cm]{images/text03/Rplot03_02.png}
     \caption{ggplot2による出力例2}
     \label{fig::03_07}
 \end{figure}
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=12cm]{images/text03/Rplot03_03.png.png}
+	\includegraphics[keepaspectratio,width=12cm]{images/text03/Rplot03_03.png}
     \caption{ggplot2による出力例3}
     \label{fig::03_08}
 \end{figure}
@@ -192,7 +191,7 @@
 ここでプロットと尺度水準のことを考えてみましょう。X軸もY軸も量的な変数であれば散布図でその変数の関係を表現することができます。X軸が名義尺度水準でY軸が量的な変数であれば，散布図もX軸の対応する水準の上に並ぶような形になります。図\ref{fig::03_09}には二つの散布図の例がありますが，図の左は量的変数と量的変数のプロット，右は質的変数と量的変数のプロットになっています。このように同じ散布図であっても，変数の種類が違うと見え方が異なります。特に右の図は散布図にするより，各水準の平均値を比較するようなバープロットのほうが情報を伝えやすいかもしれません。しかしいずれも散布図で，X軸が質的変数であるときは特殊なならびになるだけだ，という点はこの後の話と大きく関わってきますので，頭の片隅のどこかに置いておくようにしてください。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=12cm]{images/text03/Rplot03_04.png.png}
+	\includegraphics[keepaspectratio,width=12cm]{images/text03/Rplot03_04.png}
     \caption{横軸と図の形}
     \label{fig::03_09}
 \end{figure}
