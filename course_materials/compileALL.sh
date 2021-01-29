@@ -15,4 +15,4 @@ rm *.out
 rm *.fls
 rm *.fdb_latexmk
 rm *.synctex.gz
-rm *.xbb
+rm *.ltjruby

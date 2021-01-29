@@ -8,3 +8,8 @@ df %>% rowid_to_column("id") %>%
     pivot_longer(-id) %>% 
     group_by(name) %>% 
     summarise(mean=mean(value),median=median(value))
+df %>% rowid_to_column("id") %>% 
+    pivot_longer(-id) %>% 
+    ggplot(aes(x=value,fill=name))+geom_histogram(binwidth = 0.5)+facet_wrap(~name) -> g1
+
+ggsave(g1,filename = "../images/text04/Rplot04_01.png", dpi = 600, width = 8, height = 4)
