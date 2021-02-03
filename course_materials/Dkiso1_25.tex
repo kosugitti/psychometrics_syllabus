@@ -178,7 +178,7 @@ $$ p(x) = \int_1^{\infty} \frac{1}{\sqrt{2\pi \sigma^2}}exp\left( \frac{(x-\mu)^
 \paragraph{付録}乱数による近似と理論値との比較検証
 
 
-\begin{lstlisting}[language=c++]
+\begin{lstlisting}[language=c++,label={code::25_01},caption={近似値と検算}]
 X <- rnorm(100000,mean=0,sd=1)
 length(X[X>1])/100000
 # 検算
@@ -190,14 +190,14 @@ length(X[X>1])/100000
         \item[4行目] 理論値による検算。確率点1までの累積確率を総面積1から引くことで，該当箇所の面積を求める
     \end{description}
 
-\begin{tcolorbox}
+\begin{Rscreen}{乱数による近似}{out25_01}
 \begin{verbatim}
 > X <- rnorm(100000,mean=0,sd=1)
 > length(X[X>1])/100000
 [1] 0.15886
 > 1-pnorm(1,mean=0,sd=1)
 [1] 0.1586553\end{verbatim}
-\end{tcolorbox}
+\end{Rscreen}
 \section{課題}
 
 \end{document}

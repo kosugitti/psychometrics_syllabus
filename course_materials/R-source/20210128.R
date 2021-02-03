@@ -118,7 +118,7 @@ g2
 
 g <- gridExtra::grid.arrange(g1,g2,ncol=2)
 g
-ggsave(g,filename = "../images/text04/Rplot04_07.png", dpi = 600, width = 12, height = 12)
+ggsave(g,filename = "../images/text04/Rplot04_07.png", dpi = 600, width = 12, height = 6)
 
 cor(X1,Y1)
 cor(X2,Y2)

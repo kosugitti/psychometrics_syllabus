@@ -9,10 +9,12 @@
 \linenumbers
 \usepackage{hyperref}
 \usepackage{epsdice}
+\usepackage{fancyvrb}
 \usepackage{ulem}
 % ソースコード用のパッケージと設定
  \usepackage{graphicx,xcolor}
  \usepackage{listingsutf8}
+ \renewcommand{\lstlistingname}{code :}
 % ソースコードのフォントを変えたい
 \lstset{
     frame=single,
@@ -46,4 +48,4 @@ setpagesize=false,
 % 枠囲いのパッケージ
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable, skins, theorems}
-
+\newtcbtheorem[number within=section]{Rscreen}{\texttt{console}}{colframe=blue,colback=blue!3!}{RS}

@@ -16,30 +16,32 @@ Rパッケージの\texttt{brms}を使うと，一般線形モデルが簡単に
 \paragraph{Rスクリプトを開く}今日のコードを書くためのRスクリプトファイルを準備します。File > NewFile > R Scriptと進み，何も書いてないRスクリプトの画面を表示させてください。真っ白いファイルが開いたら問題ありません。
 
 続いて，ベイズ推定用のパッケージを準備します。\texttt{brms}パッケージ\footnote{ベイズで(Bayesian),回帰モデルを(Regression Mode)実行する，Stanを使ってね(using Stan)，という意味です。Stanとは確率的プログラミング言語といい，要するに乱数発生器を作ってくれるソフトウェアのことです。}をインストールするのですが，このパッケージをインストールする\textbf{前に}，このパッケージが必要とするコンパイラを用意する必要があります。
-詳しくは \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}のサイトに説明がありますが\footnote{「RStan Getting Started (Japanese)」でググると出てきます。}\footnote{\citet{馬場201907}にも導入についての詳しい説明があります。}，Windowsユーザの場合はまず，
-\begin{lstlisting}[language=c++]
+詳しくは \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}のサイトに説明がありますが\footnote{「RStan Getting Started (Japanese)」でググると出てきます。}\footnote{\citet{馬場201907}にも導入についての詳しい説明があります。}，Windowsユーザの場合はまず，\texttt{code:\ref{code::27_01}}を実行してください。
+\begin{lstlisting}[language=c++,label={code::27_01},caption={必要なツールをインストールする}]
 pkgbuild::has_build_tools(debug = TRUE)
 \end{lstlisting}
-と実行してください。コンパイラであるRtoolsが環境にない場合には，ポップアップウィンドウが出てきてRtoolsをインストールするか聞いてくるでしょう。Yesをクリックして1分ぐらいインストールが終わるのを待って下さい。
+
+コンパイラであるRtoolsが環境にない場合には，ポップアップウィンドウが出てきてRtoolsをインストールするか聞いてくるでしょう。Yesをクリックして1分ぐらいインストールが終わるのを待って下さい。
 
 Macユーザの場合は，\url{https://github.com/rmacoslib/r-macos-rtools}にいき，Release page から\texttt{macos-rtools-4.0.0.pkg}を選択してインストールします\footnote{2020年11月28日段階での状況です。}。
 % OSがCatalinaであれば，さらに
-% \begin{lstlisting}[language=c++]
+% \begin{lstlisting}[language=c++,label={code::27_01},caption={オブジェクトに代入}]
 % install.packages("Rcpp", repos = "https://rcppcore.github.io/drat")
 % \end{lstlisting}
 % とする必要があります。
 
 これで準備OKで，これではじめて\texttt{brms}パッケージをインストールできるようになりました\footnote{この環境構築は初心者にはとっても荷が重いところですね。困ったらいつでも連絡してきてください。どうしても難しい場合は，サーバが利用できますのでこれまた連絡してください。}。
-RStudioのパッケージのところから\texttt{brms}を入力してインストール，あるいはRのスクリプトとして
-\begin{lstlisting}[language=c++]
+関連する複数のパッケージを次々取り込んで行きますので，少し時間がかかるかもしれません。 
+RStudioのパッケージのところから\texttt{brms}を入力してインストール，あるいはRのスクリプトとして\texttt{code:\ref{code::27_02}}のようにすればインストールが始まります。
+
+\begin{lstlisting}[language=c++,label={code::27_02},caption={パッケージを入れる}]
 install.packages("brms")
 \end{lstlisting}
-とすればインストールが始まります。関連する複数のパッケージを次々取り込んで行きますので，少し時間がかかるかもしれません。 
 
 この作業は環境整備なので一度だけでよく，無事にインストールできれば今後はパッケージを呼び出すだけでよくなります。
 \section{回帰分析の推定}
-それでは回帰分析の推定をしていきましょう。使うデータは第\ref{chapter10}講で使った高校・大学の成績についてのものです。復習がてら，次のコードを実行しましょう。
-\begin{lstlisting}[language=c++]
+それでは回帰分析の推定をしていきましょう。使うデータは第\ref{chapter10}講で使った高校・大学の成績についてのものです。復習がてら，\texttt{code:\ref{code::27_03}}実行しましょう。
+\begin{lstlisting}[language=c++,label={code::27_03},caption={回帰分析をやってみる}]
 # データを入力
 koukou <- c(2.13,2.42,2.26,3.87,3.90,2.43,3.44,
 2.15,2.18,3.00,3.42,2.55,3.19,3.05,2.52)
@@ -68,9 +70,8 @@ summary(fit)
     \item[15行目] 結果を出力しています
 \end{description}
 
-これの結果は次のようなものでした。
-
-\begin{tcolorbox}
+これの結果は次のようなものでした(\texttt{console\ref{RS:out27_01}})。
+\begin{Rscreen}{lmの出力}{out27_01}
 \begin{verbatim}
 > summary(fit)
 
@@ -92,16 +93,18 @@ Residual standard error: 34.36 on 13 degrees of freedom
 Multiple R-squared:  0.754,	Adjusted R-squared:  0.7351 
 F-statistic: 39.85 on 1 and 13 DF,  p-value: 2.688e-05
 \end{verbatim}
-\end{tcolorbox}
+\end{Rscreen}
 回帰係数は切片が288.74，傾きが93.72と推定され，それらが0ではないと帰無仮説に対する検定結果が示されています。またモデル全体の適合について，$F(1,13)=39.85,p=0.000002688$という結果や，$R^2=0.754$などが示されています\footnote{少し補足。$p$値は$2.688\times 10^{-5}$という意味です。桁数の表示が長くなりすぎるので，機械はこのような省略記号を書きます。また適合度を表す$R^2$の値ですが，ここではMultiple R-squaredの値をそのまま書いています。この値はサンプルサイズによって過大評価されることがあるので，論文などではそれを補正した「自由度調節済み$R^2$」が使われることもあります。}
 
 早速これをベイズ推定していきましょう。何がどう変わるのでしょうか。
-まずはパッケージ\texttt{brms}を読み込み，回帰分析の関数を\texttt{lm}から\texttt{brm}に変えるだけでオッケーです。
-\begin{lstlisting}[language=c++]
+まずはパッケージ\texttt{brms}を読み込み，回帰分析の関数を\texttt{lm}から\texttt{brm}に変えるだけでオッケーです(\texttt{code:\ref{code::27_04}})。
+
+\begin{lstlisting}[language=c++,label={code::27_04},caption={ベイズ推定してみる}]
 library(brms)
 fit.brm <- brm(daigaku ~ koukou, data = seiseki)
 print(fit.brm)
 \end{lstlisting}
+
 画面に様々なメッセージが出力されたかと思いますがそれは後で説明するとして，とりあえず最後の3行目を実行して示された回帰分析の結果を確認してみましょう。
 
 一行目に\texttt{Family: gaussian }とあります。これは正規分布(gaussian curve)を使ったモデルであることが示されています。2，3行目にモデルの説明，4行目にデータの説明があった後，6行目には\texttt{Samples:}とあります。これはデータ，標本のことを指しているのではなく，MCMC法によって得られた乱数のサンプルのことを意味しています。MCMCの表記等については後でまとめて説明します。
@@ -112,8 +115,8 @@ print(fit.brm)
 
 最後にもう1つの推定値，$\sigma$が\texttt{Family Specific Parameters}のところに現れています\footnote{線形回帰は$Y_i \sim N(\beta_0 + \beta_1 X_i , \sigma)$で，未知数は$\beta_0,\beta_1,\sigma$の三つであったことを思い出してください。}。
 
-これが基本的な結果の情報です。\texttt{lm}関数を使った最尤推定の結果とほとんど同じ数字になっていることがわかります。結果はそれほど変わらないのですが，推定値が分布として得られていることが大きく異なる点です。
-\begin{tcolorbox}
+\texttt{console\ref{RS:out27_02}}が基本的な結果の情報です。\texttt{lm}関数を使った最尤推定の結果とほとんど同じ数字になっていることがわかります。結果はそれほど変わらないのですが，推定値が分布として得られていることが大きく異なる点です。
+\begin{Rscreen}{brmsの出力}{out27_02}
     \begin{verbatim}
 Family: gaussian 
 Links: mu = identity; sigma = identity 
@@ -135,7 +138,7 @@ Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
 \end{verbatim}
-\end{tcolorbox}
+\end{Rscreen}
 このことをわかりやすく表示するために，\texttt{plot(fit.brm)}としてみましょう。図\ref{fig::27_01}のように，分析結果がプロットされます。
 \begin{figure}[ht]
     \centering
@@ -143,9 +146,9 @@ scale reduction factor on split chains (at convergence, Rhat = 1).
     \caption{ベイズ法による回帰係数の推定}
     \label{fig::27_01}
 \end{figure}
-この図の左側にあるのが，事後分布の形です。推定値である288.37や93.86は分布の平均値(EAP推定値)で，この分布のピーク(MAP推定値)ではないことに注意してください。MAP推定値が欲しい場合は，別途\texttt{bayestestR}パッケージを導入し，\verb|map_estimate|関数を実行する必要があります。
+この図の左側にあるのが，事後分布の形です。推定値である288.37や93.86は分布の平均値(EAP推定値)で，この分布のピーク(MAP推定値)ではないことに注意してください。MAP推定値が欲しい場合は，別途\texttt{bayestestR}パッケージを導入し，\verb|map_estimate|関数を実行する必要があります(\texttt{code:\ref{code::27_05}})。
 
-\begin{lstlisting}[language=c++]
+\begin{lstlisting}[language=c++,label={code::27_05},caption={結果の表示}]
 install.packages(bayestestR)
 library(bayestestR)
 map_estimate(fit.brm)
@@ -159,14 +162,14 @@ map_estimate(fit.brm)
 
 最小二乗法や最尤法と違って，結果が分布で表されるという感覚が掴めてきたでしょうか。続いてはこの分布が乱数によって生成されていることに注目してみたいと思います。
 \subsection{MCMC法の評価}
-既に述べたように，MCMCは乱数発生法であり，事後分布からのサンプリングでもって結果のヒストグラムを描くのでした。ヒストグラムが確率分布の稜線を描いてくれるからです。ただし，乱数ですから毎回違う結果が出ます。乱数がちゃんと事後分布からのものであるかどうかも，チェックしなければなりません。それらの情報について書いてあるのが，結果の6行目，
-\begin{tcolorbox}
+既に述べたように，MCMCは乱数発生法であり，事後分布からのサンプリングでもって結果のヒストグラムを描くのでした。ヒストグラムが確率分布の稜線を描いてくれるからです。ただし，乱数ですから毎回違う結果が出ます。乱数がちゃんと事後分布からのものであるかどうかも，チェックしなければなりません。それらの情報について書いてあるのが，結果の6行目のあたりにあるのです(\texttt{console\ref{RS:out27_03}})
+\begin{Rscreen}{MCMCの評価}{out27_03}
     \begin{verbatim}
 Samples: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
     total post-warmup samples = 4000
 \end{verbatim}
-\end{tcolorbox}
-のあたりにあるのです。これを読み解いていきましょう。
+\end{Rscreen}
+。これを読み解いていきましょう。
 
 MCMC法はステップ・バイ・ステップで，一歩ずつ次の乱数を生み出していってます。このMCMCサンプルは，推定したいパラメータの代表候補たちです。内部に保存されているデータを抜き出したのが図\ref{fig::27_02}です。今回は切片(\verb|b_intercept|)と傾き(\texttt{b})と誤差の散らばり度(\texttt{sigma})について，毎回のステップで得られた乱数の値が書かれています。例えば傾きは$77.55104 \to 100.42599 \to 133.46551 \to 77.90979 \to \cdots$というように，前回の値を軸にしながら次々と乱数を生み出していってるのです。正確には，ここには3つの変数があり，赤枠で囲んでいるようにこの3つの変数からなる同時確率空間からサンプリングしてきます。つまり$(336.0793,77.55104,32.49790)\to (283.5139,100.42599,41.52797) \to \cdots$というように，3つずつセットでステップを踏んでいることになります。これがどんどん積み重なっていく，ステップの様子を示したのが図の中頃にあるギザギザの折れ線であり，これをまとめ上げて積み重ねたヒストグラムが最後に事後分布として得られる，というのが基本原理です。
 
@@ -189,16 +192,18 @@ MCMC法はステップ・バイ・ステップで，一歩ずつ次の乱数を�
     \caption{推定がうまくいってない時の例}
     \label{fig::27_03}
 \end{figure}
-このように，結果が出力された後でMCMCの挙動をチェックすることが必要です。出力画面には最後に，
-\begin{tcolorbox}
+このように，結果が出力された後でMCMCの挙動をチェックすることが必要です。出力画面には最後にチェインの絡み具合をし評価した$\hat{R}$(Rhat)が1であれば収束している，ということを書いていて\footnote{ひとところに集まってきているという意味のconvergeを収束，といいます。コロナウイルスの蔓延が終わる，という意味でのしゅうそくは「終息」と書きます。}，今回の結果のRhatの列にはいずれも1.00とありますから，MCMCは問題なく事後分布からの代表値を取り出している，と診断できます(\texttt{console\ref{RS:out27_04}})。
+
+\begin{Rscreen}{MCMCに関するメッセージ}{out27_04}
 \begin{verbatim}
 and Rhat is the potential scale reduction factor on split chains (at convergence, Rhat = 1).
 \end{verbatim}
-\end{tcolorbox}
-とありましたが，これはチェインの絡み具合をし評価した$\hat{R}$(Rhat)が1であれば収束している，ということを書いていて\footnote{ひとところに集まってきているという意味のconvergeを収束，といいます。コロナウイルスの蔓延が終わる，という意味でのしゅうそくは「終息」と書きます。}，今回の結果のRhatの列にはいずれも1.00とありますから，MCMCは問題なく事後分布からの代表値を取り出している，と診断できます。
+\end{Rscreen}
+
 \section{要因計画の推定}
-続いて要因計画の例にいきましょう。既に線形モデルで推定する方法については説明してありますから，これの関数を\texttt{lm}から\texttt{brm}に変えるだけでオッケーです。二要因の例を使って説明してみましょう。
-\begin{lstlisting}[language=c++]
+続いて要因計画の例にいきましょう。既に線形モデルで推定する方法については説明してありますから，これの関数を\texttt{lm}から\texttt{brm}に変えるだけでオッケーです。二要因の例を使って説明してみましょう(\texttt{code:\ref{code::27_06}})。
+
+\begin{lstlisting}[language=c++,label={code::27_06},caption={データを作ってbrmでベイズ推定}]
 Example2 <- data.frame(
     id = 1:12,
     num = rep(1:3, 4),
@@ -223,9 +228,8 @@ result.brm2
     \item[15行目] 線形モデルを実行しています。\texttt{brm}としてあることに注意して下さい。
     \item[16行目] 結果を出力させています。
 \end{description}
-これを実行した結果が次のようになります。
-
-\begin{tcolorbox}
+これを実行した結果が次のようになります(\texttt{console\ref{RS:out27_05}})。
+\begin{Rscreen}{交互作用モデルのbrms結果}{out27_05}
 \begin{verbatim}
 Family: gaussian 
 Links: mu = identity; sigma = identity 
@@ -249,11 +253,11 @@ Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
 \end{verbatim}
-\end{tcolorbox}
+\end{Rscreen}
 データの生成に正規分布を仮定していること(\texttt{Family: gaussian})，モデル式やMCMCサンプルの特徴を描いた後に，推定値が出ています。推定値の見方は\texttt{lm}の時と同じですが，95\%区間が示されていること，MCMCの収束を判定する\texttt{Rhat}などがあるところが違うところですね。この95\%区間が狭いと自信を持って結果を言える，広いと確信度が低くまだまだデータが足りない，というところでしょうか。また今回は主効果にあたるところの95\%区間が0を跨いでいるので，傾きが0であるという帰無仮説を考えるのであれば，これは棄却できないということになります。交互作用は少なくとも3.69，大きければ10.42ポイントも動かすのですから，これは大きな効果があると言っていいでしょう。
 
-このように直接的に大きさを評価することもできますが，次のようなプロットを描くと特にわかりやすいでしょう。
-\begin{lstlisting}[language=c++]
+このように直接的に大きさを評価することもできますが，次のようなプロットを描くと特にわかりやすいでしょう(\texttt{code:\ref{code::27_07}})。
+\begin{lstlisting}[language=c++,label={code::27_07},caption={周辺化して効果を見る}]
 conditional_effects(result.brm2,effects = "temp")
 conditional_effects(result.brm2,effects = "maker")
 conditional_effects(result.brm2,effects = "temp:maker")
@@ -273,8 +277,8 @@ $$ X_{ij} \sim Normal( \mu_i + \beta_0 + \beta_{ij} ,\sigma)$$
 となります。平均にあたるところが線形モデルで表現され，誤差$\epsilon$が散らばることが正規分布の標準偏差$\sigma$で表現されていることを確認してください。それ以外に違いはありません。
 ところで，個人差$i$は介入前のスタート地点の状態を表しており，様々な値を取ると考えられますが，この個性の部分についても正規分布を仮定できます。つまり，
 $$ \mu_i \sim Normal(\mu_G, \tau) $$
-のように，です(個人差の散らばりを表す標準偏差として，新たな記号$\tau$(タウ)を用意しました)。線形モデルで表現するには，このように正規分布の中に正規分布が入っている，という階層的な構造を考えることと同じなのです。これを\texttt{brms}で推定するには，次のようにコードを書きます。
-\begin{lstlisting}[language=c++]
+のように，です(個人差の散らばりを表す標準偏差として，新たな記号$\tau$(タウ)を用意しました)。線形モデルで表現するには，このように正規分布の中に正規分布が入っている，という階層的な構造を考えることと同じなのです。これを\texttt{brms}で推定するには，次のようにコードを書きます(\texttt{code:\ref{code::27_08}})。
+\begin{lstlisting}[language=c++,label={code::27_08},caption={データを作ってbrmでベイズ推定}]
 Example3 <- data.frame(
   ID = rep(1:4,3),
   time = rep(1:3,each=4),
@@ -295,8 +299,8 @@ conditional_effects(result.brm3)
 \end{description}
 線形モデルの書き方が変わったことに注意してください。従属変数と独立変数をチルダで繋ぐのはこれまでと同じなのですが，これに加えて\texttt{(1|ID)}という表記があります。このカッコの中身は1が切片を表しており，それが変数\texttt{ID}ごとに変わるよ，ということを意味しています。
 
-これを実行した結果が次のようになります。
-\begin{tcolorbox}
+これを実行した結果が次のようになります(\texttt{console\ref{RS:out27_06}})。
+\begin{Rscreen}{ランダム切片モデル}{out27_06}
     \begin{verbatim}
 Family: gaussian 
 Links: mu = identity; sigma = identity 
@@ -324,7 +328,7 @@ Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
 \end{verbatim}
-\end{tcolorbox}
+\end{Rscreen}
 結果のところに大きく分けて，\texttt{Group-Level Effects}と\texttt{Population-Level Effects}の2つがあることみてください。群間要因の場合は\texttt{Population-Level Effects}の要素しかありませんでした。これは\keyterm{固定効果}fixed effectと呼ばれ，どの個人にも共通の効果があることを表しています。これに対して\texttt{Group-Level Effects}は\keyterm{変量効果}random effectと呼ばれ，人ごと，ケースごとに確率的に変わりうるところを意味しています。今回は最初の個人差(スタート地点，切片)が人ごとに変わるので\texttt{sd(Intercept)}とあります。スタート地点が人によって2点ぐらいは左右するよ，ということがここでみて取れるのです。
 
 固定効果の見方は，群間要因の時と同じです。第一期(Time1)に比べて，第二期は平均点が$-3.99$，第三期は$-2.00$となっています。この区間幅をみると，第一期よりも下がっているというところですが，第一期と第三期の下り幅はギリギリ0でない，というぐらいであってもう少し慎重にデータを追加して検証した方が良いかもしれませんね。\\
@@ -358,8 +362,8 @@ scale reduction factor on split chains (at convergence, Rhat = 1).
 さらに別の学校では，テキスト・教員は一種類・一人なのですが，4つの時期において成績が変化するかどうかを追跡調査しました。
 各時期のテストの点数は表\ref{L23::exe3}の通りです。次の各指示に従い，その結果について回答してください。
 
-なお，このデータセットは\texttt{Lesson8exe3.csv}ファイルに入っていますが，分析に際しては次のコードを実行して，整理しなおしたデータセットを使ってください。
-\begin{lstlisting}[language=c++]
+なお，このデータセットは\texttt{Lesson8exe3.csv}ファイルに入っていますが，分析に際しては次のコードを実行して，整理しなおしたデータセットを使ってください(\texttt{code:\ref{code::27_09}})。
+\begin{lstlisting}[language=c++,label={code::27_09},caption={データを外部ファイルから読み込んで実行する}]
 library(tidyverse)
 dat3 <- read_csv("Lesson8exe3.csv") %>% 
     pivot_longer(-id,names_to="period") %>% 
