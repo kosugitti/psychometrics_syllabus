@@ -329,7 +329,7 @@ and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
 \end{verbatim}
 \end{Rscreen}
-結果のところに大きく分けて，\texttt{Group-Level Effects}と\texttt{Population-Level Effects}の2つがあることみてください。群間要因の場合は\texttt{Population-Level Effects}の要素しかありませんでした。これは\keyterm{固定効果}fixed effectと呼ばれ，どの個人にも共通の効果があることを表しています。これに対して\texttt{Group-Level Effects}は\keyterm{変量効果}random effectと呼ばれ，人ごと，ケースごとに確率的に変わりうるところを意味しています。今回は最初の個人差(スタート地点，切片)が人ごとに変わるので\texttt{sd(Intercept)}とあります。スタート地点が人によって2点ぐらいは左右するよ，ということがここでみて取れるのです。
+結果のところに大きく分けて，\texttt{Group-Level Effects}と\texttt{Population-Level Effects}の2つがあることみてください。群間要因の場合は\texttt{Population-Level Effects}の要素しかありませんでした。これは\keyterm{固定効果}{こていこうか}{fixed effect}と呼ばれ，どの個人にも共通の効果があることを表しています。これに対して\texttt{Group-Level Effects}は\keyterm{変量効果}{へんりょうこうか}{random effect}と呼ばれ，人ごと，ケースごとに確率的に変わりうるところを意味しています。今回は最初の個人差(スタート地点，切片)が人ごとに変わるので\texttt{sd(Intercept)}とあります。スタート地点が人によって2点ぐらいは左右するよ，ということがここでみて取れるのです。
 
 固定効果の見方は，群間要因の時と同じです。第一期(Time1)に比べて，第二期は平均点が$-3.99$，第三期は$-2.00$となっています。この区間幅をみると，第一期よりも下がっているというところですが，第一期と第三期の下り幅はギリギリ0でない，というぐらいであってもう少し慎重にデータを追加して検証した方が良いかもしれませんね。\\
 

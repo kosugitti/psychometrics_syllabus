@@ -9,7 +9,9 @@
 \maketitle
 \setcounter{tocdepth}{1}
 \tableofcontents
-\newpage
+% 行番号開始
+\linenumbers
+% 各章
 \include{Dkiso1_01}
 \include{Dkiso1_02}
 \include{Dkiso1_03}
@@ -37,10 +39,15 @@
 \include{Dkiso1_25}
 \include{Dkiso1_26}
 \include{Dkiso1_27}
-% \include{Dkiso1_28}
-% \include{Dkiso1_29}
-% \include{Dkiso1_30}
-
+\include{Dkiso1_28}
+\include{Dkiso1_29}
+\include{Dkiso1_30}
+% 行番号終了
+\nolinenumbers
+% 引用文献
 \bibliographystyle{../jecon_jpa}
 \bibliography{../sbib}
+% 索引
+\printindex
+
 \end{document}
