@@ -1,0 +1,7 @@
+library(tidyverse)
+dat <- read_csv("baseball2020.csv")
+dat$team <- as.factor(dat$team)
+dat$position <- as.factor(dat$position)
+dat$bloodType <- as.factor(dat$bloodType)
+g <- dat %>% ggplot(aes(x=本塁打,y=salary,color=position))+geom_point()+facet_wrap(~team) 
+ggsave(g,filename = "../images/text05/Rplot05_02.png", dpi = 600, width = 12, height = 8)

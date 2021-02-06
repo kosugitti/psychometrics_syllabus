@@ -1,0 +1,42 @@
+---
+title: "第5回課題"
+author: "もはん・小杉考司"
+date: "2021/2/6"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 記述統計量
+
+```{r}
+library(tidyverse)
+dat <- read_csv("baseball2020.csv")
+dat$team <- as.factor(dat$team)
+dat$position <- as.factor(dat$position)
+dat$bloodType <- as.factor(dat$bloodType)
+
+summary(dat)
+mean(dat$height)
+sd(dat$weight)
+median(dat$salary)
+cor(dat$height,dat$weight)
+```
+## 図を書く1
+
+```{r}
+g1 <- ggplot(data = dat, mapping = aes(x = height, y = weight, color= team))
+g1 + geom_point()
+
+g1 + geom_smooth() 
+
+g2 <- ggplot(data = dat, mapping = aes(x = team, y = salary, fill= team))
+g2 + geom_boxplot()
+```
+
+```{r}
+dat %>% ggplot(aes(x=本塁打,y=salary,color=position))+geom_point()+facet_wrap(~team)
+```
+
