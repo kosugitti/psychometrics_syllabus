@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 rm *.pdf
+textlint *.tex --fix
 lualatex Dkiso1_book
 upbibtex Dkiso1_book
 lualatex Dkiso1_book

@@ -1,11 +1,12 @@
 #!/usr/bin/bash
 rm *.pdf
-lualatex Dkiso1_book
-upbibtex Dkiso1_book
-lualatex Dkiso1_book
-lualatex Dkiso1_book
-upmendex -r -c -g -s indexStyle.ist Dkiso1_book
-lualatex Dkiso1_book
+textlint *.tex --fix
+lualatex Dkiso2_book
+upbibtex Dkiso2_book
+lualatex Dkiso2_book
+lualatex Dkiso2_book
+upmendex -r -c -g -s indexStyle.ist Dkiso2_book
+lualatex Dkiso2_book
 
 rm *.aux
 rm *.log
