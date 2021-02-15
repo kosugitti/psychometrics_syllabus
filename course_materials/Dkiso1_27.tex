@@ -271,12 +271,12 @@ conditional_effects(result.brm2,effects = "temp:maker")
 \end{figure}
 \section{群内モデルの推定}
 最後に，群内のモデルについて解説します。第\ref{chapter22}講の，介入効果のモデルを思い出してください。群内要因がある線形モデルは，次のように表記できるのでした。
-$$ X_{ij} = \mu_i + \beta_0 + \beta_{ij} + \epsilon_{ijk}$$
+\[ X_{ij} = \mu_i + \beta_0 + \beta_{ij} + \epsilon_{ijk}\]
 群間要因のモデルと違って，$\mu_i$すなわち個人$i$ごとの平均値が想定されていることがポイントです。これを確率モデルとして書くと，
-$$ X_{ij} \sim Normal( \mu_i + \beta_0 + \beta_{ij} ,\sigma)$$
+\[ X_{ij} \sim Normal( \mu_i + \beta_0 + \beta_{ij} ,\sigma)\]
 となります。平均にあたるところが線形モデルで表現され，誤差$\epsilon$が散らばることが正規分布の標準偏差$\sigma$で表現されていることを確認してください。それ以外に違いはありません。
 ところで，個人差$i$は介入前のスタート地点の状態を表しており，様々な値を取ると考えられますが，この個性の部分についても正規分布を仮定できます。つまり，
-$$ \mu_i \sim Normal(\mu_G, \tau) $$
+\[ \mu_i \sim Normal(\mu_G, \tau) \]
 のように，です(個人差の散らばりを表す標準偏差として，新たな記号$\tau$(タウ)を用意しました)。線形モデルで表現するには，このように正規分布の中に正規分布が入っている，という階層的な構造を考えることと同じなのです。これを\texttt{brms}で推定するには，次のようにコードを書きます(\texttt{code:\ref{code::27_08}})。
 \begin{lstlisting}[language=c++,label={code::27_08},caption={データを作ってbrmでベイズ推定}]
 Example3 <- data.frame(
