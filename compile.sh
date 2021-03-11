@@ -1,8 +1,12 @@
 #!/usr/bin/bash
+## changePath
+path=`dirname $1`
+filename=`basename $1`
+cd $path
 ## backup
-cp $1.tex $1.old
+cp ${filename}.tex ${filename}.old
 ########### upgrade patch
-val=$(sed -n 4p $1.tex )
+val=$(sed -n 4p ${filename}.tex )
 version=`echo $val | sed -E "s/lhead{version.//" | sed -E "s/}//"`
 version=${version#\\}
 
@@ -18,8 +22,8 @@ newVer=${major}.${minor}.${plusOne}
 newval=`echo $val | sed -e "s/$version/$newVer/"`
 #echo $val | sed -e "s/$val/$newval/"
 echo "New version"$newVer
-cat $1.tex | (rm $1.tex; sed "s/$val/$newval/" > $1.tex)
-cp $1.tex tmp.tex
+cat ${filename}.tex | (rm ${filename}.tex; sed "s/$val/$newval/" > ${filename}.tex)
+cp ${filename}.tex tmp.tex
 
 ## LateX Main
 lualatex tmp
@@ -30,7 +34,7 @@ upmendex -r -c -g -s indexStyle.ist tmp
 lualatex tmp
 
 ## cleanup
-cp tmp.pdf $1.pdf
+mv tmp.pdf ../${filename}.pdf
 
 rm tmp.*
 rm *.aux
@@ -48,3 +52,4 @@ rm *.ilg
 rm *.idx
 rm *.ind
 
+cd ..
