@@ -1,8 +1,6 @@
-#!/usr/bin/bash
-## backup
-cp $1.tex $1.old
+cp syllabus2.tex syllabus2.old
 ########### upgrade patch
-val=$(sed -n 4p $1.tex )
+val=$(sed -n 4p Dkiso2_book.tex )
 version=`echo $val | sed -E "s/lhead{version.//" | sed -E "s/}//"`
 version=${version#\\}
 
@@ -18,33 +16,13 @@ newVer=${major}.${minor}.${plusOne}
 newval=`echo $val | sed -e "s/$version/$newVer/"`
 #echo $val | sed -e "s/$val/$newval/"
 echo "New version"$newVer
-cat $1.tex | (rm $1.tex; sed "s/$val/$newval/" > $1.tex)
-cp $1.tex tmp.tex
+#sed -i -e "s/$val/$newval/" Dkiso2_book.tex
+cat Dkiso2_book.tex | (rm Dkiso2_book.tex; sed "s/$val/$newval/" > Dkiso2_book.tex)
 
-## LateX Main
-lualatex tmp
-upbibtex tmp
-lualatex tmp
-lualatex tmp
-upmendex -r -c -g -s indexStyle.ist tmp
-lualatex tmp
-
-## cleanup
-cp tmp.pdf $1.pdf
-
-rm tmp.*
-rm *.aux
-rm *.log
-rm *.dvi
-rm *.toc
-rm *.bbl
-rm *.blg
-rm *.out
-rm *.fls
-rm *.fdb_latexmk
-rm *.synctex.gz
-rm *.ltjruby
-rm *.ilg
-rm *.idx
-rm *.ind
-
+### Main Latex
+lualatex Dkiso2_book
+upbibtex Dkiso2_book
+lualatex Dkiso2_book
+lualatex Dkiso2_book
+upmendex -r -c -g -s indexStyle.ist Dkiso2_book
+lualatex Dkiso2_book

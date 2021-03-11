@@ -30,7 +30,7 @@ upmendex -r -c -g -s indexStyle.ist tmp
 lualatex tmp
 
 ## cleanup
-cp tmp.pdf $1.pdf
+mv tmp.pdf ../$1.pdf
 
 rm tmp.*
 rm *.aux
