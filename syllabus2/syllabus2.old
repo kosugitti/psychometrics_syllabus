@@ -1,7 +1,7 @@
 \documentclass{ltjsarticle}
 \usepackage{../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 0.4.2}
+\lhead{version 0.5.3}
 \begin{document}
 \title{心理学データ解析応用1/2 詳細シラバス}
 \author{担当：小杉考司}
@@ -32,16 +32,19 @@
 \include{Dkiso2_lesson03}
 \include{Dkiso2_lesson04}
 \include{Dkiso2_lesson05}
-% \include{lessonII06}行列計算の基礎
-% \include{lessonII07}行列による関係の表現；分散共分散行列，相関行列，距離行列
-% \include{lessonII08}行列によるモデルの表現；回帰分析モデル，線形モデルとデザイン行列
-% \include{lessonII09}行列によるモデルの表現；因子分析モデル
-% \include{lessonII10}因子分析モデルの行列表現，固有値分解とその幾何学的意味
-% \include{lessonII11}Rをつかっての行列計算と因子分析/行列の計算/固有値分解
-% \include{lessonII12}Rをつかっての行列計算と因子分析/psychパッケージの利用/因子軸の回転
-% \include{lessonII13}構造方程式モデリング
-% \include{lessonII14}Rを使っての構造方程式モデリング/lavaanパッケージの利用
-% \include{lessonII15}数量化と多次元尺度法
+\include{Dkiso2_lesson06}
+\include{Dkiso2_lesson07}
+\include{Dkiso2_lesson08}
+\include{Dkiso2_lesson09}
+% \include{lessonII10}Rをつかっての行列計算と因子分析/psychパッケージの利用/因子数の決め方/因子軸の回転
+% \include{lessonII11}Rをつかっての項目反応理論
+% \include{lessonII12}構造方程式モデリング
+% \include{lessonII13}Rを使っての構造方程式モデリング/lavaanパッケージの利用
+% \include{lessonII14}双対尺度法
+% \include{lessonII15}多次元尺度構成法/展開法
+
+% \include{lessonII15}
+
 %%%%% 後期　データから情報を取り出すことにこだわる/パソコンを使った演習が半分
 % \include{lessonII16}イントロダクション；プログラミングの基礎/整然データ/for文による反復/if文による分岐/
 % \include{lessonII17}イントロダクション；行列計算のプログラム/入れ子になったインデックス
