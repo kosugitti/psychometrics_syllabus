@@ -22,7 +22,13 @@ newVer=${major}.${minor}.${plusOne}
 newval=`echo $val | sed -e "s/$version/$newVer/"`
 #echo $val | sed -e "s/$val/$newval/"
 echo "New version"$newVer
+echo "元のファイルはこうだぞ"
+cat ${filename}.tex
+echo "かきかえるぞ"
 cat ${filename}.tex | (rm ${filename}.tex; sed "s/$val/$newval/" > ${filename}.tex)
+echo "かきかえたぞ"
+cat ${filname}.tex
+echo "コンパイル始めます"
 cp ${filename}.tex tmp.tex
 
 ## LateX Main
