@@ -15,10 +15,10 @@
 \[
 \bm{X}=
 \begin{pmatrix}
-X_{11} & X_{12} & \cdots & X_{1m} \\
-X_{21} & X_{22} & \cdots & X_{2m} \\
+x_{11} & x_{12} & \cdots & x_{1m} \\
+x_{21} & x_{22} & \cdots & x_{2m} \\
 \vdots & \vdots & \ddots & \vdots \\
-X_{n1} & X_{n2} & \cdots & X_{nm} \\
+x_{n1} & x_{n2} & \cdots & x_{nm} \\
 \end{pmatrix}
 \]
 
@@ -33,7 +33,7 @@ X_{n1} & X_{n2} & \cdots & X_{nm} \\
 
 
 これを使って平均値(列)ベクトル$\bm{m}$を次のように表すことができます。
-\[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} = \begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} = \begin{pmatrix}\bar{x_1} \\ \bar{x_2}\\ \vdots \bar{x_n} \end{pmatrix} \]
+\[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} = \begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} = \begin{pmatrix}\bar{x_1} \\ \bar{x_2}\\ \vdots \\\bar{x_n} \end{pmatrix} \]
 
 
 さて，平均からの偏差を要素に持つ行列$\bm{V}$を考えたとします。
@@ -121,7 +121,7 @@ e_n
 \vdots & \vdots \\
 1 & x_n
 \end{pmatrix},
-\beta=
+\bm{\beta}=
 \begin{pmatrix}
 b\\
 a
@@ -155,7 +155,7 @@ a
 
 このように，行列表現をすると多くの変数を一気に扱い，表現できるのです。このため，多変量解析ではベクトルの表記が基本になります。サイズを気にせず一般的に表現できるからです。
 
-実際にこれらの式を読む時は，行列のサイズをイメージしながら読むと良いでしょう。例えば左辺の$\bm{Y}$はサイズ$n$のベクトルなのですから，右辺の$\bm{X} \beta$もサイズ$n$の縦ベクトルになるはずなのです。実際，$\bm{X}$は$n \times (m+1)$の行列で，$\beta$は$(m+1) \times 1$のベクトルですから，計算結果は$n \times 1$，つまりサイズ$n$の縦ベクトルです。
+実際にこれらの式を読む時は，行列のサイズをイメージしながら読むと良いでしょう。例えば左辺の$\bm{Y}$はサイズ$n$のベクトルなのですから，右辺の$\bm{X \beta}$もサイズ$n$の縦ベクトルになるはずなのです。実際，$\bm{X}$は$n \times (m+1)$の行列で，$\beta$は$(m+1) \times 1$のベクトルですから，計算結果は$n \times 1$，つまりサイズ$n$の縦ベクトルです。
 
 \section{デザイン行列}
 ところで，心理統計と言えば平均値の差を見ることだ，という話はこれまで散々聞いてきたところかと思います。

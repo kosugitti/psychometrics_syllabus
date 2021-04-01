@@ -1,7 +1,8 @@
 rm(list=ls())
 library(tidyverse)
 library(colorBlindness)
-old = theme_set(theme_gray(base_family="HiraKakuProN-W3"))
+library(gridExtra)
+old = theme_set(theme_bw(base_family="HiraKakuProN-W3"))
 scale_fill_manual(values=colorBlindness::Blue2Orange10Steps)
 inv_logit <- function(x){
     1/(1+exp(-1.7*x))
@@ -99,9 +100,9 @@ p1 <- ggplot(data.frame(x = c(-4, 4)), aes(x = x))+xlab("theta")+ylab("prob.")+
         geom = "area", fill = palette()[4],
         alpha=0.5
     )+
-    annotate("text",x=-3,y=0.1,label="あてはまらない",size=8)+
-    annotate("text",x=2.5,y=0.1,label="あてはまる",size=8)+
-    annotate("text",x=0,y=0.2,label="どちらでもない",size=8)
+    annotate("text",x=-3,y=0.1,label="あてはまらない",size=8,family="HiraKakuProN-W3")+
+    annotate("text",x=2.5,y=0.1,label="あてはまる",size=8,family="HiraKakuProN-W3")+
+    annotate("text",x=0,y=0.2,label="どちらでもない",size=8,family="HiraKakuProN-W3")
 p2 <- ggplot(data.frame(x = c(-4, 4)), aes(x = x))+xlab("theta")+ylab("prob.")+
     stat_function(fun=twoParameters, args=list(a=1, b=1),color=palette()[4])+
     stat_function(fun=IRCCC_rev, args=list(a=1, b=-1),color=palette()[2])+

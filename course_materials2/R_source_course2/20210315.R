@@ -17,7 +17,7 @@ threeParameters <- function(x,a=1,b=0,c=0){
 
 
 p <- ggplot(data.frame(x = c(-4, 4)), aes(x = x))
-g1 <- p + stat_function(fun = dnorm)+ylab("prob")+xlab("theta")
+g1 <- p + stat_function(fun = dnorm)+ylab("density")+xlab("theta")
 g2 <- p + stat_function(fun = pnorm)+ylab("prob")+xlab("theta")+ 
     stat_function(fun = inv_logit,lty=2,color="#0054FF")
 g <- gridExtra::grid.arrange(g1,g2)
