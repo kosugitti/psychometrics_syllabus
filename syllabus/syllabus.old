@@ -1,7 +1,7 @@
 \documentclass{ltjsarticle}
 \usepackage{../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.0.2}
+\lhead{version 1.0.7}
 \begin{document}
 \title{心理学データ解析基礎1/2 コマシラバス}
 \author{担当：小杉考司}
@@ -39,34 +39,34 @@
     \label{processTable}
     \begin{tabular}[t]{lccccccc}
         & 記述統計 & 確率 & モデル & 推測・推定 & 意思決定 & 実践 & page \\\hline\hline
-       心理学と統計法の関係 &  &  &  &  &  &  &  p.\pageref{Dkiso1_lesson01}\\
-       電子計算機のイロハ &  &  &  &  &  &  &  p.\pageref{Dkiso1_lesson02}\\
-       数値データの種類 & ○ &  &  &  &  &  &  p.\pageref{Dkiso1_lesson03}\\
-       記述統計量 & ○ &  &  &  &  &  &  p.\pageref{Dkiso1_lesson04}\\
-       統計環境Rを使ってみる & ○ &  &  &  &  & ○ &  p.\pageref{Dkiso1_lesson05}\\
-       古典的テスト理論 &  &  & ○ &  &  &  &  p.\pageref{Dkiso1_lesson06}\\
-       確率分布 &  & ○ &  &  &  &  &  p.\pageref{Dkiso1_lesson07}\\
-       正規分布 &  & ○ &  & ○ &  &  &  p.\pageref{Dkiso1_lesson08}\\
-       線形モデルの基礎 &  &  & ○ &  &  &  &  p.\pageref{Dkiso1_lesson09}\\
-       重回帰分析モデル &  &  & ○ &  &  &  &  p.\pageref{Dkiso1_lesson10}\\
-       Rをつかった回帰分析 & ○ &  & ○ &  &  & ○ &  p.\pageref{Dkiso1_lesson11}\\
-       実験計画法1 &  &  & ○ &  &  &  &  p.\pageref{Dkiso1_lesson12}\\
-       実験計画法2 &  &  & ○ &  &  &  &  p.\pageref{Dkiso1_lesson13}\\
-       実験計画法3 &  &  & ○ &  &  &  &  p.\pageref{Dkiso1_lesson14}\\\hline
-       確率と統計的推論 &  & ○ &  & ○ &  &  &  p.\pageref{Dkiso1_lesson16}\\
-       推論と意思決定 &  & ○ &  &  & ○ &  &  p.\pageref{Dkiso1_lesson17}\\
-       帰無仮説検定 &  & ○ & ○ &  & ○ &  &  p.\pageref{Dkiso1_lesson18}\\
-       平均値差の検定 &  & ○ & ○ &  & ○ &  & p.\pageref{Dkiso1_lesson19} \\
-       Rによる帰無仮説検定 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{Dkiso1_lesson20}\\
-       平均値差の検定2 &  & ○ & ○ &  & ○ &  &  p.\pageref{Dkiso1_lesson21}\\
-       Rによる帰無仮説検定2 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{Dkiso1_lesson22}\\
-       確率分布とデータの関係；尤度 &  & ○ & ○ & ○ &  &  &  p.\pageref{Dkiso1_lesson23}\\
-       回帰分析の最尤推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{Dkiso1_lesson24}\\
-       ベイズ推測の基礎 &  & ○ & ○ & ○ &  &  &  p.\pageref{Dkiso1_lesson25}\\
-       ベイズ推測の基礎2 &  & ○ & ○ & ○ &  &  &  p.\pageref{Dkiso1_lesson26}\\
-       ベイズ法による母数の推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{Dkiso1_lesson27}\\
-       ベイズ法による回帰分析 &  & ○ & ○ & ○ &  &  &  p.\pageref{Dkiso1_lesson28}\\
-       Rによるベイズ推測 &  & ○ & ○ & ○ &  & ○ & p.\pageref{Dkiso1_lesson29} \\\hline
+       心理学と統計法の関係 &  &  &  &  &  &  &  p.\pageref{D1_lesson01}\\
+       電子計算機のイロハ &  &  &  &  &  &  &  p.\pageref{D1_lesson02}\\
+       数値データの種類 & ○ &  &  &  &  &  &  p.\pageref{D1_lesson03}\\
+       記述統計量 & ○ &  &  &  &  &  &  p.\pageref{D1_lesson04}\\
+       統計環境Rを使ってみる & ○ &  &  &  &  & ○ &  p.\pageref{D1_lesson05}\\
+       古典的テスト理論 &  &  & ○ &  &  &  &  p.\pageref{D1_lesson06}\\
+       確率分布 &  & ○ &  &  &  &  &  p.\pageref{D1_lesson07}\\
+       正規分布 &  & ○ &  & ○ &  &  &  p.\pageref{D1_lesson08}\\
+       線形モデルの基礎 &  &  & ○ &  &  &  &  p.\pageref{D1_lesson09}\\
+       重回帰分析モデル &  &  & ○ &  &  &  &  p.\pageref{D1_lesson10}\\
+       Rをつかった回帰分析 & ○ &  & ○ &  &  & ○ &  p.\pageref{D1_lesson11}\\
+       実験計画法1 &  &  & ○ &  &  &  &  p.\pageref{D1_lesson12}\\
+       実験計画法2 &  &  & ○ &  &  &  &  p.\pageref{D1_lesson13}\\
+       実験計画法3 &  &  & ○ &  &  &  &  p.\pageref{D1_lesson14}\\\hline
+       確率と統計的推論 &  & ○ &  & ○ &  &  &  p.\pageref{D1_lesson16}\\
+       推論と意思決定 &  & ○ &  &  & ○ &  &  p.\pageref{D1_lesson17}\\
+       帰無仮説検定 &  & ○ & ○ &  & ○ &  &  p.\pageref{D1_lesson18}\\
+       平均値差の検定 &  & ○ & ○ &  & ○ &  & p.\pageref{D1_lesson19} \\
+       Rによる帰無仮説検定 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{D1_lesson20}\\
+       平均値差の検定2 &  & ○ & ○ &  & ○ &  &  p.\pageref{D1_lesson21}\\
+       Rによる帰無仮説検定2 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{D1_lesson22}\\
+       確率分布とデータの関係；尤度 &  & ○ & ○ & ○ &  &  &  p.\pageref{D1_lesson23}\\
+       回帰分析の最尤推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{D1_lesson24}\\
+       ベイズ推測の基礎 &  & ○ & ○ & ○ &  &  &  p.\pageref{D1_lesson25}\\
+       ベイズ推測の基礎2 &  & ○ & ○ & ○ &  &  &  p.\pageref{D1_lesson26}\\
+       ベイズ法による母数の推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{D1_lesson27}\\
+       ベイズ法による回帰分析 &  & ○ & ○ & ○ &  &  &  p.\pageref{D1_lesson28}\\
+       Rによるベイズ推測 &  & ○ & ○ & ○ &  & ○ & p.\pageref{D1_lesson29} \\\hline
 \end{tabular}
 \end{table}
 
@@ -105,6 +105,6 @@
 \include{Dkiso1_lesson29}
 \include{Dkiso1_lesson30}
 
-\bibliographystyle{jecon_jpa}
-\bibliography{sbib}
+\bibliographystyle{../jecon_jpa}
+\bibliography{../sbib}
 \end{document}
