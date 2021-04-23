@@ -67,6 +67,9 @@ g <- p + stat_function(fun = dnorm) +
     axis.text = element_text(size = 16),
     axis.title = element_text(size = 14, face = "bold")
   ) + ylab("Probability density")
+
+g
+
 ggsave(g, filename = "../images/text08/Rplot08_03.png", dpi = 600, width = 8, height = 6)
 
 # 被積分関数の定義
