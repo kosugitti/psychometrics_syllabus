@@ -53,6 +53,26 @@ b1 <- rxy[1,2]*sy/sx
 b2 = by - b1*bx
 b1
 b2
+fit2 <- lm(X1 ~ X2,data=dat)
+fit2
+
+regFunc1 <- function(x1){
+    93.71779*x1+288.73711
+}
+
+regFunc2 <- function(x2){
+    0.008046*x2-1.626110
+}
+
+(x2 <- regFunc1(3.42))
+(x1 <- regFunc2(x2))
+for(i in 1:100){
+    (x2 <- regFunc1(x1))
+    (x1 <- regFunc2(x2))
+}
+x1
+x2
+summary(dat)
 
 dat.df %>% ggplot(aes(x = 高校の成績, y = 大学の成績)) +
     geom_point() +

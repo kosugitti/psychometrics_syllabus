@@ -97,3 +97,17 @@ c7 <- (0.08-0.00)/0.03
 c(c1,c2,c3,c4,c5,c6,c7)/0.8
 
 mean(c1-c2,c2-c3,c3-c4,c4-c5,c5-c6,c6-c7)
+
+## 課題
+
+X <- c(1,3,5,18,24,53,56)
+rbind(X,# 度数
+      X/sum(X), # 相対度数
+      cumsum(X/sum(X)), # 累積相対度数
+      qnorm(cumsum(X/sum(X))), # 累積相対度数の確率点
+      dnorm(qnorm(cumsum(X/sum(X)))) # 累積相対度数の確率密度
+) %>%  xtable::xtable()
+
+cum <- cumsum(X/sum(X)) #累積相対頻度
+c(0,cum[-7])
+(dnorm(qnorm(c(0,cum[-7])))-dnorm(qnorm(cum)))/(X/sum(X)) #累積相対頻度の確率密度(五段目)を引き算して，相対頻度(二段目)でわる
