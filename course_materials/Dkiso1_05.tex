@@ -116,17 +116,17 @@ R は、自由なソフトウェアであり、「完全に無保証」です。
 これらのボタンを押すと，コードがコンソールに送られて実行結果が返ってきます(図\ref{fig::05_04})。コンソールに示されているものは，この資料では次のような囲みで表現します(\texttt{console\ref{RS:out05_01}})が，さて，みなさんの環境で同じ結果が得られましだでしょうか。
 \begin{Rscreen}{四則演算}{out05_01}
 	\begin{verbatim}
-		> # 四則演算
-		> 1+2
-		[1] 3
-		> 2-4
-		[1] -2
-		> 3*5
-		[1] 15
-		> 6/3
-		[1] 2
-		> sqrt(16)
-		[1] 4
+> # 四則演算
+> 1+2
+[1] 3
+> 2-4
+[1] -2
+> 3*5
+[1] 15
+> 6/3
+[1] 2
+> sqrt(16)
+[1] 4
 \end{verbatim}
 \end{Rscreen}
 
@@ -220,13 +220,13 @@ Rで扱う変数、関数、データセットなどには全て，名前がつ�
 実行結果は\texttt{console\ref{RS:out05_02}}のようになるでしょう。
 \begin{Rscreen}{オブジェクトに代入する}{out05_02}
 	\begin{verbatim}
-		> # オブジェクト
-		> A <- 2
-		> B <- 3
-		> A + B
-		[1] 5
-		> A 
-		[1] 2
+> # オブジェクト
+> A <- 2
+> B <- 3
+> A + B
+[1] 5
+> A 
+[1] 2
 \end{verbatim}
 \end{Rscreen}
 一行目は当然なんの回答もありませんが，2，3行目を実行してもすぐに次のプロンプト(\verb|>|)がでて指示待ちになります。これは「代入しろ」といわれたから代入したのであって，特に反応を求めてないからです。次の4行目になって初めて足し算をせよ、と言われたのでその結果が5である，と返答しています。また，5行目はAとだけ入力されました。このように指示待ちの時にそのオブジェクト名を入れると，その中身を全て表示してくれます。今回は2がはいっているので，2ですよ，と答えてくれています。
@@ -325,20 +325,20 @@ A + B
 コンソールには\texttt{console\ref{RS:out05_03}}のように表されていると思います。
 \begin{Rscreen}{オブジェクトに代入する}{out05_03}
 	\begin{verbatim}
-	> df <- data.frame(
-		+     name = c("Taro", "Hanako", "Ken"),
-		+     gender = c("male", "female", "male"),
-		+     height = c(170,160,155),
-		+     weight = c(55,60,43)
-		+ )
-		> df
-			name gender height weight
-		1   Taro   male    170     55
-		2 Hanako female    160     60
-		3    Ken   male    155     43
-		> df$name
-		[1] "Taro"   "Hanako" "Ken"
-	\end{verbatim}
+> df <- data.frame(
+	+     name = c("Taro", "Hanako", "Ken"),
+	+     gender = c("male", "female", "male"),
+	+     height = c(170,160,155),
+	+     weight = c(55,60,43)
+	+ )
+> df
+	name gender height weight
+1   Taro   male    170     55
+2 Hanako female    160     60
+3    Ken   male    155     43
+> df$name
+[1] "Taro"   "Hanako" "Ken"
+\end{verbatim}
 \end{Rscreen}
 このオブジェクト，\texttt{df}の出力を見るとわかるように，行に個人，列に変数の長方形方になっています。変数にアクセスする時は，list型の時と同じようにオブジェクト名の背後に\verb|$|をつけて，\verb|df$name|のようにします。
 

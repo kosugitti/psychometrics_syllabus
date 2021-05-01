@@ -45,24 +45,45 @@ C <- matrix(c(1, 0, 0, 1, 1, 1), ncol = 3)
 B %*% C
 B %*% t(C)
 
-A <- matrix(c(2,1,5,3),ncol=2)
+A <- matrix(c(2, 1, 5, 3), ncol = 2)
 solve(A)
 A %*% solve(A)
 
 
-A <- matrix(c(1,5,3,-2,4,1,-5,3,-3),ncol=3)
-b <- c(3,1,6)
+A <- matrix(c(1, 5, 3, -2, 4, 1, -5, 3, -3), ncol = 3)
+b <- c(3, 1, 6)
 solve(A) %*% b
 
 
 # データの行列計算 ----------------------------------------------------------------
 
-dat <- read_csv("../../course_materials/R_source_course1/baseball2020.csv") %>% 
-    dplyr::filter(position=="投手") %>% 
-    dplyr::select(Name,team,height,weight,salary,勝利,セーブ) %>% 
-    na.omit() %>% 
-    arrange(-勝利)
+dat <- read_csv("../../course_materials/R_source_course1/baseball2020.csv") %>%
+  dplyr::filter(position == "投手") %>%
+  dplyr::select(Name, team, height, weight, salary, 勝利, セーブ) %>%
+  na.omit() %>%
+  arrange(-勝利)
 
-write_csv(dat,"pitcher2020.csv")
+write_csv(dat, "pitcher2020.csv")
 
-dat %>% head(10) %>% as.matrix %>% knitr::kable(format="latex",caption = "投手のデータ")
+datafile <- read_csv("pitcher2020.csv")
+dataset <- datafile %>%
+  select(height, weight, salary) %>%
+  as.matrix()
+
+n <- nrow(dataset)
+one <- rep(1, n)
+m <- t(dataset) %*% one / n
+V <- dataset - one %*% t(m)
+S <- t(V) %*% V / n
+SD <- diag(S) %>% sqrt()
+Q <- diag(SD)
+Z <- V %*% solve(Q)
+R <- t(Z) %*% Z / n
+cor(dataset)
+
+eig <- eigen(R)
+eig$values
+sum(eig$values)
+sum(diag(R))
+eig$vector
+eig$vector[,1]^2 %>% sum

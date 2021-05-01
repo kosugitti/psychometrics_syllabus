@@ -131,9 +131,9 @@ qnorm(0.975, mean = 0, sd = 1)
 
 \begin{Rscreen}{t.testの出力}{out20_01}
 \begin{verbatim}
-    > t.test(s1,mu=5,conf.level = 0.95)
+> t.test(s1,mu=5,conf.level = 0.95)
 
-	One Sample t-test
+One Sample t-test
 
 data:  s1
 t = 0.92459, df = 4, p-value = 0.4075
@@ -209,15 +209,15 @@ t.test(value ~ condition, data = dat, paired = T, alternative = "less")
 さて，こうして得られる結果は\texttt{console\ref{RS:out20_04}}の通りです。
 \begin{Rscreen}{t.testの出力}{out20_04}
     \begin{verbatim}
-    Paired t-test
-    data:  value by condition
-    t = -2.4783, df = 9, p-value = 0.01754
-    alternative hypothesis: true difference in means is less than 0
-    95 percent confidence interval:
-            -Inf -0.6248331
-    sample estimates:
-    mean of the differences 
-                       -2.4 
+Paired t-test
+data:  value by condition
+t = -2.4783, df = 9, p-value = 0.01754
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+        -Inf -0.6248331
+sample estimates:
+mean of the differences 
+                   -2.4 
 \end{verbatim}
 \end{Rscreen}
 
@@ -310,12 +310,12 @@ cohen.d(value ~ condition, data = dat, hedges.correction = T)
 結果は\texttt{console\ref{RS:out20_07}}のように示されます。
 \begin{Rscreen}{効果量の出力}{out20_07}
 \begin{verbatim}
-    Hedges's g
+Hedges's g
 
-    g estimate: -0.7715342 (medium)
-    95 percent confidence interval:
-         lower      upper 
-    -2.1369693  0.5939009 
+g estimate: -0.7715342 (medium)
+95 percent confidence interval:
+       lower      upper 
+-2.1369693  0.5939009 
 \end{verbatim}
 \end{Rscreen}
 
@@ -341,18 +341,18 @@ cohen.d(value ~ condition, data = dat, paired = TRUE)
 
 \begin{Rscreen}{rnormの出力}{out20_08}
 \begin{verbatim}
-    Cohen's d
+Cohen's d
 
-    d estimate: -0.344241 (small)
-    95 percent confidence interval:
-          lower       upper 
-    -0.64457930 -0.04390272 
-    
-     警告メッセージ: 
-     cohen.d.formula(value ~ condition, data = dat, paired = TRUE) で: 
-      Trying to compute paired samples Cohen's d using formula input. Results may be incorrect
-      if cases do not appear in the same order for both levels of the grouping factor. Use the
-      format 'value ~ treatment | Subject(id)' to specify a subject id variable.
+d estimate: -0.344241 (small)
+95 percent confidence interval:
+      lower       upper 
+-0.64457930 -0.04390272 
+
+    警告メッセージ: 
+cohen.d.formula(value ~ condition, data = dat, paired = TRUE) で: 
+Trying to compute paired samples Cohen's d using formula input. Results may be incorrect
+ if cases do not appear in the same order for both levels of the grouping factor. Use the
+format 'value ~ treatment | Subject(id)' to specify a subject id variable.
 \end{verbatim}
 \end{Rscreen}
 この警告は，「対応のある個々人を識別する変数がデータセットに入ってないので，間違った結果になっているかもしれませんよ。次の書式を使ってください」と言ってます。これに対応するためには、\texttt{code:\ref{code::20_15}}のようにします。
@@ -376,9 +376,9 @@ power.t.test(power = 0.8, delta = 0.7, sig.level = 0.05)
 さて，これの出力結果を見ると，次のように示されました(\texttt{console\ref{RS:out20_09}})。
 \begin{Rscreen}{rnormの出力}{out20_09}
 \begin{verbatim}
-    Two-sample t test power calculation 
+Two-sample t test power calculation 
 
-    n = 33.02467
+n = 33.02467
 delta = 0.7
    sd = 1
 sig.level = 0.05
@@ -396,11 +396,11 @@ power.t.test(n = 5, delta = 0.7, sig.level = 0.05)
 
 \begin{Rscreen}{検定力の出力}{out20_10}
 \begin{verbatim}
-    Two-sample t test power calculation 
+Two-sample t test power calculation 
 
-    n = 5
+n = 5
 delta = 0.7
-   sd = 1
+sd = 1
 sig.level = 0.05
 power = 0.16318
 alternative = two.sided
