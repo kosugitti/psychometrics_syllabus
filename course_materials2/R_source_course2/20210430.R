@@ -15,3 +15,54 @@ E <- matrix(A, ncol = 3, nrow = 6)
 G <- matrix(A, ncol = 3, nrow = 4)
 E
 G
+
+
+# 四則演算 --------------------------------------------------------------------
+
+x <- 1:3
+y <- 8:10
+x + y
+x - y
+2 * x
+y / 3
+A <- matrix(c(1, 2, 3, 4), ncol = 2)
+B <- matrix(c(5, 6, 7, 8), ncol = 2)
+A + B
+A * 3 + B * 2
+
+
+a <- c(1, 2, 1)
+b <- c(3, 4, 2)
+a * b
+a %*% b
+a %*% t(b)
+A <- matrix(1:9, ncol = 3)
+A * a
+A %*% a
+a %*% A
+B <- matrix(1:6, nrow = 3, byrow = T)
+C <- matrix(c(1, 0, 0, 1, 1, 1), ncol = 3)
+B %*% C
+B %*% t(C)
+
+A <- matrix(c(2,1,5,3),ncol=2)
+solve(A)
+A %*% solve(A)
+
+
+A <- matrix(c(1,5,3,-2,4,1,-5,3,-3),ncol=3)
+b <- c(3,1,6)
+solve(A) %*% b
+
+
+# データの行列計算 ----------------------------------------------------------------
+
+dat <- read_csv("../../course_materials/R_source_course1/baseball2020.csv") %>% 
+    dplyr::filter(position=="投手") %>% 
+    dplyr::select(Name,team,height,weight,salary,勝利,セーブ) %>% 
+    na.omit() %>% 
+    arrange(-勝利)
+
+write_csv(dat,"pitcher2020.csv")
+
+dat %>% head(10) %>% as.matrix %>% knitr::kable(format="latex",caption = "投手のデータ")
