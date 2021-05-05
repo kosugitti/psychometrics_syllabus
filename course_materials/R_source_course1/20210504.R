@@ -68,7 +68,9 @@ dat.df %>%
     dplyr::select(ID,内申点,入試,評定,Yhat,Residuals) %>% 
     knitr::kable(format = "latex", caption = "予測値と残差")
 
-ggpairs(dat.df)
+g <- ggpairs(dat.df)
+ggsave
+
 
 ## 部分相関係数
 lm2 <- lm(評定~内申点,data=dat.df)
@@ -93,13 +95,20 @@ N <- 500
 mu <- c(50,10,10)
 sds <- c(10,10,10)
 Sigma <- diag(sds^2)
-Sigma[1,2] = sds[1]*sds[2]*0.8
-Sigma[1,3] = sds[1]*sds[3]*0.8
-Sigma[2,3] = sds[2]*sds[3]*0.8
-Sigma[2,1] = sds[2]*sds[1]*0.8
-Sigma[3,1] = sds[3]*sds[1]*0.8
-Sigma[3,2] = sds[3]*sds[2]*0.8
+Sigma[1,2] = sds[1]*sds[2]*-0.6
+Sigma[1,3] = sds[1]*sds[3]*0.3
+Sigma[2,3] = sds[2]*sds[3]*0.4
+Sigma[2,1] = Sigma[1,2]
+Sigma[3,1] = Sigma[1,3]
+Sigma[3,2] = Sigma[2,3]
 X <- mvrnorm(N,mu,Sigma) %>% as.data.frame %>% as_tibble
-lm(V3~V1+V2,data=X)
-s3d <- scatterplot3d(X$V1,X$V2,X$V3, pch=16, highlight.3d=T,angle=55,
+fit <- lm(V3~V1+V2,data=X)
+fit
+plot.new()
+scatterplot3d(X$V1,X$V2,X$V3, pch=16, highlight.3d=T,angle=55,
                      main="",xlab="X1",ylab="X2",zlab="Y")
+s3d$plane3d(fit)
+newX <- data.frame(V1=c(30,30,40,40),
+                   V2=c(0,10,0,10))
+newX
+predict(fit,newX)
