@@ -69,7 +69,7 @@ dat.df %>%
     knitr::kable(format = "latex", caption = "予測値と残差")
 
 g <- ggpairs(dat.df)
-ggsave
+ggsave(g,filename = "../images/text10/Rplot10_03.png", dpi = 600, width = 8, height = 6)
 
 
 ## 部分相関係数
@@ -82,7 +82,10 @@ dat.z <- scale(dat) %>% as.data.frame %>%
     dplyr::rename(内申点z=V1,入試z=V2,評定z=V3)
 lm3 <- lm(評定z~内申点z+入試z,data=dat.z)
 summary(lm3)
-
+dat.z %>% 
+    mutate(ID=LETTERS[1:15]) %>% 
+    dplyr::select(ID,内申点z,入試z,評定z) %>% 
+    knitr::kable(format = "latex", caption = "予測値と残差")
 
 library(car)
 vif(lm3)
