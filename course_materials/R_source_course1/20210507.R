@@ -54,4 +54,39 @@ summary(result2z)
 
 
 
+dat %>% 
+    dplyr::filter(position=="投手") %>% 
+    dplyr::select(Win,Lose,Save,Hold,salary) %>% 
+    na.omit %>% 
+    cor()
+
+# 課題 ----------------------------------------------------------------------
+
+# Homesしらべ　向丘駅近辺のワンルーム家賃相場
+library(tidyverse)
+heibei = c(41.4,20.28,18.2,19.87,20.28,23.18,19.87,19.87)
+chiku = c(14,16,28,16,19,20,17,20)
+ekitoho = c(10,9,10,13,7,14,12,17)
+yachin = c(8.6,6.1,4.2,5.7,6.3,5.4,6.25,5.8)
+
+dat.df <- data.frame(heibei,chiku,ekitoho,yachin) 
+dat.df %>% knitr::kable(format='latex',caption='家賃相場')
+write_csv(dat.df, file="yachin.csv")
+read_csv("yachin.csv")
+
+psych::pairs.panels(dat.df)
+
+mean(dat.df$heibei)
+mean(dat.df$yachin)
+sdx = (dat.df$heibei - mean(dat.df$heibei))^2 %>% mean %>% sqrt
+sdy = (dat.df$yachin - mean(dat.df$yachin))^2 %>% mean %>% sqrt
+sdXY = mean((dat.df$heibei - mean(dat.df$heibei))*(dat.df$yachin - mean(dat.df$yachin)))
+Rxy = sdXY / sdx / sdy
+b1 = Rxy * sdy / sdx
+b0 = mean(dat.df$yachin) - b1*mean(dat.df$heibei)
+
+summary(lm(yachin~heibei,dat=dat.df))
+summary(lm(heibei~yachin,dat=dat.df))
+b1 * 15 + b0
+
 
