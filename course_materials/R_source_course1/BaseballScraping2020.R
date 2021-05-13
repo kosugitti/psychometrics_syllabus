@@ -151,7 +151,7 @@ dat1 %>%
     Save = セーブ,
     Hold = ホールド
   ) %>%
-  dplyr::select(Name, team, salary, 
+  dplyr::select(Name, team, salary, bloodType,
                 position, height, weight, 
                 Hit, HR, Win, Lose, Save, Hold) -> baseball
 
