@@ -24,3 +24,4 @@ dat$bloodType <- as.factor(dat$bloodType)
 g <- dat %>% ggplot(aes(x=HR,y=salary,color=position))+geom_point()+facet_wrap(~team) 
 g
 ggsave(g,filename = "../images/text05/Rplot05_02.png", dpi = 600, width = 12, height = 8)
+
