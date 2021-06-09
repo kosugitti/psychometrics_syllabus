@@ -33,7 +33,7 @@ x_{n1} & x_{n2} & \cdots & x_{nm} \\
 
 
 これを使って平均値(列)ベクトル$\bm{m}$を次のように表すことができます。
-\[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} = \begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} = \begin{pmatrix}\bar{x_1} \\ \bar{x_2}\\ \vdots \\\bar{x_n} \end{pmatrix} \]
+\[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} = \begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} = \begin{pmatrix}\bar{x_1} \\ \bar{x_2}\\ \vdots \\\bar{x_m} \end{pmatrix} \]
 
 
 さて，平均からの偏差を要素に持つ行列$\bm{V}$を考えたとします。
@@ -54,24 +54,25 @@ x_{n1} & x_{n2} & \cdots & x_{nm} \\
 
 
 これを使うと，例えば分散共分散行列$\bm{S}$は次のようになります。
-\[ \bm{S} = \frac{1}{n} \bm{V}' \bm{V} = \begin{pmatrix} s_{11} & s_{12} & \cdots & s_{1m} \\
-												   s_{21} & s_{22} & \cdots & s_{2m} \\
+\[ \bm{S} = \frac{1}{n} \bm{V}' \bm{V} = \begin{pmatrix} 
+												s_1^2 & s_{12} & \cdots & s_{1m} \\
+												   s_{21} & s_2^2 & \cdots & s_{2m} \\
 												   \vdots & \vdots & \ddots & \vdots \\
-												   s_{m1} & s_{m2} & \cdots & s_{mm} \end{pmatrix} \]
+												   s_{m1} & s_{m2} & \cdots & s_m^2 \end{pmatrix} \]
 
 
-また，対角項に各変数の標準偏差が入った行列$\bm{Q}$を以下のように定めるとしましょう。次のような行列です。
-\[ \bm{Q} = \begin{pmatrix} \sigma_1 & 0 & \cdots & 0 \\
-						  0 & \sigma_2 & \cdots & 0 \\
+また，対角項に各変数の標準偏差＄s_j$が入った行列$\bm{Q}$を以下のように定めるとしましょう。次のような行列です。
+\[ \bm{Q} = \begin{pmatrix} s_1 & 0 & \cdots & 0 \\
+						  0 & s_2 & \cdots & 0 \\
 						  \vdots & \vdots & \ddots & \vdots   \\
-						  0 & 0 & \cdots & \sigma_m \end{pmatrix} \]
+						  0 & 0 & \cdots & s_m \end{pmatrix} \]
 そうすると，これの逆行列をつかって標準得点行列$\bm{Z}$を次のように表すことができます。
 \[ \bm{Z} = \bm{V} \bm{Q}^{-1} \]
 さらに，これを用いて相関行列$\bm{R}$を次のように表すことができます。
 \[ \bm{R} = \frac{1}{n}\bm{Z}' \bm{Z} = \begin{pmatrix} 1 & r_{12} & \cdots & r_{1m} \\
 												 r_{21} & 1 & \cdots & r_{2m} \\
 												 \vdots & \vdots & \ddots & \vdots \\
-												 r_{1m} & r_{2m} & \cdots & 1 \end{pmatrix} \]
+												 r_{m1} & r_{m2} & \cdots & 1 \end{pmatrix} \]
 データのサイズにかかわらず，一般的にこのように表現できるのはとてもわかりやすいですね。
 
 \section{線形モデルの行列表現}
