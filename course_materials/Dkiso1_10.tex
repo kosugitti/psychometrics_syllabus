@@ -39,7 +39,7 @@
     \centering
     \begin{tabular}[t]{rrrr}
     \hline
-    学生ID & 高校の内申点 & 大学入試の成績 ＆大学のGPA\\\hline
+    学生ID & 高校の内申点 & 大学入試の成績 &大学のGPA\\\hline
     \hline
     A & 2.13 & 460 & 5.34\\
     B & 2.42 & 500 & 7.97\\
@@ -85,7 +85,7 @@ Rでチョチョイと計算できるのですが，詳しくは次回に回す�
 \begin{table}
     \caption{予測値と残差}
     \centering
-    \begin{tabular}[t]{l|r|r|r|r|r}
+    \begin{tabular}[t]{l|rrr|rr}
     \hline
     ID & 内申点 & 入試 & 評定 & Yhat & Residuals\\
     \hline
@@ -123,7 +123,7 @@ Rでチョチョイと計算できるのですが，詳しくは次回に回す�
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{images/text10/Rplot10_03.png}
+	\includegraphics[keepaspectratio,width=10cm]{images/text10/Rplot10_03.png}
     \caption{予測値や残差を含んだ散布図}
     \label{fig::10_03}
 \end{figure}
@@ -134,7 +134,7 @@ Rでチョチョイと計算できるのですが，詳しくは次回に回す�
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{images/text10/Slide10_01.png}
+	\includegraphics[keepaspectratio,width=10cm]{images/text10/Slide10_01.png}
     \caption{回帰分析は説明変数を分割する}
     \label{fig::10_04}
 \end{figure}
@@ -143,7 +143,7 @@ Rでチョチョイと計算できるのですが，詳しくは次回に回す�
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{images/text10/Slide10_02.png}
+	\includegraphics[keepaspectratio,width=10cm]{images/text10/Slide10_02.png}
     \caption{部分相関係数}
     \label{fig::10_05}
 \end{figure}
@@ -154,7 +154,7 @@ Rでチョチョイと計算できるのですが，詳しくは次回に回す�
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{images/text10/Slide10_03.png}
+	\includegraphics[keepaspectratio,width=10cm]{images/text10/Slide10_03.png}
     \caption{偏相関係数}
     \label{fig::10_05}
 \end{figure}
@@ -167,7 +167,7 @@ Rでチョチョイと計算できるのですが，詳しくは次回に回す�
 さらに，ここでは$x_1$で統制された$y$と$x_2$との相関関係を求めましたが，$x_1$で$x_2$を統制した残差をつかって，$y$を回帰することもできます(図\ref{fig::10_06})。実はこれが重回帰分析の時に計算されている，回帰係数になっているのです。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{images/text10/Slide10_04.png}
+	\includegraphics[keepaspectratio,width=10cm]{images/text10/Slide10_04.png}
     \caption{偏回帰係数}
     \label{fig::10_06}
 \end{figure}
@@ -175,7 +175,7 @@ Rでチョチョイと計算できるのですが，詳しくは次回に回す�
 重回帰分析の回帰係数は特に，\keyterm{偏回帰係数}{へんかいきけいすう}{partial regression coefficient}といいます。偏という字がついているのは，相互に影響を取り除いたと言う意味です。前の節の最後に，回帰係数の意味は$x_1,x_2$それぞれの軸に沿った水平移動をした時の上昇率だ，ということを伝えました(図\ref{fig::10_07})。ここで$x_1$の係数を解釈するときには，$x_2$が統制されている($x_2$は変化していない)ことに注意が必要です。言葉で表現するのは難しいのですが，丁寧に言うなら「入試の成績($x_2$)が同じだとすると，内申点($x_1$)が1点上がることに入学後の成績($y$)は0.604点あがる」が正しい表現ということになります。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{images/text10/Slide10_05.png}
+	\includegraphics[keepaspectratio,width=10cm]{images/text10/Slide10_05.png}
     \caption{偏回帰係数が表す値の意味}
     \label{fig::10_07}
 \end{figure}
@@ -225,7 +225,7 @@ $x_1 \simeq x_2$といってもいいような感じです。仮に$x_2$を$x_1$
 \begin{table}
     \caption{標準化したデータ(一部)}
     \centering
-    \begin{tabular}[t]{l|r|r|r}
+    \begin{tabular}[t]{l|ccc}
     \hline
     ID & 内申点z & 入試z & 評定z\\
     \hline
@@ -251,8 +251,68 @@ $x_1 \simeq x_2$といってもいいような感じです。仮に$x_2$を$x_1$
 まずは切片$b_0$の値がないことです。気づきましたでしょうか。切片項は変数全体の高さ調整に使われるものであり，各変数の平均値を加味して計算されるものだったわけですが，標準化したデータを使った場合全ての変数の平均が0になっていますから，この調整が必要なくなったわけです。ということで標準化した回帰分析のばあいは切片がないのも当然なのです。
 もうひとつ，モデル適合について考えてみます。実は，標準化しない時の$R^2$値と標準化した時の$R^2$値は同じです。データが標準化されていようがされていまいが，線形モデルの当てはめをする上で変数間関係(相関関係)が変わるわけではありません。位置とか幅が違うだけであり，散布図の見た目が変わるわけではないのです。考えてみれば当たり前のことなのですが，改めて確認しておくといいでしょう。
 
-
-
 \section{課題}
+
+大学周辺のワンルームマンションの相場を調べるため，8件ほどの物件のデータを集めてみました(表\ref{tab:ex11_01}，図\ref{fig::10_08})。これをもとに，家賃を従属変数とし，広さ広さ，築年数，最寄りの交通機関からの移動時間を独立変数とした重回帰分析を行いました。
+
+\begin{table}
+    \caption{\label{tab:ex11_01}家賃のデータ}
+    \centering
+    \begin{tabular}[t]{rrrr}
+    \hline
+    平米 & 築年数 & 駅から徒歩 & 家賃\\\hline
+    41.40 & 14 & 10 & 8.60\\
+    20.28 & 16 & 9 & 6.10\\
+    18.20 & 28 & 10 & 4.20\\
+    19.87 & 16 & 13 & 5.70\\
+    20.28 & 19 & 7 & 6.30\\
+    23.18 & 20 & 14 & 5.40\\
+    19.87 & 17 & 12 & 6.25\\
+    19.87 & 20 & 17 & 5.80\\
+    \hline
+    \end{tabular}
+\end{table}
+
+
+\begin{figure}[ht]
+    \centering
+	\includegraphics[keepaspectratio,width=8cm]{images/text10/Rplot10_04.png}
+    \caption{サンプルデータのプロット}
+    \label{fig::10_08}
+\end{figure}
+
+ロウデータの重回帰式は，
+\[ \mbox{予測値}　＝　7.05　+　0.09\mbox{平米}　-　0.14\mbox{築年数}　-　0.04\mbox{移動時間} \]
+
+となり，すべてのデータを変数ごとに標準化したデータの重回帰式は
+\[ \mbox{予測値}　＝　0.58\mbox{平米}　-　0.51\mbox{築年数}　-　 0.10\mbox{移動時間} \]
+
+となりました。また，適合度指標は$R^2 = 0.93$になりました。
+
+このデータや結果を踏まえて，次の設問に答えてください。
+
+\paragraph{重回帰分析の結果を読み取る1}ロウデータの回帰分析とその結果について，正しい表現をしているものすべてにチェックを入れてください。 
+\begin{itemize}
+    \item 切片は7.05である
+    \item 移動時間が同じ物件であれば，築年数が1年長いと家賃が1400円低い
+    \item 家賃を決めるのに最も重要な変数は，回帰分析からはわからない
+    \item 家賃を決めるのに最も重要な変数は，係数の絶対値が一番大きい築年数である。
+    \item 家賃を決めるのに最も重要な変数は，係数が正の平米である。
+    \item 移動時間と築年数が同じ物件であれば，1平米広くなると家賃が900円高い
+    \item 築年数が1年増えると家賃が1400円下がる
+    \item 従属変数である家賃と平米，あるいは家賃と築年数の相関係数が高いため，多重共線性が生じている可能性を疑うべきである。
+\end{itemize}
+
+\paragraph{重回帰分析の結果を読み取る2}標準化されたデータの回帰分析とその結果について，正しい表現をしているものすべてにチェックを入れてください。 
+\begin{itemize}
+    \item 移動時間と築年数が同じ物件であれば，1平米広くなると家賃が5800円高い。
+    \item 家賃を決めるのに最も重要な変数は，回帰分析からはわからない。
+    \item 家賃を決めるのに最も重要な変数は，係数の絶対値が一番大きい平米である。
+    \item 切片は記載されていないので，分析結果が解釈できない。
+    \item 家賃を決めるに最も重要な変数は，係数が正の平米である。
+    \item 移動時間が同じ物件であれば，築年数が1年長いと家賃が5600円低い。
+    \item 標準化されたデータの散布図が描かれていないので，分析に進むのは良くない。
+    \item 説明変数が平米だけの回帰分析より，平米と築年数の2変数を使った回帰分析の方が，また平米と築年数の回帰分析より，平米と築年数と駅からの時間の3変数を使った回帰分析の方が，適合度R二乗は大きくなる 
+\end{itemize}
 
 \end{document} 

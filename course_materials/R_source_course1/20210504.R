@@ -115,3 +115,13 @@ newX <- data.frame(V1=c(30,30,40,40),
                    V2=c(0,10,0,10))
 newX
 predict(fit,newX)
+
+
+#  課題 ---------------------------------------------------------------------
+
+dat <- read_csv("yachin.csv") %>% 
+    rename(平米=heibei,築年数=chiku,駅から徒歩=ekitoho,家賃=yachin)
+dat %>% knitr::kable(format="latex",caption="家賃のデータ",label="ex11_01")
+g <- ggpairs(dat)
+ggsave(g,filename = "../images/text10/Rplot10_04.png", dpi = 600, width = 8, height = 6)
+g
