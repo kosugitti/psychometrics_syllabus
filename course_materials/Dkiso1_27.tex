@@ -113,7 +113,7 @@ print(fit.brm)
 
 係数などは\texttt{Population-Level Effects }というところに書かれているもので，切片(Intercept)の推定値(Estimate)が288.37，説明変数である高校の成績にかかる傾きが93.86であることが示されています。続いて標準誤差，95\%確信区間の下限(lower)(\texttt{l-95\%CI})，上限(upper)(\texttt{u-95\% CI})が示されています。検定ではなく，95\%区間を見てそれが0を跨いでいるかどうかで，検定と同じような判断ができるということですね。
 
-最後にもう1つの推定値，$\sigma$が\texttt{Family Specific Parameters}のところに現れています\footnote{線形回帰は$Y_i \sim N(\beta_0 + \beta_1 X_i , \sigma)$で，未知数は$\beta_0,\beta_1,\sigma$の三つであったことを思い出してください。}。
+最後にもう1つの推定値，$\sigma$が\texttt{Family Specific Parameters}のところに現れています\footnote{線形回帰は$Y_i \sim N(\beta_0 + \beta_1 X_i , \sigma)$で，未知数は$\beta_0,\beta_1,\sigma$の3つであったことを思い出してください。}。
 
 \texttt{console\ref{RS:out27_02}}が基本的な結果の情報です。\texttt{lm}関数を使った最尤推定の結果とほとんど同じ数字になっていることがわかります。結果はそれほど変わらないのですが，推定値が分布として得られていることが大きく異なる点です。
 \begin{Rscreen}{brmsの出力}{out27_02}

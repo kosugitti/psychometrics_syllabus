@@ -1,0 +1,86 @@
+
+  \documentclass[dvipdfmx, tikz,border=10pt]{standalone}
+
+  \usetikzlibrary{shapes, arrows, positioning, backgrounds}
+
+  \tikzset{cor/.style ={latex-latex, draw}}
+
+  \tikzset{latent/.style ={ellipse, draw,minimum width=0.8cm, minimum height=0.5cm}}
+
+  \tikzset{observed/.style ={rectangle, fill=white, draw, minimum width=0.8cm, minimum height=0.5cm}}
+
+  \tikzset{value/.style ={draw=none, fill=white, inner sep=1pt}}
+
+  \begin{document}
+
+  \begin{tikzpicture}[-latex, draw,shorten >=1pt, font=\sffamily]
+
+  
+  \node (visual) at (2,1.5) [latent] {visual};
+  \node (textual) at (5,1.5) [latent] {textual};
+  \node (speed) at (8,1.5) [latent] {speed};
+  \node (x1) at (1, 0) [observed] {x1};
+  \node (x2) at (2, 0) [observed] {x2};
+  \node (x3) at (3, 0) [observed] {x3};
+  \node (x4) at (4, 0) [observed] {x4};
+  \node (x5) at (5, 0) [observed] {x5};
+  \node (x6) at (6, 0) [observed] {x6};
+  \node (x7) at (7, 0) [observed] {x7};
+  \node (x8) at (8, 0) [observed] {x8};
+  \node (x9) at (9, 0) [observed] {x9};
+  \node [draw=none](e_x1) at (1, -1) {\scriptsize0.4};
+  \node [draw=none](e_x2) at (2, -1) {\scriptsize0.82};
+  \node [draw=none](e_x3) at (3, -1) {\scriptsize0.66};
+  \node [draw=none](e_x4) at (4, -1) {\scriptsize0.27};
+  \node [draw=none](e_x5) at (5, -1) {\scriptsize0.27};
+  \node [draw=none](e_x6) at (6, -1) {\scriptsize0.3};
+  \node [draw=none](e_x7) at (7, -1) {\scriptsize0.68};
+  \node [draw=none](e_x8) at (8, -1) {\scriptsize0.48};
+  \node [draw=none](e_x9) at (9, -1) {\scriptsize0.56};
+  \path (visual) edge
+                         node [value] {\scriptsize0.77}
+                         (x1.north);
+  \path (visual) edge
+                         node [value] {\scriptsize0.42}
+                         (x2.north);
+  \path (visual) edge
+                         node [value] {\scriptsize0.58}
+                         (x3.north);
+  \path (textual) edge
+                         node [value] {\scriptsize0.85}
+                         (x4.north);
+  \path (textual) edge
+                         node [value] {\scriptsize0.86}
+                         (x5.north);
+  \path (textual) edge
+                         node [value] {\scriptsize0.84}
+                         (x6.north);
+  \path (speed) edge
+                         node [value] {\scriptsize0.57}
+                         (x7.north);
+  \path (speed) edge
+                         node [value] {\scriptsize0.72}
+                         (x8.north);
+  \path (speed) edge
+                         node [value] {\scriptsize0.67}
+                         (x9.north);
+  \path (e_x1) edge (x1);
+  \path (e_x2) edge (x2);
+  \path (e_x3) edge (x3);
+  \path (e_x4) edge (x4);
+  \path (e_x5) edge (x5);
+  \path (e_x6) edge (x6);
+  \path (e_x7) edge (x7);
+  \path (e_x8) edge (x8);
+  \path (e_x9) edge (x9);
+  \path [cor](visual) edge [bend left]
+                            node [value] {\scriptsize0.46}
+                            (textual);
+  \path [cor](visual) edge [bend left]
+                            node [value] {\scriptsize0.47}
+                            (speed);
+  \path [cor](textual) edge [bend left]
+                            node [value] {\scriptsize0.28}
+                            (speed);
+\end{tikzpicture}
+\end{document}

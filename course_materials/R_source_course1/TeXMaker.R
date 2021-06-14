@@ -53,7 +53,7 @@ for(l in 1:11){
             cat(file=openFN,word,"\n",append = T,"\n\n")
         }
     }
-    # 一つ上の階層に戻って次のファイルへ
+    # 1つ上の階層に戻って次のファイルへ
     cat(file=openFN,"\\end{document}","\n",append = T)
     setwd(gwd)
 }
