@@ -239,7 +239,6 @@ solve(A) %*% b
 \begin{lstlisting}[language=c++,label={code::09_05},caption={データファイルの読み込み}]
 library(tidyverse)
 datafile <- read_csv("pitcher2020.csv")
-datafile <- read_csv("pitcher2020.csv")
 dataset <- datafile %>%
                     select(height, weight, salary) %>%
                     as.matrix()
