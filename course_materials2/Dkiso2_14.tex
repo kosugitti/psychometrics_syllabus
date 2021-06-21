@@ -147,12 +147,12 @@ plot(result)
     \item[5行目] 結果のプロット
 \end{description}
 
-データ\texttt{caith}はスコットランドのCaithness地方に住んでいた人に対してなされた調査で，髪の毛の色と目の色の関係を集計したものです。列方向に髪の毛の色，行方向に目の色が入っていますね(表\ref{tbl::14_05})。
+データ\texttt{caith}はスコットランドのCaithness地方に住んでいた人に対してなされた調査で，髪の毛の色と目の色の関係を集計したものです。列方向に髪の毛の色，行方向に目の色が入っていますね(表\ref{tbl::14_06})。
 
 \begin{table}[h]
-	\begin{center}
 	\caption{データ\texttt{caith}の中身}
-\begin{tabular}{lrrrrr}
+    \centering
+	\begin{tabular}{lrrrrr}
 	\hline
 	  & fair & red & medium & dark & black\\\hline
 	\hline
@@ -161,8 +161,8 @@ plot(result)
 	medium & 343 & 84 & 909 & 412 & 26\\
 	dark & 98 & 48 & 403 & 681 & 85\\
 	\hline
-\end{tabular}
-\label{tbl::14_05}
+	\end{tabular}
+	\label{tbl::14_06}
 \end{table}
 
 この行・列のカテゴリには特に順序性などありませんが，分析することで最も線形性の高いウェイトをつけることができます。もちろん1次元で表現できない可能性があり，その場合は第二，第三と次元数を増やして行きます。データの行数あるいは列数の小さい方マイナス1次元まで求めることができます。それを表現しているのが，関数\texttt{corresp}のオプション\texttt{nf}で，行数\texttt{nrow(caith)}，列数\texttt{ncol(caith)}の小さい方(\texttt{min}関数)マイナス1を指定しています。
