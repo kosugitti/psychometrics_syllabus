@@ -1789,7 +1789,7 @@ FUNCTION {set.alphabet.in.author}
       t purify$ 't :=
       % 一文字目だけ取り出す。
       t #1 text.prefix$ 't :=
-      % 日本語か alphabet か？
+      % 日本語か alphabet か? 
       t is.kanji.str$
         { #0 'alphabet.in.author :=
         }
@@ -1822,7 +1822,7 @@ FUNCTION {format.names}
   numnames 'namesleft :=
   % namesleft が 0 より大なら繰り返し (while)
   { namesleft #0 > }
-    % s に日本語含むか？
+    % s に日本語含むか? 
     { s check.kanji.str
         % 日本語含むケースの処理
         { nameptr 'name.num :=
@@ -1969,7 +1969,7 @@ FUNCTION {format.names.alt}
   numnames 'namesleft :=
   % namesleft が 0 より大なら繰り返し (while)
   { namesleft #0 > }
-    % s に日本語含むか？
+    % s に日本語含むか? 
     { sss check.kanji.str
         % 日本語含むケースの処理
         { nameptr 'name.num :=
@@ -2176,7 +2176,7 @@ FUNCTION {compare.names.jecon}
   #1 'i.jecon :=
   % i.jecon > len1.jeon でないなら繰り返し
   { i.jecon len1.jecon > not }
-    % current author と previous author が等しいか？
+    % current author と previous author が等しいか? 
     { tempa i.jecon "{ff }{vv }{ll}{ jj}" format.name$
       s     i.jecon "{ff }{vv }{ll}{ jj}" format.name$ =
         % 等しいとき
@@ -2233,7 +2233,7 @@ FUNCTION {format.authors}
         % s に代入。
         { author 's := }
       if$
-      % extra.label.bysame に bysame という値が入っているか？
+      % extra.label.bysame に bysame という値が入っているか? 
       extra.label.bysame "bysame" =
         % Yes なら bysame を挿入。
 	{ author insert.bysame }
@@ -2260,7 +2260,7 @@ FUNCTION {format.editors}
         }
         { editor 's := }
       if$
-      % extra.label.bysame に bysame という値が入っているか？
+      % extra.label.bysame に bysame という値が入っているか? 
       extra.label.bysame "bysame" =
         % Yes なら bysame.check に 1 を代入し、bysame を挿入
 	{ #1 'bysame.check :=
@@ -2291,7 +2291,7 @@ FUNCTION {format.editors}
 FUNCTION {format.authors.alt}
 { author empty$
     { "" }
-    % extra.label.bysame に bysame という値が入っているか？
+    % extra.label.bysame に bysame という値が入っているか? 
     { extra.label.bysame "bysame" =
         % Yes なら bysame を挿入
 	{ author insert.bysame }
@@ -2309,7 +2309,7 @@ FUNCTION {format.authors.alt}
 FUNCTION {format.editors.alt}
 { editor empty$
     { "" }
-    % extra.label.bysame に bysame という値が入っているか？
+    % extra.label.bysame に bysame という値が入っているか? 
     { extra.label.bysame "bysame" =
         % Yes なら bysame.check に 1 を代入し、bysame を挿入
 	{ #1 'bysame.check :=
@@ -5064,7 +5064,7 @@ FUNCTION {forward.pass}
         'format.authors.alt
       if$
       'this.author :=
-      % 現在の author (this.author) が一個前の author (prev.author) と同じか？
+      % 現在の author (this.author) が一個前の author (prev.author) と同じか? 
       this.author prev.author =
         % 同じなら extra.labe.bysame に bysame を代入
         { "bysame" 'extra.label.bysame := }
@@ -5126,7 +5126,7 @@ FUNCTION {forward.pass.two}
         'format.authors.alt
      if$
      'this.author :=
-     % 現在の author (this.author) が一個前の author (prev.author) と同じか？
+     % 現在の author (this.author) が一個前の author (prev.author) と同じか? 
      this.author prev.author =
         % 同じなら extra.labe.bysame に bysame を代入
         { "bysame" 'extra.label.bysame := }
