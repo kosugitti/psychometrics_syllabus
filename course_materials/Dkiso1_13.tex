@@ -185,15 +185,17 @@ $X_{ij}$は$i$さんが要因$j$のときにどちらに割り振られたかを
 
 \[
 \label{eq13_04}
-  \begin{cases}
-    y_1 = b_0 + b_1 X_{11} + b_2 X_{12} + e_1 = b_0 + b_1 + b_2 + e_1 & \mbox{Hotで銘柄A}\\
-    \vdots & \vdots \\
-    y_4 = b_0 + b_1 X_{41} + b_2 X_{42} + e_4 = b_0 + b_1 - b_2 + e_4 & \mbox{Hotで銘柄B}\\
-    \vdots & \vdots \\
-    y_7 = b_0 + b_1 X_{71} + b_2 X_{72} + e_7 = b_0 - b_1 + b_2 + e_7 & \mbox{Coldで銘柄A}\\
-    \vdots & \vdots \\
-    y_10 = b_0 + b_1 X_{10,1} + b_2 X_{10,2} + e_{10} = b_0 - b_1 - b_2 + e_{10} & \mbox{Coldで銘柄B}\\
-  \end{cases}
+\left \{
+  \begin{array}{cccccc}
+    y_1 &=& b_0 + b_1 X_{11} + b_2 X_{12} + e_1 &=& b_0 + b_1 + b_2 + e_1 & \mbox{Hotで銘柄A}\\
+    \vdots& & \vdots && \vdots & \\
+    y_4 &=& b_0 + b_1 X_{41} + b_2 X_{42} + e_4 &=& b_0 + b_1 - b_2 + e_4 & \mbox{Hotで銘柄B}\\
+    \vdots& & \vdots && \vdots & \\
+    y_7 &=& b_0 + b_1 X_{71} + b_2 X_{72} + e_7 &=& b_0 - b_1 + b_2 + e_7 & \mbox{Coldで銘柄A}\\
+    \vdots& & \vdots && \vdots &\\
+    y_{10} &=& b_0 + b_1 X_{10,1} + b_2 X_{10,2} + e_{10} &=& b_0 - b_1 - b_2 + e_{10} & \mbox{Coldで銘柄B}\\
+  \end{array}
+\right.
 \]
 
 ここで$X_{ij}$は符号だけを表している名義尺度水準であることを確認しておいてください。
@@ -282,14 +284,14 @@ y{i} = b_0 + b_1 X_{i1}+ b_2 X_{i2} + b_3 X_{i3} + e_{i}
 \[
 \label{eq13_05}
 \left\{ 
-  \begin{array}{lll}
-    y_1 &= b_0 + b_1 X_{11} + b_2 X_{12} + b_3 X_{13}+ e_1 = b_0 + b_1 + b_2  + b_3 + e_1 & \mbox{Hotで銘柄A}\\
+  \begin{array}{cccccc}
+    y_1 &=& b_0 + b_1 X_{11} + b_2 X_{12} + b_3 X_{13}+ e_1 &= &b_0 + b_1 + b_2  + b_3 + e_1 & \mbox{Hotで銘柄A}\\
     \vdots& \vdots  & \vdots \\
-    y_4 &= b_0 + b_1 X_{41} + b_2 X_{42} + b_3 X_{43}+ e_4 = b_0 + b_1 - b_2 - b_3 + e_4 & \mbox{Hotで銘柄B}\\
+    y_4 &=& b_0 + b_1 X_{41} + b_2 X_{42} + b_3 X_{43}+ e_4 &= &b_0 + b_1 - b_2 - b_3 + e_4 & \mbox{Hotで銘柄B}\\
     \vdots &\vdots & \vdots \\
-    y_7 &= b_0 + b_1 X_{71} + b_2 X_{72} + b_3 X_{73}+ e_7= b_0 - b_1 + b_2 - b_3 + e_7 & \mbox{Coldで銘柄A}\\
+    y_7 &=& b_0 + b_1 X_{71} + b_2 X_{72} + b_3 X_{73}+ e_7&=& b_0 - b_1 + b_2 - b_3 + e_7 & \mbox{Coldで銘柄A}\\
     \vdots &\vdots & \vdots \\
-    y_10 &= b_0 + b_1 X_{10,1} + b_2 X_{10,2} + b_3 X_{10,3}+ e_{10} = b_0 - b_1 - b_2+ b_3  + e_{10} & \mbox{Coldで銘柄B}\\
+    y_{10} &=& b_0 + b_1 X_{10,1} + b_2 X_{10,2} + b_3 X_{10,3}+ e_{10} &=& b_0 - b_1 - b_2+ b_3  + e_{10} & \mbox{Coldで銘柄B}\\
   \end{array}
 \right .
 \]
@@ -305,14 +307,14 @@ y{i} = b_0 + b_1 X_{i1}+ b_2 X_{i2} + b_3 X_{i3} + e_{i}
     %---- 最初の図 ---------------------------
     \begin{minipage}[t]{0.45\hsize}
       \centering
-      \includegraphics[keepaspectratio,width=6cm]{images/text22/slide22_01.png}
+      \includegraphics[keepaspectratio,width=6cm]{images/text13/slide13_01.png}
       \caption{主効果の計算は周辺の平均値から計算する}
       \label{fig::13_03}
     \end{minipage} &
     %---- 2番目の図 --------------------------
     \begin{minipage}[t]{0.45\hsize}
       \centering
-      \includegraphics[keepaspectratio,width=6cm]{images/text22/slide22_02.png}
+      \includegraphics[keepaspectratio,width=6cm]{images/text13/slide13_02.png}
       \caption{交互作用はセルの内部で相殺するように}
       \label{fig::13_04}
     \end{minipage}
@@ -367,5 +369,35 @@ y{i} = b_0 + b_1 X_{i1}+ b_2 X_{i2} + b_3 X_{i3} + e_{i}
 このことからわかるように，要因計画はいくらでも複雑にしても良い，というものではありません。要因が増えるごとに考えるべき要素が増えるだけであり，結局統一的な解釈が難しくなります。お勧めとしては，交互作用のないような現象について，二要因までの研究計画にしておいた方が良いように思います。
 
 \section{課題}
+間(2)$\times$間(2)の実験計画で，各セルn人になるように配置してとある課題をやってもらったとします。二つの要因をそれぞれA,Bとし，Aの第一水準を$a_1$のように表記することにします。
+
+$a_1b_1$の条件での平均点は65点，
+$a_1b_2$の条件での平均点は45点，
+$a_2b_1$の条件での平均点は41点，
+$a_2b_2$の条件での平均点は49点でした。
+
+
+この時，次の大きさを算出してください。効果の大きさは群平均と全体平均の差で表現できます。
+\begin{enumerate}
+  \item 全体平均(Grand Mean, GM)
+  \item 要因Aの効果の大きさ($|b_1|$)
+  \item 要因Bの効果の大きさ($|b_2|$)
+  \item 交互作用ABの効果の大きさ($|b_3|$)
+\end{enumerate}
+
+なお，水準の組み合わせごとの平均を表にしたものが表\ref{tbl::13_05}です。参考にしてください。
+
+\begin{table}[ht]
+  \centering
+  \caption{実験計画と効果} 
+  \begin{tabular}{c|cc|c}
+              & $a_1$ & $a_2$ & \\\hline
+   $b_1$ & 65 & 45 & $+b_2$\\
+   $b_2$ & 41 & 49 & $-b_2$\\\hline
+&    $+b_1$ & $-b_1$ & GM
+  \end{tabular}
+  \label{tbl::13_05}
+\end{table}
+
 
 \end{document} 
