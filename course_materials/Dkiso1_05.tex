@@ -650,9 +650,7 @@ Windowsでこれをダウンロードすると，親切にも「ダウンロー�
 \begin{lstlisting}[language=c++,label={code::05_exe2},caption={さまざまなグラフを書いてみる}]
 	g1 <- ggplot(data = dat, mapping = aes(x = height, y = weight, color= team))
 	g1 + geom_point()
-
 	g1 + geom_smooth() 
-
 	g2 <- ggplot(data = dat, mapping = aes(x = team, y = salary, fill= team))
 	g2 + geom_boxplot()
 \end{lstlisting}
@@ -660,9 +658,9 @@ Windowsでこれをダウンロードすると，親切にも「ダウンロー�
 \begin{description}
     \item[1行目] データは\texttt{dat}オブジェクト，x軸は身長変数，y軸は体重変数で，チームごとに色分けをします。
 	\item[2行目] 散布図を書いてみます。
-	\item[5行目] データに合うような線を引いてみます。
-	\item[6行目] データは\texttt{dat}オブジェクト，x軸にチームを，y軸に年収変数をおいて，チームごとに色で塗りつぶします。
-	\item[7行目] 箱ひげ図を書いてみます。
+	\item[3行目] データに合うような線を引いてみます。
+	\item[4行目] データは\texttt{dat}オブジェクト，x軸にチームを，y軸に年収変数をおいて，チームごとに色で塗りつぶします。
+	\item[5行目] 箱ひげ図を書いてみます。
 \end{description}
 \paragraph{図を書いてみる2}図\ref{fig::05_16}と同じ図を書いてください。
 \begin{figure}[ht]
