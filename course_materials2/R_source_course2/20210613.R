@@ -40,9 +40,9 @@ summary(result2, fit.measures = T, standardized = T)
 library(semPlot)
 semPaths(result2, what = "est")
 library(tidySEM)
-png("../images/chapter13/Rplot13_01.png", width = 1000, height = 200)
+#png("../images/chapter13/Rplot13_01.png", width = 1000, height = 200)
 graph_sem(model = result2)
-dev.off()
+#dev.off()
 
 ### FA
 model3 <- "
@@ -69,6 +69,7 @@ textual =~ x4 + x5 + x6
 "
 result4 <- sem(model4, data = HolzingerSwineford1939)
 summary(result4, fit.measures = T, standardized = T)
+library(tidyverse)
 modificationindices(result4) %>%
   as_tibble() %>%
   arrange(-mi)
