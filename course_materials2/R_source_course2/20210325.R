@@ -100,8 +100,8 @@ p1 <- ggplot(data.frame(x = c(-4, 4)), aes(x = x))+xlab("theta")+ylab("prob.")+
         geom = "area", fill = palette()[4],
         alpha=0.5
     )+
-    annotate("text",x=-3,y=0.1,label="あてはまらない",size=8,family="HiraKakuProN-W3")+
-    annotate("text",x=2.5,y=0.1,label="あてはまる",size=8,family="HiraKakuProN-W3")+
+    annotate("text",x=-3,y=0.1,label="当てはまらない",size=8,family="HiraKakuProN-W3")+
+    annotate("text",x=2.5,y=0.1,label="当てはまる",size=8,family="HiraKakuProN-W3")+
     annotate("text",x=0,y=0.2,label="どちらでもない",size=8,family="HiraKakuProN-W3")
 p2 <- ggplot(data.frame(x = c(-4, 4)), aes(x = x))+xlab("theta")+ylab("prob.")+
     stat_function(fun=twoParameters, args=list(a=1, b=1),color=palette()[4])+
