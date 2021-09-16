@@ -26,6 +26,108 @@ Windowsは多数派のOSですが，OSメーカはソフトウェア会社でハ
 さて，環境の導入には三種類のルートがあります。第一のものが最も基本的なアプローチで，自分の手元の環境を作り上げるというものです。これを\textbf{ローカル環境}での構築と呼びます。ローカル環境は自分だけの環境ということなので，自分の責任でもってしっかりと環境構築をすることができます。第二のアプローチとして，ある程度出来上がった環境を丸ごと取り込む，\textbf{仮想環境}での構築という方法があります。PCのOSの中に別のマシン・別のOSをさらに憑依させて使うようなやりかたで，これができると取り込む環境は完成しているので細かい設定をする必要がありません。問題は「憑依させる」準備がいろいろ大変であるということです。また憑依させたPCはブラウザ経由でアクセスすることになることにも注意してください。最後の方法は，\textbf{サーバの利用}です。これは環境を構築するのではなく，既に誰かがどこかで構築してくれたサービスを受け取るという，受動的な方法です。サービスを受け取ることのメリットは作り手の苦労を知る必要がないことですが，サービスが打ち切られると手元に何も残らなくなるという問題があります。この講義の受講者は，第一，第二の方法でどうしてもうまくいかなかった場合に，私の方からサーバ環境によるサービスを提供しますので，最後の砦だと思っておいてください\footnote{ケチくさいこと言わずに全員に提供しろよー，と思うかもしれませんが，サーバが貧弱で全受講生が一斉にアクセスするとサーバが止まってしまう可能性が高いからです。ちなみにサーバを強くするためにはたくさんのお金がかかりますので，私個人のサービスでは限界があるのです。}。
 
 \section{導入方法1；ローカル環境での構築}
+
+ローカル環境での構築は，R，RStudioの導入から入ります。ここは既にできている人もいるかもしれませんが，念のためバージョンが最新のものかどうかを確かめておいてください。
+ローカル環境構築の方法がわからない人は，「RStudio」「インストール」などのキーワードでウェブ検索し，自分の環境にあった例を見つけてそれをみながら進めると良いでしょう。
+参考までに幾つかあげておきますと，新しいものでは，高知工科大学柳井先生のこちら\url{http://yukiyanai.github.io/jp/resources/}とか，Quiitaの記事\url{https://qiita.com/hujuu/items/ddd66ae8e6f3f989f2c0}が良いでしょう。。
+書籍では，手前味噌で恐縮ですが\citet{kosugi2019}などが良いでしょう\footnote{インストールに際しては，RStudio DesktopのFree editionを選んでください。RStudio CloudやRStudio Serverは別のものです。}。
+
+次に確率型プログラミング言語，Stanの導入を行います。StanをRから使えるようにするものとして，\texttt{rstan}パッケージがあります。
+これもOSごとに導入の方法が違いますので，公式サイト\url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}をみて導入にチャレンジしましょう。このサイトは「rstan getting started japanese」などで検索すると見つけることができます。
+ところで，最近は確率型プログラミング言語として\texttt{cmdstanr}という別のパッケージもでてきました。こちらもstanの公式が提供しているものですが，\texttt{rstan}よりもシンプルな作りになっている分，エラーが生じにくくて便利ですし，開発チームもこちら側のバージョンから先に提供するようになってきています。今後は\texttt{rstan}よりも\texttt{cmdstanr}のほうが使われることが多くなるかもしれません。このパッケージの導入には，同じく公式サイト\url{https://mc-stan.org/cmdstanr/articles/cmdstanr.html}を参考にしましょう。「cmdstanr インストール」で検索すると色々な紹介サイトが出てきますので，自分と同じ環境でなるべく日付の新しいものから参考にしていくといいでしょう。
+
 \section{導入方法2；仮想環境での構築}
+
+第二のルート，仮想環境を構築する場合ですが，これについては我らが国里先生が大変詳しいサイトを作ってくださっています。
+日本心理学会のチュートリアルワークショップ，「再現可能な日本語論文執筆入門:jpaRmdで実現する再現可能で低コストな日本語論文執筆のはじめの一歩」で使われた時の資料集がそれで，このサイト\url{https://ykunisato.github.io/jpa2021-tws-jpaRmd/}の事前準備編をよく読むと導入できます。通信環境にもよりますが，慣れているとものの10数秒でシステム導入できるという優れものです。面倒な設定が怖い人は，是非試してみてください。
+
+
 \section{導入方法3；サーバの利用}
+
+最後はどうしようもない時のおまけです。classkosugitti@gmail.comにメールで「どうしようもないから助けてー」と連絡ください。授業についていけないことが最悪の状況ですので，ギリギリまで準備してダメなようであれば連絡ください。アカウントの発行はすぐにできますが，いわゆる社会通年上一般的な，営業時間内にしか対応できませんのでそのおつもりで。
+
+\section{導入できたかな？確認編}
+
+とにかくRStudioの画面を見ることができれば，次のRスクリプトを実行して「確率型プログラミングが機能しているかどうか」を確認してください。
+
+\texttt{rstan}で環境を準備した人は次のコードを実行してください。なお，この資料からコードをコピー＆ペーストするのは難しいと思いますので，シラバスのページからコードのリンクをたどり，そこからとってくることをお勧めします。
+
+
+\begin{lstlisting}[language=c++,label={code::App1},caption={rstanパッケージの起動確認}]
+library(rstan)
+rstan_options(auto_write = TRUE)
+options(mc.cores = parallel::detectCores())
+
+stancode <- "
+data {
+  int<lower=0> J; // number of schools 
+  real y[J]; // estimated treatment effects
+  real<lower=0> sigma[J]; // s.e. of effect estimates 
+}
+parameters {
+  real mu; 
+  real<lower=0> tau;
+  real eta[J];
+}
+transformed parameters {
+  real theta[J];
+  for (j in 1:J)
+  theta[j] = mu + tau * eta[j];
+}
+model {
+  target += normal_lpdf(eta | 0, 1);
+  target += normal_lpdf(y | theta, sigma);
+}
+"
+
+schools_dat <- list(J = 8, y = c(28, 8, -3, 7, -1, 1, 18, 12), 
+  sigma = c(15, 10, 16, 11, 9, 11, 10, 18))
+
+model.ex <- stan_model(model_code = stancode, model_name = "school")
+fit.ML <- optimizing(model.ex, data = schools_dat)
+fit.samp <- sampling(model.ex, data = schools_dat, iter = 1000, 
+  chains = 4)
+fit
+\end{lstlisting}
+
+\texttt{cmdstanr}で環境を準備した人は次のコードを実行してください。
+
+\begin{lstlisting}[language=c++,label={code::App1},caption={cmdstanrパッケージの起動確認}]
+library(cmdstanr)
+
+stancode <- "
+data {
+  int<lower=0> J; // number of schools 
+  real y[J]; // estimated treatment effects
+  real<lower=0> sigma[J]; // s.e. of effect estimates 
+}
+parameters {
+  real mu; 
+  real<lower=0> tau;
+  real eta[J];
+}
+transformed parameters {
+  real theta[J];
+  for (j in 1:J)
+  theta[j] = mu + tau * eta[j];
+}
+model {
+  target += normal_lpdf(eta | 0, 1);
+  target += normal_lpdf(y | theta, sigma);
+}
+"
+
+schools_dat <- list(J = 8, y = c(28, 8, -3, 7, -1, 1, 18, 12), 
+                    sigma = c(15, 10, 16, 11, 9, 11, 10, 18))
+
+model.ex <- stan_model(model_code = stancode, model_name = "school")
+fit.samp <- sampling(model.ex, data = schools_dat, iter = 1000, 
+                     chains = 4)
+fit.samp
+\end{lstlisting}
+
+
+
+
+
 \end{document} 
