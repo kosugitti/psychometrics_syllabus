@@ -1,7 +1,7 @@
 \documentclass{ltjsarticle}
 \usepackage{../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.0.4}
+\lhead{version 1.0.5}
 \begin{document}
 \title{心理学データ解析応用1 詳細シラバス}
 \author{担当：小杉考司}
@@ -54,21 +54,21 @@
 % \include{lessonII15}
 
 %%%%% 後期　データから情報を取り出すことにこだわる/パソコンを使った演習が半分
-% \include{lessonII16}イントロダクション；プログラミングの基礎/整然データ/for文による反復/if文による分岐/
-% \include{lessonII17}イントロダクション；行列計算のプログラム/入れ子になったインデックス
-% \include{lessonII18}イントロダクション；データ生成メカニズム；ベイズ統計モデリングとそのツールの導入/MCMC/Stan
-% \include{lessonII19}ベイジアンアプローチと確率的プログラミング1；7人の科学者
-% \include{lessonII20}モデリングの目から見た検定1；二群の平均値の差
-% \include{lessonII21}モデリングの目から見た検定2；多群の平均値の差/生成量
-% \include{lessonII22}モデリングの目から見た検定3；対応のある平均値の差
-% \include{lessonII23}ベイジアンアプローチと確率的プログラミング2；変化点検出
-% \include{lessonII24}線形モデルの基礎；回帰分析とベイズ推定
-% \include{lessonII25}線形モデルの展開1；パッケージを使った一般化線形モデル/ロジスティック回帰分析，ポアソン回帰分析
-% \include{lessonII26}線形モデルの展開2；パッケージを使った階層混合線形モデル
-% \include{lessonII27}線形モデルの展開3；パッケージを使わずに線形モデル
-% \include{lessonII28}線形モデルの展開4；パッケージを使わずに階層混合線形モデル
-% \include{lessonII29}ベイジアンアプローチと確率的プログラミング3；項目反応モデル
-% \include{lessonII30}ベイジアンアプローチと確率的プログラミング4；状態空間モデル
+\include{Dkiso2_lesson16} %イントロダクション
+% \include{lessonII17}イントロダクション；データ生成メカニズム；ベイズ統計モデリングとそのツールの導入/MCMC/Stan
+% \include{lessonII18}ベイジアンアプローチと確率的プログラミング1；7人の科学者
+% \include{lessonII19}モデリングの目から見た検定1；二群の平均値の差
+% \include{lessonII20}モデリングの目から見た検定2；多群の平均値の差/生成量
+% \include{lessonII21}モデリングの目から見た検定3；対応のある平均値の差
+% \include{lessonII22}ベイジアンアプローチと確率的プログラミング2；変化点検出
+% \include{lessonII23}線形モデルの基礎；回帰分析とベイズ推定
+% \include{lessonII24}線形モデルの展開1；パッケージを使った一般化線形モデル/ロジスティック回帰分析，ポアソン回帰分析
+% \include{lessonII25}線形モデルの展開2；パッケージを使った階層混合線形モデル
+% \include{lessonII26}線形モデルの展開3；パッケージを使わずに線形モデル
+% \include{lessonII27}線形モデルの展開4；パッケージを使わずに階層混合線形モデル
+% \include{lessonII28}ベイジアンアプローチと確率的プログラミング3；項目反応モデル
+% \include{lessonII29}ベイジアンアプローチと確率的プログラミング4；状態空間モデル
+% \include{lessonII30}総括
 \newpage
 \bibliographystyle{../jecon_jpa}
 \bibliography{../sbib}
