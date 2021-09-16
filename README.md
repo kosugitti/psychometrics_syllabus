@@ -57,7 +57,8 @@
 
 ### 心理学データ解析応用2
 
-+ [事前準備；Rstan/cmdstanrの確認用コード]()
++ [事前準備；Rstanの確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
++ [事前準備；cmdstanrの確認用コード](codes/Dkiso2/00_Appendix1_cmdstanr.R)
 
 ## ライセンス等
 
