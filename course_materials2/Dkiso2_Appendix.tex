@@ -29,7 +29,7 @@ Windowsは多数派のOSですが，OSメーカはソフトウェア会社でハ
 
 ローカル環境での構築は，R，RStudioの導入から入ります。ここは既にできている人もいるかもしれませんが，念のためバージョンが最新のものかどうかを確かめておいてください。
 ローカル環境構築の方法がわからない人は，「RStudio」「インストール」などのキーワードでウェブ検索し，自分の環境にあった例を見つけてそれをみながら進めると良いでしょう。
-参考までに幾つかあげておきますと，新しいものでは，高知工科大学柳井先生のこちら\url{http://yukiyanai.github.io/jp/resources/}とか，Quiitaの記事\url{https://qiita.com/hujuu/items/ddd66ae8e6f3f989f2c0}が良いでしょう。。
+参考までに幾つかあげておきますと，新しいものでは，高知工科大学柳井先生のこちら\url{http://yukiyanai.github.io/jp/resources/}とか，Quiitaの記事\url{https://qiita.com/hujuu/items/ddd66ae8e6f3f989f2c0}が良いでしょう。
 書籍では，手前味噌で恐縮ですが\citet{kosugi2019}などが良いでしょう\footnote{インストールに際しては，RStudio DesktopのFree editionを選んでください。RStudio CloudやRStudio Serverは別のものです。}。
 
 次に確率型プログラミング言語，Stanの導入を行います。StanをRから使えるようにするものとして，\texttt{rstan}パッケージがあります。
@@ -50,7 +50,7 @@ Windowsは多数派のOSですが，OSメーカはソフトウェア会社でハ
 
 とにかくRStudioの画面を見ることができれば，次のRスクリプトを実行して「確率型プログラミングが機能しているかどうか」を確認してください。
 
-\texttt{rstan}で環境を準備した人は次のコードを実行してください。なお，この資料からコードをコピー＆ペーストするのは難しいと思いますので，シラバスのページからコードのリンクをたどり，そこからとってくることをお勧めします。
+\texttt{rstan}で環境を準備した人は次のコードを実行してください。なお，この資料からコードをコピー＆ペーストするのは難しいと思いますので，シラバスのページからコードのリンクをたどり，そこからとってくることをお勧めします\footnote{シラバスのページはこちら。\url{https://kosugitti.github.io/psychometrtics_syllabus/}}。
 
 
 \begin{lstlisting}[language=c++,label={code::App1},caption={rstanパッケージの起動確認}]
@@ -94,6 +94,7 @@ fit
 
 \begin{lstlisting}[language=c++,label={code::App1},caption={cmdstanrパッケージの起動確認}]
 library(cmdstanr)
+set_cmdstan_path()
 
 stancode <- "
 data {
@@ -120,13 +121,18 @@ model {
 schools_dat <- list(J = 8, y = c(28, 8, -3, 7, -1, 1, 18, 12), 
                     sigma = c(15, 10, 16, 11, 9, 11, 10, 18))
 
-model.ex <- stan_model(model_code = stancode, model_name = "school")
-fit.samp <- sampling(model.ex, data = schools_dat, iter = 1000, 
-                     chains = 4)
-fit.samp
+modelFile <- write_stan_file(stancode)
+model <- cmdstan_model(modelFile)
+fit.samp <- model$sample(data=schools_dat,
+                         iter_warmup = 1000,
+                         iter_sampling = 2000,
+                         chains = 4,
+                         parallel_chains = 4,
+                         refresh = 200)
+fit.samp$print()
 \end{lstlisting}
 
-
+出力例はちょっと違ってきますが，\texttt{mu}の\texttt{mean}が7.8ぐらいの数字になっていればOKです。それがどういう意味なのかは，授業内でおいおい説明していきます。
 
 
 
