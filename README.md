@@ -59,6 +59,7 @@
 
 + [事前準備；Rstanの確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
 + [事前準備；cmdstanrの確認用コード](codes/Dkiso2/00_Appendix1_cmdstanr.R)
++ [第一回；プログラミングの基礎](codes/Dkiso2/01_BasicProgramming.R)
 
 ## ライセンス等
 
