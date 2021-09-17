@@ -21,7 +21,6 @@ for (i in c(1, 3, 5, 15, 12)) {
   print(paste(a, "に", i, "を加えます"))
   a <- a + i
   print(a)
-  i <- 12
 }
 
 ## 反復その3
@@ -35,10 +34,9 @@ for (i in 1:5) {
 A
 
 ## 条件分岐その1
-egg <- 250
-if (egg < 200) {
+egg <- 199
+if (egg == 200) {
   print("卵を買います")
 } else {
   print("卵を買いません")
 }
-
