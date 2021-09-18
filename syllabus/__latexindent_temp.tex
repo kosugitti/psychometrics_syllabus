@@ -1,110 +1,53 @@
-\documentclass{ltjsarticle}
-\usepackage{../myStyle}
-%% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.1.0}
-\begin{document}
-\title{心理学データ解析基礎1(心理学統計法)\\心理学データ解析1AB\\心理学データ解析基礎2}
-\author{担当：小杉考司}
-\date{Last Compiled on \number\year .\number\month .\number\day}
-\maketitle
-\setcounter{tocdepth}{1}
-\tableofcontents
-\newpage
-\section*{はじめに}
-\subsection*{授業のテーマ}
+\section{ベイズ法による回帰分析}
+\label{D1_lesson28}
 
-「見えないもの」をみよう・測ろう・考えようとするのが心理統計の世界である。
-
-\subsection*{一年を通じて伝えたいポイント}
+\subsection{授業内容}
+\subsubsection{科目の中でのこのコマの位置づけ}
+\begin{tabular}[t]{cccccc}
+    記述統計[4] & 確率[15] & モデル[20] & 推測・推定[10] & 意思決定[6] & 実践[4]
+\end{tabular}
+\subsubsection{概要}
+回帰分析を最尤法で解いたように，ベイズ法で解くことももちろん可能である。事前分布の置き方と結果の解釈に注意しつつ，また最尤法と結果を比較しながらその推定方法を評価する。また，心理学では正規分布モデルと要因計画法を組み合わせて，平均因果効果の推定を行う研究が多い。この場合も線形モデルという点では回帰分析と同じであるが，判断基準として帰無仮説検定が用いられてきた。今回はベイズ法をつかって，要員計画における推定すべきパラメータと事後分布の解釈の仕方について考える。
+\subsubsection{コマ主題細目(箇条書き)}
 \begin{description}
-    \item[母数を知るための推測] 大学での統計，心理統計は標本の記述統計量を検証したいのではなく，母集団を表す数字を求めるための推測統計である。
-    \item[確率を用いた推論] 母数を知るための方法は3つある。代表値を用いたモーメント法，確率分布をつかった最尤法，ベイズ法である。
-    \item[要因計画と線形モデル] 心理学では，要因計画による研究条件をコントロールし，平均値の差をもちいた考察(平均因果効果)をおこなうことが多い。そしてそれらは総じて線形モデルとして表現できる。
-    \item[モデル比較と意思決定] モデルによる母数の推定だけではなく，そこから一定の「結論」あるいは「意思決定」を行うための方法として，モデル比較やNHSTといった方法がある。
-    \item[統計環境Rによる実践] 統計環境Rを利用して，理論的な理解だけでなく実際に計算ができることも身につけるべき技術である。
+\item[回帰分析と尤度]回帰分析を確率モデルで表現し，ベイズ法で解くための求めるべきパラメータについて考える。推定にはbrmsと呼ばれるRパッケージを用いる。パッケージの結果出力される数値を読み取り，また事前分布がどのように設定されていたか，結果のプロットなど読み取り方を理解する。
+\begin{flushright}
+    $\to$ \citet{馬場201907}のP.167--172
+\end{flushright}
+
+% \item[事後予測分布]ベイズ法はパラメータの更新を考えるのであるから，いま得られた事後分布を使って，さらに今後のデータがどのようになるかを予測することができる。これが事後分布による事後予測分布であり，ベイズ統計学の実践的な応用例である。事後予測分布はモデルのチェックにも用いられるし，モデルの評価に用いることもできる。
+% \begin{flushright}
+%     $\to$\citet{馬場201907}のP.134--135.およびP.173--179
+% \end{flushright}
+
+\item[要因計画と推定]帰無仮説検定では，効果があったかなかったかという質的な判断を行い，効果の大きさについては効果量という標準化された大きさを使って別途報告するのが一般的であった。しかし要因計画が線形モデルで表現されるのであれば，その傾き・パラメータを直接検討することが効果の大きさの検討につながる。改めて一般線形モデル(線形モデルと要因計画が同じものであること)を数式で表現し，未知パラメータに対してその大きさを推定することを考える。最尤法でも同様の結果は得られるが，ベイズ法の場合は得られた結果の確信度も分布の幅として表現されている。また，多重比較についての考え方もシンプルになるなど利点も多い。
+\begin{flushright}
+    $\to$ \citet{豊田201606}のP.116--135
+\end{flushright}
+
+
+\item[ベイズ法による判断]ベイズ法による判断は，区間推定を用いて帰無仮説検定のように行うのではなく，モデル間比較として考える方法もある。ここではベイズファクターを用いたモデル比較によって，どのような解釈が可能かを考える。実践上はJASPを用いるとわかりやすい。
+\begin{flushright}
+    $\to$ \citet{Lee201709}のP.88--103
+\end{flushright}
+
 \end{description}
+\subsubsection{キーワード}
+\begin{itemize}
+\item 回帰分析
+\item 事後予測分布
+\item 要因計画
+\item ベイズファクター
+\end{itemize}
+\subsection{授業情報}
+\paragraph{コマの展開方法}
+講義
+\paragraph{標準シラバスにおける位置づけ}
+科目番号5；心理学統計法；(1)心理学で用いられる統計手法；J より高度な記述や推定を目指して
+\subsubsection{予習・復習課題}
+\paragraph{予習}
+これまでの講義(特に第\ref{D1_lesson19},\ref{D1_lesson21},\ref{D1_lesson23}講)を振り返っておこう。これまではモーメント法，最尤法による推定だったものが，ベイズ法に変わる事になる。特に要因計画法と帰無仮説検定が合体した分散分析モデルにおいては，統計的判断の二種類の間違いなど注意すべき点が含まれていたが，ベイズ法は検定ではないのでこうした問題を気にする必要はなくなる。違いを把握するためにも，分散分析の手続きについて復習しておくことが望ましい。
+\paragraph{復習}
+最尤法は点推定だが，ベイズ法だと分布で推定結果が得られるため，その報告には代表値を使うことになる。中心化傾向や幅など，どのような情報を読み取り，記述するべきなのかをしっかり復習しておく。また事後予測分布という考え方は，モデルチェックにも使えるし，実際には将来のデータの予測，その性能を評価するために用いられる。特に予測が重要な研究領域では，事後予測分布の評価が重要である。事後予測分布，事後予測チェックというベイズ統計の実践的使いかたについて復習する。
 
-注）「科目の中でのこのコマの位置づけ」の中で示されているのは，上記のポイントに対応した，その時間の進度(Level)のようなものです
-\footnote{記述統計は「一年を通じて伝えたいポイント」の基礎および準備であり，本質ではありませんので「ポイント」には含まれませんが，「授業の進度」には含まれます。}。例えば，次のようにあった場合，
-\begin{tcolorbox}
-\begin{tabular}[t]{ccccccc}
-    記述統計[3] & 確率[2] & モデル[1] & 推測・推定[1] & 意思決定[0] & 実践[1]
-\end{tabular}
-\end{tcolorbox}
-記述統計は第3段階，確率についての話は第2段階，モデルについての話は第1段階，推測・推定についての話はまだ含まれておらず，実践は第1段階にきたことを表します。この進度は，次の表~\ref{processTable}に対応し，累積するものです。
-
-
-\begin{table}
-    \caption{テーマと講義との対応}
-    \label{processTable}
-    \begin{tabular}[t]{lccccccc}
-        & 記述統計 & 確率 & モデル & 推測・推定 & 意思決定 & 実践 & page \\\hline\hline
-       心理学と統計法の関係 &  &  &  &  &  &  &  p.\pageref{D1_lesson01}\\
-       電子計算機のイロハ &  &  &  &  &  &  &  p.\pageref{D1_lesson02}\\
-       数値データの種類 & ○ &  &  &  &  &  &  p.\pageref{D1_lesson03}\\
-       記述統計量 & ○ &  &  &  &  &  &  p.\pageref{D1_lesson04}\\
-       統計環境Rを使ってみる & ○ &  &  &  &  & ○ &  p.\pageref{D1_lesson05}\\
-       古典的テスト理論 &  &  & ○ &  &  &  &  p.\pageref{D1_lesson06}\\
-       確率分布 &  & ○ &  &  &  &  &  p.\pageref{D1_lesson07}\\
-       正規分布 &  & ○ &  & ○ &  &  &  p.\pageref{D1_lesson08}\\
-       線形モデルの基礎 &  &  & ○ &  &  &  &  p.\pageref{D1_lesson09}\\
-       重回帰分析モデル &  &  & ○ &  &  &  &  p.\pageref{D1_lesson10}\\
-       Rをつかった回帰分析 & ○ &  & ○ &  &  & ○ &  p.\pageref{D1_lesson11}\\
-       実験計画法1 &  &  & ○ &  &  &  &  p.\pageref{D1_lesson12}\\
-       実験計画法2 &  &  & ○ &  &  &  &  p.\pageref{D1_lesson13}\\
-       実験計画法3 &  &  & ○ &  &  &  &  p.\pageref{D1_lesson14}\\\hline
-       確率と統計的推論 &  & ○ &  & ○ &  &  &  p.\pageref{D1_lesson16}\\
-       推論と意思決定 &  & ○ &  &  & ○ &  &  p.\pageref{D1_lesson17}\\
-       帰無仮説検定 &  & ○ & ○ &  & ○ &  &  p.\pageref{D1_lesson18}\\
-       平均値差の検定 &  & ○ & ○ &  & ○ &  & p.\pageref{D1_lesson19} \\
-       Rによる帰無仮説検定 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{D1_lesson20}\\
-       平均値差の検定2 &  & ○ & ○ &  & ○ &  &  p.\pageref{D1_lesson21}\\
-       Rによる帰無仮説検定2 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{D1_lesson22}\\
-       確率分布とデータの関係；尤度 &  & ○ & ○ & ○ &  &  &  p.\pageref{D1_lesson23}\\
-       回帰分析の最尤推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{D1_lesson24}\\
-       ベイズ推測の基礎 &  & ○ & ○ & ○ &  &  &  p.\pageref{D1_lesson25}\\
-       ベイズ推測の基礎2 &  & ○ & ○ & ○ &  &  &  p.\pageref{D1_lesson26}\\
-       ベイズ法による母数の推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{D1_lesson27}\\
-       ベイズ法による回帰分析 &  & ○ & ○ & ○ &  &  &  p.\pageref{D1_lesson28}\\
-       Rによるベイズ推測 &  & ○ & ○ & ○ &  & ○ & p.\pageref{D1_lesson29} \\\hline
-\end{tabular}
-\end{table}
-
-
-
-なお，各コマにおける「標準シラバスにおける位置づけ」とは，公認心理師大学カリキュラム　標準シラバス（2018年8月22日版）\footnote{\url{https://psych.or.jp/wp-content/uploads/2018/04/standard_syllabus_2018-8-22.pdf}} との対応を表しています。
-
-\include{Dkiso1_lesson01}
-\include{Dkiso1_lesson02}
-\include{Dkiso1_lesson03}
-\include{Dkiso1_lesson04}
-\include{Dkiso1_lesson05}
-\include{Dkiso1_lesson06}
-\include{Dkiso1_lesson07}
-\include{Dkiso1_lesson08}
-\include{Dkiso1_lesson09}
-\include{Dkiso1_lesson10}
-\include{Dkiso1_lesson11}
-\include{Dkiso1_lesson12}
-\include{Dkiso1_lesson13}
-\include{Dkiso1_lesson14}
-\include{Dkiso1_lesson15}
-\include{Dkiso1_lesson16}
-\include{Dkiso1_lesson17}
-\include{Dkiso1_lesson18}
-\include{Dkiso1_lesson19}
-\include{Dkiso1_lesson20}
-\include{Dkiso1_lesson21}
-\include{Dkiso1_lesson22}
-\include{Dkiso1_lesson23}
-\include{Dkiso1_lesson24}
-\include{Dkiso1_lesson25}
-\include{Dkiso1_lesson26}
-\include{Dkiso1_lesson27}
-\include{Dkiso1_lesson28}
-\include{Dkiso1_lesson29}
-\include{Dkiso1_lesson30}
-
-\bibliographystyle{../jecon_jpa}
-\bibliography{../sbib}
-\end{document}
+また，要員計画法を線形モデルとして見立てて，ベイズ推定した場合にえらえる情報はどのような意味があるのか。どのように読み解くべきか，分散分析の結果と対比しながら説明できるようになっておこう。
