@@ -1,7 +1,7 @@
 \documentclass{ltjsarticle}
 \usepackage{../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 0.16.0}
+\lhead{version 0.16.2}
 \begin{document}
 \title{心理学データ解析応用1 詳細シラバス}
 \author{担当：小杉考司}
@@ -35,27 +35,27 @@
 \end{description}
 
 %%%%% 前期　測定することにこだわる/座学
-\include{Dkiso2_lesson01} %イントロ
-\include{Dkiso2_lesson02} % 心理尺度
-\include{Dkiso2_lesson03} % テスト理論と因子分析
-\include{Dkiso2_lesson04} % IRT
-\include{Dkiso2_lesson05} % IRT/GRM
-\include{Dkiso2_lesson06} % 行列の基礎
-\include{Dkiso2_lesson07} % データの行列表現，回帰，因子モデルの表現
-\include{Dkiso2_lesson08} % 行列の固有値問題
-\include{Dkiso2_lesson09} % Rで行列計算
-\include{Dkiso2_lesson10} %Rをつかっての行列計算と因子分析/psychパッケージの利用/因子数の決め方/因子軸の回転/簡便的因子得点と回帰的因子得点
-\include{Dkiso2_lesson11} %Rをつかっての項目反応理論
-\include{Dkiso2_lesson12} %構造方程式モデリング
-\include{Dkiso2_lesson13} %Rを使っての構造方程式モデリング/lavaanパッケージの利用
-\include{Dkiso2_lesson14} %双対尺度法
-\include{Dkiso2_lesson15} %多次元尺度構成法/展開法
+\include{Syllabus2_chap01} %イントロ
+\include{Syllabus2_chap02} % 心理尺度
+\include{Syllabus2_chap03} % テスト理論と因子分析
+\include{Syllabus2_chap04} % IRT
+\include{Syllabus2_chap05} % IRT/GRM
+\include{Syllabus2_chap06} % 行列の基礎
+\include{Syllabus2_chap07} % データの行列表現，回帰，因子モデルの表現
+\include{Syllabus2_chap08} % 行列の固有値問題
+\include{Syllabus2_chap09} % Rで行列計算
+\include{Syllabus2_chap10} %Rをつかっての行列計算と因子分析/psychパッケージの利用/因子数の決め方/因子軸の回転/簡便的因子得点と回帰的因子得点
+\include{Syllabus2_chap11} %Rをつかっての項目反応理論
+\include{Syllabus2_chap12} %構造方程式モデリング
+\include{Syllabus2_chap13} %Rを使っての構造方程式モデリング/lavaanパッケージの利用
+\include{Syllabus2_chap14} %双対尺度法
+\include{Syllabus2_chap15} %多次元尺度構成法/展開法
 
 % \include{lessonII15}
 
 %%%%% 後期　データから情報を取り出すことにこだわる/パソコンを使った演習が半分
-\include{Dkiso2_lesson16} %イントロダクション
-% \include{lessonII17}イントロダクション；データ生成メカニズム；ベイズ統計モデリングとそのツールの導入/MCMC/Stan
+\include{Syllabus2_chap16} %イントロダクション
+\include{Syllabus2_chap17}
 % \include{lessonII18}ベイジアンアプローチと確率的プログラミング1；7人の科学者
 % \include{lessonII19}モデリングの目から見た検定1；二群の平均値の差
 % \include{lessonII20}モデリングの目から見た検定2；多群の平均値の差/生成量

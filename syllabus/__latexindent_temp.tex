@@ -1,60 +1,110 @@
-\section{推論と判断}
-\label{D1_lesson17}
+\documentclass{ltjsarticle}
+\usepackage{../myStyle}
+%% バッチ処理をするので\lheadは必ず4行目にあること
+\lhead{version 1.2.4}
+\begin{document}
+\title{心理学データ解析基礎1(心理学統計法)\\心理学データ解析1AB\\心理学データ解析基礎2}
+\author{担当：小杉考司}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+\newpage
+\section*{はじめに}
+\subsection*{授業のテーマ}
 
-\subsection{授業内容}
-\subsubsection{科目の中でのこのコマの位置づけ}
-\begin{tabular}[t]{cccccc}
-    記述統計[4] & 確率[4] & モデル[8] & 推測・推定[2] & 意思決定[1] & 実践[2]
-\end{tabular}
-\subsubsection{概要}
-標本統計量をつかって母数を推定する方法として，幅を持たせた推論である区間推定という方法がある。この区間の中に母数があるとはどういうことか，注意して理解する必要がある。また標本統計量を標準化しておくことで，標準正規分布を使って一般的な推定ができる利便性があることを理解する。これらは推定の問題であったが，心理学における多くの場合には推定量そのものよりも，平均因果効果があったのかなかったのか，という判断を下したいという目的があり，そのために検定と呼ばれるモデル比較の考え方が導入される。正規分布など母集団分布におけるモデルはそのままに，パラメータがどういう値であるかについての仮説を戦わせるその作法を学ぶ。
-\subsubsection{コマ主題細目(箇条書き)}
+「見えないもの」をみよう・測ろう・考えようとするのが心理統計の世界である。
+
+\subsection*{一年を通じて伝えたいポイント}
 \begin{description}
-
-\item[不偏推定量]母集団に正規分布を仮定し，標本平均の平均(期待値)が母平均に一致することを確認する。このことから，標本統計量が推定値として利用できることを確認する。ただし，分散の場合は一致しない(不偏性がない)ことをみる。分散については不偏分散を考えることでこの不一致を解決することができる。
-\begin{flushright}
-    $\to$ 不偏推定量については\citet{Yamada2004}のP.98--103に詳しい。
-\end{flushright}
-
-\item[点推定と区間推定]標本平均は母平均の不偏推定量ではあるが，ある値をそのまま母平均であると考えるのは(標準誤差の考え方があるとは言え)やや断定的である。これに対して一定の幅を使って予測する区間推定という方法がある。推定に確率の言葉が入ってくるので不慣れな表現が出てくるが，注意深く解釈する必要がある。
-\begin{flushright}
-    $\to$ \citet{川端201408}のP.111--116.
-\end{flushright}
-
-\item[標準正規分布の利点]標本統計量を標準化しておくことで標準正規分布に対応させ，例えば95\%区間に対応する$\pm 1.96$という数字を使うことができれば便利である。ここでは標準化の計算についておさらいするとともに，標準正規分布の表の利用の仕方について改めて理解する。
-\begin{flushright}
-    $\to$ \citet{Yamada2004}のP.86--89.
-\end{flushright}
-
-\item[標本だけを使った推定]標準正規分布を使うと母数の推定ができることが分かったが，母分散が明らかでない場合は推定ができない。そこで母分散が未知の場合であっても推定できるような仕掛けを考える必要がある。ここではt分布を導入し，標準正規分布の時と同様の計算方法で標本統計量がけから区間推定ができることを理解する。
-
-\begin{flushright}
-    $\to$ \citet{Yamada2004}のP.128--131.
-\end{flushright}
-
-
-\item[推定と検定]ここまでは平均値などを推定してきたが，推定量を意思決定に応用する方法がある。特定の数値についての複数のモデルを比較し優劣を決めるモデル比較の考え方がこれで，心理学においては特に，帰無仮説と対立仮説という2つのモデルを用いる帰無仮説検定という考え方である。
-\begin{flushright}
-    $\to$ \citet{川端201408}のP.81--85.
-\end{flushright}
-
-
+    \item[母数を知るための推測] 大学での統計，心理統計は標本の記述統計量を検証したいのではなく，母集団を表す数字を求めるための推測統計である。
+    \item[確率を用いた推論] 母数を知るための方法は3つある。代表値を用いたモーメント法，確率分布をつかった最尤法，ベイズ法である。
+    \item[要因計画と線形モデル] 心理学では，要因計画による研究条件をコントロールし，平均値の差をもちいた考察(平均因果効果)をおこなうことが多い。そしてそれらは総じて線形モデルとして表現できる。
+    \item[モデル比較と意思決定] モデルによる母数の推定だけではなく，そこから一定の「結論」あるいは「意思決定」を行うための方法として，モデル比較やNHSTといった方法がある。
+    \item[統計環境Rによる実践] 統計環境Rを利用して，理論的な理解だけでなく実際に計算ができることも身につけるべき技術である。
 \end{description}
-\subsubsection{キーワード}
-\begin{itemize}
-\item 点推定と 区間推定
-\item 不偏推定量
-\item 標準正規分布
-\item t分布
-\item 統計的検定
-\end{itemize}
-\subsection{授業情報}
-\paragraph{コマの展開方法}
-講義
-\paragraph{標準シラバスにおける位置づけ}
-科目番号5；心理学統計法；1.心理学で用いられる統計手法；F 推測統計:その考え方
-\subsubsection{予習・復習課題}
-\paragraph{予習}
-母集団と標本の関係，標本から母数を推定できることについて，前回の話の延長線上で進むので十分に復習してから授業に挑むこと。特に限られた情報から未知なるものを推定するという手続きに当たっては，幾重にも過程が重ねられていくので，どのような仮定を置いて進めてきているかを再確認しておくと良いだろう。
-\paragraph{復習}
-帰無仮説検定については，触れていない心理統計のテキストはないと言っても過言ではないので，どのようなものでも良いから手に取り，その手続きや用語について復習しておくことが望ましい。テキストによっては，分布(ex. $t$検定，$F$検定)や要因計画(ex.対応のあるt検定，分散分析)ごとに分けて書かれていたり，フローチャートのように説明されているものもあるが，本質は母数の推定とモデル比較であることに注意して読み解くと良い。
+
+注）「科目の中でのこのコマの位置づけ」の中で示されているのは，上記のポイントに対応した，その時間の進度(Level)のようなものです
+\footnote{記述統計は「一年を通じて伝えたいポイント」の基礎および準備であり，本質ではありませんので「ポイント」には含まれませんが，「授業の進度」には含まれます。}。例えば，次のようにあった場合，
+\begin{tcolorbox}
+\begin{tabular}[t]{ccccccc}
+    記述統計[3] & 確率[2] & モデル[1] & 推測・推定[1] & 意思決定[0] & 実践[1]
+\end{tabular}
+\end{tcolorbox}
+記述統計は第3段階，確率についての話は第2段階，モデルについての話は第1段階，推測・推定についての話はまだ含まれておらず，実践は第1段階にきたことを表します。この進度は，次の表~\ref{processTable}に対応し，累積するものです。
+
+
+\begin{table}
+    \caption{テーマと講義との対応}
+    \label{processTable}
+    \begin{tabular}[t]{lccccccc}
+        & 記述統計 & 確率 & モデル & 推測・推定 & 意思決定 & 実践 & page \\\hline\hline
+       心理学と統計法の関係 &  &  &  &  &  &  &  p.\pageref{syllabus1_chap01}\\
+       電子計算機のイロハ &  &  &  &  &  &  &  p.\pageref{syllabus1_chap02}\\
+       数値データの種類 & ○ &  &  &  &  &  &  p.\pageref{syllabus1_chap03}\\
+       記述統計量 & ○ &  &  &  &  &  &  p.\pageref{syllabus1_chap04}\\
+       統計環境Rを使ってみる & ○ &  &  &  &  & ○ &  p.\pageref{syllabus1_chap05}\\
+       古典的テスト理論 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap06}\\
+       確率分布 &  & ○ &  &  &  &  &  p.\pageref{syllabus1_chap07}\\
+       正規分布 &  & ○ &  & ○ &  &  &  p.\pageref{syllabus1_chap08}\\
+       線形モデルの基礎 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap09}\\
+       重回帰分析モデル &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap10}\\
+       Rをつかった回帰分析 & ○ &  & ○ &  &  & ○ &  p.\pageref{syllabus1_chap11}\\
+       実験計画法1 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap12}\\
+       実験計画法2 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap13}\\
+       実験計画法3 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap14}\\\hline
+       確率と統計的推論 &  & ○ &  & ○ &  &  &  p.\pageref{syllabus1_chap16}\\
+       推論と判断 &  & ○ &  &  & ○ &  &  p.\pageref{syllabus1_chap17}\\
+       帰無仮説検定の実際 &  & ○ & ○ &  & ○ &  &  p.\pageref{syllabus1_chap18}\\
+       平均値差の検定 &  & ○ & ○ &  & ○ &  & p.\pageref{syllabus1_chap19} \\
+       Rによる帰無仮説検定 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{syllabus1_chap20}\\
+       要因計画と平均値差の検定 &  & ○ & ○ &  & ○ &  &  p.\pageref{syllabus1_chap21}\\
+       Rによる帰無仮説検定2 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{syllabus1_chap22}\\
+       確率分布とデータの関係 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap23}\\
+       回帰分析の最尤推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap24}\\
+       ベイズ推測の基礎 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap25}\\
+       ベイズ推測の実際 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap26}\\
+       ベイズ法による母数の推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap27}\\
+       ベイズ法による回帰分析 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap28}\\
+       Rによるベイズ推測 &  & ○ & ○ & ○ &  & ○ & p.\pageref{syllabus1_chap29} \\\hline
+\end{tabular}
+\end{table}
+
+
+
+なお，各コマにおける「標準シラバスにおける位置づけ」とは，公認心理師大学カリキュラム　標準シラバス（2018年8月22日版）\footnote{\url{https://psych.or.jp/wp-content/uploads/2018/04/standard_syllabus_2018-8-22.pdf}} との対応を表しています。
+
+\include{Syllabus1_chap01}
+\include{Syllabus1_chap02}
+\include{Syllabus1_chap03}
+\include{Syllabus1_chap04}
+\include{Syllabus1_chap05}
+\include{Syllabus1_chap06}
+\include{Syllabus1_chap07}
+\include{Syllabus1_chap08}
+\include{Syllabus1_chap09}
+\include{Syllabus1_chap10}
+\include{Syllabus1_chap11}
+\include{Syllabus1_chap12}
+\include{Syllabus1_chap13}
+\include{Syllabus1_chap14}
+\include{Syllabus1_chap15}
+\include{Syllabus1_chap16}
+\include{Syllabus1_chap17}
+\include{Syllabus1_chap18}
+\include{Syllabus1_chap19}
+\include{Syllabus1_chap20}
+\include{Syllabus1_chap21}
+\include{Syllabus1_chap22}
+\include{Syllabus1_chap23}
+\include{Syllabus1_chap24}
+\include{Syllabus1_chap25}
+\include{Syllabus1_chap26}
+\include{Syllabus1_chap27}
+\include{Syllabus1_chap28}
+\include{Syllabus1_chap29}
+\include{Syllabus1_chap30}
+
+\bibliographystyle{../jecon_jpa}
+\bibliography{../sbib}
+\end{document}
