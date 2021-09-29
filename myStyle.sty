@@ -19,10 +19,12 @@
 % ソースコードのフォントを変えたい
 \lstset{
     frame=single,
-    keywordstyle={\color{blue}},
-    stringstyle=\color{magenta}, 
+    backgroundcolor={\color[gray]{.95}},
+    keywordstyle={\color{magenta}},
+    stringstyle=\color{blue}, 
     basicstyle=\ttfamily\small,
-    numberstyle={\ttfamily\small\color{gray}},  
+    numberstyle={\ttfamily\small\color{black}},  
+    commentstyle = {\ttfamily \color[cmyk]{1,0.4,1,0}},
     numbers=left,
     numbersep=10pt,
     tabsize=2,
@@ -30,7 +32,6 @@
     xleftmargin=17pt,
     framexleftmargin=17pt
 }
-
 % Hyper Linkを目立たせない呪文
 \hypersetup{
 setpagesize=false,
@@ -51,8 +52,13 @@ setpagesize=false,
 
 % 枠囲いのパッケージ
 \usepackage{tcolorbox}
+\usepackage{xcolor}
 \tcbuselibrary{breakable, skins, theorems}
 \newtcbtheorem[number within=section]{Rscreen}{\texttt{console}}{colframe=gray,colback=blue!3!,fontupper=\gtfamily\small}{RS}
+
+\newtcbtheorem[number within=section]{SCrstan}{\texttt{console}}{colframe=gray,colback=green!3!,fontupper=\gtfamily\small}{SCrstan}
+
+\newtcbtheorem[number within=section]{SCcmd}{\texttt{console}}{colframe=gray,colback=pink!3!,fontupper=\gtfamily\small}{SCcmd}
 
 % 索引
 \usepackage{makeidx}
