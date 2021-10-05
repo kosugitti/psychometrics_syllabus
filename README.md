@@ -59,7 +59,10 @@
 
 - [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
 - [事前準備；cmdstanr の確認用コード](codes/Dkiso2/00_Appendix1_cmdstanr.R)
-- [第一回；プログラミングの基礎](codes/Dkiso2/01_BasicProgramming.R)
+- [第01回；プログラミングの基礎](codes/Dkiso2/01_BasicProgramming.R)
+- [第02回；プログラミングの基礎](codes/Dkiso2/02_randomVariables.R)
+- [第03回；stanの基礎(rstan)](codes/Dkiso2/03_exampleRstan.R)
+- [第03回；stanの基礎(cmdstan)](codes/Dkiso2/03_exampleCmdstan.R)
 
 ## ライセンス等
 
