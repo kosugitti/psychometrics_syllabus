@@ -63,6 +63,8 @@
 - [第02回；プログラミングの基礎](codes/Dkiso2/02_randomVariables.R)
 - [第03回；stanの基礎(rstan)](codes/Dkiso2/03_exampleRstan.R)
 - [第03回；stanの基礎(cmdstan)](codes/Dkiso2/03_exampleCmdstan.R)
+- [第04回；平均値の差の検定(rstan)](codes/Dkiso2/04_exampleRstan.R)
+- [第04回；平均値の差の検定(cmdstan)](codes/Dkiso2/04_exampleCmdstan.R)
 
 ## ライセンス等
 
