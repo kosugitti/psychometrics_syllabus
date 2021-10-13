@@ -55,6 +55,10 @@
 
 ## 授業の R コード
 
+### 心理学データ解析基礎 2
+
+- [二群の平均値差](codes/Dkiso1/20_example.R)
+
 ### 心理学データ解析応用 2
 
 - [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
@@ -65,6 +69,8 @@
 - [第03回；stanの基礎(cmdstan)](codes/Dkiso2/03_exampleCmdstan.R)
 - [第04回；平均値の差の検定(rstan)](codes/Dkiso2/04_exampleRstan.R)
 - [第04回；平均値の差の検定(cmdstan)](codes/Dkiso2/04_exampleCmdstan.R)
+- [第05回；生成量を使って(rstan)](codes/Dkiso2/05_exampleRstan.R)
+- [第05回；生成量を使って(cmdstan)](codes/Dkiso2/05_exampleCmdstan.R)
 
 ## ライセンス等
 
