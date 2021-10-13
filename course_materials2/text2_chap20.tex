@@ -80,7 +80,7 @@ generated quantities{
 \begin{figure}[ht]
     \centering
     \includegraphics[keepaspectratio,width=12cm]{images/chapter20/Rplot20_01.png}
-    \caption{$\mu$の事後分布と\verb|X|の事後予測分布}
+    \caption{事後分布と事後予測分布}
     \label{fig::20_01}
 \end{figure}
 この図の左側は$\mu_1$の\keytermL{事後分布}{じごぶんぷ}が，右側には$X_1$の\keytermL{事後予測分布}{じごよそくぶんぷ}が描かれています。左側は\textbf{パラメータの世界}の話であり，右側は\textbf{データの世界}の話になっていることに注意してください。
@@ -253,7 +253,7 @@ sig1 <- 5
 sig2 <- 8
 \end{lstlisting}
 
-第一の群の平均は\vebr|mu1 <- 50|としています。第二群の平均は\verb|mu2 <- 60|というようにしてもいいのですが，差を考えるという意味を強調するために一旦変数\verb|diff|を作って差の量を定め，それを\verb|mu1|に加えるという方法をとっています。
+第一の群の平均は\verb|mu1 <- 50|としています。第二群の平均は\verb|mu2 <- 60|というようにしてもいいのですが，差を考えるという意味を強調するために一旦変数\verb|diff|を作って差の量を定め，それを\verb|mu1|に加えるという方法をとっています。
 二つの群は正規分布に従いますから，それぞれの標準偏差を\verb|sig1,sig2|として設定しました。
 ここから仮想データを作ります。データの生成は乱数に従うので，\verb|rnorm|関数の出番です。
 \begin{lstlisting}[language=c++,label={code::20_03},caption={仮想データの生成}]
