@@ -6,8 +6,8 @@ library(rstan)
 options(mc.cores = parallel::detectCores())
 rstan_options(auto_write = TRUE)
 library(cmdstanr)
-# cmdstanr::set_cmdstan_path("/home/rstudio/.cmdstanr/cmdstan-2.28.0")
-cmdstanr::set_cmdstan_path("/Users/Napier/.cmdstanr/cmdstan-2.28.0")
+cmdstanr::set_cmdstan_path("/home/rstudio/.cmdstanr/cmdstan-2.28.0")
+#cmdstanr::set_cmdstan_path("/Users/Napier/.cmdstanr/cmdstan-2.28.0")
 # データなど -------------------------------------------------------------------
 
 groupA <- c(30, 50, 70, 90, 60, 50, 70, 60)
@@ -52,133 +52,33 @@ g1 <- sampling2$draws() %>%
 
 plot(g1)
 
-g2 <- groupA %>%
-  as.data.frame() %>%
-  ggplot(aes(x = .)) +
-  geom_histogram(binwidth = 6)
+g2 <- groupA %>% as.data.frame %>% 
+  ggplot(aes(x=.))+geom_histogram(binwidth=6)
 
-ggsave(g1, filename = "../images/chapter20/Rplot20_01.png", dpi = 600, width = 8, height = 4)
+ggsave(g1,filename = "../images/chapter20/Rplot20_01.png", dpi = 600, width = 8, height = 4)
 
 pred <- sampling2$draws() %>%
   posterior::as_draws_df() %>%
   as_tibble() %>%
   dplyr::select(-lp__, -.chain, -.iteration) %>%
-  pivot_longer(-.draw) %>%
-  dplyr::filter(str_detect(name, pattern = "Xpred1")) %>%
-  pivot_wider(names_from = name, values_from = value, id_cols = .draw) %>%
-  dplyr::select(-.draw) %>%
-  as.matrix()
+  pivot_longer(-.draw) %>% 
+  dplyr::filter(str_detect(name,pattern="Xpred1")) %>% 
+  pivot_wider(names_from=name,values_from=value,id_cols=.draw) %>% 
+  dplyr::select(-.draw) %>% 
+  as.matrix 
 
-bayesplot::ppc_hist(y = groupA, yrep = pred[sample(nrow(pred), 15), ]) %>%
+bayesplot::ppc_hist(y=groupA,yrep=pred[sample(nrow(pred),15),]) %>% 
   ggsave(filename = "../images/chapter20/Rplot20_02.png", dpi = 600, width = 8, height = 4)
 
 
 # 優越率・閾上率 ----------------------------------------------------------------
 
 modelC <- cmdstanr::cmdstan_model("ttest06.stan")
-modelR <- rstan::stan_model("ttest06.stan")
-groupA <- c(30, 50, 70, 90, 60, 50, 70, 60)
-groupB <- c(20, 40, 60, 40, 40, 50, 40, 30)
-dataSet <- list(X1 = groupA, X2 = groupB, N1 = 8, N2 = 8, C = 3)
-
-sampling1 <- sampling(modelR, dataSet, warmup = 1000, iter = 4000, chains = 4)
-sampling1
-
-sampling2 <- modelC$sample(
-  data = dataSet,
-  chains = 4,
-  iter_sampling = 5000,
-  iter_warmup = 1000,
-  parallel_chains = 4
-)
-sampling2
+dataSet <- list(X1 = groupA, X2 = groupB, N1 = 8, N2 = 8)
 
 
 
-# パラメータリカバリ ---------------------------------------------------------------
-
-mu1 <- 50
-diff <- 10
-mu2 <- mu1 + diff
-sig1 <- 5
-sig2 <- 8
-
-set.seed(12345)
-N <- 10
-X1 <- rnorm(N, mu1, sig1)
-X2 <- rnorm(N, mu2, sig2)
-
-## t検定(モーメント法による推定と判定)
-t.test(X1,X2)
-## ベイズ推定(MCMCによるベイズ推定と差の分布)
-dataSet <- list(X1 = X1, X2 = X2, N1 = N, N2 = N, C = 3)
-modelC <- cmdstanr::cmdstan_model("ttest03.stan")
-sampling2 <- modelC$sample(
-  data = dataSet,
-  chains = 4,
-  iter_sampling = 5000,
-  iter_warmup = 1000,
-  parallel_chains = 4
-)
-sampling2
-
-### うまくいかない例
-
-mu1 <- 50
-diff <- 18
-mu2 <- mu1 + diff
-sig1 <- 10
-sig2 <- 15
-
-set.seed(12345)
-N <- 3
-X1 <- rnorm(N, mu1, sig1)
-X2 <- rnorm(N, mu2, sig2)
-
-## t検定(モーメント法による推定と判定)
-t.test(X1,X2)
-## ベイズ推定(MCMCによるベイズ推定と差の分布)
-dataSet <- list(X1 = X1, X2 = X2, N1 = N, N2 = N, C = 3)
-modelC <- cmdstanr::cmdstan_model("ttest03.stan")
-sampling2 <- modelC$sample(
-  data = dataSet,
-  chains = 4,
-  iter_sampling = 5000,
-  iter_warmup = 1000,
-  parallel_chains = 4
-)
-sampling2
 
 # 課題 ----------------------------------------------------------------------
-potatoA <- c(8.4,11.3,8.1,11.2,5.8,6.3,7.1,10.9,7.1,6.5,5.0,3.0,7.2,6.5,6.4,6.4,9.3,8.3)
-potatoB <- c(6.7,7.2,4.2,11.0,7.5,8.9,7.0,8.0,7.2,4.2,6.0,9.0,8.6,9.0,5.0)
-dataSet <- list(X1 = potatoA, X2 = potatoB, N1 = length(potatoA), N2 = length(potatoB))
-
-modelC <- cmdstanr::cmdstan_model("ttest01.stan")
-sampling2 <- modelC$sample(
-  data = dataSet,
-  chains = 4,
-  iter_sampling = 5000,
-  iter_warmup = 1000,
-  parallel_chains = 4
-)
-sampling2
-
-sig <- 2.13
-mu1 <- 0
-mu2 <- 0
-N1 <- 1000
-N2 <- 300
-case1 <- rnorm(N1,mu1,sig)
-case2 <- rnorm(N2,mu1,sig)
-dataSet <- list(X1 = case1, X2 = case2, N1 = N1, N2 = N2)
-
-modelC <- cmdstanr::cmdstan_model("ttest01.stan")
-sampling2 <- modelC$sample(
-  data = dataSet,
-  chains = 4,
-  iter_sampling = 5000,
-  iter_warmup = 1000,
-  parallel_chains = 4
-)
-sampling2
+potatoA <- c(8.4, 11.3, 8.1, 11.2, 5.8, 6.3, 7.1, 10.9, 7.1, 6.5, 5.0, 3.0, 7.2, 6.5, 6.4, 6.4, 9.3, 8.3)
+potatoB <- c(6.7, 7.2, 4.2, 11.0, 7.5, 8.9, 7.0, 8.0, 7.2, 4.2, 6.0, 9.0, 8.6, 9.0, 5.0)
