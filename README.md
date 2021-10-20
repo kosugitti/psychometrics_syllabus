@@ -71,6 +71,9 @@
 - [第04回；平均値の差の検定(cmdstan)](codes/Dkiso2/04_exampleCmdstan.R)
 - [第05回；生成量を使って(rstan)](codes/Dkiso2/05_exampleRstan.R)
 - [第05回；生成量を使って(cmdstan)](codes/Dkiso2/05_exampleCmdstan.R)
+- [第06回；多群の平均値の比較(rstan)](codes/Dkiso2/06_AnovaExampleRstan.R)
+- [第06回；多群の平均値の比較(cmdstan)](codes/Dkiso2/06_AnovaExampleCmdstan.R)
+- [第06回；多群の平均値の比較；応用課題・データセットない人用](codes/Dkiso2/baseball2020.csv)
 
 ## ライセンス等
 
