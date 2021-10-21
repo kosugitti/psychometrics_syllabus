@@ -156,7 +156,7 @@ echo "かきかえたぞ"
 cat ${filname}.tex
 echo "コンパイル始めます"
 cp ${filename}.tex tmp.tex
-echo "基礎シラバスの最新バージョンは"$newVer "です。" >| Syllabus_versions1.md
+echo "基礎シラバスの最新バージョンは"$newVer "です。" >| ../Syllabus_versions1.md
 
 ## LateX Main
 lualatex tmp
@@ -218,7 +218,7 @@ echo "かきかえたぞ"
 cat ${filname}.tex
 echo "コンパイル始めます"
 cp ${filename}.tex tmp.tex
-echo "応用シラバスの最新バージョンは"$newVer "です。" >| Syllabus_versions2.md
+echo "応用シラバスの最新バージョンは"$newVer "です。" >| ../Syllabus_versions2.md
 
 ## LateX Main
 lualatex tmp

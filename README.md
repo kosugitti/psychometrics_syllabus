@@ -43,10 +43,10 @@
 バージョン情報は[セマンティックバージョニング 2.0](https://semver.org/lang/ja/)に準拠しており，ピリオドで区切られた数字がメジャー.マイナー.パッチに該当します。
 誤字脱字の修正レベルはパッチ，段落や章立て，構成の変更がマイナーリビジョン，方針の転換などがメジャーリビジョンになります。
 
-{% include_relative syllabus/Syllabus_versions1.md %}
-{% include_relative syllabus2/Syllabus_versions2.md %}
-{% include_relative course_materials/Book_versions1.md %}
-{% include_relative course_materials2/Book_versions2.md %}
+{% include_relative Syllabus_versions1.md %}
+{% include_relative Syllabus_versions2.md %}
+{% include_relative Book_versions1.md %}
+{% include_relative Book_versions2.md %}
 
 ### シラバス
 
