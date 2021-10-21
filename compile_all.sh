@@ -248,3 +248,8 @@ cd ..
 today=$(date "+%Y%m%d")
 git commit -a -m $today
 git push
+
+#### Version 表記
+
+today=$(LANG="ja_JP.UTF-8" date)
+echo "最後にコンパイルされたのは"$today "です。" >| versions.md

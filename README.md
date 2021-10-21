@@ -43,6 +43,8 @@
 バージョン情報は[セマンティックバージョニング 2.0](https://semver.org/lang/ja/)に準拠しており，ピリオドで区切られた数字がメジャー.マイナー.パッチに該当します。
 誤字脱字の修正レベルはパッチ，段落や章立て，構成の変更がマイナーリビジョン，方針の転換などがメジャーリビジョンになります。
 
+{% include_relative versions.md %}
+
 ### シラバス
 
 - [心理学データ解析基礎 1(心理学統計法)/心理学データ解析 2/心理学データ解析 1AB](syllabus.pdf)
@@ -63,17 +65,17 @@
 
 - [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
 - [事前準備；cmdstanr の確認用コード](codes/Dkiso2/00_Appendix1_cmdstanr.R)
-- [第01回；プログラミングの基礎](codes/Dkiso2/01_BasicProgramming.R)
-- [第02回；プログラミングの基礎](codes/Dkiso2/02_randomVariables.R)
-- [第03回；stanの基礎(rstan)](codes/Dkiso2/03_exampleRstan.R)
-- [第03回；stanの基礎(cmdstan)](codes/Dkiso2/03_exampleCmdstan.R)
-- [第04回；平均値の差の検定(rstan)](codes/Dkiso2/04_exampleRstan.R)
-- [第04回；平均値の差の検定(cmdstan)](codes/Dkiso2/04_exampleCmdstan.R)
-- [第05回；生成量を使って(rstan)](codes/Dkiso2/05_exampleRstan.R)
-- [第05回；生成量を使って(cmdstan)](codes/Dkiso2/05_exampleCmdstan.R)
-- [第06回；多群の平均値の比較(rstan)](codes/Dkiso2/06_AnovaExampleRstan.R)
-- [第06回；多群の平均値の比較(cmdstan)](codes/Dkiso2/06_AnovaExampleCmdstan.R)
-- [第06回；多群の平均値の比較；応用課題・データセットない人用](codes/Dkiso2/baseball2020.csv)
+- [第 01 回；プログラミングの基礎](codes/Dkiso2/01_BasicProgramming.R)
+- [第 02 回；プログラミングの基礎](codes/Dkiso2/02_randomVariables.R)
+- [第 03 回；stan の基礎(rstan)](codes/Dkiso2/03_exampleRstan.R)
+- [第 03 回；stan の基礎(cmdstan)](codes/Dkiso2/03_exampleCmdstan.R)
+- [第 04 回；平均値の差の検定(rstan)](codes/Dkiso2/04_exampleRstan.R)
+- [第 04 回；平均値の差の検定(cmdstan)](codes/Dkiso2/04_exampleCmdstan.R)
+- [第 05 回；生成量を使って(rstan)](codes/Dkiso2/05_exampleRstan.R)
+- [第 05 回；生成量を使って(cmdstan)](codes/Dkiso2/05_exampleCmdstan.R)
+- [第 06 回；多群の平均値の比較(rstan)](codes/Dkiso2/06_AnovaExampleRstan.R)
+- [第 06 回；多群の平均値の比較(cmdstan)](codes/Dkiso2/06_AnovaExampleCmdstan.R)
+- [第 06 回；多群の平均値の比較；応用課題・データセットない人用](codes/Dkiso2/baseball2020.csv)
 
 ## ライセンス等
 

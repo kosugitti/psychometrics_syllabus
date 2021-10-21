@@ -59,3 +59,8 @@ rm *.idx
 rm *.ind
 
 cd ..
+
+#### Version 表記
+
+today=$(LANG="ja_JP.UTF-8" date)
+echo "最後にコンパイルされたのは"$today "です。" >| versions.md
