@@ -1,0 +1,31 @@
+\documentclass{book}
+
+\usepackage{tex4ht}
+% \altusepackage{fontspec}
+% \altusepackage{xeCJK}
+% \altusepackage{xunicode}
+% \setCJKmainfont{IPAMincho}
+
+\begin{document}
+\VerbatimFootnotes
+\title{心理学データ解析基礎1(心理学統計法)/2\\心理学データ解析1A/B 教材テキスト}
+\author{担当：小杉考司}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+% 行番号開始
+\linenumbers
+% 各章
+\include{text1_chap01}
+\nolinenumbers
+\addcontentsline{toc}{chapter}{引用文献}
+% 引用文献
+\bibliographystyle{../jecon_jpa}
+\bibliography{../sbib}
+% 索引
+\addcontentsline{toc}{chapter}{索引}
+\printindex
+
+
+\end{document}
