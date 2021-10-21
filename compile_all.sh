@@ -32,6 +32,8 @@ cat ${filname}.tex
 echo "コンパイル始めます"
 cp ${filename}.tex tmp.tex
 
+echo "基礎テキストの最新バージョンは"$newVer "です。" >| Book_versions1.md
+
 ## LateX Main
 lualatex tmp
 upbibtex tmp
@@ -92,6 +94,7 @@ echo "かきかえたぞ"
 cat ${filname}.tex
 echo "コンパイル始めます"
 cp ${filename}.tex tmp.tex
+echo "応用テキストの最新バージョンは"$newVer "です。" >| Book_versions2.md
 
 ## LateX Main
 lualatex tmp
@@ -153,6 +156,7 @@ echo "かきかえたぞ"
 cat ${filname}.tex
 echo "コンパイル始めます"
 cp ${filename}.tex tmp.tex
+echo "基礎シラバスの最新バージョンは"$newVer "です。" >| Syllabus_versions1.md
 
 ## LateX Main
 lualatex tmp
@@ -214,6 +218,7 @@ echo "かきかえたぞ"
 cat ${filname}.tex
 echo "コンパイル始めます"
 cp ${filename}.tex tmp.tex
+echo "応用シラバスの最新バージョンは"$newVer "です。" >| Syllabus_versions2.md
 
 ## LateX Main
 lualatex tmp
@@ -249,7 +254,3 @@ today=$(date "+%Y%m%d")
 git commit -a -m $today
 git push
 
-#### Version 表記
-
-today=$(LANG="ja_JP.UTF-8" date)
-echo "最後にコンパイルされたのは"$today "です。" >| versions.md
