@@ -343,8 +343,9 @@ data{
 ...(中略)...
 model{
   // Likelihood
-  for(l in 1:L)
+  for(l in 1:L){
     X[l] ~ normal(mu[idx[l]],sig);
+  }
     
   // Prior
   gm ~ uniform(0,100);
