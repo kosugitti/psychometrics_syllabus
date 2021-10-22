@@ -1,0 +1,58 @@
+\documentclass{ltjsbook}
+\usepackage{../../myStyle}
+%% バッチ処理をするので\lheadは必ず4行目にあること
+\lhead{version 1.20.5}
+\usepackage{docmute}
+
+\begin{document}
+\VerbatimFootnotes
+\title{心理学データ解析基礎1(心理学統計法)/2\\心理学データ解析1A/B 教材テキスト}
+\author{担当：小杉考司}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+% 行番号開始
+\linenumbers
+% 各章
+\include{text1_chap01}
+\include{text1_chap02}
+\include{text1_chap03}
+\include{text1_chap04}
+\include{text1_chap05}
+\include{text1_chap06}
+\include{text1_chap07}
+\include{text1_chap08}
+\include{text1_chap09}
+\include{text1_chap10}
+\include{text1_chap11}
+\include{text1_chap12}
+\include{text1_chap13}
+\include{text1_chap14}
+\include{text1_chap15}
+\include{text1_chap16}
+\include{text1_chap17}
+\include{text1_chap18}
+\include{text1_chap19}
+\include{text1_chap20}
+% \include{text1_chap21}
+% \include{text1_chap22}
+% \include{text1_chap23}
+% \include{text1_chap24}
+% \include{text1_chap25}
+% \include{text1_chap26}
+% \include{text1_chap27}
+% \include{text1_chap28}
+% \include{text1_chap29}
+% \include{text1_chap30}
+% 行番号終了
+\nolinenumbers
+\addcontentsline{toc}{chapter}{引用文献}
+% 引用文献
+\bibliographystyle{../../jecon_jpa}
+\bibliography{../../sbib}
+% 索引
+\addcontentsline{toc}{chapter}{索引}
+\printindex
+
+\end{document}
