@@ -32,7 +32,7 @@ cat ${filname}.tex
 echo "コンパイル始めます"
 cp ${filename}.tex tmp.tex
 
-echo "基礎テキストの最新バージョンは"$newVer "です。" >| Book_versions1.md
+echo "基礎テキストの最新バージョンは"$newVer "です。" >| ../../Book_versions1.md
 
 ## LateX Main
 lualatex tmp
@@ -48,7 +48,7 @@ grep 'Overfull' tmp > overfull_error.log
 
 
 ## cleanup
-mv tmp.pdf ../${filename}.pdf
+mv tmp.pdf ../../${filename}.pdf
 
 rm tmp.*
 rm *.aux
@@ -99,7 +99,7 @@ echo "かきかえたぞ"
 cat ${filname}.tex
 echo "コンパイル始めます"
 cp ${filename}.tex tmp.tex
-echo "応用テキストの最新バージョンは"$newVer "です。" >| Book_versions2.md
+echo "応用テキストの最新バージョンは"$newVer "です。" >| ../../Book_versions2.md
 
 ## LateX Main
 lualatex tmp
@@ -114,7 +114,7 @@ grep 'Citation' tmp > Citation_error.log
 grep 'Overfull' tmp > overfull_error.log
 
 ## cleanup
-mv tmp.pdf ../${filename}.pdf
+mv tmp.pdf ../../${filename}.pdf
 
 rm tmp.*
 rm *.aux
@@ -269,6 +269,6 @@ cd ..
 
 ########################## git commit & push
 today=$(date)
-git commit -a -m $today
+git commit -a -m $today+'にコンパイルしました'
 git push
 
