@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 18 ベイズ法による母数の推定 | データ解析基礎テキストブック</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 18 ベイズ法による母数の推定 | データ解析基礎テキストブック" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 18 ベイズ法による母数の推定 | データ解析基礎テキストブック" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="小杉考司" />
+
+
+<meta name="date" content="2021-10-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chapter24.html"/>
+<link rel="next" href="chapter26.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="chapter1.html"><a href="chapter1.html"><i class="fa fa-check"></i><b>1</b> 心理統計を始める前に</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="chapter1.html"><a href="chapter1.html#はじめに"><i class="fa fa-check"></i><b>1.1</b> はじめに</a></li>
+<li class="chapter" data-level="1.2" data-path="chapter1.html"><a href="chapter1.html#心理学とはどういう学問なのだろうか"><i class="fa fa-check"></i><b>1.2</b> 心理学とはどういう学問なのだろうか</a></li>
+<li class="chapter" data-level="1.3" data-path="chapter1.html"><a href="chapter1.html#近代科学の特徴"><i class="fa fa-check"></i><b>1.3</b> 近代科学の特徴</a></li>
+<li class="chapter" data-level="1.4" data-path="chapter1.html"><a href="chapter1.html#心理学のいとなみ"><i class="fa fa-check"></i><b>1.4</b> 心理学のいとなみ</a></li>
+<li class="chapter" data-level="1.5" data-path="chapter1.html"><a href="chapter1.html#課題"><i class="fa fa-check"></i><b>1.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chapter10.html"><a href="chapter10.html"><i class="fa fa-check"></i><b>2</b> 重回帰分析</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chapter10.html"><a href="chapter10.html#重回帰分析"><i class="fa fa-check"></i><b>2.1</b> 重回帰分析</a></li>
+<li class="chapter" data-level="2.2" data-path="chapter10.html"><a href="chapter10.html#偏回帰係数"><i class="fa fa-check"></i><b>2.2</b> 偏回帰係数</a></li>
+<li class="chapter" data-level="2.3" data-path="chapter10.html"><a href="chapter10.html#標準化された係数"><i class="fa fa-check"></i><b>2.3</b> 標準化された係数</a></li>
+<li class="chapter" data-level="2.4" data-path="chapter10.html"><a href="chapter10.html#今日のまとめ"><i class="fa fa-check"></i><b>2.4</b> 今日のまとめ</a></li>
+<li class="chapter" data-level="2.5" data-path="chapter10.html"><a href="chapter10.html#課題-1"><i class="fa fa-check"></i><b>2.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter11.html"><a href="chapter11.html"><i class="fa fa-check"></i><b>3</b> Rをつかった回帰分析</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chapter11.html"><a href="chapter11.html#rの環境再確認"><i class="fa fa-check"></i><b>3.1</b> Rの環境再確認</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="chapter11.html"><a href="chapter11.html#環境の準備確認"><i class="fa fa-check"></i><b>3.1.1</b> 環境の準備(確認)</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chapter11.html"><a href="chapter11.html#散布図の描画"><i class="fa fa-check"></i><b>3.1.2</b> 散布図の描画</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chapter11.html"><a href="chapter11.html#線形回帰の実行"><i class="fa fa-check"></i><b>3.2</b> 線形回帰の実行</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter11.html"><a href="chapter11.html#残差からわかること"><i class="fa fa-check"></i><b>3.3</b> 残差からわかること</a></li>
+<li class="chapter" data-level="3.4" data-path="chapter11.html"><a href="chapter11.html#重回帰分析-1"><i class="fa fa-check"></i><b>3.4</b> 重回帰分析</a></li>
+<li class="chapter" data-level="3.5" data-path="chapter11.html"><a href="chapter11.html#課題-2"><i class="fa fa-check"></i><b>3.5</b> 課題</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="chapter11.html"><a href="chapter11.html#課題-3"><i class="fa fa-check"></i><b>3.5.1</b> 課題</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter12.html"><a href="chapter12.html"><i class="fa fa-check"></i><b>4</b> 実験計画法1；実験計画法とは</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chapter12.html"><a href="chapter12.html#RCT"><i class="fa fa-check"></i><b>4.1</b> ランダム化</a></li>
+<li class="chapter" data-level="4.2" data-path="chapter12.html"><a href="chapter12.html#用語の整理"><i class="fa fa-check"></i><b>4.2</b> 用語の整理</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chapter12.html"><a href="chapter12.html#要因と水準"><i class="fa fa-check"></i><b>4.2.1</b> 要因と水準</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chapter12.html"><a href="chapter12.html#群内計画と群間計画"><i class="fa fa-check"></i><b>4.2.2</b> 群内計画と群間計画</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chapter12.html"><a href="chapter12.html#実験でなぜ効果がわかるのか"><i class="fa fa-check"></i><b>4.3</b> 実験でなぜ効果がわかるのか</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="chapter12.html"><a href="chapter12.html#平方和の分解"><i class="fa fa-check"></i><b>4.3.1</b> 平方和の分解</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="chapter12.html"><a href="chapter12.html#HowToEvaluateTheDifference"><i class="fa fa-check"></i><b>4.4</b> 効果はどのように評価するのか</a></li>
+<li class="chapter" data-level="4.5" data-path="chapter12.html"><a href="chapter12.html#課題-9"><i class="fa fa-check"></i><b>4.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter13.html"><a href="chapter13.html"><i class="fa fa-check"></i><b>5</b> 実験計画法2；Between計画</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chapter13.html"><a href="chapter13.html#線形モデルによる二要因計画の表現と自由度"><i class="fa fa-check"></i><b>5.1</b> 線形モデルによる二要因計画の表現と自由度</a></li>
+<li class="chapter" data-level="5.2" data-path="chapter13.html"><a href="chapter13.html#二要因の場合"><i class="fa fa-check"></i><b>5.2</b> 二要因の場合</a></li>
+<li class="chapter" data-level="5.3" data-path="chapter13.html"><a href="chapter13.html#効果の大きさを算出する"><i class="fa fa-check"></i><b>5.3</b> 効果の大きさを算出する</a></li>
+<li class="chapter" data-level="5.4" data-path="chapter13.html"><a href="chapter13.html#交互作用の出現"><i class="fa fa-check"></i><b>5.4</b> 交互作用の出現</a></li>
+<li class="chapter" data-level="5.5" data-path="chapter13.html"><a href="chapter13.html#課題-10"><i class="fa fa-check"></i><b>5.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapter14.html"><a href="chapter14.html"><i class="fa fa-check"></i><b>6</b> 実験計画法3；一要因モデル(Within)</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chapter14.html"><a href="chapter14.html#within計画の場合"><i class="fa fa-check"></i><b>6.1</b> Within計画の場合</a></li>
+<li class="chapter" data-level="6.2" data-path="chapter14.html"><a href="chapter14.html#群間計画と群内計画の比較"><i class="fa fa-check"></i><b>6.2</b> 群間計画と群内計画の比較</a></li>
+<li class="chapter" data-level="6.3" data-path="chapter14.html"><a href="chapter14.html#分布から考える"><i class="fa fa-check"></i><b>6.3</b> 分布から考える</a></li>
+<li class="chapter" data-level="6.4" data-path="chapter14.html"><a href="chapter14.html#課題-11"><i class="fa fa-check"></i><b>6.4</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chapter15.html"><a href="chapter15.html"><i class="fa fa-check"></i><b>7</b> 第15講</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chapter15.html"><a href="chapter15.html#課題-12"><i class="fa fa-check"></i><b>7.1</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chapter16.html"><a href="chapter16.html"><i class="fa fa-check"></i><b>8</b> 確率と統計的推論</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapter16.html"><a href="chapter16.html#母集団と標本"><i class="fa fa-check"></i><b>8.1</b> 母集団と標本</a></li>
+<li class="chapter" data-level="8.2" data-path="chapter16.html"><a href="chapter16.html#母集団分布とモデル"><i class="fa fa-check"></i><b>8.2</b> 母集団分布とモデル</a></li>
+<li class="chapter" data-level="8.3" data-path="chapter16.html"><a href="chapter16.html#標本分布と標準誤差"><i class="fa fa-check"></i><b>8.3</b> 標本分布と標準誤差</a></li>
+<li class="chapter" data-level="8.4" data-path="chapter16.html"><a href="chapter16.html#まとめ"><i class="fa fa-check"></i><b>8.4</b> まとめ</a></li>
+<li class="chapter" data-level="8.5" data-path="chapter16.html"><a href="chapter16.html#課題-13"><i class="fa fa-check"></i><b>8.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chapter17.html"><a href="chapter17.html"><i class="fa fa-check"></i><b>9</b> 推論と判断</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chapter17.html"><a href="chapter17.html#不偏推定量"><i class="fa fa-check"></i><b>9.1</b> 不偏推定量</a></li>
+<li class="chapter" data-level="9.2" data-path="chapter17.html"><a href="chapter17.html#標本平均の区間推定"><i class="fa fa-check"></i><b>9.2</b> 標本平均の区間推定</a></li>
+<li class="chapter" data-level="9.3" data-path="chapter17.html"><a href="chapter17.html#標本だけから推測したい"><i class="fa fa-check"></i><b>9.3</b> 標本だけから推測したい</a></li>
+<li class="chapter" data-level="9.4" data-path="chapter17.html"><a href="chapter17.html#推定と検定"><i class="fa fa-check"></i><b>9.4</b> 推定と検定</a></li>
+<li class="chapter" data-level="9.5" data-path="chapter17.html"><a href="chapter17.html#課題-14"><i class="fa fa-check"></i><b>9.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chapter18.html"><a href="chapter18.html"><i class="fa fa-check"></i><b>10</b> 帰無仮説検定</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="chapter18.html"><a href="chapter18.html#帰無仮説検定の手続き"><i class="fa fa-check"></i><b>10.1</b> 帰無仮説検定の手続き</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="chapter18.html"><a href="chapter18.html#仮説を設定する"><i class="fa fa-check"></i><b>10.1.1</b> 仮説を設定する</a></li>
+<li class="chapter" data-level="10.1.2" data-path="chapter18.html"><a href="chapter18.html#統計的仮説検定に用いられる検定統計量を選択する"><i class="fa fa-check"></i><b>10.1.2</b> 統計的仮説検定に用いられる検定統計量を選択する</a></li>
+<li class="chapter" data-level="10.1.3" data-path="chapter18.html"><a href="chapter18.html#仮説が間違っているか正しいかの判断の基準になる確率を設定する"><i class="fa fa-check"></i><b>10.1.3</b> 仮説が間違っているか正しいかの判断の基準になる確率を設定する</a></li>
+<li class="chapter" data-level="10.1.4" data-path="chapter18.html"><a href="chapter18.html#実際のデータから検定統計量の実現値を計算する"><i class="fa fa-check"></i><b>10.1.4</b> 実際のデータから検定統計量の実現値を計算する</a></li>
+<li class="chapter" data-level="10.1.5" data-path="chapter18.html"><a href="chapter18.html#最初に定めた仮説が間違っているか正しいかを判断する"><i class="fa fa-check"></i><b>10.1.5</b> 最初に定めた仮説が間違っているか正しいかを判断する</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="chapter18.html"><a href="chapter18.html#つの平均値の検定"><i class="fa fa-check"></i><b>10.2</b> 1つの平均値の検定</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="chapter18.html"><a href="chapter18.html#母sdがわかっている場合"><i class="fa fa-check"></i><b>10.2.1</b> 母SDがわかっている場合</a></li>
+<li class="chapter" data-level="10.2.2" data-path="chapter18.html"><a href="chapter18.html#母sdがわかっていない場合"><i class="fa fa-check"></i><b>10.2.2</b> 母SDがわかっていない場合</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="chapter18.html"><a href="chapter18.html#相関係数の検定"><i class="fa fa-check"></i><b>10.3</b> 相関係数の検定</a></li>
+<li class="chapter" data-level="10.4" data-path="chapter18.html"><a href="chapter18.html#課題-15"><i class="fa fa-check"></i><b>10.4</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chapter19.html"><a href="chapter19.html"><i class="fa fa-check"></i><b>11</b> 帰無仮説検定の注意点</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chapter19.html"><a href="chapter19.html#結果の報告の仕方"><i class="fa fa-check"></i><b>11.1</b> 結果の報告の仕方</a></li>
+<li class="chapter" data-level="11.2" data-path="chapter19.html"><a href="chapter19.html#statistical_significant"><i class="fa fa-check"></i><b>11.2</b> 統計的に有意とは</a></li>
+<li class="chapter" data-level="11.3" data-path="chapter19.html"><a href="chapter19.html#検定における2種類の間違い"><i class="fa fa-check"></i><b>11.3</b> 検定における2種類の間違い</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="chapter19.html"><a href="chapter19.html#TypeI_II_Error"><i class="fa fa-check"></i><b>11.3.1</b> <span class="math inline">\(p\)</span>値とは何か</a></li>
+<li class="chapter" data-level="11.3.2" data-path="chapter19.html"><a href="chapter19.html#alphaのインフレ"><i class="fa fa-check"></i><b>11.3.2</b> <span class="math inline">\(\alpha\)</span>のインフレ</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="chapter19.html"><a href="chapter19.html#効果量と例数設計"><i class="fa fa-check"></i><b>11.4</b> 効果量と例数設計</a></li>
+<li class="chapter" data-level="11.5" data-path="chapter19.html"><a href="chapter19.html#課題-16"><i class="fa fa-check"></i><b>11.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chapter2.html"><a href="chapter2.html"><i class="fa fa-check"></i><b>12</b> 電子計算機のイロハ</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="chapter2.html"><a href="chapter2.html#前置き"><i class="fa fa-check"></i><b>12.1</b> 前置き</a></li>
+<li class="chapter" data-level="12.2" data-path="chapter2.html"><a href="chapter2.html#コンピュータの基礎"><i class="fa fa-check"></i><b>12.2</b> コンピュータの基礎</a></li>
+<li class="chapter" data-level="12.3" data-path="chapter2.html"><a href="chapter2.html#コンピュータの歴史"><i class="fa fa-check"></i><b>12.3</b> コンピュータの歴史</a></li>
+<li class="chapter" data-level="12.4" data-path="chapter2.html"><a href="chapter2.html#情報の単位"><i class="fa fa-check"></i><b>12.4</b> 情報の単位</a></li>
+<li class="chapter" data-level="12.5" data-path="chapter2.html"><a href="chapter2.html#suffix"><i class="fa fa-check"></i><b>12.5</b> ファイルの場所</a></li>
+<li class="chapter" data-level="12.6" data-path="chapter2.html"><a href="chapter2.html#reproducibility"><i class="fa fa-check"></i><b>12.6</b> 再現性のある研究実践へ</a></li>
+<li class="chapter" data-level="12.7" data-path="chapter2.html"><a href="chapter2.html#課題-17"><i class="fa fa-check"></i><b>12.7</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="chapter20.html"><a href="chapter20.html"><i class="fa fa-check"></i><b>13</b> 二群の平均値差</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chapter20.html"><a href="chapter20.html#一要因withinデザイン2水準"><i class="fa fa-check"></i><b>13.1</b> 一要因Withinデザイン，2水準</a></li>
+<li class="chapter" data-level="13.2" data-path="chapter20.html"><a href="chapter20.html#rによる実践対応のあるt検定"><i class="fa fa-check"></i><b>13.2</b> Rによる実践；対応のあるt検定</a></li>
+<li class="chapter" data-level="13.3" data-path="chapter20.html"><a href="chapter20.html#一要因betweenデザイン2水準"><i class="fa fa-check"></i><b>13.3</b> 一要因Betweenデザイン，2水準</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="chapter20.html"><a href="chapter20.html#区間推定でまず考えてみよう"><i class="fa fa-check"></i><b>13.3.1</b> 区間推定でまず考えてみよう</a></li>
+<li class="chapter" data-level="13.3.2" data-path="chapter20.html"><a href="chapter20.html#検定で勝負を決めようじゃないか"><i class="fa fa-check"></i><b>13.3.2</b> 検定で勝負を決めようじゃないか</a></li>
+<li class="chapter" data-level="13.3.3" data-path="chapter20.html"><a href="chapter20.html#検定と方向性"><i class="fa fa-check"></i><b>13.3.3</b> 検定と方向性</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="chapter20.html"><a href="chapter20.html#rによる実践対応のないt検定"><i class="fa fa-check"></i><b>13.4</b> Rによる実践；対応のないt検定</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="chapter20.html"><a href="chapter20.html#welchの補正"><i class="fa fa-check"></i><b>13.4.1</b> Welchの補正</a></li>
+<li class="chapter" data-level="13.4.2" data-path="chapter20.html"><a href="chapter20.html#事後的な効果量の検証"><i class="fa fa-check"></i><b>13.4.2</b> 事後的な効果量の検証</a></li>
+<li class="chapter" data-level="13.4.3" data-path="chapter20.html"><a href="chapter20.html#補遺"><i class="fa fa-check"></i><b>13.4.3</b> 補遺</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="chapter20.html"><a href="chapter20.html#課題-18"><i class="fa fa-check"></i><b>13.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="chapter21.html"><a href="chapter21.html"><i class="fa fa-check"></i><b>14</b> 要因計画と平均値差の検定</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="chapter21.html"><a href="chapter21.html#平均値の比較とモデル比較"><i class="fa fa-check"></i><b>14.1</b> 平均値の比較とモデル比較</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="chapter21.html"><a href="chapter21.html#平均値差の検定として考える"><i class="fa fa-check"></i><b>14.1.1</b> 平均値差の検定として考える</a></li>
+<li class="chapter" data-level="14.1.2" data-path="chapter21.html"><a href="chapter21.html#神様の目から見た実験計画"><i class="fa fa-check"></i><b>14.1.2</b> 神様の目から見た実験計画</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="chapter21.html"><a href="chapter21.html#一要因betweenデザイン多水準の場合"><i class="fa fa-check"></i><b>14.2</b> 一要因Betweenデザイン，多水準の場合</a></li>
+<li class="chapter" data-level="14.3" data-path="chapter21.html"><a href="chapter21.html#帰無仮説検定としての一要因多水準計画"><i class="fa fa-check"></i><b>14.3</b> 帰無仮説検定としての一要因多水準計画</a></li>
+<li class="chapter" data-level="14.4" data-path="chapter21.html"><a href="chapter21.html#帰無仮説検定で差があったかなかったかという判断だけで終わらせるのではなくどの程度の差があったのかについて報告しないといけないのでした分散分析における効果量は全体の分散のうち効果の分散がどれほどの量であったかという比率つまり効果量効果の分散全体の分散1"><i class="fa fa-check"></i><b>14.4</b> 帰無仮説検定で，差があったかなかったか，という判断だけで終わらせるのではなく，どの程度の差があったのかについて報告しないといけないのでした。分散分析における効果量は，全体の分散のうち効果の分散がどれほどの量であったかという比率，つまり効果量=効果の分散/全体の分散=1</a></li>
+<li class="chapter" data-level="14.5" data-path="chapter21.html"><a href="chapter21.html#課題-19"><i class="fa fa-check"></i><b>14.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="chapter22.html"><a href="chapter22.html"><i class="fa fa-check"></i><b>15</b> 要因計画と平均値差の検定その2</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="chapter22.html"><a href="chapter22.html#事後の検定"><i class="fa fa-check"></i><b>15.1</b> 事後の検定</a></li>
+<li class="chapter" data-level="15.2" data-path="chapter22.html"><a href="chapter22.html#帰無仮説検定としての二要因線形モデル"><i class="fa fa-check"></i><b>15.2</b> 帰無仮説検定としての二要因線形モデル</a></li>
+<li class="chapter" data-level="15.3" data-path="chapter22.html"><a href="chapter22.html#課題-20"><i class="fa fa-check"></i><b>15.3</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="chapter23.html"><a href="chapter23.html"><i class="fa fa-check"></i><b>16</b> Rによる帰無仮説検定2</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="chapter23.html"><a href="chapter23.html#rで分散分析を行う上でのポイント"><i class="fa fa-check"></i><b>16.1</b> Rで分散分析を行う上でのポイント</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="chapter23.html"><a href="chapter23.html#数のタイプ"><i class="fa fa-check"></i><b>16.1.1</b> 数のタイプ</a></li>
+<li class="chapter" data-level="16.1.2" data-path="chapter23.html"><a href="chapter23.html#分散分析用の関数を読み込もう"><i class="fa fa-check"></i><b>16.1.2</b> 分散分析用の関数を読み込もう</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="chapter23.html"><a href="chapter23.html#一要因between計画の実際"><i class="fa fa-check"></i><b>16.2</b> 一要因Between計画の実際</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="chapter23.html"><a href="chapter23.html#線形モデルとして分析"><i class="fa fa-check"></i><b>16.2.1</b> 線形モデルとして分析</a></li>
+<li class="chapter" data-level="16.2.2" data-path="chapter23.html"><a href="chapter23.html#帰無仮説検定として分析"><i class="fa fa-check"></i><b>16.2.2</b> 帰無仮説検定として分析</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="chapter23.html"><a href="chapter23.html#二要因between計画の実際"><i class="fa fa-check"></i><b>16.3</b> 二要因Between計画の実際</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="chapter23.html"><a href="chapter23.html#線形モデルとして分析-1"><i class="fa fa-check"></i><b>16.3.1</b> 線形モデルとして分析</a></li>
+<li class="chapter" data-level="16.3.2" data-path="chapter23.html"><a href="chapter23.html#帰無仮説検定として分析-1"><i class="fa fa-check"></i><b>16.3.2</b> 帰無仮説検定として分析</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="chapter23.html"><a href="chapter23.html#一要因within計画の実際"><i class="fa fa-check"></i><b>16.4</b> 一要因Within計画の実際</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="chapter23.html"><a href="chapter23.html#帰無仮説検定として分析-2"><i class="fa fa-check"></i><b>16.4.1</b> 帰無仮説検定として分析</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="chapter23.html"><a href="chapter23.html#課題-21"><i class="fa fa-check"></i><b>16.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="chapter24.html"><a href="chapter24.html"><i class="fa fa-check"></i><b>17</b> 確率分布とデータの関係</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="chapter24.html"><a href="chapter24.html#確率モデルによる推論"><i class="fa fa-check"></i><b>17.1</b> 確率モデルによる推論</a></li>
+<li class="chapter" data-level="17.2" data-path="chapter24.html"><a href="chapter24.html#確率関数と尤度"><i class="fa fa-check"></i><b>17.2</b> 確率関数と尤度</a></li>
+<li class="chapter" data-level="17.3" data-path="chapter24.html"><a href="chapter24.html#最尤推定"><i class="fa fa-check"></i><b>17.3</b> 最尤推定</a></li>
+<li class="chapter" data-level="17.4" data-path="chapter24.html"><a href="chapter24.html#対数と尤度"><i class="fa fa-check"></i><b>17.4</b> 対数と尤度</a></li>
+<li class="chapter" data-level="17.5" data-path="chapter24.html"><a href="chapter24.html#正規分布の尤度関数"><i class="fa fa-check"></i><b>17.5</b> 正規分布の尤度関数</a></li>
+<li class="chapter" data-level="17.6" data-path="chapter24.html"><a href="chapter24.html#ベイズの定理"><i class="fa fa-check"></i><b>17.6</b> ベイズの定理</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="chapter24.html"><a href="chapter24.html#ベイズの定理とは"><i class="fa fa-check"></i><b>17.6.1</b> ベイズの定理とは</a></li>
+<li class="chapter" data-level="17.6.2" data-path="chapter24.html"><a href="chapter24.html#ベイズの定理の意味"><i class="fa fa-check"></i><b>17.6.2</b> ベイズの定理の意味</a></li>
+</ul></li>
+<li class="chapter" data-level="17.7" data-path="chapter24.html"><a href="chapter24.html#課題-22"><i class="fa fa-check"></i><b>17.7</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="chapter25.html"><a href="chapter25.html"><i class="fa fa-check"></i><b>18</b> ベイズ法による母数の推定</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="chapter25.html"><a href="chapter25.html#ベイズの定理再考"><i class="fa fa-check"></i><b>18.1</b> ベイズの定理・再考</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="chapter25.html"><a href="chapter25.html#事前分布"><i class="fa fa-check"></i><b>18.1.1</b> 事前分布</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="chapter25.html"><a href="chapter25.html#ベイズ法によるパラメータの推定"><i class="fa fa-check"></i><b>18.2</b> ベイズ法によるパラメータの推定</a></li>
+<li class="chapter" data-level="18.3" data-path="chapter25.html"><a href="chapter25.html#確率の考え方と統計的推論"><i class="fa fa-check"></i><b>18.3</b> 確率の考え方と統計的推論</a></li>
+<li class="chapter" data-level="18.4" data-path="chapter25.html"><a href="chapter25.html#乱数による近似計算法"><i class="fa fa-check"></i><b>18.4</b> 乱数による近似計算法</a></li>
+<li class="chapter" data-level="18.5" data-path="chapter25.html"><a href="chapter25.html#課題-23"><i class="fa fa-check"></i><b>18.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="chapter26.html"><a href="chapter26.html"><i class="fa fa-check"></i><b>19</b> ベイズ法による回帰分析と平均値差の検定</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="chapter26.html"><a href="chapter26.html#ベイズ法による母数の推定"><i class="fa fa-check"></i><b>19.1</b> ベイズ法による母数の推定</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="chapter26.html"><a href="chapter26.html#つの推定法"><i class="fa fa-check"></i><b>19.1.1</b> 3つの推定法</a></li>
+<li class="chapter" data-level="19.1.2" data-path="chapter26.html"><a href="chapter26.html#事前分布と尤度の折衷"><i class="fa fa-check"></i><b>19.1.2</b> 事前分布と尤度の折衷</a></li>
+<li class="chapter" data-level="19.1.3" data-path="chapter26.html"><a href="chapter26.html#おかしな検定結果"><i class="fa fa-check"></i><b>19.1.3</b> おかしな検定結果?</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="chapter26.html"><a href="chapter26.html#回帰分析の確率モデル"><i class="fa fa-check"></i><b>19.2</b> 回帰分析の確率モデル</a></li>
+<li class="chapter" data-level="19.3" data-path="chapter26.html"><a href="chapter26.html#回帰分析の最尤推定ベイズ推定"><i class="fa fa-check"></i><b>19.3</b> 回帰分析の最尤推定，ベイズ推定</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="chapter26.html"><a href="chapter26.html#最尤推定の場合"><i class="fa fa-check"></i><b>19.3.1</b> 最尤推定の場合</a></li>
+<li class="chapter" data-level="19.3.2" data-path="chapter26.html"><a href="chapter26.html#ベイズ推定の場合"><i class="fa fa-check"></i><b>19.3.2</b> ベイズ推定の場合</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="chapter26.html"><a href="chapter26.html#帰無仮説検定とベイズ推定"><i class="fa fa-check"></i><b>19.4</b> 帰無仮説検定とベイズ推定</a></li>
+<li class="chapter" data-level="19.5" data-path="chapter26.html"><a href="chapter26.html#課題-24"><i class="fa fa-check"></i><b>19.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="chapter27.html"><a href="chapter27.html"><i class="fa fa-check"></i><b>20</b> Rによるベイズ推定</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="chapter27.html"><a href="chapter27.html#環境の準備"><i class="fa fa-check"></i><b>20.1</b> 環境の準備</a></li>
+<li class="chapter" data-level="20.2" data-path="chapter27.html"><a href="chapter27.html#回帰分析の推定"><i class="fa fa-check"></i><b>20.2</b> 回帰分析の推定</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="データは図にする.html"><a href="データは図にする.html"><i class="fa fa-check"></i><b>21</b> データは図にする</a></li>
+<li class="chapter" data-level="22" data-path="線形モデルはlm関数従属変数説明変数の形で書く.html"><a href="線形モデルはlm関数従属変数説明変数の形で書く.html"><i class="fa fa-check"></i><b>22</b> 線形モデルはlm関数。従属変数~説明変数の形で書く</a>
+<ul>
+<li class="chapter" data-level="22.0.1" data-path="線形モデルはlm関数従属変数説明変数の形で書く.html"><a href="線形モデルはlm関数従属変数説明変数の形で書く.html#mcmc法の評価"><i class="fa fa-check"></i><b>22.0.1</b> MCMC法の評価</a></li>
+<li class="chapter" data-level="22.1" data-path="線形モデルはlm関数従属変数説明変数の形で書く.html"><a href="線形モデルはlm関数従属変数説明変数の形で書く.html#要因計画の推定"><i class="fa fa-check"></i><b>22.1</b> 要因計画の推定</a></li>
+<li class="chapter" data-level="22.2" data-path="線形モデルはlm関数従属変数説明変数の形で書く.html"><a href="線形モデルはlm関数従属変数説明変数の形で書く.html#群内モデルの推定"><i class="fa fa-check"></i><b>22.2</b> 群内モデルの推定</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="chapter4.html"><a href="chapter4.html"><i class="fa fa-check"></i><b>23</b> 記述統計量</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="chapter4.html"><a href="chapter4.html#はじめに-1"><i class="fa fa-check"></i><b>23.1</b> はじめに</a></li>
+<li class="chapter" data-level="23.2" data-path="chapter4.html"><a href="chapter4.html#中心化傾向の指標"><i class="fa fa-check"></i><b>23.2</b> 中心化傾向の指標</a>
+<ul>
+<li class="chapter" data-level="23.2.1" data-path="chapter4.html"><a href="chapter4.html#平均値mean"><i class="fa fa-check"></i><b>23.2.1</b> 平均値mean</a></li>
+<li class="chapter" data-level="23.2.2" data-path="chapter4.html"><a href="chapter4.html#中央値median"><i class="fa fa-check"></i><b>23.2.2</b> 中央値median</a></li>
+<li class="chapter" data-level="23.2.3" data-path="chapter4.html"><a href="chapter4.html#最頻値mode"><i class="fa fa-check"></i><b>23.2.3</b> 最頻値mode</a></li>
+</ul></li>
+<li class="chapter" data-level="23.3" data-path="chapter4.html"><a href="chapter4.html#散らばりの指標"><i class="fa fa-check"></i><b>23.3</b> 散らばりの指標</a>
+<ul>
+<li class="chapter" data-level="23.3.1" data-path="chapter4.html"><a href="chapter4.html#分散と標準偏差"><i class="fa fa-check"></i><b>23.3.1</b> 分散と標準偏差</a></li>
+</ul></li>
+<li class="chapter" data-level="23.4" data-path="chapter4.html"><a href="chapter4.html#zScore"><i class="fa fa-check"></i><b>23.4</b> データの相対的位置</a></li>
+<li class="chapter" data-level="23.5" data-path="chapter4.html"><a href="chapter4.html#変数間関係の指標"><i class="fa fa-check"></i><b>23.5</b> 変数間関係の指標</a>
+<ul>
+<li class="chapter" data-level="23.5.1" data-path="chapter4.html"><a href="chapter4.html#相関係数の落とし穴"><i class="fa fa-check"></i><b>23.5.1</b> 相関係数の落とし穴</a></li>
+</ul></li>
+<li class="chapter" data-level="23.6" data-path="chapter4.html"><a href="chapter4.html#課題-25"><i class="fa fa-check"></i><b>23.6</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="chapter5.html"><a href="chapter5.html"><i class="fa fa-check"></i><b>24</b> 統計環境Rを使ってみる</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="chapter5.html"><a href="chapter5.html#環境の準備-1"><i class="fa fa-check"></i><b>24.1</b> 環境の準備</a>
+<ul>
+<li class="chapter" data-level="24.1.1" data-path="chapter5.html"><a href="chapter5.html#統計解析環境とアプリケーション"><i class="fa fa-check"></i><b>24.1.1</b> 統計解析環境とアプリケーション</a></li>
+<li class="chapter" data-level="24.1.2" data-path="chapter5.html"><a href="chapter5.html#統計環境r"><i class="fa fa-check"></i><b>24.1.2</b> 統計環境R</a></li>
+<li class="chapter" data-level="24.1.3" data-path="chapter5.html"><a href="chapter5.html#総合開発環境rstudio"><i class="fa fa-check"></i><b>24.1.3</b> 総合開発環境RStudio</a></li>
+<li class="chapter" data-level="24.1.4" data-path="chapter5.html"><a href="chapter5.html#統計環境の準備"><i class="fa fa-check"></i><b>24.1.4</b> 統計環境の準備</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="chapter5.html"><a href="chapter5.html#rとrstudioの基本的な機能"><i class="fa fa-check"></i><b>24.2</b> RとRStudioの基本的な機能</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="chapter5.html"><a href="chapter5.html#rstudioの機能と画面"><i class="fa fa-check"></i><b>24.2.1</b> RStudioの機能と画面</a></li>
+<li class="chapter" data-level="24.2.2" data-path="chapter5.html"><a href="chapter5.html#プロジェクト管理とrmarkdownによる実践"><i class="fa fa-check"></i><b>24.2.2</b> プロジェクト管理とRmarkdownによる実践</a></li>
+<li class="chapter" data-level="24.2.3" data-path="chapter5.html"><a href="chapter5.html#rの基本操作"><i class="fa fa-check"></i><b>24.2.3</b> Rの基本操作</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="chapter5.html"><a href="chapter5.html#rmarkdownによる文書作成"><i class="fa fa-check"></i><b>24.3</b> Rmarkdownによる文書作成</a></li>
+<li class="chapter" data-level="24.4" data-path="chapter5.html"><a href="chapter5.html#code05_08-.c-languagec-labelcode05_08-captionrmarkdownを書いてみる"><i class="fa fa-check"></i><b>24.4</b> ```` {#code::05_08 .c++ language=“c++” label=“code::05_08” caption=“Rmarkdownを書いてみる”}</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="計算をする.html"><a href="計算をする.html"><i class="fa fa-check"></i><b>25</b> 計算をする</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="計算をする.html"><a href="計算をする.html#四則演算"><i class="fa fa-check"></i><b>25.1</b> 四則演算</a>
+<ul>
+<li class="chapter" data-level="25.1.1" data-path="計算をする.html"><a href="計算をする.html#足し算"><i class="fa fa-check"></i><b>25.1.1</b> 足し算</a></li>
+<li class="chapter" data-level="25.1.2" data-path="計算をする.html"><a href="計算をする.html#引き算"><i class="fa fa-check"></i><b>25.1.2</b> 引き算</a></li>
+</ul></li>
+<li class="chapter" data-level="25.2" data-path="計算をする.html"><a href="計算をする.html#グラフの文法"><i class="fa fa-check"></i><b>25.2</b> グラフの文法</a>
+<ul>
+<li class="chapter" data-level="25.2.1" data-path="計算をする.html"><a href="計算をする.html#データの読み込みと整理"><i class="fa fa-check"></i><b>25.2.1</b> データの読み込みと整理</a></li>
+<li class="chapter" data-level="25.2.2" data-path="計算をする.html"><a href="計算をする.html#グラフの描画"><i class="fa fa-check"></i><b>25.2.2</b> グラフの描画</a></li>
+</ul></li>
+<li class="chapter" data-level="25.3" data-path="計算をする.html"><a href="計算をする.html#課題-26"><i class="fa fa-check"></i><b>25.3</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="chapter6.html"><a href="chapter6.html"><i class="fa fa-check"></i><b>26</b> 古典的テスト理論</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="chapter6.html"><a href="chapter6.html#テストと心理学"><i class="fa fa-check"></i><b>26.1</b> テストと心理学</a>
+<ul>
+<li class="chapter" data-level="26.1.1" data-path="chapter6.html"><a href="chapter6.html#人の性格についての考え方"><i class="fa fa-check"></i><b>26.1.1</b> 人の性格についての考え方</a></li>
+<li class="chapter" data-level="26.1.2" data-path="chapter6.html"><a href="chapter6.html#良いテストと悪いテスト"><i class="fa fa-check"></i><b>26.1.2</b> 良いテストと悪いテスト</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="chapter6.html"><a href="chapter6.html#測定のモデル"><i class="fa fa-check"></i><b>26.2</b> 測定のモデル</a></li>
+<li class="chapter" data-level="26.3" data-path="chapter6.html"><a href="chapter6.html#誤差の基本的性質"><i class="fa fa-check"></i><b>26.3</b> 誤差の基本的性質</a></li>
+<li class="chapter" data-level="26.4" data-path="chapter6.html"><a href="chapter6.html#テストの分散と信頼性妥当性の関係"><i class="fa fa-check"></i><b>26.4</b> テストの分散と信頼性・妥当性の関係</a>
+<ul>
+<li class="chapter" data-level="26.4.1" data-path="chapter6.html"><a href="chapter6.html#信頼性"><i class="fa fa-check"></i><b>26.4.1</b> 信頼性</a></li>
+<li class="chapter" data-level="26.4.2" data-path="chapter6.html"><a href="chapter6.html#信頼性を評価する"><i class="fa fa-check"></i><b>26.4.2</b> 信頼性を評価する</a></li>
+<li class="chapter" data-level="26.4.3" data-path="chapter6.html"><a href="chapter6.html#妥当性"><i class="fa fa-check"></i><b>26.4.3</b> 妥当性</a></li>
+<li class="chapter" data-level="26.4.4" data-path="chapter6.html"><a href="chapter6.html#妥当性を評価する"><i class="fa fa-check"></i><b>26.4.4</b> 妥当性を評価する</a></li>
+</ul></li>
+<li class="chapter" data-level="26.5" data-path="chapter6.html"><a href="chapter6.html#課題-27"><i class="fa fa-check"></i><b>26.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="chapter7.html"><a href="chapter7.html"><i class="fa fa-check"></i><b>27</b> 確率分布</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="chapter7.html"><a href="chapter7.html#確率と呼ばれる数字"><i class="fa fa-check"></i><b>27.1</b> 確率と呼ばれる数字</a>
+<ul>
+<li class="chapter" data-level="27.1.1" data-path="chapter7.html"><a href="chapter7.html#推論"><i class="fa fa-check"></i><b>27.1.1</b> 推論</a></li>
+</ul></li>
+<li class="chapter" data-level="27.2" data-path="chapter7.html"><a href="chapter7.html#確率分布"><i class="fa fa-check"></i><b>27.2</b> 確率分布</a>
+<ul>
+<li class="chapter" data-level="27.2.1" data-path="chapter7.html"><a href="chapter7.html#離散分布と確率質量"><i class="fa fa-check"></i><b>27.2.1</b> 離散分布と確率質量</a></li>
+<li class="chapter" data-level="27.2.2" data-path="chapter7.html"><a href="chapter7.html#continuousDistribution"><i class="fa fa-check"></i><b>27.2.2</b> 連続分布と確率密度数</a></li>
+<li class="chapter" data-level="27.2.3" data-path="chapter7.html"><a href="chapter7.html#確率分布関数"><i class="fa fa-check"></i><b>27.2.3</b> 確率分布関数</a></li>
+</ul></li>
+<li class="chapter" data-level="27.3" data-path="chapter7.html"><a href="chapter7.html#ベルヌーイ分布と二項分布"><i class="fa fa-check"></i><b>27.3</b> ベルヌーイ分布と二項分布</a>
+<ul>
+<li class="chapter" data-level="27.3.1" data-path="chapter7.html"><a href="chapter7.html#ベルヌーイ分布"><i class="fa fa-check"></i><b>27.3.1</b> ベルヌーイ分布</a></li>
+<li class="chapter" data-level="27.3.2" data-path="chapter7.html"><a href="chapter7.html#二項分布"><i class="fa fa-check"></i><b>27.3.2</b> 二項分布</a></li>
+</ul></li>
+<li class="chapter" data-level="27.4" data-path="chapter7.html"><a href="chapter7.html#expectation"><i class="fa fa-check"></i><b>27.4</b> 確率関数の期待値</a></li>
+<li class="chapter" data-level="27.5" data-path="chapter7.html"><a href="chapter7.html#課題-28"><i class="fa fa-check"></i><b>27.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="chapter8.html"><a href="chapter8.html"><i class="fa fa-check"></i><b>28</b> 正規分布と推測統計学</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="chapter8.html"><a href="chapter8.html#正規分布の形"><i class="fa fa-check"></i><b>28.1</b> 正規分布の形</a>
+<ul>
+<li class="chapter" data-level="28.1.1" data-path="chapter8.html"><a href="chapter8.html#正規分布ができるまで"><i class="fa fa-check"></i><b>28.1.1</b> 正規分布ができるまで</a></li>
+<li class="chapter" data-level="28.1.2" data-path="chapter8.html"><a href="chapter8.html#正規分布を特徴づける"><i class="fa fa-check"></i><b>28.1.2</b> 正規分布を特徴づける</a></li>
+</ul></li>
+<li class="chapter" data-level="28.2" data-path="chapter8.html"><a href="chapter8.html#正規分布の関数"><i class="fa fa-check"></i><b>28.2</b> 正規分布の関数</a></li>
+<li class="chapter" data-level="28.3" data-path="chapter8.html"><a href="chapter8.html#標準正規分布の面積を測る"><i class="fa fa-check"></i><b>28.3</b> 標準正規分布の面積を測る</a></li>
+<li class="chapter" data-level="28.4" data-path="chapter8.html"><a href="chapter8.html#UsefulNormal"><i class="fa fa-check"></i><b>28.4</b> 標準正規分布の利用</a></li>
+<li class="chapter" data-level="28.5" data-path="chapter8.html"><a href="chapter8.html#まとめにかえて"><i class="fa fa-check"></i><b>28.5</b> まとめにかえて</a></li>
+<li class="chapter" data-level="28.6" data-path="chapter8.html"><a href="chapter8.html#課題-29"><i class="fa fa-check"></i><b>28.6</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="chapter9.html"><a href="chapter9.html"><i class="fa fa-check"></i><b>29</b> 線形モデルの基礎</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="chapter9.html"><a href="chapter9.html#相関関係とモデル"><i class="fa fa-check"></i><b>29.1</b> 相関関係とモデル</a></li>
+<li class="chapter" data-level="29.2" data-path="chapter9.html"><a href="chapter9.html#予測と線形モデル"><i class="fa fa-check"></i><b>29.2</b> 予測と線形モデル</a></li>
+<li class="chapter" data-level="29.3" data-path="chapter9.html"><a href="chapter9.html#最小二乗法"><i class="fa fa-check"></i><b>29.3</b> 最小二乗法</a></li>
+<li class="chapter" data-level="29.4" data-path="chapter9.html"><a href="chapter9.html#予測の評価"><i class="fa fa-check"></i><b>29.4</b> 予測の評価</a></li>
+<li class="chapter" data-level="29.5" data-path="chapter9.html"><a href="chapter9.html#課題-30"><i class="fa fa-check"></i><b>29.5</b> 課題</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">データ解析基礎テキストブック</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter25" class="section level1" number="18">
+<h1><span class="header-section-number">Chapter 18</span> ベイズ法による母数の推定</h1>
+<p>母数を推定する第三の方法として，ベイズ法による推定を考えます。ベイズ法の利点は，尤度関数を確率分布関数に変えてくれることであり，推定値の確からしさを確率で表現できる点でもあります。また，これらの推定方法で統計的推定や，実際の統計モデルでどのように用いられるかを考えます。こうした計算を容易にしたのが確率的プログラミング言語の発展であり，確率分布を乱数によって近似するという方法(MCMC法)であることにも言及します。</p>
+<div id="ベイズの定理再考" class="section level2" number="18.1">
+<h2><span class="header-section-number">18.1</span> ベイズの定理・再考</h2>
+<p>前回は最尤法による推定の説明を行い，最後にベイズ法の入り口であるベイズの定理について説明しました。ここでは復習も兼ねて，これらの関係を改めて見直してみたいと思います。</p>
+<p>まずベイズの定理ですが，形としては次のようなものでした。
+<span class="math display">\[P(A|B) = \frac{P(B|A)P(A)}{P(B)}\]</span>
+ここで<span class="math inline">\(P()\)</span>で表されているのは確率，とだけ言っていましたが，これは離散でも連続でも同じことですので，確率分布と呼びましょう。特に左辺は「結果的にこうなる」という意味ですから，と呼ばれます。</p>
+<p>この確率的関係(右辺も左辺も全部Pで囲われています！)を，実際に統計的推論の場面で用いることを考えます。左辺にある事後分布は，データをとったうえで，パラメータがどのあたりにあるのかを推論するということを条件付き確率で表しています。つまり，BがデータでAがパラメータ，事後分布<span class="math inline">\(P(A|B)\)</span>が「データをとった上でのパラメータの確率」ということです。であれば，右辺にある<span class="math inline">\(P(B|A)\)</span>は「パラメータがあった時にデータが出てくる確率」を意味することになります。これってなんでしたっけ？
+そう，ですね！</p>
+<p>さて記号の意味を考えていきますと，<span class="math inline">\(P(A)\)</span>はデータを取る前のパラメータの確率，ということになります。これはデータを取る前の確率なので，といいます。事前の確率ってなんだ，データを取る前にわかっているのか？
+とか思いますが，これについては後でまた説明を足しますので，いったん次にいきましょう。</p>
+<p>また<span class="math inline">\(P(B)\)</span>はデータの確率，ということになります。データの確率？
+データが得られるかどうかの確率？
+というのはわかるはずがないような気もしますが，前回の乳がんの罹患率の例を思い出すと「あり得るパラメータから考えられる全てのデータが出てくる確率をかき集めたもの」，というようなイメージができるかもしれません。用語としてはといいますが，実践上はこれについて深く考えなくてもよいものであることを後で説明します。のでこれについても話はここまで<a href="#fn151" class="footnote-ref" id="fnref151"><sup>151</sup></a>。</p>
+<p>今，言葉で表現したものでベイズの定理を書き変えてみます。
+<span class="math display">\[\mbox{事後分布} = \mbox{尤度} \times \frac{事前分布}{周辺尤度}\]</span>
+ここにあるように，尤度に何かをかけた結果，左辺が分布になっている，ということに注目してください。前回，尤度は確率ではないという話をしました。尤度関数の面積(積分)が1.0にならないので，確率にならないのです。ですがこの式は，その尤度に事前分布をかけて，周辺尤度で割って，事後分布を得ています。事後分布は確率分布です。つまり，尤度を確率にしてくれるのがベイズの定理だ，と思っていただいて構いません。</p>
+<p>尤度が確率に変わったら何が嬉しいのでしょう？
+また事前分布ってなんでしょう？
+これさえわかれば，新しい母数の推定方法が見えてきます。</p>
+<div id="事前分布" class="section level3" number="18.1.1">
+<h3><span class="header-section-number">18.1.1</span> 事前分布</h3>
+<p>先に事前分布の説明から進めたいと思います。</p>
+<p>事前分布は，確率のパラメータについて事前に与える分布です。パラメータがどれぐらいになるのか知りたいのに，事前に何かわかっていることがあるっておかしくない？
+と思う人もいるかもしれません。</p>
+<p>ベイズの式の各項は，確率で表現されています。確率と呼ばれる数字については第<a href="chapter6.html#chapter6" reference-type="ref" reference="chapter6"><span class="math display">\[chapter6\]</span></a>講を思い出して欲しいのですが，条件が3つあって，</p>
+<ol style="list-style-type: decimal">
+<li><p>確率の値は非負</p></li>
+<li><p>全標本空間における全ての事象の確率の合計が1.0</p></li>
+<li><p>任意の2つの相互に排他的な事象について，どちらか一方が発生する確率は個々の確率の和</p></li>
+</ol>
+<p>ということでした。そしてこの条件が満たされているのであれば，それはなんでも確率と思って計算できるということでした。</p>
+<p>皆さんが高校までの数学で習う確率は，「全パターンを数え上げて割合を答える」というようなものだったかと思います。これは的確率といわれ，無限につながる数列の極限として確率を考えるものでした。これに対し，降水確率など信念の強さを表す数字であっても，上の条件が満たされていればそれは確率なのでした。こちらの確率の考え方を，あるいは的確率，と読んでおくことにしましょう<a href="#fn152" class="footnote-ref" id="fnref152"><sup>152</sup></a>。</p>
+<p>さてこの自分の信念，考え方の確からしさをも確率で表現することを考えます。第<a href="chapter6.html#chapter6" reference-type="ref" reference="chapter6"><span class="math display">\[chapter6\]</span></a>講で示したように，推論とは確率の再分配であり，「他に可能性がない」のであれば100%確からしい，と言えるのです。逆に「事前にパラメータがどのあたりにあるのかなんて，全くわからない」という場合も，確率で表現しなければなりません。この表現方法として，「どこ」にあるのかわからないのであれば「全部あり得る」と広く広く守備範囲を広げておけば良いことになりますね。確率なので面積は1.0でなければなりませんが，その分うすく伸ばすように考えれば良いのです。</p>
+<div class="figure">
+<img src="../images/text25/slide25_01.png" id="fig::25_01" style="width:12cm" alt="" />
+<p class="caption">コイントスの出目についての四つの信念</p>
+</div>
+<p>図<a href="chapter25.html#fig::25_01" reference-type="ref" reference="fig::25_01">1.1</a>に，4つの確率分布を示しました。これらはベルヌーイ分布のパラメータ<span class="math inline">\(\theta\)</span>についての，個人の考え方を示していると思ってください。ベルヌーイ分布はコイントスのような，二値の結果を生じさせる試行についての確率分布ですから，確率<span class="math inline">\(\theta\)</span>は<span class="math inline">\(0 \le \theta \le 1\)</span>の範囲にあるはずです。
+図<a href="chapter25.html#fig::25_01" reference-type="ref" reference="fig::25_01">1.1</a>の左上は範囲全てにわたってフラットです。つまり，「どこ」にあるとも断言できない，どこにも同じ程度にあるはずだという信念で，言い方を変えると何もはっきりとは言えない，つまりわからない状態を表しています。データを分析するにあたって，事前に何もわからないのであれば，このようにフラットな事前分布(特にといいます)を置けばよく，こういう事前分布の置き方を特にと呼びます。
+図<a href="chapter25.html#fig::25_01" reference-type="ref" reference="fig::25_01">1.1</a>の右上は逆に，<span class="math inline">\(\theta=0.5\)</span>のあたりにあるはずだ，と思っている人の考え方です。少なくとも0.45，大きくとも0.55ぐらいでしょう，ということなので，かなり確信度の高い(確率分布の幅が狭い)状態にあると言えます。
+そこまではっきりわからないけど，でもちょっと裏が出やすそうだなあ，というふんわりと低めの予想をしている人は，図<a href="chapter25.html#fig::25_01" reference-type="ref" reference="fig::25_01">1.1</a>の左下のような信念をもっている，と表現できますし，「絶対に表が出る。面しか出ない」と強く信じている人は図<a href="chapter25.html#fig::25_01" reference-type="ref" reference="fig::25_01">1.1</a>の右下のようになります。</p>
+<p>このように，全くわからないことや，どこかに特定の強い思い入れがあること，あるいはなんとなくこの辺じゃないかと思っていること，など事前の情報を確率分布として表現することは可能なのです。研究の実践場面において，事前に何かわかっていることが「全くない」のであれば，一様分布のような無情報事前分布，あるいはすごく幅の広い弱情報事前分布を置けば良いでしょう。身長や体重などのデータを分析する時に，正規分布を仮定しますが，このような場合は少なくとも負の値をとることはありませんし，いくら背が高い，体重が重いとしても10mや5tになったりするはずはないので，<span class="math inline">\(0\le \mu \le 100000\)</span>のような幅で事前分布をおいても構いません。</p>
+<p>あるいは先行研究などから，ある程度のアタリがつけられるのであれば，その値を中心にふんわりした事前分布を置いたっていいのです。逆にいうと，このように事前分布をおくことで，先行研究との一貫性を持たせたり，先行研究の情報を活用して知見を積み重ねていくことができる，とも言えます。</p>
+</div>
+</div>
+<div id="ベイズ法によるパラメータの推定" class="section level2" number="18.2">
+<h2><span class="header-section-number">18.2</span> ベイズ法によるパラメータの推定</h2>
+<p>ではベイズ法で，実際にパラメータを推定する例を考えてみましょう。
+難易度が同じぐらいの10問のテストを受けたとします。推定したいのは回答者の学力。この能力は，問題に正しく答える比率<span class="math inline">\(\theta\)</span>である，と定義します。学力<span class="math inline">\(\theta\)</span>は直接観測できず，観測できるのは「正答数」だけです。今回ある回答者が4問正解したとして，学力はどうやって見積もれば良いでしょうか？
+というのがここでの課題になります。</p>
+<p>ベイズ法による考え方は，基本的にたった2つのステップからなります<a href="#fn153" class="footnote-ref" id="fnref153"><sup>153</sup></a>。</p>
+<ol style="list-style-type: decimal">
+<li><p>不確実性，信念の強さを確率によって数量化する(事前分布priorの設定)</p></li>
+<li><p>観測データを使って事前の情報/信念を更新し，事後の情報/信念(事後分布posterior)にアップデートする</p></li>
+</ol>
+<p>これだけです。</p>
+<p>ではまずステップ1，事前確率を考えてみましょう。
+この受験生の学力がどれぐらいなのか，事前に全くわかっていなかったとします。しかし正答率をかんがえるのですから，推定値は<span class="math inline">\(0 \le \theta \le 1\)</span>の範囲にあるはず。全くわかっていないのですから，この範囲の一様分布を設定しましょう。</p>
+<p>次にステップ2ですね。アップデートです。アップデートにはベイズの定理を使います。
+ベイズの定理は事後分布=<span class="math inline">\(\frac{\mbox{尤度}\times \mbox{事前分布}}{\mbox{周辺尤度}}\)</span>で，今回の尤度は4問正解した，つまり(順番は分かりませんが)正答,正答,正答,正答,誤答,誤答,誤答,誤答,誤答,誤答，というような状況です。ベルヌーイ分布ですから，尤度は<span class="math inline">\(\theta^4(1-\theta)^6\)</span>ということになります。</p>
+<div class="figure">
+<img src="../images/text25/slide25_02.png" id="fig::25_02" style="width:12cm" alt="" />
+<p class="caption">ベイズ推定の実際</p>
+</div>
+<p>分子が確率と確率の掛け算になっているので，イメージしにくいかもしれません。私個人のイメージでは，波の衝突のような感じだと思っています。X軸に沿って細かく数字を切り出して，逐一掛け合わせていくような方法のイメージでも良いかもしれません(図<a href="chapter25.html#fig::25_03" reference-type="ref" reference="fig::25_03">1.3</a>)。ちなみに，事前分布が今回一様分布ですので，尤度と組み合わせたところ，その高さは変わりますが形Shapeは変化しません。このように，事前分布を一様分布にしておくと，データと確率分布の関係，尤度の形をそのまま結果に反映させることができることになります。</p>
+<div class="figure">
+<img src="../images/text25/slide25_03.png" id="fig::25_03" style="width:12cm" alt="" />
+<p class="caption">確率同士の掛け合わせ</p>
+</div>
+<p>さて，この掛け合わせた結果を<span class="math inline">\(P(D)\)</span>，つまりデータの確率で割らないといけないのですが，ここは無視してしまいましょう。というのも，この分母が何をやっているかを考えれば，パラメータのような変わる数(変数)が含まれていないのでここは「定数」になっていることがわかります。分子のところは尤度と事前分布を掛け合わせたものですから，数字はすごく小さいのものになっているのでしょうが，最終的に左辺は事後分布という名の確率分布です。つまり，左辺は面積が1.0に規格化されており，分母は面積を1.0にするための，割り算用の定数に過ぎないということがわかります。我々はパラメータがどのあたりにあるのかが知りたいのですが，「ここにありそう」というのはそこの確率が高そうだ，ということであって，形さえわかれば縦軸の単位は別に詳しくわからなくても，横軸の位置を推測するのに苦労はない訳です。そういうわけで，分母は無視しちゃいましょう<a href="#fn154" class="footnote-ref" id="fnref154"><sup>154</sup></a>。この「形がわかればいい」というのを数学的に表すと，
+<span class="math display">\[P(\mbox{事後分布}) \propto \mbox{尤度}\times \mbox{事前分布}\]</span>
+となります。<span class="math inline">\(\propto\)</span>というのは，相似形である，という意味です。</p>
+<p>さて，図<a href="chapter25.html#fig::25_04" reference-type="ref" reference="fig::25_04">1.4</a>にあるように，事後分布が計算できました。これが<span class="math inline">\(\theta\)</span>の推定結果ということになります。</p>
+<div class="figure">
+<img src="../images/text25/slide25_04.png" id="fig::25_04" style="width:12cm" alt="" />
+<p class="caption">事後分布が計算できました</p>
+</div>
+</div>
+<div id="確率の考え方と統計的推論" class="section level2" number="18.3">
+<h2><span class="header-section-number">18.3</span> 確率の考え方と統計的推論</h2>
+<p>このように計算するのがベイズ法による推定方法です。</p>
+<p>と言われても，ピンと来ないかもしれません。図<a href="chapter25.html#fig::25_04" reference-type="ref" reference="fig::25_04">1.4</a>に示されているように，ベイズ法は推定結果も事後分布＝確率分布として得られます。モーメント法や最尤法は，<span class="math inline">\(\theta\)</span>の値がXXXです！と答えを出してはくれるのですが，ベイズ推定の場合は答えが「分布」で出ていますから，1つの値にして回答を出すことができないのです。この分布全部が答えであり，事前分布の解釈のように「この辺りにありそうだ」という信念の強さを表しているとも言えます。</p>
+<p>分布全体を見ながら「ふむふむ」でもいいのですが，もちろん1つの数字にすることは可能です。これこそこの授業の最初の方(第<a href="#chapter3" reference-type="ref" reference="chapter3"><span class="math display">\[chapter3\]</span></a>講)でやった，記述統計の得意とするところなのですから。例えばこの分布関数のピーク，記述統計でいうところの最頻値を考えると，これは最も確率が高いところなので，最も尤もらしい，つまり最尤推定値と考えることができます。ちなみにこの関数の最尤推定値はということでと言われます。また，確率関数の期待値を代表値とすることもできて，それはExpectation
+A
+Posteriorということで，と呼ばれます。またこの関数は左に歪んでいますから，平均値であるEAPはあまり代表値として相応しくないため，中央値をつかってMEDian
+a posteriorということでを使ったほうがいいかもしれません。</p>
+<p>ちなみに今回のこの関数のピーク，MAP推定値は<span class="math inline">\(\theta=0.4\)</span>です。0.4になる確率が最も高いのですね。</p>
+<p>・・・なんだこれ，と思ったかもしれません。10問中4問正解だから0.4なのは当たり前じゃないか，ということだと思うのですが，繰り返しになりますがそれは標本平均値を使ったモーメント法の答え。尤度関数と事後分布の形が同じなので，最尤推定の結果も0.4になります。が最尤推定の場合は0.4になる「確率が最も高い」とは言えません。尤度関数は確率ではないからで，0.4になるのが最も尤もらしい，というに止まります。ベイズ推定の場合は，(事後分布が)0.4になる確率が最も高いといっても構いません。大事なのは，どの方法をとっても同じような答えが出るということです。同じデータで，同じ母数を推定しているのですから，筋道は違えど答えは同じということです。それよりも，各推定法の道のりの違い，表現の違い，どういうことが言えるかといった違いをしっかり踏まえておいてください。</p>
+<p>ベイズ法の場合は確率的な答えになっていますから，表現しやすい利点があります。例えばMAP推定値は0.4ですが，図<a href="chapter25.html#fig::25_05" reference-type="ref" reference="fig::25_05">1.5</a>にあるように，「<span class="math inline">\(\theta\)</span>の値が0.306から0.499の間に入っている確率が50%」だとか，「95%の確率で<span class="math inline">\(\theta\)</span>が0.159から0.682の間に分布している」という表現をできます。</p>
+<div class="figure">
+<img src="../images/text25/slide25_05.png" id="fig::25_05" style="width:12cm" alt="" />
+<p class="caption">事後分布による区間推定</p>
+</div>
+<p>この区間推定の方法は，モーメント法による信用区間のそれとは違うことに注意してください。モーメント法による推定は，標準誤差を使って推定し，「この区間の中にある」と断言して，この宣言が的中する確率が95%という意味です。実際には，あたっているかハズレているかの二択であり，基本的に点推定なのであるのに対し，こちらは基本的に区間推定で，逆に言えば「この区間の中にある」としか言えない，あるいは「この区間の中にある確信度が95%」というような意味になります。頻度主義的なに対し，ベイズ法によるこの区間はと呼んで区別します<a href="#fn155" class="footnote-ref" id="fnref155"><sup>155</sup></a>。</p>
+<p>主義や信念の対立で優劣を決めたいわけではないのですが，頻度主義的な発想とベイズ主義的な発想とでは，母数についての考え方が違っているのも事実です。頻度主義的な発想では，無限に試行を繰り返せばいつかは答えにたどり着くはずで，言い換えれば「真実はいつも1つ」なわけです。ただそれが直接わかり得ないから，徐々に近づいていくしかない。図<a href="chapter25.html#fig::25_06" reference-type="ref" reference="fig::25_06">1.6</a>の上の段にあるように毎回の試行で信用区間をとって表現できますが，これは本当の値(図では0.5が真の値としています)を跨いでいるかどうか0/1の判定が続くわけです。</p>
+<p>これに対して主観確率で考えるベイズ法による推定は，そもそも母数の値がわかりませんので，わからないことを確率で表現する。最初は幅の広い，全域に渡るような確率でぼんやり考えるのです。これに毎回の試行＝データを積み重ねることによって，この幅を狭めていき，「この辺にあるんじゃないかなあ」という確信度を高めていくという考え方です。</p>
+<div class="figure">
+<img src="../images/text25/slide25_06.png" id="fig::25_06" style="width:12cm" alt="" />
+<p class="caption">確率についての2つの考え方</p>
+</div>
+<p>ベイズ法による推定をするときに，真の値が定数としてただ1つ定まっている，と考えられるかどうかについては，特に定まりがありません。母数は定数で定まっている，ただそれが確率的にしかわからないだけだという考え方をするのか，母数がそもそも確率的に分布していると考えるのか，いずれの考えであってもいいでしょう<a href="#fn156" class="footnote-ref" id="fnref156"><sup>156</sup></a>。</p>
+<p>現代的に，あるいは統計のユーザとしてはプラグマティックに「使い物になるほうが正しい考え方だ」という割り切り方をしても良いでしょう<a href="#fn157" class="footnote-ref" id="fnref157"><sup>157</sup></a>。いずれにせよ，これらの手法によって表現されるものの意味の違いについて，少し注意しておいていただければと思います。</p>
+</div>
+<div id="乱数による近似計算法" class="section level2" number="18.4">
+<h2><span class="header-section-number">18.4</span> 乱数による近似計算法</h2>
+<p>ベイズ法による推定は，ここ10年ほどで一気に広がりを見せました。トーマス・ベイズ牧師がベイズの定理を表したのが18世紀なのですが，21世紀に入るまではずっと活用されてこなかったのは何故でしょうか。そもそも，ベイズ牧師は逆確率の法則，つまり手元のデータから根源的な理由を探る確率，という発想がどこか間違っているのではないか(神の意思に反しているのではないか)と考え，公表したがらなかったということもありますし，分散分析を生み出したフィッシャーがベイズ主義的な考え方に反論して弾圧したこと，ベイズ統計学は暗号解読など軍事目的に使われていて業績が公表されなかったことなど，いくつかの理由は考えられます。が，そうしたネガティブな理由ではなく，積極的な理由をいうならば，「これまでは計算が難しくて実用的でなかった」からであり，「近年コンピュータ技術の発展により，実用的な計算方法が開発された」からであると言えるでしょう。その技術的なブレイクスルーこそ，MCMC(マルコフチェインモンテカルロMarcov
+Chain Monte Carlo法)と呼ばれるものです。</p>
+<p>ベイズ統計学の実用上の難しさは，モデルが複雑になっていくときに「確率関数を複数組み合わせた計算」が手に負えないほど複雑になることに問題がありました。MCMC法が開発されるまでは，上手い組み合わせ方を見つけて計算しやすくなる確率分布を考えるとか，だいたいこの辺りにピークがあるだろうと思われる領域を狙って，細かく区間をメッシュ状に区切りとにかく計算しまくる，という方法だったのですが，それでも大変なことなのでした。</p>
+<p>MCMC法は近似的な答えを探す1つの方法です。MCMCという名前は「マルコフ連鎖」と「モンテカルロ法」の2つのパートから出来上がっています。マルコフ連鎖は，目標となる確率分布状態になるような推移規則を作る方法であり，モンテカルロ法は乱数を発生させるアルゴリズムです。この2つが合体することで，確率分布の形がわからなくてもサンプルが得られるような，乱数発生器を作る方法，ということになります。</p>
+<p>ベイズ統計のゴールは事後分布を作ることです。事前分布を一様分布にして，尤度はベルヌーイ分布にする，といった簡単な場合ですと特に問題ないのですが，ある確率分布のパラメータがあって，さらにそれを生成する確率分布があるといった，階層的に入れ子になっているようなモデルが出てくると，「最終的な事後分布の形がわからない」という状況になります。正規分布とかポアソン分布といった，名前がついている確率分布であればその特徴がはっきりわかるのですが，それらを組み合わせて作られるものは名もなき合成関数になり，どんな形状をしているのか，全く想像つかないことがあります。マルコフ連鎖を使うと，そのなもなき合成関数の形状をとにかく作り上げることができる，そんな数学的技術です。</p>
+<p>モンテカルロ法は乱数発生技術です。乱数というのは規則性のない数ですが，これを作るのはなかなか難しいです。人間が0-9の数字を適当に書いていくと，知らず知らずのうちに均等でないパターンができてしまいます<a href="#fn158" class="footnote-ref" id="fnref158"><sup>158</sup></a>。コンピュータに(例えばRに)乱数があるじゃないか，と思われるかもしれませんが，コンピュータはあくまでも計算機でどこまでも合理的です。乱数によって動いているように見えますが，乱数に見えるような数字を生成するアルゴリズムがその中には埋め込まれていますから，正確には擬似乱数でしかありません。コンピュータの作る乱数は，もちろん人間が適当に思いつく乱数よりもより規則性が少ないですが，それでも基本的に</p>
+<ul>
+<li><p>何らかの関数<span class="math inline">\(g\)</span>によって，内部状態<span class="math inline">\(S_t\)</span>をアップデートする；<span class="math inline">\(S_{t+1}=g(S_t)\)</span></p></li>
+<li><p>内部状態<span class="math inline">\(S_t\)</span>から何らかの関数<span class="math inline">\(h\)</span>によって，実現値が生成される；<span class="math inline">\(x = h(S_t)\)</span></p></li>
+</ul>
+<p>というステップを反復(<span class="math inline">\(t=1,2,3\ldots\)</span>)することで生成するのです。こうした乱数列ができれば，それを正規分布の形だとか二項分布の形に当てはめて出力することは簡単なのです。このステップ・バイ・ステップの計算法としてある確率分布に従う乱数発生技術があり，これがマルコフ過程とひっついてできたのがMCMC法ということになります<a href="#fn159" class="footnote-ref" id="fnref159"><sup>159</sup></a>。</p>
+<p>MCMC法は，ですから，どんな形の確率分布であっても乱数のサンプリングは生成できる，という技術なわけです。事後分布の関数の形，形状がわからなくてもそこからの乱数は作れるという技術であり，コンピュータ技術の性能が発展した今では大量の乱数を生成することも瞬時に行われます。</p>
+<p>さて，確率分布をRで実行するところで皆さんもお感じになったかと思いますが，乱数は大量に発生させてそのヒストグラムを描くと，確率分布関数の形に近づいていきます。大量にあれば，確率分布関数がわからなくてもそのヒストグラムを描いて稜線を見れば，その確率分布関数の形が目に見えてきます。図<a href="chapter25.html#fig::25_07" reference-type="ref" reference="fig::25_07">1.7</a>に，Rで正規乱数を発生させた例を示しました。乱数が100個しかない場合(図の左上)，そのヒストグラムを見ても何だかギザギザしていますが，1000個(右上)になるとパターンがあるようですし，10000個(左下)になると所々歪な箇所はありますが大体左右対称に，10万個になるとほぼ理論的なベル型カーブに近い形が現れていますね<a href="#fn160" class="footnote-ref" id="fnref160"><sup>160</sup></a>。このように，乱数を発生させることでもその確率分布関数の形をみるには十分なのです。ちなみに10万点発生させた今回の例でも，私の実行環境では一瞬で描画まで終わりました<a href="#fn161" class="footnote-ref" id="fnref161"><sup>161</sup></a>。</p>
+<div class="figure">
+<img src="../images/text25/Rplot25_01.png" id="fig::25_07" style="width:12cm" alt="" />
+<p class="caption">Rで正規乱数を発生させた例。サンプルの数が多くなってくると，そのヒストグラムはほとんど正規分布の形になっている。</p>
+</div>
+<p>この乱数発生法による近似計算には，別の利点もあります。関数の形で考えるのではなく，その関数から生成された実現値がデータとして格納されていますから，関数の期待値の計算も「実現値の算術平均」を計算するだけで近似的な答えが得られます。大量のデータがあって，その記述統計量を計算するのは，統計パッケージのメインの仕事です。関数の解を求めるのは数式の展開があって難しくても，具体例にしてくれると統計パッケージは即座に対応できるのです。</p>
+<p>また，データの加工も統計パッケージは得意とするところです。「正規分布の確率点1.0以上の数字が出てくる確率を計算する，というのは数式的には積分を使って，
+<span class="math display">\[p(x) = \int_1^{\infty} \frac{1}{\sqrt{2\pi \sigma^2}}exp\left( \frac{(x-\mu)^2}{2\sigma^2}\right) dx\]</span>
+という計算が必要ですが<a href="#fn162" class="footnote-ref" id="fnref162"><sup>162</sup></a>，この関数から得られた乱数があるのであれば，その乱数のうち1.0以上の値を持つものを選び出して，全体の数で割る＝相対度数にしてやればそれで確率の近似値になるわけです。</p>
+<p>ベイズ統計学の難しいところは，複数のパラメータが入り組んでいる関数になると，積分が複数重なるので計算が実質的に不可能，という問題が生じることでした。しかしこのMCMC法をつかって事後分布からの乱数を発生させると，当該領域の数を集計するという記述統計の計算になるだけで，複雑な部分が全くなくなるのです。この技術のおかげで，ベイズ統計学が実践的に使えるレベルになってきたのが最近，ということです。</p>
+<p>みなさんには次回以降，この技術を使って「推定方法としてのベイズ」になった時に何がどう変わるのかをしっかり学んでもらいたいと思います<a href="#fn163" class="footnote-ref" id="fnref163"><sup>163</sup></a>。</p>
+<div id="付録" class="section level5" number="18.4.0.0.1">
+<h5><span class="header-section-number">18.4.0.0.1</span> 付録</h5>
+<p>乱数による近似と理論値との比較検証</p>
+<p><code>{#code::25_01 .c++ language="c++" label="code::25_01" caption="近似値と検算"} X &lt;- rnorm(100000,mean=0,sd=1) length(X[X&gt;1])/100000 # 検算 1-pnorm(1,mean=0,sd=1)</code></p>
+<dl>
+<dt>1行目</dt>
+<dd><p>平均<span class="math inline">\(0\)</span>，標準偏差<span class="math inline">\(1\)</span>の標準正規分布に従う乱数を10万点生成して<code>X</code>に代入</p>
+</dd>
+<dt>2行目</dt>
+<dd><p><code>X</code>のうち<code>X&gt;1</code>の条件を満たす要素の長さ(<code>length</code>)=個数を10万で割る</p>
+</dd>
+<dt>4行目</dt>
+<dd><p>理論値による検算。確率点1までの累積確率を総面積1から引くことで，該当箇所の面積を求める</p>
+</dd>
+</dl>
+<div class="Rscreen">
+<p>乱数による近似out25_01</p>
+<pre><code>&gt; X &lt;- rnorm(100000,mean=0,sd=1)
+&gt; length(X[X&gt;1])/100000
+[1] 0.15886
+&gt; 1-pnorm(1,mean=0,sd=1)
+[1] 0.1586553</code></pre>
+</div>
+</div>
+</div>
+<div id="課題-23" class="section level2" number="18.5">
+<h2><span class="header-section-number">18.5</span> 課題</h2>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="151">
+<li id="fn151"><p>もう1つは「説明する」です。<a href="chapter25.html#fnref151" class="footnote-back">↩︎</a></p></li>
+<li id="fn152"><p>なんで<span class="math inline">\(b\)</span>なんだ<span class="math inline">\(a\)</span>でもいいじゃないか，と言われたら返す言葉もないのですが，慣例的に<span class="math inline">\(b\)</span>で係数を表しています。ちなみに今はアルファベットの<span class="math inline">\(b\)</span>ですが，後期になると<span class="math inline">\(b\)</span>のギリシア文字<span class="math inline">\(\beta\)</span>に変わります。ギリシア文字で表現するのは推測統計学的な推定に関わるようになってからです。<a href="chapter25.html#fnref152" class="footnote-back">↩︎</a></p></li>
+<li id="fn153"><p>親の身長から子供の身長を予測することを考えてみてください。次にその子が親になって，その子がまた親になって・・・という時に，「背の高い親からは背の高い子しかうまれない」というルールであれば，世界はものすごく高身長なひとと低身長な人に二分されてしまいます。そうではないということは，背の高い親から背の低い子が生まれることもあるし，その逆もあるということです。また野球選手などでルーキーのときは成績がいいのに，2年目になったら成績が下がる，というのは2年目のジンクスなどといわれますが，その人の平均的な能力以上のスコアが出た次の年に，平均的な値に帰るために低くなりがちなことは，当然ありえることでもあるのです。こうした効果のことを回帰効果といいます。<a href="chapter25.html#fnref153" class="footnote-back">↩︎</a></p></li>
+<li id="fn154"><p>細かい計算式については，<span class="citation">(<a href="#ref-kosugi2018のPp.133をみてください" role="doc-biblioref"><strong>kosugi2018のPp.133をみてください?</strong></a>)</span>。<a href="chapter25.html#fnref154" class="footnote-back">↩︎</a></p></li>
+<li id="fn155"><p>指数についてこれまで習ったことを思い出してください。<span class="math inline">\(a\neq 0\)</span>のとき，<span class="math inline">\(a^0=1\)</span>ですし，<span class="math inline">\(a^{-n}=\frac{1}{a^2}\)</span>と定義するのでした。<a href="chapter25.html#fnref155" class="footnote-back">↩︎</a></p></li>
+<li id="fn156"><p>こういうの見ると，「あ，ずるい。著者め逃げたな」と思いませんか。私なら思います。そう思われると悔しいので，<a href="mailto:参考図書として@西内201712をあげておきます" class="email">参考図書として@西内201712をあげておきます</a>。<a href="mailto:また@長沼201611のP.62" class="email">また@長沼201611のP.62</a>–69も参考になります。<a href="chapter25.html#fnref156" class="footnote-back">↩︎</a></p></li>
+<li id="fn157"><p><span class="math inline">\(\pi\)</span>は3.141592...という実数です。円周率ですね。面積になぜ円周率が出てくるのか，それがガウスの凄いところです。<a href="chapter25.html#fnref157" class="footnote-back">↩︎</a></p></li>
+<li id="fn158"><p>特に文系には！私も文系出身ですので，最初に習った頃は「うん，わからん！」となりました。<a href="chapter25.html#fnref158" class="footnote-back">↩︎</a></p></li>
+<li id="fn159"><p>過去形で書いていることからも明らかなように，これら数表が便利だったのは現在ほどコンピュータが個人消費者レベルにまで浸透していない時代のことで，今は次に紹介する計算機を使う方が素早く正確です。<a href="chapter25.html#fnref159" class="footnote-back">↩︎</a></p></li>
+<li id="fn160"><p>じゃあなんでやらせたんだ，という意見もあるかもしれませんが，例えば公認心理師認定試験など計算機を持ち込めない環境で，数表から読み取って答えを出さねばならないシーンがあるかもしれない，と思いまして。<a href="chapter25.html#fnref160" class="footnote-back">↩︎</a></p></li>
+<li id="fn161"><p>標準化したスコアについてはPp.を参照。<a href="chapter25.html#fnref161" class="footnote-back">↩︎</a></p></li>
+<li id="fn162"><p>Rを使った計算をしました。<code>1-pnorm(q=1,mean=0,sd=1)=0.15865</code>，あるいは<code>1-pnorm(q=2,mean=0,sd=1)=0.02275013</code>です。<a href="chapter25.html#fnref162" class="footnote-back">↩︎</a></p></li>
+<li id="fn163"><p>うまくいかなくて質問するときは，どの行でどのようなエラーが出たのか，を伝えてください。エラーの文章をコピーして伝えるようにしてください。よくない質問の仕方は「なんかエラーが出てできませんでした」です。こちらもサポートのしようがありません。<a href="chapter25.html#fnref163" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter24.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter26.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -132,6 +132,6 @@ cd ..
 
 
 ########################## git commit & push
-today=$(date "+%Y%m%d")
+today=$(date)
 git commit -a -m $today
 git push

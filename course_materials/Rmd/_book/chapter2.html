@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 12 電子計算機のイロハ | データ解析基礎テキストブック</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 12 電子計算機のイロハ | データ解析基礎テキストブック" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 12 電子計算機のイロハ | データ解析基礎テキストブック" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="小杉考司" />
+
+
+<meta name="date" content="2021-10-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chapter19.html"/>
+<link rel="next" href="chapter20.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="chapter1.html"><a href="chapter1.html"><i class="fa fa-check"></i><b>1</b> 心理統計を始める前に</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="chapter1.html"><a href="chapter1.html#はじめに"><i class="fa fa-check"></i><b>1.1</b> はじめに</a></li>
+<li class="chapter" data-level="1.2" data-path="chapter1.html"><a href="chapter1.html#心理学とはどういう学問なのだろうか"><i class="fa fa-check"></i><b>1.2</b> 心理学とはどういう学問なのだろうか</a></li>
+<li class="chapter" data-level="1.3" data-path="chapter1.html"><a href="chapter1.html#近代科学の特徴"><i class="fa fa-check"></i><b>1.3</b> 近代科学の特徴</a></li>
+<li class="chapter" data-level="1.4" data-path="chapter1.html"><a href="chapter1.html#心理学のいとなみ"><i class="fa fa-check"></i><b>1.4</b> 心理学のいとなみ</a></li>
+<li class="chapter" data-level="1.5" data-path="chapter1.html"><a href="chapter1.html#課題"><i class="fa fa-check"></i><b>1.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chapter10.html"><a href="chapter10.html"><i class="fa fa-check"></i><b>2</b> 重回帰分析</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chapter10.html"><a href="chapter10.html#重回帰分析"><i class="fa fa-check"></i><b>2.1</b> 重回帰分析</a></li>
+<li class="chapter" data-level="2.2" data-path="chapter10.html"><a href="chapter10.html#偏回帰係数"><i class="fa fa-check"></i><b>2.2</b> 偏回帰係数</a></li>
+<li class="chapter" data-level="2.3" data-path="chapter10.html"><a href="chapter10.html#標準化された係数"><i class="fa fa-check"></i><b>2.3</b> 標準化された係数</a></li>
+<li class="chapter" data-level="2.4" data-path="chapter10.html"><a href="chapter10.html#今日のまとめ"><i class="fa fa-check"></i><b>2.4</b> 今日のまとめ</a></li>
+<li class="chapter" data-level="2.5" data-path="chapter10.html"><a href="chapter10.html#課題-1"><i class="fa fa-check"></i><b>2.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter11.html"><a href="chapter11.html"><i class="fa fa-check"></i><b>3</b> Rをつかった回帰分析</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chapter11.html"><a href="chapter11.html#rの環境再確認"><i class="fa fa-check"></i><b>3.1</b> Rの環境再確認</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="chapter11.html"><a href="chapter11.html#環境の準備確認"><i class="fa fa-check"></i><b>3.1.1</b> 環境の準備(確認)</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chapter11.html"><a href="chapter11.html#散布図の描画"><i class="fa fa-check"></i><b>3.1.2</b> 散布図の描画</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chapter11.html"><a href="chapter11.html#線形回帰の実行"><i class="fa fa-check"></i><b>3.2</b> 線形回帰の実行</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter11.html"><a href="chapter11.html#残差からわかること"><i class="fa fa-check"></i><b>3.3</b> 残差からわかること</a></li>
+<li class="chapter" data-level="3.4" data-path="chapter11.html"><a href="chapter11.html#重回帰分析-1"><i class="fa fa-check"></i><b>3.4</b> 重回帰分析</a></li>
+<li class="chapter" data-level="3.5" data-path="chapter11.html"><a href="chapter11.html#課題-2"><i class="fa fa-check"></i><b>3.5</b> 課題</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="chapter11.html"><a href="chapter11.html#課題-3"><i class="fa fa-check"></i><b>3.5.1</b> 課題</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter12.html"><a href="chapter12.html"><i class="fa fa-check"></i><b>4</b> 実験計画法1；実験計画法とは</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chapter12.html"><a href="chapter12.html#RCT"><i class="fa fa-check"></i><b>4.1</b> ランダム化</a></li>
+<li class="chapter" data-level="4.2" data-path="chapter12.html"><a href="chapter12.html#用語の整理"><i class="fa fa-check"></i><b>4.2</b> 用語の整理</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chapter12.html"><a href="chapter12.html#要因と水準"><i class="fa fa-check"></i><b>4.2.1</b> 要因と水準</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chapter12.html"><a href="chapter12.html#群内計画と群間計画"><i class="fa fa-check"></i><b>4.2.2</b> 群内計画と群間計画</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chapter12.html"><a href="chapter12.html#実験でなぜ効果がわかるのか"><i class="fa fa-check"></i><b>4.3</b> 実験でなぜ効果がわかるのか</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="chapter12.html"><a href="chapter12.html#平方和の分解"><i class="fa fa-check"></i><b>4.3.1</b> 平方和の分解</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="chapter12.html"><a href="chapter12.html#HowToEvaluateTheDifference"><i class="fa fa-check"></i><b>4.4</b> 効果はどのように評価するのか</a></li>
+<li class="chapter" data-level="4.5" data-path="chapter12.html"><a href="chapter12.html#課題-9"><i class="fa fa-check"></i><b>4.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter13.html"><a href="chapter13.html"><i class="fa fa-check"></i><b>5</b> 実験計画法2；Between計画</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chapter13.html"><a href="chapter13.html#線形モデルによる二要因計画の表現と自由度"><i class="fa fa-check"></i><b>5.1</b> 線形モデルによる二要因計画の表現と自由度</a></li>
+<li class="chapter" data-level="5.2" data-path="chapter13.html"><a href="chapter13.html#二要因の場合"><i class="fa fa-check"></i><b>5.2</b> 二要因の場合</a></li>
+<li class="chapter" data-level="5.3" data-path="chapter13.html"><a href="chapter13.html#効果の大きさを算出する"><i class="fa fa-check"></i><b>5.3</b> 効果の大きさを算出する</a></li>
+<li class="chapter" data-level="5.4" data-path="chapter13.html"><a href="chapter13.html#交互作用の出現"><i class="fa fa-check"></i><b>5.4</b> 交互作用の出現</a></li>
+<li class="chapter" data-level="5.5" data-path="chapter13.html"><a href="chapter13.html#課題-10"><i class="fa fa-check"></i><b>5.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapter14.html"><a href="chapter14.html"><i class="fa fa-check"></i><b>6</b> 実験計画法3；一要因モデル(Within)</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chapter14.html"><a href="chapter14.html#within計画の場合"><i class="fa fa-check"></i><b>6.1</b> Within計画の場合</a></li>
+<li class="chapter" data-level="6.2" data-path="chapter14.html"><a href="chapter14.html#群間計画と群内計画の比較"><i class="fa fa-check"></i><b>6.2</b> 群間計画と群内計画の比較</a></li>
+<li class="chapter" data-level="6.3" data-path="chapter14.html"><a href="chapter14.html#分布から考える"><i class="fa fa-check"></i><b>6.3</b> 分布から考える</a></li>
+<li class="chapter" data-level="6.4" data-path="chapter14.html"><a href="chapter14.html#課題-11"><i class="fa fa-check"></i><b>6.4</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chapter15.html"><a href="chapter15.html"><i class="fa fa-check"></i><b>7</b> 第15講</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chapter15.html"><a href="chapter15.html#課題-12"><i class="fa fa-check"></i><b>7.1</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chapter16.html"><a href="chapter16.html"><i class="fa fa-check"></i><b>8</b> 確率と統計的推論</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapter16.html"><a href="chapter16.html#母集団と標本"><i class="fa fa-check"></i><b>8.1</b> 母集団と標本</a></li>
+<li class="chapter" data-level="8.2" data-path="chapter16.html"><a href="chapter16.html#母集団分布とモデル"><i class="fa fa-check"></i><b>8.2</b> 母集団分布とモデル</a></li>
+<li class="chapter" data-level="8.3" data-path="chapter16.html"><a href="chapter16.html#標本分布と標準誤差"><i class="fa fa-check"></i><b>8.3</b> 標本分布と標準誤差</a></li>
+<li class="chapter" data-level="8.4" data-path="chapter16.html"><a href="chapter16.html#まとめ"><i class="fa fa-check"></i><b>8.4</b> まとめ</a></li>
+<li class="chapter" data-level="8.5" data-path="chapter16.html"><a href="chapter16.html#課題-13"><i class="fa fa-check"></i><b>8.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chapter17.html"><a href="chapter17.html"><i class="fa fa-check"></i><b>9</b> 推論と判断</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chapter17.html"><a href="chapter17.html#不偏推定量"><i class="fa fa-check"></i><b>9.1</b> 不偏推定量</a></li>
+<li class="chapter" data-level="9.2" data-path="chapter17.html"><a href="chapter17.html#標本平均の区間推定"><i class="fa fa-check"></i><b>9.2</b> 標本平均の区間推定</a></li>
+<li class="chapter" data-level="9.3" data-path="chapter17.html"><a href="chapter17.html#標本だけから推測したい"><i class="fa fa-check"></i><b>9.3</b> 標本だけから推測したい</a></li>
+<li class="chapter" data-level="9.4" data-path="chapter17.html"><a href="chapter17.html#推定と検定"><i class="fa fa-check"></i><b>9.4</b> 推定と検定</a></li>
+<li class="chapter" data-level="9.5" data-path="chapter17.html"><a href="chapter17.html#課題-14"><i class="fa fa-check"></i><b>9.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chapter18.html"><a href="chapter18.html"><i class="fa fa-check"></i><b>10</b> 帰無仮説検定</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="chapter18.html"><a href="chapter18.html#帰無仮説検定の手続き"><i class="fa fa-check"></i><b>10.1</b> 帰無仮説検定の手続き</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="chapter18.html"><a href="chapter18.html#仮説を設定する"><i class="fa fa-check"></i><b>10.1.1</b> 仮説を設定する</a></li>
+<li class="chapter" data-level="10.1.2" data-path="chapter18.html"><a href="chapter18.html#統計的仮説検定に用いられる検定統計量を選択する"><i class="fa fa-check"></i><b>10.1.2</b> 統計的仮説検定に用いられる検定統計量を選択する</a></li>
+<li class="chapter" data-level="10.1.3" data-path="chapter18.html"><a href="chapter18.html#仮説が間違っているか正しいかの判断の基準になる確率を設定する"><i class="fa fa-check"></i><b>10.1.3</b> 仮説が間違っているか正しいかの判断の基準になる確率を設定する</a></li>
+<li class="chapter" data-level="10.1.4" data-path="chapter18.html"><a href="chapter18.html#実際のデータから検定統計量の実現値を計算する"><i class="fa fa-check"></i><b>10.1.4</b> 実際のデータから検定統計量の実現値を計算する</a></li>
+<li class="chapter" data-level="10.1.5" data-path="chapter18.html"><a href="chapter18.html#最初に定めた仮説が間違っているか正しいかを判断する"><i class="fa fa-check"></i><b>10.1.5</b> 最初に定めた仮説が間違っているか正しいかを判断する</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="chapter18.html"><a href="chapter18.html#つの平均値の検定"><i class="fa fa-check"></i><b>10.2</b> 1つの平均値の検定</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="chapter18.html"><a href="chapter18.html#母sdがわかっている場合"><i class="fa fa-check"></i><b>10.2.1</b> 母SDがわかっている場合</a></li>
+<li class="chapter" data-level="10.2.2" data-path="chapter18.html"><a href="chapter18.html#母sdがわかっていない場合"><i class="fa fa-check"></i><b>10.2.2</b> 母SDがわかっていない場合</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="chapter18.html"><a href="chapter18.html#相関係数の検定"><i class="fa fa-check"></i><b>10.3</b> 相関係数の検定</a></li>
+<li class="chapter" data-level="10.4" data-path="chapter18.html"><a href="chapter18.html#課題-15"><i class="fa fa-check"></i><b>10.4</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chapter19.html"><a href="chapter19.html"><i class="fa fa-check"></i><b>11</b> 帰無仮説検定の注意点</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chapter19.html"><a href="chapter19.html#結果の報告の仕方"><i class="fa fa-check"></i><b>11.1</b> 結果の報告の仕方</a></li>
+<li class="chapter" data-level="11.2" data-path="chapter19.html"><a href="chapter19.html#statistical_significant"><i class="fa fa-check"></i><b>11.2</b> 統計的に有意とは</a></li>
+<li class="chapter" data-level="11.3" data-path="chapter19.html"><a href="chapter19.html#検定における2種類の間違い"><i class="fa fa-check"></i><b>11.3</b> 検定における2種類の間違い</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="chapter19.html"><a href="chapter19.html#TypeI_II_Error"><i class="fa fa-check"></i><b>11.3.1</b> <span class="math inline">\(p\)</span>値とは何か</a></li>
+<li class="chapter" data-level="11.3.2" data-path="chapter19.html"><a href="chapter19.html#alphaのインフレ"><i class="fa fa-check"></i><b>11.3.2</b> <span class="math inline">\(\alpha\)</span>のインフレ</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="chapter19.html"><a href="chapter19.html#効果量と例数設計"><i class="fa fa-check"></i><b>11.4</b> 効果量と例数設計</a></li>
+<li class="chapter" data-level="11.5" data-path="chapter19.html"><a href="chapter19.html#課題-16"><i class="fa fa-check"></i><b>11.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chapter2.html"><a href="chapter2.html"><i class="fa fa-check"></i><b>12</b> 電子計算機のイロハ</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="chapter2.html"><a href="chapter2.html#前置き"><i class="fa fa-check"></i><b>12.1</b> 前置き</a></li>
+<li class="chapter" data-level="12.2" data-path="chapter2.html"><a href="chapter2.html#コンピュータの基礎"><i class="fa fa-check"></i><b>12.2</b> コンピュータの基礎</a></li>
+<li class="chapter" data-level="12.3" data-path="chapter2.html"><a href="chapter2.html#コンピュータの歴史"><i class="fa fa-check"></i><b>12.3</b> コンピュータの歴史</a></li>
+<li class="chapter" data-level="12.4" data-path="chapter2.html"><a href="chapter2.html#情報の単位"><i class="fa fa-check"></i><b>12.4</b> 情報の単位</a></li>
+<li class="chapter" data-level="12.5" data-path="chapter2.html"><a href="chapter2.html#suffix"><i class="fa fa-check"></i><b>12.5</b> ファイルの場所</a></li>
+<li class="chapter" data-level="12.6" data-path="chapter2.html"><a href="chapter2.html#reproducibility"><i class="fa fa-check"></i><b>12.6</b> 再現性のある研究実践へ</a></li>
+<li class="chapter" data-level="12.7" data-path="chapter2.html"><a href="chapter2.html#課題-17"><i class="fa fa-check"></i><b>12.7</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="chapter20.html"><a href="chapter20.html"><i class="fa fa-check"></i><b>13</b> 二群の平均値差</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chapter20.html"><a href="chapter20.html#一要因withinデザイン2水準"><i class="fa fa-check"></i><b>13.1</b> 一要因Withinデザイン，2水準</a></li>
+<li class="chapter" data-level="13.2" data-path="chapter20.html"><a href="chapter20.html#rによる実践対応のあるt検定"><i class="fa fa-check"></i><b>13.2</b> Rによる実践；対応のあるt検定</a></li>
+<li class="chapter" data-level="13.3" data-path="chapter20.html"><a href="chapter20.html#一要因betweenデザイン2水準"><i class="fa fa-check"></i><b>13.3</b> 一要因Betweenデザイン，2水準</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="chapter20.html"><a href="chapter20.html#区間推定でまず考えてみよう"><i class="fa fa-check"></i><b>13.3.1</b> 区間推定でまず考えてみよう</a></li>
+<li class="chapter" data-level="13.3.2" data-path="chapter20.html"><a href="chapter20.html#検定で勝負を決めようじゃないか"><i class="fa fa-check"></i><b>13.3.2</b> 検定で勝負を決めようじゃないか</a></li>
+<li class="chapter" data-level="13.3.3" data-path="chapter20.html"><a href="chapter20.html#検定と方向性"><i class="fa fa-check"></i><b>13.3.3</b> 検定と方向性</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="chapter20.html"><a href="chapter20.html#rによる実践対応のないt検定"><i class="fa fa-check"></i><b>13.4</b> Rによる実践；対応のないt検定</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="chapter20.html"><a href="chapter20.html#welchの補正"><i class="fa fa-check"></i><b>13.4.1</b> Welchの補正</a></li>
+<li class="chapter" data-level="13.4.2" data-path="chapter20.html"><a href="chapter20.html#事後的な効果量の検証"><i class="fa fa-check"></i><b>13.4.2</b> 事後的な効果量の検証</a></li>
+<li class="chapter" data-level="13.4.3" data-path="chapter20.html"><a href="chapter20.html#補遺"><i class="fa fa-check"></i><b>13.4.3</b> 補遺</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="chapter20.html"><a href="chapter20.html#課題-18"><i class="fa fa-check"></i><b>13.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="chapter21.html"><a href="chapter21.html"><i class="fa fa-check"></i><b>14</b> 要因計画と平均値差の検定</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="chapter21.html"><a href="chapter21.html#平均値の比較とモデル比較"><i class="fa fa-check"></i><b>14.1</b> 平均値の比較とモデル比較</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="chapter21.html"><a href="chapter21.html#平均値差の検定として考える"><i class="fa fa-check"></i><b>14.1.1</b> 平均値差の検定として考える</a></li>
+<li class="chapter" data-level="14.1.2" data-path="chapter21.html"><a href="chapter21.html#神様の目から見た実験計画"><i class="fa fa-check"></i><b>14.1.2</b> 神様の目から見た実験計画</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="chapter21.html"><a href="chapter21.html#一要因betweenデザイン多水準の場合"><i class="fa fa-check"></i><b>14.2</b> 一要因Betweenデザイン，多水準の場合</a></li>
+<li class="chapter" data-level="14.3" data-path="chapter21.html"><a href="chapter21.html#帰無仮説検定としての一要因多水準計画"><i class="fa fa-check"></i><b>14.3</b> 帰無仮説検定としての一要因多水準計画</a></li>
+<li class="chapter" data-level="14.4" data-path="chapter21.html"><a href="chapter21.html#帰無仮説検定で差があったかなかったかという判断だけで終わらせるのではなくどの程度の差があったのかについて報告しないといけないのでした分散分析における効果量は全体の分散のうち効果の分散がどれほどの量であったかという比率つまり効果量効果の分散全体の分散1"><i class="fa fa-check"></i><b>14.4</b> 帰無仮説検定で，差があったかなかったか，という判断だけで終わらせるのではなく，どの程度の差があったのかについて報告しないといけないのでした。分散分析における効果量は，全体の分散のうち効果の分散がどれほどの量であったかという比率，つまり効果量=効果の分散/全体の分散=1</a></li>
+<li class="chapter" data-level="14.5" data-path="chapter21.html"><a href="chapter21.html#課題-19"><i class="fa fa-check"></i><b>14.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="chapter22.html"><a href="chapter22.html"><i class="fa fa-check"></i><b>15</b> 要因計画と平均値差の検定その2</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="chapter22.html"><a href="chapter22.html#事後の検定"><i class="fa fa-check"></i><b>15.1</b> 事後の検定</a></li>
+<li class="chapter" data-level="15.2" data-path="chapter22.html"><a href="chapter22.html#帰無仮説検定としての二要因線形モデル"><i class="fa fa-check"></i><b>15.2</b> 帰無仮説検定としての二要因線形モデル</a></li>
+<li class="chapter" data-level="15.3" data-path="chapter22.html"><a href="chapter22.html#課題-20"><i class="fa fa-check"></i><b>15.3</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="chapter23.html"><a href="chapter23.html"><i class="fa fa-check"></i><b>16</b> Rによる帰無仮説検定2</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="chapter23.html"><a href="chapter23.html#rで分散分析を行う上でのポイント"><i class="fa fa-check"></i><b>16.1</b> Rで分散分析を行う上でのポイント</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="chapter23.html"><a href="chapter23.html#数のタイプ"><i class="fa fa-check"></i><b>16.1.1</b> 数のタイプ</a></li>
+<li class="chapter" data-level="16.1.2" data-path="chapter23.html"><a href="chapter23.html#分散分析用の関数を読み込もう"><i class="fa fa-check"></i><b>16.1.2</b> 分散分析用の関数を読み込もう</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="chapter23.html"><a href="chapter23.html#一要因between計画の実際"><i class="fa fa-check"></i><b>16.2</b> 一要因Between計画の実際</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="chapter23.html"><a href="chapter23.html#線形モデルとして分析"><i class="fa fa-check"></i><b>16.2.1</b> 線形モデルとして分析</a></li>
+<li class="chapter" data-level="16.2.2" data-path="chapter23.html"><a href="chapter23.html#帰無仮説検定として分析"><i class="fa fa-check"></i><b>16.2.2</b> 帰無仮説検定として分析</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="chapter23.html"><a href="chapter23.html#二要因between計画の実際"><i class="fa fa-check"></i><b>16.3</b> 二要因Between計画の実際</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="chapter23.html"><a href="chapter23.html#線形モデルとして分析-1"><i class="fa fa-check"></i><b>16.3.1</b> 線形モデルとして分析</a></li>
+<li class="chapter" data-level="16.3.2" data-path="chapter23.html"><a href="chapter23.html#帰無仮説検定として分析-1"><i class="fa fa-check"></i><b>16.3.2</b> 帰無仮説検定として分析</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="chapter23.html"><a href="chapter23.html#一要因within計画の実際"><i class="fa fa-check"></i><b>16.4</b> 一要因Within計画の実際</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="chapter23.html"><a href="chapter23.html#帰無仮説検定として分析-2"><i class="fa fa-check"></i><b>16.4.1</b> 帰無仮説検定として分析</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="chapter23.html"><a href="chapter23.html#課題-21"><i class="fa fa-check"></i><b>16.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="chapter24.html"><a href="chapter24.html"><i class="fa fa-check"></i><b>17</b> 確率分布とデータの関係</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="chapter24.html"><a href="chapter24.html#確率モデルによる推論"><i class="fa fa-check"></i><b>17.1</b> 確率モデルによる推論</a></li>
+<li class="chapter" data-level="17.2" data-path="chapter24.html"><a href="chapter24.html#確率関数と尤度"><i class="fa fa-check"></i><b>17.2</b> 確率関数と尤度</a></li>
+<li class="chapter" data-level="17.3" data-path="chapter24.html"><a href="chapter24.html#最尤推定"><i class="fa fa-check"></i><b>17.3</b> 最尤推定</a></li>
+<li class="chapter" data-level="17.4" data-path="chapter24.html"><a href="chapter24.html#対数と尤度"><i class="fa fa-check"></i><b>17.4</b> 対数と尤度</a></li>
+<li class="chapter" data-level="17.5" data-path="chapter24.html"><a href="chapter24.html#正規分布の尤度関数"><i class="fa fa-check"></i><b>17.5</b> 正規分布の尤度関数</a></li>
+<li class="chapter" data-level="17.6" data-path="chapter24.html"><a href="chapter24.html#ベイズの定理"><i class="fa fa-check"></i><b>17.6</b> ベイズの定理</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="chapter24.html"><a href="chapter24.html#ベイズの定理とは"><i class="fa fa-check"></i><b>17.6.1</b> ベイズの定理とは</a></li>
+<li class="chapter" data-level="17.6.2" data-path="chapter24.html"><a href="chapter24.html#ベイズの定理の意味"><i class="fa fa-check"></i><b>17.6.2</b> ベイズの定理の意味</a></li>
+</ul></li>
+<li class="chapter" data-level="17.7" data-path="chapter24.html"><a href="chapter24.html#課題-22"><i class="fa fa-check"></i><b>17.7</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="chapter25.html"><a href="chapter25.html"><i class="fa fa-check"></i><b>18</b> ベイズ法による母数の推定</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="chapter25.html"><a href="chapter25.html#ベイズの定理再考"><i class="fa fa-check"></i><b>18.1</b> ベイズの定理・再考</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="chapter25.html"><a href="chapter25.html#事前分布"><i class="fa fa-check"></i><b>18.1.1</b> 事前分布</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="chapter25.html"><a href="chapter25.html#ベイズ法によるパラメータの推定"><i class="fa fa-check"></i><b>18.2</b> ベイズ法によるパラメータの推定</a></li>
+<li class="chapter" data-level="18.3" data-path="chapter25.html"><a href="chapter25.html#確率の考え方と統計的推論"><i class="fa fa-check"></i><b>18.3</b> 確率の考え方と統計的推論</a></li>
+<li class="chapter" data-level="18.4" data-path="chapter25.html"><a href="chapter25.html#乱数による近似計算法"><i class="fa fa-check"></i><b>18.4</b> 乱数による近似計算法</a></li>
+<li class="chapter" data-level="18.5" data-path="chapter25.html"><a href="chapter25.html#課題-23"><i class="fa fa-check"></i><b>18.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="chapter26.html"><a href="chapter26.html"><i class="fa fa-check"></i><b>19</b> ベイズ法による回帰分析と平均値差の検定</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="chapter26.html"><a href="chapter26.html#ベイズ法による母数の推定"><i class="fa fa-check"></i><b>19.1</b> ベイズ法による母数の推定</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="chapter26.html"><a href="chapter26.html#つの推定法"><i class="fa fa-check"></i><b>19.1.1</b> 3つの推定法</a></li>
+<li class="chapter" data-level="19.1.2" data-path="chapter26.html"><a href="chapter26.html#事前分布と尤度の折衷"><i class="fa fa-check"></i><b>19.1.2</b> 事前分布と尤度の折衷</a></li>
+<li class="chapter" data-level="19.1.3" data-path="chapter26.html"><a href="chapter26.html#おかしな検定結果"><i class="fa fa-check"></i><b>19.1.3</b> おかしな検定結果?</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="chapter26.html"><a href="chapter26.html#回帰分析の確率モデル"><i class="fa fa-check"></i><b>19.2</b> 回帰分析の確率モデル</a></li>
+<li class="chapter" data-level="19.3" data-path="chapter26.html"><a href="chapter26.html#回帰分析の最尤推定ベイズ推定"><i class="fa fa-check"></i><b>19.3</b> 回帰分析の最尤推定，ベイズ推定</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="chapter26.html"><a href="chapter26.html#最尤推定の場合"><i class="fa fa-check"></i><b>19.3.1</b> 最尤推定の場合</a></li>
+<li class="chapter" data-level="19.3.2" data-path="chapter26.html"><a href="chapter26.html#ベイズ推定の場合"><i class="fa fa-check"></i><b>19.3.2</b> ベイズ推定の場合</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="chapter26.html"><a href="chapter26.html#帰無仮説検定とベイズ推定"><i class="fa fa-check"></i><b>19.4</b> 帰無仮説検定とベイズ推定</a></li>
+<li class="chapter" data-level="19.5" data-path="chapter26.html"><a href="chapter26.html#課題-24"><i class="fa fa-check"></i><b>19.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="chapter27.html"><a href="chapter27.html"><i class="fa fa-check"></i><b>20</b> Rによるベイズ推定</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="chapter27.html"><a href="chapter27.html#環境の準備"><i class="fa fa-check"></i><b>20.1</b> 環境の準備</a></li>
+<li class="chapter" data-level="20.2" data-path="chapter27.html"><a href="chapter27.html#回帰分析の推定"><i class="fa fa-check"></i><b>20.2</b> 回帰分析の推定</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="データは図にする.html"><a href="データは図にする.html"><i class="fa fa-check"></i><b>21</b> データは図にする</a></li>
+<li class="chapter" data-level="22" data-path="線形モデルはlm関数従属変数説明変数の形で書く.html"><a href="線形モデルはlm関数従属変数説明変数の形で書く.html"><i class="fa fa-check"></i><b>22</b> 線形モデルはlm関数。従属変数~説明変数の形で書く</a>
+<ul>
+<li class="chapter" data-level="22.0.1" data-path="線形モデルはlm関数従属変数説明変数の形で書く.html"><a href="線形モデルはlm関数従属変数説明変数の形で書く.html#mcmc法の評価"><i class="fa fa-check"></i><b>22.0.1</b> MCMC法の評価</a></li>
+<li class="chapter" data-level="22.1" data-path="線形モデルはlm関数従属変数説明変数の形で書く.html"><a href="線形モデルはlm関数従属変数説明変数の形で書く.html#要因計画の推定"><i class="fa fa-check"></i><b>22.1</b> 要因計画の推定</a></li>
+<li class="chapter" data-level="22.2" data-path="線形モデルはlm関数従属変数説明変数の形で書く.html"><a href="線形モデルはlm関数従属変数説明変数の形で書く.html#群内モデルの推定"><i class="fa fa-check"></i><b>22.2</b> 群内モデルの推定</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="chapter4.html"><a href="chapter4.html"><i class="fa fa-check"></i><b>23</b> 記述統計量</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="chapter4.html"><a href="chapter4.html#はじめに-1"><i class="fa fa-check"></i><b>23.1</b> はじめに</a></li>
+<li class="chapter" data-level="23.2" data-path="chapter4.html"><a href="chapter4.html#中心化傾向の指標"><i class="fa fa-check"></i><b>23.2</b> 中心化傾向の指標</a>
+<ul>
+<li class="chapter" data-level="23.2.1" data-path="chapter4.html"><a href="chapter4.html#平均値mean"><i class="fa fa-check"></i><b>23.2.1</b> 平均値mean</a></li>
+<li class="chapter" data-level="23.2.2" data-path="chapter4.html"><a href="chapter4.html#中央値median"><i class="fa fa-check"></i><b>23.2.2</b> 中央値median</a></li>
+<li class="chapter" data-level="23.2.3" data-path="chapter4.html"><a href="chapter4.html#最頻値mode"><i class="fa fa-check"></i><b>23.2.3</b> 最頻値mode</a></li>
+</ul></li>
+<li class="chapter" data-level="23.3" data-path="chapter4.html"><a href="chapter4.html#散らばりの指標"><i class="fa fa-check"></i><b>23.3</b> 散らばりの指標</a>
+<ul>
+<li class="chapter" data-level="23.3.1" data-path="chapter4.html"><a href="chapter4.html#分散と標準偏差"><i class="fa fa-check"></i><b>23.3.1</b> 分散と標準偏差</a></li>
+</ul></li>
+<li class="chapter" data-level="23.4" data-path="chapter4.html"><a href="chapter4.html#zScore"><i class="fa fa-check"></i><b>23.4</b> データの相対的位置</a></li>
+<li class="chapter" data-level="23.5" data-path="chapter4.html"><a href="chapter4.html#変数間関係の指標"><i class="fa fa-check"></i><b>23.5</b> 変数間関係の指標</a>
+<ul>
+<li class="chapter" data-level="23.5.1" data-path="chapter4.html"><a href="chapter4.html#相関係数の落とし穴"><i class="fa fa-check"></i><b>23.5.1</b> 相関係数の落とし穴</a></li>
+</ul></li>
+<li class="chapter" data-level="23.6" data-path="chapter4.html"><a href="chapter4.html#課題-25"><i class="fa fa-check"></i><b>23.6</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="chapter5.html"><a href="chapter5.html"><i class="fa fa-check"></i><b>24</b> 統計環境Rを使ってみる</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="chapter5.html"><a href="chapter5.html#環境の準備-1"><i class="fa fa-check"></i><b>24.1</b> 環境の準備</a>
+<ul>
+<li class="chapter" data-level="24.1.1" data-path="chapter5.html"><a href="chapter5.html#統計解析環境とアプリケーション"><i class="fa fa-check"></i><b>24.1.1</b> 統計解析環境とアプリケーション</a></li>
+<li class="chapter" data-level="24.1.2" data-path="chapter5.html"><a href="chapter5.html#統計環境r"><i class="fa fa-check"></i><b>24.1.2</b> 統計環境R</a></li>
+<li class="chapter" data-level="24.1.3" data-path="chapter5.html"><a href="chapter5.html#総合開発環境rstudio"><i class="fa fa-check"></i><b>24.1.3</b> 総合開発環境RStudio</a></li>
+<li class="chapter" data-level="24.1.4" data-path="chapter5.html"><a href="chapter5.html#統計環境の準備"><i class="fa fa-check"></i><b>24.1.4</b> 統計環境の準備</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="chapter5.html"><a href="chapter5.html#rとrstudioの基本的な機能"><i class="fa fa-check"></i><b>24.2</b> RとRStudioの基本的な機能</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="chapter5.html"><a href="chapter5.html#rstudioの機能と画面"><i class="fa fa-check"></i><b>24.2.1</b> RStudioの機能と画面</a></li>
+<li class="chapter" data-level="24.2.2" data-path="chapter5.html"><a href="chapter5.html#プロジェクト管理とrmarkdownによる実践"><i class="fa fa-check"></i><b>24.2.2</b> プロジェクト管理とRmarkdownによる実践</a></li>
+<li class="chapter" data-level="24.2.3" data-path="chapter5.html"><a href="chapter5.html#rの基本操作"><i class="fa fa-check"></i><b>24.2.3</b> Rの基本操作</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="chapter5.html"><a href="chapter5.html#rmarkdownによる文書作成"><i class="fa fa-check"></i><b>24.3</b> Rmarkdownによる文書作成</a></li>
+<li class="chapter" data-level="24.4" data-path="chapter5.html"><a href="chapter5.html#code05_08-.c-languagec-labelcode05_08-captionrmarkdownを書いてみる"><i class="fa fa-check"></i><b>24.4</b> ```` {#code::05_08 .c++ language=“c++” label=“code::05_08” caption=“Rmarkdownを書いてみる”}</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="計算をする.html"><a href="計算をする.html"><i class="fa fa-check"></i><b>25</b> 計算をする</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="計算をする.html"><a href="計算をする.html#四則演算"><i class="fa fa-check"></i><b>25.1</b> 四則演算</a>
+<ul>
+<li class="chapter" data-level="25.1.1" data-path="計算をする.html"><a href="計算をする.html#足し算"><i class="fa fa-check"></i><b>25.1.1</b> 足し算</a></li>
+<li class="chapter" data-level="25.1.2" data-path="計算をする.html"><a href="計算をする.html#引き算"><i class="fa fa-check"></i><b>25.1.2</b> 引き算</a></li>
+</ul></li>
+<li class="chapter" data-level="25.2" data-path="計算をする.html"><a href="計算をする.html#グラフの文法"><i class="fa fa-check"></i><b>25.2</b> グラフの文法</a>
+<ul>
+<li class="chapter" data-level="25.2.1" data-path="計算をする.html"><a href="計算をする.html#データの読み込みと整理"><i class="fa fa-check"></i><b>25.2.1</b> データの読み込みと整理</a></li>
+<li class="chapter" data-level="25.2.2" data-path="計算をする.html"><a href="計算をする.html#グラフの描画"><i class="fa fa-check"></i><b>25.2.2</b> グラフの描画</a></li>
+</ul></li>
+<li class="chapter" data-level="25.3" data-path="計算をする.html"><a href="計算をする.html#課題-26"><i class="fa fa-check"></i><b>25.3</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="chapter6.html"><a href="chapter6.html"><i class="fa fa-check"></i><b>26</b> 古典的テスト理論</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="chapter6.html"><a href="chapter6.html#テストと心理学"><i class="fa fa-check"></i><b>26.1</b> テストと心理学</a>
+<ul>
+<li class="chapter" data-level="26.1.1" data-path="chapter6.html"><a href="chapter6.html#人の性格についての考え方"><i class="fa fa-check"></i><b>26.1.1</b> 人の性格についての考え方</a></li>
+<li class="chapter" data-level="26.1.2" data-path="chapter6.html"><a href="chapter6.html#良いテストと悪いテスト"><i class="fa fa-check"></i><b>26.1.2</b> 良いテストと悪いテスト</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="chapter6.html"><a href="chapter6.html#測定のモデル"><i class="fa fa-check"></i><b>26.2</b> 測定のモデル</a></li>
+<li class="chapter" data-level="26.3" data-path="chapter6.html"><a href="chapter6.html#誤差の基本的性質"><i class="fa fa-check"></i><b>26.3</b> 誤差の基本的性質</a></li>
+<li class="chapter" data-level="26.4" data-path="chapter6.html"><a href="chapter6.html#テストの分散と信頼性妥当性の関係"><i class="fa fa-check"></i><b>26.4</b> テストの分散と信頼性・妥当性の関係</a>
+<ul>
+<li class="chapter" data-level="26.4.1" data-path="chapter6.html"><a href="chapter6.html#信頼性"><i class="fa fa-check"></i><b>26.4.1</b> 信頼性</a></li>
+<li class="chapter" data-level="26.4.2" data-path="chapter6.html"><a href="chapter6.html#信頼性を評価する"><i class="fa fa-check"></i><b>26.4.2</b> 信頼性を評価する</a></li>
+<li class="chapter" data-level="26.4.3" data-path="chapter6.html"><a href="chapter6.html#妥当性"><i class="fa fa-check"></i><b>26.4.3</b> 妥当性</a></li>
+<li class="chapter" data-level="26.4.4" data-path="chapter6.html"><a href="chapter6.html#妥当性を評価する"><i class="fa fa-check"></i><b>26.4.4</b> 妥当性を評価する</a></li>
+</ul></li>
+<li class="chapter" data-level="26.5" data-path="chapter6.html"><a href="chapter6.html#課題-27"><i class="fa fa-check"></i><b>26.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="chapter7.html"><a href="chapter7.html"><i class="fa fa-check"></i><b>27</b> 確率分布</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="chapter7.html"><a href="chapter7.html#確率と呼ばれる数字"><i class="fa fa-check"></i><b>27.1</b> 確率と呼ばれる数字</a>
+<ul>
+<li class="chapter" data-level="27.1.1" data-path="chapter7.html"><a href="chapter7.html#推論"><i class="fa fa-check"></i><b>27.1.1</b> 推論</a></li>
+</ul></li>
+<li class="chapter" data-level="27.2" data-path="chapter7.html"><a href="chapter7.html#確率分布"><i class="fa fa-check"></i><b>27.2</b> 確率分布</a>
+<ul>
+<li class="chapter" data-level="27.2.1" data-path="chapter7.html"><a href="chapter7.html#離散分布と確率質量"><i class="fa fa-check"></i><b>27.2.1</b> 離散分布と確率質量</a></li>
+<li class="chapter" data-level="27.2.2" data-path="chapter7.html"><a href="chapter7.html#continuousDistribution"><i class="fa fa-check"></i><b>27.2.2</b> 連続分布と確率密度数</a></li>
+<li class="chapter" data-level="27.2.3" data-path="chapter7.html"><a href="chapter7.html#確率分布関数"><i class="fa fa-check"></i><b>27.2.3</b> 確率分布関数</a></li>
+</ul></li>
+<li class="chapter" data-level="27.3" data-path="chapter7.html"><a href="chapter7.html#ベルヌーイ分布と二項分布"><i class="fa fa-check"></i><b>27.3</b> ベルヌーイ分布と二項分布</a>
+<ul>
+<li class="chapter" data-level="27.3.1" data-path="chapter7.html"><a href="chapter7.html#ベルヌーイ分布"><i class="fa fa-check"></i><b>27.3.1</b> ベルヌーイ分布</a></li>
+<li class="chapter" data-level="27.3.2" data-path="chapter7.html"><a href="chapter7.html#二項分布"><i class="fa fa-check"></i><b>27.3.2</b> 二項分布</a></li>
+</ul></li>
+<li class="chapter" data-level="27.4" data-path="chapter7.html"><a href="chapter7.html#expectation"><i class="fa fa-check"></i><b>27.4</b> 確率関数の期待値</a></li>
+<li class="chapter" data-level="27.5" data-path="chapter7.html"><a href="chapter7.html#課題-28"><i class="fa fa-check"></i><b>27.5</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="chapter8.html"><a href="chapter8.html"><i class="fa fa-check"></i><b>28</b> 正規分布と推測統計学</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="chapter8.html"><a href="chapter8.html#正規分布の形"><i class="fa fa-check"></i><b>28.1</b> 正規分布の形</a>
+<ul>
+<li class="chapter" data-level="28.1.1" data-path="chapter8.html"><a href="chapter8.html#正規分布ができるまで"><i class="fa fa-check"></i><b>28.1.1</b> 正規分布ができるまで</a></li>
+<li class="chapter" data-level="28.1.2" data-path="chapter8.html"><a href="chapter8.html#正規分布を特徴づける"><i class="fa fa-check"></i><b>28.1.2</b> 正規分布を特徴づける</a></li>
+</ul></li>
+<li class="chapter" data-level="28.2" data-path="chapter8.html"><a href="chapter8.html#正規分布の関数"><i class="fa fa-check"></i><b>28.2</b> 正規分布の関数</a></li>
+<li class="chapter" data-level="28.3" data-path="chapter8.html"><a href="chapter8.html#標準正規分布の面積を測る"><i class="fa fa-check"></i><b>28.3</b> 標準正規分布の面積を測る</a></li>
+<li class="chapter" data-level="28.4" data-path="chapter8.html"><a href="chapter8.html#UsefulNormal"><i class="fa fa-check"></i><b>28.4</b> 標準正規分布の利用</a></li>
+<li class="chapter" data-level="28.5" data-path="chapter8.html"><a href="chapter8.html#まとめにかえて"><i class="fa fa-check"></i><b>28.5</b> まとめにかえて</a></li>
+<li class="chapter" data-level="28.6" data-path="chapter8.html"><a href="chapter8.html#課題-29"><i class="fa fa-check"></i><b>28.6</b> 課題</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="chapter9.html"><a href="chapter9.html"><i class="fa fa-check"></i><b>29</b> 線形モデルの基礎</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="chapter9.html"><a href="chapter9.html#相関関係とモデル"><i class="fa fa-check"></i><b>29.1</b> 相関関係とモデル</a></li>
+<li class="chapter" data-level="29.2" data-path="chapter9.html"><a href="chapter9.html#予測と線形モデル"><i class="fa fa-check"></i><b>29.2</b> 予測と線形モデル</a></li>
+<li class="chapter" data-level="29.3" data-path="chapter9.html"><a href="chapter9.html#最小二乗法"><i class="fa fa-check"></i><b>29.3</b> 最小二乗法</a></li>
+<li class="chapter" data-level="29.4" data-path="chapter9.html"><a href="chapter9.html#予測の評価"><i class="fa fa-check"></i><b>29.4</b> 予測の評価</a></li>
+<li class="chapter" data-level="29.5" data-path="chapter9.html"><a href="chapter9.html#課題-30"><i class="fa fa-check"></i><b>29.5</b> 課題</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">データ解析基礎テキストブック</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter2" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> 電子計算機のイロハ</h1>
+<div id="前置き" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> 前置き</h2>
+<p>前回は心理学と統計の関係について，という事前準備をお話ししました。ではいよいよ内容に入るか，と言ったらそうではなく，今回もまだ準備運動の段階です。すみません。
+しかも今回はコンピュータの話です。そんなの聞かなくてもわかってるよ，という人もいるかもしれませんし，知らなくてもみなさんはきっとスマートフォンやタブレットを使っていることと思います。しかし知らずに使うことと，知ってて使うことには大きな違いがありますし，今後大学でレポートや論文を書いたり，それに必要な統計処理をするためにも，計算機の基本的な特徴を知っておく必要があるのです。コンピュータ関係の授業で聞いたことがある話，これから聞く話もあると思いますが，もし苦手意識を持っている人がいたらこれを機に再入門するつもりで読んでください。</p>
+</div>
+<div id="コンピュータの基礎" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> コンピュータの基礎</h2>
+<p>21世紀に生きる私たちは身の回りをコンピュータに囲まれて生きています<a href="#fn71" class="footnote-ref" id="fnref71"><sup>71</sup></a>。それは携帯電話の形をしていたり，ノートパソコン，デスクトップパソコンの形をしていたりします。また時々テレビなどで報道されますが，気象予報や飛沫がどのように飛び散るかをシミュレーションする大型計算機「富嶽」などもコンピュータですね。これらは形は違いますが，いずれも電子計算機であり，電子計算機には次の5つの装置があります。</p>
+<dl>
+<dt>入力装置</dt>
+<dd><p>キーボードやマウス，タッチパネルなどを使って情報を取り込むデバイス(装置)</p>
+</dd>
+<dt>出力装置</dt>
+<dd><p>モニタやプリンタ，タッチパネルなどを経由して情報を出力するデバイス</p>
+</dd>
+<dt>演算装置</dt>
+<dd><p>プログラムの命令に従って計算処理(四則演算や論理演算)をする装置。一般に電子計算機の中央で一括して処理するので，Central
+Processing Unit(CPU)と呼ばれるものです。</p>
+</dd>
+<dt>制御装置</dt>
+<dd><p>演算結果に従って他の装置に指示を出す装置のこと。演算装置とまとめてCPUに実装されています。</p>
+</dd>
+<dt>記憶装置</dt>
+<dd><p>計算結果などの情報を一旦保持しておく装置のこと。コンピュータの内部にあって一時的な計算に使われる一次記憶装置，ハードディスクドライブ(Hard
+Disk Drive,HDD)やソリッドステートドライブ(Solid State
+Drive,SSD)などの二次記憶装置など。</p>
+</dd>
+</dl>
+<p>最後の記憶装置については，一次記憶装置，二次記憶装置と種類が分かれていますがこの区別は簡単で，電源を落とした時に記憶が消えてしまうのが一次記憶装置，電源を落としても記憶が消えないのが二次記憶装置です。例えば<span class="math inline">\(12+38=\)</span>という計算をするとき，頭の中で「えーっと一の位が2と8だから10になって繰り上がるから・・・」と考えてから，ノートに<span class="math inline">\(=50\)</span>という答えを書くと思います。次の問題に進むと，先ほどの「1繰り上がるから・・・」という情報は忘れてますよね。でもノートに書いた<span class="math inline">\(12+38=50\)</span>というのは残っています。このノートがいわば二次記憶装置であり，頭の中で一時的に保持していた情報が一次記憶装置ということになります。一次記憶装置はRAM(Random
+Access Memory)とも呼ばれます<a href="#fn72" class="footnote-ref" id="fnref72"><sup>72</sup></a>。</p>
+<p>ところで，コンピュータがやっているのは計算だけです。私はこの資料をPCに向かって書いており，キーボード(入力装置)を叩きながら，画面(出力装置)を見て文字を連ねています。これも「キーが押されたら文字を表示させ，その文字列を記録する」という処理を機械が淡々とこなしているに過ぎません。あるいはマウスやトラックパッドで，アイコンを指し示し，カチリと押す<a href="#fn73" class="footnote-ref" id="fnref73"><sup>73</sup></a>ことで選択し，押し込んだまま移動させ(ドラッグ)，離すことで別の場所に置いたりします(ドロップ)。トラックパッドの場合は2本指で同時に押したりしますし，タッチパネルの場合は二本指を広げたり(ピンチアウト)，逆に二本指を狭めたり(ピンチイン)，3本以上の指でファサーっと触って場所を広げたりします。例えば「ファイルを掴んでゴミ箱に捨てる(削除する)」というのが我々にとっての操作ですが，コンピュータの内部では実はこんなことをしていません。ファイルは(二次)記憶装置に書き込まれた情報です。記憶装置は原稿用紙のように小さなマス目がたくさんあって，ファイルとはそのマス目のXXX番目からYYY番目までの情報，ということです。このファイルを削除するというのは，記憶装置のある場所(アドレス)に「削除されたものなので画面に表示しない」という情報を書き込む，という操作をしているだけです。じゃあなぜ私たちは「ゴミ箱にドラッグ＆ドロップ」なんてするのでしょう？
+それはそのほうがわかりやすいからですよね。「ファイルを削除する」というのは，「メモリアドレスのXXX番地に別の情報を書き込む」という操作だと言われてもピンとこないので，コンピュータが人間にとってわかりやすい表現をして見せてくれているのです。このユーザにとってわかりやすい幻を見せてその気にさせてくれるというデザインのことを，ユーザーイリュージョンと言います。ともかくこういう「画面で見ながら操作する」ことをグラフィカル・ユーザ・インターフェイス(Graphical
+User
+Interface,GUI)といいますが，これのおかげでコンピュータの操作は随分楽になっています<a href="#fn74" class="footnote-ref" id="fnref74"><sup>74</sup></a>。</p>
+</div>
+<div id="コンピュータの歴史" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> コンピュータの歴史</h2>
+<p>コンピュータの装置，すなわちハードウェアについての解説につづいて，ソフトの側面についても解説を加えようと思うのですが，そのためには少し歴史的な流れを説明したほうがわかりやすいかもしれません。</p>
+<p>コンピュータの発展の歴史は，小型化の歴史でもあります。最初にできたコンピュータはENIACといいます。1946年の話です。このENIACは27トン，広さにして倉庫1つ分(167<span class="math inline">\(m^2\)</span>，90畳以上の広さ)が必要なもので，真空管を使った計算機でした。軍事的な計画のために開発されたオーダーメイドのものですから，一般人が触れるはずがないものです。時代が下がって真空管が半導体，ICチップになった頃，やっとサイズが小さくなって，家庭用・個人用のコンピュータというのができるかもという時代が来ました。Appleコンピュータの創始者，スティーブ・ジョブズとスティーブ・ウォズニアックが最初のパソコン(Personal
+Computer,PC)，Apple Iを発売したのが1976年。爆発的に売れたApple
+IIが発売されたのが1977年です。AppleIIはブラウン管表示装置とキーボードを持っていましたので，今のPCの原型とも言えるかもしれません<a href="#fn75" class="footnote-ref" id="fnref75"><sup>75</sup></a>。PCを作っている会社はAppleだけでなく，IBMやDECなどがありましたが，まだこの頃はパーソナルなレベルのものよりも大型計算機の開発が進んでいました。IBMがPCを作ったのは1980年で，この頃から小型化が進められていきます。</p>
+<p>私事で恐縮ですが，1976年に生まれた私が初めてPCを手にしたのは1991年，高校入学のお祝いで買ってもらったFujitsuのFM-Townsという機体でした。この頃は「マルチメディア」という名前もなく，「ハイパーメディア」と読んで売り出していました。この機体は他のPC(NECのPC-9801やSharpのX68000シリーズが有名でした)とは違って，CD-ROMドライブをつけていたことが画期的だった時代です。その後1994年に大学生になりましたが，この頃は連絡を取り合うツールはポケベルが主流であり，携帯電話(やPHS)のような個人端末は高級品という時代でした。大学に入るとコンピュータを学ぶ授業があり，アカウントをもらったりするのですが，それは大学が持っている大型計算機に端末からアクセスするためのものでした。いろんな部屋にあるのは「端末」で，それほど機能の優れたPCではなく，複雑な計算(統計的な計算など)は大型計算機に仕事を依頼しその返信を待つ，というスタイルでした。関西私立のマンモス校でしたので学生数は非常に多かったのですが，多くの学生が一度にアクセスしても，大型計算機はものすごくものすごーく計算が早かったので，瞬時に回答をもたらしてくれるものでした<a href="#fn76" class="footnote-ref" id="fnref76"><sup>76</sup></a>。つまり，まだ「専門的な計算は大型計算機」という時代であり，パーソナルなコンピュータになるにはもう少し時間が必要でした。</p>
+<p>どれぐらいか，というと，実はその次の年なのです。1995年，Windows
+95というOSが発売されました。これを機に日本でもPCがどんどん浸透していくことになります。Windows95は物凄いんだぞ，と発売前からテレビでも散々とりあげられ，発売日には行列ができて真夜中のカウントダウンと同時に大フィーバー，という売れ行きでした。当時のそれは何が凄かったのでしょう？
+コンピュータにはそれ動かす基本ソフトが必要です。HDDにデータを書き込み，キーボードからの入力をディスプレイに表示する，といったごく基本的な装置を統括し，メモリ番地をファイルという単位で扱うと言った基本的な操作はOSいうソフトウェアが担当します(図<a href="chapter2.html#fig::02_01" reference-type="ref" reference="fig::02_01">1.1</a>)<a href="#fn77" class="footnote-ref" id="fnref77"><sup>77</sup></a>。このOS，大型計算機はUnixと呼ばれるものを使っていましたが，各企業が個人向けにコンピュータを売り始めるときにも当然必要で，各社で開発もしていましたが，PCの共通規格をつくることでOS部分は共有できるようになりました。そこを提供したのがMicrosoft社のビル・ゲイツです。どんなパーツで作られたPCであってもWindowsというOSが共通のフィールドを用意してくれるので，ユーザはWindowsで動くアプリケーションを選ぶだけで良い，ということになったのです。</p>
+<div class="figure">
+<img src="../images/text02/slide02_01.png" id="fig::02_01" style="width:12cm" alt="" />
+<p class="caption">コンピュータのハードウェアとソフトウェアの関係</p>
+</div>
+<p>そしてWindows95は，GUI，つまり「ファイルを掴んでポイ」といった直感的な操作で使えることも大きな特徴でした。大型計算機で使われているLinuxは基本的にCommand
+User
+Interface,CUIで，黒い画面にプログラムを書いて実行するといった手法で，初心者には人気がなかったのです。GUIについては，その頃Appleを追放されていたスティーブ・ジョブズが，NeXTという会社でGUIを備えたOSを開発していました。このNeXTはその後Appleに買収され，ジョブズはAppleに戻って活躍することになります。その頃から巷では，WindowsのGUIはAppleのOSを真似したものだと非難されていたのですが，商業的にはWindowsが大勝利，というわけです。ともかくこれを機に企業などはもちろん一般家庭でもPCを使うような時代になりました。</p>
+<p>ちなみにインターネットが広まったのもこの頃です。私は大学3年生の時，大学の授業で初めてインターネットを介して世界の情報を得る，という経験をしました<a href="#fn78" class="footnote-ref" id="fnref78"><sup>78</sup></a>。その頃から徐々に，大型PCのアカウントではなくインターネットで使えるメールアドレスというのを個々人が持つようになりました。携帯電話も廉価なPHSが広まり，メッセージだけでなく徐々に音声，写真，短い動画が遅れるようになっていきます。当初は当然画質・音質も今とは比べものにならないのですが，それでもインターネットを経由してつながるという経験は想像を超えたものでした。</p>
+<p>皆さんはすでに，携帯電話やインターネットがある時代に生まれた世代だと思います。こんな話はすでに過去のものであり，不便な頃の話を聞かされても困る，と思うかもしれません。私の世代は，幸いにもこのようにちょうどコンピュータが使われはじめ，広がり，高性能になっていくにつれて育ってきていますので，そのぶん機械の根本的な理解に直結しやすい社会環境にあったのです。みなさんは，便利な時代ではありますが，言い換えると「初心者が苦労しないように補助輪をつけておく」「何もしなくてもできているような感覚が得られるようなイリュージョンを見せておく」という状態におかれているので，補助輪が対応できない道に進んだり，多くの人とは違う使い方をするときに，急にサポートが外れどこで困っているかわからなくなる，ということになりかねません。非常に大雑把なHistorical
+Reviewではありますが，理解の一助になればと思います。</p>
+<p>ところで，先ほどサポートという言葉を使いましたが，このサポートを商売にしているのがMicrosoftやAppleというIT企業です。これらの会社は，ユーザが使いやすいようにソフトウェアを提供してくれますが，有償ですし想定外の使用をするユーザに対してはサポートをしてくれません。逆にいうと，「決められた路線を走らなければ面倒を見ない」ということでもあり，これはユーザに不自由を強いているとも言えます。また，どのような仕組みで動いているのかを尋ねても，企業秘密と言って答えてくれません。コンピュータは誰でも自由に使えるべきものであり，勝手にユーザの情報を盗んだりしていないか，と言ったチェックをするためにもオープンであるべきではないか。そういう考え方に基づく，フリーソフトウェアというソフトウェアのあり方があります。UnixというOSをPC用にしたLinuxがそうであり，オフィスソフトのLibreOffice，統計環境のRなどもこの精神に賛同するものです。フリーソフトウェアは自由であり，無償です。お金と秘密を払ってサポートを受ける代わりに，ユーザが相互に助け合ってオープンで自由な世界を広げていこうという活動です。急に何の話なんだ，と思うかもしれませんが，最後のセクションでもう一度この問題に触れ，心理学，ひいては科学的活動すべてにおいて重要な問題であることを確認したいと思います。</p>
+</div>
+<div id="情報の単位" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> 情報の単位</h2>
+<p>コンピュータを取り巻く世界の話はこれまでにして，ソフトの側面についての解説に入りましょう。</p>
+<p>コンピュータは文字，音，絵，動画ファイルいずれについても，全て0か1のデータとして管理します。0/1の1つの単位を1bit(ビット)と言います。1bitであればYesかNoか，という二択の情報しか提供できませんが，これが7つあれば<span class="math inline">\(2^7=128\)</span>ですから，これで128種類の状態を表現できます。コンピュータは一般に，8bitで1つの単位として計算します。8bitのことを1byte(バイト)と言います。この1byteが1024集まったものを1kb(キロバイト)といいます<a href="#fn79" class="footnote-ref" id="fnref79"><sup>79</sup></a>。1kbの次は，1024kb=1Mb(メガバイト)です。さらに1024MB=1GB(ギガバイト)で，1024GB=1TB(テラバイト)，1024TB=1PB(ペタバイト)，1024PB=1EB(エクサバイト)と続きます。K,M,G,T,P,Eといった名称は1000倍ごとに変わる大きさの桁をあらわしているのであって，「ギガが減る」というのは本来意味をなさない表現です<a href="#fn80" class="footnote-ref" id="fnref80"><sup>80</sup></a>。</p>
+<p>このビット・バイトは情報に関する基本単位なのであちこちに使われます。記憶装置について使われるとき，一次記憶装置も二次記憶装置も同じ単位なので混同するかもしれませんが，2021年現在では二次記憶装置の単位はGBからTBが使われます。USBフラッシュメモリーや外付けHDDなどは数TBの容量が一般的でしょう。これに対して，一次記憶装置は4〜64GBぐらいが相場かと思います。一次記憶装置は暗算の途中経過のように一時的に記憶する場所に過ぎないので十数Gでも問題ありませんが，二次記憶装置は結果の記録なので大きければ大きいほど余裕が持てますね。例えば数TBでもテレビドラマや映画を何本も記憶できるのですから，PBやEBなんて使うのかな，と侮ってはいけません<a href="#fn81" class="footnote-ref" id="fnref81"><sup>81</sup></a>。すぐにそれぐらいのサイズが必要な時代が来ることでしょう。</p>
+<p>実際，それぞれ単位ではどれぐらいの情報が記録できるのでしょうか。1byteは128文字表現できるので，英語のアルファベット26文字に加え，数字や簡単な記号であれば1byteで表現できます。例えばAという文字は01000001，Bという文字は01000010，小文字のaは01100001，と言ったように0/1の文字列8個と一対一対応させて考えるのです。日本語は1byteでは足りませんので，一文字あたり2byteが割り当てられます。また1KB(=1024byte)は500文字ですから，原稿用紙一枚ぐらいになります。1MB(=1024KB)は文字だけだと新聞一紙(朝刊の40ページ分)ぐらいで，昔の記録媒体であるフロッピーディスク一枚に保存できるのがちょうど1MBでした<a href="#fn82" class="footnote-ref" id="fnref82"><sup>82</sup></a>。ちなみに「カメラ映像+音声」のオンラインビデオ会議を1時間やると200〜300MBぐらいの容量をやりとりしていることになります。ビデオ会議では文字(チャット)だけでなく，画像(動画)や音声も送り合いますね。実は画像や音声も，0/1に置き換えています。音声の場合，1秒間を短い間隔にくぎります。この区切りのことをサンプリング周波数といい，例えば44.1
+kHzという単位は1 秒間に
+<span class="math inline">\(44.1 \times 1000 ＝ 44100\)</span>点のデータの採取をします。この6データ点において，音の振動幅を区切ります。ビットレートと言いますが，例えば16bitで区切る場合は2<span class="math inline">\(^16=65,536\)</span>段階で区切り，その高さのおとがある(1)かない(0)かで表すわけです。このように時間と音階を細かく区切り，その目に情報があるかないかを積み重ねてデータとするわけです。テキストよりも圧倒的に情報が多くなるのが分かりますね。画像も同様に，図面を細かい単位(ピクセルなど)で分けて，そこの色合いを色々な段階で区切ります。色はR(赤)G(緑)B(青)の組み合わせで表現でき，それぞれを8bit<span class="math inline">\(=2^8=256\)</span>段階で表現したりします。一点一点にその情報がありますから，図の情報も非常に多くなるのがわかると思います。動画はその画像が時系列的に細かく分割されたものと思ってください。このように分解しますので，テキスト，音声，図，動画の順にデータサイズが大きくなります。通信機器が最初ポケベル＝数byteの情報しか送れなかったものから，徐々に絵文字，ショートメッセージ(音声)，写真<a href="#fn83" class="footnote-ref" id="fnref83"><sup>83</sup></a>，動画が送れるように発展していきました。今では町中のあちこちで，誰もが手軽に動画をモバイル端末で見られるようになっています。あらためて，すごい進歩ですね<a href="#fn84" class="footnote-ref" id="fnref84"><sup>84</sup></a>。<a href="#fn85" class="footnote-ref" id="fnref85"><sup>85</sup></a>。</p>
+<p>ところで，1byteは256種の情報が記録できるので，英語のアルファベットや数字は1byteあれば十分だが，日本語や中国語など，英語以外の言語は文字種が多いので，2byteで一文字を表すという話をしました。この2バイト文字も，例えば「あ」とか「亜」という文字に111000111000000110000010とか111001001011101010011100という文字列を割り当てるのですが，言語ごとによってどの数字をどの文字に割り当てるかという対応表が変わってきます。これを文字コードと言います。日本語はかつてShift-JISというコードで変換していましたが，今は世界のあらゆる言語に対応している共通企画である，UTF-8という文字コードで変換することが一般的です。ところがなぜか，日本のWindows
+OSだけShift-JISをいまだに使い続けており，他のPCとファイルをやり取りするときに文字コードの変換エラー問題が起きます。ファイルを開いて文字化けをしたりとか，プログラムが実行される際に「ファイルにアクセスできない」というエラーが生じたりするのは，この文字コードの問題が大きいのです<a href="#fn86" class="footnote-ref" id="fnref86"><sup>86</sup></a>。受身的な対策法になってしまいますが，PCでつかうユーザ名やファイル名などは半角英数文字を使い，短くした方がこうしたエラーに出くわしにくくなります。逆に，全角文字やスペース(空白)などを含んだファイル名，やたらと長いファイル名を使っていると，こうした問題に出くわしやすくなるということです。</p>
+</div>
+<div id="suffix" class="section level2" number="12.5">
+<h2><span class="header-section-number">12.5</span> ファイルの場所</h2>
+<p>物理的実体(記録装置，記憶装置)の上で0/1のデータをやり取りしているだけです。記録(記憶)装置上に置かれている情報のセットは「ファイル」という形で記録されています。スマートフォンやタブレットは，ユーザの利便性のためにファイルの存在を意識しなくても良いようになってはいますが，バックエンドでは実行されるアプリケーションもファイルですし，開かれる音声や動画もファイルです。
+特にパソコンでは，どの媒体，どのアプリで使うどういうファイルかを識別するために，拡張子(かくちょうし)と呼ばれる識別記号をファイルの後ろにつけています。拡張子はファイル名の背後にピリオドで区切って追記されています。ついてないように見えても，OSがそれを表示させない設定にしてあるだけであることに注意してください。代表的な拡張子と，それに対応づけられているアプリケーションは次のようなものがあります。</p>
+<dl>
+<dt>.docx</dt>
+<dd><p>マイクロソフト社の文書作成アプリケーション，Wordで使うファイル</p>
+</dd>
+<dt>.xlsx</dt>
+<dd><p>マイクロソフト社の表計算アプリケーション，Excelで使うファイル</p>
+</dd>
+<dt>.pdf</dt>
+<dd><p>Adobe社が開発したPortable Document
+Format形式。OSが違っても同じレイアウトで文書を表示できるのが利点で，PDF形式を読むことができるアプリケーションは多数。</p>
+</dd>
+<dt>.txt</dt>
+<dd><p>シンプルな文字だけのテキストファイル。文字の飾りやレイアウトなどの情報がない最もプレーンな形式なので，OSが違っても文字コードさえ合っていれば読むことができる。</p>
+</dd>
+<dt>.mp3</dt>
+<dd><p>音楽，音声のファイル。音声データには他の種類もあります。</p>
+</dd>
+<dt>.jpg</dt>
+<dd><p>画像のファイル形式の一種。</p>
+</dd>
+<dt>.png</dt>
+<dd><p>画像のファイル形式の一種。</p>
+</dd>
+<dt>.csv</dt>
+<dd><p>comma separated
+variablesファイル。変数をカンマ(,)で区切ったファイルという意味で，中身は.txtと同じく装飾のない文字/数字だけであり，文字コードさえ間違えなければOSを問わずに読み書きできる。データのやり取りはこの形式で行われることが多い。</p>
+</dd>
+</dl>
+<p><code>.txt</code>や<code>.csv</code>といった形式は，「装飾のない，文字だけの」ファイルです。こうした種類のことをASCIIファイルと言います。メモ帳などのエディタと呼ばれるプログラムで読み書きできます。逆に<code>.docx</code>など特定の会社が提供するアプリケーションに対応しているファイルは，アプリの中での様々な操作・装飾を暗号化して保存しており，メモ帳などで読んでも意味がわかりません。対応しないアプリでは開くこともできません。こうした形式はASCIIファイルに対してバイナリファイルと言います。</p>
+<p>OSは拡張子を見てファイルの種類を判別し，そのファイルを開くのに適したアプリケーションを自動的に起動し，開いてくれます<a href="#fn87" class="footnote-ref" id="fnref87"><sup>87</sup></a>。<code>.csv</code>ファイルはExcelなどのアプリケーションで開くことも当然できますが，その際文字コードのエラーが生じたり，保存するときに文字コードを変えたりして，形式・内容が気づかずに変わっていることがあります。Windowsも良かれと思ってやっていることなのですが，処理が徹底してないのか，かえって不便になってしまっています<a href="#fn88" class="footnote-ref" id="fnref88"><sup>88</sup></a>。</p>
+<p>パソコンが機能するのに必要なファイルは非常にたくさんあるので，整理するためにディレクトリ(フォルダ)の中にまとめて，階層構造を持って保存されています。複数のファイルはフォルダにまとめますが，フォルダをまとめたフォルダ，というように「階層構造」をつくっています。
+図<a href="chapter2.html#fig::02_02" reference-type="ref" reference="fig::02_02">1.2</a>や<a href="chapter2.html#fig::02_03" reference-type="ref" reference="fig::02_03">1.3</a>に，WindowsやMacでファイルを見るための画面(アプリケーション名がそれぞれエクスプローラ，ファインダーと異なります)を示しています。いずれもアイコンの色や形は違いますが，フォルダの中にフォルダやファイルが含まれる，という形になっているのがわかると思います。</p>
+<div class="figure">
+<img src="../images/text02/slide02_02.png" id="fig::02_02" style="width:12cm" alt="" />
+<p class="caption">Windowsのエクスプローラ画面</p>
+</div>
+<div class="figure">
+<img src="../images/text02/slide02_03.png" id="fig::02_03" style="width:12cm" alt="" />
+<p class="caption">Mac OSのファインダー画面</p>
+</div>
+<p>ここでWindowsの画面にある，エクスプローラの上部を見てみましょう。この例では「PC&gt;ローカルディスク(C:)&gt;ユーザー＞kosugitti&gt;」とありますね。日本語の文字が入っているので2バイト文字なのかと思いきや，ここをクリックしてみると「C:¥Users¥kosugitti」と出てきます。実はこちらが本当の名前で，ローカルディスクとかユーザーと表示されていたのは使い手に優しく表現しているだけのイリュージョンなのです。ここでC:とあるのはドライブと呼ばれ<a href="#fn89" class="footnote-ref" id="fnref89"><sup>89</sup></a>，記憶装置の実体を指します。この場合はパソコンに内蔵されたハードディスクドライブです<a href="#fn90" class="footnote-ref" id="fnref90"><sup>90</sup></a>。このCドライブの中に，Usersというフォルダがあり，その中にkosugittiというユーザが使う領域がある，という区分になっています<a href="#fn91" class="footnote-ref" id="fnref91"><sup>91</sup></a>。</p>
+<div class="figure">
+<img src="../images/text02/slide02_04.png" id="fig::02_04" style="width:12cm" alt="" />
+<p class="caption">Windowsのフォルダ階層</p>
+</div>
+<p>図<a href="chapter2.html#fig::02_05" reference-type="ref" reference="fig::02_05">1.5</a>にはMacの画面を示していますが，ここでもドライブ，フォルダ，フォルダ，という構造になっていること，ユーザのなかにnapierというユーザ名があることなどが確認できると思います。Ubuntuなど別のOSでもこうした仕組みは同じです。これらの画面を見ながら自分で使うファイル，作ったファイルがどこにあるのかをはっきり把握できるようにしておいてください。</p>
+<div class="figure">
+<img src="../images/text02/slide02_05.png" id="fig::02_05" style="width:12cm" alt="" />
+<p class="caption">Mac OSのフォルダ階層</p>
+</div>
+<p>ところで，最近はこうした手元の物理的実体にファイルを置くことに加えて，クラウドに保存することも少なくありません。クラウドとは雲という意味で，インターネットの向こう側のどこか，ということを意味します。ですが，基本的にはインターネットで繋いだその先にも電子計算機があるのです。例えばパソコンAとパソコンBをケーブルで繋ぐと，パソコンAからパソコンBのファイルにアクセスできます<a href="#fn92" class="footnote-ref" id="fnref92"><sup>92</sup></a>。このケーブルをどんどん伸ばすと，遠く離れていてもこの操作ができます。このケーブル網を世界レベルに広げているのがインターネットです<a href="#fn93" class="footnote-ref" id="fnref93"><sup>93</sup></a>。</p>
+<p>ここで覚えておいて欲しいのは，当たり前のようですが，ネットといっても基本的には電子計算機と電子計算機を繋げている実体がどこかにあって，ファイルのやりとりをしているだけだということです。ブラウザはウェブサイトの情報を書いたファイルを取り込んでホームページを見せてくれていますし<a href="#fn94" class="footnote-ref" id="fnref94"><sup>94</sup></a>，Youtubeは動画のファイル，Instagramは画像のファイルへのアクセスをして見せてくれているのです。</p>
+<div class="figure">
+<img src="../images/text02/slide02_06.png" id="fig::02_06" style="width:12cm" alt="" />
+<p class="caption">インターネットの世界</p>
+</div>
+<p>最近ではクラウドサービス，というのがよくあります。中でもDropboxとかOneDrive，iCloudなどが有名です。これらは，ファイルをインターネットを介した別の大型電子計算機に保存(アップロード)し，インターネットを介して読み込み(ダウンロード)して使う，というものです。手元の電子計算機の中に記録されているファイルのことを「ローカル」，サーバなど遠隔地にある大型機に記録されているファイルのことを「サーバ」「クラウド」と呼んで区別しますが，このローカルとサーバのファイルを常に同じものに同期しておく便利なシステムです。こうしたクラウドサービスを使うと，たとえば大学で作業して保存したファイルを，USBメモリに保存して自宅のパソコンにコピーする，という操作をしなくても，大学でクラウドサービス上のフォルダ内に保存しただけで，自宅のパソコンにそのファイルがコピーされているため<a href="#fn95" class="footnote-ref" id="fnref95"><sup>95</sup></a>，意識せずにそのまま作業を続けられるということです。自動的にバックアップをとってくれているとも言えるので便利ですね。</p>
+<p>もちろん注意すべきこともあります。「他の人に見られたら困るファイル」，「アプリケーションの実行ファイル」などは通信網の向こうではなく，手元(ローカル)に置いておきましょう。個人情報・機密情報などを，クラウドドライブに保存すると，悪意を持った人が大型計算機に攻撃を仕掛けて情報を盗んでいく可能性があるからです。情報化の怖いところは，取られても気づかない(コピーすればいいだけで元ファイルになんの影響もない)ところにあります。加えて，取られたものをばら撒かれる＝インターネットを介して誰でもアクセスし保存できるようにされると，全てを回収できなくなるのも問題です。失言が記録されて拡散されると大変なことになるのは，みなさんもこの時代に生きる人間のマナーとして色々見聞するところと思います。
+また，クラウドサービスで自動的に同期されるといっても，アプリケーションの実行ファイルなどはローカルに保存するべきです。アプリケーションは実行に際してさまざまな関連ファイルにアクセスしますので，1つでも場所が違うところがあるとエラーになって動かなくなります。同じOSでも，です。インターネットからとってきたソフトウェアをうっかりOneDriveに保存してしまうと，アクセスできないエラーで起動しない，ということもありますので注意してください<a href="#fn96" class="footnote-ref" id="fnref96"><sup>96</sup></a>。</p>
+</div>
+<div id="reproducibility" class="section level2" number="12.6">
+<h2><span class="header-section-number">12.6</span> 再現性のある研究実践へ</h2>
+<p>今後，みなさんはパソコンを使って文章(レポートや論文)を作成するという機会が増えてくることは間違いありません。文字を入力するだけであればスマートフォンでもいいですが，レイアウトを整えるためにはパソコンが必要になってきます。文章だけでなく，図表も作成することになりますし，図表を作るのに必要な統計的データの整理，分析もパソコンを使って行います。特に図表や統計分析は，プログラムを書いて行うことになります。機械は0と1の羅列で情報処理をしますが，その文字列を人間が考えるのは大変です。機械にやって欲しい操作，計算を人間がわかる言葉で書いたものをプログラムと言います。機械と人間を繋ぐ言語だと思ってください。この言語には色々な種類がありますが，基本的に統計環境Rという言語を使えるようになってください<a href="#fn97" class="footnote-ref" id="fnref97"><sup>97</sup></a>。</p>
+<p>計算だけでなく図表を書くのも，プログラミングすることになります。なぜそんな面倒なことをするのでしょう？
+表計算ソフトを使うと，誰でもマウスでカチカチっとすれば簡単にグラフが作れるのに，と思った人もいるかもしれません。その答えは端的にいうと，そのやり方だと記録が残らないからです。同じデータに同じプログラムをあてがえば，別の計算機上でも結果が同じになります。この誰がどこでやっても同じ結果になる，というのが科学の営みとして重要なことであるのは第<a href="chapter1.html#chapter1" reference-type="ref" reference="chapter1"><span class="math display">\[chapter1\]</span></a>講で説明した通りです。また，教員と研究指導のやりとりをする上でも，プログラムに書き起こされていることは利点があります。マウスでの動きを口頭で説明するのは難しいですね。さらに自分がどういう設定・環境で実行したかを完全に意識していない場合，「なんだかわからないけど，カチカチやっているうちにこの結果が出ました」ということにもなりかねません。そういう報告を受けた教員の気持ちも想像してみてください。指導のしようがありません。</p>
+<p>プログラムで実行するというのはすなわち，何をどのように操作するのかを書き下すことでもあります。すごく複雑な統計処理も，中身は1つ1つの「計算」の積み重ねです。何がどのように積み重なっているかをしっかり理解しなければ書けません。逆に言えば，書いてあるものを見ればどのように組み立て，どのような実行をしているのかがわかります。うまくいかないプログラム，つまりエラーがおきるプログラムであっても，プログラムされたコード(スクリプトとも言います)を見せてもらえれば，どこにエラーが生じているかを明らかにできます。研究の実践とその成果が「動作」ではなく「指示書」として記録に残ることは，研究の再現性を高めるためにも重要な営みなのです。</p>
+<p>教育や学習の上でも利点はあります。プログラムを書くときに必要なのはこのアルゴリズム的思考，すなわち目標に向かうための必要な手続きを1つ1つ特定し，順序立てて実行していくという考え方です。お料理のように，「玉子焼き」というゴールに到達するために「卵を取る」「卵を割る」「卵をかき混ぜる」「フライパンを温める」・・・といった各手続きを順序立てて実行できなければなりません。これから先，統計の話が複雑になってくると，わからない！と音を上げたくなることが出てくるかもしれません。そんなときは(たっぷり休憩して心身ともに元気な状態で落ち着いて)見直すことで，どこからどこまで理解していて，どこから理解できていないのか，確認できます。プログラムのエラーの場合，どこからどこまでが正常に動いていて，どこから計算がおかしくなるのかを見ることができるのです。諦めなければ，確実に積み重ね，前進できます。エラーが出ると言いましたが，エラーはたいていの場合エラーメッセージとともに明らかになります。このメッセージをよく読めば，解決のいとぐちが掴めるのです。わからなければエラーメッセージとともに，教員に相談してください。どこでどのようなエラーが出たかをじっくり確認すれば，何が間違いで何がわかっていなかったのかがわかるというものです。エラーを1つ1つ無くしていき，うまく動くプログラムが書けたときは嬉しいものですよ。</p>
+<p>最後に，プログラムを含めて記録の取れる研究実践について少しだけ説明しておきます。科学は「自分だけがわかっている」という私秘性を排除した公共的な営みである，ということはすでにお話しした通りです。個々人の興味関心によって研究を積み重ねていくのですが，研究の結果明らかになったことはオープンな議論の場に出すべきです。なぜなら，自分が知りたいと思って始めた研究について，他の人から自分では気づかなかった問題点を指摘してもらえるかもしれないし，もっと面白いテーマに展開できるかもしれない，あるいは他の人と一緒に研究しようということになるかもしれないからです<a href="#fn98" class="footnote-ref" id="fnref98"><sup>98</sup></a>。自分の研究も他人の研究の成果を踏まえて，あるいはそこからインスパイアされて進めることになりますが，この研究のスタートとなるこれまでの成果に間違いや嘘が含まれていては困りますね。人間を対象にした研究の場合は，間違いや嘘が全く含まれていなくても完全に同じ状況や同じ対象に研究するというのが難しいので，先行研究の結果が再現できないという問題があります<a href="#fn99" class="footnote-ref" id="fnref99"><sup>99</sup></a>。</p>
+<p>そこで，何をどのように研究したか，どういうデータをとってどのように分析したか，ということを事細かく記録しておく必要があります。最近では，研究を始める前に事前にどのような研究計画で進めていくかを公開し<a href="#fn100" class="footnote-ref" id="fnref100"><sup>100</sup></a>，とったデータや分析プログラムも公開するということが行われています。こうした研究計画やデータ，プログラムの公開はOpen
+Science
+Frameworkというウェブサイト<a href="#fn101" class="footnote-ref" id="fnref101"><sup>101</sup></a>が今最もよく利用されています。ここでファイルを共有すると，いつどのようなファイルが置かれたか，どのように更新されたかという記録が残るので，記録の改竄などを疑われるような懸念がなくなるという利点もあります。</p>
+<p>皆さんも，ごく初心者とは言え心理学という科学の営みをするメンバーの一人になったわけですから，自分の記録やファイルを管理し，公開するという意識を持って取り組むようにしてください。</p>
+</div>
+<div id="課題-17" class="section level2" number="12.7">
+<h2><span class="header-section-number">12.7</span> 課題</h2>
+<div id="自分の電子機器のスペックを調べる" class="section level5" number="12.7.0.0.1">
+<h5><span class="header-section-number">12.7.0.0.1</span> 自分の電子機器のスペックを調べる</h5>
+<p>皆さんが使っているパソコンの，CPUのメーカー，型版はどういったものですか。一次記憶装置はどれぐらいの容量がありますか。二次記憶装置の容量はどうですか。いま二次記憶装置の空き容量はどれぐらいですか。調べて回答してください。</p>
+</div>
+<div id="自分のファイルの場所を調べる" class="section level5" number="12.7.0.0.2">
+<h5><span class="header-section-number">12.7.0.0.2</span> 自分のファイルの場所を調べる</h5>
+<p>同じくパソコンのユーザ名は何になっていますか。また何か適当なファイルを作り，どこかに保存し，「どこにどのようなファイル名で保存したか」を報告してください。拡張子をつけることを忘れずに。</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="71">
+<li id="fn71"><p>もう1つは「説明する」です。<a href="chapter2.html#fnref71" class="footnote-back">↩︎</a></p></li>
+<li id="fn72"><p>なんで<span class="math inline">\(b\)</span>なんだ<span class="math inline">\(a\)</span>でもいいじゃないか，と言われたら返す言葉もないのですが，慣例的に<span class="math inline">\(b\)</span>で係数を表しています。ちなみに今はアルファベットの<span class="math inline">\(b\)</span>ですが，後期になると<span class="math inline">\(b\)</span>のギリシア文字<span class="math inline">\(\beta\)</span>に変わります。ギリシア文字で表現するのは推測統計学的な推定に関わるようになってからです。<a href="chapter2.html#fnref72" class="footnote-back">↩︎</a></p></li>
+<li id="fn73"><p>親の身長から子供の身長を予測することを考えてみてください。次にその子が親になって，その子がまた親になって・・・という時に，「背の高い親からは背の高い子しかうまれない」というルールであれば，世界はものすごく高身長なひとと低身長な人に二分されてしまいます。そうではないということは，背の高い親から背の低い子が生まれることもあるし，その逆もあるということです。また野球選手などでルーキーのときは成績がいいのに，2年目になったら成績が下がる，というのは2年目のジンクスなどといわれますが，その人の平均的な能力以上のスコアが出た次の年に，平均的な値に帰るために低くなりがちなことは，当然ありえることでもあるのです。こうした効果のことを回帰効果といいます。<a href="chapter2.html#fnref73" class="footnote-back">↩︎</a></p></li>
+<li id="fn74"><p>細かい計算式については，<span class="citation">(<a href="#ref-kosugi2018のPp.133をみてください" role="doc-biblioref"><strong>kosugi2018のPp.133をみてください?</strong></a>)</span>。<a href="chapter2.html#fnref74" class="footnote-back">↩︎</a></p></li>
+<li id="fn75"><p>指数についてこれまで習ったことを思い出してください。<span class="math inline">\(a\neq 0\)</span>のとき，<span class="math inline">\(a^0=1\)</span>ですし，<span class="math inline">\(a^{-n}=\frac{1}{a^2}\)</span>と定義するのでした。<a href="chapter2.html#fnref75" class="footnote-back">↩︎</a></p></li>
+<li id="fn76"><p>こういうの見ると，「あ，ずるい。著者め逃げたな」と思いませんか。私なら思います。そう思われると悔しいので，<a href="mailto:参考図書として@西内201712をあげておきます" class="email">参考図書として@西内201712をあげておきます</a>。<a href="mailto:また@長沼201611のP.62" class="email">また@長沼201611のP.62</a>–69も参考になります。<a href="chapter2.html#fnref76" class="footnote-back">↩︎</a></p></li>
+<li id="fn77"><p><span class="math inline">\(\pi\)</span>は3.141592...という実数です。円周率ですね。面積になぜ円周率が出てくるのか，それがガウスの凄いところです。<a href="chapter2.html#fnref77" class="footnote-back">↩︎</a></p></li>
+<li id="fn78"><p>特に文系には！私も文系出身ですので，最初に習った頃は「うん，わからん！」となりました。<a href="chapter2.html#fnref78" class="footnote-back">↩︎</a></p></li>
+<li id="fn79"><p>過去形で書いていることからも明らかなように，これら数表が便利だったのは現在ほどコンピュータが個人消費者レベルにまで浸透していない時代のことで，今は次に紹介する計算機を使う方が素早く正確です。<a href="chapter2.html#fnref79" class="footnote-back">↩︎</a></p></li>
+<li id="fn80"><p>じゃあなんでやらせたんだ，という意見もあるかもしれませんが，例えば公認心理師認定試験など計算機を持ち込めない環境で，数表から読み取って答えを出さねばならないシーンがあるかもしれない，と思いまして。<a href="chapter2.html#fnref80" class="footnote-back">↩︎</a></p></li>
+<li id="fn81"><p>標準化したスコアについてはPp.を参照。<a href="chapter2.html#fnref81" class="footnote-back">↩︎</a></p></li>
+<li id="fn82"><p>Rを使った計算をしました。<code>1-pnorm(q=1,mean=0,sd=1)=0.15865</code>，あるいは<code>1-pnorm(q=2,mean=0,sd=1)=0.02275013</code>です。<a href="chapter2.html#fnref82" class="footnote-back">↩︎</a></p></li>
+<li id="fn83"><p>うまくいかなくて質問するときは，どの行でどのようなエラーが出たのか，を伝えてください。エラーの文章をコピーして伝えるようにしてください。よくない質問の仕方は「なんかエラーが出てできませんでした」です。こちらもサポートのしようがありません。<a href="chapter2.html#fnref83" class="footnote-back">↩︎</a></p></li>
+<li id="fn84"><p>Version
+Controlはパスしましたが、研究をする上ではこれが重要になってきます。つまり，何月何日にどのような作業をしたか，という記録を全て残しておく必要があるからです。研究ノートやラボノートと言われる記録をつける時に必要です。この記録は不正をしていない証拠にもなります。ここを選ぶとGitやSubversionといったバージョン管理ソフトと連携できます。今はそこまで厳格に管理する必要がないと思うので，説明を省略しますが，ゼミによっては必要になることもあるでしょう。<a href="chapter2.html#fnref84" class="footnote-back">↩︎</a></p></li>
+<li id="fn85"><p>半角英数のみで作るべきです。<a href="chapter2.html#fnref85" class="footnote-back">↩︎</a></p></li>
+<li id="fn86"><p>MacOSの例なのでWindows版では上のバーのところなど，違いもあります。<a href="chapter2.html#fnref86" class="footnote-back">↩︎</a></p></li>
+<li id="fn87"><p>この例では<code>C:\Users\napier\Desktop\toukei</code>です。napierは私のPCの名前，toukeiはプロジェクト名です。<a href="chapter2.html#fnref87" class="footnote-back">↩︎</a></p></li>
+<li id="fn88"><p>ワーキングディレクトリといいます。<a href="chapter2.html#fnref88" class="footnote-back">↩︎</a></p></li>
+<li id="fn89"><p>実際に授業をしていて，ファイルへのアクセスエラーで相談を受ける原因第2位です。第1位はファイルエンコードの問題です。<a href="chapter2.html#fnref89" class="footnote-back">↩︎</a></p></li>
+<li id="fn90"><p><span class="math inline">\(\to\)</span>第<a href="chapter2.html#chapter2" reference-type="ref" reference="chapter2"><span class="math display">\[chapter2\]</span></a>のセクション<a href="chapter2.html#suffix" reference-type="ref" reference="suffix"><span class="math display">\[suffix\]</span></a><a href="chapter2.html#fnref90" class="footnote-back">↩︎</a></p></li>
+<li id="fn91"><p>本講執筆時点(2021/02/05)で289,680件のパッケージがCRANに登録されています。それ以外にも無数のパッケージがGithubなどで公開されています。<a href="chapter2.html#fnref91" class="footnote-back">↩︎</a></p></li>
+<li id="fn92"><p>出てくるボックスに示された，“Install
+From”が「どこからとってくるか」を示している欄になりますが，これはCRANが自動的に選択されているので変更する必要はありません。<a href="chapter2.html#fnref92" class="footnote-back">↩︎</a></p></li>
+<li id="fn93"><p>と同時に，同じパッケージを何度もダウンロードする必要はないということです。もっとも，Rのバージョンが上がるとか，違う環境で実行する場合は再ダウンロードが必要なこともあります。<a href="chapter2.html#fnref93" class="footnote-back">↩︎</a></p></li>
+<li id="fn94"><p>この<code>tidyverse</code>パッケージは，実はパッケージのパッケージですので，これをインストールしようとすると関連するその他のパッケージを次々と自動的に呼び出して環境を整えてくれます。初回は少し時間がかかりますが，気長に待ちましょう。大学のPC室や計算機サーバなどには，すでにインストールが終わっているのでその作業は必要ありません。<a href="chapter2.html#fnref94" class="footnote-back">↩︎</a></p></li>
+<li id="fn95"><p>適当な日本語訳がありません。objectはもの，対象という抽象的な意味なので，カタカナでオブジェクトとするしかないのです。<a href="chapter2.html#fnref95" class="footnote-back">↩︎</a></p></li>
+<li id="fn96"><p>オブジェクトの中に何が入っているかは，Environmentタブをみるとわかることがあります。今見ると，Aに4，Bに3が入っていることが示されているでしょう。<a href="chapter2.html#fnref96" class="footnote-back">↩︎</a></p></li>
+<li id="fn97"><p>combineやconcatenateの略語と言われています。<a href="chapter2.html#fnref97" class="footnote-back">↩︎</a></p></li>
+<li id="fn98"><p>PDF形式に出力するには，TeXという別のシステムがまた必要ですが，これもRStudioからインストールすることができます。<a href="chapter2.html#fnref98" class="footnote-back">↩︎</a></p></li>
+<li id="fn99"><p>もちろんTitleとAuthorはちがうはずですが！<a href="chapter2.html#fnref99" class="footnote-back">↩︎</a></p></li>
+<li id="fn100"><p>後ほど指示しますが，本講の課題はRmarkdown形式のファイルを提出してもらいます<a href="chapter2.html#fnref100" class="footnote-back">↩︎</a></p></li>
+<li id="fn101"><p>初めての場合，RStudioが<code>knit</code>に必要な関連パッケージをインターネットからダウンロードしようとします。ダウンロードしても良いか?
+と聞いてきますのでOKを選択してください。<a href="chapter2.html#fnref101" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter19.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter20.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
