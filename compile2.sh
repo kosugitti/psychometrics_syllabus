@@ -117,7 +117,7 @@ grep 'Citation' tmp > Citation_error.log
 grep 'Overfull' tmp > overfull_error.log
 
 ## cleanup
-mv tmp.pdf ../../${filename}.pdf
+mv tmp.pdf ../${filename}.pdf
 
 rm tmp.*
 rm *.aux
