@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 #####################################################################text1
 ## changePath
-path="course_materials"
+path="course_materials/tex"
 filename="Dkiso1_book"
 cd $path
 ## backup
@@ -64,7 +64,7 @@ rm *.ind
 cd ..
 #####################################################################text 2
 ## changePath
-path="course_materials2"
+path="course_materials2/tex"
 filename="Dkiso2_book"
 cd $path
 ## backup

@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 #####################################################################text1
 ## changePath
-path="course_materials"
+path="course_materials/tex"
 filename="Dkiso1_book"
 cd $path
 ## backup
@@ -43,7 +43,7 @@ upmendex -r -c -g -s indexStyle.ist tmp
 lualatex tmp
 
 ## cleanup
-mv tmp.pdf ../${filename}.pdf
+mv tmp.pdf ../../${filename}.pdf
 
 rm tmp.*
 rm *.aux
@@ -107,7 +107,7 @@ upmendex -r -c -g -s indexStyle.ist tmp
 lualatex tmp
 
 ## cleanup
-mv tmp.pdf ../${filename}.pdf
+mv tmp.pdf ../../${filename}.pdf
 
 rm tmp.*
 rm *.aux
