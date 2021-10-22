@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+
 #####################################################################text1
 ## changePath
 path="course_materials/tex"
@@ -135,7 +136,9 @@ rm *.ind
 cd ..
 
 
-########################## git commit & push
-today=$(date)
-git commit -a -m $today
-git push
+########################## Show Message
+echo $(date)
+echo 'データ解析基礎のシラバスとテキストを改定しました。'
+cat Syllabbus_versions1.md
+cat Book_versions1.md
+echo 'git commit -a -mをお願いします。'

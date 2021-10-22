@@ -1,40 +1,111 @@
-\documentclass{article}
-\usepackage{import}
-%\nonstopmode
-\usepackage{makeidx}
-\usepackage{appendix}
-\usepackage{verbatim}
-\usepackage{graphicx}
-\usepackage[table]{xcolor}
-\usepackage{enumerate}
-\usepackage{longtable}
-\usepackage{multirow}
-\usepackage{hyperref}
-\usepackage{alternative4ht}
-\altusepackage{fontspec}
-\altusepackage{xeCJK}
-\altusepackage{xunicode}
-%
-%\usepackage{xeCJK}
-%\usepackage[TS1,T1]{fontenc}
-%\usepackage{xunicode}
-%\setCJKmainfont{AozoraMinchoRegular}
-%\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-%\defaultfontfeatures{Ligatures=TeX}
-\pagenumbering{roman}
-\providecommand{\tabularnewline}{\\}
-\newcommand{\documentname}{マニュアル}
-\title{TestHTML}
-\date{\mydate{\today}}
+\documentclass{ltjsarticle}
+\usepackage{../myStyle}
+%% バッチ処理をするので\lheadは必ず4行目にあること
+\lhead{version 1.2.14}
 \begin{document}
-\clearpage
+\title{心理学データ解析基礎1(心理学統計法)\\心理学データ解析1AB\\心理学データ解析基礎2}
+\author{担当：小杉考司}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+\newpage
+\section*{はじめに}
+\subsection*{授業のテーマ}
 
-% -------- sections ----------------
-\pagenumbering{arabic}
-\setcounter{page}{1}
+「見えないもの」をみよう・測ろう・考えようとするのが心理統計の世界である。
 
-% end preamble
-% Chapters
-\documentname この章では、コマンドラインインターフェースで使用可能な機能について解説します。ユーザが使用できるオプションについて知り>たい場合は本章>を参照してください。
-This section is in english.
+\subsection*{一年を通じて伝えたいポイント}
+\begin{description}
+    \item[母数を知るための推測] 大学での統計，心理統計は標本の記述統計量を検証したいのではなく，母集団を表す数字を求めるための推測統計である。
+    \item[確率を用いた推論] 母数を知るための方法は3つある。代表値を用いたモーメント法，確率分布をつかった最尤法，ベイズ法である。
+    \item[要因計画と線形モデル] 心理学では，要因計画による研究条件をコントロールし，平均値の差をもちいた考察(平均因果効果)をおこなうことが多い。そしてそれらは総じて線形モデルとして表現できる。
+    \item[モデル比較と意思決定] モデルによる母数の推定だけではなく，そこから一定の「結論」あるいは「意思決定」を行うための方法として，モデル比較やNHSTといった方法がある。
+    \item[統計環境Rによる実践] 統計環境Rを利用して，理論的な理解だけでなく実際に計算ができることも身につけるべき技術である。
+\end{description}
+
+注）「科目の中でのこのコマの位置づけ」の中で示されているのは，上記のポイントに対応した，その時間の進度(Level)のようなものです
+\footnote{記述統計は「一年を通じて伝えたいポイント」の基礎および準備であり，本質ではありませんので「ポイント」には含まれませんが，「授業の進度」には含まれます。}。例えば，次のようにあった場合，
+\begin{tcolorbox}
+\begin{tabular}[t]{ccccccc}
+    記述統計[3] & 確率[2] & モデル[1] & 推測・推定[1] & 意思決定[0] & 実践[1]
+\end{tabular}
+\end{tcolorbox}
+記述統計は第3段階，確率についての話は第2段階，モデルについての話は第1段階，推測・推定についての話はまだ含まれておらず，実践は第1段階にきたことを表します。この進度は，次の表~\ref{processTable}に対応し，累積するものです。
+
+
+\begin{table}
+    \caption{テーマと講義との対応}
+    \label{processTable}
+    \begin{tabular}[t]{lccccccc}
+        & 記述統計 & 確率 & モデル & 推測・推定 & 意思決定 & 実践 & page \\\hline\hline
+       心理学と統計法の関係 &  &  &  &  &  &  &  p.\pageref{syllabus1_chap01}\\
+       電子計算機のイロハ &  &  &  &  &  &  &  p.\pageref{syllabus1_chap02}\\
+       数値データの種類 & ○ &  &  &  &  &  &  p.\pageref{syllabus1_chap03}\\
+       記述統計量 & ○ &  &  &  &  &  &  p.\pageref{syllabus1_chap04}\\
+       統計環境Rを使ってみる & ○ &  &  &  &  & ○ &  p.\pageref{syllabus1_chap05}\\
+       古典的テスト理論 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap06}\\
+       確率分布 &  & ○ &  &  &  &  &  p.\pageref{syllabus1_chap07}\\
+       正規分布 &  & ○ &  & ○ &  &  &  p.\pageref{syllabus1_chap08}\\
+       線形モデルの基礎 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap09}\\
+       重回帰分析モデル &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap10}\\
+       Rをつかった回帰分析 & ○ &  & ○ &  &  & ○ &  p.\pageref{syllabus1_chap11}\\
+       実験計画法1 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap12}\\
+       実験計画法2 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap13}\\
+       実験計画法3 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap14}\\\hline
+       確率と統計的推論 &  & ○ &  & ○ &  &  &  p.\pageref{syllabus1_chap16}\\
+       推論と判断 &  & ○ &  &  & ○ &  &  p.\pageref{syllabus1_chap17}\\
+       帰無仮説検定の実際 &  & ○ & ○ &  & ○ &  &  p.\pageref{syllabus1_chap18}\\
+       平均値差の検定 &  & ○ & ○ &  & ○ &  & p.\pageref{syllabus1_chap19} \\
+       Rによる帰無仮説検定 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{syllabus1_chap20}\\
+       要因計画と平均値差の検定 &  & ○ & ○ &  & ○ &  &  p.\pageref{syllabus1_chap21}\\
+       Rによる帰無仮説検定2 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{syllabus1_chap22}\\
+       確率分布とデータの関係 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap23}\\
+       回帰分析の最尤推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap24}\\
+       ベイズ推測の基礎 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap25}\\
+       ベイズ推測の実際 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap26}\\
+       ベイズ法による母数の推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap27}\\
+       ベイズ法による回帰分析 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap28}\\
+       Rによるベイズ推測 &  & ○ & ○ & ○ &  & ○ & p.\pageref{syllabus1_chap29} \\\hline
+\end{tabular}
+\end{table}
+
+
+
+なお，各コマにおける「標準シラバスにおける位置づけ」とは，公認心理師大学カリキュラム　標準シラバス（2018年8月22日版）\footnote{\url{https://psych.or.jp/wp-content/uploads/2018/04/standard_syllabus_2018-8-22.pdf}} との対応を表しています。
+
+\include{Syllabus1_chap01}
+\include{Syllabus1_chap02}
+\include{Syllabus1_chap03}
+\include{Syllabus1_chap04}
+\include{Syllabus1_chap05}
+\include{Syllabus1_chap06}
+\include{Syllabus1_chap07}
+\include{Syllabus1_chap08}
+\include{Syllabus1_chap09}
+\include{Syllabus1_chap10}
+\include{Syllabus1_chap11}
+\include{Syllabus1_chap12}
+\include{Syllabus1_chap13}
+\include{Syllabus1_chap14}
+\include{Syllabus1_chap15}
+\include{Syllabus1_chap16}
+\include{Syllabus1_chap17}
+\include{Syllabus1_chap18}
+\include{Syllabus1_chap19}
+\include{Syllabus1_chap20}
+\include{Syllabus1_chap21}
+\include{Syllabus1_chap22}
+\include{Syllabus1_chap23}
+\include{Syllabus1_chap24}
+\include{Syllabus1_chap25}
+\include{Syllabus1_chap26}
+\include{Syllabus1_chap27}
+\include{Syllabus1_chap28}
+\include{Syllabus1_chap29}
+\include{Syllabus1_chap30}
+
+\addcontentsline{toc}{chapter}{引用文献}
+\bibliographystyle{../jecon_jpa}
+\bibliography{../sbib}
 \end{document}
