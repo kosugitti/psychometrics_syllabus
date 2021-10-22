@@ -138,7 +138,7 @@ cd ..
 
 ########################## Show Message
 echo $(date)
-echo 'データ解析基礎のシラバスとテキストを改定しました。'
-cat Syllabbus_versions1.md
-cat Book_versions1.md
+echo 'データ解析応用のシラバスとテキストを改定しました。'
+cat Syllabus_versions2.md
+cat Book_versions2.md
 echo 'git commit -a -mをお願いします。'
