@@ -169,7 +169,7 @@ mean of x mean of y
 
 モデリング上ではこれをどう表現すれば良いでしょうか。これは実は簡単で，分散が実験群と統制群で異なるというのですから，別々に推定してやれば良いのです。
 
-\begin{lstlisting}[language=C++,label={code::19_03},caption={分散が異なる場合の推定モデル}]
+\begin{lstlisting}[language=C++,label={code::19_04},caption={分散が異なる場合の推定モデル}]
         ...
 parameters{
     real mu1;
@@ -193,7 +193,7 @@ model{
 \section{差の分布}
 さて，二群のデータから考えられるそれぞれの母平均が推定されました。今回は実験群と統制群の平均値差が大きく離れており，一方の95\%上限が他方の95\%下限を上回っているという状況でしたので，「差がある」と判断できましたが，そうでないこともありそうです。つまり，微妙な差のとき，ですね。次のようなデータで試しに推定してみましょう。まずは5\%水準で検定をしてみます。
 
-\begin{lstlisting}[language=c++,label={code::19_03},caption={帰無仮説検定のコード}]
+\begin{lstlisting}[language=c++,label={code::19_05},caption={帰無仮説検定のコード}]
 groupA <- c(30, 50, 70, 90, 60, 50, 70, 60)
 groupB <- c(30, 45, 60, 40, 60, 50, 40, 30)
 ## t検定

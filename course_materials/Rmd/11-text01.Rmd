@@ -334,7 +334,7 @@ $$\hat{y} = 2144.8 + 741.0 \times HR + 300.2 \times Hit$$
 
 データセットの各変数を標準化する必要がありますが，それには`scale`関数を使います。
 
-``` {#code::11_07 .c++ language="c++" label="code::11_07" caption="標準化したデータで重回帰分析を実行"}
+``` {#code::11_08 .c++ language="c++" label="code::11_08" caption="標準化したデータで重回帰分析を実行"}
 batter2z <- scale(batter2) %>% as.data.frame()
 summary(batter2z)
 result2z <- lm(salary ~ HR + Hit, data = batter2z)

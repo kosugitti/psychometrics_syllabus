@@ -41,13 +41,17 @@ lualatex tmp
 lualatex tmp
 upmendex -r -c -g -s indexStyle.ist tmp
 lualatex tmp
+## Tex Warning Check
+grep 'multiply' tmp > multiply_error.log
+grep 'Citation' tmp > Citation_error.log
+grep 'Overfull' tmp > overfull_error.log
+
 
 ## cleanup
 mv tmp.pdf ../${filename}.pdf
 
 rm tmp.*
 rm *.aux
-rm *.log
 rm *.dvi
 rm *.toc
 rm *.bbl
@@ -61,6 +65,7 @@ rm *.ilg
 rm *.idx
 rm *.ind
 
+cd ..
 cd ..
 #####################################################################text 2
 ## changePath
@@ -103,13 +108,16 @@ lualatex tmp
 lualatex tmp
 upmendex -r -c -g -s indexStyle.ist tmp
 lualatex tmp
+## Tex Warning Check
+grep 'multiply' tmp > multiply_error.log
+grep 'Citation' tmp > Citation_error.log
+grep 'Overfull' tmp > overfull_error.log
 
 ## cleanup
 mv tmp.pdf ../${filename}.pdf
 
 rm tmp.*
 rm *.aux
-rm *.log
 rm *.dvi
 rm *.toc
 rm *.bbl
@@ -123,6 +131,7 @@ rm *.ilg
 rm *.idx
 rm *.ind
 
+cd ..
 cd ..
 #####################################################################syl 1
 ## changePath
@@ -165,13 +174,16 @@ lualatex tmp
 lualatex tmp
 upmendex -r -c -g -s indexStyle.ist tmp
 lualatex tmp
+## Tex Warning Check
+grep 'multiply' tmp > multiply_error.log
+grep 'Citation' tmp > Citation_error.log
+grep 'Overfull' tmp > overfull_error.log
 
 ## cleanup
 mv tmp.pdf ../${filename}.pdf
 
 rm tmp.*
 rm *.aux
-rm *.log
 rm *.dvi
 rm *.toc
 rm *.bbl
@@ -186,6 +198,7 @@ rm *.idx
 rm *.ind
 
 cd ..
+
 #####################################################################syl 2
 ## changePath
 path="syllabus2"
@@ -228,12 +241,17 @@ lualatex tmp
 upmendex -r -c -g -s indexStyle.ist tmp
 lualatex tmp
 
+## Tex Warning Check
+grep 'multiply' tmp > multiply_error.log
+grep 'Citation' tmp > Citation_error.log
+grep 'Overfull' tmp > overfull_error.log
+
+
 ## cleanup
 mv tmp.pdf ../${filename}.pdf
 
 rm tmp.*
 rm *.aux
-rm *.log
 rm *.dvi
 rm *.toc
 rm *.bbl
@@ -250,7 +268,7 @@ rm *.ind
 cd ..
 
 ########################## git commit & push
-today=$(date "+%Y%m%d")
+today=$(date)
 git commit -a -m $today
 git push
 

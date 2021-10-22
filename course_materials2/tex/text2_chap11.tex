@@ -96,9 +96,9 @@ V10   0.5890   0.4180
     \end{verbatim}
 \end{Rscreen}
 
-次のセクション\texttt{console\ref{RS:out11_03}}には，\keyterm{$\alpha$係数}{あるふぁけいすう}{alpha coefficient}が算出されています。これも全体の場合と，特定の変数を抜いた場合とを計算しています。
+次のセクション\texttt{console\ref{RS:out11_04}}には，\keyterm{$\alpha$係数}{あるふぁけいすう}{alpha coefficient}が算出されています。これも全体の場合と，特定の変数を抜いた場合とを計算しています。
 心理尺度における信頼性係数としての$\alpha$係数は，0.8以上であれば信頼性がある，といった目安がありますが，二値データの場合はここに示したようにそれよりもずいぶんと低くなります。これは二値データの分散が小さくなることから仕方のないことですし，項目反応理論で分析する上での信頼性は情報量関数として表されますから，問題ではありません。
-\begin{Rscreen}{記述統計の出力3}{out11_03}
+\begin{Rscreen}{記述統計の出力4}{out11_04}
     \begin{verbatim}
         Cronbach's alpha:
         value
@@ -116,8 +116,8 @@ Excluding V10 0.5817
     \end{verbatim}
 \end{Rscreen}
 
-最後にセクション\texttt{console\ref{RS:out11_04}}では，変数同士の関連が特に弱いものが示されています。変数同士のペアについて度数分布表を作成し，$\chi^2$検定によって\texttt{p.value}を算出しています。この値が小さければ，2つの変数の関係が強いことを示していると解釈できるのですが，ここにあげているように大きな数字になっているということは，変数間の関係が弱いと読み取ることができます。
-\begin{Rscreen}{記述統計の出力4}{out11_04}
+最後にセクション\texttt{console\ref{RS:out11_05}}では，変数同士の関連が特に弱いものが示されています。変数同士のペアについて度数分布表を作成し，$\chi^2$検定によって\texttt{p.value}を算出しています。この値が小さければ，2つの変数の関係が強いことを示していると解釈できるのですが，ここにあげているように大きな数字になっているということは，変数間の関係が弱いと読み取ることができます。
+\begin{Rscreen}{記述統計の出力4}{out11_05}
     \begin{verbatim}
 Pairwise Associations:
    Item i Item j p.value
@@ -174,8 +174,8 @@ plot(result.1pl,type="IIC",items = 0)
         \item[5行目] \keyterm{テスト情報曲線}{てすとじょうほうきょくせん}{Test Information Curve}のプロット。\texttt{plot}関数のオプションで表示する項目番号をゼロにするとTICになる。
 \end{description}
 
-2行目で結果の出力を行っていますが，出力\ref{RS:out11_02}のように表されます。
-\begin{Rscreen}{2PLモデルの結果出力}{out11_02}
+2行目で結果の出力を行っていますが，出力\ref{RS:out11_06}のように表されます。
+\begin{Rscreen}{2PLモデルの結果出力}{out11_06}
     \begin{verbatim}
 Call:
 rasch(data = dat)
@@ -220,8 +220,8 @@ plot(result.2pl,type="IIC",items = 0)
         \item[5行目] \keyterm{テスト情報曲線}{てすとじょうほうきょくせん}{Test Information Curve}のプロット
 \end{description}
 
-2行目で結果の出力を行っていますが，出力\ref{RS:out11_03}のように表されます。
-\begin{Rscreen}{2PLモデルの結果出力}{out11_03}
+2行目で結果の出力を行っていますが，出力\ref{RS:out11_15}のように表されます。
+\begin{Rscreen}{2PLモデルの結果出力}{out11_15}
     \begin{verbatim}
 Call:
 ltm(formula = dat ~ z1)
@@ -269,8 +269,8 @@ plot(result.3pl,type="IIC",items = 0)
 \end{lstlisting}
 
 
-コードは一行目の関数以外ほとんど同じですので，逐一解説は致しませんが，出力のところを見ておきましょう(出力\ref{RS:out11_04})。
-\begin{Rscreen}{3PLモデルの結果出力}{out11_04}
+コードは一行目の関数以外ほとんど同じですので，逐一解説は致しませんが，出力のところを見ておきましょう(出力\ref{RS:out11_07})。
+\begin{Rscreen}{3PLモデルの結果出力}{out11_07}
     \begin{verbatim}
 Call:
 tpm(data = dat)
@@ -342,11 +342,11 @@ plot(result.grm, type = "IIC", items = 0)
         \item[11行目]項目群についてのTICを表示させています。  
 \end{description}
 
-\texttt{code:\ref{code::11_05}}の6行目で，分析結果の数値的出力をさせていますので，それをみておきましょう(出力\ref{RS:out11_05})。
+\texttt{code:\ref{code::11_05}}の6行目で，分析結果の数値的出力をさせていますので，それをみておきましょう(出力\ref{RS:out11_25})。
 
 ここで，\texttt{Dscrmn}とあるのは識別力母数ですが，困難度母数に対応するのが\texttt{Extrmt1}から\texttt{Extrmt5}にあたります。この尺度は6件法ですので，反応カテゴリが変わる切れ目，すなわち\keytermL{閾値}{いきち}が5つあるのです。これらが2PLモデルでいうところの困難度に対応すると言ってもいいでしょう。
 
-\begin{Rscreen}{GRMモデルの結果出力}{out11_05}
+\begin{Rscreen}{GRMモデルの結果出力}{out11_25}
     \begin{verbatim}
 Call:
 grm(data = dat)

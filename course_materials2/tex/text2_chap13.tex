@@ -185,7 +185,7 @@ summary(result3, fit.measures = T, standardized = T)
 \subsection{構造方程式モデルへ}
 それでは潜在変数同士の関係に，更なる仮定を入れたモデルを考えてみましょう。
 
-\begin{lstlisting}[language=c++,label={code::13_03},caption={構造方程式モデル}]
+\begin{lstlisting}[language=c++,label={code::13_04},caption={構造方程式モデル}]
 model4 <- "
  visual =~ x1 + x2 + x3
 textual =~ x4 + x5 + x6
@@ -208,12 +208,12 @@ modificationindices(result4) %>%
         \item[10-12行目] 分析結果の\keytermL{修正指数}{しゅうせいしすう}を出力。ただし指標\verb|mi|の大きい順に並べ替えるために11行目で出力を\texttt{tibble}型にし，\texttt{arrange}関数で並べ替えている。
 \end{description}
 
-まずは今回のモデルについても，図でみたほうがわかりやすいでしょう。結果を合わせて図\ref{fig::13_03}に示してみました。
+まずは今回のモデルについても，図でみたほうがわかりやすいでしょう。結果を合わせて図\ref{fig::13_04}に示してみました。
 \begin{figure}
     \begin{center}
         \includegraphics{../R_source_course2/chapter13fig03.pdf}
         \caption{構造方程式モデルへ}
-    \label{fig::13_03}
+    \label{fig::13_04}
     \end{center}
 \end{figure}
 

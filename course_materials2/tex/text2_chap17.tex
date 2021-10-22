@@ -190,7 +190,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 \end{description}
 これは理論的な正規分布の形を図示するものです。美しいですね。でも同様のことが，乱数を使ってもできます。
 
-\begin{lstlisting}[language=c++,label={code::17_04},caption={確率分布の可視化1}]
+\begin{lstlisting}[language=c++,label={code::17_05},caption={確率分布の可視化2}]
 N <- 1000
 X <- rnorm(N, mean = 0, sd = 1) %>% as.data.frame()
 ggplot(data = X, aes(x = .)) +
@@ -212,7 +212,7 @@ ggplot(data = X, aes(x = .)) +
 
 まずは\texttt{data.frame}型にした正規乱数を使って，記述統計量を算出する例を見てみましょう。
 
-\begin{lstlisting}[language=c++,label={code::17_05},caption={確率分布の要約}]
+\begin{lstlisting}[language=c++,label={code::17_06},caption={確率分布の要約}]
 N <- 10000
 X <- rnorm(N, mean = 0, sd = 1) %>%
   as.data.frame() %>%
@@ -242,7 +242,7 @@ X %>%
 \end{description}
 
 また，確率密度が最も高くなる点を算出するための関数を自分で作ってみることにします。次のようにコードを入力してください。
-\begin{lstlisting}[language=c++,label={code::17_05},caption={確率分布の要約}]
+\begin{lstlisting}[language=c++,label={code::17_07},caption={確率分布の要約}]
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
 }
