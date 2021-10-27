@@ -79,6 +79,8 @@
 - [第 06 回；多群の平均値の比較(rstan)](codes/Dkiso2/06_AnovaExampleRstan.R)
 - [第 06 回；多群の平均値の比較(cmdstan)](codes/Dkiso2/06_AnovaExampleCmdstan.R)
 - [第 06 回；多群の平均値の比較；応用課題・データセットない人用](codes/Dkiso2/baseball2020.csv)
+- [第 07 回；Withinモデルの平均値の比較(rstan)](codes/Dkiso2/07_WithinExampleRstan.R)
+- [第 07 回；Withinモデルの平均値の比較(cmdstan)](codes/Dkiso2/07_WithinExampleCmdstan.R)
 
 ## ライセンス等
 
