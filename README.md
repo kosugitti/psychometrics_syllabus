@@ -65,7 +65,7 @@
 - [二群の平均値差](codes/Dkiso1/20_example.R)
 - [Rによる分散分析のコード](codes/Dkiso1/Chapter22ANOVA.R)
 - [Rによる分散分析のコード(Rmdファイルバージョン)](codes/Dkiso1/Chapter22ANOVA.Rmd)
-- [Chapter22課題ファイル](chapter22exe.zip)
+- [Chapter22課題ファイル](codes/Dkiso1/chapter22exe.zip)
 
 ### 心理学データ解析応用 2
 
