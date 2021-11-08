@@ -63,9 +63,9 @@
 ### 心理学データ解析基礎 2
 
 - [二群の平均値差](codes/Dkiso1/20_example.R)
-- [Rによる分散分析のコード](codes/Dkiso1/Chapter22ANOVA.R)
-- [Rによる分散分析のコード(Rmdファイルバージョン)](codes/Dkiso1/Chapter22ANOVA.Rmd)
-- [Chapter22課題ファイル](codes/Dkiso1/chapter22exe.zip)
+- [R による分散分析のコード](codes/Dkiso1/Chapter22ANOVA.R)
+- [R による分散分析のコード(Rmd ファイルバージョン)](codes/Dkiso1/Chapter22ANOVA.Rmd)
+- [Chapter22 課題ファイル](codes/Dkiso1/chapter22exe.zip)
 
 ### 心理学データ解析応用 2
 
@@ -82,8 +82,10 @@
 - [第 06 回；多群の平均値の比較(rstan)](codes/Dkiso2/06_AnovaExampleRstan.R)
 - [第 06 回；多群の平均値の比較(cmdstan)](codes/Dkiso2/06_AnovaExampleCmdstan.R)
 - [第 06 回；多群の平均値の比較；応用課題・データセットない人用](codes/Dkiso2/baseball2020.csv)
-- [第 07 回；Withinモデルの平均値の比較(rstan)](codes/Dkiso2/07_WithinExampleRstan.R)
-- [第 07 回；Withinモデルの平均値の比較(cmdstan)](codes/Dkiso2/07_WithinExampleCmdstan.R)
+- [第 07 回；Within モデルの平均値の比較(rstan)](codes/Dkiso2/07_WithinExampleRstan.R)
+- [第 07 回；Within モデルの平均値の比較(cmdstan)](codes/Dkiso2/07_WithinExampleCmdstan.R)
+- [第 08 回；カテゴリカルモデルの分析(rstan)](codes/Dkiso2/08_categoricalRstan.R)
+- [第 08 回；カテゴリカルモデルの分析(cmdstan)](codes/Dkiso2/08_categoricalCmdstan.R)
 
 ## ライセンス等
 
