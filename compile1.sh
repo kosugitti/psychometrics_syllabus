@@ -33,7 +33,7 @@ cat ${filname}.tex
 echo "コンパイル始めます"
 cp ${filename}.tex tmp.tex
 
-echo "基礎テキストの最新バージョンは"$newVer "です。" >| ../Book_versions1.md
+echo "基礎テキストの最新バージョンは"$newVer "です。" >| ../../Book_versions1.md
 
 ## LateX Main
 lualatex tmp

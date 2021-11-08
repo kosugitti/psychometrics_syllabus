@@ -33,7 +33,7 @@ cat ${filname}.tex
 echo "コンパイル始めます"
 cp ${filename}.tex tmp.tex
 
-echo "応用テキストの最新バージョンは"$newVer "です。" >| ../Book_versions2.md
+echo "応用テキストの最新バージョンは"$newVer "です。" >| ../../Book_versions2.md
 
 
 ## LateX Main

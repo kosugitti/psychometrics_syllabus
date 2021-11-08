@@ -174,7 +174,7 @@ generated quantities{
     \begin{tabular}{c|c|cc|c}
         \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{A}\\
         \cline{3-4}
-        \multicolumn{2}{|c|}{}
+        \multicolumn{2}{c|}{}
                   & Yes & No & \\ \hline
             B & Yes & a & b & \\
               &  No & c & d & \\ \hline
@@ -195,21 +195,29 @@ generated quantities{
 このように，2つの群わけが独立ではない場合の確率はどう考えればいいでしょうか。$a:b:c:d$を$\pi_1:\pi_2:\pi_3:\pi_4$と考えるのでは4つのセルが独立だと考えていることになってしまいます。
 そうではなく，順番にまずAが確率$\alpha$でYesと判断する，ということを考えましょう。Noと判断する確率は$1-\alpha$です。次にBの判断ですが，AがYesと判断した時にBがYesと判断する確率を$\beta$としましょう。またAがNoと判断した時にBもNoと判断する確率を$\gamma$と考えます。
 
-そうすると，両者がYesと答える確率$\pi_a = \alpha\beta$，AがNoでBがYesと答える確率$\pi_b = (1-\alpha)\beta$，AがYesでBがNoと答える確率$\pi_c = \alpha(1-\gamma)$，両者がNoと答える確率$\pi_d = (1-\alpha)\gamma $のようにあらわすことがで切るようになります(表\ref{tbl:23_04})。$\kappa$係数はこれら$\pi_a$〜$\pi_d$の組み合わせで計算できますから，生成量を使えば算出できますね。
-\begin{table}[ht]
-    \centering
-    \caption{対応のあるカテゴリ判断の確率}
-    \begin{tabular}{c|c|cc|c}
-        \multicolumn{2}{|c|}{} & \multicolumn{2}{c|}{A}\\
-        \cline{3-5}
-        \multicolumn{2}{|c|}{}
-                  & Yes & No  &  \\ \hline
-            B & Yes &  $\alpha\beta$  &  $(1-\alpha)(1-\gamma)$   &   \\
-              &  No &  $\alpha(1-\beta)$  &  $(1-\alpha)\gamma $   &  \\ \hline
-              &     & $\alpha$ & $1-\alpha$ & 1 \\ \hline
-        \end{tabular}
-    \label{tbl:23_04}
-\end{table}
+そうすると，両者がYesと答える確率$\pi_a = \alpha\beta$，AがNoでBがYesと答える確率$\pi_b = (1-\alpha)\beta$，AがYesでBがNoと答える確率$\pi_c = \alpha(1-\gamma)$，両者がNoと答える確率$\pi_d = (1-\alpha)\gamma $のようにあらわすことがで切るようになります(図\ref{fig:23_02})。$\kappa$係数はこれら$\pi_a$〜$\pi_d$の組み合わせで計算できますから，生成量を使えば算出できますね。
+
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=12cm,keepaspectratio]{../images/chapter23/Slide23_01.png}
+  \caption{対応のあるカテゴリ判断の確率}
+  \label{fig:23_02}
+  \end{center}
+\end{figure}
+% \begin{table}[ht]
+%     \centering
+%     \caption{対応のあるカテゴリ判断の確率}
+%     \begin{tabular}{c|c|cc|c}
+%         \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{A}\\
+%         \cline{3-5}
+%         \multicolumn{2}{c|}{}
+%                   & Yes & No  &  \\ \hline
+%             B & Yes &  $\alpha\beta$  &  $(1-\alpha)(1-\gamma)$   &   \\
+%               &  No &  $\alpha(1-\beta)$  &  $(1-\alpha)\gamma $   &  \\ \hline
+%               &     & $\alpha$ & $1-\alpha$ & 1 \\ \hline
+%         \end{tabular}
+%     \label{tbl:23_04}
+% \end{table}
 それではこれをコードにしていきましょう。確率ですから，変数の範囲は0から1に制限し，事前分布もこの範囲の一様分布にしています。
 \begin{lstlisting}[language=C++,label={stan::23_03},caption={$\kappa$係数を計算するモデル}]
 data{
