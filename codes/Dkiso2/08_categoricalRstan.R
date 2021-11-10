@@ -1,6 +1,9 @@
 rm(list = ls())
 library(tidyverse)
 library(rstan)
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = TRUE)
+
 # rstanの場合
 model <- rstan::stan_model("categorical1.stan")
 fit <- sampling(model,

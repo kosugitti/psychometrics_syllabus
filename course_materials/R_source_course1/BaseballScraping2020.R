@@ -144,16 +144,19 @@ dat1 %>%
   filter(!is.na(salary)) %>%
   rename(
     UniformNum = 背番号,
+    Games = 試合,
     Hit = 安打,
+    AtBats = 打数,
     HR = 本塁打,
     Win = 勝利,
     Lose = 敗北,
     Save = セーブ,
     Hold = ホールド
-  ) %>%
-  dplyr::select(Name, team, salary, bloodType,
-                position, height, weight, 
-                Hit, HR, Win, Lose, Save, Hold) -> baseball
-
+  ) %>% 
+  dplyr::select(
+    Name, team, salary, bloodType, AtBats,
+    position, Games, height, weight,
+    Hit, HR, Win, Lose, Save, Hold
+  ) -> baseball
 write_csv(baseball, file = "baseball2020.csv")
 # rm(list=ls())

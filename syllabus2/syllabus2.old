@@ -1,7 +1,7 @@
 \documentclass{ltjsarticle}
 \usepackage{../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 0.23.7}
+\lhead{version 0.24.1}
 \begin{document}
 \title{心理学データ解析応用1/2\\心理学データ解析2A/B\\}
 \author{担当：小杉考司}
@@ -62,10 +62,10 @@
 \include{Syllabus2_chap21} %モデリングの目から見た検定3；多群の平均値の差；transformed parametersブロックでパラメータに制約をかける。連言命題（ANOVAの下位検定との違い。アルファのインフレなし）
 \include{Syllabus2_chap22} %モデリングの目から見た検定4；対応のある平均値の差；IDを持ったデータ構造。ネスト＝階層化
 \include{Syllabus2_chap23} %モデリングの目から見た検定5；カテゴリカル分布を使って一致率の検定；カイ二乗検定，カテゴリカル分布，一致率のコード
-% \include{Syllabus2_chap25}線形モデルの基礎；一般化線形モデル；回帰分析のベイズ推定，データに合わせた確率分布（リンク関数），パラメータの解釈（変換前後），事後予測分布による解釈
-% \include{Syllabus2_chap26}線形モデルの展開1；一般化線形モデル2；ロジスティック回帰分析，ポアソン回帰分析，周辺分布の出力など
-% \include{Syllabus2_chap24} %混合分布モデル・0過剰ポアソン
-% \include{Syllabus2_chap27}線形モデルの展開2；BFによるモデル比較・サヴェージ・ディッキー法
+\include{Syllabus2_chap24} %線形モデルの基礎；一般化線形モデル；回帰分析のベイズ推定，データに合わせた確率分布（リンク関数），パラメータの解釈（変換前後），事後予測分布による解釈
+% \include{Syllabus2_chap25} %階層線形モデル
+% \include{Syllabus2_chap26} %混合分布モデル・0過剰ポアソン
+% \include{Syllabus2_chap27} %線形モデルの展開2；BFによるモデル比較・サヴェージ・ディッキー法
 % \include{Syllabus2_chap28}ベイジアンアプローチと確率的プログラミング3；項目反応モデル
 % \include{Syllabus2_chap29}ベイジアンアプローチと確率的プログラミング2；変化点検出
 % \include{Syllabus2_chap30}ベイジアンアプローチと確率的プログラミング4；状態空間モデル
