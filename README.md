@@ -88,7 +88,7 @@
 - [第 08 回；カテゴリカルモデルの分析(cmdstan)](codes/Dkiso2/08_categoricalCmdstan.R)
 - [第 09 回；一般化線形モデル(rstan)](codes/Dkiso2/09_GLM_Rstan.R)
 - [第 09 回；一般化線形モデル(cmdstan)](codes/Dkiso2/08_GLM_Cmdstan.R)
-
+- [野球選手のデータ](codes/Dkiso2/baseball2020.csv)
 
 ## ライセンス等
 
