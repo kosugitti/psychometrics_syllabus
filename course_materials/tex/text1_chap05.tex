@@ -1,6 +1,6 @@
 \documentclass{ltjbook}
 \usepackage{docmute} 
-\usepackage{../myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document} 
 \VerbatimFootnotes
@@ -32,7 +32,8 @@ RStudioはそれ単体では使うことができません。Rが入っている
 
 しかしながら，大学のPC室に行かなくても自宅で論文やレポートを書きたい，ということもあるかもしれません。また，大学などの設備は大学が管理していますので，自分でパッケージを追加したい，とおもっても管理権限がなくうまく行かないこともあるかもしれません。幸いRやRStudioはフリーソフトウェアですので，手元のPCにインストールして環境を構築するにしても，元手は一切かかりません。これを機に，自分のパソコン環境にR/RStudioを準備しておくと良いでしょう。
 
-RやRStudioの環境構築については，その方法を検索すればさまざまなものが出てきますので，そちらを参考にしてください\footnote{Rの唯一の弱点は検索可能性が低いこと。Rという一文字で検索してもまともなものにヒットしないので，``CRAN''とか``RとRStudio インストール''など周りに言葉を足して検索してみてください。}\footnote{新しいものでは，高知工科大学柳井先生のこちら\url{http://yukiyanai.github.io/jp/resources/}とか，Quiitaの記事\url{https://qiita.com/hujuu/items/ddd66ae8e6f3f989f2c0}が良いでしょう。}。書籍では，手前味噌で恐縮ですが\citet{kosugi2019}などが良いでしょう\footnote{インストールに際しては，RStudio DesktopのFree editionを選んでください。RStudio CloudやRStudio Serverは別のものです。}。
+RやRStudioの環境構築については，その方法を検索すればさまざまなものが出てきますので，そちらを参考にしてください\footnote{Rの唯一の弱点は検索可能性が低いこと。Rという一文字で検索してもまともなものにヒットしないので，``CRAN''とか``RとRStudio インストール''など周りに言葉を足して検索してみてください。}。新しいものでは，高知工科大学柳内先生のこちら\url{http://yukiyanai.github.io/jp/resources/}とか，
+Syunsuke Fukuda先生の「初心者向けRのインストールガイド」\url{https://syunsuke.github.io/r_install_guide_for_beginners/}などは網羅的かつ丁寧なので，よく読んで始めると良いでしょう。Quiitaの記事\url{https://qiita.com/hujuu/items/ddd66ae8e6f3f989f2c0}なども良いと思います。書籍では，手前味噌で恐縮ですが\citet{kosugi2019}などが良いでしょう\footnote{なお，インストールに際しては，RStudio DesktopのFree editionを選んでください。RStudio CloudやRStudio Serverは別のものです。}。
 
 以降は環境が準備できているものとして解説を続けます\footnote{トラブルがあって環境の準備がうまくできていない場合は，\texttt{classkosugitti@gmail.com}までご相談ください。}。
 
@@ -211,8 +212,26 @@ Rでは関数を使って様々な計算をこなします。Rをインストー
 
 このインストールは，RStudioのパッケージペインからも実行できますが，\texttt{code:\ref{code::05_02b}}のようにコードを使って実行することも可能です。
 \begin{lstlisting}[language=c++,label={code::05_02b},caption={コードからインストールする}]
-	install.packages("tidyverse")
+install.packages("tidyverse")
 \end{lstlisting}
+
+\begin{tcolorbox}[title=パッケージのインストール先,fonttitle=\gtfamily\sffamily\bfseries,colframe=blue,colback=blue!3!]
+ここでエラーに遭遇して「パッケージがインストールできない！」となることがあります。Windowsユーザがよく直面します。
+
+原因はいくつか考えられますが，ほとんどが文字化けに起因したものです。
+パッケージといっても電子データ，ファイルで提供されるものであり，インストーリとはインターネットからファイルをダウンロードしてくるところから始まります。
+ダウンロードしてきた情報は手元のPCにファイルとして保存することになりますが，ここで「保存先に\textbf{書き込み権限がない}」ことでエラーになる，というのが第一の問題です。エラーメッセージの中に\verb|'lib = "C:/Program Files/R/R-4.1.1/library"' is not writable|などとあれば(is not writable=書けないよ)，このエラーです。その場合は，R/RStudioを\underline{管理人権限で実行する}必要があります。アイコンを右クリックして，サブメニューから管理人として実行を選びましょう。
+
+第二の問題は，書き込む先のフォルダ名に起因するものです。エラーメッセージの中に\verb|ディレクトリ'C:\Users\XXXX\OneDrive\?????'を作成できません|とあれば，この問題です。ここでXXXXと書いてあるのはみなさんのPC名，\verb|????|が文字化けの箇所です。ユーザ名として2バイト文字=全角文字を使っているWindowsユーザだけがこのエラーに遭遇します。理由はWindowsの不親切設計，一貫しないOSデザインのせいです。パソコンを買ってきたら自分の名前を漢字で入力したいですよね。漢字でユーザを作るとそれで動いてくれたらいいのですが，なぜかWindowsはここで文字コードのエラーを起こすのです。他のOSであれば，文字コードはUTF-8に統一されているのでこの問題は生じません。
+解決策としては，半角英数文字のユーザを作り直し，そのユーザでRのインストールをやり直すか，パッケージをダウンロードする先のフォルダをこちらで指定してやるかの二択です。
+後者の方法は，まずインストール先がどこになっているかを確認する必要があります。Rのコンソールに\verb|.libPaths()|と入力してみてください。ここで表示されるのが，ライブラリへのパス，つまりパッケージが保存される場所です。もしここに全角文字があれば，エラーになります。
+そこでまず，全角文字を含まない場所にパッケージをインストールするフォルダを用意します。PCのCドライブ直下に作るのが良いでしょう。例えば\verb|C:/Rlibrary|のようなフォルダを準備します。
+次にRで，この関数を使って，\verb|.libPaths("C:/Rlibrary")|のように，先ほど作ったフォルダを指定します。
+これでインストール先が変わるので問題なくインストールできるでしょう。
+最後に一つ注意を。Rを再起動するたびに\verb|.libPaths()|がリセットされるケースがあります。これはRの環境変数が設定されているからで，これを修正するには\verb|.Rprofile|ファイルを作るとか，コマンドプロンプトやコントロールパネルから環境変数\verb|R_LIBS_USER|を設定する必要があります。
+\end{tcolorbox}
+
+
 \subsubsection{オブジェクトの利用}
 Rで扱う変数、関数、データセットなどには全て，名前がついています。なまえがついた「それ」のことをオブジェクトと呼びます\footnote{適当な日本語訳がありません。objectはもの，対象という抽象的な意味なので，カタカナでオブジェクトとするしかないのです。}。\texttt{code:\ref{code::05_03}}を書いてみてください。
 \begin{lstlisting}[language=c++,label={code::05_03},caption={オブジェクトに代入}]
