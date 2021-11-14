@@ -6,7 +6,7 @@ rstan_options(auto_write = TRUE)
 
 # LM ----------------------------------------------------------------------
 
-dat <- read_csv("baseball2020.csv")
+dat <- read_csv("baseball2020.csv",locale = locale(encoding = "utf8"))
 dataSet <- list(N = NROW(dat), Y = dat$height, X = dat$weight)
 dat %>% ggplot(aes(x = weight, y = height)) +
   geom_point() +
