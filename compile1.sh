@@ -142,3 +142,6 @@ echo 'データ解析基礎のシラバスとテキストを改定しました�
 cat Syllabus_versions1.md
 cat Book_versions1.md
 echo 'git commit -a -mをお願いします。'
+cat multiply_error.log
+cat Citation_error.log
+cat overfull_error.log

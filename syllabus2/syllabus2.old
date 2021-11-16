@@ -1,7 +1,7 @@
 \documentclass{ltjsarticle}
 \usepackage{../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 0.24.7}
+\lhead{version 0.25.0}
 \begin{document}
 \title{心理学データ解析応用1/2\\心理学データ解析2A/B\\}
 \author{担当：小杉考司}
@@ -51,8 +51,6 @@
 \include{Syllabus2_chap14} %双対尺度法
 \include{Syllabus2_chap15} %多次元尺度構成法/展開法
 
-% \include{lessonII15}
-
 %%%%% 後期　データから情報を取り出すことにこだわる/パソコンを使った演習が半分
 \include{Syllabus2_chap16} %イントロダクション；プログラミングの基礎/代入・反復・条件分岐
 \include{Syllabus2_chap17} %ベイズ推定の基礎；ベイズの定理，確率に対する乱数近似
@@ -63,7 +61,7 @@
 \include{Syllabus2_chap22} %モデリングの目から見た検定4；対応のある平均値の差；IDを持ったデータ構造。ネスト＝階層化
 \include{Syllabus2_chap23} %モデリングの目から見た検定5；カテゴリカル分布を使って一致率の検定；カイ二乗検定，カテゴリカル分布，一致率のコード
 \include{Syllabus2_chap24} %線形モデルの基礎；一般化線形モデル；回帰分析のベイズ推定，データに合わせた確率分布（リンク関数），パラメータの解釈（変換前後），事後予測分布による解釈
-% \include{Syllabus2_chap25} %階層線形モデル
+\include{Syllabus2_chap25} %階層線形モデル
 % \include{Syllabus2_chap26} %混合分布モデル・0過剰ポアソン
 % \include{Syllabus2_chap27} %線形モデルの展開2；BFによるモデル比較・サヴェージ・ディッキー法
 % \include{Syllabus2_chap28}ベイジアンアプローチと確率的プログラミング3；項目反応モデル

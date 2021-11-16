@@ -1,5 +1,6 @@
 ### https://stackoverflow.com/questions/62551795/make-ggplot-with-regression-line-and-normal-distribution-overlay
 library(ggplot2)
+library(tidyverse)
 library(colorBlindness)
 x <- seq(1, 11, 1)
 y <- x * 0.5
