@@ -6,7 +6,7 @@ library(cmdstanr)
 library(posterior)
 library(bayesplot)
 color_scheme_set("brightblue")
-set_cmdstan_path("/Users/Napier/.cmdstanr/cmdstan-2.28.1")
+set_cmdstan_path("/Users/kosugitti445/.cmdstanr/cmdstan-2.28.1")
 
 # # rstanの場合
 # model <- rstan::stan_model("categorical1.stan")

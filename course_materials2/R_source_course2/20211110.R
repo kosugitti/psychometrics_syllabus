@@ -7,7 +7,7 @@ library(posterior)
 library(bayesplot)
 library(colorBlindness)
 color_scheme_set("brightblue")
-set_cmdstan_path("/Users/Napier/.cmdstanr/cmdstan-2.28.1")
+set_cmdstan_path("/Users/gauss/.cmdstanr/cmdstan-2.28.1")
 
 
 # LM ----------------------------------------------------------------------
@@ -19,6 +19,16 @@ g <- dat %>% ggplot(aes(x = weight, y = height)) +
   geom_point() +
   geom_smooth(formula = "y~x", method = "lm", se = FALSE)
 ggsave(g, filename = "../images/chapter24/Rplot24_01.png", dpi = 600, width = 8, height = 4)
+g
+
+resultlm <- lm(height~weight,dat)
+
+lmFit <- data.frame(resultlm$fitted.values,dat$weight)
+
+g + stat_function(fun = dnorm, args = list(mean = lmFit[1,1], sd = 3), colour = "red") +
+  coord_flip()
+
+
 
 modelC <- cmdstan_model("LM.stan")
 fit <- modelC$sample(

@@ -7,6 +7,7 @@ color_scheme_set("brightblue")
 # LM ----------------------------------------------------------------------
 
 dat <- read_csv("baseball2020.csv",locale = locale(encoding = "utf8"))
+dat <- read.csv("baseball2020.csv",fileEncoding = "UTF-8")
 dataSet <- list(N = NROW(dat), Y = dat$height, X = dat$weight)
 dat %>% ggplot(aes(x = weight, y = height)) +
     geom_point() +
