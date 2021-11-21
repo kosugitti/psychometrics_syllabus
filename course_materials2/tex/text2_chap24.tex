@@ -30,7 +30,7 @@
    \begin{pmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_n \end{pmatrix} 
 \]
 のようになります\footnote{$\beta_3 = 0 - (\beta_1 + \beta_2)$となっていることに注意。}。ここで行列$\bm{X}$はその群に属しているかどうか(その群の効果が発動するかどうか)を0/1で表している\keyterm{デザイン行列}{でざいんぎょうれつ}{design matrix}であり，有無という状態に一対一対応した\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}の数字です。説明変数が名義尺度水準になっているだけで，これが間隔尺度水準以上の\textbf{量的な}データであれば，\keyterm{回帰分析}{かいきぶんせき}{regression analysis}になるわけです。回帰分析は一般に，
-\[ Y_i = \beta_0 + \beta_1 X_{i1} +  \beta_2 X_{i2} + \vdots + \epsilon \]
+\[ Y_i = \beta_0 + \beta_1 X_{i1} +  \beta_2 X_{i2} + \cdots + \epsilon \]
 あるいはベクトルで書くと
 \begin{equation}
     \bm{Y}=\bm{X\beta}+\bm{\epsilon}
@@ -322,7 +322,7 @@ Inference for Stan model: logistic.
 post-warmup draws per chain=1000, total post-warmup draws=4000.
 
        mean se_mean   sd  2.5%   25%   50%   75% 97.5% n_eff Rhat
-      -2.77    0.01 0.40 -3.58 -3.04 -2.75 -2.50 -2.01  1067    1
+beta0 -2.77    0.01 0.40 -3.58 -3.04 -2.75 -2.50 -2.01  1067    1
 beta1  0.05    0.00 0.01  0.04  0.05  0.05  0.06  0.07  1073    1
 
 Samples were drawn using NUTS(diag_e) at Wed Nov 10 14:33:09 2021.

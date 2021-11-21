@@ -1,14 +1,3 @@
-\documentclass{ltjsarticle}
-\usepackage{../myStyle}
-%% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 0.25.8}
-\begin{document}
-\title{心理学データ解析応用1/2\\心理学データ解析2A/B\\詳細シラバス}
-\author{担当：小杉考司}
-\date{Last Compiled on \number\year .\number\month .\number\day}
-\maketitle
-\setcounter{tocdepth}{1}
-\tableofcontents
 \section*{はじめに}
 昨今はデータサイエンス，情報科学の領域が非常に隆盛で，コンピュータを使ってデータを分析し，経済の動向や購買行動などの予測に用いられることが一般的である。
 しかし，人の行動や考え方をどのようにデータにするかについては，当然ながら心理学には一日の長がある。
@@ -32,44 +21,3 @@
     \item[データ生成メカニズム] データから情報を取り出す受け身的な分析ではなく，データに数字を与えたり，データが生まれてくるメカニズムをリバースエンジニアリングすることで，さらに積極的にデータ解析に立ち向かおう。
     \item[統計環境Rと確率的プログラミング言語Stanによる実践] 統計環境Rと確率的プログラミング言語Stanに習熟することで実際に計算し，確認しながら分析を進めることができる。
 \end{description}
-%%%%% 前期　測定することにこだわる/座学
-\include{Syllabus2_chap01} %イントロ
-\include{Syllabus2_chap02} % 心理尺度
-\include{Syllabus2_chap03} % テスト理論と因子分析
-\include{Syllabus2_chap04} % IRT
-\include{Syllabus2_chap05} % IRT/GRM
-\include{Syllabus2_chap06} % 行列の基礎
-\include{Syllabus2_chap07} % データの行列表現，回帰，因子モデルの表現
-\include{Syllabus2_chap08} % 行列の固有値問題
-\include{Syllabus2_chap09} % Rで行列計算
-\include{Syllabus2_chap10} %Rをつかっての行列計算と因子分析/psychパッケージの利用/因子数の決め方/因子軸の回転/簡便的因子得点と回帰的因子得点
-\include{Syllabus2_chap11} %Rをつかっての項目反応理論
-\include{Syllabus2_chap12} %構造方程式モデリング
-\include{Syllabus2_chap13} %Rを使っての構造方程式モデリング/lavaanパッケージの利用
-\include{Syllabus2_chap14} %双対尺度法
-\include{Syllabus2_chap15} %多次元尺度構成法/展開法
-
-%%%%% 後期　データから情報を取り出すことにこだわる/パソコンを使った演習が半分
-\include{Syllabus2_chap16} %イントロダクション；プログラミングの基礎/代入・反復・条件分岐
-\include{Syllabus2_chap17} %ベイズ推定の基礎；ベイズの定理，確率に対する乱数近似
-\include{Syllabus2_chap18} %7人の科学者；MCMCの実際；設計図とコード，MCMCの診断，代表値による解釈
-\include{Syllabus2_chap19} %モデリングの目から見た検定1；二群の平均値の差；差の分布(生成量)，量的な仮説
-\include{Syllabus2_chap20} %モデリングの目からみた検定2；パラメータリカバリ，例数設計，パラメータについての仮説と実現値についての仮説
-\include{Syllabus2_chap21} %モデリングの目から見た検定3；多群の平均値の差；transformed parametersブロックでパラメータに制約をかける。連言命題（ANOVAの下位検定との違い。アルファのインフレなし）
-\include{Syllabus2_chap22} %モデリングの目から見た検定4；対応のある平均値の差；IDを持ったデータ構造。ネスト＝階層化
-\include{Syllabus2_chap23} %モデリングの目から見た検定5；カテゴリカル分布を使って一致率の検定；カイ二乗検定，カテゴリカル分布，一致率のコード
-\include{Syllabus2_chap24} %線形モデルの基礎；一般化線形モデル；回帰分析のベイズ推定，データに合わせた確率分布（リンク関数），パラメータの解釈（変換前後），事後予測分布による解釈
-\include{Syllabus2_chap25} %階層線形モデル
-% \include{Syllabus2_chap26} %混合分布モデル・0過剰ポアソン
-% \include{Syllabus2_chap27} %線形モデルの展開2；BFによるモデル比較・サヴェージ・ディッキー法
-% \include{Syllabus2_chap28}ベイジアンアプローチと確率的プログラミング3；項目反応モデル
-% \include{Syllabus2_chap29}ベイジアンアプローチと確率的プログラミング2；変化点検出
-% \include{Syllabus2_chap30}ベイジアンアプローチと確率的プログラミング4；状態空間モデル
-% \include{Syllabus2_chap30}総括
-
-
-\addcontentsline{toc}{section}{\bibname}
-
-\bibliographystyle{../jecon_jpa}
-\bibliography{../sbib}
-\end{document}

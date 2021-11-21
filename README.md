@@ -65,7 +65,7 @@
 - [二群の平均値差](codes/Dkiso1/20_example.R)
 - [R による分散分析のコード](codes/Dkiso1/Chapter22ANOVA.R)
 - [R による分散分析のコード(Rmd ファイルバージョン)](codes/Dkiso1/Chapter22ANOVA.Rmd)
-- [Chapter22 課題ファイル](codes/Dkiso1/chapter22exe.zip)
+- [Chapter22 課題ファイル(zipで圧縮してあります)](codes/Dkiso1/chapter22exe.zip)
 
 ### 心理学データ解析応用 2
 
@@ -89,6 +89,9 @@
 - [第 09 回；一般化線形モデル(rstan)](codes/Dkiso2/09_GLM_Rstan.R)
 - [第 09 回；一般化線形モデル(cmdstan)](codes/Dkiso2/09_GLM_Cmdstan.R)
 - [野球選手のデータ](codes/Dkiso2/baseball2020.csv)
+- [第 10 回；一般化線形混合モデル・階層線形モデル(rstan)](codes/Dkiso2/10_GLMM_Rstan.R)
+- [第 10 回；一般化線形混合モデル・階層線形モデル(cmdstan)](codes/Dkiso2/10_GLMM_Cmdstan.R)
+- [野球選手のデータ10年度分](codes/Dkiso2/baseballDecade.csv)
 
 ## ライセンス等
 

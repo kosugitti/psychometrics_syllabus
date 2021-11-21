@@ -1,17 +1,24 @@
 \documentclass{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.23.1}
+\lhead{version 1.23.2}
 \usepackage{docmute}
 
 \begin{document}
+\includepdf[noautoscale=false,pages=-]{../images/cover1.pdf}
 \VerbatimFootnotes
-\title{心理学データ解析基礎1(心理学統計法)/2\\心理学データ解析1A/B 教材テキスト}
-\author{担当：小杉考司}
+\input{../../copyright} % copyright page
+\title{心理学データ解析基礎}
+\author{小杉　考司}
 \date{Last Compiled on \number\year .\number\month .\number\day}
 \maketitle
 \setcounter{tocdepth}{1}
+
+
+\input{preface1} % preface
+
 \tableofcontents
+
 % 行番号開始
 \linenumbers
 % 各章
