@@ -248,7 +248,8 @@ g4 <- sample %>%
 g5 <- sample %>% ggplot(aes(x = height)) +
   geom_histogram(binwidth = 1)
 
-g6 <- ggplot(sample, aes(x = height, y = weight, colour = team, fill = team, shape = position)) +
+g6 <- ggplot(sample, aes(x = height, y = weight, 
+            colour = team, fill = team, shape = position)) +
   geom_point() +
   xlab("height") +
   ylab("weight") +

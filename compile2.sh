@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-
+cp -f FAQ.tex course_materials2/tex/
 #####################################################################text 2
 ## changePath
 path="course_materials2/tex"

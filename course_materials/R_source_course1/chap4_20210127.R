@@ -72,3 +72,4 @@ p3 <- ggplot(data = data.frame(X = c(0, 100)), aes(x = X)) +
   geom_segment(aes(x = 30, xend = 35, y = dnorm(35, 30, 5), yend = dnorm(35, 30, 5)), lty = 1)
 
 grid.arrange(p2, p3, ncol = 1)
+

@@ -1,7 +1,8 @@
 rm(list = ls())
 library(tidyverse)
 old <- theme_set(theme_gray(base_family = "HiraKakuProN-W3"))
-dat <- read_csv("baseball2020.csv", na = "NA", locale = locale(encoding = "utf8"))
+dat <- read_csv("baseballDecade.csv", na = "NA", locale = locale(encoding = "utf8")) %>% 
+    filter(Year=="2020年度")
 summary(dat)
 
 batter <- dat %>%

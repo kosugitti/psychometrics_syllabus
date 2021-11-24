@@ -216,7 +216,7 @@ solve(A) %*% b
     \centering
     \begin{tabular}[t]{ccccccc}
     \hline
-    Name & team & height & weight & salary & 勝利 & セーブ\\
+    Name & team & height & weight & salary & Win & Save\\
     \hline
     菅野　智之 & Giants & 186 & 92 & 65000 & 14 & 0\\
     西　勇輝 & Tigers & 181 & 82 & 20000 & 11 & 0\\
@@ -234,20 +234,31 @@ solve(A) %*% b
     \label{tbl::09_01}
     \end{table}
 
-表\ref{tbl::09_01}に示したのは，2020年の野球選手のデータです。これについては\texttt{pitcher2020.csv}というファイル名で提供します。それをプロジェクトフォルダに置き，\texttt{code:\ref{code::09_05}}のコードを実行してください。
+表\ref{tbl::09_01}に示したのは，いつもの野球選手のデータです。それをプロジェクトフォルダに置き，\texttt{code:\ref{code::09_05}}のコードを実行してください。
 
 \begin{lstlisting}[language=c++,label={code::09_06},caption={データファイルの読み込み}]
 library(tidyverse)
-datafile <- read_csv("pitcher2020.csv")
-dataset <- datafile %>%
-                    select(height, weight, salary) %>%
-                    as.matrix()
+dataset <- read_csv("baseballDecade.csv") %>%
+  dplyr::filter(Year=="2020年度") %>% 
+  dplyr::filter(position == "投手") %>%
+  dplyr::select(Name, team, height, weight, salary, Win, Save) %>%
+  na.omit() %>%
+  arrange(-Win) %>% 
+  select(height, weight, salary) %>%
+  as.matrix() 
 \end{lstlisting}
 \begin{description}
         \item[1行目] 読み込み他，ファイル操作を便利にするパッケージ\texttt{tidyverse}を読み込みます\footnote{\texttt{tidyverse}パッケージがない人はインストールしてください。関連パッケージをいろいろまとめたパッケージ群パッケージなので，少し時間がかかります。}。
-        \item[2行目] ファイルからデータを読み込み，\texttt{datafile}オブジェクトに代入します。
-        \item[3-5行目] \texttt{datafile}オブジェクトの中から，\texttt{height,weight,salary}という数字に関する列だけ選択し(\texttt{select})，それを行列型に変えて(\texttt{as.matrix})，\texttt{dataset}オブジェクトに代入しています。ここで
-         \verb| \%>\% | はパイプ演算子と呼ばれるもので，左の操作を右の操作へつなげる役割をします\footnote{R4.1.0からは記号が変わる可能性があります。}。
+        \item[2-9行目] データファイルを変形し，\texttt{dataset}オブジェクトに代入しています。ここで\verb| \%>\% | はパイプ演算子と呼ばれるもので，左の操作を右の操作へつなげる役割をします。
+        \begin{description}
+            \item[3行目] データを2020年度のものだけに絞るため，\verb|dplyr|パッケージの\verb|filter|関数を適用しています。
+            \item[4行目] データを投手のものだけに絞るため，\verb|dplyr|パッケージの\verb|filter|関数を適用しています。
+            \item[5行目] 変数を必要なものだけに絞るため，\verb|dplyr|パッケージの\verb|select|関数を適用しています。
+            \item[6行目] データセットから欠損値を除いています。
+            \item[7行目] 表示用に，データを勝利数(変数\verb|Win|)の多い順に並べ直しています。
+            \item[8行目] 以下の計算に使う変数だけに絞り込んでいます。
+            \item[9行目] データセットを行列方に変換しています。
+        \end{description} 
 \end{description}
 
 ともかくこれで\texttt{dataset}オブジェクトは行列型の，335行3列の行列になっています。

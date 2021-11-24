@@ -59,7 +59,7 @@ ggsave(g, filename = "../images/chapter25/Rplot25_01.png", dpi = 600, width = 12
 
 ### ポアソン分布で個体差を入れて
 #### リンク関数はlog,逆リンクはexp
-model_pois <- cmdstanr::cmdstan_model("glm_poisson.stan")
+model_pois <- cmdstanr::cmdstan_model("glmm_poisson.stan")
 
 dat.tmp <- dat %>%
   dplyr::filter(Year == "2020年度") %>%
@@ -74,7 +74,7 @@ dataSet <- list(
   idIndex = dat.tmp$ID
 )
 
-model_pois <- cmdstanr::cmdstan_model("glm_poisson.stan")
+model_pois <- cmdstanr::cmdstan_model("glmm_poisson.stan")
 fit <- model_pois$sample(
   data = dataSet,
   chains = 4,
@@ -129,7 +129,7 @@ g <- dat.tmp %>%
 
 
 ### 個体差いれないポアソン分布
-model_pois_plain <- cmdstan_model("poisson.stan")
+model_pois_plain <- cmdstan_model("glm_poisson.stan")
 dataSet <- list(
   L = NROW(dat.tmp),
   X = dat.tmp$salary,
@@ -167,7 +167,7 @@ dat <- baseball %>%
   filter(salary > 5000) %>%
   select(Year, Name, salary, AtBats, Hit, Games, HR)
 
-model_binom <- cmdstanr::cmdstan_model("glm_binomial.stan")
+model_binom <- cmdstanr::cmdstan_model("glmm_binomial.stan")
 dat.tmp <- dat %>%
   mutate(salary = salary / 1000) %>%
   mutate(ID = as.factor(Name)) %>%
@@ -246,7 +246,7 @@ pitcher %>%
   geom_smooth(method = "lm", formula = "y~x", se = F) +
   facet_wrap(~team)
 
-modelH <- cmdstan_model("glmm_poisson.stan")
+modelH <- cmdstan_model("hlm_poisson.stan")
 dat.tmp <- batter %>%
   mutate(
     NameID = as.factor(Name),

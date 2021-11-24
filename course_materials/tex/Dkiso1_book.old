@@ -1,12 +1,13 @@
 \documentclass{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.23.1}
+\lhead{version 1.24.2}
 \usepackage{docmute}
 
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/cover1.pdf}
 \VerbatimFootnotes
+\input{../../copyright} % copyright page
 \title{心理学データ解析基礎}
 \author{小杉　考司}
 \date{Last Compiled on \number\year .\number\month .\number\day}
@@ -14,7 +15,6 @@
 \setcounter{tocdepth}{1}
 
 
-\input{../../copyright} % copyright page
 \input{preface1} % preface
 
 \tableofcontents
@@ -45,7 +45,7 @@
 \include{text1_chap21}
 \include{text1_chap22}
 \include{text1_chap23}
-% \include{text1_chap24}
+\include{text1_chap24}
 % \include{text1_chap25}
 % \include{text1_chap26}
 % \include{text1_chap27}
@@ -53,7 +53,10 @@
 % \include{text1_chap29}
 % \include{text1_chap30}
 % 行番号終了
+\appendix
+\include{FAQ} % FAQ page
 \nolinenumbers
+
 \addcontentsline{toc}{chapter}{引用文献}
 % 引用文献
 \bibliographystyle{../../jecon_jpa}

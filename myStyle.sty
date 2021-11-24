@@ -40,8 +40,9 @@ setpagesize=false,
  bookmarksnumbered=true,%
  bookmarksopen=true,%
  colorlinks=true,%
- linkcolor=black,
- citecolor=black,
+ linkcolor=blue,
+ citecolor=teal,
+ urlcolor=magenta
 }
 % 図の周りに文章を配置する
 \usepackage{wrapfig}
@@ -56,9 +57,26 @@ setpagesize=false,
 \usepackage{tcolorbox}
 \usepackage{xcolor}
 \tcbuselibrary{breakable, skins, theorems}
+% スクリーン出力
 \newtcbtheorem[number within=section]{Rscreen}{\texttt{Rの出力}}{colframe=gray,colback=blue!3!,fontupper=\gtfamily\small}{RS}
 \newtcbtheorem[number within=section]{SCrstan}{\texttt{rstanの出力}}{colframe=gray,colback=green!3!,fontupper=\gtfamily\small}{SCrstan}
 \newtcbtheorem[number within=section]{SCcmd}{\texttt{cmdstanrの出力}}{colframe=gray,colback=pink!3!,fontupper=\gtfamily\small}{SCcmd}
+% FAQ box
+\newtcbtheorem[number within=section]{FAQ}{Q.}
+{
+    fonttitle=\gtfamily\sffamily,
+    skin=bicolor,
+    colframe=gray!2,
+    colback=gray!10!white,
+    rightrule=10pt,
+    leftrule=10pt,
+    bottomrule=2pt,
+    colbacktitle=red!65,
+    theorem style=standard,
+    arc=3pt,
+    colbacklower=green!5
+}{FAQbox}
+
 
 % 索引
 \usepackage{makeidx}

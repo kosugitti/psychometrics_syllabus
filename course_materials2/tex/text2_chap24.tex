@@ -129,7 +129,7 @@ generated quantities{
 
 そこそこ相関がありそうですね。では回帰モデルを当てはめてみましょう。
 \begin{lstlisting}[language=c++,label={code::24_01},caption={一般線形モデルを実行するコード}]
-dat <- read_csv("baseball2020.csv")
+dat <- read_csv("baseballDecade.csv") %>% filter(Year=="2020年度")
 dataSet <- list(N = NROW(dat), Y = dat$height, X = dat$weight)
 ## cmdstanrで実行する場合
 modelC <- cmdstan_model("LM.stan")

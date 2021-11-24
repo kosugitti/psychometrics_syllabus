@@ -1,7 +1,7 @@
 rm(list = ls())
 library(tidyverse)
-sample <- read.csv("baseball2020.csv", fileEncoding = "utf-8", header = TRUE)
-weight <- read.csv("SimpleWeight.csv") %>%
+sample <- read_csv("baseballDecade.csv", locale = locale(encoding="utf-8")) %>% filter(Year=="2020年度")
+weight <- read_csv("SimpleWeight.csv") %>%
   mutate(date = paste0(year, "/", month, "/", day)) %>%
   mutate(date = lubridate::ymd(date))
 old <- theme_set(theme_gray(base_family = "HiraKakuProN-W3"))
@@ -10,25 +10,25 @@ g1 <- ggplot(sample, aes(x = height, y = weight, colour = team, fill = team)) +
   geom_point()
 # ボックスプロット
 g2 <- sample %>%
-  select(position, height) %>%
+  dplyr::select(position, height) %>%
   na.omit() %>%
-  ggplot(aes(x = position, y = height, fill = position)) +
+  ggplot(aes(x = position, y = height, fill = position)) +scale_fill_brewer(palette = "Dark2")+
   geom_boxplot()
 # バイオリンプロット
 g3 <- sample %>%
-  select(position, height) %>%
+  dplyr::select(position, height) %>%
   na.omit() %>%
-  ggplot(aes(x = position, y = height, fill = position)) +
+  ggplot(aes(x = position, y = height, fill = position)) +scale_fill_brewer(palette = "Dark2")+
   geom_violin(alpha = 0.7) +
   geom_jitter(alpha = 0.3)
 # バープロット
 g4 <- sample %>%
-  select(height, position) %>%
+  dplyr::select(height, position) %>%
   na.omit() %>%
   group_by(position) %>%
   summarise(mean = mean(height), sd = sd(height)) %>%
   ggplot(aes(x = position, y = mean, fill = position)) +
-  geom_bar(stat = "identity", alpha = 0.7) +
+  geom_bar(stat = "identity", alpha = 0.7) +scale_fill_brewer(palette = "Dark2")+
   ylim(0, 200) +
   geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = .5)
 # ヒストグラム
@@ -59,12 +59,12 @@ ggsave(g7, filename = "../images/text03/Rplot03_03.png", dpi = 600, width = 12, 
 
 # 離散と連続
 g8 <- sample %>%
-  select(height, weight) %>%
+  dplyr::select(height, weight) %>%
   na.omit() %>%
   ggplot(aes(x = weight, y = height)) +
   geom_point()
 g9 <- sample %>%
-  select(height, position) %>%
+  dplyr::select(height, position) %>%
   na.omit() %>%
   ggplot(aes(x = position, y = height)) +
   geom_point()

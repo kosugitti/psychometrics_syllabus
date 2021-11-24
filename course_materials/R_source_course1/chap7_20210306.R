@@ -46,3 +46,4 @@ g3 <- data.frame(Ns = seq(0, 30)) %>%
     geom_bar(stat = "identity")
 g <- gridExtra::grid.arrange(g1,g2,g3)
 ggsave(g,filename = "../images/text07/Rplot07_04.png", dpi = 600, width = 12, height = 8)
+

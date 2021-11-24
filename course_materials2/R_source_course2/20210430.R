@@ -57,18 +57,18 @@ solve(A) %*% b
 
 # データの行列計算 ----------------------------------------------------------------
 
-dat <- read_csv("../../course_materials/R_source_course1/baseball2020.csv") %>%
+dataset <- read_csv("baseballDecade.csv") %>%
+  dplyr::filter(Year=="2020年度") %>% 
   dplyr::filter(position == "投手") %>%
-  dplyr::select(Name, team, height, weight, salary, 勝利, セーブ) %>%
+  dplyr::select(Name, team, height, weight, salary, Win, Save) %>%
   na.omit() %>%
-  arrange(-勝利)
-
-write_csv(dat, "pitcher2020.csv")
-
-datafile <- read_csv("pitcher2020.csv")
-dataset <- datafile %>%
+  arrange(-Win) %>% print %>% 
   select(height, weight, salary) %>%
-  as.matrix()
+  as.matrix() 
+
+# write_csv(dat, "pitcher2020.csv")
+# 
+# datafile <- read_csv("pitcher2020.csv")
 
 n <- nrow(dataset)
 one <- rep(1, n)
