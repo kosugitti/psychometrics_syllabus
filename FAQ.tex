@@ -38,6 +38,24 @@ Warning in install.packages:
 \end{description}
 \end{FAQ}
 
+
+\begin{FAQ}{ファイルが読み込めません}{}
+    \begin{verbatim}
+file(filename, "r", encoding = encoding) でエラー:
+   コネクションを開くことができません
+ 追加情報:  警告メッセージ:
+ file(filename, "r", encoding = encoding) で:
+   ファイル 'foo.csv' を開くことができません: No such file or directory
+    \end{verbatim}
+    \tcblower{\large A.}
+指定された場所にファイルがないので，読み込むことができないエラーです。
+確認すべきは，「プロジェクトを開いているか」，「プロジェクトフォルダの中に当該ファイルはあるか」，「ファイル名のミススペルはないか」です。
+プロジェクトってなんだという人は，RStudioの基本に立ち戻り，プロジェクトでファイルやフォルダを管理するようにしてください。プロジェクト管理については，Pp.\pageref{UnderProject}にもその説明があります。
+
+プロジェクトによる管理とは要するに，Rが今見ているフォルダの場所を固定する方法です。プロジェクトを開くと，プロジェクトフォルダが「今見ているフォルダ(ワーキングディレクトリ)」になりますので，その中のファイルを参照することになります。
+プロジェクトフォルダの中に当該ファイルがないと読み込むことができませんので\footnote{フォルダの位置を相対的・絶対的に指定してやれば，どこにおいていても読み込むことはできますが，この問題で悩んでいる人は相対・絶対パスの指定というところでさらに疑問が深まることになると思いますので，気にしないでくれて結構です。相対・絶対パスが知りたい人は，ファイル場所とは何かを再確認してください($\to$Pp.\pageref{filelocale})。}，当該ファイルをプロジェクトフォルダ内に移してきてください。
+\end{FAQ}
+
 \begin{FAQ}{ANOVA君が読み込めません}{}
 \begin{verbatim}
 file(filename, "r", encoding = encoding) でエラー:
@@ -58,10 +76,10 @@ cohen.d(value ~ condition, data = dat, hedges.crrection = T)
 Hedgesの補正(correction)のオプションが通っていません。スペルミスです。オプションのスペルが間違っているので無視されたので，関数名通りCohenのdが算出されます。
 \end{FAQ}
 
-\begin{FAQ}{Rスクリプトをrmdファイルに変換する方法がわかりません。}{}
-\tcblower{\large A.}
-Rスクリプトを直接Rmdに変換する術はありません。Rmdファイルを作って、Rスクリプトはチャンクの中に書き込みます。Rmdやチャンクについてはセクション\ref{Rmarkdown},Pp.\pageref{Rmarkdown}を参照してください。
-\end{FAQ}
+% \begin{FAQ}{Rスクリプトをrmdファイルに変換する方法がわかりません。}{}
+% \tcblower{\large A.}
+% Rスクリプトを直接Rmdに変換する術はありません。Rmdファイルを作って、Rスクリプトはチャンクの中に書き込みます。Rmdやチャンクについてはセクション\ref{Rmarkdown},Pp.\pageref{Rmarkdown}を参照してください。
+% \end{FAQ}
 
 \begin{FAQ}{描画の際に次のような注意が出てきます。これはどういう意味ですか。}{}
 \begin{verbatim}Removed 671 rows containing missing values (geom_point).\end{verbatim}

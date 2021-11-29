@@ -92,6 +92,14 @@ fit <- model_binom$sample(
 )
 
 # 課題2，階層線形モデル -------------------------------------------------------------
+
+pitcher <- baseball %>%
+    dplyr::filter(Year == "2020年度") %>%
+    dplyr::filter(position == "投手") %>%
+    dplyr::filter(salary > 1000) %>%
+    mutate(salary = salary / 1000) %>%
+    dplyr::select(Name, team, salary, Win)
+
 dat.tmp <- pitcher%>%
     mutate(
         NameID = as.factor(Name),

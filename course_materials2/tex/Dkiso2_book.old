@@ -1,7 +1,7 @@
 \documentclass{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 0.26.1}
+\lhead{version 0.26.7}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/cover2.pdf}
@@ -53,8 +53,9 @@
 \include{text2_chap29}
 \include{text2_chap30}
 \appendix
-\include{FAQ} % FAQ page
 \include{text2_Appendix1}
+\include{text1_chap02}
+\include{FAQ} % FAQ page
 % 行番号終了
 \nolinenumbers
 % 引用文献

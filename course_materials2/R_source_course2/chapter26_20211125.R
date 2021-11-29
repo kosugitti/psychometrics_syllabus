@@ -131,7 +131,7 @@ fit.df <- fit.stanfit %>% MCMC_result()
 ## 事後予測分布的に作ってみる
 theta <- 0.61
 lambda <- 14.67
-N <- Nrow(dat.tmp)
+N <- NROW(dat.tmp)
 g1 <- data.frame(FLG= rbinom(N,size=1, prob = theta) ) %>% 
   rowwise() %>% 
   mutate(Save = if_else(FLG==1,rpois(1,lambda),rpois(1,0))) %>% 
