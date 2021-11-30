@@ -1,0 +1,107 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{myStyle} 
+
+\begin{document} 
+\VerbatimFootnotes
+\chapter{Frequently Asked Questions；よくある質問}
+
+\begin{FAQ}{パッケージを読み込もうとすると次のようなエラーが出ます。どうすれば良いですか。}{}
+    \verb|library(tidyverse)でエラー；'tidyverse'というパッケージはありません。|
+    \tcblower
+    {\large A.} パッケージがないので，インストールしてください。
+\end{FAQ}
+
+
+\begin{FAQ}{パッケージをインストールしようとすると次のようなエラーが出ます。どうすれば良いですか。}{}
+\begin{verbatim}
+Warning in install.packages:
+    'lib = "C:/Program Files/R/R-4.0.5/library"' is not writable
+\end{verbatim}
+\tcblower
+{\large A.} ユーザがファイルに書き込みをする権限を持っていないので，(パッケージファイルをドライブに)書き込みできないというエラーです。
+RStudioを実行する時に，「管理者として実行」を選びましょう。
+\end{FAQ}
+
+
+\begin{FAQ}{パッケージをインストールしようとすると次のようなエラーが出ます。どうすれば良いですか。}{}
+\begin{verbatim}
+Warning in install.packages:
+    ディレクトリ 'C:\Users\????' を作成できません。理由は```'Invalid argument'です。
+\end{verbatim}
+\tcblower{\large A.}
+ユーザ名が全角文字を含んでいるため，文字化けしてR側から操作ができません。
+解決する方法は二つあります。
+\begin{description}
+    \item [ユーザを作り直す方法] ユーザ名に全角文字を含まない，新しいユーザを作成します。設定＞アカウントから新しいアカウントを作りましょう。
+    \item [インストールフォルダを指定する] Rのコンソールで\verb|.libPaths()|と実行すると，パッケージをインストールするフォルダが出てきますが，ここを変更する方法です。まずCドライブのすぐ下にインストール先のフォルダを作ります。仮にこれを\verb|myLib|としましょう。次にRのコンソールで\verb|.libPaths("C:\myLib")|と先ほど指定したフォルダを書いてやると，これでインストール先が変わりますので，書き込み・インストールができるようになります。老婆心ながら付け加えますと，フォルダ名はなんでも構いませんが，全角文字ではいけません。また場所もCドライブのすぐ下である必要はありませんが，全角文字や空白を含むフォルダの下に入れてしまってはいけません。OndDriveのようなクラウドを指定するのも良くありません(探しに行った時にオフラインだとまたエラーになります)。
+\end{description}
+\end{FAQ}
+
+
+\begin{FAQ}{ファイルが読み込めません}{}
+    \begin{verbatim}
+file(filename, "r", encoding = encoding) でエラー:
+   コネクションを開くことができません
+ 追加情報:  警告メッセージ:
+ file(filename, "r", encoding = encoding) で:
+   ファイル 'foo.csv' を開くことができません: No such file or directory
+    \end{verbatim}
+    \tcblower{\large A.}
+指定された場所にファイルがないので，読み込むことができないエラーです。
+確認すべきは，「プロジェクトを開いているか」，「プロジェクトフォルダの中に当該ファイルはあるか」，「ファイル名のミススペルはないか」です。
+プロジェクトってなんだという人は，RStudioの基本に立ち戻り，プロジェクトでファイルやフォルダを管理するようにしてください。プロジェクト管理については，Pp.\pageref{UnderProject}にもその説明があります。
+
+プロジェクトによる管理とは要するに，Rが今見ているフォルダの場所を固定する方法です。プロジェクトを開くと，プロジェクトフォルダが「今見ているフォルダ(ワーキングディレクトリ)」になりますので，その中のファイルを参照することになります。
+プロジェクトフォルダの中に当該ファイルがないと読み込むことができませんので\footnote{フォルダの位置を相対的・絶対的に指定してやれば，どこにおいていても読み込むことはできますが，この問題で悩んでいる人は相対・絶対パスの指定というところでさらに疑問が深まることになると思いますので，気にしないでくれて結構です。相対・絶対パスが知りたい人は，ファイル場所とは何かを再確認してください($\to$Pp.\pageref{filelocale})。}，当該ファイルをプロジェクトフォルダ内に移してきてください。
+\end{FAQ}
+
+\begin{FAQ}{ANOVA君が読み込めません}{}
+\begin{verbatim}
+file(filename, "r", encoding = encoding) でエラー:
+   コネクションを開くことができません
+ 追加情報:  警告メッセージ:
+ file(filename, "r", encoding = encoding) で:
+   ファイル 'http:/riseki.php.xdomain.jp/index.php?plugin=attach&refer=ANOVA君&openfile=anovakun_486.txt' を開くことができません: Invalid argument
+\end{verbatim}
+\tcblower{\large A.}
+ファイルを読み込みにいく先がURL，すなわちインターネット上になっています。ANOVA君のファイルを一度手元のPCのフォルダにダウンロードし，そのローカルのファイルの位置を指定して読み込むようにしてください。
+\end{FAQ}
+
+\begin{FAQ}{効果量として Hedges の g を算出してください。という指示について実行するとｇではなくｄが出てしまうようなのですが、どうすればよいでしょうか。コードは次の通りです。}{}
+\begin{verbatim}
+cohen.d(value ~ condition, data = dat, hedges.crrection = T)
+\end{verbatim}
+\tcblower{\large A.}
+Hedgesの補正(correction)のオプションが通っていません。スペルミスです。オプションのスペルが間違っているので無視されたので，関数名通りCohenのdが算出されます。
+\end{FAQ}
+
+% \begin{FAQ}{Rスクリプトをrmdファイルに変換する方法がわかりません。}{}
+% \tcblower{\large A.}
+% Rスクリプトを直接Rmdに変換する術はありません。Rmdファイルを作って、Rスクリプトはチャンクの中に書き込みます。Rmdやチャンクについてはセクション\ref{Rmarkdown},Pp.\pageref{Rmarkdown}を参照してください。
+% \end{FAQ}
+
+\begin{FAQ}{描画の際に次のような注意が出てきます。これはどういう意味ですか。}{}
+\begin{verbatim}Removed 671 rows containing missing values (geom_point).\end{verbatim}
+\tcblower{\large A.}
+「671件の行で欠損値が含まれています」ということです。つまりデータセットの中に欠損値(観測されていない，数値が入っていない行）が671件あったので，それは表示できませんでしたよ，という意味です。
+警告が嫌だということであれば，データセットの中で欠けているものを除外する必要があります。Rの関数では，\verb|na.omit|で欠損値を除外することができます。
+\end{FAQ}
+
+\begin{FAQ}{lm関数を実行するコードでオブジェクトがないと言われます。}{}
+\begin{verbatim}
+result <- lm( weight - height, data = dat)
+\end{verbatim}
+\tcblower{\large A.}
+従属変数と独立変数とをつなげるのはチルダ(\verb|~|)という記号です。そこがハイフン(\verb|-|)になっています。
+\end{FAQ}
+
+\begin{FAQ}{lm関数を実行するコードでオブジェクトがないと言われます。}{}
+\begin{verbatim}
+result <- lm( weight - height )
+\end{verbatim}
+\tcblower{\large A.}
+データを与えていないので，\verb|weight|というオブジェクトを探しに行って，見つからないというエラーです。\verb|data|オプションでデータを与えてあげてください。
+\end{FAQ}
+
+\end{document}
