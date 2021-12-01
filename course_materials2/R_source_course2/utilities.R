@@ -1,6 +1,6 @@
 rm(list = ls())
 library(pacman)
-pacman::p_load(tidyverse,posterior,bayesplot,RColorBrewer,ggthemes,patchwork)
+pacman::p_load(tidyverse, posterior, bayesplot, RColorBrewer, ggthemes, patchwork)
 color_scheme_set("brightblue")
 old <- theme_set(theme_gray(base_family = "HiraKakuProN-W3"))
 theme_set(theme(text = element_text(family = "HiraKakuProN-W3")))
