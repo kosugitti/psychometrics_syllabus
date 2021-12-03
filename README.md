@@ -94,6 +94,10 @@
 - [野球選手のデータ10年度分](codes/Dkiso2/baseballDecade.csv)
 - [第 11 回；混合分布モデル(rstan)](codes/Dkiso2/11_Mixture_Rstan.R)
 - [第 11 回；混合分布モデル(cmdstan)](codes/Dkiso2/11_Mixture_Cmdstan.R)
+- [項目反応理論用のデータ](codes/Dkiso2/IRTsample.csv)
+- [第 12 回；IRTモデル(rstan)](codes/Dkiso2/12_IRT_Rstan.R)
+- [第 12 回；IRTモデル(cmdstan)](codes/Dkiso2/12_IRT_Cmdstan.R)
+
 
 ## ライセンス等
 

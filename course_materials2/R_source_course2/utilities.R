@@ -1,12 +1,17 @@
 rm(list = ls())
 library(pacman)
-pacman::p_load(tidyverse, posterior, bayesplot, RColorBrewer, ggthemes, patchwork)
+pacman::p_load(tidyverse, 
+               posterior, 
+               bayesplot, 
+               RColorBrewer, 
+               ggthemes, 
+               patchwork,
+               cmdstanr,
+               bayestestR)
 color_scheme_set("brightblue")
 old <- theme_set(theme_gray(base_family = "HiraKakuProN-W3"))
 theme_set(theme(text = element_text(family = "HiraKakuProN-W3")))
 update_geom_defaults("text", list(family = "HiraKakuProN-W3"))
-library(cmdstanr)
-
 library(rstan)
 options(mc.cores = parallel::detectCores())
 rstan_options(auto_write = TRUE)

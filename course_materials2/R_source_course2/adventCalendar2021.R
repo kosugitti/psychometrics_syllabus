@@ -73,3 +73,15 @@ sample <- data.frame(FLG= rbinom(N,size=1, prob = theta) )
 sample %>% 
   rowwise() %>% 
   mutate(value = if_else(FLG==0,rpois(1,0),rpois(1,lambda)))
+
+
+dat <- list(
+  A = c(150,120,130),
+  B = c(130),
+  C = rnorm(10,0,1)
+)
+
+dat %>% as.data.frame()
+
+
+dat %>% as.matrix() %>% t()

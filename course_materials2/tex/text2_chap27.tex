@@ -1,12 +1,342 @@
 \documentclass{ltjsbook}
 \usepackage{docmute} 
-\usepackage{../myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document} 
 \chapter{確率的プログラミング；項目反応理論}
 \label{chapter27} 
+さてここまで，線形モデルを中心にモデリングのステップを一段一段登ってきました。
+この後は，これまでの技術や考え方を応用し，より実践的なプログラミングへと進んでいきます。さまざまなモデルの確率的表現や，そのコーディング技法を学ぶことで，ご自身の研究にも応用できる技術的ヒントが得られるかもしれません。
 
+今回は第\ref{chapter04},\ref{chapter05}および\ref{chapter11 }で学んだ項目反応理論を，Stanを使って実装する例を見ていきたいと思います。
+\section{ロジスティックモデルの復習}
+\subsection{パラメータモデル側から}
+ここで簡単に前期の復習をしておきます。
+
+目に見えないものを測定するという意味では，心理尺度や学力検査は同じ技術であるというところから，測定モデルの話を導入しました。
+特に学力検査で想定されている測定対象，学力は，正規分布していると考えられること，累積的な能力の蓄積の程度を測定していると考えられることから，正答率が累積正規分布をつかった潜在能力(学力)の関数と考えられるというところからモデル化がすすみました。累積正規分布を直接扱うモデルもありますが，一般にはそれによく近似する\keytermL{ロジスティック関数}{ろじすてぃっくかんすう}，すなわち
+
+\[ f(x) = \frac{1}{1+exp(-1.7x)}\]
+
+を使って近似することで，項目の特徴を描写することが考えられたのでした。
+
+x軸が潜在能力$\theta$を表していると考えれば，縦軸は能力に応じた\keytermL{通過率}{つうかりつ}になると考えられます。この関数を左右に動かす位置パラメータ，$b_j$を加えたモデルが\keyterm{1パラメータ・ロジスティックモデル}{1ぱらめーたろじすてぃっくもでる}{One Parameter Logistic model}であり，次の式\ref{1PLmodel}で表現されるのでした。
+
+\begin{equation}     p_j(\theta) = \frac{1}{1+exp(-1.7(\theta-b_j))} \label{1PLmodel} \end{equation}
+
+ここで$p_j(\theta)$は項目$j$に対する$\theta$の通過率であり，$b_j$は\keyterm{困難度}{こんなんど}{difficulty}母数と言われるものです。
+
+さらに項目を特徴づけるために，傾きの大きさを表すパラメータ，$a_j$を加えたモデルが\keyterm{2パラメータ・ロジスティックモデル}{2ぱらめーたろじすてぃっくもでる}{Two Parameter Logistic model}です。モデル式は式\ref{2PLmodel}で表されます。
+
+\begin{equation}     p_j(\theta) = \frac{1}{1+exp(-1.7a_j(\theta-b_j))} \label{2PLmodel} \end{equation}
+
+$a_j$はのことを特に\keyterm{識別力}{しきべつりょく}{discriminant}と呼ぶのでした。$a_j$の値によって傾きがどのように変わるかを，図\ref{fig::27_01}の二段目をみて確認しておきましょう。
+
+最後に，第\ref{chapter04}章では紹介していませんでしたが，3つ目のパラメータである$c_j$，\keyterm{当て推量母数}{あてすいりょうぼすう}{guessing parameter}を入れたモデルも紹介しておきます。モデルは式\ref{3PLmodel}のように表されます。
+\begin{equation}     p_j(\theta) = c_j + \frac{1-c_j}{1+exp(-1.7a_j(\theta-b_j))} \label{3PLmodel} \end{equation}
+ここには切片のように定数$c_j$が入っていますから，関数のベースラインが上に上がるイメージです。これはつまり，学力$\theta$にかかわらず一定の正答率を有するということで，「適当に答えても当たる確率」ということから当て推量とよばれています。
+
+\begin{figure}[ht]
+    \begin{center}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter27/Rplot27_01.png}
+     \caption{上から順に，1，2，3パラメータロジスティックモデル。どこがどう変わっていくか確認しておこう。}
+     \label{fig::27_01}
+    \end{center}
+\end{figure}
+\subsection{確率モデル側から}
+さて今度は同じモデルをデータとの対応の観点から見てみましょう。
+テストのデータは0/1の二値であり，ベルヌーイ分布から出てきていると考えることができます。またロジスティックモデルはその言葉の通りロジスティック関数を使って，$-\infty$から$+\infty$まであり得る$\theta$の値を，0から1の範囲に入るように変換しているわけです。これは一般化線形モデルの文脈でいうところの，\keytermL{ロジスティック回帰}{ろじすてぃっくかいき}分析であり，\keytermL{リンク関数}{りんくかんすう}がロジット関数，\keytermL{逆リンク関数}{ぎゃくりんくかんすう}がロジスティック関数になっているモデルだと考えることができます。
+
+データ生成のモデル設計図として考えると，図\ref{fig::27_02}のようになります。パッケージを使っての分析の時は\keytermL{最尤法}{さいゆうほう}による推定結果でしたが，ここで被検者母数に\underline{標準正規分布}を，項目母数に正規分布を事前分布としておいただけで，ベイズ推定モデルに置き換えることができました。
+
+これまで利用してきた技術の応用で考えることができますから，すぐにでも実装できそうですね！
+\begin{figure}[ht]
+    \begin{center}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter27/Slide27_01.png}
+     \caption{確率モデルとしての設計図。ロジスティック関数とベルヌーイ分布の組み合わせでテスト理論のモデルが表現できる。}
+     \label{fig::27_02}
+    \end{center}
+\end{figure}
+
+\section{ロジスティックモデルでの実装}
+それでは設計図をもとにモデルをコードにしていきましょう。
+
+項目数がM，被検者数がNの$N \times M$サイズの行列でデータが与えられていると考え，行列の各要素に対して通過率$p_{ij}$を計算し，それをベルヌーイ分布に当てはめるという形で実装したのがコード\ref{stan::27_01}になります。
+
+\begin{lstlisting}[language=C++,label={stan::27_01},caption={1PLモデル}]
+data{
+  int<lower=0> M;
+  int<lower=0> N;
+  int<lower=0,upper=1> resp[N,M];
+}
+
+parameters{
+  real<lower=-5,upper=5> b[M];
+  real theta[N];
+}
+
+transformed parameters{
+  real<lower=0,upper=1> prob[N,M];
+  for(n in 1:N){
+    for(m in 1:M){
+      prob[n,m] = inv_logit(1.7*(theta[n]-b[m]));
+    }
+  }
+}
+
+model{
+  for(n in 1:N){
+    for(m in 1:M){
+      resp[n,m] ~ bernoulli(prob[n,m]);
+    }
+  }
+  //prior
+  b ~ normal(0,3);
+  theta ~ normal(0,1);
+}
+\end{lstlisting}
+今回はわかりやすくするために，\verb|transformed parameters|ブロックを使いましたが，直接\verb|model|ブロックに書き込んでも構いませんし，\verb|bernoulli_logit|関数を使えばさらに高速に安定した推定結果が得られます。
+
+\verb|transformed parameters|ブロックにパラメータを追加するだけで，2PL,3PLモデルに拡張することも容易にできます。2PLモデルに拡張した例がコード\ref{stan::27_02}，3PLモデルに拡張した例がコード\ref{stan::27_03}です。
+\begin{lstlisting}[language=C++,label={stan::27_02},caption={2PLモデル}]
+...(前略)...
+parameters{
+  real<lower=0> a[M];
+  real<lower=-5,upper=5> b[M];
+  real theta[N];
+}
+
+transformed parameters{
+  real<lower=0,upper=1> prob[N,M];
+  for(n in 1:N){
+    for(m in 1:M){
+      prob[n,m] = inv_logit(1.7*a[m]*(theta[n]-b[m]));
+    }
+  }
+}
+...(後略)...
+\end{lstlisting}
+
+\begin{lstlisting}[language=C++,label={stan::27_03},caption={3PLモデル}]
+...(前略)...
+parameters{
+  real<lower=0> a[M];
+  real<lower=-5,upper=5> b[M];
+  real<lower=0,upper=1> c[M];
+  real theta[N];
+}
+
+transformed parameters{
+  real<lower=0,upper=1> prob[N,M];
+  for(n in 1:N){
+    for(m in 1:M){
+      prob[n,m] = c[m] + (1-c[m])*inv_logit(1.7*a[m]*(theta[n]-b[m]));
+    }
+  }
+}
+...(後略)...
+\end{lstlisting}
+
+第\ref{chapter11}章で使ったサンプルコードをつかって，このモデルで推定するためのコードがコード\ref{code::27_01}です(cmdstanrでの例)。
+\begin{lstlisting}[language=c++,label={code::27_01},caption={IRTのコード}]
+dat <- read_csv("IRTsample.csv")
+model_1pl <- cmdstan_model("oneParameter.stan")
+model_2pl <- cmdstan_model("twoParameters.stan")
+model_3pl <- cmdstan_model("threeParameters.stan")
+
+dataSet <- list(N = NROW(dat), M = NCOL(dat), resp = as.matrix(dat))
+fit1 <- model_1pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
+fit2 <- model_2pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
+fit3 <- model_3pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
+\end{lstlisting}
+分析結果を見てみましょう。EAP推定値はそれぞれ表\ref{tbl::27_01}，図\ref{fig::27_03}のようになりました。
+\begin{table}[ht]
+\caption{それぞれのパラメータ推定値}
+\centering
+\begin{tabular}[t]{c|c|cc|ccc}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{1PL} & \multicolumn{2}{c|}{2PL} & \multicolumn{3}{c}{3PL} \\\hline
+Qid & $b_j$ & $a_j$ & $b_j$ & $a_j$ & $b_j$ & $c_j$\\
+\hline
+1 & 0.727 & 0.347 & 1.716 & 2.865 & 1.567 & 0.221\\
+2 & -1.605 & 0.724 & -2.140 & 1.818 & -0.761 & 0.557\\
+3 & -1.175 & 1.124 & -1.229 & 2.900 & -0.626 & 0.338\\
+4 & -1.077 & 0.955 & -1.222 & 2.033 & -0.535 & 0.362\\
+5 & 0.577 & 0.691 & 0.771 & 2.451 & 0.946 & 0.159\\
+6 & 1.271 & 0.694 & 1.742 & 1.100 & 1.659 & 0.050\\
+7 & 0.564 & 0.692 & 0.753 & 1.027 & 0.941 & 0.099\\
+8 & 1.590 & 0.360 & 3.650 & 1.581 & 3.355 & 0.084\\
+9 & 0.514 & 0.484 & 0.893 & 0.836 & 1.205 & 0.142\\
+10 & -0.864 & 1.214 & -0.887 & 2.547 & -0.395 & 0.298\\
+\hline
+\end{tabular}
+\label{tbl::27_01}
+\end{table}
+
+\begin{figure}[ht]
+    \begin{center}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter27/Rplot27_02.png}
+     \caption{推定値を使って描いた各モデルのICC}
+     \label{fig::27_03}
+    \end{center}
+\end{figure}
+
+\section{整然データでの分析}
+このように，IRTモデルを簡単に実装することができました。
+
+ところで，このモデルをもう少し使いやすくするために，データを\keyterm{整然データ}{せいぜんでーた}{tidy data}にすることを考えてみましょう。
+というのも，今はデータを行列形で渡していますが，これだと欠損値があった場合にうまく機能しないからです。Stanはデータに欠損値を取ることができず，与えられるデータに\verb|NA|が入っていることは許されません。
+
+整然データは，1行に1つの数字が入っているようなデータで($\to$Pp.\pageref{tidyDataForm}参照)，その行を見るだけで全ての情報が手に入るようなデータです。行列型のデータは，人のIDを行ラベルで，変数のIDを列ラベルでみなければなりませんので，参照方向が一つに定められていません。具体的には次のような形のデータになります(\texttt{console\ref{RS:out27_01}})。この形式ですと，一行で誰の(\verb|Pid|)，どの問いに対する(\verb|Qid|)反応か(\verb|value|)ということがわかりますね。
+\begin{Rscreen}{整然データになったテストデータ}{out27_01}
+    \begin{verbatim}
+# A tibble: 20 × 3
+     Pid   Qid value
+   <int> <dbl> <dbl>
+ 1     1     1     0
+ 2     1     2     0
+ 3     1     3     1
+ 4     1     4     0
+ 5     1     5     0
+ 6     1     6     0
+ 7     1     7     0
+ 8     1     8     0
+ 9     1     9     0
+10     1    10     0
+11     2     1     1
+12     2     2     1
+13     2     3     0
+    \end{verbatim}
+\end{Rscreen}
+もし欠損値があればその行を削除してしまえば，完全データになりますから，Stanに欠損値を与えなくて済むことになります。
+
+もちろんこれに対応する形で，Stanのコードを書き換える必要があります。こんどはデータも長くなりますから，何行目に誰のど問いに対する反応が入っているかを，識別変数を使いながら指定することになります。具体的には次のようなコード例になるでしょう(コード\ref{stan::27_04})。
+\begin{lstlisting}[language=C++,label={stan::27_02},caption={Tidy Dataに対応した2PLモデル}]
+data{
+  int<lower=0> L;
+  int<lower=0> N;
+  int<lower=0> M;
+  int<lower=0,upper=N> Pid[L];
+  int<lower=0,upper=M> Qid[L];
+  int<lower=0,upper=1> resp[L];
+}
+
+parameters{
+  real<lower=0> a[M];
+  real<lower=-5,upper=5> b[M];
+  real theta[N];
+}
+
+transformed parameters{
+  real<lower=0,upper=1> prob[N,M];
+  for(n in 1:N){
+    for(m in 1:M){
+      prob[n,m] = inv_logit(1.7*a[m]*(theta[n]-b[m]));
+    }
+  }
+}
+
+model{
+  for(l in 1:L){
+    resp[l] ~ bernoulli(prob[Pid[l],Qid[l]]);
+  }
+  //prior
+  a ~ normal(0,3);
+  b ~ normal(0,3);
+  theta ~ normal(0,1);
+}
+\end{lstlisting}
+\paragraph{コード解説}
+\begin{description}
+  \item[dataブロック] データ長\verb|L|，最大被検者数\verb|N|，最大項目数\verb|M|，被検者識別変数\verb|Pid|，項目識別変数\verb|Qid|，L行目の反応\verb|resp|としてデータを受け取ります。
+  \item[parametersブロック] これまでと同じです。
+  \item[transformed parametersブロック] ここも手を加える必要がありません。
+  \item[modelブロック] L行目の反応に対して，識別変数で特定された確率をつかってモデルを当てはめます。
+\end{description} 
+これの結果はこれまでのモデルと変わりませんが，欠損値に対応できたはずですので，元の完全データに技と欠損値を与えて改変し，結果がどう変わるかを確認してみましょう。
+\begin{lstlisting}[language=c++,label={code::27_02},caption={tidyデータにして技と欠損値を与える}]
+dat.tmp <- dat %>%
+  rowid_to_column("Pid") %>%
+  pivot_longer(-Pid) %>%
+  mutate(Qid = str_extract(name, pattern = "\\d+") %>% as.numeric()) %>% 
+  dplyr::select(Pid,Qid,value)
+
+# わざと欠損値を与える
+dat.tmp$value[1] <- NA
+dat.tmp$value[11:13] <- NA
+\end{lstlisting}
+\paragraph{コード解説}
+\begin{description}
+  \item[1行目] \verb|dat|に入っている行列型・完全データを変形していきます。
+  \item[2行目] 一行ごとに被検者の反応が入っていますので，行番号を被検者識別変数\verb|Pid|として作ります。
+  \item[3行目] データを縦長にします。その時のキーとなるのは，先ほど作った\verb|Pid|で，この変数は除いて縦長にする関数が\verb|pivot_longer|です。
+  \item[4行目] 少し技巧的ですが，ここまでの段階で変数は\verb|Pid,name,value|という3つになっています。なかでも\verb|name|変数には元データの変数名が入っていますので，これを加工して問題番号を取り出します。\verb|str_extract| 関数の\verb|str|とは\verb|string|，すなわち文字列を扱う関数であるという意味です。\verb|str_extract|は文字列から条件に合ったものを抜き出すextractというもので，条件を\verb|pattern|で指定しています。ここで\verb|\\d+|とあるのは\keyterm{正規表現}{せいきひょうげん}{regular expression}というもので，文字列を一定の規則に従って特定の文字列を表現する方法です。ここでは数字だけを抜き出しています\footnote{少し丁寧にいうと，\verb|\d|は正規表現で数字を意味する記号です。ただ，バックスラッシュ(\verb|\|)がそのままでは正規表現の記号だと認識されず特殊文字だという宣言をしている(エスケープシーケンス，といいます)だけになってしまいます。そこで，「特殊文字のバックスラッシュだよ」を表すために重ねて\verb|\\|としています。また，\verb|+|は正規表現でいうところの「直前の文字が1回以上繰り返される」という意味です。今回は10という数字が出てくる可能性があり，\verb|\\d|だけだと1しか抜き出せないので，数字が連なっていたら全体を取り出すようにしています。要するに，数字を全部取り出しましょう，が正規表現では\verb|\\d+|になるわけです。}。また，このようにして取り出せた数字は文字列としての数字ですので，これを\verb|as.numeric|関数に送ることで，数値であることを教えています。
+  \item[5行目] 被検者識別変数，項目識別変数，反応の値だけにデータを限定しています。
+  \item[7行目] ここでこのデータセットの1行目に欠損値\verb|NA|を上書きしています。わざと欠損させたのです。
+  \item[8行目] 同じく11行目から13行目までも欠損値に上書きしてしまいました。
+\end{description} 
+こうしてできたデータセットは次のようになります(\texttt{console\ref{RS:out27_02}})。
+\begin{Rscreen}{整然データになったテストデータ}{out27_02}
+    \begin{verbatim}
+# A tibble: 20 × 3
+     Pid   Qid value
+   <int> <dbl> <dbl>
+ 1     1     1    NA
+ 2     1     2     0
+ 3     1     3     1
+ 4     1     4     0
+ 5     1     5     0
+ 6     1     6     0
+ 7     1     7     0
+ 8     1     8     0
+ 9     1     9     0
+10     1    10     0
+11     2     1    NA
+12     2     2    NA
+13     2     3    NA
+14     2     4     0
+15     2     5     0
+16     2     6     0
+17     2     7     0
+18     2     8     0
+19     2     9     0
+20     2    10     1
+    \end{verbatim}
+\end{Rscreen}
+確かに数カ所，欠けているところができましたね。これをそのまま渡すことができませんから，欠損のあるところは削除してデータセットを作り，推定してみましょう。
+\begin{lstlisting}[language=c++,label={code::27_03},caption={データセットを作って推定する}]
+# 欠損値を消したデータセットにする
+dat.tmp <- na.omit(dat.tmp)
+
+dataSet <- list(
+  L = NROW(dat.tmp), N = max(dat.tmp$Pid), M = max(dat.tmp$Qid),
+  Pid = dat.tmp$Pid, Qid = dat.tmp$Qid,
+  resp = dat.tmp$value
+)
+
+model_2pl_ver2 <- cmdstan_model("twoParameters2.stan")
+fit2.2 <- model_2pl_ver2$sample(
+  data = dataSet,
+  chains = 4,
+  parallel_chains = 4
+)
+\end{lstlisting}
+欠損があっても，データを整形して欠損を取り除いた形で分析し，問題なく推定できたと思います。欠損が含まれているから，そのデータは全て使い物にならないと考えるのではなく，データの存在するところ・利用できるところは利用しつくすという有効活用ができたと思います。
+
+最後に，推定結果を確認しておきましょう。1人目の被検者は1つ，2人目の被検者は3つの欠損がありました。つまり他の被検者は10問分の情報を持っているのに，この2人はそれぞれ9問，7問分しか情報が得られなかったことになります。
+そのことが結果の推定値にどう変わるのかというと，出力\ref{RS:out27_03}の通りです。
+\begin{SCrstan}{ロジスティック回帰分析の結果}{out27_03}
+    \begin{verbatim}
+# A tibble: 3 × 8
+  Varname     MAP   L95    L50    U50    U95    SD   Pid
+  <chr>     <dbl> <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl>
+1 theta[1] -1.39  -2.48 -1.73  -1.06  -0.381 0.533     1
+2 theta[2] -0.702 -1.97 -1.17  -0.385  0.376 0.599     2
+3 theta[3] -0.691 -1.65 -0.987 -0.326  0.404 0.511     3
+    \end{verbatim}
+\end{SCrstan}
+これを見ると，10問分の情報を持っている3人目の被検者の能力値が$\theta_3 = -0.691$と推定されていますが，そのSDが0.511です。これに比べて，9問しか情報のない被検者1のSDは0.533，7問しか情報のない被検者2のSDは0.599と，情報が少なくなるとSDが大きくなっていくことがわかります。推定値のSDが大きいということは，幅が広い，すなわちわからないことがより多くあることを意味します。得られる情報が少なければ，絞り込みが難しくなるというのがデータにも表れていることがわかりますね。
 
 \section{課題}
-
+本講で扱った，1PL，2PL，3PLモデルそれぞれを実行する，StanファイルやRコードを提出してください。ただし，いずれのモデルも整然データに対応したコードになっている必要があります。
+データやRコードは伴走サイトを通じて提供されています。不明な点がありましたら，TAあるいは小杉まで連絡して指導を受けてください。
 \end{document} 
