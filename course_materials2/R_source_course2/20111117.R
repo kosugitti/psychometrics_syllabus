@@ -165,9 +165,11 @@ dat <- baseball %>%
   dplyr::filter(position != "投手") %>%
   dplyr::filter(Year == "2020年度") %>%
   filter(salary > 5000) %>%
+  filter(AtBats>50) %>% 
+  filter(AtBats<400) %>% 
   select(Year, Name, salary, AtBats, Hit, Games, HR)
 
-model_binom <- cmdstanr::cmdstan_model("glmm_binomial.stan")
+model_binom <- cmdstanr::cmdstan_model("glmm_binomial2.stan")
 dat.tmp <- dat %>%
   mutate(salary = salary / 1000) %>%
   mutate(ID = as.factor(Name)) %>%
@@ -175,7 +177,7 @@ dat.tmp <- dat %>%
 
 dataSet <- list(
   L = NROW(dat.tmp), X = dat.tmp$salary,
-  Y = dat.tmp$HR, N = dat.tmp$Hit
+  Y = dat.tmp$Hit, N = dat.tmp$AtBats
 )
 fit <- model_binom$sample(
   data = dataSet,

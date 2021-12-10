@@ -32,7 +32,7 @@ MCMC_result <- function(x) {
     rename(Varname = 1, Rhat = 2)
   RhatCheck <- all(Rhats$Rhat < 1.10, na.rm = T)
   if (!RhatCheck) {
-    stop("Rhatが1.0を超えているものがあります。")
+    stop("Rhatが1.10を超えているものがあります。")
   } else {
     print("all Rhats are <1.1, Fine!")
   }

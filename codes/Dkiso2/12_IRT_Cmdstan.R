@@ -34,7 +34,7 @@ g1 <- p +
   ggtitle("1PL model.困難度母数はそれぞれ1，-1，2")
 g2 <- p + stat_function(fun = twoParameters, args = list(a = 1, b = 1), color = palette()[2]) +
   stat_function(fun = twoParameters, args = list(a = 0.8, b = -1), color = palette()[3]) +
-  stat_function(fun = twoParameters, args = list(a = 1.2, b = 2), color = palette()[4]) + ylab("pass") +
+  stat_function(fun = twoParameters, args = list(a = 2, b = 2), color = palette()[4]) + ylab("pass") +
   ggtitle("2PL model.識別力母数はそれぞれ1，0.8，1.2")
 g3 <- p + stat_function(fun = threeParameters, args = list(a = 1, b = 1, c = 0), color = palette()[2]) +
   stat_function(fun = threeParameters, args = list(a = 0.8, b = -1, c = 0.2), color = palette()[3]) +
@@ -66,10 +66,10 @@ fit2.stanfit <- fit2$output_files() %>% rstan::read_stan_csv()
 fit3.stanfit <- fit3$output_files() %>% rstan::read_stan_csv()
 
 
-fit1.df <- fit1.stanfit %>%
+fit1.df <- fit1.stanfit %>% 
   as.data.frame() %>%
   as_tibble() %>%
-  rowid_to_column("iter") %>%
+  rowid_to_column("iter") %>% 
   pivot_longer(-iter, names_to = "Varname") %>%
   group_by(Varname) %>%
   summarise(
