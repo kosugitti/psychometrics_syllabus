@@ -1,3 +1,8 @@
+# 心理学データ解析応用/伴走サイトコード -----------------------------------------------------
+#  Programmed by kosugitti 
+#  Licence ; Creative Commons BY-SA license (CC BY-SA) version 4.0
+## Lesson 2.Basics of stochastic programming
+
 rm(list = ls())
 set.seed(12345)
 dnorm(0, mean = 0, sd = 1)

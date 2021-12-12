@@ -97,6 +97,11 @@
 - [項目反応理論用のデータ](codes/Dkiso2/IRTsample.csv)
 - [第 12 回；IRTモデル(rstan)](codes/Dkiso2/12_IRT_Rstan.R)
 - [第 12 回；IRTモデル(cmdstan)](codes/Dkiso2/12_IRT_Cmdstan.R)
+- [体重推移のデータ](codes/Dkiso2/Weight.csv)
+- [第 13 回；変化点検出・折線回帰(rstan)](codes/Dkiso2/13_changePoing_Rstan.R)
+- [第 13 回；変化点検出・折線回帰(cmdstan)](codes/Dkiso2/13_changePoint_Cmdstan.R)
+- [第 14 回；状態空間モデル(rstan)](codes/Dkiso2/14_stateSpace_Rstan.R)
+- [第 14 回；状態空間モデル(cmdstan)](codes/Dkiso2/14_stateSpace_Cmdstan.R)
 
 
 ## ライセンス等

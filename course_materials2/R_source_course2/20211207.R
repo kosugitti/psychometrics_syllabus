@@ -5,7 +5,7 @@ g <- dat %>%
   filter(date > "2020/01/01") %>%
   ggplot(aes(x = date, y = weight)) +
   geom_point()
-ggsave(g, filename = "../images/chapter29/Rplot29_01.png", dpi = 600, width = 8, height = 4)
+ggsave(g, filename = "../images/chapter29/Rplot29_01.png", dpi = 600, width = 16, height = 9)
 
 
 # 状態空間モデル -----------------------------------------------------------------
@@ -22,9 +22,23 @@ fit1 <- model$sample(
   parallel_chains = 4
 )
 
-fit1.df <- fit1$output_files() %>%
-  rstan::read_stan_csv() %>%
-  MCMC_result()
+fit1.stanfit <- fit1$output_files() %>% rstan::read_stan_csv()
+fit1.df <- fit1.stanfit %>%
+  as.data.frame() %>%
+  as_tibble() %>%
+  rowid_to_column("iter") %>%
+  pivot_longer(-iter, names_to = "Varname") %>%
+  group_by(Varname) %>%
+  summarise(
+    EAP = mean(value),
+    MED = median(value),
+    MAP = map_estimation(value),
+    SD = sd(value),
+    L95 = quantile(value, probs = 0.025),
+    L50 = quantile(value, probs = 0.25),
+    U50 = quantile(value, probs = 0.75),
+    U95 = quantile(value, probs = 0.975)
+  )
 
 Est1 <- fit1.df %>%
   dplyr::filter(str_detect(Varname, "mu")) %>%
@@ -38,7 +52,9 @@ g <- dat1 %>%
   geom_point() +
   geom_point(aes(x = ID, y = MAP), color = palette()[2]) +
   geom_ribbon(fill = palette()[3], alpha = 0.2)
-ggsave(g, filename = "../images/chapter29/Rplot29_02.png", dpi = 600, width = 8, height = 4)
+plot(g)
+
+ggsave(g, filename = "../images/chapter29/Rplot29_02.png", dpi = 600, width = 16, height = 9)
 
 # 日付は連続か？ -----------------------------------------------------------------
 
@@ -51,7 +67,7 @@ dat1 %>%
 fullDays <- data.frame(date = as.Date("2020/01/01"):as.Date("2021/12/01")) %>%
   mutate(date = as.Date(date, origin = "1970-01-01")) %>%
   left_join(dat1, by = "date") %>%
-  tidyr::replace_na(list(weight = 999))
+  tidyr::replace_na(list(weight = 999, bodyFat = 999))
 
 model2 <- cmdstan_model("StateSpace2.stan")
 dataSet <- list(L = NROW(fullDays), W = fullDays$weight, Nmiss = sum(fullDays$weight == 999))
@@ -76,39 +92,47 @@ Est2miss <- fit2.df %>%
   select(ID, MAP, U95, L95)
 
 ### plot用の関数を準備
-plotFunction <- function(fullDays,Est,MissEst){
-  tmp <- fullDays %>% rowid_to_column("ID") %>% 
-    left_join(Est2,by="ID") %>% 
-    rowwise() %>% 
-    mutate(FLG = if(weight!=999){1}else{2})
+plotFunction <- function(fullDays, Est, MissEst) {
+  tmp <- fullDays %>%
+    rowid_to_column("ID") %>%
+    left_join(Est, by = "ID") %>%
+    rowwise() %>%
+    mutate(FLG = if (weight != 999) {
+      1
+    } else {
+      2
+    })
   misJ <- 1
   tmp$weight2 <- NA
   tmp$weight2U <- NA
   tmp$weight2L <- NA
-  for(i in 1:NROW(tmp)){
-    if(tmp$FLG[i]==2){
+  for (i in 1:NROW(tmp)) {
+    if (tmp$FLG[i] == 2) {
       tmp$weight2[i] <- MissEst$MAP[misJ]
       tmp$weight2U[i] <- MissEst$U95[misJ]
       tmp$weight2L[i] <- MissEst$L95[misJ]
-      misJ <- misJ +1}else{
-        tmp$weight2[i] <- tmp$weight[i]
-        tmp$weight2U[i] <- tmp$weight[i]
-        tmp$weight2L[i] <- tmp$weight[i]
-      }
+      misJ <- misJ + 1
+    } else {
+      tmp$weight2[i] <- tmp$weight[i]
+      tmp$weight2U[i] <- tmp$weight[i]
+      tmp$weight2L[i] <- tmp$weight[i]
+    }
   }
   return(tmp)
 }
 
-plot.tmp <- plotFunction(fullDays,Est2,Est2miss)
+plot.tmp <- plotFunction(fullDays, Est2, Est2miss)
 
 g <- ggplot(data = plot.tmp) +
   geom_point(aes(x = date, y = weight2)) +
-  geom_errorbar(aes(x = date, y = weight2, ymin = weight2L, ymax = weight2U, color = palette()[2]))+
-  geom_point(aes(x = date, y = MAP,color=palette()[3])) +
-  geom_errorbar(aes(x = date, y = MAP, ymin = L95, ymax = U95,color=palette()[4])) +
-  scale_x_date(date_breaks = "1 month", limits = as.Date(c("2020-01-01", "2020-05-01"))) + 
+  geom_errorbar(aes(x = date, y = weight2, ymin = weight2L, ymax = weight2U, color = palette()[2])) +
+  geom_point(aes(x = date, y = MAP, color = palette()[3])) +
+  geom_errorbar(aes(x = date, y = MAP, ymin = L95, ymax = U95, color = palette()[4])) +
+  scale_x_date(date_breaks = "1 month", limits = as.Date(c("2020-01-01", "2020-05-01"))) +
   theme(legend.position = "none")
-ggsave(g, filename = "../images/chapter29/Rplot29_03.png", dpi = 600, width = 8, height = 4)
+g
+
+ggsave(g, filename = "../images/chapter29/Rplot29_03.png", dpi = 600, width = 16, height = 9)
 
 # 未来も欠損じゃない？ --------------------------------------------------------------
 
@@ -146,17 +170,17 @@ Est3miss <- fit3.df %>%
   select(ID, MAP, U95, L95)
 
 
-plot.tmp <- plotFunction(fullDays,Est3,Est3miss)
+plot.tmp <- plotFunction(fullDays, Est3, Est3miss)
 
 g <- ggplot(data = plot.tmp) +
   geom_point(aes(x = date, y = weight2)) +
-  geom_errorbar(aes(x = date, y = weight2, ymin = weight2L, ymax = weight2U, color = palette()[2]))+
-  geom_point(aes(x = date, y = MAP,color=palette()[3])) +
-  geom_errorbar(aes(x = date, y = MAP, ymin = L95, ymax = U95,color=palette()[4])) +
-  scale_x_date(date_breaks = "1 month", limits = as.Date(c("2021-05-01", "2021-12-31"))) + 
+  geom_errorbar(aes(x = date, y = weight2, ymin = weight2L, ymax = weight2U, color = palette()[2])) +
+  geom_point(aes(x = date, y = MAP, color = palette()[3])) +
+  geom_errorbar(aes(x = date, y = MAP, ymin = L95, ymax = U95, color = palette()[4])) +
+  scale_x_date(date_breaks = "1 month", limits = as.Date(c("2021-05-01", "2021-12-31"))) +
   theme(legend.position = "none")
 
-ggsave(g, filename = "../images/chapter29/Rplot29_04.png", dpi = 600, width = 8, height = 4)
+ggsave(g, filename = "../images/chapter29/Rplot29_04.png", dpi = 600, width = 16, height = 9)
 
 # 二階差分 --------------------------------------------------------------------
 
@@ -186,14 +210,14 @@ Est4miss <- fit4.df %>%
   select(ID, MAP, U95, L95)
 
 
-plot.tmp <- plotFunction(fullDays,Est4,Est4miss)
+plot.tmp <- plotFunction(fullDays, Est4, Est4miss)
 
 g <- ggplot(data = plot.tmp) +
   geom_point(aes(x = date, y = weight2)) +
-  geom_errorbar(aes(x = date, y = weight2, ymin = weight2L, ymax = weight2U, color = palette()[2]))+
-  geom_point(aes(x = date, y = MAP,color=palette()[3])) +
-  geom_errorbar(aes(x = date, y = MAP, ymin = L95, ymax = U95,color=palette()[4])) +
-  scale_x_date(date_breaks = "1 month", limits = as.Date(c("2021-05-01", "2021-12-31"))) + 
+  geom_errorbar(aes(x = date, y = weight2, ymin = weight2L, ymax = weight2U, color = palette()[2])) +
+  geom_point(aes(x = date, y = MAP, color = palette()[3])) +
+  geom_errorbar(aes(x = date, y = MAP, ymin = L95, ymax = U95, color = palette()[4])) +
+  scale_x_date(date_breaks = "1 month", limits = as.Date(c("2021-05-01", "2021-12-31"))) +
   theme(legend.position = "none")
 
-ggsave(g, filename = "../images/chapter29/Rplot29_05.png", dpi = 600, width = 8, height = 4)
+ggsave(g, filename = "../images/chapter29/Rplot29_05.png", dpi = 600, width = 16, height = 9)

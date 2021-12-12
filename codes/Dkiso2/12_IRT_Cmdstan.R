@@ -1,3 +1,8 @@
+# 心理学データ解析応用/伴走サイトコード -----------------------------------------------------
+#  Programmed by kosugitti 
+#  Licence ; Creative Commons BY-SA license (CC BY-SA) version 4.0
+## Lesson 12. IRT models Cmdstan version.
+
 rm(list = ls())
 library(tidyverse)
 library(cmdstanr)

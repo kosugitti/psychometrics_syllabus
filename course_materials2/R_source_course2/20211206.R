@@ -2,18 +2,30 @@ rm(list = ls())
 source("utilities.R")
 dat <- read_csv("weight.csv")
 g <- dat %>%
-  dplyr::filter(date > "2021/05/01") %>%
-  dplyr::filter(date < "2021/10/01") %>%
+  mutate(date = as.Date(date)) %>% 
+  # dplyr::filter(date > "2019/01/01") %>%
+  # dplyr::filter(date < "2022/01/01") %>%
   ggplot(aes(x = date, y = weight)) +
-  geom_point()
+  geom_point()+
+  scale_x_date(date_breaks = "6 month")
+g
 
-ggsave(g, filename = "../images/chapter28/Rplot28_01.png", dpi = 600, width = 8, height = 4)
+
+ggsave(g, filename = "../images/chapter28/Rplot28_01.png", dpi = 600, width = 16, height = 9)
 
 # 二種類混ぜる ------------------------------------------------------------------
 
 dat1 <- dat %>%
   dplyr::filter(date > "2019/01/01") %>%
   dplyr::filter(date < "2021/01/01")
+
+g <- dat1 %>%
+  mutate(date = as.Date(date)) %>% 
+  ggplot(aes(x = date, y = weight)) +
+  geom_point()+
+  scale_x_date(date_breaks = "2 month")
+g
+ggsave(g, filename = "../images/chapter28/Rplot28_02.png", dpi = 600, width = 16, height = 9)
 
 model <- cmdstanr::cmdstan_model("changePoint1.stan")
 dataSet <- list(L = NROW(dat1), W = dat1$weight)
@@ -32,20 +44,25 @@ timeCheck <- fit.df %>%
 
 g <- dat1 %>%
   bind_cols(timeCheck) %>%
+  mutate(date = as.Date(date)) %>% 
   ggplot(aes(x = date, y = weight, color = as.factor(FLG))) +
-  geom_point() +
+  geom_point() +  scale_x_date(date_breaks = "2 month")+
   geom_hline(yintercept = 81.2, color = 1) +
-  geom_hline(yintercept = 83.1, color = 2)
-ggsave(g, filename = "../images/chapter28/Rplot28_02.png", dpi = 600, width = 8, height = 4)
+  geom_hline(yintercept = 83.1, color = 2) + 
+  theme(legend.position = "none")
+g
+ggsave(g, filename = "../images/chapter28/Rplot28_03.png", dpi = 600, width = 16, height = 9)
 
 # 変化点検出 -------------------------------------------------------------------
 
 g <- dat %>%
+  mutate(date = as.Date(date)) %>% 
   dplyr::filter(date > "2021/01/01") %>%
   dplyr::filter(date < "2021/11/01") %>%
   ggplot(aes(x = date, y = weight)) +
-  geom_point()
-ggsave(g, filename = "../images/chapter28/Rplot28_03.png", dpi = 600, width = 8, height = 4)
+  geom_point()+scale_x_date(date_breaks = "2 month")
+g
+ggsave(g, filename = "../images/chapter28/Rplot28_04.png", dpi = 600, width = 16, height = 9)
 
 dat2 <- dat %>%
   dplyr::filter(date > "2021/01/01") %>%
@@ -69,20 +86,22 @@ g <- dat %>%
   dplyr::filter(date < "2021/11/01") %>%
   rowid_to_column("Date") %>%
   ggplot(aes(x = Date, y = weight)) +
-  geom_point() +
+  geom_point() + 
   geom_segment(x = 1, xend = Est$tau, y = Est$mu2, yend = Est$mu2, color = 2) +
   geom_segment(x = Est$tau, xend = dataSet$L, y = Est$mu1, yend = Est$mu1, color = 2) +
   geom_vline(xintercept = Est$tau, color = 3, lwd = 2)
-
-ggsave(g, filename = "../images/chapter28/Rplot28_04.png", dpi = 600, width = 8, height = 4)
+g
+ggsave(g, filename = "../images/chapter28/Rplot28_05.png", dpi = 600, width = 16, height = 9)
 
 # 折線回帰 --------------------------------------------------------------------
 
-dat %>%
-  # dplyr::filter(date > "2021/01/01") %>%
-  # dplyr::filter(date < "2021/11/01") %>%
+g <- dat %>%
+  mutate(date = as.Date(date)) %>% 
+  dplyr::filter(date > "2016/01/01") %>%
+  dplyr::filter(date < "2016/12/01") %>%
   ggplot(aes(x = date, y = weight)) +
-  geom_point()
+  geom_point()+scale_x_date(date_breaks = "2 month")
+
 
 dat3 <- dat %>%
   dplyr::filter(date > "2016/01/01") %>%
@@ -90,10 +109,12 @@ dat3 <- dat %>%
   rowid_to_column("cDate")
 
 
-g <- dat3 %>% ggplot(aes(x = as.Date(date), y = weight)) +
+g <- dat3 %>% 
+  mutate(date = as.Date(date)) %>% 
+  ggplot(aes(x = date, y = weight)) +
   geom_point() +
   scale_x_date(date_labels = "%m/%d")
-ggsave(g, filename = "../images/chapter28/Rplot28_05.png", dpi = 600, width = 8, height = 4)
+ggsave(g, filename = "../images/chapter28/Rplot28_06.png", dpi = 600, width = 16, height = 9)
 
 
 model3 <- cmdstanr::cmdstan_model("changePoint3.stan")
@@ -124,7 +145,7 @@ g <- ggplot() +
   stat_function(fun = function(x) Est2$beta0b + Est2$beta1b * x, aes(color = palette()[2]), lty = 2, lwd = 2) +
   geom_vline(xintercept = Est2$tau, color = 3, lwd = 2)
 
-ggsave(g, filename = "../images/chapter28/Rplot28_06.png", dpi = 600, width = 8, height = 4)
+ggsave(g, filename = "../images/chapter28/Rplot28_07.png", dpi = 600, width = 16, height = 9)
 
 
 # 俺線ひっつけモデル ---------------------------------------------------------------
@@ -159,6 +180,52 @@ g <- ggplot() +
     xlim = c(Est2b$tau, NROW(dat3)),
     fun = function(x) Est2b$beta0b + Est2b$beta1b * x, aes(color = palette()[2]), lty = 2, lwd = 2
   ) +
-  geom_vline(xintercept = Est2b$tau, color = 3, lwd = 2)
+  geom_vline(xintercept = Est2b$tau, color = 3, lwd = 2)+theme(legend.position = "none")
 
-ggsave(g, filename = "../images/chapter28/Rplot28_07.png", dpi = 600, width = 8, height = 4)
+ggsave(g, filename = "../images/chapter28/Rplot28_08.png", dpi = 600, width = 16, height = 9)
+
+
+# 課題 ----------------------------------------------------------------------
+
+dat3.kadai <- dat %>%
+  dplyr::filter(date > "2015/01/01") %>%
+  dplyr::filter(date < "2015/12/10") %>%
+  rowid_to_column("cDate")
+g <- dat3.kadai %>% 
+  mutate(date = as.Date(date)) %>% 
+  ggplot(aes(x = date, y = weight)) +
+  geom_point() +
+  scale_x_date(date_labels = "%m/%d")
+g
+
+dataSet <- list(L = NROW(dat3.kadai), X = dat3.kadai$cDate, W = dat3.kadai$weight)
+fit3b <- model3b$sample(
+  data = dataSet,
+  chains = 4,
+  parallel_chains = 4,
+  seed = 8931
+)
+
+fit3b.df <- fit3b$output_files() %>%
+  rstan::read_stan_csv() %>%
+  MCMC_result()
+
+## 折れたのはいつ？
+Est2b <- fit3b.df %>%
+  select(Varname, MAP) %>%
+  pivot_wider(names_from = Varname, values_from = MAP) %>%
+  rename(beta0a = 1, beta0b = 2)
+
+g <- ggplot() +
+  geom_point(data = dat3.kadai, aes(x = cDate, y = weight)) +
+  stat_function(
+    xlim = c(1, Est2b$tau),
+    fun = function(x) Est2b$beta0a + Est2b$beta1a * x, aes(color = palette()[2]), lty = 2, lwd = 2
+  ) +
+  stat_function(
+    xlim = c(Est2b$tau, NROW(dat3.kadai)),
+    fun = function(x) Est2b$beta0b + Est2b$beta1b * x, aes(color = palette()[2]), lty = 2, lwd = 2
+  ) +
+  geom_vline(xintercept = Est2b$tau, color = 3, lwd = 2)+theme(legend.position = "none")
+g
+
