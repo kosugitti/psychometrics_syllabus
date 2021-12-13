@@ -65,7 +65,7 @@
 - [二群の平均値差](codes/Dkiso1/20_example.R)
 - [R による分散分析のコード](codes/Dkiso1/Chapter22ANOVA.R)
 - [R による分散分析のコード(Rmd ファイルバージョン)](codes/Dkiso1/Chapter22ANOVA.Rmd)
-- [Chapter22 課題ファイル(zipで圧縮してあります)](codes/Dkiso1/chapter22exe.zip)
+- [Chapter22 課題ファイル(zip で圧縮してあります)](codes/Dkiso1/chapter22exe.zip)
 
 ### 心理学データ解析応用 2
 
@@ -91,18 +91,17 @@
 - [野球選手のデータ](codes/Dkiso2/baseball2020.csv)
 - [第 10 回；一般化線形混合モデル・階層線形モデル(rstan)](codes/Dkiso2/10_GLMM_Rstan.R)
 - [第 10 回；一般化線形混合モデル・階層線形モデル(cmdstan)](codes/Dkiso2/10_GLMM_Cmdstan.R)
-- [野球選手のデータ10年度分](codes/Dkiso2/baseballDecade.csv)
+- [野球選手のデータ 10 年度分](codes/Dkiso2/baseballDecade.csv)
 - [第 11 回；混合分布モデル(rstan)](codes/Dkiso2/11_Mixture_Rstan.R)
 - [第 11 回；混合分布モデル(cmdstan)](codes/Dkiso2/11_Mixture_Cmdstan.R)
 - [項目反応理論用のデータ](codes/Dkiso2/IRTsample.csv)
-- [第 12 回；IRTモデル(rstan)](codes/Dkiso2/12_IRT_Rstan.R)
-- [第 12 回；IRTモデル(cmdstan)](codes/Dkiso2/12_IRT_Cmdstan.R)
+- [第 12 回；IRT モデル(rstan)](codes/Dkiso2/12_IRT_Rstan.R)
+- [第 12 回；IRT モデル(cmdstan)](codes/Dkiso2/12_IRT_Cmdstan.R)
 - [体重推移のデータ](codes/Dkiso2/Weight.csv)
-- [第 13 回；変化点検出・折線回帰(rstan)](codes/Dkiso2/13_changePoing_Rstan.R)
+- [第 13 回；変化点検出・折線回帰(rstan)](codes/Dkiso2/13_changePoint_Rstan.R)
 - [第 13 回；変化点検出・折線回帰(cmdstan)](codes/Dkiso2/13_changePoint_Cmdstan.R)
 - [第 14 回；状態空間モデル(rstan)](codes/Dkiso2/14_stateSpace_Rstan.R)
 - [第 14 回；状態空間モデル(cmdstan)](codes/Dkiso2/14_stateSpace_Cmdstan.R)
-
 
 ## ライセンス等
 
