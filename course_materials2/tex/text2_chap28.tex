@@ -126,7 +126,7 @@ data{
 }
 
 parameters{
-  real<lower=0,upper=L> tau;
+  real<lower=1,upper=L> tau;
   vector[2] mu;
   real<lower=0> sigma;
 }
@@ -140,7 +140,7 @@ model{
     }
   }
   
-  tau ~ uniform(0,L);
+  tau ~ uniform(1,L);
   mu ~ normal(80,10);
   sigma ~ cauchy(0,5);
 }
