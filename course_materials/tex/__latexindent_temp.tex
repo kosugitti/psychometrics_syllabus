@@ -1,69 +1,10 @@
-\documentclass{ltjsbook}
-\usepackage{../../myStyle}
-%% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.29.6}
-\usepackage{docmute}
+\documentclass{ltjbook}
+\usepackage{docmute} 
+\usepackage{../myStyle} 
 
-\begin{document}
-\includepdf[noautoscale=false,pages=-]{../images/cover1.pdf}
-\VerbatimFootnotes
-\input{../../copyright} % copyright page
-\title{心理学データ解析基礎}
-\author{小杉　考司}
-\date{Last Compiled on \number\year .\number\month .\number\day}
-\maketitle
-\setcounter{tocdepth}{1}
+\begin{document} 
+\chapter{後期のまとめ}
+\label{chapter30} 
+\section{課題}
 
-
-\input{preface1} % preface
-
-\tableofcontents
-
-% 行番号開始
-\linenumbers
-% 各章
-\include{text1_chap01}
-\include{text1_chap02}
-\include{text1_chap03}
-\include{text1_chap04}
-\include{text1_chap05}
-\include{text1_chap06}
-\include{text1_chap07}
-\include{text1_chap08}
-\include{text1_chap09}
-\include{text1_chap10}
-\include{text1_chap11}
-\include{text1_chap12}
-\include{text1_chap13}
-\include{text1_chap14}
-\include{text1_chap15}
-\include{text1_chap16}
-\include{text1_chap17}
-\include{text1_chap18}
-\include{text1_chap19}
-\include{text1_chap20}
-\include{text1_chap21}
-\include{text1_chap22}
-\include{text1_chap23}
-\include{text1_chap24}
-\include{text1_chap25}
-\include{text1_chap26}
-\include{text1_chap27}
-\include{text1_chap28}
-\include{text1_chap29}
-\include{text1_chap30}
-% 行番号終了
-\appendix
-\include{FAQ} % FAQ page
-\nolinenumbers
-
-\addcontentsline{toc}{chapter}{引用文献}
-% 引用文献
-\bibliographystyle{../../jecon_jpa}
-\bibliography{../../sbib}
-% 索引
-\addcontentsline{toc}{chapter}{索引}
-
-\printindex
-
-\end{document}
+\end{document} 

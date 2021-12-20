@@ -40,12 +40,12 @@ lualatex tmp
 upbibtex tmp
 lualatex tmp
 lualatex tmp
-upmendex -r -c -g -s indexStyle.ist tmp
+upmendex -r -c -g -s ../../indexStyle.ist tmp
 lualatex tmp
 ## Tex Warning Check
-grep 'multiply' tmp > multiply_error.log
-grep 'Citation' tmp > Citation_error.log
-grep 'Overfull' tmp > overfull_error.log
+grep 'multiply' tmp.log > error.log
+grep 'Citation' tmp.log >> error.log
+grep 'Overfull' tmp.log >> error.log
 
 ## cleanup
 mv tmp.pdf ../../${filename}.pdf
@@ -71,7 +71,5 @@ cd ..
 echo $(date)
 echo 'データ解析基礎のテキストを改定しました。'
 cat Book_versions1.md
-echo 'git commit -a -mをお願いします。'
-cat multiply_error.log
-cat Citation_error.log
-cat overfull_error.log
+cat course_materials/tex/error.log
+cat syllabus/error.log

@@ -31,5 +31,8 @@ pandoc text1_chap24.tex -f latex -t markdown -o 24-text01.Rmd
 pandoc text1_chap25.tex -f latex -t markdown -o 25-text01.Rmd
 pandoc text1_chap26.tex -f latex -t markdown -o 26-text01.Rmd
 pandoc text1_chap27.tex -f latex -t markdown -o 27-text01.Rmd
+pandoc text1_chap28.tex -f latex -t markdown -o 28-text01.Rmd
+pandoc text1_chap29.tex -f latex -t markdown -o 29-text01.Rmd
+pandoc text1_chap30.tex -f latex -t markdown -o 30-text01.Rmd
 
 mv -f *.Rmd ../Rmd/
