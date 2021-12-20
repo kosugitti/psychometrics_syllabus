@@ -12,6 +12,18 @@ dat %>% dplyr::filter(年代>17) %>%
                   上沼恵美子) %>% print %>% 
   dplyr::mutate(Score=オール巨人+富澤たけし+塙宣之+立川志らく+中川礼二+松本人志+上沼恵美子) %>% 
   ggplot(aes(x=ネタ順,y=Score,group=年代,color=as.factor(年代)))+geom_point()+geom_line()
+
+dat %>% dplyr::filter(年代>17) %>% 
+  dplyr::select( 
+                  オール巨人,
+                  富澤たけし,
+                  塙宣之,
+                  立川志らく,
+                  中川礼二,
+                  松本人志,
+                  上沼恵美子) %>% cor
+  
+
 # 審査員の類似度
 dat %>% dplyr::filter(年代>17) %>% 
   dplyr::select(年代, 
