@@ -84,7 +84,7 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
     \centering
     \includegraphics[keepaspectratio,width=8cm]{../images/JASP/JASP_web01.png}
     \caption{JASPのWebサイト}
-    \label{fig::28_04}
+    \label{fig::28_05}
 \end{figure}
 ここに，ダウンロードのボタン(Download JASP)がありますのでクリックすると，各種OSに対応したJASPが用意されています。
 自分の環境に合ったものをダウンロードし，アプリをインストールしてみましょう\footnote{macOSユーザでHomebrewによるソフトのパッケージ管理をしているひとは，\verb|brew install JASP --cask|でインストールすることができます。}。
@@ -92,14 +92,14 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
     \centering
     \includegraphics[keepaspectratio,width=8cm]{../images/JASP/JASP_web02.png}
     \caption{自分の環境に合ったものをダウンロードしよう}
-    \label{fig::28_05}
+    \label{fig::28_06}
 \end{figure}
 インストールが無事終了したら，起動してみましょう。JASPの起動画面が既に日本語化されていると思います。そこにはJASPの特徴である，\textbf{フリー，フレンドリー，フレキシブル}の説明があります。特に「フレキシブル」のところにあるように，このソフトは他のどのパッケージにもない特徴として，伝統的な分析方法とベイズ的な分析方法をシームレスにつなげているという特徴が明記されています。
 \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio,width=8cm]{../images/JASP/JASP_wakeup.png}
     \caption{起動画面のご挨拶も是非一読してください}
-    \label{fig::28_06}
+    \label{fig::28_07}
 \end{figure}
 
 また下の方には「JASPは猛烈なスピードで開発されています！」とあります。JASPのバージョンはまだ1.0にも満たないものですが，既に十分使えるレベルになっているのに加え，開発も進んでいます。ちなみに日本語化チームには著者も加わっており\footnote{詳しくは\url{https://jasp-stats.org/2021/10/28/日本語でjaspが使えるようになりました/}}，もし不自然な訳語や誤った表記，誤訳などがあるようでしたらご連絡ください\footnote{あるいはJASPユーザの会\url{https://github.com/jasp-user-jp/jasp-user-jp}に連絡いただいても結構です。}。
@@ -110,14 +110,14 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
     \centering
     \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_01.png}
     \caption{ファイルを読み込む}
-    \label{fig::28_07}
+    \label{fig::28_08}
 \end{figure}
 例として，野球選手のデータファイル(csv)を読み込んでみます\footnote{このサンプルデータは本稿の伴走サイトにて提供されています。}。
 \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_02.png}
     \caption{ファイルを読み込みました}
-    \label{fig::28_08}
+    \label{fig::28_09}
 \end{figure}
 読み込んだらデータファイルが表示されます。ここで変数の横に，ベン図のような記号がついていたり，物差しのような記号がついていたりするのがわかると思います。JASPではデータを\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}，\keytermL{順序尺度水準}{じゅんじょしゃくどすいじゅん}，\textbf{スケール}の3つに分類します。スケールは\keytermL{間隔尺度水準}{かんかくしゃくどすいじゅん}と\keytermL{比率尺度水準}{ひりつしゃくどすいじゅん}を合わせたものです。スケールになると加減乗除など算術的処理ができるので，それ以外の2つと区別するのですね。
 
@@ -129,7 +129,7 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
     \centering
     \includegraphics[keepaspectratio,width=8cm]{../images/JASP/JASP_03.png}
     \caption{記述統計の出力}
-    \label{fig::28_09}
+    \label{fig::28_10}
 \end{figure}
 
 記述統計メニューは，下の方に「プロット」や「統計量」についてのオプション指定ができる場所があります。
@@ -138,41 +138,41 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
     \centering
     \includegraphics[keepaspectratio,width=8cm]{../images/JASP/JASP_04.png}
     \caption{プロットオプション}
-    \label{fig::28_10}
+    \label{fig::28_11}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio,width=8cm]{../images/JASP/JASP_plot01.png}
     \caption{ボックスプロットや散布図}
-    \label{fig::28_11}
+    \label{fig::28_12}
 \end{figure}
 もちろん細かな図版の調整には\keytermL{ggplot2}{ggplot2}の方が向いているのですが，これでも概略を掴むには十分ですね\footnote{JASPに準拠したテキストがオンラインで公開されていて，そちらも日本語訳が進められているのですが，そこでも「細かい調整はggplot2でないとね」といった内容の記述があります。詳しくはJASPで統計を学ぼう!のサイト\url{https://jasp-user-jp.github.io/LSwithJASP/}をご覧ください。}。
 
-これらのプロットは，図の横にある下三角をクリックすると，コピーしたり画像ファイルとして保存することもできます(図\ref{fig::28_12})。
+これらのプロットは，図の横にある下三角をクリックすると，コピーしたり画像ファイルとして保存することもできます(図\ref{fig::28_13})。
 \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_plot02.png}
     \caption{JASPの図オブジェクトは保存できる}
-    \label{fig::28_12}
+    \label{fig::28_13}
 \end{figure}
 JASPだけで画像の調整がうまくいくのであれば，プレゼン資料の作成などに利用できるでしょう。
 
 \section{JASPによる相関・回帰分析}
-JASPの特徴はすでに述べたように，1つの分析法を従来型(頻度主義的確率に基づくもの)とベイズ型(朱kん確率に基づくもの)の両方で並列的に行えることです。メニューをクリックすると，伝統的な方法とベイジアン(ベイズ的な)が選べるようになっています(図\ref{fig::28_13})。
+JASPの特徴はすでに述べたように，1つの分析法を従来型(頻度主義的確率に基づくもの)とベイズ型(朱kん確率に基づくもの)の両方で並列的に行えることです。メニューをクリックすると，伝統的な方法とベイジアン(ベイズ的な)が選べるようになっています(図\ref{fig::28_14})。
 \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_05.png}
     \caption{一つのメニューで二つの分析}
-    \label{fig::28_13}
+    \label{fig::28_14}
 \end{figure}
 また，もう1つの特徴として，サンプルデータが豊富なことが挙げられます。
-JASPが持っているサンプルデータだけでなく，OSF\footnote{Open Science Frameworkの略で，心理学の再現性問題などのとも相まって，研究で使ったロウデータそのものを公開したらいいじゃないか，という活動です。詳しくは\url{https://osf.io/gceur/}を参照してください。}とよばれるWeb上で公開されている研究データにアクセスし，そこからデータを取ってくることもできるようになっているのです(図\ref{fig::28_14})。
+JASPが持っているサンプルデータだけでなく，OSF\footnote{Open Science Frameworkの略で，心理学の再現性問題などのとも相まって，研究で使ったロウデータそのものを公開したらいいじゃないか，という活動です。詳しくは\url{https://osf.io/gceur/}を参照してください。}とよばれるWeb上で公開されている研究データにアクセスし，そこからデータを取ってくることもできるようになっているのです(図\ref{fig::28_15})。
 \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_06.png}
     \caption{サンプルデータも豊富にある}
-    \label{fig::28_14}
+    \label{fig::28_15}
 \end{figure}
 
 ここで適当なサンプルデータを選んで，相関係数や回帰分析を見てみることにしましょう。
@@ -183,7 +183,7 @@ JASPが持っているサンプルデータだけでなく，OSF\footnote{Open S
     \centering
     \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_cor1.png}
     \caption{伝統的な相関分析}
-    \label{fig::28_15}
+    \label{fig::28_16}
 \end{figure}
 オプションのところにはデフォルトで，「ピアソンのr」と「有意性の報告」にチェックが入っています。
 いわゆる相関係数は\textbf{ピアソンの積率相関係数}というのが正式名称ですが，JASPでは順序尺度水準の数字に適用できるスピアマンの順位相関係数や，ケンドールのタウbと呼ばれる相関係数にすることもできます。また，有意性の報告にチェックが入っていて，表には$p$値がでています。思い出して欲しいのですが，帰無仮説検定として「母相関$\rho$はゼロである」という無相関を仮定したモデルと，「母相関はゼロではない」という対立仮説を比べています。たとえば神経症傾向と外向性の相関係数は$r=-0.3650$であり，これが母相関$\rho=0$のところから得られたデータだと考えるにはちょっと珍しすぎるよね($p<.001$)ということが示されています。オプションで「有意な相関のフラグを立てる」にチェックを入れると，有意なところにはアスタリスクマークがつき，$p$値が小さいほどアスタリスクの数は増えることでそれを示しています\footnote{これが良くない風習ですね！$p$値が小さくても，相関係数が大きいことを意味しませんし，仮説の正しさを支持するものでもありません。}
@@ -207,7 +207,7 @@ JASPが持っているサンプルデータだけでなく，OSF\footnote{Open S
     \centering
     \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_ttest.png}
     \caption{伝統的なt検定}
-    \label{fig::28_16}
+    \label{fig::28_17}
 \end{figure}
 結果として，表\ref{tab:ttest}が示されます。ここで，分散が等しいという仮定の場合はStudentの行をみて，$t(42)=-2.267,p=0.029,d=-0.684$であることが読み取れます\footnote{$t$分布はペンネームStudentさんが書いた論文が元になっているので，異分散のための補正のないt検定はStudentのt検定，と言います。ちなみに著者はWilliam Sealy Gossetであることが明らかになっています。彼を雇用するギネスビール社が本名仕様を許さなかったため，ペンネームで論文を投稿したと言われています。}
 
@@ -293,21 +293,21 @@ JASPが持っているサンプルデータだけでなく，OSF\footnote{Open S
 		\end{tabular}
 	}
 \end{table}
-このことは記述統計的なプロットを見るとはっきりします(図\ref{fig::28_16})。
+このことは記述統計的なプロットを見るとはっきりします(図\ref{fig::28_18})。
 \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_ttestPlot.png}
     \caption{二群の平均値と確信区間}
-    \label{fig::28_16}
+    \label{fig::28_18}
 \end{figure}
 これをみると，実験群と統制群の95\%確信区間は重複しているところが結構ありそうです。重複している場合は，ROPEがどれぐらいであるにせよ，性急な判断はやめて保留し，データ(エビデンス)をもっと追加してから考えた方がいいでしょう。
 
-ここでもう1つ，「事前分布と事後分布」の出力を見てみましょう(図\ref{fig::28_17})。
+ここでもう1つ，「事前分布と事後分布」の出力を見てみましょう(図\ref{fig::28_19})。
 \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_ttestBF.png}
     \caption{事前分布と事後分布}
-    \label{fig::28_17}
+    \label{fig::28_19}
 \end{figure}
 
 これは効果量$d$の推定値$\delta$の事前分布と事後分布を示しています。効果量は標準化された平均値の差を表しており，事前分布では0を中心としたコーシー分布が置かれています。つまり，検定前の主観確率としては「差はないんじゃないかな」とうっすら思っている，という状態です。これにデータ(尤度と事前確率)から計算された事後分布を重ねると，$\delta=0$の密度が事前分布よりも低い位置にきていますね。

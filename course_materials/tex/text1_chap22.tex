@@ -1,14 +1,10 @@
 \documentclass{ltjsarticle}
 \usepackage{docmute} 
 \usepackage{myStyle} 
-
-
-\setcounter{chapter}{22}
-
 \begin{document}
 
 \chapter{Rによる分散分析}
-\label{chapter23}
+\label{chapter22}
 ここまでで，要因計画を線形モデルとして，あるいは帰無仮説検定の枠組みで考えるやり方を説明してきました。
 細かい計算はRで行う，ということで先送りしてきた話をここで回収したいと思います。Rを使った演習でどのように計算が進むのか，どのように結果が表示されるのか，どのようにその結果を解釈するのかについて学んでいきましょう。
 \section{Rで分散分析を行う上でのポイント}
@@ -104,12 +100,12 @@ source("anovakun_486.txt")
 source("http://riseki.php.xdomain.jp/index.php?plugin=attach&refer=ANOVA君&openfile=anovakun_486.txt")
 \end{lstlisting}
 
-これらのコードが実行されると，Rの環境にたくさんの関数が入っているはずです(図\ref{fig::23_01})。これらが入っていればOKです。
+これらのコードが実行されると，Rの環境にたくさんの関数が入っているはずです(図\ref{fig::22_01})。これらが入っていればOKです。
 \begin{figure}[ht]
     \centering
     \includegraphics[keepaspectratio,width=12cm]{../images/text23/screen23_01.png}
     \caption{anovakuを読み込んだあとの環境タブ}
-    \label{fig::23_01}
+    \label{fig::22_01}
 \end{figure}
 それでは実際の使い方を見ていきましょう。
 \section{一要因Between計画の実際}

@@ -1,27 +1,35 @@
 data{
   int N;
   int Y[N];
+  real omega[2];
+  real kappa[2];
 }
 
 parameters{
-  real<lower=0,upper=1> tau;
   real<lower=0,upper=1> theta1;
   real<lower=0,upper=1> theta2;
 }
 
-transformed parameters{
-  real lp[N,2];
+model{
+  real lp[2];
+  lp[1] = log(0.5);
+  lp[2] = log1m(0.5);
   for(n in 1:N){
-    lp[n,1] = log(tau) + bernoulli_lpmf(Y[n]|theta1);
-    lp[n,2] = log1m(tau)+ bernoulli_lpmf(Y[n]|theta2);
+    lp[1] += bernoulli_lpmf(Y[n]|theta1);
+    lp[2] += bernoulli_lpmf(Y[n]|theta2);
   }
+  target += log_sum_exp(lp);
+  target += beta_lpdf(theta1|omega[1]*(kappa[1]-2)+1, (1-omega[1])*(kappa[1]-2)+1);
+  target += beta_lpdf(theta2|omega[2]*(kappa[2]-2)+1, (1-omega[2])*(kappa[2]-2)+1);
 }
 
-model{
+generated quantities{
+  int m;
+  real lp[2,N];
   for(n in 1:N){
-    target += log_sum_exp(lp[n]);
+   lp[1,n] = bernoulli_lpmf(Y[n]|theta1)+beta_lpdf(theta1|omega[1]*(kappa[1]-2)+1, (1-omega[1])*(kappa[1]-2)+1);
+   lp[2,n] = bernoulli_lpmf(Y[n]|theta2)+beta_lpdf(theta2|omega[2]*(kappa[2]-2)+1, (1-omega[2])*(kappa[2]-2)+1);
   }
-  tau ~ beta(1,1);
-  target += beta_lpdf(theta1|2.8, 17.2);
-  target += beta_lpdf(theta2|13.6,6.4);
+  if(sum(lp[1,]) >= sum(lp[2,])){ m = 1; }else{ m = 2;}
 }
+

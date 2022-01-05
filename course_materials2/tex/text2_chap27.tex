@@ -210,7 +210,7 @@ Qid & $b_j$ & $a_j$ & $b_j$ & $a_j$ & $b_j$ & $c_j$\\
 もし欠損値があればその行を削除してしまえば，完全データになりますから，Stanに欠損値を与えなくて済むことになります。
 
 もちろんこれに対応する形で，Stanのコードを書き換える必要があります。こんどはデータも長くなりますから，何行目に誰のど問いに対する反応が入っているかを，識別変数を使いながら指定することになります。具体的には次のようなコード例になるでしょう(コード\ref{stan::27_04})。
-\begin{lstlisting}[language=C++,label={stan::27_02},caption={Tidy Dataに対応した2PLモデル}]
+\begin{lstlisting}[language=C++,label={stan::27_04},caption={Tidy Dataに対応した2PLモデル}]
 data{
   int<lower=0> L;
   int<lower=0> N;

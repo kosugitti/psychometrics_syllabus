@@ -377,7 +377,7 @@ model{
 ここで，個人差に関係なく影響を与えている効果のことを\keyterm{固定効果}{こていこうか}{Fixed Effect}と呼び，個人差のように交換可能な要素のことを\keyterm{変量効果}{へんりょうこうか}{Random Effect}と呼びます。またず\ref{fig::22_02}に示されているように，データ生成分布の中に個人差の分布が入れ子になって含まれていますね。このようなデータは階層モデルといい，特に今回のように線形な階層モデルは\keyterm{階層線形モデル}{かいそうせんけいもでる}{Hierarchical Linear Model}とよばれます。この展開については，次回以降にお話しすることになるでしょう。
 
 ではこのモデルを実装していきましょう。設計図に沿えばStanコードは書けるはずです。ここにはStanに与えるRのコード例を用意しましたので，自分なりのコードを書いて検証してみてください\footnote{これに限らず，コードに正しい書き方はありません。自分なりの書き方で結構です。判断すべきは正しく機能するかどうかであって，書き方はあくまでも一例にすぎません。}。
-\begin{lstlisting}[language=C++,label={code::22_03},caption={整然データ対応番}]
+\begin{lstlisting}[language=C++,label={code::22_04b},caption={整然データ対応番}]
 dat_raw <- data.frame(ID = 1:4,
                       period1 = c(10,9,4,7),
                       period2 = c(5,4,2,3),
@@ -389,5 +389,5 @@ tidy_dat <- dat_raw %>%
   mutate(cond = as.numeric(name))
 \end{lstlisting}
 \section{課題}
-Code::\ref{code::22_03}を参考にしながら，表\ref{tbl::22_02}の事例を検証するためのStanコードを書いてください。作ったStanファイルやRコードを提出してください。
+Code::\ref{code::22_04b}を参考にしながら，表\ref{tbl::22_02}の事例を検証するためのStanコードを書いてください。作ったStanファイルやRコードを提出してください。
 \end{document} 

@@ -383,7 +383,7 @@ Log.Lik: -21721.91
 いわゆる一般的な因子分析は，ピアソンの積率相関係数を元に(積率相関係数の相関行列$\bm{R}$の固有値分解から)因子を求めていくのですが，この積率相関係数が間隔尺度水準を仮定したもので，シグマ法で計算された尺度値を使っていないのであれば疑義が残る，という話でした。
 この元になる相関係数が，潜在的連続体を仮定した順序尺度水準向けの相関係数である，\keytermL{ポリコリック相関係数}{ぽりこりっくそうかんけいすう}であれば，その問題は解決します。反応段階が順序尺度を仮定した因子分析のことを特に\keytermL{カテゴリカル因子分析}{かてごりかるいんしぶんせき}と言います。カテゴリカル因子部な席は，前回紹介した\texttt{psych}パッケージに少しオプションを足すだけで簡単に実行できるものです。
 
-\begin{lstlisting}[language=c++,label={code::11_05},caption={GRMの実行}]
+\begin{lstlisting}[language=c++,label={code::11_06},caption={GRMの実行}]
 dat <- bfi %>% dplyr::select(-gender, -education, -age)
 result.fa <- fa.poly(dat, nfactors = 5, rotate = "geominQ")
 print(result.fa, sort = T, cut = 0.3)
@@ -402,7 +402,7 @@ print(result.fa, sort = T, cut = 0.3)
 
 カテゴリカル因子分析は，因子分析の文脈から順序尺度水準の項目を扱えるように，と発展してきたものです，これに対して，項目反応理論の文脈から心理尺度を扱えるように，と発展してきたルートもあります。これは\keyterm{多次元項目反応理論}{たじげんこうもくはんのうりろん}{multi-dimensional item response theory}と呼ばれるもので，これを提供するRパッケージもあります。それが\texttt{mirt}パッケージ\citep{mirt}です。最後にこれを使ったコードの例を示しておきます。この計算には時間がかかりますが，完全情報最尤推定によって項目反応理論で算出するような，精度の高い因子得点を得ることができるのは利点だと言えるでしょう。
 
-\begin{lstlisting}[language=c++,label={code::11_06},caption={mirtの実行}]
+\begin{lstlisting}[language=c++,label={code::11_06b},caption={mirtの実行}]
 library(mirt)
 result.mirt <- mirt(dat, 5)
 print(result.mirt)

@@ -141,12 +141,12 @@ and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
 \end{verbatim}
 \end{Rscreen}
-このことをわかりやすく表示するために，\texttt{plot(fit.brm)}としてみましょう。図\ref{fig::27_01}のように，分析結果がプロットされます。
+このことをわかりやすく表示するために，\texttt{plot(fit.brm)}としてみましょう。図\ref{fig::29_01}のように，分析結果がプロットされます。
 \begin{figure}[ht]
     \centering
     \includegraphics[keepaspectratio,width=12cm]{../images/text27/Rplot27_01.png}
     \caption{ベイズ法による回帰係数の推定}
-    \label{fig::27_01}
+    \label{fig::29_01}
 \end{figure}
 この図の左側にあるのが，事後分布の形です。推定値である288.37や93.86は分布の平均値(EAP推定値)で，この分布のピーク(MAP推定値)ではないことに注意してください。MAP推定値が欲しい場合は，別途\texttt{bayestestR}パッケージ\citep{bayestestR}を導入し，\verb|map_estimate|関数を実行する必要があります(\texttt{code:\ref{code::27_05}})。
 

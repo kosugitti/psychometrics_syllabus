@@ -6,6 +6,15 @@
 \VerbatimFootnotes
 \chapter{Frequently Asked Questions；よくある質問}
 
+\begin{FAQ}{ファイルを読み込もうとすると次のようなエラーが出ます。どうすれば良いですか。}{}
+    \verb|'xxxxx'に不正なマルチバイト文字があります|
+    \tcblower
+    {\large A.} 文字化けの原因は，たとえばUTF-8形式で提供されているファイルを，Windows標準のCP932形式で読み込もうとする，という文字コードの不一致です。
+    ですからそれをオプションで指定してあげれば問題解決です。
+    \verb|read.csv|関数を使っている場合，オプションの指定は\verb|read.csv("foo.csv",fileEncoding="UTF-8")|のようにします。
+    \verb|tidyverse|の\verb|read_csv|関数を使っている場合，localeオプションで，locale関数のencodingを明示的にUTF-8とします。\verb|read_csv("foo.csv", locale=locale(encoding = "UTF-8"))|のようにします。
+\end{FAQ}
+
 \begin{FAQ}{パッケージを読み込もうとすると次のようなエラーが出ます。どうすれば良いですか。}{}
     \verb|library(tidyverse)でエラー；'tidyverse'というパッケージはありません。|
     \tcblower
