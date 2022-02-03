@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-\section{数値データの種類}
-\label{s02_Numbers}
-=======
 \documentclass{ltjsarticle}
 \usepackage{../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.3.0}
+\lhead{version 2.0.2}
 \begin{document}
 \title{心理学データ解析基礎1(心理学統計法)\\心理学データ解析1AB\\心理学データ解析基礎2}
 \author{担当：小杉考司}
@@ -16,130 +12,102 @@
 \newpage
 \section*{はじめに}
 \subsection*{授業のテーマ}
->>>>>>> parent of c7c90f8 (0202_rename)
 
-\subsection{授業内容}
-\subsubsection{科目の中でのこのコマの位置づけ}
-\begin{tabular}[t]{ccccccc}
-    記述統計[1] & 確率[0] & モデル[0] & 推測・推定[0] & 意思決定[0] & 実践[0]
-\end{tabular}
-<<<<<<< HEAD
-\subsubsection{概要}
-目に見えない心という対象を研究するために，言語や行動によって得られた反応を記録しなければならず，記録されたものは集計，分析のために数値化される。数字やその統計的分析結果が，対象を必ずしも反映していないという直観に反するかもしれないが，数字の限界は言語の限界と同じであり，言い換えれば論述・論考・論証の限界に等しい全ての科学的領域をカバーする。ここでは数値化することで何が得られるか，その長所を理解する。
-\subsubsection{コマ主題細目}
+「見えないもの」をみよう・測ろう・考えようとするのが心理統計の世界である。
+
+\subsection*{一年を通じて伝えたいポイント}
 \begin{description}
-\item[データと変数] 個人の特徴を記述するにあたって，心理統計では全ての情報を数値化する。これらの数字は人によって変わりうるので，一般に変数と呼ぶ。また，目に見える変数を観測変数やアウトカムとよぶが，目に見えない心の状態をデータから取り出したりする場合は，それを潜在変数と呼んで区別する。
-\begin{flushright}
-    $\to$ データの分類については，\citet{Yamada2004}のP.18--21。
-\end{flushright}
-=======
+    \item[母数を知るための推測] 大学での統計，心理統計は標本の記述統計量を検証したいのではなく，母集団を表す数字を求めるための推測統計である。
+    \item[確率を用いた推論] 母数を知るための方法は3つある。代表値を用いたモーメント法，確率分布をつかった最尤法，ベイズ法である。
+    \item[要因計画と線形モデル] 心理学では，要因計画による研究条件をコントロールし，平均値の差をもちいた考察(平均因果効果)をおこなうことが多い。そしてそれらは総じて線形モデルとして表現できる。
+    \item[モデル比較と意思決定] モデルによる母数の推定だけではなく，そこから一定の「結論」あるいは「意思決定」を行うための方法として，モデル比較やNHSTといった方法がある。
+    \item[統計環境Rによる実践] 統計環境Rを利用して，理論的な理解だけでなく実際に計算ができることも身につけるべき技術である。
+\end{description}
+
+注）「科目の中でのこのコマの位置づけ」の中で示されているのは，上記のポイントに対応した，その時間の進度(Level)のようなものです
+\footnote{記述統計は「一年を通じて伝えたいポイント」の基礎および準備であり，本質ではありませんので「ポイント」には含まれませんが，「授業の進度」には含まれます。}。例えば，次のようにあった場合，
+\begin{tcolorbox}
+\begin{tabular}[t]{ccccccc}
+    記述統計[3] & 確率[2] & モデル[1] & 推測・推定[1] & 意思決定[0] & 実践[1]
+\end{tabular}
 \end{tcolorbox}
 記述統計は第3段階，確率についての話は第2段階，モデルについての話は第1段階，推測・推定についての話はまだ含まれておらず，実践は第1段階にきたことを表します。この進度は，次の表~\ref{processTable}に対応し，累積するものです。
 
 
 \begin{table}
+    \centering
     \caption{テーマと講義との対応}
     \label{processTable}
     \begin{tabular}[t]{lccccccc}
-        & 記述統計 & 確率 & モデル & 推測・推定 & 意思決定 & 実践 & page \\\hline\hline
-       心理学と統計法の関係 &  &  &  &  &  &  &  p.\pageref{syllabus1_chap01}\\
-       電子計算機のイロハ &  &  &  &  &  &  &  p.\pageref{syllabus1_chap02}\\
-       数値データの種類 & ○ &  &  &  &  &  &  p.\pageref{syllabus1_chap03}\\
-       記述統計量 & ○ &  &  &  &  &  &  p.\pageref{syllabus1_chap04}\\
-       統計環境Rを使ってみる & ○ &  &  &  &  & ○ &  p.\pageref{syllabus1_chap05}\\
-       古典的テスト理論 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap06}\\
-       確率分布 &  & ○ &  &  &  &  &  p.\pageref{syllabus1_chap07}\\
-       正規分布 &  & ○ &  & ○ &  &  &  p.\pageref{syllabus1_chap08}\\
-       線形モデルの基礎 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap09}\\
-       重回帰分析モデル &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap10}\\
-       Rをつかった回帰分析 & ○ &  & ○ &  &  & ○ &  p.\pageref{syllabus1_chap11}\\
-       実験計画法1 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap12}\\
-       実験計画法2 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap13}\\
-       実験計画法3 &  &  & ○ &  &  &  &  p.\pageref{syllabus1_chap14}\\\hline
-       確率と統計的推論 &  & ○ &  & ○ &  &  &  p.\pageref{syllabus1_chap16}\\
-       推論と判断 &  & ○ &  &  & ○ &  &  p.\pageref{syllabus1_chap17}\\
-       帰無仮説検定の実際 &  & ○ & ○ &  & ○ &  &  p.\pageref{syllabus1_chap18}\\
-       平均値差の検定 &  & ○ & ○ &  & ○ &  & p.\pageref{syllabus1_chap19} \\
-       Rによる帰無仮説検定 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{syllabus1_chap20}\\
-       要因計画と平均値差の検定 &  & ○ & ○ &  & ○ &  &  p.\pageref{syllabus1_chap21}\\
-       Rによる帰無仮説検定2 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{syllabus1_chap22}\\
-       確率分布とデータの関係 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap23}\\
-       回帰分析の最尤推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap24}\\
-       ベイズ推測の基礎 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap25}\\
-       ベイズ推測の実際 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap26}\\
-       ベイズ法による母数の推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap27}\\
-       ベイズ法による回帰分析 &  & ○ & ○ & ○ &  &  &  p.\pageref{syllabus1_chap28}\\
-       Rによるベイズ推測 &  & ○ & ○ & ○ &  & ○ & p.\pageref{syllabus1_chap29} \\\hline
+                                & 記述統計  & 確率  & モデル & 推測・推定    &  検定 & 演習  & page \\\hline\hline
+       心理学と統計法の関係     &           &       &        &               &       &       &  p.\pageref{s01_Introduction}\\
+       数値データの種類         & ○        &       &        &               &       &       &  p.\pageref{s02_Numbers}\\
+       統計環境Rの導入          &           &       &        &               &       & ○    &  p.\pageref{s03_introR}\\
+       統計環境Rの利用          & ○        &       &        &               &       & ○    &  p.\pageref{s04_usingR}\\
+       記述統計量               & ○        &       &        &               &       &       &  p.\pageref{s05_descriptives}\\
+       測定の基礎               &           &       & ○     &               &       &       &  p.\pageref{s06_ctt}\\
+       誤差と確率               &           & ○    &        &               &       &       &  p.\pageref{s07_probability}\\
+       相関と因果               &           &       & ○     &               &       &       &  p.\pageref{s08_CorrelationCausation}\\
+       単回帰分析               &           &       & ○     &               &       &       &  p.\pageref{s09_Regression}\\
+       重回帰分析               &           &       & ○     &               &       &       &  p.\pageref{s10_MultipleRegression}\\
+       Rをつかった回帰分析      &           &       & ○     &               &       & ○    &  p.\pageref{s11_Regression_onR}\\
+       実験計画法1              &           &       & ○     &               &       &       &  p.\pageref{s12_design1}\\
+       実験計画法2              &           &       & ○     &               &       &       &  p.\pageref{s13_design2}\\
+       実験計画法3              &           &       & ○     &               &       &       &  p.\pageref{s14_design3}\\\hline
+       確率と統計的推論         &           & ○    &        & ○            &       &       &  p.\pageref{s16_inference}\\
+       推論と判断               &           & ○    &        &               & ○    &       &  p.\pageref{s17_estimation_and_test}\\
+       帰無仮説検定             &           & ○    &        &               & ○    &       &  p.\pageref{s18_NHST}\\
+       帰無仮説検定の注意点     &           & ○    &        &               & ○    &       &  p.\pageref{s19_NHST2} \\
+       二群の平均値差           &           & ○    & ○     & ○            & ○    & ○    &  p.\pageref{s20_ttest}\\
+       要因計画と平均値差の検定 &           & ○    & ○     &               & ○    &       &  p.\pageref{s21_anova}\\
+       Rによる分散分析          &           & ○    & ○     & ○            & ○    & ○    &  p.\pageref{s22_anova_onR}\\
+       確率分布とデータの関係   &           & ○    & ○     & ○            &       &       &  p.\pageref{s23_likelihood}\\
+       回帰分析の最尤推定       &           & ○    & ○     & ○            &       &       &  p.\pageref{s24_maximum_likelihood}\\
+       ベイズ推定の基礎         &           & ○    &        & ○            &       &       &  p.\pageref{s25_bayesian1}\\
+       ベイズ推定の実際         &           & ○    & ○     & ○            &       &       &  p.\pageref{s26_bayesian2}\\
+       ベイズ推定と判断         &           & ○    & ○     & ○            &       &       &  p.\pageref{s27_bayesian3}\\
+       JASPによるベイズ推定     &           & ○    &        & ○            &       & ○    &  p.\pageref{s28_jasp}\\
+       Rによるベイズ推定        &           & ○    & ○     & ○            &       & ○    &  p.\pageref{s29_brms} \\\hline
 \end{tabular}
 \end{table}
 
 
->>>>>>> parent of c7c90f8 (0202_rename)
 
-\item[変数の分類] 実際に心理学ではどのようなものを研究対象としているかの事例をいくつか見ることで，何が変数として使われているか，それがどういう枠組みで使われているかを理解する。心理学研究のほとんどが，予測変数/被予測変数の関係で議論されていることから明らかなように，心理学での研究関心の多くは因果的効果の検証にある。ただし，相関関係と因果関係は異なることに注意が必要である。
-\begin{flushright}
-    $\to$ 使い方による変数の分類は,\citet{山内201001}のP.4-5,因果関係と相関関係の区別については\citet{三浦201705}のP.30--34，より詳細には\citet{豊田1992}のP.24-66に詳しい。
-\end{flushright}
+なお，各コマにおける「標準シラバスにおける位置づけ」とは，公認心理師大学カリキュラム　標準シラバス(2018年8月22日版)\footnote{\url{https://psych.or.jp/wp-content/uploads/2018/04/standard_syllabus_2018-8-22.pdf}} との対応を表しています。
 
-<<<<<<< HEAD
-\item[尺度水準による分類] 全ての数字が四則演算が可能かと言われると，そうではない。尺度水準とは，数値が持つ情報や性質の段階を表す言葉であり，Steavens,S.が提唱した4段階の区別が特に重要である。この尺度の四水準について理解し，得られた数字データがどの水準に該当するかを判別することができるようにならなければ，誤った統計処理をすることになるため注意が必要である。
-\begin{flushright}
-    $\to$\citet{川端201408}のP.9--16，あるいは\citet{Yamada2004}のP.22-25.
-\end{flushright}
+\include{s01_Introduction}
+\include{s02_Numbers}
+\include{s03_introR}
+\include{s04_usingR}
+\include{s05_descriptives}
+\include{s06_ctt}
+\include{s07_probability}
+\include{s08_CorrelationCausation}
+\include{s09_Regression}
+\include{s10_MultipleRegression}
+\include{s11_Regression_onR}
+\include{s12_design1}
+\include{s13_design2}
+\include{s14_design3}
+\include{s15_FirstSemester}
+\include{s16_inference}
+\include{s17_estimation_and_test}
+\include{s18_NHST}
+\include{s19_NHST2}
+\include{s20_ttest}
+\include{s21_anova}
+\include{s22_anova_onR}
+\include{s23_likelihood}
+\include{s24_maximum_likelihood}
+\include{s25_bayesian}
+\include{s26_bayesian2}
+\include{s27_bayesian3}
+\include{s28_jasp}
+\include{s29_brms}
+\include{s30_SecondSemester}
 
-\item[データの可視化] 数量化されたデータは可視化することでその全体像がわかりやすくなる。他に，数字を見ていただけでは気づかない変数間関係が可視化されることで理解されることも少なくない。得られたデータは基本的に可視化しなければならず，その重要性および可視化に当たっても再現性を担保するため，グラフ描画の文法があることを理解する。ただし，ここでは統計環境Rのパッケージ，ggplot2の用法に限定的に言及している。可視化の文法については，心理学業界ではまだ広く浸透した概念とは言い難いが，見た目の美しさのみならず，論理的な美しさや再現可能性の観点から考えて重要である。
-\begin{flushright}
-    $\to$\citet{紀ノ定201806}の4章に詳しい。近年では\citet{Kieran2018}が一冊を通じて可視化について論じており，特に第1章は心理学的観点から論じられているため必読。
-\end{flushright}
-=======
-\include{Syllabus1_chap01}
-\include{Syllabus1_chap02}
-\include{Syllabus1_chap03}
-\include{Syllabus1_chap04}
-\include{Syllabus1_chap05}
-\include{Syllabus1_chap06}
-\include{Syllabus1_chap07}
-\include{Syllabus1_chap08}
-\include{Syllabus1_chap09}
-\include{Syllabus1_chap10}
-\include{Syllabus1_chap11}
-\include{Syllabus1_chap12}
-\include{Syllabus1_chap13}
-\include{Syllabus1_chap14}
-\include{Syllabus1_chap15}
-\include{Syllabus1_chap16}
-\include{Syllabus1_chap17}
-\include{Syllabus1_chap18}
-\include{Syllabus1_chap19}
-\include{Syllabus1_chap20}
-\include{Syllabus1_chap21}
-\include{Syllabus1_chap22}
-\include{Syllabus1_chap23}
-\include{Syllabus1_chap24}
-\include{Syllabus1_chap25}
-\include{Syllabus1_chap26}
-\include{Syllabus1_chap27}
-\include{Syllabus1_chap28}
-\include{Syllabus1_chap29}
-\include{Syllabus1_chap30}
->>>>>>> parent of c7c90f8 (0202_rename)
+\addcontentsline{toc}{section}{\bibname}
 
-
-\end{description}
-\subsubsection{キーワード}
-\begin{itemize}
-\item 観測変数と潜在変数
-\item 尺度の四水準
-\item 相関関係と因果関係
-\item データの可視化
-\end{itemize}
-\subsection{授業情報}
-\paragraph{コマの展開方法}
-講義
-\paragraph{標準シラバスにおける位置づけ}
-科目番号4；心理学研究法；1.心理学における実証的研究法（量的研究及び質的研究）；C 実証の手続き
-\subsubsection{予習・復習課題}
-\paragraph{予習}
-一般に，データに基づいて(Ebidence Based)論証・考察することが主観的な思い込みから脱却する第一歩である。また常識的な知識であっても，その情報をアップデートしていかなければならない。このことについて，\citet{Rosling2019}を呼んでみると良い。尺度水準については心理学や心理統計の入門的テキストでは必ず触れられる項目であり，\citet{三浦201705,川端201408,Yamada2004,kosugi2018,kosugi2019}などを手に取って確認しておくと良い。
-\paragraph{復習}
-身の回りにある様々な数字に注意を払い，それらがどの尺度水準の情報を持っているかを考えるだけで十分な復習になる。また逆に，四つの水準それぞれの代表例を身近な例から考えて見ると良い。可視化についても，身の回りのグラフが適切に情報を反映しているかどうか，検証するための材料には事欠かない。特にこれはおかしなグラフになっている，というのを発見した場合はすぐに担当教員まで連絡して欲しい(小杉は「間違ったグラフ」フォルダのなかに様々な悪用例をコレクションするのが趣味であり，教材として用いることも少なくないため，是非協力してもらいたい)\footnote{mailto:kosugi@psy.senshu-u.ac.jp}。
+\bibliographystyle{../jecon_jpa}
+\bibliography{../sbib}
+\end{document}
