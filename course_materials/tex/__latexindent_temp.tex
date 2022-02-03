@@ -1,71 +1,63 @@
-\documentclass{ltjsbook}
-\usepackage{../../myStyle}
-%% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.30.2}
-\usepackage{docmute}
+\section*{はじめに}
+\subsection*{授業のテーマ}
 
-\begin{document}
-\includepdf[noautoscale=false,pages=-]{../images/cover1.pdf}
-\VerbatimFootnotes
-\input{../../copyright} % copyright page
-\title{心理学データ解析基礎}
-\author{小杉　考司}
-\date{Last Compiled on \number\year .\number\month .\number\day}
-\maketitle
-\setcounter{tocdepth}{1}
+「見えないもの」をみよう・測ろう・考えようとするのが心理統計の世界である。
+
+\subsection*{一年を通じて伝えたいポイント}
+\begin{description}
+    \item[母数を知るための推測] 大学での統計，心理統計は標本の記述統計量を検証したいのではなく，母集団を表す数字を求めるための推測統計である。
+    \item[確率を用いた推論] 母数を知るための方法は3つある。代表値を用いたモーメント法，確率分布をつかった最尤法，ベイズ法である。
+    \item[要因計画と線形モデル] 心理学では，要因計画による研究条件をコントロールし，平均値の差をもちいた考察(平均因果効果)をおこなうことが多い。そしてそれらは総じて線形モデルとして表現できる。
+    \item[モデル比較と意思決定] モデルによる母数の推定だけではなく，そこから一定の「結論」あるいは「意思決定」を行うための方法として，モデル比較やNHSTといった方法がある。
+    \item[統計環境Rによる実践] 統計環境Rを利用して，理論的な理解だけでなく実際に計算ができることも身につけるべき技術である。
+\end{description}
+
+注）「科目の中でのこのコマの位置づけ」の中で示されているのは，上記のポイントに対応した，その時間の進度(Level)のようなものです
+\footnote{記述統計は「一年を通じて伝えたいポイント」の基礎および準備であり，本質ではありませんので「ポイント」には含まれませんが，「授業の進度」には含まれます。}。例えば，次のようにあった場合，
+\begin{tcolorbox}
+\begin{tabular}[t]{ccccccc}
+    記述統計[3] & 確率[2] & モデル[1] & 推測・推定[1] & 検定[0] & 実践[1]
+\end{tabular}
+\end{tcolorbox}
+記述統計は第3段階，確率についての話は第2段階，モデルについての話は第1段階，推測・推定についての話はまだ含まれておらず，実践は第1段階にきたことを表します。この進度は，次の表~\ref{processTable}に対応し，累積するものです。
 
 
-\input{preface1} % preface
+\begin{table}
+    \caption{テーマと講義との対応}
+    \label{processTable}
+    \begin{tabular}[t]{lccccccc}
+        & 記述統計 & 確率 & モデル & 推測・推定 & 意思決定 & 実践 & page \\\hline\hline
+       心理学と統計法の関係 &  &  &  &  &  &  &  p.\pageref{chapter1}\\
+       電子計算機のイロハ &  &  &  &  &  &  &  p.\pageref{chapter2}\\
+       数値データの種類 & ○ &  &  &  &  &  &  p.\pageref{chapter3}\\
+       記述統計量 & ○ &  &  &  &  &  &  p.\pageref{chapter4}\\
+       統計環境Rを使ってみる & ○ &  &  &  &  & ○ &  p.\pageref{chapter5}\\
+       古典的テスト理論 &  &  & ○ &  &  &  &  p.\pageref{chapter6}\\
+       確率分布 &  & ○ &  &  &  &  &  p.\pageref{chapter7}\\
+       正規分布 &  & ○ &  & ○ &  &  &  p.\pageref{chapter8}\\
+       線形モデルの基礎 &  &  & ○ &  &  &  &  p.\pageref{chapter9}\\
+       重回帰分析モデル &  &  & ○ &  &  &  &  p.\pageref{chapter10}\\
+       Rをつかった回帰分析 & ○ &  & ○ &  &  & ○ &  p.\pageref{chapter11}\\
+       実験計画法1 &  &  & ○ &  &  &  &  p.\pageref{chapter12}\\
+       実験計画法2 &  &  & ○ &  &  &  &  p.\pageref{chapter13}\\
+       実験計画法3 &  &  & ○ &  &  &  &  p.\pageref{chapter14}\\\hline
+       確率と統計的推論 &  & ○ &  & ○ &  &  &  p.\pageref{chapter16}\\
+       推論と判断 &  & ○ &  &  & ○ &  &  p.\pageref{chapter17}\\
+       帰無仮説検定の実際 &  & ○ & ○ &  & ○ &  &  p.\pageref{chapter18}\\
+       平均値差の検定 &  & ○ & ○ &  & ○ &  & p.\pageref{chapter19} \\
+       Rによる帰無仮説検定 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{chapter20}\\
+       要因計画と平均値差の検定 &  & ○ & ○ &  & ○ &  &  p.\pageref{chapter21}\\
+       Rによる帰無仮説検定2 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{chapter22}\\
+       確率分布とデータの関係 &  & ○ & ○ & ○ &  &  &  p.\pageref{chapter23}\\
+       回帰分析の最尤推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{chapter24}\\
+       ベイズ推測の基礎 &  & ○ & ○ & ○ &  &  &  p.\pageref{chapter25}\\
+       ベイズ推測の実際 &  & ○ & ○ & ○ &  &  &  p.\pageref{chapter26}\\
+       ベイズ推定と判断 &  & ○ & ○ & ○ &  &  &  p.\pageref{chapter27}\\
+       JASPによるベイズ推定の実践 &  & ○ & ○ & ○ &  &  &  p.\pageref{chapter28}\\
+       Rによるベイズ推定 &  & ○ & ○ & ○ &  & ○ & p.\pageref{chapter29} \\\hline
+\end{tabular}
+\end{table}
 
-\tableofcontents
 
-% 行番号開始
-\linenumbers
-% 各章
-\include{m01_introduction}
-\include{m02_Numbers}
-\include{m03_introR}
-\include{m04_usingR}
-\include{m05_descriptives}
-\include{m06_ctt}
-\include{m07_probability}
-\include{m08_CorrelationCausation}
-\include{m09_Regression}
-\include{m10_MultipleRegression}
-\include{m11_Regression_onR}
-\include{m12_design1}
-\include{m13_design2}
-\include{m14_design3}
-\include{m15_FirstSemester}
-\include{m16_inference}
-\include{m17_estimation_and_test}
-\include{m18_NHST}
-\include{m19_NHST2}
-\include{m20_ttest}
-\include{m21_anova}
-\include{m22_anova_onR}
-\include{m23_likelihood}
-\include{m24_maximum_likelihood}
-\include{m25_bayesian}
-\include{m26_bayesian2}
-\include{m27_bayesian3}
-\include{m28_jasp}
-\include{m29_brms}
-\include{m30_SecondSemester}
 
-% 行番号終了
-\appendix
-\include{FAQ} % FAQ page
-\include{Computer}
-\nolinenumbers
-
-\addcontentsline{toc}{chapter}{引用文献}
-% 引用文献
-\bibliographystyle{../../jecon_jpa}
-\bibliography{../../sbib}
-% 索引
-\addcontentsline{toc}{chapter}{索引}
-
-\printindex
-
-\end{document}
+なお，各コマにおける「標準シラバスにおける位置づけ」とは，公認心理師大学カリキュラム　標準シラバス（2018年8月22日版）\footnote{\url{https://psych.or.jp/wp-content/uploads/2018/04/standard_syllabus_2018-8-22.pdf}} との対応を表しています。

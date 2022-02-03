@@ -1,113 +1,53 @@
-\documentclass{ltjsarticle}
-\usepackage{../myStyle}
-%% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 2.0.2}
-\begin{document}
-\title{心理学データ解析基礎1(心理学統計法)\\心理学データ解析1AB\\心理学データ解析基礎2}
-\author{担当：小杉考司}
-\date{Last Compiled on \number\year .\number\month .\number\day}
-\maketitle
-\setcounter{tocdepth}{1}
-\tableofcontents
-\newpage
-\section*{はじめに}
-\subsection*{授業のテーマ}
+\section{相関と因果}
+\label{s08_CorrelationCausation}
 
-「見えないもの」をみよう・測ろう・考えようとするのが心理統計の世界である。
-
-\subsection*{一年を通じて伝えたいポイント}
-\begin{description}
-    \item[母数を知るための推測] 大学での統計，心理統計は標本の記述統計量を検証したいのではなく，母集団を表す数字を求めるための推測統計である。
-    \item[確率を用いた推論] 母数を知るための方法は3つある。代表値を用いたモーメント法，確率分布をつかった最尤法，ベイズ法である。
-    \item[要因計画と線形モデル] 心理学では，要因計画による研究条件をコントロールし，平均値の差をもちいた考察(平均因果効果)をおこなうことが多い。そしてそれらは総じて線形モデルとして表現できる。
-    \item[モデル比較と意思決定] モデルによる母数の推定だけではなく，そこから一定の「結論」あるいは「意思決定」を行うための方法として，モデル比較やNHSTといった方法がある。
-    \item[統計環境Rによる実践] 統計環境Rを利用して，理論的な理解だけでなく実際に計算ができることも身につけるべき技術である。
-\end{description}
-
-注）「科目の中でのこのコマの位置づけ」の中で示されているのは，上記のポイントに対応した，その時間の進度(Level)のようなものです
-\footnote{記述統計は「一年を通じて伝えたいポイント」の基礎および準備であり，本質ではありませんので「ポイント」には含まれませんが，「授業の進度」には含まれます。}。例えば，次のようにあった場合，
-\begin{tcolorbox}
+\subsection{授業内容}
+\subsubsection{科目の中でのこのコマの位置づけ}
 \begin{tabular}[t]{ccccccc}
-    記述統計[3] & 確率[2] & モデル[1] & 推測・推定[1] & 意思決定[0] & 実践[1]
+    記述統計[3] & 確率[1] & モデル[2] & 推測・推定[0] & 検定[0] & 実践[2]
 \end{tabular}
-\end{tcolorbox}
-記述統計は第3段階，確率についての話は第2段階，モデルについての話は第1段階，推測・推定についての話はまだ含まれておらず，実践は第1段階にきたことを表します。この進度は，次の表~\ref{processTable}に対応し，累積するものです。
 
+\subsubsection{概要}
+これまでは1変数の記述や，潜在変数の説明をしてきたが，ここからは複数の変数について考えていくことになる。
+変数同士の関係は，共分散やその標準化した相関係数で記述することができるが，相関係数は直線的関係についての指数であることや，表面上の相関関係が必ずしも本質を反映していない可能性があることに注意が必要である。相関関係と因果関係の違いを注意深く理解し，交絡変数に影響された擬似変数になっていないか，といったところを注意する必要がある。
+複数の具体的な例を提示しつつ，因果関係と相関関係の違いや，スナップショット的研究では相関関係しかわからないこと，実験/介入の効果を見るためにどのような点に注意しなければならないかといった研究法の一部に言及しつつ理解を深める。
 
-\begin{table}
-    \centering
-    \caption{テーマと講義との対応}
-    \label{processTable}
-    \begin{tabular}[t]{lccccccc}
-                                & 記述統計  & 確率  & モデル & 推測・推定    &  検定 & 演習  & page \\\hline\hline
-       心理学と統計法の関係     &           &       &        &               &       &       &  p.\pageref{s01_Introduction}\\
-       数値データの種類         & ○        &       &        &               &       &       &  p.\pageref{s02_Numbers}\\
-       統計環境Rの導入          &           &       &        &               &       & ○    &  p.\pageref{s03_introR}\\
-       統計環境Rの利用          & ○        &       &        &               &       & ○    &  p.\pageref{s04_usingR}\\
-       記述統計量               & ○        &       &        &               &       &       &  p.\pageref{s05_descriptives}\\
-       測定の基礎               &           &       & ○     &               &       &       &  p.\pageref{s06_ctt}\\
-       誤差と確率               &           & ○    &        &               &       &       &  p.\pageref{s07_probability}\\
-       相関と因果               &           &       & ○     &               &       &       &  p.\pageref{s08_CorrelationCausation}\\
-       単回帰分析               &           &       & ○     &               &       &       &  p.\pageref{s09_Regression}\\
-       重回帰分析               &           &       & ○     &               &       &       &  p.\pageref{s10_MultipleRegression}\\
-       Rをつかった回帰分析      &           &       & ○     &               &       & ○    &  p.\pageref{s11_Regression_onR}\\
-       実験計画法1              &           &       & ○     &               &       &       &  p.\pageref{s12_design1}\\
-       実験計画法2              &           &       & ○     &               &       &       &  p.\pageref{s13_design2}\\
-       実験計画法3              &           &       & ○     &               &       &       &  p.\pageref{s14_design3}\\\hline
-       確率と統計的推論         &           & ○    &        & ○            &       &       &  p.\pageref{s16_inference}\\
-       推論と判断               &           & ○    &        &               & ○    &       &  p.\pageref{s17_estimation_and_test}\\
-       帰無仮説検定             &           & ○    &        &               & ○    &       &  p.\pageref{s18_NHST}\\
-       帰無仮説検定の注意点     &           & ○    &        &               & ○    &       &  p.\pageref{s19_NHST2} \\
-       二群の平均値差           &           & ○    & ○     & ○            & ○    & ○    &  p.\pageref{s20_ttest}\\
-       要因計画と平均値差の検定 &           & ○    & ○     &               & ○    &       &  p.\pageref{s21_anova}\\
-       Rによる分散分析          &           & ○    & ○     & ○            & ○    & ○    &  p.\pageref{s22_anova_onR}\\
-       確率分布とデータの関係   &           & ○    & ○     & ○            &       &       &  p.\pageref{s23_likelihood}\\
-       回帰分析の最尤推定       &           & ○    & ○     & ○            &       &       &  p.\pageref{s24_maximum_likelihood}\\
-       ベイズ推定の基礎         &           & ○    &        & ○            &       &       &  p.\pageref{s25_bayesian1}\\
-       ベイズ推定の実際         &           & ○    & ○     & ○            &       &       &  p.\pageref{s26_bayesian2}\\
-       ベイズ推定と判断         &           & ○    & ○     & ○            &       &       &  p.\pageref{s27_bayesian3}\\
-       JASPによるベイズ推定     &           & ○    &        & ○            &       & ○    &  p.\pageref{s28_jasp}\\
-       Rによるベイズ推定        &           & ○    & ○     & ○            &       & ○    &  p.\pageref{s29_brms} \\\hline
-\end{tabular}
-\end{table}
+\subsubsection{コマ主題細目}
+\begin{description}
+    \item[変数間関係の指標]ここまでは1つの変数についての特徴を記述するものであったが，次に複数の変数による変数同士の関係を考える。変数間関係の指標としては，順序相関や連関係数なども含まれるし，クロス集計表も変数間関係を表すものである。中でも連続的な変数に対する指標としての共分散，それを標準化したスコアにしたものがピアソンの積率相関係数であることを理解する。また相関係数はあくまでも変数間の直線的関係についての記述であり，相関係数だけを見て判断すると対象の理解を誤る場合があることに注意する。
+    \begin{flushright}
+        $\to$ \citet{山内201001}のP.62--75,\citet{Yamada2004}のP.44--59，\citet{川端201408}のP.48--58.
+    \end{flushright}
 
+    \item[因果関係] 相関関係があるところに，因果的な説明をしてしまいがちであるが，因果的な説明をするためには相関以上に注意が必要である。因果関係を見るために必要な，時間的先行性，他の原因がないこと，他の結果に至らないことなどの諸条件を確認する。マスコミなど周りの例から，相関と因果を取り違えて判断している悪例を示す。
+    \begin{flushright}
+        $\to$ 相関と因果の違いについては，\citet{Toyoda1992}に簡潔にまとめられている。
+    \end{flushright}
 
-
-なお，各コマにおける「標準シラバスにおける位置づけ」とは，公認心理師大学カリキュラム　標準シラバス(2018年8月22日版)\footnote{\url{https://psych.or.jp/wp-content/uploads/2018/04/standard_syllabus_2018-8-22.pdf}} との対応を表しています。
-
-\include{s01_Introduction}
-\include{s02_Numbers}
-\include{s03_introR}
-\include{s04_usingR}
-\include{s05_descriptives}
-\include{s06_ctt}
-\include{s07_probability}
-\include{s08_CorrelationCausation}
-\include{s09_Regression}
-\include{s10_MultipleRegression}
-\include{s11_Regression_onR}
-\include{s12_design1}
-\include{s13_design2}
-\include{s14_design3}
-\include{s15_FirstSemester}
-\include{s16_inference}
-\include{s17_estimation_and_test}
-\include{s18_NHST}
-\include{s19_NHST2}
-\include{s20_ttest}
-\include{s21_anova}
-\include{s22_anova_onR}
-\include{s23_likelihood}
-\include{s24_maximum_likelihood}
-\include{s25_bayesian}
-\include{s26_bayesian2}
-\include{s27_bayesian3}
-\include{s28_jasp}
-\include{s29_brms}
-\include{s30_SecondSemester}
-
-\addcontentsline{toc}{section}{\bibname}
-
-\bibliographystyle{../jecon_jpa}
-\bibliography{../sbib}
-\end{document}
+    \item[疑似相関] 見かけ上は相関があるように見える例として，純粋な擬似相関だけでなく，打ち切りデータや層別の問題などがある。具体的な例を参照しつつこれらの問題点を指摘し，またデータを入手した時に散布図を複数書くことで直感的な判断ミスを避けることができる。
+    \begin{flushright}
+        $\to$ \verb|datasauRus|パッケージには，記述統計が同じだがプロットが全く異なる12のケースが含まれていて参考になる。可視化の重要性については\citet{Kieran2018}を参照。
+    \end{flushright}
+ 
+    \item[交絡] 第三の隠れた変数によって，見かけ上の相関が生じている可能性もある。こうした変数のことを交絡変数と呼び，基本的に交絡変数を取り逃がさないように研究を設計することが重要である。因果関係を考える時はセレクションバイアスが含まれないようなサンプリングをする必要がある。Y
+    \begin{flushright}
+        $\to$ 因果効果を考えるための導入として\citet{Yasui2019}を参照。
+    \end{flushright}
+\end{description}
+\subsubsection{キーワード}
+\begin{itemize}
+\item 相関係数
+\item 相関関係と因果関係
+\item 擬似変数
+\item 交絡要因
+\end{itemize}
+\subsection{授業情報}
+\paragraph{コマの展開方法}
+講義
+\paragraph{標準シラバスにおける位置づけ}
+科目番号5 心理学統計法；1.心理学で用いられる統計手法；B 記述統計：相関
+\subsubsection{予習・復習課題}
+\paragraph{予習}
+分散，標準偏差，標準化の手続きについて再確認しておくこと。分散は自分自身との共分散という形で理解することができるし，共分散を標準化したものが相関係数になるからである。
+\paragraph{復習}
+我々がアクセスできる情報の中にも，相関関係を因果関係のように捉えて類推し，ミスリーディングな表現になっているものも少なくない。身の回りのこうした事例をひとつ挙げ，どのように間違いがあるか，正しくはどのように考えるべきかについて，論じてみよう。これはデータリテラシーの問題でもあるし，統計法の初歩的問題でもある。
