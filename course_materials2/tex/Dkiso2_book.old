@@ -1,7 +1,7 @@
 \documentclass{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.0.1}
+\lhead{version 1.0.2}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/cover2.pdf}
@@ -22,39 +22,38 @@
 % 行番号開始
 \linenumbers
 % 各章
-\include{text2_chap01}
-\include{text2_chap02}
-\include{text2_chap03}
-\include{text2_chap04}
-\include{text2_chap05}
-\include{text2_chap06}
-\include{text2_chap07}
-\include{text2_chap08}
-\include{text2_chap09}
-\include{text2_chap10}
-\include{text2_chap11}
-\include{text2_chap12}
-\include{text2_chap13}
-\include{text2_chap14}
-\include{text2_chap15}
-\include{text2_chap16}
-\include{text2_chap17}
-\include{text2_chap18}
-\include{text2_chap19}
-\include{text2_chap20}
-\include{text2_chap21}
-\include{text2_chap22}
-\include{text2_chap23}
-\include{text2_chap24}
-\include{text2_chap25}
-\include{text2_chap26}
-\include{text2_chap27}
-\include{text2_chap28}
-\include{text2_chap29}
-\include{text2_chap30}
+
+\include{x01_introduction}
+\include{x02_scaling}
+\include{x03_testTheory}
+\include{x04_IRT}
+\include{x05_GRM}
+\include{x06_matrix}
+\include{x07_matrixModel}
+\include{x08_Eigen}
+\include{x09_matrix_onR}
+\include{x10_FA}
+\include{x11_IRTonR}
+\include{x12_SEM}
+\include{x13_SEMonR}
+\include{x14_DualScaling}
+\include{x15_MDS}
+\include{x16_Programming}
+\include{x17_Bayesian}
+\include{x18_MCMC}
+\include{x19_modeling1}
+\include{x20_modeling2}
+\include{x21_modeling3}
+\include{x22_modeling4}
+\include{x25_HLM}
+\include{x26_mixed}
+\include{x27_IRTonBayes}
+\include{x28_ChangePoint}
+\include{x29_SSpace}
+\include{x30_comparison}
 \appendix
-\include{text2_Appendix1}
-\include{text1_chap02}
+\include{prepareStan}
+\include{Computer}
 \include{FAQ} % FAQ page
 % 行番号終了
 \nolinenumbers

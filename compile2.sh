@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 cp -f FAQ.tex course_materials2/tex/
-cp -f course_materials/tex/text1_chap02.tex course_materials2/tex/
-cp -rf course_materials/images/text02/ course_materials2/images/text02/
+cp -f Computer.tex course_materials2/tex/
 #####################################################################text 2
 ## changePath
 path="course_materials2/tex"
