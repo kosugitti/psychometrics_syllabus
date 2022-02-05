@@ -1,10 +1,10 @@
 \documentclass{ltjbook}
 \usepackage{docmute} 
-\usepackage{../myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document} 
 \chapter{実験計画法3；一要因モデル(Within)} 
-\label{chapter14} 
+\label{m14_design3} 
 
 ここまで，線形モデルとしての実験計画法を見てきました。一要因，二要因がそれぞれ単回帰分析，重回帰分析に対応すること，二要因以上になると組み合わせの効果が出現することなどを見てきました。
 しかしここまでの話はいずれも，\keytermL{群間要因}{ぐんかんよういん}計画の話でした。そこで\keytermL{群内要因}{ぐんないよういん}計画の場合はどのようになるか，というところに目を向けていきたいと思います。
@@ -35,7 +35,7 @@
 
 \begin{figure}
   \centering
-  \includegraphics[keepaspectratio,width=8cm]{../images/text22/Rplot22_03.png}
+  \includegraphics[keepaspectratio,width=8cm]{../images/22_anovaOnR/Rplot22_03.png}
   \caption{介入効果によるクライアントの状態変化}
   \label{fig::22_05}
 \end{figure}
@@ -62,7 +62,7 @@ y_{i3} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i3} = b_0 + d_i +
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[keepaspectratio,width=12cm]{../images/text14/slide14_01.png}
+  \includegraphics[keepaspectratio,width=12cm]{../images/14_design3/slide14_01.png}
   \caption{線形モデルで表現}
   \label{fig::22_06}
 \end{figure}
@@ -135,7 +135,7 @@ y_{i3} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i3} = b_0 + d_i +
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[keepaspectratio,width=12cm]{../images/text22/slide22_04.png}
+  \includegraphics[keepaspectratio,width=12cm]{../images/22_anovaOnR/slide22_04.png}
   \caption{群内計画と群間計画の違い}
   \label{fig::22_07}
 \end{figure}
@@ -151,7 +151,7 @@ y_{i3} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i3} = b_0 + d_i +
 \[ y_i = b_0 + b_1 + e_i, \mbox{ただしここで}e_i \sim Normal(0, \sigma) \]
 \begin{figure}[ht]
   \centering
-  \includegraphics[keepaspectratio,width=4cm]{../images/text14/slide14_02.png}
+  \includegraphics[keepaspectratio,width=4cm]{../images/14_design3/slide14_02.png}
 \end{figure}
 この$e_i$が正規分布に従うのですが，$b_0+b_1$のところは確率的に変わるものではないことに注意してください。ここが確率的に変わらないということをよく考えれば，数式に沿ってある値が足されることと同じです。右辺全体で見ると，$b_0+b_1$のところは，正規分布の位置を非確率的にずらすことでもあります。さらに言えば，正規分布の平均値が$b_0+b_1$なのであり，式全体を次のように書き換えることができます。
 
@@ -167,7 +167,7 @@ y_{i3} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i3} = b_0 + d_i +
 \[ y_{ij} = b_0 + d_i + b_{ij} + e_{ij}, \mbox{ただしここで}d_i \sim Normal(0,\delta), e_{ij} \sim Normal(0,\sigma) \]
 \begin{figure}[ht]
   \centering
-  \includegraphics[keepaspectratio,width=6cm]{../images/text14/slide14_03.png}
+  \includegraphics[keepaspectratio,width=6cm]{../images/14_design3/slide14_03.png}
 \end{figure}
 確率的なモデルで考えると，群内計画のデータには2つの分布が混ざり込んでいるので，\keyterm{混合効果モデル}{こんごうこうかもでる}{Mixed Effect Model}と呼ぶことがあります。先ほどの群間計画では，$b_0+b_1$で平均値をずらした正規分布にデータが従うことになりましたが，群内計画では$b_0+b_1+d_i$が既に確率的に分布し，それが平均値となった確率分布がデータの従う分布になる，つまり(誤差の)正規分布の中に(個人差の)正規分布が入れ子になった形でモデルが表現されたことになります。分布が混ざったので\textbf{混合}というのですね。またより複雑なモデルの場合，この個人差を説明する他の変数や要因をつかって，個人差の分布もモデル化することになります。そのような場合，個人差に関係なく全体に及ぼす効果のことを\keyterm{固定効果}{こていこうか}{Fixed Effect}，個人差とともに変わりうる効果のことを\keyterm{変量効果}{へんりょうこうか}{Random Effect}と呼んで区別することがあります。名前だけでも覚えておいてください。
 

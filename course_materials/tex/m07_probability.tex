@@ -1,10 +1,10 @@
 \documentclass{ltjbook}
 \usepackage{docmute} 
-\usepackage{../myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document} 
 \chapter{確率分布} 
-\label{chapter7} 
+\label{m07_probability} 
 今回は確率のお話です。
 
 前回は心理学的な測定の話をしました。そこから急になぜ数学の話になるの，と思った人もいるかもしれませんが，確率と統計は切っても切れない関係にあるのです。
@@ -60,7 +60,7 @@
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text07/slide07_01.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/07_probability/slide07_01.png}
     \caption{最初の状態。有力な手がかりはない。}
     \label{fig::07_01}
 \end{figure}
@@ -68,7 +68,7 @@
 ここで気象庁に電話をしたとしましょう。すると雨は降っていなかった，という情報が手に入ったわけです。これを受けて，「雨が降った可能性は0だ」と考えることができます。確率で表現するためには全部の確率(可能性)の和が1.0でなければなりませんから，残りの3つの確率＝確信度が33\%に上がったことになります(図\ref{fig::07_02})。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text07/slide07_02.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/07_probability/slide07_02.png}
     \caption{雨が降ったという可能性はゼロになったので，確信度がかわった。}
     \label{fig::07_02}
 \end{figure}
@@ -76,7 +76,7 @@
 次に同じように，今度は市役所に電話して，散水車の可能性を確かめました。そうするとそんなことはしていない，という情報が手に入ります。これを受けて「散水車が通った可能性も0だ」と考えが変わります。確率で表現するなら，選択肢が2つに減りましたがどちらも同じぐらいの確からしさしかないので，50\%ずつに確信度が変わった，ということです(図\ref{fig::07_03})。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text07/slide07_03.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/07_probability/slide07_03.png}
     \caption{散水車が通った可能性はゼロになったので，確信度がかわった。}
     \label{fig::07_03}
 \end{figure}
@@ -84,7 +84,7 @@
 最後に水道局に確認して，水道の問題でもないことがわかりました。これを受けて，シャーロック・ホームズばりに「あり得ないことかもしれないが，通行人が飲み物をこぼしたとしか考えられない」という状態になるわけです。確率でいうなら，他の事象の可能性がゼロで，全部の面積が1なのですから，100\%間違いない！ということです。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text07/slide07_04.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/07_probability/slide07_04.png}
     \caption{水道管が破裂した可能性はゼロになったので，確信度がかわった。}
     \label{fig::07_04}
 \end{figure}
@@ -102,7 +102,7 @@
 離散的な確率変数の例をさらにみていきましょう。サイコロを例にとります。サイコロの出目は離散的ですからね。サイコロを100回投げてその出目を記録し，グラフにしたのが図\ref{fig::07_05}です。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text07/slide07_05.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/07_probability/slide07_05.png}
     \caption{サイコロの確率分布}
     \label{fig::07_05}
 \end{figure}
@@ -113,14 +113,14 @@
 次に連続変数の場合を考えてみましょう。先ほどと同じく，今度は1000人の身長を測定したデータを例にします。身長は連続量だと考えることができます。図\ref{fig::07_06}にそのヒストグラムを書いてみました。このヒストグラムは1階級が5cm幅で，各階級に何人いるかの数字も同時に書いています。このように階級ごとに区切ったものは，先のサイコロの例と同じように相対頻度にできますから，例えば160-165cmの階級の確率質量は0.165，という言い方をしてもいいかもしれません。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text07/Rplot07_01.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/07_probability/Rplot07_01.png}
     \caption{身長の確率分布。bin幅は5cm}
     \label{fig::07_06}
 \end{figure}
 しかし「5cmで区切る」ということに深い意味はなく，これが別に2.5cmでも1cmでもいいわけです。たとえば同じデータを2.5cm間隔で区切りで書き直したのが図\ref{fig::07_07}になります。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text07/Rplot07_02.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/07_probability/Rplot07_02.png}
     \caption{身長の確率分布。bin幅は2.5cm}
     \label{fig::07_07}
 \end{figure}
@@ -174,7 +174,7 @@ $n$回中$k$回成功する\footnote{表が出る，でもいいのですが0/1�
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text07/Rplot07_04.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/07_probability/Rplot07_04.png}
     \caption{二項分布の例。最上段は$n=5,\theta=0.2$,中段は$n=10,\theta=0.5$,下段は$n=30,\theta=0.8$}
     \label{fig::07_08}
 \end{figure}

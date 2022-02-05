@@ -1,11 +1,11 @@
-\documentclass{ltjsarticle}
+\documentclass{ltjsbook}
 \usepackage{docmute} 
-\usepackage{myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document}
 
 \chapter{確率分布とデータの関係}
-\label{chapter23}
+\label{23_likelihood}
 検定では平均因果効果を検証するため，平均値や(不偏)分散などの標本統計量がどのような確率分布に従うかを参照し，結果を判定するという使い方を行なってきました。検定はこのように，母数を推定する方法に，結果を判定するロジックが組み合わさったものなのでした。この時の母数の推定方法は，標本平均や不偏分散を推定値とする方法で，モーメント法とよばれるものです。これに対し，モデルである確率分布をデータに最も近しい形に調節することで，そのパラメータを推定値とする方法があります。ここではこの方法，最尤推定法とその根幹にある尤度という考え方を解説します。
 \section{確率モデルによる推論}
 もう一度，後期のテーマである統計的推論の基本を振り返ってみましょう。
@@ -30,7 +30,7 @@
 ここで$\theta=0.7$，のようにパラメータがわかっている状況は普通とは逆なのですから，パラメータがわからない未知のまま($\theta$の記号のまま)考えを進めたいと思います。もしコインが表，表と2回続けて表が出るとすると，その確率は$\theta \times \theta = \theta^2$です。3回続けて出たら$\theta^3$，表，表，裏，裏，表なら$\theta^3\times (1-\theta)^2$，と文字を使って表現できます。ここで$\theta$は0から1の間を取る数字ですから，横軸に$\theta$をとり，，縦軸に$y=\theta^3\times (1-\theta)^2$として関数のグラフを書くことができますね。これを書いたのが図\ref{fig::23_01}です。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text24/Rplot24_01.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/24_ML/Rplot24_01.png}
     \caption{「表，表，裏，裏，表」と出たコインのパラメータの関数}
     \label{fig::23_01}
 \end{figure}
@@ -117,7 +117,7 @@
 となり，「桁数が小さすぎて計算できない」という問題が生じなくなります。また，対数をとったグラフは図\ref{fig::24_02}のようになりますが，ピークの箇所は変わらないことが確認できます\footnote{正直わかりにくいよね，でもあってますからご容赦。}。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text24/Rplot24_02.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/24_ML/Rplot24_02.png}
     \caption{「表，表，裏，裏，表」と出たコインのパラメータの関数について対数をとったもの。縦軸は対数尤度}
     \label{fig::24_02}
 \end{figure}
@@ -132,7 +132,7 @@
 さて，これらのデータが何らかの正規分布，$N(\mu,10)$から得られたわけですが，仮に$\mu=160$だとすると，確率分布を描いて，実現値に対してどの程度「尤もらしいのか」を確率密度で計算できます(図\ref{fig::24_03})。各データ点に対応する確率密度は確率ではありませんが，どの程度生じやすいかを表している数字ではありますので，このまま利用できます。Rでの計算方法はもちろん，\texttt{dnorm(165,mean=160,sd=10)}とすれば良いですね！
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text24/slide24_01.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/24_ML/slide24_01.png}
     \caption{}
     \label{fig::24_03}
 \end{figure}
@@ -163,7 +163,7 @@
 ですがもちろん，170に限る必要はないですね。171でも175でも179でもいいかもしれない。要するにこの数字(尤度)は$\mu$の関数になっているわけです。そこで，横軸に$\mu$をとり，縦軸に尤度をとってグラフを書いてみますと，図\ref{fig::24_04}のようになります。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text24/Rplot24_03.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/24_ML/Rplot24_03.png}
     \caption{正規分布の尤度を求める}
     \label{fig::24_04}
 \end{figure}
@@ -174,7 +174,7 @@
 この2つの関数のグラフを書いたのが図\ref{fig::24_05}です。2つの変数で1つの対数尤度が決まるので，3次元プロットになりますし，2変数の微分方程式を解くことになるので数学的には少し面倒になりますが，同様に推定できることがわかります。最尤推定の結果は，標本平均と標本標準偏差の値と一致します\footnote{不偏分散の平方根($N-1$で割った方)じゃないのか，と思われるかもしれませんが，最尤推定による母SDの推定値は標本SDに一致します。}。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text24/Rplot24_04.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/24_ML/Rplot24_04.png}
     \caption{平均と標準偏差による2変数関数としての正規分布の対数尤度}
     \label{fig::24_05}
 \end{figure}

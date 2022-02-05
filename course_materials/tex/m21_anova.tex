@@ -1,11 +1,11 @@
 \documentclass{ltjbook}
 \usepackage{docmute} 
-\usepackage{myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document}
 
 \chapter{要因計画と平均値差の検定}
-\label{chapter21}
+\label{21_anova}
 ここまでは主に，平均値の比較に確率的判断の手続きを加えた仮説検定の話をしてきました。
 ここでは前期の最後に学んだ，線形モデルから要因計画へと進んだ話に，\underline{検定の話を統合します}。線形モデルに確率的判断の手続きを加えたものが，\keyterm{分散分析}{ぶんさんぶんせき}{ANalysis Of Variance;ANOVA}と呼ばれる独自の体系になります。
 
@@ -30,7 +30,7 @@
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=10cm]{../images/text21/slide21_01.png}
+    \includegraphics[keepaspectratio,width=10cm]{../images/21_anova/slide21_01.png}
     \caption{2つの群の平均値のプロット。黒い点は各群のそれぞれの観測値}
     \label{fig::21_01}
 \end{figure}
@@ -47,7 +47,7 @@
 % さて，ここで帰無仮説検定の，母平均に差がないというのはどういう状況でしょうか。$\mu_1 - \mu_2 =0$ というのはつまり，$\mu_1 = \mu_2$ということと同じですから，同じ平均値を持つ正規分布からデータが得られたと仮定した，ということになります(図\ref{fig::21_04})\footnote{特に$t$検定においては標準偏差も同じと仮定しますから，同一の正規分布になります}。
 % \begin{figure}[ht]
 %     \centering
-%     \includegraphics[keepaspectratio,width=8cm]{../images/text21/slide21_04.png}
+%     \includegraphics[keepaspectratio,width=8cm]{../images/21_anova/slide21_04.png}
 %     \caption{母集団が上になるように元の図を回転しています}
 %     \label{fig::21_04}
 % \end{figure}
@@ -65,7 +65,7 @@
 
 \begin{figure}[hb]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text21/slide21_03.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/21_anova/slide21_03.png}
     \caption{効果がなければ全体平均に同じ。群の効果は相対的に平均値をずらす。}
     \label{fig::21_03}
 \end{figure}
@@ -131,7 +131,7 @@
 さてさて。記号で$y_i,x_i$とか$b_0,b_1$だったのが$\beta_0$とか$\beta_1$などと変わってはいますが，基本的には$y=ax+b$の一次線形関数の形です(図\ref{fig::21_05})。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text21/slide21_05.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/21_anova/slide21_05.png}
     \caption{数学的には記号が変わっても使われ方が同じであれば同型と考えます}
     \label{fig::21_05}
 \end{figure}
@@ -186,7 +186,7 @@
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text21/slide21_06.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/21_anova/slide21_06.png}
     \caption{表\ref{table::21_02}を可視化したもの。全体平均からの矢印は群効果の大きさ}
     \label{fig::21_06}
 \end{figure}
@@ -195,7 +195,7 @@
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[keepaspectratio,width=12cm]{../images/text21/slide21_07.png}
+  \includegraphics[keepaspectratio,width=12cm]{../images/21_anova/slide21_07.png}
   \caption{横軸は並べ替えても構わない}
   \label{fig::21_07}
 \end{figure}
@@ -264,7 +264,7 @@
 
 % \begin{figure}[ht]
 %     \centering
-%     \includegraphics[keepaspectratio,width=12cm]{../images/text21/slide21_08.png}
+%     \includegraphics[keepaspectratio,width=12cm]{../images/21_anova/slide21_08.png}
 %     \caption{平均値の差(群の効果)が同じ2つの実験の例。左側は群間の分散(緑の矢印)に比べて群内の分散(青の矢印)が大きいため，効果があるとは言いにくい。右側の例では，統制群の最大値が実験群の最小値にも及ばないほどなので，効果があると言いやすい。}
 %     \label{fig::21_08}
 % \end{figure}

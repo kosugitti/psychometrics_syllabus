@@ -35,7 +35,7 @@
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text04/slide04_01.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/05_descriptives/slide04_01.png}
     \caption{5人の所持金データ}
     \label{fig::04_01}
 \end{figure}
@@ -84,7 +84,7 @@
 図\ref{fig::04_02}は，厚生労働省による「国民生活基礎調査」で示されたデータです\footnote{\url{https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa19/dl/03.pdf}}。これを見ると所得分布は左側に歪んでおり，平均値は552万3千円ですが，中央値は437万円，最頻値は200-300万円のクラスということになります。最頻値は一番データ点が多いところですので，「国民の平均所得は552万円です」と言われると多くの人が(この例では少なくとも55.9\%の人が)，「えっ，私の年収低すぎ・・・?」という印象を抱きます。もちろん所得分布が低い方に歪んでいる状況も悪いのですが，代表値として平均値を使うことがそもそも適切でない例ともいえます\footnote{もちろん為政者の目から見れば，平均は550万円もあるんだから日本は豊かだ，とアピールできるので良い指標なのかもしれません。数字に悪意はなく，何の数字をどのように使うのかという人の側に問題があるだけです。}。ニュース報道などでは平均値しか報道されませんが，それでは不当な印象を与えることになります。\textbf{データは図にする}ことが大事なのです。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text04/slide04_02.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/05_descriptives/slide04_02.png}
     \caption{所得金額階級別世帯数の相対度数分布}
     \label{fig::04_02}
 \end{figure}
@@ -92,7 +92,7 @@
 ところで，最頻値は頻度を数えるものですから，間隔尺度水準以上の連続的な数字の場合はいくつかの区間に区切って数えることになります。図\ref{fig::04_02}の例もそうですね。ただしこの時，最頻値は区間幅の区切り方が違うと結果が変わってしまうことに注意しましょう。図\ref{fig::04_03}の2つのヒストグラムは，実は同じデータなのです。違いは区間幅binwidthのとり方で，左図は15点間隔，右図は5点間隔でグラフを書きました。最頻値はそれぞれ赤で囲ったところになりますが，左図の場合の最頻値は40-55点クラス，右図の場合は47-52点のクラスになります。最頻値の場合は，どのような区間幅でカウントするかということにも注意が必要ですね。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text04/slide04_03.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/05_descriptives/slide04_03.png}
     \caption{区間幅の区切り方で結果が変わる}
     \label{fig::04_03}
 \end{figure}
@@ -128,7 +128,7 @@
 
     \begin{figure}[ht]
         \centering
-        \includegraphics[keepaspectratio,width=12cm]{../images/text04/Rplot04_01.png}
+        \includegraphics[keepaspectratio,width=12cm]{../images/05_descriptives/Rplot04_01.png}
         \caption{2つのデータを見比べてみよう}
         \label{fig::04_04}
     \end{figure}
@@ -139,7 +139,7 @@
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text04/slide04_05.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/05_descriptives/slide04_05.png}
     \caption{中心から各データ点が平均的にどの程度離れているか}
     \label{fig::04_05}
 \end{figure}
@@ -178,7 +178,7 @@ B群の分散は，次のようになります。
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text04/slide04_06.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/05_descriptives/slide04_06.png}
     \caption{四分位とIQR}
     \label{fig::04_06}
 \end{figure}
@@ -189,7 +189,7 @@ B群の分散は，次のようになります。
 ところで第\ref{chapter3}章で，ボックスプロットについて言及しました。みなさんはもしかすると\keyterm{箱ひげ図}{はこひげず}{boxplot}という名称で，高校までの数学で学んだことがあるかもしれません。この図示の方法は，データがどのぐらいの幅を持っているかを箱とひげで表現しています。箱の真ん中にあるのが中央値，箱の下のラインが第1四分位，上のラインが第3四分位を表すのが一般的です。ですが，髭に当たる部分については2通りの書き方があります。図\ref{fig::04_07}にあるのは同じデータですが，ひげの長さを「最大値から最小値まで」とする方法(上段)もありますし，「IQRの1.5倍まで」とする方法(下段)もあります。どちらの方法で描画されているのか，注意するようにしてください\footnote{高校数学，引いてはセンター試験などでは最大値から最小値まで表す，という記法が使われているようですが，データ分析の文脈ではIQRの1.5倍までをひげにして，それ以上の数字は外れ値として点で表す方法が一般的です。どちらが正しいとも言えないのですが，今後は後者の書き方に出会うことの方が多いと思いますので，注意を促すために書いています。}。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text04/slide04_07.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/05_descriptives/slide04_07.png}
     \caption{ボックスプロット(箱ひげ図)の2通りの書き方}
     \label{fig::04_07}
 \end{figure}
@@ -221,7 +221,7 @@ B群の分散は，次のようになります。
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text04/slide04_08.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/05_descriptives/slide04_08.png}
     \caption{データの散らばりと相対的な位置}
     \label{fig::04_08}
 \end{figure}
@@ -244,7 +244,7 @@ B群の分散は，次のようになります。
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/text04/Rplot04_02.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/05_descriptives/Rplot04_02.png}
     \caption{散布図の例}
     \label{fig::04_09}
 \end{figure}
@@ -307,7 +307,7 @@ B群の分散は，次のようになります。
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/text04/Rplot04_03.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/05_descriptives/Rplot04_03.png}
     \caption{様々な相関係数}
     \label{fig::04_10}
 \end{figure}
@@ -323,7 +323,7 @@ B群の分散は，次のようになります。
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/text04/Rplot04_04.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/05_descriptives/Rplot04_04.png}
     \caption{曲がった関係には向かない}
     \label{fig::04_11}
 \end{figure}
@@ -332,7 +332,7 @@ B群の分散は，次のようになります。
 逆に，ある2変数の相関係数が$r=0.922$でした。この2変数には強い相関があるといって良いでしょうか。待って待って，一旦落ち着いて散布図を書いてみましょう。例えば図\ref{fig::04_12}のようなデータなのかもしれないのですから。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/text04/Rplot04_05.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/05_descriptives/Rplot04_05.png}
     \caption{外れ値がひっぱる}
     \label{fig::04_12}
 \end{figure}
@@ -345,7 +345,7 @@ B群の分散は，次のようになります。
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/text04/Rplot04_06.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/05_descriptives/Rplot04_06.png}
     \caption{打ち切りデータの例}
     \label{fig::04_13}
 \end{figure}
@@ -356,7 +356,7 @@ B群の分散は，次のようになります。
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/text04/Rplot04_07.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/05_descriptives/Rplot04_07.png}
     \caption{階層的なデータ}
     \label{fig::04_14}
 \end{figure}

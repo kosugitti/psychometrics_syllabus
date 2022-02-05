@@ -5,7 +5,7 @@
 \begin{document}
 
 \chapter{回帰分析の最尤推定}
-\label{chapter24}
+\label{24_maximum_likelihood}
 前回は確率分布関数に含まれる変数の中で，パラメータの方が未知であると考えた尤度関数として捉え，尤度が最大になるようにパラメータの値を推定する\textbf{最尤推定法}について学びました。
 
 今回はこれを，線形モデルに適用するお話です。線形モデルについては前期から今まで，折に触れては説明してきました。まず第\ref{chapter9}講「線形モデルの基礎」で回帰分析に触れ，続いて重回帰分析(第\ref{chapter10}講)，それから要因計画へと展開してきたわけです。後期に入って推測統計学の話になり，要因計画と仮説検定の合体技，\keytermL{分散分析}{ぶんさんぶんせき}の話になりましたが，そこでの推定方法は\keytermL{モーメント法}{もーめんとほう}，すなわち\keytermL{標本平均}{ひょうほんへいきん}や\keytermL{不偏分散}{ふへんぶんさん}を使ってのものでした。\keytermL{平方和}{へいほうわ}を\keytermL{自由度}{じゆうど}で割って，\keytermL{平均平方}{へいきんへいほう}を出し，その比が\keytermL{F分布}{Fぶんぷ}に従う，という考え方は，平均や分散から母数を考えようという発想と同じものだと言えます。
@@ -39,18 +39,18 @@
 \[ Y_i =  \beta_0 + \beta_1 X_i+ e_i \]
 ということになります。ここで$ \beta_0 + \beta_1 X_i$のところは確率的に変わるものではない，ということを思い出してください。
 \begin{center}
-    \includegraphics[keepaspectratio,width=6cm]{../images/text26/eq26_01.png}
+    \includegraphics[keepaspectratio,width=6cm]{../images/26_bayesian2/eq26_01.png}
 \end{center}
 誤差$e_i$は平均0を中心に確率的に散らばりますが，その前のところは確率的ではありませんので，これを組み合わせた式全体としては，最後に確率的な散らばりがひっついているような形になります。
 \begin{center}
-    \includegraphics[keepaspectratio,width=5cm]{../images/text26/eq26_02.png}
+    \includegraphics[keepaspectratio,width=5cm]{../images/26_bayesian2/eq26_02.png}
 \end{center}
 
 さて，この「確率的でないところ」が確率分布の中に入り込むとしたら，誤差$e_i$の平均値を一定の量，$\beta_0 + \beta_1 X_i$分だけ動かすことになります。
 回帰直線が表しているのは，誤差のない予測の線でもあります。実際のデータはそれに誤差が伴って生じます。確率モデルになった線形モデルは，図\ref{fig::24_01}のようなイメージで考えるといいかもしれません。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=12cm]{../images/text24/Rplot24_06.png}
+	\includegraphics[keepaspectratio,width=12cm]{../images/24_ML/Rplot24_06.png}
     \caption{予測直線にまとわりつく誤差}
     \label{fig::24_01}
 \end{figure}

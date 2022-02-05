@@ -1,10 +1,10 @@
-\documentclass{ltjsarticle}
+\documentclass{ltjbook}
 \usepackage{docmute} 
-\usepackage{myStyle} 
+\usepackage{../../myStyle} 
 \begin{document}
 
 \chapter{Rによる分散分析}
-\label{chapter22}
+\label{m22_anovaOnR}
 ここまでで，要因計画を線形モデルとして，あるいは帰無仮説検定の枠組みで考えるやり方を説明してきました。
 細かい計算はRで行う，ということで先送りしてきた話をここで回収したいと思います。Rを使った演習でどのように計算が進むのか，どのように結果が表示されるのか，どのようにその結果を解釈するのかについて学んでいきましょう。
 \section{Rで分散分析を行う上でのポイント}
@@ -14,7 +14,7 @@
 \paragraph{Rスクリプトを開く}今日のコードを書くためのRスクリプトファイルを準備します。\verb|File > NewFile > R Script|と進み，何も書いてないRスクリプトの画面を表示させてください。真っ白いファイルが開いたら問題ありません。
 \begin{figure}[ht]
   \centering
-  \includegraphics[keepaspectratio,width=12cm]{../images/text20/fig20_01.png}
+  \includegraphics[keepaspectratio,width=12cm]{../images/20_ttest/fig20_01.png}
   \caption{プロジェクトが開いていることを確認する。上が開いていない状態。下が開いている状態。開いていると，メニューバーにフォルダが表示され，右上にプロジェクト名が表示されている。}
   \label{fig::20_01}
 \end{figure}
@@ -103,7 +103,7 @@ source("http://riseki.php.xdomain.jp/index.php?plugin=attach&refer=ANOVA君&open
 これらのコードが実行されると，Rの環境にたくさんの関数が入っているはずです(図\ref{fig::22_01})。これらが入っていればOKです。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text23/screen23_01.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/23_likelihood/screen23_01.png}
     \caption{anovakuを読み込んだあとの環境タブ}
     \label{fig::22_01}
 \end{figure}
@@ -184,7 +184,7 @@ F-statistic: 2.489 on 2 and 9 DF,  p-value: 0.1379
 これを見ると，切片\texttt{(Intercept)}の推定値が5.5，次に2つの説明変数の係数が書いてあります。文字が連なっているのでわかりにくいかもしれませんが，それぞれ\texttt{condition}と\texttt{exp1}の関係，\texttt{condition}と\texttt{exp2}の関係を表しています。図\ref{fig::23_02}を見ると結果の意味は分かり易いと思います。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text23/slide23_01.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/23_likelihood/slide23_01.png}
     \caption{線形モデルとして分析した結果の意味するもの}
     \label{fig::23_02}
 \end{figure}
@@ -432,7 +432,7 @@ output is over --------------------///
 これらの結果を見やすくするために，図\ref{fig::23_03}に対応するところに線を引いてみました。結果と見比べて，どこに差があったか確認しておいてください。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text23/slide23_02.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/23_likelihood/slide23_02.png}
     \caption{POST ANALYSISの検定結果の確認}
     \label{fig::23_03}
 \end{figure}

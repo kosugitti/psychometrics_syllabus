@@ -1,10 +1,10 @@
 \documentclass{ltjbook}
 \usepackage{docmute} 
-\usepackage{../myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document} 
 \chapter{正規分布と推測統計学} 
-\label{chapter8} 
+\label{m08_CorrelationCausation} 
 前回，確率という数字，またベルヌーイ分布，二項分布など離散的な確率変数について説明しました。
 今回は連続的な確率変数の代表格である\keyterm{正規分布}{せいきぶんぷ}{Normal Distribution}について説明します。
 心理学を始め，統計的アプローチでこの正規分布は中心的な役割を担います。統計モデルのほとんどは正規分布帝国に含まれる，といわれるほどです\citep{三中2018}。
@@ -23,7 +23,7 @@
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text08/Slide08_01.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/08_CorrelationCausation/Slide08_01.png}
     \caption{色々な大きさの誤差が重なり合う。時には同じ大きさで相殺し合うことも。}
     \label{fig::08_01}
 \end{figure}
@@ -33,7 +33,7 @@
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text08/Slide08_02.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/08_CorrelationCausation/Slide08_02.png}
     \caption{積み重ねて考えるので順番を入れ替えても良い}
     \label{fig::08_02}
 \end{figure}
@@ -51,7 +51,7 @@
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,height=10cm]{../images/text08/GaltonBoard.png}
+	\includegraphics[keepaspectratio,height=10cm]{../images/08_CorrelationCausation/GaltonBoard.png}
     \caption{二項分布と正規分布の関係を表すゴルトンボード}
     \label{fig::08_03}
 \end{figure}
@@ -70,7 +70,7 @@
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text08/Slide08_03.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/08_CorrelationCausation/Slide08_03.png}
     \caption{正規分布で重要なのは位置と幅}
     \label{fig::08_04}
 \end{figure}
@@ -83,7 +83,7 @@
 正規分布カーブのように飛ぶ時は，二箇所で操縦桿が水平になるシーンが出てくるはず。そこを結ぶとカーブの幅が定義できます。この幅の長さが標準偏差2つ分に該当します。平均を挟んで，左右に標準偏差1つ分ずつでてくるわけですね。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text08/Slide08_04.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/08_CorrelationCausation/Slide08_04.png}
     \caption{正規分布の幅を測る位置}
     \label{fig::08_05}
 \end{figure}
@@ -103,7 +103,7 @@
 最もなだらかなラインは$\mu=1,\sigma=3$にして描きました。ほとんど横ばいのような形ではありますが，これでも左右対称で山形の正規分布の一種です。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text08/Rplot08_01.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/08_CorrelationCausation/Rplot08_01.png}
     \caption{正規分布の幅を測る位置}
     \label{fig::08_06}
 \end{figure}
@@ -140,7 +140,7 @@
 標準正規分布は位置や幅の調整が入りませんから，式導出の経緯が見て取れるかと思います。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text08/Rplot08_02.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/08_CorrelationCausation/Rplot08_02.png}
     \caption{正規分布の確率密度関数導出の経緯}
     \label{fig::08_07}
 \end{figure}
@@ -154,7 +154,7 @@
 これをどのようにして求めるのか，4つの方法をご紹介しましょう。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text08/Rplot08_03.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/08_CorrelationCausation/Rplot08_03.png}
     \caption{正規分布の確率を求める}
     \label{fig::08_08}
 \end{figure}
@@ -254,7 +254,7 @@
 
     \begin{figure}[ht]
         \centering
-        \includegraphics[keepaspectratio,width=8cm]{../images/text08/Rplot08_04.png}
+        \includegraphics[keepaspectratio,width=8cm]{../images/08_CorrelationCausation/Rplot08_04.png}
         \caption{数表の見方。上の段が$P(0\le Z \le z)$，下の段は$P(Z\ge z)$ のイメージ図}
         \label{fig::08_09}
     \end{figure}
@@ -305,7 +305,7 @@ Rで次のように入力し，実行した例を示します。
 図\ref{fig::08_10}に\texttt{dXXX，pXXX，qXXX}が何を表すかを図子しました。$d$は高さ，$p$は面積，$q$はx軸上の座標を表していることを再確認してください。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/text08/Rplot08_05.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/08_CorrelationCausation/Rplot08_05.png}
     \caption{\texttt{dXXX，pXXX，qXXX}の示すところを確認しよう}
     \label{fig::08_10}
 \end{figure}
@@ -324,7 +324,7 @@ Rで次のように入力し，実行した例を示します。
 たとえばRでは10万点の正規分布に従う乱数を発生させる，ということも一瞬でできます。乱数は規則性がないように出てくる設計になっているので，毎回得られる数字は異なりますが，それを集計するとある確率分布に従っていることがはっきりわかってきます(図\ref{fig::08_11})。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/text08/Rplot08_06.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/08_CorrelationCausation/Rplot08_06.png}
     \caption{乱数が増えると正規分布の形に近づく。左上から順に100,1000,10000,100000点の乱数を発生させて描いたヒストグラム}
     \label{fig::08_11}
 \end{figure}

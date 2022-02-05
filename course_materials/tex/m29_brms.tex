@@ -4,7 +4,7 @@
 
 \begin{document}
 \chapter{Rによるベイズ推定}
-\label{chapter29}
+\label{29_brms}
 JASPによる分析は比較的簡単で，わかりやすかったのではないでしょうか。とはいえ，それはユーザーインターフェイスのおかげかもしれませんね。すなわちクリック，タップ，ドロップなどで視覚的に操作できるGUIのおかげで，簡単便利とおもえるわけです。
 もちろんそれを否定するわけではありませんが，GUIの欠点として，やったことを他人と共有する難しさがあります。「これをこうして・・・」と動きを言葉で説明するのは難しいことです。共有できないことは再現できないことにつながりますし，ひどい場合は「機械が勝手にやったので，自分では何をやったかわかりません」ということにもなりかねません\footnote{実際，GUIの統計ソフトウェアで指導していると困るのがここで，自分では気づかない，デフォルトで設定されている条件でぶんせきしているとか，自分がどういう動きをしたかがわからないので，統計の原理や仮定を違えておかしな分析を無自覚にやっている，ということにもなります。}。その点，RなどCUIで実行指令書を残しておくやり方は，一見面倒なように思えるのですが，記録が残ることと再現可能性の高さから，研究教育の面では向いています。
 
@@ -144,7 +144,7 @@ scale reduction factor on split chains (at convergence, Rhat = 1).
 このことをわかりやすく表示するために，\texttt{plot(fit.brm)}としてみましょう。図\ref{fig::29_01}のように，分析結果がプロットされます。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text27/Rplot27_01.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/27_bayesian3/Rplot27_01.png}
     \caption{ベイズ法による回帰係数の推定}
     \label{fig::29_01}
 \end{figure}
@@ -177,7 +177,7 @@ MCMC法はステップ・バイ・ステップで，一歩ずつ次の乱数を�
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text27/slide27_02.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/27_bayesian3/slide27_02.png}
     \caption{MCMCのやっていること}
     \label{fig::27_02}
 \end{figure}
@@ -190,7 +190,7 @@ MCMC法はステップ・バイ・ステップで，一歩ずつ次の乱数を�
 図\ref{fig::27_03}をみてください。この図はトレースプロットといい，先ほどの図\ref{fig::27_02}の中頃にあったもの，あるいは\texttt{plot}で出力させた図\ref{fig::27_01}の右側にあったものです。ステップ数を横軸にとりながら鎖のステップを線で結んで，鎖がどのあたりをウロウロしているかを可視化しています。図の上には，複数のスタート地点から始まっても，途中で鎖が絡まりあって同じような領域をウロウロしている(サンプリングしている)ことが示されています。一方，下の方の図では鎖がほぐれています。下のような例は，サンプリングがうまくいっていないことの証左で，モデルが悪かったか，パラメータを特定する条件が不十分であったか，といった何らかの問題があったことを示しています。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text27/slide27_01.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/27_bayesian3/slide27_01.png}
     \caption{推定がうまくいってない時の例}
     \label{fig::27_03}
 \end{figure}
@@ -267,7 +267,7 @@ conditional_effects(result.brm2,effects = "temp:maker")
 表示される3つの図(\ref{fig::27_04})はそれぞれ，温度の主効果，銘柄の主効果，そして交互作用であり，そのEAP推定値(点)と95\%確信区間がついています。これを見ると，温度の主効果は確信区間に重複があり，銘柄にそれはないこと，交互作用も暖かい時の銘柄の違いが大きく，冷たい時の銘柄の効果は薄いとか，銘柄Bは温度ではっきりと違いがあるというようなことが目に見えてわかります。これらは帰無仮説検定ではありませんから，検定の多重性の問題がないため，新しい統計量を使って計算し直す必要もありません。非常に直感的に推論を進めていくことができるでしょう。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text27/slide27_03.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/27_bayesian3/slide27_03.png}
     \caption{周辺平均値の推定結果}
     \label{fig::27_04}
 \end{figure}

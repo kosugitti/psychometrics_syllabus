@@ -30,7 +30,7 @@
 この方法はうまくピークを探せるかもしれませんが，ピークが複数ある山脈のような事後分布になると，ひょっとしたらもっと高いところがあるのに見つけられないということがあるかもしれません。またパラメータの数がもっともっと多くなると，計算ももっともっと時間がかかるということで，大変計算量の多い方法になってしまい，これも現実的な解法ではないと言えるでしょう。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text28/slide28_01.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/28_JASP/slide28_01.png}
     \caption{スライスしてピークを探すグリッドサーチ法}
     \label{fig::28_01}
 \end{figure}
@@ -41,7 +41,7 @@
 セクション\ref{randomVariablesMethod}(Pp.\pageref{randomVariablesMethod})で少し触れたように，乱数発生は確率分布を近似するための1つのアプローチです。Rには正規分布や二項分布，t分布やF分布など，有名な確率分布関数に関しては自前で準備しており，\verb|dnorm|のようにすれば正規分布\verb|norm|の密度\verb|d|ensityを算出するとか，\verb|qt|のようにすれば\verb|t|分布におけるある確率を取る範囲の確率点\verb|q|を返すといったことができるのでした。さらに\verb|rnorm(N,mean,sd)|という関数は，任意の平均と標準偏差をもつ正規乱数をN個生成できます。大量に乱数を発生させると，そのヒストグラムは正規分布の形を再生するのでした(図\ref{fig::08_11})。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/text08/Rplot08_06.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/08_CorrelationCausation/Rplot08_06.png}
     \caption{図\ref{fig::08_11}を再掲；乱数が増えると正規分布の形に近づく。左上から順に100,1000,10000,100000点の乱数を発生させて描いたヒストグラム}
     \label{fig::28_02}
 \end{figure}
@@ -57,7 +57,7 @@
 しかし乱数発生法の場合，この積分や周辺化消去については特に意識する必要はありません。図\ref{fig::28_03}には2次元空間から乱数を発生させた散布図と，周辺化した密度プロットを描きましたが，この密度プロット，要するに変数ごとのヒストグラムを書いただけです。積分のような面倒なことを考えなくても，変数ごとに考えることがすなわち，他の変数の影響を排除して考えたことになるからです。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/text28/Rplot28_01.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/Rplot28_01.png}
     \caption{周辺化は変数ごとのヒストグラムでよいことになる}
     \label{fig::28_03}
 \end{figure}
@@ -67,7 +67,7 @@
 こうしたMCMC法をつかった推定ができたおかげで，簡単にベイズ統計を実践できるようになりました。このMCMC法を実現するには，乱数発生法を持ったプログラミング環境が必要です。これら\keytermL{確率プログラミング言語}{かくりつぷろぐらみんぐげんご}と呼ばれる代表的なものとして，\keytermL{JAGS}{JAGS}\citep{JAGS}や\keytermL{Stan}{Stan}\citep{stan2017}と呼ばれるものがあります\footnote{以前はBUGSやWinBUGSという言語がありました。BUGSは1989年から開発が始まり，後継のWinBUGSは2007年に最新版が出て終わりました。古いテキストを探すと，これらのソフトを使う例が載っています(\citet{Lee201709}など)。その後発としてJAGSが，さらに乱数発生アルゴリズムに改良を加えたStanは2021年現在も最新版が開発され，リリースされ続けています。}。これらはいずれも，データと確率モデル，事前分布を設定すれば，尤度と事前分布の積を内部で計算し，そこからの乱数を発生させてくれます\footnote{これらの詳しい使い方については，姉妹講義であるデータ解析応用の方で取り扱いますので，興味があれば是非履修してください。}。これらの言語は単体で使うのではなく，Rなど他の統計環境から呼び出して使います。Rは\verb|rstan|パッケージや\verb|cmdstanr|パッケージをつかってStanと連携をとり，乱数発生はStanに，集計や描画はRでできるようにしています(図\ref{fig::28_04})。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/text28/slide28_02.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/slide28_02.png}
     \caption{RからStanを使うときのイメージ}
     \label{fig::28_04}
 \end{figure}
@@ -82,7 +82,7 @@ JASPもまたRと同じくフリーソフトウェアです。こちらはアム
 JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}にアクセスできるようになるでしょう(図\ref{fig::28_05})。本稿執筆時点\footnote{2021年12月17日14時48分}で最新版はver0.16となっています。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/JASP/JASP_web01.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/JASP_web01.png}
     \caption{JASPのWebサイト}
     \label{fig::28_05}
 \end{figure}
@@ -90,14 +90,14 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
 自分の環境に合ったものをダウンロードし，アプリをインストールしてみましょう\footnote{macOSユーザでHomebrewによるソフトのパッケージ管理をしているひとは，\verb|brew install JASP --cask|でインストールすることができます。}。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/JASP/JASP_web02.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/JASP_web02.png}
     \caption{自分の環境に合ったものをダウンロードしよう}
     \label{fig::28_06}
 \end{figure}
 インストールが無事終了したら，起動してみましょう。JASPの起動画面が既に日本語化されていると思います。そこにはJASPの特徴である，\textbf{フリー，フレンドリー，フレキシブル}の説明があります。特に「フレキシブル」のところにあるように，このソフトは他のどのパッケージにもない特徴として，伝統的な分析方法とベイズ的な分析方法をシームレスにつなげているという特徴が明記されています。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/JASP/JASP_wakeup.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/JASP_wakeup.png}
     \caption{起動画面のご挨拶も是非一読してください}
     \label{fig::28_07}
 \end{figure}
@@ -108,14 +108,14 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
 画面の左上にある3本線をクリックするとメインメニューが開きます。ここで「開く」$\to$「コンピュータ」と進むと，自分のPCにあるデータファイルを読み込むことができます。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_01.png}
+    \includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_01.png}
     \caption{ファイルを読み込む}
     \label{fig::28_08}
 \end{figure}
 例として，野球選手のデータファイル(csv)を読み込んでみます\footnote{このサンプルデータは本稿の伴走サイトにて提供されています。}。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_02.png}
+    \includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_02.png}
     \caption{ファイルを読み込みました}
     \label{fig::28_09}
 \end{figure}
@@ -127,7 +127,7 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
 たとえば身長変数\verb|height|と体重変数\verb|weight|をチームごとにみてみたい，というのであれば，「分割」のところに\verb|team|変数を投入し(右に向いた三角形ボタンを押すと，選ばれた変数がボックス内に移動します)，分析対象の変数を上のボックスに投入すればよく，右の画面に自動的に計算結果が出てきます(図\ref{fig::28_09})。簡単ですね！
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/JASP/JASP_03.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/JASP_03.png}
     \caption{記述統計の出力}
     \label{fig::28_10}
 \end{figure}
@@ -136,14 +136,14 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
 ここをクリックすると，様々なオプションが表示されます。たとえばプロットでは，色を指定するカラーパレットが選べますし，箱ヒゲ図，散布図，回帰直線の追加などが選べます(図\ref{fig::28_10})。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/JASP/JASP_04.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/JASP_04.png}
     \caption{プロットオプション}
     \label{fig::28_11}
 \end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/JASP/JASP_plot01.png}
+    \includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/JASP_plot01.png}
     \caption{ボックスプロットや散布図}
     \label{fig::28_12}
 \end{figure}
@@ -152,7 +152,7 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
 これらのプロットは，図の横にある下三角をクリックすると，コピーしたり画像ファイルとして保存することもできます(図\ref{fig::28_13})。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_plot02.png}
+    \includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_plot02.png}
     \caption{JASPの図オブジェクトは保存できる}
     \label{fig::28_13}
 \end{figure}
@@ -162,7 +162,7 @@ JASPだけで画像の調整がうまくいくのであれば，プレゼン資�
 JASPの特徴はすでに述べたように，1つの分析法を従来型(頻度主義的確率に基づくもの)とベイズ型(朱kん確率に基づくもの)の両方で並列的に行えることです。メニューをクリックすると，伝統的な方法とベイジアン(ベイズ的な)が選べるようになっています(図\ref{fig::28_14})。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_05.png}
+    \includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_05.png}
     \caption{一つのメニューで二つの分析}
     \label{fig::28_14}
 \end{figure}
@@ -170,7 +170,7 @@ JASPの特徴はすでに述べたように，1つの分析法を従来型(頻�
 JASPが持っているサンプルデータだけでなく，OSF\footnote{Open Science Frameworkの略で，心理学の再現性問題などのとも相まって，研究で使ったロウデータそのものを公開したらいいじゃないか，という活動です。詳しくは\url{https://osf.io/gceur/}を参照してください。}とよばれるWeb上で公開されている研究データにアクセスし，そこからデータを取ってくることもできるようになっているのです(図\ref{fig::28_15})。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_06.png}
+    \includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_06.png}
     \caption{サンプルデータも豊富にある}
     \label{fig::28_15}
 \end{figure}
@@ -181,7 +181,7 @@ JASPが持っているサンプルデータだけでなく，OSF\footnote{Open S
 普通の相関係数が欲しいだけでしたら，メニューの回帰$\to$伝統的・相関を選びます。全ての変数を右側のボックスに移動するだけで，結果のところに相関行列が表示されます。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_cor1.png}
+    \includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_cor1.png}
     \caption{伝統的な相関分析}
     \label{fig::28_16}
 \end{figure}
@@ -205,7 +205,7 @@ JASPが持っているサンプルデータだけでなく，OSF\footnote{Open S
 対立仮説は二群に差がある(グループ1$\neq$グループ2)とし，仮定のチェックや効果量など，適当に選んでみましょう。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_ttest.png}
+    \includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_ttest.png}
     \caption{伝統的なt検定}
     \label{fig::28_17}
 \end{figure}
@@ -296,7 +296,7 @@ JASPが持っているサンプルデータだけでなく，OSF\footnote{Open S
 このことは記述統計的なプロットを見るとはっきりします(図\ref{fig::28_18})。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_ttestPlot.png}
+    \includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_ttestPlot.png}
     \caption{二群の平均値と確信区間}
     \label{fig::28_18}
 \end{figure}
@@ -305,7 +305,7 @@ JASPが持っているサンプルデータだけでなく，OSF\footnote{Open S
 ここでもう1つ，「事前分布と事後分布」の出力を見てみましょう(図\ref{fig::28_19})。
 \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,width=6cm]{../images/JASP/JASP_ttestBF.png}
+    \includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_ttestBF.png}
     \caption{事前分布と事後分布}
     \label{fig::28_19}
 \end{figure}

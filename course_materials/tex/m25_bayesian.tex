@@ -1,10 +1,10 @@
-\documentclass{ltjbook}
+\documentclass{ltjsbook}
 \usepackage{docmute} 
 \usepackage{../../myStyle} 
 
 \begin{document}
 \chapter{ベイズ推測の基礎}
-\label{chapter25}
+\label{m25_bayesian}
 ここまで尤度を使った推定方法について説明してきました。モーメント法と最尤法，いずれも同じ答えが出るのですがその考え方が違うというところを確認してきましたね。さてここからは，もう1つの推定法であるベイズ法について解説します。そのためには，ベイズ法の根本的な法則について知っておいた方が良いので，少し回りくどいかもしれませんが，まずはそこから説明していきましょう。目的を先に教えてくれないとやだよ，という人のために一言で目的だけ言っておきます。ベイズ法は最尤法と同じく確率モデルを使うのですが，尤度が「確率じゃない」という妙な性質があったのに対し，ベイズ法は答えを確率で出します。尤度を確率にするための仕掛けがこれから始まるのです。
 
 \section{ベイズの定理}
@@ -161,7 +161,7 @@
 これに対して主観確率で考えるベイズ法による推定は，そもそも母数の値がわかりませんので，わからないことを確率で表現する。最初は幅の広い，全域に渡るような確率でぼんやり考えるのです。これに毎回の試行＝データを積み重ねることによって，この幅を狭めていき，「この辺にあるんじゃないかなあ」という確信度を高めていくという考え方です。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text25/slide25_06.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/25_bayesian/slide25_06.png}
     \caption{確率についての2つの考え方}
     \label{fig::25_06}
 \end{figure}
