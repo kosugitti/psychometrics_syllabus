@@ -5,7 +5,7 @@
 \begin{document} 
 \VerbatimFootnotes
 \chapter{Rによる構造方程式モデリング}
-\label{chapter13} 
+\label{13_SEMonR} 
 
 これまでの流れと同じで，統計技術の理論を知っただけではなく，自分で実際に計算できる演習を経てこそ理解が深まります。本講ではRをつかって実際に構造方程式モデリングを解くことを演習的に学んでいきましょう。
 構造方程式モデリングを実装するパッケージは複数あるが，最も応用範囲がひろい\texttt{lavaan}パッケージを用いることにします。
@@ -145,7 +145,7 @@ summary(result2, fit.measures = T, standardized = T)
 
 \begin{figure}
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter13/Rplot13_01.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/13_SEMonR/Rplot13_01.png}
     \caption{パス解析の図}
     \label{fig::13_01}
     \end{center}
@@ -168,7 +168,7 @@ summary(result3, fit.measures = T, standardized = T)
 これのモデル図は図\ref{fig::13_03}のようになります\footnote{この図は\citet{小野島2021}の関数を使っています。tikzを使って綺麗なモデルが描ける素晴らしい関数の提供に感謝。}。モデル上特に指定はしてありませんが，潜在変数同士の相関係数も自動的に推定されています。パス係数は潜在変数からでてきていますから，因子負荷量のように考えることができますね。
 \begin{figure}
     \begin{center}
-    \includegraphics{../R_source_course2/chapter13fig02.pdf}
+    \includegraphics{../images/13_SEMonR/SEMonR_fig02.pdf}
     \caption{潜在変数モデル}
     \label{fig::13_03}
     \end{center}
@@ -211,7 +211,7 @@ modificationindices(result4) %>%
 まずは今回のモデルについても，図でみたほうがわかりやすいでしょう。結果を合わせて図\ref{fig::13_04}に示してみました。
 \begin{figure}
     \begin{center}
-        \includegraphics{../R_source_course2/chapter13fig03.pdf}
+        \includegraphics{../images/13_SEMonR/SEMonR_fig03.pdf}
         \caption{構造方程式モデルへ}
     \label{fig::13_04}
     \end{center}

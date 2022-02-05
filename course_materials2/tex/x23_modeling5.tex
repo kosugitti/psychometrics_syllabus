@@ -5,7 +5,7 @@
 \begin{document} 
 \VerbatimFootnotes
 \chapter{モデリングの目から見た検定5；カテゴリカル分布をつかって}
-\label{chapter23} 
+\label{23_modeling5} 
 ここまで様々なモデルを使って，パラメータ間あるいはデータの間の差を検討するということを考えてきました。ここで差分を計算できているということは，数値が\textbf{連続的}であったということもできます。いいかるならば，\keytermL{間隔尺度水準}{かんかくしゃくどすいじゅん}以上の尺度水準で得られたデータに対する検証だったわけです。
 
 ところがデータの種類によっては\keytermL{順序尺度水準}{じゅんじょしゃくどすいじゅん}や\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}でしか得られないこともあります。試験に合格したのか，失敗したのか。男性か，女性か。47都道府県のどこ出身なのか。あるいはたとえば，正解率や成功率，相対的な比率などでデータが現されたり考えたりすることもあります。比率は連続的な数字ではありますが，$\frac{X}{Y}$のように数え上げによる度数の比較ですから，元は\textbf{離散的}な，質や種類を区別するための数字による(度数に該当するかどうか)情報だと言えるでしょう。たとえば比率のデータに対してt検定のような分析をするのは適切ではなく\footnote{t検定は正規分布するデータを前提にしている検定方法・確率分布であり，比率のデータはとうてい正規分布とは考えられないからです。正規分布の定義域は$-\infty$から$\infty$なのに対し，比率は$0$から$1$でしかないことからも明らかです。}，カテゴリカルな分布を考えて検証する必要があります。
@@ -120,7 +120,7 @@ fit <- model$sample(
 構造も何もないモデルですから，推定はすぐに終わると思います。$51:45:27 = 0.4146:0.3658:0.2195$ですから，ほぼ標本分布と同じような形で事後分布が推定されました(図\ref{fig::23_01})。
 \begin{figure}
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter23/Rplot23_01.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/23_modeling5/Rplot23_01.png}
     \caption{比率ベクトルの推定結果}
     \label{fig::23_01}
     \end{center}
@@ -200,7 +200,7 @@ generated quantities{
 
 \begin{figure}
   \begin{center}
-  \includegraphics[width=12cm,keepaspectratio]{../images/chapter23/Slide23_01.png}
+  \includegraphics[width=12cm,keepaspectratio]{../images/23_modeling5/Slide23_01.png}
   \caption{対応のあるカテゴリ判断の確率}
   \label{fig:23_02}
   \end{center}

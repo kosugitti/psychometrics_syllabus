@@ -1,11 +1,11 @@
 \documentclass{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.0.3}
+\lhead{version 1.0.6}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/cover2.pdf}
-\input{../../copyright} % copyright page
+\input{../../common_contents/copyright} % copyright page
 
 \VerbatimFootnotes
 \title{心理学データ解析応用}
@@ -53,8 +53,8 @@
 \include{x30_comparison}
 \appendix
 \include{prepareStan}
-\include{Computer}
-\include{FAQ} % FAQ page
+\input{../../common_contents/FAQ} % FAQ page
+\input{../../common_contents/Computer}
 % 行番号終了
 \nolinenumbers
 % 引用文献

@@ -4,7 +4,7 @@
 
 \begin{document} 
 \chapter{確率的プログラミング；変化点と折線回帰}
-\label{chapter28}
+\label{28_ChangePoint}
 さて今回は，今までの線形モデルとはちょっと違うモデリングになります。その名も変化点検出，そして折線回帰です。タイトルだけでも面白そうではありませんか？
 
 さらに今回は次のようなデータを扱います(図\ref{fig:28_01})。何を隠そうこのデータは，私の体重の推移のデータなのです。
@@ -12,7 +12,7 @@
 
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter28/Rplot28_01.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/28_ChangePoint/Rplot28_01.png}
     \caption{体重の時系列的推移}
     \label{fig:28_01}
     \end{center}
@@ -23,7 +23,7 @@
 2019年から2020年の2年間に限定したデータが，図\ref{fig:28_02}になります。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter28/Rplot28_02.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/28_ChangePoint/Rplot28_02.png}
     \caption{2019-2020年のデータ}
     \label{fig:28_02}
     \end{center}
@@ -78,7 +78,7 @@ fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4, seed = 1234
 \end{lstlisting}
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter28/Rplot28_03.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/28_ChangePoint/Rplot28_03.png}
     \caption{2つの体重のモード}
     \label{fig:28_03}
     \end{center}
@@ -92,7 +92,7 @@ fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4, seed = 1234
 
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter28/Rplot28_04.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/28_ChangePoint/Rplot28_04.png}
     \caption{大きく変化したデータ}
     \label{fig:28_04}
     \end{center}
@@ -112,7 +112,7 @@ fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4, seed = 1234
 ベイズ統計はわからないことを確率で表現し，データでその確率情報をアップデートしていくというものです。今回はいつ変化したのがわかりませんから，その変化した時期を$\tau$とし，データ区間の中にその日があると考えて，その区間の一様分布を事前分布とします。その時期$\tau$を境に，データが出てくる分布の位置パラメータがずれると考えるのです。設計図は次のようになります(図\ref{fig:28_05})
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[width=12cm,keepaspectratio]{../images/chapter28/slide28_01.png}
+  \includegraphics[width=12cm,keepaspectratio]{../images/28_ChangePoint/slide28_01.png}
   \caption{変化点検出のモデル設計図}
   \label{fig:28_05}
   \end{center}
@@ -175,7 +175,7 @@ model{
 違いがわかるようにデータとモデルの推定値を合わせたのが，図\ref{fig:28_06}です。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter28/Rplot28_05.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/28_ChangePoint/Rplot28_05.png}
     \caption{検出された変化点と平均値の違い}
     \label{fig:28_06}
     \end{center}
@@ -186,7 +186,7 @@ model{
 先ほどは，変化点を機に平均値が変わる，というモデルでした。では次のような分布の場合はどうなるでしょうか。今度は2016年に注目してみました(図\ref{fig:28_07})。
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[width=12cm,keepaspectratio]{../images/chapter28/Rplot28_06.png}
+  \includegraphics[width=12cm,keepaspectratio]{../images/28_ChangePoint/Rplot28_06.png}
   \caption{2016年の変化}
   \label{fig:28_07}
   \end{center}
@@ -198,7 +198,7 @@ model{
 ということで，そのイメージができたのであれば，そのままモデルを描いてしまいましょう。設計図が少しごちゃっとしてしまいましたが，ポイントは傾きの係数を前半は負，後半は正に限定しているところでしょうか(図\ref{fig:28_08})。また，変化点は大体このあたり・・・ということでデータの100行目(2016/04/29)から250行目(2016/10/15)の間に置いてみました。
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[width=12cm,keepaspectratio]{../images/chapter28/slide28_02.png}
+  \includegraphics[width=12cm,keepaspectratio]{../images/28_ChangePoint/slide28_02.png}
   \caption{折線回帰モデル設計図}
   \label{fig:28_08}
   \end{center}
@@ -257,7 +257,7 @@ model{
 
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[width=12cm,keepaspectratio]{../images/chapter28/Rplot28_07.png}
+  \includegraphics[width=12cm,keepaspectratio]{../images/28_ChangePoint/Rplot28_07.png}
   \caption{折線回帰モデル推定結果}
   \label{fig:28_09}
   \end{center}
@@ -287,7 +287,7 @@ transformed parameters{
 このコード\ref{stan::28_03}にあるように，\verb|beta0b|を計算式から出すようにして，改めて推定をした結果が図\ref{fig:28_10}になります。これだと変化点が前にずれて，データの169行目(2016/07/10)で心がポッキリ折れていることがわかります。
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[width=12cm,keepaspectratio]{../images/chapter28/Rplot28_08.png}
+  \includegraphics[width=12cm,keepaspectratio]{../images/28_ChangePoint/Rplot28_08.png}
   \caption{変化点を合わせた折線回帰モデル}
   \label{fig:28_10}
   \end{center}

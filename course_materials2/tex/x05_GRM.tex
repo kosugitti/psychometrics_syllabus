@@ -1,10 +1,10 @@
 \documentclass{ltjsbook}
 \usepackage{docmute} 
-\usepackage{../myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document} 
 \chapter{現代テスト理論その2} 
-\label{chapter5} 
+\label{x05_GRM} 
 
 \section{現代テスト理論の特徴}
 前回は現代テスト理論として項目反応理論(IRT)を紹介しました。ロジスティック曲線を応用して項目の特徴を描画し，それを使って被験者母数を推定する方法についても解説しました。この一連の手続きに基づき，現代テスト理論の利点を考えてみたいと思います。
@@ -45,7 +45,7 @@ IRTの考え方からいうと，どんな項目でも何らかの情報を提�
 図\ref{fig::05_01}にいくつかのICCとそれに対応するIICを描きましたので，確認してください。
 \begin{figure}[ht]
   \begin{center}
-   \includegraphics[width=12cm,keepaspectratio,clip]{../images/chapter05/Rplot05_01.png}
+   \includegraphics[width=12cm,keepaspectratio,clip]{../images/05_GRM/Rplot05_01.png}
    \caption{項目特徴曲線(IIC,上図)とテスト情報曲線(IIC,下図)の例。左から順に$a_1=0.8,b_1=-1$の識別力が弱く簡単な項目，$a_2=1,b=1$のやや困難な項目，$a_3=1.2,b_3=2$の識別力が高く困難な項目。}
    \label{fig::05_01}
   \end{center}
@@ -58,7 +58,7 @@ IICのピークは，対応するICCの$\theta=0.5$のところにあること�
 またIICはある項目から得られる情報のことを意味しますが，テストに含まれている全ての情報関数を足し合わせることで，そのテストから得られる情報の大きさを関数として評価できます。すなわちテスト全体の情報量$I_T(\theta)$は，$I_T(\theta)=\sum_{j=1}^M I_j(\theta)$であり，この関数のことを\keyterm{テスト情報関数}{てすとじょうほうかんすう}{Test Infromation Curve}といいます。図\ref{fig::05_01}の3つの項目からなるTICを示したのが図\ref{fig::05_02}です。
 \begin{figure}[ht]
   \begin{center}
-   \includegraphics[width=12cm,keepaspectratio,clip]{../images/chapter05/Rplot05_02.png}
+   \includegraphics[width=12cm,keepaspectratio,clip]{../images/05_GRM/Rplot05_02.png}
    \caption{テスト情報関数(黒の実線部)。理解を進めるために各IICを薄い点線で表現した。}
    \label{fig::05_02}
   \end{center}
@@ -104,7 +104,7 @@ GRMの考え方の基本は，段階反応の背後には正規分布する連�
 
 \begin{figure}[ht]
   \begin{center}
-   \includegraphics[width=12cm,keepaspectratio,clip]{../images/chapter05/Rplot05_03.png}
+   \includegraphics[width=12cm,keepaspectratio,clip]{../images/05_GRM/Rplot05_03.png}
    \caption{正規分布と閾値(上図)とIRCCC(下図)}
    \label{fig::05_03}
   \end{center}
@@ -122,7 +122,7 @@ IRCCCを，$\theta$の値がマイナスからプラスの方向に動かしな�
 このように5段階，7段階を設定して回答者に無理やり回答を求めても，分析するとカテゴリのピークが潰れていることがあります。回答者の反応しやすいカテゴリ数を丁寧に設計してやることが重要です。もちろん無分別に尺度値をつけて，そのまま分析するのはもっとも不適切な方法です。
 \begin{figure}[ht]
   \begin{center}
-   \includegraphics[width=12cm,keepaspectratio,clip]{../images/chapter05/Rplot05_04.png}
+   \includegraphics[width=12cm,keepaspectratio,clip]{../images/05_GRM/Rplot05_04.png}
    \caption{適切な反応段階をデザインする}
    \label{fig::05_04}
   \end{center}
@@ -146,7 +146,7 @@ IRCCCを，$\theta$の値がマイナスからプラスの方向に動かしな�
 これらの相関係数はいずれも，順序(あるいはバイナリ)変数の背後に連続体があると考え，潜在的な連続体$\times$潜在的な連続体の相関係数を連続体のカテゴリが変わる閾値とともに推定するのです(図\ref{fig::05_05})。
 \begin{figure}[ht]
   \begin{center}
-   \includegraphics[width=12cm,keepaspectratio,clip]{../images/chapter05/Slide05_01.png}
+   \includegraphics[width=12cm,keepaspectratio,clip]{../images/05_GRM/Slide05_01.png}
    \caption{ポリ個リック相関係数のイメージ}
    \label{fig::05_05}
   \end{center}

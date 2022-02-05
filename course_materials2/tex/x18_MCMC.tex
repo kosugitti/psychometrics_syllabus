@@ -1,11 +1,11 @@
 \documentclass{ltjsbook}
 \usepackage{docmute} 
-\usepackage{../myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document} 
 \chapter{ベイジアンアプローチと確率的プログラミング1}
 それではいよいよ，データ生成モデリングとベイズ推定による実践例を見ていくことにしましょう。
-\label{chapter18} 
+\label{18_MCMC} 
 \section{7人の科学者}
 ここでは \citet{Lee201709}より「7人の科学者」の例を紹介します。そこでのカバーストーリーは次のようなものです。
 
@@ -25,7 +25,7 @@
 
 \begin{figure}
     \begin{center}
-    \includegraphics[width=10cm,keepaspectratio]{../images/chapter18/slide18_01.png}
+    \includegraphics[width=10cm,keepaspectratio]{../images/18_MCMC/slide18_01.png}
     \caption{データが生成されるプロセス}
     \label{fig::18_01}
     \end{center}
@@ -40,7 +40,7 @@
 これらをおくことで，モデルの設計図が出来上がりました(図\ref{fig::18_02})。あとはこれをもとに，確率プログラミング言語に書き起こしていけば良いでしょう。
 \begin{figure}
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter18/slide18_02.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/18_MCMC/slide18_02.png}
     \caption{モデルの全体像}
     \label{fig::18_02}
     \end{center}
@@ -241,7 +241,7 @@ lp__   -9.45    0.07  1.67 -13.80 -10.19 -9.10 -8.39  -7.07   570 1.01
 
 \begin{figure}
     \begin{center}
-    \includegraphics[width=10cm,keepaspectratio]{../images/chapter18/Rplot18_01.png}
+    \includegraphics[width=10cm,keepaspectratio]{../images/18_MCMC/Rplot18_01.png}
     \caption{トレースプロットの例}
     \label{fig::18_03}
     \end{center}
@@ -249,7 +249,7 @@ lp__   -9.45    0.07  1.67 -13.80 -10.19 -9.10 -8.39  -7.07   570 1.01
 これについては悪い例を見た方が早いかもしれません。図\ref{fig::18_04}に，チェインが絡まない場合のトレースプロットを示しました。このように，複数のチェインがそれぞれバラバラ，迷子になっている場合は，手元に生成された乱数が事後分布の適切な代表になっていないと判断することになります。
 \begin{figure}
     \begin{center}
-    \includegraphics[width=10cm,keepaspectratio]{../images/chapter18/Rplot18_02.png}
+    \includegraphics[width=10cm,keepaspectratio]{../images/18_MCMC/Rplot18_02.png}
     \caption{チェインが絡まない場合}
     \label{fig::18_04}
     \end{center}

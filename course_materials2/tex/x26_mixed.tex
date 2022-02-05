@@ -5,7 +5,7 @@
 \begin{document} 
 \VerbatimFootnotes
 \chapter{混合分布モデル}
-\label{chapter26} 
+\label{26_mixed} 
 さてLM$\to$GLM$\to$GLMM$\to$HLMと，線形モデルを展開させてきました。後半のGLMMやHLMでは分布を混ぜるということをしてきたわけですが，今回も分布を混ぜるモデルについて見ていきたいとおもいます。
 
 今回の分布の混ぜ方は，パラメータの構造が複雑化するのではなく，そもそも違うパラメータの分布が混ざり合っているというパターンです。具体的な例から見ていきましょう。
@@ -13,7 +13,7 @@
 図\ref{fig:26_01}を見てください。これは野球選手データからTigersの年俸をヒストグラムにしたものです。年俸のデータはそのままだと左に歪んでいるので，対数をとったものを表示しています。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter26/Rplot26_01.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/26_mixed/Rplot26_01.png}
     \caption{Tigersの選手年俸(対数)の分布}
     \label{fig:26_01}
     \end{center}
@@ -38,7 +38,7 @@
 こうした分類，クラスタリングの手法はいくつかあって，大きく分けると\keyterm{階層的クラスタリング}{かいそうてきくらすたりんぐ}{hierarchal clustering}と\keytermL{非階層的クラスタリング}{ひかいそうてきくらすたりんぐ}の二種類に分かれます。階層的というのはHLMの発想と同じで，クラスターが積み重なっていくようなイメージです。例えば要素$\{a,b,c,d,e\}$をクラスタリングする時，距離が近いものを使ってまず$\{a\},\{b,c\},\{d,e\}$と分割したとします。次に$\{b,c\}$を1つの新しいデータ点だと考えて，$a$と$\{b,c\}$，$\{b,c\}$と$\{d,e\}$の距離を考え，近い方をさらに次のクラスターにまとめます。すなわち$\{a,\{b,c\}\},\{d,e\}$というようにです。それをさらに上位階層でまとめ$\{a,\{b,c\},\{d,e\}\}$と全てが1つのクラスターにまとめられたら終わり，とより包括的なクラスターへ，より上位のクラスターへとまとめていくのが階層的クラスタリングという手法です。この方法で分類した例を図\ref{fig:26_02}に示します。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter26/Rplot26_02.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/26_mixed/Rplot26_02.png}
     \caption{Tigersの選手を年俸で階層的クラスタリング(ウォード法による)}
     \label{fig:26_02}
     \end{center}
@@ -55,7 +55,7 @@
 混合分布モデルの考え方は，アルクラスターに含まれるかどうかが確率的に決まるというものです。例えばコイントスをして，表が出たらクラスターA，裏が出たらクラスターB，というように分類するようなものです。コイントスはベルヌーイ分布に下がいますから，確率$\theta$でクラスターA，確率$1-\theta$でクラスターB，と言っていることと同じです(図\ref{fig:26_03})。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter26/slide26_01.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/26_mixed/slide26_01.png}
     \caption{二つの正規分布からデータが出てくるモデル}
     \label{fig:26_03}
     \end{center}
@@ -68,7 +68,7 @@
 
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter26/slide26_02.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/26_mixed/slide26_02.png}
     \caption{K個の正規分布からデータが出てくるモデル}
     \label{fig:26_04}
     \end{center}
@@ -238,7 +238,7 @@ sigma[2] 0.75    0.01 0.24 0.38 0.53 0.77 0.94  1.19   454    1
 事後予測分布から，所得平均の高い「超一流」選手と「一般的」な選手とに分けて分布を色分けしてみました(図\ref{fig:26_10})。データから，この選手がどちらのクラスに所属しているかも想像できるところが面白いですね。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter26/Rplot26_06.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/26_mixed/Rplot26_06.png}
     \caption{選手のクラスタリング}
     \label{fig:26_10}
     \end{center}
@@ -251,7 +251,7 @@ sigma[2] 0.75    0.01 0.24 0.38 0.53 0.77 0.94  1.19   454    1
 さて，異なる分布の混ぜ合わせ，離散確率分布による条件分岐の例として，もう1つ別の例を示しましょう。次の図\ref{fig:26_05}を見てください。
 \begin{figure}[hb]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter26/Rplot26_03.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/26_mixed/Rplot26_03.png}
     \caption{投手のセーブ数}
     \label{fig:26_05}
     \end{center}
@@ -265,7 +265,7 @@ sigma[2] 0.75    0.01 0.24 0.38 0.53 0.77 0.94  1.19   454    1
 
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter26/Rplot26_04.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/26_mixed/Rplot26_04.png}
     \caption{さまざまなポアソン分布。$\lambda$は1.5，3，4.5，10.5で描画}
     \label{fig:26_06}
     \end{center}
@@ -273,7 +273,7 @@ sigma[2] 0.75    0.01 0.24 0.38 0.53 0.77 0.94  1.19   454    1
 そこで混合分布です。まずセーブ数が0かどうかを考えます。セーブ数0というのは，そもそもクローザーではないか，クローザーなのに0セーブポイントのへっぽこか，の二択です。セーブ数が0でない限り，ポアソン分布からセーブ数が生成される，と考えるのです。設計図のイメージは図\ref{fig:26_07}の通りです。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter26/slide26_03.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/26_mixed/slide26_03.png}
     \caption{ポアソン分布との混ぜ合わせ}
     \label{fig:26_07}
     \end{center}
@@ -350,7 +350,7 @@ fit <- model$sample(
 事後予測分布のように，この確率モデルで出てくるデータを図\ref{fig:26_08}に示してみました。単一の分布では表現できないモデル化ができているのではないでしょうか。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter26/Rplot26_05.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/26_mixed/Rplot26_05.png}
     \caption{ゼロ過剰ポアソン分布による当てはめ。上がロウデータ，したが事後予測分布}
     \label{fig:26_08}
     \end{center}
@@ -396,7 +396,7 @@ model{
 データの分布や特徴を考えて，それにあった分析モデルを作っていくのは，モデラーとしての階段を一歩登ったことになります。図\ref{fig:26_09}には統計分析家の成長ステップの模式図を描いてみました\footnote{この図は東北大学大学院文学研究科の浜田宏先生が，専修大学社会知性開発研究センター主催の研究会(2019.2.26開催，於専修大学サテライトキャンパス)にてご講演いただいた際の，資料をもとに作図したものです。}。最初はデータの記述や線形モデルの当てはめなど，得られたデータに振り回されるような形でモデルを作り上げてきましたが，今回のように分布を混ぜ合わせると，さらにその表現力が豊かになることが実感できたのではないでしょうか。図にあるように，確率モデルのパラメータが心理事象の(数学的)記述から導出され，それがデータと合致する可動かで検証するようになれれば，さらにもう一段階研究のレベルが上がることになるでしょう。最終的には，心理学理論の方から新しい確率分布が導出される日が来るかもしれませんね。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter26/slide26_04.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/26_mixed/slide26_04.png}
     \caption{統計モデラーの道。浜田宏先生(東北大学)のアイデアをもとにイラスト化したもの}
     \label{fig:26_09}
     \end{center}

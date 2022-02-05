@@ -1,10 +1,10 @@
 \documentclass{ltjsbook}
 \usepackage{docmute} 
-\usepackage{../myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document} 
 \chapter{現代テスト理論} 
-\label{chapter4} 
+\label{04+irt} 
 \section{因子分析とテスト理論}
 ここまで，古典的テスト理論と因子分析の話を見てきました。古典的テスト理論から，テストの信頼性と妥当性の話を導きました。次に因子分析モデルによって，古典的テスト理論が多因子(多次元)モデルに展開されるのでした。
 
@@ -26,7 +26,7 @@
 さて，学力のような潜在変数が標準正規分布に従うと仮定しましょう。この分布はどこの確率点がどれぐらいの確率密度を持っているか，あるいはある確率点以上・以下の面積が全体の何\%かを表すものですが，縦軸をある点以下の累積確率に書き直してみましょう(図\ref{fig::04_01})。図\ref{fig::04_01}の上の図がいわゆる正規分布の分布の形，確率密度関数です。下の図はこれを累積確率に書き換えたものになっています。累積確率は0\%から始まって，最終的に100\%にまでどのように増えていくかを示した図になります。
 \begin{figure}[ht]
     \begin{center}
-     \includegraphics[width=12cm,height=15cm,keepaspectratio,clip]{../images/chapter04/Rplot04_01.png}
+     \includegraphics[width=12cm,height=15cm,keepaspectratio,clip]{../images/04_irt/Rplot04_01.png}
      \caption{正規分布の確率密度関数(上)と累積確率関数(下)}
      \label{fig::04_01}
     \end{center}
@@ -38,7 +38,7 @@
 
 \begin{figure}[ht]
     \begin{center}
-     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter04/Rplot04_02.png}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/04_irt/Rplot04_02.png}
      \caption{群ごとの平均通過率。左上が良いパターン。右上は簡単すぎる，左下は難しすぎる項目。右下は逆転していて良くない項目。}
      \label{fig::04_02}
     \end{center}
@@ -65,7 +65,7 @@
 ここで$b$という変数が入ってきました。これが\keyterm{困難度}{こんなんど}{difficulty}を表す指標です。$b=0$のときは標準正規分布と同じ形になりますが，$b=1$ならばこの式は右に，$b=-1$ならば左に動きます。つまり$b>0$であれば難しく，$b<0$であれば簡単であることを表現していることになります。図\ref{fig::04_03}に困難度が$b=-1,0,+1$の時の曲線を書いてみましたので確認してください。
 \begin{figure}[ht]
     \begin{center}
-     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter04/Rplot04_03.png}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/04_irt/Rplot04_03.png}
      \caption{困難度母数の入ったロジスティック曲線。1PLロジスティックモデルともいう。点線が$b=0$の標準的曲線。赤が$b=-1$，青が$b=+1$の例}
      \label{fig::04_03}
     \end{center}
@@ -78,7 +78,7 @@
 
 \begin{figure}[ht]
     \begin{center}
-     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter04/Rplot04_04.png}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/04_irt/Rplot04_04.png}
      \caption{識別力母数の入ったロジスティック曲線。2PLロジスティックモデルともいう。点線が$a=1$の標準的曲線。赤が$a=0.5$，青が$a=1.5$の例}
      \label{fig::04_04}
     \end{center}
@@ -99,7 +99,7 @@
 
 \begin{figure}[ht]
     \begin{center}
-     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter04/Rplot04_05.png}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/04_irt/Rplot04_05.png}
      \caption{実際のテストに2PLモデルを適用した例}
      \label{fig::04_05}
     \end{center}
@@ -132,7 +132,7 @@
 
 \begin{figure}[ht]
     \begin{center}
-     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter04/Rplot04_06.png}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/04_irt/Rplot04_06.png}
      \caption{実際のテスト項目\texttt{I0013}に正答した人の能力がありそうな領域}
      \label{fig::04_06}
     \end{center}
@@ -141,7 +141,7 @@
 次に，困難度のより高い項目である\texttt{I0017}には\textbf{誤答}したとしましょう。その人は，\texttt{I0017}のICCの下の領域には\textbf{ない}はずです。項目\texttt{I0013}のICCの下で，かつ，項目\texttt{I0017}のICCの上にあるはずなので，図\ref{fig::04_07}のように塗りつぶされた領域の中に入ります。
 \begin{figure}[ht]
     \begin{center}
-     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter04/Rplot04_07.png}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/04_irt/Rplot04_07.png}
      \caption{つぎのテスト項目\texttt{I0013}には誤答した人の能力がありそうな領域}
      \label{fig::04_07}
     \end{center}
@@ -152,7 +152,7 @@
 ここでさらに同じ人に，項目\texttt{M0605}の質問をして，この人がそれにも正解したとしましょう。この人の能力$\theta$のありそうな範囲はさらに絞り込むことができます(図\ref{fig::04_08})。
 \begin{figure}[ht]
     \begin{center}
-     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter04/Rplot04_08.png}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/04_irt/Rplot04_08.png}
      \caption{さらにテスト項目\texttt{M0605}には正答した人の能力がありそうな領域}
      \label{fig::04_08}
     \end{center}

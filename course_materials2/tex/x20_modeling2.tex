@@ -1,10 +1,10 @@
 \documentclass{ltjsbook}
 \usepackage{docmute} 
-\usepackage{../myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document} 
 \chapter{モデリングの目から見た検定2；パタメータの世界とデータの世界}
-\label{chapter20} 
+\label{20_modeling2} 
 前回は，二群の平均値差の検定を行うデータ生成モデルを考えました。平均値差の検定には正規分布が仮定されますから，データ生成モデルも正規分布からデータが作られていると考えれば良かったわけです。仮定に忠実に設計図を書き，それに対応したStanコードを書くと母平均の推定値が出てきます。検定の時も母平均の推定値を使って考えるのですが，検定統計量にしてしまうので実感が湧きにくいところがあったかもしれません。データ生成モデルの場合は，直接パラメータを考えるのでイメージがしやすいという側面がありました。
 
 さらに，MCMCによる推定ですから事後分布からの代表値が，実現値として手元のオブジェクトに代入されています。これをつかった計算をすることで，たとえばパラメータの差を計算でき，その分布を考えることができるのでした。
@@ -79,7 +79,7 @@ generated quantities{
 この$\mu$と\verb|Xpred|を図にしてみたのが図\ref{fig::20_01}です。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/chapter20/Rplot20_01.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/20_modeling2/Rplot20_01.png}
     \caption{事後分布と事後予測分布}
     \label{fig::20_01}
 \end{figure}
@@ -90,7 +90,7 @@ generated quantities{
 また，この事後予測分布の形は，もとのデータの分布の形と似ているかどうかを視覚的に確認するために使われます。図\ref{fig::20_02}に，事後予測分布ともとのデータのヒストグラムを合わせて表示してみました。事後予測分布はMCMCサンプルの数だけありますが，ここでは一部だけ取り出しています。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/chapter20/Rplot20_02.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/20_modeling2/Rplot20_02.png}
     \caption{データの分布と事後予測分布の視覚的な確認}
     \label{fig::20_02}
 \end{figure}

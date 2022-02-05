@@ -5,7 +5,7 @@
 \begin{document} 
 \VerbatimFootnotes
 \chapter{階層線形モデル}
-\label{chapter25} 
+\label{25_HLM} 
 前回は\keytermL{一般線形モデル}{いっぱんせんけいもでる}から，\keytermL{一般化線形モデル}{いっぱんかせんけいもでる}へ，すなわち正規分布以外の確率分布を扱えるモデルへと展開しました。今回はさらにモデルを展開し，\keyterm{一般化線形混合モデル}{いっぱんかせんけいこんごうもでる}{Generalized Linear Mixed  Model;GLMM}へと展開していきます。混合mixedという言葉があるように，複数の確率分布の混ぜ合わせが含まれることが，GLMMの特徴です。
 
 とはいえ，皆さんは既に第\ref{chapter22}でこの問題を扱っています。Within計画・多水準のモデルがそれに当たります。Within計画のモデルでは，個人差$\mu_i$に効果$\delta_j$が加わるという形でモデルを形成しました。ここで個人差$\mu_i$も正規分布に従うものと考えていました。個人差が従う正規分布，誤差が従う正規分布が混じりあってデータになりますから，これもMix されたモデルと考えることができるのです。
@@ -46,7 +46,7 @@
 線形モデルですから，勝ち星を$Y_i$，年俸を$X_i$として$\hat{Y_i} = \beta_0 + \beta_1 X_i $という関係を考えます。とはいえ，2020年度の関係は図示されていますが，選手の年俸というのはそれまでの業績によるところも大きく，そもそも個人差があり得るところです。そこで個人差$\mu_i$を考えて，$\hat{Y_i} = \beta_0 + \beta_1 X_i + \mu_i$とした線形モデルを考えましょう。また，勝利数は0以上の整数しか取りませんから，これはポアソン分布に従うと考えられます。そこでポアソン分布に合わせるために，逆リンク関数を使って$\lambda = \exp(Y_i) = \exp(\beta_0 + \beta_1 X_i + \mu_i)$とした上で，$Y_i \sim poisson(\lambda_i)$という確率モデルに入れることにしましょう。このモデルの設計図は図\ref{fig:25_02}のようになります。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[height=10cm,keepaspectratio]{../images/chapter25/Rplot25_01.png}
+    \includegraphics[height=10cm,keepaspectratio]{../images/25_HLM/Rplot25_01.png}
     \caption{一流選手の年俸と勝利数}
     \label{fig:25_01}
     \end{center}
@@ -55,7 +55,7 @@
 
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter25/Slide25_01.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Slide25_01.png}
     \caption{ポアソン分布を使ったGLMMモデルの設計図}
     \label{fig:25_02}
     \end{center}
@@ -185,7 +185,7 @@ fit <- model_pois$sample(
 
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter25/Slide25_03.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Slide25_03.png}
     \caption{データの畳み込み関数の挙動。左側がもとのデータで，グループ化変数を使って畳み込むと，データフレームの中にグループごとのミニ・データフレームが畳み込まれる。}
     \label{fig:25_03}
     \end{center}
@@ -194,7 +194,7 @@ fit <- model_pois$sample(
 さて，このコードを実行し，結果からモデルを図にしたのが図\ref{fig:25_04}です。図中の赤い転線は，$+\mu_i$をおかずに5人全体を混ぜ合わせたときのポアソン回帰です。個人差を表す項目を追加することで，より個々のデータに沿った回帰プロットが実践できていることがわかると思います。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter25/Rplot25_02.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Rplot25_02.png}
     \caption{ポアソン分布を使ったGLMMの結果}
     \label{fig:25_04}
     \end{center}
@@ -219,7 +219,7 @@ fit <- model_pois$sample(
 何がそんなに問題なのでしょうか。図\ref{fig:25_06}をみてください。左右にあるのは同じデータの分布ですが，左側は階層の区別をしない場合で，右側はその区別をした場合です。線形回帰の直線を引いておきましたが，これを見ると明らかなように階層性を考えなければ，私たちは正の相関があるデータだと判断してしまうでしょう。しかし右側，群ごとに区別してモデルを書いてみると，回帰直線は全て右下がり，つまり負の相関があるデータだったことがわかります。階層性や群ごとの特徴を無視して分析してしまうと，結果が真逆になってしまう可能性を孕んでいるわけです。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter25/Rplot25_03.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Rplot25_03.png}
     \caption{階層データの分析が必要な理由}
     \label{fig:25_06}
     \end{center}
@@ -254,7 +254,7 @@ fit <- model_pois$sample(
 
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter25/Rplot25_04.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Rplot25_04.png}
     \caption{チームごとにバラバラの回帰分析を実施する。できなくはないけど，要するにどういうこと，と言いたくもなる。}
     \label{fig:25_07}
     \end{center}
@@ -269,7 +269,7 @@ fit <- model_pois$sample(
 またさらに別の角度から考えてみましょう。今度はこの線形モデルの，設計図を書いてみるのです。図\ref{fig:25_08}にそれを書いてみました。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter25/slide25_04.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/slide25_04.png}
     \caption{チームごとにバラバラの回帰分析を実施する}
     \label{fig:25_08}
     \end{center}
@@ -363,7 +363,7 @@ Varname    EAP    MED    MAP     SD    L95    L50    U50    U95  Rhat
 最後にこの結果をプロットしてみました。球団ごとの50\%確信区間も合わせてプロットしてあります。これをみると傾きや切片の球団ごとの違いがイメージしやすくなるかと思います。
 \begin{figure}[ht]
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter25/Rplot25_05.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Rplot25_05.png}
     \caption{階層線形モデル；チームごとのポアソン回帰分析}
     \label{fig:25_09}
     \end{center}

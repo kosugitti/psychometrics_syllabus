@@ -4,7 +4,7 @@
 
 \begin{document} 
 \chapter{確率的プログラミング；項目反応理論}
-\label{chapter27} 
+\label{27_IRTonBayes} 
 さてここまで，線形モデルを中心にモデリングのステップを一段一段登ってきました。
 この後は，これまでの技術や考え方を応用し，より実践的なプログラミングへと進んでいきます。さまざまなモデルの確率的表現や，そのコーディング技法を学ぶことで，ご自身の研究にも応用できる技術的ヒントが得られるかもしれません。
 
@@ -38,7 +38,7 @@ $a_j$はのことを特に\keyterm{識別力}{しきべつりょく}{discriminan
 
 \begin{figure}[ht]
     \begin{center}
-     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter27/Rplot27_01.png}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/27_IRTonBayes/Rplot27_01.png}
      \caption{上から順に，1，2，3パラメータロジスティックモデル。どこがどう変わっていくか確認しておこう。}
      \label{fig::27_01}
     \end{center}
@@ -52,7 +52,7 @@ $a_j$はのことを特に\keyterm{識別力}{しきべつりょく}{discriminan
 これまで利用してきた技術の応用で考えることができますから，すぐにでも実装できそうですね！
 \begin{figure}[ht]
     \begin{center}
-     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter27/Slide27_01.png}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/27_IRTonBayes/Slide27_01.png}
      \caption{確率モデルとしての設計図。ロジスティック関数とベルヌーイ分布の組み合わせでテスト理論のモデルが表現できる。}
      \label{fig::27_02}
     \end{center}
@@ -174,7 +174,7 @@ Qid & $b_j$ & $a_j$ & $b_j$ & $a_j$ & $b_j$ & $c_j$\\
 
 \begin{figure}[ht]
     \begin{center}
-     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/chapter27/Rplot27_02.png}
+     \includegraphics[width=12cm,height=12cm,keepaspectratio,clip]{../images/27_IRTonBayes/Rplot27_02.png}
      \caption{推定値を使って描いた各モデルのICC}
      \label{fig::27_03}
     \end{center}

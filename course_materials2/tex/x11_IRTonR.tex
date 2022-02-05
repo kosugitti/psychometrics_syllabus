@@ -1,10 +1,10 @@
 \documentclass{ltjsbook}
 \usepackage{docmute} 
-\usepackage{../myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document} 
 \chapter{Rをつかった項目反応理論} 
-\label{chapter11} 
+\label{11_IRTonR} 
 
 今回もRを使った演習です。Rを使っての行列計算，Rを使っての因子分析と進めてきましたが，今回はRをつかって項目反応理論を実践的に理解していきましょう。
 
@@ -191,7 +191,7 @@ Log.Lik: -2468.743
 1PLモデルで表現する項目の違いは\keytermL{困難度母数}{こんなんどぼすう}だけですから，この数字(\texttt{Dffclt})が小されければ簡単な項目，大きければ難しい項目だったことがわかります。例えば\texttt{V2}の困難度母数は$b_2=-2.208$ですが，記述統計のところで見た正答率(88.6\%)を考えると，簡単な問題だったことがわかりますね。\keyterm{識別力母数}{しきべつりょくぼすう}は\texttt{Dscrmn}として1.126と推定されています。これは項目を通じて一定です。このことは図\ref{fig::11_01}の左にあるICCをみて，全ての曲線の傾きが同じことで確認できます。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/chapter11/Rplot11_01.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/11_IRTonR/Rplot11_01.png}
     \caption{1PLのさまざまなプロット。左からICC,IIC,TIC}
     \label{fig::11_01}
 \end{figure}
@@ -251,7 +251,7 @@ Log.Lik: -2446.104
 プロットによる出力も見ておきましょう(図\ref{fig::11_02})。識別力母数が入ったことで，ICCの傾きが項目によってさまざまになりますし，IICやTICの見た目もすっかり変わってしまいましたが，読み取り方は同じです。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/chapter11/Rplot11_02.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/11_IRTonR/Rplot11_02.png}
     \caption{2PLのさまざまなプロット。左からICC,IIC,TIC}
     \label{fig::11_02}
 \end{figure}
@@ -298,7 +298,7 @@ Log.Lik: -2431.371
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/chapter11/Rplot11_03.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/11_IRTonR/Rplot11_03.png}
     \caption{3PLのさまざまなプロット。左からICC,IIC,TIC}
     \label{fig::11_03}
 \end{figure}
@@ -368,7 +368,7 @@ Log.Lik: -21721.91
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/chapter11/Rplot11_04.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/11_IRTonR/Rplot11_04.png}
     \caption{GRMのIRCCC}
     \label{fig::11_04}
 \end{figure}

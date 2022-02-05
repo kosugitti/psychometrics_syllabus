@@ -1,11 +1,11 @@
 \documentclass{ltjsbook}
 \usepackage{docmute} 
-\usepackage{../myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document} 
 \VerbatimFootnotes
 \chapter{モデリングの目から見た検定3；多群の平均値差モデル}
-\label{chapter21} 
+\label{21_modeling3} 
 \section{要因計画モデル} 
 さてここまでは二水準の平均値差を考えるモデルでしたが，ここからそれを三水準に増やしてみましょう。
 水準数が多くなると\keyterm{要因計画}{よういんけいかく}{Factorial Design}や\keyterm{実験計画}{じっけんけいかく}{Experimental Design}といった話になってきます。\keyterm{分散分析}{ぶんさんぶんせき}{ANalysis Of VAriance;ANOVA}は要因計画と帰無仮説検定の合わせ技で，効果がある/ないの判定を分散の比をつかって行うことでした\footnote{忘れた人は，データ解析基礎のテキストに戻って確認してください。}。
@@ -15,7 +15,7 @@
 まずは簡単な\keyterm{群間計画}{ぐんかんけいかく}{Between Design}の話から進めましょう。対応のない二群の時のように，それが三群になるモデルですので，モデルの設計図は非常に単純です(図\ref{fig::21_01})。
 \begin{figure}
     \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/chapter21/Slide21_01.png}
+    \includegraphics[width=12cm,keepaspectratio]{../images/21_modeling3/Slide21_01.png}
     \caption{多群の平均値の差を比べるときの設計図}
     \label{fig::21_01}
     \end{center}
@@ -156,7 +156,7 @@ model{
 
 \begin{figure}
   \begin{center}
-  \includegraphics[width=12cm,keepaspectratio]{../images/chapter21/Slide21_02.png}
+  \includegraphics[width=12cm,keepaspectratio]{../images/21_modeling3/Slide21_02.png}
   \caption{全体平均は水平線}
   \label{fig::21_02}
   \end{center}
@@ -327,7 +327,7 @@ convergence, Rhat=1).
 このデータの情報を全く損なうことなく，縦長に並べ直したのが図\ref{fig::21_03}の右側です。これは1つの行がそれぞれの観測に対応しています。このような形式にすると，何行目かということを指定するだけで，どの群の何番目の人なのかという情報が手に入ります。またデータの中に欠損があっても，整然データの形にする時にこれは観測に含まれないので，データの一部が欠けることがないという利点があります。
 \begin{figure}
 \begin{center}
-  \includegraphics[width=16cm,keepaspectratio]{../images/chapter21/Slide21_03.png}
+  \includegraphics[width=16cm,keepaspectratio]{../images/21_modeling3/Slide21_03.png}
   \caption{一般的なデータと整然データ}
   \label{fig::21_03}
   \end{center}

@@ -1,10 +1,10 @@
 \documentclass{ltjsbook}
 \usepackage{docmute} 
-\usepackage{myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document} 
 \chapter{モデリングの目から見た検定1；二群の平均値の差}
-\label{chapter19} 
+\label{19_modeling1} 
 前回はデータ生成メカニズムという観点で考えることで，標準偏差(分散)を「測定精度」と考えた検討ができることを示しました。
 今回は，心理学でもよく使われている平均値の差を検討対象とするモデルを考えることにします。
 
@@ -43,7 +43,7 @@ $$ t = \frac{\bar{X}_A-\bar{X}_B}{\sqrt{\frac{(n_1-1)\hat{\sigma_A}^2+(n_2-1)\ha
 これをそのまま設計図にし，コードにしてみましょう。設計図として図\ref{fig::19_01}が，これをもとにコードがコード\ref{stan::19_01}のようにかけていればいいでしょう。コードが設計図をほぼそのまま文字起こししていることを確認してください。
 \begin{figure}
     \begin{center}
-    \includegraphics[width=10cm,keepaspectratio]{../images/chapter19/slide19_01.png}
+    \includegraphics[width=10cm,keepaspectratio]{../images/19_modeling1/slide19_01.png}
     \caption{平均値の差を比べるときの設計図}
     \label{fig::19_01}
     \end{center}
@@ -207,7 +207,7 @@ t.test(groupA, groupB, var.equal = FALSE)
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/chapter19/Rplot19_01.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/19_modeling1/Rplot19_01.png}
     \caption{二つの平均値パラメータの事後分布}
     \label{fig::19_02}
 \end{figure}
