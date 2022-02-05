@@ -15,7 +15,7 @@
 
 インターネットにアクセスするのではなく，手元のPCで(ローカル環境で)作業する例としては，文章を書くことが多いでしょう。大学生をはじめ研究者というのは基本的にコミュニケーションをする人ですから，半ば文筆業であると言っても過言ではありません。またこの文章を作成するために，必要な資料を作ることがあり，数値データを扱う場合は表計算ソフトを使うことになるでしょう。表計算ソフトの代表例として，Excel，Numbers，Calcsなどがあります。表計算ソフトは記述統計量やグラフの作成など，これまで学んできたことが簡単にできるものがありますが，それ以上の複数の変数を一度に扱った分析をするのには，機能的に不十分です。
 
-そこで，より専門的な統計的処理をするためには，統計専用のソフトウェアを使うことになります。統計専用のソフトウェアとしては，SPSSやSAS，Stataなどの商用ソフトウェアもありますが，専修大学人間科学部心理学専攻では現在，Rを学科共通のツールとして利用することにしています。パソコンでこうしたソフトウェアを使うに先立って，重要な「ファイルの場所」について説明します。すでに情報の授業などで聞いたことがある話でしょうし，使い慣れている人にとっては当たり前の話なのですが，携帯電話端末やタブレットではファイルの位置がユーザに見えにくくなっていることも確かです。パソコンに苦手意識があったり，PCのトラブルに慣れていない人は今からのお話と，できれば付録(セクション\ref{computer},\pageref{computer})も併せて目を通しておいてください。
+そこで，より専門的な統計的処理をするためには，統計専用のソフトウェアを使うことになります。統計専用のソフトウェアとしては，SPSSやSAS，Stataなどの商用ソフトウェアもありますが，専修大学人間科学部心理学専攻では現在，Rを学科共通のツールとして利用することにしています。パソコンでこうしたソフトウェアを使うに先立って，重要な「ファイルの場所」について説明します。すでに情報の授業などで聞いたことがある話でしょうし，使い慣れている人にとっては当たり前の話なのですが，携帯電話端末やタブレットではファイルの位置がユーザに見えにくくなっていることも確かです。パソコンに苦手意識があったり，PCのトラブルに慣れていない人は今からのお話と，できれば付録(付録\ref{computer},Page.\pageref{computer})も併せて目を通しておいてください。
 
 \subsection{ファイルの場所}
 \label{filelocale}
@@ -27,14 +27,14 @@
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text02/slide02_02.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/03_introR/computer_02.png}
     \caption{Windowsのエクスプローラ画面}
     \label{fig::02_02}
 \end{figure}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text02/slide02_03.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/03_introR/computer_03.png}
     \caption{Mac OSのファインダー画面}
     \label{fig::02_03}
 \end{figure}
@@ -42,14 +42,14 @@
 ここでWindowsの画面にある，エクスプローラの上部を見てみましょう。この例では「PC>ローカルディスク(C:)>ユーザー＞kosugitti>」とありますね。日本語の文字が入っているので2バイト文字なのかと思いきや，ここをクリックしてみると「C:¥Users¥kosugitti」と出てきます。実はこちらが本当の名前で，ローカルディスクとかユーザーと表示されていたのは使い手に優しく表現しているだけのイリュージョンなのです。ここでC:とあるのはドライブと呼ばれ\footnote{なんでCから始まってて，AやBじゃないんだ，と思われるかもしれませんが，これにも歴史的経緯があります。かつてのパソコンは，フロッピーディスクドライブ(FDD)が2器ついているのが基本で，それらにA,Bと割り振られていました。その後に出てきた内蔵ハードディスクドライブはCとするのが順当だったわけです。その後FDDは時代とともに使われなくなりドライブも無くなったのですが，ドライブレター(ドライブに割り当てた文字)は残ったのです。}，記憶装置の実体を指します。この場合はパソコンに内蔵されたハードディスクドライブです\footnote{ハードディスクドライブ(HDD)とは，FDDの中に入っている磁気媒体の円盤が積み重なったもので，FDDよりも大容量のデータを保管できます。FDDが1MBぐらいであるのに対し，HDDは数TBのものが現在主流です。}。このCドライブの中に，Usersというフォルダがあり，その中にkosugittiというユーザが使う領域がある，という区分になっています\footnote{最初にパソコンを購入した時に，このパソコンで使うユーザの名前は何ですかと聞かれると思います。その時に入力したものがユーザ名になりますが，その時に2バイト文字でユーザ名を入力していると，その後のアプリケーションがうまく動かないエラーが出てくることになったりします。}。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text02/slide02_04.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/03_introR/computer_04.png}
     \caption{Windowsのフォルダ階層}
     \label{fig::02_04}
 \end{figure}
 図\ref{fig::02_05}にはMacの画面を示していますが，ここでもドライブ，フォルダ，フォルダ，という構造になっていること，ユーザのなかにnapierというユーザ名があることなどが確認できると思います。Ubuntuなど別のOSでもこうした仕組みは同じです。これらの画面を見ながら自分で使うファイル，作ったファイルがどこにあるのかをはっきり把握できるようにしておいてください。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/text02/slide02_05.png}
+    \includegraphics[keepaspectratio,width=12cm]{../images/03_introR/computer_05.png}
     \caption{Mac OSのフォルダ階層}
     \label{fig::02_05}
 \end{figure}
@@ -92,21 +92,21 @@ Syunsuke Fukuda先生の「初心者向けRのインストールガイド」\url
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=10cm]{../images/text05/Screen1.png}
+	\includegraphics[keepaspectratio,width=10cm]{../images/03_introR/Screen1.png}
     \caption{RStudio起動初期の画面}
     \label{fig::05_01}
 \end{figure}
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=10cm]{../images/text05/Screen2.png}
+	\includegraphics[keepaspectratio,width=10cm]{../images/03_introR/Screen2.png}
     \caption{新しくスクリプトファイルを開く}
     \label{fig::05_02}
 \end{figure}
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=10cm]{../images/text05/Screen3.png}
+	\includegraphics[keepaspectratio,width=10cm]{../images/03_introR/Screen3.png}
     \caption{RStudioの画面}
     \label{fig::05_03}
 \end{figure}
@@ -154,7 +154,7 @@ R は、自由なソフトウェアであり、「完全に無保証」です。
 書いたあと，スクリプトペインの右上にある\texttt{Run}を押すと一行ずつ実行されていきます。あるいは，CTRL+Enterでもスクリプトをコンソールに送り込むことができます。マウスで複数行を選んで\texttt{Run}ボタンを押すと囲んだ箇所を実行することもできます。このスクリプトペイン全体を実行したいときは\texttt{Source}ボタンを押します。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text05/Screen4.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/03_introR/Screen4.png}
     \caption{スクリプトを実行する}
     \label{fig::05_04}
 \end{figure}
@@ -206,7 +206,7 @@ RStudioを使う時の基本は，プロジェクトによる管理です。分�
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text05/Screen5.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/03_introR/Screen5.png}
     \caption{プロジェクトを作る場所を選ぶ}
     \label{fig::05_05}
 \end{figure}
@@ -214,7 +214,7 @@ RStudioを使う時の基本は，プロジェクトによる管理です。分�
 図\ref{fig::05_05}には\verb|New Directory > New Project|と進んだ次のウィンドウを示しています。黒く塗りつぶしているところは私の個人的なPC環境の内容が反映されるので誤魔化しているんですが，みなさんの環境にあった場所(DocumentとかDesktopと言った場所)を選び，上の空白になっているところに新しいプロジェクト名(例えば\text{toukei}など\footnote{半角英数のみで作るべきです。})を入力してOKとします。するとしばらくすると，画面が変わるはずです。一見同じ状態のようにも見えますが，実はところどころ違いがあります。気がつきましたか？ 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=12cm]{../images/text05/Screen6.png}
+	\includegraphics[keepaspectratio,width=12cm]{../images/03_introR/Screen6.png}
     \caption{プロジェクトで開いている場合}
     \label{fig::05_06}
 \end{figure}
@@ -325,7 +325,7 @@ A + B
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text05/Screen7.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/03_introR/Screen7.png}
     \caption{クリーンな環境をいつでも保つための設定}
     \label{fig::05_07}
 \end{figure}

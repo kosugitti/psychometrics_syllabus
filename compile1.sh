@@ -1,6 +1,4 @@
 #!/usr/bin/bash
-cp -f FAQ.tex course_materials/tex/
-cp -f Computer.tex course_materials/tex/
 #####################################################################text1
 ## changePath
 path="course_materials/tex"
@@ -102,7 +100,7 @@ cat ${filname}.tex
 echo "コンパイル始めます"
 cp ${filename}.tex tmp.tex
 
-echo "基礎シラバスの最新バージョンは"$newVer "です。" >| ../Syllabbus_versions1.md
+echo "基礎シラバスの最新バージョンは"$newVer "です。" >| ../Syllabus_versions1.md
 
 ## LateX Main
 lualatex tmp

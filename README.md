@@ -60,12 +60,20 @@
 
 ## 授業の R コード
 
+## サンプルデータ
+
+- [野球選手のデータ 10 年度分](codes/SampleData/BaseballDecade.csv)
+- [項目反応理論用のデータ](codes/SampleData/IRTsample.csv)
+- [体重推移のデータ](codes/SampleData/Weight.csv)
+
 ### 心理学データ解析基礎 2
 
 - [二群の平均値差](codes/Dkiso1/20_example.R)
 - [R による分散分析のコード](codes/Dkiso1/Chapter22ANOVA.R)
 - [R による分散分析のコード(Rmd ファイルバージョン)](codes/Dkiso1/Chapter22ANOVA.Rmd)
-- [Chapter22 課題ファイル(zip で圧縮してあります)](codes/Dkiso1/chapter22exe.zip)
+- [分散分析課題用データセット 1](codes/SampleData/chapter22exe1.csv)
+- [分散分析課題用データセット 2](codes/SampleData/chapter22exe2.csv)
+- [分散分析課題用データセット 3](codes/SampleData/chapter22exe3.csv)
 
 ### 心理学データ解析応用 2
 
@@ -81,23 +89,18 @@
 - [第 05 回；生成量を使って(cmdstan)](codes/Dkiso2/05_exampleCmdstan.R)
 - [第 06 回；多群の平均値の比較(rstan)](codes/Dkiso2/06_AnovaExampleRstan.R)
 - [第 06 回；多群の平均値の比較(cmdstan)](codes/Dkiso2/06_AnovaExampleCmdstan.R)
-- [第 06 回；多群の平均値の比較；応用課題・データセットない人用](codes/Dkiso2/baseball2020.csv)
 - [第 07 回；Within モデルの平均値の比較(rstan)](codes/Dkiso2/07_WithinExampleRstan.R)
 - [第 07 回；Within モデルの平均値の比較(cmdstan)](codes/Dkiso2/07_WithinExampleCmdstan.R)
 - [第 08 回；カテゴリカルモデルの分析(rstan)](codes/Dkiso2/08_categoricalRstan.R)
 - [第 08 回；カテゴリカルモデルの分析(cmdstan)](codes/Dkiso2/08_categoricalCmdstan.R)
 - [第 09 回；一般化線形モデル(rstan)](codes/Dkiso2/09_GLM_Rstan.R)
 - [第 09 回；一般化線形モデル(cmdstan)](codes/Dkiso2/09_GLM_Cmdstan.R)
-- [野球選手のデータ](codes/Dkiso2/baseball2020.csv)
 - [第 10 回；一般化線形混合モデル・階層線形モデル(rstan)](codes/Dkiso2/10_GLMM_Rstan.R)
 - [第 10 回；一般化線形混合モデル・階層線形モデル(cmdstan)](codes/Dkiso2/10_GLMM_Cmdstan.R)
-- [野球選手のデータ 10 年度分](codes/Dkiso2/baseballDecade.csv)
 - [第 11 回；混合分布モデル(rstan)](codes/Dkiso2/11_Mixture_Rstan.R)
 - [第 11 回；混合分布モデル(cmdstan)](codes/Dkiso2/11_Mixture_Cmdstan.R)
-- [項目反応理論用のデータ](codes/Dkiso2/IRTsample.csv)
 - [第 12 回；IRT モデル(rstan)](codes/Dkiso2/12_IRT_Rstan.R)
 - [第 12 回；IRT モデル(cmdstan)](codes/Dkiso2/12_IRT_Cmdstan.R)
-- [体重推移のデータ](codes/Dkiso2/Weight.csv)
 - [第 13 回；変化点検出・折線回帰(rstan)](codes/Dkiso2/13_changePoint_Rstan.R)
 - [第 13 回；変化点検出・折線回帰(cmdstan)](codes/Dkiso2/13_changePoint_Cmdstanr.R)
 - [第 14 回；状態空間モデル(rstan)](codes/Dkiso2/14_stateSpace_Rstan.R)

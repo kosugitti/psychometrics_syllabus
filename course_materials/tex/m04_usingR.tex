@@ -16,7 +16,7 @@
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text05/Screen8.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/04_usingR/Screen8.png}
     \caption{R Markdownからの最終出力を選択する}
     \label{fig::05_08}
 \end{figure}
@@ -25,7 +25,7 @@
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/text05/Screen9.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/04_usingR/Screen9.png}
     \caption{R Markdownからの最終出力を選択する}
     \label{fig::05_09}
 \end{figure}
@@ -37,7 +37,7 @@
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=12cm]{../images/text05/Screen10.png}
+	\includegraphics[keepaspectratio,width=12cm]{../images/04_usingR/Screen10.png}
     \caption{R MarkdownファイルとKnitされたものの比較}
     \label{fig::05_10}
 \end{figure}
@@ -88,14 +88,14 @@ output: html_document
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=10cm]{../images/text05/Screen11.png}
+	\includegraphics[keepaspectratio,width=10cm]{../images/04_usingR/Screen11.png}
     \caption{Rチャンクを挿入するボタン}
     \label{fig::05_11}
 \end{figure}
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=10cm]{../images/text05/Screen12.png}
+	\includegraphics[keepaspectratio,width=10cm]{../images/04_usingR/Screen12.png}
     \caption{チャンクの設定や実行}
     \label{fig::05_12}
 \end{figure}
@@ -109,17 +109,18 @@ Rmarkdownを使うと，Rスクリプト(計算の指示書)とレポートの�
 
 もちろんそれだけでなく，計算手続の記録をつけるという意味で科学的にも重要だという話でしたね。研究実践の例として，データが手に入ったらデータファイルは加工せず，加工の部分は全てRスクリプト/Rmarkdownでやることで計算結果の捏造が起きていないかどうかをチェックすることができるのです。研究で得られたデータは公開することで，いろいろな人にチェックしてもらおうというオープンサイエンスの動きも広がっています。
 
-さて，このようにデータファイルが外部にある場合，それをRの中に取り込む必要があります。外部データの取り込みは，分析を始める前の手続きではありますが，初心者がトラブルに巻き込まれやすいシーンでもあります。手順を丁寧にみていきましょう。
-
-% データが数件しかないのであれば，上で解説した方法で\texttt{data.frame}型に1つ1つ入力していけば良いのですが，Rのコードでそれを実行するとなると大変です。また実際の研究のシーンであれば，機械が大量にデータをファイルに出力するといっこともあるでしょう。Web調査を行った結果なども，表計算ソフトで利用できる形に出力されるのが一般的です。
+さて，このようにデータファイルが外部にある場合，それをRの中に取り込む必要があります。外部データの取り込みは，分析を始める前の手続きではありますが，初心者がトラブルに巻き込まれやすいシーンでもあります。手順を説明していきますので，注意深く読んでおいてください。
+\subsection{データの作成}
+話に先立って，どのようにデータファイルを作るかについて説明しておきましょう。
+% Rのコードでそれを実行するとなると大変です。また実際の研究のシーンであれば，機械が大量にデータをファイルに出力するといっこともあるでしょう。Web調査を行った結果なども，表計算ソフトで利用できる形に出力されるのが一般的です。
 % ここではそうしたファイルからデータを読み込む方法について説明します。
 
-ところで，データファイルを自分で作ることもあるかもしれません。データを手入力してファイルを作る場合は，表計算ソフトを使う方が便利です。このときに注意すべきことは，\textbf{1つ載せるには1つのデータしか入れない}ということです。これからデータを色々加工していきますが，加工する前のデータはなるべくプレーンな状態であったほうが良いのです(すでに加工された食材を違う料理に利用するのは大変ですから！)。
+データが数件しかないのであれば，上で解説した方法で\texttt{data.frame}型に1つ1つ入力していけば良いのですが，データを手入力してファイルを作る場合は，表計算ソフトを使う方が便利です。このときに注意すべきことは，\textbf{1つのセルには1つのデータしか入れない}ということです。これからデータを色々加工していきますが，加工する前のデータはなるべくプレーンな状態であったほうが良いのです(すでに加工された食材を違う料理に利用するのは大変ですから！)。
 
-図\ref{fig::05_13}には分析に不向きな，悪いデータファイル作成の例を示しました。これをまずはじっくり眺めて，どこがまずいのか考えてみてください。少なくとも7つの点で問題があります\footnote{残念ながら官公庁などが提供するデータの中には，こうしたよくない形式のファイルがよくみられ，データの活用ができにくくなっている実体があります。}。
+図\ref{fig::05_13}には分析に不向きな，悪いデータファイル作成の例を示しました。これをまずはじっくり眺めて，どこがまずいのか考えてみてください。少なくとも7つの点で問題があります。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=12cm]{../images/text05/Screen13.png}
+	\includegraphics[keepaspectratio,width=14cm]{../images/04_usingR/Screen13.png}
     \caption{分析に不向きなデータファイル}
     \label{fig::05_13}
 \end{figure}
@@ -135,7 +136,7 @@ Rmarkdownを使うと，Rスクリプト(計算の指示書)とレポートの�
 	\item I列6行目，D大学の杉田さんに関する変数3の箇所が空欄です。これはデータが入手できなかったところかもしれませんが，これは欠損値であることを明示すべきです。
 	\item 「東京の大学」と「神奈川の大学」という複数のシートがあります。データファイルとしては1つのシートにすべての情報が入っていなければなりません。同時に分析できるデータなのであれば，一枚のシートにまとめるべきです。
 \end{enumerate}
-皆さんはいくつ気づいたでしょうか。これらの問題点を通じて言えることは「1つのデータセット，1つのセルには過不足ない情報を入れる」ということです。表を作って見せるのであればこのような入力でも良いのですが，ここでは数値データを分析することが目的なのですから，レイアウトや数字でない情報，計算してここから作れる情報は，分析に必要のない過剰な情報なのです。ちなみにアンダーラインや文字色，セルの色などは分析の時に自動的に受け落ちます(データではない情報なので)。
+皆さんはいくつ気づいたでしょうか。これらの問題点を通じて言えることは「1つのデータセット，1つのセルには過不足ない情報を入れる」ということです。表を作って見せるのであればこのような入力でも良いのですが，ここでは数値データを分析することが目的なのですから，レイアウトや数字でない情報，計算してここから作れる情報は，分析に必要のない過剰な情報なのです。ちなみにアンダーラインや文字色，セルの色などは分析の時に自動的に受け落ちます(データではない情報なので)。表計算ソフトは数字を表にして計算するソフトウェアであり，方眼用紙やレイアウトする文書とは異なることを意識しましょう。
 
 加えて分析の時に不便なのは，文字と数字の関係です。1つのセルに複数の数字が入る場合，区切り記号などをつけることが多いかと思いますが(スペースも機械にとっては文字です！)，こうした文字種・変数の種類・水準が混在しているのも情報過多ということになります。
 
@@ -143,25 +144,76 @@ Rmarkdownを使うと，Rスクリプト(計算の指示書)とレポートの�
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=12cm]{../images/text05/Screen14.png}
+	\includegraphics[keepaspectratio,width=12cm]{../images/04_usingR/Screen14.png}
     \caption{分析に適したデータファイル}
     \label{fig::05_14}
 \end{figure}
 
 このように，データの入力の基本は，\textbf{1行に1ケースの情報が入っている，過不足のない1つのデータセットを作ること}である，と言えます。
 
-このようにして作られたデータファイルは，UTF-8の文字コードによるcsv形式で保存するのが基本です($\to$第\ref{chapter2}章\ref{suffix}節)。ファイルを保存する時に，ファイル形式をしっかり指定し，拡張子も\texttt{.csv}にしましょう。csvファイルはASCIIファイルですし，文字コードも世界基準のUTF-8にしておけばどのPC空でもみることができます。ある一企業が開発した特定のOS，特定のアプリケーションを持っていなければデータを見ることができない，というのは科学的研究の観点からは不適切なのです。
+このようにして作られたデータファイルは，UTF-8の文字コードによるcsv形式で保存するのが基本です($\to$付録\ref{computer}，\ref{suffix}節，Pp.\pageref{suffix}参照)。ファイルを保存する時に，ファイル形式をしっかり指定し，拡張子も\texttt{.csv}にしましょう。csvファイルはASCIIファイルですし，文字コードも世界基準のUTF-8にしておけばどのPC空でもみることができます。ある一企業が開発した特定のOS，特定のアプリケーションを持っていなければデータを見ることができない，というのは科学的研究の観点からは不適切なのです。
+
+ちなみに2020年12月，総務省により機械判読可能なデータの表記方法の統一ルールが策定されました\citep{soumu2020}。それには次のようなチェック項目が含まれています。
+\begin{description}
+	\item[チェック項目1-1] ファイル形式はExcelかCSVとなっているか
+	\item[チェック項目1-2] 1セル1データとなっているか
+	\item[チェック項目1-3] 数値データは数値属性とし，文字列を含まないこと
+	\item[チェック項目1-4] セルの結合をしていないか
+	\item[チェック項目1-5] スペースや改行等で体裁を整えていないか
+	\item[チェック項目1-6] 項目名を省略していないか
+	\item[チェック項目1-7] 数式を使用している場合は，数値データに修正しているか
+	\item[チェック項目1-8] オブジェクトを使用していないか
+	\item[チェック項目1-9] データの単位を記載しているか
+	\item[チェック項目1-10] 機種依存文字を使用していないか
+	\item[チェック項目2-1] データが分断されていないか
+	\item[チェック項目2-2] 1シートに複数の表が掲載されていないか
+\end{description}
+みなさんも自分でデータを作るときは，こうした基準に沿うように心がけてください。
+また表計算ソフトの中で，代表値を計算したりグラフを書いたりしたくなりますが，みなさんは既に統計環境を手に入れているのですから，そうした加工・可視化などはRのほうでやり，データは「誰が触っても良いプレーンな素材」として保管しておくように心がけましょう。
 
 \paragraph{データファイルを読み込む}
 \label{readCSV}
-さて，ではデータファイルがプロジェクトの中に保存できたとしましょう。このファイル名を\texttt{sample.csv}とします。このデータファイルを読み込むには，読み込むための関数を使います。Rが持っている基本関数である\texttt{read.csv}関数を使えば読み込めるのですが，ここではより便利なパッケージの関数を使ってみましょう。
+さて，ではここで練習用のデータセットを使って，これを読み込むところから分析を始めてみましょう。
+授業シラバスのサイト\footnote{\url{https://kosugitti.github.io/psychometrtics_syllabus/}}から「野球選手のデータ10年分」をダウンロードし，\textbf{プロジェクトフォルダに保存してください}。
+
+このデータセットはプロ野球データFreak\footnote{\url{https://baseball-data.com/}}さんからスクレイピングしてきたものであり，2011年から10年間のプロ野球選手のデータが入っているものです。データの中身については表\ref{BaseballDecade}を参照してください。
+\begin{table}[ht]
+	\begin{center}
+	\caption{サンプルデータファイルの構造}
+	\begin{tabular}{c|cl}
+	変数名 & 型& 内容\\\hline
+	Year & 文字列 & 何年度のデータか \\
+	Name & 文字列 & 選手名 \\
+	team & 文字列 & チーム名 \\
+	salary & 数字 & 年報(推定) \\
+	bloodType & 文字列 & 血液型。A,B,O,AB型の4分類\\
+	height & 数字 & 選手の身長 \\
+	weight& 数字 & 選手の体重 \\
+	UniformNum& 数字 & 背番号 \\
+	position& 文字列 & 守備位置。投手，捕手，内野手，外野手の4分類 \\
+	Games& 数字 & 出場試合数 \\
+	AtBats& 数字 & 打席に立った回数。打数 \\
+	Hit& 数字 & ヒットを打った回数 \\
+	HR& 数字 & ホームランを打った回数 \\
+	Win& 数字 & 勝ち投手になった回数。投手のみ \\
+	Lose& 数字 & 負け投手になった回数。投手のみ \\
+	Save& 数字 & セーブ数。投手のみ \\
+	Hold& 数字 & ホールド数。投手のみ \\
+	\end{tabular}
+	\label{BaseballDecade}
+	\end{center}
+\end{table}
+
+
+
+さてこのデータファイルを読み込むには，読み込むための関数を使います。Rが持っている基本関数である\texttt{read.csv}関数を使っても読み込めるのですが，ここではより便利なパッケージの関数を使ってみましょう。
 
 ここではRmarkdownではなく，プレーンなRスクリプトファイルをつくって話を進めます。
-\verb|FIle > New File > R Script|から新しくファイルを開くか，先ほどのRスクリプトファイルの下に\texttt{code:\ref{code::05_09}}のコードを書いて実行してください。
+作業を始める前に，データファイルがプロジェクトフォルダの中にあること，そもそもプロジェクトを開いていることを確認してくださいね\footnote{プロジェクトを開くことで，Rのカレントディレクトリ(現在作業中のディレクトリ。ワーキングディレクトリ，ワーキングフォルダとも言います)が当該フォルダの中にセットされます。これがセットされているので，ファイルの読み込みにあたってファイル名だけの指定で済むようになります。プロジェクトを開いていないとか，違うフォルダのファイルを参照したい場合は，ファイル名のところに相対パスを指定する必要があります。ファイルの場所の指定については，付録\ref{Computer}のPp.\pageref{setLocation}を参照してください。}。その上で，\verb|FIle > New File > R Script|から新しくファイルを開くか，先ほどのRスクリプトファイルの下に\texttt{code:\ref{code::05_09}}のコードを書いて実行してください。
 
 \begin{lstlisting}[language=c++,label={code::05_09},caption={CSVファイルを読み込む}]
 library(tidyverse)
-dat <- read_csv("sample.csv",na = "NA")
+dat <- read_csv("baseballDecade.csv",na = "NA")
 \end{lstlisting}
 
 \begin{description}
@@ -169,8 +221,8 @@ dat <- read_csv("sample.csv",na = "NA")
 	\item[2行目] \texttt{dat}オブジェクトに，\verb|read_csv|関数で読み込むファイルを代入します。関数の第一引数はファイル名，\verb|na|は欠損値の指定で，\texttt{NA}という文字列を欠損値として扱うことを宣言しています。
 \end{description}
 
-このようにすることで，外部ファイルを読み込むことができます。
-
+このようにすることで，外部ファイルを読み込むことができます。ここで示した\verb|tidyverse|パッケージは，Rにおけるデータ加工のためのパッケージです\footnote{ファイルが読み込めない，文字化けするなどのエラーについては，付録\ref{FreaquentlyAskedQuestions},Pp.\pageref{FreaquentlyAskedQuestions}を参照のこと。}。
+作ったデータを分析しやすいように加工することを\keyterm{データハンドリング}{でーたはんどりんぐ}{Data Handling}といいます。次のセクションでは簡単にデータハンドリングの方法と，どのように加工すると良いのかについて説明します。
 % \begin{tcolorbox}[title=FAQ；ファイルの文字化け,fonttitle=\gtfamily\sffamily\bfseries,colframe=blue,colback=blue!3!]
 % 　ここでWindowsユーザの多くがエラーに遭遇します。「資料として配布されたファイルが文字化けして読み込めません」という相談が毎年頻発します。
 
@@ -182,9 +234,86 @@ dat <- read_csv("sample.csv",na = "NA")
 % そんな時は読み込み関数に\verb|locale=locale(encoding=”utf8")|をオプションとして追加すると良いでしょう。
 % \end{tcolorbox}
 
-
 \section{整然データ}
+\subsection{整然データとは}
+データ入力の時に見たように，データファイルは1セルに1情報，重複や集計，オブジェクトや文字列のないデータセットであることが基本です。
+また図\ref{fig::05_14}にあるように，一行ごとに1人(1ケース，1オブザベーション，1レコードとも言います)のデータが入っており，各列が変数を表していることが一般的です。変数が増えると横に伸びていきますので，こうしたデータの入力形式を\keytermL{ワイド型}{わいどがた}のデータということがあります。
 
+ここで表\ref{tbl::usingR_not_tidy}を見てください。このデータを見ると我々は，「大阪の午後は曇りなんだな」ということがすぐにわかります。
+\begin{table}[ht]
+	\begin{center}
+	\caption{ワイド型データ}
+	\begin{tabular}{c|cccc}
+		& 午前 & 午後 & 夕方 & 深夜\\\hline
+	東京 & 晴 & 晴 & 雨 & 雨\\
+	大阪 & 晴 & 曇 & 晴 & 晴\\
+	福岡 & 晴 & 曇 & 曇 & 雨\\\hline
+	\end{tabular}
+	\label{tbl::usingR_not_tidy}
+	\end{center}
+\end{table}
+しかしその判断は，「大阪」行の「午後」列を見て，すなわち行と列に素早く目を走らせてそれのクロスするところで「曇」という情報を得ています。夕方や深夜の情報が知りたければ，列を変えますね。列ごとに違う変数になっているから当然です。行と列の名前を参照するというのは，目線を左右と上下に動かす2アクション必要なことです。
+
+ここで「変数名」も変数ごとに変わる変数である，という観点に立ち，1行見るだけで全ての情報がわかるようにしてみましょう。表\ref{tbl::usingR_tidy}には表\ref{tbl::usingR_not_tidy}と同じ情報しか含まれていませんが，一行見るだけで全ての情報がわかるようになっています。
+\begin{table}[ht]
+	\begin{center}
+	\caption{ロング型データ}
+	\begin{tabular}{ccc}
+	東京 & 午前 & 晴 \\
+	東京 & 午後 & 晴 \\
+	東京 & 夕方 & 雨 \\
+	東京 & 深夜 & 雨 \\
+	大阪 & 午前 & 晴 \\
+	大阪 & 午後 & 曇 \\
+	大阪 & 夕方 & 晴 \\
+	大阪 & 深夜 & 晴 \\
+	福岡 & 午前 & 晴 \\
+	福岡 & 午後 & 曇 \\
+	福岡 & 夕方 & 曇 \\
+	福岡 & 深夜 & 雨 \\\hline
+	\end{tabular}
+	\label{tbl::usingR_tidy}
+	\end{center}
+\end{table}
+表\ref{tbl::usingR_tidy}のような形のデータのことを，\keytermL{ロング型}{ろんぐがた}のデータと言います。
+このような形にしておくと，情報の欠落(欠損値)があった時の対応が楽に行えたり，レコードの選択がやりやすくなるなどの利点があります。
+
+このような分析しやすいデータの形について，\citet{@JSSv059i10}が提唱したのが\keyterm{整然データ}{せいぜんでーた}{Tidy Data}という考え方です。整然データとは，次の4つの特徴を持ったデータ形式のことです。
+\begin{itemize}
+	\item 個々の変数(variable)が1つの列(column)をなす。
+	\item 個々の観測(observation)が1つの行(row)をなす。
+	\item 個々の観測の構成単位の類型(type of observational unit)が1つの表 (table) をなす。
+	\item 個々の値 (value) が1つのセル (cell) をなす。
+\end{itemize}
+先程の天気の例では，時間，場所，天候という3つの情報が表に含まれていますが，これが
+
+
+\subsection{データハンドリング}
+\label{dataHandling}
+\paragraph{tidyverseパッケージ}
+\paragraph{セレクト}
+\paragraph{フィルター}
+\paragraph{ミューテート}
+\paragraph{ピボットロンガー}
+\paragraph{ピボットワイダー}
+
+\texttt{filter}関数は，データ全体にフィルタをかけて，該当するレコード(オブザベーション，ケース，個人)を抜き出します。言い換えれば行の選択なのです。
+ある変数について条件に該当すれば，そのデータは抜き出すというのがこの関数の仕事であり，今回は\texttt{position!="投手"}という条件で抜き出しています。ここで\verb|!=|という記号が出てきましたが，これは$\neq$の意味です。$\neq$が入力できないので，\verb|!|で否定を表すようになっているのですね。逆にこの条件に合致していれば，という場合は\verb|==|とイコールを重ねて使います。イコールが1つしかなければ，Rは代入せよという意味，すなわち\verb|<-|と同じ意味に解釈してしまうのです\footnote{実は普段から，\verb|dat=read_csv(***)|のように書いても良かったのですが，いわゆる等式を表す記号と混乱するのでここでは\verb|<-|にしていました。}ちなみに，このデータは投手のデータと野手のデータが含まれており，\texttt{position}は守備位置を表しますから，野手のデータは捕手か内野手か外野手ということになります。あるいは投手でないのが野手です。後者の条件のほうが簡単なのでこのようにしています。
+
+\texttt{select}関数は，該当する変数だけ抜き出したいときに使います。今回は身長\texttt{height}と体重\texttt{weight}が欲しかったのでその2つを書いています。
+この関数の抜き出し方は，言い換えれば列方向の抜き出しです。\texttt{filter}と\texttt{select}の違いをしっかり理解しておいてください(図\ref{fig::11_02})
+\begin{figure}[ht]
+    \centering
+	\includegraphics[keepaspectratio,width=12cm]{../images/04_usingR/Slide11_01.png}
+    \caption{\texttt{filter}(左)と\texttt{select}(右)の違い}
+    \label{fig::11_02}
+\end{figure}
+
+このコードにはさらに重要なポイントがあります。ひとつはパイプ演算子\verb|%>%|です。これは前のオブジェクトを後の関数の第一引数に渡す，という意味があります。例えば，$y=f(x)$という変換をし，さらに$z=g(y)$という変換をしたい場合，頭の中では$x\to y \to z$と考えていると思いますが，コードで書くと$y \leftarrow x$で$z \leftarrow y$という逆の向きで考えなければなりません。あるいは$z=g(f(x))$と内側にくり入れていくので，見た目にわかりにくくなります。この思考の流れに沿った変換にするようにつなげるのが
+\verb|%>%|
+です。ここでは\texttt{dat}オブジェクトを\texttt{filter}に渡し，行を選択したものをさらに渡して\texttt{select}で列選択，という処理をしています。それを最後に\texttt{batter}に代入する(\verb|<-|)わけですね。
+
+また，\texttt{filter}や\texttt{select}には\texttt{dplyr::}という記号が前についています。これは\texttt{dplyr}パッケージの\texttt{filter}関数，\texttt{select}関数を使ってくださいね，というパッケージ名の指定を行っているところです。\texttt{filter}や\texttt{select}といった関数名は非常に一般的ですから，他のパッケージが使っていて関数名が重複してしまう可能性があります。実際\texttt{select}関数はよく重複するのです。それを避けるための措置だと思ってください。
 
 
 
@@ -246,8 +375,9 @@ RとRStudioを使って計算し，文書を作成するという基本的な使
 
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=16cm]{../images/text05/Rplot05_01.png}
-    \caption{ggplotによる描画。左上は\texttt{code:\ref{code::05_10}}，右上は\texttt{code:\ref{code::05_11}}，左下は\texttt{code:\ref{code::05_12}}，右下は\texttt{code:\ref{code::05_13}の結果}}
+	\includegraphics[keepaspectratio,width=16cm]{../images/04_usingR/Rplot05_01.png}
+    \caption{ggplotによる描画。左上は\texttt{code:\ref{code::05_10}}，右上は\texttt{code:\ref{code::05_11}}，
+	左下は\texttt{code:\ref{code::05_12}}，右下は\texttt{code:\ref{code::05_13}の結果}}
     \label{fig::05_15}
 \end{figure}
 
@@ -285,7 +415,7 @@ RとRStudioを使って計算し，文書を作成するという基本的な使
 \paragraph{記述統計量を計算する}次の手順を実行し，データの記述統計量を計算してください。
 
 \begin{enumerate}
-	\item サンプルデータ\texttt{baseball2020.csv}をダウンロードし，プロジェクトフォルダに保存します。
+	\item サンプルデータ\texttt{baseball.csv}をダウンロードし，プロジェクトフォルダに保存します。
 	\item \texttt{code:\ref{code::05_exe1}}を実行し，データを整えます。
 	\item データ全体の要約をする関数\verb|summary|を使って，データオブジェクトの記述統計量を表示してください。
 	\item 身長変数heightの平均値を算出してください。平均値の関数は\verb|mean|です。
@@ -296,7 +426,7 @@ RとRStudioを使って計算し，文書を作成するという基本的な使
 
 \begin{lstlisting}[language=c++,label={code::05_exe1},caption={データの読み込みと整え}]
 	library(tidyverse)
-	dat <- read_csv("baseball2020.csv")
+	dat <- read_csv("baseball.csv")
 	dat$team <- as.factor(dat$team)
 	dat$position <- as.factor(dat$position)
 	dat$bloodType <- as.factor(dat$bloodType)
@@ -327,7 +457,7 @@ RとRStudioを使って計算し，文書を作成するという基本的な使
 \paragraph{図を書いてみる2}図\ref{fig::05_16}と同じ図を書いてください。
 \begin{figure}[ht]
     \centering
-	\includegraphics[keepaspectratio,width=16cm]{../images/text05/Rplot05_02.png}
+	\includegraphics[keepaspectratio,width=16cm]{../images/04_usingR/Rplot05_02.png}
     \caption{課題の図}
     \label{fig::05_16}
 \end{figure}

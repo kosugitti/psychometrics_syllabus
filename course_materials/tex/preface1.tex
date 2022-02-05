@@ -21,43 +21,42 @@
 \end{tcolorbox}
 記述統計は第3段階，確率についての話は第2段階，モデルについての話は第1段階，推測・推定についての話はまだ含まれておらず，実践は第1段階にきたことを表します。この進度は，次の表~\ref{processTable}に対応し，累積するものです。
 
-
 \begin{table}
+    \centering
     \caption{テーマと講義との対応}
     \label{processTable}
     \begin{tabular}[t]{lccccccc}
-        & 記述統計 & 確率 & モデル & 推測・推定 & 意思決定 & 実践 & page \\\hline\hline
-       心理学と統計法の関係 &  &  &  &  &  &  &  p.\pageref{chapter1}\\
-       電子計算機のイロハ &  &  &  &  &  &  &  p.\pageref{chapter2}\\
-       数値データの種類 & ○ &  &  &  &  &  &  p.\pageref{chapter3}\\
-       記述統計量 & ○ &  &  &  &  &  &  p.\pageref{chapter4}\\
-       統計環境Rを使ってみる & ○ &  &  &  &  & ○ &  p.\pageref{chapter5}\\
-       古典的テスト理論 &  &  & ○ &  &  &  &  p.\pageref{chapter6}\\
-       確率分布 &  & ○ &  &  &  &  &  p.\pageref{chapter7}\\
-       正規分布 &  & ○ &  & ○ &  &  &  p.\pageref{chapter8}\\
-       線形モデルの基礎 &  &  & ○ &  &  &  &  p.\pageref{chapter9}\\
-       重回帰分析モデル &  &  & ○ &  &  &  &  p.\pageref{chapter10}\\
-       Rをつかった回帰分析 & ○ &  & ○ &  &  & ○ &  p.\pageref{chapter11}\\
-       実験計画法1 &  &  & ○ &  &  &  &  p.\pageref{chapter12}\\
-       実験計画法2 &  &  & ○ &  &  &  &  p.\pageref{chapter13}\\
-       実験計画法3 &  &  & ○ &  &  &  &  p.\pageref{chapter14}\\\hline
-       確率と統計的推論 &  & ○ &  & ○ &  &  &  p.\pageref{chapter16}\\
-       推論と判断 &  & ○ &  &  & ○ &  &  p.\pageref{chapter17}\\
-       帰無仮説検定の実際 &  & ○ & ○ &  & ○ &  &  p.\pageref{chapter18}\\
-       平均値差の検定 &  & ○ & ○ &  & ○ &  & p.\pageref{chapter19} \\
-       Rによる帰無仮説検定 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{chapter20}\\
-       要因計画と平均値差の検定 &  & ○ & ○ &  & ○ &  &  p.\pageref{chapter21}\\
-       Rによる帰無仮説検定2 &  & ○ & ○ & ○ & ○ & ○ &  p.\pageref{chapter22}\\
-       確率分布とデータの関係 &  & ○ & ○ & ○ &  &  &  p.\pageref{chapter23}\\
-       回帰分析の最尤推定 &  & ○ & ○ & ○ &  &  &  p.\pageref{chapter24}\\
-       ベイズ推測の基礎 &  & ○ & ○ & ○ &  &  &  p.\pageref{chapter25}\\
-       ベイズ推測の実際 &  & ○ & ○ & ○ &  &  &  p.\pageref{chapter26}\\
-       ベイズ推定と判断 &  & ○ & ○ & ○ &  &  &  p.\pageref{chapter27}\\
-       JASPによるベイズ推定の実践 &  & ○ & ○ & ○ &  &  &  p.\pageref{chapter28}\\
-       Rによるベイズ推定 &  & ○ & ○ & ○ &  & ○ & p.\pageref{chapter29} \\\hline
+                                & 記述統計  & 確率  & モデル & 推測・推定    &  検定 & 演習  & page \\\hline\hline
+       心理学と統計法の関係     &           &       &        &               &       &       &  p.\pageref{s01_Introduction}\\
+       数値データの種類         & 1        &       &        &               &       &       &  p.\pageref{s02_Numbers}\\
+       統計環境Rの導入          &           &       &        &               &       & 1    &  p.\pageref{s03_introR}\\
+       統計環境Rの利用          & 2        &       &        &               &       & 2    &  p.\pageref{s04_usingR}\\
+       記述統計量               & 3        &       &        &               &       &       &  p.\pageref{s05_descriptives}\\
+       測定の基礎               &           &       & 1     &               &       &       &  p.\pageref{s06_ctt}\\
+       誤差と確率               &           & 1    &        &               &       &       &  p.\pageref{s07_probability}\\
+       相関と因果               &           &       & 2     &               &       &       &  p.\pageref{s08_CorrelationCausation}\\
+       単回帰分析               &           &       & 3     &               &       &       &  p.\pageref{s09_Regression}\\
+       重回帰分析               &           &       & 4     &               &       &       &  p.\pageref{s10_MultipleRegression}\\
+       Rをつかった回帰分析      &           &       & 5     &               &       & 3    &  p.\pageref{s11_Regression_onR}\\
+       実験計画法1              &           &       & 6     &               &       &       &  p.\pageref{s12_design1}\\
+       実験計画法2              &           &       & 7     &               &       &       &  p.\pageref{s13_design2}\\
+       実験計画法3              &           &       & 8     &               &       &       &  p.\pageref{s14_design3}\\\hline
+       確率と統計的推論         &           & 2    &        & 1            &       &       &  p.\pageref{s16_inference}\\
+       推論と判断               &           & 3    &        &               & 1    &       &  p.\pageref{s17_estimation_and_test}\\
+       帰無仮説検定             &           & 4    &        &               & 2    &       &  p.\pageref{s18_NHST}\\
+       帰無仮説検定の注意点     &           & 5    &        &               & 3    &       &  p.\pageref{s19_NHST2} \\
+       二群の平均値差           &           & 6    & 9     & 2           & 4    & 4    &  p.\pageref{s20_ttest}\\
+       要因計画と平均値差の検定 &           & 7    & 10     &               & 5    &       &  p.\pageref{s21_anova}\\
+       Rによる分散分析          &           & 8    & 11     & 3            & 6    & 5    &  p.\pageref{s22_anova_onR}\\
+       確率分布とデータの関係   &           & 9    & 12     & 4            &       &       &  p.\pageref{s23_likelihood}\\
+       回帰分析の最尤推定       &           & 10    & 13     & 5            &       &       &  p.\pageref{s24_maximum_likelihood}\\
+       ベイズ推定の基礎         &           & 11    &        & 6            &       &       &  p.\pageref{s25_bayesian1}\\
+       ベイズ推定の実際         &           & 12    & 14     & 7            &       &       &  p.\pageref{s26_bayesian2}\\
+       ベイズ推定と判断         &           & 13    & 15     & 8            &       &       &  p.\pageref{s27_bayesian3}\\
+       JASPによるベイズ推定     &           & 14    &        & 9            &       & 6    &  p.\pageref{s28_jasp}\\
+       Rによるベイズ推定        &           & 15    & 16     & 10            &       & 7    &  p.\pageref{s29_brms} \\\hline
 \end{tabular}
 \end{table}
-
 
 
 なお，各コマにおける「標準シラバスにおける位置づけ」とは，公認心理師大学カリキュラム　標準シラバス（2018年8月22日版）\footnote{\url{https://psych.or.jp/wp-content/uploads/2018/04/standard_syllabus_2018-8-22.pdf}} との対応を表しています。
