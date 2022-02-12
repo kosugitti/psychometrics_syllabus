@@ -34,7 +34,7 @@ Rにはいろいろな数字のタイプがあります。オブジェクトに�
 \end{description}
 これらの型を確認するには，オブジェクトの仕組みがどうなっているかを調べる必要があります。調べるのは\texttt{str}関数で，これを使うとオブジェクトの中身がわかるようになっています。
 
-第\ref{chapter4}講のことを思い出しつつ，\texttt{code:\ref{code::23_01}}を入力してみてください。
+第\ref{m04_usingR}講のことを思い出しつつ，\texttt{code:\ref{code::23_01}}を入力してみてください。
 \begin{lstlisting}[language=c++,label={code::23_01},caption={オブジェクトに代入}]
 obj <- data.frame(
     list(name=c("kosugi","yamada","ueda"),
@@ -109,7 +109,7 @@ source("http://riseki.php.xdomain.jp/index.php?plugin=attach&refer=ANOVA君&open
 \end{figure}
 それでは実際の使い方を見ていきましょう。
 \section{一要因Between計画の実際}
-ではまず一要因Between計画の話から。例として第\ref{chapter21}講のデータを使います。一応再掲しておきましょう(表\ref{table::23_01})。
+ではまず一要因Between計画の話から。例として第\ref{m21_anova}講のデータを使います。一応再掲しておきましょう(表\ref{table::23_01})。
 \begin{table}[ht]
     \centering
     \caption{一要因3水準Between計画のデータ}
@@ -188,7 +188,7 @@ F-statistic: 2.489 on 2 and 9 DF,  p-value: 0.1379
     \caption{線形モデルとして分析した結果の意味するもの}
     \label{fig::23_02}
 \end{figure}
-第\ref{chapter21}講では，線形モデルを
+第\ref{m21_anova}講では，線形モデルを
 \[ X_{ij} = \beta_0 + \beta_j + \epsilon_{ij} \]
 としていました。ここで$\beta_0$は全体平均でした。全体平均を基本として，各水準に対する効果$\beta_j$がどうなったか，というモデル化でしたが，ここでは
 \[ X_{ij} = \bar{X}_1 + \beta_j + \epsilon_{ij} \]
@@ -264,7 +264,7 @@ output is over --------------------///
 
 これだけだと，特に\texttt{anovakun}が便利そうに思えないかもしれません。が，以下様々な要因計画に対応しているので，徐々にその良さがわかってくると思います。
 \section{二要因Between計画の実際}
-それでは続いて，二要因の計画にいきましょう。第\ref{chapter22}講のデータを使います。一応再掲しておきましょう(表\ref{tbl::23_02})。
+それでは続いて，二要因の計画にいきましょう。データを再掲しておきましょう(表\ref{tbl::23_02})。
 % latex table generated in R 4.0.2 by xtable 1.8-4 package
 % Fri Sep 11 14:11:29 2020
 \begin{table}[ht]
@@ -442,7 +442,7 @@ output is over --------------------///
 温度と銘柄の効果を独立変数とした二要因分散分析($2 \times 2$のBetweenデザイン)をおこなったところ，交互作用が有意($F(1,8)=24.5,p=0.0011,\epsilon^2=0.6267$)になり，事後の検定の結果，銘柄Aにおける温度の効果($F(1,8)=9,p=0.0171,\epsilon^2=0.21133$)，銘柄Bにおける温度の効果($F(1,8)=16.0,p=0.0039,\epsilon^2=0.4000$)，および温かい時の銘柄の効果($F(1,8)=25,p=0.0011,\epsilon^2=0.6400$)が統計的に有意であった。
 \end{quote}
 \section{一要因Within計画の実際}
-最後にWithin計画の例をやってみましょう。仮想データとして第\ref{chapter22}講のものを使います。念のため表\ref{tbl::23_03}に再掲しました。
+最後にWithin計画の例をやってみましょう。仮想データとして次のような表\ref{tbl::23_03}を使います。
 \begin{table}[ht]
     \centering
     \caption{Within Data Example} 

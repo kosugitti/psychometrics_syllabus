@@ -4,7 +4,7 @@
 
 \begin{document} 
 \chapter{Rをつかっての行列計算} 
-\label{09_matrixOnR}
+\label{x09_matrixOnR}
 \section{Rによる行列計算}
 
 今回は統計環境Rをつかって，演習によってこれまで習ったことを整理していきましょう。
@@ -262,7 +262,7 @@ dataset <- read_csv("baseballDecade.csv") %>%
 \end{description}
 
 ともかくこれで\texttt{dataset}オブジェクトは行列型の，335行3列の行列になっています。
-今から行う計算は，第\ref{chapter7}章でやったように，データ行列$\bm{X}$から，平均ベクトル$\bm{m}$，平均偏差行列$\bm{V}$，分散共分散行列$\bm{S}$，標準偏差を対角に持つ行列$\bm{Q}$，標準化スコア行列$\bm{Z}$，相関行列$\bm{R}$を作る，という手順です。数式とコードを示しますので，確認しながら進めてください。
+今から行う計算は，第\ref{x07_matrixModel}章でやったように，データ行列$\bm{X}$から，平均ベクトル$\bm{m}$，平均偏差行列$\bm{V}$，分散共分散行列$\bm{S}$，標準偏差を対角に持つ行列$\bm{Q}$，標準化スコア行列$\bm{Z}$，相関行列$\bm{R}$を作る，という手順です。数式とコードを示しますので，確認しながら進めてください。
 
 \begin{equation}\label{meanM} \bm{m} = \frac{1}{n}\bm{X'1} \end{equation}
 \begin{equation}\label{diffV} \bm{V} = \bm{X}-\bm{1m'} \end{equation}

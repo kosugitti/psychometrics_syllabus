@@ -44,10 +44,10 @@ lualatex tmp
 upmendex -r -c -g -s ../../indexStyle.ist tmp
 lualatex tmp
 ## Tex Warning Check
-grep 'undefined' tmp > error.log
-grep 'multiply' tmp >> error.log
-grep 'Citation' tmp >> error.log
-grep 'Overfull' tmp >> error.log
+grep 'undefined' tmp.log > error.log
+grep 'multiply' tmp.log >> error.log
+grep 'Citation' tmp.log >> error.log
+grep 'Overfull' tmp.log >> error.log
 
 
 ## cleanup
@@ -115,10 +115,10 @@ lualatex tmp
 upmendex -r -c -g -s ../../indexStyle.ist tmp
 lualatex tmp
 ## Tex Warning Check
-grep 'undefined' tmp > error.log
-grep 'multiply' tmp >> error.log
-grep 'Citation' tmp >> error.log
-grep 'Overfull' tmp >> error.log
+grep 'undefined' tmp.log > error.log
+grep 'multiply' tmp.log >> error.log
+grep 'Citation' tmp.log >> error.log
+grep 'Overfull' tmp.log >> error.log
 
 
 ## cleanup

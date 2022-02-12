@@ -5,7 +5,7 @@
 \begin{document} 
 \VerbatimFootnotes
 \chapter{モデリングの目から見た検定4；対応のある群の比較}
-\label{22_modeling4} 
+\label{x22_modeling4} 
 \section{対応のある群}
 \subsection{多次元正規分布}
 ここまでは\keyterm{群間要因}{ぐんかんよういん}{Between Design}のモデリングをしてきましたが，今回は\keyterm{群内要因}{ぐんないよういん}{Within Design}のモデリング的アプローチになります。
@@ -31,7 +31,7 @@ Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくて
                                 \vdots & \vdots & \ddots & \vdots \\
                                 \sigma_{m1} & \sigma_{m2} & \cdots & \sigma_{m}^2 \end{pmatrix} \]
 
-この行列の\keyterm{対角}{たいかく}{diagonal}要素には分散$\sigma_j^2$があり，非対角要素には共分散$\sigma_{jk}$が入っている\textbf{正方対称行列}になっていますね\footnote{これら行列の要素や名称については，第\ref{chapter6}章でやったことを思い出してください。}。またこうしてみると，変数jの分散$\sigma_j^2$はjとjの共分散，すなわち$\sigma_{jj}$であることもわかりやすいですね。ところでこれを考えることでどこに相関の要素が入っているのでしょう？改めて，分散や共分散，相関係数の定義式から考えてみたいと思います。
+この行列の\keyterm{対角}{たいかく}{diagonal}要素には分散$\sigma_j^2$があり，非対角要素には共分散$\sigma_{jk}$が入っている\textbf{正方対称行列}になっていますね\footnote{これら行列の要素や名称については，第\ref{x06_matrix}章でやったことを思い出してください。}。またこうしてみると，変数jの分散$\sigma_j^2$はjとjの共分散，すなわち$\sigma_{jj}$であることもわかりやすいですね。ところでこれを考えることでどこに相関の要素が入っているのでしょう？改めて，分散や共分散，相関係数の定義式から考えてみたいと思います。
 
 \begin{eqnarray}
     \mbox{分散} &:& \sigma_{j}^2 = \frac{1}{n}\sum (x_{ij} -\bar{x_j})^2 \\
@@ -336,14 +336,14 @@ model{
     3 & 4 & 2 & 3\\
     4 & 7 & 3 & 5\\\hline
     \end{tabular}
-    \label{tbl::22_02}
+    \label{tbl:22_02}
 \end{table}
 チェックの結果が表\ref{tbl:22_02}のようになっていて，ここの数字が抑うつ度スコア(低ければ低いほど健康)だと思ってください。
 記号で書く時のノーテーション(表記法)は，値$X_{ij}$が$i$さんの第$j$期のスコア，ということにしたいと思います。
 
 これを使って毎回の変化の大きさを見積もりたいと思います。前回やった，多水準モデルのことを参考に見ていきましょう。ポイントは，前回は全体平均からの差分で効果を考えていたところが，今回は個人差があるので個人ごとの平均$\mu_i$を基準におくところです。
 
-最初の人のスコア，$X_{11}=10,X_{12}=5,X_{13}=9$はそれぞれ，その人の平均$\mu_i$から考えて，$\mu_1+\delta_1,\mu_1+\delta_2,\mu_1+\delta_3$となるはずだと考えましょう。理論通りにならない誤差を含めて考えれば，先ほどの表\ref{tbl::22_02}は表\ref{tbl:22_03}のようになっているはずなのです。
+最初の人のスコア，$X_{11}=10,X_{12}=5,X_{13}=9$はそれぞれ，その人の平均$\mu_i$から考えて，$\mu_1+\delta_1,\mu_1+\delta_2,\mu_1+\delta_3$となるはずだと考えましょう。理論通りにならない誤差を含めて考えれば，先ほどの表\ref{tbl:22_02}は表\ref{tbl:22_03}のようになっているはずなのです。
 \begin{table}
     \centering
     \caption{介入時期とスコアのモデル式}
@@ -354,7 +354,7 @@ model{
     3 & $X_{31}\sim N(\mu_3+\delta_1,\sigma)$ & $X_{32}\sim N(\mu_3+\delta_2,\sigma)$ & $X_{33}\sim N(\mu_3+\delta_3,\sigma)$ \\
     4 & $X_{41}\sim N(\mu_4+\delta_1,\sigma)$ & $X_{42}\sim N(\mu_4+\delta_2,\sigma)$ & $X_{43}\sim N(\mu_4+\delta_3,\sigma)$ \\\hline
     \end{tabular}
-    \label{tbl::22_03}
+    \label{tbl:22_03}
 \end{table}
 
 つまり，$X_{ij}\sim N(\mu_i+\delta_j,\sigma)$ですね。個人のベースライン$\mu_i$に，各時期の効果$\delta_j$が加わったものを中心に，正規分布に従う誤差を纏ってデータになる，という考え方です。
@@ -389,5 +389,5 @@ tidy_dat <- dat_raw %>%
   mutate(cond = as.numeric(name))
 \end{lstlisting}
 \section{課題}
-Code::\ref{code::22_04b}を参考にしながら，表\ref{tbl::22_02}の事例を検証するためのStanコードを書いてください。作ったStanファイルやRコードを提出してください。
+Code::\ref{code::22_04b}を参考にしながら，表\ref{tbl:22_02}の事例を検証するためのStanコードを書いてください。作ったStanファイルやRコードを提出してください。
 \end{document} 
