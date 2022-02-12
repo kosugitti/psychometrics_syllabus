@@ -36,6 +36,7 @@ echo "応用テキストの最新バージョンは"$newVer "です。" >| ../..
 
 
 ## LateX Main
+rm error.log
 lualatex tmp
 upbibtex tmp
 lualatex tmp
@@ -51,7 +52,7 @@ grep 'Overfull' tmp >> error.log
 
 ## cleanup
 mv tmp.pdf ../../${filename}.pdf
-
+mv tmp.log ../../${filename}.log
 rm tmp.*
 rm *.aux
 rm *.dvi
@@ -106,6 +107,7 @@ cp ${filename}.tex tmp.tex
 echo "応用シラバスの最新バージョンは"$newVer "です。" >| ../Syllabus_versions2.md
 
 ## LateX Main
+rm error.log
 lualatex tmp
 upbibtex tmp
 lualatex tmp
@@ -121,7 +123,7 @@ grep 'Overfull' tmp >> error.log
 
 ## cleanup
 mv tmp.pdf ../${filename}.pdf
-
+mv tmp.log ../${filename}.log
 rm tmp.*
 rm *.aux
 rm *.dvi

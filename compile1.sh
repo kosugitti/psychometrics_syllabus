@@ -35,6 +35,7 @@ cp ${filename}.tex tmp.tex
 echo "基礎テキストの最新バージョンは"$newVer "です。" >| ../../Book_versions1.md
 
 ## LateX Main
+rm error.log
 lualatex tmp
 upbibtex tmp
 lualatex tmp
@@ -50,7 +51,7 @@ grep 'Overfull' tmp >> error.log
 
 ## cleanup
 mv tmp.pdf ../../${filename}.pdf
-
+mv tmp.log ../../${filename}.log
 rm tmp.*
 rm *.aux
 rm *.dvi
@@ -105,6 +106,7 @@ cp ${filename}.tex tmp.tex
 echo "基礎シラバスの最新バージョンは"$newVer "です。" >| ../Syllabus_versions1.md
 
 ## LateX Main
+rm error.log
 lualatex tmp
 upbibtex tmp
 lualatex tmp
@@ -119,7 +121,7 @@ grep 'Overfull' tmp >> error.log
 
 ## cleanup
 mv tmp.pdf ../${filename}.pdf
-
+mv tmp.log ../${filename}.log
 rm tmp.*
 rm *.aux
 rm *.dvi

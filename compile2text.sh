@@ -36,6 +36,7 @@ echo "応用テキストの最新バージョンは"$newVer "です。" >| ../..
 
 
 ## LateX Main
+rm error.log
 lualatex tmp
 upbibtex tmp
 lualatex tmp
