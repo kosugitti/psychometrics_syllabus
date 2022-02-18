@@ -38,11 +38,11 @@
 さて最後に，現代ベイズ統計の盛り上げに一役も二役も買っている，\keyterm{マルコフチェインモンテカルロ法}{まるこふちぇいんもんてかるろほう}{Marcov Chain Monte-Carlo}の登場です。
 通称\keytermL{MCMC}{MCMC}と呼ばれるこの手法は，マルコフチェインとモンテカルロの2つの技術が組み合わさったものでです。マルコフチェイン(\keytermL{マルコフ連鎖}{まるこふれんさ}ともいいます)は，目標となる確率分布状態になるような推移規則を作る方法であり，モンテカルロ法は乱数を発生させるアルゴリズムです。この2つが合体することで，確率分布の形がわからなくてもサンプルが得られるような，乱数発生器を作る方法が生まれたのです。
 
-セクション\ref{randomVariablesMethod}(Pp.\pageref{randomVariablesMethod})で少し触れたように，乱数発生は確率分布を近似するための1つのアプローチです。Rには正規分布や二項分布，t分布やF分布など，有名な確率分布関数に関しては自前で準備しており，\verb|dnorm|のようにすれば正規分布\verb|norm|の密度\verb|d|ensityを算出するとか，\verb|qt|のようにすれば\verb|t|分布におけるある確率を取る範囲の確率点\verb|q|を返すといったことができるのでした。さらに\verb|rnorm(N,mean,sd)|という関数は，任意の平均と標準偏差をもつ正規乱数をN個生成できます。大量に乱数を発生させると，そのヒストグラムは正規分布の形を再生するのでした(図\ref{fig::08_11})。
+第\ref{m07_probability}講(Pp.\pageref{randomVariablesMethod})で少し触れたように，乱数発生は確率分布を近似するための1つのアプローチです。Rには正規分布や二項分布，t分布やF分布など，有名な確率分布関数に関しては自前で準備しており，\verb|dnorm|のようにすれば正規分布\verb|norm|の密度\verb|d|ensityを算出するとか，\verb|qt|のようにすれば\verb|t|分布におけるある確率を取る範囲の確率点\verb|q|を返すといったことができるのでした。さらに\verb|rnorm(N,mean,sd)|という関数は，任意の平均と標準偏差をもつ正規乱数をN個生成できます。大量に乱数を発生させると，そのヒストグラムは正規分布の形を再生するのです(図\ref{fig::28_02})。
 \begin{figure}[ht]
     \centering
-    \includegraphics[keepaspectratio,width=8cm]{../images/08_CorrelationCausation/Rplot08_06.png}
-    \caption{図\ref{fig::08_11}を再掲；乱数が増えると正規分布の形に近づく。左上から順に100,1000,10000,100000点の乱数を発生させて描いたヒストグラム}
+    \includegraphics[keepaspectratio,width=8cm]{../images/07_probability/Rplot08_06.png}
+    \caption{乱数が増えると正規分布の形に近づく。左上から順に100,1000,10000,100000点の乱数を発生させて描いたヒストグラム}
     \label{fig::28_02}
 \end{figure}
 

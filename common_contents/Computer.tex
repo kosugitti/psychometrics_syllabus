@@ -126,10 +126,10 @@ dat <- read_csv("C:\User\kosugitti\Document\kiso1\sample.csv")
 
 では作業フォルダと別のフォルダの中にファイルがあれば，アクセスできないのでしょうか。そんなことはありません。code::\ref{code::Comp_02}の書き方を使えば，作業フォルダがどこにあっても位置を特定できますから，作業フォルダを問わずに書くことができます。ちょっと長くて面倒ですが，確実にある場所を指定しているからです。この書き方のことを\keytermL{絶対パス}{ぜったいぱす}による指定といいます。
 一方，code::\ref{code::Comp_01}の書き方は，今の作業フォルダから見た場所，という相対的な書き方になっています。この書き方のことを\keytermL{相対パス}{そうたいぱす}による指定，といいます。
-相対パス指定で，違うフォルダにアクセスする場合には，次のようにします(code:\ref{code::Comp_03}の書き方は)
+相対パス指定で，違うフォルダにアクセスする場合には，次のようにします(code:\ref{code::Comp_03})。
 ここでは，\verb|Document|フォルダの中に，kiso1,kiso2フォルダがあり，kiso1フォルダの中で作業している時にkiso2フォルダの\verb|sample2.csv|ファイルを読み込む例を書いています。
 
-\begin{lstlisting}[language=c++,label={code::Comp_01},caption={絶対パスで読み込む}]
+\begin{lstlisting}[language=c++,label={code::Comp_03},caption={絶対パスで読み込む}]
 # 絶対パス指定
 dat <- read_csv("C:\User\kosugitti\Document\kiso2\sample2.csv")
 # 相対パス指定
