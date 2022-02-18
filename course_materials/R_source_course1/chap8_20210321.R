@@ -119,7 +119,7 @@ ggsave(g, filename = "../images/text08/Rplot08_04.png", dpi = 600, width = 8, he
 # 関数を使う
 dnorm(x = 0, mean = 0, sd = 1)
 pnorm(q = 1.0, mean = 0, sd = 1)
-qnorm(p = 0.618, mean = 0, sd = 1)
+qnorm(p = 0.841, mean = 0, sd = 1)
 rnorm(n = 10, mean = 0, sd = 1)
 
 p <- ggplot(data.frame(x = c(-4, 4)), aes(x = x))
