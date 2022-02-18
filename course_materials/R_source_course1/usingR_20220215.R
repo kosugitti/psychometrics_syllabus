@@ -19,13 +19,15 @@ dat %>%
   select(AtBats, Hit) %>%
   mutate(BattingAverage = Hit / AtBats)
 
-dat.long <- dat %>% 
-    select(Year, Name, position) %>%
+dat.long <- dat %>%
+  select(Year, Name, position) %>%
   rownames_to_column("ID") %>%
   print() %>%
   pivot_longer(-ID, names_to = "Variables", values_to = "Value")
+dat.long
 
-
+dat.long %>% 
+    pivot_wider(id_cols = ID, names_from = name, values_from = value)
 
 
 g1 <- ggplot(data = dat, mapping = aes(x = height, y = weight))

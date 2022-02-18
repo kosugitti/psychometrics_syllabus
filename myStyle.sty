@@ -59,9 +59,12 @@ setpagesize=false,
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable, skins, theorems}
 % スクリーン出力
-\newtcbtheorem[number within=section]{Rscreen}{Rの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=blue!3!,fontupper=\gtfamily\small}{RS}
-\newtcbtheorem[number within=section]{SCrstan}{rstanの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=green!3!,fontupper=\gtfamily\small}{SCrstan}
-\newtcbtheorem[number within=section]{SCcmd}{cmdstanrの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=pink!3!,fontupper=\gtfamily\small}{SCcmd}
+\newtcbtheorem[number within=chapter]{Rscreen}{Rの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=blue!3!,fontupper=\gtfamily\small}{RS}
+\newtcbtheorem[number within=chapter]{SCrstan}{rstanの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=green!3!,fontupper=\gtfamily\small}{SCrstan}
+\newtcbtheorem[number within=chapter]{SCcmd}{cmdstanrの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=pink!3!,fontupper=\gtfamily\small}{SCcmd}
+% コラム
+\newtcbtheorem[number within=chapter]{Untiku}{うんちく}{fonttitle=\gtfamily\sffamily\bfseries,colframe=blue,colback=blue!7!}{Untiku}
+
 % FAQ box
 \newtcbtheorem[number within=section]{FAQ}{Q.}
 {
