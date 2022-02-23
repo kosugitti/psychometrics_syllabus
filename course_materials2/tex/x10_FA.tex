@@ -150,6 +150,108 @@ $values
 回転方法とは\keyterm{因子軸の回転}{いんしじくのかいてん}{rotation of factor axis}について定めるところです。これについては少し説明が必要ですね。
 
 \paragraph{因子軸の回転}
+因子分析は，相関行列という項目間関係が作り出す空間に，その基礎となる軸を見出すものでした。これを図\ref{fig::x10_FAcoord1}のように表現してみます。
+項目同士はその相関関係から空間を作っていますが，ここでは2因子，F1とF2という軸をもとに座標のように書いています。項目同士が近くにあるのは，創刊しあっていることを意味します\footnote{原点からのベクトルと考えたときに，2つの項目ベクトルが作る角度$\theta$のコサインを取った$\cos \theta$が相関係数になります。}。ここで項目1の座標を見ると，第一因子(F1)に0.3，第二因子(F2)に0.6とありますが，これが項目1の因子に対する因子負荷量ということになります。
+\begin{figure}[he]
+    \centering
+    \begin{tikzpicture}[
+        nodestyle/.style={
+            fill=black,
+            circle,
+            minimum height=4pt,
+            inner sep=0pt,
+        }
+    ]
+        \draw[thick,->](-4,0) -- (4,0) node[right]{$F1$};%x軸
+        \draw[thick,->](0,-4) -- (0,4) node[above]{$F2$};%y軸
+        \node[nodestyle] (item1) at (1.5,3.1) [label=item1] {};
+        \node[nodestyle] (item2) at (2.1,2.8) [label=item2] {};
+        \node[nodestyle] (item3) at (2.2,2.1) [label=item3] {};
+        \node[nodestyle] (item4) at (1.5,-2.0) [label=item4] {};
+        \node[nodestyle] (item5) at (1.5,-2.5) [label=item5] {};
+        \node[nodestyle] (item6) at (-1.5,-2.8) [label=item6] {};
+        \draw[dashed] (item1) -- (1.5,0) node[below]{$0.3$};
+        \draw[dashed] (item1) -- (0,3.1) node[left]{$0.6$};
+    \end{tikzpicture}
+    \caption{項目の空間にある基底}
+    \label{fig::x10_FAcoord1}
+\end{figure}
+
+印紙分析では因子負荷量をもとに，「この項目と関係の深い因子はどれか」「因子はどういう項目から構成されているか」ということを考えていくのですが，項目1は第一，第二因子それぞれにちょっとずつ関係していることがわかります。そのほかの項目も，2つの因子に負荷していますがなかなか決め手がない，というところですね。
+
+そこで座標を回転させます。どの項目がどの因子に関係しているのかを，よりはっきりさせるように軸をグルリと回すのが因子軸回転の目的です。
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[
+        nodestyle/.style={
+            fill=black,
+            circle,
+            minimum height=4pt,
+            inner sep=0pt,
+        }
+    ]
+        \draw[->](-4,0) -- (4,0) node[right]{$F1$};%x軸
+        \draw[->](0,-4) -- (0,4) node[above]{$F2$};%y軸
+        \node[nodestyle] (item1) at (1.5,3.1) [] {};
+        \node[nodestyle] (item2) at (2.1,2.8) [] {};
+        \node[nodestyle] (item3) at (2.2,2.1) [label=item3] {};
+        \node[nodestyle] (item4) at (1.5,-2.0) [label=item4] {};
+        \node[nodestyle] (item5) at (1.5,-2.5) [label=item5] {};
+        \node[nodestyle] (item6) at (-1.5,-2.8) [label=item6] {};
+        \draw[->,thick](-2,-3.464) -- (2,3.464) node[above right]{$F1^\prime$};%回転後
+        \draw[->,thick](3.464,-2) -- (-3.464,2) node[above left]{$F2^\prime$};%回転後
+        \draw[dashed](0,0) -- (3/2,3*1.732/2);
+        \draw [->](1.5,0) arc [start angle = 0, end angle = 60, radius = 1.5];
+        \draw [->](0,1.5) arc [start angle = 90, end angle = 150, radius = 1.5];
+        \coordinate (o) at (0,0);
+        \coordinate (F1x) at (2,3.464);
+        \coordinate (F2x) at (-3.464,2);
+        \draw[dashed] (item1) -- ($(o)!(item1)!(F1x)$){};
+        \draw[dashed] (item1) -- ($(o)!(item1)!(F2x)$){};
+    \end{tikzpicture}
+    \caption{因子軸の回転。60度回転させてみました。}
+    \label{fig::x10_FAcoord2}
+\end{figure}
+図\ref{fig::x10_FAcoord2}のように回転させますと，回転後の軸($F1^\prime,F2^prime$)に下ろした垂線が座標，すなわち因子負荷量になりますから，項目1は第一因子($F1^\prime$)に0.9，第二因子($F2^\prime$)に-0.07になりました。こうしてみると，項目1は第一因子と非常に深く関係しているし，第二因子とはほとんど関係がない，とみることができます。ほかの項目も一方の因子に大きく負荷し，他方の因子にほとんど負荷していないようになりますから，どの因子がどういう項目と関係するかを評価するのにメリハリが効いてやりやすくなります。このように，利用しやすく座標を変えるのが因子軸の回転，という技なのです。
+
+ここで最初の因子軸$F1,F2$は直交していましたね。座標ですから当然です。直交している，すなわち因子間相関がないように回転することを\keyterm{直交回転}{ちょっこうかいてん}{orthogonal rotation}といいます。
+
+しかし，因子軸の回転の目的は，わかりやすくするためなのですから，いっそ図\ref{fig::x10_FAcoord3}のように，角度をつけた方がさらにうまくメリハリをつけることができますね。この図では，項目4,5が明らかに第二因子に影響している，ということが見て取れるようになりました。
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[
+        nodestyle/.style={
+            fill=black,
+            circle,
+            minimum height=4pt,
+            inner sep=0pt,
+        }
+    ]
+        \draw[->](-4,0) -- (4,0) node[right]{$F1$};%x軸
+        \draw[->](0,-4) -- (0,4) node[above]{$F2$};%y軸
+        \node[nodestyle] (item1) at (1.5,3.1) [] {};
+        \node[nodestyle] (item2) at (2.1,2.8) [] {};
+        \node[nodestyle] (item3) at (2.2,2.1) [label=item3] {};
+        \node[nodestyle] (item4) at (1.5,-2.0) [label=item4] {};
+        \node[nodestyle] (item5) at (1.5,-2.5) [label=item5] {};
+        \node[nodestyle] (item6) at (-1.5,-2.8) [label=item6] {};
+        \draw[->,thick](-2,-3.464) -- (2,3.464) node[above right]{$F1^\prime$};%回転後
+        \draw[->,thick](1.72,-3.61) -- (-1.72,3.61) node[above left]{$F2^\prime$};%回転後
+        \draw[dashed](0,0) -- (3/2,3*1.732/2);
+        \draw [->](1.5,0) arc [start angle = 0, end angle = 60, radius = 1.5];
+        \draw [->](0,1.5) arc [start angle = 90, end angle = 115, radius = 1.5];
+        \draw [thick](0.25,0.433) arc[start angle = 60, end angle = 115,radius = 0.5];
+        \coordinate (o) at (0,0);
+        \coordinate (F1x) at (2,3.464);
+        \coordinate (F2x) at (-3.464,2);
+    \end{tikzpicture}
+    \caption{角度をつけて回転させる斜交回転の例。角度があるとは，因子同士が相関するということ。}
+    \label{fig::x10_FAcoord3}
+\end{figure}
+
+このように，因子軸が直角で交わっていない場合の回転方法を\keyterm{斜交回転}{しゃこうかいてん}{oblique rotation}といいます。因子軸の回転は一般に，斜交回転した方がメリハリが効いて因子を解釈しやすくなります。斜交回転したとき算出される因子同士の相関を考えて，これが十分小さい，すなわち直角とほぼ見做せる程度だとおもわれたら直交回転を行う，とするのが良いでしょう。
+
+\paragraph{行列による説明}
 因子分析の行列モデルは次のようなものでした。
 \[ \bm{R}= \bm{AA'}+\bm{D}^2 \]
 ここで$\bm{AA'}$に単位行列$\bm{I}$を挟んでも，$\bm{AA'}=\bm{AIA'}$で結果は変わりませんね。ここで$\bm{I} = \bm{TT'}$となるような行列$\bm{T}$があっても同じです。たとえば2因子構造の時に，次のような行列$\bm{T}$を考えたとすると，$\bm{TT'}=\bm{I}$であることがわかります。
@@ -161,13 +263,13 @@ $values
     \begin{pmatrix} cos \theta & sin \theta \\ -sin \theta & cos\theta \end{pmatrix}
     =\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} =\bm{I}
  \]
-このような$\bm{T}$は回転行列と言われます。原点を中心に，座標を角度$\theta$で回転させるからです。$\theta$の値は任意なので，因子負荷行列は，$\theta$に応じて無数にあることになります。であれば，使い勝手の良い角度で回転してやればいいとも言えるわけです。使い勝手がいいというのは，どの項目がどの項目と対応しているかがわかりやすい，特徴がはっきりするような方向だということになります。このように，因子分析が終わったら軸を回転させて，解釈しやすい特徴量を作るのです。これを因子軸の回転と言います。
+このような$\bm{T}$は回転行列と言われます。原点を中心に，座標を角度$\theta$で回転させるからです。$\theta$の値は任意なので，因子負荷行列は，$\theta$に応じて無数にあることになります。であれば，使い勝手の良い角度で回転してやればいいとも言えるわけです。
 
-今回の$\bm{TT'}=\bm{I}$は2つの軸が直角に交わったままですので，このような回転方法を\keyterm{直交回転}{ちょっこうかいてん}{orthogonal rotation}といいます。ここで直角ではない場合を考えてみましょう。
+\keytermL{直交回転}{ちょっこうかいてん}の場合は角度が直角，すなわち相関がないわけですから，数学的には回転行列が$\bm{TT'}=\bm{I}$のようになった状態を言います。一方で\keytermL{斜交回転}{しゃこうかいてん}の場合は相関があるわけですが，
 
 \[ \bm{\Phi} = \bm{T'\Phi T}\]
 
-このように変換しても，$\bm{R} = \bm{AT'\Phi TA'}+\bm{D}^2=\bm{BB'}+\bm{D}^2$の形さえ保てていれば因子分析モデルとしては違いがないわけで，このような$\bm{\Phi}$を任意に定めることができます\footnote{制約条件として$diag(\bm{T'\Phi T})=\bm{I}$として単位を整えておく必要はあります。}。この時$\bm{\Phi}$は\keyterm{因子間相関}{いんしかんそうかん}{factor correlations}と呼ばれます。相関があってもよい，すなわち因子軸が直角で交わってない場合の回転方法を\keyterm{斜交回転}{しゃこうかいてん}{oblique rotation}といいます。
+のように置いて，$\bm{R} = \bm{AT'\Phi TA'}+\bm{D}^2=\bm{BB'}+\bm{D}^2$の形さえ保てていれば因子分析モデルとしては違いがないわけで，このような$\bm{\Phi}$を任意に定めることができます\footnote{制約条件として$diag(\bm{T'\Phi T})=\bm{I}$として単位を整えておく必要はあります。}。この時$\bm{\Phi}$は\keyterm{因子間相関}{いんしかんそうかん}{factor correlations}と呼ばれます。
 
 直交回転も斜交回転も，目的は\textbf{解釈をしやすくする}ということにあり，そのための基準はいくつか考えられます。それらの基準に応じて，例えば直交回転では\keyterm{バリマックス回転}{ばりまっくすかいてん}{varimax rotation}，斜交回転では\keyterm{プロマックス回転}{ぷろまっくすかいてん}{promax rotation}などがあり，ここでは\keyterm{ジオミン回転}{じおみんかいてん}{geomin rotation}を選びました\footnote{ジオミン回転には直交モデルと斜交モデルがあり，それぞれ\verb|geominT,geominQ|という名前で実装されています。}。
 

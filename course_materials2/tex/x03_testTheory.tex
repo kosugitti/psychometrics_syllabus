@@ -97,25 +97,37 @@ r_{jk}&=&\displaystyle{\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}}\\
 \end{array}
 \end{equation}
 
-これは代数の計算としてやっていくと，非常に煩雑で間違いが起きやすそうです。そこで，少し視覚化してわかりやすくしてみましょう(図\ref{SDSD})。
+これは代数の計算としてやっていくと，非常に煩雑で間違いが起きやすそうです。そこで，少し視覚化してわかりやすくしてみましょう。
+多項式の掛け算は，各項目の総当たり戦ですので，列方向に$z_{ij}$，行方向に$z_{ik}$の各要素を置いて，要素同士の組み合わせ表を作ります(図\ref{x03_multiply})。
 
-\begin{figure}[ht]
-\begin{center}
- \includegraphics[width=12cm,height=15cm,keepaspectratio,clip]{../images/03_testTheory/Image13.jpg}
- \caption{2つの標準得点を掛け合わせるということ}
- \label{SDSD}
-\end{center}
+\begin{figure}
+\[
+    \begin{array}{rl|cccccc|}
+&    &  \multicolumn{6}{c}{z_{ij}=}    \\
+&    &  a_{j1}f_{i1} +& a_{j2}f_{i2}+ & a_{j3}f_{i3} +& \cdots\cdots +& a_{jm}f_{im} +& d_jU_{ij}    \\\hline
+& \begin{array}{c}a_{k1}f_{i1}\\+\end{array} & \multicolumn{1}{>{\columncolor{red!9}}c}{} & \multicolumn{4}{>{\columncolor{cyan!9}}c}{} & \multicolumn{1}{>{\columncolor{green!9}}c}{}\\
+z_{ik}=& \begin{array}{c}a_{k2}f_{i2}\\+\end{array} & \multicolumn{1}{>{\columncolor{cyan!9}}c}{} & \multicolumn{1}{>{\columncolor{red!9}}c}{\textcircled{\scriptsize 1}} &  \multicolumn{3}{>{\columncolor{cyan!9}}c}{\textcircled{\scriptsize 2}}  &\multicolumn{1}{>{\columncolor{green!9}}c}{}\\
+&\begin{array}{c}a_{k3}f_{i3}\\+\end{array} & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}    & \multicolumn{1}{>{\columncolor{red!9}}c}{} & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}  &\multicolumn{1}{>{\columncolor{green!9}}c}{\textcircled{\scriptsize 3}}\\
+& \hspace{10pt}\begin{array}{c}\vdots\\+\end{array} &\multicolumn{3}{>{\columncolor{cyan!9}}c}{\textcircled{\scriptsize 2}}   &  \multicolumn{1}{>{\columncolor{red!9}}c}{}  & \multicolumn{1}{>{\columncolor{cyan!9}}c}{} & \multicolumn{1}{>{\columncolor{green!9}}c}{}\\
+& \begin{array}{c}a_{km}f_{im}\\+\end{array} & \multicolumn{4}{>{\columncolor{cyan!9}}c}{} & \multicolumn{1}{>{\columncolor{red!9}}c}{} & \multicolumn{1}{>{\columncolor{green!9}}c}{}\\
+& \hspace{7pt}\begin{array}{c}\\d_kU_{ik}\\ \end{array}& \multicolumn{5}{>{\columncolor{green!9}}c}{\textcircled{\scriptsize 3}}& \multicolumn{1}{>{\columncolor{yellow!9}}c}{\textcircled{\scriptsize 4}}\\\hline
+
+    \end{array}
+\]
+\caption{項目同士の総当たりを考える}
+\label{x03_multiply}
 \end{figure}
 
-このように図示してみると，先ほどの計算は4つのパートに別れることがわかります。
-\begin{enumerate}
-	\item \label{rest}因子$p$と$p$の積和部分
-	\item \label{del}因子$p$と$q$の積和部分
-	\item \label{eT}因子$p$($q$)と独自因子の積和部分
-	\item \label{dj}独自因子同士の積和部分
-\end{enumerate}
+図\ref{x03_multiply}に示されたのは個人$i$についてのものであり，これが人数分ある，すなわち$\sum_{i=1}^N$をつけないといけないことに注意してください。
+さて図を軽く色分けしてあるのですが，ここにあるように計算すべき領域を4つに分けて考えていきましょう。
+\begin{description}
+	\item[\textcircled{\scriptsize 1}の領域] 因子$p$と$p$の積和部分(同じ因子同士の掛け合わせ)
+	\item[\textcircled{\scriptsize 2}の領域] 因子$p$と$q$の積和部分(異なる因子同士の掛け合わせ)
+	\item[\textcircled{\scriptsize 3}の領域] 因子$p$($q$)と独自因子の積和部分
+	\item[\textcircled{\scriptsize 4}の領域] 独自因子同士の積和部分
+\end{description}
 
-この各パートを順に計算していきましょう。まず\ref{rest}ですが，例えば第一因子については
+この各パートを順に計算していきましょう。まず\textcircled{\scriptsize 1}ですが，例えば第一因子については
 \begin{equation}
 \frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2
 \end{equation}
@@ -125,13 +137,13 @@ r_{jk}&=&\displaystyle{\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}}\\
 \end{equation}
 となります。この$F_{i1}$は因子得点であり，上の仮定より標準化されたものだということになります。さて，標準得点と標準得点の積和平均は相関係数になることをもう一度思い出してください！そうすると，これは自分自身との相関係数を表していることになりますから，当然$F_{i1}^2=1.0$であることがわかります。
 
-結局，\ref{rest}のエリアは
+結局，\textcircled{\scriptsize 1}のエリアは
 \begin{equation}
 \frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{N}\sum F_{i1}^2=a_{j1}a_{k1}
 \end{equation}
 と，とてもあっさり書き下すことができるのです。
 
-つづいて\ref{del}を見てみましょう。ここは2つの因子がかけ合わさった部分ですね。落ち着いて，第一因子と第二因子を例にして考えてみましょう。この箇所で得られるのは，
+つづいて\textcircled{\scriptsize 2}を見てみましょう。ここは異なる因子がかけ合わさった部分ですね。落ち着いて，第一因子と第二因子を例にして考えてみましょう。この箇所で得られるのは，
 \begin{equation}
 \frac{1}{N}\sum a_{j1}F_{i1} a_{k2}F_{k2} = a_{j1}a_{k2}\frac{1}{N}\sum F_{i1}F_{i2}
 \end{equation}
@@ -140,20 +152,20 @@ r_{jk}&=&\displaystyle{\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}}\\
 \begin{equation}
 \frac{1}{N}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{N}\sum F_{i1}F_{i2}=0
 \end{equation}
-となることがわかりました。つまり，この領域\ref{del}は，全て$0$になってしまうのです。
+となることがわかりました。つまり，この領域\textcircled{\scriptsize 2}は，全て$0$になってしまうのです。
 
 
-続いて\ref{eT}の部分について考えてみましょう。これはある共通因子と独自因子の積和部分です。例によって標準得点同士の関係から，相関係数を算出することになりますが，独自因子は共通因子と無相関であることを考えると，
+続いて\textcircled{\scriptsize 3}の部分について考えてみましょう。これはある共通因子と独自因子の積和部分です。例によって標準得点同士の関係から，相関係数を算出することになりますが，独自因子は共通因子と無相関であることを考えると，
 \begin{equation}
 \frac{1}{N}\sum a_{i1}F_{i1}d_{j}U_{ij}=a_{ik}d_{j} \frac{1}{N}\sum U_{ij}F_{i1} =0
 \end{equation}
 とこのように，この箇所も全て$0$になってしまいます。
 
-最後の\ref{dj}に至っては，独自因子と独自因子の積和ですから，これも
+最後の\textcircled{\scriptsize 4}に至っては，独自因子と独自因子の積和ですから，これも
 \begin{equation}
 \frac{1}{N}\sum d_{j}d_{k}U_{ij}U_{ik}=d_{j}d_{k}\frac{1}{N}\sum U_{ij}U_{ik}=0
 \end{equation}
-のように$0$になります。結局，消えて無くなるのがほとんどで，残るのは\ref{rest}の部分だけであり，$r_{jk}$を考えるときはそこだけ考慮すればよいことになります。
+のように$0$になります。結局，消えて無くなるのがほとんどで，残るのは\textcircled{1}の部分だけであり，$r_{jk}$を考えるときはそこだけ考慮すればよいことになります。
 
 整理すると，
 \begin{equation}

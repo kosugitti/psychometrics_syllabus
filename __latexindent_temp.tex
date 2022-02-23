@@ -1,0 +1,32 @@
+\documentclass{ltjarticle}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, calc}
+\usepackage{colortbl,xcolor}
+\begin{document}
+
+\begin{figure}
+
+\[
+    \begin{array}{rl|cccccc}
+&    &  \multicolumn{6}{c}{z_{ij}=}    \\
+&    &  a_{j1}f_{i1} +& a_{j2}f_{i2}+ & a_{j3}f_{i3} +& \cdots\cdots +& a_{jm}f_{im} +& d_jU_{ij}    \\\hline
+& \begin{array}{c}a_{k1}f_{i1}\\+\end{array} & \multicolumn{1}{>{\columncolor{red!9}}c}{} & \multicolumn{4}{>{\columncolor{cyan!9}}c}{} & \multicolumn{1}{>{\columncolor{green!9}}c}{}\\
+z_{ik}=& \begin{array}{c}a_{k2}f_{i2}\\+\end{array} & \multicolumn{1}{>{\columncolor{cyan!9}}c}{} & \multicolumn{1}{>{\columncolor{red!9}}c}{\textcircled{1}} &  \multicolumn{3}{>{\columncolor{cyan!9}}c}{\textcircled{2}}  &\multicolumn{1}{>{\columncolor{green!9}}c}{}\\
+&\begin{array}{c}a_{k3}f_{i3}\\+\end{array} & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}    & \multicolumn{1}{>{\columncolor{red!9}}c}{} & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}  &\multicolumn{1}{>{\columncolor{green!9}}c}{\textcircled{3}}\\
+& \hspace{10pt}\begin{array}{c}\vdots\\+\end{array} &\multicolumn{3}{>{\columncolor{cyan!9}}c}{\textcircled{2}}   &  \multicolumn{1}{>{\columncolor{red!9}}c}{}  & \multicolumn{1}{>{\columncolor{cyan!9}}c}{} & \multicolumn{1}{>{\columncolor{green!9}}c}{}\\
+& \begin{array}{c}a_{km}f_{im}\\+\end{array} & \multicolumn{4}{>{\columncolor{cyan!9}}c}{} & \multicolumn{1}{>{\columncolor{red!9}}c}{} & \multicolumn{1}{>{\columncolor{green!9}}c}{}\\
+& \hspace{10pt}\begin{array}{c}\\d_kU_{ik}\\ \end{array}& \multicolumn{5}{>{\columncolor{green!9}}c}{\textcircled{3}}& \multicolumn{1}{>{\columncolor{yellow!9}}c}{\textcircled{4}}\\\hline
+
+    \end{array}
+\]    
+\caption{うんこ}
+\end{figure}
+
+\begin{description}
+	\item[\textcircled{1}の領域] 因子$p$と$p$の積和部分(同じ因子同士の掛け合わせ)
+	\item[\textcircled{2}の領域] 因子$p$と$q$の積和部分(異なる因子同士の掛け合わせ)
+	\item[\textcircled{3}の領域] 因子$p$($q$)と独自因子の積和部分
+	\item[\textcircled{4}の領域] 独自因子同士の積和部分
+\end{description}
+
+\end{document}
