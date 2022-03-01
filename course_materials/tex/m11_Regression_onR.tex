@@ -2,10 +2,10 @@
 \usepackage{docmute} 
 \usepackage{../../myStyle} 
 
-\begin{document} 
+\begin{document}
 \VerbatimFootnotes
-\chapter{Rをつかった回帰分析} 
-\label{m11_MRonR} 
+\chapter{Rをつかった回帰分析}
+\label{m11_MRonR}
 
 さてここまでは，回帰分析や重回帰分析の仕組みを言葉で説明してきましたが，自分で計算できなければ絵に描いた餅です。重回帰分析の回帰係数を求める方法については特に説明してきませんでしたが，Rで計算する時は単回帰・重回帰の区別なく表現できるので，ここで一気に習得してしまいましょう。
 
@@ -37,11 +37,11 @@ summary(dat)
 
 \paragraph{コード解説}
 \begin{description}
-        \item[1行目] 環境Environmentを初期化するコードです。Rmd形式で書いている人はこの行は書かないようにしてください\footnote{Rmdファイルはそのまま使うのではなく，出力ファイル形式に\verb|knit|して使います。 その際必ず環境情報は初期化されるので書く必要がなく，むしろ書いてあると \verb|knit| するファイルの情報なども消してしまうので \verb|knit| できなくなるのです。}。
-        \item[2行目] \texttt{tidyverse}パッケージを読み込んでいます。このパッケージはファイルの読み込みや並べ替え操作など，便利な機能がまとめられたものです。
-        \item[3-4行目] \texttt{baseballDecade.csv}というファイルを読み込んでいます。このファイルがプロジェクトフォルダ内にあることを確認してから実行してください。
-        \item[5行目] ファイルの一部，2020年度のデータだけに絞るようフィルターをかけています。
-        \item[6行目] 読み込んだデータの記述統計量など，基本的な要約を行っています。
+	\item[1行目] 環境Environmentを初期化するコードです。Rmd形式で書いている人はこの行は書かないようにしてください\footnote{Rmdファイルはそのまま使うのではなく，出力ファイル形式に\verb|knit|して使います。 その際必ず環境情報は初期化されるので書く必要がなく，むしろ書いてあると \verb|knit| するファイルの情報なども消してしまうので \verb|knit| できなくなるのです。}。
+	\item[2行目] \texttt{tidyverse}パッケージを読み込んでいます。このパッケージはファイルの読み込みや並べ替え操作など，便利な機能がまとめられたものです。
+	\item[3-4行目] \texttt{baseballDecade.csv}というファイルを読み込んでいます。このファイルがプロジェクトフォルダ内にあることを確認してから実行してください。
+	\item[5行目] ファイルの一部，2020年度のデータだけに絞るようフィルターをかけています。
+	\item[6行目] 読み込んだデータの記述統計量など，基本的な要約を行っています。
 \end{description}
 
 \subsection{散布図の描画}
@@ -58,19 +58,19 @@ g
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-    \item[1-3行目] \texttt{batter}というオブジェクトを作っています。これは\texttt{dat}オブジェクトを加工して作るのですが，詳しくはこの後で説明します。
-    \item[4行目] \texttt{batter}オブジェクトを使って，x軸を\texttt{height}変数，y軸を\texttt{weight}変数をするキャンパスを指定します。
-    \item[5行目] キャンパスに点を打つように\verb|geom_point|します。
-    \item[6行目] 描画オブジェクト\texttt{g}を表示します。
+	\item[1-3行目] \texttt{batter}というオブジェクトを作っています。これは\texttt{dat}オブジェクトを加工して作るのですが，詳しくはこの後で説明します。
+	\item[4行目] \texttt{batter}オブジェクトを使って，x軸を\texttt{height}変数，y軸を\texttt{weight}変数をするキャンパスを指定します。
+	\item[5行目] キャンパスに点を打つように\verb|geom_point|します。
+	\item[6行目] 描画オブジェクト\texttt{g}を表示します。
 \end{description}
 
 結果的に図\ref{fig::11_01}のような図ができていればOKです。
 
 \begin{figure}[ht]
-    \centering
+	\centering
 	\includegraphics[keepaspectratio,width=8cm]{../images/11_MultipleRegressionOnR/Rplot11_01.png}
-    \caption{身長と体重のデータ}
-    \label{fig::11_01}
+	\caption{身長と体重のデータ}
+	\label{fig::11_01}
 \end{figure}
 
 さて1-3行目の操作ですが，ここでやりたかったことは\texttt{dat}オブジェクトの中から打者のデータに限って，身長と体重の変数を抜き出すことでした。
@@ -84,8 +84,8 @@ g
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-    \item[1行目] 散布図を書いているオブジェクト\texttt{g}にスムージング関数\verb|geom_smooth|でデータにスムーズな線を引く。線の引き方は\texttt{lm}すなわち\keytermL{線形モデル}{せんけいもでる}。
-    \item[2行目] オブジェクト\texttt{g}の描画
+	\item[1行目] 散布図を書いているオブジェクト\texttt{g}にスムージング関数\verb|geom_smooth|でデータにスムーズな線を引く。線の引き方は\texttt{lm}すなわち\keytermL{線形モデル}{せんけいもでる}。
+	\item[2行目] オブジェクト\texttt{g}の描画
 \end{description}
 
 \section{線形回帰の実行}
@@ -97,8 +97,8 @@ g
 
 \paragraph{コード解説}
 \begin{description}
-    \item[1行目] \texttt{lm}関数に回帰式とデータを入れて分析を実行し，その結果を\texttt{result}オブジェクトに代入する。ちなみに\verb|~|はチルダといいます\footnote{日本語キー配列の場合，「ほ」の右，アットマークの上にある「へ」のキーをShiftを押しながら押すと出ます。USキー配列の場合はtabキーの上にあります。}。
-    \item[2行目] 分析結果の要約を出力させる。
+	\item[1行目] \texttt{lm}関数に回帰式とデータを入れて分析を実行し，その結果を\texttt{result}オブジェクトに代入する。ちなみに\verb|~|はチルダといいます\footnote{日本語キー配列の場合，「ほ」の右，アットマークの上にある「へ」のキーをShiftを押しながら押すと出ます。USキー配列の場合はtabキーの上にあります。}。
+	\item[2行目] 分析結果の要約を出力させる。
 \end{description}
 
 ここで重要なのは，1行目の回帰式の表現です。Rでは$y\sim x $という書き方で，$y=f(x)$を表現します。これは回帰式に限らず，一般的に従属変数$y$と独立変数$x$の関係を$\sim$でつなげる，という\keyterm{式}{しき}{formula}の書き方なのです。今回は\texttt{lm}という関数を使って表現しましたが，線形モデルではない関数で独立変数，従属変数の関係を書く時も\verb|y ~ x|で表現します。この表記に慣れると，あの分析もこの分析も，形としては$y=f(x)$なんだな，ということがわかりやすくていいですね。今回は，体重を身長で予測したということになっています。
@@ -106,7 +106,7 @@ g
 この分析の出力結果が出力\ref{RS:out11_01}の通りです。
 
 \begin{Rscreen}{回帰分析の出力結果}{out11_01}
-    \begin{verbatim}
+	\begin{verbatim}
 Call:
 lm(formula = weight ~ height, data = batter)
 
@@ -153,16 +153,16 @@ cor(batter)
 
 \paragraph{コード解説}
 \begin{description}
-    \item[1-3行目] \verb|batter|オブジェクトに\verb|batter|オブジェクトを加工したものを上書きしていきます。加工内容は，\verb|dplyr|パッケージの\verb|mutate|関数を使って変数を追加することです。追加する変数名は\verb|residuals|と\verb|yhat|で，\verb|residuals|には\verb|result|オブジェクトの\verb|residuals|変数を，\verb|yhat|には\verb|result|オブジェクトの\verb|fitted.values|変数をあてがっています。
-    \item[4行目] 上書きされた\verb|batter|オブジェクトを表示させています。長くなりますので，上の方の一部分だけが表示されます。
-    \item[5行目] 上書きされた\verb|batter|オブジェクトの要約統計量を表示させています。
-    \item[6行目] \verb|batter|オブジェクトのプロットを描いています。
-    \item[7行目] \verb|batter|オブジェクトの相関係数を計算しています。
+	\item[1-3行目] \verb|batter|オブジェクトに\verb|batter|オブジェクトを加工したものを上書きしていきます。加工内容は，\verb|dplyr|パッケージの\verb|mutate|関数を使って変数を追加することです。追加する変数名は\verb|residuals|と\verb|yhat|で，\verb|residuals|には\verb|result|オブジェクトの\verb|residuals|変数を，\verb|yhat|には\verb|result|オブジェクトの\verb|fitted.values|変数をあてがっています。
+	\item[4行目] 上書きされた\verb|batter|オブジェクトを表示させています。長くなりますので，上の方の一部分だけが表示されます。
+	\item[5行目] 上書きされた\verb|batter|オブジェクトの要約統計量を表示させています。
+	\item[6行目] \verb|batter|オブジェクトのプロットを描いています。
+	\item[7行目] \verb|batter|オブジェクトの相関係数を計算しています。
 \end{description}
 
 回帰分析の結果を代入したオブジェクト\verb|result|には，\verb|residuals|変数として残差が含まれています。同じく\verb|fitted.values|変数として予測値が含まれています。4行目の出力結果の一部を見てみましょう(出力\ref{RS:out11_02})。
 \begin{Rscreen}{回帰分析の出力結果}{out11_02}
-\begin{verbatim}
+	\begin{verbatim}
 # A tibble: 329 × 4
    height weight residuals  yhat
     <dbl>  <dbl>     <dbl> <dbl>
@@ -199,19 +199,19 @@ cor(batter2)
 
 \paragraph{コード解説}
 \begin{description}
-    \item[1-4行目]\texttt{batter2}というオブジェクトを作っています。これは\texttt{dat}オブジェクトを加工して作っており，2行目で野手(投手でない人)を選択し，3行目で変数として本塁打，安打，salaryを選択しています。4行目は欠損値を一括で取り除く処理をしています。ホームランを打っていない人などはデータに含められないからです。
-    \item[5-7行目] x軸に本塁打の数，y軸に年俸(\verb|salary|)をとった散布図を書いています。
-    \item[8-10行目]  x軸に安打の数，y軸に年俸(\verb|salary|)をとった散布図を書いています。
-    \item[11行目] データの相関関係を数字でみています。
+	\item[1-4行目]\texttt{batter2}というオブジェクトを作っています。これは\texttt{dat}オブジェクトを加工して作っており，2行目で野手(投手でない人)を選択し，3行目で変数として本塁打，安打，salaryを選択しています。4行目は欠損値を一括で取り除く処理をしています。ホームランを打っていない人などはデータに含められないからです。
+	\item[5-7行目] x軸に本塁打の数，y軸に年俸(\verb|salary|)をとった散布図を書いています。
+	\item[8-10行目]  x軸に安打の数，y軸に年俸(\verb|salary|)をとった散布図を書いています。
+	\item[11行目] データの相関関係を数字でみています。
 \end{description}
 
 プロットを見ると，ホームランの数や安打の数が増えるほど，年俸は上がっているようです(図\ref{fig::11_03})。さすがプロ野球は実力勝負の世界，グランドには銭が埋まっているというやつです。少しデータの左端の方，つまりホームランや安打を打たない人が数多くいるため，よく打つ人に引っ張られて相関係数が大きく出ている可能性はありますし，安打と本塁打の間にも相関があるので少し気になりますが，ひとまずはこれで分析することにしましょう。
 
 \begin{figure}[ht]
-    \centering
+	\centering
 	\includegraphics[keepaspectratio,width=12cm]{../images/11_MultipleRegressionOnR/Rplot11_02.png}
-    \caption{本塁打，安打と年俸の関係}
-    \label{fig::11_03}
+	\caption{本塁打，安打と年俸の関係}
+	\label{fig::11_03}
 \end{figure}
 
 回帰分析のコード\texttt{code::\ref{code::11_07}}と出力\ref{RS:out11_03})は次の通りです。
@@ -222,7 +222,7 @@ summary(result2)
 \end{lstlisting}
 
 \begin{Rscreen}{回帰分析の出力結果}{out11_03}
-\begin{verbatim}
+	\begin{verbatim}
 Call:
 lm(formula = salary ~ HR + Hit, data = batter2)
 
@@ -266,14 +266,14 @@ summary(result2z)
 
 \paragraph{コード解説}
 \begin{description}
-    \item[1行目]\texttt{batter2z}というオブジェクトを作っています。これは\texttt{batter2}オブジェクトを\verb|scale|関数で標準化することで作れるのですが，\verb|scale|関数は出来上がったものがデータを表す\texttt{data.frame}型になっていませんので，\verb|%>%|でつないで\verb|as.data.frame|という関数でデータの形にしています。
-    \item[2行目] 出来上がった\texttt{batter2z}というオブジェクトの記述統計量をみています。平均値が0.0になっていることなどから，標準化されていることが確認できます。
-    \item[3行目]  \texttt{batter2z}オブジェクトで同じように重回帰分析をしています。
-    \item[11行目] 結果を出力させています。
+	\item[1行目]\texttt{batter2z}というオブジェクトを作っています。これは\texttt{batter2}オブジェクトを\verb|scale|関数で標準化することで作れるのですが，\verb|scale|関数は出来上がったものがデータを表す\texttt{data.frame}型になっていませんので，\verb|%>%|でつないで\verb|as.data.frame|という関数でデータの形にしています。
+	\item[2行目] 出来上がった\texttt{batter2z}というオブジェクトの記述統計量をみています。平均値が0.0になっていることなどから，標準化されていることが確認できます。
+	\item[3行目]  \texttt{batter2z}オブジェクトで同じように重回帰分析をしています。
+	\item[11行目] 結果を出力させています。
 \end{description}
 
 \begin{Rscreen}{回帰分析の出力結果}{out11_04}
-\begin{verbatim}
+	\begin{verbatim}
 Call:
 lm(formula = salary ~ HR + Hit, data = batter2z)
 
@@ -317,24 +317,24 @@ Rチャンクの外に，結果の読み取りや解釈を，言葉で記述し�
 次のデータ(表\ref{tbl::ex11_01})は，向ヶ丘駅周辺の家賃について調べたもので，部屋の広さ(\verb|heibei|，単位$m^2$)と，築年数(\verb|chiku|)，駅から徒歩何分かかるか(\verb|ekitoho|)，家賃(\verb|yachin|)からなるものです\footnote{2019年5月に実際に賃貸住宅サイトを利用して調べたものです。}。
 なおこのデータは\texttt{yachin.csv}として配布しています。
 \begin{table}
-    \caption{家賃相場}
-    \centering
-    \begin{tabular}[t]{rrrr}
-    \hline
-    heibei & chiku & ekitoho & yachin\\
-    \hline
-    41.40 & 14 & 10 & 8.60\\
-    20.28 & 16 & 9 & 6.10\\
-    18.20 & 28 & 10 & 4.20\\
-    19.87 & 16 & 13 & 5.70\\
-    20.28 & 19 & 7 & 6.30\\
-    23.18 & 20 & 14 & 5.40\\
-    19.87 & 17 & 12 & 6.25\\
-    19.87 & 20 & 17 & 5.80\\
-    \hline
-    \end{tabular}
-    \label{tbl::ex11_01}
-    \end{table}
+	\caption{家賃相場}
+	\centering
+	\begin{tabular}[t]{rrrr}
+		\hline
+		heibei & chiku & ekitoho & yachin \\
+		\hline
+		41.40  & 14    & 10      & 8.60   \\
+		20.28  & 16    & 9       & 6.10   \\
+		18.20  & 28    & 10      & 4.20   \\
+		19.87  & 16    & 13      & 5.70   \\
+		20.28  & 19    & 7       & 6.30   \\
+		23.18  & 20    & 14      & 5.40   \\
+		19.87  & 17    & 12      & 6.25   \\
+		19.87  & 20    & 17      & 5.80   \\
+		\hline
+	\end{tabular}
+	\label{tbl::ex11_01}
+\end{table}
 \paragraph{課題}家賃を従属変数，平米を説明変数とした回帰分析を行い，回帰式を求めてください。
 \paragraph{課題}15平米で家賃6万円の物件を新たに見つけました。この物件はこのデータに照らし合わせて，お得な物件だと言えるでしょうか。データに基づいて判断してください。
 \paragraph{課題}家賃を従属変数，平米と築年数を説明変数とした重回帰分析を行い，回帰式を求めてください。

@@ -2,10 +2,10 @@
 \usepackage{docmute} 
 \usepackage{../../myStyle} 
 
-\begin{document} 
+\begin{document}
 \VerbatimFootnotes
 \chapter{階層線形モデル}
-\label{x25_HLM} 
+\label{x25_HLM}
 前回は\keytermL{一般線形モデル}{いっぱんせんけいもでる}から，\keytermL{一般化線形モデル}{いっぱんかせんけいもでる}へ，すなわち正規分布以外の確率分布を扱えるモデルへと展開しました。今回はさらにモデルを展開し，\keyterm{一般化線形混合モデル}{いっぱんかせんけいこんごうもでる}{Generalized Linear Mixed  Model;GLMM}へと展開していきます。混合mixedという言葉があるように，複数の確率分布の混ぜ合わせが含まれることが，GLMMの特徴です。
 
 とはいえ，皆さんは既に第\ref{x22_modeling4}でこの問題を扱っています。Within計画・多水準のモデルがそれに当たります。Within計画のモデルでは，個人差$\mu_i$に効果$\delta_j$が加わるという形でモデルを形成しました。ここで個人差$\mu_i$も正規分布に従うものと考えていました。個人差が従う正規分布，誤差が従う正規分布が混じりあってデータになりますから，これもMix されたモデルと考えることができるのです。
@@ -30,36 +30,36 @@
 表\ref{tbl::25_01}に確率分布，逆リンク関数，リンク関数の関係をまとめました。さらにStanではそれぞれの確率分布に加え，リンク関数とセットになった関数が既に用意されています。\verb|transformed parameters|ブロックで逐一変換しなくても，この関数を使うと\verb|model|ブロックで直接線形モデルを書き込むことができますので，便利です。ここで線形モデルで表されるものを$\mu,\theta,\lambda$などさまざまなギリシア文字を使っていますが，このギリシア文字の違いに特に意味はありません。一般的に正規分布の\keytermL{位置母数}{いちぼすう}には$\mu$が，ベルヌーイ分布のそれには$\theta$が，ポアソン分布のそれには$\lambda$が使われることが多く，その慣例に習っただけです。いずれも確率分布の中心的な位置を表す母数であるということだけが重要です。また正規分布のところを見ると，リンク関数も逆リンク関数も同じ形をしていることがわかります。こうした\textbf{恒等式}で済んだので複雑なことを考える必要がなかったんですね。
 
 \begin{table}[ht]
-    \centering
-    \caption{確率分布とリンク関数の関係}
-    \begin{tabular}{cccc}
-        確率分布 & 逆リンク関数 & リンク関数 & Stanの専用関数 \\\hline
-        正規分布 & $\mu = \beta_0 + \beta_1 X$ & $\beta_0 + \beta_1X=\mu$ & \verb|normal| \\
-        ベルヌーイ分布 & $\theta = \frac{1}{1+exp(-(\beta_0+\beta_1X))}$ & $\beta_0 + \beta_1 X = \log\left(\frac{\theta}{1-\theta}\right) $ & \verb|bernoulli_logit| \\
-        ポアソン分布 & $\lambda = \exp(\beta_0 + \beta_1 X)$ & $\beta_0 + \beta_1X = \log(\lambda)$ & \verb|poisson_log| \\\hline
-    \end{tabular}
-    \label{tbl::25_01}
+	\centering
+	\caption{確率分布とリンク関数の関係}
+	\begin{tabular}{cccc}
+		確率分布       & 逆リンク関数                                    & リンク関数                                                        & Stanの専用関数         \\\hline
+		正規分布       & $\mu = \beta_0 + \beta_1 X$                     & $\beta_0 + \beta_1X=\mu$                                          & \verb|normal|          \\
+		ベルヌーイ分布 & $\theta = \frac{1}{1+exp(-(\beta_0+\beta_1X))}$ & $\beta_0 + \beta_1 X = \log\left(\frac{\theta}{1-\theta}\right) $ & \verb|bernoulli_logit| \\
+		ポアソン分布   & $\lambda = \exp(\beta_0 + \beta_1 X)$           & $\beta_0 + \beta_1X = \log(\lambda)$                              & \verb|poisson_log|     \\\hline
+	\end{tabular}
+	\label{tbl::25_01}
 \end{table}
 
 では一般化線形モデルに「個人差」を混合するモデルを考えてみましょう。ここでは前の章でも扱った野球のデータを例に説明します。
 図\ref{fig:25_01}には2020年に5000万円以上の年俸をもらっている一流選手5名の年俸(単位は千万円)と勝利数の関係を表しています。年俸が高いと勝ち星が増える，という関係にあると考えてモデルを組みます。
 線形モデルですから，勝ち星を$Y_i$，年俸を$X_i$として$\hat{Y_i} = \beta_0 + \beta_1 X_i $という関係を考えます。とはいえ，2020年度の関係は図示されていますが，選手の年俸というのはそれまでの業績によるところも大きく，そもそも個人差があり得るところです。そこで個人差$\mu_i$を考えて，$\hat{Y_i} = \beta_0 + \beta_1 X_i + \mu_i$とした線形モデルを考えましょう。また，勝利数は0以上の整数しか取りませんから，これはポアソン分布に従うと考えられます。そこでポアソン分布に合わせるために，逆リンク関数を使って$\lambda = \exp(Y_i) = \exp(\beta_0 + \beta_1 X_i + \mu_i)$とした上で，$Y_i \sim poisson(\lambda_i)$という確率モデルに入れることにしましょう。このモデルの設計図は図\ref{fig:25_02}のようになります。
 \begin{figure}[ht]
-    \begin{center}
-    \includegraphics[height=10cm,keepaspectratio]{../images/25_HLM/Rplot25_01.png}
-    \caption{一流選手の年俸と勝利数}
-    \label{fig:25_01}
-    \end{center}
+	\begin{center}
+		\includegraphics[height=10cm,keepaspectratio]{../images/25_HLM/Rplot25_01.png}
+		\caption{一流選手の年俸と勝利数}
+		\label{fig:25_01}
+	\end{center}
 \end{figure}
 
 
 \begin{figure}[ht]
-    \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Slide25_01.png}
-    \caption{ポアソン分布を使ったGLMMモデルの設計図}
-    \label{fig:25_02}
-    \end{center}
-  \end{figure}
+	\begin{center}
+		\includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Slide25_01.png}
+		\caption{ポアソン分布を使ったGLMMモデルの設計図}
+		\label{fig:25_02}
+	\end{center}
+\end{figure}
 それではこれをもとに，GLMMをやってみましょう。実行するためのStanのコードはコード\ref{stan::25_01}のようになります。
 
 \begin{lstlisting}[language=C++,label={stan::25_01},caption={個人差を含んだポアソン回帰モデル}]
@@ -89,9 +89,9 @@ model{
 
 \paragraph{コード解説}
 \begin{description}
-    \item[dataブロック] データ長Lと，独立変数X，従属変数Yを宣言しています。ポアソン分布に従う確率変数ですので従属変数は\verb|int|型にしてあります。
-    \item[parametersブロック] 線形モデルの係数と個人差$\mu_i$を人数分用意しました。
-    \item[modelブロック] モデル尤度のところは\verb|poisson_log|を使っているので，線形のコードをそのまま書き込むことができています。事前分布は正規分布にしました。
+	\item[dataブロック] データ長Lと，独立変数X，従属変数Yを宣言しています。ポアソン分布に従う確率変数ですので従属変数は\verb|int|型にしてあります。
+	\item[parametersブロック] 線形モデルの係数と個人差$\mu_i$を人数分用意しました。
+	\item[modelブロック] モデル尤度のところは\verb|poisson_log|を使っているので，線形のコードをそのまま書き込むことができています。事前分布は正規分布にしました。
 \end{description}
 
 これをRで呼び出すコードはCode::\ref{code::25_01}の通りです。少しテクニカルなコードになっていますので自分で書けなくても構いませんが\footnote{コードの書き方は単一の正解というものがありません。ここに書いてあるのは著者流のやり方だというだけであって，同じ結果が出るのであれば別のコードの書き方であっても構いません。今回のこのコードはサイトで配布しています。}，各ステップで何をしているか読めるようになっておくといいでしょう\footnote{パイプ演算子\verb|%>%|を使って変換プロセスをつなげて言ってますが，その途中でデータがどのように加工されているか知りたい場合，\verb| %>% print %>% |と\verb|print|関数を挟むといいでしょう。ステップごとのデータの変形プロセスがよくわかると思います。}。
@@ -138,32 +138,32 @@ fit <- model_pois$sample(
 
 \paragraph{コード解説}
 \begin{description}
-    \item[1行目] ファイルからデータを読み込みます。このデータファイル\verb|baseballDecade.csv|には野手，投手の10年分のデータが入っています。
-    \item[3-15行目] 最初のブロックとして，データの加工・変改を行い，それを\verb|dat|オブジェクトに格納します。
-        \begin{description}
-            \item[4行目] フィルターをかけて，投手だけのデータに絞り込みます。
-            \item[5行目] サラリーが5000(万円)以上のデータに絞り込みます。
-            \item[6行目] 選手名でグルーピングします。10年分のデータがあるわけですから，1人につき最大10件のレコードがあります。
-            \item[7行目] \verb|nest|関数でグループ化変数に沿ってデータを畳み込みます。引数を特に指定しなければ，変数は全て\verb|data|という変数名に含まれます。この段階でデータフレームは出力\ref{RS:out25_01}のようになっています。\verb|nest|関数のイメージを図\ref{fig:25_03}に示しました。
-            \item[8行目] 畳み込まれたデータセットを使って，そのデータの行数(何年分のデータがあるか\footnote{ここで\verb|data|とあるのはまとめられたミニ・データフレーム全体を引数にしています。それに対して\verb|NROW|という関数をあてがうことで行数を数えています。\verb|NROW|関数の引数は\verb|.|ですが，これは\verb|map|関数の第一引数全体を再度参照するときの略記号です。\verb|purrr::map|というのは\verb|purrr|パッケージの\verb|map|関数で，同じ関数操作を繰り返し行うときに使います。})，勝利数情報の欠損値の有無を作る変数\footnote{\verb|purrr::map|の使い方は先ほどと同じで，\verb|.$Win|は\verb|data$Win|と同じ意味です。\verb|anyNA|はNAがあるかどうかを\verb|TRUE/FALSE|で返す関数です。}を作っています。
-            \item[9行目] フィルターをかけて，データの行数\verb|n|が10のものだけを抜き出します。つまり10年間ずっと登板している一流の選手だけに絞ったのです。
-            \item[10行目] フィルターをかけて，欠損値がないデータだけに絞っています。
-            \item[11行目] 畳み込みを解除します。
-            \item[12行目] 年度，選手名，年俸，勝利数だけ変数をセレクトして取り出します。
-        \end{description} 
-    \item[17-21行目] このブロックではStanで使うためにさらに一時的なデータ加工をし，\verb|dat.tmp|オブジェクトに格納しています。
-        \begin{description}
-            \item[18行目] フィルターをかけて2020年度のデータだけにします。
-            \item[19行目] 年俸のデータは数字が大きいので，1000万円単位にします。分析の際，数字が大きすぎると計算がオーバーフローしてしまうことがありますから，適当な単位にしておくことは実践上の有効なテクニックの1つです。
-            \item[20行目] 名前の変数は文字型ですが，そのままStanに渡すことはできないので，Factor型にした\verb|ID|という変数に作り替えます。
-            \item[21行目] 先ほど作った\verb|ID|はFactor型ですが，Stanでは質的な違いを表す数字だけあれば良いので，数字型に変形します。
-        \end{description} 
-    \item[18-23行目] Stanに与えるためのデータセットにするブロックです。
-    \item[25-32行目] cmdstanrでサンプリングするためのコードです。rstanの場合は\verb|sampling|関数を使うことになります。
+	\item[1行目] ファイルからデータを読み込みます。このデータファイル\verb|baseballDecade.csv|には野手，投手の10年分のデータが入っています。
+	\item[3-15行目] 最初のブロックとして，データの加工・変改を行い，それを\verb|dat|オブジェクトに格納します。
+		\begin{description}
+			\item[4行目] フィルターをかけて，投手だけのデータに絞り込みます。
+			\item[5行目] サラリーが5000(万円)以上のデータに絞り込みます。
+			\item[6行目] 選手名でグルーピングします。10年分のデータがあるわけですから，1人につき最大10件のレコードがあります。
+			\item[7行目] \verb|nest|関数でグループ化変数に沿ってデータを畳み込みます。引数を特に指定しなければ，変数は全て\verb|data|という変数名に含まれます。この段階でデータフレームは出力\ref{RS:out25_01}のようになっています。\verb|nest|関数のイメージを図\ref{fig:25_03}に示しました。
+			\item[8行目] 畳み込まれたデータセットを使って，そのデータの行数(何年分のデータがあるか\footnote{ここで\verb|data|とあるのはまとめられたミニ・データフレーム全体を引数にしています。それに対して\verb|NROW|という関数をあてがうことで行数を数えています。\verb|NROW|関数の引数は\verb|.|ですが，これは\verb|map|関数の第一引数全体を再度参照するときの略記号です。\verb|purrr::map|というのは\verb|purrr|パッケージの\verb|map|関数で，同じ関数操作を繰り返し行うときに使います。})，勝利数情報の欠損値の有無を作る変数\footnote{\verb|purrr::map|の使い方は先ほどと同じで，\verb|.$Win|は\verb|data$Win|と同じ意味です。\verb|anyNA|はNAがあるかどうかを\verb|TRUE/FALSE|で返す関数です。}を作っています。
+			\item[9行目] フィルターをかけて，データの行数\verb|n|が10のものだけを抜き出します。つまり10年間ずっと登板している一流の選手だけに絞ったのです。
+			\item[10行目] フィルターをかけて，欠損値がないデータだけに絞っています。
+			\item[11行目] 畳み込みを解除します。
+			\item[12行目] 年度，選手名，年俸，勝利数だけ変数をセレクトして取り出します。
+		\end{description}
+	\item[17-21行目] このブロックではStanで使うためにさらに一時的なデータ加工をし，\verb|dat.tmp|オブジェクトに格納しています。
+		\begin{description}
+			\item[18行目] フィルターをかけて2020年度のデータだけにします。
+			\item[19行目] 年俸のデータは数字が大きいので，1000万円単位にします。分析の際，数字が大きすぎると計算がオーバーフローしてしまうことがありますから，適当な単位にしておくことは実践上の有効なテクニックの1つです。
+			\item[20行目] 名前の変数は文字型ですが，そのままStanに渡すことはできないので，Factor型にした\verb|ID|という変数に作り替えます。
+			\item[21行目] 先ほど作った\verb|ID|はFactor型ですが，Stanでは質的な違いを表す数字だけあれば良いので，数字型に変形します。
+		\end{description}
+	\item[18-23行目] Stanに与えるためのデータセットにするブロックです。
+	\item[25-32行目] cmdstanrでサンプリングするためのコードです。rstanの場合は\verb|sampling|関数を使うことになります。
 \end{description}
 
 \begin{Rscreen}{データをグループ化変数でネストする}{out25_01}
-\begin{verbatim}
+	\begin{verbatim}
 # A tibble: 295 × 2
 # Groups:   Name [295]
    Name       data             
@@ -184,20 +184,20 @@ fit <- model_pois$sample(
 
 
 \begin{figure}[ht]
-    \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Slide25_03.png}
-    \caption{データの畳み込み関数の挙動。左側がもとのデータで，グループ化変数を使って畳み込むと，データフレームの中にグループごとのミニ・データフレームが畳み込まれる。}
-    \label{fig:25_03}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Slide25_03.png}
+		\caption{データの畳み込み関数の挙動。左側がもとのデータで，グループ化変数を使って畳み込むと，データフレームの中にグループごとのミニ・データフレームが畳み込まれる。}
+		\label{fig:25_03}
+	\end{center}
 \end{figure}
 
 さて，このコードを実行し，結果からモデルを図にしたのが図\ref{fig:25_04}です。図中の赤い転線は，$+\mu_i$をおかずに5人全体を混ぜ合わせたときのポアソン回帰です。個人差を表す項目を追加することで，より個々のデータに沿った回帰プロットが実践できていることがわかると思います。
 \begin{figure}[ht]
-    \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Rplot25_02.png}
-    \caption{ポアソン分布を使ったGLMMの結果}
-    \label{fig:25_04}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Rplot25_02.png}
+		\caption{ポアソン分布を使ったGLMMの結果}
+		\label{fig:25_04}
+	\end{center}
 \end{figure}
 
 今回は個人差$\mu_i$だけを考えましたが，たとえば野球の弾の規定が変わってピッチャーが有利になる年とそうでない年があったとか，登板する球場のサイズによって有利不利がある，といったさまざまな個別事情に対し，それを表す変数の項を付加することで，よりデータの詳細を細かくモデルに組み込んでいくことができます。線形モデルは\textbf{線形である}という制限から逃げることはできませんが，確率分布や個別の事情を組み込むことで，より上手く個々のデータの特徴を表現できるようになることが，イメージできたのではないでしょうか。
@@ -218,11 +218,11 @@ fit <- model_pois$sample(
 
 何がそんなに問題なのでしょうか。図\ref{fig:25_06}をみてください。左右にあるのは同じデータの分布ですが，左側は階層の区別をしない場合で，右側はその区別をした場合です。線形回帰の直線を引いておきましたが，これを見ると明らかなように階層性を考えなければ，私たちは正の相関があるデータだと判断してしまうでしょう。しかし右側，群ごとに区別してモデルを書いてみると，回帰直線は全て右下がり，つまり負の相関があるデータだったことがわかります。階層性や群ごとの特徴を無視して分析してしまうと，結果が真逆になってしまう可能性を孕んでいるわけです。
 \begin{figure}[ht]
-    \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Rplot25_03.png}
-    \caption{階層データの分析が必要な理由}
-    \label{fig:25_06}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Rplot25_03.png}
+		\caption{階層データの分析が必要な理由}
+		\label{fig:25_06}
+	\end{center}
 \end{figure}
 
 \textbf{データは図にする}ことの重要性は何度指摘してもしすぎることはないと思いますが，ことほど左様にデータの持っている性質はなるべく丁寧に見定めなければなりません。そして階層に区分して分析する必要があるのであれば，モデルもそのようにレベルアップさせなければなりません。そこで出てくるのが\keyterm{階層線形モデル}{かいそうせんけいもでる}{Hierarichal Linear Model}です。
@@ -239,12 +239,12 @@ fit <- model_pois$sample(
 
 式を整理するとこうなります。
 \begin{equation}
-\begin{array}{lll}
-    \hat{Y_{ij}} &=& \beta_{0j} + \beta_{1j} X_{ij} \\
-    \beta_{0j} &=& \gamma_{00} + u_{0j} \\
-    \beta_{1j} &=& \gamma_{10} + u_{1j} \\ &&\\
-    \begin{pmatrix} u_{0j} \\ u_{1j} \end{pmatrix} &\sim& MN \left( \begin{pmatrix} 0\\0\end{pmatrix},\begin{pmatrix} \tau_{00} & \tau_{01} \\ \tau_{10} & \tau_{11} \end{pmatrix} \right )
-\end{array}
+	\begin{array}{lll}
+		\hat{Y_{ij}}                                   & =    & \beta_{0j} + \beta_{1j} X_{ij}                                                                                                    \\
+		\beta_{0j}                                     & =    & \gamma_{00} + u_{0j}                                                                                                              \\
+		\beta_{1j}                                     & =    & \gamma_{10} + u_{1j}                                                                                                              \\ &&\\
+		\begin{pmatrix} u_{0j} \\ u_{1j} \end{pmatrix} & \sim & MN \left( \begin{pmatrix} 0\\0\end{pmatrix},\begin{pmatrix} \tau_{00} & \tau_{01} \\ \tau_{10} & \tau_{11} \end{pmatrix} \right )
+	\end{array}
 \end{equation}
 
 あらまあ。何だか訳がわからなくなりそうですね。いやもちろん，じっくり考えればお分かりいただけると信じていますが，直感的にわかりにくいかもしれません。そこで同じことを違う角度から説明してみたいと思います。
@@ -253,11 +253,11 @@ fit <- model_pois$sample(
 この結果を解釈するときは，球団ごとにバラバラの分析をしていることと同じですから，12球団ごとの切片$\beta_{0j}$と傾き$\beta_{1j}$が出てきます。ちょっと面倒ですが，データがそういうものなんだから仕方ありません。
 
 \begin{figure}[ht]
-    \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Rplot25_04.png}
-    \caption{チームごとにバラバラの回帰分析を実施する。できなくはないけど，要するにどういうこと，と言いたくもなる。}
-    \label{fig:25_07}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Rplot25_04.png}
+		\caption{チームごとにバラバラの回帰分析を実施する。できなくはないけど，要するにどういうこと，と言いたくもなる。}
+		\label{fig:25_07}
+	\end{center}
 \end{figure}
 
 でもこれが，12球団ではなく，100球団，1000球団あったらどうしますか。1000個の切片と傾きをずらーっと数表に並べられても，目が痛くなりますね。辛いだけです。せっかく大量のデータを手に入れているのに，分析結果を細かくみてくれなかったら悲しい。かといって「で，結局どういうことなの」と言われた時に，「えー，第1球団の切片と傾きは・・・で，第2球団の切片と傾きは・・・で，第998球団の切片と傾きは・・・」と読み上げることもないでしょう。ではどうするか。
@@ -268,24 +268,24 @@ fit <- model_pois$sample(
 
 またさらに別の角度から考えてみましょう。今度はこの線形モデルの，設計図を書いてみるのです。図\ref{fig:25_08}にそれを書いてみました。
 \begin{figure}[ht]
-    \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/slide25_04.png}
-    \caption{チームごとにバラバラの回帰分析を実施する}
-    \label{fig:25_08}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/slide25_04.png}
+		\caption{チームごとにバラバラの回帰分析を実施する}
+		\label{fig:25_08}
+	\end{center}
 \end{figure}
 
 図\ref{fig:25_08}では，話を簡単にするために係数の共分散を想定しない($\tau_{10}=\tau_{01}=0$)，1次元正規分布から係数が来ているモデルにしています。
 これをみると，
 \begin{enumerate}
-    \item データはポアソン分布からきている；$Y_{ij} = poisson(\lambda_{ij})$
-    \item ポアソン分布は線形モデルから逆リンク関数で接続されてきている；$\lambda_{ij} = exp(\beta_{0j}+\beta_{1j}X_{ij})$
-    \item 線形モデルの切片が別の分布からきている；$\beta_{0j}\sim N(\gamma_{00},\tau_{00})$
-    \item 線形モデルの傾きも別の分布からきている；$\beta_{1j}\sim N(\gamma_{10},\tau_{11})$
-    \item $\gamma_{00}$がどういう数字かわからないので，確率分布(事前分布)でそのわからなさを表現；$\gamma_{00} \sim N(0,10)$
-    \item $\gamma_{10}$がどういう数字かわからないので，確率分布でそのわからなさを表現；$\gamma_{10} \sim N(0,10)$
-    \item $\tau_{00}$がどういう数字かわからないので，確率分布(事前分布)でそのわからなさを表現。SDなのでcauchy分布にしてみた；$\tau_{00} \sim cauchy(0,5)$
-    \item $\tau_{11}$がどういう数字かわからないので，確率分布(事前分布)でそのわからなさを表現。SDなのでcauchy分布にしてみた；$\tau_{11} \sim cauchy(0,5)$
+	\item データはポアソン分布からきている；$Y_{ij} = poisson(\lambda_{ij})$
+	\item ポアソン分布は線形モデルから逆リンク関数で接続されてきている；$\lambda_{ij} = exp(\beta_{0j}+\beta_{1j}X_{ij})$
+	\item 線形モデルの切片が別の分布からきている；$\beta_{0j}\sim N(\gamma_{00},\tau_{00})$
+	\item 線形モデルの傾きも別の分布からきている；$\beta_{1j}\sim N(\gamma_{10},\tau_{11})$
+	\item $\gamma_{00}$がどういう数字かわからないので，確率分布(事前分布)でそのわからなさを表現；$\gamma_{00} \sim N(0,10)$
+	\item $\gamma_{10}$がどういう数字かわからないので，確率分布でそのわからなさを表現；$\gamma_{10} \sim N(0,10)$
+	\item $\tau_{00}$がどういう数字かわからないので，確率分布(事前分布)でそのわからなさを表現。SDなのでcauchy分布にしてみた；$\tau_{00} \sim cauchy(0,5)$
+	\item $\tau_{11}$がどういう数字かわからないので，確率分布(事前分布)でそのわからなさを表現。SDなのでcauchy分布にしてみた；$\tau_{11} \sim cauchy(0,5)$
 \end{enumerate}
 という順番で読み解くことができます。
 データに分布を仮定する，これがベイズ推定のスタートでしたが，仮定された分布のパラメータに，線形モデルという数学的\textbf{構造}が入っています。このパラメータに数式を入れることを\keyterm{モデリング}{もでりんぐ}{modeling}というわけです。そしてそのモデルに含まれている未知数(パラメータ)に，さらに別の分布が入っています。分布に分布が入っているから，混合mixしているわけです。しかもこの混合加減は，上に上にとレベルが上がっていきますので，階層的なモデリングになっています。パラメータのパラメータは，\keyterm{ハイパーパラメータ}{はいぱーぱらめーた}{Hyper parameter}と呼んだりします。かっこいい。
@@ -341,15 +341,15 @@ model{
 
 \paragraph{コード解説}
 \begin{description}
-    \item[dataブロック] データは整然データの形で渡します。データの長さL，説明変数X，被説明変数Yの他に，群の数G，どの群に属するのかを表すインデックス変数G[L]を用意しています。 
-    \item[parametersブロック] 群の数だけ係数$\beta_0,\beta_1$が必要です。加えて，これら切片と傾きの平均値$\gamma$と散らばり$\tau$を用意しています。
-    \item[transformed parametersブロック] \verb|poisson_log|を使ってもいいのですが，話をわかりやすくするために一旦$\lambda_{ij}$を作っています。係数\verb|beta0[g]|のグループを表す\verb|g|のところは，L行目のデータの所属先を表すインデックス，\verb|Gindex[l]|で代入しています。\verb|beta1|についても同様です。
-    \item[modelブロック] データの各行は，行ごとの線形モデルで推定されますのでスッキリしたものです。\verb|beta0[g]|や\verb|beta1[g]|はハイパーパラメータを持つ上位の正規分布にカバーされています。パラメータの事前分布は設計図通りです。
+	\item[dataブロック] データは整然データの形で渡します。データの長さL，説明変数X，被説明変数Yの他に，群の数G，どの群に属するのかを表すインデックス変数G[L]を用意しています。
+	\item[parametersブロック] 群の数だけ係数$\beta_0,\beta_1$が必要です。加えて，これら切片と傾きの平均値$\gamma$と散らばり$\tau$を用意しています。
+	\item[transformed parametersブロック] \verb|poisson_log|を使ってもいいのですが，話をわかりやすくするために一旦$\lambda_{ij}$を作っています。係数\verb|beta0[g]|のグループを表す\verb|g|のところは，L行目のデータの所属先を表すインデックス，\verb|Gindex[l]|で代入しています。\verb|beta1|についても同様です。
+	\item[modelブロック] データの各行は，行ごとの線形モデルで推定されますのでスッキリしたものです。\verb|beta0[g]|や\verb|beta1[g]|はハイパーパラメータを持つ上位の正規分布にカバーされています。パラメータの事前分布は設計図通りです。
 \end{description}
 
 これを使って，年俸でホームランの数を予測する階層線形モデルを推定させましょう。結果を出力\ref{RS:out25_02}に示してあります。
 \begin{Rscreen}{ハイパーパラメータの推定値}{out25_02}
-\begin{verbatim}
+	\begin{verbatim}
 Varname    EAP    MED    MAP     SD    L95    L50    U50    U95  Rhat
 <chr>    <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl> <dbl>
 1 gamma0  1.44   1.45   1.44   0.121  1.20   1.37   1.52   1.68    1.00
@@ -362,11 +362,11 @@ Varname    EAP    MED    MAP     SD    L95    L50    U50    U95  Rhat
 
 最後にこの結果をプロットしてみました。球団ごとの50\%確信区間も合わせてプロットしてあります。これをみると傾きや切片の球団ごとの違いがイメージしやすくなるかと思います。
 \begin{figure}[ht]
-    \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Rplot25_05.png}
-    \caption{階層線形モデル；チームごとのポアソン回帰分析}
-    \label{fig:25_09}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=12cm,keepaspectratio]{../images/25_HLM/Rplot25_05.png}
+		\caption{階層線形モデル；チームごとのポアソン回帰分析}
+		\label{fig:25_09}
+	\end{center}
 \end{figure}
 
 今日は分布を混ぜるというところから，線形モデルを階層的に組み上げていくことを説明してみました。数式的には難しいように感じるかもしれませんが，設計図を書いてコードにできれば，分析イメージは掴めるのではないでしょうか。
@@ -379,4 +379,4 @@ Varname    EAP    MED    MAP     SD    L95    L50    U50    U95  Rhat
 野球のデータで，野手の長打率を年俸で予測するモデルに個人差を入れたモデルを考えてみましょう。今回，長打率は安打数\verb|Hit|のうち，ホームランの本数\verb|HR|から考える割合とします。割合情報の分析ですので，二項分布で表現できます。二項分布の確率$\theta$の線形モデルに個人差を入れ，分析してみましょう。コード\ref{stan::25_01}が参考になるはずです。
 \paragraph{階層線形モデルのコードを書いてみよう}
 野球のデータで，年俸でピッチャーの勝利数を予測する階層線形モデルを考えてみましょう。12球団の平均や，球団ごとの散らばりはどれぐらいになるでしょうか。ピッチャーの勝利数はポアソン分布に従うと考えられますので，コード\ref{stan::25_02}が参考になるでしょう。データ加工のコードは伴走サイトで提供しますが，ご自身でコードを書いても一向に構いません。
-\end{document} 
+\end{document}

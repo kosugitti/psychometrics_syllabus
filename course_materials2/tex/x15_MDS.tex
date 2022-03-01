@@ -2,9 +2,9 @@
 \usepackage{docmute} 
 \usepackage{../../myStyle} 
 
-\begin{document} 
+\begin{document}
 \chapter{多次元尺度構成法}
-\label{x15_MDS} 
+\label{x15_MDS}
 今回は\keyterm{多次元尺度構成法}{たじげんしゃくどこうせいほう}{Multi-Dimensional Sacling; MDS}について解説します。
 ここまで分散共分散行列を分解するところから，クロス表のような名義尺度水準のデータを分解するところまでやってきました。
 
@@ -21,20 +21,20 @@ MDSは距離行列を固有値分解するモデルです。それではこの�
 Rにはサンプルデータとして\texttt{eurodist}というヨーロッパ各地の都市間距離のデータが用意されています。表\ref{tbl::15_01}にその一部を示します。
 
 \begin{table}[ht]
-    \centering
-    \begin{tabular}{l|rrrrrr}
-    \hline
-      & Athens & Barcelona & Brussels & Calais & Cherbourg & Cologne\\
-    \hline
-    Athens & 0 &  &  &  &  & \\
-    Barcelona & 3313 & 0 & &  &  & \\
-    Brussels & 2963 & 1318 & 0 &  &  & \\
-    Calais & 3175 & 1326 & 204 & 0 &  & \\
-    Cherbourg & 3339 & 1294 & 583 & 460 & 0 & \\
-    Cologne & 2762 & 1498 & 206 & 409 & 785 & 0\\
-    \hline
-    \end{tabular}
-    \label{tbl::15_01}
+	\centering
+	\begin{tabular}{l|rrrrrr}
+		\hline
+		          & Athens & Barcelona & Brussels & Calais & Cherbourg & Cologne \\
+		\hline
+		Athens    & 0      &           &          &        &           &         \\
+		Barcelona & 3313   & 0         &          &        &           &         \\
+		Brussels  & 2963   & 1318      & 0        &        &           &         \\
+		Calais    & 3175   & 1326      & 204      & 0      &           &         \\
+		Cherbourg & 3339   & 1294      & 583      & 460    & 0         &         \\
+		Cologne   & 2762   & 1498      & 206      & 409    & 785       & 0       \\
+		\hline
+	\end{tabular}
+	\label{tbl::15_01}
 \end{table}
 
 元のデータは$21 \times 21$のサイズです。表から，例えばアテネ(Athens)とバルセロナ(Barcelona)の距離が3313km，と言うことが読み取れます。表の右上が空白になっていますが，これは\keytermL{距離行列}{きょりぎょうれつ}が\keytermL{対称行列}{たいしょうぎょうれつ}なので，無駄な情報を表示しないようにしているからです。アテネとバルセロナの距離は，バルセロナとアテネの距離に等しいですからね。
@@ -45,11 +45,11 @@ Rにはサンプルデータとして\texttt{eurodist}というヨーロッパ�
 
 
 \begin{figure}
-    \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/15_MDS/Rplot15_01.png}
-    \caption{MDSのプロット}
-    \label{fig::15_01}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=12cm,keepaspectratio]{../images/15_MDS/Rplot15_01.png}
+		\caption{MDSのプロット}
+		\label{fig::15_01}
+	\end{center}
 \end{figure}
 
 図\ref{fig::15_01}をみると，上の方にストックホルム(Stockholm)があって，右下にアテネが，中央にパリ(Paris)が・・・といった配置になっています。地球上の位置と完全に一致しているとは言えませんが，それでも概ねうまくプロットできていますね\footnote{完全に一致しない理由は，地球が球面であるのに対し平面にプロットしたから，と言うのもあります。}。このように，距離関係だけから地図を作ることができるというのが，MDSという手法なのです。
@@ -59,10 +59,10 @@ Rにはサンプルデータとして\texttt{eurodist}というヨーロッパ�
 MDSは距離関係だけから地図を作る方法でした。因子分析は相関関係から次元を作る方法でした。この2つの手法はとても似ています。というのも，相関関係と言うのが変数と変数の近さ・遠さ，つまり距離を表しているとも言えるからです。
 あらためて\keyterm{距離}{きょり}{distance}とは何かを考えてみましょう。2点$x,y$の距離を$d(x,y)$とすると，距離とよばれる数字の条件は次のようになります。
 \begin{description}
-    \item[非負性] $d(x,y)\ge 0$
-    \item[非退化性] $d(x,y)=0 \Leftrightarrow x=y$
-    \item[対称性] $d(x,y)=d(y,x)$
-    \item[三角不等式] $d(x,z) + d(z,y) \ge d(x,y)$
+	\item[非負性] $d(x,y)\ge 0$
+	\item[非退化性] $d(x,y)=0 \Leftrightarrow x=y$
+	\item[対称性] $d(x,y)=d(y,x)$
+	\item[三角不等式] $d(x,z) + d(z,y) \ge d(x,y)$
 \end{description}
 もっとも一般的に使われるのはユークリッド距離で，2次元座標$(x_1,y_1),(x_2,y_2)$があった時のユークリッド距離は次のように計算します。
 \[ \sqrt{(x_1-x_2)^2+(y_1-y_2)^2} \]
@@ -123,4 +123,4 @@ $$ \delta_{jk} > \delta_{lm} \mbox{ならば}d_{jk}\le d_{lm} $$
 
 \section{課題}
 
-\end{document} 
+\end{document}

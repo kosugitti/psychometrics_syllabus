@@ -2,9 +2,9 @@
 \usepackage{docmute} 
 \usepackage{../../myStyle} 
 
-\begin{document} 
-\chapter{実験計画法3；一要因モデル(Within)} 
-\label{m14_design3} 
+\begin{document}
+\chapter{実験計画法3；一要因モデル(Within)}
+\label{m14_design3}
 
 ここまで，線形モデルとしての実験計画法を見てきました。一要因，二要因がそれぞれ単回帰分析，重回帰分析に対応すること，二要因以上になると組み合わせの効果が出現することなどを見てきました。
 しかしここまでの話はいずれも，\keytermL{群間要因}{ぐんかんよういん}計画の話でした。そこで\keytermL{群内要因}{ぐんないよういん}計画の場合はどのようになるか，というところに目を向けていきたいと思います。
@@ -17,27 +17,27 @@
 % latex table generated in R 4.0.2 by xtable 1.8-4 package
 % Fri Sep 11 14:57:29 2020
 \begin{table}[ht]
-  \centering
-  \caption{Within Data Example} 
-  \begin{tabular}{lrrr}
-    \hline
-  ID & Time1 & Time2 & Time3 \\ 
-    \hline
-  1 & 10 & 5 & 9 \\ 
-    2 & 9 & 4 & 5 \\ 
-    3 & 4 & 2 & 3 \\ 
-    4 & 7 & 3 & 5 \\ 
-     \hline
-  \end{tabular}
-  \label{tbl::22_05}
-  \end{table}
+	\centering
+	\caption{Within Data Example}
+	\begin{tabular}{lrrr}
+		\hline
+		ID & Time1 & Time2 & Time3 \\
+		\hline
+		1  & 10    & 5     & 9     \\
+		2  & 9     & 4     & 5     \\
+		3  & 4     & 2     & 3     \\
+		4  & 7     & 3     & 5     \\
+		\hline
+	\end{tabular}
+	\label{tbl::22_05}
+\end{table}
 このデータを図にしてみましょう。ポイントは，3つの調査時点(Time1,2,3)それぞれが独立ではなく，クライアント番号(ID)は共通しているというところです。横軸は時間だとすると，その軸に意味がありますから，同じ人のデータ点を線で結ぶことができるのです。
 
 \begin{figure}
-  \centering
-  \includegraphics[keepaspectratio,width=8cm]{../images/22_anovaOnR/Rplot22_03.png}
-  \caption{介入効果によるクライアントの状態変化}
-  \label{fig::22_05}
+	\centering
+	\includegraphics[keepaspectratio,width=8cm]{../images/22_anovaOnR/Rplot22_03.png}
+	\caption{介入効果によるクライアントの状態変化}
+	\label{fig::22_05}
 \end{figure}
 図\ref{fig::22_05}をみていると，個人差こそあれ，第一期(Time1)から二期(Time2)にかけては一旦下降傾向があり，第二期から三期(Time3)にかけては上昇傾向があるのかなあ，と思ったりします。この直感をデータで検証してくことが大事ですね。
 
@@ -47,24 +47,24 @@
 
 ここで$x_{ij}$はまたしても，第$j$期に$b_j$の効果がある($1$)かない($0$)かを表している記号だと思ってください。具体的には，$i$さんの3つの時期$j=1,2,3$の効果を隠さずに書くとしたら，次のようになっていることに注意です。
 \[
-  y_{i1} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i1} = b_0 + d_i + b_1 \times 1 + b_2 \times 0 + b_3 \times 0 + e_{i1} = b_0 + d_i + b_1 + e_{i1}\\
-\] 
-
-\[ 
-  y_{i2} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i2} = b_0 + d_i + b_1 \times 0 + b_2 \times 1 + b_3 \times 0 + e_{i2} = b_0 + d_i + b_2 + e_{i2}\\
+	y_{i1} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i1} = b_0 + d_i + b_1 \times 1 + b_2 \times 0 + b_3 \times 0 + e_{i1} = b_0 + d_i + b_1 + e_{i1}\\
 \]
 
 \[
-y_{i3} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i3} = b_0 + d_i + b_1 \times 0 + b_2 \times 0 + b_3 \times 1 + e_{i3} = b_0 + d_i + b_3 + e_{i3}\\
+	y_{i2} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i2} = b_0 + d_i + b_1 \times 0 + b_2 \times 1 + b_3 \times 0 + e_{i2} = b_0 + d_i + b_2 + e_{i2}\\
+\]
+
+\[
+	y_{i3} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i3} = b_0 + d_i + b_1 \times 0 + b_2 \times 0 + b_3 \times 1 + e_{i3} = b_0 + d_i + b_3 + e_{i3}\\
 \]
 
 また，ポイントとして，新たに$d_i$というのが出てきていることに注意してください。これは$i$に伴って変わる数字で，時期$j$の添字がついていませんから，「時期を通して一貫した個人の平均値」ということになります。$b_0$は$i$も$j$もついていませんから，個人にも時期にも関係なく変化しない全体の平均値を表しています。
 
 \begin{figure}[ht]
-  \centering
-  \includegraphics[keepaspectratio,width=12cm]{../images/14_design3/slide14_01.png}
-  \caption{線形モデルで表現}
-  \label{fig::22_06}
+	\centering
+	\includegraphics[keepaspectratio,width=12cm]{../images/14_design3/slide14_01.png}
+	\caption{線形モデルで表現}
+	\label{fig::22_06}
 \end{figure}
 
 これを図で表したのが図\ref{fig::22_06}です。全体平均$b_0$とは別に，個別の平均$d_i$の水平線が引かれています。個人平均は個々人のベースラインですので，時期によって変わりません。時期の効果$b_j$は4人に等しく影響します。添字$i$がないことでこれを表現しています。効果は同じであったとしても，個人の平均が違うので，データとして得られる数字は様々になっている，というわけです。もちろん個人差，効果を考慮しても析出できない誤差$e_{ij}$がありますし，これまで同様$b_{j}$は相対的，つまり全ての水準を足し合わせると$0$になってしまうものです。また，個人の平均値$d_i$も相対的なものとして捉えられます。全体平均$b_0$が別にあるからですね。これまで同様に無作為に割り付けているので，何の効果も個人差もなかったら，全体平均の横一線に並ぶはずだ，というのが基本的なアイデアだからです。
@@ -77,49 +77,49 @@ y_{i3} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i3} = b_0 + d_i +
 % latex table generated in R 4.0.2 by xtable 1.8-4 package
 % Fri Sep 11 14:57:29 2020
 \begin{table}[ht]
-  \centering
-  \caption{水準ごとの平均から効果を考える} 
-  \begin{tabular}{lrrr|r}
-    \hline
-  ID & Time1 & Time2 & Time3 & 平均\\ 
-    \hline
-  1 & 10 & 5 & 9 & 8\\ 
-    2 & 9 & 4 & 5 & 6\\ 
-    3 & 4 & 2 & 3 & 3\\ 
-    4 & 7 & 3 & 5 & 5\\ 
-     \hline
-平均 & 7.5 & 3.5 &  5.5 &  5.5 \\\hline
-  \end{tabular}
-  \label{tbl::22_06}
-  \end{table}
+	\centering
+	\caption{水準ごとの平均から効果を考える}
+	\begin{tabular}{lrrr|r}
+		\hline
+		ID   & Time1 & Time2 & Time3 & 平均 \\
+		\hline
+		1    & 10    & 5     & 9     & 8    \\
+		2    & 9     & 4     & 5     & 6    \\
+		3    & 4     & 2     & 3     & 3    \\
+		4    & 7     & 3     & 5     & 5    \\
+		\hline
+		平均 & 7.5   & 3.5   & 5.5   & 5.5  \\\hline
+	\end{tabular}
+	\label{tbl::22_06}
+\end{table}
 こうして，効果，個人差，誤差を計算して表にしたのが表\ref{tbl::22_07}です。例によって総和すると0ですので，平方和を計算することで相対的な大きさを比較できるようになります。
 
 % latex table generated in R 4.0.2 by xtable 1.8-4 package
 % Fri Sep 11 15:52:17 2020
 \begin{table}[ht]
-  \centering
-  \caption{効果，個人差，誤差を析出する} 
-  \begin{tabular}{llrcrrr}
-    \hline
-  ID & 時期 & スコア & 全体平均 & 個人差 & 効果 & 誤差 \\ 
-    \hline
-  1 & Time1 & 10 & 5.5 & +2.5 & +2.0 & 0.0\\ 
-    1 & Time2 & 5 & 5.5 & +2.5 & -2.0 & -1.0\\ 
-    1 & Time3 & 9 & 5.5 & +2.5 & 0.0 & +1.0\\ 
-    2 & Time1 & 9 & 5.5 & +0.5 & +2.0 & +1.0\\ 
-    2 & Time2 & 4 & 5.5 & +0.5 & -2.0 & 0.0\\ 
-    2 & Time3 & 5 & 5.5 & +0.5 & 0.0 & -1.0\\ 
-    3 & Time1 & 4 & 5.5 & -2.5 & +2.0 & -1.0\\ 
-    3 & Time2 & 2 & 5.5 & -2.5 & -2.0 & +1.0\\ 
-    3 & Time3 & 3& 5.5 & -2.5 & 0.0 & 0.0 \\ 
-    4 & Time1 & 7 & 5.5 & -0.5 & +2.0 & 0.0\\ 
-    4 & Time2 & 3 & 5.5 & -0.5 & -2.0 & 0.0\\ 
-    4 & Time3 & 5& 5.5  & -0.5 & 0.0 & 0.0 \\ 
-     \hline\hline
-  平方和&&&&39.0 & 32.0&6.0\\\hline
-  \end{tabular}
-  \label{tbl::22_07}
-  \end{table}
+	\centering
+	\caption{効果，個人差，誤差を析出する}
+	\begin{tabular}{llrcrrr}
+		\hline
+		ID     & 時期  & スコア & 全体平均 & 個人差 & 効果 & 誤差 \\
+		\hline
+		1      & Time1 & 10     & 5.5      & +2.5   & +2.0 & 0.0  \\
+		1      & Time2 & 5      & 5.5      & +2.5   & -2.0 & -1.0 \\
+		1      & Time3 & 9      & 5.5      & +2.5   & 0.0  & +1.0 \\
+		2      & Time1 & 9      & 5.5      & +0.5   & +2.0 & +1.0 \\
+		2      & Time2 & 4      & 5.5      & +0.5   & -2.0 & 0.0  \\
+		2      & Time3 & 5      & 5.5      & +0.5   & 0.0  & -1.0 \\
+		3      & Time1 & 4      & 5.5      & -2.5   & +2.0 & -1.0 \\
+		3      & Time2 & 2      & 5.5      & -2.5   & -2.0 & +1.0 \\
+		3      & Time3 & 3      & 5.5      & -2.5   & 0.0  & 0.0  \\
+		4      & Time1 & 7      & 5.5      & -0.5   & +2.0 & 0.0  \\
+		4      & Time2 & 3      & 5.5      & -0.5   & -2.0 & 0.0  \\
+		4      & Time3 & 5      & 5.5      & -0.5   & 0.0  & 0.0  \\
+		\hline\hline
+		平方和 &       &        &          & 39.0   & 32.0 & 6.0  \\\hline
+	\end{tabular}
+	\label{tbl::22_07}
+\end{table}
 
 ここにあるように，個人$i$の時期$j$における誤差，と各セルに細かく誤差が計算できるようになりました。これが群内要因計画の強みなのです。
 
@@ -134,10 +134,10 @@ y_{i3} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i3} = b_0 + d_i +
 であれば，全ての研究が群内計画であればよいのに，と思うかもしれません。ただし現実的な問題として，同じ人に何度も何度もデータを提供してもらうのは，非常に負担をかけることになります(群内計画は反復測定計画とも呼ばれるのでした)。研究倫理的な観点，あるいは計画上の手間を考えると，群間計画にせざるを得ないということが少なくありません。研究者，研究に協力してくれる人，のコストを考えて実験計画はデザインする必要があるということです。
 
 \begin{figure}[ht]
-  \centering
-  \includegraphics[keepaspectratio,width=12cm]{../images/22_anovaOnR/slide22_04.png}
-  \caption{群内計画と群間計画の違い}
-  \label{fig::22_07}
+	\centering
+	\includegraphics[keepaspectratio,width=12cm]{../images/22_anovaOnR/slide22_04.png}
+	\caption{群内計画と群間計画の違い}
+	\label{fig::22_07}
 \end{figure}
 
 \section{分布から考える}
@@ -150,8 +150,8 @@ y_{i3} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i3} = b_0 + d_i +
 群間計画の場合は，各項目の値$y_i$を切片$b_0$と効果$b_1$と誤差に分けます。
 \[ y_i = b_0 + b_1 + e_i, \mbox{ただしここで}e_i \sim Normal(0, \sigma) \]
 \begin{figure}[ht]
-  \centering
-  \includegraphics[keepaspectratio,width=4cm]{../images/14_design3/slide14_02.png}
+	\centering
+	\includegraphics[keepaspectratio,width=4cm]{../images/14_design3/slide14_02.png}
 \end{figure}
 この$e_i$が正規分布に従うのですが，$b_0+b_1$のところは確率的に変わるものではないことに注意してください。ここが確率的に変わらないということをよく考えれば，数式に沿ってある値が足されることと同じです。右辺全体で見ると，$b_0+b_1$のところは，正規分布の位置を非確率的にずらすことでもあります。さらに言えば，正規分布の平均値が$b_0+b_1$なのであり，式全体を次のように書き換えることができます。
 
@@ -166,8 +166,8 @@ y_{i3} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i3} = b_0 + d_i +
 さてそうすると，群内計画の場合は2つの異なる正規分布が混ぜ合わさった形になっていることになります。
 \[ y_{ij} = b_0 + d_i + b_{ij} + e_{ij}, \mbox{ただしここで}d_i \sim Normal(0,\delta), e_{ij} \sim Normal(0,\sigma) \]
 \begin{figure}[ht]
-  \centering
-  \includegraphics[keepaspectratio,width=6cm]{../images/14_design3/slide14_03.png}
+	\centering
+	\includegraphics[keepaspectratio,width=6cm]{../images/14_design3/slide14_03.png}
 \end{figure}
 確率的なモデルで考えると，群内計画のデータには2つの分布が混ざり込んでいるので，\keyterm{混合効果モデル}{こんごうこうかもでる}{Mixed Effect Model}と呼ぶことがあります。先ほどの群間計画では，$b_0+b_1$で平均値をずらした正規分布にデータが従うことになりましたが，群内計画では$b_0+b_1+d_i$が既に確率的に分布し，それが平均値となった確率分布がデータの従う分布になる，つまり(誤差の)正規分布の中に(個人差の)正規分布が入れ子になった形でモデルが表現されたことになります。分布が混ざったので\textbf{混合}というのですね。またより複雑なモデルの場合，この個人差を説明する他の変数や要因をつかって，個人差の分布もモデル化することになります。そのような場合，個人差に関係なく全体に及ぼす効果のことを\keyterm{固定効果}{こていこうか}{Fixed Effect}，個人差とともに変わりうる効果のことを\keyterm{変量効果}{へんりょうこうか}{Random Effect}と呼んで区別することがあります。名前だけでも覚えておいてください。
 
@@ -180,4 +180,4 @@ y_{i3} = b_0 + d_i + b_1 x_{i1} + b_2 x_{i2} + b_3 x_{i3} + e_{i3} = b_0 + d_i +
 
 \section{課題}
 
-\end{document} 
+\end{document}

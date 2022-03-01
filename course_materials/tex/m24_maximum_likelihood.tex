@@ -17,9 +17,9 @@
 
 データの組，$X_i,Y_i$があった時に，変数$X$をつかって$Y$を予測する，線形モデルを当てはめるということを考えるのでした。線形モデルは最も単純な一次式で，
 \[\hat{Y}_i = b_0 + b_1 X_i \]
- とし，予測値$\hat{Y}$に誤差$e$がついて実現値$Y$が得られると考えて，
- \[ Y_i= b_0 + b_1 X_i + e_i  \]
- とするのでした。第\ref{m08_CorrelationCausation}講でやった\keytermL{最小二乗法}{さいしょうにじょうほう}は，この式をデータに当てはめ，データの中で誤差が一番小さくなるように切片を求める，という方法だったことを思い出してください。あくまでも手元のデータの話しかしていませんでしたが，これに推測統計学のエッセンス，つまり手元のデータは標本に過ぎず，母集団の中でどうか，ということを考えたいと思います。
+とし，予測値$\hat{Y}$に誤差$e$がついて実現値$Y$が得られると考えて，
+\[ Y_i= b_0 + b_1 X_i + e_i  \]
+とするのでした。第\ref{m08_CorrelationCausation}講でやった\keytermL{最小二乗法}{さいしょうにじょうほう}は，この式をデータに当てはめ，データの中で誤差が一番小さくなるように切片を求める，という方法だったことを思い出してください。あくまでも手元のデータの話しかしていませんでしたが，これに推測統計学のエッセンス，つまり手元のデータは標本に過ぎず，母集団の中でどうか，ということを考えたいと思います。
 
 ところで，この時も仮定として誤差の分布に\keytermL{正規分布}{せいきぶんぷ}を仮定していましたね。誤差はさまざまな未知なる要因の積み重ねですから，数字を増やす方向に加わるのか，減らす方向に加わるのかは分かりません。それでも極端に大きな誤差というのは出にくく，平均周りの誤差が出やすいと考えるなら，単峰で左右対称のベルカーブのような形になるはずです。また，今回ここで考えているのは\keytermL{偶然誤差}{ぐうぜんごさ}ですから\footnote{これに対して\keytermL{系統誤差}{けいとうごさ}というのがありました。システマチックな誤差，という意味で，常に定数が加わるようなイメージです。体重計などの秤で何も測っていない時にメモリがずれているようなものですから，今回のケースではその補正は触れません。測定する際に気をつけるべきことで，気をつけてもなくならないのが偶然誤差です。}，その平均はゼロだと考えられます。ですから，$e_i = Y_i - \hat{Y}_i$をデータ全体で最小にするようにモデルをフィッティングするのでした。ここまでは前期の復習になります。
 
@@ -39,37 +39,37 @@
 \[ Y_i =  \beta_0 + \beta_1 X_i+ e_i \]
 ということになります。ここで$ \beta_0 + \beta_1 X_i$のところは確率的に変わるものではない，ということを思い出してください。
 \begin{center}
-    \includegraphics[keepaspectratio,width=6cm]{../images/26_bayesian2/eq26_01.png}
+	\includegraphics[keepaspectratio,width=6cm]{../images/26_bayesian2/eq26_01.png}
 \end{center}
 誤差$e_i$は平均0を中心に確率的に散らばりますが，その前のところは確率的ではありませんので，これを組み合わせた式全体としては，最後に確率的な散らばりがひっついているような形になります。
 \begin{center}
-    \includegraphics[keepaspectratio,width=5cm]{../images/26_bayesian2/eq26_02.png}
+	\includegraphics[keepaspectratio,width=5cm]{../images/26_bayesian2/eq26_02.png}
 \end{center}
 
 さて，この「確率的でないところ」が確率分布の中に入り込むとしたら，誤差$e_i$の平均値を一定の量，$\beta_0 + \beta_1 X_i$分だけ動かすことになります。
 回帰直線が表しているのは，誤差のない予測の線でもあります。実際のデータはそれに誤差が伴って生じます。確率モデルになった線形モデルは，図\ref{fig::24_01}のようなイメージで考えるといいかもしれません。
 \begin{figure}[ht]
-    \centering
+	\centering
 	\includegraphics[keepaspectratio,width=12cm]{../images/24_ML/Rplot24_06.png}
-    \caption{予測直線にまとわりつく誤差}
-    \label{fig::24_01}
+	\caption{予測直線にまとわりつく誤差}
+	\label{fig::24_01}
 \end{figure}
 
 ここで正規分布がもつ2つのパラメータ，$\mu$と$\sigma$は，それぞれ\textbf{位置}と\textbf{幅}を表しているわけですが，確率的でないところはこの位置をズラすような作用をすることになります。
 
 大事なところなので，もう一度式で確認しながら説明します。まず今回のモデルに含まれる情報は次のとおりです。
 \begin{eqnarray}
-    \hat{Y}_i = \beta_0 + \beta_1 X_i \label{eq24_01}\\
-    Y_i = \hat{Y}_i + e_i \label{eq24_02}\\
-    e_i \sim N(0,\sigma)\label{eq24_03}
+	\hat{Y}_i = \beta_0 + \beta_1 X_i \label{eq24_01}\\
+	Y_i = \hat{Y}_i + e_i \label{eq24_02}\\
+	e_i \sim N(0,\sigma)\label{eq24_03}
 \end{eqnarray}
 ここで式\ref{eq24_01}と\ref{eq24_02}を合わせて，
 \begin{equation}
-    \begin{array}{ccc}
-    Y_i &=& \beta_0 + \beta_1 X_i +e_i\\
-    e_i &\sim& N(0,\sigma)
-    \end{array}
-    \label{eq24_04}
+	\begin{array}{ccc}
+		Y_i & =    & \beta_0 + \beta_1 X_i +e_i \\
+		e_i & \sim & N(0,\sigma)
+	\end{array}
+	\label{eq24_04}
 \end{equation}
 とします。ここで$e_i$の中心は$0$で，それに$\beta_0 + \beta_1 X_i$が加わるのですから，
 \[ Y_i \sim N(\beta_0 + \beta_1X_i, \sigma) \]
@@ -77,8 +77,8 @@
 
 あるいは，式\ref{eq24_02}と\ref{eq24_03}から先に，
 \begin{eqnarray}
-    \hat{Y}_i &=& \beta_0 + \beta_1 X_i \label{eq24_05}\\
-    e_i &\sim& N(\hat{Y}_i,\sigma) \label{eq24_06}
+	\hat{Y}_i &=& \beta_0 + \beta_1 X_i \label{eq24_05}\\
+	e_i &\sim& N(\hat{Y}_i,\sigma) \label{eq24_06}
 \end{eqnarray}
 と考えて，この式\ref{eq24_06}の$\hat{Y}_i$に式\ref{eq24_05}を代入しても，
 \[ Y_i \sim N(\beta_0 + \beta_1X_i, \sigma) \]
@@ -140,7 +140,7 @@ result.LM
 \end{lstlisting}
 結果は出力\ref{RS:out24_01}のようになります。
 \begin{Rscreen}{比較した結果}{out24_01}
-    \begin{verbatim}
+	\begin{verbatim}
 > # 最小二乗法の推定
 > result.LS <- lsfit(x = batter$height, y = batter$weight)
 > result.LS$coefficients
@@ -184,10 +184,10 @@ F-statistic: 226.9 on 1 and 327 DF,  p-value: < 2.2e-16
 \section{課題}
 \paragraph{回帰分析の結果を読み取る}出力\ref{RS:out24_01}の読み取り方について，正しい記述を全て選んでください。
 \begin{itemize}
-    \item 回帰係数が$1.166$である確率は$p<0.05$なので，滅多に得られる数字ではないから統計的に意味がない。
-    \item 回帰係数の有意性検定が示しているのは，傾きが0であるという帰無仮説のもとで今回の係数$1.166$が得られる確率が小さい($p<0.05$)ということだから，統計的に意味がある。
-    \item 今回のデータから考えると，回帰係数を$1.166$としたときに尤度が最も高くなる。
-    \item 今回のデータから考えると，回帰係数を$1.166$としたときに残差の総量(二乗和)が最も小さくなる。
-    \item 今回のデータから考えると，回帰係数が$1.166$となる確率は95\%以上である。
+	\item 回帰係数が$1.166$である確率は$p<0.05$なので，滅多に得られる数字ではないから統計的に意味がない。
+	\item 回帰係数の有意性検定が示しているのは，傾きが0であるという帰無仮説のもとで今回の係数$1.166$が得られる確率が小さい($p<0.05$)ということだから，統計的に意味がある。
+	\item 今回のデータから考えると，回帰係数を$1.166$としたときに尤度が最も高くなる。
+	\item 今回のデータから考えると，回帰係数を$1.166$としたときに残差の総量(二乗和)が最も小さくなる。
+	\item 今回のデータから考えると，回帰係数が$1.166$となる確率は95\%以上である。
 \end{itemize}
 \end{document}

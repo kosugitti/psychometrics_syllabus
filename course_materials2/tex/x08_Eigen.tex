@@ -2,9 +2,9 @@
 \usepackage{docmute} 
 \usepackage{../../myStyle} 
 
-\begin{document} 
-\chapter{因子分析モデルの行列表現} 
-\label{x08_eigen} 
+\begin{document}
+\chapter{因子分析モデルの行列表現}
+\label{x08_eigen}
 
 \section{固有値と固有ベクトル}
 今回は正方行列にみられる面白い特徴である，\keyterm{固有値}{こゆうち}{eigenvalue}と\keyterm{固有ベクトル}{こゆうべくとる}{eigenvector}についての話から始めます。
@@ -12,38 +12,38 @@
 
 \[ \bm{Ax} = \lambda\bm{x} \]
 
-一見すると，$\bm{x}$が両辺に入っていますから，$\bm{A}$が$\lambda$に置き換わった等式に見えます。しかし一方は行列で，他方はスカラーです。こんな奇妙なことが本当にあるのでしょうか？ 
+一見すると，$\bm{x}$が両辺に入っていますから，$\bm{A}$が$\lambda$に置き換わった等式に見えます。しかし一方は行列で，他方はスカラーです。こんな奇妙なことが本当にあるのでしょうか？
 具体的な数値例をみてみましょう。
 
 \[
- \bm{A} = \begin{pmatrix} 
-1 & 6 \\ 2 & 5 
-\end{pmatrix}
-,\bm{x} = \begin{pmatrix} 
-1 \\ 1 
-\end{pmatrix}
+	\bm{A} = \begin{pmatrix}
+		1 & 6 \\ 2 & 5
+	\end{pmatrix}
+	,\bm{x} = \begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
 \]
 
 を例にします。この時次の関係が成り立ちます。
 
 \[
-\bm{Ax} = 
-\begin {pmatrix}
-1 & 6 \\
-2 & 5 \\
-\end{pmatrix}
-\begin{pmatrix}
-1 \\ 1
-\end{pmatrix}
-=
-\begin{pmatrix}
-7 \\ 7
-\end{pmatrix}
-=7
-\begin{pmatrix}
-1 \\ 1
-\end{pmatrix}
-=7 \bm{x}
+	\bm{Ax} =
+	\begin {pmatrix}
+	1 & 6 \\
+	2 & 5 \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		7 \\ 7
+	\end{pmatrix}
+	=7
+	\begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
+	=7 \bm{x}
 \]
 
 確かに成立する組み合わせがありますね。この行列$\bm{A}$に対して，7が固有値，$(1,1)$が固有ベクトルになっています。
@@ -58,7 +58,7 @@
 
 \[ \sum_{i=1}^N \lambda_i = trace(\bm{A}) = \sum_{i=1}^N a_{ii} \]
 
- ここで$a_{ij}$は行列$\bm{A}$の要素であり，$a_{ii}$は$i$行$i$列目，つまり対角要素です。
+ここで$a_{ij}$は行列$\bm{A}$の要素であり，$a_{ii}$は$i$行$i$列目，つまり対角要素です。
 この正方行列$\bm{A}$のサイズは$N$で，対角要素の総和を特に\keyterm{トレース}{とれーす}{trace}といい$trace(\bm{A})$と表します。
 それが固有値の総和とイコールになる，ということを表しています。サイズ$N$の正方行列からは固有値が$N$個算出できることがわかっており，それを全て足し合わせたものがトレースと同じになっているのですね。先ほどの例で言えば，$\bm{A}$のトレースは$1+5=6$で，固有値の総和は$7-1=6$であり，確かにこの関係が成立していることがわかります。
 
@@ -68,13 +68,13 @@
 固有値都行列の関係は冒頭で示したように，$\bm{Ax}=\lambda \bm{x}$であり，正方行列の特徴をスカラーにしてしまうというものです。得られる$N$個の固有値は，元の正方行列のエッセンスをスカラーにして表現しているわけです。ここで固有値の大きさの順に並べ替えて，順に$\lambda_1,\lambda_2 \cdots \lambda_n$としたとしましょう。ここで固有ベクトルの大きさを$\bm{xx'}=1$となるように選んでやれば，元の行列を次のように書き換えることができます。
 
 \[
-    \bm{Axx'} = \lambda \bm{xx'}
+	\bm{Axx'} = \lambda \bm{xx'}
 \]
 
 ここから，次のように行列$\bm{A}$を分解して行くことができます。
 
 \[
-    \bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
+	\bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
 \]
 
 これらをまとめると，固有値は元の行列の対角要素の情報を表したものであり，全体の情報量はそのままに重要度の順に並べ替えたものである，といえるでしょう。
@@ -127,7 +127,7 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 
 ある正方行列から固有値$\lambda$と固有ベクトル$\bm{a}$が得られたとします。このベクトル$\bm{a}$の全ての要素を定数$c$倍したベクトル$\bm{b}=c\bm{a}$を考えると，これもやはり同じ関係が成り立ちます。
 \begin{equation}
-\bm{A}\bm{b}=  \lambda c \bm{a} =\lambda \bm{b}
+	\bm{A}\bm{b}=  \lambda c \bm{a} =\lambda \bm{b}
 \end{equation}
 先ほどの計算でも明らかになりましたが，固有ベクトルの値は絶対的なものではなく，要素間の相対的大きさを反映しているに過ぎないのでしたね。
 
@@ -135,40 +135,40 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 
 固有値と固有ベクトルの話の最初にあった，$\bm{Ax}=\lambda\bm{x}$というのを見直してみましょう。$\bm{x}$がなんらかの座標を表していると考えると，それに正方行列をかけるとはどういう意味でしょうか。次の計算式を見てください。
 \begin{equation}
-    \bm{Ax}=
-    \begin{pmatrix} 
-    2 & 0 \\ 
-    0 & 3 
-    \end{pmatrix}
-    \begin{pmatrix}
-     1 \\
-     2 
-    \end{pmatrix} 
-    =
-    \begin{pmatrix}
-    2 \\
-     6
-    \end{pmatrix}
+	\bm{Ax}=
+	\begin{pmatrix}
+		2 & 0 \\
+		0 & 3
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\
+		2
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		2 \\
+		6
+	\end{pmatrix}
 \end{equation}
 
 これをみると，座標$\bm{x}=\begin{pmatrix}1\\2\end{pmatrix}$に$\bm{A}$をかけたことで，座標が$\begin{pmatrix}2\\6\end{pmatrix}$に変わった，と見ることもできますね。このように，ある座標が別の座標に移ることを特に「変換」と呼びます\footnote{より一般的にいうと，以下のようになります。:集合$X$の各元$x$に集合$Y$の元$f(x)$を対応させる対応$f$のことを, 集合$X$から集合$Y$への写像(mapping)，関数(function)，あるいは変換(transformation)という。}。つまり\textbf{正方行列はなんらかの変換を施すもの}だ，と考えることができます。
 
 今回の例では，行列$\bm{A}$には次のような性質があります。
 \begin{equation}
-\begin{pmatrix}
-2 & 0\\
-0 & 3
-\end{pmatrix}
-\begin{pmatrix}
-1 \\
-0 
-\end{pmatrix} 
-= 2 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+	\begin{pmatrix}
+		2 & 0 \\
+		0 & 3
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\
+		0
+	\end{pmatrix}
+	= 2 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
 \end{equation}
 
 \begin{equation}
-\begin{pmatrix} 2 & 0\\ 0 & 3 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} 
-= 3 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+	\begin{pmatrix} 2 & 0\\ 0 & 3 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+	= 3 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
 \end{equation}
 
 そう，お気づきのように，これは固有値・固有ベクトルです。この行列の固有値・固有ベクトルはそれぞれ$\lambda_1=2,\bm{x}_1=(1,0)$，$\lambda_2=3,\bm{x}_2=(0,1)$であることがわかります。この固有値，固有ベクトルの組み合わせをじっとみていると，面白い特徴がわかって来ます。
@@ -186,12 +186,12 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 \section{因子分析の数学的理解}
 さあ因子分析に戻って考えてみましょう。因子分析のモデルは次のようなものでした。
 \begin{equation}
-    \bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
+	\bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
 \end{equation}
 
 ここで，左辺の正方行列を相関行列$\bm{R}$とし，$\lambda_1 \bm{xx'} = \bm{aa'}$となるようにベクトルの大きさが整えられているとすれば，次のように表現できます。
 \begin{equation}
-\bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
+	\bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
 \end{equation}
 
 ここでは共通因子の数が$m$個だとわかっている体で分解していますが，基本的にはサイズ$N$の行列からは$N$個の固有値がずらーっと並ぶわけです。それをどこかで「共通しているのはここまで」と判断し，残りは誤差であるとしてまとめて$\bm{dd'}$にしているだけですね。このように数学的にはここからが共通因子，ここからが独自因子といった区別をすることなく，最後のひとかけらまで固有値分解を行なっているのですが，その次元の重要度でもって共通因子と誤差因子に(研究者が恣意的に)分割しているのが因子分析のやっていることなのです。
@@ -203,12 +203,12 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 ところで因子分析モデルの$\bm{A}$，因子負荷行列ですが，これは共通因子の固有ベクトルをセットで扱ったものです。つまり，$\bm{A} = \bm{a_1,a_2,\cdots,a_m}$と縦ベクトルを並べたものになっています。エレメントワイズで表現すると次のようになります。
 
 \[
-   \bm{A} = \left (
-       \begin{pmatrix}  a_{11}\\a_{12}\\\vdots a_{1N} \end{pmatrix},
-       \begin{pmatrix}  a_{21}\\a_{22}\\\vdots a_{2N} \end{pmatrix},
-       \cdots
-       \begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots a_{mN} \end{pmatrix},
-    \right )
+	\bm{A} = \left (
+	\begin{pmatrix}  a_{11}\\a_{12}\\\vdots a_{1N} \end{pmatrix},
+	\begin{pmatrix}  a_{21}\\a_{22}\\\vdots a_{2N} \end{pmatrix},
+	\cdots
+	\begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots a_{mN} \end{pmatrix},
+	\right )
 \]
 
 ここで$\bm{AA'}$の間に単位行列$\bm{I}$ を挟んでも，別に結果は変わりませんよね。単位行列はかけても変わらないのが特徴ですから，$\bm{AA'}=\bm{AIA}$です。ここでの$\bm{I}$のサイズは$m \times m$であることに注意しつつ聞いてください。
@@ -227,4 +227,4 @@ $diag(\bm{T\Phi T'})=\bm{I}_m$という
 \paragraph{固有値問題}行列$\begin{pmatrix}8&1\\4&5\end{pmatrix}$の固有値・固有ベクトルを求めよ。
 
 
-\end{document} 
+\end{document}

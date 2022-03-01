@@ -2,9 +2,9 @@
 \usepackage{docmute} 
 \usepackage{../../myStyle} 
 
-\begin{document} 
-\chapter{Rをつかった項目反応理論} 
-\label{x11_IRTonR} 
+\begin{document}
+\chapter{Rをつかった項目反応理論}
+\label{x11_IRTonR}
 
 今回もRを使った演習です。Rを使っての行列計算，Rを使っての因子分析と進めてきましたが，今回はRをつかって項目反応理論を実践的に理解していきましょう。
 
@@ -12,21 +12,21 @@
 \subsection{データの素描}
 項目反応理論は，テスト理論に関するモデルですから，サンプルデータとして二値データを使いましょう。表\ref{tbl::11_01}に使うデータの一部を示しています\footnote{このデータ全体については，\texttt{IRTsample.csv}というファイル形式で配布していますので，それを読み込んで使ってください}。
 \begin{table}
-    \caption{IRTで使うサンプルデータ(一部)}
-    \centering
-    \begin{tabular}[t]{rrrrrrrrrr}
-    \hline
-    V1 & V2 & V3 & V4 & V5 & V6 & V7 & V8 & V9 & V10\\
-    \hline
-    0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-    1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
-    0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1\\
-    0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 1\\
-    0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1\\
-    1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1\\
-    \hline
-    \end{tabular}
-    \label{tbl::11_01}
+	\caption{IRTで使うサンプルデータ(一部)}
+	\centering
+	\begin{tabular}[t]{rrrrrrrrrr}
+		\hline
+		V1 & V2 & V3 & V4 & V5 & V6 & V7 & V8 & V9 & V10 \\
+		\hline
+		0  & 0  & 1  & 0  & 0  & 0  & 0  & 0  & 0  & 0   \\
+		1  & 1  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 1   \\
+		0  & 1  & 0  & 1  & 0  & 0  & 0  & 0  & 0  & 1   \\
+		0  & 1  & 1  & 1  & 1  & 1  & 0  & 0  & 0  & 1   \\
+		0  & 1  & 1  & 1  & 1  & 0  & 0  & 0  & 0  & 1   \\
+		1  & 1  & 1  & 1  & 0  & 0  & 0  & 0  & 1  & 1   \\
+		\hline
+	\end{tabular}
+	\label{tbl::11_01}
 \end{table}
 
 このように，テスト理論で使うデータは0/1の二値データで，1が正答，0が誤答を表しています。
@@ -42,18 +42,18 @@
     dat <- read_csv("IRTsample.csv")
     ltm::descript(dat)
 \end{lstlisting}
-    
+
 \paragraph{コード解説}
-    \begin{description}
-        \item[1行目] 環境の初期化
-        \item[2-3行目] パッケージの読み込み
-        \item[4-5行目] サンプルデータ\texttt{IRTsample.csv}を読み込む。文字化けする人は，\verb|read_csv|関数のオプションとして\texttt{locale=locale(encoding="UTF-8")}を追加してください。
-        \item[6行目] ltmパッケージに含まれる\texttt{descript}関数を実行
-    \end{description}
+\begin{description}
+	\item[1行目] 環境の初期化
+	\item[2-3行目] パッケージの読み込み
+	\item[4-5行目] サンプルデータ\texttt{IRTsample.csv}を読み込む。文字化けする人は，\verb|read_csv|関数のオプションとして\texttt{locale=locale(encoding="UTF-8")}を追加してください。
+	\item[6行目] ltmパッケージに含まれる\texttt{descript}関数を実行
+\end{description}
 
 いろいろな情報が一気に出力されるので，順にみていきます。まず\texttt{console\ref{RS:out11_01}}のところです。ここには各変数の0と1の比率が入っています。この例では，\texttt{V1}は0が71.0\%，1が29.0\%含まれているということです。最後の\texttt{logit}は，0から1の間に入る数字$p$にたいして，$logit(p)=\log\left(\frac{p}{1-p}\right)$で計算される量です。ここでは$p$は正答率であり，この\texttt{logit}の値が負であれば0の比率が，正であれば1の比率が多かった，ということを意味します。0/1がちょうど半々であれば，\texttt{logit}の値は0になる，そういう数字です。これを見るだけでも，\texttt{V8}はずいぶんと正答率が低かったんだな，\texttt{V3}は逆に正答率が高かったんだな，ということがわかります。
 \begin{Rscreen}{記述統計の出力1}{out11_01}
-\begin{verbatim}
+	\begin{verbatim}
     Proportions for each level of response:
     0     1   logit
 V1  0.710 0.290 -0.8954
@@ -71,16 +71,16 @@ V10 0.254 0.746  1.0774
 
 次のセクション\texttt{console\ref{RS:out11_02}}には，正答数の分布が示されています。10問全部正解したのは3人だけ，6問正解した人が104人だった，といったことがわかります。
 \begin{Rscreen}{記述統計の出力2}{out11_02}
-    \begin{verbatim}
+	\begin{verbatim}
         Frequencies of total scores:
         0  1  2  3  4   5  6  7  8  9 10
    Freq 4 19 41 62 97 104 66 54 36 14  3
     \end{verbatim}
-    \end{Rscreen}
-    
+\end{Rscreen}
+
 次のセクション\texttt{console\ref{RS:out11_03}}には，\keyterm{点双列相関係数}{てんそうれつそうかんけいすう}{Point Biserial correlation}が計算されています。この相関係数は2値と連続値の相関係数であり，ここでは各変数(二値)と合計得点(0から10)の相関係数を計算しています。この合計得点の計算方法には，その変数自身を含める場合(Included)と含めない場合(Excluded)の二種類があります。具体的に説明したほうがわかりやすいでしょう。例えば変数\texttt{V1}についていうと，「その変数自身を含める場合」の合計得点とは$V1+V2+V3+V4+V5+V6+V7+V8+V9+V10$で計算しています。「含めない場合」は$V2+V3+\cdots+V10$とするわけです。含める場合の相関係数が0.5207，含めない場合の相関係数が0.2480です。当然自身が含まれているほうが合計得点に深く関わっているので相関係数が高くなります。裏を返せば，含める場合と含めない場合の相関係数に大きな差があるとき，その変数はテスト全体に大きく貢献する重要な変数だといえるでしょう。
 \begin{Rscreen}{記述統計の出力3}{out11_03}
-    \begin{verbatim}
+	\begin{verbatim}
 Point Biserial correlation with Total Score:
     Included Excluded
 V1    0.4228   0.2118
@@ -99,7 +99,7 @@ V10   0.5890   0.4180
 次のセクション\texttt{console\ref{RS:out11_04}}には，\keyterm{$\alpha$係数}{あるふぁけいすう}{alpha coefficient}が算出されています。これも全体の場合と，特定の変数を抜いた場合とを計算しています。
 心理尺度における信頼性係数としての$\alpha$係数は，0.8以上であれば信頼性がある，といった目安がありますが，二値データの場合はここに示したようにそれよりもずいぶんと低くなります。これは二値データの分散が小さくなることから仕方のないことですし，項目反応理論で分析する上での信頼性は情報量関数として表されますから，問題ではありません。
 \begin{Rscreen}{記述統計の出力4}{out11_04}
-    \begin{verbatim}
+	\begin{verbatim}
         Cronbach's alpha:
         value
 All Items     0.6341
@@ -118,7 +118,7 @@ Excluding V10 0.5817
 
 最後にセクション\texttt{console\ref{RS:out11_05}}では，変数同士の関連が特に弱いものが示されています。変数同士のペアについて度数分布表を作成し，$\chi^2$検定によって\texttt{p.value}を算出しています。この値が小さければ，2つの変数の関係が強いことを示していると解釈できるのですが，ここにあげているように大きな数字になっているということは，変数間の関係が弱いと読み取ることができます。
 \begin{Rscreen}{記述統計の出力4}{out11_05}
-    \begin{verbatim}
+	\begin{verbatim}
 Pairwise Associations:
    Item i Item j p.value
 1       2      8   0.625
@@ -132,7 +132,7 @@ Pairwise Associations:
 9       1      3   0.166
 10      3      8   0.124
     \end{verbatim}
-    \end{Rscreen}
+\end{Rscreen}
 \subsection{IRTモデルの実際}
 データの感じがわかったところで，IRTモデルを実行していきましょう。
 
@@ -164,19 +164,19 @@ plot(result.1pl,type="ICC")
 plot(result.1pl,type="IIC")
 plot(result.1pl,type="IIC",items = 0)
 \end{lstlisting}
-    
+
 \paragraph{コード解説}
 \begin{description}
-        \item[1行目] 1PLモデル(ラッシュモデル)の実行
-        \item[2行目] 結果の出力
-        \item[3行目] \keyterm{項目特性曲線}{こうもくとくせいきょくせん}{Item Characteristic Curve}のプロット。\texttt{plot}関数のオプションで表示する情報をICCと指定。
-        \item[4行目] \keyterm{項目情報曲線}{こうもくじょうほうきょくせん}{Item Information Curve}のプロット。\texttt{plot}関数のオプションで表示する情報をIICと指定。
-        \item[5行目] \keyterm{テスト情報曲線}{てすとじょうほうきょくせん}{Test Information Curve}のプロット。\texttt{plot}関数のオプションで表示する項目番号をゼロにするとTICになる。
+	\item[1行目] 1PLモデル(ラッシュモデル)の実行
+	\item[2行目] 結果の出力
+	\item[3行目] \keyterm{項目特性曲線}{こうもくとくせいきょくせん}{Item Characteristic Curve}のプロット。\texttt{plot}関数のオプションで表示する情報をICCと指定。
+	\item[4行目] \keyterm{項目情報曲線}{こうもくじょうほうきょくせん}{Item Information Curve}のプロット。\texttt{plot}関数のオプションで表示する情報をIICと指定。
+	\item[5行目] \keyterm{テスト情報曲線}{てすとじょうほうきょくせん}{Test Information Curve}のプロット。\texttt{plot}関数のオプションで表示する項目番号をゼロにするとTICになる。
 \end{description}
 
 2行目で結果の出力を行っていますが，出力\ref{RS:out11_06}のように表されます。
 \begin{Rscreen}{2PLモデルの結果出力}{out11_06}
-    \begin{verbatim}
+	\begin{verbatim}
 Call:
 rasch(data = dat)
 
@@ -190,10 +190,10 @@ Log.Lik: -2468.743
 \end{Rscreen}
 1PLモデルで表現する項目の違いは\keytermL{困難度母数}{こんなんどぼすう}だけですから，この数字(\texttt{Dffclt})が小されければ簡単な項目，大きければ難しい項目だったことがわかります。例えば\texttt{V2}の困難度母数は$b_2=-2.208$ですが，記述統計のところで見た正答率(88.6\%)を考えると，簡単な問題だったことがわかりますね。\keyterm{識別力母数}{しきべつりょくぼすう}は\texttt{Dscrmn}として1.126と推定されています。これは項目を通じて一定です。このことは図\ref{fig::11_01}の左にあるICCをみて，全ての曲線の傾きが同じことで確認できます。
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/11_IRTonR/Rplot11_01.png}
-    \caption{1PLのさまざまなプロット。左からICC,IIC,TIC}
-    \label{fig::11_01}
+	\centering
+	\includegraphics[keepaspectratio,width=12cm]{../images/11_IRTonR/Rplot11_01.png}
+	\caption{1PLのさまざまなプロット。左からICC,IIC,TIC}
+	\label{fig::11_01}
 \end{figure}
 
 図\ref{fig::11_01}の左が数値的出力結果を図示したものです。これを見た方がわかりやすいかもしれません。x軸は$\theta$，つまり測定する潜在変数の値になっており，テストで言えばある人の学力$\theta_i$があったときに，各問いにどれぐらいの確率で正答するかを表していることになります。これをみると\texttt{V2}が最も簡単で，\texttt{V8}が最も難しかったテストであることがわかります。
@@ -211,19 +211,19 @@ plot(result.2pl,type="ICC")
 plot(result.2pl,type="IIC")
 plot(result.2pl,type="IIC",items = 0)
 \end{lstlisting}
-        
+
 \paragraph{コード解説}
 \begin{description}
-        \item[1行目] 1PLモデル(ラッシュモデル)の実行
-        \item[2行目] 結果の出力
-        \item[3行目] \keyterm{項目特性曲線}{こうもくとくせいきょくせん}{Item Characteristic Curve}のプロット
-        \item[4行目] \keyterm{項目情報曲線}{こうもくじょうほうきょくせん}{Item Information Curve}のプロット
-        \item[5行目] \keyterm{テスト情報曲線}{てすとじょうほうきょくせん}{Test Information Curve}のプロット
+	\item[1行目] 1PLモデル(ラッシュモデル)の実行
+	\item[2行目] 結果の出力
+	\item[3行目] \keyterm{項目特性曲線}{こうもくとくせいきょくせん}{Item Characteristic Curve}のプロット
+	\item[4行目] \keyterm{項目情報曲線}{こうもくじょうほうきょくせん}{Item Information Curve}のプロット
+	\item[5行目] \keyterm{テスト情報曲線}{てすとじょうほうきょくせん}{Test Information Curve}のプロット
 \end{description}
 
 2行目で結果の出力を行っていますが，出力\ref{RS:out11_15}のように表されます。
 \begin{Rscreen}{2PLモデルの結果出力}{out11_15}
-    \begin{verbatim}
+	\begin{verbatim}
 Call:
 ltm(formula = dat ~ z1)
 
@@ -250,10 +250,10 @@ Log.Lik: -2446.104
 
 プロットによる出力も見ておきましょう(図\ref{fig::11_02})。識別力母数が入ったことで，ICCの傾きが項目によってさまざまになりますし，IICやTICの見た目もすっかり変わってしまいましたが，読み取り方は同じです。
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/11_IRTonR/Rplot11_02.png}
-    \caption{2PLのさまざまなプロット。左からICC,IIC,TIC}
-    \label{fig::11_02}
+	\centering
+	\includegraphics[keepaspectratio,width=12cm]{../images/11_IRTonR/Rplot11_02.png}
+	\caption{2PLのさまざまなプロット。左からICC,IIC,TIC}
+	\label{fig::11_02}
 \end{figure}
 
 
@@ -272,7 +272,7 @@ plot(result.3pl,type="IIC",items = 0)
 
 コードは一行目の関数以外ほとんど同じですので，逐一解説は致しませんが，出力のところを見ておきましょう(出力\ref{RS:out11_07})。
 \begin{Rscreen}{3PLモデルの結果出力}{out11_07}
-    \begin{verbatim}
+	\begin{verbatim}
 Call:
 tpm(data = dat)
 
@@ -297,16 +297,16 @@ Log.Lik: -2431.371
 3PLモデルは困難度，識別力に加えて\keytermL{当て推量母数}{あてすいりょうぼすう}が計算されます。これはICCの形(図\ref{fig::11_03}の左)を見ればわかりますが，曲線全体が底上げされたようになっているものがあります。この最低ラインの高さが当て推量母数の大きさです。図や数値から，\texttt{V2}のそれが大きい数字であることが読み取れます。ICCは$\theta$の関数である正答率ですが，これが$\theta$の値に関わらず一定の値を取るということは，どれだけ能力が低くてもその確率で正答してしまうことを意味しています。なので「適当に推測して答えを当てられる大きさ」という意味で当て推量母数と呼ばれているのです。
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/11_IRTonR/Rplot11_03.png}
-    \caption{3PLのさまざまなプロット。左からICC,IIC,TIC}
-    \label{fig::11_03}
+	\centering
+	\includegraphics[keepaspectratio,width=12cm]{../images/11_IRTonR/Rplot11_03.png}
+	\caption{3PLのさまざまなプロット。左からICC,IIC,TIC}
+	\label{fig::11_03}
 \end{figure}
 
 今回当て推量母数を含めて考えたことで，IICやTICがまた大きく変化しました。この数字が高すぎるV2は，テストとしてはあまり良い項目ではなかったのかもしれません。また，モデルの適合度としては3PLモデルが最もよかったのですが，2PLモデルとそれほど大きく違うわけでもありません。
 どのモデルでどのように推定するべきか，推定されたモデルはどういう仮定を持っているのかについて，しっかり理解した上で利用するようにしましょう。
 
-\section{段階反応モデルの実際} 
+\section{段階反応モデルの実際}
 
 続いて\keytermL{段階反応モデル}{だんかいはんのうもでる}の練習に進みましょう。項目反応理論は正答/誤答の二値データに対して用いるものでしたが，これを多段階反応に拡張したモデルの1つが段階反応モデルです。多段階反応とは，「全く当てはまらない」を1，「非常に当てはまる」を7とする，といったような\keytermL{リッカート尺度}{りっかーとしゃくど}のようなスタイルの調査項目です。反応させるカテゴリの段階数に応じて，5件法とか7件法と呼ばれたりします。
 
@@ -329,18 +329,18 @@ plot(result.grm, type = "ICC", items = 4)
 plot(result.grm, type = "IIC", items = 4)
 plot(result.grm, type = "IIC", items = 0)
 \end{lstlisting}
-        
+
 \paragraph{コード解説}
 \begin{description}
-        \item[1行目] \texttt{psych}パッケージを読み込む。サンプルデータ\texttt{bfi}を用いるためです。
-        \item[2-4行目] データの加工。\texttt{bfi}データから，性別，最終学歴，年齢などの情報を取り除き，またNで始まる変数だけ選出(\texttt{select})しています。
-        \item[5行目] 段階反応モデルの実行。
-        \item[6行目] 結果の出力。
-        \item[7行目] 項目1についてのICC，厳密には\keyterm{項目反応カテゴリ特徴曲線}{こうもくはんのうかてごりとくちょうきょくせん}{Item Response Category Characteristic Curve}と呼びます。
-        \item[8行目] 項目1についてのIICを表示させています。
-        \item[9行目] 項目4についてのICCを表示させています。
-        \item[10行目] 項目4についてのICCを表示させています。
-        \item[11行目]項目群についてのTICを表示させています。  
+	\item[1行目] \texttt{psych}パッケージを読み込む。サンプルデータ\texttt{bfi}を用いるためです。
+	\item[2-4行目] データの加工。\texttt{bfi}データから，性別，最終学歴，年齢などの情報を取り除き，またNで始まる変数だけ選出(\texttt{select})しています。
+	\item[5行目] 段階反応モデルの実行。
+	\item[6行目] 結果の出力。
+	\item[7行目] 項目1についてのICC，厳密には\keyterm{項目反応カテゴリ特徴曲線}{こうもくはんのうかてごりとくちょうきょくせん}{Item Response Category Characteristic Curve}と呼びます。
+	\item[8行目] 項目1についてのIICを表示させています。
+	\item[9行目] 項目4についてのICCを表示させています。
+	\item[10行目] 項目4についてのICCを表示させています。
+		\item[11行目]項目群についてのTICを表示させています。
 \end{description}
 
 \texttt{code:\ref{code::11_05}}の6行目で，分析結果の数値的出力をさせていますので，それをみておきましょう(出力\ref{RS:out11_25})。
@@ -348,7 +348,7 @@ plot(result.grm, type = "IIC", items = 0)
 ここで，\texttt{Dscrmn}とあるのは識別力母数ですが，困難度母数に対応するのが\texttt{Extrmt1}から\texttt{Extrmt5}にあたります。この尺度は6件法ですので，反応カテゴリが変わる切れ目，すなわち\keytermL{閾値}{いきち}が5つあるのです。これらが2PLモデルでいうところの困難度に対応すると言ってもいいでしょう。
 
 \begin{Rscreen}{GRMモデルの結果出力}{out11_25}
-    \begin{verbatim}
+	\begin{verbatim}
 Call:
 grm(data = dat)
 
@@ -367,16 +367,16 @@ Log.Lik: -21721.91
 数値を見ていてもピンとこないかもしれませんので，図でこの各項目の特徴を確認しておきましょう。変数\texttt{N1}と\texttt{N4}のIRCCCを図\ref{fig::11_04}に示しました。この図に表されている複数の曲線が，$\theta$に対応した各カテゴリに反応する確率を表しています。図の左，\texttt{N1}は綺麗なカーブが描かれており，各カテゴリのピークが見て取れますが，\texttt{N4}は反応カテゴリ3の山が埋もれてしまっていることがみてとれます。この項目については，6段階ではなく5段階で反応を求めるのがよかったのかもしれません\footnote{ちなみに\texttt{N1}は「すぐ怒る(Get angry easily)」，\texttt{N4}は「割と凹む(Often feel blue)」です。日本語訳は小杉の意訳で定訳ではありません。あしからず。}。
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=12cm]{../images/11_IRTonR/Rplot11_04.png}
-    \caption{GRMのIRCCC}
-    \label{fig::11_04}
+	\centering
+	\includegraphics[keepaspectratio,width=12cm]{../images/11_IRTonR/Rplot11_04.png}
+	\caption{GRMのIRCCC}
+	\label{fig::11_04}
 \end{figure}
 
 原理的には難しいことのように感じますが，コードを書いて実践する分にはほとんど苦労がなく，二値モデルと同じように考えることができます。コードにはIICやTICを描くものもありますが，1PL,2PL,3PLモデルと変わらない感じで多段階モデルが実行できますね。
 みなさんも心理尺度を使う時は，盲目的にスコアリングし，因子分析するのではなく，どういう仮定の元でどういう計算をしているかを理解しながら，データや調査協力者にとって最適な分析をするように心がけてください。
 
-\section{カテゴリカル因子分析との対応} 
+\section{カテゴリカル因子分析との対応}
 さて多段階反応による分析も簡単にできることがわかりましたが，気になるのは段階反応モデルが一因子構造しか仮定していないところです。bfiデータはビッグファイブと呼ばれるように五因子(5次元)の仮定があるのですが，一因子ずつ\texttt{grm}を実行して後で統合するのは大変です。
 
 でも大丈夫。簡単に多次元に展開する方法があります。
@@ -391,9 +391,9 @@ print(result.fa, sort = T, cut = 0.3)
 
 \paragraph{コード解説}
 \begin{description}
-        \item[1行目] サンプルデータ\texttt{bfi}の加工をしています。
-        \item[2行目] ポリ個リック相関係数に基づく因子分析の実行
-        \item[3行目] 結果の出力。
+	\item[1行目] サンプルデータ\texttt{bfi}の加工をしています。
+	\item[2行目] ポリ個リック相関係数に基づく因子分析の実行
+	\item[3行目] 結果の出力。
 \end{description}
 
 コードの2行目を見ていただくとわかる通り，ただの\texttt{fa}関数ではなく\texttt{fa.poly}としただけで，あとは因子分析と同じです。この\texttt{.poly}のところがポリコリック相関係数を使うよう指定しているところで，これで実質的に測定尺度水準が順序尺度水準であると想定した因子分析をしたことになっています。
@@ -412,4 +412,4 @@ result.mirt %>% summary(rotate = "geominQ")
 
 \section{課題}
 
-\end{document} 
+\end{document}

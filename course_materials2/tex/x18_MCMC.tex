@@ -2,17 +2,17 @@
 \usepackage{docmute} 
 \usepackage{../../myStyle} 
 
-\begin{document} 
+\begin{document}
 \chapter{ベイジアンアプローチと確率的プログラミング1}
 それではいよいよ，データ生成モデリングとベイズ推定による実践例を見ていくことにしましょう。
-\label{x18_MCMC} 
+\label{x18_MCMC}
 \section{7人の科学者}
 ここでは \citet{Lee201709}より「7人の科学者」の例を紹介します。そこでのカバーストーリーは次のようなものです。
 
 \begin{quote}
-    実験スキルが大きく異なる7人の科学者が，全員同じ量について測定を行う。彼らが得た数値結果は次の通り。
-    $$Y＝{-27.020,3.570,8.191,9.808,9.603,9.945,10.056}$$
-    直感的には，最初の二人の科学者はひどく適性を欠いた測定者であり，この量の真の値はおそらく10をわずかに下回るくらいであるように思えるのだが・・・？？
+	実験スキルが大きく異なる7人の科学者が，全員同じ量について測定を行う。彼らが得た数値結果は次の通り。
+	$$Y＝{-27.020,3.570,8.191,9.808,9.603,9.945,10.056}$$
+	直感的には，最初の二人の科学者はひどく適性を欠いた測定者であり，この量の真の値はおそらく10をわずかに下回るくらいであるように思えるのだが・・・？？
 \end{quote}
 
 さあ，これをみて「あれ，どこが統計的な問題なんだ？」と思った人もいるかもしれません。なんらかの測定をして，データのばらつきがあるんだけど，それが測定者によって違うらしい，というのはわかったかと思いますが，これをどうやって統計的な問いにするのでしょうか。まず，ストーリーの背後に「正確な測定値(真の値)はわからないけど，定数のはず」という前提があることを確認しましょう。測定の基本として測定誤差があるので真の値を特定出来はしませんが，測定を繰り返すと真の値に近づいていくはずではあります。また，今回の測定結果は7人それぞれ別の人による測定であることから，測定誤差の出方が測定毎すなわち測定者毎に異なるだろう，という仮説もあります。
@@ -24,11 +24,11 @@
 
 
 \begin{figure}
-    \begin{center}
-    \includegraphics[width=10cm,keepaspectratio]{../images/18_MCMC/slide18_01.png}
-    \caption{データが生成されるプロセス}
-    \label{fig::18_01}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=10cm,keepaspectratio]{../images/18_MCMC/slide18_01.png}
+		\caption{データが生成されるプロセス}
+		\label{fig::18_01}
+	\end{center}
 \end{figure}
 
 しかしここでも，$\mu$と$\sigma_i$は結局なんなんだ，どういう数字なんだということがわからないままです。わからない量は確率の言葉で表現するのがベイジアンの生き様。ここは未知のパラメータがどうやって出てくるかなんてわからないところなので，「わからない」ことを確率で表現する必要があります。パラメータに対して「この辺りにあるだろう」と事前に想定する確率分布のことを\keyterm{事前分布}{じぜんぶんぷ}{prior distribution}というのでした。
@@ -39,11 +39,11 @@
 
 これらをおくことで，モデルの設計図が出来上がりました(図\ref{fig::18_02})。あとはこれをもとに，確率プログラミング言語に書き起こしていけば良いでしょう。
 \begin{figure}
-    \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/18_MCMC/slide18_02.png}
-    \caption{モデルの全体像}
-    \label{fig::18_02}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=12cm,keepaspectratio]{../images/18_MCMC/slide18_02.png}
+		\caption{モデルの全体像}
+		\label{fig::18_02}
+	\end{center}
 \end{figure}
 
 \section{Stanコードの書き方}
@@ -55,12 +55,12 @@ Stanは事後分布からの乱数を生成するための言語です。その�
 \paragraph{ブロック単位の記述}
 Stanに書くべきことは\textbf{ブロック}の中に記述します。ブロックは中括弧(\{ ... \})で括ったもので，次の6つの種類があります。
 \begin{enumerate}
-    \item \texttt{data}ブロック
-    \item \texttt{transformed data}ブロック
-    \item \texttt{parameters}ブロック
-    \item \texttt{transformed parameters}ブロック
-    \item \texttt{model}ブロック
-    \item \texttt{generated quantities}ブロック
+	\item \texttt{data}ブロック
+	\item \texttt{transformed data}ブロック
+	\item \texttt{parameters}ブロック
+	\item \texttt{transformed parameters}ブロック
+	\item \texttt{model}ブロック
+	\item \texttt{generated quantities}ブロック
 \end{enumerate}
 
 Stanのプログラムに含まれるブロックは，この順番でなければならないと決まっているので注意してください。
@@ -107,9 +107,9 @@ model{
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-        \item[\texttt{model}ブロック] 尤度と事前分布を書くところ。確率分布からのサンプリングは変数を左に，$\sim$で確率分布につなぎます。\texttt{normal}とか\texttt{cauchy}が確率分布の名前なのでRStudioではハイライト表示されているはず。一行の終わりはセミコロンで。複数のデータや変数，$Y_i$や$\sigma_i$は\verb|Y[i]|や\verb|sig[i]|のように，大括弧(\verb|[ ]| )を後ろにつけて書きます。これは変数が配列(複数の要素を持っている)ときに，その要素を指定する方法です。またデータは7件あって，それぞれについて$i$さんの測定値$Y_i$と測定誤差$\sigma_i$があるので，\texttt{for}文で繰り返しています。変数\verb|sig[i]|についての事前分布も同様に繰り返しています。ちなみに変数名\texttt{mu, sig, Y}などは任意で，予約語でなければ好きな名前にしてもらって構いません。
-        \item[\texttt{parameters}ブロック] \texttt{model}ブロックで，変数\texttt{mu}や\texttt{sig}という任意に命名して使っていたわけですが，それは何なのかを宣言してやらねばなりません。これらは求めたいパラメータなのですから，このブロックに型と共に宣言するわけです。変数\verb|mu|は実数型，変数\verb|sig|も実数型ですが7つの要素を持つ配列，しかも負の数を取らないので下限はゼロですよ，という宣言をしているところになります。範囲の設定に\verb|<>|の記号を使っていること注意してください。 
-        \item[\texttt{data}ブロック] 最後にデータブロックです。モデルの変数でもパラメータでもない，外部から与えら得るものなので，変数名\verb|Y|で宣言しています。実数型で，7人分の要素があります。
+	\item[\texttt{model}ブロック] 尤度と事前分布を書くところ。確率分布からのサンプリングは変数を左に，$\sim$で確率分布につなぎます。\texttt{normal}とか\texttt{cauchy}が確率分布の名前なのでRStudioではハイライト表示されているはず。一行の終わりはセミコロンで。複数のデータや変数，$Y_i$や$\sigma_i$は\verb|Y[i]|や\verb|sig[i]|のように，大括弧(\verb|[ ]| )を後ろにつけて書きます。これは変数が配列(複数の要素を持っている)ときに，その要素を指定する方法です。またデータは7件あって，それぞれについて$i$さんの測定値$Y_i$と測定誤差$\sigma_i$があるので，\texttt{for}文で繰り返しています。変数\verb|sig[i]|についての事前分布も同様に繰り返しています。ちなみに変数名\texttt{mu, sig, Y}などは任意で，予約語でなければ好きな名前にしてもらって構いません。
+	\item[\texttt{parameters}ブロック] \texttt{model}ブロックで，変数\texttt{mu}や\texttt{sig}という任意に命名して使っていたわけですが，それは何なのかを宣言してやらねばなりません。これらは求めたいパラメータなのですから，このブロックに型と共に宣言するわけです。変数\verb|mu|は実数型，変数\verb|sig|も実数型ですが7つの要素を持つ配列，しかも負の数を取らないので下限はゼロですよ，という宣言をしているところになります。範囲の設定に\verb|<>|の記号を使っていること注意してください。
+	\item[\texttt{data}ブロック] 最後にデータブロックです。モデルの変数でもパラメータでもない，外部から与えら得るものなので，変数名\verb|Y|で宣言しています。実数型で，7人分の要素があります。
 \end{description}
 
 いかがでしょうか。書き方(文法)がわかると比較的単純，あるいは率直な書き方をしていることがお分かりいただけるかと思います。尤度と事前分布とデータを書くだけで，Stanは事後分布からの乱数を生成してくれます。確率密度関数を書いたり解いたりしなくても，結果の近似計算ができるというのはとても便利なことではないでしょうか。
@@ -146,11 +146,11 @@ sample <- fit1rstan %>%
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-    \item[1行目]　パッケージの呼び出し
-    \item[2-3行目] CPUの並列化や上書き保存など，パッケージの設定
-    \item[4行目] モデルのコンパイルを実行して\texttt{model}オブジェクトに入れます。コンパイルには少し時間がかかります。
-    \item[5行目] 乱数発生。ここでRのデータをStanに渡しています。実行すると画面に色々表示されるかと思います。
-    \item[6-9行目] 得られた乱数をデータセットに整形。まず\texttt{rstan::extract}でMCMCサンプルだけを取り出し，\texttt{as.data.frame}でデータフレーム型に，\verb|as_tibble|でtibble型に変換します。
+	\item[1行目]　パッケージの呼び出し
+	\item[2-3行目] CPUの並列化や上書き保存など，パッケージの設定
+	\item[4行目] モデルのコンパイルを実行して\texttt{model}オブジェクトに入れます。コンパイルには少し時間がかかります。
+	\item[5行目] 乱数発生。ここでRのデータをStanに渡しています。実行すると画面に色々表示されるかと思います。
+	\item[6-9行目] 得られた乱数をデータセットに整形。まず\texttt{rstan::extract}でMCMCサンプルだけを取り出し，\texttt{as.data.frame}でデータフレーム型に，\verb|as_tibble|でtibble型に変換します。
 \end{description}
 
 \paragraph{cmdstanrパッケージによる呼び出し}
@@ -171,10 +171,10 @@ sample <- fit1cmdstan$draws() %>%
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-    \item[1行目] パッケージの呼び出し
-    \item[2行目] モデルのコンパイルを実行して\texttt{model}オブジェクトに入れます。コンパイルには少し時間がかかります。
-    \item[4-8行目] 乱数発生。ここでRのデータをStanに渡したり，並列化の指定をしたりします。実行すると画面に色々表示されるかと思います。
-    \item[9-11行目] 得られた乱数をデータセットに整形。まず\verb|posterior::as_draws_df|でMCMCサンプルだけを取り出し，\verb|as_tibble|でtibble型に変換します。
+	\item[1行目] パッケージの呼び出し
+	\item[2行目] モデルのコンパイルを実行して\texttt{model}オブジェクトに入れます。コンパイルには少し時間がかかります。
+	\item[4-8行目] 乱数発生。ここでRのデータをStanに渡したり，並列化の指定をしたりします。実行すると画面に色々表示されるかと思います。
+	\item[9-11行目] 得られた乱数をデータセットに整形。まず\verb|posterior::as_draws_df|でMCMCサンプルだけを取り出し，\verb|as_tibble|でtibble型に変換します。
 \end{description}
 
 どちらのパッケージで実行してもらっても結構ですが，コンパイル$\to$サンプリングという流れは同じです。またサンプリングの際に，Rからデータを渡すことになりますが，データはR環境では\texttt{x}というオブジェクト名だったものを，Stanの\texttt{data}ブロックで宣言した\texttt{Y}という変数にして渡すのだ，ということが書かれています。データは複数のものを与えることがあるので，\texttt{list}関数で並べて渡すことにします。そのほかの設定については，順次説明します。
@@ -185,7 +185,7 @@ sample <- fit1cmdstan$draws() %>%
 1回目のサンプリングで，$9.98,23.4,4.63,1.13,0.123,5.17,0.0264,1.24,-9.10$という数字のセットがあります。変数名にあるように，前から$\mu, \sigma_1,\sigma_2,\cdots,\sigma_7$の代表値と，\verb|lp__|の値が得られています。最後の\verb|lp__|は\keyterm{対数尤度}{たいすうゆうど}{log posterior}の略で，ここでは正確には事後対数尤度と呼ばれるものです。今回の代表値から計算された尤度の対数ということで，パラメータの推定値とは違いますのでここでは気にしないことにしましょう。ということで改めて，1回目のサンプリングで$9.98,23.4,4.63,1.13,0.123,5.17,0.0264,1.24$という数字のセットが得られました。このように，今回求めたかったパラメータは8つあったわけですが，その8次元からなる空間の1つの座標点を取り出した1回目，ということです。2回目は$9.90,27.2,13.1,2.86,1.23,0.779,0.0449,0.446$というセットでした。以下3,4,..と続き，4000サンプルを得たわけです。このように結果は8次元からなるパラメータの\keyterm{同時確率空間}{どうじかくりつくうかん}{joint probability space}から得られており，一行一行が1回1回のサンプリングステップなのです。
 
 \begin{Rscreen}{MCMCサンプルの結果(ごく一部)}{out18_01}
-    \begin{verbatim}
+	\begin{verbatim}
         # A tibble: 4,000 × 9
         mu sig.1 sig.2 sig.3 sig.4 sig.5   sig.6 sig.7   lp__
      <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>   <dbl> <dbl>  <dbl>
@@ -199,7 +199,7 @@ sample <- fit1cmdstan$draws() %>%
 さて，MCMCが実行できましたが，その中身を少しみてみましょう。サンプリング結果を代入したオブジェクト名をそのまま入力すると，要約された結果が示されます。パッケージによって出力例は少し異なりますが，ほぼ同じ情報が含まれています。
 
 \begin{SCrstan}{MCMCの結果出力(rstanパッケージの場合)}{out18_02}
-    \begin{verbatim}
+	\begin{verbatim}
 Inference for Stan model: sevenScientist.
 4 chains, each with iter=2000; warmup=1000; thin=1; 
 post-warmup draws per chain=1000, total post-warmup draws=4000.
@@ -218,7 +218,7 @@ lp__   -9.45    0.07  1.67 -13.80 -10.19 -9.10 -8.39  -7.07   570 1.01
 \end{SCrstan}
 
 \begin{SCcmd}{MCMCの結果出力(cmdstanrパッケージの場合)}{out18_03}
-    \begin{verbatim}
+	\begin{verbatim}
  variable  mean median     sd   mad     q5    q95 rhat ess_bulk ess_tail
    lp__   -9.70  -9.35   1.91  1.69 -13.28  -7.30 1.00      914     1694
    mu      9.64   9.81   0.67  0.36   8.28  10.36 1.01      879     1101
@@ -240,19 +240,19 @@ lp__   -9.45    0.07  1.67 -13.80 -10.19 -9.10 -8.39  -7.07   570 1.01
 ちなみにこの図，\texttt{rstan}パッケージの場合は\texttt{traceplot(fit1rstan)}，\texttt{cmdstanr}の場合は\verb|fit1cmdstan$draws("mu") %>% bayesplot::mcmc_trace()|とすれば描画できます。
 
 \begin{figure}
-    \begin{center}
-    \includegraphics[width=10cm,keepaspectratio]{../images/18_MCMC/Rplot18_01.png}
-    \caption{トレースプロットの例}
-    \label{fig::18_03}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=10cm,keepaspectratio]{../images/18_MCMC/Rplot18_01.png}
+		\caption{トレースプロットの例}
+		\label{fig::18_03}
+	\end{center}
 \end{figure}
 これについては悪い例を見た方が早いかもしれません。図\ref{fig::18_04}に，チェインが絡まない場合のトレースプロットを示しました。このように，複数のチェインがそれぞれバラバラ，迷子になっている場合は，手元に生成された乱数が事後分布の適切な代表になっていないと判断することになります。
 \begin{figure}
-    \begin{center}
-    \includegraphics[width=10cm,keepaspectratio]{../images/18_MCMC/Rplot18_02.png}
-    \caption{チェインが絡まない場合}
-    \label{fig::18_04}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=10cm,keepaspectratio]{../images/18_MCMC/Rplot18_02.png}
+		\caption{チェインが絡まない場合}
+		\label{fig::18_04}
+	\end{center}
 \end{figure}
 
 次に，\keyterm{有効サンプルサイズ}{ゆうこうさんぷるさいず}{effective sample size}を見ておきましょう。\texttt{rstan}パッケージを使っている例の場合は\verb|n_eff|，\texttt{cmdstanr}パッケージを使っている例の場合は\verb|ess_tail|を見ましょう。これはMCMCサンプルがうまく取れたかどうかを診断した結果で，ここが少なくとも3桁ほどなければ不十分なのだ，と考えます。いくらあったらいいかについては，どれだけMCMCサンプルを発生させたかに依存するので一概には言えませんが，少なくとも効果的に得られているのが100サンプルぐらいないとダメなんだ，ということです。
@@ -322,22 +322,22 @@ sample_cmdstan %>%
 
 
 \begin{table}[ht]
-    \caption{MCMCの結果}
-    \centering
-    \begin{tabular}{l|ccccc}
-        \hline
-        パラメータ & EAP & MED & MAP & U95 & L95\\
-        \hline
-        $\mu$ & 9.570 & 9.622 & 9.596 & 10.547 & 7.753\\
-        $\sigma_1$ & 42.197 & 26.955 & 23.101 & 151.573 & 14.259\\
-        $\sigma_2$ & 8.776 & 6.853 & 6.849 & 30.356 & 2.590\\
-        $\sigma_3$ & 4.310 & 3.232 & 3.626 & 17.280 & 0.440\\
-        $\sigma_4$ & 2.756 & 1.102 & 0.993 & 15.750 & 0.085\\
-        $\sigma_5$ & 2.507 & 1.052 & 0.358 & 11.823 & 0.022\\
-        $\sigma_6$ & 2.503 & 1.676 & 2.021 & 12.339 & 0.076\\
-        $\sigma_7$ & 2.598 & 1.020 & 0.674 & 13.548 & 0.100\\\hline
-        \end{tabular}
-        \label{tbl::18_01}
+	\caption{MCMCの結果}
+	\centering
+	\begin{tabular}{l|ccccc}
+		\hline
+		パラメータ & EAP    & MED    & MAP    & U95     & L95    \\
+		\hline
+		$\mu$      & 9.570  & 9.622  & 9.596  & 10.547  & 7.753  \\
+		$\sigma_1$ & 42.197 & 26.955 & 23.101 & 151.573 & 14.259 \\
+		$\sigma_2$ & 8.776  & 6.853  & 6.849  & 30.356  & 2.590  \\
+		$\sigma_3$ & 4.310  & 3.232  & 3.626  & 17.280  & 0.440  \\
+		$\sigma_4$ & 2.756  & 1.102  & 0.993  & 15.750  & 0.085  \\
+		$\sigma_5$ & 2.507  & 1.052  & 0.358  & 11.823  & 0.022  \\
+		$\sigma_6$ & 2.503  & 1.676  & 2.021  & 12.339  & 0.076  \\
+		$\sigma_7$ & 2.598  & 1.020  & 0.674  & 13.548  & 0.100  \\\hline
+	\end{tabular}
+	\label{tbl::18_01}
 \end{table}
 
 ここでは\keyterm{事後確率最大値}{じごかくりつさいだいち}{Maximum A Posterior}を見ることにしましょう。
@@ -353,9 +353,9 @@ sample_cmdstan %>%
 \section{課題}
 次の計算をするR/Stanコードを記述し，提出してください。なお提出されたコード単体でバグがなく動くことが確認できないものは，未提出扱いになります。コードの書き方などわからないところがあれば，曜日別TAか小杉までメールで連絡し，指導を受けてください。
 \begin{enumerate}
-    \item 8人目の科学者が現れて，測定値18.25だったと報告してきました。この人のデータも含めた分析モデルにするために，RおよびStanのコードを書き換え，MCMC推定してください。また7人の時とくらべて結果がどう変わったでしょうか？気づいたことを報告してください。
-    \item MCMCサンプルの精度を上げるため，5つのチェインで，warmup期間を10000，最終的なMCMCサンプルを10万点得られるようにRのコードを書き換えてください。
-    \item MCMCサンプルを使って，$\mu$と$\sigma$の分布の形を可視化するコードを書いてください。
+	\item 8人目の科学者が現れて，測定値18.25だったと報告してきました。この人のデータも含めた分析モデルにするために，RおよびStanのコードを書き換え，MCMC推定してください。また7人の時とくらべて結果がどう変わったでしょうか？気づいたことを報告してください。
+	\item MCMCサンプルの精度を上げるため，5つのチェインで，warmup期間を10000，最終的なMCMCサンプルを10万点得られるようにRのコードを書き換えてください。
+	\item MCMCサンプルを使って，$\mu$と$\sigma$の分布の形を可視化するコードを書いてください。
 \end{enumerate}
 
-\end{document} 
+\end{document}

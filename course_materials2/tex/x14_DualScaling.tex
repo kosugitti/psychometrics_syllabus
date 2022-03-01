@@ -2,9 +2,9 @@
 \usepackage{docmute} 
 \usepackage{../../myStyle} 
 
-\begin{document} 
+\begin{document}
 \chapter{双対尺度法}
-\label{x14_DualScaling} 
+\label{x14_DualScaling}
 
 
 さて前回SEMを学んだことで，分散共分散行列をとことんまで分析し尽くす方法が手に入ったことになります。SEMは統合的な表現方法ですから，観測変数でも潜在変数でもいいですし，順序尺度水準以上の代償関係が表現できる数値データであれば，あらゆる表現ができるわけです。
@@ -19,15 +19,15 @@
 ごくシンプルかつ具体的な例をあげてみましょう。血圧と頭痛の頻度について調査したとします。血圧は高い，普通，低いの3段階。頭痛の頻度は「ない」、「たまに」、「ときどき」，「いつも」の4段階です。表\ref{tbl::14_01}のような結果を見ると，この集計表に直線的な関係は確かになさそうですね。でも関係ないわけではない，と思いませんか。
 \begin{table}[h]
 	\begin{center}
-	\caption{血圧と頭痛}
-	\begin{tabular}{c|cccc}
-	血圧&ない&たまに&ときどき&いつも\\
-	\hline
-	高い&0&0&3&2\\
-	普通&5&0&0&0\\
-	低い&0&2&3&1\\
-	\end{tabular}
-	\label{tbl::14_01}
+		\caption{血圧と頭痛}
+		\begin{tabular}{c|cccc}
+			血圧 & ない & たまに & ときどき & いつも \\
+			\hline
+			高い & 0    & 0      & 3        & 2      \\
+			普通 & 5    & 0      & 0        & 0      \\
+			低い & 0    & 2      & 3        & 1      \\
+		\end{tabular}
+		\label{tbl::14_01}
 	\end{center}
 \end{table}
 
@@ -41,15 +41,15 @@
 また，頭痛の順番も「いつも」と「ときどき」をひっくり返しました。
 \begin{table}[h]
 	\begin{center}
-	\caption{並び替えられた「血圧と頭痛」}
-	\begin{tabular}{c|cccc}
-	血圧&ない&たまに&いつも&ときどき\\
-	\hline
-	高い&0&0&2&3\\
-	低い&0&2&1&3\\
-	普通&5&0&0&0\\
-	\end{tabular}
-	\label{tbl::14_02}
+		\caption{並び替えられた「血圧と頭痛」}
+		\begin{tabular}{c|cccc}
+			血圧 & ない & たまに & いつも & ときどき \\
+			\hline
+			高い & 0    & 0      & 2      & 3        \\
+			低い & 0    & 2      & 1      & 3        \\
+			普通 & 5    & 0      & 0      & 0        \\
+		\end{tabular}
+		\label{tbl::14_02}
 	\end{center}
 \end{table}
 順番を並び替えてしまったというのは，尺度水準的には数字を無視して「高い」「低い」「普通」というカテゴリーとして暑かったということになります。つまり，名義尺度水準レベルにまで落として考えたのです。
@@ -71,12 +71,12 @@
 \begin{table}[h]
 	\caption{林の数量化}
 	\begin{tabular}{c|c|c|c|c}
-	手法 & 外的基準 & データ & 目的 & 関連する手法\\
-	\hline
-	数量化Ⅰ類 & 量的変数 & 質的変数 & 外的基準の予測 & 重回帰分析\\
-	数量化Ⅱ類 & 質的変数 & 質的変数 & 外的基準の判別 & 判別分析\\
-	数量化Ⅲ類 & なし & 質的変数 & 変数間の関係の要約と記述 & 正準相関分析\\
-	数量化Ⅳ類 & なし & 対象間の類似度 & 対象間の関係の要約と記述 & 多次元尺度法\\
+		手法      & 外的基準 & データ         & 目的                     & 関連する手法 \\
+		\hline
+		数量化Ⅰ類 & 量的変数 & 質的変数       & 外的基準の予測           & 重回帰分析   \\
+		数量化Ⅱ類 & 質的変数 & 質的変数       & 外的基準の判別           & 判別分析     \\
+		数量化Ⅲ類 & なし     & 質的変数       & 変数間の関係の要約と記述 & 正準相関分析 \\
+		数量化Ⅳ類 & なし     & 対象間の類似度 & 対象間の関係の要約と記述 & 多次元尺度法 \\
 	\end{tabular}
 	\label{tbl::14_03}
 \end{table}
@@ -92,33 +92,33 @@
 
 \begin{table}[h]
 	\begin{minipage}[t]{.30\textwidth}
-	  \begin{center}
-		\begin{tabular}{cccc}
-			ID & Q1 & Q2 & $\cdots$ \\\hline
-			1 & 1  & 3 & $\cdots$ \\
-			2 & 2  & 4 & $\cdots$ \\
-			$\vdots$ & $\vdots$  & $\vdots$ &  \\\hline
-		\end{tabular}
-	  \end{center}
-	  \caption{一般的なデータセット}
-	  \label{tbl::14_04}
+		\begin{center}
+			\begin{tabular}{cccc}
+				ID       & Q1       & Q2       & $\cdots$ \\\hline
+				1        & 1        & 3        & $\cdots$ \\
+				2        & 2        & 4        & $\cdots$ \\
+				$\vdots$ & $\vdots$ & $\vdots$ &          \\\hline
+			\end{tabular}
+		\end{center}
+		\caption{一般的なデータセット}
+		\label{tbl::14_04}
 	\end{minipage}
 	%
 	\hfill
 	%
 	\begin{minipage}[t]{.60\textwidth}
-	  \begin{center}
-		\begin{tabular}{ccccccc}
-			ID & Q1:M & Q1:F & Q2:5 & Q2:4 & Q2:3 &$\cdots$ \\\hline
-			1 & 1  & 0 & 0 & 0 & 1  & $\cdots$ \\
-			2 & 0  & 1 & 0 & 1 & 0  & $\cdots$ \\
-			$\vdots$ & $\vdots $ & $\vdots$ &  \\\hline
-		\end{tabular}
-	  \end{center}
-	  \caption{カテゴリカル化したデータセット}
-	  \label{tbl::14_05}
+		\begin{center}
+			\begin{tabular}{ccccccc}
+				ID       & Q1:M      & Q1:F     & Q2:5 & Q2:4 & Q2:3 & $\cdots$ \\\hline
+				1        & 1         & 0        & 0    & 0    & 1    & $\cdots$ \\
+				2        & 0         & 1        & 0    & 1    & 0    & $\cdots$ \\
+				$\vdots$ & $\vdots $ & $\vdots$ &                               \\\hline
+			\end{tabular}
+		\end{center}
+		\caption{カテゴリカル化したデータセット}
+		\label{tbl::14_05}
 	\end{minipage}
-  \end{table}
+\end{table}
 
 また表\ref{tbl::14_01}を並べ替えた時のように，こうした名義尺度のデータの線形性が最大になるように，行だけでなく，列も並べ替えます。データの中で線形性が最大になるように，反応カテゴリ\textbf{と}回答者に数字を割り振るのです。
 ちなみに表\ref{tbl::14_01}は集計されたデータであり，今回の表\ref{tbl::14_05}は集計前のデータです。カテゴリカルな変数の分析の場合は，どちらでも良いのです。行と列の関係が表されている数字であれば，「ある/ない」のような二値反応でも，集計された度数でも構いません。さらにいえば，行と列の関係が記述されていればなんでもいいのです。
@@ -140,27 +140,27 @@ plot(result)
 
 \paragraph{コード解説}
 \begin{description}
-    \item[1行目] パッケージ\texttt{MASS}のよみこみ
-    \item[2行目] サンプルデータ\texttt{caith}を表示させる
-    \item[3行目] 対応分析関数\texttt{corresp}で分析した結果を\texttt{result}オブジェクトに入れる
-    \item[4行目] 結果の出力
-    \item[5行目] 結果のプロット
+	\item[1行目] パッケージ\texttt{MASS}のよみこみ
+	\item[2行目] サンプルデータ\texttt{caith}を表示させる
+	\item[3行目] 対応分析関数\texttt{corresp}で分析した結果を\texttt{result}オブジェクトに入れる
+	\item[4行目] 結果の出力
+	\item[5行目] 結果のプロット
 \end{description}
 
 データ\texttt{caith}はスコットランドのCaithness地方に住んでいた人に対してなされた調査で，髪の毛の色と目の色の関係を集計したものです。列方向に髪の毛の色，行方向に目の色が入っていますね(表\ref{tbl::14_06})。
 
 \begin{table}[h]
 	\caption{データ\texttt{caith}の中身}
-    \centering
+	\centering
 	\begin{tabular}{lrrrrr}
-	\hline
-	  & fair & red & medium & dark & black\\\hline
-	\hline
-	blue & 326 & 38 & 241 & 110 & 3\\
-	light & 688 & 116 & 584 & 188 & 4\\
-	medium & 343 & 84 & 909 & 412 & 26\\
-	dark & 98 & 48 & 403 & 681 & 85\\
-	\hline
+		\hline
+		       & fair & red & medium & dark & black \\\hline
+		\hline
+		blue   & 326  & 38  & 241    & 110  & 3     \\
+		light  & 688  & 116 & 584    & 188  & 4     \\
+		medium & 343  & 84  & 909    & 412  & 26    \\
+		dark   & 98   & 48  & 403    & 681  & 85    \\
+		\hline
 	\end{tabular}
 	\label{tbl::14_06}
 \end{table}
@@ -169,7 +169,7 @@ plot(result)
 
 結果は出力\ref{RS:out14_01}のようになります。行及び列にスコアがついていますね。この値を尺度値として使うと，データの相関係数が最大になるというような指標化がなされたのです。
 \begin{Rscreen}{対応分析の結果}{out14_01}
-    \begin{verbatim}
+	\begin{verbatim}
 First canonical correlation(s): 4.463684e-01 1.734554e-01 2.931691e-02 1.134031e-16 
 
  Row scores:
@@ -198,11 +198,11 @@ black   2.45176017  1.6513565 -1.5736976  1.1609621
 そしてこれを見ると，例えば髪の毛と目の色がどちらもdarkである場合，この二点は近くにプロットされています。この二点が近くにあるということは，両者の結びつきが強いということです。髪の毛が暗い人は目の色も暗い人が多い，といった関係の強さが見て取れます。
 
 \begin{figure}
-    \begin{center}
-    \includegraphics[width=12cm,keepaspectratio]{../images/14_DualScaling/Rplot14_01.png}
-    \caption{分析結果のプロット}
-    \label{fig::14_01}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=12cm,keepaspectratio]{../images/14_DualScaling/Rplot14_01.png}
+		\caption{分析結果のプロット}
+		\label{fig::14_01}
+	\end{center}
 \end{figure}
 
 ちなみにこれは対応分析独特の表示法で，行と列の変数が1つの画面にうつされていますね。
@@ -226,4 +226,4 @@ black   2.45176017  1.6513565 -1.5736976  1.1609621
 
 \section{課題}
 
-\end{document} 
+\end{document}
