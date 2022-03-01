@@ -1,7 +1,7 @@
 \documentclass{ltjsarticle}
 \usepackage{../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 2.0.10}
+\lhead{version 2.0.11}
 \begin{document}
 
 \title{心理学データ解析基礎1(心理学統計法)\\心理学データ解析1AB\\心理学データ解析基礎2}
@@ -9,107 +9,107 @@
 \date{Last Compiled on \number\year .\number\month .\number\day}
 \maketitle
 
-% \setcounter{tocdepth}{1}
-% \tableofcontents
-% \newpage
-% \section*{はじめに}
-% \subsection*{授業のテーマ}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\newpage
+\section*{はじめに}
+\subsection*{授業のテーマ}
 
 「見えないもの」をみよう・測ろう・考えようとするのが心理統計の世界である。
 
-% \subsection*{一年を通じて伝えたいポイント}
-% \begin{description}
-% 	\item[母数を知るための推測] 大学での統計，心理統計は標本の記述統計量を検証したいのではなく，母集団を表す数字を求めるための推測統計である。
-% 	\item[確率を用いた推論] 母数を知るための方法は3つある。代表値を用いたモーメント法，確率分布をつかった最尤法，ベイズ法である。
-% 	\item[要因計画と線形モデル] 心理学では，要因計画による研究条件をコントロールし，平均値の差をもちいた考察(平均因果効果)をおこなうことが多い。そしてそれらは総じて線形モデルとして表現できる。
-% 	\item[モデル比較と意思決定] モデルによる母数の推定だけではなく，そこから一定の「結論」あるいは「意思決定」を行うための方法として，モデル比較やNHSTといった方法がある。
-% 	\item[統計環境Rによる実践] 統計環境Rを利用して，理論的な理解だけでなく実際に計算ができることも身につけるべき技術である。
-% \end{description}
+\subsection*{一年を通じて伝えたいポイント}
+\begin{description}
+    \item[母数を知るための推測] 大学での統計，心理統計は標本の記述統計量を検証したいのではなく，母集団を表す数字を求めるための推測統計である。
+    \item[確率を用いた推論] 母数を知るための方法は3つある。代表値を用いたモーメント法，確率分布をつかった最尤法，ベイズ法である。
+    \item[要因計画と線形モデル] 心理学では，要因計画による研究条件をコントロールし，平均値の差をもちいた考察(平均因果効果)をおこなうことが多い。そしてそれらは総じて線形モデルとして表現できる。
+    \item[モデル比較と意思決定] モデルによる母数の推定だけではなく，そこから一定の「結論」あるいは「意思決定」を行うための方法として，モデル比較やNHSTといった方法がある。
+    \item[統計環境Rによる実践] 統計環境Rを利用して，理論的な理解だけでなく実際に計算ができることも身につけるべき技術である。
+\end{description}
 
-% 注）「科目の中でのこのコマの位置づけ」の中で示されているのは，上記のポイントに対応した，その時間の進度(Level)のようなものです
-% \footnote{記述統計は「一年を通じて伝えたいポイント」の基礎および準備であり，本質ではありませんので「ポイント」には含まれませんが，「授業の進度」には含まれます。}。例えば，次のようにあった場合，
-% \begin{tcolorbox}
-% 	\begin{tabular}[t]{ccccccc}
-% 		記述統計[3] & 確率[2] & モデル[1] & 推測・推定[1] & 検定[0] & 実践[1]
-% 	\end{tabular}
-% \end{tcolorbox}
-% 記述統計は第3段階，確率についての話は第2段階，モデルについての話は第1段階，推測・推定についての話はまだ含まれておらず，実践は第1段階にきたことを表します。この進度は，次の表~\ref{processTable}に対応し，累積するものです。
-
-
-% \begin{table}
-% 	\centering
-% 	\caption{テーマと講義との対応}
-% 	\label{processTable}
-% 	\begin{tabular}[t]{lccccccc}
-% 		                         & 記述統計 & 確率 & モデル & 推測・推定 & 検定 & 演習 & page                                 \\\hline\hline
-% 		心理学と統計法の関係     &          &      &        &            &      &      & p.\pageref{s01_Introduction}         \\
-% 		数値データの種類         & 1        &      &        &            &      &      & p.\pageref{s02_Numbers}              \\
-% 		統計環境Rの導入          &          &      &        &            &      & 1    & p.\pageref{s03_introR}               \\
-% 		統計環境Rの利用          & 2        &      &        &            &      & 2    & p.\pageref{s04_usingR}               \\
-% 		記述統計量               & 3        &      &        &            &      &      & p.\pageref{s05_descriptives}         \\
-% 		測定の基礎               &          &      & 1      &            &      &      & p.\pageref{s06_ctt}                  \\
-% 		誤差と確率               &          & 1    &        &            &      &      & p.\pageref{s07_probability}          \\
-% 		相関と因果               &          &      & 2      &            &      &      & p.\pageref{s08_CorrelationCausation} \\
-% 		単回帰分析               &          &      & 3      &            &      &      & p.\pageref{s09_Regression}           \\
-% 		重回帰分析               &          &      & 4      &            &      &      & p.\pageref{s10_MultipleRegression}   \\
-% 		Rをつかった回帰分析      &          &      & 5      &            &      & 3    & p.\pageref{s11_Regression_onR}       \\
-% 		実験計画法1              &          &      & 6      &            &      &      & p.\pageref{s12_design1}              \\
-% 		実験計画法2              &          &      & 7      &            &      &      & p.\pageref{s13_design2}              \\
-% 		実験計画法3              &          &      & 8      &            &      &      & p.\pageref{s14_design3}              \\\hline
-% 		確率と統計的推論         &          & 2    &        & 1          &      &      & p.\pageref{s16_inference}            \\
-% 		推論と判断               &          & 3    &        &            & 1    &      & p.\pageref{s17_estimation_and_test}  \\
-% 		帰無仮説検定             &          & 4    &        &            & 2    &      & p.\pageref{s18_NHST}                 \\
-% 		帰無仮説検定の注意点     &          & 5    &        &            & 3    &      & p.\pageref{s19_NHST2}                \\
-% 		二群の平均値差           &          & 6    & 9      & 2          & 4    & 4    & p.\pageref{s20_ttest}                \\
-% 		要因計画と平均値差の検定 &          & 7    & 10     &            & 5    &      & p.\pageref{s21_anova}                \\
-% 		Rによる分散分析          &          & 8    & 11     & 3          & 6    & 5    & p.\pageref{s22_anova_onR}            \\
-% 		確率分布とデータの関係   &          & 9    & 12     & 4          &      &      & p.\pageref{s23_likelihood}           \\
-% 		回帰分析の最尤推定       &          & 10   & 13     & 5          &      &      & p.\pageref{s24_maximum_likelihood}   \\
-% 		ベイズ推定の基礎         &          & 11   &        & 6          &      &      & p.\pageref{s25_bayesian1}            \\
-% 		ベイズ推定の実際         &          & 12   & 14     & 7          &      &      & p.\pageref{s26_bayesian2}            \\
-% 		ベイズ推定と判断         &          & 13   & 15     & 8          &      &      & p.\pageref{s27_bayesian3}            \\
-% 		JASPによるベイズ推定     &          & 14   &        & 9          &      & 6    & p.\pageref{s28_jasp}                 \\
-% 		Rによるベイズ推定        &          & 15   & 16     & 10         &      & 7    & p.\pageref{s29_brms}                 \\\hline
-% 	\end{tabular}
-% \end{table}
+注）「科目の中でのこのコマの位置づけ」の中で示されているのは，上記のポイントに対応した，その時間の進度(Level)のようなものです
+\footnote{記述統計は「一年を通じて伝えたいポイント」の基礎および準備であり，本質ではありませんので「ポイント」には含まれませんが，「授業の進度」には含まれます。}。例えば，次のようにあった場合，
+\begin{tcolorbox}
+    \begin{tabular}[t]{ccccccc}
+        記述統計[3] & 確率[2] & モデル[1] & 推測・推定[1] & 検定[0] & 実践[1]
+    \end{tabular}
+\end{tcolorbox}
+記述統計は第3段階，確率についての話は第2段階，モデルについての話は第1段階，推測・推定についての話はまだ含まれておらず，実践は第1段階にきたことを表します。この進度は，次の表~\ref{processTable}に対応し，累積するものです。
 
 
+\begin{table}
+    \centering
+    \caption{テーマと講義との対応}
+    \label{processTable}
+    \begin{tabular}[t]{lccccccc}
+                                 & 記述統計 & 確率 & モデル & 推測・推定 & 検定 & 演習 & page                                 \\\hline\hline
+        心理学と統計法の関係     &          &      &        &            &      &      & p.\pageref{s01_Introduction}         \\
+        数値データの種類         & 1        &      &        &            &      &      & p.\pageref{s02_Numbers}              \\
+        統計環境Rの導入          &          &      &        &            &      & 1    & p.\pageref{s03_introR}               \\
+        統計環境Rの利用          & 2        &      &        &            &      & 2    & p.\pageref{s04_usingR}               \\
+        記述統計量               & 3        &      &        &            &      &      & p.\pageref{s05_descriptives}         \\
+        測定の基礎               &          &      & 1      &            &      &      & p.\pageref{s06_ctt}                  \\
+        誤差と確率               &          & 1    &        &            &      &      & p.\pageref{s07_probability}          \\
+        相関と因果               &          &      & 2      &            &      &      & p.\pageref{s08_CorrelationCausation} \\
+        単回帰分析               &          &      & 3      &            &      &      & p.\pageref{s09_Regression}           \\
+        重回帰分析               &          &      & 4      &            &      &      & p.\pageref{s10_MultipleRegression}   \\
+        Rをつかった回帰分析      &          &      & 5      &            &      & 3    & p.\pageref{s11_Regression_onR}       \\
+        実験計画法1              &          &      & 6      &            &      &      & p.\pageref{s12_design1}              \\
+        実験計画法2              &          &      & 7      &            &      &      & p.\pageref{s13_design2}              \\
+        実験計画法3              &          &      & 8      &            &      &      & p.\pageref{s14_design3}              \\\hline
+        確率と統計的推論         &          & 2    &        & 1          &      &      & p.\pageref{s16_inference}            \\
+        推論と判断               &          & 3    &        &            & 1    &      & p.\pageref{s17_estimation_and_test}  \\
+        帰無仮説検定             &          & 4    &        &            & 2    &      & p.\pageref{s18_NHST}                 \\
+        帰無仮説検定の注意点     &          & 5    &        &            & 3    &      & p.\pageref{s19_NHST2}                \\
+        二群の平均値差           &          & 6    & 9      & 2          & 4    & 4    & p.\pageref{s20_ttest}                \\
+        要因計画と平均値差の検定 &          & 7    & 10     &            & 5    &      & p.\pageref{s21_anova}                \\
+        Rによる分散分析          &          & 8    & 11     & 3          & 6    & 5    & p.\pageref{s22_anova_onR}            \\
+        確率分布とデータの関係   &          & 9    & 12     & 4          &      &      & p.\pageref{s23_likelihood}           \\
+        回帰分析の最尤推定       &          & 10   & 13     & 5          &      &      & p.\pageref{s24_maximum_likelihood}   \\
+        ベイズ推定の基礎         &          & 11   &        & 6          &      &      & p.\pageref{s25_bayesian1}            \\
+        ベイズ推定の実際         &          & 12   & 14     & 7          &      &      & p.\pageref{s26_bayesian2}            \\
+        ベイズ推定と判断         &          & 13   & 15     & 8          &      &      & p.\pageref{s27_bayesian3}            \\
+        JASPによるベイズ推定     &          & 14   &        & 9          &      & 6    & p.\pageref{s28_jasp}                 \\
+        Rによるベイズ推定        &          & 15   & 16     & 10         &      & 7    & p.\pageref{s29_brms}                 \\\hline
+    \end{tabular}
+\end{table}
 
-% なお，各コマにおける「標準シラバスにおける位置づけ」とは，公認心理師大学カリキュラム　標準シラバス(2018年8月22日版)\footnote{\url{https://psych.or.jp/wp-content/uploads/2018/04/standard_syllabus_2018-8-22.pdf}} との対応を表しています。
 
-% \include{s01_Introduction}
-% \include{s02_Numbers}
-% \include{s03_introR}
-% \include{s04_usingR}
-% \include{s05_descriptives}
-% \include{s06_ctt}
-% \include{s07_probability}
-% \include{s08_CorrelationCausation}
-% \include{s09_Regression}
-% \include{s10_MultipleRegression}
-% \include{s11_Regression_onR}
-% \include{s12_design1}
-% \include{s13_design2}
-% \include{s14_design3}
-% \include{s15_FirstSemester}
-% \include{s16_inference}
-% \include{s17_estimation_and_test}
-% \include{s18_NHST}
-% \include{s19_NHST2}
-% \include{s20_ttest}
-% \include{s21_anova}
-% \include{s22_anova_onR}
-% \include{s23_likelihood}
-% \include{s24_maximum_likelihood}
-% \include{s25_bayesian}
-% \include{s26_bayesian2}
-% \include{s27_bayesian3}
-% \include{s28_jasp}
-% \include{s29_brms}
-% \include{s30_SecondSemester}
 
-% \addcontentsline{toc}{section}{\bibname}
+なお，各コマにおける「標準シラバスにおける位置づけ」とは，公認心理師大学カリキュラム　標準シラバス(2018年8月22日版)\footnote{\url{https://psych.or.jp/wp-content/uploads/2018/04/standard_syllabus_2018-8-22.pdf}} との対応を表しています。
 
-% \bibliographystyle{../jecon_jpa}
-% \bibliography{../sbib}
+\include{s01_Introduction}
+\include{s02_Numbers}
+\include{s03_introR}
+\include{s04_usingR}
+\include{s05_descriptives}
+\include{s06_ctt}
+\include{s07_probability}
+\include{s08_CorrelationCausation}
+\include{s09_Regression}
+\include{s10_MultipleRegression}
+\include{s11_Regression_onR}
+\include{s12_design1}
+\include{s13_design2}
+\include{s14_design3}
+\include{s15_FirstSemester}
+\include{s16_inference}
+\include{s17_estimation_and_test}
+\include{s18_NHST}
+\include{s19_NHST2}
+\include{s20_ttest}
+\include{s21_anova}
+\include{s22_anova_onR}
+\include{s23_likelihood}
+\include{s24_maximum_likelihood}
+\include{s25_bayesian}
+\include{s26_bayesian2}
+\include{s27_bayesian3}
+\include{s28_jasp}
+\include{s29_brms}
+\include{s30_SecondSemester}
+
+\addcontentsline{toc}{section}{\bibname}
+
+\bibliographystyle{../jecon_jpa}
+\bibliography{../sbib}
 \end{document}
