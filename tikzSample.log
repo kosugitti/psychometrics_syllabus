@@ -1,36 +1,38 @@
-This is LuaHBTeX, Version 1.13.2 (TeX Live 2021)  (format=lualatex 2022.2.17)  23 FEB 2022 10:33
+This is LuaHBTeX, Version 1.13.2 (TeX Live 2021)  (format=lualatex 2022.3.1)  5 MAR 2022 09:55
  restricted system commands enabled.
 **tikzSample.tex
 (./tikzSample.tex
 LaTeX2e <2021-11-15> patch level 1
-Lua module: luaotfload 2021-05-21 3.18 Lua based OpenType font support
+Lua module: luaotfload 2022-02-27 3.20 Lua based OpenType font support
 Lua module: lualibs 2021-05-20 2.74 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2021-05-20 2.74 ConTeXt Lua libraries -- extended c
 ollection.
 luaotfload | conf : Root cache directory is "/Users/Napier/Library/texlive/2021/
 texmf-var/luatex-cache/generic/names".
-luaotfload | init : Loading fontloader "fontloader-2021-05-20.lua" from kpse-res
+luaotfload | init : Loading fontloader "fontloader-2022-02-24.lua" from kpse-res
 olved path "/usr/local/texlive/2021/texmf-dist/tex/luatex/luaotfload/fontloader-
-2021-05-20.lua".
+2022-02-24.lua".
 Lua-only attribute luaotfload@noligature = 1
-Lua-only attribute luaotfload@syllabe = 2
-luaotfload | init : Context OpenType loader version 3.116
+luaotfload | init : Context OpenType loader version 3.119
 Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
 Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
 Inserting `luaotfload.glyph_stream' at position 1 in `glyph_stream_provider'.
 Inserting `luaotfload.define_font' at position 1 in `define_font'.
-Lua-only attribute luaotfload_color_attribute = 3
+Lua-only attribute luaotfload_color_attribute = 2
 luaotfload | conf : Root cache directory is "/Users/Napier/Library/texlive/2021/
 texmf-var/luatex-cache/generic/names".
 Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_opentype_file'.
 Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' at position 1 in `glyph_stream_provider'
+.
 Inserting `luaotfload.harf.finalize_vlist' at position 1 in `post_linebreak_filt
 er'.
 Inserting `luaotfload.harf.finalize_hlist' at position 2 in `hpack_filter'.
 Inserting `luaotfload.cleanup_files' at position 1 in `wrapup_run'.
 Inserting `luaotfload.harf.finalize_unicode' at position 1 in `finish_pdffile'.
 Inserting `luaotfload.glyphinfo' at position 1 in `glyph_info'.
-Lua-only attribute luaotfload.letterspace_done = 4
+Lua-only attribute luaotfload.letterspace_done = 3
 Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
 font'.
 Inserting `luaotfload.aux.set_font_index' at position 2 in `luaotfload.patch_fon
@@ -43,7 +45,7 @@ Inserting `luaotfload.aux.set_capheight' at position 4 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'
-. L3 programming layer <2022-02-05>
+. L3 programming layer <2022-02-24>
 Inserting `tracingstacklevels' at position 1 in `input_level_string'.
 (/usr/local/texlive/2021/texmf-dist/tex/luatex/luatexja/ltjarticle.cls
 Document Class: ltjarticle 2021-12-22 v1.8f-ltj-21 Standard LuaLaTeX-ja class
@@ -114,29 +116,29 @@ X primitives.
 \ltj@dimen@zw=\dimen137
 \ltj@dimen@zh=\dimen138
 \ltj@dimen@jQ=\dimen139
-\ltj@icflag=\attribute5
-\ltj@curjfnt=\attribute6
-\ltj@curtfnt=\attribute7
-\ltj@charclass=\attribute8
-\ltj@charcode=\attribute9
-\ltj@autospc=\attribute10
-\ltj@autoxspc=\attribute11
-\ltj@yablshift=\attribute12
-\ltj@ykblshift=\attribute13
-\ltj@tablshift=\attribute14
-\ltj@tkblshift=\attribute15
-\jfam=\attribute16
-\ltj@vert@ori=\attribute17
-\ltj@dir=\attribute18
+\ltj@icflag=\attribute4
+\ltj@curjfnt=\attribute5
+\ltj@curtfnt=\attribute6
+\ltj@charclass=\attribute7
+\ltj@charcode=\attribute8
+\ltj@autospc=\attribute9
+\ltj@autoxspc=\attribute10
+\ltj@yablshift=\attribute11
+\ltj@ykblshift=\attribute12
+\ltj@tablshift=\attribute13
+\ltj@tkblshift=\attribute14
+\jfam=\attribute15
+\ltj@vert@ori=\attribute16
+\ltj@dir=\attribute17
 \ltj@@japanese=\language2
 \ltj@tempcnta=\count187
-\ltj@kcat0=\attribute19
-\ltj@kcat1=\attribute20
-\ltj@kcat2=\attribute21
-\ltj@kcat3=\attribute22
-\ltj@kcat4=\attribute23
-\ltj@kcat5=\attribute24
-\ltj@kcat6=\attribute25
+\ltj@kcat0=\attribute18
+\ltj@kcat1=\attribute19
+\ltj@kcat2=\attribute20
+\ltj@kcat3=\attribute21
+\ltj@kcat4=\attribute22
+\ltj@kcat5=\attribute23
+\ltj@kcat6=\attribute24
 Custom whatsit inhibitglue = 1
 Custom whatsit stack_marker = 2
 Custom whatsit begin_par = 3
@@ -323,8 +325,8 @@ LaTeX Info: Redefining \fontshapeforce on input line 954.
 (/usr/local/texlive/2021/texmf-dist/tex/luatex/luatexja/patches/lltjdefs.sty
 Package: lltjdefs 2022-01-23 Default font settings of LuaTeX-ja
 luaotfload | db : Font names database loaded from /Users/Napier/Library/texlive/
-2021/texmf-var/luatex-cache/generic/names/luaotfload-names.luc(load cache: extra
-_lmroman10-regular.luc)
+2021/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache: ex
+tra_lmroman10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
 (Font)              scaled to size 9.6222pt on input line 75.
 
@@ -341,7 +343,7 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 Package: lltjcore 2022-01-17 Patch to LaTeX2e Kernel for LuaTeX-ja
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2022-02-05 L3 programming layer (loader) 
+Package: expl3 2022-02-24 L3 programming layer (loader) 
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2022-02-07 L3 backend support: PDF output (LuaTeX)
@@ -765,6 +767,14 @@ File: pgflibraryarrows.meta.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 s/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarypatterns.code.tex
+File: tikzlibrarypatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/pgflibrarypattern
+s.code.tex
+File: pgflibrarypatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))
 (/usr/local/texlive/2021/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
 
@@ -781,37 +791,49 @@ Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
 \everycr=\toks39
 \minrowclearance=\skip51
 )
+(/usr/local/texlive/2021/texmf-dist/tex/latex/metalogo/metalogo.sty
+Package: metalogo 2010/05/29 v0.12 Extended TeX logo macros
+
+(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+)
+\xl@everylogo=\toks40
+\xl@@everylogo=\toks41
+LaTeX Info: Redefining \TeX on input line 193.
+LaTeX Info: Redefining \LaTeX on input line 202.
+LaTeX Info: Redefining \LaTeXe on input line 219.
+)
 (/usr/local/texlive/2021/texmf-dist/tex/luatex/luatexja/patches/lltjp-array.sty
 Package: lltjp-array 2019-07-18 Patch to array for LuaTeX-ja
 ) (./tikzSample.aux)
 \openout1 = tikzSample.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 5.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 5
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 7
 .
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for JY3/mc/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for JT3/mc/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for JY3/mc/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for JT3/mc/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
 
 (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -820,12 +842,12 @@ LaTeX Font Info:    ... okay on input line 5.
 \scratchbox=\box81
 \nofMPsegments=\count296
 \nofMParguments=\count297
-\everyMPshowfont=\toks40
+\everyMPshowfont=\toks42
 \MPscratchCnt=\count298
 \MPscratchDim=\dimen274
 \MPnumerator=\count299
 \makeMPintoPDFobject=\count300
-\everyMPtoPDFconversion=\toks41
+\everyMPtoPDFconversion=\toks43
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -836,112 +858,36 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 9.
+(Font)              <7> on input line 16.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 9.
+(Font)              <5> on input line 16.
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 6.73553pt on input line 9.
+(Font)              scaled to size 6.73553pt on input line 16.
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 4.8111pt on input line 9.
+(Font)              scaled to size 4.8111pt on input line 16.
 
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 14.
-
-LaTeX Font Info:    Trying to load font information for OMS+lmr on input line 1
-4.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/lm/omslmr.fd
-File: omslmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-14.
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/lm/omslmsy.fd
-File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 14.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 14.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 14.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 14.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 15.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 15.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 16.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 16.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 18.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 18.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 18.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 18.
-
-
-Overfull \hbox (18.90962pt too wide) detected at line 21
-[]
- []
-
-(load cache: extra_lmroman10-bold.luc)
-LaTeX Font Info:    Font shape `JT3/mc/b/n' in size <10> not available
-(Font)              Font shape `JT3/gt/m/n' tried instead on input line 26.
-LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 26.
-LaTeX Font Info:    Font shape `JY3/mc/b/n' in size <10> not available
-(Font)              Font shape `JY3/gt/m/n' tried instead on input line 26.
-LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 26.
-(load cache: extra_haranoajigothic-medium.luc)
-LaTeX Font Info:    Font shape `OMS/lmr/bx/n' in size <10> not available
-(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 26.
 [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
 (./tikzSample.aux))
 
 Here is how much of LuaTeX's memory you used:
- 15154 strings out of 477802
+ 15431 strings out of 477800
  125244,662416 words of node,token memory allocated
- 9787 words of node memory still in use:
-   7 hlist, 1 vlist, 4 rule, 2 glue, 118 kern, 1 glyph, 3789 attribute, 140 glue
-_spec, 209 attribute_list, 2 write, 75 user_defined nodes
-   avail lists: 1:21,2:31684,3:59,4:487,5:218,6:10,7:1816,8:9,9:912
- 35143 multiletter control sequences out of 65536+600000
- 35 fonts using 16985359 bytes
- 114i,16n,112p,1764b,380s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2021/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGot
-hic-Medium.otf>{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.
-enc}</usr/local/texlive/2021/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.
-otf></usr/local/texlive/2021/texmf-dist/fonts/opentype/public/haranoaji/HaranoAj
-iMincho-Regular.otf></usr/local/texlive/2021/texmf-dist/fonts/opentype/public/lm
-/lmroman10-regular.otf></usr/local/texlive/2021/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbsy10.pfb><
-/usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on tikzSample.pdf (1 page, 60130 bytes).
+ 7210 words of node memory still in use:
+   7 hlist, 1 vlist, 4 rule, 2 glue, 118 kern, 1 glyph, 2851 attribute, 65 glue_
+spec, 154 attribute_list, 2 write, 21 user_defined nodes
+   avail lists: 1:19,2:11725,3:289,4:183,5:98,6:4,7:422,8:1,9:174,11:6
+ 35404 multiletter control sequences out of 65536+600000
+ 29 fonts using 12819967 bytes
+ 114i,8n,112p,1764b,744s stack positions out of 10000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2021/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.o
+tf></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+>
+Output written on tikzSample.pdf (1 page, 11546 bytes).
 
-PDF statistics: 68 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+PDF statistics: 22 PDF objects out of 1000 (max. 8388607)
+ 14 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 

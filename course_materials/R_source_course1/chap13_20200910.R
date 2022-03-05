@@ -39,9 +39,10 @@ ggsave(filename = "Rplot22_01.png", dpi = 600, width = 6, height = 4)
 
 
 
-df_example %>% ggplot(aes(x = 温度, y = 評価, fill =温度)) +
+df_example %>% ggplot(aes(x = 温度, y = 評価, fill =温度))+
   stat_summary(fun = mean, geom = "bar") +
   theme(legend.position = "bottom", text = element_text(family = "HiraKakuProN-W3")) +
+  scale_fill_manual(values = c("#ff9900", "#339900")) +
   geom_hline(yintercept = mean(df_example$評価)) + ylim(0, 15) -> g1
 df_example %>% ggplot(aes(x = メーカー, y = 評価, fill = メーカー)) +
   stat_summary(fun = mean, geom = "bar") +
@@ -49,4 +50,55 @@ df_example %>% ggplot(aes(x = メーカー, y = 評価, fill = メーカー)) +
   geom_hline(yintercept = mean(df_example$評価)) + ylim(0, 15) -> g2
 gridExtra::grid.arrange(g1, g2, nrow = 1) -> g3
 
-ggsave(g3,filename = "Rplot22_02.png", dpi = 600, width = 8, height = 4)
+ggsave(g3,filename = "../images/22_anovaOnR/Rplot22_02.png", dpi = 600, width = 8, height = 4)
+
+
+interaction.plot(
+    x.factor=df_example$温度,       # x軸の変数
+    trace.factor=df_example$メーカー,     # 線で描き分ける変数
+    response=df_example$評価,       # y軸の変数
+    fun=mean,                # 平均値を図示するならmeanを指定
+    type="b",                # 点と線で表すグラフを指定
+    legend=TRUE,             # 凡例あり
+#    ylim=c(80, 94),          # y軸の範囲指定
+    xlab = "Class",          # x軸タイトル
+    ylab = "mean of Score",  # y軸タイトル
+    trace.label = "Sex",     # 線で描き分ける変数タイトル（凡例に出る)
+    pch=c(19, 21),           # 丸の記号の種類
+    cex.lab=1.2              # 軸タイトルの文字サイズ
+)
+
+g1 <- df_example %>% 
+    ggplot() +
+    aes(x = 温度, color = メーカー, group = メーカー, y = 評価) +
+    stat_summary(fun = mean, geom = "point",lwd=3) +
+    stat_summary(fun = mean, geom = "line",lwd=2) +
+    ylim(5,13)
+ggsave(g1,filename = "../images/22_anovaOnR/Rplot22_05.png", dpi = 600, width = 8, height = 4)
+
+g1+ geom_segment(aes(x=1,xend=1,y=12,yend=12),lty=2,color=2) +
+    geom_segment(aes(x=1,xend=1,y=7,yend=7),lty=2,color=3)+
+    geom_segment(aes(x=1,xend=2,y=11,yend=11),lty=2,color=3) + 
+    geom_segment(aes(x=1,xend=2,y=9,yend=9),lty=2,color=2)
+
+g1 <- g1 + geom_point(aes(x=1.5,y=(12+9)/2),color="#f8766D",size=4)+
+    geom_point(aes(x=1.5,y=(11+7)/2),color="#00BFC4",size=4)+
+    geom_segment(aes(x=1.5,xend=1.5,y=(12+9)/2,yend=(11+7)/2),lty=2,color=1)
+
+g2 <- df_example %>% 
+    ggplot() +
+    aes(x = 温度, color = メーカー, group = メーカー, y = 評価) +
+    stat_summary(fun = mean, geom = "point",lwd=3) +
+    stat_summary(fun = mean, geom = "line",lwd=2) + 
+    stat_summary(fun = mean, geom = "point",lwd=3) + ylim(5,13) +
+    geom_segment(aes(x=1,xend=1,y=12,yend=7),lty=2,color=1) + 
+    geom_segment(aes(x=2,xend=2,y=11,yend=9),lty=2,color=1) + 
+    geom_point(aes(x=1,y=9.5),size=3,color="#ff9900") + 
+    geom_point(aes(x=2,y=10),size=3,color="#339900")
+
+gridExtra::grid.arrange(g2, g1, nrow = 1) -> g3
+
+
+ggsave(g3,filename = "../images/22_anovaOnR/Rplot22_04.png", dpi = 600, width = 8, height = 4)
+
+

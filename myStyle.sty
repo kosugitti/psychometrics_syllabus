@@ -1,25 +1,24 @@
 \usepackage[longnamesfirst]{natbib}
 % 1行49文字。200行で一万文字程度(目安)
 \usepackage[left=25mm,right=25mm,top=30mm,bottom=30mm]{geometry}
-\usepackage{url}
-\usepackage{graphicx} 
-\renewcommand{\refname}{引用文献}
-\usepackage{lineno}
+\usepackage{url} %URLをきれいに表示
+\usepackage{graphicx} %図版を読み込む
+\usepackage{lineno} %行番号表示パッケージ
 \usepackage{lscape} %横向きの表
-\usepackage{luatexja-ruby}
-\usepackage{hyperref}
-\usepackage{epsdice}
-\usepackage{fancyvrb}
-\usepackage{ulem}
-\usepackage{bm}
-\usepackage{fancyvrb}
-\usepackage{pdfpages}
-\usepackage{booktabs}
-\usepackage{tikz}
-\usepackage{amsmath}
-\usetikzlibrary{positioning, arrows.meta,calc}
+\usepackage{luatexja-ruby} %ルビを振る
+\usepackage{hyperref} %ハイパーリンク設定
+\usepackage{epsdice} %サイコロの図がでるパッケージ
+\usepackage{fancyvrb} % verbatim環境の拡張版
+\usepackage{ulem} % 下線を引く
+\usepackage{bm} %ベクトル表記が楽になるパッケージ
+\usepackage{pdfpages} %PDFファイルを取り込むパッケージ。表紙の図版に。
+\usepackage{booktabs} %表の罫線パッケージ
+\usepackage{amsmath} %AMS系数式パッケージ
+\usepackage{wrapfig} % 図の周りに文章を配置するパッケージ
+\usepackage{multirow} % 表の縦結合
+\usepackage{tikz} % コマンドで図を書くパッケージ
+\usetikzlibrary{positioning, arrows.meta,calc} % Tikzのパッケージ
 % ソースコード用のパッケージと設定
-\usepackage{graphicx}
 \usepackage{colortbl,xcolor}
 \usepackage{listingsutf8}
 \renewcommand{\lstlistingname}{code :}
@@ -49,10 +48,6 @@ setpagesize=false,
  citecolor=teal,
  urlcolor=magenta
 }
-% 図の周りに文章を配置する
-\usepackage{wrapfig}
-% 表の縦結合
-\usepackage{multirow}
 
 % 強調表現/索引
 \newcommand\keyterm[3]{\textbf{#1(#3)}\index{#2@#1}}
@@ -62,11 +57,11 @@ setpagesize=false,
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable, skins, theorems}
 % スクリーン出力
-\newtcbtheorem[number within=section]{Rscreen}{Rの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=blue!3!,fontupper=\gtfamily\small}{RS}
-\newtcbtheorem[number within=section]{SCrstan}{rstanの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=green!3!,fontupper=\gtfamily\small}{SCrstan}
-\newtcbtheorem[number within=section]{SCcmd}{cmdstanrの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=pink!3!,fontupper=\gtfamily\small}{SCcmd}
+\newtcbtheorem[number within=chapter]{Rscreen}{Rの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=blue!3!,fontupper=\gtfamily\small}{RS}
+\newtcbtheorem{SCrstan}{rstanの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=green!3!,fontupper=\gtfamily\small}{SCrstan}
+\newtcbtheorem{SCcmd}{cmdstanrの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=pink!3!,fontupper=\gtfamily\small}{SCcmd}
 % コラム
-\newtcbtheorem[number within=chapter]{Untiku}{うんちく}{fonttitle=\gtfamily\sffamily\bfseries,colframe=blue,colback=blue!7!,fontupper=\gtfamily\small}{Untiku}
+\newtcbtheorem{Untiku}{うんちく}{fonttitle=\gtfamily\sffamily\bfseries,colframe=blue,colback=blue!7!,fontupper=\gtfamily\small}{Untiku}
 
 % FAQ box
 \newtcbtheorem[number within=section]{FAQ}{Q.}
@@ -88,6 +83,7 @@ setpagesize=false,
 % 索引
 \usepackage{makeidx}
 \makeindex
+
 % 索引スタイル
 \newcommand{\groupedheadprefix}[1]{%
     \par%
@@ -99,3 +95,7 @@ setpagesize=false,
 \usepackage{fancyhdr}
 \pagestyle{fancy}
     \cfoot{\thepage} %フッタ中央．ページ番号を表示
+
+\renewcommand{\refname}{引用文献}
+% 脚注でもverbatim環境が使いたい
+\VerbatimFootnotes
