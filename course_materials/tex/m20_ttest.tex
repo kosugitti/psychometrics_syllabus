@@ -96,82 +96,6 @@ $\bar{D}$を移項目して
 \end{quote}
 とすると尚良いでしょう\footnote{5\%水準でカットするのも，95\%水準の幅を報告するのも，同じ情報で冗長だ，と思われるかもしれません。実にその通りで，かつ，帰無仮説検定の「有意差あり」という報告は信頼区間をみればわかる一方，その逆は成立しない($p$値は分布に関する情報ではない)のですから，有意差あり/なしという言い方は必要ないのです。今でもこの表現が使われるのは，旧世紀の名残でしかありません。}。
 
-\section{Rによる実践；対応のあるt検定}
-さて，先にみた関数関数\texttt{t.test}は，当然$t$検定用の関数ですので，実際に検定のシーンで使ってみましょう。
-
-対応のあるt検定，つまり一要因群内(Within)2水準の平均値差の検定をどう計算するか，です。前節では面倒な計算式がありましたが，今回その辺の計算は機械がやってくれますので，例によって出力をしっかり確認するようにしましょう。
-
-例として，表\ref{fig::19_01}の10人の参加者データを使います。元になるデータをオブジェクトに格納する\texttt{code:\ref{code::20_08}}を実行しましょう。
-\begin{lstlisting}[language=c++,label={code::20_08},caption={t検定を行う}]
-X <- c(34, 25, 13, 21, 13, 26, 19, 12, 19, 19)
-Y <- c(35, 30, 16, 27, 20, 28, 16, 14, 18, 21)
-t.test(X, Y, paired = T, alternative = "less")
-\end{lstlisting}
-
-\paragraph{コード解説}
-\begin{description}
-	\item[1行目] 一方のデータをオブジェクト\texttt{X}に代入しています。\texttt{c}は結合combineという関数です。
-	\item[2行目] 他方のデータをオブジェクト\texttt{Y}に代入しています。
-	\item[3行目] t検定を行っています。引数として，データ\texttt{X,Y}を指定し，次に\texttt{paired}オプションを\texttt{T}に\footnote{大文字の\texttt{T}は$TRUE$，真であり，この逆は\texttt{F}とかいて$FALSE$,偽を意味する\textbf{特別な文字}です。真か偽か，本当か嘘かという2つの状態を表す論理値と呼ばれるもので，ここではスイッチオン/オフの意味です。対応スイッチ，オン！という意味ですね。大文字の$T,F$をオブジェクト名にして利用することも可能ですが，Rが専門的な意味で使う予約語なので，一般的にはそのような使用は避けた方が望ましいです。}，対立仮説alternativeを「XがYよりも小さい」という\underline{片側検定}にしてあります。
-\end{description}
-さて，このスクリプトは直感的にわかりやすく書きましたが，同じことを別の表現をすることもできます(\texttt{code:\ref{code::20_09}})。
-
-\begin{lstlisting}[language=c++,label={code::20_09},caption={t検定その2}]
-X <- c(34, 25, 13, 21, 13, 26, 19, 12, 19, 19)
-Y <- c(35, 30, 16, 27, 20, 28, 16, 14, 18, 21)
-dat <- data.frame(condition = c(rep(1, 10), rep(2, 10)), value = c(X, Y))
-dat$condition <- factor(dat$condition, labels = c("pre", "post"))
-t.test(value ~ condition, data = dat, paired = T, alternative = "less")
-\end{lstlisting}
-これは1，2行目は先ほどと同じですが，
-\begin{description}
-	\item[3行目] オブジェクトからデータフレームを作成。データの値は変数\texttt{value}に，これを条件ごとに区別する条件変数\texttt{condition}と共に作ります。\texttt{condition}の中にある\texttt{rep}関数は，ある文字・数字を繰り返すもので，ここでは\texttt{rep(1,10)}で1を10個作っています。ここだけ実行するとその動作がよくわかりますよ(\texttt{console\ref{RS:out20_02}})。
-		\begin{Rscreen}{repの出力}{out20_02}
-			\begin{verbatim}
-> rep(1,10)
-[1] 1 1 1 1 1 1 1 1 1 1\end{verbatim}
-		\end{Rscreen}
-	\item[4行目] 先ほど作った\texttt{condition}変数をファクター型(要因型，ラベル付き名義尺度水準)に置き換えています。
-	\item[5行目] t検定ですが，書式が変わっています。チルダ\texttt{\~}を使って，従属変数\verb|~|独立変数という書き方に変えています。
-\end{description}
-こちらはデータフレームを作った書き方ですから，データフレームがどういう形なのかみておくと良いでしょう(\texttt{console\ref{RS:out20_03}})。
-
-\begin{Rscreen}{datの中身を確認}{out20_03}
-	\begin{verbatim}
-> dat
-   condition value
-1        pre    34
-2        pre    25
-3        pre    13
-(中略)
-11      post    35
-12      post    30
-13      post    16
-(後略)
-\end{verbatim}
-\end{Rscreen}
-実際のデータ分析の時は、外部からデータファイルを読み込んだり，既にデータフレームに整形されたものを分析することが多いかと思います。このチルダを使って独立変数，従属変数の形に表すのがRでは一般的な関数関係の表現形ですから，これを機にどちらの使い方でもできるように解説しました。
-
-さて，こうして得られる結果は\texttt{console\ref{RS:out20_04}}の通りです。
-\begin{Rscreen}{t.testの出力}{out20_04}
-	\begin{verbatim}
-Paired t-test
-data:  value by condition
-t = -2.4783, df = 9, p-value = 0.01754
-alternative hypothesis: true difference in means is less than 0
-95 percent confidence interval:
-        -Inf -0.6248331
-sample estimates:
-mean of the differences 
-                   -2.4 
-\end{verbatim}
-\end{Rscreen}
-
-上から三行目に$t$値が出ていますね。帰無仮説の下での$t$統計量の実現値は$t(9)=-2.4783$であり，これが出現する確率は$p=0.01754$です。対立仮説は，平均値の差が0より小さい(true difference in means is less than 0)という対立仮説になっています\footnote{Rでは前の変数が後ろの変数に比べて大か，小かを表現します。}。これが片側検定になっているのは，\texttt{t.test}関数の引数に\texttt{alternative="less"}と書いたからで，これを\texttt{alternative="greater"}とすれば逆の片側検定(事前データのスコアの方が事後データのスコアより大きい)を検定することになり，特に何も書かないか\texttt{alternative="two.sided"}とすれば両側検定になります。
-
-前の章($\to$第\ref{m19_NHST2}講)を参考に，このような結果をどう解釈し，どうレポートに記載するかを確認しておいてください。
-
-
 
 \section{一要因Betweenデザイン，2水準}
 \subsection{区間推定でまず考えてみよう}
@@ -272,8 +196,85 @@ $t$分布を見ながら，先ほどの$t$値の考え方を見てみましょ�
 また，ここでこのように検定の具体例をみてきたわけですから，是非この技術を身の回りでも活用してみてください。
 何か2つのグループがあって，その平均値が違うのであれば，これは偶然によるものなのかそうでないのか。一般化して良いのかどうか。この推測統計学的発想は，身の回りの至る所に応用できるものです。知識と技術を手に入れたら，是非具体例を自分で考えて，試してみてください\footnote{例えば「お兄ちゃんのフライドポテトの方が，いつも長いのばっかり入っていてずるい！」というような兄弟喧嘩の種も，両者のフライドポテトの長さを測り，その平均値を出して$t$検定すれば「たまたま今回のポテトの問題だった」のか，いつもそうなる現象なのか検定で決着をつけることができます。実際に筆者が居酒屋のフライドポテトでこれの検証をした時，テーブルごとのポテトの長さに平均的な差はありませんでした。くわえて，フライドポテトの長さが非常に正規分布に近かったのを知って，感心したことがあります。}
 
+
+\section{Rによる実践；対応のあるt検定}
+では具体的に，Rを使って計算してみましょう。
+まずは対応のあるt検定，つまり一要因群内(Within)2水準の平均値差の検定です。面倒な計算式がありましたが，今回その辺の計算は機械がやってくれますので，例によって出力をしっかり確認するようにしましょう。
+
+例として，表\ref{fig::19_01}の10人の参加者データを使います。元になるデータをオブジェクトに格納する\texttt{code:\ref{code::20_08}}を実行しましょう。
+\begin{lstlisting}[language=c++,label={code::20_08},caption={t検定を行う}]
+X <- c(34, 25, 13, 21, 13, 26, 19, 12, 19, 19)
+Y <- c(35, 30, 16, 27, 20, 28, 16, 14, 18, 21)
+t.test(X, Y, paired = T, alternative = "less")
+\end{lstlisting}
+
+\paragraph{コード解説}
+\begin{description}
+	\item[1行目] 一方のデータをオブジェクト\texttt{X}に代入しています。\texttt{c}は結合combineという関数です。
+	\item[2行目] 他方のデータをオブジェクト\texttt{Y}に代入しています。
+	\item[3行目] t検定を行っています。引数として，データ\texttt{X,Y}を指定し，次に\texttt{paired}オプションを\texttt{T}に\footnote{大文字の\texttt{T}は$TRUE$，真であり，この逆は\texttt{F}とかいて$FALSE$,偽を意味する\textbf{特別な文字}です。真か偽か，本当か嘘かという2つの状態を表す論理値と呼ばれるもので，ここではスイッチオン/オフの意味です。対応スイッチ，オン！という意味ですね。大文字の$T,F$をオブジェクト名にして利用することも可能ですが，Rが専門的な意味で使う予約語なので，一般的にはそのような使用は避けた方が望ましいです。}，対立仮説alternativeを「XがYよりも小さい」という\underline{片側検定}にしてあります。
+\end{description}
+さて，このスクリプトは直感的にわかりやすく書きましたが，同じことを別の表現をすることもできます(\texttt{code:\ref{code::20_09}})。
+
+\begin{lstlisting}[language=c++,label={code::20_09},caption={t検定その2}]
+X <- c(34, 25, 13, 21, 13, 26, 19, 12, 19, 19)
+Y <- c(35, 30, 16, 27, 20, 28, 16, 14, 18, 21)
+dat <- data.frame(condition = c(rep(1, 10), rep(2, 10)), value = c(X, Y))
+dat$condition <- factor(dat$condition, labels = c("pre", "post"))
+t.test(value ~ condition, data = dat, paired = T, alternative = "less")
+\end{lstlisting}
+これは1，2行目は先ほどと同じですが，
+\begin{description}
+	\item[3行目] オブジェクトからデータフレームを作成。データの値は変数\texttt{value}に，これを条件ごとに区別する条件変数\texttt{condition}と共に作ります。\texttt{condition}の中にある\texttt{rep}関数は，ある文字・数字を繰り返すもので，ここでは\texttt{rep(1,10)}で1を10個作っています。ここだけ実行するとその動作がよくわかりますよ(\texttt{Rの出力\ref{RS:out20_02}})。
+		\begin{Rscreen}{repの出力}{out20_02}
+			\begin{verbatim}
+> rep(1,10)
+[1] 1 1 1 1 1 1 1 1 1 1\end{verbatim}
+		\end{Rscreen}
+	\item[4行目] 先ほど作った\texttt{condition}変数をファクター型(要因型，ラベル付き名義尺度水準)に置き換えています。
+	\item[5行目] t検定ですが，書式が変わっています。チルダ\texttt{\~}を使って，従属変数\verb|~|独立変数という書き方に変えています。
+\end{description}
+こちらはデータフレームを作った書き方ですから，データフレームがどういう形なのかみておくと良いでしょう(\texttt{Rの出力\ref{RS:out20_03}})。
+
+\begin{Rscreen}{datの中身を確認}{out20_03}
+	\begin{verbatim}
+> dat
+   condition value
+1        pre    34
+2        pre    25
+3        pre    13
+(中略)
+11      post    35
+12      post    30
+13      post    16
+(後略)
+\end{verbatim}
+\end{Rscreen}
+実際のデータ分析の時は、外部からデータファイルを読み込んだり，既にデータフレームに整形されたものを分析することが多いかと思います。このチルダを使って独立変数，従属変数の形に表すのがRでは一般的な関数関係の表現形ですから，これを機にどちらの使い方でもできるように解説しました。
+
+さて，こうして得られる結果は\texttt{Rの出力\ref{RS:out20_04}}の通りです。
+\begin{Rscreen}{t.testの出力}{out20_04}
+	\begin{verbatim}
+Paired t-test
+data:  value by condition
+t = -2.4783, df = 9, p-value = 0.01754
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+        -Inf -0.6248331
+sample estimates:
+mean of the differences 
+                   -2.4 
+\end{verbatim}
+\end{Rscreen}
+
+上から三行目に$t$値が出ていますね。帰無仮説の下での$t$統計量の実現値は$t(9)=-2.4783$であり，これが出現する確率は$p=0.01754$です。対立仮説は，平均値の差が0より小さい(true difference in means is less than 0)という対立仮説になっています\footnote{Rでは前の変数が後ろの変数に比べて大か，小かを表現します。}。これが片側検定になっているのは，\texttt{t.test}関数の引数に\texttt{alternative="less"}と書いたからで，これを\texttt{alternative="greater"}とすれば逆の片側検定(事前データのスコアの方が事後データのスコアより大きい)を検定することになり，特に何も書かないか\texttt{alternative="two.sided"}とすれば両側検定になります。
+
+前の章($\to$第\ref{m19_NHST2}講)を参考に，このような結果をどう解釈し，どうレポートに記載するかを確認しておいてください。
+
 \section{Rによる実践；対応のないt検定}
-ではRでの実践です。先程の表\ref{tbl::19_02}のデータを分析することを考えます。難しい計算は抜きにして，\texttt{code:\ref{code::20_10}}を入力し，分析を実行してください。
+つづいて対応のないt検定のほうも，Rでできるようになりましょう。
+
+先程の表\ref{tbl::19_02}のデータを分析することを考えます。難しい計算は抜きにして，\texttt{code:\ref{code::20_10}}を入力し，分析を実行してください。
 \begin{lstlisting}[language=c++,label={code::20_10},caption={formulaで指定}]
 X <- c(25, 15, 24, 17, 22)
 Y <- c(31, 28, 30, 19, 18)
@@ -283,7 +284,7 @@ t.test(value ~ condition, data = dat)
 \end{lstlisting}
 スクリプトの内容については、先ほどとほぼ同じです。大きな違いは，\texttt{t.test}関数の引数がなくなったところで，\texttt{paired}オプションもなければ，\texttt{alternative}オプションもありません。ないのは、デフォルトの状態を使っているからで，Rの\texttt{t.test}関数はデフォルトで対応のない，両側検定の$t$検定をやってくれるのです。
 
-結果は次のように表示されるはずです(\texttt{console\ref{RS:out20_05}})。
+結果は次のように表示されるはずです(\texttt{Rの出力\ref{RS:out20_05}})。
 \begin{Rscreen}{Welchの補正}{out20_05}
 	\begin{verbatim}
 Welch Two Sample t-test
@@ -324,7 +325,7 @@ Rの\texttt{t.test}関数は，より仮定の緩やかな，Welchの補正を�
 t.test(value ~ condition, data = dat,var.equal = T)
 \end{lstlisting}
 
-これで，\texttt{console\ref{RS:out20_06}}のような結果を得ることができます。
+これで，\texttt{Rの出力\ref{RS:out20_06}}のような結果を得ることができます。
 
 \begin{Rscreen}{分散が等しいという仮定を置く}{out20_06}
 	\begin{verbatim}
@@ -352,9 +353,9 @@ sample estimates:
 library(effsize)
 cohen.d(value ~ condition, data = dat, hedges.correction = T)
 \end{lstlisting}
-ここではまず2行目でパッケージを読み込み\footnote{このパッケージを持っていない場合は，当然インターネットからダウンロードしてローカル(手元のPC)に保存しておく必要があります。このダウンロードは「パッケージのインストール」と呼ばれ，\texttt{install.packages}関数で行うことができます。今回パッケージのインストールを行う場合は，\texttt{install.packages("effsize")}と入力し，実行してください。大文字小文字の違いにも気を付けて！また，これは一度ダウンロードすれば，毎回する必要はありません。}，次の行でcohenのdをHedgesの補正をかけて算出せよ，としています。
+ここではまず2行目でパッケージを読み込み\footnote{このパッケージを持っていない場合は，当然インターネットからダウンロードしてローカル(手元のPC)に保存しておく必要があります。}，次の行でcohenのdをHedgesの補正をかけて算出せよ，としています。
 
-結果は\texttt{console\ref{RS:out20_07}}のように示されます。
+結果は\texttt{Rの出力\ref{RS:out20_07}}のように示されます。
 \begin{Rscreen}{効果量の出力}{out20_07}
 	\begin{verbatim}
 Hedges's g
@@ -381,7 +382,7 @@ g estimate: -0.7715342 (medium)
 \begin{lstlisting}[language=c++,label={code::20_13},caption={cohenのd}]
 cohen.d(X,Y,paired = TRUE)
 \end{lstlisting}
-ただし，チルダを使った書き方をしている場合，\texttt{code:\ref{code::20_14}}のようにすると，出力に次のような警告が付されます(\texttt{console\ref{RS:out20_08}})。
+ただし，チルダを使った書き方をしている場合，\texttt{code:\ref{code::20_14}}のようにすると，出力に次のような警告が付されます(\texttt{Rの出力\ref{RS:out20_08}})。
 \begin{lstlisting}[language=c++,label={code::20_14},caption={cohenのdその2}]
 cohen.d(value ~ condition, data = dat, paired = TRUE)
 \end{lstlisting}
@@ -418,9 +419,9 @@ cohen.d(value ~ condition | Subject(ID), data = dat, paired = TRUE)
 \begin{lstlisting}[language=c++,label={code::20_16},caption={power.t.test関数}]
 power.t.test(power = 0.8, delta = 0.7, sig.level = 0.05)
 \end{lstlisting}
-ここで，\texttt{delta=0.7}としたのは，標準化された平均値差が0.7あるとして，という考え方です。これは先ほどの事後的検定力分析の結果，それぐらいあったんじゃないの？ と思われたのでその値を使いました。もっと小さく見積もったり，逆にもう少し大きく見積もったりしても構いません。また，\texttt{power=0.8}としましたが，これは\keyterm{検定力}{けんていりょく}{power}で，セクション\ref{TypeI_II_Error}で出てきたものです。Type II Error，つまり差があるのにあると言えない間違い($\beta$)を20\%ぐらいに抑え，80\%の確率で当てたいとしました($1-\beta=0.8$)。また，有意水準は5\%です($\alpha=0.05$,スクリプトの中では\texttt{sig.level=0.05}としています)。
+ここで，\texttt{delta=0.7}としたのは，標準化された平均値差が0.7あるとして，という考え方です。これは先ほどの事後的検定力分析の結果，それぐらいあったんじゃないの？ と思われたのでその値を使いました。もっと小さく見積もったり，逆にもう少し大きく見積もったりしても構いません。また，\texttt{power=0.8}としましたが，これは\keyterm{検定力}{けんていりょく}{power}で，セクション\ref{TypeI_II_Error}(Pp.\pageref{TypeI_II_Error})で出てきたものです。Type II Error，つまり差があるのにあると言えない間違い($\beta$)を20\%ぐらいに抑え，80\%の確率で当てたいとしました($1-\beta=0.8$)。また，有意水準は5\%です($\alpha=0.05$,スクリプトの中では\texttt{sig.level=0.05}としています)。
 
-さて，これの出力結果を見ると，次のように示されました(\texttt{console\ref{RS:out20_09}})。
+さて，これの出力結果を見ると，次のように示されました(\texttt{Rの出力\ref{RS:out20_09}})。
 \begin{Rscreen}{rnormの出力}{out20_09}
 	\begin{verbatim}
 Two-sample t test power calculation 
@@ -435,7 +436,7 @@ alternative = two.sided
 NOTE: n is number in *each* group
 \end{verbatim}
 \end{Rscreen}
-ここの$n$にあるように，効果量0.7，検定力0.8で研究するのであれば，33か34人は集めたいところ，だったわけです。逆に今回は5人しか集めていませんでしたが，これを使って，\texttt{code:\ref{code::20_17}}とすると，\texttt{console\ref{RS:out20_10}}のように示されます。
+ここの$n$にあるように，効果量0.7，検定力0.8で研究するのであれば，33か34人は集めたいところ，だったわけです。逆に今回は5人しか集めていませんでしたが，これを使って，\texttt{code:\ref{code::20_17}}とすると，\texttt{Rの出力\ref{RS:out20_10}}のように示されます。
 
 \begin{lstlisting}[language=c++,label={code::20_17},caption={power.t.testで$n$を固定}]
 power.t.test(n = 5, delta = 0.7, sig.level = 0.05)
