@@ -6,7 +6,7 @@
 \VerbatimFootnotes
 \chapter{JASPによるベイズ推定の実践}
 \label{m28_jasp}
-さて前回は，ベイズ推定を使った判断の方法について，\keytermL{HDI}{HDI}と\keytermL{ROPE}{ROPE}をつかって考える方法と，\keytermL{ベイズファクター}{べいずふぁくたー}をつかって考える方法などを紹介してきました。
+さて前回は，ベイズ推定を使った判断の方法について，\keytermL{HDI}{さいこうみつどくかん}と\keytermL{ROPE}{じっしつてきにとうかなはんい}をつかって考える方法と，\keytermL{ベイズファクター}{べいずふぁくたー}をつかって考える方法などを紹介してきました。
 
 これらの方法も，実際に計算できなければ絵に描いた餅，ということでベイズ推定を実際に行う方法について具体的な方法を学んでいきましょう。
 \section{ベイズ推定の方法}
@@ -108,14 +108,14 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
 画面の左上にある3本線をクリックするとメインメニューが開きます。ここで「開く」$\to$「コンピュータ」と進むと，自分のPCにあるデータファイルを読み込むことができます。
 \begin{figure}[h]
 	\centering
-	\includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_01.png}
+	\includegraphics[keepaspectratio,width=10cm]{../images/28_JASP/JASP_01.png}
 	\caption{ファイルを読み込む}
 	\label{fig::28_08}
 \end{figure}
 例として，野球選手のデータファイル(csv)を読み込んでみます\footnote{このサンプルデータは本稿の伴走サイトにて提供されています。}。
 \begin{figure}[h]
 	\centering
-	\includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_02.png}
+	\includegraphics[keepaspectratio,width=10cm]{../images/28_JASP/JASP_02.png}
 	\caption{ファイルを読み込みました}
 	\label{fig::28_09}
 \end{figure}
@@ -127,7 +127,7 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
 たとえば身長変数\verb|height|と体重変数\verb|weight|をチームごとにみてみたい，というのであれば，「分割」のところに\verb|team|変数を投入し(右に向いた三角形ボタンを押すと，選ばれた変数がボックス内に移動します)，分析対象の変数を上のボックスに投入すればよく，右の画面に自動的に計算結果が出てきます(図\ref{fig::28_09})。簡単ですね！
 \begin{figure}[h]
 	\centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/JASP_03.png}
+	\includegraphics[keepaspectratio,width=12cm]{../images/28_JASP/JASP_03.png}
 	\caption{記述統計の出力}
 	\label{fig::28_10}
 \end{figure}
@@ -136,14 +136,14 @@ JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}に�
 ここをクリックすると，様々なオプションが表示されます。たとえばプロットでは，色を指定するカラーパレットが選べますし，箱ヒゲ図，散布図，回帰直線の追加などが選べます(図\ref{fig::28_10})。
 \begin{figure}[h]
 	\centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/JASP_04.png}
+	\includegraphics[keepaspectratio,width=10cm]{../images/28_JASP/JASP_04.png}
 	\caption{プロットオプション}
 	\label{fig::28_11}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/JASP_plot01.png}
+	\includegraphics[keepaspectratio,width=12cm]{../images/28_JASP/JASP_plot01.png}
 	\caption{ボックスプロットや散布図}
 	\label{fig::28_12}
 \end{figure}
@@ -162,7 +162,7 @@ JASPだけで画像の調整がうまくいくのであれば，プレゼン資�
 JASPの特徴はすでに述べたように，1つの分析法を従来型(頻度主義的確率に基づくもの)とベイズ型(朱kん確率に基づくもの)の両方で並列的に行えることです。メニューをクリックすると，伝統的な方法とベイジアン(ベイズ的な)が選べるようになっています(図\ref{fig::28_14})。
 \begin{figure}[h]
 	\centering
-	\includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_05.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/JASP_05.png}
 	\caption{一つのメニューで二つの分析}
 	\label{fig::28_14}
 \end{figure}
@@ -170,7 +170,7 @@ JASPの特徴はすでに述べたように，1つの分析法を従来型(頻�
 JASPが持っているサンプルデータだけでなく，OSF\footnote{Open Science Frameworkの略で，心理学の再現性問題などのとも相まって，研究で使ったロウデータそのものを公開したらいいじゃないか，という活動です。詳しくは\url{https://osf.io/gceur/}を参照してください。}とよばれるWeb上で公開されている研究データにアクセスし，そこからデータを取ってくることもできるようになっているのです(図\ref{fig::28_15})。
 \begin{figure}[h]
 	\centering
-	\includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_06.png}
+	\includegraphics[keepaspectratio,width=8cm]{../images/28_JASP/JASP_06.png}
 	\caption{サンプルデータも豊富にある}
 	\label{fig::28_15}
 \end{figure}
@@ -231,7 +231,7 @@ JASPが持っているサンプルデータだけでなく，OSF\footnote{Open S
 	}
 \end{table}
 
-ではどういう時にStudent行をみて，どういう時はWelch行を見ればいいのでしょうか。基本的に家庭が緩いWelchのほうをみればよいのですが，分散が同じと見做せるかどうかは「仮定のチェック」を見れば良いでしょう。
+ではどういう時にStudent行をみて，どういう時はWelch行を見ればいいのでしょうか。基本的に仮定が緩いWelchのほうをみればよいのですが，分散が同じと見做せるかどうかは「仮定のチェック」を見れば良いでしょう。
 仮定のチェックには，そもそもの前提である「データは正規分布に従っているのか」を検定する，シャピロ・ウィルク検定があります(表\ref{tab:Shapiro-Wilk})。つづいて分散が同じと見做せるかどうかを検定するレヴィーン検定(表\ref{tab:levene})があります。
 
 ここで注意して欲しいのは，これらの検定は帰無仮説が「正規分布に従っている」「分散が等しいといえる」であり，対立仮説は「従っていない」「等分散ではない」になります。つまり，ここでは分析結果が有意になると，「従っていない」「分散が等しくない」ということになります。シャピロ・ウィルク検定で有意になると，そもそもt検定をしてはいけません。レヴィーンの検定で有意になると，分散が等しいという仮定が破られているわけですから，Welchの方を見るべきです。
@@ -305,7 +305,7 @@ JASPが持っているサンプルデータだけでなく，OSF\footnote{Open S
 ここでもう1つ，「事前分布と事後分布」の出力を見てみましょう(図\ref{fig::28_19})。
 \begin{figure}[h]
 	\centering
-	\includegraphics[keepaspectratio,width=6cm]{../images/28_JASP/JASP_ttestBF.png}
+	\includegraphics[keepaspectratio,width=12cm]{../images/28_JASP/JASP_ttestBF.png}
 	\caption{事前分布と事後分布}
 	\label{fig::28_19}
 \end{figure}
@@ -315,7 +315,7 @@ JASPが持っているサンプルデータだけでなく，OSF\footnote{Open S
 
 ともかくこれを見ると，ちょこっと下がっただけ。また$\delta$の確信区間は[-1.173,-0.006]です。上限がほとんどゼロですね。ゼロというのは差がないということですから，今回のデータを持って差があるよ，というのはちょっと厳しいかもしれません。
 
-ここで注意を1つ。従来法とベイズ法の両方の結果を見て，あれ？従来法なら有意差ありで，ベイズ法ならそこまで強く言えないんなら，従来法だけレポートに書いたいいんじゃない，と思った人。そういう「ちょっと自分にまずいことは隠しておこう」という態度は科学的誠実さには欠けますよ。今回はいずれも対立仮説の方が支持されていますが，もっと微妙な差であればもしかすると，従来法とベイズ法の結果が異なることがあるかもしれません。そのような場合でも今回の場合でも，両方の結果を記載して「このデータが本当に伝えていることは何か」をしっかり考えることの方が重要です。自分に都合の良い結果だけ利用するのではなく，差があるかないかという短絡的な判断で論じるのではなく，信頼区間や確信区間，$p$値も効果量もベイズファクターも全て記載して，現象の正しい理解をすることの方が重要なのですから。
+ここで注意を1つ。従来法と\keytermL{ベイズ法}{べいずほう}の両方の結果を見て，あれ？従来法なら有意差ありで，ベイズ法ならそこまで強く言えないんなら，従来法だけレポートに書いたいいんじゃない，と思った人。そういう「ちょっと自分にまずいことは隠しておこう」という態度は科学的誠実さには欠けますよ。今回はいずれも対立仮説の方が支持されていますが，もっと微妙な差であればもしかすると，従来法とベイズ法の結果が異なることがあるかもしれません。そのような場合でも今回の場合でも，両方の結果を記載して「このデータが本当に伝えていることは何か」をしっかり考えることの方が重要です。自分に都合の良い結果だけ利用するのではなく，差があるかないかという短絡的な判断で論じるのではなく，信頼区間や確信区間，$p$値も効果量もベイズファクターも全て記載して，現象の正しい理解をすることの方が重要なのですから。
 
 
 ともかく，JASPというソフトを使うと，簡単に両方の手法が比較できることがわかっていただけたかと思います。今後は，t検定とBFの併記のような形で，分析結果を報告する研究例が増えてくるでしょう。
