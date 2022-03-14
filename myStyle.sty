@@ -1,6 +1,6 @@
 \usepackage[longnamesfirst]{natbib}
 % 1行49文字。200行で一万文字程度(目安)
-\usepackage[left=25mm,right=25mm,top=30mm,bottom=30mm]{geometry}
+\usepackage[left=30mm,right=30mm,top=25mm,bottom=25mm,includefoot,heightrounded]{geometry}
 \usepackage{url} %URLをきれいに表示
 \usepackage{graphicx} %図版を読み込む
 \usepackage{lineno} %行番号表示パッケージ
@@ -96,6 +96,16 @@ setpagesize=false,
 \usepackage{fancyhdr}
 \pagestyle{fancy}
     \cfoot{\thepage} %フッタ中央．ページ番号を表示
+    \renewcommand{\chaptermark}[1]{\markboth{第\ \thechapter\ 講 \ #1}{}}
+
+% 章の最初のページ番号を除く呪文
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{empty}% original style: plain
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\makeatother
 
 \renewcommand{\refname}{引用文献}
 % 脚注でもverbatim環境が使いたい

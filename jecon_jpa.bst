@@ -7,7 +7,7 @@
 % 　　 引用元； 　https://github.com/ShiroTakeda/jecon-bst
 % 　
 % 　加えて，奥村先生の心理学用の設定(http://blue.zero.jp/yokumura/texpsychology.html)
-%　 の多くも参考にし，特にincollectionの設定には奥村先生の作られた関数を一部拝借しています。
+%　 の多くも参考にし，とくにincollectionの設定には奥村先生の作られた関数を一部拝借しています。
 %
 % 　　多くのcontributorsに感謝しかありません。
 %
