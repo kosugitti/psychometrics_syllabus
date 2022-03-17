@@ -34,8 +34,8 @@ Rにはいろいろな数字のタイプがあります。オブジェクトに�
 \end{description}
 これらの型を確認するには，オブジェクトの仕組みがどうなっているかを調べる必要があります。調べるのは\texttt{str}関数で，これを使うとオブジェクトの中身がわかるようになっています。
 
-第\ref{m04_usingR}講のことを思い出しつつ，\texttt{code:\ref{code::23_01}}を入力してみてください。
-\begin{lstlisting}[language=c++,label={code::23_01},caption={オブジェクトに代入}]
+第\ref{m04_usingR}講のことを思い出しつつ，\texttt{code:\ref{code:23_01}}を入力してみてください。
+\begin{lstlisting}[language=c++,label={code:23_01},caption={オブジェクトに代入}]
 obj <- data.frame(
     list(name=c("kosugi","yamada","ueda"),
         gender = c(1,2,1),
@@ -61,9 +61,9 @@ str(obj)
  $ weight: num  60 70 80
 \end{verbatim}
 \end{Rscreen}
-ここにあるように，\texttt{obj}オブジェクトの\texttt{name}変数はchr型で，他の3つの変数は数値型(numeric)である，というのが示されています。ここで性別\texttt{gender}を因子型にしてみましょう(\texttt{code:\ref{code::23_02}})。
+ここにあるように，\texttt{obj}オブジェクトの\texttt{name}変数はchr型で，他の3つの変数は数値型(numeric)である，というのが示されています。ここで性別\texttt{gender}を因子型にしてみましょう(\texttt{code:\ref{code:23_02}})。
 
-\begin{lstlisting}[language=c++,label={code::23_02},caption={因子型にする}]
+\begin{lstlisting}[language=c++,label={code:23_02},caption={因子型にする}]
 obj$gender <- factor(obj$gender,label=c('male','female'))
 \end{lstlisting}
 
@@ -87,16 +87,16 @@ factor型にして分析するだけで，効果の大きさは見積もれる�
 
 また思い出して欲しいのですが，分散分析で群間・群内平方和の比較をした結果，有意であると判断されても「どこが有意なのか」までは分からないので，事後検定が必要なのでした。Rはデフォルトで分散分析やTukeyの多重比較をやってくれる関数などを持っていますが，別々の関数になっていて，自分で1つ1つやっていくのは面倒なところもあります。この主な分析$\to$事後の検定という一連の流れを，自動的にやってくれる便利な関数があります。
 
-井関龍太さんの\texttt{anovakun}というのがそれで，ネットで一般に公開されています\footnote{\url{http://riseki.php.xdomain.jp/index.php?ANOVA君}}。CRANからダウンロードするパッケージのようにはなっていませんので，これを使うにはローカルに\texttt{anovakun}関数を書いたファイル(執筆時点，2021年11月現在で\verb|anovakun_486.txt|)をダウンロードし読み込むか，Rから直接インターネット経由でダウンロードして使うか，の2通りの方法のいずれかを使う必要があります。どちらにしても，Rの\texttt{source}関数をつかうもので，ダウンロードしたファイルを使う場合は\underline{プロジェクトフォルダに当該ファイルをダウンロードした上で}，読み込むコードを実行します(\texttt{code:\ref{code::23_03}})。
+井関龍太さんの\texttt{anovakun}というのがそれで，ネットで一般に公開されています\footnote{\url{http://riseki.php.xdomain.jp/index.php?ANOVA君}}。CRANからダウンロードするパッケージのようにはなっていませんので，これを使うにはローカルに\texttt{anovakun}関数を書いたファイル(執筆時点，2021年11月現在で\verb|anovakun_486.txt|)をダウンロードし読み込むか，Rから直接インターネット経由でダウンロードして使うか，の2通りの方法のいずれかを使う必要があります。どちらにしても，Rの\texttt{source}関数をつかうもので，ダウンロードしたファイルを使う場合は\underline{プロジェクトフォルダに当該ファイルをダウンロードした上で}，読み込むコードを実行します(\texttt{code:\ref{code:23_03}})。
 
-\begin{lstlisting}[language=c++,label={code::23_03},caption={ソースを読み込む}]
+\begin{lstlisting}[language=c++,label={code:23_03},caption={ソースを読み込む}]
 source("anovakun_486.txt")
 \end{lstlisting}
 
-ネットから直接ダウンロードする場合は，インターネットにつながっている状態で\texttt{code:\ref{code::23_04}}を実行します\footnote{リンク先を転記するのは大変です。Googleで「ANOVA君」を検索し，井関先生のサイトに飛んでから，「下のアイコンをクリックしてファイルを保存してください。」とあるANOVA君ソースファイルのリンク先を右クリック，リンク先をコピーすれば確実です。ちなみにこのアドレスはリンクの長さを縮めるLink Shortnerサービスのひとつ，bit.lyを使っています。}。
+ネットから直接ダウンロードする場合は，インターネットにつながっている状態で\texttt{code:\ref{code:23_04}}を実行します\footnote{リンク先を転記するのは大変です。Googleで「ANOVA君」を検索し，井関先生のサイトに飛んでから，「下のアイコンをクリックしてファイルを保存してください。」とあるANOVA君ソースファイルのリンク先を右クリック，リンク先をコピーすれば確実です。ちなみにこのアドレスはリンクの長さを縮めるLink Shortnerサービスのひとつ，bit.lyを使っています。}。
 
 
-\begin{lstlisting}[language=c++,label={code::23_04},caption={ANOVA君のソースをネットからとってくる}]
+\begin{lstlisting}[language=c++,label={code:23_04},caption={ANOVA君のソースをネットからとってくる}]
 source("https://bit.ly/3CFrK5b")
 \end{lstlisting}
 
@@ -133,9 +133,9 @@ source("https://bit.ly/3CFrK5b")
 	\end{tabular}
 	\label{table::23_01}
 \end{table}
-まずはこれを線形モデルとして分析するところからです。\texttt{code:\ref{code::23_05}}のようにデータフレームを組み上げます。
+まずはこれを線形モデルとして分析するところからです。\texttt{code:\ref{code:23_05}}のようにデータフレームを組み上げます。
 
-\begin{lstlisting}[language=c++,label={code::23_05},caption={データの準備}]
+\begin{lstlisting}[language=c++,label={code:23_05},caption={データの準備}]
 # データフレームを組み上げる
 Example1 <- data.frame(id = rep(1:4,3),
                        condition = rep(1:3,each=4),
@@ -151,9 +151,9 @@ Example1$condition <- factor(Example1$condition,
 \end{description}
 
 \subsection{線形モデルとして分析}
-線形モデルとしての分析は，前期でやったように\texttt{lm}関数を使います(\texttt{code:\ref{code::23_06}})。
+線形モデルとしての分析は，前期でやったように\texttt{lm}関数を使います(\texttt{code:\ref{code:23_06}})。
 
-\begin{lstlisting}[language=c++,label={code::23_06},caption={lm関数で分析}]
+\begin{lstlisting}[language=c++,label={code:23_06},caption={lm関数で分析}]
 result.lm1 <- lm(value~condition,data=Example1)
 summary(result.lm1)
 \end{lstlisting}
@@ -198,10 +198,10 @@ F-statistic: 2.489 on 2 and 9 DF,  p-value: 0.1379
 線形モデルですから，モデルの適合度(\texttt{Multiple R-squared, Adjusted R-squared})なども出ていますが，それよりも最後の一行，この線形モデル全体の検定結果が出ています。これは要因計画のもう1つの切り口，分散分析による結果と同じものです。では分散分析の視点からこの分析結果を見てみましょう。
 
 \subsection{帰無仮説検定として分析}
-要因計画の帰無仮説検定版，つまり分散分析の結果ですが，線形モデルと同じなので今回得られた出力をすこし変えるだけで対応できます。最も単純には，先ほどの線形モデルの結果を\texttt{anova}関数に入れると，分散分析表が次のように示されます(\texttt{code:\ref{code::23_07}},\texttt{Rの出力\ref{RS:out23_04}})。
+要因計画の帰無仮説検定版，つまり分散分析の結果ですが，線形モデルと同じなので今回得られた出力をすこし変えるだけで対応できます。最も単純には，先ほどの線形モデルの結果を\texttt{anova}関数に入れると，分散分析表が次のように示されます(\texttt{code:\ref{code:23_07}},\texttt{Rの出力\ref{RS:out23_04}})。
 
 
-\begin{lstlisting}[language=c++,label={code::23_07},caption={分散分析としてみる}]
+\begin{lstlisting}[language=c++,label={code:23_07},caption={分散分析としてみる}]
 anova(result.lm1)
 \end{lstlisting}
 
@@ -220,12 +220,12 @@ Residuals  9  11.75  1.3056
 
 これだけですから，\texttt{lm}関数だけでいいじゃないかと考える人もいるかもしれません。基本的には問題ないのですが，分散分析は「群のサンプルサイズが違う場合」や，「分散の計算」においていくつかの計算バリエーションがあり，Rデフォルトの\texttt{lm}関数では十分対応できなくなるシーンが出てきます。
 
-そこで先ほど導入した，分散分析線用関数\texttt{anovakun}を使います。実際の使い方は次のようになります(\texttt{code:\ref{code::23_08}})。
-\begin{lstlisting}[language=c++,label={code::23_08},caption={anovakunで実行}]
+そこで先ほど導入した，分散分析線用関数\texttt{anovakun}を使います。実際の使い方は次のようになります(\texttt{code:\ref{code:23_08}})。
+\begin{lstlisting}[language=c++,label={code:23_08},caption={anovakunで実行}]
 anovakun(Example1[,2:3],"As",3,eps=T)
 \end{lstlisting}
 
-まず，\texttt{anovakun}には分散分析に必要なデータだけを与える必要があります。今回のデータフレームにあるid列は入りませんので，\texttt{Example1[,2:3]}としてデータの2列目と3列目だけ(2列目から3列目まで)に限定しています\footnote{大括弧$\left[, \right]$は，データフレームの行および列を指定するのに使います。 一行目だけを指定したい場合は\texttt{Example1[1,]}，一列目だけ指定したい場合は\texttt{Example1[,1]}，1行1列目の要素だけアクセスしたい場合は\texttt{Example1[1,1]}のようにします。}。次に書いてある\texttt{As}は，\texttt{anovakun}独特の記法です。ここでの\texttt{s}は被験者subjectを意味しており，これの左側に群間要因を，右側に\keytermL{群内要因}{ぐんないよういん}を書きます。今回は一要因の群間デザインですので，左側に1つ要因Aをおく，という書き方になっています。これを\texttt{sA}のようにすると一要因群内デザイン，\texttt{AsB}とすると，要因Aは群間で要因Bは群内の混合計画を表すことになります。最後に，今回の一要因Aの水準数を入力すれば，\texttt{anovakun}関数は全ての分析を実行してくれます。オプションとして，効果量$\epsilon^2$を表示するスイッチをオン(\texttt{eps=T})とすると，効果量も出してくれます(\texttt{Rの出力\ref{RS:out23_05}})。
+まず，\texttt{anovakun}には分散分析に必要なデータだけを与える必要があります。今回のデータフレームにあるid列は入りませんので，\texttt{Example1[,2:3]}としてデータの2列目と3列目だけ(2列目から3列目まで)に限定しています\footnote{大括弧$\left[, \right]$は，データフレームの行および列を指定するのに使います。 一行目だけを指定したい場合は\texttt{Example1[1,]}，一列目だけ指定したい場合は\texttt{Example1[,1]}，1行1列目の要素だけアクセスしたい場合は\texttt{Example1[1,1]}のようにします。}。次に書いてある\texttt{As}は，\texttt{anovakun}独特の記法です。ここでの\texttt{s}は被験者subjectを意味しており，これの左側に群間要因を，右側に\keytermL{群内要因}{ぐんないよういん}を書きます。今回は一要因の群間デザインですので，左側に1つ要因Aをおく，という書き方になっています。これを\texttt{sA}のようにすると一要因群内デザイン，\texttt{AsB}とすると，要因Aは群間で要因Bは群内の混合計画を表すことになります。最後に，今回の一要因Aの水準数を入力すれば，\texttt{anovakun}関数はすべての分析を実行してくれます。オプションとして，効果量$\epsilon^2$を表示するスイッチをオン(\texttt{eps=T})とすると，効果量も出してくれます(\texttt{Rの出力\ref{RS:out23_05}})。
 
 \begin{Rscreen}{anovakunの出力}{out23_05}
 
@@ -263,7 +263,7 @@ output is over --------------------///
 \end{Rscreen}
 各群の平均値，標準偏差および，分散分析表が表示されていますね。これを見て，どことどこの数字を参照すれば良いか等，確認しておいてください。
 
-これだけだと，とくに\texttt{anovakun}が便利そうに思えないかもしれません。が，以下様々な要因計画に対応しているので，徐々にその良さがわかってくると思います。
+これだけだと，とくに\texttt{anovakun}が便利そうに思えないかもしれません。が，以下さまざまな要因計画に対応しているので，徐々にその良さがわかってくると思います。
 \section{二要因Between計画の実際}
 それでは続いて，二要因の計画にいきましょう。データを再掲しておきましょう(表\ref{tbl::23_02})。
 % latex table generated in R 4.0.2 by xtable 1.8-4 package
@@ -292,8 +292,8 @@ output is over --------------------///
 
 	\label{tbl::23_02}
 \end{table}
-これをデータフレーム型にします。温度，メーカーは名義尺度水準なので要因型にします(\texttt{code:\ref{code::23_09}})。
-\begin{lstlisting}[language=c++,label={code::23_09},caption={データフレームにする}]
+これをデータフレーム型にします。温度，メーカーは名義尺度水準なので要因型にします(\texttt{code:\ref{code:23_09}})。
+\begin{lstlisting}[language=c++,label={code:23_09},caption={データフレームにする}]
 Example2 <- data.frame(id = 1:12,
                        num = rep(1:3,4),
                        temp = rep(1:2,each=6),
@@ -305,8 +305,8 @@ Example2$maker <- factor(Example2$maker,
                          labels=c("A","B"))
 \end{lstlisting}
 \subsection{線形モデルとして分析}
-これでデータはできたので，分析にかけるだけですね。二要因以上に計画が複雑になる場合は，交互作用を考えなければならないことに注意が必要です。線形モデルで表現するには，次のようにします(\texttt{code:\ref{code::23_10}})。
-\begin{lstlisting}[language=c++,label={code::23_10},caption={線形モデルとして実行}]
+これでデータはできたので，分析にかけるだけですね。二要因以上に計画が複雑になる場合は，交互作用を考えなければならないことに注意が必要です。線形モデルで表現するには，次のようにします(\texttt{code:\ref{code:23_10}})。
+\begin{lstlisting}[language=c++,label={code:23_10},caption={線形モデルとして実行}]
 result.lm2 <- lm(value ~ temp*maker,data=Example2)
 summary(result.lm2)
 \end{lstlisting}
@@ -343,8 +343,8 @@ F-statistic: 9.833 on 3 and 8 DF,  p-value: 0.004641
 
 そこでそれぞれの水準について検証できる，分散分析モデルで分析してみます。
 \subsection{帰無仮説検定として分析}
-要因計画の帰無仮説検定版，でやってみましょう。先ほどと同じように，Rがデフォルトで持っている関数\texttt{anova}に線形モデルの結果を入れてみます(\texttt{code:\ref{code::23_11}})。
-\begin{lstlisting}[language=c++,label={code::23_11},caption={分散分析としてみる}]
+要因計画の帰無仮説検定版，でやってみましょう。先ほどと同じように，Rがデフォルトで持っている関数\texttt{anova}に線形モデルの結果を入れてみます(\texttt{code:\ref{code:23_11}})。
+\begin{lstlisting}[language=c++,label={code:23_11},caption={分散分析としてみる}]
 anova(result.lm2)
 \end{lstlisting}
 
@@ -368,8 +368,8 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 
 ただ，このままだと「交互作用は有意だけど，どこがどう違うのかわからない」という状況ですね。4つの母平均が同じである($\mu_{11}=\mu_{12}=\mu_{21}=\mu_{22}$)という帰無仮説が棄却されただけで，どこがどう違うのかについては事後の検定を追加しなければならないからです。
 
-ではこれを\texttt{anovakun}でやってみましょう。彼(?)なら一気に全ての答えを出してくれるのです(\texttt{code:\ref{code::23_12}})。
-\begin{lstlisting}[language=c++,label={code::23_12},caption={anovakunで実行}]
+ではこれを\texttt{anovakun}でやってみましょう。彼(?)なら一気にすべての答えを出してくれるのです(\texttt{code:\ref{code:23_12}})。
+\begin{lstlisting}[language=c++,label={code:23_12},caption={anovakunで実行}]
 anovakun(Example2[,3:5],"ABs",2,2,eps = T)
 \end{lstlisting}
 先ほどと同様，\texttt{anovakun}にはid列やnum列は必要ありませんので，3行目から5行目まで，要因A,Bと従属変数だけを与えます。要因計画は間$\times$間ですので，被験者\texttt{s}の左側にA,Bとしています。2つの要因はそれぞれ2水準ですので，水準数を2つ書いています。最後の\texttt{eps=T}は，効果量である$\epsilon^2$を表示するスイッチをオン(TRUE)，ということです。
@@ -460,8 +460,8 @@ output is over --------------------///
 	\label{tbl::23_03}
 \end{table}
 
-これをデータフレーム型にします(\texttt{code:\ref{code::23_13}})。
-\begin{lstlisting}[language=c++,label={code::23_13},caption={データフレームにする}]
+これをデータフレーム型にします(\texttt{code:\ref{code:23_13}})。
+\begin{lstlisting}[language=c++,label={code:23_13},caption={データフレームにする}]
 Example3 <- data.frame(ID=1:4,
 Time1 = c(10,9,4,7),
 Time2 = c(5,4,2,3),
@@ -470,8 +470,8 @@ Time3 = c(9,5,3,5))
 
 線形モデルとして表現するには，少し複雑な操作が必要ですので\footnote{具体的には，一人ひとりに回帰分析をしつつ，個々人の切片＝個人差がより上位の確率分布にしたがっている，という階層的線形モデルという形になり，次回以降で取り上げる確率モデルの導入をしないといけないのです。Rで実行する場合も別途パッケージを導入する必要があり，とても今回の残り時間で扱い切れる分量ではないので，割愛させていただきました。興味がある人は二年次のデータ解析応用でお会いしましょう。}，今回は分散分析的アプローチのみ紹介したいと思います。
 \subsection{帰無仮説検定として分析}
-群内モデルの\texttt{anovakun}での入力は次のようになります(\texttt{code:\ref{code::23_14}})。
-\begin{lstlisting}[language=c++,label={code::23_14},caption={anovakunで実行}]
+群内モデルの\texttt{anovakun}での入力は次のようになります(\texttt{code:\ref{code:23_14}})。
+\begin{lstlisting}[language=c++,label={code:23_14},caption={anovakunで実行}]
 anovakun(Example3[, 2:4], "sA", 3, eps = T)
 \end{lstlisting}
 データセットや変数の指定，効果量オプションの指定はとくに追記することはありません。デザインの指定が\texttt{"sA"}と\texttt{s}の右側に来ているところがポイントです。これを実行すると，\texttt{Rの出力\ref{RS:out23_09}}のように結果が示されます。
@@ -523,7 +523,7 @@ It was executed on Tue Sep 15 13:50:06 2020.
                    +p < .10, *p < .05, **p < .01, ***p < .001
 \end{verbatim}
 \end{Rscreen}
-これが満たされない場合は，Greenhouse-Geisserの補正やHuynh-Feldt-Lecoutreなどの補正をしなければならないが，どうでしょうね？ というのを確認するのがこの箇所です(\texttt{Rの出力\ref{RS:out23_10}})。今回は$p$が1.000で$ns$，つまりnot significant=有意に歪んでいるとは言えない，ということなので補正は不要です。もしここが有意である，つまり丸いという状況から異なっている現状があると思われるのであれば，自由度などの補正が必要で，その時\texttt{anovakun}はオプションで補正を指定できます。ともかく今回は，このまま先に進めそうです\footnote{まったく！検定の多重性が問題だとかなんとか言いながら，そもそも前提が満たされているかどうかの検定は挟まないといけないし，ここでは有意差がでると補正，出ないとOKってなんかいつもとは違う判断をしないといけない。分散分析とか帰無仮説検定というのは，とても厳密な手続きが必要なのですが，こんな感じであちこちに補正，修正などが入ってきて，正直嫌になりますよね。私は嫌なのでそういう悩みのないベイズ統計的アプローチの方がいいと思うんですが，みんなよくこんなの真面目にやってきたなあと思いますよ。}。
+これが満たされない場合は，Greenhouse-Geisserの補正やHuynh-Feldt-Lecoutreなどの補正をしなければならないが，どうでしょうね？ というのを確認するのがこの箇所です(\texttt{Rの出力\ref{RS:out23_10}})。今回は$p$が1.000で$ns$，つまりnot significant=有意に歪んでいるとは言えない，ということなので補正は不要です。もしここが有意である，つまり丸いという状況から異なっている現状があると思われるのであれば，自由度などの補正が必要で，その時\texttt{anovakun}はオプションで補正を指定できます。ともかく今回は，このまま先に進めそうです\footnote{まったく！検定の多重性が問題だとかなんとか言いながら，そもそも前提が満たされているかどうかの検定は挟まないといけないし，ここでは有意差がでると補正，出ないとOKってなんかいつもとは違う判断をしないといけない。分散分析とか帰無仮説検定というのは，とても厳密な手続きが必要なのですが，こんな感じであちこちに補正，修正などが入ってきて，正直嫌になりますよね。私は嫌なのでそういう悩みのないベイズ統計的アプローチの方がいいと思うんですが，みんなよくこんなのまじめにやってきたなあと思いますよ。}。
 \begin{Rscreen}{下位検定の出力}{out23_10}
 
 	\begin{verbatim}

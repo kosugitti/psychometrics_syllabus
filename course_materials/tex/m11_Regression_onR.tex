@@ -26,7 +26,7 @@
 
 今回，第\ref{m04_usingR}章の課題と同じ野球選手のデータを読み込んでみましょう。次の3行を実行してください。
 
-\begin{lstlisting}[language=c++,label={code::11_01},caption={環境の初期化とパッケージ，ファイルの読み込み}]
+\begin{lstlisting}[language=c++,label={code:11_01},caption={環境の初期化とパッケージ，ファイルの読み込み}]
 rm(list=ls())
 library(tidyverse)
 dat <- read_csv("baseballDecade.csv", na="NA", 
@@ -46,9 +46,9 @@ summary(dat)
 
 \subsection{散布図の描画}
 データが手に入ったとき，最初にすることは可視化です。\textbf{データは図にする}という約束は忘れないでくださいね。
-今回は様々な変数があるのですが，ここで打者の身長と体重のデータだけ抜き出して図にしてみたいと思います。
+今回はさまざまな変数があるのですが，ここで打者の身長と体重のデータだけ抜き出して図にしてみたいと思います。
 
-\begin{lstlisting}[language=c++,label={code::11_02},caption={環境の初期化とパッケージ，ファイルの読み込み}]
+\begin{lstlisting}[language=c++,label={code:11_02},caption={環境の初期化とパッケージ，ファイルの読み込み}]
 batter <- dat %>%
   dplyr::filter(position != "投手") %>%
   dplyr::select(height, weight)
@@ -78,7 +78,7 @@ g
 ともかくこれで欲しいデータの散布図が書け，どうやら正の相関がありそうだということがわかりました。
 直線関係を仮定しても良さそうです。ちなみに次のコードを書くと\texttt{ggplot}で直線を書くことができますよ。
 
-\begin{lstlisting}[language=c++,label={code::11_03},caption={回帰線を引く}]
+\begin{lstlisting}[language=c++,label={code:11_03},caption={回帰線を引く}]
 g <- g + geom_smooth(method = "lm", se = FALSE)
 g
 \end{lstlisting}
@@ -89,8 +89,8 @@ g
 \end{description}
 
 \section{線形回帰の実行}
-それではここから回帰分析を行います。回帰分析は線形関数を当てはめるので\keyterm{線形モデル}{せんけいもでる}{linerar model}と呼ばれますが，これの頭文字をとった\texttt{lm}関数が線形回帰モデルです。次の\texttt{code::\ref{code::11_04}}を実行してみましょう。
-\begin{lstlisting}[language=c++,label={code::11_04},caption={回帰分析の実行}]
+それではここから回帰分析を行います。回帰分析は線形関数を当てはめるので\keyterm{線形モデル}{せんけいもでる}{linerar model}と呼ばれますが，これの頭文字をとった\texttt{lm}関数が線形回帰モデルです。次の\texttt{code:\ref{code:11_04}}を実行してみましょう。
+\begin{lstlisting}[language=c++,label={code:11_04},caption={回帰分析の実行}]
     result <- lm(weight ~ height, data= batter)
     summary(result)
 \end{lstlisting}
@@ -135,13 +135,13 @@ F-statistic: 226.9 on 1 and 327 DF,  p-value: < 2.2e-16
 
 どの数字が結果の何に対応しているか確認しておいてください。また，この式が得られたということは身長のところに新しい数字を入れると体重の予測ができるということもわかってもらえると思います。
 
-その他にもいろいろな情報が出ていますが，その内容は後期でお話しする推測統計に関するところですので，今のところはまだ知らなくてOKです\footnote{それでも少し解説しておきます。まず推定値というのは今回のデータから得られる値ではなく，このデータが大きな母集団から撮られた標本だと考えたときに，標本のデータから母集団の関係を推測するならこの値になる，という意味があるからです。今回のデータについての最小二乗法での答えが欲しいのですから，標本から推定するのではなく，標本の特徴を考えてればいいじゃない，と思うかもしれません。いやほんとその通りなので，今はまだ説明しないのです。幸い，最小二乗法で求めた回帰係数の値と，推定法(ここでは最尤法という方法を使っていますが)による答えが一致しますから，悩まなくてもいいのですが。また，今回の標本ではなく別の標本だった場合，この推定値がどれぐらい違う値になる可能性があったかを計算して出しています。それが\texttt{Std.Error}のところです。それを踏まえて考えると，回帰係数が0，すなわち説明変数が全く予測しないという状態になる可能性がどれぐらいあるか，というのを検証しているのが\texttt{t value}や\texttt{Pr(>|t|)}のところで，これをみながら今回の分析から何が言えるかを結論づけたりするわけです。}。
+その他にもいろいろな情報が出ていますが，その内容は後期でお話しする推測統計に関するところですので，今のところはまだ知らなくてOKです\footnote{それでも少し解説しておきます。まず推定値というのは今回のデータから得られる値ではなく，このデータが大きな母集団から撮られた標本だと考えたときに，標本のデータから母集団の関係を推測するならこの値になる，という意味があるからです。今回のデータについての最小二乗法での答えが欲しいのですから，標本から推定するのではなく，標本の特徴を考えてればいいじゃない，と思うかもしれません。いやほんとその通りなので，今はまだ説明しないのです。幸い，最小二乗法で求めた回帰係数の値と，推定法(ここでは最尤法という方法を使っていますが)による答えが一致しますから，悩まなくてもいいのですが。また，今回の標本ではなく別の標本だった場合，この推定値がどれぐらい違う値になる可能性があったかを計算して出しています。それが\texttt{Std.Error}のところです。それを踏まえて考えると，回帰係数が0，すなわち説明変数がまったく予測しないという状態になる可能性がどれぐらいあるか，というのを検証しているのが\texttt{t value}や\texttt{Pr(>|t|)}のところで，これをみながら今回の分析から何が言えるかを結論づけたりするわけです。}。
 それよりも大事なのは下から二行目にある，\texttt{Multiple R-squared}というところです。これがいわゆる$R^2$値であり，モデルの\keytermL{適合度}{てきごうど}を表しています。今回は$R^2=0.4096$ですから，予測値$\hat{y}$と従属変数$y$の相関係数が0.62ぐらい，分散説明率が40.9\% ぐらいだったということがわかります。悪い当てはまとしては，やや悪いといったところでしょうか。
 
 \section{残差からわかること}
 今回の\texttt{lm}関数から返される結果を格納したオブジェクトの中には，他にも予測値$\hat{y_i}$や残差$e_i$といった情報が含まれています。それらが架空の値ではなく，算出されたここの値であるということを確認するために，表示させてみましょう。
 
-\begin{lstlisting}[language=c++,label={code::11_05},caption={回帰分析のその他の情報}]
+\begin{lstlisting}[language=c++,label={code:11_05},caption={回帰分析のその他の情報}]
 batter <- batter %>% 
     dplyr::mutate(residuals = result$residuals,
                     yhat = result$fitted.values) 
@@ -183,7 +183,7 @@ cor(batter)
 \section{重回帰分析}
 では続いて\keytermL{重回帰分析}{じゅうかいきぶんせき}に行きましょう。Rにおいて重回帰分析を行う時は，説明項を1つ追加するだけでいいので，作業としては簡単なものです。ただし結果の解釈には注意が必要であることを忘れずに。
 
-\begin{lstlisting}[language=c++,label={code::11_06},caption={重回帰分析のデータを作って可視化}]
+\begin{lstlisting}[language=c++,label={code:11_06},caption={重回帰分析のデータを作って可視化}]
 batter2 <- dat %>%
     dplyr::filter(position != "投手") %>%
     dplyr::select(HR, Hit, salary) %>%
@@ -214,9 +214,9 @@ cor(batter2)
 	\label{fig::11_03}
 \end{figure}
 
-回帰分析のコード\texttt{code::\ref{code::11_07}}と出力\ref{RS:out11_03})は次の通りです。
+回帰分析のコード\texttt{code:\ref{code:11_07}}と出力\ref{RS:out11_03})は次の通りです。
 
-\begin{lstlisting}[language=c++,label={code::11_07},caption={重回帰分析の実行}]
+\begin{lstlisting}[language=c++,label={code:11_07},caption={重回帰分析の実行}]
 result2 <- lm(salary ~ HR + Hit, data = batter2)
 summary(result2)
 \end{lstlisting}
@@ -256,7 +256,7 @@ F-statistic: 99.06 on 2 and 326 DF,  p-value: < 2.2e-16
 
 データセットの各変数を標準化する必要がありますが，それには\texttt{scale}関数を使います。
 
-\begin{lstlisting}[language=c++,label={code::11_08},caption={標準化したデータで重回帰分析を実行}]
+\begin{lstlisting}[language=c++,label={code:11_08},caption={標準化したデータで重回帰分析を実行}]
 batter2z <- scale(batter2) %>% as.data.frame()
 summary(batter2z)
 result2z <- lm(salary ~ HR + Hit, data = batter2z)

@@ -1,7 +1,7 @@
 \documentclass{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.0.18}
+\lhead{version 1.1.5}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/cover2.pdf}
@@ -9,7 +9,7 @@
 
 \VerbatimFootnotes
 \title{心理学データ解析応用}
-\author{小杉考司}
+\author{小杉　考司}
 \date{Last Compiled on \number\year .\number\month .\number\day}
 \maketitle
 \setcounter{tocdepth}{1}
@@ -22,7 +22,7 @@
 % 行番号開始
 \linenumbers
 % 各章
-
+\part{心理学データ解析応用1}
 \include{x01_introduction}
 \include{x02_scaling}
 \include{x03_testTheory}
@@ -38,6 +38,7 @@
 \include{x13_SEMonR}
 \include{x14_DualScaling}
 \include{x15_MDS}
+\part{心理学データ解析応用2}
 \include{x16_Programming}
 \include{x17_Bayesian}
 \include{x18_MCMC}
@@ -45,6 +46,8 @@
 \include{x20_modeling2}
 \include{x21_modeling3}
 \include{x22_modeling4}
+\include{x23_modeling5}
+\include{x24_linearModel}
 \include{x25_HLM}
 \include{x26_mixed}
 \include{x27_IRTonBayes}
@@ -55,6 +58,37 @@
 \include{prepareStan}
 \input{../../common_contents/FAQ} % FAQ page
 \input{../../common_contents/Computer}
+\chapter{本講義に対応する詳細シラバス}
+\input{../../syllabus2/a01_introduction}
+\input{../../syllabus2/a02_scaling}
+\input{../../syllabus2/a03_testTheory}
+\input{../../syllabus2/a04_IRT}
+\input{../../syllabus2/a05_GRM}
+\input{../../syllabus2/a06_matrix}
+\input{../../syllabus2/a07_matrixModel}
+\input{../../syllabus2/a08_Eigen}
+\input{../../syllabus2/a09_matrix_onR}
+\input{../../syllabus2/a10_FA}
+\input{../../syllabus2/a11_IRTonR}
+\input{../../syllabus2/a12_SEM}
+\input{../../syllabus2/a13_SEMonR}
+\input{../../syllabus2/a14_DualuScaling}
+\input{../../syllabus2/a15_MDS}
+\input{../../syllabus2/a16_Programming}
+\input{../../syllabus2/a17_Bayesian}
+\input{../../syllabus2/a18_MCMC}
+\input{../../syllabus2/a19_modeling1}
+\input{../../syllabus2/a20_modeling2}
+\input{../../syllabus2/a21_modeling3}
+\input{../../syllabus2/a22_modeling4}
+\input{../../syllabus2/a23_modeling5}
+\input{../../syllabus2/a24_linearModel}
+\input{../../syllabus2/a25_HLM}
+\input{../../syllabus2/a26_mixed}
+\input{../../syllabus2/a27_IRTonBayes}
+\input{../../syllabus2/a28_ChangePoint}
+\input{../../syllabus2/a29_SSpace}
+\input{../../syllabus2/a30_comparison}
 % 行番号終了
 \nolinenumbers
 % 引用文献

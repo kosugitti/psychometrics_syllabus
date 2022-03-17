@@ -8,7 +8,7 @@
 さてここまで，線形モデルを中心にモデリングのステップを一段一段登ってきました。
 この後は，これまでの技術や考え方を応用し，より実践的なプログラミングへと進んでいきます。さまざまなモデルの確率的表現や，そのコーディング技法を学ぶことで，ご自身の研究にも応用できる技術的ヒントが得られるかもしれません。
 
-今回は第\ref{x04_IRT},\ref{x05_GRM}および\ref{x11_IRTonR}講で学んだ項目反応理論を，Stanを使って実装する例を見ていきたいと思います。
+今回は第\ref{x04_IRT}講,第\ref{x05_GRM}講および第\ref{x11_IRTonR}講で学んだ項目反応理論を，Stanを使って実装する例を見ていきたいと思います。
 \section{ロジスティックモデルの復習}
 \subsection{パラメータモデル側から}
 ここで簡単に前期の復習をしておきます。
@@ -137,8 +137,8 @@ transformed parameters{
 ...(後略)...
 \end{lstlisting}
 
-第\ref{x11_IRTonR}講で使ったサンプルコードをつかって，このモデルで推定するためのコードがコード\ref{code::27_01}です(cmdstanrでの例)。
-\begin{lstlisting}[language=c++,label={code::27_01},caption={IRTのコード}]
+第\ref{x11_IRTonR}講で使ったサンプルコードをつかって，このモデルで推定するためのコードがコード\ref{code:27_01}です(cmdstanrでの例)。
+\begin{lstlisting}[language=c++,label={code:27_01},caption={IRTのコード}]
 dat <- read_csv("IRTsample.csv")
 model_1pl <- cmdstan_model("oneParameter.stan")
 model_2pl <- cmdstan_model("twoParameters.stan")
@@ -149,7 +149,7 @@ fit1 <- model_1pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 fit2 <- model_2pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 fit3 <- model_3pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 \end{lstlisting}
-分析結果を見てみましょう。EAP推定値はそれぞれ表\ref{tbl::27_01}，図\ref{fig::27_03}のようになりました。
+分析結果を見てみましょう。\keytermL{EAP推定値}{EAP}はそれぞれ表\ref{tbl::27_01}，図\ref{fig::27_03}のようになりました。
 \begin{table}[ht]
 	\caption{それぞれのパラメータ推定値}
 	\centering
@@ -186,7 +186,7 @@ fit3 <- model_3pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 ところで，このモデルをもう少し使いやすくするために，データを\keyterm{整然データ}{せいぜんでーた}{tidy data}にすることを考えてみましょう。
 というのも，今はデータを行列形で渡していますが，これだと欠損値があった場合にうまく機能しないからです。Stanはデータに欠損値を取ることができず，与えられるデータに\verb|NA|が入っていることは許されません。
 
-整然データは，1行に1つの数字が入っているようなデータで($\to$Pp.\pageref{tidyDataForm}参照)，その行を見るだけで全ての情報が手に入るようなデータです。行列型のデータは，人のIDを行ラベルで，変数のIDを列ラベルでみなければなりませんので，参照方向が1つに定められていません。具体的には次のような形のデータになります(\texttt{Rの出力\ref{RS:out27_01}})。この形式ですと，一行で誰の(\verb|Pid|)，どの問いに対する(\verb|Qid|)反応か(\verb|value|)ということがわかりますね。
+整然データは，1行に1つの数字が入っているようなデータで(セクション\ref{tidyDataForm}，Pp.\pageref{tidyDataForm}参照)，その行を見るだけですべての情報が手に入るようなデータです。行列型のデータは，人のIDを行ラベルで，変数のIDを列ラベルでみなければなりませんので，参照方向が1つに定められていません。具体的には次のような形のデータになります(\texttt{Rの出力\ref{RS:out27_01}})。この形式ですと，一行で誰の(\verb|Pid|)，どの問いに対する(\verb|Qid|)反応か(\verb|value|)ということがわかりますね。
 \begin{Rscreen}{整然データになったテストデータ}{out27_01}
 	\begin{verbatim}
 # A tibble: 20 × 3
@@ -253,7 +253,7 @@ model{
 	\item[modelブロック] L行目の反応に対して，識別変数で特定された確率をつかってモデルを当てはめます。
 \end{description}
 これの結果はこれまでのモデルと変わりませんが，欠損値に対応できたはずですので，元の完全データに技と欠損値を与えて改変し，結果がどう変わるかを確認してみましょう。
-\begin{lstlisting}[language=c++,label={code::27_02},caption={tidyデータにして技と欠損値を与える}]
+\begin{lstlisting}[language=c++,label={code:27_02},caption={tidyデータにして技と欠損値を与える}]
 dat.tmp <- dat %>%
   rowid_to_column("Pid") %>%
   pivot_longer(-Pid) %>%
@@ -303,7 +303,7 @@ dat.tmp$value[11:13] <- NA
     \end{verbatim}
 \end{Rscreen}
 確かに数カ所，欠けているところができましたね。これをそのまま渡すことができませんから，欠損のあるところは削除してデータセットを作り，推定してみましょう。
-\begin{lstlisting}[language=c++,label={code::27_03},caption={データセットを作って推定する}]
+\begin{lstlisting}[language=c++,label={code:27_03},caption={データセットを作って推定する}]
 # 欠損値を消したデータセットにする
 dat.tmp <- na.omit(dat.tmp)
 
@@ -320,7 +320,7 @@ fit2.2 <- model_2pl_ver2$sample(
   parallel_chains = 4
 )
 \end{lstlisting}
-欠損があっても，データを整形して欠損を取り除いた形で分析し，問題なく推定できたと思います。欠損が含まれているから，そのデータは全て使い物にならないと考えるのではなく，データの存在するところ・利用できるところは利用しつくすという有効活用ができたと思います。
+欠損があっても，データを整形して欠損を取り除いた形で分析し，問題なく推定できたと思います。欠損が含まれているから，そのデータはすべて使い物にならないと考えるのではなく，データの存在するところ・利用できるところは利用しつくすという有効活用ができたと思います。
 
 最後に，推定結果を確認しておきましょう。1人目の被検者は1つ，2人目の被検者は3つの欠損がありました。つまり他の被検者は10問分の情報を持っているのに，この2人はそれぞれ9問，7問分しか情報が得られなかったことになります。
 そのことが結果の推定値にどう変わるのかというと，出力\ref{SCrstan:out27_03}の通りです。

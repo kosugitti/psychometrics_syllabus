@@ -1,5 +1,15 @@
 \documentclass[a4]{ltjsbook}
 \usepackage{../../myStyle}
+
+% 章の最初のページ番号を除く呪文
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{empty}% original style: plain
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\makeatother
+
 %% バッチ処理をするので\lheadは必ず4行目にあること
 \lhead{}
 \usepackage{docmute}
@@ -101,6 +111,6 @@
 \addcontentsline{toc}{chapter}{索引}
 
 \printindex
-
+% 奥付
 \input{masthead}
 \end{document}

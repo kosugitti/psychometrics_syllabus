@@ -8,7 +8,7 @@
 
 
 \label{chapter20}
-ここまで様々な統計的仮説検定を学んできましたが，実践上はどのように行うのかを知らなければ絵に描いた餅になります。今回は統計環境Rで帰無仮説検定を行う方法について，実際に手を動かして理解を深めてください。統計環境はRを，その補助としてRStudioを用います。
+ここまでさまざまな統計的仮説検定を学んできましたが，実践上はどのように行うのかを知らなければ絵に描いた餅になります。今回は統計環境Rで帰無仮説検定を行う方法について，実際に手を動かして理解を深めてください。統計環境はRを，その補助としてRStudioを用います。
 統計パッケージは以外にも色々ありますが，どのようなパッケージ，ソフトを使っても同様の出力が得られます。大事なことは，出力画面の位置で内容を覚えるのではなく，意味的な理解をしておくことです。
 
 \section{基本的操作のおさらい；記述統計}
@@ -27,9 +27,9 @@
 
 \subsection{データセットを作る}
 \paragraph{データに変数を代入}
-第\ref{chapter16}講でやったように，小さなサイズの母集団を作ってそこから標本をいくつも取り出す練習をしてみましょう。\texttt{code:\ref{code::20_01}}を入力してください\footnote{\#はコメントアウトで「この行で何を計算しているか」を説明している箇所です。みなさんが必ずしも入力する必要はありません。ただ，コメントアウトをつけておくと後で読み返しやすくなります。}。
+第\ref{chapter16}講でやったように，小さなサイズの母集団を作ってそこから標本をいくつも取り出す練習をしてみましょう。\texttt{code:\ref{code:20_01}}を入力してください\footnote{\#はコメントアウトで「この行で何を計算しているか」を説明している箇所です。みなさんが必ずしも入力する必要はありません。ただ，コメントアウトをつけておくと後で読み返しやすくなります。}。
 
-\begin{lstlisting}[language=c++,label={code::20_01},caption={繰り返しサンプリングする}]
+\begin{lstlisting}[language=c++,label={code:20_01},caption={繰り返しサンプリングする}]
 # Clear workspace
 rm(list=ls())
 ### 母集団を作る
@@ -60,8 +60,8 @@ Rでの確率関数は，関数の名前の前に\texttt{r}をつければ乱数
 
 標本平均が母平均の推定値として，どれほど適切なのかをチェックしてみてください。また標本平均の平均のほうが，より母平均に近くなっている・・・でしょうか？ \footnote{データを乱数で作っているので，実現値次第では必ずしもそうならないことがあります。その場合は何度か試してみるか，母集団・標本のサイズを大きくして検証してください。実際に100人分のデータを集めたり，何度もサンプリングを繰り返すのは大変ですが，機械の中でやることですので簡単に状況設定を弄ることができます。}
 
-続いて標準偏差を計算してみましょう\footnote{これ以降，s1のサンプルは個々人の実行環境によって違うと思いますので，アウトプットは示していません。}(\texttt{code:\ref{code::20_01}})。標準偏差の関数は\texttt{sd}です。また，分散は\texttt{var}で得られます。
-\begin{lstlisting}[language=c++,label={code::20_02},caption={関数で標準偏差や分散を求める}]
+続いて標準偏差を計算してみましょう\footnote{これ以降，s1のサンプルは個々人の実行環境によって違うと思いますので，アウトプットは示していません。}(\texttt{code:\ref{code:20_01}})。標準偏差の関数は\texttt{sd}です。また，分散は\texttt{var}で得られます。
+\begin{lstlisting}[language=c++,label={code:20_02},caption={関数で標準偏差や分散を求める}]
 # 標準偏差
 sd(s1)
 # 分散
@@ -71,8 +71,8 @@ sd(s1)^2
 \end{lstlisting}
 標準偏差は分散の正の平方根ですから，統計量として持っている意味は同じです。確認のために最後の1つの式を入れました。6行目で\texttt{\^}とあるのは累乗の計算記号です。
 
-ところで注意してもらいたいのですが，Rがデフォルトで持っている標準偏差(と分散)の関数は，不偏分散に基づいています。つまり，足したデータの総数ではなく，総数$-1$で割ったものになっています。標本分散，標本標準偏差が欲しい時は，計算式を書いて計算しなければなりません。\texttt{code:\ref{code::20_03}}を書いて確認してみましょう。
-\begin{lstlisting}[language=c++,label={code::20_03},caption={標本分散を求める}]
+ところで注意してもらいたいのですが，Rがデフォルトで持っている標準偏差(と分散)の関数は，不偏分散に基づいています。つまり，足したデータの総数ではなく，総数$-1$で割ったものになっています。標本分散，標本標準偏差が欲しい時は，計算式を書いて計算しなければなりません。\texttt{code:\ref{code:20_03}}を書いて確認してみましょう。
+\begin{lstlisting}[language=c++,label={code:20_03},caption={標本分散を求める}]
 # 標本分散
 mean((s1 - mean(s1))^2)
 # 確認
@@ -99,7 +99,7 @@ var(s1)*4/5
 	\item ということは、片側に2.5\%あれば良い
 	\item x座標が欲しいので，したから97.5\%の確率点を\texttt{qnorm}で求める
 \end{enumerate}
-という手順になるのでした(図\ref{fig::20_03})。コードでは\texttt{code:\ref{code::20_04}}のようにすればOKです。
+という手順になるのでした(図\ref{fig::20_03})。コードでは\texttt{code:\ref{code:20_04}}のようにすればOKです。
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=12cm]{../images/text20/fig20_03.png}
@@ -107,24 +107,24 @@ var(s1)*4/5
 	\label{fig::20_03}
 \end{figure}
 
-\begin{lstlisting}[language=c++,label={code::20_04},caption={正規分布の95\%区間}]
+\begin{lstlisting}[language=c++,label={code:20_04},caption={正規分布の95\%区間}]
 # 正規分布の95%区間
 qnorm(0.975, mean = 0, sd = 1)
 \end{lstlisting}
-これで区間推定してみましょう。今回は母平均5,母標準偏差1のところからサンプルをとってきています。たとえば1つ目のオブジェクト，$s1$について区間推定するならば，\texttt{code:\ref{code::20_05}}として計算できることになります\footnote{-1.96のところを，下から0.025の確率点で算出することでマイナス符号をつけないで表現できています。}。
-\begin{lstlisting}[language=c++,label={code::20_05},caption={標本1の区間推定}]
+これで区間推定してみましょう。今回は母平均5,母標準偏差1のところからサンプルをとってきています。たとえば1つ目のオブジェクト，$s1$について区間推定するならば，\texttt{code:\ref{code:20_05}}として計算できることになります\footnote{-1.96のところを，下から0.025の確率点で算出することでマイナス符号をつけないで表現できています。}。
+\begin{lstlisting}[language=c++,label={code:20_05},caption={標本1の区間推定}]
     mean(s1)+qnorm(0.025)*(1/sqrt(5))
     mean(s1)+qnorm(0.975)*(1/sqrt(5))
 \end{lstlisting}
 
 
-ただし，これは母分散がわかっている場合であって，実際はわからないので$t$分布を使うのでした。Rにおける$t$分布の関数名はそのまま\texttt{t}なので，これを\texttt{dt,pt,qt}などとすれば確率密度や累積確率，確率点がわかります。ただし，引数として自由度$df$が必要なことを忘れないで。これを使った区間推定は，\texttt{code:\ref{code::20_06}}のようになります\footnote{自由度の設定と，母分散の変わりに標本分散\texttt{sd(s1)}とすることに注意。}。
-\begin{lstlisting}[language=c++,label={code::20_06},caption={母分散がわからない場合}]
+ただし，これは母分散がわかっている場合であって，実際はわからないので$t$分布を使うのでした。Rにおける$t$分布の関数名はそのまま\texttt{t}なので，これを\texttt{dt,pt,qt}などとすれば確率密度や累積確率，確率点がわかります。ただし，引数として自由度$df$が必要なことを忘れないで。これを使った区間推定は，\texttt{code:\ref{code:20_06}}のようになります\footnote{自由度の設定と，母分散の変わりに標本分散\texttt{sd(s1)}とすることに注意。}。
+\begin{lstlisting}[language=c++,label={code:20_06},caption={母分散がわからない場合}]
     mean(s1)+qt(0.025,df=4)*(sd(s1)/sqrt(5))
     mean(s1)+qt(0.975,df=4)*(sd(s1)/sqrt(5))
 \end{lstlisting}
-それにしても，数式を書くので何やら思ったより面倒だな，と思った人もいるかもしれません。実はもっと簡単な方法があります。それは，Rの$t$検定の関数を使う方法です。$t$検定といえば，2群の平均値差についての検定が思いつきますが，それは次のセクションでやることにして，\texttt{code:\ref{code::20_07}}を実行してください。
-\begin{lstlisting}[language=c++,label={code::20_07},caption={t.test関数で推定}]
+それにしても，数式を書くので何やら思ったより面倒だな，と思った人もいるかもしれません。実はもっと簡単な方法があります。それは，Rの$t$検定の関数を使う方法です。$t$検定といえば，2群の平均値差についての検定が思いつきますが，それは次のセクションでやることにして，\texttt{code:\ref{code:20_07}}を実行してください。
+\begin{lstlisting}[language=c++,label={code:20_07},caption={t.test関数で推定}]
     t.test(s1,mu=5,conf.level = 0.95)
 \end{lstlisting}
 これは，母平均が5である母集団から得られた標本の平均が，母集団から有意に離れているかどうかを検定するという検定方法になります。これを実行すると，私の環境では\texttt{console\ref{RS:out20_01}}のような結果が得られました\footnote{繰り返しになりますがs1のサンプルは実行環境によって違うと思いますので，結果はみなさんの手元の数字と異なると思います。出力のどこがどういう意味であるかを見ることが肝要です。}。
@@ -154,8 +154,8 @@ mean of x
 
 対応のあるt検定，つまり一要因群内(Within)2水準の平均値差の検定をどう計算するか，です。前節では面倒な計算式がありましたが，今回その辺の計算は機械がやってくれますので，例によって出力をしっかり確認するようにしましょう。
 
-例として，表\ref{fig::19_01}の10人の参加者データを使います。元になるデータをオブジェクトに格納する\texttt{code:\ref{code::20_08}}を実行しましょう。
-\begin{lstlisting}[language=c++,label={code::20_08},caption={t検定を行う}]
+例として，表\ref{fig::19_01}の10人の参加者データを使います。元になるデータをオブジェクトに格納する\texttt{code:\ref{code:20_08}}を実行しましょう。
+\begin{lstlisting}[language=c++,label={code:20_08},caption={t検定を行う}]
 X <- c(34, 25, 13, 21, 13, 26, 19, 12, 19, 19)
 Y <- c(35, 30, 16, 27, 20, 28, 16, 14, 18, 21)
 t.test(X, Y, paired = T, alternative = "less")
@@ -167,9 +167,9 @@ t.test(X, Y, paired = T, alternative = "less")
 	\item[2行目] 他方のデータをオブジェクト\texttt{Y}に代入しています。
 	\item[3行目] t検定を行っています。引数として，データ\texttt{X,Y}を指定し，次に\texttt{paired}オプションを\texttt{T}に\footnote{大文字の\texttt{T}は$TRUE$，真であり，この逆は\texttt{F}とかいて$FALSE$,偽を意味する\textbf{特別な文字}です。真か偽か，本当か嘘かという2つの状態を表す論理値と呼ばれるもので，ここではスイッチオン/オフの意味です。対応スイッチ，オン！という意味ですね。大文字の$T,F$をオブジェクト名にして利用することも可能ですが，Rが専門的な意味で使う予約語なので，一般的にはそのような使用は避けた方が望ましいです。}，対立仮説alternativeを「XがYよりも小さい」という\underline{片側検定}にしてあります。
 \end{description}
-さて，このスクリプトは直感的にわかりやすく書きましたが，同じことを別の表現をすることもできます(\texttt{code:\ref{code::20_09}})。
+さて，このスクリプトは直感的にわかりやすく書きましたが，同じことを別の表現をすることもできます(\texttt{code:\ref{code:20_09}})。
 
-\begin{lstlisting}[language=c++,label={code::20_09},caption={t検定その2}]
+\begin{lstlisting}[language=c++,label={code:20_09},caption={t検定その2}]
 X <- c(34, 25, 13, 21, 13, 26, 19, 12, 19, 19)
 Y <- c(35, 30, 16, 27, 20, 28, 16, 14, 18, 21)
 dat <- data.frame(condition = c(rep(1, 10), rep(2, 10)), value = c(X, Y))
@@ -226,8 +226,8 @@ mean of the differences
 前の章($\to$第\ref{chapter19}講)を参考に，このような結果をどう解釈し，どうレポートに記載するかを確認しておいてください。
 
 \section{対応のないt検定}
-今度は対応のない，独立した2群の平均値差の検定，言い換えるならば一要因群間(Between)2水準計画のデータの検定を考えましょう。同じく前の章から，表\ref{tbl::19_02}のデータを分析することを考えます。難しい計算は抜きにして，\texttt{code:\ref{code::20_10}}を入力し，分析を実行してください。
-\begin{lstlisting}[language=c++,label={code::20_10},caption={formulaで指定}]
+今度は対応のない，独立した2群の平均値差の検定，言い換えるならば一要因群間(Between)2水準計画のデータの検定を考えましょう。同じく前の章から，表\ref{tbl::19_02}のデータを分析することを考えます。難しい計算は抜きにして，\texttt{code:\ref{code:20_10}}を入力し，分析を実行してください。
+\begin{lstlisting}[language=c++,label={code:20_10},caption={formulaで指定}]
 X <- c(25, 15, 24, 17, 22)
 Y <- c(31, 28, 30, 19, 18)
 dat <- data.frame(condition = c(rep(1, 5), rep(2, 5)), value = c(X, Y))
@@ -271,9 +271,9 @@ Rの\texttt{t.test}関数は，より仮定の緩やかな，Welchの補正を�
 と報告します\footnote{$t$の値は，両側検定の場合符号に意味がないのでマイナスを取って記載します。}。差があるかどうかの判断だけでなく，差の95\%信用区間にも目を向けておきましょう。結果から，差の95\%信頼区間はCI[-12.609577,3.409577]でした。差は-12から+3までの幅があり，帰無仮説である差$=0$を含んでいるので，有意になりません。
 
 
-ところで，分散が同じだ，と仮定できる場合は\texttt{t.test}関数のオプションを使います(\texttt{code:\ref{code::20_11}})。
+ところで，分散が同じだ，と仮定できる場合は\texttt{t.test}関数のオプションを使います(\texttt{code:\ref{code:20_11}})。
 
-\begin{lstlisting}[language=c++,label={code::20_11},caption={分散のオプション指定}]
+\begin{lstlisting}[language=c++,label={code:20_11},caption={分散のオプション指定}]
 t.test(value ~ condition, data = dat,var.equal = T)
 \end{lstlisting}
 
@@ -298,9 +298,9 @@ sample estimates:
 \subsection{事後的な効果量の検証}
 検定が終わった後ではありますが，このデータの実験は「勝ち目がある」ものだったのでしょうか。つまり，母集団における母平均の差が十分大きなものなのかどうかが気になります。母数は分かりませんが，これまでも分からないものは標本統計量で置き換えて推定してきたわけですから，データを取った後になって，これはどれぐらい効果量の大きなデータだったのか，を考えてみましょう。
 
-効果量の計算についても，Rを使って簡単に行うことができます。Rではパッケージを追加することで様々な統計関数が増えますが，効果量についての\textsf{effsize}パッケージ\citep{effsize}を導入すれば，この計算も簡単にできます。効果量については第\ref{chapter19}講で触れましたので確認しておいてください。ここではより推奨される，Hedgesのgの算出の仕方を紹介します(\texttt{code:\ref{code::20_12}})。
+効果量の計算についても，Rを使って簡単に行うことができます。Rではパッケージを追加することでさまざまな統計関数が増えますが，効果量についての\textsf{effsize}パッケージ\citep{effsize}を導入すれば，この計算も簡単にできます。効果量については第\ref{chapter19}講で触れましたので確認しておいてください。ここではより推奨される，Hedgesのgの算出の仕方を紹介します(\texttt{code:\ref{code:20_12}})。
 
-\begin{lstlisting}[language=c++,label={code::20_12},caption={効果量を求める}]
+\begin{lstlisting}[language=c++,label={code:20_12},caption={効果量を求める}]
 # パッケージの読み込み
 library(effsize)
 cohen.d(value ~ condition, data = dat, hedges.correction = T)
@@ -329,13 +329,13 @@ g estimate: -0.7715342 (medium)
 
 \subsection{補遺}
 付録的に2点付け加えます。時間的に余裕がある・興味がある場合はご一読ください。
-\paragraph{対応のあるt検定の効果量を計算する}対応のある$t$検定をして，その効果量を求める場合は，次のようにpairedオプションをオンにしておきます(\texttt{code:\ref{code::20_13}})。
+\paragraph{対応のあるt検定の効果量を計算する}対応のある$t$検定をして，その効果量を求める場合は，次のようにpairedオプションをオンにしておきます(\texttt{code:\ref{code:20_13}})。
 
-\begin{lstlisting}[language=c++,label={code::20_13},caption={cohenのd}]
+\begin{lstlisting}[language=c++,label={code:20_13},caption={cohenのd}]
 cohen.d(X,Y,paired = TRUE)
 \end{lstlisting}
-ただし，チルダを使った書き方をしている場合，\texttt{code:\ref{code::20_14}}のようにすると，出力に次のような警告が付されます(\texttt{console\ref{RS:out20_08}})。
-\begin{lstlisting}[language=c++,label={code::20_14},caption={cohenのdその2}]
+ただし，チルダを使った書き方をしている場合，\texttt{code:\ref{code:20_14}}のようにすると，出力に次のような警告が付されます(\texttt{console\ref{RS:out20_08}})。
+\begin{lstlisting}[language=c++,label={code:20_14},caption={cohenのdその2}]
 cohen.d(value ~ condition, data = dat, paired = TRUE)
 \end{lstlisting}
 
@@ -355,8 +355,8 @@ Trying to compute paired samples Cohen's d using formula input. Results may be i
 format 'value ~ treatment | Subject(id)' to specify a subject id variable.
 \end{verbatim}
 \end{Rscreen}
-この警告は，「対応のある個々人を識別する変数がデータセットに入ってないので，間違った結果になっているかもしれませんよ。次の書式を使ってください」と言ってます。これに対応するためには、\texttt{code:\ref{code::20_15}}のようにします。
-\begin{lstlisting}[language=c++,label={code::20_15},caption={対応のある場合のcohen.d}]
+この警告は，「対応のある個々人を識別する変数がデータセットに入ってないので，間違った結果になっているかもしれませんよ。次の書式を使ってください」と言ってます。これに対応するためには、\texttt{code:\ref{code:20_15}}のようにします。
+\begin{lstlisting}[language=c++,label={code:20_15},caption={対応のある場合のcohen.d}]
 X <- c(34, 25, 13, 21, 13, 26, 19, 12, 19, 19)
 Y <- c(35, 30, 16, 27, 20, 28, 16, 14, 18, 21)
 dat <- data.frame(condition = c(rep(1, 10), rep(2, 10)), value = c(X, Y))
@@ -367,8 +367,8 @@ cohen.d(value ~ condition | Subject(ID), data = dat, paired = TRUE)
 ここでのポイントは5行目にIDを識別する変数を作り\footnote{関数\texttt{rep}で\texttt{1:10}を2回繰り返しています。Rではコロンで繋げた数字は，連番を意味します。}，効果量を計算する式を警告の提案通りのフォーマットに書き換えています。
 
 \paragraph{例数設計のしかた}
-対応のない$t$検定で，効果量が0.7あるのに有意になりませんでした。これはサンプルサイズが小かったからかも，ということでしたが，では何人分のデータがあればよかったのでしょうか。\texttt{code:\ref{code::20_16}}ようにRに入力することで，そのヒントが得られます。
-\begin{lstlisting}[language=c++,label={code::20_16},caption={power.t.test関数}]
+対応のない$t$検定で，効果量が0.7あるのに有意になりませんでした。これはサンプルサイズが小かったからかも，ということでしたが，では何人分のデータがあればよかったのでしょうか。\texttt{code:\ref{code:20_16}}ようにRに入力することで，そのヒントが得られます。
+\begin{lstlisting}[language=c++,label={code:20_16},caption={power.t.test関数}]
 power.t.test(power = 0.8, delta = 0.7, sig.level = 0.05)
 \end{lstlisting}
 ここで，\texttt{delta=0.7}としたのは，標準化された平均値差が0.7あるとして，という考え方です。これは先ほどの事後的検定力分析の結果，それぐらいあったんじゃないの？ と思われたのでその値を使いました。もっと小さく見積もったり，逆にもう少し大きく見積もったりしても構いません。また，\texttt{power=0.8}としましたが，これは\keyterm{検定力}{けんていりょく}{power}で，セクション\ref{sec::18_05}で出てきたものです。Type II Error，つまり差があるのにあると言えない間違い($\beta$)を20\%ぐらいに抑え，80\%の確率で当てたいとしました($1-\beta=0.8$)。また，有意水準は5\%です($\alpha=0.05$,スクリプトの中では\texttt{sig.level=0.05}としています)。
@@ -388,9 +388,9 @@ alternative = two.sided
 NOTE: n is number in *each* group
 \end{verbatim}
 \end{Rscreen}
-ここの$n$にあるように，効果量0.7，検定力0.8で研究するのであれば，33か34人は集めたいところ，だったわけです。逆に今回は5人しか集めていませんでしたが，これを使って，\texttt{code:\ref{code::20_17}}とすると，\texttt{console\ref{RS:out20_10}}のように示されます。
+ここの$n$にあるように，効果量0.7，検定力0.8で研究するのであれば，33か34人は集めたいところ，だったわけです。逆に今回は5人しか集めていませんでしたが，これを使って，\texttt{code:\ref{code:20_17}}とすると，\texttt{console\ref{RS:out20_10}}のように示されます。
 
-\begin{lstlisting}[language=c++,label={code::20_17},caption={power.t.testで$n$を固定}]
+\begin{lstlisting}[language=c++,label={code:20_17},caption={power.t.testで$n$を固定}]
 power.t.test(n = 5, delta = 0.7, sig.level = 0.05)
 \end{lstlisting}
 

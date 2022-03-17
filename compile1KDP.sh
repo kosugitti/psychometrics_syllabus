@@ -6,26 +6,26 @@ filename="Dkiso1_book_kdp"
 cd $path
 ## backup
 cp ${filename}.tex ${filename}.old
-cp ${filename}.tex tmp.tex
+cp ${filename}.tex tmpK.tex
 ## LateX Main
-rm error.log
-lualatex tmp
-upbibtex tmp
-lualatex tmp
-lualatex tmp
-upmendex -r -c -g -s ../../indexStyle.ist tmp
-lualatex tmp
+rm errorK.log
+lualatex tmpK
+upbibtex tmpK
+lualatex tmpK
+lualatex tmpK
+upmendex -r -c -g -s ../../indexStyle.ist tmpK
+lualatex tmpK
 ## Tex Warning Check
-grep 'undefined' tmp.log > error.log
-grep 'multiply' tmp.log >> error.log
-grep 'Citation' tmp.log >> error.log
-grep 'Overfull' tmp.log >> error.log
+grep 'undefined' tmpK.log > errorK.log
+grep 'multiply' tmpK.log >> errorK.log
+grep 'Citation' tmpK.log >> errorK.log
+grep 'Overfull' tmpK.log >> errorK.log
 
 
 ## cleanup
-mv tmp.pdf ../../${filename}.pdf
-mv tmp.log ../../${filename}.log
-rm tmp.*
+mv tmpK.pdf ../../${filename}.pdf
+mv tmpK.log ../../${filename}.log
+rm tmpK.*
 rm *.aux
 rm *.dvi
 rm *.toc
@@ -45,4 +45,4 @@ cd ..
 
 echo $(date)
 echo '出版用PDFを作成しました。出版用PDFには後書きと奥付があり，著作権表示が異なります。'
-cat syllabus/error.log
+cat course_materials/tex/errorK.log

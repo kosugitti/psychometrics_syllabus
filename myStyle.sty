@@ -98,14 +98,7 @@ setpagesize=false,
     \cfoot{\thepage} %フッタ中央．ページ番号を表示
     \renewcommand{\chaptermark}[1]{\markboth{第\ \thechapter\ 講 \ #1}{}}
 
-% 章の最初のページ番号を除く呪文
-\makeatletter
-\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
-                    \thispagestyle{empty}% original style: plain
-                    \global\@topnum\z@
-                    \@afterindentfalse
-                    \secdef\@chapter\@schapter}
-\makeatother
+
 
 \renewcommand{\refname}{引用文献}
 % 脚注でもverbatim環境が使いたい

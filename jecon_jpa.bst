@@ -42,7 +42,7 @@
 % version 指定
 FUNCTION {jecon.version} { "5.4" }
 
-% Debug mode．0 以外を指定すると様々な情報を表示させることが可能．
+% Debug mode．0 以外を指定するとさまざまな情報を表示させることが可能．
 FUNCTION {jecon.debug}
 { #0 }    % Debug mode off.
 % { #1 }    % Debug mode on.
@@ -2838,7 +2838,7 @@ FUNCTION {extract.num}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%	edition 処理用のプログラム
 
-% 英語の edition は全て 1st, 2nd, 3rd, 4th etc. に変換する。
+% 英語の edition はすべて 1st, 2nd, 3rd, 4th etc. に変換する。
 FUNCTION {eng.ord}
 { duplicate$ "1" swap$ *
   #-2 #1 substring$ "1" =
@@ -4088,7 +4088,7 @@ FUNCTION {set.is.kanji.entry.two}
   'is.kanji.entry.two :=
 }
 
-%%% 全てのエントリーに対し実行
+%%% すべてのエントリーに対し実行
 ITERATE {set.is.kanji.entry.author}
 ITERATE {set.is.kanji.entry}
 ITERATE {set.is.kanji.entry.two}
@@ -4108,7 +4108,7 @@ FUNCTION {set.order.cited}
   order.num 'order.cited :=
   #1 order.num + 'order.num :=
 }
-%%% 全てのエントリーに対し実行
+%%% すべてのエントリーに対し実行
 ITERATE {set.order.cited}
 
 %%% 記号を除去し、小文字に変換

@@ -32,9 +32,9 @@
 \end{figure}
 
 このファイルの1〜6行目は，文書全体の設定をしているところです。ここは基本的に変更する必要はありません。
-1行目，6行目には\verb|---|とありますが，この区切り記号が重要な意味を持ちますので，変更しないようにとくに注意してください。2行目はタイトル，3行目は作者，4行目は作成日，5行目は出力形式が書いてあります。これらは先程の図\ref{fig::05_08}で指定したものが反映されているはずです。これらは変更しても結構ですが，書式ルールから外れると後々うまくいかなくなるので注意してください。
+1行目，6行目には\verb|---|とありますが，この区切り記号が重要な意味を持ちますので，変更しないようにとくに注意してください。2行目はタイトル，3行目は作者，4行目は作成日，5行目は出力形式が書いてあります。これらはさきほどの図\ref{fig::05_08}で指定したものが反映されているはずです。これらは変更しても結構ですが，書式ルールから外れると後々うまくいかなくなるので注意してください。
 
-7行目からが本文です。よく見ると，背景が灰色のゾーンと白色のゾーンがあると思います。灰色のゾーン(8〜10行目，18〜20行目など)は\keyterm{チャンク}{ちゃんく}{chunk}と呼ばれるRのコードを書く領域です。白色のゾーン(11〜17行目，21〜25行目など)は文書，本文を書くところになります。7行目以降はサンプルの文章が入っていますから，全て削除してしまっても構いません。実際に皆さんがレポート等を書く時は削除しましょう\footnote{後ほど指示しますが，本講の課題はRmarkdown形式のファイルを提出してもらいます}。でも今一旦そのままで，ファイルの上にある\verb|knit|というボタンを押してみましょう。これは\keyterm{ニット}{knit}{knit}と言い，文章を編み上げるという意味です。このファイルが未保存の場合は，保存するファイル名を指定する画面が出ますが，任意の名前にして実行してみましょう\footnote{初めての場合，RStudioが\texttt{knit}に必要な関連パッケージをインターネットからダウンロードしようとします。ダウンロードしても良いか? と聞いてきますのでOKを選択してください。}
+7行目からが本文です。よく見ると，背景が灰色のゾーンと白色のゾーンがあると思います。灰色のゾーン(8〜10行目，18〜20行目など)は\keyterm{チャンク}{ちゃんく}{chunk}と呼ばれるRのコードを書く領域です。白色のゾーン(11〜17行目，21〜25行目など)は文書，本文を書くところになります。7行目以降はサンプルの文章が入っていますから，すべて削除してしまっても構いません。実際に皆さんがレポート等を書く時は削除しましょう\footnote{後ほど指示しますが，本講の課題はRmarkdown形式のファイルを提出してもらいます}。でも今いったんそのままで，ファイルの上にある\verb|knit|というボタンを押してみましょう。これは\keyterm{ニット}{knit}{knit}と言い，文章を編み上げるという意味です。このファイルが未保存の場合は，保存するファイル名を指定する画面が出ますが，任意の名前にして実行してみましょう\footnote{初めての場合，RStudioが\texttt{knit}に必要な関連パッケージをインターネットからダウンロードしようとします。ダウンロードしても良いか? と聞いてきますのでOKを選択してください。}
 
 \begin{figure}[ht]
 	\centering
@@ -52,13 +52,13 @@
 このように，計算結果をコピー＆ペーストで文書に書き写すのではなく，明示するのは計算手順だけでよいのです。このようにすることで，この出力された文書を受け取る側は，どのような計算がなされ，どのような結果になるかを確認できます。そしてそこに\keytermL{コピペ汚染}{こぴぺおせん}は生じるはずがないのです！これは科学論文を作成するときに，方法を明示することと間違いがないことを担保しているという意味で，大変便利で画期的な方法であることがおわかりいただけたかと思います。
 
 \paragraph{自分で書いてみる}
-それでは元のファイルの7行目以下を全て削除し，自分なりにRmarkdownを書いてみましょう。
-\texttt{code:\ref{code::05_08}}のように書くのを目標とします。
-このとき，Rのコードを書くチャンク領域を挿入するには，図\ref{fig::05_11}に示した上のボタンを押して，Rを選択します。\texttt{code:\ref{code::05_08}}に書いてあるように，バッククォーテーションを3つ繋げて，中括弧でrと書き(\verb|```{r}|)，バッククォーテーションで閉じるという方法でも結構です。
+それでは元のファイルの7行目以下をすべて削除し，自分なりにRmarkdownを書いてみましょう。
+\texttt{code:\ref{code:05_08}}のように書くのを目標とします。
+このとき，Rのコードを書くチャンク領域を挿入するには，図\ref{fig::05_11}に示した上のボタンを押して，Rを選択します。\texttt{code:\ref{code:05_08}}に書いてあるように，バッククォーテーションを3つ繋げて，中括弧でrと書き(\verb|```{r}|)，バッククォーテーションで閉じるという方法でも結構です。
 
 チャンクには，設定や一時的な実行を行うためのボタンが表示されます(図\ref{fig::05_12})。実行ボタンを押すとknitではなくその下に実行結果が表示されるので，自分の意図した結果が示されているか，確認できます。
 
-\begin{lstlisting}[language=c++,label={code::05_08},caption={Rmarkdownを書いてみる}]
+\begin{lstlisting}[language=c++,label={code:05_08},caption={Rmarkdownを書いてみる}]
 ---
 title: "れんしゅう"
 author: "小杉考司"
@@ -108,7 +108,7 @@ Rmarkdownを使うと，Rスクリプト(計算の指示書)とレポートの�
 
 もし定期的に同じようなデータが上がってきて，何度も同じようなレポートをしなければならない，というような仕事があったとします。これは仮定の話ではありますが，実際は社会に出て，毎月，毎年の集計をしなければならないようなことはよくあることです。この時いつも同じ計算をマウスでカチカチと繰り返しているのは，馬鹿らしいことですね。同じ手続き，同じ文章で数字だけ違うのであれば，データだけ変えて同じ指示書に流し込んでやればいいのです。Rmarkdownはまさにそういう時に向いています。
 
-もちろんそれだけでなく，計算手続の記録をつけるという意味で科学的にも重要だという話でしたね。研究実践の例として，データが手に入ったらデータファイルは加工せず，加工の部分は全てRスクリプト/Rmarkdownでやることで計算結果の捏造が起きていないかどうかをチェックできるのです。研究で得られたデータは公開することで，いろいろな人にチェックしてもらおうというオープンサイエンスの動きも広がっています。
+もちろんそれだけでなく，計算手続の記録をつけるという意味で科学的にも重要だという話でしたね。研究実践の例として，データが手に入ったらデータファイルは加工せず，加工の部分はすべてRスクリプト/Rmarkdownでやることで計算結果の捏造が起きていないかどうかをチェックできるのです。研究で得られたデータは公開することで，いろいろな人にチェックしてもらおうというオープンサイエンスの動きも広がっています。
 \section{外部データの読み込み}
 さて，このようにデータファイルが外部にある場合，それをRの中に取り込む必要があります。外部データの取り込みは，分析を始める前の手続きではありますが，初心者がトラブルに巻き込まれやすいシーンでもあります。手順を説明していきますので，注意深く読んでおいてください。
 \subsection{データの作成}
@@ -208,9 +208,9 @@ Rmarkdownを使うと，Rスクリプト(計算の指示書)とレポートの�
 さてこのデータファイルを読み込むには，読み込むための関数を使います。Rが持っている基本関数である\texttt{read.csv}関数を使っても読み込めるのですが，ここではより便利なパッケージの関数を使ってみましょう。
 
 ここではRmarkdownではなく，プレーンなRスクリプトファイルをつくって話を進めます。
-作業を始める前に，データファイルがプロジェクトフォルダの中にあること，そもそもプロジェクトを開いていることを確認してくださいね\footnote{プロジェクトを開くことで，Rのカレントディレクトリ(現在作業中のディレクトリ。ワーキングディレクトリ，ワーキングフォルダとも言います)が当該フォルダの中にセットされます。これがセットされているので，ファイルの読み込みにあたってファイル名だけの指定で済むようになります。プロジェクトを開いていないとか，違うフォルダのファイルを参照したい場合は，ファイル名のところに相対パスを指定する必要があります。ファイルの場所の指定については，付録\ref{computer}のPp.\pageref{setLocation}を参照してください。}。その上で，\verb|FIle > New File > R Script|から新しくファイルを開くか，先ほどのRスクリプトファイルの下に\texttt{code:\ref{code::05_09}}のコードを書いて実行してください。
+作業を始める前に，データファイルがプロジェクトフォルダの中にあること，そもそもプロジェクトを開いていることを確認してくださいね\footnote{プロジェクトを開くことで，Rのカレントディレクトリ(現在作業中のディレクトリ。ワーキングディレクトリ，ワーキングフォルダとも言います)が当該フォルダの中にセットされます。これがセットされているので，ファイルの読み込みにあたってファイル名だけの指定で済むようになります。プロジェクトを開いていないとか，違うフォルダのファイルを参照したい場合は，ファイル名のところに相対パスを指定する必要があります。ファイルの場所の指定については，付録\ref{computer}のPp.\pageref{setLocation}を参照してください。}。その上で，\verb|FIle > New File > R Script|から新しくファイルを開くか，先ほどのRスクリプトファイルの下に\texttt{code:\ref{code:05_09}}のコードを書いて実行してください。
 
-\begin{lstlisting}[language=c++,label={code::05_09},caption={CSVファイルを読み込む}]
+\begin{lstlisting}[language=c++,label={code:05_09},caption={CSVファイルを読み込む}]
 library(tidyverse)
 dat <- read_csv("baseballDecade.csv",na = "NA")
 \end{lstlisting}
@@ -253,7 +253,7 @@ dat <- read_csv("baseballDecade.csv",na = "NA")
 \end{table}
 しかしその判断は，「大阪」行の「午後」列を見て，すなわち行と列に素早く目を走らせてそれのクロスするところで「曇」という情報を得ています。夕方や深夜の情報が知りたければ，列を変えますね。列ごとに違う変数になっているから当然です。行と列の名前を参照するというのは，目線を左右と上下に動かす2アクション必要なことです。
 
-しかしここで参照している「列名(変数名)」も変数，データの一部ではないでしょうか。この観点に立ち，1行見るだけで全ての情報がわかるようにしてみましょう。表\ref{tbl::usingR_tidy}には表\ref{tbl::usingR_not_tidy}と同じ情報しか含まれていませんが，一行見るだけで全ての情報がわかるようになっています。
+しかしここで参照している「列名(変数名)」も変数，データの一部ではないでしょうか。この観点に立ち，1行見るだけですべての情報がわかるようにしてみましょう。表\ref{tbl::usingR_tidy}には表\ref{tbl::usingR_not_tidy}と同じ情報しか含まれていませんが，一行見るだけですべての情報がわかるようになっています。
 \begin{table}[ht]
 	\begin{center}
 		\caption{ロング型データ}
@@ -285,7 +285,7 @@ dat <- read_csv("baseballDecade.csv",na = "NA")
 	\item 個々の観測の構成単位の類型(type of observational unit)が1つの表 (table) をなす。
 	\item 個々の値 (value) が1つのセル (cell) をなす。
 \end{itemize}
-先程の天気の例では，時間，場所，天候という3つの情報が表に含まれていますが，これが一行の中にまとまっているのが整然データです。
+さきほどの天気の例では，時間，場所，天候という3つの情報が表に含まれていますが，これが一行の中にまとまっているのが整然データです。
 人間にとってはワイド型のデータの方がわかりやすいこともありますが，分析を進めていく上ではロング型・整然データの方が便利なことも多くあります。たとえばこの後で行う作図においては，整然データの方が便利な形です。X軸に割り当てる列，Y軸に割り当てる列，色や形を指定する列，など列ごとに持つ特徴を図の設定に割り当てることができるからです。
 
 ここで見たようにロング/ワイドどちらの形式でも持っている情報は同じですから，これを相互に行き来できるようにデータハンドリングする方法を見ておきましょう。
@@ -318,8 +318,8 @@ x dplyr::lag()    masks stats::lag()
 今からいくつかの関数を紹介します。それらはレゴブロックの1ピースのようなもので，「これだけ渡されてもどうしろと」と思うかもしれませんが，これらを組み合わせると大きなことができる・・・！と思ってお付き合いください。
 \paragraph{列選択：select}
 まずは列選択の関数，\verb|select|について。先ほど読み込んだ野球データは表\ref{BaseballDecade}にあるように多くの変数があります。ここから，身長\verb|height|と体重\verb|weight|だけの変数を取り出したい，というときにこの関数を使います。
-コード\verb|code::usingR_select|の結果が出力\ref{RS:usingR_select}です。
-\begin{lstlisting}[language=c++,label={code::usingR_select},caption={select関数}]
+コード\verb|code:usingR_select|の結果が出力\ref{RS:usingR_select}です。
+\begin{lstlisting}[language=c++,label={code:usingR_select},caption={select関数}]
 dat %>% select(height,weight)
 \end{lstlisting}
 \begin{Rscreen}{select関数の出力結果}{usingR_select}
@@ -346,8 +346,8 @@ dat %>% select(height,weight)
 ここで重要なポイントがあります。それはパイプ演算子\verb|%>%|です。これは前のオブジェクトを後の関数の第一引数に渡す，という意味があります。たとえば，$y=f(x)$という変換をし，さらに$z=g(y)$という変換をしたい場合，頭の中では$x\to y \to z$と考えていると思いますが，コードで書くと$y \leftarrow x$で$z \leftarrow y$という逆の向きで考えなければなりません。あるいは$z=g(f(x))$と内側にくり入れていくので，見た目にわかりにくくなります。この思考の流れに沿った変換にするようにつなげるのが\verb|%>%|です\footnote{これを読むときは，頭の中で「経て」と読みましょう。\verb|dat|を経て\verb|select|へ。なんのこっちゃと思った人は，ダウンタウンのごっつええ感じという昔の番組で「経て」というコントがあったので，ググってみてみてください。}\footnote{パーセント，大なり，パーセントと3回も入力するのは面倒ですね！RStudioではショートカットキーとして，\verb|Ctrl+Shift+M|があります。CtrlキーとShiftキーとMを同時押し，です。こうした入力ショートカットについては他にもいろいろあり，RStudioのHelpメニューからCheetSheetを選択してください。チートコマンドを書き込んださまざまな情報が1-2枚にまとまっています。}。
 
 \paragraph{行選択：filter}
-今度は行選択。\verb|filter|という関数です。先ほど読み込んだデータは6546行もあるのですが，たとえば2020年度のデータだけが欲しい，というときは行を選択することになります。ここで使うのが\verb|filter|です。コード\verb|code::usingR_filter|の結果が出力\ref{RS:usingR_filter}です。
-\begin{lstlisting}[language=c++,label={code::usingR_filter},caption={filter関数}]
+今度は行選択。\verb|filter|という関数です。先ほど読み込んだデータは6546行もあるのですが，たとえば2020年度のデータだけが欲しい，というときは行を選択することになります。ここで使うのが\verb|filter|です。コード\verb|code:usingR_filter|の結果が出力\ref{RS:usingR_filter}です。
+\begin{lstlisting}[language=c++,label={code:usingR_filter},caption={filter関数}]
 dat %>% filter(Year == "2020年度")
 \end{lstlisting}
 \begin{Rscreen}{filter関数の出力結果}{usingR_filter}
@@ -374,8 +374,8 @@ dat %>% filter(Year == "2020年度")
 
 ここで，\verb|filter|関数の中では，\verb|Year == "2020年度"|と書いてあります。これは\verb|Year|変数の値が「2020年度」だった行だけ抜き出しましょう，という意味です。イコールを2つ重ねている\verb|==|という記号は，「左が右と等しいかどうか」を判断するための関数のような動きをしています。イコールが1つしかなければ，Rは代入せよという意味，すなわち\verb|<-|と同じ意味に解釈してしまうのです\footnote{実は普段から，\verb|dat=read_csv(***)|のように書いても良かったのですが，いわゆる等式を表す記号と混乱するのでここでは\verb|<-|にしていました。}。
 
-この条件判断式は色々な使い方があります。コード\ref{code::usingR_filter2}にいくつかの例を示しますので，実行してどのようになるか確かめてみてください。
-\begin{lstlisting}[language=c++,label={code::usingR_filter2},caption={filter関数}]
+この条件判断式は色々な使い方があります。コード\ref{code:usingR_filter2}にいくつかの例を示しますので，実行してどのようになるか確かめてみてください。
+\begin{lstlisting}[language=c++,label={code:usingR_filter2},caption={filter関数}]
 # 身長が180cm以上の人だけ取り出す
 dat %>% filter(height > 180)
 # 体重が100kg以下の人だけ取り出す
@@ -399,22 +399,22 @@ dat %>% filter(position == "捕手" | position == "内野手" | position =="外�
 
 \paragraph{変数生成；mutate}
 今度は変数を作る，mutateという関数です。たとえば打率は安打数を打席数で割ったもの，です。
-今回のデータセットには安打数\verb|Hit|と打席数\verb|AtBats|はありますが，打率のデータがありません。これを作ろう，というときはコード\ref{code::usingR_mutate}のようにします。
-\begin{lstlisting}[language=c++,label={code::usingR_mutate},caption={mutate関数}]
+今回のデータセットには安打数\verb|Hit|と打席数\verb|AtBats|はありますが，打率のデータがありません。これを作ろう，というときはコード\ref{code:usingR_mutate}のようにします。
+\begin{lstlisting}[language=c++,label={code:usingR_mutate},caption={mutate関数}]
 dat %>% select(AtBats,Hit) %>% mutate(BattingAverage = Hit / AtBats)
 \end{lstlisting}
-今回は一旦変数を選択してから，\verb|mutate|関数に入れました。もちろん直接入れてもらっても構いません。
+今回はいったん変数を選択してから，\verb|mutate|関数に入れました。もちろん直接入れてもらっても構いません。
 いずれにせよ，これで変数が作れることがわかったと思います。
 
 この「新しく変数を作る」というのは結構重要で，たとえばデータの中に欠損値があったとき，それを別の数字で置き換えるということがしたくなるかもしれません。\verb|mutate|関数で作る変数名を既存の変数名と同じにしておくと\textbf{上書き}されますから，これで書き換えることができます。
 
 またデータサイエンスの実践上，変数同士の組み合わせからデータの特徴を表す別の変数を作り出したいということはよくあります。こうした加工のことを\keytermL{特徴量エンジニアリング}{とくちょうりょうえんじにありんぐ}といいます。
 
-このように変数を加工することで，既存の変数から新しい変数をどんどん作っていくことができます。言い換えれば，データの加工はこれらの関数を使って，R上で記録を取りながら加工していきましょう，ということです。データを表計算ソフトで作っていて，そこで加工してしまうと\underline{データの捏造}が疑われる可能性があります。入力ミスや欠損値など不完全なデータであっても，それをどのように修正したかをすべてRで記録しながら進めていくことが，オープンサイエンスの取り組みとして重要なことなのです。入手したデータファイルは手を加えず，加工のプロセスを全てオープンに明示しながら分析を進めていくことが重要です。
+このように変数を加工することで，既存の変数から新しい変数をどんどん作っていくことができます。言い換えれば，データの加工はこれらの関数を使って，R上で記録を取りながら加工していきましょう，ということです。データを表計算ソフトで作っていて，そこで加工してしまうと\underline{データの捏造}が疑われる可能性があります。入力ミスや欠損値など不完全なデータであっても，それをどのように修正したかをすべてRで記録しながら進めていくことが，オープンサイエンスの取り組みとして重要なことなのです。入手したデータファイルは手を加えず，加工のプロセスをすべてオープンに明示しながら分析を進めていくことが重要です。
 
 \paragraph{ロング型とワイド型の変換}
-最後にデータをロング型の整然データにすることを考えましょう。次のコード\ref{code::usingR_pivot_longer}を実行してください。
-\begin{lstlisting}[language=c++,label={code::usingR_pivot_longer},caption={ロング型にする関数}]
+最後にデータをロング型の整然データにすることを考えましょう。次のコード\ref{code:usingR_pivot_longer}を実行してください。
+\begin{lstlisting}[language=c++,label={code:usingR_pivot_longer},caption={ロング型にする関数}]
 dat.long <- dat %>%
   select(Year, Name, position) %>%
   rownames_to_column("ID") %>%
@@ -470,13 +470,13 @@ dat.long <- dat %>%
 \end{Rscreen}
 これで整然データの形になっていますね。すなわち，\verb|name|のところに変数名が，\verb|value|のところにその変数の値が入っているわけです。一行目は，ID1番の，変数\verb|Year|の値が\verb|2020年度|であることを示し，2行目はID1番の，変数\verb|Name|の値が\verb|菊池　涼介|であることをしているわけです。このようにして，ロング型にすることができました。
 
-ちなみに，新しく作られる変数の変数名を指定することもできます。コード\ref{code::usingR_pivot_longer2}の例では，変数名を\verb|Variables|，値が入る変数名を\verb|Value|としてみました。
-\begin{lstlisting}[language=c++,label={code::usingR_pivot_longer2},caption={出力する変数名の指定}]
+ちなみに，新しく作られる変数の変数名を指定することもできます。コード\ref{code:usingR_pivot_longer2}の例では，変数名を\verb|Variables|，値が入る変数名を\verb|Value|としてみました。
+\begin{lstlisting}[language=c++,label={code:usingR_pivot_longer2},caption={出力する変数名の指定}]
 pivot_longer(-ID, names_to = "Variables", values_to = "Value")
 \end{lstlisting}
 
-さて，このようにロング型のデータができたら，その逆もみておきましょう。ロング型をワイド型に戻したいこともあるわけです。次のコード\ref{code::usingR_pivot_wider}を実行してください。
-\begin{lstlisting}[language=c++,label={code::usingR_pivot_wider},caption={ワイド型にする関数}]
+さて，このようにロング型のデータができたら，その逆もみておきましょう。ロング型をワイド型に戻したいこともあるわけです。次のコード\ref{code:usingR_pivot_wider}を実行してください。
+\begin{lstlisting}[language=c++,label={code:usingR_pivot_wider},caption={ワイド型にする関数}]
 dat.long %>% 
     pivot_wider(id_cols = ID, names_from = name, values_from = value)
 \end{lstlisting}
@@ -499,9 +499,9 @@ dat.long %>%
 	\item X軸Y軸から出来上がるキャンバスに，点や線，何をプロットするのかを指定する。
 	\item その上にモデルを加えて，元のデータとの対応を考えたりする。別のデータを重ねることもある。
 \end{enumerate}
-これを踏まえて，先程のコードに続けて\footnote{続きにかくというのは，パッケージやデータの読み込みが終わっていることが必要だからです。描画に必要な\texttt{ggplot2}パッケージは，\texttt{tidyverse}パッケージを読み込むと同時に読み込まれています。}，\texttt{code:\ref{code::05_10}}を入力してください。
+これを踏まえて，さきほどのコードに続けて\footnote{続きにかくというのは，パッケージやデータの読み込みが終わっていることが必要だからです。描画に必要な\texttt{ggplot2}パッケージは，\texttt{tidyverse}パッケージを読み込むと同時に読み込まれています。}，\texttt{code:\ref{code:05_10}}を入力してください。
 
-\begin{lstlisting}[language=c++,label={code::05_10},caption={まずはキャンパスを設定する}]
+\begin{lstlisting}[language=c++,label={code:05_10},caption={まずはキャンパスを設定する}]
 g1 <- ggplot(data = dat,  mapping = aes(x = height, y = weight))
 g1
 \end{lstlisting}
@@ -514,9 +514,9 @@ g1
 
 さてこのように，データの縦横だけを指定したオブジェクトを作り，それを表示させると，プロットのところには灰色の背景を持ったキャンパスだけが表示されたと思います(図\ref{fig::05_15}の左上)\footnote{Macユーザであれば，x軸，y軸のラベル名が表示されず四角い豆腐のようなものしか出ないかもしれません。これは文字コードの問題で，次のコードを実行すれば直ります。\verb|old <- theme_set(theme_gray(base_family = "HiraKakuProN-W3"))|。あるいは，「Mac ggplot2 豆腐 文字化け」などで検索してみてください。}。
 
-これがベースになって，次々と要素を付け加えていきます。次のコード\texttt{code:\ref{code::05_11}}，\texttt{code:\ref{code::05_12}}を書いて実行してみてください。
+これがベースになって，次々と要素を付け加えていきます。次のコード\texttt{code:\ref{code:05_11}}，\texttt{code:\ref{code:05_12}}を書いて実行してみてください。
 
-\begin{lstlisting}[language=c++,label={code::05_11},caption={キャンパスにデータ点をプロット}]
+\begin{lstlisting}[language=c++,label={code:05_11},caption={キャンパスにデータ点をプロット}]
 g2 <- g1 + geom_point()
 g2
 \end{lstlisting}
@@ -526,7 +526,7 @@ g2
 	\item[2行目] \texttt{g2}って何? つまりこれを表示しろ，という命令です。\texttt{plot(g2)}と書いても結構です。
 \end{description}
 
-\begin{lstlisting}[language=c++,label={code::05_12},caption={線形モデルを当てはめる}]
+\begin{lstlisting}[language=c++,label={code:05_12},caption={線形モデルを当てはめる}]
 g3 <- g2 + geom_smooth(method="lm")
 g3
 \end{lstlisting}
@@ -540,8 +540,8 @@ g3
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=16cm]{../images/04_usingR/Rplot05_01.png}
-	\caption{ggplotによる描画。左上は\texttt{code:\ref{code::05_10}}，右上は\texttt{code:\ref{code::05_11}}，
-		左下は\texttt{code:\ref{code::05_12}}，右下は\texttt{code:\ref{code::05_13}}の結果}
+	\caption{ggplotによる描画。左上は\texttt{code:\ref{code:05_10}}，右上は\texttt{code:\ref{code:05_11}}，
+		左下は\texttt{code:\ref{code:05_12}}，右下は\texttt{code:\ref{code:05_13}}の結果}
 	\label{fig::05_15}
 \end{figure}
 
@@ -559,8 +559,8 @@ g3
 \end{itemize}
 これらの組み合わせで，さまざまなグラフが表現できるのです。少し書き換えるだけですぐにできますので，色々変えて遊んでみましょう。
 
-最後に，次のコード\texttt{code:\ref{code::05_13}}を実行してみましょう。
-\begin{lstlisting}[language=c++,label={code::05_13},caption={チームごとに分割}]
+最後に，次のコード\texttt{code:\ref{code:05_13}}を実行してみましょう。
+\begin{lstlisting}[language=c++,label={code:05_13},caption={チームごとに分割}]
 g4 <- g3 + facet_wrap(~team)
 g4
 \end{lstlisting}
@@ -580,7 +580,7 @@ g4
 
 \begin{enumerate}
 	\item サンプルデータ\texttt{BaseballDecade.csv}をダウンロードし，プロジェクトフォルダに保存します。
-	\item \texttt{code:\ref{code::05_exe1}}を実行し，データを整えます。
+	\item \texttt{code:\ref{code:05_exe1}}を実行し，データを整えます。
 	\item データ全体の要約をする関数\verb|summary|を使って，データオブジェクトの記述統計量を表示してください。
 	\item 身長変数heightの平均値を算出してください。平均値の関数は\verb|mean|です。
 	\item 体重変数weightの標準偏差を算出してください。標準偏差の関数は\verb|sd|です。
@@ -588,7 +588,7 @@ g4
 	\item 身長と体重の相関係数を算出してください。相関係数の関数は\verb|cor|で，2つの引数をとります。
 \end{enumerate}
 
-\begin{lstlisting}[language=c++,label={code::05_exe1},caption={データの読み込みと整え}]
+\begin{lstlisting}[language=c++,label={code:05_exe1},caption={データの読み込みと整え}]
 library(tidyverse)
 dat <- read_csv("BaseballDecade.csv")
 dat$team <- as.factor(dat$team)
@@ -602,8 +602,8 @@ dat$bloodType <- as.factor(dat$bloodType)
 	\item[3-5行目] \texttt{team,position,bloodType}などの変数は，\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}です。これが名義尺度水準であると設定し，同じ変数名に上書きしています。名義尺度水準にする関数は\texttt{as.factor}です。
 \end{description}
 
-\paragraph{図を書いてみる1}同じデータセットを使って，\texttt{code:\ref{code::05_exe1}}を実行してください。
-\begin{lstlisting}[language=c++,label={code::05_exe2},caption={さまざまなグラフを書いてみる}]
+\paragraph{図を書いてみる1}同じデータセットを使って，\texttt{code:\ref{code:05_exe1}}を実行してください。
+\begin{lstlisting}[language=c++,label={code:05_exe2},caption={さまざまなグラフを書いてみる}]
 g1 <- ggplot(data = dat, mapping = aes(x = height, y = weight, color= team))
 g1 + geom_point()
 g1 + geom_smooth() 
