@@ -2,7 +2,7 @@
 #####################################################################text 2
 ## changePath
 path="course_materials2/tex"
-filename="Dkiso2_book"
+filename="Dkiso2_book_kdp"
 cd $path
 ## backup
 cp ${filename}.tex ${filename}.old
@@ -21,7 +21,7 @@ upmendex -r -c -g -s ../../indexStyle.ist tmpK
 lualatex tmpK
 ## Tex Warning Check
 grep 'undefined' tmpK.log > errorK.log
-grep 'multiply' tmpK.log >> error.log
+grep 'multiply' tmpK.log >> errorK.log
 grep 'Citation' tmpK.log >> errorK.log
 grep 'Overfull' tmpK.log >> errorK.log
 

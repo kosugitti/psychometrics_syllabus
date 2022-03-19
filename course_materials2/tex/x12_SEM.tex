@@ -18,33 +18,33 @@
 
 また，変数同士の関係を表現する必要がありますが，関係には\keytermL{因果関係}{いんがかんけい}と\keytermL{相関関係}{そうかんかんけい}があります。調査データから因果関係を見出すのは原理的に不可能ですが，モデル上は一方が他方の原因になっている，と考えることがあります。回帰分析はその典型例で，説明変数が原因となって，被説明変数のあたいが結果的に変わる，という関係ですね。こうした関係を一方向の矢印で表現します。他方，相関関係は因果関係よりも緩やかで，何らかの関係がある，ということを意味しているに過ぎません。因果の向きが定まっているのではなく，どちらの向きにも影響しうる，ということで双方向矢印でもってこれを表現します。
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=6cm,height=6cm,keepaspectratio]{../images/12_SEM/Slide12_01.png}
-		\caption{変数と関係の表記法}
-		\label{fig::12_01}
-	\end{center}
+\begin{figure}[h]
+   \begin{center}
+      \includegraphics[width=0.5\linewidth,keepaspectratio]{../images/12_SEM/Slide12_01.png}
+      \caption{変数と関係の表記法}
+      \label{fig::12_01}
+   \end{center}
 \end{figure}
 
 図\ref{fig::12_01}にこの表記方法をまとめました。準備は実はこれだけです。この表記方法を使って，さまざまなモデルが統合的に表現できます。たとえば\keytermL{回帰分析}{かいきぶんせき}を考えてみましょう。説明変数も被る説明変数も観測されている変数を使います。一方が他方の因果的関係にあるので，パスダイアグラムで表現すると図\ref{fig::12_02}の上図のようになります。ここで\keytermL{残差}{ざんさ}はデータになく，モデルの計算結果から想定される潜在的な変数なので楕円で描かれていることに注意してください。また\keytermL{重回帰分析}{じゅうかいきぶんせき}は図\ref{fig::12_02}の下図のようになります。説明変数が複数に増えただけですので，表記上はこのように変わるわけですね。
 
 なお，この因果関係を表す矢印の上に(偏)回帰係数を書いて，影響力の大きさを表現することがあります。構造方程式モデリングでは，この矢印によって表される影響力の強さは\keyterm{パス係数}{ぱすけいすう}{path coefficient}という呼び方で統一されます。
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=6cm,height=6cm,keepaspectratio]{../images/12_SEM/Slide12_02.png}
-		\caption{回帰分析と重回帰分析}
-		\label{fig::12_02}
-	\end{center}
+\begin{figure}[h]
+   \begin{center}
+      \includegraphics[width=0.5\linewidth,keepaspectratio]{../images/12_SEM/Slide12_02.png}
+      \caption{回帰分析と重回帰分析}
+      \label{fig::12_02}
+   \end{center}
 \end{figure}
 
 では\keytermL{因子分析}{いんしぶんせき}をパスダイアグラムで表現するとどうなるでしょうか。複数の項目の背後にある共通要因を潜在変数として仮定するので，パスダイアグラムで表現すると図\ref{fig::12_03}のようになります。
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=6cm,height=6cm,keepaspectratio]{../images/12_SEM/Slide12_03.png}
-		\caption{因子分析モデル}
-		\label{fig::12_03}
-	\end{center}
+\begin{figure}[h]
+   \begin{center}
+      \includegraphics[width=0.5\linewidth,keepaspectratio]{../images/12_SEM/Slide12_03.png}
+      \caption{因子分析モデル}
+      \label{fig::12_03}
+   \end{center}
 \end{figure}
 これは1因子モデルですが，多因子モデルは基本的に左側にくる潜在変数が複数になるだけです。潜在変数(因子)からのパス係数は，\keytermL{因子負荷量}{いんしふかりょう}なのです。また図\ref{fig::12_02} と図\ref{fig::12_03}を見比べると，回帰分析と因子分析も形はよく似ていることがわかります。両者の違いは，説明変数が観測変数か潜在変数かであり，因子分析とは説明変数が潜在変数になった回帰分析モデル，ということもできるのです。
 
@@ -56,12 +56,12 @@
 
 \paragraph{主成分分析}このコースではここまで取り上げてきませんでしたが，因子分析とよく似た手法で\keyterm{主成分分析}{しゅせいぶんぶんせき}{Principle Component Analysis}というのがあります。主成分分析の目的は観測変数を重みつき線型結合させ，個々のデータをもっともよく説明するような主成分という合成変数を作り出すことです。たとえば体力テストなどで複数の競技の記録をつけた後，総合的に誰が一番運動能力があるのか，というときにこの分析が使われたりします。この分析方法をパスダイアグラムで書くと図\ref{fig::12_04}のようになります。
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=6cm,height=6cm,keepaspectratio]{../images/12_SEM/Slide12_04.png}
-		\caption{主成分分析モデル}
-		\label{fig::12_04}
-	\end{center}
+\begin{figure}[h]
+   \begin{center}
+      \includegraphics[width=0.5\linewidth,keepaspectratio]{../images/12_SEM/Slide12_04.png}
+      \caption{主成分分析モデル}
+      \label{fig::12_04}
+   \end{center}
 \end{figure}
 
 これを見ると，因子分析と似ている，でもちょっと違う，というのがよくわかりますね。因子分析は潜在的な説明変数を作るのですが，主成分分析は潜在的な被説明変数を作る分析方法なのです。
@@ -70,24 +70,24 @@
 
 \paragraph{尺度水準の違いによるモデルの違い}
 
-たとえば因子分析において観測変数が順序尺度水準であれば，同じパスダイアグラムであってもそれはカテゴリカル因子分析をしたことになります。パスダイアグラムでは変数の尺度水準を表現することはありませんが，言い換えると尺度水準が違うだけで別の分析モデルになるということです。
+たとえば因子分析において観測変数が\keytermL{順序尺度水準}{じゅんじょしゃくどすいじゅん}であれば，同じパスダイアグラムであってもそれはカテゴリカル因子分析をしたことになります。パスダイアグラムでは変数の尺度水準を表現することはありませんが，言い換えると尺度水準が違うだけで別の分析モデルになるということです。
 
 たとえば回帰分析において，被説明変数が離散的(\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん})なモデルは，かつて\keyterm{判別分析}{はんべつぶんせき}{Descriminant Analysis}と呼ばれていました。同様に被説明変数が\keytermL{順序尺度水準}{じゅんじょしゃくどすいじゅん}で得られた場合は，\keyterm{順序ロジットモデル}{じゅじょろじっともでる}{Ordinal Logit Model}や\keytermL{順序プロビットモデル}{じゅんじょぷろびっともでる}{Ordinal Probit Model}と呼ばれたモデルです(2水準ならロジットモデル，3水準以上はプロビットモデル)。
 
 また回帰分析において，説明変数が離散的(名義尺度水準)なモデルは，\keyterm{分散分析}{ぶんさんぶんせき}{ANalysis Of VAriance;ANOVA}と呼ばれていたのでした。とくに説明変数が2カテゴリの場合は\keyterm{t検定}{tけんてい}{t-test}として知られています。これらは平均値差の検定という文脈で説明されてきたかと思いますが，いずれも回帰分析，もとい\keytermL{線形モデル}{せんけいもでる}の一種であるというのはご存知の通りです。
 
-色々な分析法，分析モデル名がありますが，パスダイアグラムで表現すれば同じである，というのがポイントです。\keytermL{構造方程式モデリング}{こうぞうほうていしきもでりんぐ}はその下位モデルとしてこれらの分析をすべて含む，あるいは統合的な表現であるというのはそういう意味です。このように統合される以前は，それぞれの分析方法をそれぞれのソフトウェアや関数で実行する必要があったのですが，今はSEMが扱えるソフトウェア，関数1つで分析できるのです。大変ありがたいことではないですか！考えるべきポイントもすべてパス係数や適合度といった統合的指標でよいのですから。
+色々な分析法，分析モデル名がありますが，\keytermL{パスダイアグラム}{ぱすだいあぐらむ}で表現すれば同じである，というのがポイントです。\keytermL{構造方程式モデリング}{こうぞうほうていしきもでりんぐ}はその下位モデルとしてこれらの分析をすべて含む，あるいは統合的な表現であるというのはそういう意味です。このように統合される以前は，それぞれの分析方法をそれぞれのソフトウェアや関数で実行する必要があったのですが，今はSEMが扱えるソフトウェア，関数1つで分析できるのです。大変ありがたいことではないですか！考えるべきポイントもすべてパス係数や適合度といった統合的指標でよいのですから。
 
 \paragraph{自由なモデルへ}
 
 因子分析と回帰分析，あるいはその他のさまざまな統計モデルが，パスダイアグラムによって統合的に表現できるようになりました。その利点は表現が統一化されただけではなく，同じプラットフォームで表現できるのですから，たとえば図\ref{fig::12_05}のような表現もできるということです。
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=12cm,keepaspectratio]{../images/12_SEM/Slide12_05.png}
-		\caption{構造方程式と測定方程式。記号の意味は後述}
-		\label{fig::12_05}
-	\end{center}
+\begin{figure}[h]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/12_SEM/Slide12_05.png}
+      \caption{構造方程式と測定方程式。記号の意味は後述}
+      \label{fig::12_05}
+   \end{center}
 \end{figure}
 
 図\ref{fig::12_05}には因子分析がふたつと，因子と因子の関係を矢印で結んだパスが描かれています。潜在変数の間に回帰分析を組み込んだようなものですね。イメージとしては，ある心理変数が別の心理変数に影響を与える(ex.外向性が抑うつ傾向に影響する，など)といったものを表しているわけです。心理学者は心理的変数がどう影響しあっているか，関係しあっているかをみていきたいわけですから，やりたいことは要するにこういう複合的なモデルによる検証だったのだ，と言っても過言ではないでしょう。このような分析も，SEMのおかげで簡単にできるようになりました。ここで観測変数から潜在変数を構成する箇所をとくに\keytermL{測定方程式}{そくていほうていしき}，潜在変数同志の因果関係などそれ以外の関係を表現する箇所を\keytermL{構造方程式}{こうぞうほうていしき}と呼んで区別することがありますが，\keytermL{構造方程式モデリング}{こうぞうほうていしきもでりんぐ}はその両者からなるモデル全体のこと，ということができるでしょう。
@@ -110,12 +110,12 @@
 図\ref{fig::12_02}に表した因子分析モデルも，同様に次のような方程式で表せるのでした(項目が3つの場合)。
 
 \[ \left \{
-	\begin{array}{rcl}
-		x_1 & = & \lambda_1 f + e_1 \\
-		x_2 & = & \lambda_2 f + e_2 \\
-		x_3 & = & \lambda_3 f + e_3 \\
-	\end{array}
-	\right .
+   \begin{array}{rcl}
+      x_1 & = & \lambda_1 f + e_1 \\
+      x_2 & = & \lambda_2 f + e_2 \\
+      x_3 & = & \lambda_3 f + e_3 \\
+   \end{array}
+   \right .
 \]
 
 ここで$f$は因子得点，$\lambda_j$は因子負荷量，あるいはパス係数を表しています。
@@ -129,20 +129,20 @@
 ここからデータの分散共分散行列$\bm{\Sigma}$を考えてみましょう。
 
 \begin{eqnarray*}
-	\bm{V}\left[ \bm{x} \right] &=& \bm{E}\left[ \bm{xx'}\right]\\
-	&=& \bm{E}\left[ (\bm{\Lambda f}+\bm{e}) (\bm{\Lambda f}+\bm{e})' \right] \\
-	&=& \bm{E}\left[ (\bm{\Lambda f}+\bm{e}) (\bm{f \Lambda' }+\bm{e'}) \right] \\
-	&=& \bm{E}\left[ \bm{ \Lambda f^2 \Lambda' + \Lambda f e'  + ef\Lambda’ + ee' } \right] \\
-	&=& \bm{\Lambda \Lambda'} + \Psi \\
+   \bm{V}\left[ \bm{x} \right] &=& \bm{E}\left[ \bm{xx'}\right]\\
+   &=& \bm{E}\left[ (\bm{\Lambda f}+\bm{e}) (\bm{\Lambda f}+\bm{e})' \right] \\
+   &=& \bm{E}\left[ (\bm{\Lambda f}+\bm{e}) (\bm{f \Lambda' }+\bm{e'}) \right] \\
+   &=& \bm{E}\left[ \bm{ \Lambda f^2 \Lambda' + \Lambda f e'  + ef\Lambda’ + ee' } \right] \\
+   &=& \bm{\Lambda \Lambda'} + \Psi \\
 \end{eqnarray*}
 
 これをエレメントワイズで書き出すと次のようになります。
 \begin{eqnarray*}
-	\begin{pmatrix} s_1^2 & s_1s_2 & s_1s_3 \\
+   \begin{pmatrix} s_1^2 & s_1s_2 & s_1s_3 \\
                       & s_2^2  & s_2s_3 \\
                       &        & s_3^2\end{pmatrix}
-	&=& \begin{pmatrix} \lambda_1\\ \lambda_2 \\ \lambda_3 \end{pmatrix}\begin{pmatrix} \lambda_1 & \lambda_2 & \lambda_3 \end{pmatrix} + \begin{pmatrix} \sigma_1^2 & & \\ & \sigma_2^2 & \\ & & \sigma_3^2 \end{pmatrix} \\
-	&=& \begin{pmatrix} \lambda_11^2 + \sigma_1^2 & \lambda_1\lambda_2       & \lambda_1 \lambda_3      \\
+   &=& \begin{pmatrix} \lambda_1\\ \lambda_2 \\ \lambda_3 \end{pmatrix}\begin{pmatrix} \lambda_1 & \lambda_2 & \lambda_3 \end{pmatrix} + \begin{pmatrix} \sigma_1^2 & & \\ & \sigma_2^2 & \\ & & \sigma_3^2 \end{pmatrix} \\
+   &=& \begin{pmatrix} \lambda_11^2 + \sigma_1^2 & \lambda_1\lambda_2       & \lambda_1 \lambda_3      \\
                                           & \lambda_2^2 + \sigma_2^2 & \lambda_2 \lambda_3      \\
                                           &                          & \lambda_3^2 + \sigma_3^2\end{pmatrix}
 \end{eqnarray*}
@@ -159,22 +159,22 @@
 
 それを踏まえて，モデルの方程式を書くと，次のようになります。
 \[ \left \{
-	\begin{array}{rcl}
-		V_1 & = & f_1 + e_1             \\
-		V_2 & = & \lambda_{21}f_1 + e_2 \\
-		V_3 & = & \lambda_{31}f_1 + e_3 \\
-		V_4 & = & f_2 + e_4             \\
-		V_5 & = & \lambda_{52}f_2 + e_5 \\
-		V_6 & = & \lambda_{62}f_2 + e_6 \\
-		f_2 & = & \gamma_{21}f_1 + d
-	\end{array}
-	\right .
+   \begin{array}{rcl}
+      V_1 & = & f_1 + e_1             \\
+      V_2 & = & \lambda_{21}f_1 + e_2 \\
+      V_3 & = & \lambda_{31}f_1 + e_3 \\
+      V_4 & = & f_2 + e_4             \\
+      V_5 & = & \lambda_{52}f_2 + e_5 \\
+      V_6 & = & \lambda_{62}f_2 + e_6 \\
+      f_2 & = & \gamma_{21}f_1 + d
+   \end{array}
+   \right .
 \]
 ややこしいだけで，書けるのは書けましたね！そして当然，これは行列表現した方が楽ではないか，というアイデアが浮かぶと思います。その通りで，エレメントワイズにまずは書いてみましょう。
 
 \[
-	\begin{pmatrix} V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \\ f_2 \\f_1 \end{pmatrix} =
-	\begin{pmatrix} 0 & 0 & 0 & 0 & 0 & 0 & 0            & 1            \\
+   \begin{pmatrix} V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \\ f_2 \\f_1 \end{pmatrix} =
+   \begin{pmatrix} 0 & 0 & 0 & 0 & 0 & 0 & 0            & 1            \\
                 0 & 0 & 0 & 0 & 0 & 0 & 0            & \lambda_{21} \\
                 0 & 0 & 0 & 0 & 0 & 0 & 0            & \lambda_{31} \\
                 0 & 0 & 0 & 0 & 0 & 0 & 1            & 0            \\
@@ -182,25 +182,25 @@
                 0 & 0 & 0 & 0 & 0 & 0 & \lambda_{62} & 0            \\
                 0 & 0 & 0 & 0 & 0 & 0 & 0            & \gamma_{21}  \\
                 0 & 0 & 0 & 0 & 0 & 0 & 0            & 0\end{pmatrix}
-	\begin{pmatrix} V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \\ f_2 \\f_1 \end{pmatrix} +
-	\begin{pmatrix} e_1 \\ e_2 \\ e_3 \\ e_4 \\ e_5 \\ e_6 \\ d \\f_1 \end{pmatrix}
+   \begin{pmatrix} V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \\ f_2 \\f_1 \end{pmatrix} +
+   \begin{pmatrix} e_1 \\ e_2 \\ e_3 \\ e_4 \\ e_5 \\ e_6 \\ d \\f_1 \end{pmatrix}
 \]
 
 左辺のベクトルの最後に$f_1$が入っているところがポイントで，これは方程式的には$f_1=f_1$というだけの式なのですが，これを入れたおかげで全体を整合的に表現できましたね。
 この左辺のベクトルを$\bm{v}$として，式全体を$\bm{v} = \bm{Gv}+\bm{e}$と考えてみましょう。すると次のように展開できます。
 
 \begin{eqnarray*}
-	\bm{v} &=& \bm{Gv}+\bm{e}\\
-	\bm{v}-\bm{Gv} &=& \bm{e}\\
-	(\bm{I}-\bm{G})\bm{v} &=& \bm{e}\\
-	(\bm{I}-\bm{G})^{-1}(\bm{I}-\bm{G})\bm{v} &=& (\bm{I}-\bm{G})^{-1}\bm{e}\\
+   \bm{v} &=& \bm{Gv}+\bm{e}\\
+   \bm{v}-\bm{Gv} &=& \bm{e}\\
+   (\bm{I}-\bm{G})\bm{v} &=& \bm{e}\\
+   (\bm{I}-\bm{G})^{-1}(\bm{I}-\bm{G})\bm{v} &=& (\bm{I}-\bm{G})^{-1}\bm{e}\\
 \end{eqnarray*}
 ここで$\bm{P} = (\bm{I}-\bm{G})$とすると，
 \[ \bm{v} = \bm{P}^{-1}\bm{e} \]
 ということになります。これをエレメントワイズで書くと次のようになります。
 \[
-	\begin{pmatrix} V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \\ f_2 \\f_1 \end{pmatrix} =
-	\begin{pmatrix} 1 & 0 & 0 & 0 & 0 & 0 & 0             & -1            \\
+   \begin{pmatrix} V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \\ f_2 \\f_1 \end{pmatrix} =
+   \begin{pmatrix} 1 & 0 & 0 & 0 & 0 & 0 & 0             & -1            \\
                 0 & 1 & 0 & 0 & 0 & 0 & 0             & -\lambda_{21} \\
                 0 & 0 & 1 & 0 & 0 & 0 & 0             & -\lambda_{31} \\
                 0 & 0 & 0 & 1 & 0 & 0 & -1            & 0             \\
@@ -208,13 +208,13 @@
                 0 & 0 & 0 & 0 & 0 & 1 & -\lambda_{62} & 0             \\
                 0 & 0 & 0 & 0 & 0 & 0 & 1             & -\gamma_{21}  \\
                 0 & 0 & 0 & 0 & 0 & 0 & 0             & 1\end{pmatrix}
-	\begin{pmatrix} e_1 \\ e_2 \\ e_3 \\ e_4 \\ e_5 \\ e_6 \\ d \\f_1 \end{pmatrix}
+   \begin{pmatrix} e_1 \\ e_2 \\ e_3 \\ e_4 \\ e_5 \\ e_6 \\ d \\f_1 \end{pmatrix}
 \]
 
 さて，変数からなるベクトル$\bm{v}$ではありますが，観測変数は$V_1$から$V_6$までしかありませんから，そこだけを取り出す行列$\bm{F}=\{ \bm{I},\bm{O} \}$を考えます。ここでは次のような行列です。
 \[
-	\bm{F} =
-	\begin{pmatrix} 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+   \bm{F} =
+   \begin{pmatrix} 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
                 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
                 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
                 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
@@ -223,19 +223,19 @@
 \]
 これを使って，次のように関係を書き直すことができます。
 \[
-	\bm{g} = \begin{pmatrix}  V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \end{pmatrix} = \bm{FP^{-1}e}
+   \bm{g} = \begin{pmatrix}  V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \end{pmatrix} = \bm{FP^{-1}e}
 \]
 さて，ではデータだけのベクトル$\bm{g}$から分散共分散行列を構成するとしましょう。データベクトル$\bm{g}$は平均が0だと仮定します\footnote{ずいぶんと勝手な仮定だな，と思うかもしれませんが，分析の元になる変数ベクトルを標準化したと思っていただければそれほどおかしなことでもない，と考えてもらっても構いません。あるいは単に変数ごとの平均をとった平均偏差ベクトルを作って，それをデータだとしたと考えてください。}。そうすると分散共分散行列$\bm{\Sigma}$は次のようになります。
 
 \begin{eqnarray*}
-	\bm{\Sigma} &=& \bm{gg'}  \\
-	& = & \bm{ F P^{-1} e ( F P^{-1} e) '} \\
-	& = & \bm{ FP^{-1} ee' P^{-1'} F' }
+   \bm{\Sigma} &=& \bm{gg'}  \\
+   & = & \bm{ F P^{-1} e ( F P^{-1} e) '} \\
+   & = & \bm{ FP^{-1} ee' P^{-1'} F' }
 \end{eqnarray*}
 
 ここで式の中にある$\bm{ee'}$は誤差などの未知数で作った分散共分散行列になっています。誤差は他の変数との共分散がないと考えられるので，これは結局対角行列です。
 \[
-	\bm{ee'}= \begin{pmatrix}  V(e_1) &        &        &        &        &  &        &      &        \\
+   \bm{ee'}= \begin{pmatrix}  V(e_1) &        &        &        &        &  &        &      &        \\
                         & V(e_2) &        &        &        &  &        &      &        \\
                         &        & V(e_3) &        &        &  &        &      &        \\
                         &        &        & V(e_4) &        &  &        &      &        \\

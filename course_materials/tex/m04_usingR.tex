@@ -16,19 +16,19 @@
 文書作成とそこに含まれる図表や数字の計算が，同じ環境で行われればこの問題は無くなります。RStudioはそれを実現してくれる環境です。計算環境はRが持っていますから，それを文書に組み込む仕組みがあれば良いのです。RStudioではRmarkdownという書式を使ってこれに対応します。RmarkdownはMarkdownといわれる文書形式にRを組み込んだRStudio独自のファイル形式です。メニューから\verb|File > New File > R Markdown|とすすむと，最終的にどの出力形式のファイルが必要か聞いてくるところがあります(図\ref{fig::05_08})。ここにあるように，最終的にHTML，PDF，Wordといったファイル形式で出力ができます\footnote{PDF形式に出力するには，TeXという別のシステムがまた必要ですが，これもRStudioからインストールすることができます。}。ここではひとまずHTMLを選びましょう。Titleには文書タイトルを，Authorには作者名を入れますので，ここも適当なタイトルと皆さんの名前を入れてOKを押してください。
 
 \begin{figure}[ht]
-	\centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/04_usingR/Screen8.png}
-	\caption{R Markdownからの最終出力を選択する}
-	\label{fig::05_08}
+   \centering
+   \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/04_usingR/Screen8.png}
+   \caption{R Markdownからの最終出力を選択する}
+   \label{fig::05_08}
 \end{figure}
 
 するとRmarkdown形式のファイルが開かれます。すでに何か書き込まれたファイルになっていますが，これは書き方の例が書いてあるのです。図\ref{fig::05_09}に最初の数行をキャプチャしたものを示しました。皆さんの手元の環境でも同じになっているか，確認しながら以下の解説を読んでください\footnote{もちろんTitleとAuthorはみなさんが書いたものに変わっているはずです。}。
 
 \begin{figure}[ht]
-	\centering
-	\includegraphics[keepaspectratio,width=8cm]{../images/04_usingR/Screen9.png}
-	\caption{R Markdownからの最終出力を選択する}
-	\label{fig::05_09}
+   \centering
+   \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/04_usingR/Screen9.png}
+   \caption{R Markdownからの最終出力を選択する}
+   \label{fig::05_09}
 \end{figure}
 
 このファイルの1〜6行目は，文書全体の設定をしているところです。ここは基本的に変更する必要はありません。
@@ -37,10 +37,10 @@
 7行目からが本文です。よく見ると，背景が灰色のゾーンと白色のゾーンがあると思います。灰色のゾーン(8〜10行目，18〜20行目など)は\keyterm{チャンク}{ちゃんく}{chunk}と呼ばれるRのコードを書く領域です。白色のゾーン(11〜17行目，21〜25行目など)は文書，本文を書くところになります。7行目以降はサンプルの文章が入っていますから，すべて削除してしまっても構いません。実際に皆さんがレポート等を書く時は削除しましょう\footnote{後ほど指示しますが，本講の課題はRmarkdown形式のファイルを提出してもらいます}。でも今いったんそのままで，ファイルの上にある\verb|knit|というボタンを押してみましょう。これは\keyterm{ニット}{knit}{knit}と言い，文章を編み上げるという意味です。このファイルが未保存の場合は，保存するファイル名を指定する画面が出ますが，任意の名前にして実行してみましょう\footnote{初めての場合，RStudioが\texttt{knit}に必要な関連パッケージをインターネットからダウンロードしようとします。ダウンロードしても良いか? と聞いてきますのでOKを選択してください。}
 
 \begin{figure}[ht]
-	\centering
-	\includegraphics[keepaspectratio,width=12cm]{../images/04_usingR/Screen10.png}
-	\caption{R MarkdownファイルとKnitされたものの比較}
-	\label{fig::05_10}
+   \centering
+   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/04_usingR/Screen10.png}
+   \caption{R MarkdownファイルとKnitされたものの比較}
+   \label{fig::05_10}
 \end{figure}
 
 図\ref{fig::05_10}には，Rmarkdownのファイルと出力結果を並べてみました\footnote{knitがうまく完了していれば，Viewerペインに表示されているはずです。}。対応関係がわかりますでしょうか。設定のところで入力したタイトルが大きく表示され，ついで作者名，日付が示されています。その後で本文が続きます。
@@ -88,17 +88,17 @@ output: html_document
 \end{lstlisting}
 
 \begin{figure}[ht]
-	\centering
-	\includegraphics[keepaspectratio,width=10cm]{../images/04_usingR/Screen11.png}
-	\caption{Rチャンクを挿入するボタン}
-	\label{fig::05_11}
+   \centering
+   \includegraphics[keepaspectratio,width=0.75\linewidth]{../images/04_usingR/Screen11.png}
+   \caption{Rチャンクを挿入するボタン}
+   \label{fig::05_11}
 \end{figure}
 
 \begin{figure}[ht]
-	\centering
-	\includegraphics[keepaspectratio,width=10cm]{../images/04_usingR/Screen12.png}
-	\caption{チャンクの設定や実行}
-	\label{fig::05_12}
+   \centering
+   \includegraphics[keepaspectratio,width=0.75\linewidth]{../images/04_usingR/Screen12.png}
+   \caption{チャンクの設定や実行}
+   \label{fig::05_12}
 \end{figure}
 
 うまくできましたでしょうか。コードや設定に間違いがあればknitは中断してしまいますが，エラーメッセージを読んで対応しましょう。RMarkdownについて，詳しくは\citet{高橋201805}が一冊を使って解説していますし，\citet{紀ノ定201806}や\citet{kosugi2019}なども参考になります\footnote{専修大学の国里ゼミと小杉ゼミでは，卒論をRmarkdownで書くことを推奨しています。再現性の観点から便利であることはもちろん，文書の規定に合わせたり引用文献リストを自動生成させたりする，専修大学専用パッケージ\texttt{senshuRmd}を共同開発しており，これを利用します。}。
@@ -120,22 +120,22 @@ Rmarkdownを使うと，Rスクリプト(計算の指示書)とレポートの�
 
 図\ref{fig::05_13}には分析に不向きな，悪いデータファイル作成の例を示しました。これをまずはじっくり眺めて，どこがまずいのか考えてみてください。少なくとも7つの点で問題があります。
 \begin{figure}[ht]
-	\centering
-	\includegraphics[keepaspectratio,width=14cm]{../images/04_usingR/Screen13.png}
-	\caption{分析に不向きなデータファイル}
-	\label{fig::05_13}
+   \centering
+   \includegraphics[keepaspectratio,width=\linewidth]{../images/04_usingR/Screen13.png}
+   \caption{分析に不向きなデータファイル}
+   \label{fig::05_13}
 \end{figure}
 
 分析しにくいよくないデータになっているのは次の箇所です。
 \begin{enumerate}
-	\item 1行目にこの表のタイトルのようなものが入っていますが，これは分析には使わない情報なので不要です。
-	\item 1行目はセルを結合しています。データセットは\texttt{data.frame}型のように矩形であるべきなので，データのサイズを狂わせる行の存在は不適切です。
-	\item 2行目には大学名が入っているようです。AからD列はC大学，FからIはD大学のデータのようですが，1つのデータセットに複数のデータが混在しているのはよくありません。
-	\item 身長と体重，という変数名のところには1つのセルに複数の数字が入っています。カンマで区切られており，見た目にはわかりますが，機械的には(カンマのせいで)数字ではなく文字列として扱われます。データがデータになっていないのです。
-	\item 変数2の列は「非常にそう思う」という言葉の回答と，数字が入っています。1つの列の中に複数の種類のデータが含まれるので分析できません(文字と数字の集計ができない。ちなみにこの場合は文字変数として扱われます)。
-	\item 7行目に平均とありますが，データの平均はデータから計算できる量なので，Rで算出するものです。データの中に計算結果を入れておくべきではありません。
-	\item I列6行目，D大学の杉田さんに関する変数3の箇所が空欄です。これはデータが入手できなかったところかもしれませんが，これは欠損値であることを明示すべきです。
-	\item 「東京の大学」と「神奈川の大学」という複数のシートがあります。データファイルとしては1つのシートにすべての情報が入っていなければなりません。同時に分析できるデータなのであれば，一枚のシートにまとめるべきです。
+   \item 1行目にこの表のタイトルのようなものが入っていますが，これは分析には使わない情報なので不要です。
+   \item 1行目はセルを結合しています。データセットは\texttt{data.frame}型のように矩形であるべきなので，データのサイズを狂わせる行の存在は不適切です。
+   \item 2行目には大学名が入っているようです。AからD列はC大学，FからIはD大学のデータのようですが，1つのデータセットに複数のデータが混在しているのはよくありません。
+   \item 身長と体重，という変数名のところには1つのセルに複数の数字が入っています。カンマで区切られており，見た目にはわかりますが，機械的には(カンマのせいで)数字ではなく文字列として扱われます。データがデータになっていないのです。
+   \item 変数2の列は「非常にそう思う」という言葉の回答と，数字が入っています。1つの列の中に複数の種類のデータが含まれるので分析できません(文字と数字の集計ができない。ちなみにこの場合は文字変数として扱われます)。
+   \item 7行目に平均とありますが，データの平均はデータから計算できる量なので，Rで算出するものです。データの中に計算結果を入れておくべきではありません。
+   \item I列6行目，D大学の杉田さんに関する変数3の箇所が空欄です。これはデータが入手できなかったところかもしれませんが，これは欠損値であることを明示すべきです。
+   \item 「東京の大学」と「神奈川の大学」という複数のシートがあります。データファイルとしては1つのシートにすべての情報が入っていなければなりません。同時に分析できるデータなのであれば，一枚のシートにまとめるべきです。
 \end{enumerate}
 皆さんはいくつ気づいたでしょうか。これらの問題点を通じて言えることは「1つのデータセット，1つのセルには過不足ない情報を入れる」ということです。表を作って見せるのであればこのような入力でも良いのですが，ここでは数値データを分析することが目的なのですから，レイアウトや数字でない情報，計算してここから作れる情報は，分析に必要のない過剰な情報なのです。ちなみにアンダーラインや文字色，セルの色などは分析の時に自動的に受け落ちます(データではない情報なので)。表計算ソフトは数字を表にして計算するソフトウェアであり，方眼用紙やレイアウトする文書とは異なることを意識しましょう。
 
@@ -144,10 +144,10 @@ Rmarkdownを使うと，Rスクリプト(計算の指示書)とレポートの�
 今回の問題点を修正したのが図\ref{fig::05_14}のようなデータセットです。単一のデータセットで完結しています。また1つの列に一種類の変数，不要な情報はなく，過剰な情報もないデータセットになっているのがわかるかと思います。なお，変数3のところに\texttt{NA}とあるのは\texttt{No Answer}の略で\keyterm{欠損値}{けっそんち}{missing value}を意味しています。これは読み込む時に，欠損値をどのような文字にしているか，という指定ができますので問題になりません。
 
 \begin{figure}[ht]
-	\centering
-	\includegraphics[keepaspectratio,width=12cm]{../images/04_usingR/Screen14.png}
-	\caption{分析に適したデータファイル}
-	\label{fig::05_14}
+   \centering
+   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/04_usingR/Screen14.png}
+   \caption{分析に適したデータファイル}
+   \label{fig::05_14}
 \end{figure}
 
 このように，データの入力の基本は，\textbf{1行に1ケースの情報が入っている，過不足のない1つのデータセットを作ること}である，と言えます。
@@ -156,18 +156,18 @@ Rmarkdownを使うと，Rスクリプト(計算の指示書)とレポートの�
 
 ちなみに2020年12月，総務省により機械判読可能なデータの表記方法の統一ルールが策定されました\citep{soumu}。それには次のようなチェック項目が含まれています。
 \begin{description}
-	\item[チェック項目1-1] ファイル形式はExcelかCSVとなっているか
-	\item[チェック項目1-2] 1セル1データとなっているか
-	\item[チェック項目1-3] 数値データは数値属性とし，文字列を含まないこと
-	\item[チェック項目1-4] セルの結合をしていないか
-	\item[チェック項目1-5] スペースや改行等で体裁を整えていないか
-	\item[チェック項目1-6] 項目名を省略していないか
-	\item[チェック項目1-7] 数式を使用している場合は，数値データに修正しているか
-	\item[チェック項目1-8] オブジェクトを使用していないか
-	\item[チェック項目1-9] データの単位を記載しているか
-	\item[チェック項目1-10] 機種依存文字を使用していないか
-	\item[チェック項目2-1] データが分断されていないか
-	\item[チェック項目2-2] 1シートに複数の表が掲載されていないか
+   \item[チェック項目1-1] ファイル形式はExcelかCSVとなっているか
+   \item[チェック項目1-2] 1セル1データとなっているか
+   \item[チェック項目1-3] 数値データは数値属性とし，文字列を含まないこと
+   \item[チェック項目1-4] セルの結合をしていないか
+   \item[チェック項目1-5] スペースや改行等で体裁を整えていないか
+   \item[チェック項目1-6] 項目名を省略していないか
+   \item[チェック項目1-7] 数式を使用している場合は，数値データに修正しているか
+   \item[チェック項目1-8] オブジェクトを使用していないか
+   \item[チェック項目1-9] データの単位を記載しているか
+   \item[チェック項目1-10] 機種依存文字を使用していないか
+   \item[チェック項目2-1] データが分断されていないか
+   \item[チェック項目2-2] 1シートに複数の表が掲載されていないか
 \end{description}
 みなさんも自分でデータを作るときは，こうした基準に沿うように心がけてください。
 また表計算ソフトの中で，代表値を計算したりグラフを書いたりしたくなりますが，みなさんは既に統計環境を手に入れているのですから，そうした加工・可視化などはRのほうでやり，データは「誰が触っても良いプレーンな素材」として保管しておくように心がけましょう。
@@ -179,30 +179,30 @@ Rmarkdownを使うと，Rスクリプト(計算の指示書)とレポートの�
 
 このデータセットはプロ野球データFreak\footnote{\url{https://baseball-data.com/}}さんからスクレイピングしてきたものであり，2011年から10年間のプロ野球選手のデータが入っているものです。データの中身については表\ref{BaseballDecade}を参照してください。
 \begin{table}[ht]
-	\begin{center}
-		\caption{サンプルデータファイルの構造}
-		\begin{tabular}{ccl}
-			変数名     & 型     & 内容                                        \\\hline
-			Year       & 文字列 & 何年度のデータか                            \\
-			Name       & 文字列 & 選手名                                      \\
-			team       & 文字列 & チーム名                                    \\
-			salary     & 数字   & 年報(推定)                                  \\
-			bloodType  & 文字列 & 血液型。A,B,O,AB型の4分類                   \\
-			height     & 数字   & 選手の身長                                  \\
-			weight     & 数字   & 選手の体重                                  \\
-			UniformNum & 数字   & 背番号                                      \\
-			position   & 文字列 & 守備位置。投手，捕手，内野手，外野手の4分類 \\
-			Games      & 数字   & 出場試合数                                  \\
-			AtBats     & 数字   & 打席に立った回数。打数                      \\
-			Hit        & 数字   & ヒットを打った回数                          \\
-			HR         & 数字   & ホームランを打った回数                      \\
-			Win        & 数字   & 勝ち投手になった回数。投手のみ              \\
-			Lose       & 数字   & 負け投手になった回数。投手のみ              \\
-			Save       & 数字   & セーブ数。投手のみ                          \\
-			Hold       & 数字   & ホールド数。投手のみ                        \\\hline
-		\end{tabular}
-		\label{BaseballDecade}
-	\end{center}
+   \begin{center}
+      \caption{サンプルデータファイルの構造}
+      \begin{tabular}{ccl}
+         変数名     & 型     & 内容                                        \\\hline
+         Year       & 文字列 & 何年度のデータか                            \\
+         Name       & 文字列 & 選手名                                      \\
+         team       & 文字列 & チーム名                                    \\
+         salary     & 数字   & 年報(推定)                                  \\
+         bloodType  & 文字列 & 血液型。A,B,O,AB型の4分類                   \\
+         height     & 数字   & 選手の身長                                  \\
+         weight     & 数字   & 選手の体重                                  \\
+         UniformNum & 数字   & 背番号                                      \\
+         position   & 文字列 & 守備位置。投手，捕手，内野手，外野手の4分類 \\
+         Games      & 数字   & 出場試合数                                  \\
+         AtBats     & 数字   & 打席に立った回数。打数                      \\
+         Hit        & 数字   & ヒットを打った回数                          \\
+         HR         & 数字   & ホームランを打った回数                      \\
+         Win        & 数字   & 勝ち投手になった回数。投手のみ              \\
+         Lose       & 数字   & 負け投手になった回数。投手のみ              \\
+         Save       & 数字   & セーブ数。投手のみ                          \\
+         Hold       & 数字   & ホールド数。投手のみ                        \\\hline
+      \end{tabular}
+      \label{BaseballDecade}
+   \end{center}
 \end{table}
 
 さてこのデータファイルを読み込むには，読み込むための関数を使います。Rが持っている基本関数である\texttt{read.csv}関数を使っても読み込めるのですが，ここではより便利なパッケージの関数を使ってみましょう。
@@ -216,8 +216,8 @@ dat <- read_csv("baseballDecade.csv",na = "NA")
 \end{lstlisting}
 
 \begin{description}
-	\item[1行目] \texttt{tidyverse}パッケージを読み込む。次の\verb|read_csv|関数がこのパッケージに含まれているからです。
-	\item[2行目] \texttt{dat}オブジェクトに，\verb|read_csv|関数で読み込むファイルを代入します。関数の第一引数はファイル名，\verb|na|は欠損値の指定で，\texttt{NA}という文字列を欠損値として扱うことを宣言しています。
+   \item[1行目] \texttt{tidyverse}パッケージを読み込む。次の\verb|read_csv|関数がこのパッケージに含まれているからです。
+   \item[2行目] \texttt{dat}オブジェクトに，\verb|read_csv|関数で読み込むファイルを代入します。関数の第一引数はファイル名，\verb|na|は欠損値の指定で，\texttt{NA}という文字列を欠損値として扱うことを宣言しています。
 \end{description}
 
 このようにすることで，外部ファイルを読み込むことができます。ここで示した\verb|tidyverse|パッケージは，Rにおけるデータ加工のためのパッケージです\footnote{ファイルが読み込めない，文字化けするなどのエラーについては，付録\ref{FreaquentlyAskedQuestions},Pp.\pageref{FreaquentlyAskedQuestions}を参照のこと。}。
@@ -240,50 +240,50 @@ dat <- read_csv("baseballDecade.csv",na = "NA")
 
 ここで表\ref{tbl::usingR_not_tidy}を見てください。このデータを見ると我々は，「大阪の午後は曇りなんだな」ということがすぐにわかります。
 \begin{table}[ht]
-	\begin{center}
-		\caption{ワイド型データ}
-		\begin{tabular}{c|cccc}
-			     & 午前 & 午後 & 夕方 & 深夜 \\\hline
-			東京 & 晴   & 晴   & 雨   & 雨   \\
-			大阪 & 晴   & 曇   & 晴   & 晴   \\
-			福岡 & 晴   & 曇   & 曇   & 雨   \\\hline
-		\end{tabular}
-		\label{tbl::usingR_not_tidy}
-	\end{center}
+   \begin{center}
+      \caption{ワイド型データ}
+      \begin{tabular}{c|cccc}
+              & 午前 & 午後 & 夕方 & 深夜 \\\hline
+         東京 & 晴   & 晴   & 雨   & 雨   \\
+         大阪 & 晴   & 曇   & 晴   & 晴   \\
+         福岡 & 晴   & 曇   & 曇   & 雨   \\\hline
+      \end{tabular}
+      \label{tbl::usingR_not_tidy}
+   \end{center}
 \end{table}
 しかしその判断は，「大阪」行の「午後」列を見て，すなわち行と列に素早く目を走らせてそれのクロスするところで「曇」という情報を得ています。夕方や深夜の情報が知りたければ，列を変えますね。列ごとに違う変数になっているから当然です。行と列の名前を参照するというのは，目線を左右と上下に動かす2アクション必要なことです。
 
 しかしここで参照している「列名(変数名)」も変数，データの一部ではないでしょうか。この観点に立ち，1行見るだけですべての情報がわかるようにしてみましょう。表\ref{tbl::usingR_tidy}には表\ref{tbl::usingR_not_tidy}と同じ情報しか含まれていませんが，一行見るだけですべての情報がわかるようになっています。
 \begin{table}[ht]
-	\begin{center}
-		\caption{ロング型データ}
-		\begin{tabular}{ccc}
-			地域 & 時間帯 & 天候 \\\hline
-			東京 & 午前   & 晴   \\
-			東京 & 午後   & 晴   \\
-			東京 & 夕方   & 雨   \\
-			東京 & 深夜   & 雨   \\
-			大阪 & 午前   & 晴   \\
-			大阪 & 午後   & 曇   \\
-			大阪 & 夕方   & 晴   \\
-			大阪 & 深夜   & 晴   \\
-			福岡 & 午前   & 晴   \\
-			福岡 & 午後   & 曇   \\
-			福岡 & 夕方   & 曇   \\
-			福岡 & 深夜   & 雨   \\\hline
-		\end{tabular}
-		\label{tbl::usingR_tidy}
-	\end{center}
+   \begin{center}
+      \caption{ロング型データ}
+      \begin{tabular}{ccc}
+         地域 & 時間帯 & 天候 \\\hline
+         東京 & 午前   & 晴   \\
+         東京 & 午後   & 晴   \\
+         東京 & 夕方   & 雨   \\
+         東京 & 深夜   & 雨   \\
+         大阪 & 午前   & 晴   \\
+         大阪 & 午後   & 曇   \\
+         大阪 & 夕方   & 晴   \\
+         大阪 & 深夜   & 晴   \\
+         福岡 & 午前   & 晴   \\
+         福岡 & 午後   & 曇   \\
+         福岡 & 夕方   & 曇   \\
+         福岡 & 深夜   & 雨   \\\hline
+      \end{tabular}
+      \label{tbl::usingR_tidy}
+   \end{center}
 \end{table}
 表\ref{tbl::usingR_tidy}のような形のデータのことを，\keytermL{ロング型}{ろんぐがた}のデータと言います。
 このような形にしておくと，情報の欠落(欠損値)があった時の対応が楽に行えたり，レコードの選択がやりやすくなるなどの利点があります。
 
 このような分析しやすいデータの形について，\citet{Hadley2014}が提唱したのが\keyterm{整然データ}{せいぜんでーた}{Tidy Data}という考え方です。整然データとは，次の4つの特徴を持ったデータ形式のことです。
 \begin{itemize}
-	\item 個々の変数(variable)が1つの列(column)をなす。
-	\item 個々の観測(observation)が1つの行(row)をなす。
-	\item 個々の観測の構成単位の類型(type of observational unit)が1つの表 (table) をなす。
-	\item 個々の値 (value) が1つのセル (cell) をなす。
+   \item 個々の変数(variable)が1つの列(column)をなす。
+   \item 個々の観測(observation)が1つの行(row)をなす。
+   \item 個々の観測の構成単位の類型(type of observational unit)が1つの表 (table) をなす。
+   \item 個々の値 (value) が1つのセル (cell) をなす。
 \end{itemize}
 さきほどの天気の例では，時間，場所，天候という3つの情報が表に含まれていますが，これが一行の中にまとまっているのが整然データです。
 人間にとってはワイド型のデータの方がわかりやすいこともありますが，分析を進めていく上ではロング型・整然データの方が便利なことも多くあります。たとえばこの後で行う作図においては，整然データの方が便利な形です。X軸に割り当てる列，Y軸に割り当てる列，色や形を指定する列，など列ごとに持つ特徴を図の設定に割り当てることができるからです。
@@ -300,14 +300,14 @@ dat <- read_csv("baseballDecade.csv",na = "NA")
 実装する関数は\verb|library|で，実行すると図\ref{RS:library_tidyverse}のように表示されます。
 
 \begin{Rscreen}{tidyverseパッケージの読み込み}{library_tidyverse}
-	\begin{verbatim}
+   \begin{verbatim}
 > library(tidyverse)
-── Attaching packages ────────────────────── tidyverse 1.3.1 ──
+── Attaching packages ─────────────────── tidyverse 1.3.1 ──
 ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
 ✓ tibble  3.1.6     ✓ dplyr   1.0.7
 ✓ tidyr   1.1.4     ✓ stringr 1.4.0
 ✓ readr   2.1.1     ✓ forcats 0.5.1
-── Conflicts ────────────────────────── tidyverse_conflicts() ──
+── Conflicts ─────────────────────── tidyverse_conflicts() ──
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
 \end{verbatim}
@@ -323,7 +323,7 @@ x dplyr::lag()    masks stats::lag()
 dat %>% select(height,weight)
 \end{lstlisting}
 \begin{Rscreen}{select関数の出力結果}{usingR_select}
-	\begin{verbatim}
+   \begin{verbatim}
 > dat %>% select(height,weight)
 # A tibble: 6,546 × 2
    height weight
@@ -351,7 +351,7 @@ dat %>% select(height,weight)
 dat %>% filter(Year == "2020年度")
 \end{lstlisting}
 \begin{Rscreen}{filter関数の出力結果}{usingR_filter}
-	\begin{verbatim}
+   \begin{verbatim}
 > dat %>% filter(Year == "2020年度")
 # A tibble: 664 × 17
    Year     Name    team  salary bloodType height weight UniformNum position
@@ -385,16 +385,17 @@ dat %>% filter(position == "投手")
 # 野手だけ取り出す，野手とは投手でない人のことです
 dat %>% filter(position != "投手")
 # どちらかの条件を満たす，という場合
-dat %>% filter(position == "捕手" | position == "内野手" | position =="外野手")
+dat %>% filter(position == "捕手" | position == "内野手" | 
+                  position =="外野手")
 \end{lstlisting}
 野手だけ取り出すときに\verb|!=|という記号が出てきましたが，これは$\neq$の意味です。$\neq$が入力できないので，\verb|!|で否定を表すようになっているのですね。このデータは投手のデータと野手のデータが含まれており，\texttt{position}は守備位置を表しますから，野手のデータは捕手か内野手か外野手ということになります。AかBかC,という選択を表す表現は\verb"|"という表現を使いますが，今回は長くなるので「投手でない」という条件で抜き出しました。
 
 ここまで列選択\texttt{select}と行選択\texttt{filter}について説明しました。両者の違いをイメージで理解しておいてください(図\ref{fig::11_02})。
 \begin{figure}[ht]
-	\centering
-	\includegraphics[keepaspectratio,width=12cm]{../images/04_usingR/Slide11_01.png}
-	\caption{\texttt{filter}(左)と\texttt{select}(右)の違い}
-	\label{fig::11_02}
+   \centering
+   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/04_usingR/Slide11_01.png}
+   \caption{\texttt{filter}(左)と\texttt{select}(右)の違い}
+   \label{fig::11_02}
 \end{figure}
 
 \paragraph{変数生成；mutate}
@@ -423,16 +424,16 @@ dat.long <- dat %>%
 \end{lstlisting}
 
 \begin{description}
-	\item[1行目] いまからdatオブジェクトを加工していきます。加工した結果をdat.longオブジェクトに代入します。
-	\item[2行目] datオブジェクトから年度，名前，ポジション変数だけ取り出しています。
-	\item[3行目] 行変数名，あるいは何行目かという情報をもった変数を一列作ります。変数名は\verb|ID|とします。
-	\item[4行目] \verb|pivot_longer|関数でロング型にします。このとき，\verb|ID|列がキーになっています。
-	\item[5行目] 結果を出力させています。
+   \item[1行目] いまからdatオブジェクトを加工していきます。加工した結果をdat.longオブジェクトに代入します。
+   \item[2行目] datオブジェクトから年度，名前，ポジション変数だけ取り出しています。
+   \item[3行目] 行変数名，あるいは何行目かという情報をもった変数を一列作ります。変数名は\verb|ID|とします。
+   \item[4行目] \verb|pivot_longer|関数でロング型にします。このとき，\verb|ID|列がキーになっています。
+   \item[5行目] 結果を出力させています。
 \end{description}
 
 このコードを3行目まで実行した場合，出力\ref{RS:usingR_pivot_longer1}のようになります。\verb|ID|という列ができていますね。この列変数をキーに，\verb|Year,Name,Position|とあった変数を変数名とその値というペアに置き換えるのが，\verb|pivot_longer|関数です。
 \begin{Rscreen}{行番号をつけた段階}{usingR_pivot_longer1}
-	\begin{verbatim}
+   \begin{verbatim}
 # A tibble: 664 × 4
    ID    Year     Name           position
    <chr> <chr>    <chr>          <fct>   
@@ -451,7 +452,7 @@ dat.long <- dat %>%
 \end{Rscreen}
 最後までいくと，結果は出力\ref{RS:usingR_pivot_longer2}のようになっているはずです。
 \begin{Rscreen}{行番号をつけた段階}{usingR_pivot_longer2}
-	\begin{verbatim}
+   \begin{verbatim}
 # A tibble: 1,992 × 3
    ID    name     value         
    <chr> <chr>    <chr>         
@@ -495,9 +496,9 @@ dat.long %>%
 \paragraph{可視化の文法}
 可視化の文法に沿った作図のコードは，次のように考えていきます。
 \begin{enumerate}
-	\item X軸Y軸にどのような変数を置くかを考える。
-	\item X軸Y軸から出来上がるキャンバスに，点や線，何をプロットするのかを指定する。
-	\item その上にモデルを加えて，元のデータとの対応を考えたりする。別のデータを重ねることもある。
+   \item X軸Y軸にどのような変数を置くかを考える。
+   \item X軸Y軸から出来上がるキャンバスに，点や線，何をプロットするのかを指定する。
+   \item その上にモデルを加えて，元のデータとの対応を考えたりする。別のデータを重ねることもある。
 \end{enumerate}
 これを踏まえて，さきほどのコードに続けて\footnote{続きにかくというのは，パッケージやデータの読み込みが終わっていることが必要だからです。描画に必要な\texttt{ggplot2}パッケージは，\texttt{tidyverse}パッケージを読み込むと同時に読み込まれています。}，\texttt{code:\ref{code:05_10}}を入力してください。
 
@@ -507,8 +508,8 @@ g1
 \end{lstlisting}
 
 \begin{description}
-	\item[1行目] \texttt{g1}オブジェクトにggplotで作った図の情報を渡します。
-	\item[2行目] \texttt{g1}って何? つまりこれを表示しろ，という命令です。\texttt{plot(g1)}と書いても結構です。
+   \item[1行目] \texttt{g1}オブジェクトにggplotで作った図の情報を渡します。
+   \item[2行目] \texttt{g1}って何? つまりこれを表示しろ，という命令です。\texttt{plot(g1)}と書いても結構です。
 \end{description}
 この1行目で，データは\texttt{dat}というオブジェクトを使い，x軸に\texttt{dat}オブジェクトの身長変数\verb|height|，y軸に体重変数\verb|weight|を対応させたマッピングをしなさい，ということを指定しています。\texttt{aes}関数はピンとこないかもしれませんが，この1行目で，データは\texttt{dat}というオブジェクトを使い，x軸に\texttt{dat}オブジェクトの身長変数，y軸に体重変数を対応させたマッピングをしなさい，ということを指定しています。\texttt{aes}関数はなんと読むのかもピンとこない変な綴りだと思うかもしれませんが，実はaestheticの略です。エステティック，審美的・美学的思想という意味です。データの美的対応を考える箇所ですので，ちょうどいい名称ですね。この\texttt{aes}関数の中にはこのほかにも，色を何に対応させるか，サイズを何に対応させるか，群わけはどの変数に対応しているか，と言った対応関係を表す関数情報を設定するところだと思っておいてください。
 
@@ -522,8 +523,8 @@ g2
 \end{lstlisting}
 
 \begin{description}
-	\item[1行目] \texttt{g1}オブジェクトに点(point)を打つ関数を追加したものを，\texttt{g2}オブジェクトとします。
-	\item[2行目] \texttt{g2}って何? つまりこれを表示しろ，という命令です。\texttt{plot(g2)}と書いても結構です。
+   \item[1行目] \texttt{g1}オブジェクトに点(point)を打つ関数を追加したものを，\texttt{g2}オブジェクトとします。
+   \item[2行目] \texttt{g2}って何? つまりこれを表示しろ，という命令です。\texttt{plot(g2)}と書いても結構です。
 \end{description}
 
 \begin{lstlisting}[language=c++,label={code:05_12},caption={線形モデルを当てはめる}]
@@ -532,17 +533,17 @@ g3
 \end{lstlisting}
 
 \begin{description}
-	\item[1行目] \texttt{g2}オブジェクトに滑らかな線を引く関数を追加し，\texttt{g3}オブジェクトとします。線の関数は\texttt{lm}，Linear Modelの略で直線を引く時に使います。
-	\item[2行目] \texttt{g3}って何? つまりこれを表示しろ，という命令です。\texttt{plot(g3)}と書いても結構です。
+   \item[1行目] \texttt{g2}オブジェクトに滑らかな線を引く関数を追加し，\texttt{g3}オブジェクトとします。線の関数は\texttt{lm}，Linear Modelの略で直線を引く時に使います。
+   \item[2行目] \texttt{g3}って何? つまりこれを表示しろ，という命令です。\texttt{plot(g3)}と書いても結構です。
 \end{description}
 
 
 \begin{figure}[ht]
-	\centering
-	\includegraphics[keepaspectratio,width=16cm]{../images/04_usingR/Rplot05_01.png}
-	\caption{ggplotによる描画。左上は\texttt{code:\ref{code:05_10}}，右上は\texttt{code:\ref{code:05_11}}，
-		左下は\texttt{code:\ref{code:05_12}}，右下は\texttt{code:\ref{code:05_13}}の結果}
-	\label{fig::05_15}
+   \centering
+   \includegraphics[keepaspectratio,width=\linewidth]{../images/04_usingR/Rplot05_01.png}
+   \caption{ggplotによる描画。左上は\texttt{code:\ref{code:05_10}}，右上は\texttt{code:\ref{code:05_11}}，
+      左下は\texttt{code:\ref{code:05_12}}，右下は\texttt{code:\ref{code:05_13}}の結果}
+   \label{fig::05_15}
 \end{figure}
 
 
@@ -551,11 +552,11 @@ g3
 
 また今回使った\verb|geom_|という関数は，geometry(幾何学)の頭文字ですが，これを使ってさまざまなマッピングをします。よく使われるものに，次のようなものがあります。
 \begin{itemize}
-	\item \verb|geom_point| 点を打つ。散布図を書くことができる。
-	\item \verb|geom_boxplot| ボックスプロットを書く。
-	\item \verb|geom_bar| 棒グラフを書く。
-	\item \verb|geom_line| 線を引く。折れ線グラフなどに使う。
-	\item \verb|geom_smooth| 滑らかな線を引く。どのような線を引くかは色々な関数が考えられる。
+   \item \verb|geom_point| 点を打つ。散布図を書くことができる。
+   \item \verb|geom_boxplot| ボックスプロットを書く。
+   \item \verb|geom_bar| 棒グラフを書く。
+   \item \verb|geom_line| 線を引く。折れ線グラフなどに使う。
+   \item \verb|geom_smooth| 滑らかな線を引く。どのような線を引くかは色々な関数が考えられる。
 \end{itemize}
 これらの組み合わせで，さまざまなグラフが表現できるのです。少し書き換えるだけですぐにできますので，色々変えて遊んでみましょう。
 
@@ -566,8 +567,8 @@ g4
 \end{lstlisting}
 
 \begin{description}
-	\item[1行目] \texttt{g3}オブジェクトをチーム変数\verb|team|で区切った図にせよ，という対応を指示。
-	\item[2行目] \texttt{g4}を表示しろ，という命令です。
+   \item[1行目] \texttt{g3}オブジェクトをチーム変数\verb|team|で区切った図にせよ，という対応を指示。
+   \item[2行目] \texttt{g4}を表示しろ，という命令です。
 \end{description}
 
 今度は\verb|facet_wrap|という関数が出てきました。\verb|facet_|というのは分割，区切りを考える関数です。データにはさまざまな情報を書き込むことができますが，適当なグループで書き分けることでわかることも出てきます。今回は地域という変数で分割せよ，という表現をしており，その結果が図\ref{fig::05_15}の右下のようになっています。
@@ -579,13 +580,13 @@ g4
 \paragraph{記述統計量を計算する}次の手順を実行し，データの記述統計量を計算してください。
 
 \begin{enumerate}
-	\item サンプルデータ\texttt{BaseballDecade.csv}をダウンロードし，プロジェクトフォルダに保存します。
-	\item \texttt{code:\ref{code:05_exe1}}を実行し，データを整えます。
-	\item データ全体の要約をする関数\verb|summary|を使って，データオブジェクトの記述統計量を表示してください。
-	\item 身長変数heightの平均値を算出してください。平均値の関数は\verb|mean|です。
-	\item 体重変数weightの標準偏差を算出してください。標準偏差の関数は\verb|sd|です。
-	\item 年収変数salaryの中央値を算出してください。中央値の関数は\verb|median|です。
-	\item 身長と体重の相関係数を算出してください。相関係数の関数は\verb|cor|で，2つの引数をとります。
+   \item サンプルデータ\texttt{BaseballDecade.csv}をダウンロードし，プロジェクトフォルダに保存します。
+   \item \texttt{code:\ref{code:05_exe1}}を実行し，データを整えます。
+   \item データ全体の要約をする関数\verb|summary|を使って，データオブジェクトの記述統計量を表示してください。
+   \item 身長変数heightの平均値を算出してください。平均値の関数は\verb|mean|です。
+   \item 体重変数weightの標準偏差を算出してください。標準偏差の関数は\verb|sd|です。
+   \item 年収変数salaryの中央値を算出してください。中央値の関数は\verb|median|です。
+   \item 身長と体重の相関係数を算出してください。相関係数の関数は\verb|cor|で，2つの引数をとります。
 \end{enumerate}
 
 \begin{lstlisting}[language=c++,label={code:05_exe1},caption={データの読み込みと整え}]
@@ -597,33 +598,35 @@ dat$bloodType <- as.factor(dat$bloodType)
 \end{lstlisting}
 
 \begin{description}
-	\item[1行目] \texttt{tidyverse}パッケージを読み込みます。
-	\item[2行目] データファイルを読み込みます。
-	\item[3-5行目] \texttt{team,position,bloodType}などの変数は，\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}です。これが名義尺度水準であると設定し，同じ変数名に上書きしています。名義尺度水準にする関数は\texttt{as.factor}です。
+   \item[1行目] \texttt{tidyverse}パッケージを読み込みます。
+   \item[2行目] データファイルを読み込みます。
+   \item[3-5行目] \texttt{team,position,bloodType}などの変数は，\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}です。これが名義尺度水準であると設定し，同じ変数名に上書きしています。名義尺度水準にする関数は\texttt{as.factor}です。
 \end{description}
 
 \paragraph{図を書いてみる1}同じデータセットを使って，\texttt{code:\ref{code:05_exe1}}を実行してください。
 \begin{lstlisting}[language=c++,label={code:05_exe2},caption={さまざまなグラフを書いてみる}]
-g1 <- ggplot(data = dat, mapping = aes(x = height, y = weight, color= team))
+g1 <- ggplot(data = dat, 
+             mapping = aes(x = height, y = weight, color= team))
 g1 + geom_point()
 g1 + geom_smooth() 
-g2 <- ggplot(data = dat, mapping = aes(x = team, y = salary, fill= team))
+g2 <- ggplot(data = dat, 
+             mapping = aes(x = team, y = salary, fill= team))
 g2 + geom_boxplot()
 \end{lstlisting}
 
 \begin{description}
-	\item[1行目] データは\texttt{dat}オブジェクト，x軸は身長変数，y軸は体重変数で，チームごとに色分けをします。
-	\item[2行目] 散布図を書いてみます。
-	\item[3行目] データに合うような線を引いてみます。
-	\item[4行目] データは\texttt{dat}オブジェクト，x軸にチームを，y軸に年収変数をおいて，チームごとに色で塗りつぶします。
-	\item[5行目] 箱ひげ図を書いてみます。
+   \item[1行目] データは\texttt{dat}オブジェクト，x軸は身長変数，y軸は体重変数で，チームごとに色分けをします。
+   \item[2行目] 散布図を書いてみます。
+   \item[3行目] データに合うような線を引いてみます。
+   \item[4行目] データは\texttt{dat}オブジェクト，x軸にチームを，y軸に年収変数をおいて，チームごとに色で塗りつぶします。
+   \item[5行目] 箱ひげ図を書いてみます。
 \end{description}
 \paragraph{図を書いてみる2}\verb|dat|オブジェクトを使って図\ref{fig::05_16}と同じ図を書いてください。
 \begin{figure}[ht]
-	\centering
-	\includegraphics[keepaspectratio,width=16cm]{../images/04_usingR/Rplot05_02.png}
-	\caption{課題の図}
-	\label{fig::05_16}
+   \centering
+   \includegraphics[keepaspectratio,width=\linewidth]{../images/04_usingR/Rplot05_02.png}
+   \caption{課題の図}
+   \label{fig::05_16}
 \end{figure}
 
 \end{document}

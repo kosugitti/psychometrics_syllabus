@@ -26,3 +26,13 @@ g1 <- p + stat_function(fun = dnorm) +
     ) + ylab("確率密度")+xlab("")+theme(axis.text = element_text(size=20),
                                        axis.title.y = element_text(size=20))
 g1
+
+g1 <- p + stat_function(fun = dnorm,lwd=1) +
+    geom_point(aes(x=-1,y=dnorm(-1)),size=3)+
+    geom_point(aes(x=1,y=dnorm(1)),size=3)+
+    theme_classic()+ylab("")+theme(axis.text.x=element_text(size = 15))+
+    scale_x_continuous(breaks = -4:4)
+
+
+g1
+

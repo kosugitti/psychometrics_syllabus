@@ -8,11 +8,11 @@
 \label{x22_modeling4}
 \section{対応のある群}
 \subsection{多次元正規分布}
-ここまでは\keyterm{群間要因}{ぐんかんよういん}{Between Design}のモデリングをしてきましたが，今回は\keyterm{群内要因}{ぐんないよういん}{Within Design}のモデリング的アプローチになります。
+ここまでは\keyterm{群間計画}{ぐんかんけいかく}{Between Design}のモデリングをしてきましたが，今回は\keyterm{群内計画}{ぐんないけいかく}{Within Design}のモデリング的アプローチになります。
 
 Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくてい}{Repeated Measure}と呼ばれることがあり，とくに二群の場合は\keyterm{対応のあるt検定}{たいおうのあるtけんてい}{Paired t-test}と言ったりします。同じ人から2回データを取って，その変化をみる\keyterm{事前・事後デザイン}{じぜん・じごでざいん}{Pre-post Design}がその典型例です。2回以上とる場合もあるので，その場合は反復測定とよばれるわけです。
 
-この場合のデータ生成モデルは，何が違うのでしょうか。\keytermL{群間要因}{ぐんかんよういん}のt検定は別名\textbf{独立した二群の}t検定と呼ばれるように，2つの群のデータがバラバラに出てきているのですが，今回は\textbf{対応のある二群}ですから，独立してないということになります。独立していない，つまり関係がある。データ分析上は，2つのデータに相関がある場合を考える必要があります。同じ人の事前・事後のデータであれば，当然変化のもとになる「その人」という共通要因があるわけで，同じ人からデータを得ていますから当然相関していることを前提に考えなければなりません。
+この場合のデータ生成モデルは，何が違うのでしょうか。\keytermL{群間計画}{ぐんかんけいかく}のt検定は別名\textbf{独立した二群の}t検定と呼ばれるように，2つの群のデータがバラバラに出てきているのですが，今回は\textbf{対応のある二群}ですから，独立してないということになります。独立していない，つまり関係がある。データ分析上は，2つのデータに相関がある場合を考える必要があります。同じ人の事前・事後のデータであれば，当然変化のもとになる「その人」という共通要因があるわけで，同じ人からデータを得ていますから当然相関していることを前提に考えなければなりません。
 
 統計モデル上，独立した二群であれば別々の正規分布からデータが出てきていると考えますが，今回は1つの分布から2つのデータが出てきていることになります。ここで使うのは\keyterm{二次元正規分布}{にじげんせいきぶんぷ}{Two-Dimensional Norma Distribution}，さらに群の数が多い場合に一般化した\keyterm{多次元正規分布}{たじげんせいきぶんぷ}{Multidimensional Normal Distribution}あるいは\keyterm{多変量正規分布}{たへんりょうせいきぶんぷ}{Multivariate Normal Distribution}と呼ばれる分布を使います。この正規分布の特徴は，それぞれの変数(次元)に注目すれば正規分布なのですが，各次元に相関関係があることを組み込まなければなりません。
 
@@ -31,12 +31,12 @@ Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくて
                 \vdots       & \vdots      & \ddots & \vdots       \\
                 \sigma_{m1}  & \sigma_{m2} & \cdots & \sigma_{m}^2\end{pmatrix} \]
 
-この行列の\keyterm{対角}{たいかく}{diagonal}要素には分散$\sigma_j^2$があり，非対角要素には共分散$\sigma_{jk}$が入っている\textbf{正方対称行列}になっていますね\footnote{これら行列の要素や名称については，第\ref{x06_matrix}講でやったことを思い出してください。}。またこうしてみると，変数jの分散$\sigma_j^2$はjとjの共分散，すなわち$\sigma_{jj}$であることもわかりやすいですね。ところでこれを考えることでどこに相関の要素が入っているのでしょう？改めて，分散や共分散，相関係数の定義式から考えてみたいと思います。
+この行列の\keyterm{対角}{たいかく}{diagonal}要素には分散$\sigma_j^2$があり，非対角要素には共分散$\sigma_{jk}$が入っている\keytermL{正方対称行列}{せいほうたいしょうぎょうれつ}になっていますね\footnote{これら行列の要素や名称については，第\ref{x06_matrix}講でやったことを思い出してください。}。またこうしてみると，変数jの分散$\sigma_j^2$はjとjの共分散，すなわち$\sigma_{jj}$であることもわかりやすいですね。ところでこれを考えることでどこに相関の要素が入っているのでしょう？改めて，分散や共分散，相関係数の定義式から考えてみたいと思います。
 
 \begin{eqnarray}
-	\mbox{分散} &:& \sigma_{j}^2 = \frac{1}{n}\sum (x_{ij} -\bar{x_j})^2 \\
-	\mbox{共分散} &:& \sigma_{jk} = \frac{1}{n}\sum (x_{ij} - \bar{x_j})(x_{ik} - \bar{x_k}) \\
-	\mbox{相関} &:& \rho_{jk} = \frac{\sigma_{jk}}{\sigma_j\sigma_k}
+   \mbox{分散} &:& \sigma_{j}^2 = \frac{1}{n}\sum (x_{ij} -\bar{x_j})^2 \\
+   \mbox{共分散} &:& \sigma_{jk} = \frac{1}{n}\sum (x_{ij} - \bar{x_j})(x_{ik} - \bar{x_k}) \\
+   \mbox{相関} &:& \rho_{jk} = \frac{\sigma_{jk}}{\sigma_j\sigma_k}
 \end{eqnarray}
 
 この関係から逆に，共分散$\sigma_{jk}$は次のように表すことができます。
@@ -47,12 +47,12 @@ Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくて
 \subsection{対応のあるデータの生成モデル}
 ではこれを使ってモデルの設計図を書いてみましょう。設計図は図\ref{fig::22_01}のようになるでしょう。
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=12cm,keepaspectratio]{../images/22_modeling4/Slide22_01.png}
-		\caption{対応ある二群のデータ生成モデル設計図}
-		\label{fig::22_01}
-	\end{center}
+\begin{figure}[h]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/22_modeling4/Slide22_01.png}
+      \caption{対応ある二群のデータ生成モデル設計図}
+      \label{fig::22_01}
+   \end{center}
 \end{figure}
 
 あとはこれを使ってコードを書くだけです。
@@ -64,45 +64,45 @@ Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくて
 
 またStanには，\verb|matrix|型という行列の型もあります。\verb|matrix[N,M] X;|のように宣言してやると，サイズ$N \times M$の行列変数Xが1つ用意されます。\verb|matrix[N,M] X[L];|のように宣言すると，サイズ$N \times M$の行列変数XをL個用意することになります。他にも特殊な型として，\verb|cov_matrix|型とか\verb|corr_matrix|型などがあります。これらは正方行列ですから，サイズの指定は1つでよく，たとえば\verb|cov_matrix[2]|とすれば$2 \times 2$の正方行列を用意したことになります。Stanにおける変数や配列の型について，\citet{松浦201610}を参考にまとめたものを表\ref{tbl:22_01}に，イメージ図を図\ref{fig:22_03},\ref{fig:22_04},\ref{fig:22_05}に示します。
 
-\begin{table}
-	\centering
-	\caption{Stanの配列と型}
-	\begin{tabular}{ccc}
-		型の例       & 宣言例                  & 解説                                             \\\hline
-		整数         & \verb|int X|            & 整数ひとつ                                       \\
-		実数         & \verb|real X|           & 実数ひとつ                                       \\
-		範囲つき実数 & \verb|real<lower=0> X|  & 0より大きい数字の入るX                           \\
-		整数の配列   & \verb|int X[N]|         & N個の整数                                        \\
-		実数の配列   & \verb|real X[N,M]|      & $N\times M$個の実数からなる2次元配列             \\
-		実数の配列   & \verb|real X[N,M,L]|    & $N\times M\times L$個の実数からなる3次元配列     \\
-		ベクトル     & \verb|vector[K] X|      & 長さKのベクトルひとつ                            \\
-		ベクトル     & \verb|vector[K] X[N]|   & 長さKのベクトルがN個                             \\
-		ベクトル     & \verb|vector[K] X[N,M]| & 長さKのベクトルが$N\times M$個                   \\
-		行列         & \verb|matrix[J,K] X|    & サイズ$J\times K$の行列がひとつ                  \\
-		行列         & \verb|matrix[J,K] X[N]| & サイズ$J\times K$の行列がN個                     \\
-		特別な行列   & \verb|cov_matrix[J] X|  & サイズ$J\times J$の正方対称行列がひとつ          \\
-		特別な行列   & \verb|corr_matrix[J] X| & 対角が1のサイズ$J\times J$の正方対称行列がひとつ \\\hline
-	\end{tabular}
-	\label{tbl:22_01}
+\begin{table}[ht]
+   \centering
+   \caption{Stanの配列と型}
+   \begin{tabular}{ccc}
+      型の例       & 宣言例                  & 解説                                             \\\hline
+      整数         & \verb|int X|            & 整数ひとつ                                       \\
+      実数         & \verb|real X|           & 実数ひとつ                                       \\
+      範囲つき実数 & \verb|real<lower=0> X|  & 0より大きい数字の入るX                           \\
+      整数の配列   & \verb|int X[N]|         & N個の整数                                        \\
+      実数の配列   & \verb|real X[N,M]|      & $N\times M$個の実数からなる2次元配列             \\
+      実数の配列   & \verb|real X[N,M,L]|    & $N\times M\times L$個の実数からなる3次元配列     \\
+      ベクトル     & \verb|vector[K] X|      & 長さKのベクトルひとつ                            \\
+      ベクトル     & \verb|vector[K] X[N]|   & 長さKのベクトルがN個                             \\
+      ベクトル     & \verb|vector[K] X[N,M]| & 長さKのベクトルが$N\times M$個                   \\
+      行列         & \verb|matrix[J,K] X|    & サイズ$J\times K$の行列がひとつ                  \\
+      行列         & \verb|matrix[J,K] X[N]| & サイズ$J\times K$の行列がN個                     \\
+      特別な行列   & \verb|cov_matrix[J] X|  & サイズ$J\times J$の正方対称行列がひとつ          \\
+      特別な行列   & \verb|corr_matrix[J] X| & 対角が1のサイズ$J\times J$の正方対称行列がひとつ \\\hline
+   \end{tabular}
+   \label{tbl:22_01}
 \end{table}
 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[keepaspectratio, width=12cm]{../images/22_modeling4/Slide22_03.png}
-	\caption{変数の型とサイズ(1)}
-	\label{fig:22_03}
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_03.png}
+   \caption{変数の型とサイズ(1)}
+   \label{fig:22_03}
 \end{figure}
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[keepaspectratio, width=12cm]{../images/22_modeling4/Slide22_04.png}
-	\caption{変数の型とサイズ(2)}
-	\label{fig:22_04}
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_04.png}
+   \caption{変数の型とサイズ(2)}
+   \label{fig:22_04}
 \end{figure}
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[keepaspectratio, width=14cm]{../images/22_modeling4/Slide22_05.png}
-	\caption{変数の型とサイズ(3)}
-	\label{fig:22_05}
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_05.png}
+   \caption{変数の型とサイズ(3)}
+   \label{fig:22_05}
 \end{figure}
 
 
@@ -141,10 +141,10 @@ model{
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-	\item[dataブロック] サンプルサイズNのデータですが，ペアになっている数字なので\verb|vector[2]|で宣言した変数XをN個用意しています。
-	\item[parametersブロック] パラメータとして，平均をベクトル，標準偏差や相関係数はスカラで宣言しています。標準偏差や相関係数の範囲指定にも注意してください。
-	\item[transformed parametersブロック] 各標準偏差，相関係数を使って分散共分散行列SIGを構成しています。わかりやすくするために，各要素について書き下して書いています。
-	\item[modelブロック] 尤度はデータベクトルが多次元正規分布関数\verb|multi_normal|から出てきていることを示しています。多次元正規分布関数の引数は，ベクトルと行列です。
+   \item[dataブロック] サンプルサイズNのデータですが，ペアになっている数字なので\verb|vector[2]|で宣言した変数XをN個用意しています。
+   \item[parametersブロック] パラメータとして，平均をベクトル，標準偏差や相関係数はスカラで宣言しています。標準偏差や相関係数の範囲指定にも注意してください。
+   \item[transformed parametersブロック] 各標準偏差，相関係数を使って分散共分散行列SIGを構成しています。わかりやすくするために，各要素について書き下して書いています。
+   \item[modelブロック] 尤度はデータベクトルが多次元正規分布関数\verb|multi_normal|から出てきていることを示しています。多次元正規分布関数の引数は，ベクトルと行列です。
 \end{description}
 
 この書き方ですと，三群に拡張した時に大変になるのは目に見えていますね。こんな時のために，ベクトルと行列用関数をつかって書いておく方法があります。
@@ -178,14 +178,14 @@ model{
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-	\item[dataブロック] データのサイズKも外侮から指定できる変数とし，それを使ってサイズKのベクトルXをN個用意しています。
-	\item[parametersブロック] パラメータとして，平均と標準偏差をベクトルで，相関係数も行列として宣言しました。標準偏差ベクトルの範囲指定の方法に注意してください。
-	\item[transformed parametersブロック] Stanの関数\verb|quad_form_diag|を使って分散共分散行列を作成しました。この関数は，正方行列$\bm{X}$とベクトル$\bm{v}$から，$diag(\bm{v}) \bm{X} diag(\bm{v})$という計算をするものです。ここで\verb|diag|はk個の要素を対角項に持つ$k \times k$の対角行列を作ることを意味します。今回の例で具体的に説明しましょう。ここでの正方行列は相関行列で，ベクトルは標準偏差を要素に持つ\verb|sds|ですから，
-		\[ \begin{pmatrix}\sigma_1&0\\0&\sigma_2\end{pmatrix}\begin{pmatrix}1&\rho_{12}\\\rho_{12}&1\end{pmatrix}\begin{pmatrix}\sigma_1&0\\0&\sigma_2\end{pmatrix} =
-			\begin{pmatrix} \sigma_1 & \sigma_1\rho_{12}\\ \sigma_2\rho_{12} & \sigma_2\end{pmatrix}\begin{pmatrix}\sigma_1 & 0\\ 0 & \sigma_2\end{pmatrix} =
-			\begin{pmatrix}\sigma_1^2 & \sigma_1\sigma_2\rho_{12} \\ \sigma_1\sigma_2\rho_{12} & \sigma_2^2\end{pmatrix} \]
-		となり，分散共分散行列が構成されていることがわかりますね。
-	\item[modelブロック] 注目すべきポイントは相関行列の事前分布です。相関行列の事前分布には，Stanでは\verb|lkj_corr|という関数を使うのが一般的で，この引数が1になっているのは無情報分布であることを意味しています。
+   \item[dataブロック] データのサイズKも外侮から指定できる変数とし，それを使ってサイズKのベクトルXをN個用意しています。
+   \item[parametersブロック] パラメータとして，平均と標準偏差をベクトルで，相関係数も行列として宣言しました。標準偏差ベクトルの範囲指定の方法に注意してください。
+   \item[transformed parametersブロック] Stanの関数\verb|quad_form_diag|を使って分散共分散行列を作成しました。この関数は，正方行列$\bm{X}$とベクトル$\bm{v}$から，$diag(\bm{v}) \bm{X} diag(\bm{v})$という計算をするものです。ここで\verb|diag|はk個の要素を対角項に持つ$k \times k$の対角行列を作ることを意味します。今回の例で具体的に説明しましょう。ここでの正方行列は相関行列で，ベクトルは標準偏差を要素に持つ\verb|sds|ですから，
+      \[ \begin{pmatrix}\sigma_1&0\\0&\sigma_2\end{pmatrix}\begin{pmatrix}1&\rho_{12}\\\rho_{12}&1\end{pmatrix}\begin{pmatrix}\sigma_1&0\\0&\sigma_2\end{pmatrix} =
+         \begin{pmatrix} \sigma_1 & \sigma_1\rho_{12}\\ \sigma_2\rho_{12} & \sigma_2\end{pmatrix}\begin{pmatrix}\sigma_1 & 0\\ 0 & \sigma_2\end{pmatrix} =
+         \begin{pmatrix}\sigma_1^2 & \sigma_1\sigma_2\rho_{12} \\ \sigma_1\sigma_2\rho_{12} & \sigma_2^2\end{pmatrix} \]
+      となり，分散共分散行列が構成されていることがわかりますね。
+   \item[modelブロック] 注目すべきポイントは相関行列の事前分布です。相関行列の事前分布には，Stanでは\verb|lkj_corr|という関数を使うのが一般的で，この引数が1になっているのは無情報分布であることを意味しています。
 \end{description}
 
 このコードで推定される平均値，\verb|mu|ベクトルの2つの要素が，事前・事後の平均値に該当します。ですからこの差分を計算すれば「平均的にどれぐらい変化があったか」という\textbf{平均因果効果}を見積もったことになります。この差分については，\keytermL{生成量}{せいせいりょう}のブロックで算出しても構いません。もちろんその差分から標準化した効果の大きさを算出することもできますし，パラメータについての仮説，事後予測などデータについての仮説など，さまざまに検証できることはこれまでの通りです。
@@ -214,7 +214,7 @@ dataSet <- list(N=N, X=X)
 ここでは二群の平均をいずれも50，標準偏差を10と5にし，相関係数を0.7としたサンプルを100個作ることにしました。発生させる乱数は\verb|MASS|パッケージの\verb|mvrnorm|関数を使います。この関数は，発生させるサンプルサイズと，平均ベクトル，分散共分散行列を引数に取ります。これを使って推定させた結果の例が出力\ref{SCrstan:out22_01}になります。
 
 \begin{SCrstan}{MCMCの結果出力}{out22_01}
-	\begin{verbatim}
+   \begin{verbatim}
  variable    mean  median    sd   mad      q5     q95 rhat ess_bulk ess_tail
  lp__     -455.32 -455.00  1.59  1.43 -458.38 -453.38 1.00     9279    13139
  mu[1]      49.77   49.77  0.99  0.98   48.14   51.39 1.00    12611    13820
@@ -233,7 +233,7 @@ dataSet <- list(N=N, X=X)
 ところで，今回与えたデータXは行列の形をしています。一行が2つの数字を持つペアになっているのですが，これは\keytermL{整然データ}{せいぜんでーた}の形にはなっていませんね。
 整然データであれば，次のようなデータセットになっているはずです(Rの出力\ref{RS:out22_01})。
 \begin{Rscreen}{対応ある二群の仮想データ・整然版}{out22_01}
-	\begin{verbatim}
+   \begin{verbatim}
 # A tibble: 200 × 3
       ID name  value
    <int> <chr> <dbl>
@@ -265,13 +265,13 @@ tidy_data <- X %>%
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-	\item[2行目] 真値の設定をして，行列Xを作っています。
-	\item[3行目] Xを加工して，\verb|tidy_data|という変数に作り替えます。加工のプロセスは下記の通りです。
-	\item[4行目] \verb|data.frame|型を経て\verb|tibble|型に変形します\footnote{\verb|tibble|型にする必要は別にありません。著者の趣味です。\verb|tibble|型は\verb|data.frame|型の拡張版で表示した時に変数の型などがわかりやすいという利点があります。\verb|matrix|型からいきなり\verb|tibble|型に変更すると警告が出るので，いったん\verb|data.frame|型を経由しました。}。
-	\item[5行目] この段階で，変数名が\verb|V1,V2|となっていますが，わかりやすくするために\verb|pre,post|に書き換えました。
-	\item[6行目] 行番号を\verb|ID|という変数名を持つものに変えています。
-	\item[7行目] \verb|ID|をキーに，横長だったデータを縦長に(tidyに)変換する関数です。
-	\item[8行目] 縦長になった変数(Code::\ref{code:22_04}はこの段階の出力です)から，\verb|name|変数の値が\verb|pre|であるものを1に，そうでないものを2にした新しい変数\verb|cond|を作りました。
+   \item[2行目] 真値の設定をして，行列Xを作っています。
+   \item[3行目] Xを加工して，\verb|tidy_data|という変数に作り替えます。加工のプロセスは下記の通りです。
+   \item[4行目] \verb|data.frame|型を経て\verb|tibble|型に変形します\footnote{\verb|tibble|型にする必要は別にありません。著者の趣味です。\verb|tibble|型は\verb|data.frame|型の拡張版で表示した時に変数の型などがわかりやすいという利点があります。\verb|matrix|型からいきなり\verb|tibble|型に変更すると警告が出るので，いったん\verb|data.frame|型を経由しました。}。
+   \item[5行目] この段階で，変数名が\verb|V1,V2|となっていますが，わかりやすくするために\verb|pre,post|に書き換えました。
+   \item[6行目] 行番号を\verb|ID|という変数名を持つものに変えています。
+   \item[7行目] \verb|ID|をキーに，横長だったデータを縦長に(tidyに)変換する関数です。
+   \item[8行目] 縦長になった変数(Code::\ref{code:22_04}はこの段階の出力です)から，\verb|name|変数の値が\verb|pre|であるものを1に，そうでないものを2にした新しい変数\verb|cond|を作りました。
 \end{description}
 このコードでどういうデータセットができたのか，Rのコンソールで\verb|tidy_data|として確認すると良いでしょう。1つ1つのステップを確認したい場合は，途中で止めて一歩ずつ進むのも手です。
 
@@ -307,9 +307,9 @@ model{
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-	\item[dataブロック] 1.データ全体の長さ\verb|L|，2.被験者の数\verb|N|，3.被験者ID\verb|IDindex|，4.そのデータがどの水準なのかを示す識別子\verb|Condition|，5.実際の値\verb|val|を与えています。最後の3つはデータ長と同じサイズです。
-	\item[transformed dataブロック] データを変形する\verb|transformed data|ブロックの登場です。ここではペアとしての情報がある\verb|vector|型にした変数を作っています。その変数\verb|pairX|は，N人分の情報があり，それぞれ要素番号1,2がベクトルの要素に対応しています。ここでも入れ子になった識別子を使っていて，\verb|pairX[IDindex[l],Condition[l]]|はl行目の個人\verb|IDindex[l]|，l行目の条件\verb|Condition[l]|から，たとえば \verb|IDindex[l]＝15|，\verb|Condition[l]=2|であれば15番目の人の事後の値\verb|pairX[15,2]|を値として代入する，ということをしています。
-	\item[modelブロック] 作った\verb|pairedX|というベクトルに対して多次元正規分布からのデータを与えています。
+   \item[dataブロック] 1.データ全体の長さ\verb|L|，2.被験者の数\verb|N|，3.被験者ID\verb|IDindex|，4.そのデータがどの水準なのかを示す識別子\verb|Condition|，5.実際の値\verb|val|を与えています。最後の3つはデータ長と同じサイズです。
+   \item[transformed dataブロック] データを変形する\verb|transformed data|ブロックの登場です。ここではペアとしての情報がある\verb|vector|型にした変数を作っています。その変数\verb|pairX|は，N人分の情報があり，それぞれ要素番号1,2がベクトルの要素に対応しています。ここでも入れ子になった識別子を使っていて，\verb|pairX[IDindex[l],Condition[l]]|はl行目の個人\verb|IDindex[l]|，l行目の条件\verb|Condition[l]|から，たとえば \verb|IDindex[l]＝15|，\verb|Condition[l]=2|であれば15番目の人の事後の値\verb|pairX[15,2]|を値として代入する，ということをしています。
+   \item[modelブロック] 作った\verb|pairedX|というベクトルに対して多次元正規分布からのデータを与えています。
 \end{description}
 
 少しややこしくなったように思えますが，データの構造が複雑化すると整然データの方がスッキリすることの方が一般的です。コードをよく読んで，どのような動きをするのかイメージをしっかり掴むようにしましょう。
@@ -323,20 +323,20 @@ model{
 
 これを踏まえて，少し話を拡張した3水準モデルを考えてみましょう。たとえば次のようなカバーストーリーはいかがでしょう。
 \begin{quote}
-	臨床心理学者がある介入法をつかってメンタルケアに取り組んでいます。
-	4人のクライアントにこの手法を適用し，抑うつ度が改善されていくかどうかチェックし，この介入法に効果があるのかどうかを検証したいと思っています。
+   臨床心理学者がある介入法をつかってメンタルケアに取り組んでいます。
+   4人のクライアントにこの手法を適用し，抑うつ度が改善されていくかどうかチェックし，この介入法に効果があるのかどうかを検証したいと思っています。
 \end{quote}
-\begin{table}
-	\centering
-	\caption{介入時期とスコアの推移}
-	\begin{tabular}{cccc}
-		ID & 1期 & 2期 & 3期 \\\hline
-		1  & 10  & 5   & 9   \\
-		2  & 9   & 4   & 5   \\
-		3  & 4   & 2   & 3   \\
-		4  & 7   & 3   & 5   \\\hline
-	\end{tabular}
-	\label{tbl:22_02}
+\begin{table}[ht]
+   \centering
+   \caption{介入時期とスコアの推移}
+   \begin{tabular}{cccc}
+      ID & 1期 & 2期 & 3期 \\\hline
+      1  & 10  & 5   & 9   \\
+      2  & 9   & 4   & 5   \\
+      3  & 4   & 2   & 3   \\
+      4  & 7   & 3   & 5   \\\hline
+   \end{tabular}
+   \label{tbl:22_02}
 \end{table}
 チェックの結果が表\ref{tbl:22_02}のようになっていて，ここの数字が抑うつ度スコア(低ければ低いほど健康)だと思ってください。
 記号で書く時のノーテーション(表記法)は，値$X_{ij}$が$i$さんの第$j$期のスコア，ということにしたいと思います。
@@ -344,17 +344,17 @@ model{
 これを使って毎回の変化の大きさを見積もりたいと思います。前回やった，多水準モデルのことを参考に見ていきましょう。ポイントは，前回は全体平均からの差分で効果を考えていたところが，今回は個人差があるので個人ごとの平均$\mu_i$を基準におくところです。
 
 最初の人のスコア，$X_{11}=10,X_{12}=5,X_{13}=9$はそれぞれ，その人の平均$\mu_i$から考えて，$\mu_1+\delta_1,\mu_1+\delta_2,\mu_1+\delta_3$となるはずだと考えましょう。理論通りにならない誤差を含めて考えれば，先ほどの表\ref{tbl:22_02}は表\ref{tbl:22_03}のようになっているはずなのです。
-\begin{table}
-	\centering
-	\caption{介入時期とスコアのモデル式}
-	\begin{tabular}{cccc}
-		ID & 1期                                   & 2期                                   & 3期                                   \\\hline
-		1  & $X_{11}\sim N(\mu_1+\delta_1,\sigma)$ & $X_{12}\sim N(\mu_1+\delta_2,\sigma)$ & $X_{13}\sim N(\mu_1+\delta_3,\sigma)$ \\
-		2  & $X_{21}\sim N(\mu_2+\delta_1,\sigma)$ & $X_{22}\sim N(\mu_2+\delta_2,\sigma)$ & $X_{23}\sim N(\mu_2+\delta_3,\sigma)$ \\
-		3  & $X_{31}\sim N(\mu_3+\delta_1,\sigma)$ & $X_{32}\sim N(\mu_3+\delta_2,\sigma)$ & $X_{33}\sim N(\mu_3+\delta_3,\sigma)$ \\
-		4  & $X_{41}\sim N(\mu_4+\delta_1,\sigma)$ & $X_{42}\sim N(\mu_4+\delta_2,\sigma)$ & $X_{43}\sim N(\mu_4+\delta_3,\sigma)$ \\\hline
-	\end{tabular}
-	\label{tbl:22_03}
+\begin{table}[ht]
+   \centering
+   \caption{介入時期とスコアのモデル式}
+   \begin{tabular}{cccc}
+      ID & 1期                                   & 2期                                   & 3期                                   \\\hline
+      1  & $X_{11}\sim N(\mu_1+\delta_1,\sigma)$ & $X_{12}\sim N(\mu_1+\delta_2,\sigma)$ & $X_{13}\sim N(\mu_1+\delta_3,\sigma)$ \\
+      2  & $X_{21}\sim N(\mu_2+\delta_1,\sigma)$ & $X_{22}\sim N(\mu_2+\delta_2,\sigma)$ & $X_{23}\sim N(\mu_2+\delta_3,\sigma)$ \\
+      3  & $X_{31}\sim N(\mu_3+\delta_1,\sigma)$ & $X_{32}\sim N(\mu_3+\delta_2,\sigma)$ & $X_{33}\sim N(\mu_3+\delta_3,\sigma)$ \\
+      4  & $X_{41}\sim N(\mu_4+\delta_1,\sigma)$ & $X_{42}\sim N(\mu_4+\delta_2,\sigma)$ & $X_{43}\sim N(\mu_4+\delta_3,\sigma)$ \\\hline
+   \end{tabular}
+   \label{tbl:22_03}
 \end{table}
 
 つまり，$X_{ij}\sim N(\mu_i+\delta_j,\sigma)$ですね。個人のベースライン$\mu_i$に，各時期の効果$\delta_j$が加わったものを中心に，正規分布に従う誤差を纏ってデータになる，という考え方です。
@@ -365,12 +365,12 @@ model{
 \[ \mu_i \sim N(\psi,\tau) \]
 
 と考えることにしましょう。これを設計図に書き込んだのが，図\ref{fig::22_02}です。
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=12cm,keepaspectratio]{../images/22_modeling4/Slide22_02.png}
-		\caption{階層的データ生成モデル}
-		\label{fig::22_02}
-	\end{center}
+\begin{figure}[h]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/22_modeling4/Slide22_02.png}
+      \caption{階層的データ生成モデル}
+      \label{fig::22_02}
+   \end{center}
 \end{figure}
 
 このように，相関があることを個人$i$に紐づけられた変数として表現し，個人差からの差分として対応のあるモデルを考えることができます。

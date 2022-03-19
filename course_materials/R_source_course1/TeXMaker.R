@@ -45,7 +45,7 @@ for(l in 1:11){
             cat(file=openFN,word,"\n",append = T)
             word = paste0("\t\t\\centering")
             cat(file=openFN,word,"\n",append = T)
-            word = paste0("\t\t\\includegraphics[keepaspectratio,height=12cm]{images/",dirName$value[l],"/",tmp$value[FIGS],"}")
+            word = paste0("\t\t\\includegraphics[keepaspectratio,height=0.6\linewidth{images/",dirName$value[l],"/",tmp$value[FIGS],"}")
             cat(file=openFN,word,"\n",append = T)
             word = paste0("\t\t\\label{",tmp$label[FIGS],"}")
             cat(file=openFN,word,"\n",append = T)
