@@ -44,11 +44,11 @@ IRTの考え方からいうと，どんな項目でも何らかの情報を提�
 ここで$p_j(\theta)$はその項目$j$の$\theta$における正答率(通過率)，$q_j(\theta)$は誤答率を表しています。能力が平均的，すなわち$\theta=0$のときは，$0.5 \times 0.5$になる平均的な困難度($b=0$)の設問が最も大きな値になる，というわけですね。
 図\ref{fig::05_01}にいくつかのICCとそれに対応するIICを描きましたので，確認してください。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_01.png}
-      \caption{項目特徴曲線(IIC,上図)とテスト情報曲線(IIC,下図)の例。左から順に$a_1=0.8,b_1=-1$の識別力が弱く簡単な項目，$a_2=1,b=1$のやや困難な項目，$a_3=1.2,b_3=2$の識別力が高く困難な項目。}
-      \label{fig::05_01}
-   \end{center}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_01.png}
+        \caption{項目特徴曲線(IIC,上図)とテスト情報曲線(IIC,下図)の例。左から順に$a_1=0.8,b_1=-1$の識別力が弱く簡単な項目，$a_2=1,b=1$のやや困難な項目，$a_3=1.2,b_3=2$の識別力が高く困難な項目。}
+        \label{fig::05_01}
+    \end{center}
 \end{figure}
 IICのピークは，対応するICCの$\theta=0.5$のところにあること，識別力はピークの尖り具合に関わっていることを確認してください。
 
@@ -57,11 +57,11 @@ IICのピークは，対応するICCの$\theta=0.5$のところにあること�
 
 またIICはある項目から得られる情報のことを意味しますが，テストに含まれているすべての情報関数を足し合わせることで，そのテストから得られる情報の大きさを関数として評価できます。すなわちテスト全体の情報量$I_T(\theta)$は，$I_T(\theta)=\sum_{j=1}^M I_j(\theta)$であり，この関数のことを\keyterm{テスト情報関数}{てすとじょうほうかんすう}{Test Infromation Curve}といいます。図\ref{fig::05_01}の3つの項目からなるTICを示したのが図\ref{fig::05_02}です。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_02.png}
-      \caption{テスト情報関数(黒の実線部)。理解を進めるために各IICを薄い点線で表現した。}
-      \label{fig::05_02}
-   \end{center}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_02.png}
+        \caption{テスト情報関数(黒の実線部)。理解を進めるために各IICを薄い点線で表現した。}
+        \label{fig::05_02}
+    \end{center}
 \end{figure}
 これを見ると，この3つの項目からなるテストは$\theta=2$より少し低いレベルを測定するときに最も鋭敏に働くということがわかります。このように，項目母数がわかっていれば事前にテストの特徴をどのあたりに持ってくるかを決定でき，自由自在にテストをデザインできるようになるわけです。
 
@@ -81,7 +81,7 @@ IICのピークは，対応するICCの$\theta=0.5$のところにあること�
 \section{段階反応モデル}
 リッカート法などで作られる尺度は，一般に5，7段階のものが多くあります。少ないものでは3件法\footnote{たとえばYG性格検査は3段階です。}であったり，ものによっては4，6件法であることもあります\footnote{偶数の段階にすることで，必ずどちらかの極に寄るようにして集計できます。日本人は「どちらでもない」に回答しがちな中点集中傾向があるとも言われているので，わざと肯定・否定のどちらかに寄せようという考え方です。}。しかしこれらの段階はいずれも順序尺度水準の情報しか持っておらず，そのままでは尺度値として使うことができません。シグマ法などで数値化すれば良いのですが，その手間を省いて分析する悪い習慣もあることは既に指摘した通りです。
 
-IRTの多段階版はこうした問題に対応できる方法です。IRTの多段階モデルは大きくわけて2つあり，1つは\keyterm{段階反応モデル}{だんかいはんのうもでる}{Graded Response Model; GRM}\citep{samejima1997graded}，もうひとつは\keyterm{多段採点モデル}{ただんさいてんもでる}{Partial Credit Model}\citep{muraki1992generalized}と呼ばれています。どちらも発想は似たようなところがあり，ここではGRMについて解説します。興味がある人は，\citet{豊田秀樹2012-08-24}や\citet{加藤健太郎2014-07-25}など専門書を参考にしてください。
+IRTの多段階版はこうした問題に対応できる方法です。IRTの多段階モデルは大きくわけて2つあり，1つは\keyterm{段階反応モデル}{だんかいはんのうもでる}{Graded Response Model; GRM}\citep{samejima1997graded}，もうひとつは\keyterm{多段採点モデル}{ただんさいてんもでる}{Partial Credit Model}\citep{muraki1992generalized}と呼ばれています。どちらも発想は似たようなところがあり，ここではGRMについて解説します。興味がある人は，\citet{Toyoda20120824}や\citet{Katoken2014}など専門書を参考にしてください。
 
 GRMの考え方の基本は，段階反応の背後には正規分布する連続的な潜在特性$\theta$がある，と仮定するところです。心理的な能力，学力，性質などは連続的なのですが，それが表に出てくる時は離散的(順序的)だというわけです。図\ref{fig::05_03}に図示されているように，正規分布がある\keyterm{閾値}{いきち}{threshold}(これを$b_k$と表しますが)を超えると出現する時は次のカテゴリになる，ということを考えます。図は三段階の例ですが，図から明らかなように$k$段階であれば閾値の数は$k-1$個あることになります。横軸$\theta$は心理的な態度や性質の強さだと思ってください。さてそうすると，$\theta=2.0$ぐらいであれば，ほぼ間違いなく「当てはまる」に回答することになりますし，$\theta=-2$であれば「当てはまらない」に回答するようになるはずです。このように$\theta$が大きくなればなるほど最後のカテゴリに反応する確率は上がっていきますから，ここは2PLモデルの時のようにロジスティック曲線で「当てはまる」に回答する確率を表現できるでしょう。問題は，それより下の段階に反応する確率をどのように表現するか，です。
 
@@ -103,11 +103,11 @@ GRMの考え方の基本は，段階反応の背後には正規分布する連�
 ここにあるように，段階数が増えたとしても$k$番目のカテゴリ以上に反応する確率から，$k+1$番目に反応する確率を引いてやれば，$k$番目のカテゴリに反応する確率が得られます。この計算をして描かれる曲線のことを\keyterm{項目反応カテゴリ特性曲線}{こうもくはんのうかてごりとくせいきょくせん}{Item Response Category Charactaristic Curve; IRCCC}，あるいは単に\keyterm{カテゴリ確率曲線}{かてごりかくりつきょくせん}{Category Probability Curve}と呼ばれます。IRCCCは図\ref{fig::05_03}の下段に示されています。
 
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_03.png}
-      \caption{正規分布と閾値(上図)とIRCCC(下図)}
-      \label{fig::05_03}
-   \end{center}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_03.png}
+        \caption{正規分布と閾値(上図)とIRCCC(下図)}
+        \label{fig::05_03}
+    \end{center}
 \end{figure}
 
 IRCCCを，$\theta$の値がマイナスからプラスの方向に動かしながら見ていってください。最初は当然「当てはまらない」に反応する確率が一番高いのですが，それが徐々に下がっていきます。「どちらでもない」の反応確率は徐々に増えていき，閾値$b_{j1}$で「当てはまらない」と逆転しピークを迎えることになります。その頃「当てはまる」も徐々増えていき，閾値$b_{j2}$でピークが逆転する，というようになります。ピークは逆転されても，他の確率が0になっているわけではなく，可能性は残っています。
@@ -121,11 +121,11 @@ IRCCCを，$\theta$の値がマイナスからプラスの方向に動かしな�
 
 このように5段階，7段階を設定して回答者に無理やり回答を求めても，分析するとカテゴリのピークが潰れていることがあります。回答者の反応しやすいカテゴリ数を丁寧に設計してやることが重要です。もちろん無分別に尺度値をつけて，そのまま分析するのはもっとも不適切な方法です。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_04.png}
-      \caption{適切な反応段階をデザインする}
-      \label{fig::05_04}
-   \end{center}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_04.png}
+        \caption{適切な反応段階をデザインする}
+        \label{fig::05_04}
+    \end{center}
 \end{figure}
 
 
@@ -145,11 +145,11 @@ IRCCCを，$\theta$の値がマイナスからプラスの方向に動かしな�
 
 これらの相関係数はいずれも，順序(あるいはバイナリ)変数の背後に連続体があると考え，潜在的な連続体$\times$潜在的な連続体の相関係数を連続体のカテゴリが変わる閾値とともに推定するのです(図\ref{fig::05_05})。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Slide05_01.png}
-      \caption{ポリ個リック相関係数のイメージ}
-      \label{fig::05_05}
-   \end{center}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Slide05_01.png}
+        \caption{ポリ個リック相関係数のイメージ}
+        \label{fig::05_05}
+    \end{center}
 \end{figure}
 
 こうして推定された相関係数を使って因子分析を行うと，順序尺度水準に適した因子分析を行うことができます。この方法をとくに\keyterm{カテゴリカル因子分析}{かてごりかるいんしぶんせき}{categorical factor analysis}といいます。もっともこの名前を覚えておく必要はありません。\textbf{カテゴリカル因子分析は段階反応モデルと数学的に等価である}ことがわかっています。GRMをすることはカテゴリカル因子分析をしていることと同じ，なのです。

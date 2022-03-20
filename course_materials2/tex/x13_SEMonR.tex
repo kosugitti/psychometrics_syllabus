@@ -18,39 +18,39 @@
 今回のデータとして\texttt{lavaan}パッケージに含まれている\texttt{HolzingerSwineford1939}データセットを使います。これは\citep{holzinger1939study}のデータで301人に対して行われた15の能力テストスコアの一部が入ったデータです。一部を\ref{tbl::13_01}に示しました。
 \begin{table}[ht]
 
-   \caption{Holzinger and Swineford(1939)のデータ}
-   \centering
-   \begin{tabular}[t]{rrrrlrrrrrrrrrr}
-      \hline
-      id & sex & ageyr & agemo & school  & grade & x1   & x2   & x3   & x4   & x5   & x6   & x7   & x8   & x9   \\
-      \hline
-      1  & 1   & 13    & 1     & Pasteur & 7     & 3.33 & 7.75 & 0.38 & 2.33 & 5.75 & 1.29 & 3.39 & 5.75 & 6.36 \\
-      2  & 2   & 13    & 7     & Pasteur & 7     & 5.33 & 5.25 & 2.12 & 1.67 & 3.00 & 1.29 & 3.78 & 6.25 & 7.92 \\
-      3  & 2   & 13    & 1     & Pasteur & 7     & 4.50 & 5.25 & 1.88 & 1.00 & 1.75 & 0.43 & 3.26 & 3.90 & 4.42 \\
-      4  & 1   & 13    & 2     & Pasteur & 7     & 5.33 & 7.75 & 3.00 & 2.67 & 4.50 & 2.43 & 3.00 & 5.30 & 4.86 \\
-      5  & 2   & 12    & 2     & Pasteur & 7     & 4.83 & 4.75 & 0.88 & 2.67 & 4.00 & 2.57 & 3.70 & 6.30 & 5.92 \\
-      6  & 2   & 14    & 1     & Pasteur & 7     & 5.33 & 5.00 & 2.25 & 1.00 & 3.00 & 0.86 & 4.35 & 6.65 & 7.50 \\
-      \hline
-   \end{tabular}
-   \label{tbl::13_01}
+    \caption{Holzinger and Swineford(1939)のデータ}
+    \centering
+    \begin{tabular}[t]{rrrrlrrrrrrrrrr}
+        \hline
+        id & sex & ageyr & agemo & school  & grade & x1   & x2   & x3   & x4   & x5   & x6   & x7   & x8   & x9   \\
+        \hline
+        1  & 1   & 13    & 1     & Pasteur & 7     & 3.33 & 7.75 & 0.38 & 2.33 & 5.75 & 1.29 & 3.39 & 5.75 & 6.36 \\
+        2  & 2   & 13    & 7     & Pasteur & 7     & 5.33 & 5.25 & 2.12 & 1.67 & 3.00 & 1.29 & 3.78 & 6.25 & 7.92 \\
+        3  & 2   & 13    & 1     & Pasteur & 7     & 4.50 & 5.25 & 1.88 & 1.00 & 1.75 & 0.43 & 3.26 & 3.90 & 4.42 \\
+        4  & 1   & 13    & 2     & Pasteur & 7     & 5.33 & 7.75 & 3.00 & 2.67 & 4.50 & 2.43 & 3.00 & 5.30 & 4.86 \\
+        5  & 2   & 12    & 2     & Pasteur & 7     & 4.83 & 4.75 & 0.88 & 2.67 & 4.00 & 2.57 & 3.70 & 6.30 & 5.92 \\
+        6  & 2   & 14    & 1     & Pasteur & 7     & 5.33 & 5.00 & 2.25 & 1.00 & 3.00 & 0.86 & 4.35 & 6.65 & 7.50 \\
+        \hline
+    \end{tabular}
+    \label{tbl::13_01}
 \end{table}
 変数の意味は以下の通りです。x1からx3が空間的知覚，x4からx6が言語的能力，x7からx9が移動する物体の認識力を測るものになっています。
 \begin{description}
-   \item[id] 被験者ID
-   \item[sex] 性別(男性=1,女性=2)
-   \item[ageyr] 生まれ年
-   \item[agemo] 生まれ月
-   \item[school] 所属校
-   \item[grade] 学年
-   \item[x1] 視覚的知覚
-   \item[x2] 立方体
-   \item[x3] 菱形
-   \item[x4] 段落の理解
-   \item[x5] 文章完成
-   \item[x6] 言葉の意味
-   \item[x7] 加速
-   \item[x8] 点を数える
-   \item[x9] 直線・曲線文字の区別
+    \item[id] 被験者ID
+    \item[sex] 性別(男性=1,女性=2)
+    \item[ageyr] 生まれ年
+    \item[agemo] 生まれ月
+    \item[school] 所属校
+    \item[grade] 学年
+    \item[x1] 視覚的知覚
+    \item[x2] 立方体
+    \item[x3] 菱形
+    \item[x4] 段落の理解
+    \item[x5] 文章完成
+    \item[x6] 言葉の意味
+    \item[x7] 加速
+    \item[x8] 点を数える
+    \item[x9] 直線・曲線文字の区別
 \end{description}
 
 さて，ではまず回帰分析をやってみることにしましょう。変数x4をx5,x6で回帰する重回帰モデルを\texttt{lavaan}を実行するには\texttt{code:\ref{code:13_01}}のように書きます。
@@ -68,10 +68,10 @@ summary(result1.1)
 
 \paragraph{コード解説}
 \begin{description}
-   \item[1-3行目] モデルの記述
-   \item[4行目] 関数による推定
-   \item[5行目] 結果の出力
-   \item[6-8行目] 従来の\texttt{lm}関数による当てはめ例
+    \item[1-3行目] モデルの記述
+    \item[4行目] 関数による推定
+    \item[5行目] 結果の出力
+    \item[6-8行目] 従来の\texttt{lm}関数による当てはめ例
 \end{description}
 
 ここでモデルを書くところは，ダブルクォーテーションで括られていることに注意してください。このようにすることで，Rに複数行からなるモデルを渡すことが可能になります。実際のモデルは2行目だけで，これは\texttt{lm}関数に書いているモデル式の形と同じであることがわかります。モデルを書いて，モデルとデータの組みを\texttt{sem}関数に渡すと結果が帰ってくる，これだけです。結果を出力するときに，オプションとして\texttt{fit.measures}を書いてあるところだけが違います。
@@ -79,7 +79,7 @@ summary(result1.1)
 出力結果の一部を出力\ref{RS:out13_01}に示します。実際はもっと色々でているのですが，CFI , TLI, AIC,BIC, RMSEA, SRMRなどはそれぞれ適合度指標を荒らしています。推定結果は\texttt{Regression:}の\texttt{Estimate}のところを見てください。これらは，\texttt{lm}関数と同じ係数になっていることが確認できます。
 
 \begin{Rscreen}{観測変数だけのモデル}{out13_01}
-   \begin{verbatim}
+    \begin{verbatim}
 
     (中略)
 
@@ -144,11 +144,11 @@ summary(result2, fit.measures = T, standardized = T)
 これを図にしたのが図\ref{fig::13_01}です。ちなみにこの図もRのパッケージで書きました。パス図を自動的に書いてくれるパッケージとして\texttt{semPlot}パッケージ\citep{Charles2013}や\texttt{tidySEM}パッケージ\citep{tidySEM}などを使います。ここでは\texttt{tidySEM}パッケージの\verb|graph_sem|関数を使いました。
 
 \begin{figure}[h]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/13_SEMonR/Rplot13_01.png}
-      \caption{パス解析の図}
-      \label{fig::13_01}
-   \end{center}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/13_SEMonR/Rplot13_01.png}
+        \caption{パス解析の図}
+        \label{fig::13_01}
+    \end{center}
 \end{figure}
 
 \subsection{測定方程式を入れたモデル}
@@ -165,13 +165,13 @@ result3 <- sem(model3, data = HolzingerSwineford1939)
 summary(result3, fit.measures = T, standardized = T)
 \end{lstlisting}
 
-これのモデル図は図\ref{fig::13_03}のようになります\footnote{この図は\citet{小野島2021}の関数を使っています。tikzを使って綺麗なモデルが描ける素晴らしい関数の提供に感謝。}。モデル上とくに指定はしてありませんが，潜在変数同士の相関係数も自動的に推定されています。パス係数は潜在変数からでてきていますから，\keytermL{因子負荷量}{いんしふかりょう}のように考えることができますね。
+これのモデル図は図\ref{fig::13_03}のようになります\footnote{この図は\citet{Onoshima2021}の関数を使っています。tikzを使って綺麗なモデルが描ける素晴らしい関数の提供に感謝。}。モデル上とくに指定はしてありませんが，潜在変数同士の相関係数も自動的に推定されています。パス係数は潜在変数からでてきていますから，\keytermL{因子負荷量}{いんしふかりょう}のように考えることができますね。
 \begin{figure}[h]
-   \begin{center}
-      \includegraphics{../images/13_SEMonR/SEMonR_fig02.pdf}
-      \caption{潜在変数モデル}
-      \label{fig::13_03}
-   \end{center}
+    \begin{center}
+        \includegraphics{../images/13_SEMonR/SEMonR_fig02.pdf}
+        \caption{潜在変数モデル}
+        \label{fig::13_03}
+    \end{center}
 \end{figure}
 
 このモデルは因子分析の一種ですが\keytermL{探索的因子分析}{たんさくてきいんしぶんせき}とはいくつかの点で違います。1つは因子数が3である，と最初から決めていた点。2つ目は因子負荷量ですが，探索的因子分析の場合はどの項目に対しても共通因子からの因子負荷量が計算されていました。今回の例では，x4からx9の変数にすいてもvisual因子からのパスが出ている，というモデルだったのです。今回のモデルではそれらのパスはなく，visual因子はx1,x2,x3にしか影響していません。言い換えると，x4からx9に対するvisual因子のパス係数は0である，と特定したようなものです。
@@ -202,19 +202,19 @@ modificationindices(result4) %>%
 
 \paragraph{コード解説}
 \begin{description}
-   \item[1-7行目] モデルの記述。visual, textual, speedの3因子をつくり，textualはvisualとspeedから説明されるモデル。さらにspeed因子は学年によっても説明される。
-   \item[8行目] 関数による推定
-   \item[9行目] 結果の出力。適合度指標と標準化係数の出力オプションをつけて。
-   \item[10-12行目] 分析結果の\keytermL{修正指数}{しゅうせいしすう}を出力。ただし指標\verb|mi|の大きい順に並べ替えるために11行目で出力を\texttt{tibble}型にし，\texttt{arrange}関数で並べ替えている。
+    \item[1-7行目] モデルの記述。visual, textual, speedの3因子をつくり，textualはvisualとspeedから説明されるモデル。さらにspeed因子は学年によっても説明される。
+    \item[8行目] 関数による推定
+    \item[9行目] 結果の出力。適合度指標と標準化係数の出力オプションをつけて。
+    \item[10-12行目] 分析結果の\keytermL{修正指数}{しゅうせいしすう}を出力。ただし指標\verb|mi|の大きい順に並べ替えるために11行目で出力を\texttt{tibble}型にし，\texttt{arrange}関数で並べ替えている。
 \end{description}
 
 まずは今回のモデルについても，図でみたほうがわかりやすいでしょう。結果を合わせて図\ref{fig::13_04}に示してみました。
 \begin{figure}[h]
-   \begin{center}
-      \includegraphics{../images/13_SEMonR/SEMonR_fig03.pdf}
-      \caption{構造方程式モデルへ}
-      \label{fig::13_04}
-   \end{center}
+    \begin{center}
+        \includegraphics{../images/13_SEMonR/SEMonR_fig03.pdf}
+        \caption{構造方程式モデルへ}
+        \label{fig::13_04}
+    \end{center}
 \end{figure}
 
 この図の出力と，Rでの出力はどこが対応しているか，それぞれ確認しましょう。
@@ -228,7 +228,7 @@ SEMの基本として，パスが入った(影響を受けた)変数は，影響
 visual因子は説明変数になっていますが，パスが入ってきませんので，この分散は1.00です。図ではvisual因子の楕円の上に1からの影響が入っていますが，これは分散が1だということの意味です。同じくgrade変数も説明されない変数\footnote{説明されない変数のことをとくに\keyterm{外生変数}{がいせいへんすう}{exogenous variable}といいます。これに対して説明されることがある変数は\keyterm{内生変数}{ないせいへんすう}{endogenous variable}といいます。}ですので，この分散が1(標準化されています)になっているのです。
 
 \begin{Rscreen}{構造を入れたモデルの出力結果(一部)}{out13_02}
-   \begin{verbatim}
+    \begin{verbatim}
 Latent Variables:
                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
   visual =~                                                             
@@ -271,7 +271,7 @@ Variances:
 
 最後に出力\ref{RS:out13_03}にある，\keyterm{修正指数}{しゅうせいしすう}{modification index}の出力を見てみましょう。一行目にあるのは，visual因子は変数x9へのパスをつけると，適合度がぐっと上がるよ，ということを意味しています。
 \begin{Rscreen}{修正指数(一部)}{out13_03}
-   \begin{verbatim}
+    \begin{verbatim}
 # A tibble: 64 x 8
    lhs     op    rhs        mi   epc sepc.lv sepc.all sepc.nox
    <chr>   <chr> <chr>   <dbl> <dbl>   <dbl>    <dbl>    <dbl>
@@ -290,21 +290,21 @@ Variances:
 
 実際にvisual因子が変数x9に影響している(x9から因子が構成されている)というモデルを作り，適合度指標を比べてみましょう。表\ref{tab:13_03}に代表的な適合度指標の修正前の値と修正後の値を示しました。
 \begin{table}[ht]
-   \caption{修正前後での指標の変化}
-   \centering
-   \begin{tabular}[t]{l|rr}
-      \hline
-      index & before   & after    \\\hline
-      CFI   & 0.895    & 0.945    \\
-      TLI   & 0.856    & 0.923    \\
-      AIC   & 7479.335 & 7433.224 \\
-      BIC   & 7557.115 & 7514.707 \\
-      RMSEA & 0.100    & 0.073    \\
-      GFI   & 0.919    & 0.944    \\
-      AGFI  & 0.866    & 0.905    \\
-      \hline
-   \end{tabular}
-   \label{tab:13_03}
+    \caption{修正前後での指標の変化}
+    \centering
+    \begin{tabular}[t]{l|rr}
+        \hline
+        index & before   & after    \\\hline
+        CFI   & 0.895    & 0.945    \\
+        TLI   & 0.856    & 0.923    \\
+        AIC   & 7479.335 & 7433.224 \\
+        BIC   & 7557.115 & 7514.707 \\
+        RMSEA & 0.100    & 0.073    \\
+        GFI   & 0.919    & 0.944    \\
+        AGFI  & 0.866    & 0.905    \\
+        \hline
+    \end{tabular}
+    \label{tab:13_03}
 \end{table}
 いずれの適合度指標においても，大きな改善が見られています。さて，これをどう考えたらいいでしょうか。
 

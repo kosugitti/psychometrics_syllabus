@@ -13,22 +13,22 @@
 またこの古典的テスト理論から，いくつかの重要な考えを読み取ることができます。ひとつは誤差についての考え方です。このモデルを$X_i = t_i + e_i$のように複数の項目からなるテストであると考えましょう。この時，テストの平均は次のように計算できます。
 
 \begin{align*}
-	 & \bar{X}  =  \frac{1}{n}\sum_{i=1}^n X_i                           &                 & \mbox{} \\
-	 & =  \frac{1}{n}\sum_{i=1}^n (t_i + e_i)                            & \mbox{定義より}           \\
-	 & =  \frac{1}{n} \sum_{i=1}^n  t_i +  \frac{1}{n} \sum_{i=1}^n  e_i & \mbox{分配して}           \\
-	 & =  \bar{t} + \bar{e}                                              & \mbox{}                   \\
+     & \bar{X}  =  \frac{1}{n}\sum_{i=1}^n X_i                           &                 & \mbox{} \\
+     & =  \frac{1}{n}\sum_{i=1}^n (t_i + e_i)                            & \mbox{定義より}           \\
+     & =  \frac{1}{n} \sum_{i=1}^n  t_i +  \frac{1}{n} \sum_{i=1}^n  e_i & \mbox{分配して}           \\
+     & =  \bar{t} + \bar{e}                                              & \mbox{}                   \\
 \end{align*}
 
 ここで$\bar{e}=0$ですから，$\bar{X}=\bar{t}$となって，いつかは誤差がなくなって真のスコアを得ることができるようになる，ということが示されます。誤差の平均がゼロであるというのは，その誤差の出現の仕方に「正に偏る」「負に偏る」といった一貫した傾向がないことを意味しています。また平均は$0$ですが分散はゼロではありません。平均と分散を持ち，1つ1つの実現値に法則性がないことから，確率モデルとして\keyterm{正規分布}{せいきぶんぷ}{Gaussian Curve}が仮定されるというのは，すでに習ったことがあると思います。
 
 さらにテストの平均ではなく分散を考えると，次のようなことがわかります。
 \begin{align*}
-	 & Var(X)  =  \frac{1}{n}\sum_{i=1}^n (X_i - \bar{X})^2                                                                                              & \mbox{定義より}                \\
-	 & = \frac{1}{n}\sum_{i=1}^n  ((t_i + e_i) - (\bar{t} + \bar{e}))^2                                                                                  & \mbox{Xをテスト理論のモデルに} \\
-	 & = \frac{1}{n}\sum_{i=1}^n (  (t_i - \bar{t}) + (e_i - \bar{e}) )^2                                                                                & \mbox{同じ記号でまとめる}      \\
-	 & = \frac{1}{n}\sum_{i=1}^n (  (t_i - \bar{t})^2 + 2(t_i - \bar{t})(e_i - \bar{e}) + (e_i - \bar{e})^2  )                                           & \mbox{展開する}                \\
-	 & = \frac{1}{n}\sum_{i=1}^n (t_i - \bar{t})^2 +\frac{1}{n}\sum_{i=1}^n 2(t_i - \bar{t})(e_i - \bar{e})  + \frac{1}{n}\sum_{i=1}^n (e_i - \bar{e})^2 & \mbox{$\sum$を分配}            \\
-	 & =  Var(t) + 2Cov(te) + Var(e)
+     & Var(X)  =  \frac{1}{n}\sum_{i=1}^n (X_i - \bar{X})^2                                                                                              & \mbox{定義より}                \\
+     & = \frac{1}{n}\sum_{i=1}^n  ((t_i + e_i) - (\bar{t} + \bar{e}))^2                                                                                  & \mbox{Xをテスト理論のモデルに} \\
+     & = \frac{1}{n}\sum_{i=1}^n (  (t_i - \bar{t}) + (e_i - \bar{e}) )^2                                                                                & \mbox{同じ記号でまとめる}      \\
+     & = \frac{1}{n}\sum_{i=1}^n (  (t_i - \bar{t})^2 + 2(t_i - \bar{t})(e_i - \bar{e}) + (e_i - \bar{e})^2  )                                           & \mbox{展開する}                \\
+     & = \frac{1}{n}\sum_{i=1}^n (t_i - \bar{t})^2 +\frac{1}{n}\sum_{i=1}^n 2(t_i - \bar{t})(e_i - \bar{e})  + \frac{1}{n}\sum_{i=1}^n (e_i - \bar{e})^2 & \mbox{$\sum$を分配}            \\
+     & =  Var(t) + 2Cov(te) + Var(e)
 \end{align*}
 ここで$Cov$とは共分散を表しています。第二項の$2Cov(te)$は真のスコアと誤差との共分散(を2倍したもの)を表していることになりますが，共分散がそもそも線形関係を表す指標であったことを思い出してください。相関係数は共分散を標準化したものだったわけですが，そういう意味ではこの$Cov(te)$というのは真のスコアと誤差との相関関係を表しているようなものです。さて，ここでも誤差の特徴を考えてみましょう。すなわち，誤差とはどのような傾向もなく出現するもの，という本来の性質があるのです。どのような傾向もないわけですから，当然なにかと相関関係にあるはずがない，すなわち$Cov(te)=0$であることがわかります。
 
@@ -52,14 +52,14 @@
 
 因子分析モデルはこれを改良し，$a_j f_i$としました。すなわち，ある項目に対する反応$z_{ij}$は，その項目が測定したい特徴を十分に反映しているかどうか($a_j$)と，その人がその特徴を有しているかどうか($f_i$)の両方が成立している必要があるわけです。掛け算ですから，一方がゼロであれば結果もゼロになります。すなわち測定したい特徴を反映していない項目($a_j=0$)であれば，どれほどそれについての能力($f_i$)が高くても反応できないのです。たとえば美的センスに非常に秀でた人がいても，数学のテストでその能力を反映させることはできませんよね。これは数学のテストというのが数学力を測定するものであって，美的センスを測定するものではないからです。
 
-因子分析は知能検査や性格検査の文脈から生まれてきたものです。心理学において「知能」とは，何にでも応用可能な一般的な知能というのがあるのか，あるいは語彙力や計算力といった複数の個別の能力があるのか，という議論がありました。知能検査としていろいろなものが考えられますが，それらがきちんと当該能力を測定する検査法だったかどうかもわからないわけで，因子分析モデルはそこを評価できるようにした，とも言えます。性格検査についても同様で，特性論的に考えるならば人間の性質というのは複数のもの，たとえば外向性，神経症傾向，開放性，協調性，勤勉性\footnote{\citet{小塩2020}のビッグファイブについての解説に基づいています。}などがあり，ある性格検査の項目は協調性を測定するのには向いているけれども，神経症傾向を測定するには向いていないということがあるわけです。このように，心理学と因子分析モデルは深い関係があります。
+因子分析は知能検査や性格検査の文脈から生まれてきたものです。心理学において「知能」とは，何にでも応用可能な一般的な知能というのがあるのか，あるいは語彙力や計算力といった複数の個別の能力があるのか，という議論がありました。知能検査としていろいろなものが考えられますが，それらがきちんと当該能力を測定する検査法だったかどうかもわからないわけで，因子分析モデルはそこを評価できるようにした，とも言えます。性格検査についても同様で，特性論的に考えるならば人間の性質というのは複数のもの，たとえば外向性，神経症傾向，開放性，協調性，勤勉性\footnote{\citet{Oshio2020}のビッグファイブについての解説に基づいています。}などがあり，ある性格検査の項目は協調性を測定するのには向いているけれども，神経症傾向を測定するには向いていないということがあるわけです。このように，心理学と因子分析モデルは深い関係があります。
 
 \subsection{多因子モデル}
 さて先ほどは一因子，あるいは単因子ともいいますが，測定したい特徴が1つだけのモデルでした。学力テストなどは一因子で問題ありません。国語のテストは国語の能力を，数学のテストは数学の能力を測定していれば良いのであって，数学のテストを解くのに美的センス(真美的能力)が必要というのは，むしろ困った状況ですらありますね。しかし，知能検査や性格検査の場合はそうではありません。ある行動傾向，ある形容詞，ある検査がたった1つの能力・性質・心理的要因だけを反映しているとは限りません。たとえば人に優しく振る舞うといっても，その背後に外向性があるのか，あるいはそうすると自分がよく見られるからという利己的な性格があるのか等々が考えられます。1つの項目に複数の要素(因子)が複合的に影響していることを考えるべきです。そこで因子の数が1つではなく，複数ある多因子モデルを考えることにします。多因子モデルは次のように表現されます。
 
 \begin{equation}
-	Z_{ij} = a_{j1}f_{i1} + a_{j2}f_{i2}+a_{j3}f_{i3} + \cdots + a_{jm}f_{im} + d_j u_{ij}
-	\label{factor}
+    Z_{ij} = a_{j1}f_{i1} + a_{j2}f_{i2}+a_{j3}f_{i3} + \cdots + a_{jm}f_{im} + d_j u_{ij}
+    \label{factor}
 \end{equation}
 
 記号の意味は単因子モデルと基本的には同じです。$Z_{ij}$は個人$i$の項目$j$に対する反応を標準得点で表したものであり，$a_{jm}$は第m因子の\keytermL{因子負荷量}{いんしふかりょう}，$f_{im}$は第$m$因子の\keytermL{因子得点}{いんしとくてん}を表しています。因子の数が複数あるモデルですから，$a_{j1},a_{j2},\cdots, a_{jm}$とか$f_{i1},f_{i2},\cdots, f_{im}$のように因子の番号と項目・個人の添字の組み合わせになっていることを確認してください。最後の$e_{ij}$が$d_j u_{ij}$となっていますが，これは誤差についても他の因子と形を同じくし，項目に依存するものとそれ以外に区別しているだけです。
@@ -74,108 +74,108 @@
 
 そこで，この未知数だらけの方程式を解くために，因子について以下のような条件を置きます。
 \begin{itemize}
-	\item 共通因子の因子得点，独自因子の因子得点は，標準化されている。すなわち，いずれの因子得点も平均点は0であり，分散は1である。
-	\item 共通因子と独自因子との間に相関はない。
+    \item 共通因子の因子得点，独自因子の因子得点は，標準化されている。すなわち，いずれの因子得点も平均点は0であり，分散は1である。
+    \item 共通因子と独自因子との間に相関はない。
 \end{itemize}
 この他に，状況に応じて因子同士の間に相関を仮定します。
 \begin{itemize}
-	\item 共通因子同士の相関を認めないのを「直交因子モデル」，認めるのを「斜交因子モデル」と呼ぶ。
+    \item 共通因子同士の相関を認めないのを「直交因子モデル」，認めるのを「斜交因子モデル」と呼ぶ。
 \end{itemize}
 
 このような仮定を置いたら問題が解けるようになるのでしょうか？ 実はこの問題を解く鍵は，多変量データであればなんとかなるのです！
 
 2つの変数，$j$と$k$の標準得点から，
 \begin{equation}
-	r_{jk}=\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}
+    r_{jk}=\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}
 \end{equation}
 
 のように，相関係数が算出されることを思い出してください。先ほどの因子分析の基本代数式(式\ref{factor})をこの式に代入してみましょう。
 \begin{equation}
-	\begin{array}{ccl}
-		r_{jk} & = & \displaystyle{\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}}                                                                                                                  \\
-		       & = & \displaystyle{\frac{1}{N} \sum_{i=1}^{N}}(a_{j1}f_{i1}+a_{j2}f_{i2}+ \ldots \ +a_{jm}f_{im}+d_{j}u_{ij})(a_{k1}f_{i1}+a_{k2}f_{i2}+ \ldots \ +a_{km}f_{km}+d_{k}u_{ik})
-	\end{array}
+    \begin{array}{ccl}
+        r_{jk} & = & \displaystyle{\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}}                                                                                                                  \\
+               & = & \displaystyle{\frac{1}{N} \sum_{i=1}^{N}}(a_{j1}f_{i1}+a_{j2}f_{i2}+ \ldots \ +a_{jm}f_{im}+d_{j}u_{ij})(a_{k1}f_{i1}+a_{k2}f_{i2}+ \ldots \ +a_{km}f_{km}+d_{k}u_{ik})
+    \end{array}
 \end{equation}
 
 これは代数の計算としてやっていくと，非常に煩雑で間違いが起きやすそうです。そこで，少し視覚化してわかりやすくしてみましょう。
 多項式の掛け算は，各項目の総当たり戦ですので，列方向に$z_{ij}$，行方向に$z_{ik}$の各要素を置いて，要素同士の組み合わせ表を作ります(図\ref{x03_multiply})。
 
 \begin{figure}[ht]
-	\[
-		\begin{array}{rl|cccccc|}
-			        &                                                       & \multicolumn{6}{c}{z_{ij}=}                                                                                                                                                                                                                                                                                                        \\
-			        &                                                       & a_{j1}f_{i1} +                                                          & a_{j2}f_{i2}+                                                            & a_{j3}f_{i3} +                                                         & \cdots\cdots +                                                          & a_{jm}f_{im} + & d_jU_{ij} \\\hline
-			        & \begin{array}{c}a_{k1}f_{i1}\\+\end{array}            & \multicolumn{1}{>{\columncolor{red!9}}c}{}                              & \multicolumn{4}{>{\columncolor{cyan!9}}c}{}                              & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                                                                                                  \\
-			z_{ik}= & \begin{array}{c}a_{k2}f_{i2}\\+\end{array}            & \multicolumn{1}{>{\columncolor{cyan!9}}c}{}                             & \multicolumn{1}{>{\columncolor{red!9}}c}{\textcircled{\scriptsize 1}}    & \multicolumn{3}{>{\columncolor{cyan!9}}c}{\textcircled{\scriptsize 2}} & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                         \\
-			        & \begin{array}{c}a_{k3}f_{i3}\\+\end{array}            & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}                             & \multicolumn{1}{>{\columncolor{red!9}}c}{}                               & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}                            & \multicolumn{1}{>{\columncolor{green!9}}c}{\textcircled{\scriptsize 3}}                              \\
-			        & \hspace{10pt}\begin{array}{c}\vdots\\+\end{array}     & \multicolumn{3}{>{\columncolor{cyan!9}}c}{\textcircled{\scriptsize 2}}  & \multicolumn{1}{>{\columncolor{red!9}}c}{}                               & \multicolumn{1}{>{\columncolor{cyan!9}}c}{}                            & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                         \\
-			        & \begin{array}{c}a_{km}f_{im}\\+\end{array}            & \multicolumn{4}{>{\columncolor{cyan!9}}c}{}                             & \multicolumn{1}{>{\columncolor{red!9}}c}{}                               & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                                                                                                  \\
-			        & \hspace{7pt}\begin{array}{c}\\d_kU_{ik}\\ \end{array} & \multicolumn{5}{>{\columncolor{green!9}}c}{\textcircled{\scriptsize 3}} & \multicolumn{1}{>{\columncolor{yellow!9}}c}{\textcircled{\scriptsize 4}}                                                                                                                                                                                 \\\hline
-		\end{array}
-	\]
-	\caption{項目同士の総当たりを考える}
-	\label{x03_multiply}
+    \[
+        \begin{array}{rl|cccccc|}
+                    &                                                       & \multicolumn{6}{c}{z_{ij}=}                                                                                                                                                                                                                                                                                                        \\
+                    &                                                       & a_{j1}f_{i1} +                                                          & a_{j2}f_{i2}+                                                            & a_{j3}f_{i3} +                                                         & \cdots\cdots +                                                          & a_{jm}f_{im} + & d_jU_{ij} \\\hline
+                    & \begin{array}{c}a_{k1}f_{i1}\\+\end{array}            & \multicolumn{1}{>{\columncolor{red!9}}c}{}                              & \multicolumn{4}{>{\columncolor{cyan!9}}c}{}                              & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                                                                                                  \\
+            z_{ik}= & \begin{array}{c}a_{k2}f_{i2}\\+\end{array}            & \multicolumn{1}{>{\columncolor{cyan!9}}c}{}                             & \multicolumn{1}{>{\columncolor{red!9}}c}{\textcircled{\scriptsize 1}}    & \multicolumn{3}{>{\columncolor{cyan!9}}c}{\textcircled{\scriptsize 2}} & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                         \\
+                    & \begin{array}{c}a_{k3}f_{i3}\\+\end{array}            & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}                             & \multicolumn{1}{>{\columncolor{red!9}}c}{}                               & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}                            & \multicolumn{1}{>{\columncolor{green!9}}c}{\textcircled{\scriptsize 3}}                              \\
+                    & \hspace{10pt}\begin{array}{c}\vdots\\+\end{array}     & \multicolumn{3}{>{\columncolor{cyan!9}}c}{\textcircled{\scriptsize 2}}  & \multicolumn{1}{>{\columncolor{red!9}}c}{}                               & \multicolumn{1}{>{\columncolor{cyan!9}}c}{}                            & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                         \\
+                    & \begin{array}{c}a_{km}f_{im}\\+\end{array}            & \multicolumn{4}{>{\columncolor{cyan!9}}c}{}                             & \multicolumn{1}{>{\columncolor{red!9}}c}{}                               & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                                                                                                  \\
+                    & \hspace{7pt}\begin{array}{c}\\d_kU_{ik}\\ \end{array} & \multicolumn{5}{>{\columncolor{green!9}}c}{\textcircled{\scriptsize 3}} & \multicolumn{1}{>{\columncolor{yellow!9}}c}{\textcircled{\scriptsize 4}}                                                                                                                                                                                 \\\hline
+        \end{array}
+    \]
+    \caption{項目同士の総当たりを考える}
+    \label{x03_multiply}
 \end{figure}
 
 図\ref{x03_multiply}に示されたのは個人$i$についてのものであり，これが人数分ある，すなわち$\sum_{i=1}^N$をつけないといけないことに注意してください。
 さて図を軽く色分けしてあるのですが，ここにあるように計算すべき領域を4つに分けて考えていきましょう。
 \begin{description}
-	\item[\textcircled{\scriptsize 1}の領域] 因子$p$と$p$の積和部分(同じ因子同士の掛け合わせ)
-	\item[\textcircled{\scriptsize 2}の領域] 因子$p$と$q$の積和部分(異なる因子同士の掛け合わせ)
-	\item[\textcircled{\scriptsize 3}の領域] 因子$p$($q$)と独自因子の積和部分
-	\item[\textcircled{\scriptsize 4}の領域] 独自因子同士の積和部分
+    \item[\textcircled{\scriptsize 1}の領域] 因子$p$と$p$の積和部分(同じ因子同士の掛け合わせ)
+    \item[\textcircled{\scriptsize 2}の領域] 因子$p$と$q$の積和部分(異なる因子同士の掛け合わせ)
+    \item[\textcircled{\scriptsize 3}の領域] 因子$p$($q$)と独自因子の積和部分
+    \item[\textcircled{\scriptsize 4}の領域] 独自因子同士の積和部分
 \end{description}
 
 この各パートを順に計算していきましょう。まず\textcircled{\scriptsize 1}ですが，たとえば第一因子については
 \begin{equation}
-	\frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2
+    \frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2
 \end{equation}
 となることがわかります。ここで，$a_{j1}$と$a_{k1}$は$N$には関係がない($\sum$は$i$が$1$から$N$まで変化することを意味しているが，係数$i$はどちらにも入っていない)ので，総和して割る意味がないことに気づきます。そうなると，必然的にこの式は，
 \begin{equation}
-	\frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{N}\sum F_{i1}^2
+    \frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{N}\sum F_{i1}^2
 \end{equation}
 となります。この$F_{i1}$は因子得点であり，上の仮定より標準化されたものだということになります。さて，標準得点と標準得点の積和平均は相関係数になることをもう一度思い出してください！そうすると，これは自分自身との相関係数を表していることになりますから，当然$F_{i1}^2=1.0$であることがわかります。
 
 結局，\textcircled{\scriptsize 1}のエリアは
 \begin{equation}
-	\frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{N}\sum F_{i1}^2=a_{j1}a_{k1}
+    \frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{N}\sum F_{i1}^2=a_{j1}a_{k1}
 \end{equation}
 と，とてもあっさり書き下すことができるのです。
 
 つづいて\textcircled{\scriptsize 2}を見てみましょう。ここは異なる因子がかけ合わさった部分ですね。落ち着いて，第一因子と第二因子を例にして考えてみましょう。この箇所で得られるのは，
 \begin{equation}
-	\frac{1}{N}\sum a_{j1}F_{i1} a_{k2}F_{k2} = a_{j1}a_{k2}\frac{1}{N}\sum F_{i1}F_{i2}
+    \frac{1}{N}\sum a_{j1}F_{i1} a_{k2}F_{k2} = a_{j1}a_{k2}\frac{1}{N}\sum F_{i1}F_{i2}
 \end{equation}
 ということになります。ここで，$F_{i1}$および$F_{i2}$はそれぞれ第一，第二因子における個人$i$の因子得点を意味しています。因子得点は標準化されていることをもう一度思い出すと，これは第一因子と第二因子の相関係数になります。ここで，この因子分析が直交因子モデルだと考えますと，因子同士に相関がないわけですから，数字としては$0.0$で消えてしまいます。するとこの部分は，
 
 \begin{equation}
-	\frac{1}{N}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{N}\sum F_{i1}F_{i2}=0
+    \frac{1}{N}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{N}\sum F_{i1}F_{i2}=0
 \end{equation}
 となることがわかりました。つまり，この領域\textcircled{\scriptsize 2}は，すべて$0$になってしまうのです。
 
 
 続いて\textcircled{\scriptsize 3}の部分について考えてみましょう。これはある共通因子と独自因子の積和部分です。例によって標準得点同士の関係から，相関係数を算出することになりますが，独自因子は共通因子と無相関であることを考えると，
 \begin{equation}
-	\frac{1}{N}\sum a_{i1}F_{i1}d_{j}U_{ij}=a_{ik}d_{j} \frac{1}{N}\sum U_{ij}F_{i1} =0
+    \frac{1}{N}\sum a_{i1}F_{i1}d_{j}U_{ij}=a_{ik}d_{j} \frac{1}{N}\sum U_{ij}F_{i1} =0
 \end{equation}
 とこのように，この箇所もすべて$0$になってしまいます。
 
 最後の\textcircled{\scriptsize 4}に至っては，独自因子と独自因子の積和ですから，これも
 \begin{equation}
-	\frac{1}{N}\sum d_{j}d_{k}U_{ij}U_{ik}=d_{j}d_{k}\frac{1}{N}\sum U_{ij}U_{ik}=0
+    \frac{1}{N}\sum d_{j}d_{k}U_{ij}U_{ik}=d_{j}d_{k}\frac{1}{N}\sum U_{ij}U_{ik}=0
 \end{equation}
 のように$0$になります。結局，消えて無くなるのがほとんどで，残るのは\textcircled{1}の部分だけであり，$r_{jk}$を考えるときはそこだけ考慮すればよいことになります。
 
 整理すると，
 \begin{equation}
-	r_{jk}=a_{j1}a_{k1}+a_{j2}a_{k2}+ \cdots +a_{jm}a_{km}
+    r_{jk}=a_{j1}a_{k1}+a_{j2}a_{k2}+ \cdots +a_{jm}a_{km}
 \end{equation}
 ということがわかります。つまり，項目$j$と項目$k$の相関係数は，項目$j$の因子負荷量と項目$k$の因子負荷量を，すべての因子について総和したものであるということです。因子分析の基本モデルから導出されるこの定理を，とくに\textbf{因子分析の第二定理}と呼びます。
 
 ここで同じ項目同士の相関を考えてみましょう。項目$j$と項目$j$の相関係数は，もちろん$1.0$になりますね。これを因子分析の基本式で表すと，次のように表現できます。
 \begin{equation}
-	\label{facteo1}
-	r_{jj}=a_{j1}^2+a_{j2}^2+ \cdots + a_{jm}^2 + d_j^2 = 1.0
+    \label{facteo1}
+    r_{jj}=a_{j1}^2+a_{j2}^2+ \cdots + a_{jm}^2 + d_j^2 = 1.0
 \end{equation}
 
 さて，この式が意味するのはなんでしょうか。意味を考えてみると，ある項目それ自身との相関係数は，因子負荷の二乗和からなっている，ということがわかります。これこそ\textbf{因子分析の第一定理}と呼ばれるものであり，解けるはずのなかった方程式を解くための鍵となる式なのです。

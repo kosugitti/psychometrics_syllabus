@@ -18,7 +18,7 @@ Rパッケージの\texttt{brms}を使うと，一般線形モデルが簡単に
 \paragraph{Rスクリプトを開く}今日のコードを書くためのRスクリプトファイルを準備します。File > NewFile > R Scriptと進み，何も書いてないRスクリプトの画面を表示させてください。真っ白いファイルが開いたら問題ありません。
 
 続いて，ベイズ推定用のパッケージを準備します。\texttt{brms}パッケージ\footnote{ベイズで(Bayesian),回帰モデルを(Regression Mode)実行する，Stanを使ってね(using Stan)，という意味です。Stanとは\keyterm{確率的プログラミング言語}{かくりつてきぷろぐらみんぐげんご}{stocastic programming language}の一種で，要するに乱数発生器を作ってくれるソフトウェアのことです。}をインストールするのですが，このパッケージをインストールする\textbf{前に}，このパッケージが必要とするコンパイラを用意する必要があります。
-詳しくは \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}のサイトに説明がありますが\footnote{「RStan Getting Started (Japanese)」でググると出てきます。}\footnote{\citet{馬場201907}にも導入についての詳しい説明があります。}，Windowsユーザの場合はまず，\texttt{code:\ref{code:27_01}}を実行してください。
+詳しくは \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}のサイトに説明がありますが\footnote{「RStan Getting Started (Japanese)」でググると出てきます。}\footnote{\citet{Baba201907}にも導入についての詳しい説明があります。}，Windowsユーザの場合はまず，\texttt{code:\ref{code:27_01}}を実行してください。
 \begin{lstlisting}[language=c++,label={code:27_01},caption={必要なツールをインストールする}]
 pkgbuild::has_build_tools(debug = TRUE)
 \end{lstlisting}
@@ -65,16 +65,16 @@ summary(fit)
 
 \paragraph{コード解説}
 \begin{description}
-   \item[2-3行目] 高校と大学の時のデータを入力している
-   \item[5行目] それぞれのデータをデータフレーム型に組み上げている
-   \item[8-10行目] ggplotをつかって描画しています
-   \item[13行目] 回帰分析を実行しています
-   \item[15行目] 結果を出力しています
+    \item[2-3行目] 高校と大学の時のデータを入力している
+    \item[5行目] それぞれのデータをデータフレーム型に組み上げている
+    \item[8-10行目] ggplotをつかって描画しています
+    \item[13行目] 回帰分析を実行しています
+    \item[15行目] 結果を出力しています
 \end{description}
 
 これの結果は次のようなものでした(\texttt{Rの出力\ref{RS:out27_01}})。
 \begin{Rscreen}{lmの出力}{out27_01}
-   \begin{verbatim}
+    \begin{verbatim}
 > summary(fit)
 
 Call:
@@ -119,7 +119,7 @@ print(fit.brm)
 
 \texttt{Rの出力\ref{RS:out27_02}}が基本的な結果の情報です。\texttt{lm}関数を使った最尤推定の結果とほとんど同じ数字になっていることがわかります。結果はそれほど変わらないのですが，推定値が分布として得られていることが大きく異なる点です。
 \begin{Rscreen}{brmsの出力}{out27_02}
-   \begin{verbatim}
+    \begin{verbatim}
 Family: gaussian 
 Links: mu = identity; sigma = identity 
 Formula: daigaku ~ koukou 
@@ -143,10 +143,10 @@ scale reduction factor on split chains (at convergence, Rhat = 1).
 \end{Rscreen}
 このことをわかりやすく表示するために，\texttt{plot(fit.brm)}としてみましょう。図\ref{fig::29_01}のように，分析結果がプロットされます。
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/27_bayesian3/Rplot27_01.png}
-   \caption{ベイズ法による回帰係数の推定}
-   \label{fig::29_01}
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/27_bayesian3/Rplot27_01.png}
+    \caption{ベイズ法による回帰係数の推定}
+    \label{fig::29_01}
 \end{figure}
 この図の左側にあるのが，事後分布の形です。推定値である288.37や93.86は分布の平均値(\keytermL{EAP推定値}{EAPすいていち})で，この分布のピーク(MAP推定値)ではないことに注意してください。MAP推定値が欲しい場合は，別途\texttt{bayestestR}パッケージ\citep{bayestestR}を導入し，\verb|map_estimate|関数を実行する必要があります(\texttt{code:\ref{code:27_05}})。
 
@@ -157,9 +157,9 @@ map_estimate(fit.brm)
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-   \item[1行目] \texttt{bayestestR}パッケージがない人は，この1行でインストールできます
-   \item[2行目] パッケージを読み込み
-   \item[3行目] \verb|map_estimate|関数に分析結果を投入
+    \item[1行目] \texttt{bayestestR}パッケージがない人は，この1行でインストールできます
+    \item[2行目] パッケージを読み込み
+    \item[3行目] \verb|map_estimate|関数に分析結果を投入
 \end{description}
 
 最小二乗法や最尤法と違って，結果が分布で表されるという感覚が掴めてきたでしょうか。続いてはこの分布が乱数によって生成されていることに注目してみたいと思います。
@@ -167,7 +167,7 @@ map_estimate(fit.brm)
 既に述べたように，MCMCは乱数発生法であり，事後分布からのサンプリングでもって結果のヒストグラムを描くのでした。ヒストグラムが確率分布の稜線を描いてくれるからです。ただし，乱数ですから毎回違う結果が出ます。乱数がちゃんと事後分布からのものであるかどうかも，チェックしなければなりません。それらの情報について書いてあるのが，結果の6行目のあたりにあるのです(\texttt{Rの出力\ref{RS:out27_03}})。これを読み解いていきましょう。
 
 \begin{Rscreen}{MCMCの評価}{out27_03}
-   \begin{verbatim}
+    \begin{verbatim}
 Samples: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
     total post-warmup samples = 4000
 \end{verbatim}
@@ -176,10 +176,10 @@ Samples: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
 MCMC法はステップ・バイ・ステップで，一歩ずつ次の乱数を生み出していってます。このMCMCサンプルは，推定したいパラメータの代表候補たちです。内部に保存されているデータを抜き出したのが図\ref{fig::27_02}です。今回は切片(\verb|b_intercept|)と傾き(\texttt{b})と誤差の散らばり度(\texttt{sigma})について，毎回のステップで得られた乱数の値が書かれています。たとえば傾きは$77.55104 \to 100.42599 \to 133.46551 \to 77.90979 \to \cdots$というように，前回の値を軸にしながら次々と乱数を生み出していってるのです。正確には，ここには3つの変数があり，赤枠で囲んでいるようにこの3つの変数からなる同時確率空間からサンプリングしてきます。つまり$(336.0793,77.55104,32.49790)\to (283.5139,100.42599,41.52797) \to \cdots$というように，3つずつセットでステップを踏んでいることになります。これがどんどん積み重なっていく，ステップの様子を示したのが図の中頃にあるギザギザの折れ線であり，これをまとめ上げて積み重ねたヒストグラムが最後に事後分布として得られる，というのが基本原理です。
 
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/27_bayesian3/slide27_02.png}
-   \caption{MCMCのやっていること}
-   \label{fig::27_02}
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/27_bayesian3/slide27_02.png}
+    \caption{MCMCのやっていること}
+    \label{fig::27_02}
 \end{figure}
 
 
@@ -189,16 +189,17 @@ MCMC法はステップ・バイ・ステップで，一歩ずつ次の乱数を�
 
 図\ref{fig::27_03}をみてください。この図はトレースプロットといい，先ほどの図\ref{fig::27_02}の中頃にあったもの，あるいは\texttt{plot}で出力させた図\ref{fig::27_01}の右側にあったものです。ステップ数を横軸にとりながら鎖のステップを線で結んで，鎖がどのあたりをウロウロしているかを可視化しています。図の上には，複数のスタート地点から始まっても，途中で鎖が絡まりあって同じような領域をウロウロしている(サンプリングしている)ことが示されています。一方，下の方の図では鎖がほぐれています。下のような例は，サンプリングがうまくいっていないことの証左で，モデルが悪かったか，パラメータを特定する条件が不十分であったか，といった何らかの問題があったことを示しています。
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/27_bayesian3/slide27_01.png}
-   \caption{推定がうまくいってない時の例}
-   \label{fig::27_03}
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/27_bayesian3/slide27_01.png}
+    \caption{推定がうまくいってない時の例}
+    \label{fig::27_03}
 \end{figure}
 このように，結果が出力された後でMCMCの挙動をチェックすることが必要です。出力画面には最後にチェインの絡み具合をし評価した$\hat{R}$(Rhat)が1であれば収束している，ということを書いていて\footnote{ひとところに集まってきているという意味のconvergeを収束，といいます。コロナウイルスの蔓延が終わる，という意味でのしゅうそくは「終息」と書きます。}，今回の結果のRhatの列にはいずれも1.00とありますから，MCMCは問題なく事後分布からの代表値を取り出している，と診断できます(\texttt{Rの出力\ref{RS:out27_04}})。
 
 \begin{Rscreen}{MCMCに関するメッセージ}{out27_04}
-   \begin{verbatim}
-and Rhat is the potential scale reduction factor on split chains (at convergence, Rhat = 1).
+    \begin{verbatim}
+and Rhat is the potential scale reduction factor on split 
+chains (at convergence, Rhat = 1).
 \end{verbatim}
 \end{Rscreen}
 
@@ -225,14 +226,14 @@ result.brm2
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-   \item[1-7行目] データフレーム形にデータを組み上げています
-   \item[8-13行目] 説明変数の中で名義尺度水準のものを要因型であると設定しています。
-   \item[15行目] 線形モデルを実行しています。\texttt{brm}としてあることに注意して下さい。
-   \item[16行目] 結果を出力させています。
+    \item[1-7行目] データフレーム形にデータを組み上げています
+    \item[8-13行目] 説明変数の中で名義尺度水準のものを要因型であると設定しています。
+    \item[15行目] 線形モデルを実行しています。\texttt{brm}としてあることに注意して下さい。
+    \item[16行目] 結果を出力させています。
 \end{description}
 これを実行した結果が次のようになります(\texttt{Rの出力\ref{RS:out27_05}})。
 \begin{Rscreen}{交互作用モデルのbrms結果}{out27_05}
-   \begin{verbatim}
+    \begin{verbatim}
 Family: gaussian 
 Links: mu = identity; sigma = identity 
 Formula: value ~ temp * maker 
@@ -266,10 +267,10 @@ conditional_effects(result.brm2,effects = "temp:maker")
 \end{lstlisting}
 表示される3つの図(\ref{fig::27_04})はそれぞれ，温度の主効果，銘柄の主効果，そして交互作用であり，そのEAP推定値(点)と95\%確信区間がついています。これを見ると，温度の主効果は確信区間に重複があり，銘柄にそれはないこと，交互作用も暖かい時の銘柄の違いが大きく，冷たい時の銘柄の効果は薄いとか，銘柄Bは温度ではっきりと違いがあるというようなことが目に見えてわかります。これらは帰無仮説検定ではありませんから，検定の多重性の問題がないため，新しい統計量を使って計算し直す必要もありません。非常に直感的に推論を進めていくことができるでしょう。
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/27_bayesian3/slide27_03.png}
-   \caption{周辺平均値の推定結果}
-   \label{fig::27_04}
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/27_bayesian3/slide27_03.png}
+    \caption{周辺平均値の推定結果}
+    \label{fig::27_04}
 \end{figure}
 \section{群内モデルの推定}
 最後に，群内のモデルについて解説します。第\ref{m22_anovaOnR}講の，介入効果のモデルを思い出してください。群内要因がある線形モデルは，次のように表記できるのでした。
@@ -294,16 +295,16 @@ conditional_effects(result.brm3)
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-   \item[1-5行目] データフレーム形にデータを組み上げています。前回と同じデータなのですが，組み方が少し変わっている点に注意してください。確認のために，\texttt{Example3}がどのような形になっているか一度表示してみるといいでしょう。
-   \item[6行目] 説明変数の中で名義尺度水準のものを要因型であると設定しています。
-   \item[8行目] 線形モデルを実行しています。\texttt{brm}としてあること，\texttt{(1|ID)}という項が増えていることに注意してください。
-   \item[9-10行目] 結果を出力させています。
+    \item[1-5行目] データフレーム形にデータを組み上げています。前回と同じデータなのですが，組み方が少し変わっている点に注意してください。確認のために，\texttt{Example3}がどのような形になっているか一度表示してみるといいでしょう。
+    \item[6行目] 説明変数の中で名義尺度水準のものを要因型であると設定しています。
+    \item[8行目] 線形モデルを実行しています。\texttt{brm}としてあること，\texttt{(1|ID)}という項が増えていることに注意してください。
+    \item[9-10行目] 結果を出力させています。
 \end{description}
 線形モデルの書き方が変わったことに注意してください。従属変数と独立変数をチルダで繋ぐのはこれまでと同じなのですが，これに加えて\texttt{(1|ID)}という表記があります。このカッコの中身は1が切片を表しており，それが変数\texttt{ID}ごとに変わるよ，ということを意味しています。
 
 これを実行した結果が次のようになります(\texttt{Rの出力\ref{RS:out27_06}})。
 \begin{Rscreen}{ランダム切片モデル}{out27_06}
-   \begin{verbatim}
+    \begin{verbatim}
 Family: gaussian 
 Links: mu = identity; sigma = identity 
 Formula: value ~ time + (1 | ID) 
@@ -342,10 +343,10 @@ scale reduction factor on split chains (at convergence, Rhat = 1).
 各クラスには10人の生徒がいて，それぞれのテスト結果は表\ref{L23::exe1}の通りです。このデータについて，回帰分析のベイズ推定を行った上で，次の各問いに答えてください。
 
 \begin{enumerate}
-   \item 切片の推定値はいくらになりましたか。おおよそで結構ですので，EAP推定値を答えてください。
-   \item 回帰分析を行った結果，テキストAにくらべてテキストBの平均値はどれぐらい違うと思われますか。おおよそで結構ですので，95\%区間を答えてください。
-   \item 回帰分析を行った結果，テキストAにくらべてテキストCの平均値はどれぐらい違うと思われますか。おおよそで結構ですので，95\%区間を答えてください。
-   \item 回帰分析を行った結果，テキストAにくらべてテキストDの平均値に違いがあると断言しても良いでしょうか。\verb|conditional_effects|の図をみて判断してください。
+    \item 切片の推定値はいくらになりましたか。おおよそで結構ですので，EAP推定値を答えてください。
+    \item 回帰分析を行った結果，テキストAにくらべてテキストBの平均値はどれぐらい違うと思われますか。おおよそで結構ですので，95\%区間を答えてください。
+    \item 回帰分析を行った結果，テキストAにくらべてテキストCの平均値はどれぐらい違うと思われますか。おおよそで結構ですので，95\%区間を答えてください。
+    \item 回帰分析を行った結果，テキストAにくらべてテキストDの平均値に違いがあると断言しても良いでしょうか。\verb|conditional_effects|の図をみて判断してください。
 \end{enumerate}
 
 
@@ -354,10 +355,10 @@ scale reduction factor on split chains (at convergence, Rhat = 1).
 授業後のテストの点数が表\ref{L23::exe2}の通りです。このデータに対して回帰分析のベイズ推定を行った上で，その結果について回答してください。
 
 \begin{enumerate}
-   \item 切片の推定値はいくらになりましたか。おおよそで結構ですので，EAP推定値を答えてください。
-   \item テキストA,B,Cの効果はどのように判断すれば良いでしょうか。\verb|conditional_effects|の図をみて考察してください。
-   \item 教員A,Bの効果ははどのように判断すれば良いでしょうか。\verb|conditional_effects|の図をみて考察してください。
-   \item 交互作用として，どのような特徴があるでしょうか。\verb|conditional_effects|の図をみて考察してください。
+    \item 切片の推定値はいくらになりましたか。おおよそで結構ですので，EAP推定値を答えてください。
+    \item テキストA,B,Cの効果はどのように判断すれば良いでしょうか。\verb|conditional_effects|の図をみて考察してください。
+    \item 教員A,Bの効果ははどのように判断すれば良いでしょうか。\verb|conditional_effects|の図をみて考察してください。
+    \item 交互作用として，どのような特徴があるでしょうか。\verb|conditional_effects|の図をみて考察してください。
 \end{enumerate}
 
 \paragraph{課題3 Withinデザインの分散分析}
@@ -373,13 +374,13 @@ dat3 <- read_csv("Lesson8exe3.csv") %>%
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-   \item[1行目] データファイル\texttt{Lesson8exe3.csv}を読み込んでいます
-   \item[2行目] id列をキーにデータを縦型にしています
-   \item[3行目] データを表示させています
+    \item[1行目] データファイル\texttt{Lesson8exe3.csv}を読み込んでいます
+    \item[2行目] id列をキーにデータを縦型にしています
+    \item[3行目] データを表示させています
 \end{description}
 \begin{enumerate}
-   \item 個人差について正しく述べている文章を選んでください。
-   \item 時期の効果について正しく述べている文章を選んでください。
+    \item 個人差について正しく述べている文章を選んでください。
+    \item 時期の効果について正しく述べている文章を選んでください。
 \end{enumerate}
 
 \end{document}

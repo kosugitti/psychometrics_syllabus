@@ -16,34 +16,34 @@
 具体的な数値例をみてみましょう。
 
 \[
-	\bm{A} = \begin{pmatrix}
-		1 & 6 \\ 2 & 5
-	\end{pmatrix}
-	,\bm{x} = \begin{pmatrix}
-		1 \\ 1
-	\end{pmatrix}
+    \bm{A} = \begin{pmatrix}
+        1 & 6 \\ 2 & 5
+    \end{pmatrix}
+    ,\bm{x} = \begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}
 \]
 
 を例にします。この時次の関係が成り立ちます。
 
 \[
-	\bm{Ax} =
-	\begin {pmatrix}
-	1 & 6 \\
-	2 & 5 \\
-	\end{pmatrix}
-	\begin{pmatrix}
-		1 \\ 1
-	\end{pmatrix}
-	=
-	\begin{pmatrix}
-		7 \\ 7
-	\end{pmatrix}
-	=7
-	\begin{pmatrix}
-		1 \\ 1
-	\end{pmatrix}
-	=7 \bm{x}
+    \bm{Ax} =
+    \begin {pmatrix}
+    1 & 6 \\
+    2 & 5 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        7 \\ 7
+    \end{pmatrix}
+    =7
+    \begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}
+    =7 \bm{x}
 \]
 
 確かに成立する組み合わせがありますね。この行列$\bm{A}$に対して，7が固有値，$(1,1)$が固有ベクトルになっています。
@@ -68,13 +68,13 @@
 固有値都行列の関係は冒頭で示したように，$\bm{Ax}=\lambda \bm{x}$であり，正方行列の特徴をスカラーにしてしまうというものです。得られる$N$個の固有値は，元の正方行列のエッセンスをスカラーにして表現しているわけです。ここで固有値の大きさの順に並べ替えて，順に$\lambda_1,\lambda_2 \cdots \lambda_n$としたとしましょう。ここで固有ベクトルの大きさを$\bm{xx'}=1$となるように選んでやれば，元の行列を次のように書き換えることができます。
 
 \[
-	\bm{Axx'} = \lambda \bm{xx'}
+    \bm{Axx'} = \lambda \bm{xx'}
 \]
 
 ここから，次のように行列$\bm{A}$を分解して行くことができます。
 
 \[
-	\bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
+    \bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
 \]
 
 これらをまとめると，固有値は元の行列の対角要素の情報を表したものであり，全体の情報量はそのままに重要度の順に並べ替えたものである，といえるでしょう。
@@ -89,7 +89,7 @@
 固有ベクトルは$\bm{x}=\bm{0}$すなわち全部ゼロであれば当然成り立ちますから(自明な解といいます)，これは除外することにします($\bm{x}\neq \bm{0}$)。
 行列の表現は連立方程式の解を求めることと同じなのでした。$\bm{A} - \lambda\bm{I}$を連立方程式の係数行列だと考えれば，それが\keytermL{逆行列}{ぎゃくぎょうれつ}を持つと左辺にそれをかけてしまえば全部ゼロの答えになってしまいますから，そうでない答えを求めるには，この係数行列が逆行列を持たないことが重要です。
 
-さて，この授業の中では説明してきませんでしたが，方程式が解を持つかどうかを決定する計算方法があります。これを\keyterm{行列式}{ぎょうれつしき}{determinant}といい\footnote{行列式は数値であり，解が求まるかどうか決定determinantする，という意味なのに，日本語訳はなぜか「式」といいます。変なの。}，この値がゼロでなければその方程式は解を持つ，ということがわかっています。説明しなかったのは，この値を求める計算がとても面倒だからで，詳しくは線形代数のテキストにお任せするとして\footnote{たとえば\citet{村上正康2016-03-01}の第3章をみてください。}，ここでは簡便のために$2\times2$方程式の行列について紹介します。
+さて，この授業の中では説明してきませんでしたが，方程式が解を持つかどうかを決定する計算方法があります。これを\keyterm{行列式}{ぎょうれつしき}{determinant}といい\footnote{行列式は数値であり，解が求まるかどうか決定determinantする，という意味なのに，日本語訳はなぜか「式」といいます。変なの。}，この値がゼロでなければその方程式は解を持つ，ということがわかっています。説明しなかったのは，この値を求める計算がとても面倒だからで，詳しくは線形代数のテキストにお任せするとして\footnote{たとえば\citet{Murakami20160301}の第3章をみてください。}，ここでは簡便のために$2\times2$方程式の行列について紹介します。
 
 $2 \times 2$の係数行列，$\bm{P}=\begin{pmatrix} a&b\\c&d \end{pmatrix}$の逆行列は次の式で求められることがわかっています。
 \[ \bm{P}^{-1}= \frac{1}{ad-bc}\begin{pmatrix}d & -b \\ -c &a \end{pmatrix} \]
@@ -127,7 +127,7 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 
 ある正方行列から固有値$\lambda$と固有ベクトル$\bm{a}$が得られたとします。このベクトル$\bm{a}$のすべての要素を定数$c$倍したベクトル$\bm{b}=c\bm{a}$を考えると，これもやはり同じ関係が成り立ちます。
 \begin{equation}
-	\bm{A}\bm{b}=  \lambda c \bm{a} =\lambda \bm{b}
+    \bm{A}\bm{b}=  \lambda c \bm{a} =\lambda \bm{b}
 \end{equation}
 先ほどの計算でも明らかになりましたが，固有ベクトルの値は絶対的なものではなく，要素間の相対的大きさを反映しているに過ぎないのでしたね。
 
@@ -135,40 +135,40 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 
 固有値と固有ベクトルの話の最初にあった，$\bm{Ax}=\lambda\bm{x}$というのを見直してみましょう。$\bm{x}$がなんらかの座標を表していると考えると，それに正方行列をかけるとはどういう意味でしょうか。次の計算式を見てください。
 \begin{equation}
-	\bm{Ax}=
-	\begin{pmatrix}
-		2 & 0 \\
-		0 & 3
-	\end{pmatrix}
-	\begin{pmatrix}
-		1 \\
-		2
-	\end{pmatrix}
-	=
-	\begin{pmatrix}
-		2 \\
-		6
-	\end{pmatrix}
+    \bm{Ax}=
+    \begin{pmatrix}
+        2 & 0 \\
+        0 & 3
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 \\
+        2
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        2 \\
+        6
+    \end{pmatrix}
 \end{equation}
 
 これをみると，座標$\bm{x}=\begin{pmatrix}1\\2\end{pmatrix}$に$\bm{A}$をかけたことで，座標が$\begin{pmatrix}2\\6\end{pmatrix}$に変わった，と見ることもできますね。このように，ある座標が別の座標に移ることをとくに「変換」と呼びます\footnote{より一般的にいうと，以下のようになります。:集合$X$の各元$x$に集合$Y$の元$f(x)$を対応させる対応$f$のことを, 集合$X$から集合$Y$への写像(mapping)，関数(function)，あるいは変換(transformation)という。}。つまり\textbf{正方行列はなんらかの変換を施すもの}だ，と考えることができます。
 
 今回の例では，行列$\bm{A}$には次のような性質があります。
 \begin{equation}
-	\begin{pmatrix}
-		2 & 0 \\
-		0 & 3
-	\end{pmatrix}
-	\begin{pmatrix}
-		1 \\
-		0
-	\end{pmatrix}
-	= 2 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+    \begin{pmatrix}
+        2 & 0 \\
+        0 & 3
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 \\
+        0
+    \end{pmatrix}
+    = 2 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
 \end{equation}
 
 \begin{equation}
-	\begin{pmatrix} 2 & 0\\ 0 & 3 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
-	= 3 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+    \begin{pmatrix} 2 & 0\\ 0 & 3 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+    = 3 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
 \end{equation}
 
 そう，お気づきのように，これは固有値・固有ベクトルです。この行列の固有値・固有ベクトルはそれぞれ$\lambda_1=2,\bm{x}_1=(1,0)$，$\lambda_2=3,\bm{x}_2=(0,1)$であることがわかります。この固有値，固有ベクトルの組み合わせをじっとみていると，おもしろい特徴がわかって来ます。
@@ -186,12 +186,12 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 \section{因子分析の数学的理解}
 さあ因子分析に戻って考えてみましょう。因子分析のモデルは次のようなものでした。
 \begin{equation}
-	\bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
+    \bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
 \end{equation}
 
 ここで，左辺の正方行列を相関行列$\bm{R}$とし，$\lambda_1 \bm{xx'} = \bm{aa'}$となるようにベクトルの大きさが整えられているとすれば，次のように表現できます。
 \begin{equation}
-	\bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
+    \bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
 \end{equation}
 
 ここでは共通因子の数が$m$個だとわかっている体で分解していますが，基本的にはサイズ$N$の行列からは$N$個の固有値がずらーっと並ぶわけです。それをどこかで「共通しているのはここまで」と判断し，残りは誤差であるとしてまとめて$\bm{dd'}$にしているだけですね。このように数学的にはここからが共通因子，ここからが独自因子といった区別をすることなく，最後のひとかけらまで固有値分解を行なっているのですが，その次元の重要度でもって共通因子と誤差因子に(研究者が恣意的に)分割しているのが因子分析のやっていることなのです。
@@ -203,12 +203,12 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 ところで因子分析モデルの$\bm{A}$，因子負荷行列ですが，これは共通因子の固有ベクトルをセットで扱ったものです。つまり，$\bm{A} = \bm{a_1,a_2,\cdots,a_m}$と縦ベクトルを並べたものになっています。エレメントワイズで表現すると次のようになります。
 
 \[
-	\bm{A} = \left (
-	\begin{pmatrix}  a_{11}\\a_{12}\\\vdots a_{1N} \end{pmatrix},
-	\begin{pmatrix}  a_{21}\\a_{22}\\\vdots a_{2N} \end{pmatrix},
-	\cdots
-	\begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots a_{mN} \end{pmatrix},
-	\right )
+    \bm{A} = \left (
+    \begin{pmatrix}  a_{11}\\a_{12}\\\vdots a_{1N} \end{pmatrix},
+    \begin{pmatrix}  a_{21}\\a_{22}\\\vdots a_{2N} \end{pmatrix},
+    \cdots
+    \begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots a_{mN} \end{pmatrix},
+    \right )
 \]
 
 ここで$\bm{AA'}$の間に単位行列$\bm{I}$ を挟んでも，別に結果は変わりませんよね。単位行列はかけても変わらないのが特徴ですから，$\bm{AA'}=\bm{AIA}$です。ここでの$\bm{I}$のサイズは$m \times m$であることに注意しつつ聞いてください。
