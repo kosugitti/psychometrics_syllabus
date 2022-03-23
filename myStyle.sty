@@ -18,6 +18,23 @@
 \usepackage{multirow} % 表の縦結合
 \usepackage{tikz} % コマンドで図を書くパッケージ
 \usetikzlibrary{positioning, arrows.meta,calc} % Tikzのパッケージ
+
+\usepackage{luatexja-fontspec}
+% BIZ UDフォントを使う
+\newjfontface{\nonproportional}{BIZ UDMincho Medium}[YokoFeatures={JFM=ujis}]
+\setmainjfont[Ligatures={Common,TeX},
+  ItalicFont={BIZ UDPMincho Medium},
+  ItalicFeatures={FakeSlant=0.27},
+  SlantedFont={BIZ UDPMincho Medium},
+  SlantedFeatures={FakeSlant=0.18},
+  BoldFont={BIZ UDPGothic Bold},
+  BoldSlantedFont={BIZ UDPGothic Bold},
+  BoldSlantedFeatures={FakeSlant=0.18},
+  BoldItalicFont={BIZ UDPGothic Bold},
+  BoldItalicFeatures={FakeSlant=0.27},
+  YokoFeatures={JFM=prop}]{BIZ UDPMincho Medium}
+
+
 % ソースコード用のパッケージと設定
 \usepackage{colortbl}
 \usepackage{xcolor}
