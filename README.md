@@ -55,8 +55,18 @@
 
 ### 授業教材
 
+授業内容に準拠したテキストです。PC やタブレットでご覧ください。
+
 - [心理学データ解析基礎 1(心理学統計法)/心理学データ解析 1A 授業資料](Dkiso1_book.pdf)
 - [心理学データ解析応用 1/心理学データ解析応用 2/心理学データ解析 2AB 授業資料](Dkiso2_book.pdf)
+
+### 出版物
+
+教材を全て印刷するのは大変，という人のために Amazon にてペーパーブック版を用意しています。
+ペーパーブック版は基礎編バージョン 2.0.1，応用編バージョン 1.1.1 のものになります。
+
+- [心理学データ解析基礎: R と JASP で学ぶ楽しい心理統計の世界](https://amzn.to/3tuDKn0)
+- [心理学データ解析応用: R と Stan で学ぶフリーで楽しい心理統計の世界](https://amzn.to/3D1PC2M)
 
 ## 授業の R コード
 
@@ -65,7 +75,7 @@
 - [野球選手のデータ 10 年度分](codes/SampleData/BaseballDecade.csv)
 - [項目反応理論用のデータ](codes/SampleData/IRTsample.csv)
 - [体重推移のデータ](codes/SampleData/Weight.csv)
-- [M-1グランプリの審査員データ](codes/SampleData/M1score2021.csv)
+- [M-1 グランプリの審査員データ](codes/SampleData/M1score2021.csv)
 
 ### 心理学データ解析基礎 2
 
