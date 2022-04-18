@@ -18,6 +18,7 @@
 \usepackage{multirow} % 表の縦結合
 \usepackage{tikz} % コマンドで図を書くパッケージ
 \usetikzlibrary{positioning, arrows.meta,calc} % Tikzのパッケージ
+\usepackage{lltjext}% 部分的に縦書き
 
 \usepackage{luatexja-fontspec}
 % BIZ UDフォントを使う
@@ -64,7 +65,7 @@ setpagesize=false,
  bookmarksnumbered=true,%
  bookmarksopen=true,%
  colorlinks=true,%
- linkcolor=Blue,
+ linkcolor=blue,
  citecolor=PineGreen,
  urlcolor=magenta
 }
@@ -117,7 +118,6 @@ setpagesize=false,
 \pagestyle{fancy}
     \cfoot{\thepage} %フッタ中央．ページ番号を表示
     \renewcommand{\chaptermark}[1]{\markboth{第\ \thechapter\ 講 \ #1}{}}
-
 
 
 \renewcommand{\refname}{引用文献}

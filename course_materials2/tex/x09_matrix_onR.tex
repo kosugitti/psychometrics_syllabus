@@ -33,7 +33,8 @@ D <- matrix(A, ncol = 3, byrow = T)
 	\item[4行目] 同じくオブジェクトAを\texttt{matrix}型に変換，列数は3ですが\texttt{byrow = T}で「行ごとに並べる」スイッチをオン(TRUE)にしています。
 \end{description}
 
-それぞれのオブジェクトに格納されているものを確認してみましょう。何がどうなっているかわかるでしょうか(出力\ref{RS:out09_01})。
+それぞれのオブジェクトに格納されているものを確認してみましょう。何がどうなっているかわかるでしょうか
+(出力\ref{RS:out09_01})。
 
 \begin{Rscreen}{Rにおけるベクトルと行列}{out09_01}
 	\begin{verbatim}
@@ -216,19 +217,19 @@ solve(A) %*% b
 	\centering
 	\begin{tabular}[t]{ccccccc}
 		\hline
-		Name       & team     & height   & weight   & salary   & Win      & Save     \\
+		Name     & team     & height   & weight   & salary   & Win      & Save     \\
 		\hline
-		菅野　智之 & Giants   & 186      & 92       & 65000    & 14       & 0        \\
-		西　勇輝   & Tigers   & 181      & 82       & 20000    & 11       & 0        \\
-		秋山　拓巳 & Tigers   & 188      & 101      & 3200     & 11       & 0        \\
-		大野　雄大 & Dragons  & 183      & 83       & 13000    & 11       & 0        \\
-		石川　柊太 & Softbank & 185      & 86       & 4800     & 11       & 0        \\
-		千賀　滉大 & Softbank & 187      & 90       & 30000    & 11       & 0        \\
-		涌井　秀章 & Eagles   & 185      & 85       & 12500    & 11       & 0        \\
-		森下　暢仁 & Carp     & 180      & 76       & 1600     & 10       & 0        \\
-		大貫　晋一 & DeNA     & 181      & 73       & 2500     & 10       & 0        \\
-		小川　泰弘 & Swallows & 171      & 80       & 9000     & 10       & 0        \\
-		$\vdots$   & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+		菅野　智之    & Giants   & 186      & 92       & 65000    & 14       & 0        \\
+		西　勇輝     & Tigers   & 181      & 82       & 20000    & 11       & 0        \\
+		秋山　拓巳    & Tigers   & 188      & 101      & 3200     & 11       & 0        \\
+		大野　雄大    & Dragons  & 183      & 83       & 13000    & 11       & 0        \\
+		石川　柊太    & Softbank & 185      & 86       & 4800     & 11       & 0        \\
+		千賀　滉大    & Softbank & 187      & 90       & 30000    & 11       & 0        \\
+		涌井　秀章    & Eagles   & 185      & 85       & 12500    & 11       & 0        \\
+		森下　暢仁    & Carp     & 180      & 76       & 1600     & 10       & 0        \\
+		大貫　晋一    & DeNA     & 181      & 73       & 2500     & 10       & 0        \\
+		小川　泰弘    & Swallows & 171      & 80       & 9000     & 10       & 0        \\
+		$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
 		\hline
 	\end{tabular}
 	\label{tbl::09_01}
