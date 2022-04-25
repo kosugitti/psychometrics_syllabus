@@ -1,0 +1,104 @@
+0:library(rstan)
+0:rstan_options(auto_write = TRUE)
+0:options(mc.cores = parallel::detectCores())
+0:stancode <- "
+0:data {
+0:int<lower=0> J; // number of schools
+0:real y[J]; // estimated treatment effects
+0:real<lower=0> sigma[J]; // s.e. of effect estimates
+0:}
+0:parameters {
+0:real mu;
+0:real<lower=0> tau;
+0:real eta[J];
+0:}
+0:transformed parameters {
+0:real theta[J];
+0:for (j in 1:J)
+0:theta[j] = mu + tau * eta[j];
+0:}
+0:model {
+0:target += normal_lpdf(eta | 0, 1);
+0:target += normal_lpdf(y | theta, sigma);
+0:}
+0:"
+0:schools_dat <- list(J = 8, y = c(28, 8, -3, 7, -1, 1, 18, 12),
+0:sigma = c(15, 10, 16, 11, 9, 11, 10, 18))
+0:model.ex <- stan_model(model_code = stancode, model_name = "school")
+0:fit.samp <- sampling(model.ex, data = schools_dat, iter = 1000,
+0:chains = 4)
+0:fit.samp
+0:library(cmdstanr)
+0:set_cmdstan_path()
+0:stancode <- "
+0:data {
+0:int<lower=0> J; // number of schools
+0:real y[J]; // estimated treatment effects
+0:real<lower=0> sigma[J]; // s.e. of effect estimates
+0:}
+0:parameters {
+0:real mu;
+0:real<lower=0> tau;
+0:real eta[J];
+0:}
+0:transformed parameters {
+0:real theta[J];
+0:for (j in 1:J)
+0:theta[j] = mu + tau * eta[j];
+0:}
+0:model {
+0:target += normal_lpdf(eta | 0, 1);
+0:target += normal_lpdf(y | theta, sigma);
+0:}
+0:"
+0:schools_dat <- list(J = 8, y = c(28, 8, -3, 7, -1, 1, 18, 12),
+0:sigma = c(15, 10, 16, 11, 9, 11, 10, 18))
+0:model <- cmdstan_model(stancode)
+0:model <- cmdstan_model("stancode")
+0:model <- cmdstan_model(stancode)
+0:library(cmdstanr)
+0:set_cmdstan_path()
+0:stancode <- "
+0:data {
+0:int<lower=0> J; // number of schools
+0:real y[J]; // estimated treatment effects
+0:real<lower=0> sigma[J]; // s.e. of effect estimates
+0:}
+0:parameters {
+0:real mu;
+0:real<lower=0> tau;
+0:real eta[J];
+0:}
+0:transformed parameters {
+0:real theta[J];
+0:for (j in 1:J)
+0:theta[j] = mu + tau * eta[j];
+0:}
+0:model {
+0:target += normal_lpdf(eta | 0, 1);
+0:target += normal_lpdf(y | theta, sigma);
+0:}
+0:"
+0:schools_dat <- list(J = 8, y = c(28, 8, -3, 7, -1, 1, 18, 12),
+0:sigma = c(15, 10, 16, 11, 9, 11, 10, 18))
+0:model <- cmdstan_model(stancode)
+0:modelFile <- write_stan_file(stancode)
+0:model <- cmdstan_model(modelFile)
+0:rebuild_cmdstan()
+0:modelFile <- write_stan_file(stancode)
+0:model <- cmdstan_model(modelFile)
+0:fit.samp <- model$sample(data=schools_dat,
+0:iter_warmup = 1000,
+0:iter_sampling = 2000,
+0:chains = 4,
+0:parallel_chains = 4,
+0:reflesh = 200)
+0:fit.samp <- model$sample(data=schools_dat,
+0:iter_warmup = 1000,
+0:iter_sampling = 2000,
+0:chains = 4,
+0:parallel_chains = 4,
+0:refresh = 200)
+0:fit.samp$print
+0:fit.samp$print()
+0:source("/Users/napier/Dropbox/Git/psychometrtics_syllabus/codes/Dkiso2/00_Appendix1_rstan.R", echo=TRUE)
