@@ -84,7 +84,11 @@ setpagesize=false,
 \newtcbtheorem{SCrstan}{rstanの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=green!3!,fontupper=\gtfamily\small}{SCrstan}
 \newtcbtheorem{SCcmd}{cmdstanrの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=pink!3!,fontupper=\gtfamily\small}{SCcmd}
 % コラム
-\newtcbtheorem{Untiku}{うんちく}{fonttitle=\gtfamily\sffamily\bfseries,colframe=blue,colback=blue!7!,fontupper=\gtfamily\small}{Untiku}
+\newtcbtheorem{Untiku}{うんちく}{fonttitle=\gtfamily\sffamily\bfseries,colframe=blue,colback=blue!7!,fontupper=\gtfamily\small,breakable}{Untiku}
+% figure環境の外でのcaption
+\usepackage{capt-of}
+
+
 
 % FAQ box
 \newtcbtheorem[number within=section]{FAQ}{Q.}

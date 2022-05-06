@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 2.0.2}
+\lhead{version 2.0.1}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/cover1.pdf}
@@ -21,7 +21,7 @@
 % 行番号開始
 \linenumbers
 % 各章
-% \part{心理学データ解析基礎1A(心理学統計法)}
+\part{心理学データ解析基礎1A(心理学統計法)}
 \include{m01_introduction}
 \include{m02_Numbers}
 \include{m03_introR}
@@ -37,7 +37,7 @@
 \include{m13_design2}
 \include{m14_design3}
 \include{m15_FirstSemester}
-% \part{心理学データ解析基礎1B}
+\part{心理学データ解析基礎1B}
 \include{m16_inference}
 \include{m17_estimation_and_test}
 \include{m18_NHST}
@@ -58,37 +58,37 @@
 \appendix
 \input{../../common_contents/Computer}
 \input{../../common_contents/FAQ} % FAQ page
-% \chapter{本講義に対応する詳細シラバス}
-% \input{../../syllabus/s01_Introduction}
-% \input{../../syllabus/s02_Numbers}
-% \input{../../syllabus/s03_introR}
-% \input{../../syllabus/s04_usingR}
-% \input{../../syllabus/s05_descriptives}
-% \input{../../syllabus/s06_ctt}
-% \input{../../syllabus/s07_probability}
-% \input{../../syllabus/s08_CorrelationCausation}
-% \input{../../syllabus/s09_Regression}
-% \input{../../syllabus/s10_MultipleRegression}
-% \input{../../syllabus/s11_Regression_onR}
-% \input{../../syllabus/s12_design1}
-% \input{../../syllabus/s13_design2}
-% \input{../../syllabus/s14_design3}
-% \input{../../syllabus/s15_FirstSemester}
-% \input{../../syllabus/s16_inference}
-% \input{../../syllabus/s17_estimation_and_test}
-% \input{../../syllabus/s18_NHST}
-% \input{../../syllabus/s19_NHST2}
-% \input{../../syllabus/s20_ttest}
-% \input{../../syllabus/s21_anova}
-% \input{../../syllabus/s22_anova_onR}
-% \input{../../syllabus/s23_likelihood}
-% \input{../../syllabus/s24_maximum_likelihood}
-% \input{../../syllabus/s25_bayesian}
-% \input{../../syllabus/s26_bayesian2}
-% \input{../../syllabus/s27_bayesian3}
-% \input{../../syllabus/s28_jasp}
-% \input{../../syllabus/s29_brms}
-% \input{../../syllabus/s30_SecondSemester}
+\chapter{本講義に対応する詳細シラバス}
+\input{../../syllabus/s01_Introduction}
+\input{../../syllabus/s02_Numbers}
+\input{../../syllabus/s03_introR}
+\input{../../syllabus/s04_usingR}
+\input{../../syllabus/s05_descriptives}
+\input{../../syllabus/s06_ctt}
+\input{../../syllabus/s07_probability}
+\input{../../syllabus/s08_CorrelationCausation}
+\input{../../syllabus/s09_Regression}
+\input{../../syllabus/s10_MultipleRegression}
+\input{../../syllabus/s11_Regression_onR}
+\input{../../syllabus/s12_design1}
+\input{../../syllabus/s13_design2}
+\input{../../syllabus/s14_design3}
+\input{../../syllabus/s15_FirstSemester}
+\input{../../syllabus/s16_inference}
+\input{../../syllabus/s17_estimation_and_test}
+\input{../../syllabus/s18_NHST}
+\input{../../syllabus/s19_NHST2}
+\input{../../syllabus/s20_ttest}
+\input{../../syllabus/s21_anova}
+\input{../../syllabus/s22_anova_onR}
+\input{../../syllabus/s23_likelihood}
+\input{../../syllabus/s24_maximum_likelihood}
+\input{../../syllabus/s25_bayesian}
+\input{../../syllabus/s26_bayesian2}
+\input{../../syllabus/s27_bayesian3}
+\input{../../syllabus/s28_jasp}
+\input{../../syllabus/s29_brms}
+\input{../../syllabus/s30_SecondSemester}
 \nolinenumbers
 
 \addcontentsline{toc}{chapter}{引用文献}
