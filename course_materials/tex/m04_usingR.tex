@@ -268,9 +268,9 @@ dat %>% filter(Year == "2020年度")
 この条件判断式は色々な使い方があります。コード\ref{code:usingR_filter2}にいくつかの例を示しますので，実行してどのようになるか確かめてみてください。
 \begin{lstlisting}[language=c++,label={code:usingR_filter2},caption={filter関数}]
 # 身長が180cm以上の人だけ取り出す
-dat %>% filter(height > 180)
+dat %>% filter(height >= 180)
 # 体重が100kg以下の人だけ取り出す
-dat %>% filter(weight < 100)
+dat %>% filter(weight <=100)
 # 投手だけ取り出す
 dat %>% filter(position == "投手")
 # 野手だけ取り出す，野手とは投手でない人のことです
@@ -389,7 +389,7 @@ g4
     \item[2行目] \texttt{g4}を表示しろ，という命令です。
 \end{description}
 
-今度は\verb|facet_wrap|という関数が出てきました。\verb|facet_|というのは分割，区切りを考える関数です。データにはさまざまな情報を書き込むことができますが，適当なグループで書き分けることでわかることも出てきます。今回は地域という変数で分割せよ，という表現をしており，その結果が図\ref{fig::05_15}の右下のようになっています。
+今度は\verb|facet_wrap|という関数が出てきました。\verb|facet_|というのは分割，区切りを考える関数です。データにはさまざまな情報を書き込むことができますが，適当なグループで書き分けることでわかることも出てきます。今回は\verb|team|という変数で分割せよ，という表現をしており，その結果が図\ref{fig::05_15}の右下のようになっています。
 
 可視化の文法については，習うより慣れろといった側面があります。さまざまな出力例をみながら，どのようにこのグラフが書けたのか，文法を読み解く練習もしてみましょう。ggplotによる出力例は，\url{https://www.r-graph-gallery.com/ggplot2-package.html}などが参考になります。
 
