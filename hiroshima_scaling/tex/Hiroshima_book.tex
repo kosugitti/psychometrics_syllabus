@@ -1,0 +1,39 @@
+\documentclass[dvipsnames]{ltjsbook}
+\usepackage{../../myStyle}
+\usepackage{docmute}
+\begin{document}
+\includepdf[noautoscale=false,pages=-]{../images/cover3.pdf}
+\VerbatimFootnotes
+\input{../../common_contents/copyright} % copyright page
+\title{最新行動科学特論2022}
+\author{小杉　考司}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+
+% 1. リッカート法では測れない　/3 種類の測定(テスト，パーソナリティ，態度)/古典的テスト理論
+% 2. 現代テスト理論　項目反応理論(ICC,IIC,TIC,CAT)
+% 3. 因子分析モデル　因子分析の基本モデル
+% 4. 行列の基礎　行列の加減乗除，固有値固有ベクトル
+% 5. 因子分析の行列表現
+% 6. 態度尺度の作成　サーストン法，リッカート法，SD 法
+% 7. リッカート法で測ったもの パーソナリティはどこにあるか，静的構造という性質，正規分布の二つの意味，てっちゃんの手品
+% 8. 距離を分析する　 → クラスター分析，多次元尺度構成法
+% 9. 選好を分析する　 → 展開法，多次元展開法，非計量 MDS
+% 10. MDS の展開　 → 個人差 MDS，非対称 MDS
+% 11. クロス表の分解　 → 交互平均法
+% 12. 双対尺度法の展開　 → 強制分類法，全情報分析
+% 13. 確率モデルとベイズ推定　 → 回帰分析の確率モデル，未知数の推定法 3 つ
+% 14. ベイズ推定の実際　 →MCMC 法，だいたいなんでも解ける
+% 15. 私たちは何が測りたいのか
+
+
+\addcontentsline{toc}{chapter}{引用文献}
+% 引用文献
+\bibliographystyle{../../jecon_jpa}
+\bibliography{../../sbib}
+% 索引
+\addcontentsline{toc}{chapter}{索引}
+
+\printindex
+\end{document}

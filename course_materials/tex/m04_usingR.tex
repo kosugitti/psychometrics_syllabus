@@ -623,7 +623,10 @@ dat.long <- dat %>%
 
     ちなみに，新しく作られる変数の変数名を指定することもできます。コード\ref{code:usingR_pivot_longer2}の例では，変数名を\verb|Variables|，値が入る変数名を\verb|Value|としてみました。
     \begin{lstlisting}[language=c++,label={code:usingR_pivot_longer2},caption={出力する変数名の指定}]
-pivot_longer(-ID, names_to = "Variables", values_to = "Value")
+        dat %>%
+        select(Year, Name, position) %>%
+        rownames_to_column("ID") %>%
+        pivot_longer(-ID, names_to = "Variables", values_to = "Value")
 \end{lstlisting}
 
     さて，このようにロング型のデータができたら，その逆もみておきましょう。ロング型をワイド型に戻したいこともあるわけです。次のコード\ref{code:usingR_pivot_wider}を実行してください。
