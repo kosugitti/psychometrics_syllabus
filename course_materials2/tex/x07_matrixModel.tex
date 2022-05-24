@@ -33,25 +33,29 @@
 
 
 これを使って平均値(列)ベクトル$\bm{m}$を次のように表すことができます。
-\[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} = \begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} = \begin{pmatrix}\bar{x_1} \\ \bar{x_2}\\ \vdots \\\bar{x_m} \end{pmatrix} \]
+\[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} = 
+\begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} = 
+\begin{pmatrix}\bar{x_.1} \\ \bar{x_.2}\\ \vdots \\\bar{x_.m} \end{pmatrix} \]
 
+ここで$\bar{x_.1}$は1つめの添字$i$を足し合わせて割ることでなくしていますから，$\bar{x_1}$のように省略して書くことがあります。このときの$1$は「第一番目の変数」という意味であり，個人の情報がなくなっている変数を意味していることに注意してください。
 
 さて，平均からの偏差を要素に持つ行列$\bm{V}$を考えたとします。
 \[
 	\begin{array}{ccl}
 		\bm{V} & = & \bm{X} - \bm{1} \bm{m}'                                                                                                               \\
 		       &   &                                                                                                                                       \\
-		       & = & \bm{X} - \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix} \begin{pmatrix} \bar{x_1} & \bar{x_2} & \cdots & \bar{x_m} \end{pmatrix} \\
+		       & = & \bm{X} - \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix} \begin{pmatrix} \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m} \end{pmatrix} \\
 		       &   &                                                                                                                                       \\
-		       & = & \bm{X} - \begin{pmatrix} \bar{x_1} & \bar{x_2} & \cdots & \bar{x_m} \\
-                \bar{x_1} & \bar{x_2} & \cdots & \bar{x_m} \\
+		       & = & \bm{X} - \begin{pmatrix} \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m} \\
+                \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m} \\
                 \vdots    & \vdots    & \ddots & \vdots    \\
-                \bar{x_1} & \bar{x_2} & \cdots & \bar{x_m}\end{pmatrix}
+                \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m}\end{pmatrix}
 	\end{array}
 \]
+この行列$\bm{V}$のサイズは$n \times m$であることに注意してください。
 これはまた，次のように表すこともできます。
 \[ \bm{V} = ( \bm{I} -\frac{1}{n}\bm{1} \bm{1} ')\bm{X} \]
-
+ここで$\bm{I}$は適切なサイズの単位行列です\footnote{適切なサイズってなんだよ，と思いますよね。これは計算に合うようなサイズ，という意味です。具体的に考えてみますと，$\bm{I}$の後ろは$\bm{1}\bm{1}'$です。$\bm{1}$は$n\times 1$の列ベクトルで，転置したものと掛け合わせますから，$\bm{1}\bm{1}'$のサイズは$n \times n$です。行列の引き算は同じサイズでないと成立しませんから，ここでの$\bm{I}$も$n \times n$でなければなりません。カッコの中身が$n \times n$で，それにサイズ$n \times m$である$\bm{X}$をかけますから，計算結果や右辺のサイズは$n \times m$になります。}。
 
 これを使うと，たとえば分散共分散行列$\bm{S}$は次のようになります。
 \[ \bm{S} = \frac{1}{n} \bm{V}' \bm{V} = \begin{pmatrix}
@@ -59,7 +63,8 @@
 		s_{21} & s_2^2  & \cdots & s_{2m} \\
 		\vdots & \vdots & \ddots & \vdots \\
 		s_{m1} & s_{m2} & \cdots & s_m^2\end{pmatrix} \]
-
+ここで$s_j$とあるのは第$j$変数の標準偏差を，$s_{jk}$とあるのは第$j$変数と第$k$変数の共分散です。添え字は変数番号になっています。
+また，ここでもサイズに注目してください。$\bm{V}'\bm{V}$は，サイズで言うと$m \times n$と$n \times m$の積ですから，$m \times m$ になります。この行列は正方対称行列です。
 
 また，対角項に各変数の標準偏差$s_j$が入った行列$\bm{Q}$を以下のように定めるとしましょう。次のような行列です。
 \[ \bm{Q} = \begin{pmatrix} s_1    & 0      & \cdots & 0      \\
