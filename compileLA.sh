@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 #####################################################################text1
 ## changePath
-path="LinearAlgebraBootCamp/tex"
+path="LABC/tex"
 filename="LABC"
 cd $path
 ## backup
@@ -74,4 +74,4 @@ cd ..
 echo $(date)
 echo '線形代数のテキストを改定しました。'
 cat LA_versions1.md
-cat LinearAlgebraBootCamp/error.log
+cat LABC/tex/error.log

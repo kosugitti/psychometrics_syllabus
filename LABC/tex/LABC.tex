@@ -1,0 +1,83 @@
+\documentclass[dvipsnames]{ltjsbook}
+\usepackage{../../myStyle}
+%% バッチ処理をするので\lheadは必ず4行目にあること
+\lhead{version 0.0.1}
+
+\usepackage{docmute}
+\begin{document}
+\includepdf[noautoscale=false,pages=-]{../images/cover4.png}
+\VerbatimFootnotes
+\input{../../common_contents/copyright} % copyright page
+\title{心理学者のための線形代数}
+\author{小杉　考司}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+
+
+% \input{preface1} % preface
+
+\tableofcontents
+
+% 行番号開始
+
+% 1. 行列の基礎
+% - 行列の定義；行ベクトル，烈ベクトル，スカラー，矩形行列，正方行列，対称行列，対角行列，単位行列，ゼロ行列
+% - 行列の四則演算；加減，スカラー倍，積
+\include{L01_LA}
+
+
+
+% 2. 行列とデータ
+% - 多変量データを行列で表す
+% - 平均，分散，共分散，相関の確認
+% - 平均，分散，共分散，相関を行列で表す
+% - 行列のトレース
+% 3. 行列と方程式(2,3 コマ分)
+% - 方程式を行列で表す
+% - 方程式を解く
+% - 方程式を行列で解く/ガウス・ジョルダンの消去法
+% - 基本変形と基本行列，転置
+% - 逆行列
+% - 逆行列の計算法
+% - 逆行列を使って連立方程式を解く
+% ### 二日目
+% 4. 空間的理解
+% - ベクトルの内積
+% - 内積と相関
+% - ベクトルの直交
+% 5. 空間の基底
+% - 一次結合，一次独立
+% - ベクトル空間，部分空間，直交補空間
+% - 一次独立なベクトルの数
+% - 基底；ランク落ちはなぜ起こるか
+% 6. ベクトルの分解
+% - 射影・射影行列
+% - 射影と回帰分析
+% 7. データの空間
+% - 直交行列
+% - 回転行列と分散
+% - 行列式とその空間的な意味
+% 8. 固有値と固有ベクトル
+% - 固有値と固有ベクトル
+% - 固有方程式を解く
+% - 固有値と固有ベクトルの空間的な意味
+% 9. 因子分析モデル
+% - 因子分析モデル
+% - 因子分析モデルの行列表現
+% - 因子軸の回転
+% 10. SEM と行列
+% - 構造方程式モデル
+% - 構造方程式モデルの行列表現
+% - 識別可能性
+
+
+\addcontentsline{toc}{chapter}{引用文献}
+% 引用文献
+\bibliographystyle{../../jecon_jpa}
+\bibliography{../../sbib}
+% 索引
+\addcontentsline{toc}{chapter}{索引}
+
+\printindex
+\end{document}
