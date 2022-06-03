@@ -1,4 +1,5 @@
-\documentclass{ltjarticle}
+\documentclass{ltjbook}
+\usepackage{myStyle} 
 \usepackage{tikz}
 \usetikzlibrary{positioning, arrows.meta, calc}
 \usetikzlibrary{patterns}
@@ -10,63 +11,51 @@
 \begin{document}
 \begin{figure}
 	\begin{tikzpicture}
-		\coordinate (A) at (1,1);
-		\coordinate (B) at (2,2);
-		\coordinate (C) at (5,2);
-		\coordinate (D) at (7,1);
-		\coordinate (E) at (1,3);
-		\coordinate (F) at (7,3);
-		\coordinate (G) at (1,5);
-		\coordinate (H) at (7,5);
-		\coordinate (I) at (1,7);
-		\coordinate (J) at (2.5,6.5);
-		\coordinate (K) at (5,6.5);
-		\coordinate (L) at (7,7);
-		\draw[->] (B)--(C);
-		\draw[->] (G)--(E);
-		\draw[->] (H)--(F);
-		\draw[->] (J)--(K);
-		\node (I1) at (0.3,6.5) {$\hat{y}_i  = \beta_0 + \beta_1x_i^2 \ldots$(1)};
-		\node (I2) at (0.54,6)  {${y}_i  = \hat{y}_i + e_i \ldots$(2)};
-		\node (I3) at (0.5,5.5)  {$e_i \sim N(0,\sigma) \ldots$(3)};
-		\node (L1) at (7,6)  {$e_i \sim N(0,\sigma)$};
-		\node (L2) at (7,6.5) {${y}_i  = \beta_0 + \beta_1x_i^2 + e_i$};
-		\node (A1) at (0.5,2.5) {$\hat{y}_i  = \beta_0 + \beta_1x_i^2$};
-		\node (A2) at (0.5,2) {$y_i \sim N(\hat{y}_i,\sigma)$};
-		\node (D1) at (7,2) {$y_i \sim N(\beta_0 + \beta_1 x_i,\sigma)$};
-		\node (P1) at (3.5,6.5)[above] {(2)に(1)を代入};
-		\node (P2) at (1,4)[left] {(2)に(3)を代入};
-		\node (P3) at (7,4)[right] {};
-		\node (P4) at (3.5,2)[below] {};
+		% \draw [help lines] (0,0) grid (20,20);%(0,0)から(10,4)までの"細線の方眼"
+		\draw (0,0) rectangle (2,4);
+		\draw (3,2) rectangle (6,4);
+		\draw (7,0) rectangle (10,4);
+		\coordinate (a) at (0,0);
+		\coordinate (b) at (2,4);
+		\coordinate (c) at (3,2);
+		\coordinate (d) at (6,4);
+		\coordinate (e) at (7,0);
+		\coordinate (f) at (10,4);
+		\node [left=0pt of a] {$m$};
+		\node [above=0pt of b] {$k$};
+		\node [left=0pt of c] {$k$};
+		\node [above=0pt of d] {$n$};
+		\node [left=0pt of e] {$m$};
+		\node [above=0pt of f] {$n$};
+		\node [below right=9pt of b] {$\times$};
+		\node [below right=9pt of d] {$=$};
+		\node (A) at (1,2) {$\bm{A}$};
+		\node (B) at (4.5,3) {$\bm{B}$};
+		\node (C) at (8.5,2) {$\bm{C}$};
+	\end{tikzpicture}
+	\begin{tikzpicture}
+		% \draw [help lines] (0,0) grid (20,20);%(0,0)から(10,4)までの"細線の方眼"
+
+		\node[scale=5] (A) at (1,3) {\bm{A}};
+		\node[scale=5] (B) at (4,3) {\bm{B}};
+		\node[scale=5] (C) at (8,3) {\bm{C}};
+		\node[scale=5] (T) at (2.5,3) {$\times$};
+		\node[scale=5] (E) at (6,3) {$=$};
+		\node[circle, fill=cyan!10, text centered](a1) at (0.5,1.8) {$m$};
+		\node[circle, fill=red!10, text centered](a2) at (1.5,1.8) {$k$};
+		\node[circle, fill=red!10, text centered](a3) at (3.5,1.8) {$k$};
+		\node[circle, fill=cyan!10, text centered](a4) at (4.5,1.8) {$n$};
+		\node[circle, fill=cyan!10, text centered](a5) at (7.5,1.8) {$m$};
+		\node[circle, fill=cyan!10, text centered](a6) at (8.5,1.8) {$n$};
+		\draw[dashed,red] (a2) to [out=-60,in=240] (a3);
+		\node[below] at (2.5,1) {内側は同じ};
+		\coordinate (b1) at (2.5,0);
+		\draw[blue,<->] (a5) to [out=-85,in=265] (a6);
+		\draw[blue,<-] (a1) to [out=-85,in=180] (b1);
+		\draw[blue,->] (b1) to [out=0,in=265] (a4);
+		\node[below] at (8,-0.5) {外側は結果のサイズになる};
+		\draw[dashed,blue] (b1) to [out=-45,in=245](8,1.28);
+
 	\end{tikzpicture}
 \end{figure}
-
-\begin{tikzpicture}[xscale = 0.8, yscale = 4]
-	\coordinate (A) at (-2,0);
-	\draw (A) node[left] {$y_i = \beta_0 + \beta_1 x_i + $};
-	\draw [domain=-2:2] plot(\x, {exp((-(\x)^2)/2)/(sqrt(2*pi))-0.1});
-	\draw [dashed] (0,0.4)--(0,-0.05);
-	\draw (-2,-0.05)--(2,-0.05);
-	\node (zero) at (0,-0.05)[below]{$0$};
-\end{tikzpicture}
-
-
-\begin{tikzpicture}
-	\node[draw,align=center] (a) at (5,0)
-	{古典的テスト理論\\$X=t+e$};
-	\node(P0) at (5,0.9)[above] {見えないものを測定・数値化したい};
-	\node[draw,align=center] (b) at (0,-2.5) {探索的因子分析\\$z_{ij}=\sum a_{jm}f_{im} + d_jUij$};
-	\node[draw,align=center] (c) at (10,-2.5) {項目反応理論\\ $p_j(\theta) = \frac{1}{1+exp(-1.7a_j(\theta_i -b_j))}$};
-	\node[draw] (d) at (5,-5) {カテゴリカル因子分析};
-	\draw[->] (a) --(b);
-	\draw[->] (a) --(c);
-	\draw[->] (b) --(d);
-	\draw[->] (c) --(d);
-	\node (P1) at (1.3,-1.25)[above] {構造に興味がある};
-	\node (P2) at (8.7,-1.25)[above] {機能に興味がある};
-	\node (P3) at (2.5,-4.2)[left,align=center] {順序尺度水準へ\\得点の精緻化};
-	\node (P4) at (7.5,-4.2)[right,align=center] {多段階反応へ\\多次元に拡張};
-\end{tikzpicture}
-
-
 \end{document}

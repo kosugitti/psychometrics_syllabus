@@ -1,8 +1,11 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
+%% バッチ処理をするので\lheadは必ず4行目にあること
+\lhead{version 0.0.0}
+
 \usepackage{docmute}
 \begin{document}
-\includepdf[noautoscale=false,pages=-]{../images/cover4.pdf}
+\includepdf[noautoscale=false,pages=-]{../images/cover4.png}
 \VerbatimFootnotes
 \input{../../common_contents/copyright} % copyright page
 \title{心理学者のための線形代数}
@@ -12,8 +15,19 @@
 \setcounter{tocdepth}{1}
 
 
+% \input{preface1} % preface
+
+\tableofcontents
+
+% 行番号開始
+
 % 1. 行列の基礎
+% - 行列の定義；行ベクトル，烈ベクトル，スカラー，矩形行列，正方行列，対称行列，対角行列，単位行列，ゼロ行列
+% - 行列の四則演算；加減，スカラー倍，積
 \include{L01_LA}
+
+
+
 % 2. 行列とデータ
 % - 多変量データを行列で表す
 % - 平均，分散，共分散，相関の確認
