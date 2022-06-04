@@ -85,9 +85,14 @@ setpagesize=false,
 \newtcbtheorem{SCcmd}{cmdstanrの出力}{fonttitle=\gtfamily\sffamily\bfseries\upshape,colframe=gray,colback=pink!3!,fontupper=\gtfamily\small}{SCcmd}
 % コラム
 \newtcbtheorem{Untiku}{うんちく}{fonttitle=\gtfamily\sffamily\bfseries,colframe=blue,colback=blue!7!,fontupper=\gtfamily\small,breakable}{Untiku}
+% 例題
+\newtcbtheorem[number within=chapter]{reidai}{例題}{
+    fonttitle=\gtfamily\sffamily\bfseries\upshape,
+    colframe=gray,colback=white,rightrule=0pt,leftrule=0pt,arc=7pt,bottomrule=1pt
+    }{reidai}
+
 % figure環境の外でのcaption
 \usepackage{capt-of}
-
 
 
 % FAQ box

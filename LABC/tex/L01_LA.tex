@@ -80,7 +80,7 @@
 閑話休題。このベクトルの中の数字は，とくに関係があるわけではありません。前に入っている数字がえらいとか，横にある方が重要だ，といったことはなく，ただただ数字をまとめて扱っているだけです。本来別々の数字なのです。たとえば身長と体重という2つの変数があったとき，ある人のデータを$ \begin{pmatrix} 170 \\ 60 \end{pmatrix} $と表すことができます。全然別の種類の，別の単位の数字ですね。ただし，一行目の要素に身長，二行目の要素に体重を入れるという規則にしたのであれば，別の人のデータも$\begin{pmatrix} 150 \\ 45 \end{pmatrix}$のように表さなければなりません。ここで要素の順番を入れ替えることはできないのです。
 
 さて，行数も列数も1であるものつまり行列でない数字は，とくに\keyterm{スカラー}{すからー}{scalar}と呼びます。今までは$1+2=3$といった計算をしていましたが，この$1,2,3$はすべてスカラーだといえるわけです。
-「スカラー」という用語は線形代数の専門用語として定着していますが，\ruby{Scale}{スケール}を扱うもの，という意味があるので「スケイラー」と発音した方がわかりやすいかもしれません。この後，スカラーとベクトル・行列の積の話をしますが，定数倍のように大きさを変えるという操作をします。空間的な表現のイメージとつなげることの利点が，そんなところにも現れてくるのですね。
+「スカラー」という用語は線形代数の専門用語として定着していますが，\ruby{Scale}{スケール}を扱うもの，という意味があるので「スケイラー」と発音した方がわかりやすいかもしれません。この後，スカラーとベクトル・行列の積の話をしますが，定数倍のように大きさを変えるという操作をします。空間的な表現のイメージとつなげることの利点が，そんなところにも現れてくるのです。
 
 \subsubsection{行列}
 \keyterm{行列}{ぎょうれつ}{matrix}とは数を長方形に並べたものです。行列として並べられた数を成分といい，成分の横の並びを行，縦の並びを列と呼びます。
@@ -155,22 +155,18 @@ $r_{ij}=r_{ji}$ですから，対称行列になっています。この行列�
 \end{equation*}
 
 \paragraph{対角行列と単位行列}
-また，正方行列の中でもとくに対角要素にのみ値があって，それ以外はすべて$0$になっている行列のことを\keyterm{対角行列}{たいかくぎょうれつ}{diagonal matrix}といいます。
+正方行列の中でもとくに対角要素にのみ値があって，それ以外はすべて$0$になっている行列のことを\keyterm{対角行列}{たいかくぎょうれつ}{diagonal matrix}といいます。
 \begin{equation*}
     \begin{pmatrix}
-        a_{11}                                                 \\
-         & a_{22}          &        & \text{\huge{0}}          \\
-         &                 & \ddots                            \\
-         & \text{\huge{0}} &        & \ddots                   \\
-         &                 &        &                 & a_{nn}
+        a_{11}          &        & \text{\huge{0}} \\
+                        & \ddots &                 \\
+        \text{\huge{0}} &        & a_{nn}
     \end{pmatrix}
-    =
+    \text{あるいは}
     \begin{pmatrix}
-        a_{11}                               \\
-         & a_{22} &        & \bm{O}          \\
-         &        & \ddots                   \\
-         & \bm{O} &        & \ddots          \\
-         &        &        &        & a_{nn}
+        a_{11} &        & \bm{O} \\
+               & \ddots &        \\
+        \bm{O} &        & a_{nn}
     \end{pmatrix}
 \end{equation*}
 
@@ -189,36 +185,56 @@ $\bm{E}$で表されます。
         0      & 0      & \cdots & 1      \\
     \end{pmatrix} =
     \begin{pmatrix}
-        1                                                 \\
-         & 1               &        & \text{\huge{0}}     \\
-         &                 & \ddots                       \\
-         & \text{\huge{0}} &        & \ddots              \\
-         &                 &        &                 & 1
+        1      &        & \bm{O} \\
+               & \ddots          \\
+        \bm{O} &        & 1
     \end{pmatrix}
 \end{equation*}
 
 
-これは後ほど，掛け算をするときに「かけても変わらない状態」を表すために用いられます。$\bm{I}_n$のように表すことで，サイズ$n \times n$の単位行列であることを意味することもあります。単位行列は計算過程でよく出てくる行列で，特に式中でサイズを明示しないこともありますが，計算過程を考えるとそのサイズはじめいであるので，「計算できるような適当なサイズ」である，と思っていただいてもいいかもしれません。
+これは後ほど，行列で掛け算をするときに「かけても変わらない行列」として出てきます。この行列は計算過程でよく出てくる行列で，特に式中でサイズを明示しないこともありますが，計算過程を考えるとそのサイズは明らかなので明示しない，ということがよくあります。そのときは「計算できるような適当なサイズ」である，と思ってください。明示するときは，$\bm{I}_n$のように表すことで，サイズ$n \times n$の単位行列であることを表します。
+
+\paragraph{三角行列}
+さらに，正方行列の特殊なケースで，対角より上，あるいは下の要素がすべて$0$になっている行列を\keytermL{上三角行列}{うえさんかくぎょうれつ}，\keytermL{下三角行列}{したさんかくぎょうれつ}といいます。
+
+\begin{equation*}
+    \begin{pmatrix}
+        a_{11} & \cdots & a_{1n} \\
+               & \ddots & \vdots \\
+        \bm{O} &        & a_{nn}
+    \end{pmatrix}\text{または}
+    \begin{pmatrix}
+        a_{11} &        & \bm{O} \\
+        \vdots & \ddots &        \\
+        a_{n1} & \cdots & a_{nn}
+    \end{pmatrix}
+\end{equation*}
+
+\paragraph{ゼロ行列}
+全ての要素が$0$であるような行列は，ゼロ行列$\bm{O}$と言います。
+\[ \bm{O} = \begin{pmatrix}
+        0      & 0      & \cdots & 0      \\
+        0      & 0      & \cdots & 0      \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0      & 0      & \cdots & 0
+    \end{pmatrix}
+\]
 
 \section{行列の四則演算}
-行列の四則演算は，通常のスカラーのそれとは異なります。改めて，行列としての加減乗除を定義するのだと思ってください。
-\subsection{ベクトルの計算}
-\paragraph{ベクトルの足し算・引き算}
-\paragraph{ベクトルとスカラーの積}
-\paragraph{ベクトルとベクトルの積}
+行列やベクトルが定義できたところで，操作に入っていきましょう。
 
-\subsection{行列の計算}
+
+\subsection{行列の加法}
+\paragraph{イコールであるとは}
+2つの行列$\bm{A}$と$\bm{B}$が共に$n \times m$の大きさで，対応する全ての成分が$a_{ij}=b_{ij}$であるとき，$\bm{A}$と$\bm{B}$は等しいといい，$\bm{A}=\bm{B}$で表します。
+
+当たり前のことのようですが，行列の四則演算は，通常の数字のそれとは異なります。改めて，行列としての加減乗除を定義することになりますので，これまでの数の世界のルールを行列用に定義していく必要があります。その最初が「等しい」の定義なわけです。これで計算結果をイコールで結ぶことができるようになりました。
+
 \paragraph{行列のの足し算・引き算}
-\paragraph{行列とスカラーの積}
-\paragraph{行列とベクトルの積}
-\paragraph{行列と行列の積}
+まずは行列の足し算(加法)，引き算(減法)から説明します。ベクトルは行列の中でも，行数あるいは列数が1のものですので，これで一般的に表現します。これはそれぞれ対応する位置にある成分を加え合わせる(減じる)ことで表されます。
 
+行列$\bm{A}$の要素を$a_{ij}$，行列$\bm{B}$の要素を$b_{ij}$とします。このとき行列$\bm{A},\bm{B}$はいずれも$n \times m$の同じサイズの行列です。この行列の和$\bm{A}+\bm{B}=\bm{C}$は，対応する要素同士の和を要素に持つ行列，すなわち$c_{ij} = a_{ij}+b_{ij}$になります。
 
-
-
-
-\paragraph{加法・減法}
-まずは行列の足し算(加法)，引き算(減法)から説明します\footnote{ベクトルは行列の中でも，行数あるいは列数が1のものですので，これで一般的に表現します。} 。これはそれぞれ対応する位置にある成分を加え合わせる(減じる)ことで表されます。
 
 \begin{equation*}
     \bm{A}+\bm{B} =
@@ -252,12 +268,53 @@ $\bm{E}$で表されます。
         10 & 12
     \end{pmatrix}
 \end{equation*}
-
+ベクトルでも同様です。
+\begin{equation*}
+    \begin{pmatrix}
+        1 \\
+        4
+    \end{pmatrix}
+    -
+    \begin{pmatrix}
+        5 \\
+        8
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1-5 \\
+        4-8
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        -4 \\
+        -4
+    \end{pmatrix}
+\end{equation*}
+\begin{equation*}
+    \begin{pmatrix}
+        2 &
+        3
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        1 & 6
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        2-1 & 3-6
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1 & -3
+    \end{pmatrix}
+\end{equation*}
 これからわかるように，行列の加法，減法は大きさの等しい行列でないと成り立ちません。サイズが違うものを足そうとすると，演算できない箇所が出てしまうのです。このように行列では，\underline{「計算できない」という状態になることが}ありえます。行列のサイズに注意が必要，ということがお分かりいただけるかと思います。
+\paragraph{行列とスカラーの積}
+次に掛け算(積)の定義にすすみます。
 
+行列$\bm{A}$の$\lambda$倍は，$\bm{A}$の各要素$a_{ij}$を$\lambda$倍します\footnote{式中にでてくる$\lambda$はギリシア文字でラムダといいます。小文字が$\lambda$，大文字では$\Lambda$と書きます。}。
+。
 
-\paragraph{乗法}
-続いて掛け算です。まずスカラーと行列の積を見てみましょう\footnote{指揮中にでてくる$\lambda$はギリシア文字でラムダといいます。小文字が$\lambda$，大文字では$\Lambda$と書きます。}。
 
 \begin{equation*}
     \lambda \bm{A} = \bm{A} \lambda =
@@ -270,7 +327,7 @@ $\bm{E}$で表されます。
 \end{equation*}
 
 
-実際の計算は，各成分をスカラー倍すればよいだけですので，比較的簡単ですね。
+数値例でも確認しておきます。
 
 \begin{equation*}
     2 \times
@@ -290,28 +347,103 @@ $\bm{E}$で表されます。
     \end{pmatrix}
 \end{equation*}
 
-
-次はベクトルとベクトルの掛け算です。これは形が変わってしまうので，注意が必要です。まずは行ベクトルに列ベクトルをかける例からみていきましょう。
-
+ベクトルに対しても同様です。
 \begin{equation*}
-    \bm{a} \bm{b} =
+    2 \times
     \begin{pmatrix}
-        a_1 & a_2 & \cdots & a_n \\
-    \end{pmatrix}
-    \begin{pmatrix}
-        b_1    \\
-        b_2    \\
-        \vdots \\
-        b_n    \\
+        1 \\
+        3
     \end{pmatrix}
     =
-    \sum_{j=1}^{n} a_{j} b_{j}
+    \begin{pmatrix}
+        2 \times 1 \\
+        2 \times 3
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        2 \\
+        6
+    \end{pmatrix}
 \end{equation*}
 
-
-掛け算なのですが，足し合わせるという計算プロセスが入り込んでいるので，結果はスカラーになります。掛け算なのにどうして足し算の要素が入るんだ，というクレームは，今はなしです。このように計算することに決めたことで，あとあと便利なことが出て来ますから，作法にまず慣れてからにしましょう。数値例も確認しておきます。
-
 \begin{equation*}
+    3 \times
+    \begin{pmatrix}
+        2 & 4
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        3 \times 2 & 3 \times 4
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        6 & 12
+    \end{pmatrix}
+\end{equation*}
+
+ここまでの話から，交換，結合，分配などの演算法則が成り立つことがわかります。
+
+\begin{center}
+    \begin{tabular}{cr}
+        $\bm{A} + \bm{B}  = \bm{B} + \bm{A}$                     & 交換法則 \\
+        $(\bm{A} + \bm{B})+\bm{C}  = \bm{A} + (\bm{B}+\bm{C})$   & 結合法則 \\
+        $(\alpha + \beta)\bm{A} = \alpha\bm{A} + \beta\bm{A}$    & 分配法則 \\
+        $\lambda(\bm{A}+\bm{B}) = \lambda\bm{A} + \lambda\bm{B}$ & 分配法則 \\
+        $(\alpha + \beta )\bm{A}  = \alpha(\beta\bm{A})$         & 交換法則 \\
+    \end{tabular}
+\end{center}
+
+これらは特に証明しませんが，計算のパターンとして頭に留めておいてください。
+
+\begin{reidai}{}{}
+
+    $\bm{A} = \begin{pmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6\end{pmatrix}$，
+    $\bm{B} = \begin{pmatrix} 2 & 1 \\ 4 & 1 \\ 0 & 2\end{pmatrix}$
+    であるとき，$2\bm{A} -3 \bm{B}$を計算してみましょう。
+
+\end{reidai}
+
+\subsection{行列の乗法}
+続いて積の定義に入ります。ここでは，計算によって行列(ベクトル)のサイズが変わることになりますので，サイズ感に特に注意を払ってください。
+\paragraph{ベクトルとベクトルの積}
+行列の積は，前の行列の行成分と，後ろの行列の列成分を順番にかけて足していくことになります。
+$\bm{AB}=\bm{C}$とするとき，$\bm{A}$の$i$行目と$\bm{B}$の$j$列目の要素から，$\bm{C}$の$[i,j]$要素が算出されるのです。
+記号で表現すると，次のようになります。
+\[ c_{ij} = \sum_{k} a_{ik}b_{kj} \]
+要素の位置を想像しながら考えてみましょう。
+\[
+    \begin{pmatrix}
+        a_{11}                  & a_{12}                  & \cdots                  & a_{1k}                  \\
+        \vdots                  & \vdots                  &                         & \vdots                  \\
+        \textcolor{red}{a_{i1}} & \textcolor{red}{a_{i2}} & \textcolor{red}{\cdots} & \textcolor{red}{a_{ik}} \\
+        \vdots                  & \vdots                  &                         & \vdots                  \\
+        a_{m1}                  & a_{m2}                  & \cdots                  & a_{mk}
+    \end{pmatrix}
+    \begin{pmatrix}
+        b_{11} & b_{12} & \cdots & \textcolor{blue}{b_{1j}} & \cdots & b_{1n} \\
+        b_{21} & b_{22} & \cdots & \textcolor{blue}{b_{2j}} & \cdots & b_{2n} \\
+        \vdots & \vdots &        & \textcolor{blue}{\vdots} &        & \vdots \\
+        b_{k1} & b_{k2} & \cdots & \textcolor{blue}{b_{kj}} & \cdots & b_{kn} \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        c_{11} & c_{12} & \cdots & c_{1j}                    & \cdots & c_{1n} \\
+        c_{21} & c_{22} & \cdots & c_{2j}                    & \cdots & c_{2n} \\
+        \vdots & \vdots & \cdots & \vdots                    & \cdots & \vdots \\
+        c_{i1} & c_{i2} & \cdots & \textcolor{cyan!}{c_{ij}} & \cdots & c_{in} \\
+        \vdots & \vdots & \cdots & \vdots                    & \cdots & \vdots \\
+        c_{m1} & c_{m2} & \cdots & c_{mj}                    & \cdots & c_{mn} \\
+    \end{pmatrix}
+\]
+
+積の結果の各要素が，前の行列の行，後ろの行列の列の積和から算出されると考えることになります。
+
+記号ではピンとこないと思いますので，話を簡単にするために，1列あるいは1行だけの行列，すなわち列ベクトル，行ベクトルの積から考えましょう。
+\[
+    \begin{pmatrix} a & b & c \end{pmatrix}\begin{pmatrix} d\\e\\f \end{pmatrix} = ad + be + cf
+\]
+数値例も確認しておきます。
+\[
     \begin{pmatrix}
         1 & 2 & 1
     \end{pmatrix}
@@ -319,13 +451,12 @@ $\bm{E}$で表されます。
         3 \\4\\2
     \end{pmatrix}
     =1\times 3 + 2 \times 4 + 1 \times 2 = 13
-\end{equation*}
+\]
+ここで注意して欲しいのは，両方のベクトルのサイズが同じ($1\times n$ベクトルと，$n \times 1$ベクトル，いずれもサイズは$n$)ということです。サイズが違うと，演算が対応しない要素が出てくるので，計算できなくなるのです。
+また，ベクトルとベクトルを掛け合わせた結果が$1 \times 1$の行列になりますね\footnote{実は$1\times 1$の行列をスカラーと言っていいか問題があります。本当は両者は違うものと考えるべきなのですが，計算上は違いがないのでスカラーとみなすのが一般的です。}。
 
-ここで注意して欲しいのは，両方のベクトルのサイズが同じ($1\times n$ベクトルと，$n \times 1$ベクトル，いずれもサイズは$n$)ということです。サイズが違うと，演算が対応しない要素が出てくるので，計算できない，が答えになります。
-
-今度は向きを変えて，列ベクトルに右から行ベクトルをかけてみましょう。
-
-\begin{equation*}
+列ベクトルと行ベクトルの積は次のようになります。
+\[
     \bm{a} \bm{b} =
     \begin{pmatrix}
         a_1    \\
@@ -343,12 +474,9 @@ $\bm{E}$で表されます。
         \vdots  & \vdots  &        & \vdots  \\
         a_n b_1 & a_2 b_2 & \cdots & a_n b_n \\
     \end{pmatrix}
-\end{equation*}
-
-
-今度は行列になりました。かける順番が変わるとサイズが変わる(ここでは，上の例では$1\times 1$のサイズ，下の例では$n \times n$のサイズ)ことに注意してください。スカラーの計算では順番を入れ替えても，たとえば$2 \times 3=3\times 2$のように同じ答えになりましたが，行列の場合は必ずしもそうはならない，ということです。
-
-\begin{equation*}
+\]
+数値例です。
+\[
     \begin{pmatrix}
         1 \\2\\1
     \end{pmatrix}
@@ -367,9 +495,21 @@ $\bm{E}$で表されます。
         6 & 8 & 4 \\
         3 & 4 & 2 \\
     \end{pmatrix}
-\end{equation*}
+\]
+今度は行列になりました。かける順番が変わるとサイズが変わる(ここでは，上の例では$1\times 1$のサイズ，下の例では$n \times n$のサイズ)ことに注意してください。スカラーの計算では順番を入れ替えても，たとえば$2 \times 3=3\times 2$のように同じ答えになりましたが，行列の場合は必ずしもそうはならないのです($\bm{AB} \neq \bm{BA}$)。
+
+積の結果出来上がる行列は，前の行列の行と後ろの行列の列の組み合わせですから，このような結果になるのですね。
 
 
+\begin{reidai}{}{}
+
+    $\bm{a} = \begin{pmatrix} 1  \\ 3 \\ 5 \end{pmatrix}$，
+    $\bm{b} = \begin{pmatrix} 2 & 4 & 1\end{pmatrix}$
+    であるとき，$\bm{ab}$および$\bm{ba}$を計算してみましょう。
+
+\end{reidai}
+
+\paragraph{行列とベクトルの積}
 
 行列とベクトルの積や，行列と行列の積はこの応用になってきます。
 
@@ -455,25 +595,34 @@ $\bm{E}$で表されます。
     \end{pmatrix}
 \end{equation*}
 
+\begin{reidai}{}{}
 
-さて，最後に行列と行列の積を考えます。行列$\bm{A}$と$\bm{B}$の積が成立するのは，前者の列数と後者の行数とが等しいときに限られます。行列$\bm{A}$のサイズが$n \times m$，行列$\bm{B}$のサイズが$m \times l$とすると，その積は$n \times l$の行列になります。計算手続きは，次のようになります，
+    $\bm{a} = \begin{pmatrix} 1  \\ 3 \\ 5 \end{pmatrix}$，
+    $\bm{b} = \begin{pmatrix} 2 & 4 & 1\end{pmatrix}$,
+    $\bm{C} = \begin{pmatrix} 2 & 0 & 1 \\ 3 & 1 & 1 \\ 2 & 4 & 2 \end{pmatrix}$
+    であるとき，$\bm{Ca}$および$\bm{bC}$，そして$\bm{bCa}$を計算してみましょう。
+
+\end{reidai}
+
+\paragraph{行列と行列の積}
+最後に行列と行列の積を考えます。行列$\bm{A}$と$\bm{B}$の積が成立するのは，前者の列数と後者の行数とが等しいときに限られます。行列$\bm{A}$のサイズが$m \times k$，行列$\bm{B}$のサイズが$k \times n$とすると，その積は$n \times l$の行列になります。計算手続きは，次のようになります，
 \begin{equation*}
     \bm{A} \bm{B} =
     \begin{pmatrix}
-        a_{11} & a_{12} & \cdots & a_{1m} \\
+        a_{11} & a_{12} & \cdots & a_{1k} \\
         \vdots & \vdots & \ddots & \vdots \\
-        a_{n1} & a_{n2} & \cdots & a_{nm} \\
+        a_{m1} & a_{m2} & \cdots & a_{mk} \\
     \end{pmatrix}
     \begin{pmatrix}
-        b_{11} & b_{12} & \cdots & b_{1l} \\
+        b_{11} & b_{12} & \cdots & b_{1n} \\
         \vdots & \vdots & \ddots & \vdots \\
-        b_{m1} & b_{m2} & \cdots & b_{ml} \\
+        b_{k1} & b_{k2} & \cdots & b_{kn} \\
     \end{pmatrix}
     =
     \begin{pmatrix}
-        \sum_{j=1}^{m} a_{1j} b_{j1} & \cdots & \sum_{j=1}^{m} a_{1j} b_{jl} \\
+        \sum_{j=1}^{k} a_{1j} b_{j1} & \cdots & \sum_{j=1}^{k} a_{1k} b_{kn} \\
         \vdots                       & \ddots & \vdots                       \\
-        \sum_{j=1}^{m} a_{nj} b_{jn} & \cdots & \sum_{j=1}^{m} a_{nj} b_{jl} \\
+        \sum_{j=1}^{k} a_{m1} b_{k1} & \cdots & \sum_{j=1}^{k} a_{mk} b_{kn} \\
     \end{pmatrix}
 \end{equation*}
 
@@ -569,6 +718,33 @@ $\bm{E}$で表されます。
         6 & 5 & 11
     \end{pmatrix}
 \end{equation*}
+
+行列の積は新しく出てきた計算方法ですから，慣れて自動的にできるようになるまで練習を繰り返すしかありません。少し練習してみましょう。
+
+\begin{reidai}{}{}
+    次の計算をそれぞれやってみましょう。\\
+    (1) \[   \begin{pmatrix} 1 & 3 \\ 2 & 4 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}                               \]    \\
+    (2) \[   \begin{pmatrix} -3 & 2 \\ 5 & 5 \end{pmatrix} \begin{pmatrix}1& 3 & 4\\ 2 & 0 & 1\end{pmatrix}                            \]    \\
+    (3) \[    \begin{pmatrix} 1 & 2 & 1 \\ 3 & 1 & 2 \\ 0 & -2 & 3 \end{pmatrix}\begin{pmatrix}2 & 1 \\ 3 & 0 \\ -1 & -1 \end{pmatrix}  \] \\
+    (4)\[    \begin{pmatrix}  1 & 5 & -1 \\ -2 & 3 & -1 \\ 3 & 0 & 3 \end{pmatrix}\begin{pmatrix}  -2 & 1 & 0 \\ 3 & 0 & 1 \\ 0 & 3 & 4       \end{pmatrix} \]
+\end{reidai}
+
+
+
+\section{その他の行列の操作}
+\paragraph{転置}
+\paragraph{トレース}
+\paragraph{分割}
+
+
+
+
+\paragraph{乗法}
+
+
+
+
+
 
 
 \paragraph{転置}
