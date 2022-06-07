@@ -18,6 +18,24 @@ if [[ ${version} =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
   patch=${BASH_REMATCH[3]}
 fi
 
+## cleanup
+rm *.pdf
+rm *.log
+rm *.aux
+rm *.dvi
+rm *.toc
+rm *.bbl
+rm *.blg
+rm *.out
+rm *.fls
+rm *.fdb_latexmk
+rm *.synctex.gz
+rm *.ltjruby
+rm *.ilg
+rm *.idx
+rm *.ind
+
+
 plusOne=`expr "$patch" "+" "1"`
 newVer=${major}.${minor}.${plusOne}
 newval=`echo $val | sed -e "s/$version/$newVer/"`
