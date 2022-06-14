@@ -1,0 +1,328 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+\chapter{行列とデータ}
+\label{L02_Data}
+
+線形代数は数字をセットで扱うための表現方法，計算方法ですから，多変量データを分析しようという時には必須の技術になります。
+前回は線形代数の導入として，行列の計算方法を解説してきましたが，今回はこの計算方法を使って具体的にデータをどのように表現し，どのように計算するのかを見ていくことになります。
+その前に，基本的な統計量の数式などを確認しておきましょう。
+
+\section{記述統計の復習}
+
+記述統計では，平均，分散，標準偏差，相関係数などをつかってデータの特徴を記述するのでした。行列で表現をする前に，基本的な記号や表現について確認しておきます。
+
+総和記号$\sum$を使って，変数$x_{ij}$の平均値$\bar{x}_j$は次のように表現することができます($i$はデータ点，個人を表します)。
+
+\[ \bar{x}_j = \frac{1}{N}\sum_{i=1}^N x_j \]
+
+これを使って，各データ$x_{ij}$が平均からどれぐらい離れているかを，$(x_{ij} - \bar{x}_j)$であらわし，\keyterm{平均偏差}{へいきんへんさ}{mean deviation}と言います。平均偏差の二乗の平均のことを\keyterm{分散}{ぶんさん}{variance}というのでした。
+
+\[ s_j^2  = \frac{1}{N}\sum_{i=1}^N (x_{ij} - \bar{x}_i)^2 \]
+
+ここで二乗してあるのは，そうしておかないと平均偏差の総和はゼロになってしまうからです\footnote{検算してみよう!}。プラスとマイナスが打ち消し合うからゼロになってしまうわけで，符号の影響をなくすべく二乗しているのだと思ってください。符号をなくすのには絶対値でもいいのですが，絶対値は数式で書けないから使いにくいのです\footnote{絶対値は$|x|$と書くじゃないか，と思った人もいるかもしれません。おしい，もう一歩。この記号の中身，計算式を考えてみてください。$0\le x$のとき，$|x|=x$です。$x<0$のとき，$|x|=-x$です。これ，「・・・の時」という条件で分岐していますので，1つの式で表せないあたりが使いにくいポイントです。}。
+
+この分散の式は展開して，
+\[
+    \begin{array}{lllr}
+        s_j^2 & = & \frac{1}{N}\sum_{i=1}^N (x_{ij} - \bar{x}_j)^2                                               &                  \\
+              &   &                                                                                                                 \\
+              & = & \frac{1}{N} (x_{ij}^2 - 2x_{ij} \bar{x}_j + \bar{x}_j^2)                                     & \text{平方を展開}     \\
+              &   &                                                                                                                 \\
+              & = & \frac{1}{N} \sum x_{ij}^2 - \frac{2}{N} \sum x_{ij} \bar{x}_j + \frac{1}{N} \sum \bar{x}_j^2 & \text{$\sum$を分配} \\
+              &   &                                                                                                                 \\
+              & = & \frac{1}{N} \sum x_{ij}^2 - 2\bar{x}_j\frac{1}{N} \sum x_{ij} + \bar{x}_j^2                  & \text{定数を括り出す}   \\
+              &   &                                                                                                                 \\
+              & = & \frac{1}{N} \sum x_{ij}^2 - 2\bar{x}_j\bar{x}_j + \bar{x}_j^2                                & \text{平均を計算}     \\
+              &   &                                                                                                                 \\
+              & = & \frac{1}{N} \sum x_{ij}^2 - 2\bar{x}_j^2 + \bar{x}_j^2                                       &                  \\
+              &   &                                                                                                                 \\
+              & = & \frac{1}{N} \sum x_{iJ}^2 -  \bar{x}_j^2                                                     &                  \\
+    \end{array}
+\]
+として使われることがあります\footnote{三段目，$\frac{1}{N}\sum c = \frac{1}{N} Nc = c$がミソ。}。分散がゼロのデータからは情報が得られませんから，分散とはその変数が持つ情報の大きさを表していると言っていいかもしれません。
+
+\keyterm{標準偏差}{ひょうじゅんへんさ}{Standard Deviation}は分散の正の平方根です。分散は元の単位を2乗してしまっているので，元のスケールに合わせるためには平方根を取る必要があります。
+
+\[ s_j = \sqrt{s_j^2} = \sqrt{\frac{1}{N}(x_{ij}-\bar{x}_j)^2} \]
+
+標準偏差を使ってデータを標準化するというのは，平均偏差を標準偏差で割ることでした。このようにすることで，データ全体の中での相対的な位置付けがわかるようになります。標準化したスコアは$z_i$で表現され，
+
+\[ z_{ij} = \frac{(x_{ij} - \bar{x}_j)}{s_j}\]
+
+と表されます。標準化されたスコア$z_{ij}$はその平均がゼロ($\bar{z}_j=0$)で標準偏差が1に基準化されています。
+
+さてここまでは1変数についての記述統計でしたが，複数の変数の間の関係を表すには\keyterm{共分散}{きょうぶんさん}{covariance}を用います。変数$j$と$k$の共分散は次の式で表されます。
+
+\[ s_{jk} = \frac{1}{N} \sum (x_{ij} - \bar{x_j})(x_{ik} - \bar{x}_k) \]
+
+これは分散が変数$j$と$j$の共分散，すなわち，
+
+\[s_{jj} = s_{j}^2 = \frac{1}{N}\sum (x_{ij} - \bar{x}_j)^2 = \frac{1}{N}\sum (x_{ij} - \bar{x}_j)(x_{ij} - \bar{x}_j) \]
+
+であることを思い出して，2変数バージョンにしたものだと理解すれば分かりやすいでしょう。共分散もまた，それぞれの変数の単位を残していますので，標準化することで変数関係と変数関係を相対的に比較することができるようになります。それがピアソンの\keyterm{相関係数}{そうかんけいすう}{Correlation Coefficients}です。
+
+\[ r_{jk} = \frac{1}{N}\sum (z_{ij}-\bar{z}_j)(z_{ik} - \bar{z}_k) = \frac{1}{N} \sum z_{ij}z_{ik} \]
+
+以後これらの数字，記号を使って話をしていきます。ここまでの話と違うところは，変数が1つや2つではなくたくさんあるので，一気に表現，計算する方法が欲しいという点です。まとめて表現できるのが行列の強みなのです。
+\section{行列を使った計算}
+ここまで行列の形ばかり見て来ましたが，狙いはあくまでも調査研究など，多変量データを扱う場面での利用です。変数の数が$m$個あるときに，$r_{12},r_{13},\cdots,r_{1m},r_{23},r_{24},\cdots$と逐一書いていられませんから，行列として扱うと表現が大変便利なのです。
+たとえば質問項目が$m$個あって，調査対象者$n$人から回答を得たとすると，データは次のように表現できます。
+
+\[
+    \bm{X}=
+    \begin{pmatrix}
+        x_{11} & x_{12} & \cdots & x_{1m} \\
+        x_{21} & x_{22} & \cdots & x_{2m} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        x_{n1} & x_{n2} & \cdots & x_{nm} \\
+    \end{pmatrix}
+\]
+
+データ全体をこうして，ひとつの記号で表現できたら便利ですよね。これらを使ったデータの表記に慣れておきましょう。
+
+各反応の平均点は以下のように表現されます。まず，要素がすべて$1$からなるベクトルを次のように表します。
+\[ \bm{1}=\begin{pmatrix} 1 \\ 1 \\ \vdots \\1 \end{pmatrix} \]
+わかりにくいかもしれませんが，この$\bm{1}$は太字でベクトルを表しており，スカラーの$1$とは違うことに注意してください。
+
+さて，各項目の和はベクトルの掛け算の定義によって次のように表現できます。
+\[ \bm{X}' \bm{1} = \begin{pmatrix} \sum_{i=1}^{n} x_{i1} \\ \sum_{i=1}^{n} x_{i2} \\ \vdots \\ \sum_{i=1}^{n} x_{im} \end{pmatrix} \]
+
+
+これを使って平均値(列)ベクトル$\bm{m}$を次のように表すことができます。
+\[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} =
+    \begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} =
+    \begin{pmatrix}\bar{x}_{.1} \\ \bar{x}_{.2}\\ \vdots \\\bar{x}_{.m} \end{pmatrix} \]
+
+ここで$\bar{x}_.1$は1つめの添字$i$を足し合わせて割ることでなくしていますから，$\bar{x}_1$のように省略して書くことがあります。このときの$1$は「第一番目の変数」という意味であり，個人の情報がなくなっている変数を意味していることに注意してください。
+
+具体的な数値例で見ておきましょう。次のようなデータセットがあったとします\footnote{名前は別にID番号でもよかったのですが，具体的なイメージがしやすいかなと思って日本の苗字ランキングから上位5つの苗字を取り出してみました。}。
+
+\begin{table}[h]
+    \centering
+    \caption{データセット例}
+    \begin{tabular}{cccc}
+        Name & 身長  & 体重 & 年齢 \\\hline
+        佐藤   & 150 & 50 & 42 \\
+        鈴木   & 160 & 55 & 38 \\
+        高橋   & 145 & 40 & 22 \\
+        田中   & 165 & 65 & 50 \\
+        伊藤   & 175 & 85 & 48
+    \end{tabular}
+\end{table}
+数値データだけ取り出すと次のように行列で表現できます。
+\[ \bm{X} =
+    \begin{pmatrix}
+        150 & 50 & 42 \\
+        160 & 55 & 38 \\
+        145 & 40 & 22 \\
+        165 & 65 & 50 \\
+        175 & 85 & 48
+    \end{pmatrix}
+\]
+
+データセットは5人分ですので，$\bm{I}' = \begin{pmatrix} 1 & 1 & 1 & 1 & 1 \end{pmatrix}$として，次のような計算ができます。
+\[
+    \bm{X}'\bm{1} =
+    \begin{pmatrix}
+        150 & 160 & 145 & 165 & 175 \\
+        50  & 55  & 40  & 65  & 85  \\
+        42  & 38  & 22  & 50  & 48
+    \end{pmatrix}\begin{pmatrix} 1\\1\\1\\1\\1\end{pmatrix} =
+    \begin{pmatrix}795 \\ 295 \\ 200    \end{pmatrix}
+\]
+\begin{reidai}{}{}
+    平均ベクトル$\bm{m}$を求めましょう。ここで$n=5$です。
+\end{reidai}
+
+さて，平均からの偏差を要素に持つ行列$\bm{V}$を考えたとします。
+\[
+    \begin{array}{ccl}
+        \bm{V} & = & \bm{X} - \bm{1} \bm{m}'                                                                                                                        \\
+               &   &                                                                                                                                                \\
+               & = & \bm{X} - \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix} \begin{pmatrix} \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \end{pmatrix} \\
+               &   &                                                                                                                                                \\
+               & = & \bm{X} - \begin{pmatrix} \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \\
+                \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \\
+                \vdots       & \vdots       & \ddots & \vdots       \\
+                \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m}\end{pmatrix}                                                                   \\
+               & = & \begin{pmatrix} x_{11}-\bar{x}_{.1}   & x_{12}-\bar{x}_{.2}   & \cdots & x_{1m} - \bar{x}_{.m} \\
+                x_{21} - \bar{x}_{.1} & x_{22}-\bar{x}_{.2}   & \cdots & x_{1m} - \bar{x}-{.m} \\
+                \vdots                & \vdots                & \ddots & \vdots                \\
+                x_{n1} - \bar{x}_{.1} & x_{n2} - \bar{x}_{.2} & \cdots & x_{nm} - \bar{x}_{.m}
+                     \end{pmatrix}
+    \end{array}
+\]
+この行列$\bm{V}$のサイズは$n \times m$であることに注意してください。
+
+これはまた，次のように表すこともできます。
+\[ \bm{V} = ( \bm{I} -\frac{1}{n}\bm{1} \bm{1} ')\bm{X} \]
+ここで$\bm{I}$は適切なサイズの単位行列です\footnote{適切なサイズってなんだよ，と思いますよね。これは計算に合うようなサイズ，という意味です。具体的に考えてみますと，$\bm{I}$の後ろは$\bm{1}\bm{1}'$です。$\bm{1}$は$n\times 1$の列ベクトルで，転置したものと掛け合わせますから，$\bm{1}\bm{1}'$のサイズは$n \times n$です。行列の引き算は同じサイズでないと成立しませんから，ここでの$\bm{I}$も$n \times n$でなければなりません。カッコの中身が$n \times n$で，それにサイズ$n \times m$である$\bm{X}$をかけますから，計算結果や右辺のサイズは$n \times m$になります。}。
+
+この計算仮定を具体的に(要素を参照しながら)書き下してみましょう。
+\[
+    \begin{array}{ccl}
+        \bm{V} & = & (\bm{I} - \frac{1}{n}\bm{11}')\bm{X}        \\
+               &   &                                             \\
+               & = & \left( \begin{pmatrix}
+                                    1      &   &        & \bm{O} \\
+                                           & 1 &                 \\
+                                           &   & \ddots &        \\
+                                    \bm{O} &   &        & 1\end{pmatrix}
+        -1/n
+        \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix}
+        \begin{pmatrix} 1 & 1 & \cdots & \end{pmatrix}
+        \right) \bm{X}                                           \\
+               &   &                                             \\
+               & = &
+        \left(
+        \begin{pmatrix}
+                1      &   &        & \bm{O} \\
+                       & 1 &                 \\
+                       &   & \ddots &        \\
+                \bm{O} &   &        & 1\end{pmatrix}
+        -
+        \begin{pmatrix}
+                1/n    & 1/n    & \cdots & 1/n    \\
+                1/n    & 1/n    &                 \\
+                \vdots & \vdots & \ddots & \vdots \\
+                1/n    &        &        & 1/n\end{pmatrix}
+        \right) \bm{X}                                           \\
+               &   &                                             \\
+               & = &
+        \left(
+        \bm{X} -         \begin{pmatrix}
+                             1/n    & 1/n    & \cdots & 1/n    \\
+                             1/n    & 1/n    &                 \\
+                             \vdots & \vdots & \ddots & \vdots \\
+                             1/n    &        &        & 1/n\end{pmatrix}\bm{X}
+        \right)                                                  \\
+               &   &                                             \\
+               & = &
+        \left(
+        \bm{X} -
+        \begin{pmatrix}
+            1/n(x_{11}+x_{21}+\cdots+x_{n1}) & 1/n(x_{12}+x_{22}+\cdots+x_{n2}) & \cdots & 1/n(x_{1m}+x_{2m}) + \cdots + x_{nm} \\
+            1/n(x_{11}+x_{21}+\cdots+x_{n1}) & 1/n(x_{12}+x_{22}+\cdots+x_{n2}) & \cdots & 1/n(x_{1m}+x_{2m}) + \cdots + x_{nm} \\
+            \vdots                           & \vdots                           &        & \vdots                               \\
+            1/n(x_{11}+x_{21}+\cdots+x_{n1}) & 1/n(x_{12}+x_{22}+\cdots+x_{n2}) & \cdots & 1/n(x_{1m}+x_{2m}) + \cdots + x_{nm} \\
+        \end{pmatrix}
+        \right)                                                  \\
+               &   &                                             \\
+               & = &
+        \left(
+        \bm{X} -
+        \begin{pmatrix}
+            \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \\
+            \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \\
+            \vdots       & \vdots       &        & \vdots       \\
+            \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \\
+        \end{pmatrix}
+        \right)                                                  \\
+               &   &                                             \\
+               & = &
+        \begin{pmatrix}
+            x_{11} - \bar{x}_{.1} & x_{12} - \bar{x}_{.2} & \cdots & \x_{1m} - \bar{x}_{.m} \\
+            x_{21} - \bar{x}_{.1} & x_{22} - \bar{x}_{.2} & \cdots & \x_{2m} - \bar{x}_{.m} \\
+            \vdots                & \vdots                &        & \vdots                 \\
+            x_{n1} - \bar{x}_{.1} & x_{n2} - \bar{x}_{.2} & \cdots & \x_{nm} - \bar{x}_{.m} \\
+        \end{pmatrix}
+    \end{array}
+\]
+
+
+これを使って$\bm{S}=\frac{1}{n}\bm{V}'\bm{V}$を計算してみましょう。
+\[
+    \begin{array}{ccl}
+        \bm{S} & = & \frac{1}{n} \bm{V}' \bm{V} \\
+               & = & \frac{1}{n}
+        \begin{pmatrix}
+            x_{11} - \bar{x}_{.1} & x_{21} - \bar{x}_{.1} & \cdots & \x_{n1} - \bar{x}_{.1} \\
+            x_{12} - \bar{x}_{.2} & x_{22} - \bar{x}_{.2} & \cdots & \x_{n2} - \bar{x}_{.2} \\
+            \vdots                & \vdots                &        & \vdots                 \\
+            x_{1m} - \bar{x}_{.m} & x_{2m} - \bar{x}_{.m} & \cdots & \x_{nm} - \bar{x}_{.m} \\
+        \end{pmatrix}
+        \begin{pmatrix}
+            x_{11} - \bar{x}_{.1} & x_{12} - \bar{x}_{.2} & \cdots & \x_{1m} - \bar{x}_{.m} \\
+            x_{21} - \bar{x}_{.1} & x_{22} - \bar{x}_{.2} & \cdots & \x_{2m} - \bar{x}_{.m} \\
+            \vdots                & \vdots                &        & \vdots                 \\
+            x_{n1} - \bar{x}_{.1} & x_{n2} - \bar{x}_{.2} & \cdots & \x_{nm} - \bar{x}_{.m} \\
+        \end{pmatrix}
+    \end{array}
+\]
+ここで，1行1列目の要素$s_{11}$は次のようになります。
+\[ \begin{array}{ccl}
+        s_{11} & = & \frac{1}{n}\left( (s{11}-\bar{x}_{.1})(s{11}-\bar{x}_{.1}) +
+        (s{21}-\bar{x}_{.1})(s{21}-\bar{x}_{.1}) +\cdots+(s{n1}-\bar{x}_{.1})(s{n1}-\bar{x}_{.1}) \right)                       \\
+               &   &                                                                                                            \\
+               & = & \frac{1}{n}\left( (s{11}-\bar{x}_{.1})^2 + (s{21}-\bar{x}_{.1})^2 + \cdots +(s{n1}-\bar{x}_{.1})^2 \right) \\
+               &   &                                                                                                            \\
+               & = & \frac{1}{n}\sum_{i=1}^n (x_{i1}-\bar{x}_{.1} )^2                                                           \\
+               & = & s_1^2
+    \end{array}
+\]
+一般に，この行列$\bm{S}$の対角項は，
+\[
+    \begin{array}{ccl}
+        s_{jj} & = & \frac{1}{n}(x_{1j} -\bar{x}_{.j})^2+(x_{2j} -\bar{x}_{.j})^2+\cdots+(x_{nj} -\bar{x}_{.j})^2 \\
+               &   &                                                                                              \\
+               & = & \frac{1}{n} \sum_{i=1}^n (x_{ij} - \bar{x}_{.j})^2                                           \\
+               &   &                                                                                              \\
+               & = & s_j^2
+    \end{array}
+\]
+となります。つまり，項目$j$の分散です。
+
+今度は，1行2列目の要素を計算してみましょう。
+\[
+    \begin{array}{ccl}
+        s_{12} & = & \frac{1}{n}(x_{11}-\bar{x}_{.1})(x_{12} - \bar{x}_{.2}) + (x_{21}-\bar{x}_{.1})(x_{22} - \bar{x}_{.2})+\cdots+(x_{n1}-\bar{x}_{.1})(x_{n2} - \bar{x}_{.2}) \\
+               &   &                                                                                                                                                            \\
+               & = & \frac{1}{n} \sum_{i=1}^n (x_{i1}-\bar{x}_{.1})(x_{i2} - \bar{x}_{.2})                                                                                      \\
+               &   &                                                                                                                                                            \\
+               & = & s_{12}
+    \end{array}
+\]
+これは一般に，
+\[
+    \begin{array}{ccl}
+        s_{jk} & = & \frac{1}{n}(x_{1j}-\bar{x}_{.j})(x_{1k} - \bar{x}_{.k}) + (x_{2j}-\bar{x}_{.j})(x_{2k} - \bar{x}_{.k})+\cdots+(x_{nj}-\bar{x}_{.j})(x_{nk} - \bar{x}_{.k}) \\
+               &   &                                                                                                                                                            \\
+               & = & \frac{1}{n} \sum_{i=1}^n (x_{ij}-\bar{x}_{.j})(x_{ik} - \bar{x}_{.k})                                                                                      \\
+               &   &                                                                                                                                                            \\
+               & = & s_{jk}
+    \end{array}
+\]
+となります。すなわち$j$ と$k$の共分散です。
+まとめると，
+\[ \bm{S} = \frac{1}{n}\bm{V}'\bm{V} =
+    = \begin{pmatrix}
+        s_1^2  & s_{12} & \cdots & s_{1m} \\
+        s_{21} & s_2^2  & \cdots & s_{2m} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        s_{m1} & s_{m2} & \cdots & s_m^2\end{pmatrix}
+\]
+となり，対角項に分散が，非対角項に共分散が入った行列，すなわち\keytermL{分散共分散行列}{ぶんさんきょうぶんさんぎょうれつ}を表したことになります。
+
+ここでもサイズに注目してください。$\bm{V}'\bm{V}$は，サイズで言うと$m \times n$と$n \times m$の積ですから，$m \times m$ になります。この行列は正方対称行列です。
+
+また，対角項に各変数の標準偏差$s_j$の逆数が入った行列$\bm{Q}$を以下のように定めるとしましょう。次のような行列です。
+\[ \bm{Q} = \begin{pmatrix} 1/s_1  & 0      & \cdots & 0      \\
+                0      & 1/s_2  & \cdots & 0      \\
+                \vdots & \vdots & \ddots & \vdots \\
+                0      & 0      & \cdots & 1/s_m\end{pmatrix} \]
+そうすると，これをつかって標準得点行列$\bm{Z}$を次のように表すことができます。
+\[ \bm{Z} = \bm{V} \bm{Q} \]
+さらに，これを用いて相関行列$\bm{R}$を次のように表すことができます。
+\[ \bm{R} = \frac{1}{n}\bm{Z}' \bm{Z} = \begin{pmatrix} 1      & r_{12} & \cdots & r_{1m} \\
+                r_{21} & 1      & \cdots & r_{2m} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                r_{m1} & r_{m2} & \cdots & 1\end{pmatrix} \]
+データのサイズにかかわらず，一般的にこのように表現できるのはとてもわかりやすいですね。
+
+
+\end{document}
+
+

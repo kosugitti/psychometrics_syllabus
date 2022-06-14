@@ -1,7 +1,7 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.6.5)  10 JUN 2022 10:47
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.6.5)  10 JUN 2022 11:43
  restricted system commands enabled.
-**L01_LA.tex
-(./L01_LA.tex
+**L01_Basic.tex
+(./L01_Basic.tex
 LaTeX2e <2021-11-15> patch level 1
 Lua module: luaotfload 2022-03-18 3.21 Lua based OpenType font support
 Lua module: lualibs 2021-05-20 2.74 ConTeXt Lua standard libraries.
@@ -1394,9 +1394,9 @@ Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
 )
 \@indexfile=\write6
 
-\openout6 = L01_LA.idx
+\openout6 = L01_Basic.idx
 
-Writing index file L01_LA.idx
+Writing index file L01_Basic.idx
 (/usr/local/texlive/2022/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2022/05/18 v4.0.3 Extensive control of page headers and foote
 rs
@@ -1412,8 +1412,8 @@ rs
 ))
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/patches/lltjp-array.sty
 Package: lltjp-array 2019-07-18 Patch to array for LuaTeX-ja
-) (./L01_LA.aux)
-\openout1 = L01_LA.aux
+) (./L01_Basic.aux)
+\openout1 = L01_Basic.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
@@ -1426,7 +1426,8 @@ LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 5.
 LaTeX Font Info:    Trying loading font information for TS1+cmr on input line 5
 .
- (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ts1cmr.fd
+
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 5.
@@ -1569,10 +1570,11 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@posthook=\toks58
 )
 Package hyperref Info: Link coloring ON on input line 5.
- (./L01_LA.out) (./L01_LA.out)
+
+(./L01_Basic.out) (./L01_Basic.out)
 \@outlinefile=\write7
 
-\openout7 = L01_LA.out
+\openout7 = L01_Basic.out
 \docmute@nestinglevel=\count384
 
 第1章
@@ -1721,7 +1723,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [7]
-Overfull \hbox (6.41805pt too wide) detected at line 437
+Overfull \hbox (6.41805pt too wide) detected at line 442
 [] [] \OT1/cmr/m/n/10 = []
  []
 
@@ -1737,9 +1739,8 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [9]
-Overfull \hbox (1.67569pt too wide) detected at line 627
-\OML/cmm/b/it/10 AB \OT1/cmr/m/n/10 = [] [] = []
- []
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1769,9 +1770,9 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 [13](load cache: extra_lmroman10-italic.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/it' will be
-(Font)              scaled to size 9.24713pt on input line 893.
+(Font)              scaled to size 9.24713pt on input line 899.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/it' will be
-(Font)              scaled to size 9.24713pt on input line 893.
+(Font)              scaled to size 9.24713pt on input line 899.
 
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
@@ -1787,25 +1788,22 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                Make it at least 16.0pt, for example:
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
-[15] (./L01_LA.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package rerunfilecheck Info: File `L01_LA.out' has not changed.
+[15] (./L01_Basic.aux)
+Package rerunfilecheck Info: File `L01_Basic.out' has not changed.
 (rerunfilecheck)             Checksum: 1AD4DA4E32C031A58E46B14193913AB1;787.
 )
 
 Here is how much of LuaTeX's memory you used:
  34656 strings out of 477736
  382237,1144653 words of node,token memory allocated
- 79313 words of node memory still in use:
-   10 hlist, 2 vlist, 5 rule, 9 glue, 436 kern, 1 glyph, 28520 attribute, 2494 g
-lue_spec, 1572 attribute_list, 2 write, 1046 user_defined nodes
-   avail lists: 1:57,2:80475,3:991,4:525,5:178,6:56,7:7890,8:40,9:1705,10:46,11:
-12
+ 79535 words of node memory still in use:
+   10 hlist, 2 vlist, 5 rule, 9 glue, 436 kern, 1 glyph, 28557 attribute, 2522 g
+lue_spec, 1574 attribute_list, 2 write, 1047 user_defined nodes
+   avail lists: 1:57,2:104544,3:1000,4:617,5:178,6:56,7:7890,8:43,9:1669,10:46,1
+1:12
  53856 multiletter control sequences out of 65536+600000
  102 fonts using 91384567 bytes
- 118i,12n,112p,1764b,884s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 118i,12n,112p,1767b,884s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf><
 /usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman17-regular.ot
 f></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.
@@ -1832,7 +1830,7 @@ s/cm/cmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts
 8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
 pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 ></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on L01_LA.pdf (15 pages, 1501067 bytes).
+Output written on L01_Basic.pdf (15 pages, 1504660 bytes).
 
 PDF statistics: 333 PDF objects out of 1000 (max. 8388607)
  252 compressed objects within 3 object streams
