@@ -660,27 +660,28 @@ $\bm{AB}=\bm{C}$とするとき，$\bm{A}$の$i$行目と$\bm{B}$の$j$列目の
             \node[below] at (8,-0.5) {外側は結果のサイズになる};
             \draw[dashed,blue] (b1) to [out=-45,in=245](8,1.28);
         \end{tikzpicture}
-        % \draw [help lines] (0,0) grid (20,20);%(0,0)から(10,4)までの"細線の方眼"
-        \draw (0,0) rectangle (2,4);
-        \draw (3,2) rectangle (6,4);
-        \draw (7,0) rectangle (10,4);
-        \coordinate (a) at (0,0);
-        \coordinate (b) at (2,4);
-        \coordinate (c) at (3,2);
-        \coordinate (d) at (6,4);
-        \coordinate (e) at (7,0);
-        \coordinate (f) at (10,4);
-        \node [left=0pt of a] {$m$};
-        \node [above=0pt of b] {$k$};
-        \node [left=0pt of c] {$k$};
-        \node [above=0pt of d] {$n$};
-        \node [left=0pt of e] {$m$};
-        \node [above=0pt of f] {$n$};
-        \node [below right=9pt of b] {$\times$};
-        \node [below right=9pt of d] {$=$};
-        \node (A) at (1,2) {$\bm{A}$};
-        \node (B) at (4.5,3) {$\bm{B}$};
-        \node (C) at (8.5,2) {$\bm{C}$};
+        \begin{tikzpicture}
+            % \draw [help lines] (0,0) grid (20,20);%(0,0)から(10,4)までの"細線の方眼"
+            \draw (0,0) rectangle (2,4);
+            \draw (3,2) rectangle (6,4);
+            \draw (7,0) rectangle (10,4);
+            \coordinate (a) at (0,0);
+            \coordinate (b) at (2,4);
+            \coordinate (c) at (3,2);
+            \coordinate (d) at (6,4);
+            \coordinate (e) at (7,0);
+            \coordinate (f) at (10,4);
+            \node [left=0pt of a] {$m$};
+            \node [above=0pt of b] {$k$};
+            \node [left=0pt of c] {$k$};
+            \node [above=0pt of d] {$n$};
+            \node [left=0pt of e] {$m$};
+            \node [above=0pt of f] {$n$};
+            \node [below right=9pt of b] {$\times$};
+            \node [below right=9pt of d] {$=$};
+            \node (A) at (1,2) {$\bm{A}$};
+            \node (B) at (4.5,3) {$\bm{B}$};
+            \node (C) at (8.5,2) {$\bm{C}$};
         \end{tikzpicture}
         \caption{行列のサイズを把握する}
         \label{fig::06_01}
