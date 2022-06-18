@@ -73,6 +73,7 @@
 ### サンプルデータ
 
 - [野球選手のデータ 10 年度分](codes/SampleData/BaseballDecade.csv)
+- [家賃のデータ](codes/SampleData/yachin.csv)
 - [項目反応理論用のデータ](codes/SampleData/IRTsample.csv)
 - [体重推移のデータ](codes/SampleData/Weight.csv)
 - [M-1 グランプリの審査員データ](codes/SampleData/M1score2021.csv)

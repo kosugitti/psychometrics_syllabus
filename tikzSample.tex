@@ -8,6 +8,7 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable, skins, theorems}
 \tcbuselibrary{theorems}
+\usepackage{nicematrix}
 \begin{document}
 \begin{figure}
 	\begin{tikzpicture}
@@ -58,4 +59,14 @@
 
 	\end{tikzpicture}
 \end{figure}
+
+\[
+	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
+		\rowcolor{cyan!15}1 & 0 & A_{13} & 0 \\
+		0 & \rowcolor{cyan!15}1 & A_{23} & 0 \\
+		0 & 0 & 0 & \rowcolor{cyan!15}1 \\
+		0 & 0 & 0 & 0
+	\end{pNiceArray}
+\]
+
 \end{document}
