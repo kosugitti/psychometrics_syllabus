@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 0.0.3}
+\lhead{version 0.0.5}
 
 \usepackage{docmute}
 \begin{document}
@@ -18,14 +18,11 @@
 % \input{preface1} % preface
 
 \tableofcontents
-
+\part{Day 1: 行列の基礎と方程式}
 \include{L01_Basic}
 \include{L02_Data}
 \include{L03_Equation}
-% - 逆行列
-% - 逆行列の計算法
-% - 逆行列を使って連立方程式を解く
-% ### 二日目
+\part{Day 2: 行列とベクトルの空間的理解}
 % 4. 空間的理解
 % - ベクトルの内積
 % - 内積と相関
@@ -38,6 +35,7 @@
 % 6. ベクトルの分解
 % - 射影・射影行列
 % - 射影と回帰分析
+\part{Day 3: 行列と多変量解析}
 % 7. データの空間
 % - 直交行列
 % - 回転行列と分散
