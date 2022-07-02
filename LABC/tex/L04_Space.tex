@@ -5,7 +5,7 @@
 \begin{document}
 \chapter{ベクトルの空間的理解}
 \label{L04_Space}
-\section{空間としてのベクトル}
+\section{ベクトルの可視化}
 ここまで代数(文字と式)としての行列の話をしてきましたが，ここからは空間的なイメージで考えていきたいと思います。
 何かを理解するときの入り口はいろいろあった方がよいと思います。数字の計算では面白みがわからなかった人も，空間イメージであればわかりやすいということがあるかもしれません。もちろん数字の羅列が大好きな人はそのままでもいいのですが，空間イメージと合わせて考えることができるという，数学世界の完璧なまでの整合性に感動するのも一興ではないでしょうか。
 
@@ -16,16 +16,370 @@
 
 それではさっそく，ベクトルの空間的イメージをつかむところから始めましょう。
 \subsection{ベクトル空間}
+話を簡単にするために，二次元の空間を基本に考えましょう。二次元の列ベクトル，$\footnotesize\bm{a} = \begin{pmatrix}1\\2 \end{pmatrix}$を，x軸が1,y軸が2の座標を指していると考えるのです。「指している」というと「どこから?」という問いが思い浮かびますが，基本的にこれは「原点$o=(0,0)$から」と限定しておきましょう\footnote{物理学でベクトルを扱うときは，「どこから」というのは特に気にせず，向きと大きさを持っていればそれがベクトルだ，と考えるのですが，私はそのあたりから抽象的すぎてついていけなくなるので，地に足をつけるように原点から，と限定して考えることにしています。そのようにしても，本書の目的からいって問題はありません。ちなみに，原点を固定したベクトルを\keytermL{位置ベクトル}{いちべくとる}，固定して考えないものを\keytermL{幾何ベクトル}{きかべくとる}，数学的に数字のリストだけにこだわる場合は\keytermL{数ベクトル}{かずべくとる}などと呼んで区別することもあります\citep{Murakami20160301}。}。
 
-\subsection{}
+ベクトルは数字として考えても，空間として考えても良く，両方の観点を行き来して考えるようにしていこう，というのがここでのテーマです。さてこのベクトル$\bm{a}$は，x軸上のベクトル$\footnotesize\begin{pmatrix}1\\0\end{pmatrix}$と，y軸上のベクトル$\footnotesize\begin{pmatrix}0 \\ 1\end{pmatrix}$を使って，次のように表現することができます。
 
-ベクトルの和・差
-積（スケイラー）
-ベクトルの長さ
+\[ \begin{pmatrix}1 \\2 \end{pmatrix} = 1\begin{pmatrix} 1 \\ 0 \end{pmatrix} + 2\begin{pmatrix} 0 \\1 \end{pmatrix} \]
 
-% 4. 空間的理解
-% - ベクトルの内積
-% - 内積と相関
-% - ベクトルの直交
+これはつまり，x軸とy軸を表現する基本的な単位となるベクトルがあれば，それらを使って\underline{二次元平面のあらゆる座標を表現することができる}，ということでもあります。任意の座標$(x,y)$は，
+\[ \begin{pmatrix}x \\y \end{pmatrix} = x\begin{pmatrix} 1 \\ 0 \end{pmatrix} + y\begin{pmatrix} 0 \\1 \end{pmatrix} \]
+で表せるからです。この式の右辺は\keytermL{線型結合}{せんけいけつごう}とか\keytermL{一次結合}{いちじけつごう}と呼びます。
+また，座標の基本となるベクトル，$\footnotesize\begin{pmatrix}1\\0\end{pmatrix}$と$\footnotesize\begin{pmatrix}0 \\ 1\end{pmatrix}$を\keytermL{基底}{きてい}と呼びます。
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \draw [cyan!30] (-3,-3) grid (3,3);%"細線の方眼"
+        \draw[-] (-3,0)--(3,0)node[below]{$x$}; %x軸
+        \draw[-] (0,-3)--(0,3)node[left]{$y$}; %y軸
+        \coordinate[label=below left:$o$] (o)at (0,0);
+        \coordinate (a) at (1,2);
+        \coordinate (x) at (1,0);
+        \coordinate (y) at (0,1);
+        \fill (o) circle [radius=2pt];
+        \draw[->, >=Latex,very thick] (o) -- node [midway, auto] {$\bm{a}$}(a) ;
+        \draw[->, >=Latex,thick] (o) -- node [below] {$(1,0)$}(x);
+        \draw[->, >=Latex,thick] (o) -- node [auto] {$(0,1)$}(y);
+    \end{tikzpicture}
+    \caption{基底ベクトルとその線型結合で表される座標}
+\end{figure}
+
+このようにベクトルとその空間表現は相互に行き来できるということがわかるかと思います。ここではわかりやすく二次元で描画していますが，三次元であってもいいし，四次元でも$n$次元でも，数学的には一般化して扱うことができます。
+\subsection{一次独立と一次従属}
+基底はベクトルで作る空間の基礎となるベクトル，ということですが，どのようなベクトルであってもいいというわけではありません。例えば次のような式を考えてみましょう。
+\[ x \begin{pmatrix}1\\0\end{pmatrix} + y\begin{pmatrix} 0\\1\end{pmatrix} = \begin{pmatrix}0\\0\end{pmatrix} \]
+この式が成立するのは，係数$x,y$が共にゼロ，すなわち$x = y = 0$の時だけであることがわかります。このような関係にあるベクトル$\footnotesize\begin{pmatrix}1\\0\end{pmatrix}$と$\footnotesize\begin{pmatrix}0 \\ 1\end{pmatrix}$であれば，基底として考えることができます。このような関係を特に\keytermL{一次独立}{いちじどくりつ}なベクトル，といいます。
+
+ではなぜ一次独立でないと基底にならないのでしょうか。次のようなベクトルの例で考えてみましょう。
+\[ x \begin{pmatrix}1\\0\end{pmatrix} + y\begin{pmatrix} 2\\0\end{pmatrix} = \begin{pmatrix}0\\0\end{pmatrix} \]
+この場合ですと，$x=-2, y=1$とすれば数式は成立しますね。このような関係は一次独立ではなく，\keytermL{一次従属}{いちじじゅうぞく}なベクトルであるといいます。従属している，というのは図を見ればその関係は明らかです。
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        \draw [cyan!30] (-2,-2) grid (5,5);%"細線の方眼"
+        \draw[-] (-2,0)--(5,0)node[below]{$x$}; %x軸
+        \draw[-] (0,-2)--(0,5)node[left]{$y$}; %y軸
+        \coordinate (x) at (1,0);
+        \coordinate (y) at (2,0);
+        \draw[->, >=Latex,thick] (o) -- node [below] {$(1,0)$}(x);
+        \draw[->, >=Latex,thick] (o) -- node [above right] {$(2,0)$}(y);
+    \end{tikzpicture}
+    \caption{一次従属なベクトルの組み合わせ}
+\end{figure}
+2本目のベクトルは，1本目のベクトルに従っていますね。言い換えると，$2\begin{pmatrix}1\\0\end{pmatrix}  = \begin{pmatrix} 2\\0\end{pmatrix}$ですから，2本目のベクトルは1本目のベクトルの一次結合で表現できてしまうのです。これでは結局，2番目の軸としての情報を持っていないことになりますから，一次従属な関係のベクトルであれば空間を張ることができない，基底となることができない，というわけです。
+\subsection{ベクトルの長さ}
+ところで，x軸，y軸の基底ベクトルは$\footnotesize\begin{pmatrix}1\\0\end{pmatrix}$と，$\footnotesize\begin{pmatrix}0 \\ 1\end{pmatrix}$ということでしたが，ベクトルは方向がわかっていればいいので，これは別に$\footnotesize\begin{pmatrix}2\\0\end{pmatrix}$と，$\footnotesize\begin{pmatrix}0 \\ 3\end{pmatrix}$などとしても問題ありません。ただ，目盛り1単位分にしておいた方が定数倍するときにわかりやすいので，長さを1にしておいたにすぎません。
+
+ベクトルの長さ，という言葉が出てきましたが，先ほどのベクトル$\footnotesize \bm{a} = \begin{pmatrix}1\\2 \end{pmatrix}$の長さはどうか，ということも考えることができます。ベクトルの長さのことを\keytermL{ノルム}{のるむ}といい，$\| \bm{a} \|$と書きます。これは三平方の定理を使って，
+\[ \| \bm{a} \| = \sqrt{1^2 + 2^2} = \sqrt{5} \]
+と計算することができます。一般に，n次元ベクトル$\bm{a}' = \begin{pmatrix}a_1 & a_2 & \cdots & a_n \end{pmatrix}$に対して，ノルム$\| \bm{a} \|$は
+\[ \| \bm{a} \| = \sqrt{\sum_{i=1}^n a_i^2} \]
+と定義されます。
+
+\section{ベクトルとベクトルの関係}
+
+\subsection{ベクトルの計算の空間イメージ}
+さてベクトルで空間のイメージができてきたかとおもいますが，これの計算はどのように空間化できるでしょうか。まずはベクトルのスカラー倍を見てみましょう。
+ベクトル$\footnotesize \bm{a} = \begin{pmatrix}1\\2 \end{pmatrix}$を3倍すると，
+\[  3\bm{a} = 3\begin{pmatrix}1\\2 \end{pmatrix} = \begin{pmatrix} 3 \times 1 \\ 3 \times 2 \end{pmatrix} = \begin{pmatrix} 3 \\ 6 \end{pmatrix} \]
+とそれぞれの要素に掛け込むことができるのでした。空間上は，最初のベクトルと同じ方向に伸ばすことに対応します。
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        \draw [cyan!30] (-4,-4) grid (4,7);%"細線の方眼"
+        \draw[-] (-4,0)--(4,0)node[below]{$x$}; %x軸
+        \draw[-] (0,-4)--(0,7)node[left]{$y$}; %y軸
+        \coordinate[label=below left:$o$] (o)at (0,0);
+        \coordinate (a) at (1,2);
+        \coordinate (b) at (3,6);
+        \coordinate (c) at (-1.5,-3);
+        \fill (o) circle [radius=2pt];
+        \draw[->, >=Latex,very thick] (o) -- node [midway, auto] {$\bm{a}$}(a) ;
+        \draw[->, >=Latex,very thick,blue] (o) -- node [midway, auto] {$3\bm{a}$}(b) ;
+        \draw[->, >=Latex,very thick,blue] (o) -- node [midway, left] {$-1.5\bm{a}$}(c) ;
+    \end{tikzpicture}
+    \caption{ベクトルのスカラー倍}
+\end{figure}
+同じ方向に長さだけ変える操作をするので，掛ける数字は大きさの調整役を意味します。ただの数字のことをスカラーと言いますが，これはScaler(スケーラー，スケール担当)から来ているのです。
+
+
+また，スカラー倍は同じ線上でサイズが変わるだけですが，負のスカラー倍は向きが逆転することを意味します。これは数直線のイメージで考えると，$+5-2=+3$という計算は，x軸を右に5単位いって，そこからさらに-2単位進むというのは左に進むことと同じ，ということから理解できるかと思います。
+
+今度はベクトルの和を考えてみましょう。別のベクトル$\footnotesize\bm{b} = \begin{pmatrix}3\\1\end{pmatrix}$があったとして，ベクトルの和はどうなるでしょうか。数字の計算として考えたら，
+\[ \begin{pmatrix} 1\\2 \end{pmatrix} + \begin{pmatrix} 3 \\1 \end{pmatrix} =
+    \begin{pmatrix} 1 + 3 \\ 2 + 1\end{pmatrix} = \begin{pmatrix}4 \\3\end{pmatrix} \]
+となりますから，図で言うと「2つのベクトルが作る平行四辺形の対角線が示すもの」と考えることもできますし，「x軸方向に+1,y軸方向に+2移動したところから，x軸方向に+3，y軸方向に+1移動する」と考えても良いかと思います。
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        \draw [cyan!30] (-3,-3) grid (7,7);%"細線の方眼"
+        \draw[->, >=Latex] (-3,0)--(7,0)node[below]{$x$}; %x軸
+        \draw[->,>=Latex] (0,-3)--(0,7)node[left]{$y$}; %y軸
+        \coordinate[label=below left:$o$] (o)at (0,0);
+        \coordinate (a) at (1,2);
+        \coordinate (b) at (3,1);
+        \coordinate (c) at (4,3);
+        \fill (o) circle [radius=2pt];
+        \draw[->, >=Latex,very thick] (o) -- node [midway, auto] {$\bm{a}$}(a) ;
+        \draw[->, >=Latex,very thick] (o) -- node [below] {$\bm{b}$}(b);
+        \draw[->, >=Latex,very thick] (o) -- node [auto] {$\bm{c}$}(c);
+        \draw[->, >=Latex,very thick,blue!60] (a) -- node [above] {$\bm{b}$} (c);
+        \draw[dotted] (b) -- (c);
+    \end{tikzpicture}
+    \caption{ベクトルとベクトルの和。平行四辺形の対角線，あるいは移動のイメージで}
+\end{figure}
+
+\subsection{内積}
+ベクトルの和の話が出たので，今度はベクトルの積の話をしましょう。ベクトルとベクトルの積は，掛ける順番によってはスカラーになったり行列になったりします。
+ベクトル，$\bm{a} = \footnotesize\begin{pmatrix}a_1 \\ a_2 \end{pmatrix}$と$\bm{b} = \footnotesize\begin{pmatrix}b_1 \\ b_2 \end{pmatrix}$について，$\bm{a}$を転置して行ベクトルにし，行ベクトルと列ベクトルの積にしてみると，
+\[ \bm{a}'\bm{b} = \begin{pmatrix}a_1 & a_2 \end{pmatrix} \begin{pmatrix} b_1\\b_2\end{pmatrix} = a_1b_1 + a_2b_2\]
+となります。なんだこれ。と，そのまえに，同じことをベクトル$\bm{a}$と$\bm{a}$でやってみますと，
+\[ \bm{a}'\bm{a} = \begin{pmatrix}a_1 & a_2 \end{pmatrix} \begin{pmatrix} a_1\\a_2\end{pmatrix} = a_1^2 + a_2^2 = \|\bm{a}\|^2 \]
+となります。これはノルムの二乗ですね。ベクトルの長さの計算は，ベクトルとベクトルの積(ただし行ベクトル$\times$列ベクトルの形にして)だった，ということがわかります。
+であれば，$\bm{a}'\bm{b}$で算出されるスカラーも，何らかの量を表しているわけですが，これが何なのかを考えてみたいと思います。ちなみにこの積の計算のことを特に，\keytermL{内積}{ないせき}と呼びます。
+
+内積は$(\bm{a},\bm{b})$とも表記され，一般に次のように定義されます。
+\[ (\bm{a},\bm{b}) = \sum a_i b_i \]
+内積はまた，次の性質を持つことが知られています。
+\begin{itemize}
+    \item $(\bm{a},\bm{b}) = (\bm{b}, \bm{a}) $
+    \item $(\bm{a}+\bm{b}, \bm{c}) = (\bm{a},\bm{c}) + (\bm{b},\bm{c}) $
+    \item $(\lambda\bm{a},\bm{b}) = \lambda(\bm{a},\bm{b})$
+    \item $(\bm{a},\bm{a}) \ge 0$\; ただし等号になるのは$\bm{a} = \bm{0}$の場合に限る。
+\end{itemize}
+
+さてこの内積，2つのベクトルの長さに関する何らかの量であることはわかりますが，どういう量なのか空間イメージで考えてみたいと思います。
+
+いくつかのベクトルを考えましょう。図\ref{vectors}には，$\bm{a}=\footnotesize\begin{pmatrix}3\\4\end{pmatrix}$，$\bm{b}=\footnotesize\begin{pmatrix}4\\3\end{pmatrix}$，$\bm{c}=\footnotesize\begin{pmatrix}5\\0\end{pmatrix}$，$\bm{d}=\footnotesize\begin{pmatrix}-2\\4\end{pmatrix}$，$\bm{e}=\footnotesize\begin{pmatrix}1\\0\end{pmatrix}$の5つのベクトルがあります。それぞれのノルムや内積は，
+\[ \| \bm{a} \| = \| \bm{b} \| = \| \bm{c} \| = 5 \]
+\[ \| \bm{d} \| = \sqrt{20} \]
+\[ \| \bm{e} \| = 1 \]
+\[ (\bm{a}, \bm{b}) = 12 + 12 =24\]
+\[ (\bm{a}, \bm{c}) = 15 + 0 =15\]
+\[ (\bm{a}, \bm{d}) = -8 + 12 = 4\]
+\[ (\bm{a}, \bm{e}) = 3 + 0 = 3\]
+などとなっています。結果から考えて，2つのベクトルが近いと内積は大きく，離れると小さくなるようですから，内積は2つのベクトルの関係の近さを表しているようにも見えますが，$(\bm{a},\bm{c}) > (\bm{a},\bm{d})$になっているあたりが微妙です。
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        \draw [cyan!30] (-3,-3) grid (7,7);%"細線の方眼"
+        \draw[->, >=Latex] (-3,0)--(7,0)node[below]{$x$}; %x軸
+        \draw[->,>=Latex] (0,-3)--(0,7)node[left]{$y$}; %y軸
+        \coordinate[label=below left:$o$] (o)at (0,0);
+        \coordinate (a) at (3,4);
+        \coordinate (b) at (4,3);
+        \coordinate (c) at (5,0);
+        \coordinate (d) at (-2,4);
+        \coordinate (e) at (1,0);
+        \draw[->, >=Latex,very thick] (o) -- (a) ;
+        \draw[->, >=Latex,very thick] (o) -- (b);
+        \node[right] (labelA) at (a) {$\bm{a}$};
+        \node[right] (labelB) at (b) {$\bm{b}$};
+        \node[below] (labelC) at (c) {$\bm{c}$};
+        \node[below] (labelE) at (e) {$\bm{e}$};
+        \draw[->, >=Latex,very thick] (o) -- (c);
+        \draw[->, >=Latex,very thick] (o) -- node [midway, auto] {$\bm{d}$} (d);
+        \draw[->, >=Latex,very thick] (o) -- (e);
+    \end{tikzpicture}
+    \caption{色々なベクトルの例}
+    \label{vectors}
+\end{figure}
+実は，内積は2つのベクトルの関係の近さを表していると言えなくもないのですが，そこには2つのベクトルが作る角度が関係しています。
+角度に注意しながら，ベクトル$\bm{a}$と$\bm{e}$, $\bm{a}$と$\bm{c}$を例に見てみましょう。
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        \coordinate (a) at (3,4);
+        \coordinate (e) at (1,0);
+        \coordinate (ax) at (3,0);
+        \coordinate (o)at (0,0);
+        \draw[->, >=Latex,very thick] (o) -- node[midway,rotate=53,above] {$\| \bm{a} \|$} (a) ;
+        \draw[->, >=Latex,very thick] (o) -- (e);
+        \draw[dotted] (o) -- (ax);
+        \node[right] (labelA) at (a) {$\bm{a}$};
+        \node[below] (labelE) at (e) {$\bm{e}$};
+        \coordinate (thrta_0) at (0.75,0) node at (thrta_0) [above right] {$\theta$};
+        \draw [](0.8,0) arc [start angle = 0, end angle = 53, radius = 0.8];%半径0.8の弧
+        \draw[dashed] (a) -- (ax);
+        \draw (o) to [out=-85,in=265] node[midway,below]{$\| \bm{a}\| \cos \theta$} (ax);
+    \end{tikzpicture}
+    \hspace{2cm}
+    \begin{tikzpicture}[scale=0.75]
+        \coordinate (a) at (3,4);
+        \coordinate (c) at (5,0);
+        \coordinate (ax) at (3,0);
+        \coordinate (o)at (0,0);
+        \draw[->, >=Latex,very thick] (o) -- node[midway,rotate=53,above] {$\| \bm{a} \|$} (a) ;
+        \draw[->, >=Latex,very thick] (o) -- (c);
+        \node[right] (labelA) at (a) {$\bm{a}$};
+        \node[right] (labelC) at (c) {$\bm{c}$};
+        \coordinate (thrta_0) at (0.75,0) node at (thrta_0) [above right] {$\theta$};
+        \draw [](0.8,0) arc [start angle = 0, end angle = 53, radius = 0.8];%半径0.8の弧
+        \draw[dashed] (a) -- (ax);
+        \draw (o) to [out=-85,in=265] node[midway,below]{$\| \bm{a}\| \cos \theta$} (ax);
+    \end{tikzpicture}
+    \caption{ベクトルのなす角と内積の関係}
+    \label{Vec_and_theta}
+\end{figure}
+
+ベクトル$\bm{e}$はx軸の基本ベクトルで，長さは1です。ベクトル$\bm{c}$はそれの5倍の長さはありますが，$\bm{e}$と方向が同じx軸上のベクトルです。それぞれの内積をみると，$(\bm{a},\bm{c})$は$(\bm{a},\bm{e})$の5倍ですから，大きさの意味はともかく，ベクトルのノルムに何かかけたものという関係にあることがわかります。
+
+何をかけているのでしょうか。そのヒントがベクトル$\bm{a}$との角度です。2つのベクトルの角度が$\theta$だとします。またベクトル$\bm{a}$からベクトル$\bm{e}$や$\bm{c}$に向けて垂線を下ろしたとします。このように，一方のベクトルから他方のベクトルへ垂線を下ろすことを，\keytermL{射影}{しゃえい}する，といいます。光を当てて影を落とすイメージですね。影が落ちる点までの距離は，三角関数を思い出すと$\| \bm{a} \| \cos \theta$であることがわかります(図\ref{Vec_and_theta})。
+
+つまりベクトルの角度のコサインをとったものが，内積$(\bm{a},\bm{e})$，$(\bm{a},\bm{c})$に関わってきているといえそうです。
+$\bm{a}$と$\bm{e}$の内積$(\bm{a},\bm{e})$は，ベクトル$\bm{a}$をx軸に射影した時の長さであり，$(\bm{a},\bm{e}) = \cos \theta \| \bm{a} \| \times 1 = \cos \theta \| \bm{a} \| \| \bm{e} \|$だったわけです。このように考えると，ベクトル$\bm{a}$ と$\bm{c}$との内積も，$(\bm{a},\bm{c}) = \cos \theta \| \bm{a} \| \| \bm{c} \|$といえそうです。内積は，一方のベクトルを他方のベクトルに射影した時の長さと，射影されたベクトルの長さ，2つのベクトルの作る角度の$\cos \theta$からできています。
+
+今回位は$\bm{a}$を$\bm{e}$に，$\bm{a}$を$\bm{c}$に射影して説明しましたが，逆でも構いません。例えば$\bm{c}$を$\bm{a}$に射影し，射影された$\bm{a}$のノルム倍したものとして捉えても同じことです(図\ref{Vec_and_theta2})。
+
+\begin{figure}[hb]
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        \coordinate (a) at (3,4);
+        \coordinate (c) at (5,0);
+        \coordinate (cx) at ($(o)!(c)!(a)$);
+        \coordinate (o) at (0,0);
+        \coordinate (ax) at (3,0);
+        \draw[->, >=Latex,very thick] (o) -- (a) ;
+        \draw[->, >=Latex,very thick] (o) -- (c);
+        \node[right] (labelA) at (a) {$\bm{a}$};
+        \node[right] (labelC) at (c) {$\bm{c}$};
+        \coordinate (thrta_0) at (0.75,0) node at (thrta_0) [above right] {$\theta$};
+        \draw [](0.8,0) arc [start angle = 0, end angle = 53, radius = 0.8];%半径0.8の弧
+        \draw[dashed] (c) -- (cx);
+        \draw[dashed] (a) -- (ax);
+        \draw (o) to [out=115,in=175] node[midway,above,rotate=53]{$\| \bm{c}\| \cos \theta$} (cx);
+        \draw (o) to [out=-85,in=265] node[midway,below]{$\| \bm{a}\| \cos \theta$} (ax);
+    \end{tikzpicture}
+    \caption{内積と射影関係}
+    \label{Vec_and_theta2}
+\end{figure}
+
+ポイントは，内積は2つのベクトルの類似度を表していること，その大きさは両方のベクトルのノルムと角度によって決まること，にあります。
+ちなみに内積の計算から逆に，
+\[ \cos \theta = \frac{(\bm{a}, \bm{c})}{\| \bm{c}\| \| \bm{c} \|} \]
+となりますから，$\cos \theta$は内積を両方のノルムで割ったものだ，と考えてもいいでしょう。
+
+\begin{Untiku}{余弦定理から考える}{}
+    まさか三角関数が出てくるとはな！と思った人もいるかも知れませんが，ついでに三角関数を使ったうんちくをひとつ。
+    $\cos$のことを余弦といいますが，これを使った定理として三角形の3つの辺の長さ$a,b,c$と，2つの辺が作る角度$\theta$から，
+    \begin{center}
+        \begin{tikzpicture}[scale=0.5]
+            \coordinate (a) at (4,3);
+            \coordinate (c) at (6,0);
+            \coordinate (o) at (0,0);
+            \draw[very thick] (o) -- node[midway,above] {a} (a) ;
+            \draw[very thick] (o) -- node[midway,below] {b} (c);
+            \draw[very thick] (c) -- node[midway,right] {c}(a) ;
+            \coordinate (thrta_0) at (0.75,0) node at (thrta_0) [above right] {$\theta$};
+            \draw [](0.8,0) arc [start angle = 0, end angle = 38, radius = 0.8];%半径0.8の弧
+        \end{tikzpicture}
+    \end{center}
+    \[ c^2 = a^2 + b^2 - 2\cos\theta \]
+    というのがあります。これを今回のベクトルの話に置き換えてみます。
+
+    辺の長さはベクトルでいうところのノルムですね。それを踏まえてベクトルの図で考えますと，この式がいっていることは次のように言い換えられます。
+    \[ \| \bm{c} - \bm{a} \|^2 = \| \bm{a} \|^2 + \| \bm{c} \|^2 - 2\cos \theta \]
+    \begin{center}
+        \begin{tikzpicture}
+            \coordinate (a) at (4,3);
+            \coordinate (c) at (6,0);
+            \coordinate (o) at (0,0);
+            \coordinate (ax) at (4,0);
+            \draw[->, >=Latex,very thick] (o) -- node[midway,rotate=40,above] {$\| \bm{a} \|$} (a) ;
+            \draw[->, >=Latex,very thick] (o) -- (c);
+            \draw[->, >=Latex,very thick] (c) -- node[midway,right] {$\| \bm{c} - \bm{a} \|$}(a) ;
+            \node[above] (labelA) at (a) {$\bm{a}$};
+            \node[right] (labelC) at (c) {$\bm{c}$};
+            \coordinate (thrta_0) at (0.75,0) node at (thrta_0) [above right] {$\theta$};
+            \draw [](0.8,0) arc [start angle = 0, end angle = 38, radius = 0.8];%半径0.8の弧
+            \draw[dashed] (a) -- node[pos = 0.7,left] {$\| \bm{a} \|\sin \theta $} (ax);
+            \draw (o) to [out=-85,in=265] node[midway,below]{$\| \bm{a}\| \cos \theta$} (ax);
+            \draw (ax) to [out=-85,in=265] node[midway,below right]{$\|\bm{c}\| - \| \bm{a}\| \cos \theta$} (c);
+        \end{tikzpicture}
+    \end{center}
+    三角形の時の第三の辺$c$が，ここでは$\| \bm{c} - \bm{a} \|$となっているところに注意してください。一旦c地点まで移動して，そこからa地点まで戻るので，マイナスになるという計算です。
+    ここで，ベクトル$\bm{a}$から$\bm{c}$に対して射影することを考えると，ベクトル$\bm{c}$は$\| \bm{a} \|\cos \theta$と残りの部分に分割されます。またこの垂線の高さは$\sin \theta$を使って表すことができます。この垂線で区切られた右側の領域にある三角形も直角三角形ですから，三平方の定理が成立しますね。
+    \[ \| \bm{c} - \bm{a} \|^2 = (\| \bm{a} \| \sin \theta)^2 + (\| \bm{c} \| - \| \bm{a}\|\cos \theta)^2 \]
+    ということで，右辺を展開してみますと
+    \[ = \| \bm{a} \|^2 \sin^2 \theta + \| \bm{c} \|^2 -2\| \bm{c} \| \| \bm{a}\| \cos \theta +\| \bm{a}\|^2 \cos^2 \theta \]
+    \[ = \| \bm{a} \|^2(\sin^2 \theta + \cos^2 \theta) + \| \bm{c} \|^2 -2\| \bm{c} \| \| \bm{a}\| \cos \theta\]
+    \[ = \| \bm{a} \|^2 + \| \bm{c} \|^2 -2\| \bm{c} \| \| \bm{a}\| \cos \theta\]
+    ここで$\cos \theta$の項を別にしてベクトルだけの計算にしてみましょう。移項して，
+    \[ 2\| \bm{c} \| \| \bm{a}\| \cos \theta = \| \bm{a} \|^2 + \| \bm{c} \|^2 -  \| \bm{c} - \bm{a} \|^2 \]
+    として考えてみます。
+
+    右辺はベクトルだけになりましたから，2次元ベクトルの要素として$\bm{a} = \footnotesize \begin{pmatrix} a_1\\a_2 \end{pmatrix}, \bm{c} = \footnotesize \begin{pmatrix}c_1\\c_2\end{pmatrix}$だとすると，
+    \[ 2\| \bm{c} \| \| \bm{a}\| \cos \theta = a_1^2 + a_2^2 + c_1^2 + c_2^2 -((a_1-c_1)^2 +(a_2 - c_2)^2)) \]
+    \[ = a_1^2 + a_2^2 + c_1^2 + c_2^2 - (a_1^2 + c_1^2 - 2a_1c_1 + a_2^2 + c_2^2 - 2a_2c_2) \]
+    \[ = 2(a_1c_1 + a_2c_2)\]
+    ここで両辺2で割って，
+    \[ \| \bm{c} \| \| \bm{a}\| \cos \theta = (a_1c_1 + a_2c_2) = (\bm{a},\bm{c} )\]
+    となり，内積は2つのベクトルのノルムにベクトルのなす角$\theta$の余弦をかけたもの，という話にたどりつきます。
+\end{Untiku}
+\section{データの空間的イメージ}
+ここまでで，ベクトルは空間的なものとして可視化，イメージできることをみてきました。これと心理統計とはどう言う関係があるのでしょうか。
+
+例えば次のようなデータセットがあったとします。
+\begin{table}[h]
+    \centering
+    \caption{3人$\times$2変数のデータセット}
+    \begin{tabular}{ccc}
+        名前 & 身長  & 体重 \\\hline
+        鈴木 & 160 & 70 \\
+        佐藤 & 150 & 80 \\
+        小杉 & 176 & 53 \\\hline
+    \end{tabular}
+\end{table}
+ここで身長と体重の散布図を描く，ということになれば，いわば行ベクトルごとにプロットしていくわけですからベクトルが個人を表していることになります。たとえばクラスター分析などで回答者を分類するときなどは行ベクトル同士の関係を考えるわけですから，個々人の向きや大きさをに興味関心があるわけです。
+
+ですが，たいていのデータ解析の時は変数間関係が知りたいわけですから，ベクトルを縦に見る，つまり列ベクトルとして考えることになるでしょう。
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        \draw[->, >=Latex] (-1,0)--(6,0)node[below]{身長}; %x軸
+        \draw[->,>=Latex] (0,-1)--(0,6)node[left]{体重}; %y軸
+        \coordinate[label=below left:$o$] (o)at (0,0);
+        \coordinate (a) at (4,3.5);
+        \coordinate (b) at (3.25,4);
+        \coordinate (c) at (4.4,2.65);
+        \node[right] (label1) at (a) {鈴木};
+        \node[right] (label2) at (b) {佐藤};
+        \node[right] (label3) at (c) {小杉};
+        \draw[->, >=Latex,very thick] (o) -- (a);
+        \draw[->, >=Latex,very thick] (o) -- (b);
+        \draw[->, >=Latex,very thick] (o) -- (c) ;
+    \end{tikzpicture}
+    \hspace{0.5cm}
+    \tdplotsetmaincoords{60}{100}
+    \begin{tikzpicture}[scale=0.5,tdplot_main_coords]
+        \draw[->, >=Latex] (0,0,0)--(10,0,0)node[left]{鈴木}; %x軸
+        \draw[->,>=Latex] (0,0,0)--(0,10,0)node[right]{佐藤}; %y軸
+        \draw[->,>=Latex] (0,0,0)--(0,0,10)node[left]{小杉}; %y軸
+        \coordinate (A) at (8,7.5,8.8);
+        \coordinate (Az) at (8,7.5,0);
+        \coordinate (Azy) at (8,0,0);
+        \coordinate (Azx) at (0,7.5,0);
+        \coordinate (B) at (7,8,5.3);
+        \coordinate (Bz) at (7,8,0);
+        \coordinate (Bzx) at (7,0,0);
+        \coordinate (Bzy) at (0,8,0);
+        \coordinate (Azz) at (0,0,8.8);
+        \coordinate (Bzz) at (0,0,5.3);
+        \coordinate (O) at (0,0,0);
+        \draw[->, >=Latex,ultra thick] (O) -- node [pos=0.7, auto] {身長}(A) ;
+        \draw[->, >=Latex,ultra thick] (O) -- node [pos=0.7, auto] {体重}(B);
+        \draw[cyan,dashed] (A) -- (Az);
+        \draw[cyan,dashed] (Az) -- (Azy);
+        \draw[cyan,dashed] (Az) -- (Azx);
+        \draw[cyan,dashed] (B) -- (Bz);
+        \draw[cyan,dashed] (Bz) -- (Bzy);
+        \draw[cyan,dashed] (Bz) -- (Bzx);
+        % \draw[cyan,dashed] (A) -- (Azz);
+        % \draw[cyan,dashed] (B) -- (Bzz);
+    \end{tikzpicture}
+    \caption{行でみるか列で見るか}
+\end{figure}
+
 
 \end{document}

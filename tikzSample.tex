@@ -8,6 +8,7 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable, skins, theorems}
 \tcbuselibrary{theorems}
+\usepackage{tikz-3dplot}
 \usepackage{nicematrix}
 \begin{document}
 \begin{figure}
@@ -68,5 +69,52 @@
 		0 & 0 & 0 & 0
 	\end{pNiceArray}
 \]
+
+
+\begin{tikzpicture}
+	\draw [cyan!30] (-3,-3) grid (7,7);%"細線の方眼"
+	\draw[->, >=Latex] (-3,0)--(7,0)node[below]{$x$}; %x軸
+	\draw[-> >=Latex] (0,-3)--(0,7)node[left]{$y$}; %y軸
+	\coordinate[label=$o$] (o)at (0,0);
+	\coordinate (a) at (1,2);
+	\coordinate (b) at (3,1);
+	\coordinate (c) at (4,3);
+	\fill (o) circle [radius=2pt];
+	\draw[->] (o) -- node [midway, auto] {$\bm{a}$}(a) ;
+	\draw[->] (o) -- node [below] {$\bm{b}$}(b);
+	\draw[->] (o) -- node [auto] {$\bm{c}$}(c);
+	\draw[dotted] (a) -- (c);
+	\draw[dotted] (b) -- (c);
+\end{tikzpicture}
+
+
+\tdplotsetmaincoords{60}{115}
+\begin{tikzpicture}[tdplot_main_coords]
+	\draw[->, >=Latex] (0,0,0)--(10,0,0); %x軸
+	\draw[->,>=Latex] (0,0,0)--(0,10,0); %y軸
+	\draw[->,>=Latex] (0,0,0)--(0,0,10); %y軸
+	\coordinate (A) at (8,7.5,8.8);
+	\coordinate (Az) at (8,7.5,0);
+	\coordinate (Azy) at (8,0,0);
+	\coordinate (Azx) at (0,7.5,0);
+	\coordinate (B) at (7,8,5.3);
+	\coordinate (Bz) at (7,8,0);
+	\coordinate (Bzx) at (7,0,0);
+	\coordinate (Bzy) at (0,8,0);
+	\coordinate (Azz) at (0,0,8.8);
+	\coordinate (Bzz) at (0,0,5.3);
+	\coordinate (O) at (0,0,0);
+	\draw[->, >=Latex,ultra thick] (O) -- node [pos=0.7, auto] {身長}(A) ;
+	\draw[->, >=Latex,ultra thick] (O) -- node [pos=0.7, auto] {体重}(B);
+	\draw[cyan,dashed] (A) -- (Az);
+	\draw[cyan,dashed] (Az) -- (Azy);
+	\draw[cyan,dashed] (Az) -- (Azx);
+	\draw[cyan,dashed] (B) -- (Bz);
+	\draw[cyan,dashed] (Bz) -- (Bzy);
+	\draw[cyan,dashed] (Bz) -- (Bzx);
+	% \draw[cyan,dashed] (A) -- (Azz);
+	% \draw[cyan,dashed] (B) -- (Bzz);
+\end{tikzpicture}
+
 
 \end{document}
