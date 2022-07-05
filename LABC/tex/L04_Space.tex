@@ -42,6 +42,7 @@
         \draw[->, >=Latex,thick] (o) -- node [auto] {$(0,1)$}(y);
     \end{tikzpicture}
     \caption{基底ベクトルとその線型結合で表される座標}
+    \label{orthonormalBasis}
 \end{figure}
 
 このようにベクトルとその空間表現は相互に行き来できるということがわかるかと思います。ここではわかりやすく二次元で描画していますが，三次元であってもいいし，四次元でも$n$次元でも，数学的には一般化して扱うことができます。
@@ -108,7 +109,7 @@
 今度はベクトルの和を考えてみましょう。別のベクトル$\footnotesize\bm{b} = \begin{pmatrix}3\\1\end{pmatrix}$があったとして，ベクトルの和はどうなるでしょうか。数字の計算として考えたら，
 \[ \begin{pmatrix} 1\\2 \end{pmatrix} + \begin{pmatrix} 3 \\1 \end{pmatrix} =
     \begin{pmatrix} 1 + 3 \\ 2 + 1\end{pmatrix} = \begin{pmatrix}4 \\3\end{pmatrix} \]
-となりますから，図で言うと「2つのベクトルが作る平行四辺形の対角線が示すもの」と考えることもできますし，「x軸方向に+1,y軸方向に+2移動したところから，x軸方向に+3，y軸方向に+1移動する」と考えても良いかと思います。
+となりますから，図でいうと「2つのベクトルが作る平行四辺形の対角線が示すもの」と考えることもできますし，「x軸方向に+1,y軸方向に+2移動したところから，x軸方向に+3，y軸方向に+1移動する」と考えても良いかと思います。
 \begin{figure}
     \centering
     \begin{tikzpicture}[scale=0.75]
@@ -318,7 +319,7 @@ $\bm{a}$と$\bm{e}$の内積$(\bm{a},\bm{e})$は，ベクトル$\bm{a}$をx軸�
     となり，内積は2つのベクトルのノルムにベクトルのなす角$\theta$の余弦をかけたもの，という話にたどりつきます。
 \end{Untiku}
 \section{データの空間的イメージ}
-ここまでで，ベクトルは空間的なものとして可視化，イメージできることをみてきました。これと心理統計とはどう言う関係があるのでしょうか。
+ここまでで，ベクトルは空間的なものとして可視化，イメージできることをみてきました。これと心理統計とはどういう関係があるのでしょうか。
 
 例えば次のようなデータセットがあったとします。
 \begin{table}[h]
@@ -333,7 +334,8 @@ $\bm{a}$と$\bm{e}$の内積$(\bm{a},\bm{e})$は，ベクトル$\bm{a}$をx軸�
 \end{table}
 ここで身長と体重の散布図を描く，ということになれば，いわば行ベクトルごとにプロットしていくわけですからベクトルが個人を表していることになります。たとえばクラスター分析などで回答者を分類するときなどは行ベクトル同士の関係を考えるわけですから，個々人の向きや大きさをに興味関心があるわけです。
 
-ですが，たいていのデータ解析の時は変数間関係が知りたいわけですから，ベクトルを縦に見る，つまり列ベクトルとして考えることになるでしょう。
+ですが，たいていのデータ解析の時は変数間関係が知りたいわけですから，ベクトルを縦に見る，つまり列ベクトルとして考えることになるでしょう。どちらの見方であっても本質的には変わりません。もちろん，列ベクトルとして考える時，今回は3人でしたから可視化できましたが，N人になるともう無理です。でも，数学的には$N$次元になってもその性質は変わりませんから，イメージとして変数を空間上の矢印として想像していただければと思います。
+
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}[scale=0.75]
@@ -381,5 +383,129 @@ $\bm{a}$と$\bm{e}$の内積$(\bm{a},\bm{e})$は，ベクトル$\bm{a}$をx軸�
     \caption{行でみるか列で見るか}
 \end{figure}
 
+さて，身長と体重の例のように，変数ベクトルを考えたとします。この時，変数には単位がついていますから，相対的な位置関係を考えるには変数の標準化というプロセスがあるのでした。変数の標準化は，
+\[ z_{ij} = \frac{x_{ij} - \bar{x}_{.j}}{s_j} \]
+とすることでしたが，標準化された変数ベクトルのノルムを考えてみますと，
+\[ \| \bm{z_j} \| = \sqrt{ \sum_{i=1}^N z_{ij}^2 } = \sqrt{\left (\frac{\sum_{i=1}^N(x_{ij} - \bar{x}_{.j}) }{s_j}\right)^2}  = \sqrt{\frac{Ns^2}{Ns^2}}=1\]
+です。標準化とは，ベクトルのノルムを整えることだったのですね。
+
+これを踏まえて，2つの変数ベクトル$\bm{z_j}$と$\bm{z_k}$の内積を考えてみましょう。ノルムが1ですから，
+\[ (\bm{z_j},\bm{z_k}) = \| \bm{z_j} \| \| \bm{z_k} \| \cos \theta  = \cos \theta\]
+となります。また，内積の計算をエレメントワイズで考えてみると，
+\[ (\bm{z_j},\bm{z_k}) = \sum_{i=1}^N z_{ij}z_{ik} = r_{jk} \]
+ですから，相関係数は2つの変数ベクトルの$\cos \theta$であることがわかります。
+\[ r_{jk} = \cos \theta \]
+
+さて，余弦$\cos \theta$は角度$\theta$がどんな値であろうと，$-1 \le \cos \theta \le +1$の範囲に収まりますね。相関係数も$-1 \le r_{jk} \le +1$の範囲に収まるのでした。相関係数の範囲(絶対値は1以下)であることを証明するには，シュワルツの不等式などを用いることが一般的ですが，相関係数は変数ベクトルのなす角の$\cos$だからね，でもいいわけです。素敵。
+
+\subsection{直交}
+2つのベクトルの内積が0になるとき，これらのベクトルは\keytermL{直交}{ちょっこう}する，といいます。
+
+ベクトルの内積は$(\bm{a},\bm{b})=\| \bm{a} \| \| \bm{b} \| \cos \theta $ ですから，これがゼロになるのは2つのベクトルのノルムが0か，$\cos \theta$がゼロかの場合です。$\cos \theta=0$というのは角度でいうと90度のことですから，直角に交わるすなわち直交です。
+
+直交していると相関がないというのは，空間イメージですぐに理解できます。図\ref{orthVec}の左の図は，2つのベクトルが直交している例ですが，この場合変数ベクトル$\bm{a}$上にある値が$p$から$p'$に変わったとしても，他方のベクトル$\bm{b}$の値には影響しません。しかし右図にあるように直交でないばあいは，一方の変数ベクトルでの変化が他方での変化に影響します。片方を動かすと他方も動くというのが共変動(共分散，相関)ということですから，直角でなければ相関があることになります。
+
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        \draw[->, >=Latex, very thick] (0,0)--(4,0)node[below]{$\bm{a}$}; %x軸
+        \draw[->,>=Latex, very thick] (0,0)--(0,4)node[left]{$\bm{b}$}; %y軸
+        \coordinate (o) at (0,0);
+        \coordinate (a) at (1,3);
+        \coordinate (b) at (3,3);
+        \coordinate(ax) at (1,0);
+        \coordinate(bx) at (3,0);
+        \coordinate(px) at (0,3);
+        \fill (a) circle [radius=2pt];
+        \fill (b) circle [radius=2pt];
+        \node[above] (label1) at (a) {p};
+        \node[above] (label2) at (b) {p'};
+        \draw[->] (a) -- (b);
+        \draw[dotted] (a) -- (ax);
+        \draw[dotted] (b) -- (bx);
+        \draw[dotted] (a) -- (px);
+        \draw[thick, red] ($(o)!8pt!(bx)$)--($(o)!8pt!(bx)!8pt!90:(bx)$)--($(o)!8pt!(px)$);
+    \end{tikzpicture}
+    \hspace{0.5cm}
+    \begin{tikzpicture}
+        \coordinate (e) at (4,0);
+        \coordinate (b) at (2,3);
+        \coordinate (o)at (0,0);
+        \coordinate (p1) at (2,1.5);
+        \coordinate (p2) at (3,1.5);
+        \coordinate (p1x) at (2,0);
+        \coordinate (p2x) at (3,0);
+        \coordinate (p1y) at ($(o)!(p1)!(b)$);
+        \coordinate (p2y) at ($(o)!(p2)!(b)$);
+        \node[above] (label1) at (p1) {p};
+        \node[above] (label2) at (p2) {p'};
+        \draw[->, >=Latex,very thick] (o) -- (e)node[below]{$\bm{a}$} ;
+        \draw[->, >=Latex,very thick] (o) -- (b)node[above right]{$\bm{b}$} ;
+        \draw [](0.8,0) arc [start angle = 0, end angle = 53, radius = 0.8];%半径0.8の弧
+        \fill (p1) circle [radius=2pt];
+        \fill (p2) circle [radius=2pt];
+        \draw[dotted] (p1) -- (p1x);
+        \draw[dotted] (p2) -- (p2x);
+        \draw[dotted] (p1) -- (p1y);
+        \draw[dotted] (p2) -- (p2y);
+        \draw[->] (p1) -- (p2);
+    \end{tikzpicture}
+    \caption{直角の場合は一方の変数の違いが他方に影響しない}
+    \label{orthVec}
+\end{figure}
+
+さて，あるベクトル$\bm{a}$は，あるベクトルとそれに直交するベクトルに分解することができます。図\ref{orthDev}にはベクトル$\bm{a}$を直交するふたつのベクトルに分解する，いくつかのパターンを描いています。式で表現するなら，
+\[ \bm{a} = \bm{b}_1 + \bm{b}_2 = \bm{c}_1 + \bm{c}_2 = \bm{d}_1 + \bm{d}_2 \]
+ということです。
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        \coordinate (o) at (0,0);
+        \coordinate (a) at (5,4);
+        \coordinate (b) at (6,-3);
+        \coordinate (c) at (3.5,8);
+        \coordinate (d) at (0,8);
+        \coordinate (b1) at ($(o)!(a)!(b)$);
+        \coordinate (c1) at ($(o)!(a)!(c)$);
+        \coordinate (d1) at ($(o)!(a)!(d)$);
+        \draw[->, >=Latex,very thick] (o) -- (a)node[above]{$\bm{a}$} ;
+        \node[below left] (genten) at (o) {o};
+        \draw[dotted] (o) -- (b);
+        \draw[dotted] (o) -- (c);
+        \draw[dotted] (o) -- (d);
+        \draw[->, >=Latex] (o) -- (b1)node[below right]{$\bm{b}_1$} ;
+        \draw[->, >=Latex] (b1) -- (a)node[midway,right]{$\bm{b}_2$} ;
+        \draw[->, >=Latex] (o) -- (c1)node[left]{$\bm{c}_1$} ;
+        \draw[->, >=Latex] (c1) -- (a)node[pos = 0.5,above]{$\bm{c}_2$} ;
+        \draw[->, >=Latex] (o) -- (d1)node[left]{$\bm{d}_1$} ;
+        \draw[->, >=Latex] (d1) -- (a)node[pos = 0.2,above]{$\bm{d}_2$} ;
+    \end{tikzpicture}
+    \caption{ベクトルを直交分解する}
+    \label{orthDev}
+\end{figure}
+ここにあるように，分解の仕方は何通りも考えられますが，元のベクトル$\bm{a}$に直交する方向には分解ができません。
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        \coordinate (o) at (0,0);
+        \coordinate (a) at (0,4);
+        \draw[dotted] (-4,0)--(4,0)node[below]{}; %x軸
+        \draw[->, >=Latex,very thick] (o) -- (a)node[above]{$\bm{a}$} ;
+        \node[below left] (genten) at (o) {o};
+        \draw[thick, red] (0,0.5) -- (0.5,0.5) -- (0.5,0);
+    \end{tikzpicture}
+    \caption{最初から直交している方向には影が落ちないので，分解できない}
+\end{figure}
+ベクトルを分解するというのは，あるベクトルから他方のベクトルに向けて垂線を下す，すなわち射影することです。そうすることで，分解したい方向に平行な成分と，それと直交する成分とに分解できることになります。しかし最初から直交している方向に対しては，射影しても影が落ちないのです。分解したい方向に平行な成分がないので，いわば$\bm{a} = \bm{0} + \bm{a}$のような形にしかならないということです。
+
+このようなベクトルの分解の話は，2次元以上の空間，変数ベクトルが作る空間であっても一般的に成立します。データのベクトルがn次元空間で表されていたとしても，そのベクトルと直交でない任意のベクトルに垂線を下すことができます。
+
+ところで，空間の元になるベクトルは基底といいましたが，その条件は一次独立であることであって，直交していることではありません。直交していない空間であったとしても，垂線を下ろして座標を計算できますから，基底が作る空間の任意の座標が基底ベクトルの一次結合で表現できることに変わりはないのです。
+
+そうした一般例から考えると，いわゆるx-y座標は非常に整った形をしています。冒頭に示した図\ref{orthnomalBasis}は，基底として$\footnotesize\begin{pmatrix}1\\0\end{pmatrix}$と，$\footnotesize\begin{pmatrix}0 \\ 1\end{pmatrix}$を挙げました。これはノルムが1に整えられており(正規化されている)，直交していて，基底になっていますから，特に\keytermL{正規直交基底}{せいきちょこうきてい}と呼ばれます。長さや角度についての特徴があるので「整った」という感じがするのですね。
+
+\vspace{2cm}
+さて，ここまでで，ベクトルを空間的イメージで捉え，長さや角度で表したり，座標をよみとるように基本となる軸に射影する，分解することができるのを見てきました。これが心理学のデータ解析ではどういう意味を持ってくるか，見ていくことにしましょう。
 
 \end{document}
