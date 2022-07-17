@@ -3,19 +3,329 @@
 \usepackage{../../myStyle} 
 
 \begin{document}
-\chapter{空間の基底}
+\chapter{ベクトル空間}
 \label{L05_Basis}
+ベクトルを数字のリストとしてだけではなく，空間としてイメージできるという話をしてきました。
+ここからは，ひとつひとつのベクトルではなく，ベクトル全体のつくる空間について考えていきたいと思います。
 
-基底の再確認
-基底の取り替え・基底はいろいろあっていい。歪んでてもいい。
-ベクトルの一次結合；基底を変えても次元数は同じ。
-一次独立なベクトルの数；次元
-ランク落ちはなぜ起こるか
+\section{ベクトル空間}
+実数を成分とする$p$次元ベクトル全体の作る集合を$\mathbb{R}^p$で表すとします。これを$p$次元ベクトル空間，と言います\footnote{厳密には実数ベクトル空間です。複素数を成分とするベクトルからなる空間$\bm{C}^p$は複素ベクトル空間と言い，区別します。心理学データ解析の文脈ではほとんどの場合実数だけで話が成立しますが，非対称多次元尺度法の中には複素ベクトル空間に拡張されたモデルがあります。詳しくは\citet{Chino2012}を参照してください。}。集合の記号で書くと，
 
-部分ベクトル空間
-グラムシュミットの正規直交化法
-直交補空間
-射影
+\[ \mathbb{R}^p = \left \{ \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_p \end{pmatrix} \middle| x_1,x_2,\cdots,x_p \in \mathbb{R} \right \} \]
+
+ということになります。二次元平面であれば$\mathbb{R}^2$，三次元空間であれば$\mathbb{R}^3$のように書けばよいですね。
+
+\underline{この$p$次元ベクトル空間$\mathbb{R}^p$において，一次独立な$p$次元ベクトルは$p$個までしか選ぶことができません。}
+基底の話を思い出しましょう。$p$次元ベクトルのうち，第$i$要素が1で他が全て0であるようなベクトルのことを\keytermL{基本ベクトル}{きほんべくとる}と呼びますが，次の二つの基本ベクトルは二次元の正規直交基底です。
+\[ \bm{e}_1 = \begin{pmatrix}1\\0\end{pmatrix},\bm{e}_2 = \begin{pmatrix}0 \\ 1 \end{pmatrix}\]
+この2つのベクトルさえあればその一次結合の形で，空間上のあらゆる座標を作ることができるのでした。
+
+言い換えると，任意のベクトル$\bm{x}$は，
+\[ \bm{x} = x_1 \bm{e}_1 + x_2 \bm{e}_2 \]
+で表現できるのですから，この$\bm{e}_1,\bm{e}_2$以外に別のベクトル$\bm{x}$を用意しても新しい基底となることはできません。
+
+ところで，正規直交基底以外のベクトルで空間を張ることも可能です。例えばベクトル$\bm{z}_1 = \footnotesize\begin{pmatrix}3\\-1\end{pmatrix}$と$\bm{z}_2 = \footnotesize\begin{pmatrix}1\\4\end{pmatrix}$は内積がゼロではないので($(\bm{z}_1,\bm{z}_2) = -1$)直交していませんが，基底の条件は一次独立であればいいので，空間を作ることはできます。
+
+具体的に考えてみましょう。正規直交基底からなる二次元平面上に，ベクトル$\bm{a}=\footnotesize\begin{pmatrix}4\\3\end{pmatrix}$があったとして，これを先ほどの$\bm{z}_1$と$\bm{z}_2$で表すと，
+\[ \begin{pmatrix}4\\3\end{pmatrix} = 1\begin{pmatrix}3\\-1\end{pmatrix} + 1\begin{pmatrix}1\\4\end{pmatrix} = 1\bm{z}_1 + 1\bm{z}_2\]
+で表せます。基底の取り方を変えたので，座標が変わったのです。
+図\ref{anothorBasis}にはこの座標の変換の例を示しています。図中のベクトル$\bm{a}$は原点からの向きと大きさが同じものですが，図の左はいわゆるx，y座標によるプロットをしており，そこでの座標は$\footnotesize\begin{pmatrix}4\\3\end{pmatrix}$ですが，右側の座標では$\footnotesize\begin{pmatrix}1\\1\end{pmatrix}$になっていますね。
+
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+        \draw [cyan!30] (-4,-4) grid (8,8);%"細線の方眼"
+        \draw[-] (-4,0)--(8,0); %x軸
+        \draw[-] (0,-4)--(0,8); %y軸
+        \coordinate[label=below left:$o$] (o)at (0,0);
+        \coordinate (a) at (4,3);
+        \coordinate (x) at (1,0);
+        \coordinate (y) at (0,1);
+        \fill (o) circle [radius=2pt];
+        \draw[->, >=Latex,very thick] (o) -- node [midway, auto] {$\bm{a}$}(a) ;
+        \draw[->, >=Latex,thick] (o) -- node [below] {$\bm{e}_1$}(x);
+        \draw[->, >=Latex,thick] (o) -- node [auto] {$\bm{e}_2$}(y);
+    \end{tikzpicture}
+    \hspace{20pt}
+    \begin{tikzpicture}[scale=0.5]
+        \clip (-4,-4) rectangle (8,8); % <= 切り取る範囲の指定
+        %方がん
+        \draw[cyan!30] (-7,-2)--(14,-9);
+        \draw[cyan!30] (-5,-7)--(2,21);
+        \draw[cyan!30] (-6,2)--(15,-5);
+        \draw[cyan!30] (-2,-8)--(5,20);
+        \draw[cyan!30] (-5,6)--(16,-1);
+        \draw[cyan!30] (1,-9)--(8,19);
+        \draw[cyan!30] (-4,10)--(17,3);
+        \draw[cyan!30] (4,-10)--(11,18);
+        \draw[cyan!30] (-3,14)--(18,7);
+        \draw[cyan!30] (7,-11)--(14,17);
+        \coordinate[label=below left:$o$] (o)at (0,0);
+        \draw[-] (-6,2)--(15,-5);
+        \draw[-] (-2,-8)--(5,20);
+        \coordinate (a) at (4,3);
+        \coordinate (x) at (3,-1);
+        \coordinate (y) at (1,4);
+        \fill (o) circle [radius=2pt];
+        \draw[->, >=Latex,very thick] (o) -- node [midway, auto] {$\bm{a}$}(a) ;
+        \draw[->, >=Latex] (o) -- node [below left] {$\bm{z}_1$}(x);
+        \draw[->, >=Latex] (o) -- node [below left] {$\bm{z}_2$}(y);
+    \end{tikzpicture}
+
+    \caption{基底の変換}
+    \label{anothorBasis}
+\end{figure}
+
+このように，基底はいろいろな取り方ができますし，今回の例のように直交でなくてもかまいません\footnote{内積$(\bm{z}_1,\bm{z_2})=\| \bm{z}_1 \| \| \bm{z}_2 \| \cos \theta = -1$ですから，$\sqrt{10}\sqrt{17}\cos\theta = -1$ より$116^\circ$ぐらいです。計算して$\cos \theta = -\frac{1}{\sqrt{170}}$から，Rの\verb|acos|関数で求めてもいいですし，Walfram alphaに「\{3,-1\}と\{1,4\}のなす角」と聞いてもいいかもしれません。}。図\ref{anothorBasis}のような座標であっても二次元に変わりはなく，基底の一次結合で空間全てを表現することはできるので，基底の数は一定です。一般に，ベクトル空間$\mathbb{R}^p$に含まれる基底の数$p$は\keyterm{次元}{dimension}{じげん}と呼び，$dim (\mathbb{R}^p) = p$のように表ます。
+
+\subsection{グラム・シュミットの正規直交化法}
+ここで示したあたらしい基底$\bm{z}_1,\bm{z}_2$は直交していませんが，応用上は直交した基底のほうが色々便利なので，基底を直交化したい，というときもあるかと思います。そこで直交していない基底から，直交した基底を作る方法である\keytermL{グラム・シュミットの正規直交化法}{ぐらむ・しゅみっとのせいきちょっこうかほう}について説明します。
+
+直交だけでなく，ついでに正規化もしておきましょうね。正規化とは長さを$1$にすることですから，
+\[ \bm{u}_1 = \frac{\bm{z}_1}{\| \bm{z}_1 \|} = \frac{\begin{pmatrix}3\\-1\end{pmatrix}}{\sqrt{3^2+1^2}} = \begin{pmatrix}\frac{3}{\sqrt{10}}\\\frac{-1}{\sqrt{10}}\end{pmatrix}\]
+とします。ここで$\bm{u}_1$はこれから作る正規直交基底のひとつになります。
+
+また，セクション\ref{OrthgonalAxis}でみたようにベクトルはあるベクトルとそれに直交するベクトルに分解することができるのでした。なので，$\bm{z}_2$のほうを$\bm{z}_1$あるいは$\bm{u}_1$の方向とそれに直交するベクトル$\bm{u}_2$の方向に分解してやりましょう。分解するベクトルを，ここでは$\bm{d}_1,\bm{d}_2$とおきましょう。$\bm{d}_1$は正規化された新しい基底$\bm{u}_1$の定数倍ですので$\bm{d}_1 = c\bm{u}_1$となります。
+\[ \bm{z}_2 = \bm{d}_1 + \bm{d}_2 = \bm{d}_1 + c\bm{u}_1\]
+\[ \bm{d}_2 = \bm{z}_2 - c\bm{u}_1 \]
+さて$\bm{d}_1$ベクトルの長さ$c$はどれぐらいでしょう。図\ref{GrammSchmidt}に少し角度を調整して図示してみましたが，
+この長さは三角関数を使って$c = \|\bm{z}_2\| \cos \theta$で表せそうですね。
+ここでは$\bm{z}_2$と$\bm{u}_1$の内積を考えると，$\bm{u}_1$はノルム$1$に整えているのですから
+\[ (\bm{z}_2,\bm{u}_1) = \| \bm{z}_2 \| \| \bm{u}_1 \| \cos \theta =\| \bm{z}_2 \| \cos\]
+となります。ここから$c= \| \bm{z}_2 \| \cos \theta =(\bm{z}_2,\bm{u}_1) $ということになります。
+
+まとめると，
+\[
+    \begin{array}{lll}
+        \bm{d}_2 & = & \bm{z}_2 - \bm{d}_1                           \\
+                 & = & \bm{z}_2 -c\bm{u}_1                           \\
+                 & = & \bm{z}_2 - (\|\bm{z}_2\| \cos \theta)\bm{u}_1 \\
+                 & = & \bm{z}_2 -(\bm{z}_2,\bm{u}_1)\bm{u}_1
+    \end{array}
+\]
+となります。実際に数値を入れて考えてみましょう。
+\[ \bm{d}_2 =
+    \begin{pmatrix}1\\4\end{pmatrix} -
+    \begin{pmatrix}1&4\end{pmatrix}
+    \begin{pmatrix}\frac{3}{\sqrt{10}}\\\frac{-1}{\sqrt{10}}\end{pmatrix}\bm{u}_1 =
+    \begin{pmatrix}1\\4\end{pmatrix} -
+    \frac{-1}{\sqrt{10}}
+    \begin{pmatrix}\frac{3}{\sqrt{10}} \\\frac{-1}{\sqrt{10}}\end{pmatrix}
+    =
+    \begin{pmatrix}1\\4\end{pmatrix} -
+    \begin{pmatrix}-0.3\\0.1 \end{pmatrix}
+    =
+    \begin{pmatrix}1.3\\ 3.9\end{pmatrix}
+\]
+となります。この$\bm{d}_2$を正規化すれば$\bm{u}_2$が作れますから，
+\[ \bm{u}_2 = \frac{\bm{d}_2}{\|\bm{d}_2\|} = \frac{\begin{pmatrix}1.3\\3.9\end{pmatrix}}{\sqrt{1.69}}= \begin{pmatrix}0.316 \\ 0.948 \end{pmatrix} \]
+が得られます。この$\bm{u}_1,\bm{u}_2$は$\bm{z}_1$の方向を基軸とし，直交する正規化された基底になります。
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \coordinate[label=below left:$o$] (o)at (0,0);
+        \coordinate (x) at (4,0);
+        \coordinate (y) at (2,4);
+        \coordinate (u1) at (1.5,0);
+        \coordinate (u2) at (0,4);
+        \coordinate (hx) at ($(o)!(y)!(x)$);
+        \draw (o) to [out=-85,in=265] node[midway,below]{$\bm{d}_1=c\bm{u}_1=\| \bm{z}\| \cos \theta$} (hx);
+        \draw [](0.5,0) arc [start angle = 0, end angle = 60, radius = 0.5];%半径0.8の弧
+        \node at (0.6,0.4) {$\theta$};
+        \draw[->, >=Latex] (o) -- (x);
+        \draw[->, >=Latex] (o) -- node [above left] {$\bm{z}_2$}(y);
+        \draw[->, >=Latex, ,very thick] (o) -- node[midway,below]{$\bm{u}_1$}(u1);
+        \draw[<-,>=Latex] (y) -- node[midway,right]{$\bm{d}_2$}(hx);
+        \draw[dashed,->] (o) -- node[midway,left]{$\bm{u}_2$の方向}(u2);
+        \node[right] at (x) {$\bm{z}_1$};
+    \end{tikzpicture}
+    \caption{新しく作る直交基底の方向と大きさ}
+    \label{GrammSchmidt}
+\end{figure}
+この手続きを一般化しておきます。
+
+\paragraph{グラム・シュミットの直交化法}$\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_p$からなる$p$次元空間について，次の手順で正規直交基底$\bm{b}_1,\bm{b}_2 \cdots \bm{b}_p$を作ることができる。
+\begin{enumerate}
+    \item $\bm{a}_1$を正規化して$\bm{b}_1= \bm{a}_1 / \|\bm{a}_1\|$をつくる。
+    \item $\bm{d}_2 = \bm{a}_2 - (\bm{a}_2,\bm{b}_1)\bm{b}_1$として$\bm{a}_1$に直交するベクトルを求める。
+    \item $\bm{d}_2$を正規化して$\bm{b}_2= \bm{d}_2 / \| \bm{d}_2 \|$をつくる。
+    \item 以下同様に，$\bm{d}_k = \bm{a}_k - (\bm{a}_k,\bm{b}_1)\bm{b}_1 - (\bm{a}_k,\bm{b}_2)\bm{b}_2 - \cdots -(\bm{a}_k,\bm{b}_{k-1})\bm{b}_{k-1}$のように，$k$番目のもとのベクトル$\bm{a}_k$から，それまでに得られた直交する次元の要素を取り除いて，$k$番目の直交するベクトルを求める。\label{gm1}
+    \item $\bm{d}_k$を正規化する。\label{gm2}
+    \item ステップ\ref{gm1}と\ref{gm2}を$k=p$になるまでワンステップずつ繰り返す。$k=p$になれば終了。
+\end{enumerate}
+
+計算は面倒ですが\footnote{Walfram先生に\verb|gram schmidt{...}|と聞いたり，R先生に\verb|matlib::GramSchmidt(X)|などと聞く前に，一度は自分で計算してみましょう}，ここで「次元の分解はいく通りもある」という感覚を掴んでおくと，因子分析など多変量解析を理解する時にイメージがしやすくなるでしょう。
+
+\begin{reidai}{}{}
+    ベクトル$\bm{a}_1 = \footnotesize\begin{pmatrix} 1\\0\\-1 \end{pmatrix}，\bm{a}_2 = \footnotesize\begin{pmatrix} 0\\1\\1 \end{pmatrix}，\bm{a}_3 = \footnotesize\begin{pmatrix} 0\\0\\2 \end{pmatrix}$から$\mathbb{R}^3$の正規直交基底を作ってみましょう。
+\end{reidai}
+
+
+\section{部分空間と直交補空間}
+あるベクトルの集合から，任意に2つのベクトル$\bm{x}_1$と$\bm{x}_2$を選んだ時，任意のスカラー$b_1,\b_2$をつかって表現される$b_1\bm{x}_1+b_2\bm{x}_2$がもとの集合に含まれているのであれば\footnote{「加法とスカラー倍関して閉じている」と言ったりします}，これを\keytermL{部分ベクトル空間}といいます。部分ベクトル空間は，必ずゼロベクトルを含みます($b_1=b_2=0$の場合)。
+
+2つの部分ベクトル空間に対して，次のような集合を考えましょう。
+\[ M_1 \cap M_2 = \{ \bm{x} \mid \bm{x} \in M_1, \bm{x} \in M_2 \} \]
+これはどちらの部分空間にも属するベクトルからなる集合で，\keytermL{積空間}{せきくうかん}と言います。また，
+\[ M_1 + M_2 = \{ \bm{x} \mid \bm{x} = \bm{x}_1 + \bm{x}_2, \bm{x}_1 \in M_1, \bm{x}_2 \in M_2 \} \]
+はどちらかの空間に入っていればよいという集合で，\keytermL{和空間}{わくうかん}と言います。これらはいずれも部分ベクトル空間です。
+$\mathbb{R}^p$に3つの部分空間$\bm{W},\bm{W}_1,\bm{W}_2$があって，$\bm{W}=\bm{W}_1+\bm{W}_2$かつ，$\bm{W}_1 \cap \bm{W}_2 = \{\bm{0}\}$であれば，$\bm{W}$は$\bm{W}_1$と$\bm{W}_2$の\keytermL{直和}{ちょくわ}であるといい，$\bm{W} = \bm{W}_1 \oplus \bm{W}_2$と表します。
+
+
+
+
+これを踏まえて，ベクトルの分解のように空間の分解を考えます。
+
+$\mathbb{R}^p$の任意の部分空間$\bm{W}$があったとき，$\mathbb{R}^p$のベクトル$\bm{a}$が，$\bm{W}$に属する全てのベクトルに直交するなら，$\bm{a}$は$\bm{W}$に直交する，といい$\bm{a} \perp \bm{W}$と書きます。このベクトル全体の集合を特に\keytermL{直交補空間}{ちょっこうほくうかん}といいます。直交補空間もまた$\mathbb{R}^p$の部分空間です。
+
+
+\begin{Untiku}{直交補空間もまた部分空間になる}{}
+    確認しておきましょう。$\bm{u},\bm{v} \in \bm{W}^{\perp}$とします。この$\bm{u},\bm{v}$が加法とスカラー倍しても$\bm{W}^{\perp}$に入っていれば良いのですね。ここで$\bm{x} \in \bm{W}$を用意して考えると，内積の性質から
+    \[ (\bm{x},\bm{u}+\bm{v})=(\bm{x},\bm{u}) + (\bm{x},\bm{v}) = 0+0=0\]
+    ですから，$\bm{u}+\bm{v} \in \bm{W}^{\perp}$が言えました。スカラー倍についても同様に，$\lambda \in \mathbb{R},\bm{u}\in \bm{W}^{\perp}$として，$\bm{x} \in \bm{W}$と内積の性質から
+    \[ (\lambda\bm{u},\bm{x}) = \lambda(\bm{u},\bm{x}) = \lambda \cdot 0\]
+    となり，$\lambda\bm{u} \in \bm{W}^{\perp}$が言えました。また$\bm{x} \in \bm{W}$に対してゼロベクトルとの内積，$(\bm{0},\bm{x}) = 0$であることは明らかですから，直交補空間もゼロベクトルが副真rている($\bm{0} \in \bm{W}^{\perp}$)ことが確認できます。
+\end{Untiku}
+
+イメージで考えてみましょう。$\mathbb{R}^3$，つまり三次元空間において，ある基本ベクトル$\bm{e}_1=\footnotesize\begin{pmatrix}1\\0\\0\end{pmatrix}$が作る部分空間$\bm{W}$は，x軸だけの一次元空間(直線)ですね。これの直交補空間を考えてみます。$\bm{e}_1$と直交する三次元ベクトル$\bm{v} = \footnotesize\begin{pmatrix}x \\ y \\ z\end{pmatrix}$を考えると，これは$\bm{e}_1$と直交する，つまり内積が0になるわけですから，
+\[ (\bm{e}_1,\bm{v}) = x + 0 + 0 = 0\]
+つまり$x=0$であればよく,直交補空間$\bm{W}^{\perp}$は
+
+\[ \bm{W}^{\perp} = \left \{ \begin{pmatrix}0 \\ y \\z\end{pmatrix} \middle | y,z \in \mathbb{R} \right \} \]
+
+となります。これはy軸，z軸について任意ですからこの2つの軸で作る平面空間が直交補空間ということになります。図\ref{orthogonalComplement}に空間イメージで書いてみました。3次元空間が1次元空間と2次元空間に分解されていることがわかるかと思います。あるいは1次元空間の残りを補うようなのが補空間だということです。
+
+数式的にも，次のようにいうことができます。$\mathbb{R}^{p}$の部分空間$\bm{M}$とその直交補空間$\bm{M}$を考えると，$\bm{M}+\bm{M}^{\perp} = \mathbb{R}^p, \bm{M}\cap\bm{M}^{\perp} = \{\bm{0}\}$なので，任意のベクトル$\bm{x} \in \mathbb{R}^p$は
+\[\bm{x}=\bm{x}_1+\bm{x}_2(\bm{x}_1 \in \bm{M},\bm{x}_2 \in \bm{M}^{\perp}) \]
+と表すことができ，また
+\[ dim (M) + dim (M^{\perp})= p \]
+が成り立ちます。
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \fill[cyan!10] (-2,3)--(4,2)--(4,-3.5)--(-2,-2)--cycle; %四角形を赤:青=30:70の色で塗る
+        \coordinate[label=above left:$o$] (o)at (0,0);
+        \coordinate (x1) at (-3,-3);
+        \coordinate (e1) at (-1,-1);
+        \coordinate (x2) at (3,3);
+        \coordinate (y1) at (0,-2.5);
+        \coordinate (z1) at (-2,0.5);
+        \coordinate (y2) at (0,2.5);
+        \coordinate (z2) at (4,-1);
+        \draw[<-, >=Latex] (x1) -- (x2);
+        \draw[->, >=Latex,very thick] (o) -- (e1);
+        \draw[->, >=Latex] (y1) -- (y2);
+        \draw[->, >=Latex] (z1) -- (z2);
+        \node[left] (e1) at (e1) {$\bm{e}_1$};
+        \node[above] at (y2) {y};
+        \node[above] at (z2) {z};
+        \node[below] at (x1) {x};
+    \end{tikzpicture}
+    \caption{$\bm{e}_1$ベクトルが作る空間(1次元の直線)と直交補空間}
+    \label{orthogonalComplement}
+\end{figure}
+\begin{reidai}{}{}
+    $\bm{W}$を$\bm{a} = \footnotesize\begin{pmatrix}0 \\ 1 \\ 2\end{pmatrix},\bm{b}=\footnotesize\begin{pmatrix}1\\3\\0\end{pmatrix}$という2つのベクトルによって生成される，$\mathbb{R}^3$の部分空間とします。このとき，$\bm{W}^{\perp}$の基底を見つけましょう。
+\end{reidai}
+
+\begin{hinto}{}{}
+    3次元空間のうち2つの基底ベクトルが見つかっていますので，探すべきベクトル(次元)はあと1つです。このベクトルを$\bm{v}=\footnotesize\begin{pmatrix}x\\y\\z\end{pmatrix}$と置いて，$\bm{W}$の2つの基底との内積がゼロになることから考えれば・・・
+\end{hinto}
+\section{ランク}
+以前，連立方程式と行列の話をした時に，\keyterm{階数}{かいすう}{rank}という話が出てきました($\to$セクション\ref{StairAndRank},Pp.\pageref{StairAndRank})。また，ベクトル同士が一次独立かどうかを判断する時に，ベクトルが作る行列の階数を求め，ベクトルの数と階数が一致するようであればそれぞれのベクトルでしか表せない要素があるから独立である，と判断できるのでした($\to$セクション\ref{LinerIndependent},Pp.\pageref{LinerIndependent})。このように，方程式とベクトル，ベクトルと行列，行列の独立な成分の数と空間の次元の数は密接な関係があります。
+
+ここでは行列のランクとその性質を見てみましょう。
+
+まず$n$個の$p$次元ベクトル，$\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_n$を並べた行列$\bm{A}$を考えます。サイズは$p\times n$です。
+\[ \bm{A} = (\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_n)\]
+このとき，掃き出し法によって$\bm{A}$の階数を求めることができますが，これは$\bm{A}$という空間が持つ次元数でもあるわけです。
+
+$n$次元ベクトル$\bm{x}=\footnotesize\begin{pmatrix}x_1,x_2,\cdots,x_n\end{pmatrix}'\in \mathbb{R}^n$に行列$\bm{A}$を左からかけると，$p \times n$と$n \times 1$の行列の積ですから$p \times 1$，つまり$p$次元ベクトルが得られます。このように，行列$\bm{A}$は$\mathbb{R}^n$次元から$\mathbb{R}^p$次元への\keytermL{写像}{しゃぞう}をする「座標変換装置」だと考えることができます。
+
+\[ \bm{y} = \bm{Ax} = x_1\bm{a}_1 + x_2\bm{a}_2 + \cdots + x_n\bm{a}_n \]
+この写像されたベクトル$\bm{y}$が張る$p$次元空間全体を\keyterm{像}{ぞう}{Image}といって$Im \bm{A}$と表します。
+\[ Im \bm{A} = \{ \bm{y} : \bm{y} =\bm{Ax} = x_1\bm{a}_1 + x_2\bm{a}_2 + \cdots + x_n\bm{a}_n,\bm{x}\in \mathbb{R}^n \} \subseteq \mathbb{R}^p \]
+この$Im \bm{A}$は行列$\bm{A}$の列ベクトルが張る空間であり，行列$\bm{A}$の階数を$k$とすると，$Im \bm{A}$の階数も$k$です。
+\[ dim(Im \bm{A}) = rank(\bm{A}) = k \]
+$\bm{A}$の階数が$k$というのは，$k$個の列ベクトル$\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_k$が一次独立で，残りの$\bm{a}_{k+1},\bm{a}_{k+2},\cdots,\bm{a}_n$は一次独立なベクトルの一次結合で表されるわけですから，
+\[ Im \bm{A} = \{ \bm{y}:\bm{y} = c_1\bm{a}_1+c_2\bm{a}_2+\cdots+c_k\bm{a}_k \} \]
+とすることができます。この$\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_k$は$M(A)$の基底と考えることができます。
+
+また，移した先がゼロベクトル$\bm{0}$になってしまうような元のベクトル集合のことを\keyterm{核}{かーねる}{Kernel}といいます。
+\[ Ker \bm{A} = \{ \bm{x} \in \bm{V}\mid \bm{Ax}=\bm{0}\} \]
+元の$n$次元ベクトル$\bm{x}$が作る空間$\bm{V}\in \mathbb{R}^n$のうち，$Ker \bm{A}$は潰れて無くなるわけですから，$Im\bm{A}$の次元数はもとの次元$n$から$Ker \bm{A}$の次元数$dim(Ker\bm{A})$を引いたもの，すなわち
+\[ dim(Im \bm{A}) = rank(\bm{A}) = n - dim(Ker \bm{A}) \le p \]
+となります\footnote{移される先の空間$\bm{W}$は$p$次元空間ですが，$\bm{x}$以外のところから別の写像で$Im \bm{A}$のそとに落ちることについては特に決まり事がありません。言い換えれば，ある$\bm{y} \in \mathbb{R}^p$に対して$\bm{y} = \bm{Ax}$となる$\bm{x} \in \mathbb{R}^p$が存在しない可能性もあるからです。}。
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.3]
+        \coordinate (x) at (0,-2);
+        \coordinate (xk) at (0,5);
+        \coordinate (y0) at (15,4);
+        \coordinate (y) at (15,0);
+        \coordinate[label=above:$\bm{V}$] (labelV) at (0,13);
+        \coordinate[label=above:$\bm{W}$] (labelW) at (15,13);
+        \coordinate[label=above:$Ker\bm{A}$] (labelKerbel) at (0,9);
+        \coordinate[label=above:$Im\bm{A}$] (labelImage) at (15,10);
+        \coordinate[label=above:$M(A)$] (labelMA) at (16,1);
+        \fill (y0) circle [radius=4pt];
+        \draw (0,3) ellipse (6 and 10);
+        \draw (15,3) ellipse (6 and 10);
+        \draw (xk) ellipse (3 and 4);
+        \draw (15,3) ellipse (4 and 7);
+        \node[above] at (xk) {$\bm{x}^{\ast}$};
+        \node[below] at (x) {$\bm{x}$};
+        \node[above] at (y0) {$\bm{0}$};
+        \node[below] at (y) {$\bm{y}$};
+        \draw[->] (xk) -- (y0);
+        \draw[->] (x) -- node [midway,below] {$\bm{y}=\bm{Ax}$} (y);
+        \draw[dashed] (0.2,13) -- node[midway, above] {$\bm{A}$}(15,10);
+        \draw[dashed] (0.2,9) -- (y0);
+        \draw[dashed] (0.2,1) -- (y0);
+        \draw[dashed] (0.2,-7) -- (15,-4);
+
+    \end{tikzpicture}
+    \caption{ベクトルによる線形写像}
+\end{figure}
+具体例で見てみましょう。
+
+\subsection{正射影と射影行列}
+空間を分解できることがわかりましたが，任意の$\bm{a} \in \mathbb{R}^p$は部分空間$\bm{W},\bm{W}^{\perp}$に属するベクトル$\bm{b} \in \bm{W},\bm{c} \in \bm{W}^{\perp}$をつかって
+\[ \bm{a} = \bm{b} + \bm{c} \]
+の形に一意に表すことができます。このとき，$\bm{b}$を$\bm{a}$の$\bm{W}$への\keytermL{正射影}{せいしゃえい}といいます\footnote{同様に$\bm{c}$は$\bm{W}^{\perp}$への正射影です。}。これは空間でイメージするとわかりやすいかもしれません。
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+        \fill[cyan!10] (-5,-2)--(-2,3)--(7,3)--(4,-2)--cycle; %四角形を赤:青=30:70の色で塗る
+        \coordinate[label=above left:$o$] (o)at (0,0);
+        \coordinate (a) at (4,5);
+        \coordinate (b) at (4,0);
+        \coordinate (c) at (0,5);
+        \coordinate (c2) at (0,-4);
+        \coordinate (c3) at (0,8);
+        \draw[->, >=Latex,very thick] (o) -- (a);
+        \draw[->, >=Latex,very thick] (o) -- (b);
+        \draw[->, >=Latex,very thick] (o) -- (c);
+        \draw[dashed] (a) -- (b);
+        \draw[dashed] (a) -- (c);
+        \draw[-, >=Latex] (c2) -- (c3);
+        \node[above] at (a) {$\bm{a}$};
+        \node[right] at (b) {$\bm{b}$};
+        \node[left] at (c) {$\bm{c}$};
+        \node[below left] at (6.5,3) {$\bm{W}$};
+        \node[left] at (c3) {$\bm{W}^{\perp}$};
+    \end{tikzpicture}
+    \caption{$\bm{e}_1$ベクトルが作る空間(1次元の直線)と直交補空間}
+    \label{orthogonalComplement}
+\end{figure}
+
+$p$次元ベクトルをこのように分解した時，$\bm{a}$に$\bm{b}$を対応させる行列$\bm{P}$を考えることができます。この行列のサイズは$p \times p$で，$\bm{W}$への\keytermL{射影行列}{しゃえいぎょうれつ}と呼び,$\bm{P}_W$と表します。
+\[ \bm{b} = \bm{P}_w \bm{a} \in \bm{W} \]
+\[ \bm{c} = \bm{P}_{w^{\perp}} \bm{a} \in \bm{W}^{\perp} \]
+
 
 
 \end{document}
