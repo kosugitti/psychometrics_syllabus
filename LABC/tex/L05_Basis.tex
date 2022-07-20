@@ -242,20 +242,48 @@ $\mathbb{R}^p$の任意の部分空間$\bm{W}$があったとき，$\mathbb{R}^p
 \[ \bm{A} = (\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_n)\]
 このとき，掃き出し法によって$\bm{A}$の階数を求めることができますが，これは$\bm{A}$という空間が持つ次元数でもあるわけです。
 
-$n$次元ベクトル$\bm{x}=\footnotesize\begin{pmatrix}x_1,x_2,\cdots,x_n\end{pmatrix}'\in \mathbb{R}^n$に行列$\bm{A}$を左からかけると，$p \times n$と$n \times 1$の行列の積ですから$p \times 1$，つまり$p$次元ベクトルが得られます。このように，行列$\bm{A}$は$\mathbb{R}^n$次元から$\mathbb{R}^p$次元への\keytermL{写像}{しゃぞう}をする「座標変換装置」だと考えることができます。
+具体例で考えてみます。3個の2次元ベクトル，$\footnotesize\begin{pmatrix}1\\1\end{pmatrix},\begin{pmatrix}2\\-1\end{pmatrix},\begin{pmatrix}5\\1\end{pmatrix}$からなる行列$\bm{A}=\footnotesize\begin{pmatrix}1&2&5\\1&-1&-1\end{pmatrix}$を考えると，掃き出し法によって次元数が求められます。
+\[ \begin{pmatrix}1&2&5\\1&-1&-1\end{pmatrix}\to \begin{pmatrix}1&2&5\\0&-3&-6\end{pmatrix} \to
+    \begin{pmatrix}1&2&5\\0&1&2\end{pmatrix}\to \begin{pmatrix}1&0&1\\0&1&0\end{pmatrix}\]
+この場合，行列$\bm{A}$のランク・次元は2になります。
+
+ここで$n$次元ベクトル$\bm{x}=\footnotesize\begin{pmatrix}x_1,x_2,\cdots,x_n\end{pmatrix}'\in \mathbb{R}^n$に行列$\bm{A}$を左からかけると，$p \times n$と$n \times 1$の行列の積ですから$p \times 1$，つまり$p$次元ベクトルが得られます。例えば，次のような計算です。$\bm{x} = \footnotesize\begin{pmatrix}1\\0\\2\end{pmatrix}$とすると，
+
+\[ \bm{Ax} = \begin{pmatrix}1&2&5\\1&-1&-1\end{pmatrix} \begin{pmatrix}1\\0\\2\end{pmatrix}= \begin{pmatrix}11\\-1\end{pmatrix}\]
+
+となりますから，3次元ベクトルが2次元ベクトルになりました。このように，行列$\bm{A}$は$\mathbb{R}^n$次元から$\mathbb{R}^p$次元への\keytermL{写像}{しゃぞう}をする「座標変換装置」だと考えることができます。一般的に書くと，
 
 \[ \bm{y} = \bm{Ax} = x_1\bm{a}_1 + x_2\bm{a}_2 + \cdots + x_n\bm{a}_n \]
+ということですね。
 この写像されたベクトル$\bm{y}$が張る$p$次元空間全体を\keyterm{像}{ぞう}{Image}といって$Im \bm{A}$と表します。
 \[ Im \bm{A} = \{ \bm{y} : \bm{y} =\bm{Ax} = x_1\bm{a}_1 + x_2\bm{a}_2 + \cdots + x_n\bm{a}_n,\bm{x}\in \mathbb{R}^n \} \subseteq \mathbb{R}^p \]
 この$Im \bm{A}$は行列$\bm{A}$の列ベクトルが張る空間であり，行列$\bm{A}$の階数を$k$とすると，$Im \bm{A}$の階数も$k$です。
 \[ dim(Im \bm{A}) = rank(\bm{A}) = k \]
 $\bm{A}$の階数が$k$というのは，$k$個の列ベクトル$\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_k$が一次独立で，残りの$\bm{a}_{k+1},\bm{a}_{k+2},\cdots,\bm{a}_n$は一次独立なベクトルの一次結合で表されるわけですから，
 \[ Im \bm{A} = \{ \bm{y}:\bm{y} = c_1\bm{a}_1+c_2\bm{a}_2+\cdots+c_k\bm{a}_k \} \]
-とすることができます。この$\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_k$は$M(A)$の基底と考えることができます。
+とすることができます。この$\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_k$は$Im\bm{A}$の基底と考えることができます。
+
+これは先ほどの例で考えればわかりやすいですね。
+$\bm{A}=\footnotesize\begin{pmatrix}1&2&5\\1&-1&-1\end{pmatrix}$は，$1\bm{a}_1+2\bm{a}_2 = \bm{a}_3$でしたから，$\bm{a}_1,\bm{a}_2$だけが$Im\bm{A}$の基底なのです。
 
 また，移した先がゼロベクトル$\bm{0}$になってしまうような元のベクトル集合のことを\keyterm{核}{かーねる}{Kernel}といいます。
 \[ Ker \bm{A} = \{ \bm{x} \in \bm{V}\mid \bm{Ax}=\bm{0}\} \]
-元の$n$次元ベクトル$\bm{x}$が作る空間$\bm{V}\in \mathbb{R}^n$のうち，$Ker \bm{A}$は潰れて無くなるわけですから，$Im\bm{A}$の次元数はもとの次元$n$から$Ker \bm{A}$の次元数$dim(Ker\bm{A})$を引いたもの，すなわち
+例の行列$\bm{A}$のカーネルは，$1\bm{a}_1+2\bm{a}_2 = \bm{a}_3$という関係から，あるいは
+\[ \begin{pmatrix}1&2&5\\1&-1&-1\end{pmatrix}\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix} = \begin{pmatrix}0\\0\\0\end{pmatrix} \]
+という関係から，
+\[
+    \left \{
+    \begin{array}{ccc}
+        x_1+2x_2+5x_3 & = & 0 \\
+        x_1-x_2-x_3   & = & 0
+    \end{array}
+    \right .
+\]
+が得られますから，これを解いて$x_1=1,x_2=2,x_3=-1$より，$\bm{x} =\footnotesize \begin{pmatrix}1\\2\\-1\end{pmatrix}$を基底とする部分ベクトル空間，
+\[ Ker(\bm{A}) = \{ \bm{x}:\bm{x} = c\footnotesize\begin{pmatrix}1\\2\\-1\end{pmatrix} \} \]
+と表すことができます。
+
+さて元の$n$次元ベクトル$\bm{x}$が作る空間$\bm{V}\in \mathbb{R}^n$のうち，$Ker \bm{A}$は潰れて無くなるわけですから，$Im\bm{A}$の次元数はもとの次元$n$から$Ker \bm{A}$の次元数$dim(Ker\bm{A})$を引いたもの，すなわち
 \[ dim(Im \bm{A}) = rank(\bm{A}) = n - dim(Ker \bm{A}) \le p \]
 となります\footnote{移される先の空間$\bm{W}$は$p$次元空間ですが，$\bm{x}$以外のところから別の写像で$Im \bm{A}$のそとに落ちることについては特に決まり事がありません。言い換えれば，ある$\bm{y} \in \mathbb{R}^p$に対して$\bm{y} = \bm{Ax}$となる$\bm{x} \in \mathbb{R}^p$が存在しない可能性もあるからです。}。
 \begin{figure}
@@ -289,7 +317,61 @@ $\bm{A}$の階数が$k$というのは，$k$個の列ベクトル$\bm{a}_1,\bm{a
     \end{tikzpicture}
     \caption{ベクトルによる線形写像}
 \end{figure}
-具体例で見てみましょう。
+
+このように，行列を座標変換装置だと考えること，変換装置の次元数を考えることは，多変量解析を考える時に関わってくるアイデアですので，是非しっかりとイメージしておいてください。その際，次元数がどうなるかということを考えるために，ランクが重要な発想になってくるのです。
+
+ランクはいろいろな意味や性質があります。
+ここまでみてきたように，行列$\bm{A}$の一次独立なベクトルの最大本数，ということもできますし，$Im \bm{A}$の次元数でもあります。他にも次のようなことが言えます。
+
+\paragraph{ランクは行あるいは列の数より小さい}。言い換えると，$n\times m$行列$\bm{A}$に対して，$rank(\bm{A}) \le n$かつ$rnak(\bm{A})\le m$ということになります。
+
+$n \times m$行列$\bm{A}$で$n \le m$であった場合，1次独立なベクトルは$n$個までなので$rank(\bm{A})\le n\le m$です。逆に$m < n$であれば$rank({\bm{A}})\le m < n$なので，行数・列数の小さいほう以下の次元数しかないことが明らかです。ちなみに$rank(\bm{A}) = min(n,m)$であるばあい，\textbf{フルランク}である，という言い方をします。正方行列($n=m$)の場合は$rank(\bm{A})=n$のときにフルランクであるといい，$rank(\bm{A})<n$のときに「ランク落ちが生じた」などといいます。
+
+また，正方行列がフルランクであることは，逆行列の存在を意味します。すなわち，$m$次の正方行列$\bm{A}$に対して，$rank(A)=m\Leftrightarrow\bm{A}$が正則ということです。
+
+正則とは逆行列があるということ，つまり$\bm{AA^{-1}}=\bm{I}$になるような$\bm{A}^{-1}$が存在することでした。
+逆行列があれば方程式が解けますから，$\bm{Ax}=\bm{0}$のような式があっても両辺に$\bm{A}^{-1}$をかけて
+\[
+    \begin{array}{rcl}
+        \bm{A}^{-1}\bm{Ax} & = & \bm{A}^{-1}\bm{0} \\
+        \bm{x}             & = & \bm{0}
+    \end{array}
+\]
+すなわち自明な解しかない，ということになります\footnote{自明な解ってなんだっけ，というひとはセクション\ref{doujiRenrituIchiji},Pp.\pageref{doujiRenrituIchiji}を参照。係数行列が行ごとに別々の方程式だったとして，それが同じ解を持つかどうか，というお話の流れで，全部0なら当たり前(自明)だから面白くないよね，というやつでした。}。
+さてこのとき，$\bm{A}$を列ベクトル$\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_m$と考えると，$\bm{Ax}=\bm{0}$というのは
+\[ \bm{a}_1x_1 + \bm{a}_2x_2 + \cdots + \bm{a}_m x_m =0 \]
+であり，自明な解しか持たないのですから$x_1=x_2=\cdots=x_m=0$であること，つまりこのベクトルの組は線形独立であり，ベクトルの数だけ独立した次元があるのですからフルランクであるということになります。フルランクであること，全てのベクトルが線形独立であること，同時連立一次方程式に自明な解しかないこと，逆行列があること，がつながりました。
+
+\paragraph{行列を転置してもランク数はかわらない}。つまり$rank(\bm{A}') = rank(\bm{A})$です。方程式の話の時，ランクとは階段行列に変形して行ったときの段の数，つまり線形独立な行の数ということでした。またこのセクションでは行列を列ベクトルの組として考え，線形独立な列の数(空間の基底の数)ともいいました。転置行列とは行と列を入れ替えたものですから，$rank(\bm{A}')$とは$\bm{A}'$に含まれる線形独立な行の数であり，$\bm{A}$に含まれる線形独立な列の数です。つまり，同じことだというわけです。
+
+\paragraph{行列の積のランクは，かけたそれぞれの行列のランク以下}。つまり$rank(\bm{AB}) \le \bm{A}$かつ$rank(\bm{AB})\le \bm{B}$ということです。行列が写像するもの，座標変換装置であることを思い出すと，$\bm{A}$を使っての変換は$\bm{A}$以上の次元になることはありませんね。写像は影を落とすようなものですから，落ちた先の空間以上の次元は持てないのです。$\bm{AB}$は，$\bm{B}$で写像したものを$\bm{A}$で写像する，と考えればどちらかのランク以上に広がることはないな，と直感的に理解できるのではないでしょうか。
+
+丁寧に証明しておきましょう。まず$rank(\bm{AB}) \le \bm{A}$からいきます。
+$\bm{A} = (\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_n)$である$m\times n$行列，$\bm{B}=(\bm{b}_1,\bm{b}_2,\cdots,\bm{b}_l)$である$n \times l $行列であるとします。$\bm{C}=\bm{AB}$とすると，$\bm{C}$のサイズは$m\times l$になりますから，
+\[ \bm{C} = (\bm{c}_1,\bm{c}_2,\cdots,\bm{c}_l) \]
+と考えることができます。この$\bm{C}$の1列目のベクトル，$\bm{c}_1$がどうなっているか，行列の積のプロセスをよく思い出してみてください。最初(1行目)の要素$\bm{c}_{11}$は，$\bm{a}_.$の各1行目要素と$\bm{b}_1$すなわち$\bm{B}$の1列目の要素をかけて足して行ったものです。$\bm{c}_{22}$は$\bm{a}_.$の各2行目要素と$\bm{b}_1$すなわち$\bm{B}$の1列目の要素の積和。つまり，$\bm{c}_{jk}$は$\bm{A}$の$j$行目と$\bm{B}$の$k$列目の積和になっているわけです。
+
+$\bm{C}$の1列目のベクトル，$\bm{c}_1$が$\bm{a}_.$の線型結合で出来上がっており，全体でも$\bm{c}_1,\bm{c}_2,\cdots,\bm{c}_l$は$\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_n$の線型結合で出来上がっていることがわかります。ということは，$\bm{C}$の列に含まれる線形独立なベクトルの数が，$\bm{A}$に含まれる線形独立なベクトルの数を超えることはありません。この「列に含まれる線形独立なベクトルの数」とはもちろんランクのことですから，$rank(\bm{C}) = rank(\bm{AB}) \le rank(\bm{A})$となります。
+
+次に$rank(\bm{AB}) \le \bm{B}$はどうでしょうか。これは転置行列を考えて，
+\[ rank(\bm{AB}) = rank(\bm{AB}') = rank(\bm{B}'\bm{A}') \]
+が成り立つので，先の議論から
+\[ rank(\bm{B}'\bm{A}') \le rank(\bm{B}') \]
+が成り立ちます。つまり
+\[ rank(\bm{AB}) \le rank(\bm{B}')\]
+であり，転置してもランクは変わらないのですから，
+\[ rank(\bm{AB}) \le rank(\bm{B})\]
+です。ということで，左右の行列いずれものランクを超えることはないことが証明できました。
+
+\subsubsection{行列のランクの性質}
+\begin{enumerate}
+    \item
+    \item $rank(\bm{AA'}) = rank(\bm{A'A}) = rank(\bm{A})$
+    \item $rank(\bm{AB}) \le \bm{A}$,同様に$rank(\bm{AB})\le \bm{B}$
+    \item $\bm{B}$と$\bm{C}$が正則なら，$rank(\bm{AB})=rank(\bm{CA})=rank(\bm{A})$
+    \item $rank(\bm{A}+\bm{B})\le rank(\bm{A})+rank{\bm{B}}$
+    \item $p$次の正方行列$\bm{A}$に対して，$rank(A)=p\Leftrightarrow\bm{A}$が正則
+\end{enumerate}
 
 \subsection{正射影と射影行列}
 空間を分解できることがわかりましたが，任意の$\bm{a} \in \mathbb{R}^p$は部分空間$\bm{W},\bm{W}^{\perp}$に属するベクトル$\bm{b} \in \bm{W},\bm{c} \in \bm{W}^{\perp}$をつかって
