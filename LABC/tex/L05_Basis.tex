@@ -7,6 +7,7 @@
 \label{L05_Basis}
 ベクトルを数字のリストとしてだけではなく，空間としてイメージできるという話をしてきました。
 ここからは，ひとつひとつのベクトルではなく，ベクトル全体のつくる空間について考えていきたいと思います。
+ここでのポイントは，行列が空間を作ること，行列は座標を変える変換装置であるということです。早速みていきましょう。
 
 \section{ベクトル空間}
 実数を成分とする$p$次元ベクトル全体の作る集合を$\mathbb{R}^p$で表すとします。これを$p$次元ベクトル空間，と言います\footnote{厳密には実数ベクトル空間です。複素数を成分とするベクトルからなる空間$\bm{C}^p$は複素ベクトル空間と言い，区別します。心理学データ解析の文脈ではほとんどの場合実数だけで話が成立しますが，非対称多次元尺度法の中には複素ベクトル空間に拡張されたモデルがあります。詳しくは\citet{Chino2012}を参照してください。}。集合の記号で書くと，
@@ -77,7 +78,7 @@
     \label{anothorBasis}
 \end{figure}
 
-このように，基底はいろいろな取り方ができますし，今回の例のように直交でなくてもかまいません\footnote{内積$(\bm{z}_1,\bm{z_2})=\| \bm{z}_1 \| \| \bm{z}_2 \| \cos \theta = -1$ですから，$\sqrt{10}\sqrt{17}\cos\theta = -1$ より$116^\circ$ぐらいです。計算して$\cos \theta = -\frac{1}{\sqrt{170}}$から，Rの\verb|acos|関数で求めてもいいですし，Walfram alphaに「\{3,-1\}と\{1,4\}のなす角」と聞いてもいいかもしれません。}。図\ref{anothorBasis}のような座標であっても二次元に変わりはなく，基底の一次結合で空間全てを表現することはできるので，基底の数は一定です。一般に，ベクトル空間$\mathbb{R}^p$に含まれる基底の数$p$は\keyterm{次元}{dimension}{じげん}と呼び，$dim (\mathbb{R}^p) = p$のように表ます。
+このように，基底はいろいろな取り方ができますし，今回の例のように直交でなくてもかまいません\footnote{内積$(\bm{z}_1,\bm{z_2})=\| \bm{z}_1 \| \| \bm{z}_2 \| \cos \theta = -1$ですから，$\sqrt{10}\sqrt{17}\cos\theta = -1$ より$116^\circ$ぐらいです。計算して$\cos \theta = -\frac{1}{\sqrt{170}}$から，Rの\verb|acos|関数で求めてもいいですし，Walfram alphaに「\{3,-1\}と\{1,4\}のなす角」と聞いてもいいかもしれません。}。図\ref{anothorBasis}のような座標であっても二次元に変わりはなく，基底の一次結合で空間全てを表現することはできるので，基底の数は一定です。一般に，ベクトル空間$\mathbb{R}^p$に含まれる基底の数$p$は\keyterm{次元}{dimension}{じげん}と呼び，$dim (\mathbb{R}^p) = p$のように表します。
 
 \subsection{グラム・シュミットの正規直交化法}
 ここで示したあたらしい基底$\bm{z}_1,\bm{z}_2$は直交していませんが，応用上は直交した基底のほうが色々便利なので，基底を直交化したい，というときもあるかと思います。そこで直交していない基底から，直交した基底を作る方法である\keytermL{グラム・シュミットの正規直交化法}{ぐらむ・しゅみっとのせいきちょっこうかほう}について説明します。
@@ -233,7 +234,8 @@ $\mathbb{R}^p$の任意の部分空間$\bm{W}$があったとき，$\mathbb{R}^p
 \begin{hinto}{}{}
     3次元空間のうち2つの基底ベクトルが見つかっていますので，探すべきベクトル(次元)はあと1つです。このベクトルを$\bm{v}=\footnotesize\begin{pmatrix}x\\y\\z\end{pmatrix}$と置いて，$\bm{W}$の2つの基底との内積がゼロになることから考えれば・・・
 \end{hinto}
-\section{ランク}
+\section{ランクと射影}
+\subsection{ランクのさまざまな性質}
 以前，連立方程式と行列の話をした時に，\keyterm{階数}{かいすう}{rank}という話が出てきました($\to$セクション\ref{StairAndRank},Pp.\pageref{StairAndRank})。また，ベクトル同士が一次独立かどうかを判断する時に，ベクトルが作る行列の階数を求め，ベクトルの数と階数が一致するようであればそれぞれのベクトルでしか表せない要素があるから独立である，と判断できるのでした($\to$セクション\ref{LinerIndependent},Pp.\pageref{LinerIndependent})。このように，方程式とベクトル，ベクトルと行列，行列の独立な成分の数と空間の次元の数は密接な関係があります。
 
 ここでは行列のランクとその性質を見てみましょう。
@@ -344,7 +346,7 @@ $n \times m$行列$\bm{A}$で$n \le m$であった場合，1次独立なベク�
 
 \paragraph{行列を転置してもランク数はかわらない}。つまり$rank(\bm{A}') = rank(\bm{A})$です。方程式の話の時，ランクとは階段行列に変形して行ったときの段の数，つまり線形独立な行の数ということでした。またこのセクションでは行列を列ベクトルの組として考え，線形独立な列の数(空間の基底の数)ともいいました。転置行列とは行と列を入れ替えたものですから，$rank(\bm{A}')$とは$\bm{A}'$に含まれる線形独立な行の数であり，$\bm{A}$に含まれる線形独立な列の数です。つまり，同じことだというわけです。
 
-\paragraph{行列の積のランクは，かけたそれぞれの行列のランク以下}。つまり$rank(\bm{AB}) \le \bm{A}$かつ$rank(\bm{AB})\le \bm{B}$ということです。行列が写像するもの，座標変換装置であることを思い出すと，$\bm{A}$を使っての変換は$\bm{A}$以上の次元になることはありませんね。写像は影を落とすようなものですから，落ちた先の空間以上の次元は持てないのです。$\bm{AB}$は，$\bm{B}$で写像したものを$\bm{A}$で写像する，と考えればどちらかのランク以上に広がることはないな，と直感的に理解できるのではないでしょうか。
+\paragraph{行列の積のランクは，積を構成する行列のランク以下}。つまり$rank(\bm{AB}) \le \bm{A}$かつ$rank(\bm{AB})\le \bm{B}$ということです。行列が写像するもの，座標変換装置であることを思い出すと，$\bm{A}$を使っての変換は$\bm{A}$以上の次元になることはありませんね。写像は影を落とすようなものですから，落ちた先の空間以上の次元は持てないのです。$\bm{AB}$は，$\bm{B}$で写像したものを$\bm{A}$で写像する，と考えればどちらかのランク以上に広がることはないな，と直感的に理解できるのではないでしょうか。
 
 丁寧に証明しておきましょう。まず$rank(\bm{AB}) \le \bm{A}$からいきます。
 $\bm{A} = (\bm{a}_1,\bm{a}_2,\cdots,\bm{a}_n)$である$m\times n$行列，$\bm{B}=(\bm{b}_1,\bm{b}_2,\cdots,\bm{b}_l)$である$n \times l $行列であるとします。$\bm{C}=\bm{AB}$とすると，$\bm{C}$のサイズは$m\times l$になりますから，
@@ -363,51 +365,230 @@ $\bm{C}$の1列目のベクトル，$\bm{c}_1$が$\bm{a}_.$の線型結合で出
 \[ rank(\bm{AB}) \le rank(\bm{B})\]
 です。ということで，左右の行列いずれものランクを超えることはないことが証明できました。
 
-\subsubsection{行列のランクの性質}
-\begin{enumerate}
-    \item
-    \item $rank(\bm{AA'}) = rank(\bm{A'A}) = rank(\bm{A})$
-    \item $rank(\bm{AB}) \le \bm{A}$,同様に$rank(\bm{AB})\le \bm{B}$
-    \item $\bm{B}$と$\bm{C}$が正則なら，$rank(\bm{AB})=rank(\bm{CA})=rank(\bm{A})$
-    \item $rank(\bm{A}+\bm{B})\le rank(\bm{A})+rank{\bm{B}}$
-    \item $p$次の正方行列$\bm{A}$に対して，$rank(A)=p\Leftrightarrow\bm{A}$が正則
-\end{enumerate}
+ちなみにかける行列が正則(=逆行列がある)なら，次のことも言えます。
+\[ rank(\bm{AB})=rank(\bm{CA})=rank(\bm{A}) \]
+ここで$\bm{B},\bm{C}$は正則です。
+
+先ほどの積の関係から，$rank(\bm{BA})\le rank(\bm{A})$ であることは言えますし，$\bm{B}$ が逆行列を持っているので
+\[ rank(\bm{A}) = rank(\bm{IA}) = rank(\bm{B}^{-1}\bm{BA}) \]
+と言えます。また再び，積のランクはかけた行列のランクを超えることはないので，
+\[ rank(\bm{B}^{-1}\bm{BA}) \le rank(\bm{BA}) \]
+となります。$rank(\bm{A}) \le rank(\bm{A}$で$rank(\bm{A}) \le rank(\bm{BA})$ですから，
+\[ rank(\bm{BA}) = rank(\bm{A}) \]
+となります。
+
+逆から掛けた場合も同様に，
+\[ rank(\bm{AC}) \le rank(\bm{A}) \]
+\[ rank(\bm{AC}) = rank(\bm{AI})= rank(\bm{ACC}^{-1}) \]
+\[ rank(\bm{ACC}^{-1} \le rank(\bm{AC}) \]
+\[ rank(\bm{AC}) = rank(\bm{A}) \]
+となります。
 
 \subsection{正射影と射影行列}
-空間を分解できることがわかりましたが，任意の$\bm{a} \in \mathbb{R}^p$は部分空間$\bm{W},\bm{W}^{\perp}$に属するベクトル$\bm{b} \in \bm{W},\bm{c} \in \bm{W}^{\perp}$をつかって
+\subsubsection{正射影}
+さて空間を分解できることがわかりました。任意のベクトル$\bm{a} \in \mathbb{R}^p$は互いに直交する部分空間$\bm{W},\bm{W}^{\perp}$に属するベクトル$\bm{b} \in \bm{W},\bm{c} \in \bm{W}^{\perp}$をつかって
 \[ \bm{a} = \bm{b} + \bm{c} \]
-の形に一意に表すことができます。このとき，$\bm{b}$を$\bm{a}$の$\bm{W}$への\keytermL{正射影}{せいしゃえい}といいます\footnote{同様に$\bm{c}$は$\bm{W}^{\perp}$への正射影です。}。これは空間でイメージするとわかりやすいかもしれません。
+の形に一意に表すことができます。このとき，$\bm{b}$を$\bm{a}$の$\bm{W}$への\keytermL{正射影}{せいしゃえい}といいます\footnote{同様に$\bm{c}$は$\bm{W}^{\perp}$への正射影です。}。
+
+$p$次元ベクトルをこのように分解した時，$\bm{a}$に$\bm{b}$を対応させる行列$\bm{P}$を考えることができます。話を簡単にするために，二次元空間で考えてみましょう(図\ref{projection2dim})。射影は$\bm{a}$の空間に落とした影のようなものですから，$\bm{v}$が$\bm{p}$に変換されたわけです。
+
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+        \coordinate[label=below left:$o$] (o)at (0,0);
+        \coordinate (v) at (3,4);
+        \coordinate (a) at (5,0);
+        \coordinate (p) at (3,0);
+        \draw[->, >=Latex,very thick] (o) -- (a);
+        \draw[->, >=Latex,very thick] (o) -- (v);
+        \draw[->, >=Latex,very thick] (o) --node[midway,below]{$\bm{p}$} (p);
+        \draw[dashed] (v) --node[midway,right]{$\bm{v}-\bm{p}$} (p);
+        \node[right] at (a) {$\bm{a}$};
+        \node[above left] at (v) {$\bm{v}$};
+    \end{tikzpicture}
+    \caption{二次元ベクトルを一次元に射影}
+    \label{projection2dim}
+\end{figure}
+
+ここで$\bm{p}$は$\bm{a}$と同じ向きを持ったベクトルですから，定数倍で$\bm{p}=k\bm{a}$と考えることができます。また垂線の部分，すなわち$\bm{v}-\bm{p}$は$\bm{a}$に垂直，すなわち角度が直角，つまり内積$0$ですから，
+\[ \bm{a}'(\bm{v}-\bm{p}) = \bm{a}'(\bm{v}-k\bm{a}) = 0 \]
+です。ここから，
+\[
+    \begin{array}{rrr}
+        \bm{a}'\bm{v} - k\bm{a}'\bm{a} & = & 0 \\
+                                       &   &   \\
+        k = \displaystyle \frac{\bm{a}'\bm{v}}{\bm{a}'\bm{a}}
+    \end{array}
+\]
+となります。つまり，ベクトル$\bm{p} = \frac{\bm{a}'\bm{v}}{\bm{a}'\bm{a}}\bm{a}$であることがわかります。
+
+このようにして射影先のベクトルがわかりますが，これだと$\bm{a}$を変換して$\bm{p}$にしているようですね。もとは$\bm{v}$を変換して$\bm{p}$にする，という話だったのですから，式を少し書き換えましょう。
+
+この$k$はスカラーですから，$\bm{p} = k\bm{a} = \bm{a}k$より
+\[
+    \begin{array}{rrr}
+        \bm{p} & = & \bm{a}\displaystyle\frac{\bm{a}'\bm{v}}{\bm{a}'\bm{a}} \\
+               &   &                                                        \\
+               & = & \displaystyle\frac{\bm{a}\bm{a}'\bm{v}}{\bm{a}'\bm{a}} \\
+               &   &                                                        \\
+               & = & \displaystyle\frac{\bm{a}\bm{a}'}{\bm{a}'\bm{a}}\bm{v}
+    \end{array}
+\]
+となり，$\bm{v}$に$\frac{\bm{a}\bm{a}'}{\bm{a}'\bm{a}}$をかけることで$\bm{p}$ができることがわかりました。ここでサイズ感に注意してほしいのですが，$\bm{a}\bm{a}'$は$2\times1$の列ベクトルと$1\times2$の行ベクトルの積なので行列です。分母はスカラーですからサイズに影響はありません。ともかく，行列は座標変換装置であり，射影のはたらきをする行列のことを\keytermL{射影行列}{しゃえいぎょうれつ}といいます。
+
+具体例で考えてみましょう。先ほどの例から，$\bm{a} = \scriptsize\begin{pmatrix}1\\0\end{pmatrix}$とします。これはx軸を構成するベクトルですね。こレを使って射影行列$\bm{P}$を考えますと，
+\[
+    \begin{array}{lll}
+        \bm{P} & = & \displaystyle\frac{\bm{a}\bm{a}'}{\bm{a}'\bm{a}} \\
+               &   &                                                  \\
+               & = & \begin{pmatrix}1 & 0\\0 & 0\end{pmatrix}
+    \end{array}
+\]
+となります。この行列を使うと，二次元空間にあるベクトル$\bm{v}=\scriptsize\begin{pmatrix}x\\y\end{pmatrix}$はどんなものでも，
+\[ \bm{Pv} = \begin{pmatrix}1 & 0\\0 & 0\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix} = \begin{pmatrix}x\\0\end{pmatrix} \]
+となり，x軸の要素だけ取り出されていることがわかると思います。
+
+今度は平面に分解することを考えてみましょう。空間イメージは図\ref{orthogonalComplement}のような感じです。これは3次元ベクトルを，それより小さい2次元の空間におけるベクトルに分解するしている例です。図ではちょうど上の方向からライトを当てて，平面空間に影を落としたような感じになっていますよね。
 
 \begin{figure}
     \centering
     \begin{tikzpicture}[scale=0.7]
-        \fill[cyan!10] (-5,-2)--(-2,3)--(7,3)--(4,-2)--cycle; %四角形を赤:青=30:70の色で塗る
+        \fill[cyan!10] (-5,-3)--(-2,3)--(7,3)--(4,-3)--cycle; %四角形を赤:青=30:70の色で塗る
         \coordinate[label=above left:$o$] (o)at (0,0);
         \coordinate (a) at (4,5);
-        \coordinate (b) at (4,0);
+        \coordinate (b1) at (3,2);
+        \coordinate (b2) at (3,-2);
+        \coordinate (ax) at (4,0);
         \coordinate (c) at (0,5);
         \coordinate (c2) at (0,-4);
         \coordinate (c3) at (0,8);
         \draw[->, >=Latex,very thick] (o) -- (a);
-        \draw[->, >=Latex,very thick] (o) -- (b);
+        \draw[->, >=Latex,thick] (o) -- (b1);
+        \draw[->, >=Latex,thick] (o) -- (b2);
         \draw[->, >=Latex,very thick] (o) -- (c);
-        \draw[dashed] (a) -- (b);
+        \draw[->, >=Latex,very thick] (o) -- (ax);
+        \draw[dashed] (a) -- (ax);
         \draw[dashed] (a) -- (c);
         \draw[-, >=Latex] (c2) -- (c3);
-        \node[above] at (a) {$\bm{a}$};
-        \node[right] at (b) {$\bm{b}$};
+        \node[above] at (a) {$\bm{v}$};
+        \node[below] at (ax) {$\bm{p}$};
+        \node[right] at (b1) {$\bm{b1}$};
+        \node[right] at (b2) {$\bm{b2}$};
         \node[left] at (c) {$\bm{c}$};
         \node[below left] at (6.5,3) {$\bm{W}$};
         \node[left] at (c3) {$\bm{W}^{\perp}$};
     \end{tikzpicture}
-    \caption{$\bm{e}_1$ベクトルが作る空間(1次元の直線)と直交補空間}
+    \caption{$\bm{b}$が作る空間(2次元平面)への射影と$\bm{c}$がつくるその直交補空間}
     \label{orthogonalComplement}
 \end{figure}
 
-$p$次元ベクトルをこのように分解した時，$\bm{a}$に$\bm{b}$を対応させる行列$\bm{P}$を考えることができます。この行列のサイズは$p \times p$で，$\bm{W}$への\keytermL{射影行列}{しゃえいぎょうれつ}と呼び,$\bm{P}_W$と表します。
+今回$\bm{p}$は$\bm{b}_1$と$\bm{b}_2$が作る空間のベクトルですから，
+\[ \bm{p} = \alpha_1 \bm{b}_1+\alpha_2 \bm{b}_2 \]
+という線型結合で表されることになります。$\bm{b}$はベクトルですから，
+\[\bm{p} = [\bm{b}_1　\  \bm{b}_2]\begin{pmatrix}\alpha_1\\\alpha_2\end{pmatrix} = \bm{Ax}\]
+のように表せます。
+
+今回もベクトル$\bm{v}$から下ろした垂線と，$\bm{b}_1,\bm{b}_2$はそれぞれ垂直，内積が0なので，
+\[ \bm{b}_1'(\bm{v} - \bm{Ax}) = 0 \]
+\[ \bm{b}_2'(\bm{v} - \bm{Ax}) = 0 \]
+という条件のもとで$\alpha_1,\alpha_2$を求めることになります。
+ここで
+\[ \bm{A}' = \begin{pmatrix}\bm{b}_1' \\\bm{b}_2' \end{pmatrix} \]
+ですから，まとめて
+\[ \bm{A}'(\bm{v}-\bm{Ax}) = \bm{0} \]
+としましょう。
+\[ \bm{A}'\bm{v} - \bm{A}'\bm{Ax} = \bm{0} \]
+\[ \bm{A}'\bm{Ax} = \bm{A}'\bm{v} \]
+であり，$\bm{A}'\bm{A}$は正方行列です。この正方行列を構成していた要素$\bm{b}_1,\bm{b}_2$が基底であれば一次独立で，フルランクになりますから逆行列が存在します。それを使って，
+\[ \bm{x} = (\bm{A}'\bm{A})^{-1}\bm{A}'\bm{v} \]
+が得られます。正射影ベクトル$\bm{p}$は
+\[ \bm{p} = \bm{Ax} = \bm{A}(\bm{A}'\bm{A})^{-1}\bm{A}'\bm{v} \]
+ということですから，射影行列は
+\[ \bm{P} = \bm{A}(\bm{A}'\bm{A})^{-1}\bm{A}'\]
+だということになります。
+
+具体例で見てみましょう。$\bm{b}_1 = \scriptsize\begin{pmatrix}1\\0\\0\end{pmatrix}$,$\bm{b}_2 = \scriptsize\begin{pmatrix}0\\1\\0\end{pmatrix}$ と考えると，これはx,y軸が張る二次元平面になりますね。ここに三次元ベクトル$\bm{a} = \scriptsize\begin{pmatrix}x\\y\\z\end{pmatrix}$から射影することを考えると
+\[ \bm{A} = \begin{pmatrix} 1 & 0\\0&1\\0&0 \end{pmatrix} \]
+\[ \bm{P} = \bm{A}(\bm{A}'\bm{A})^{-1}\bm{A}' =
+    \begin{pmatrix}1 & 0\\0&1\\0&0\end{pmatrix} \begin{pmatrix}1 & 0\\0&1\end{pmatrix} \begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix} =
+    \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix} \]
+となりますから，
+\[ \bm{Pa} =  \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix}x\\y\\z\end{pmatrix} = \begin{pmatrix} x\\y\\0 \end{pmatrix} \]
+です。つまりz軸方向の次元がなくなって，x,y平面に影を落とすことになるわけです。
+
+ちなみに$\bm{W}$に直行する空間$\bm{W}^{\perp}$に属するベクトル$\bm{c} \in \bm{W}^{\perp}$とともに
+\[ \bm{a} = \bm{b} + \bm{c} \]
+と表せるということでしたが，今回$\bm{c}$はz軸方向の1次元ということになりますね。
+
+一般に，$\bm{W}$への\keytermL{射影行列}{しゃえいぎょうれつ}を$\bm{P}_W$，$\bm{W}^{\perp}$への射影行列を$\bm{P}_{w^{\perp}} $と表したとします。つまり
 \[ \bm{b} = \bm{P}_w \bm{a} \in \bm{W} \]
 \[ \bm{c} = \bm{P}_{w^{\perp}} \bm{a} \in \bm{W}^{\perp} \]
+ですが，このとき空間のランクを考えると，$\bm{P}$は$p \times p$行列で$p$次元ある行列ということになります。元の空間$\bm{W}$の次元を$dim(\bm{W})=k$とすると，$dim(\bm{W}^{\perp})=p-k$という関係が成り立ちます。
 
+\subsubsection{射影行列}
+射影行列を一般的に定義すると，$\bm{P}^2 = \bm{P}$を満たす正方行列，ということになります。
+$\bm{P}^2$は$\bm{PP}$ということであり，また$\bm{P}$はその正方行列の持つ基底空間以外の次元を削ぎ落とすことを意味するのでした。何回削ぎ落としても，その射影行列の次元分は維持されることでもって，射影行列は定義されるのです。
 
+ちなみに正射影は\keytermL{直交射影}{ちょっこうしゃえい}ともいい，$\bm{P}$が特に対称行列であるときのことを指します。先ほどの例にあった
+\[ \bm{P} =  \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix} \]
+は対称行列です。定義通り，
+\[ \bm{P}^2 = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix}^2 = \bm{P} \]
+という関係が成り立っていますね。
 
+直交でない例は，非対称行列を考えれば良いのですが，例えば
+\[ \bm{P} =  \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix} \]
+は$\bm{P}^2 = \bm{P}$なので射影行列です。これがどんな射影をするかというと，
+\[ \bm{P}\begin{pmatrix}x \\y\end{pmatrix} = \begin{pmatrix}x+y\\0\end{pmatrix}\]
+ですから，図にすると図\ref{ObliqueProjection}のようになります。確かにy軸の要素をなくすような射影になっているのですが，影の落とし方が斜めからになっているわけですね。
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.85]
+        \draw [cyan!30] (-4,-2) grid (4,4);%"細線の方眼"
+        \draw[-] (-4,0)--(4,0); %x軸
+        \draw[-] (0,-2)--(0,4); %y軸
+        \coordinate[label=below left:$o$] (o)at (0,0);
+        \coordinate (a) at (-3,2);
+        \coordinate (b) at (1,1);
+        \coordinate (ax) at (-1,0);
+        \coordinate (bx) at (2,0);
+        \fill (a) circle [radius=2pt];
+        \fill (b) circle [radius=2pt];
+        \fill[red] (ax) circle [radius=2pt];
+        \fill[red] (bx) circle [radius=2pt];
+        \draw[->,>=Latex] (a) -- (ax);
+        \draw[->,>=Latex] (b) -- (bx);
+        \node[above] at (a) {(-3,2)};
+        \node[above] at (b) {(1,1)};
+        \node[below] at (ax) {(-1,0)};
+        \node[below] at (bx) {(2,0)};
+    \end{tikzpicture}
+    \caption{斜交射影の例}
+    \label{ObliqueProjection}
+\end{figure}
+
+\paragraph{射影行列の相補性}
+射影行列$\bm{P}$があると，単位行列から$\bm{P}$を引いた行列$\bm{I}-\bm{P}$もまた射影行列になります。
+特に$\bm{P}$が直交行列であれば，$\bm{I}- \bm{P}$も直交行列です。この性質のことを射影行列の相補性と言います。
+
+このことは次のように，簡単に確かめられます。
+\[(\bm{I}-\bm{P})^2 = \bm{I}^2 - 2\bm{P} + \bm{P}^2 = \bm{I} - 2\bm{P} + \bm{P} = \bm{I}-\bm{P} \]
+また
+\[ (\bm{I} - \bm{P})' = \bm{I}' - \bm{P}' = \bm{I} - \bm{P} \]
+
+\paragraph{直和分解}
+このように，射影行列$\bm{P}$があれば$\bm{I}-\bm{P}$もすぐにわかりますから，任意のベクトル$\bm{a}$を$\bm{Pa}$と$(\bm{I}-\bm{P})\bm{a}$に分けることができます。これはまた空間の像，核の言葉を使っていうと次のようになります。$\bm{I}-\bm{P}=\bm{Q}$と表すとして，
+\[ \mathbb{R}^p = Im \bm{P}\oplus Im \bm{Q} \]
+また
+\[ Ker \bm{P} = Im\bm{Q} \]
+であり，
+\[ \mathbb{R}^p = Im \bm{P}\oplus Ker \bm{P} \]
+でもあります。
+
+$\bm{P}$の核が$\bm{Q}$の像に等しいというのは，まず核のことを思い出さねばなりません。核とは$\bm{Px}=\bm{0}$になるような，つぶれてしまうところの話です。ここで$\bm{x} = \bm{Px} + \bm{Qx}$のように分解できるのですから，$\bm{Px}$が核であるなら$\bm{x} = \bm{Qx} = Im \bm{Q}$というのと同じです。
+
+直和であることを示すために，$Im \bm{P}\cup Ker\bm{P} ={0}$であることを導きましょう。まず射影された空間は部分空間なので，$Im \bm{P} \cup Ker\bm{P} \supset	{0}$です。またこの集合$Im \bm{P}\cup Ker\bm{P}$の要素を$\bm{x}$とすると，像$Im \bm{P}$をつくったもとになるもの，つまり$\bm{x}=\bm{Py}$となる$\bm{y}$が存在します。またこの$\bm{y}$は$Ker \bm{P}$の要素でもあるので，$\bm{P}$を作用させて$\bm{P}(\bm{Py}) = \bm{P}(\bm{x}) = 0$です。射影行列の定義からいって$\bm{P}^2 = \bm{P}$なので，$\bm{P}(\bm{Py})=\bm{Py} = 0$であり，この要素$\bm{x}=\bm{Py}=0$より，$Im \bm{P}\cup Ker\bm{P} ={0}$となります。
+
+\vspace{2cm}
+さて，ベクトルを空間，行列を座標変換装置とみる，ということと，それにまつわる数学的なお話は一旦ここで終わりにしておきましょう。次からは，こうした特徴や考え方を，心理統計の文脈でどのように扱うのかという話に入っていきます。
 \end{document}

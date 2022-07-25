@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.7.5)  20 JUL 2022 18:14
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.7.7)  25 JUL 2022 16:47
  restricted system commands enabled.
 **L05_Basis.tex
 (./L05_Basis.tex
@@ -7,8 +7,8 @@ Lua module: luaotfload 2022-06-15 3.22 Lua based OpenType font support
 Lua module: lualibs 2021-05-20 2.74 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2021-05-20 2.74 ConTeXt Lua libraries -- extended c
 ollection.
-luaotfload | conf : Root cache directory is "/Users/Napier/Library/texlive/2022/
-texmf-var/luatex-cache/generic/names".
+luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2022
+/texmf-var/luatex-cache/generic/names".
 luaotfload | init : Loading fontloader "fontloader-2022-06-15.lua" from kpse-res
 olved path "/usr/local/texlive/2022/texmf-dist/tex/luatex/luaotfload/fontloader-
 2022-06-15.lua".
@@ -19,8 +19,8 @@ Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
 Inserting `luaotfload.glyph_stream' at position 1 in `glyph_stream_provider'.
 Inserting `luaotfload.define_font' at position 1 in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 2
-luaotfload | conf : Root cache directory is "/Users/Napier/Library/texlive/2022/
-texmf-var/luatex-cache/generic/names".
+luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2022
+/texmf-var/luatex-cache/generic/names".
 Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_opentype_file'.
 Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_truetype_file'.
 Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
@@ -45,7 +45,7 @@ Inserting `luaotfload.aux.set_capheight' at position 4 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'
-. L3 programming layer <2022-07-01>
+. L3 programming layer <2022-07-04>
 Inserting `tracingstacklevels' at position 1 in `input_level_string'.
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/ltjsbook.cls
 Document Class: ltjsbook 2022/04/11 ltjsclasses 
@@ -324,9 +324,9 @@ LaTeX Info: Redefining \fontshapeforce on input line 954.
 )
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/patches/lltjdefs.sty
 Package: lltjdefs 2022-01-23 Default font settings of LuaTeX-ja
-luaotfload | db : Font names database loaded from /Users/Napier/Library/texlive/
-2022/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache: ex
-tra_lmroman10-regular.luc)
+luaotfload | db : Font names database loaded from /Users/hermite/Library/texlive
+/2022/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache: e
+xtra_lmroman10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
 (Font)              scaled to size 9.24713pt on input line 79.
 
@@ -343,7 +343,7 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 Package: lltjcore 2022-05-30 Patch to LaTeX2e Kernel for LuaTeX-ja
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2022-07-01 L3 programming layer (loader) 
+Package: expl3 2022-07-04 L3 programming layer (loader) 
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2022-07-01 L3 backend support: PDF output (LuaTeX)
@@ -1134,9 +1134,9 @@ c-27c.sty
 Package: luatexja-fontspec-27c 2020-04-04 fontspec support of LuaTeX-ja
 \g__ltj_fontspec_altnumber_int=\count347
 ))
-luaotfload | cache : Lookup cache loaded from /Users/Napier/Library/texlive/2022
-/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache: e
-xtra_biz-udmincho-medium.luc)
+luaotfload | cache : Lookup cache loaded from /Users/hermite/Library/texlive/202
+2/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache: 
+extra_biz-udmincho-medium.luc)
 
 Package fontspec Info: Font family 'BIZUDMinchoMedium(0)' created for font
 (fontspec)             'BIZ UDMincho Medium' with options
@@ -1696,65 +1696,65 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (Font)              scaled to size 23.00687pt on input line 6.
 (load cache: extra_lmroman12-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 11.
+(Font)              scaled to size 13.31586pt on input line 12.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 11.
+(Font)              scaled to size 13.31586pt on input line 12.
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 11.
+(Font)              scaled to size 13.31586pt on input line 12.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 11.
+(Font)              scaled to size 13.31586pt on input line 12.
 (load cache: extra_lmsans12-regular.luc)(load cache: extra_lmroman7-regular.luc)
 (load cache: extra_lmroman5-regular.luc)
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 6.47299pt on input line 12.
+(Font)              scaled to size 6.47299pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 4.62357pt on input line 12.
+(Font)              scaled to size 4.62357pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 6.47299pt on input line 12.
+(Font)              scaled to size 6.47299pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 4.62357pt on input line 12.
-LaTeX Font Info:    Trying loading font information for U+msa on input line 12.
+(Font)              scaled to size 4.62357pt on input line 13.
+LaTeX Font Info:    Trying loading font information for U+msa on input line 13.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying loading font information for U+msb on input line 12.
+LaTeX Font Info:    Trying loading font information for U+msb on input line 13.
 
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 6.47299pt on input line 12.
+(Font)              scaled to size 6.47299pt on input line 13.
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 12.
+(Font)              scaled to size 7.3977pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 12.
+(Font)              scaled to size 7.3977pt on input line 13.
 (load cache: extra_lmroman6-regular.luc)
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 5.54828pt on input line 12.
+(Font)              scaled to size 5.54828pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 12.
+(Font)              scaled to size 7.3977pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 5.54828pt on input line 12.
+(Font)              scaled to size 5.54828pt on input line 13.
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 5.54828pt on input line 12.
+(Font)              scaled to size 5.54828pt on input line 13.
 (load cache: extra_lmroman8-bold.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 7.3977pt on input line 12.
+(Font)              scaled to size 7.3977pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 7.3977pt on input line 12.
+(Font)              scaled to size 7.3977pt on input line 13.
 
 
 Package natbib Warning: Citation `Chino2012' on page 1 undefined on input line 
-12.
+13.
 
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 9.24713pt on input line 19.
+(Font)              scaled to size 9.24713pt on input line 20.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 9.24713pt on input line 19.
+(Font)              scaled to size 9.24713pt on input line 20.
 
-Overfull \hbox (0.6108pt too wide) in paragraph at lines 18--20
+Overfull \hbox (0.6108pt too wide) in paragraph at lines 19--21
 [][]$[]$[]
  []
 
@@ -1763,42 +1763,42 @@ Overfull \hbox (0.6108pt too wide) in paragraph at lines 18--20
 
 ](load cache: extra_lmroman9-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 76.
+(Font)              scaled to size 8.32242pt on input line 77.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 76.
+(Font)              scaled to size 8.32242pt on input line 77.
 (load cache: extra_lmromandemi10-regular.luc)
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 5.54828pt on input line 80.
+(Font)              scaled to size 5.54828pt on input line 81.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 4.62357pt on input line 80.
+(Font)              scaled to size 4.62357pt on input line 81.
 (load cache: extra_lmmono8-regular.luc)
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 80.
+(Font)              scaled to size 7.3977pt on input line 81.
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 82.
+(Font)              scaled to size 11.09656pt on input line 83.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 82.
+(Font)              scaled to size 11.09656pt on input line 83.
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 82.
+(Font)              scaled to size 11.09656pt on input line 83.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 82.
-
-
-LaTeX Warning: Reference `OrthgonalAxis' on page 2 undefined on input line 89.
-
+(Font)              scaled to size 11.09656pt on input line 83.
 (load cache: extra_lmromanslant10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/sl' will be
 (Font)              scaled to size 9.24713pt on input line 90.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/sl' will be
 (Font)              scaled to size 9.24713pt on input line 90.
 
+
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 16.0pt, for example:
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [2]
+
+LaTeX Warning: Reference `OrthgonalAxis' on page 3 undefined on input line 90.
+
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 148.
+(Font)              scaled to size 9.24713pt on input line 149.
 (load cache: extra_lmsans10-regular.luc)
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
@@ -1807,27 +1807,27 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 [3](load cache: extra_lmsans10-bold.luc)
 LaTeX Font Info:    Font shape `JT3/gt/b/n' in size <10> not available
-(Font)              Font shape `JT3/gt/m/n' tried instead on input line 160.
+(Font)              Font shape `JT3/gt/m/n' tried instead on input line 161.
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 160.
+(Font)              scaled to size 9.24713pt on input line 161.
 LaTeX Font Info:    Font shape `JY3/gt/b/n' in size <10> not available
-(Font)              Font shape `JY3/gt/m/n' tried instead on input line 160.
+(Font)              Font shape `JY3/gt/m/n' tried instead on input line 161.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 160.
+(Font)              scaled to size 9.24713pt on input line 161.
 
 
-LaTeX Warning: Command \b invalid in math mode on input line 166.
+LaTeX Warning: Command \b invalid in math mode on input line 167.
 
 Missing character: There is no ̲ (U+0332) in font cmmi10!
 Missing character: There is no ̲ (U+0332) in font cmmi7!
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 6.47299pt on input line 173.
+(Font)              scaled to size 6.47299pt on input line 174.
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 183.
+(Font)              scaled to size 8.32242pt on input line 184.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 183.
+(Font)              scaled to size 8.32242pt on input line 184.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 8.32242pt on input line 188.
+(Font)              scaled to size 8.32242pt on input line 189.
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 16.0pt, for example:
@@ -1841,18 +1841,18 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 [5]
 
-LaTeX Warning: Reference `StairAndRank' on page 6 undefined on input line 237.
+LaTeX Warning: Reference `StairAndRank' on page 6 undefined on input line 239.
 
 
-LaTeX Warning: Reference `StairAndRank' on page 6 undefined on input line 237.
-
-
-LaTeX Warning: Reference `LinerIndependent' on page 6 undefined on input line 2
-37.
+LaTeX Warning: Reference `StairAndRank' on page 6 undefined on input line 239.
 
 
 LaTeX Warning: Reference `LinerIndependent' on page 6 undefined on input line 2
-37.
+39.
+
+
+LaTeX Warning: Reference `LinerIndependent' on page 6 undefined on input line 2
+39.
 
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
@@ -1868,11 +1868,11 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 [7]
 
 LaTeX Warning: Reference `doujiRenrituIchiji' on page 8 undefined on input line
- 340.
+ 342.
 
 
 LaTeX Warning: Reference `doujiRenrituIchiji' on page 8 undefined on input line
- 340.
+ 342.
 
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
@@ -1887,7 +1887,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 [9]
 
-Package natbib Warning: There were undefined citations.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
@@ -1900,7 +1900,34 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                Make it at least 16.0pt, for example:
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
-[11] (./L05_Basis.aux)
+[11]
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 16.0pt, for example:
+(fancyhdr)                \setlength{\footskip}{16.0pt}.
+
+[12]
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 16.0pt, for example:
+(fancyhdr)                \setlength{\footskip}{16.0pt}.
+
+[13]
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 16.0pt, for example:
+(fancyhdr)                \setlength{\footskip}{16.0pt}.
+
+[14]
+
+Package natbib Warning: There were undefined citations.
+
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 16.0pt, for example:
+(fancyhdr)                \setlength{\footskip}{16.0pt}.
+
+[15] (./L05_Basis.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1908,20 +1935,20 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `L05_Basis.out' has not changed.
-(rerunfilecheck)             Checksum: 554CE1F5D6210DD5FB46B14EAB48FEF4;499.
+(rerunfilecheck)             Checksum: 1F254068B8A330C8AECD13878B0F79D6;523.
 )
 
 Here is how much of LuaTeX's memory you used:
- 38213 strings out of 477487
- 305793,1373583 words of node,token memory allocated
- 45495 words of node memory still in use:
-   10 hlist, 2 vlist, 5 rule, 11 glue, 449 kern, 1 glyph, 16816 attribute, 1227 
-glue_spec, 879 attribute_list, 2 write, 354 user_defined nodes
-   avail lists: 1:42,2:75928,3:887,4:403,5:152,6:56,7:6090,8:49,9:1040,10:22,11:
+ 38265 strings out of 477478
+ 305789,1373583 words of node,token memory allocated
+ 56897 words of node memory still in use:
+   10 hlist, 2 vlist, 5 rule, 11 glue, 449 kern, 1 glyph, 20606 attribute, 1765 
+glue_spec, 1093 attribute_list, 2 write, 530 user_defined nodes
+   avail lists: 1:50,2:76817,3:878,4:333,5:188,6:60,7:6096,8:49,9:1040,10:28,11:
 4
- 57617 multiletter control sequences out of 65536+600000
- 130 fonts using 103632663 bytes
- 118i,12n,112p,1767b,860s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57674 multiletter control sequences out of 65536+600000
+ 130 fonts using 103640023 bytes
+ 118i,13n,112p,1767b,860s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf><
 /usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.otf>
 </usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.ot
@@ -1948,24 +1975,25 @@ cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
 i7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.
 pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb
 ></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb>
-</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.p
+</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.p
 fb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib
-9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.p
-fb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><
-/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
-/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/t
-exlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
-live/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texliv
-e/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2
-022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2022/texmf
--dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on L05_Basis.pdf (11 pages, 720487 bytes).
+8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cm
+mib9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pf
+b></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></
+usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
+local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/loca
+l/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
+texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/tex
+live/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
+e/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2
+022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2022/te
+xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on L05_Basis.pdf (15 pages, 758781 bytes).
 
-PDF statistics: 344 PDF objects out of 1000 (max. 8388607)
- 257 compressed objects within 3 object streams
- 51 named destinations out of 1000 (max. 131072)
+PDF statistics: 369 PDF objects out of 1000 (max. 8388607)
+ 277 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 131072)
  48 words of extra memory for PDF output out of 10000 (max. 100000000)
 
