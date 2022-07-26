@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 0.0.6}
+\lhead{version 0.0.7}
 
 \usepackage{docmute}
 \begin{document}
@@ -25,13 +25,7 @@
 \part{Day 2: 行列とベクトルの空間的理解}
 \include{L04_Space}
 \include{L05_Basis}
-% 6. データの空間
-% - 回帰分析を行列で解く
-% - 行列式とその空間的な意味;潰れると解なし
-% - 射影と回帰分析
-% -- 多重共線性
-% - 直交行列
-% - 回転行列と分散
+\include{L06_DataSpace}
 \part{Day 3: 行列と多変量解析}
 
 % 7. 固有値と固有ベクトル
