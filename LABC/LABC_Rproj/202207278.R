@@ -30,5 +30,9 @@ rotMat %*% y1
 rotMat %*% y2
 
 datMat <- matrix(c(3,3,-0.8,1.5,1.5,1,2,-1,-2,-3,-2,-1.5),ncol=2,byrow=T)
-datMat <- datMat - matrix(apply(datMat,2,mean),nrow=5)
-
+datMat[,1] <- datMat[,1]-colMeans(datMat)[1]
+rotatedDat <- datMat%*%rotMat
+datMat %>% apply(2,function(x) sum(x^2))
+rotatedDat %>% apply(2,function(x) sum(x^2))
+datMat %>% apply(2,function(x) sum(x^2)) %>% sum
+rotatedDat %>% apply(2,function(x) sum(x^2)) %>% sum
