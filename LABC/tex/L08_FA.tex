@@ -79,14 +79,14 @@
 
 その上で，2つの変数，$j$と$k$の標準得点から，
 \begin{equation}
-    r_{jk}=\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}
+    r_{jk}=\frac{1}{n} \sum_{i=1}^{n} z_{ij}z_{ik}
 \end{equation}
 
 のように，相関係数が算出されることをふまえ，先ほどの因子分析の基本代数式(式\ref{factor})をこの式に代入してみましょう。
 \begin{equation}
     \begin{array}{ccl}
-        r_{jk} & = & \displaystyle{\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}}                                                                                                                  \\
-               & = & \displaystyle{\frac{1}{N} \sum_{i=1}^{N}}(a_{j1}f_{i1}+a_{j2}f_{i2}+ \ldots \ +a_{jm}f_{im}+d_{j}u_{ij})(a_{k1}f_{i1}+a_{k2}f_{i2}+ \ldots \ +a_{km}f_{im}+d_{k}u_{ik})
+        r_{jk} & = & \displaystyle{\frac{1}{n} \sum_{i=1}^{n} z_{ij}z_{ik}}                                                                                                                  \\
+               & = & \displaystyle{\frac{1}{n} \sum_{i=1}^{n}}(a_{j1}f_{i1}+a_{j2}f_{i2}+ \ldots \ +a_{jm}f_{im}+d_{j}u_{ij})(a_{k1}f_{i1}+a_{k2}f_{i2}+ \ldots \ +a_{km}f_{im}+d_{k}u_{ik})
     \end{array}
 \end{equation}
 
@@ -110,7 +110,7 @@
     \label{x03_multiply}
 \end{figure}
 
-図\ref{x03_multiply}に示されたのは個人$i$についてのものであり，これが人数分ある，すなわち$\sum_{i=1}^N$をつけないといけないことに注意してください。
+図\ref{x03_multiply}に示されたのは個人$i$についてのものであり，これが人数分ある，すなわち$\sum_{i=1}^n$をつけないといけないことに注意してください。
 さて図を軽く色分けしてあるのですが，ここにあるように計算すべき領域を4つに分けて考えていきましょう。
 \begin{description}
     \item[\textcircled{\scriptsize 1}の領域] 因子$p$と$p$の積和部分(同じ因子同士の掛け合わせ)
@@ -121,41 +121,41 @@
 
 この各パートを順に計算していきましょう。まず\textcircled{\scriptsize 1}ですが，たとえば第一因子については
 \begin{equation}
-    \frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2
+    \frac{1}{n}\sum_{i=1}^{n}a_{j1}a_{k1}F_{i1}^2
 \end{equation}
-となることがわかります。ここで，$a_{j1}$と$a_{k1}$は$N$には関係がない($\sum$は$i$が$1$から$N$まで変化することを意味しているが，係数$i$はどちらにも入っていない)ので，総和して割る意味がないことに気づきます。そうなると，必然的にこの式は，
+となることがわかります。ここで，$a_{j1}$と$a_{k1}$は$n$には関係がない($\sum$は$i$が$1$から$n$まで変化することを意味しているが，係数$i$はどちらにも入っていない)ので，総和して割る意味がないことに気づきます。そうなると，必然的にこの式は，
 \begin{equation}
-    \frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{N}\sum F_{i1}^2
+    \frac{1}{n}\sum_{i=1}^{n}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{n}\sum F_{i1}^2
 \end{equation}
 となります。この$F_{i1}$は因子得点であり，上の仮定より標準化されたものだということになります。さて，標準得点と標準得点の積和平均は相関係数になることをもう一度思い出してください！そうすると，これは自分自身との相関係数を表していることになりますから，当然$F_{i1}^2=1.0$であることがわかります。
 
 結局，\textcircled{\scriptsize 1}のエリアは
 \begin{equation}
-    \frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{N}\sum F_{i1}^2=a_{j1}a_{k1}
+    \frac{1}{n}\sum_{i=1}^{n}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{n}\sum F_{i1}^2=a_{j1}a_{k1}
 \end{equation}
 と，とてもあっさり書き下すことができるのです。
 
 つづいて\textcircled{\scriptsize 2}を見てみましょう。ここは異なる因子がかけ合わさった部分ですね。落ち着いて，第一因子と第二因子を例にして考えてみましょう。この箇所で得られるのは，
 \begin{equation}
-    \frac{1}{N}\sum a_{j1}F_{i1} a_{k2}F_{k2} = a_{j1}a_{k2}\frac{1}{N}\sum F_{i1}F_{i2}
+    \frac{1}{n}\sum a_{j1}F_{i1} a_{k2}F_{k2} = a_{j1}a_{k2}\frac{1}{n}\sum F_{i1}F_{i2}
 \end{equation}
 ということになります。ここで，$F_{i1}$および$F_{i2}$はそれぞれ第一，第二因子における個人$i$の因子得点を意味しています。因子得点は標準化されていることをもう一度思い出すと，これは第一因子と第二因子の相関係数になります。ここで，この因子分析が直交因子モデルだと考えますと，因子同士に相関がないわけですから，数字としては$0$で消えてしまいます。するとこの部分は，
 
 \begin{equation}
-    \frac{1}{N}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{N}\sum F_{i1}F_{i2}=0
+    \frac{1}{n}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{n}\sum F_{i1}F_{i2}=0
 \end{equation}
 となることがわかりました。つまり，この領域\textcircled{\scriptsize 2}は，すべて$0$になってしまうのです。
 
 
 続いて\textcircled{\scriptsize 3}の部分について考えてみましょう。これはある共通因子と独自因子の積和部分です。例によって標準得点同士の関係から，相関係数を算出することになりますが，独自因子は共通因子と無相関であることを考えると，
 \begin{equation}
-    \frac{1}{N}\sum a_{i1}F_{i1}d_{j}U_{ij}=a_{ik}d_{j} \frac{1}{N}\sum U_{ij}F_{i1} =0
+    \frac{1}{n}\sum a_{i1}F_{i1}d_{j}U_{ij}=a_{ik}d_{j} \frac{1}{n}\sum U_{ij}F_{i1} =0
 \end{equation}
 とこのように，この箇所もすべて$0$になってしまいます。
 
 最後の\textcircled{\scriptsize 4}に至っては，独自因子と独自因子の積和ですから，これも
 \begin{equation}
-    \frac{1}{N}\sum d_{j}d_{k}U_{ij}U_{ik}=d_{j}d_{k}\frac{1}{N}\sum U_{ij}U_{ik}=0
+    \frac{1}{n}\sum d_{j}d_{k}U_{ij}U_{ik}=d_{j}d_{k}\frac{1}{n}\sum U_{ij}U_{ik}=0
 \end{equation}
 のように$0$になります。結局，消えて無くなるのがほとんどで，残るのは\textcircled{1}の部分だけであり，$r_{jk}$を考えるときはそこだけ考慮すればよいことになります。
 
@@ -202,29 +202,29 @@
 
 \begin{equation}
     \begin{array}{lll}
-        \bm{R} & = & \frac{1}{N} \bm{Z}'\bm{Z}                                                                                                                                                      \\
+        \bm{R} & = & \frac{1}{n} \bm{Z}'\bm{Z}                                                                                                                                                      \\
                &   & \hspace{8cm}\text{$\bm{Z}$を因子分析のモデル式にして}                                                                                                                                       \\
-               & = & \frac{1}{N}(\bm{F} \bm{A} ' + \bm{U} \bm{D})'(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                                 \\
+               & = & \frac{1}{n}(\bm{F} \bm{A} ' + \bm{U} \bm{D})'(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                                 \\
                &   & \hspace{8cm}\text{前の項の転置を中に入れます}                                                                                                                                               \\
-               & = & \frac{1}{N}\left \{ (\bm{F} \bm{A} ')'+(\bm{U} \bm{D})' \right \}(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                             \\
+               & = & \frac{1}{n}\left \{ (\bm{F} \bm{A} ')'+(\bm{U} \bm{D})' \right \}(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                             \\
                &   & \hspace{8cm}\text{転置のカッコを外すときは順番を入れ替えて転置}                                                                                                                                      \\
-               & = & \frac{1}{N}(\bm{A} \bm{F} ' + \bm{D}' \bm{U} ')(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                               \\
+               & = & \frac{1}{n}(\bm{A} \bm{F} ' + \bm{D}' \bm{U} ')(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                               \\
                &   & \hspace{8cm}                                                                                                                                                                   \\
-               & = & \frac{1}{N}\bm{A} \bm{F}' \bm{F} \bm{A}' + \frac{1}{N} \bm{A} \bm{F}' \bm{U} \bm{D} + \frac{1}{N} \bm{D}' \bm{U} ' \bm{F} \bm{A} ' + \frac{1}{N} \bm{D}' \bm{U}' \bm{U} \bm{D} \\
+               & = & \frac{1}{n}\bm{A} \bm{F}' \bm{F} \bm{A}' + \frac{1}{n} \bm{A} \bm{F}' \bm{U} \bm{D} + \frac{1}{n} \bm{D}' \bm{U} ' \bm{F} \bm{A} ' + \frac{1}{n} \bm{D}' \bm{U}' \bm{U} \bm{D} \\
     \end{array}
 \end{equation}
 と，このように展開できました。記号を見ているとわかりにくいので，サイズ感を確認しましょう。最終的には，次のようになっています。
 \[
     \underset{m \times m}{\bm{R}} =
-    \frac{1}{N} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
-    \frac{1}{N} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}} +
-    \frac{1}{N} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
-    \frac{1}{N} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}}
+    \frac{1}{n} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
+    \frac{1}{n} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}} +
+    \frac{1}{n} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
+    \frac{1}{n} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}}
 \]
 
-ここで，要素ごとに計算していた時のことを思い出してください。第二項$\frac{1}{N} \bm{A} \bm{F}'\bm{U} \bm{D}'$と第三項$\bm{D}' \bm{U}' \bm{F} \bm{A}'$の中にある，$\bm{F}' \bm{U}$と$\bm{U}' \bm{F}$のところは，共通因子得点と独自因子得点の積ですし，いずれも標準化されていますから，$\frac{1}{N}$と合わせて考えると，これは相関係数を表していることになります。また，共通因子と独自因子は相関しませんので，これはイコール$\bm{0}$となり，この2つの項が消えてしまうのでした。
+ここで，要素ごとに計算していた時のことを思い出してください。第二項$\frac{1}{n} \bm{A} \bm{F}'\bm{U} \bm{D}'$と第三項$\bm{D}' \bm{U}' \bm{F} \bm{A}'$の中にある，$\bm{F}' \bm{U}$と$\bm{U}' \bm{F}$のところは，共通因子得点と独自因子得点の積ですし，いずれも標準化されていますから，$\frac{1}{n}$と合わせて考えると，これは相関係数を表していることになります。また，共通因子と独自因子は相関しませんので，これはイコール$\bm{0}$となり，この2つの項が消えてしまうのでした。
 
-また，第一項の$\frac{1}{N}\bm{F} ' \bm{F}$は，共通因子同士の相関を表しています。$\bm{F'F}=\bm{C}$とすると，これは因子得点間相関$\bm{C}$を表すことになります。これが直交であると仮定する，つまり他の因子と相関しないと考えると，$\bm{C} = \bm{I}$，つまり単位行列です。単位行列は計算に影響を与えませんから，$\bm{AF'FA'}=\bm{ACA'}=\bm{AIA'}=\bm{AA'}$となり，この式は簡単に次のように変形できます。
+また，第一項の$\frac{1}{n}\bm{F} ' \bm{F}$は，共通因子同士の相関を表しています。$\bm{F'F}=\bm{C}$とすると，これは因子得点間相関$\bm{C}$を表すことになります。これが直交であると仮定する，つまり他の因子と相関しないと考えると，$\bm{C} = \bm{I}$，つまり単位行列です。単位行列は計算に影響を与えませんから，$\bm{AF'FA'}=\bm{ACA'}=\bm{AIA'}=\bm{AA'}$となり，この式は簡単に次のように変形できます。
 
 \begin{equation}
     \bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
@@ -242,18 +242,18 @@
 \end{equation}
 として表すことができますね。
 
-ところで，ここでは共通因子の数が$m$個だとわかっている体で分解していますが，基本的にはサイズ$N$の行列からは$N$個の固有値がずらーっと並ぶわけです。それをどこかで「共通しているのはここまで」と判断し，残りは誤差であるとしてまとめて$\bm{dd'}$にしているだけですね。このように数学的にはここからが共通因子，ここからが独自因子といった区別をすることなく，最後のひとかけらまで固有値分解を行なっているのですが，その次元の重要度でもって共通因子と誤差因子に(研究者が恣意的に)分割しているのが因子分析のやっていることなのです。
+ところで，ここでは共通因子の数が$m$個だとわかっている体で分解していますが，基本的にはサイズ$n$の行列からは$n$個の固有値がずらーっと並ぶわけです。それをどこかで「共通しているのはここまで」と判断し，残りは誤差であるとしてまとめて$\bm{dd'}$にしているだけですね。このように数学的にはここからが共通因子，ここからが独自因子といった区別をすることなく，最後のひとかけらまで固有値分解を行なっているのですが，その次元の重要度でもって共通因子と誤差因子に(研究者が恣意的に)分割しているのが因子分析のやっていることなのです。
 
-また相関係数を固有値分解すると，その固有値はすべて足し合わせると行列のトレースから$N$になることがわかります。元のデータから計算される相関行列は，1つの項目が一単位分の情報を持っていると考えますが，固有値分解はそれを次元の重要性順に並べ替えているともいえるわけです。固有値は項目いくつ分の重要度があるかということを表す指標だと考えることができます。どこから共通因子でどこからが誤差か，ということを考えるときに，たとえば固有値が1.0よりも小さくなるようであれば，項目1つ分の情報もないのだからということで誤差因子だと判断することがあります。
+また相関係数を固有値分解すると，その固有値はすべて足し合わせると行列のトレースから$n$になることがわかります。元のデータから計算される相関行列は，1つの項目が一単位分の情報を持っていると考えますが，固有値分解はそれを次元の重要性順に並べ替えているともいえるわけです。固有値は項目いくつ分の重要度があるかということを表す指標だと考えることができます。どこから共通因子でどこからが誤差か，ということを考えるときに，たとえば固有値が1.0よりも小さくなるようであれば，項目1つ分の情報もないのだからということで誤差因子だと判断することがあります。
 
 ところで因子分析モデルの$\bm{A}$，因子負荷行列ですが，これは共通因子の固有ベクトルをセットで扱ったものです。つまり，$\bm{A} = \bm{a_1,a_2,\cdots,a_m}$と縦ベクトルを並べたものになっています。エレメントワイズで表現すると次のようになります。
 
 \[
     \bm{A} = \left (
-    \begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1N} \end{pmatrix},
-    \begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2N} \end{pmatrix},
+    \begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1n} \end{pmatrix},
+    \begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2n} \end{pmatrix},
     \cdots,
-    \begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots\\ a_{mN} \end{pmatrix},
+    \begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots\\ a_{mn} \end{pmatrix},
     \right )
 \]
 
