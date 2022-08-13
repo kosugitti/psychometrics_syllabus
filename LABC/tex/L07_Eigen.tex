@@ -121,7 +121,7 @@ $\bm{A}$の固有値$\lambda_1,\lambda_2,\cdots,\lambda_p$がそれぞれ異な�
 
 行列$\bm{A}$が実対称行列であるとし，この行列の固有値$\lambda$に対する固有ベクトルを$\bm{x}$としましょう。ここで$\lambda$や$\bm{x}$は複素数だとします。
 
-\begin{Untiku}{}{}
+\begin{quotation}
     複素数については本書の範疇を超えますが，少しだけその性質を紹介しておきます。$a,b$を実数，$i=\sqrt{-1}$として$a+bi$のことを複素数と言います。複素数$\alpha = a+bi$に対して$\overline{\alpha}=a-bi$を共役複素数といいます。その性質として，
     \begin{itemize}
         \item $\alpha$が実数\Leftrightarrow $\alpha$ = $\overline{\alpha}$
@@ -130,7 +130,7 @@ $\bm{A}$の固有値$\lambda_1,\lambda_2,\cdots,\lambda_p$がそれぞれ異な�
         \item $\alpha\overline{\alpha} = a^2+b^2$
     \end{itemize}
     などがあります。
-\end{Untiku}
+\end{quotation}
 $\bm{A}$は対称行列ですから，$\bm{A}=\bm{A}'$ですし，$\bm{A} = \overline{\bm{A}}$ でもあります。
 さてこの固有値と固有ベクトルを使って，次のような計算を考えてみましょう。
 \[
@@ -204,23 +204,23 @@ $\bm{A}$を$n$次正方対称行列，つまり$n \times n$サイズの対称行
 ついでに，さらにこの行列を固有ベクトルからなる行列で挟んで，
 \[ \bm{X}'\bm{AX} = \bm{X}'\bm{X\Lambda X}'\bm{X} = \bm{\Lambda}\]
 とすることもできます。$\bm{\Lambda}$は固有値が対角に入った対角行列ですから，このように変形することを\keytermL{対角化}{たいかくか}といいます。
-\begin{Untiku}{}{}
-    この操作の何が楽しいかというと，行列の累乗計算がずいぶんと楽になるところです。$\bm{A}^n$を考えると，
-    \[ \begin{array}{lll}
-            \bm{A}^n & = & \bm{AAA}\cdots\bm{A}                                                   \\
-                     & = & \bm{X\Lambda X}'\bm{X\Lambda X}'\bm{X\Lambda X}'\cdots\bm{X\Lambda X}' \\
-                     & = & \bm{X} \bm{\Lambda\Lambda\cdots\Lambda} \bm{X}'                        \\
-                     & = & \bm{X} \bm{\Lambda}^n \bm{X}'                                          \\
-                     &   &                                                                        \\
-                     & = & \bm{X}
-            \begin{pmatrix} \lambda_1^n & 0           & \cdots & 0           \\
+
+この操作の何が楽しいかというと，行列の累乗計算がずいぶんと楽になるところです。$\bm{A}^n$を考えると，
+\[ \begin{array}{lll}
+        \bm{A}^n & = & \bm{AAA}\cdots\bm{A}                                                   \\
+                 & = & \bm{X\Lambda X}'\bm{X\Lambda X}'\bm{X\Lambda X}'\cdots\bm{X\Lambda X}' \\
+                 & = & \bm{X} \bm{\Lambda\Lambda\cdots\Lambda} \bm{X}'                        \\
+                 & = & \bm{X} \bm{\Lambda}^n \bm{X}'                                          \\
+                 &   &                                                                        \\
+                 & = & \bm{X}
+        \begin{pmatrix} \lambda_1^n & 0           & \cdots & 0           \\
                 0           & \lambda_2^n & \cdots & 0           \\
                 \vdots      & \vdots      & \ddots & \vdots      \\
                 0           & 0           & \cdots & \lambda_n^n\end{pmatrix}\bm{X}'
-        \end{array}
-    \]
-    となるからです。行列$\bm{A}$が座標の変換であったり，何らかの作用を表現した行列であるとすると，それを作用させ続けた場合を考える時に累乗計算になりますが，その行列計算が一気に求められることになります。「何らかの作用」をハミルトン演算子と見るか，ページランクとみるか\footnote{Googleの検索エンジンが採用しているページの評価法。Googleの検索システムは，ページ同士のリンク関係を行列で表現し，スペクトル分解して重要度の高いページを重みづけて表現する，というアルゴリズムをとっており，「検索したいものに効率よく辿り着ける」ことで人気を博したからです。}，隣接行列\footnote{数理社会学などでは対人的なネットワークの関係を行列で表現し，このように呼びます。ネットワーク科学一般でも用いられてる用語と言えるでしょう。}と見るかによって見える景色は違ってくるかもしれませんが，数学的には固有値問題といういみで同じなのです。興味がある人は\citet{Naganuma20110920}の電子版付録などもみてみるといいでしょう。
-\end{Untiku}
+    \end{array}
+\]
+となるからです。行列$\bm{A}$が座標の変換であったり，何らかの作用を表現した行列であるとすると，それを作用させ続けた場合を考える時に累乗計算になりますが，その行列計算が一気に求められることになります。「何らかの作用」をハミルトン演算子と見るか，ページランクとみるか\footnote{Googleの検索エンジンが採用しているページの評価法。Googleの検索システムは，ページ同士のリンク関係を行列で表現し，スペクトル分解して重要度の高いページを重みづけて表現する，というアルゴリズムをとっており，「検索したいものに効率よく辿り着ける」ことで人気を博したからです。}，隣接行列\footnote{数理社会学などでは対人的なネットワークの関係を行列で表現し，このように呼びます。ネットワーク科学一般でも用いられてる用語と言えるでしょう。}と見るかによって見える景色は違ってくるかもしれませんが，数学的には固有値問題といういみで同じなのです。興味がある人は\citet{Naganuma20110920}の電子版付録などもみてみるといいでしょう。
+
 \paragraph{総和はトレースに一致する}
 \label{sumIsTrace}
 さて今度は，$n$個の固有値を$\lambda_1,\lambda_2,\cdots,\lambda_n$とすると

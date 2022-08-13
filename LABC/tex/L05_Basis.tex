@@ -181,13 +181,13 @@ $\mathbb{R}^p$に3つの部分空間$\bm{W},\bm{W}_1,\bm{W}_2$があって，$\b
 $\mathbb{R}^p$の任意の部分空間$\bm{W}$があったとき，$\mathbb{R}^p$のベクトル$\bm{a}$が，$\bm{W}$に属する全てのベクトルに直交するなら，$\bm{a}$は$\bm{W}$に直交する，といい$\bm{a} \perp \bm{W}$と書きます。このベクトル全体の集合を特に\keytermL{直交補空間}{ちょっこうほくうかん}といいます。直交補空間もまた$\mathbb{R}^p$の部分空間です。
 
 
-\begin{Untiku}{直交補空間もまた部分空間になる}{}
-    確認しておきましょう。$\bm{u},\bm{v} \in \bm{W}^{\perp}$とします。この$\bm{u},\bm{v}$が加法とスカラー倍しても$\bm{W}^{\perp}$に入っていれば良いのですね。ここで$\bm{x} \in \bm{W}$を用意して考えると，内積の性質から
-    \[ (\bm{x},\bm{u}+\bm{v})=(\bm{x},\bm{u}) + (\bm{x},\bm{v}) = 0+0=0\]
-    ですから，$\bm{u}+\bm{v} \in \bm{W}^{\perp}$が言えました。スカラー倍についても同様に，$\lambda \in \mathbb{R},\bm{u}\in \bm{W}^{\perp}$として，$\bm{x} \in \bm{W}$と内積の性質から
-    \[ (\lambda\bm{u},\bm{x}) = \lambda(\bm{u},\bm{x}) = \lambda \cdot 0\]
-    となり，$\lambda\bm{u} \in \bm{W}^{\perp}$が言えました。また$\bm{x} \in \bm{W}$に対してゼロベクトルとの内積，$(\bm{0},\bm{x}) = 0$であることは明らかですから，直交補空間もゼロベクトルが副真rている($\bm{0} \in \bm{W}^{\perp}$)ことが確認できます。
-\end{Untiku}
+\subsubsection{直交補空間もまた部分空間になる}
+確認しておきましょう。$\bm{u},\bm{v} \in \bm{W}^{\perp}$とします。この$\bm{u},\bm{v}$が加法とスカラー倍しても$\bm{W}^{\perp}$に入っていれば良いのですね。ここで$\bm{x} \in \bm{W}$を用意して考えると，内積の性質から
+\[ (\bm{x},\bm{u}+\bm{v})=(\bm{x},\bm{u}) + (\bm{x},\bm{v}) = 0+0=0\]
+ですから，$\bm{u}+\bm{v} \in \bm{W}^{\perp}$が言えました。スカラー倍についても同様に，$\lambda \in \mathbb{R},\bm{u}\in \bm{W}^{\perp}$として，$\bm{x} \in \bm{W}$と内積の性質から
+\[ (\lambda\bm{u},\bm{x}) = \lambda(\bm{u},\bm{x}) = \lambda \cdot 0\]
+となり，$\lambda\bm{u} \in \bm{W}^{\perp}$が言えました。また$\bm{x} \in \bm{W}$に対してゼロベクトルとの内積，$(\bm{0},\bm{x}) = 0$であることは明らかですから，直交補空間もゼロベクトルが副真rている($\bm{0} \in \bm{W}^{\perp}$)ことが確認できます。
+
 
 イメージで考えてみましょう。$\mathbb{R}^3$，つまり三次元空間において，ある基本ベクトル$\bm{e}_1=\footnotesize\begin{pmatrix}1\\0\\0\end{pmatrix}$が作る部分空間$\bm{W}$は，x軸だけの一次元空間(直線)ですね。これの直交補空間を考えてみます。$\bm{e}_1$と直交する三次元ベクトル$\bm{v} = \footnotesize\begin{pmatrix}x \\ y \\ z\end{pmatrix}$を考えると，これは$\bm{e}_1$と直交する，つまり内積が0になるわけですから，
 \[ (\bm{e}_1,\bm{v}) = x + 0 + 0 = 0\]

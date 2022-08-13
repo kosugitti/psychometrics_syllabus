@@ -390,7 +390,7 @@
 つまりベクトルの角度のコサインをとったものが，内積$(\bm{a},\bm{e})$，$(\bm{a},\bm{c})$に関わってきているといえそうです。
 $\bm{a}$と$\bm{e}$の内積$(\bm{a},\bm{e})$は，ベクトル$\bm{a}$をx軸に射影した時の長さであり，$(\bm{a},\bm{e}) = \cos \theta \| \bm{a} \| \times 1 = \cos \theta \| \bm{a} \| \| \bm{e} \|$だったわけです。このように考えると，ベクトル$\bm{a}$ と$\bm{c}$との内積も，$(\bm{a},\bm{c}) = \cos \theta \| \bm{a} \| \| \bm{c} \|$といえそうです。内積は，一方のベクトルを他方のベクトルに射影した時の長さと，射影されたベクトルの長さ，2つのベクトルの作る角度の$\cos \theta$からできています。
 
-今回位は$\bm{a}$を$\bm{e}$に，$\bm{a}$を$\bm{c}$に射影して説明しましたが，逆でも構いません。例えば$\bm{c}$を$\bm{a}$に射影し，射影された$\bm{a}$のノルム倍したものとして捉えても同じことです(図\ref{Vec_and_theta2})。
+今回は$\bm{a}$を$\bm{e}$に，$\bm{a}$を$\bm{c}$に射影して説明しましたが，逆でも構いません。例えば$\bm{c}$を$\bm{a}$に射影し，射影された$\bm{a}$のノルム倍したものとして捉えても同じことです(図\ref{Vec_and_theta2})。
 
 \begin{figure}[hb]
     \centering
@@ -420,63 +420,64 @@ $\bm{a}$と$\bm{e}$の内積$(\bm{a},\bm{e})$は，ベクトル$\bm{a}$をx軸�
 \[ \cos \theta = \frac{(\bm{a}, \bm{c})}{\| \bm{c}\| \| \bm{c} \|} \]
 となりますから，$\cos \theta$は内積を両方のノルムで割ったものだ，と考えてもいいでしょう。
 
-\begin{Untiku}{余弦定理から考える}{}
-    まさか三角関数が出てくるとはな！と思った人もいるかも知れませんが，ついでに三角関数を使ったうんちくをひとつ。
-    $\cos$のことを余弦といいますが，これを使った定理として三角形の3つの辺の長さ$a,b,c$と，2つの辺が作る角度$\theta$から，
-    \begin{center}
-        \begin{tikzpicture}[scale=0.5]
-            \coordinate (a) at (4,3);
-            \coordinate (c) at (6,0);
-            \coordinate (o) at (0,0);
-            \draw[very thick] (o) -- node[midway,above] {a} (a) ;
-            \draw[very thick] (o) -- node[midway,below] {b} (c);
-            \draw[very thick] (c) -- node[midway,right] {c}(a) ;
-            \coordinate (thrta_0) at (0.75,0) node at (thrta_0) [above right] {$\theta$};
-            \draw [](0.8,0) arc [start angle = 0, end angle = 38, radius = 0.8];%半径0.8の弧
-        \end{tikzpicture}
-    \end{center}
-    \[ c^2 = a^2 + b^2 - 2\cos\theta \]
-    というのがあります。これを今回のベクトルの話に置き換えてみます。
+\subsubsection{余弦定理から考える}
+まさか三角関数が出てくるとはな！と思った人もいるかも知れませんが，ついでに三角関数を使ったうんちくをひとつ。
+$\cos$のことを余弦といいますが，これを使った定理として三角形の3つの辺の長さ$a,b,c$と，2つの辺が作る角度$\theta$から，
+\begin{center}
+    \begin{tikzpicture}[scale=0.5]
+        \coordinate (a) at (4,3);
+        \coordinate (c) at (6,0);
+        \coordinate (o) at (0,0);
+        \draw[very thick] (o) -- node[midway,above] {a} (a) ;
+        \draw[very thick] (o) -- node[midway,below] {b} (c);
+        \draw[very thick] (c) -- node[midway,right] {c}(a) ;
+        \coordinate (thrta_0) at (0.75,0) node at (thrta_0) [above right] {$\theta$};
+        \draw [](0.8,0) arc [start angle = 0, end angle = 38, radius = 0.8];%半径0.8の弧
+    \end{tikzpicture}
+\end{center}
+\[ c^2 = a^2 + b^2 - 2\cos\theta \]
+というのがあります。これを今回のベクトルの話に置き換えてみます。
 
-    辺の長さはベクトルでいうところのノルムですね。それを踏まえてベクトルの図で考えますと，この式がいっていることは次のように言い換えられます。
-    \[ \| \bm{c} - \bm{a} \|^2 = \| \bm{a} \|^2 + \| \bm{c} \|^2 - 2\cos \theta \]
-    \begin{center}
-        \begin{tikzpicture}
-            \coordinate (a) at (4,3);
-            \coordinate (c) at (6,0);
-            \coordinate (o) at (0,0);
-            \coordinate (ax) at (4,0);
-            \draw[->, >=Latex,very thick] (o) -- node[midway,rotate=40,above] {$\| \bm{a} \|$} (a) ;
-            \draw[->, >=Latex,very thick] (o) -- (c);
-            \draw[->, >=Latex,very thick] (c) -- node[midway,right] {$\| \bm{c} - \bm{a} \|$}(a) ;
-            \node[above] (labelA) at (a) {$\bm{a}$};
-            \node[right] (labelC) at (c) {$\bm{c}$};
-            \coordinate (thrta_0) at (0.75,0) node at (thrta_0) [above right] {$\theta$};
-            \draw [](0.8,0) arc [start angle = 0, end angle = 38, radius = 0.8];%半径0.8の弧
-            \draw[dashed] (a) -- node[pos = 0.7,left] {$\| \bm{a} \|\sin \theta $} (ax);
-            \draw (o) to [out=-85,in=265] node[midway,below]{$\| \bm{a}\| \cos \theta$} (ax);
-            \draw (ax) to [out=-85,in=265] node[midway,below right]{$\|\bm{c}\| - \| \bm{a}\| \cos \theta$} (c);
-        \end{tikzpicture}
-    \end{center}
-    三角形の時の第三の辺$c$が，ここでは$\| \bm{c} - \bm{a} \|$となっているところに注意してください。一旦c地点まで移動して，そこからa地点まで戻るので，マイナスになるという計算です。
-    ここで，ベクトル$\bm{a}$から$\bm{c}$に対して射影することを考えると，ベクトル$\bm{c}$は$\| \bm{a} \|\cos \theta$と残りの部分に分割されます。またこの垂線の高さは$\sin \theta$を使って表すことができます。この垂線で区切られた右側の領域にある三角形も直角三角形ですから，三平方の定理が成立しますね。
-    \[ \| \bm{c} - \bm{a} \|^2 = (\| \bm{a} \| \sin \theta)^2 + (\| \bm{c} \| - \| \bm{a}\|\cos \theta)^2 \]
-    ということで，右辺を展開してみますと
-    \[ = \| \bm{a} \|^2 \sin^2 \theta + \| \bm{c} \|^2 -2\| \bm{c} \| \| \bm{a}\| \cos \theta +\| \bm{a}\|^2 \cos^2 \theta \]
-    \[ = \| \bm{a} \|^2(\sin^2 \theta + \cos^2 \theta) + \| \bm{c} \|^2 -2\| \bm{c} \| \| \bm{a}\| \cos \theta\]
-    \[ = \| \bm{a} \|^2 + \| \bm{c} \|^2 -2\| \bm{c} \| \| \bm{a}\| \cos \theta\]
-    ここで$\cos \theta$の項を別にしてベクトルだけの計算にしてみましょう。移項して，
-    \[ 2\| \bm{c} \| \| \bm{a}\| \cos \theta = \| \bm{a} \|^2 + \| \bm{c} \|^2 -  \| \bm{c} - \bm{a} \|^2 \]
-    として考えてみます。
+辺の長さはベクトルでいうところのノルムですね。それを踏まえてベクトルの図で考えますと，この式がいっていることは次のように言い換えられます。
+\[ \| \bm{c} - \bm{a} \|^2 = \| \bm{a} \|^2 + \| \bm{c} \|^2 - 2\cos \theta \]
+\begin{center}
+    \begin{tikzpicture}
+        \coordinate (a) at (4,3);
+        \coordinate (c) at (6,0);
+        \coordinate (o) at (0,0);
+        \coordinate (ax) at (4,0);
+        \draw[->, >=Latex,very thick] (o) -- node[midway,rotate=40,above] {$\| \bm{a} \|$} (a) ;
+        \draw[->, >=Latex,very thick] (o) -- (c);
+        \draw[->, >=Latex,very thick] (c) -- node[midway,right] {$\| \bm{c} - \bm{a} \|$}(a) ;
+        \node[above] (labelA) at (a) {$\bm{a}$};
+        \node[right] (labelC) at (c) {$\bm{c}$};
+        \coordinate (thrta_0) at (0.75,0) node at (thrta_0) [above right] {$\theta$};
+        \draw [](0.8,0) arc [start angle = 0, end angle = 38, radius = 0.8];%半径0.8の弧
+        \draw[dashed] (a) -- node[pos = 0.7,left] {$\| \bm{a} \|\sin \theta $} (ax);
+        \draw (o) to [out=-85,in=265] node[midway,below]{$\| \bm{a}\| \cos \theta$} (ax);
+        \draw (ax) to [out=-85,in=265] node[midway,below right]{$\|\bm{c}\| - \| \bm{a}\| \cos \theta$} (c);
+    \end{tikzpicture}
+\end{center}
+三角形の時の第三の辺$c$が，ここでは$\| \bm{c} - \bm{a} \|$となっているところに注意してください。一旦c地点まで移動して，そこからa地点まで戻るので，マイナスになるという計算です。
+ここで，ベクトル$\bm{a}$から$\bm{c}$に対して射影することを考えると，ベクトル$\bm{c}$は$\| \bm{a} \|\cos \theta$と残りの部分に分割されます。またこの垂線の高さは$\sin \theta$を使って表すことができます。この垂線で区切られた右側の領域にある三角形も直角三角形ですから，三平方の定理が成立しますね。
+\[ \| \bm{c} - \bm{a} \|^2 = (\| \bm{a} \| \sin \theta)^2 + (\| \bm{c} \| - \| \bm{a}\|\cos \theta)^2 \]
+ということで，右辺を展開してみますと
+\[ = \| \bm{a} \|^2 \sin^2 \theta + \| \bm{c} \|^2 -2\| \bm{c} \| \| \bm{a}\| \cos \theta +\| \bm{a}\|^2 \cos^2 \theta \]
+\[ = \| \bm{a} \|^2(\sin^2 \theta + \cos^2 \theta) + \| \bm{c} \|^2 -2\| \bm{c} \| \| \bm{a}\| \cos \theta\]
+\[ = \| \bm{a} \|^2 + \| \bm{c} \|^2 -2\| \bm{c} \| \| \bm{a}\| \cos \theta\]
+ここで$\cos \theta$の項を別にしてベクトルだけの計算にしてみましょう。移項して，
+\[ 2\| \bm{c} \| \| \bm{a}\| \cos \theta = \| \bm{a} \|^2 + \| \bm{c} \|^2 -  \| \bm{c} - \bm{a} \|^2 \]
+として考えてみます。
 
-    右辺はベクトルだけになりましたから，2次元ベクトルの要素として$\bm{a} = \footnotesize \begin{pmatrix} a_1\\a_2 \end{pmatrix}, \bm{c} = \footnotesize \begin{pmatrix}c_1\\c_2\end{pmatrix}$だとすると，
-    \[ 2\| \bm{c} \| \| \bm{a}\| \cos \theta = a_1^2 + a_2^2 + c_1^2 + c_2^2 -((a_1-c_1)^2 +(a_2 - c_2)^2)) \]
-    \[ = a_1^2 + a_2^2 + c_1^2 + c_2^2 - (a_1^2 + c_1^2 - 2a_1c_1 + a_2^2 + c_2^2 - 2a_2c_2) \]
-    \[ = 2(a_1c_1 + a_2c_2)\]
-    ここで両辺2で割って，
-    \[ \| \bm{c} \| \| \bm{a}\| \cos \theta = (a_1c_1 + a_2c_2) = (\bm{a},\bm{c} )\]
-    となり，内積は2つのベクトルのノルムにベクトルのなす角$\theta$の余弦をかけたもの，という話にたどりつきます。
-\end{Untiku}
+右辺はベクトルだけになりましたから，2次元ベクトルの要素として$\bm{a} = \footnotesize \begin{pmatrix} a_1\\a_2 \end{pmatrix}, \bm{c} = \footnotesize \begin{pmatrix}c_1\\c_2\end{pmatrix}$だとすると，
+\[ 2\| \bm{c} \| \| \bm{a}\| \cos \theta = a_1^2 + a_2^2 + c_1^2 + c_2^2 -((a_1-c_1)^2 +(a_2 - c_2)^2)) \]
+\[ = a_1^2 + a_2^2 + c_1^2 + c_2^2 - (a_1^2 + c_1^2 - 2a_1c_1 + a_2^2 + c_2^2 - 2a_2c_2) \]
+\[ = 2(a_1c_1 + a_2c_2)\]
+ここで両辺2で割って，
+\[ \| \bm{c} \| \| \bm{a}\| \cos \theta = (a_1c_1 + a_2c_2) = (\bm{a},\bm{c} )\]
+となり，内積は2つのベクトルのノルムにベクトルのなす角$\theta$の余弦をかけたもの，という話にたどりつきます。
+
+
 \section{データの空間的イメージ}
 ここまでで，ベクトルは空間的なものとして可視化，イメージできることをみてきました。これと心理統計とはどういう関係があるのでしょうか。
 
