@@ -238,22 +238,21 @@
 \[ \bm{R} = \lambda_1\bm{x}_1\bm{x}_1'+\lambda_2\bm{x}_2\bm{x}_2'+\cdots+ \lambda_n\bm{x}_n\bm{x}_n'\]
 となりますが，$\lambda_1 \bm{xx'} = \bm{aa'}$となるようにベクトルの大きさが整えられているとすれば，次のように表現できます。
 \begin{equation}
-    \bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}' =\bm{AA}'+\bm{D}
+    \bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_p\bm{a}_p'+\bm{d} \bm{d}' =\bm{AA}'+\bm{D}
 \end{equation}
-として表すことができますね。
 
 ところで，ここでは共通因子の数が$m$個だとわかっている体で分解していますが，基本的にはサイズ$n$の行列からは$n$個の固有値がずらーっと並ぶわけです。それをどこかで「共通しているのはここまで」と判断し，残りは誤差であるとしてまとめて$\bm{dd'}$にしているだけですね。このように数学的にはここからが共通因子，ここからが独自因子といった区別をすることなく，最後のひとかけらまで固有値分解を行なっているのですが，その次元の重要度でもって共通因子と誤差因子に(研究者が恣意的に)分割しているのが因子分析のやっていることなのです。
 
 また相関係数を固有値分解すると，その固有値はすべて足し合わせると行列のトレースから$n$になることがわかります。元のデータから計算される相関行列は，1つの項目が一単位分の情報を持っていると考えますが，固有値分解はそれを次元の重要性順に並べ替えているともいえるわけです。固有値は項目いくつ分の重要度があるかということを表す指標だと考えることができます。どこから共通因子でどこからが誤差か，ということを考えるときに，たとえば固有値が1.0よりも小さくなるようであれば，項目1つ分の情報もないのだからということで誤差因子だと判断することがあります。
 
-ところで因子分析モデルの$\bm{A}$，因子負荷行列ですが，これは共通因子の固有ベクトルをセットで扱ったものです。つまり，$\bm{A} = \bm{a_1,a_2,\cdots,a_m}$と縦ベクトルを並べたものになっています。エレメントワイズで表現すると次のようになります。
+ところで因子分析モデルの$\bm{A}$，因子負荷行列ですが，これは共通因子の固有ベクトルをセットで扱ったものです。つまり，$\bm{A} = \bm{a_1,a_2,\cdots,a_p}$と縦ベクトルを並べたものになっています。エレメントワイズで表現すると次のようになります。
 
 \[
     \bm{A} = \left (
-    \begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1n} \end{pmatrix},
-    \begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2n} \end{pmatrix},
+    \begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1m} \end{pmatrix},
+    \begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2m} \end{pmatrix},
     \cdots,
-    \begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots\\ a_{mn} \end{pmatrix},
+    \begin{pmatrix}  a_{p1}\\a_{p2}\\\vdots\\ a_{pm} \end{pmatrix},
     \right )
 \]
 
@@ -428,13 +427,13 @@ $\bm{U}$は各列が互いに直交していますから，$\bm{UW}$は平均偏
 主成分分析を別の表現で説明するなら，複数の変数$x_1,x_2,\cdots,x_m$があったときに，合成変数$P_i$を
 \[ p_i = w_1x_{i1} + w_2x_{i2}+\cdots+w_mx_{im} \]
 の分散を最大にするように$w_j$を決めることともいわれます。これはむしろ，上の行列計算を逆に読み解くようなものですね。ここで$x_{ij}$は平均からの偏差であるとすれば，
-\[\bm{p} = w_1\begin{pmatrix}x_{11}-\bar{x}_1\\x_{21}-\bar{x}_1\\\vdots\x_{n1}-\bar{x}_1\end{pmatrix}
-    +w_2 \begin{pmatrix}x_{12}-\bar{x}_2\\x_{22}-\bar{x}_2\\\vdots\x_{n2}-\bar{x}_2\end{pmatrix}
+\[\bm{p} = w_1\begin{pmatrix}x_{11}-\bar{x}_1\\x_{21}-\bar{x}_1\\\vdots\\\x_{n1}-\bar{x}_1\end{pmatrix}
+    +w_2 \begin{pmatrix}x_{12}-\bar{x}_2\\x_{22}-\bar{x}_2\\\vdots\\\x_{n2}-\bar{x}_2\end{pmatrix}
     +\cdots+
-    +w_m \begin{pmatrix}x_{1m}-\bar{x}_m\\x_{2m}-\bar{x}_m\\\vdots\x_{nm}-\bar{x}_m\end{pmatrix}
+    +w_m \begin{pmatrix}x_{1m}-\bar{x}_m\\x_{2m}-\bar{x}_m\\\vdots\\\x_{nm}-\bar{x}_m\end{pmatrix}
 \]
 となります。
-これは$\bm{w} =\scriptsize \begin{pmatrix}w_1\\w_2\cdots\end{pmatrix}$ という重みベクトルを平均偏差ベクトルにかけて，
+これは$\bm{w} =\scriptsize \begin{pmatrix}w_1\\w_2\\\vdots\end{pmatrix}$ という重みベクトルを平均偏差ベクトルにかけて，
 \[ \bm{p}=\bm{Vw} \]
 としていることであり，
 \[ \frac{1}{n}\bm{p}'\bm{p} = \frac{1}{n}\bm{w}'\bm{V}'\bm{V}\bm{w} = \bm{w}'\bm{Sw}\]
