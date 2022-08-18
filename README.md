@@ -118,6 +118,14 @@
 - [第 14 回；状態空間モデル(rstan)](codes/Dkiso2/14_stateSpace_Rstan.R)
 - [第 14 回；状態空間モデル(cmdstan)](codes/Dkiso2/14_stateSpace_Cmdstan.R)
 
+## 非常勤など
+
+### 2022 夏 数学ワークショップ＃１
+
+「深層学習は心理学に革新をもたらすか？　オープンサイエンスによる理論的・実践的検証」というプロジェクトの一環で，2022 年夏の数学ワークショップの講師を担当させていただくことになりました。その時のテキストをこちらにおいております。
+
+- [心理学者のための線形代数](LABC.pdf)
+
 ## ライセンス等
 
 [Written by Kosugitti](https://researchmap.jp/kosugitti)

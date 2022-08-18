@@ -78,7 +78,7 @@
     \label{anothorBasis}
 \end{figure}
 
-このように，基底はいろいろな取り方ができますし，今回の例のように直交でなくてもかまいません\footnote{内積$(\bm{z}_1,\bm{z_2})=\| \bm{z}_1 \| \| \bm{z}_2 \| \cos \theta = -1$ですから，$\sqrt{10}\sqrt{17}\cos\theta = -1$ より$116^\circ$ぐらいです。計算して$\cos \theta = -\frac{1}{\sqrt{170}}$から，Rの\verb|acos|関数で求めてもいいですし，Walfram alphaに「\{3,-1\}と\{1,4\}のなす角」と聞いてもいいかもしれません。}。図\ref{anothorBasis}のような座標であっても二次元に変わりはなく，基底の一次結合で空間全てを表現することはできるので，基底の数は一定です。一般に，ベクトル空間$\mathbb{R}^p$に含まれる基底の数$p$は\keyterm{次元}{dimension}{じげん}と呼び，$dim (\mathbb{R}^p) = p$のように表します。
+このように，基底はいろいろな取り方ができますし，今回の例のように直交でなくてもかまいません\footnote{内積$(\bm{z}_1,\bm{z_2})=\| \bm{z}_1 \| \| \bm{z}_2 \| \cos \theta = -1$ですから，$\sqrt{10}\sqrt{17}\cos\theta = -1$ より$116^\circ$ぐらいです。計算して$\cos \theta = -\frac{1}{\sqrt{170}}$から，Rの\verb|acos|関数で求めてもいいですし，Walfram alphaに「\{3,-1\}と\{1,4\}のなす角」と聞いてもいいかもしれません。}。図\ref{anothorBasis}のような座標であっても二次元に変わりはなく，基底の一次結合で空間全てを表現することはできるので，基底の数は一定です。一般に，ベクトル空間$\mathbb{R}^p$に含まれる基底の数$p$は\keyterm{次元}{じげん}{dimension}と呼び，$dim (\mathbb{R}^p) = p$のように表します。
 
 \subsection{グラム・シュミットの正規直交化法}
 \label{GMorth}
@@ -453,7 +453,7 @@ $p$次元ベクトルをこのように分解した時，$\bm{a}$に$\bm{b}$を�
 \[ \bm{Pv} = \begin{pmatrix}1 & 0\\0 & 0\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix} = \begin{pmatrix}x\\0\end{pmatrix} \]
 となり，x軸の要素だけ取り出されていることがわかると思います。
 
-今度は平面に分解することを考えてみましょう。空間イメージは図\ref{orthogonalComplement}のような感じです。これは3次元ベクトルを，それより小さい2次元の空間におけるベクトルに分解するしている例です。図ではちょうど上の方向からライトを当てて，平面空間に影を落としたような感じになっていますよね。
+今度は平面に分解することを考えてみましょう。空間イメージは図\ref{orthogonalComplement2}のような感じです。これは3次元ベクトルを，それより小さい2次元の空間におけるベクトルに分解するしている例です。図ではちょうど上の方向からライトを当てて，平面空間に影を落としたような感じになっていますよね。
 
 \begin{figure}
     \centering
@@ -484,7 +484,7 @@ $p$次元ベクトルをこのように分解した時，$\bm{a}$に$\bm{b}$を�
         \node[left] at (c3) {$\bm{W}^{\perp}$};
     \end{tikzpicture}
     \caption{$\bm{b}$が作る空間(2次元平面)への射影と$\bm{c}$がつくるその直交補空間}
-    \label{orthogonalComplement}
+    \label{orthogonalComplement2}
 \end{figure}
 
 今回$\bm{p}$は$\bm{b}_1$と$\bm{b}_2$が作る空間のベクトルですから，

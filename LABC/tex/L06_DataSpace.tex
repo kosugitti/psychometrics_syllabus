@@ -136,7 +136,7 @@ Rで逆行列を求めるには，\verb|solve|という関数があるので，�
 だそうです。
 
 さて，ではランク落ちかけ，という程度ならどうでしょう。$\bm{A}$の3列目を$\bm{A}$の2列目で上書きするときに，少し数字をいじってしまいます。
-\begin{lstlisting}[language=C++,label={Multico2},caption={ランクおちかけ}]
+\begin{lstlisting}[language=C++,label={Multico3},caption={ランクおちかけ}]
     A[,3] <- A[,2]+rnorm(5)*0.001
     M <- t(A) %*% A
     solve(M)
