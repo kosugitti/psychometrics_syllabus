@@ -11,6 +11,21 @@
 \usepackage{tikz-3dplot}
 \usepackage{nicematrix}
 \begin{document}
+
+\begin{tikzpicture}
+	\draw[thick]  (0,0)--(0,1)--(2,1)--(2,0)-- (0,0);
+	\draw[thick]  (5,0.5) ellipse (1.2 and 0.5);
+	\draw[thick,->] (8,0.5)--(10,0.5);
+	\draw[thick,<->] (12,0.5)--(14,0.5);
+	\node (A) at (1,1.2) {観測変数};
+	\node (B) at (5,1.2) {潜在変数};
+	\node (C) at (9,1.2) {因果関係};
+	\node (D) at (13,1.2) {相関関係};
+\end{tikzpicture}
+
+
+
+
 \begin{figure}
 	\begin{tikzpicture}
 		% \draw [help lines] (0,0) grid (20,20);%(0,0)から(10,4)までの"細線の方眼"

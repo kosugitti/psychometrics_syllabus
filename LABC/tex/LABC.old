@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 0.0.15}
+\lhead{version 0.0.16}
 
 \usepackage{docmute}
 \begin{document}
@@ -30,15 +30,10 @@
 \include{L07_Eigen}
 \include{L08_FA}
 \include{L09_SEM}
-% 8. 因子分析モデル
-% - 因子分析モデル
-% - 因子分析モデルの行列表現
-% - 因子軸の回転
-% 9. SEM と行列
-% - 構造方程式モデル
-% - 構造方程式モデルの行列表現
-% - 識別可能性
-
+\include{L10_ASO}
+\appendix
+\include{LA01_Rcode}
+\input{../../common_contents/Greeks}
 
 \addcontentsline{toc}{chapter}{引用文献}
 % 引用文献
