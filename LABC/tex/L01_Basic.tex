@@ -387,11 +387,11 @@ $\bm{E}$で表されます。
 
 \begin{center}
     \begin{tabular}{cr}
-        $\bm{A} + \bm{B}  = \bm{B} + \bm{A}$                     & 交換法則 \\
-        $(\bm{A} + \bm{B})+\bm{C}  = \bm{A} + (\bm{B}+\bm{C})$   & 結合法則 \\
-        $(\alpha + \beta)\bm{A} = \alpha\bm{A} + \beta\bm{A}$    & 分配法則 \\
-        $\lambda(\bm{A}+\bm{B}) = \lambda\bm{A} + \lambda\bm{B}$ & 分配法則 \\
-        $(\alpha + \beta )\bm{A}  = \alpha(\beta\bm{A})$         & 交換法則 \\
+        $\bm{A} + \bm{B}  = \bm{B} + \bm{A}$                               & 交換法則 \\
+        $(\bm{A} + \bm{B})+\bm{C}  = \bm{A} + (\bm{B}+\bm{C})$             & 結合法則 \\
+        $(\alpha + \beta)\bm{A} = \alpha\bm{A} + \beta\bm{A}$              & 分配法則 \\
+        $\lambda(\bm{A}+\bm{B}) = \lambda\bm{A} + \lambda\bm{B}$           & 分配法則 \\
+        $\lambda(\bm{AB}) = (\lambda\bm{A}\bm{B}) = \bm{A}(\lambda\bm{B})$ & 交換法則 \\
     \end{tabular}
 \end{center}
 
@@ -612,7 +612,7 @@ $\bm{AB}=\bm{C}$とするとき，$\bm{A}$の$i$行目と$\bm{B}$の$j$列目の
 \end{reidai}
 
 \paragraph{行列と行列の積}
-最後に行列と行列の積にもどって考えてみましょう。行列$\bm{A}$と$\bm{B}$の積が成立するのは，前者の列数と後者の行数とが等しいときに限られます。行列$\bm{A}$のサイズが$m \times k$，行列$\bm{B}$のサイズが$k \times n$とすると，その積は$n \times l$の行列になります。計算手続きは，次のようになります，
+最後に行列と行列の積にもどって考えてみましょう。行列$\bm{A}$と$\bm{B}$の積が成立するのは，前者の列数と後者の行数とが等しいときに限られます。行列$\bm{A}$のサイズが$m \times k$，行列$\bm{B}$のサイズが$k \times n$とすると，その積は$n \times m$の行列になります。計算手続きは，次のようになります，
 \begin{equation*}
     \bm{A} \bm{B} =
     \begin{pmatrix}
@@ -731,7 +731,7 @@ $c$を実数，$\bm{A},\bm{B},\bm{C}$を行列とするとき，
 \begin{center}
     \begin{tabular}{lr}
         $c\bm{A} = \bm{A}c$                          &      \\
-        $(c\bm{A})\bm{B} = c(\bm{AB}$                &      \\
+        $(c\bm{A})\bm{B} = c(\bm{AB})$               &      \\
         $(\bm{AB})\bm{C} = \bm{A}(\bm{BC})$          & 結合法則 \\
         $(\bm{A}+\bm{B})\bm{C} = \bm{AC} + \bm{BC} $ & 分配法則 \\
         $\bm{A}(\bm{B}+\bm{C}) = \bm{AB} + \bm{AC} $ & 分配法則 \\
@@ -877,7 +877,7 @@ $c$を実数，$\bm{A},\bm{B},\bm{C}$を行列とするとき，
 \]
 として，
 \[
-    \bm{A} = \begin{bmatrix} \bm{a}_1, \bm{a}_2, \cdots, \bm{a}_n\end{bmatrix}
+    \bm{A} = \begin{bmatrix} \bm{a}_1, \bm{a}_2, \cdots, \bm{a}_m\end{bmatrix}
 \]
 とすることもあります。
 
