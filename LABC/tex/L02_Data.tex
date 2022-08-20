@@ -39,7 +39,7 @@
               &   &                                                                                                                 \\
               & = & \frac{1}{n} \sum x_{ij}^2 - 2\bar{x}_j^2 + \bar{x}_j^2                                       &                  \\
               &   &                                                                                                                 \\
-              & = & \frac{1}{n} \sum x_{iJ}^2 -  \bar{x}_j^2                                                     &                  \\
+              & = & \frac{1}{n} \sum x_{ij}^2 -  \bar{x}_j^2                                                     &                  \\
     \end{array}
 \]
 として使われることがあります\footnote{三段目，$\frac{1}{n}\sum c = \frac{1}{n} nc = c$がミソ。}。分散がゼロのデータからは情報が得られませんから，分散とはその変数が持つ情報の大きさを表していると言っていいかもしれません。
@@ -223,10 +223,10 @@
                &   &                                             \\
                & = &
         \begin{pmatrix}
-            x_{11} - \bar{x}_{.1} & x_{12} - \bar{x}_{.2} & \cdots & \x_{1m} - \bar{x}_{.m} \\
-            x_{21} - \bar{x}_{.1} & x_{22} - \bar{x}_{.2} & \cdots & \x_{2m} - \bar{x}_{.m} \\
-            \vdots                & \vdots                &        & \vdots                 \\
-            x_{n1} - \bar{x}_{.1} & x_{n2} - \bar{x}_{.2} & \cdots & \x_{nm} - \bar{x}_{.m} \\
+            x_{11} - \bar{x}_{.1} & x_{12} - \bar{x}_{.2} & \cdots & x_{1m} - \bar{x}_{.m} \\
+            x_{21} - \bar{x}_{.1} & x_{22} - \bar{x}_{.2} & \cdots & x_{2m} - \bar{x}_{.m} \\
+            \vdots                & \vdots                &        & \vdots                \\
+            x_{n1} - \bar{x}_{.1} & x_{n2} - \bar{x}_{.2} & \cdots & x_{nm} - \bar{x}_{.m} \\
         \end{pmatrix}
     \end{array}
 \]
@@ -503,7 +503,7 @@
 これも$x_i$が個人ごとに変わるベクトルだと考えると，行列表現では次のようになります。
 
 \[ \begin{pmatrix}y_1 \\ y_2 \\ \vdots \\y_n \end{pmatrix}=
-    \begin{pmatrix} 1 & 0 \\ 1 & 0 \\ \vdots & \vdots \\ 0 & 1 \end{pmatrix}
+    \begin{pmatrix} 1 & 0 \\ 1 & 0 \\ \vdots & \vdots \\ 1 & 1 \end{pmatrix}
     \begin{pmatrix} \beta_0 \\ \beta_1 \end{pmatrix} +
     \begin{pmatrix} e_1 \\ e_2 \\ \vdots \\ e_n \end{pmatrix} \]
 
