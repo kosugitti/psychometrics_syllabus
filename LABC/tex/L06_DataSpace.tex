@@ -339,7 +339,8 @@ Rで逆行列を求めるには，\verb|solve|という関数があるので，�
 
 分散分析は分散を分解していく，つまり足し算の形に分離変形をしていくことなのですが，空間で説明するなら部分空間への分割である，ともいうことができます。
 \begin{reidai}{}{}
-    データベクトル$\bm{y} = \begin{pmatrix}1&3&4&6\end{pmatrix}'$を分解するなら，
+    4人の被験者をA,B群に2人ずつ振り分けて，群間差を見る分散分析をしたいと思います。
+    データベクトル$\bm{y} = \begin{pmatrix}1&3&4&6\end{pmatrix}'$とデザイン行列の関係は，
     \[ \begin{pmatrix}1\\3\\4\\6\\\end{pmatrix} = \begin{pmatrix}1\\1\\1\\1\\\end{pmatrix}\mu +
         \begin{pmatrix} 1 & 0\\1 & 0 \\ 0 & 1 \\ 0 & 1\end{pmatrix}
         \begin{pmatrix}\beta_1\\\beta_2\end{pmatrix} +
