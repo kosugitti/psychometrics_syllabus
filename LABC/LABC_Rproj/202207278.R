@@ -1,7 +1,7 @@
 rm(list=ls())
 pacman::p_load(tidyverse)
 
-A <- matrix(c(1,1,0,0,0,0,1,1),ncol=2)
+A <- matrix(c(1,1,0,0,0,0,-1,-1),ncol=2)
 G <- rep(1,4)
 PA <- A %*% solve(t(A)%*%A) %*% t(A)
 PG <- G %*% solve(t(G)%*%G) %*% t(G)
