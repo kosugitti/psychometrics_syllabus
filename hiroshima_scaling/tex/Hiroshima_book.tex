@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 0.0.4}
+\lhead{version 0.0.6}
 
 \usepackage{docmute}
 \begin{document}
@@ -15,12 +15,6 @@
 \setcounter{tocdepth}{1}
 
 \tableofcontents
-% \part{Day 1: テスト理論の基礎}
-% 1. リッカート法では測れない　/3 種類の測定(テスト，パーソナリティ，態度)/古典的テスト理論
-% 2. 現代テスト理論　項目反応理論(ICC,IIC,TIC,CAT)
-% 3. 因子分析モデル　因子分析の基本モデル
-% 4. 行列の基礎　行列の加減乗除，固有値固有ベクトル
-% 5. 因子分析の行列表現
 \include{H01_Intro}
 \include{H02_TestTheory}
 \include{H03_FactorAnalysis}
@@ -38,6 +32,8 @@
 \include{H08_Distance}
 \include{H09_Preference}
 \include{H10_MDS}
+\include{H11_Cross}
+\include{H12_Dual}
 
 % \part{Day 3: テスト理論の基礎}
 % 11. クロス表の分解　 → 交互平均法
@@ -45,8 +41,6 @@
 % 13. 確率モデルとベイズ推定　 → 回帰分析の確率モデル，未知数の推定法 3 つ
 % 14. ベイズ推定の実際　 →MCMC 法，だいたいなんでも解ける
 % 15. 私たちは何が測りたいのか
-\include{H11_Cross}
-\include{H12_Dual}
 \include{H13_Bayes}
 \include{H14_MCMC}
 \include{H15_Epilogue}
@@ -59,7 +53,7 @@
 \addcontentsline{toc}{chapter}{引用文献}
 % 引用文献
 \bibliographystyle{../../jecon_jpa}
-\bibliography{../../sbib}
+\bibliography{../../sbib,../../JPA92}
 % 索引
 \addcontentsline{toc}{chapter}{索引}
 
