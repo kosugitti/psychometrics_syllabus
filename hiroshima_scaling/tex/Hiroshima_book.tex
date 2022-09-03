@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 0.0.10}
+\lhead{version 0.0.17}
 
 \usepackage{docmute}
 \begin{document}
@@ -22,27 +22,14 @@
 \include{H05_MatrixForm}
 
 % \part{Day 2: テスト理論の基礎}
-% 6. 態度尺度の作成　サーストン法，リッカート法，SD 法
-% 7. リッカート法で測ったもの パーソナリティはどこにあるか，静的構造という性質，正規分布の二つの意味，てっちゃんの手品
-% 8. 距離を分析する　 → クラスター分析，多次元尺度構成法
-% 9. 選好を分析する　 → 展開法，多次元展開法
-% 10. MDS の展開　 → 個人差 MDS，非対称 MDS
 \include{H06_AttitudeScale}
-\include{H08_Distance}
-\include{H09_Preference}
-\include{H10_MDS}
-\include{H11_Cross}
-\include{H12_Dual}
+\include{H07_Distance}
+\include{H08_MDS}
+% 11. クロス表の分解　 → 交互平均法， 強制分類法，全情報分析
+\include{H09_Dual}
 
-% \part{Day 3: テスト理論の基礎}
-% 11. クロス表の分解　 → 交互平均法
-% 12. 双対尺度法の展開　 → 強制分類法，全情報分析
-% 13. 確率モデルとベイズ推定　 → 回帰分析の確率モデル，未知数の推定法 3 つ
-% 14. ベイズ推定の実際　 →MCMC 法，だいたいなんでも解ける
-% 15. 私たちは何が測りたいのか
-\include{H13_Bayes}
-\include{H14_MCMC}
-\include{H15_Epilogue}
+\include{H10_Bayes}
+\include{H11_Epilogue}
 
 
 
