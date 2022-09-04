@@ -32,21 +32,21 @@
 これを使って平均値(列)ベクトル$\bm{m}$を次のように表すことができます。
 \[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} =
     \begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} =
-    \begin{pmatrix}\bar{x_.1} \\ \bar{x_.2}\\ \vdots \\\bar{x_.m} \end{pmatrix} \]
+    \begin{pmatrix}\bar{x}_{.1} \\ \bar{x}_{.2}\\ \vdots \\\bar{x}_{.m} \end{pmatrix} \]
 
-ここで$\bar{x_.1}$は1つめの添字$i$を足し合わせて割ることでなくしていますから，$\bar{x_1}$のように省略して書くことがあります。このときの$1$は「第一番目の変数」という意味であり，個人の情報がなくなっている変数を意味していることに注意してください。
+ここで$\bar{x}_{.1}$は1つめの添字$i$を足し合わせて割ることでなくしていますから，$\bar{x}_1$のように省略して書くことがあります。このときの$1$は「第一番目の変数」という意味であり，個人の情報がなくなっている変数を意味していることに注意してください。
 
 さて，平均からの偏差を要素に持つ行列$\bm{V}$を考えたとします。
 \[
     \begin{array}{ccl}
         \bm{V} & = & \bm{X} - \bm{1} \bm{m}'                                                                                                                  \\
                &   &                                                                                                                                          \\
-               & = & \bm{X} - \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix} \begin{pmatrix} \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m} \end{pmatrix} \\
+               & = & \bm{X} - \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix} \begin{pmatrix} \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \end{pmatrix} \\
                &   &                                                                                                                                          \\
-               & = & \bm{X} - \begin{pmatrix} \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m} \\
-                \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m} \\
+               & = & \bm{X} - \begin{pmatrix} \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \\
+                \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \\
                 \vdots     & \vdots     & \ddots & \vdots     \\
-                \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m}\end{pmatrix}
+                \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m}\end{pmatrix}
     \end{array}
 \]
 この行列$\bm{V}$のサイズは$n \times m$であることに注意してください。
@@ -79,7 +79,8 @@
 
 
 \section{固有値と固有ベクトル}
-今回は正方行列にみられるおもしろい特徴である，\keyterm{固有値}{こゆうち}{eigenvalue}と\keyterm{固有ベクトル}{こゆうべくとる}{eigenvector}についての話から始めます。
+つづいて正方行列にみられるおもしろい特徴である，\keyterm{固有値}{こゆうち}{eigenvalue}と\keyterm{固有ベクトル}{こゆうべくとる}{eigenvector}についての話を見てみましょう。
+
 ある正方行列$\bm{A}$，列ベクトル$\bm{x}$，スカラー$\lambda$が次のような関係にあった時，$\lambda$を固有値，$\bm{x}$を固有ベクトルと言います。
 
 \[ \bm{Ax} = \lambda\bm{x} \]
@@ -191,7 +192,7 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 固有ベクトルが$(1,1)$でも$(2,2)$でも$(100,100)$でも，$\bm{Ax}=\lambda \bm{x}$の関係に影響しませんから，普通はベクトルの長さ(\keyterm{ノルム}{のるむ}{norm})を1.0に規格化するという方策が取られます\footnote{ノルムとは，要素の二乗和の平方根，$\sqrt{x_1^2 + x_2^2 \cdots x_n^2}$のことです。}。
 先ほど「固有ベクトルを適当な大きさに選んでやれば」というような表現をしましたが，それはベクトルの大きさはいくらでもいいからできることなのですね。
 
-さてここでみたように，$2\times2$の方程式であれば固有方程式を解くことはできるのですが，行列のサイズがどんどん大きくなると一般的に解けなくなって行くことは想像にかたくないと思います。実際我々は正方行列として，項目の情報が詰まった分散共分散行列とか相関行列を使いますから，それが2項目しかないなんてことはなくて，もっともっと大きなサイズになります。そうすると計算機を使って近似的に答えを求めて行くことになります。
+ここでみたように，$2\times2$の方程式であれば固有方程式を解くことはできるのですが，行列のサイズがどんどん大きくなると一般的に解けなくなって行くことは想像にかたくないと思います。実際我々は正方行列として，項目の情報が詰まった分散共分散行列とか相関行列を使いますから，それが2項目しかないなんてことはなくて，もっともっと大きなサイズになります。そうすると計算機を使って近似的に答えを求めて行くことになります。
 
 \section{固有値と固有ベクトルの幾何学的意味}
 
@@ -275,7 +276,7 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
                & = & \frac{1}{n}(\bm{F} \bm{A} ' + \bm{U} \bm{D})'(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                                 \\
                &   & \hspace{8cm}\text{前の項の転置を中に入れます}                                                                                                                                               \\
                & = & \frac{1}{n}\left \{ (\bm{F} \bm{A} ')'+(\bm{U} \bm{D})' \right \}(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                             \\
-               &   & \hspace{8cm}\text{転置のカッコを外すときは順番を入れ替えて転置}                                                                                                                                      \\
+               &   & \hspace{8cm}\text{転置のルールより}                                                                                                                                      \\
                & = & \frac{1}{n}(\bm{A} \bm{F} ' + \bm{D}' \bm{U} ')(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                               \\
                &   & \hspace{8cm}                                                                                                                                                                   \\
                & = & \frac{1}{n}\bm{A} \bm{F}' \bm{F} \bm{A}' + \frac{1}{n} \bm{A} \bm{F}' \bm{U} \bm{D} + \frac{1}{n} \bm{D}' \bm{U} ' \bm{F} \bm{A} ' + \frac{1}{n} \bm{D}' \bm{U}' \bm{U} \bm{D} \\
