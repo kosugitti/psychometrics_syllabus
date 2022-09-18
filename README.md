@@ -89,8 +89,8 @@
 
 ### 心理学データ解析応用 2
 
-- [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
-- [事前準備；cmdstanr の確認用コード](codes/Dkiso2/00_Appendix1_cmdstanr.R)
+- [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)**2022.09.18update!**
+- [事前準備；cmdstanr の確認用コード](codes/Dkiso2/00_Appendix1_cmdstanr.R)**2022.09.18update!**
 - [第 01 回；プログラミングの基礎](codes/Dkiso2/01_BasicProgramming.R)
 - [第 02 回；プログラミングの基礎](codes/Dkiso2/02_randomVariables.R)
 - [第 03 回；stan の基礎(rstan)](codes/Dkiso2/03_exampleRstan.R)

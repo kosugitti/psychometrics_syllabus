@@ -6,12 +6,13 @@
 \VerbatimFootnotes
 \chapter{付録；分析環境の準備}
 \label{PrepareStan}
+
 \section{はじめに}
 この授業では統計言語としてのR，それを使う統合開発環境としてのRStudio，そして\keyterm{確率的プログラミング言語}{かくりつてきぷろぐらみんぐげんご}{stocastic programming language}としてのStanを利用します。大学でのPCルームの利用にはこれらの環境がすでに準備されていますが，自分のPCに環境を準備することでいつでも分析ができるようになります。今後の研究室配属やその後の卒業研究などでも活用することになると思いますので，まずは自身のPC環境に準備することを考えてみてください。
 
 この付録資料は，これらの環境を準備する方法について解説するものですが，提供されるソフトウェアのバージョンや対応する環境などは日々発展するものですので，必ずしも最適な情報提供になり得ません。基本的な情報は提供いたしますが，執筆時\footnote{この記事は2021年9月14日に執筆されました。}での情報であることも多く，より新しい情報についてはインターネットなどでキーワード検索を行なって，より良いものを探してみてください。
 
-PCの操作が苦手に思っている人のために付言しますが，うまくいかなかったからと言って癇癪を起こしてはいけません。相手は機械ですから，命じられたことを愚直に実行しているだけです。また文房具のようなものですから，恐れて嫌うのではなく，愛して可愛がってあげることが肝要です。もしみなさんの中に，お持ちのPCに名前をつけていない人がいるようでしたら，今すぐ命名することをお勧めします。パソコンが，と思うと腹が立ちますが，わたしのXXXちゃんが，と思うとエラーも「ちょっとご機嫌斜めなのかしら」と受け入れやすくなります\footnote{ちなみに私が初めて手に入れたノートPCには「秀吉」という名前をつけました。Macに変わってからは代々数学者の名前をつけることにしています。私はいま，GaussちゃんやHermiteちゃんを持ち歩いています。}。
+PCの操作が苦手に思っている人のために付言しますが，うまくいかなかったからと言って癇癪を起こしてはいけません。相手は機械ですから，命じられたことを愚直に実行しているだけです。また文房具のようなものですから，恐れて嫌うのではなく，愛して可愛がってあげることが肝要です。もしみなさんの中に，お持ちのPCに名前をつけていない人がいるようでしたら，今すぐ命名することをオススメします。パソコンが，と思うと腹が立ちますが，わたしのXXXちゃんが，と思うとエラーも「ちょっとご機嫌斜めなのかしら」と受け入れやすくなります\footnote{ちなみに私が初めて手に入れたノートPCには「秀吉」という名前をつけました。Macに変わってからは代々数学者の名前をつけることにしています。私はいま，GaussちゃんやHermiteちゃんを持ち歩いています。}。
 
 また，困った時は教員，TA，先輩などに相談することが重要ですが，その際には症状や経緯を正確に伝えることが必要です。ペットを病院に連れていくときに「何もしてないのに勝手に病気になった。治してほしい」といわれても獣医さんは困ると思います。\textbf{普段の様子や症状についての丁寧な報告}を心がけてください。とくにPCは機械ですので，何もしていないのに壊れるということはありません。自分が自覚していないことであっても，「なにかをした」から様子がおかしくなるのです。自分はそんな大それたことはしていない\footnote{たとえば計算途中だけど時間が来たので電源をオフにした，と言ったことでも，内部ファイルにアクセしているときの中断であれば，十分にPCを破壊することができます。}，と思っても必ず何かトリガーがあったはずなのです。どこをクリックしたか，どういうコマンドを入れたかという\textbf{履歴をしっかりと把握し，丁寧に報告する}ことを心がけてください。
 
@@ -32,9 +33,11 @@ Windowsは多数派のOSですが，OSメーカはソフトウェア会社でハ
 参考までにいくつかあげておきますと，新しいものでは，高知工科大学柳井先生のこちら\url{http://yukiyanai.github.io/jp/resources/}とか，Quiitaの記事\url{https://qiita.com/hujuu/items/ddd66ae8e6f3f989f2c0}が良いでしょう。
 書籍では，手前味噌で恐縮ですが\citet{kosugi2019}などが良いでしょう\footnote{インストールに際しては，RStudio DesktopのFree editionを選んでください。RStudio CloudやRStudio Serverは別のものです。}。
 
-次に確率的プログラミング言語，Stanの導入を行います。StanをRから使えるようにするものとして，\texttt{rstan}パッケージがあります。
-これもOSごとに導入の方法が違いますので，公式サイト\url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}をみて導入にチャレンジしましょう。このサイトは「rstan getting started japanese」などで検索すると見つけることができます。
-ところで，最近は確率的プログラミング言語として\texttt{cmdstanr}という別のパッケージもでてきました。こちらもstanの公式が提供しているものですが，\texttt{rstan}よりもシンプルな作りになっている分，エラーが生じにくくて便利ですし，開発チームもこちら側のバージョンから先に提供するようになってきています。今後は\texttt{rstan}よりも\texttt{cmdstanr}のほうが使われることが多くなるかもしれません。このパッケージの導入には，同じく公式サイト\url{https://mc-stan.org/cmdstanr/articles/cmdstanr.html}を参考にしましょう。「cmdstanr インストール」で検索すると色々な紹介サイトが出てきますので，自分と同じ環境でなるべく日付の新しいものから参考にしていくといいでしょう。
+次に確率的プログラミング言語，Stanの導入を行います。StanをRから使うためのパッケージとして\texttt{cmdstanr}と\texttt{rstan}という二種類のものがあります。かつては\texttt{rstan}のほうがよく使われていたのですが，最近は\texttt{cmdstanr}のほうが安定的に動作し，開発も盛んになっているので，2022年度後期からは\texttt{cmdstanr}をこの授業のデフォルトパッケージとしたいと思います。このパッケージの導入には，公式サイト\url{https://mc-stan.org/cmdstanr/articles/cmdstanr.html}を参考にしましょう。「cmdstanr インストール」で検索すると色々な紹介サイトが出てきますので，自分と同じ環境でなるべく日付の新しいものから参考にしていくといいでしょう。Windowsユーザは導入にあたって色々障壁にあたることがありますので，こちらのサイト\url{https://norimune.net/3609}なども参考にしてみてください。導入で問題がある場合は，TAや教員に問い合わせてください。
+
+% 2022-09-18 17:35:05 rstanを第二候補に
+% StanをRから使えるようにするものとして，\texttt{rstan}パッケージがあります。
+% これもOSごとに導入の方法が違いますので，公式サイト\url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}をみて導入にチャレンジしましょう。このサイトは「rstan getting started japanese」などで検索すると見つけることができます。
 
 \section{導入方法2；仮想環境での構築}
 
@@ -50,7 +53,49 @@ Windowsは多数派のOSですが，OSメーカはソフトウェア会社でハ
 
 とにかくRStudioの画面を見ることができれば，次のRスクリプトを実行して「確率型プログラミングが機能しているかどうか」を確認してください。
 
-\texttt{rstan}で環境を準備した人は次のコードを実行してください。なお，この資料からコードをコピー＆ペーストするのは難しいと思いますので，シラバスのページからコードのリンクをたどり，そこからとってくることをお勧めします\footnote{シラバスのページはこちら。\url{https://kosugitti.github.io/psychometrtics_syllabus/}}。
+
+\texttt{cmdstanr}で環境を準備した人は次のコードを実行してください。なお，この資料からコードをコピー＆ペーストするのは難しいと思いますので，シラバスのページからコードのリンクをたどり，そこからダウンロードしてください\footnote{シラバスのページはこちら。\url{https://kosugitti.github.io/psychometrtics_syllabus/}}。ファイル名は，\verb|00_Appendix1_cmdstanr.R|です。
+
+\begin{lstlisting}[language=c++,label={code:App2},caption={cmdstanrパッケージの起動確認}]
+library(cmdstanr)
+
+stancode <- "
+data {
+  int<lower=0> J; // number of schools 
+  array[J] real y; // estimated treatment effects
+  array[J] real<lower=0> sigma; // s.e. of effect estimates 
+}
+parameters {
+  real mu; 
+  real<lower=0> tau;
+  array[J] real eta;
+}
+transformed parameters {
+  array[J] real theta;
+  for (j in 1:J)
+  theta[j] = mu + tau * eta[j];
+}
+model {
+  target += normal_lpdf(eta | 0, 1);
+  target += normal_lpdf(y | theta, sigma);
+}
+"
+
+schools_dat <- list(J = 8, y = c(28, 8, -3, 7, -1, 1, 18, 12), 
+                    sigma = c(15, 10, 16, 11, 9, 11, 10, 18))
+
+modelFile <- write_stan_file(stancode)
+model <- cmdstan_model(modelFile)
+fit.samp <- model$sample(data=schools_dat,
+                         iter_warmup = 1000,
+                         iter_sampling = 2000,
+                         chains = 4,
+                         parallel_chains = 4,
+                         refresh = 200)
+fit.samp$print()
+\end{lstlisting}
+
+\texttt{rstan}で環境を準備した人は次のコードを実行してください。こちらのファイル名は，\verb|00_Appendix1_rstan.R|です。
 
 
 \begin{lstlisting}[language=c++,label={code:App1},caption={rstanパッケージの起動確認}]
@@ -81,58 +126,17 @@ model {
 "
 
 schools_dat <- list(J = 8, y = c(28, 8, -3, 7, -1, 1, 18, 12), 
-  sigma = c(15, 10, 16, 11, 9, 11, 10, 18))
-
-model.ex <- stan_model(model_code = stancode, model_name = "school")
-fit.ML <- optimizing(model.ex, data = schools_dat)
-fit.samp <- sampling(model.ex, data = schools_dat, iter = 1000, 
-  chains = 4)
-fit
-\end{lstlisting}
-
-\texttt{cmdstanr}で環境を準備した人は次のコードを実行してください。
-
-\begin{lstlisting}[language=c++,label={code:App2},caption={cmdstanrパッケージの起動確認}]
-library(cmdstanr)
-set_cmdstan_path()
-
-stancode <- "
-data {
-  int<lower=0> J; // number of schools 
-  real y[J]; // estimated treatment effects
-  real<lower=0> sigma[J]; // s.e. of effect estimates 
-}
-parameters {
-  real mu; 
-  real<lower=0> tau;
-  real eta[J];
-}
-transformed parameters {
-  real theta[J];
-  for (j in 1:J)
-  theta[j] = mu + tau * eta[j];
-}
-model {
-  target += normal_lpdf(eta | 0, 1);
-  target += normal_lpdf(y | theta, sigma);
-}
-"
-
-schools_dat <- list(J = 8, y = c(28, 8, -3, 7, -1, 1, 18, 12), 
                     sigma = c(15, 10, 16, 11, 9, 11, 10, 18))
 
-modelFile <- write_stan_file(stancode)
-model <- cmdstan_model(modelFile)
-fit.samp <- model$sample(data=schools_dat,
-                         iter_warmup = 1000,
-                         iter_sampling = 2000,
-                         chains = 4,
-                         parallel_chains = 4,
-                         refresh = 200)
-fit.samp$print()
+model.ex <- stan_model(model_code = stancode, model_name = "school")
+fit.samp <- sampling(model.ex, data = schools_dat, iter = 1000, 
+                     chains = 4)
+
+fit.samp
 \end{lstlisting}
 
-出力例はちょっと違ってきますが，\texttt{mu}の\texttt{mean}が7.8ぐらいの数字になっていればOKです。それがどういう意味なのかは，授業内でおいおい説明します。
+
+出力例はちょっと違ってきますが，\texttt{mu}の\texttt{mean}が8.0ぐらいの数字になっていればOKです。それがどういう意味なのかは，授業内でおいおい説明します。
 
 
 
