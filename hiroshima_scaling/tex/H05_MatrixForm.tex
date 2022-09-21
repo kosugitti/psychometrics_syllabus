@@ -137,20 +137,54 @@
 
 分散共分散行列のトレースは，分散の総和を意味します。項目同士の関係を表した行列であれば，分散はその項目から得られる情報の大きさであり，それを総和するということは，その調査研究・項目群から得られる情報の総和であると言ってもいいでしょう。
 相関行列のトレースは，対角項に入っているのが$r_{ii}=1.0$ですから，項目の数と一致します。1つの項目の情報量を1.0に基準化してN項目分の情報がある，ということを表しています。
+固有値と行列の関係は冒頭で示したように，$\bm{Ax}=\lambda \bm{x}$であり，正方行列の特徴をスカラーにしてしまうというものです。得られる$N$個の固有値は，元の正方行列のエッセンスをスカラーにして表現しているわけです。
 
-固有値と行列の関係は冒頭で示したように，$\bm{Ax}=\lambda \bm{x}$であり，正方行列の特徴をスカラーにしてしまうというものです。得られる$N$個の固有値は，元の正方行列のエッセンスをスカラーにして表現しているわけです。ここで固有値の大きさの順に並べ替えて，順に$\lambda_1,\lambda_2 \cdots \lambda_n$としたとしましょう。ここで固有ベクトルの大きさを$\bm{xx'}=1$となるように選んでやれば，元の行列を次のように書き換えることができます。
 
-\[
-    \bm{Axx'} = \lambda \bm{xx'}
+ところで$\bm{A}$を$n$次正方対称行列，つまり$n \times n$サイズの対称行列だとすると，$n$個の固有値が求められます。これを$\lambda_1,\lambda_2,\cdots,\lambda_n$として，対応する固有ベクトルを$\bm{x}_1,\bm{x}_2,\cdots,\bm{x}_n$とします。ここで各固有ベクトルのノルムが1であるとしましょう。行列と固有値・固有ベクトルの関係から，
+\[ \bm{Ax}_i = \lambda_i\bm{x}_i\]
+となりますが，このベクトルを並べた行列$\bm{X}=\begin{pmatrix}\bm{x}_1&\bm{x}_2& \cdots & \bm{x}_n\end{pmatrix}$を考えると，
+\[ \bm{AX} = \bm{X \Lambda} \]
+と書くことができます。ここで$\bm{\Lambda}$は
+\[ \bm{\Lambda} =
+    \begin{pmatrix} \lambda_1 & 0         & \cdots & 0         \\
+                0         & \lambda_2 & \cdots & 0         \\
+                \vdots    & \vdots    & \ddots & \vdots    \\
+                0         & 0         & \cdots & \lambda_n\end{pmatrix}
 \]
+のような行列です。
 
-ここから，次のように行列$\bm{A}$を分解して行くことができます。
+この両辺に$\bm{X}'$をかけると
+\[ \bm{AXX}' = \bm{X \Lambda X}' \]
+となりますが，固有ベクトルの性質とノルムを整えていることから$\bm{XX}'=\bm{I}$であり，そこから
+\[ \bm{A} = \bm{X \Lambda X}' \]
+と書くことができます。
+
+ここであらためて要素に注目しつつ，次のように行列$\bm{A}$を分解して行くことができます。
 
 \[
     \bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
 \]
 
-これらをまとめると，固有値は元の行列の対角要素の情報を表したものであり，全体の情報量はそのままに重要度の順に並べ替えたものである，といえるでしょう。
+となります。この分解例は$2 \times 2$の簡単な例で確認してみましょう。
+\[ 
+    \begin{array}{ll}
+    & \begin{pmatrix} a & c\\ b & d \end{pmatrix}\begin{pmatrix}\alpha & 0\\ 0&\beta \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
+    &\\
+    =& \begin{pmatrix} \alpha a & \beta c \\ \alpha b & \beta d \end{pmatrix}
+    \begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
+    &\\
+    =& \begin{pmatrix} \alpha aa + \beta cc & \alpha ab + \beta cd \\
+        \alpha ab + \beta cd & \alpha bb + \beta dd \end{pmatrix}\\
+        &\\
+    =& \alpha \begin{pmatrix} aa & ab\\ ab & bb \end{pmatrix} + 
+    \beta \begin{pmatrix}cc & cd \\ cd & dd \end{pmatrix}\\
+    &\\
+    =& \alpha \begin{pmatrix}a\\b\end{pmatrix}\begin{pmatrix}a &b\end{pmatrix} +
+    \beta \begin{pmatrix} c\\d \end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}
+    \end{array}
+\]
+
+さてさて。これらをまとめると，固有値は元の行列の対角要素の情報を表したものであり，全体の情報量はそのままに重要度の順に並べ替えたものである，といえるでしょう。
 これこそ\keytermL{因子分析}{いんしぶんせき}で取り出そうとしている因子であり，固有値の大きさはその因子の重要度である，ということがわかります！
 
 \section{固有値と固有ベクトルを求める}
@@ -307,7 +341,7 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
     \bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
 \end{equation}
 
-ここで，左辺の正方行列を相関行列$\bm{R}$とし，$\lambda_1 \bm{xx'} = \bm{aa'}$となるようにベクトルの大きさが整えられているとすれば，次のように表現できます。
+ここで，左辺の正方行列を相関行列$\bm{R}$とし，$\lambda \bm{xx'} = \bm{aa'}$となるようにベクトルの大きさを整えてみましょう。これは$\lambda$を分解してベクトルの中に溶け込ませるようなものですから，$\bm{a} = \sqrt{\lambda}\bm{x}$とすればよいでしょう。すると相関行列は次のように分解できます。
 \begin{equation}
     \bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
 \end{equation}
@@ -318,14 +352,14 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 
 相関係数を固有値分解すると，その固有値はすべて足し合わせるとサイズ$N$になるのでした。元のデータから計算される相関行列は，1つの項目が一単位分の情報を持っていると考えますが，固有値分解はそれを次元の重要性順に並べ替えます。固有値は項目いくつ分の重要度があるかということを表す指標だと考えることができます。どこから共通因子でどこからが誤差か，ということを考えるときに，たとえば固有値が1.0よりも小さくなるようであれば，項目1つ分の情報もないのだからということで誤差因子だと判断することがあります。
 
-ところで因子分析モデルの$\bm{A}$，因子負荷行列ですが，これは共通因子の固有ベクトルをセットで扱ったものです。つまり，$\bm{A} = \bm{a_1,a_2,\cdots,a_m}$と縦ベクトルを並べたものになっています。エレメントワイズで表現すると次のようになります。
+ところで因子分析モデルの$\bm{A}$，因子負荷行列ですが，これは共通因子の固有ベクトルをセットで扱ったものです。つまり，$\bm{A} = \begin{pmatrix}\bm{a}_1 & \bm{a}_2 & \cdots& \bm{a}_m \end{pmatrix}$と縦ベクトルを並べたものになっています。エレメントワイズで表現すると次のようになります。
 
 \[
     \bm{A} = \left (
     \begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1N} \end{pmatrix},
     \begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2N} \end{pmatrix},
     \cdots,
-    \begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots\\ a_{mN} \end{pmatrix},
+    \begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots\\ a_{mN} \end{pmatrix}
     \right )
 \]
 
