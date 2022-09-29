@@ -1,10 +1,10 @@
 data{
   int L;
-  real W[L];
+  array[L] real W;
 }
 
 parameters{
-  real<lower=0,upper=1> theta[L];
+  array[L] real<lower=0,upper=1> theta;
   ordered[2] mu;
   real<lower=0> sigma;
 }

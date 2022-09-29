@@ -1,13 +1,13 @@
 data{
  int L;
- real W[L];
+ array[L] real W;
  int<lower=0> Nmiss;
 }
 
 parameters{
   real muZero;
-  real mu[L];
-  real<lower=0> Miss_W[Nmiss];
+  array[L] real mu;
+  array[Nmiss] real<lower=0> Miss_W;
   real<lower=0> sig;
   real<lower=0> tau;
 }

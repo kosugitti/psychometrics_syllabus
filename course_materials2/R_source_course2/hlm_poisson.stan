@@ -1,14 +1,14 @@
 data{
   int L;
   int G;
-  int Gindex[L];
-  real X[L];
-  int Y[L];
+  array[L] int Gindex;
+  array[L] real X;
+  array[L] int Y;
 }
 
 parameters{
-  real beta0[G];
-  real beta1[G];
+  array[G] real beta0;
+  array[G] real beta1;
   real gamma0;
   real gamma1;
   real<lower=0> tau0;
@@ -16,7 +16,7 @@ parameters{
 }
 
 transformed parameters{
-  real<lower=0> lambda[L];
+  array[L] real<lower=0> lambda;
   for(l in 1:L){
     lambda[l] = exp(beta0[Gindex[l]] + (beta1[Gindex[l]] * X[l]));
   }

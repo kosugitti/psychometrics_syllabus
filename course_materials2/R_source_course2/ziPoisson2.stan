@@ -1,7 +1,7 @@
 data{
   int L;
-  int Y[L];
-  real X[L];
+  array[L] int Y;
+  array[L] real X;
 }
 
 parameters{
@@ -11,7 +11,7 @@ parameters{
 }
 
 transformed parameters{
-  real<lower=0> lambda[L];
+  array[L] real<lower=0> lambda;
   for(l in 1:L){
     lambda[l] = exp(beta0 + beta1 * X[l]);
   }

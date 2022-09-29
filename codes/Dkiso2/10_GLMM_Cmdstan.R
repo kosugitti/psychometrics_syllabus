@@ -26,7 +26,7 @@ dat <- baseball %>%
     filter(n == 10) %>% print %>% 
     filter(!FLG) %>% print %>% 
     unnest(data) %>%
-    select(Year, Name, salary, Win)
+    dplyr::select(Year, Name, salary, Win)
 
 # GLMM --------------------------------------------------------------------
 ### ポアソン分布で個体差を入れて

@@ -7,7 +7,7 @@ rm(list = ls())
 library(tidyverse)
 library(cmdstanr)
 library(bayesplot)
-
+library(MASS)
 # リバース・リバースエンジニアリング -------------------------------------------------------
 
 mu <- c(50, 50)

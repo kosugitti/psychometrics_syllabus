@@ -85,12 +85,12 @@ Stanのコードはメモ帳など，エディタで開くことのできるテ�
 
 \begin{lstlisting}[language=C++,label={stan::18_01},caption={7人の科学者コード}]
 data{
-  real Y[7];
+  array[7] real Y;
 }
 
 parameters{
   real mu;
-  real<lower=0> sig[7];
+  array[7] real<lower=0> sig;
 }
 
 model{

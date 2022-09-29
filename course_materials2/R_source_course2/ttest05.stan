@@ -1,8 +1,8 @@
 data{
     int<lower=0> N1; // Number of Subjects in Group 1
     int<lower=0> N2; // Number of Subjects in Group 2
-    real X1[N1]; // Data in Group 1
-    real X2[N2]; // Data in Group 2
+    array[N1] real X1; // Data in Group 1
+    array[N2] real X2; // Data in Group 2
 }
 
 parameters{
@@ -24,8 +24,8 @@ model{
 }
 
 generated quantities{
-    real Xpred1[N1];
-    real Xpred2[N2];
+    array[N1] real Xpred1;
+    array[N2] real Xpred2;
     for(i in 1:N1){
         Xpred1[i] = normal_rng(mu1,sig1);
     }

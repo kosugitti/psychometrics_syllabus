@@ -1,6 +1,6 @@
 data{
   int N;
-  vector[2] X[N];
+  array[N] vector[2] X;
 }
 
 parameters{

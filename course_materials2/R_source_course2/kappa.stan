@@ -1,5 +1,5 @@
 data{
-  int Y[4];
+  array[4] int Y;
 }
 
 parameters{

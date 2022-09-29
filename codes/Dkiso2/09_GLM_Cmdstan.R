@@ -52,7 +52,7 @@ bayesplot::ppc_intervals(
 dat2 <- dat %>%
     mutate(Pitcher = if_else(position == "投手", 0, 1)) %>%
     filter(salary > 5000) %>%
-    select(Games, Pitcher) %>%
+    dplyr::select(Games, Pitcher) %>%
     na.omit()
 dat2 %>%
     ggplot(aes(x = Games, y = Pitcher)) +

@@ -110,7 +110,7 @@ Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくて
 \begin{lstlisting}[language=C++,label={stan::22_01},caption={対応ある二群のデータ生成モデル}]
 data{
   int N;
-  vector[2] X[N];
+  array[N] vector[2] X;
 }
 
 parameters{
@@ -153,7 +153,7 @@ Code::\ref{stan::22_02}には，多次元にまで拡張したコードを示し
 data{
   int N;
   int K;
-  vector[K] X[N];
+  array[N] vector[K] X;
 }
 
 parameters{

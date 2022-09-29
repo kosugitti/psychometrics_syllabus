@@ -2,9 +2,9 @@ data{
   int<lower=0> N1;
   int<lower=0> N2;
   int<lower=0> N3;
-  real X1[N1];
-  real X2[N2];
-  real X3[N3];
+  array[N1] real X1;
+  array[N2] real X2;
+  array[N3] real X3;
 }
 
 parameters{

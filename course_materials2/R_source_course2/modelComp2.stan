@@ -1,6 +1,6 @@
 data {
   int<lower=0> N;
-  int<lower=0,upper=1> Y[N];
+  array[N] int<lower=0,upper=1> Y;
 }
 transformed data{
   vector<lower=0,upper=1>[2] omega;

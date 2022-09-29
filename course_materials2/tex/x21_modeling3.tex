@@ -27,9 +27,9 @@ data{
   int<lower=0> N1;
   int<lower=0> N2;
   int<lower=0> N3;
-  real X1[N1];
-  real X2[N2];
-  real X3[N3];
+  array[N1] real X1;
+  array[N2] real X2;
+  array[N3] real X3;
 }
 
 parameters{
@@ -217,18 +217,18 @@ transformed parameters{
 data{
   int<lower=0> Lv;              // 水準数
   int<lower=0> N;               // 各群のサンプルサイズ       
-  real X[Lv,N];                 // 変数の値
+  array[Lv,N] real X;           // 変数の値
 }
 
 parameters{
   real gm;                      // 全体平均
-  real raw_delta[Lv-1];        // 全体からの差。水準数マイナス1個
-  real<lower=0> sig;           // 誤差の分散
+  array[Lv-1] real raw_delta;   // 全体からの差。水準数マイナス1個
+  real<lower=0> sig;            // 誤差の分散
 }
 
 transformed parameters{
-  real delta[Lv];            // 差の大きさを作り直す
-  real mu[Lv];                // 再構成される群ごとの平均
+  array[Lv] real delta;           // 差の大きさを作り直す
+  array[Lv] real mu;              // 再構成される群ごとの平均
   
   for(i in 1:(Lv-1)){
     delta[i] = raw_delta[i];    // ほとんどコピー
@@ -338,8 +338,8 @@ convergence, Rhat=1).
 data{
   int<lower=0> Lv;                             // 水準数
   int<lower=0> L;                              // データ数
-  int<lower=0,upper=Lv> idx[L];                // データのID
-  real X[L];                                   // 変数の値
+  array[L] int<lower=0,upper=Lv> idx;          // データのID
+  array[L] real X;                             // 変数の値
 }
 ...(中略)...
 model{

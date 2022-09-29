@@ -1,7 +1,7 @@
 data{
   int N;
-  int<lower=0,upper=1> Y[N];
-  real X[N];
+  array[N] int<lower=0,upper=1> Y;
+  array[N] real X;
 }
 
 parameters{
@@ -10,7 +10,7 @@ parameters{
 }
 
 transformed parameters{
-  real theta[N];
+  array[N] real theta;
   for(i in 1:N){
     theta[i] = inv_logit(beta0 + beta1 * X[i]);
   }

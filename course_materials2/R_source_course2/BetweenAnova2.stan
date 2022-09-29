@@ -1,19 +1,19 @@
 data{
   int<lower=0> Lv;                             // 水準数
   int<lower=0> L;                              // データ数
-  int<lower=0,upper=Lv> idx[L];                // データのID
-  real X[L];                                   // 変数の値
+  array[L] int<lower=0,upper=Lv> idx;                // データのID
+  array[L] real X;                                   // 変数の値
 }
 
 parameters{
   real gm;                                     // 全体平均
-  real raw_delta[Lv-1];                        // 全体からの差。水準数マイナス1個
+  array[Lv-1] real raw_delta;                        // 全体からの差。水準数マイナス1個
   real<lower=0> sig;                           // 誤差の分散
 }
 
 transformed parameters{
-  real delta[Lv];                            // 差の大きさを作り直す
-  real mu[Lv];                                // 再構成される群ごとの平均
+  array[Lv] real delta;                            // 差の大きさを作り直す
+  array[Lv] real mu;                                // 再構成される群ごとの平均
   
   for(i in 1:(Lv-1))                          // ほとんどコピー
     delta[i] = raw_delta[i];

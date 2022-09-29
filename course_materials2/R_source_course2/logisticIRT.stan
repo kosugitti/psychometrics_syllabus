@@ -2,15 +2,15 @@ data{
   int<lower=0> L; // data length
   int<lower=0> N; // number of persons
   int<lower=0> M; // number of questions
-  int<lower=0> Pid[L];  // personal ID
-  int<lower=0> Qid[L];  // question ID
-  int<lower=0> resp[L]; // response
+  array[L] int<lower=0> Pid;  // personal ID
+  array[L] int<lower=0> Qid;  // question ID
+  array[L] int<lower=0> resp; // response
 }
 
 parameters{
-  real<lower=0> a[M];
-  real<lower=-5,upper=5> b[M];
-  real theta[N];
+  array[M] real<lower=0> a;
+  array[M] real<lower=-5,upper=5> b;
+  array[N] real theta;
 }
 
 model{

@@ -1,7 +1,7 @@
 data{
   int N;
   int K;
-  vector[K] X[N];
+  array[N] vector[K] X;
 }
 
 parameters{

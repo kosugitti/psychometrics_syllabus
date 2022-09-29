@@ -1,8 +1,8 @@
 data{
   int N;
-  int Y[N];
-  real omega[2];
-  real kappa[2];
+  array[N] int Y;
+  array[2] real omega;
+  array[2] real kappa;
 }
 
 parameters{
@@ -11,7 +11,7 @@ parameters{
 }
 
 model{
-  real lp[2];
+  array[2] real lp;
   lp[1] = log(0.5);
   lp[2] = log1m(0.5);
   for(n in 1:N){
@@ -25,7 +25,7 @@ model{
 
 generated quantities{
   int m;
-  real lp[2,N];
+  array[2,N] real lp;
   for(n in 1:N){
    lp[1,n] = bernoulli_lpmf(Y[n]|theta1)+beta_lpdf(theta1|omega[1]*(kappa[1]-2)+1, (1-omega[1])*(kappa[1]-2)+1);
    lp[2,n] = bernoulli_lpmf(Y[n]|theta2)+beta_lpdf(theta2|omega[2]*(kappa[2]-2)+1, (1-omega[2])*(kappa[2]-2)+1);

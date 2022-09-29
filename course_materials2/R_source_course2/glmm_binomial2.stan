@@ -1,14 +1,14 @@
 data{
   int L;
-  real X[L];
-  int Y[L];
-  int N[L];
+  array[L] real X;
+  array[L] int Y;
+  array[L] int N;
 }
 
 parameters{
   real beta0;
   real beta1;
-  real mu[L];
+  array[L] real mu;
 }
 
 model{

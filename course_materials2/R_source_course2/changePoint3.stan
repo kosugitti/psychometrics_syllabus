@@ -1,12 +1,12 @@
 data{
   int L; // data length
-  real W[L];
-  real X[L];
+  array[L] real W;
+  array[L] real X;
 }
 
 parameters{
   real<lower=100,upper=250> tau;
-  real beta0[2];
+  array[2] real beta0;
   real<upper=0> beta1a;
   real<lower=0> beta1b;
   real<lower=0> sigma;

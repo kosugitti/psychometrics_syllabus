@@ -1,18 +1,18 @@
 data{
   int<lower=0> Lv;
   int<lower=0> N;
-  real X[Lv,N];
+  array[Lv,N] real X;
 }
 
 parameters{
   real gm;
-  real raw_delta[Lv-1];
+  array[Lv-1] real raw_delta;
   real<lower=0> sig;
 }
 
 transformed parameters{
-  real delta[Lv];
-  real mu[Lv];
+  array[Lv] real delta;
+  array[Lv] real mu;
   
   for(i in 1:(Lv-1)){
     delta[i] = raw_delta[i];

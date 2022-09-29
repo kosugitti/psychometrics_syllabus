@@ -1,10 +1,10 @@
 data {
   int N; // number of data points
   int P; // number of items
-  int Y[N,P]; // observations
+  array[N,P] int Y; // observations
 }
 parameters {
-  real theta[N];
+  array[N] real theta;
   vector<lower=0, upper=5>[P] a;
   vector<lower=-4, upper=4>[P] b;
 }

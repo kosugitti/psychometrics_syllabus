@@ -2,21 +2,21 @@ data{
   int L;
   int N;
   int Lv;
-  int id[L];
-  int cond[L];
-  int val[L];
+  array[L] int id;
+  array[L] int cond;
+  array[L] int val;
 }
 
 parameters{
-  real mu[N];
-  real raw_effect[Lv-1];
+  array[N] real mu;
+  array[Lv-1] real raw_effect;
   real psi;
   real<lower=0> sig;
   real<lower=0> tau;
 }
 
 transformed parameters{
-  real effect[Lv];
+  array[Lv] real effect;
   effect[1:(Lv-1)] = raw_effect;
   effect[Lv] = 0 - sum(raw_effect);
 }

@@ -1,7 +1,7 @@
 data{
   int N;
-  real Y[N];
-  real X[N];
+  array[N] real Y;
+  array[N] real X;
 }
 
 parameters{
@@ -11,7 +11,7 @@ parameters{
 }
 
 transformed parameters{
-  real mu[N];
+  array[N] real mu;
   for(i in 1:N){
     mu[i] = beta0 + beta1 * X[i];
   }
@@ -29,7 +29,7 @@ model{
 }
 
 generated quantities{
-  real predY[N];
+  array[N] real predY;
   for(i in 1:N){
     predY[i] = normal_rng(mu[i],sig);
   }

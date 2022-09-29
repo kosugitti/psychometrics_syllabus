@@ -1,10 +1,10 @@
 data{
-  real Y[7];
+  array[7] real Y;
 }
 
 parameters{
   real mu;
-  real<lower=0> sig[7];
+  array[7] real<lower=0> sig;
 }
 
 model{

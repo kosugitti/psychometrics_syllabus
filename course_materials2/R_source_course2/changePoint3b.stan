@@ -1,7 +1,7 @@
 data{
   int L; // data length
-  real W[L];
-  real X[L];
+  array[L] real W;
+  array[L] real X;
 }
 
 parameters{

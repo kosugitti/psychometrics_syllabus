@@ -1,11 +1,11 @@
 data{
  int L;
- real W[L];
+ array[L] real W;
 }
 
 parameters{
   real muZero;
-  real mu[L];
+  array[L] real mu;
   real<lower=0> sig;
   real<lower=0> tau;
 }

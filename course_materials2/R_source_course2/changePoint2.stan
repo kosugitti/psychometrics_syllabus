@@ -1,6 +1,6 @@
 data{
   int L;
-  real W[L];
+  array[L] real W;
 }
 
 parameters{

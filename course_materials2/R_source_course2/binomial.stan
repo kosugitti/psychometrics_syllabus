@@ -1,8 +1,8 @@
 data{
   int N;
-  int AB[N];
-  int Hit[N];
-  real X[N];
+  array[N] int AB;
+  array[N] int Hit;
+  array[N] real X;
 }
 
 parameters{
