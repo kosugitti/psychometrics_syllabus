@@ -24,6 +24,7 @@
 \usepackage{lltjext}% 部分的に縦書き
 \usepackage{longtable} %長い表のページ跨ぎ
 \usepackage{luatexja-fontspec}
+% \usepackage{nicematrix} % 階段行列に色付けしたり
 % BIZ UDフォントを使う
 \newjfontface{\nonproportional}{BIZ UDMincho Medium}[YokoFeatures={JFM=ujis}]
 \setmainjfont[Ligatures={Common,TeX},
@@ -141,9 +142,6 @@ setpagesize=false,
 \renewcommand{\refname}{引用文献}
 % 脚注でもverbatim環境が使いたい
 \VerbatimFootnotes
-
-% ナイスな行列をここに
-% \usepackage{nicematrix}
 
 % ギリシア数字のIIとかIIIとか
 \newcommand{\2}{\mathrm{I}\hspace{-1.2pt}\mathrm{I}}
