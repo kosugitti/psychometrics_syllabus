@@ -30,7 +30,7 @@ MCMC_result <- function(x) {
   }
   ret <- x %>%
     as.data.frame() %>%
-    as_tibble() %>%
+    as_tibble() %>% 
     rowid_to_column("iter") %>%
     pivot_longer(-iter, names_to = "Varname") %>%
     group_by(Varname) %>%
@@ -77,7 +77,7 @@ fit1.df <- fit1$output_files() %>%
   MCMC_result()
 
 Est1 <- fit1.df %>%
-  dplyr::filter(str_detect(Varname, "mu")) %>%
+  dplyr::filter(str_detect(Varname, "mu")) %>% 
   dplyr::mutate(ID = str_extract(Varname, pattern = "\\d+") %>% as.numeric()) %>%
   arrange(ID)
 

@@ -44,11 +44,11 @@
 \begin{lstlisting}[language=C++,label={stan::28_01},caption={2つの体重モードモデル}]
 data{
   int L;
-  real W[L];
+  array[L] real W;
 }
 
 parameters{
-  real<lower=0,upper=1> theta[L];
+  array[L] real<lower=0,upper=1> theta;
   ordered[2] mu;
   real<lower=0> sigma;
 }
@@ -122,7 +122,7 @@ fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4, seed = 1234
 \begin{lstlisting}[language=C++,label={stan::28_02},caption={変化点検出のモデルコード}]
 data{
   int L;
-  real W[L];
+  array[L] real W;
 }
 
 parameters{
@@ -208,13 +208,13 @@ model{
 \begin{lstlisting}[language=C++,label={stan::28_03},caption={折線回帰のモデルコード}]
 data{
   int L; // data length
-  real W[L];
-  real X[L];
+  array[L] real W;
+  array[L] real X;
 }
 
 parameters{
   real<lower=100,upper=250> tau;
-  real beta0[2];
+  array[2] real beta0;
   real<upper=0> beta1a;
   real<lower=0> beta1b;
   real<lower=0> sigma;

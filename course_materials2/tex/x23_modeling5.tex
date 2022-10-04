@@ -90,7 +90,7 @@ StanのコードはCode::\ref{stan::23_01}のようになります。ポイン�
 \begin{lstlisting}[language=C++,label={stan::23_01},caption={多項分布からのデータ生成モデル}]
 data{
     int K;
-    int X[K];
+    array[K] int X;
 }
 
 parameters{
@@ -222,7 +222,7 @@ generated quantities{
 それではこれをコードにしていきましょう。確率ですから，変数の範囲は0から1に制限し，事前分布もこの範囲の一様分布にしています。
 \begin{lstlisting}[language=C++,label={stan::23_03},caption={$\kappa$係数を計算するモデル}]
 data{
-  int Y[4];
+    array[4] int Y;
 }
 
 parameters{

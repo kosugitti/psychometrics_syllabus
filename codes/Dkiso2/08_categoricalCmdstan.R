@@ -5,6 +5,7 @@
 
 rm(list = ls())
 library(cmdstanr)
+library(tidyverse)
 library(posterior)
 library(bayesplot)
 color_scheme_set("brightblue")

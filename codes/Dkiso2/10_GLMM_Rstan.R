@@ -8,6 +8,11 @@ library(tidyverse)
 library(rstan)
 options(mc.cores = parallel::detectCores())
 rstan_options(auto_write = TRUE)
+# map推定値 ------------------------------------------------------------------
+
+map_estimation <- function(z) {
+  density(z)$x[which.max(density(z)$y)]
+}
 
 
 # データの読み込み ----------------------------------------------------------------
@@ -54,7 +59,7 @@ fit.stanfit <- sampling(model,
 fit.MCMC <- fit.stanfit %>%
     as.data.frame() %>%
     as_tibble() %>%
-    dplyr::select(beta0, beta1, "mu[1]", "mu[2]", "mu[3]", "mu[4]", "mu[5]") %>%
+    dplyr::select(beta0, beta1, "lambda[1]", "lambda[2]", "lambda[3]", "lambda[4]", "lambda[5]") %>%
     rowid_to_column("iter") %>%
     pivot_longer(-iter) %>%
     group_by(name) %>%
@@ -74,7 +79,7 @@ dat <- baseball %>%
     filter(salary > 5000) %>%
     select(Year, Name, salary, AtBats, Hit, Games, HR)
 
-model <- rstan::stan_model("glm_binomial.stan")
+model <- rstan::stan_model("glmm_binomial.stan")
 dat.tmp <- dat %>%
     mutate(salary = salary / 1000) %>%
     mutate(ID = as.factor(Name)) %>%

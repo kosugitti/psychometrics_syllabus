@@ -7,6 +7,7 @@
 rm(list = ls())
 library(tidyverse)
 library(rstan)
+library(bayesplot)
 options(mc.cores = parallel::detectCores())
 rstan_options(auto_write = TRUE)
 color_scheme_set("brightblue")

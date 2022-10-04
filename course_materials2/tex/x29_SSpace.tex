@@ -52,12 +52,12 @@
 \begin{lstlisting}[language=C++,label={stan::29_01},caption={ホワイトノイズモデル}]
 data{
  int L;
- real W[L];
+ array[L] real W;
 }
 
 parameters{
   real muZero;
-  real mu[L];
+  array[L] real mu;
   real<lower=0> sig;
   real<lower=0> tau;
 }
@@ -250,14 +250,14 @@ fullDays <- data.frame(date = as.Date("2020/01/01"):as.Date("2021/12/01")) %>%
 \begin{lstlisting}[language=c++,label={stan::29_02},caption={欠損値補間のコード}]
 data{
  int L;
- real W[L];
+ array[L] real W;
  int<lower=0> Nmiss;
 }
 
 parameters{
   real muZero;
-  real mu[L];
-  real<lower=0> Miss_W[Nmiss];
+  array[L] real mu;
+  array[Nmiss] real<lower=0> Miss_W;
   real<lower=0> sig;
   real<lower=0> tau;
 }

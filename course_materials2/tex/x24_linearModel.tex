@@ -110,8 +110,8 @@
 \begin{lstlisting}[language=C++,label={stan::24_01},caption={線形モデルのStanコード}]
 data{
   int N;
-  real Y[N];
-  real X[N];
+  array[L] real X;
+  array[L] int Y;
 }
 
 parameters{
@@ -121,10 +121,10 @@ parameters{
 }
 
 transformed parameters{
-  real mu[N];
-  for(i in 1:N){
-    mu[i] = beta0 + beta1 * X[i];
-  }
+   array[N] real mu;
+   for(i in 1:N){
+      mu[i] = beta0 + beta1 * X[i];
+   }
 }
 
 model{
@@ -290,8 +290,8 @@ F-statistic: 638.6 on 1 and 957 DF,  p-value: < 2.2e-16\end{verbatim}
 \begin{lstlisting}[language=c++,label={stan::24_02},caption={ロジスティック回帰分析のコード}]
 data{
   int N;
-  int<lower=0,upper=1> Y[N];
-  real X[N];
+  array[N] int<lower=0,upper=1> Y;
+  array[N] real X;
 }
 
 parameters{

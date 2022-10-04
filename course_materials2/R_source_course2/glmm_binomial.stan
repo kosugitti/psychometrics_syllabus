@@ -12,7 +12,7 @@ parameters{
 }
 
 transformed parameters{
-  real<lower=0,upper=1> theta[L];
+  array[L] real<lower=0,upper=1> theta;
   for(l in 1:L){
     theta[l] = inv_logit(beta0 + (beta1 * X[l]) + mu[l]);
   }

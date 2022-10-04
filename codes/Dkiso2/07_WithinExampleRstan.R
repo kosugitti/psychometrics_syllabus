@@ -5,7 +5,7 @@
 
 rm(list = ls())
 library(tidyverse)
-library(rstan)
+library(MASS)
 library(rstan)
 options(mc.cores = parallel::detectCores())
 rstan_options(auto_write = TRUE)

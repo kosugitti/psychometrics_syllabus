@@ -282,13 +282,13 @@ tidy_data <- X %>%
 data{
   int L;
   int N;
-  int<lower=0,upper=N> IDindex[L];
-  int<lower=1,upper=2> Condition[L];
-  real val[L];
+  array[L] int<lower=0,upper=N> IDindex;
+  array[L] int<lower=1,upper=2> Condition;
+  array[L] real val;
 }
 
 transformed data{
-  vector[2] pairX[N];
+  array[N] vector[2] pairX;
   for(l in 1:L){
     pairX[IDindex[l],Condition[l]] = val[l];
   }
