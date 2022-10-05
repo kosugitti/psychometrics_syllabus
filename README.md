@@ -76,7 +76,7 @@
 - [家賃のデータ](codes/SampleData/yachin.csv)
 - [項目反応理論用のデータ](codes/SampleData/IRTsample.csv)
 - [体重推移のデータ](codes/SampleData/Weight.csv)
-- [M-1 グランプリの審査員データ](codes/SampleData/M1score2021.csv)
+- [M-1 グランプリの評定データ](codes/SampleData/M1score2021.csv)
 
 ### 心理学データ解析基礎 2
 
@@ -131,7 +131,7 @@
 2022 年度広島大学総合科学部で開かれた「行動科学特論」は，心理測定をテーマに講義をまとめました。
 授業で用いた資料をアップしております。
 
-- [心理教育測定法；「見みえないもの」のはかりかた](Hiroshima_book.pdf)
+- [心理教育測定法](Scaling.pdf)
 
 ## ライセンス等
 

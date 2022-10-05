@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 #####################################################################text1
 ## changePath
-path="hiroshima_scaling/tex"
-filename="Hiroshima_book"
+path="Scaling/tex"
+filename="Scaling"
 cd $path
 ## backup
 cp ${filename}.tex ${filename}.old

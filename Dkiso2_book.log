@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.9.4)  21 SEP 2022 17:03
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.10.4)  4 OCT 2022 18:50
  restricted system commands enabled.
 **tmp
 (./tmp.tex
@@ -7,8 +7,8 @@ Lua module: luaotfload 2022-06-15 3.22 Lua based OpenType font support
 Lua module: lualibs 2021-05-20 2.74 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2021-05-20 2.74 ConTeXt Lua libraries -- extended c
 ollection.
-luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2022
-/texmf-var/luatex-cache/generic/names".
+luaotfload | conf : Root cache directory is "/Users/kosugitti/Library/texlive/20
+22/texmf-var/luatex-cache/generic/names".
 luaotfload | init : Loading fontloader "fontloader-2022-06-15.lua" from kpse-res
 olved path "/usr/local/texlive/2022/texmf-dist/tex/luatex/luaotfload/fontloader-
 2022-06-15.lua".
@@ -19,8 +19,8 @@ Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
 Inserting `luaotfload.glyph_stream' at position 1 in `glyph_stream_provider'.
 Inserting `luaotfload.define_font' at position 1 in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 2
-luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2022
-/texmf-var/luatex-cache/generic/names".
+luaotfload | conf : Root cache directory is "/Users/kosugitti/Library/texlive/20
+22/texmf-var/luatex-cache/generic/names".
 Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_opentype_file'.
 Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_truetype_file'.
 Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
@@ -45,15 +45,15 @@ Inserting `luaotfload.aux.set_capheight' at position 4 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'
-. L3 programming layer <2022-08-30>
+. L3 programming layer <2022-09-28>
 Inserting `tracingstacklevels' at position 1 in `input_level_string'.
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/ltjsbook.cls
-Document Class: ltjsbook 2022/04/11 ltjsclasses 
+Document Class: ltjsbook 2022/09/12 ltjsclasses 
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/luatexja.sty
-Package: luatexja 2022-08-10 Japanese Typesetting with Lua(La)TeX
+Package: luatexja 2022-10-02 Japanese Typesetting with Lua(La)TeX
 
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/luatexja-core.sty
-Package: luatexja-core 2022-01-12 Core of LuaTeX-ja
+Package: luatexja-core 2022-08-24 Core of LuaTeX-ja
 
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
 Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX 
@@ -132,6 +132,9 @@ X primitives.
 \ltj@dir=\attribute17
 \ltj@@japanese=\language2
 \ltj@tempcnta=\count187
+\ltj@tempdima=\dimen140
+\ltj@@stack=\count188
+\ltj@@group@level=\count189
 \ltj@kcat0=\attribute18
 \ltj@kcat1=\attribute19
 \ltj@kcat2=\attribute20
@@ -145,16 +148,16 @@ Custom whatsit begin_par = 3
 Custom whatsit direction = 4
 Custom whatsit box_boundary = 5
 Custom whatsit ja_al_boundary = 6(load cache: ltj-cid-auto-adobe-japan1.luc)
-Lua module: luatexja.charrange 2020-07-30 Handling the range of Japanese charact
+Lua module: luatexja.charrange 2022-08-19 Handling the range of Japanese charact
 ers
-Lua module: luatexja.stack 2020-07-30 LuaTeX-ja stack system
+Lua module: luatexja.stack 2022-08-20 LuaTeX-ja stack system
 Inserting `ltj.create_dir_whatsit' at position 3 in `hpack_filter'.
 Inserting `ltj.create_dir_whatsit' at position 2 in `post_linebreak_filter'.
 Inserting `ltj.direction' at position 1 in `vpack_filter'.
 Inserting `ltj.direction' at position 1 in `pre_output_filter'.
 Inserting `ltj.lineskip' at position 3 in `post_linebreak_filter'.
 Inserting `ltj.lineskip' at position 1 in `append_to_vlist_filter'.
-Lua module: luatexja.jfont 2021-11-06 Loader for Japanese fonts
+Lua module: luatexja.jfont 2022-08-20 Loader for Japanese fonts
 Removing  `luaotfload.define_font' from `define_font'.
 Inserting `luatexja.font_callback' at position 1 in `define_font'.
 Removing  `luaotfload.aux.set_sscale_dimens' from `luaotfload.patch_font'.
@@ -209,7 +212,7 @@ Inserting `ltj.create_dir_whatsit' at position 4 in `hpack_filter'.
 Removing  `luaotfload.node_processor' from `pre_linebreak_filter'.
 Inserting `ltj.set_stack_level' at position 1 in `pre_linebreak_filter'.
 Inserting `luaotfload.node_processor' at position 2 in `pre_linebreak_filter'.
-Lua module: luatexja.jfmglue 2022-02-09 Insertion process of JFM glues, [x]kanji
+Lua module: luatexja.jfmglue 2022-08-29 Insertion process of JFM glues, [x]kanji
 skip and others
 Inserting `luatexja.beginpar.np_info' at position 1 in `luatexja.jfmglue.whatsit
 _getinfo'.
@@ -242,9 +245,8 @@ Inserting `luaotfload.harf.finalize_hlist' at position 5 in `hpack_filter'.
 Inserting `ltj.create_dir_whatsit' at position 6 in `hpack_filter'.
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/ltj-base.sty
 Package: ltj-base 2021-03-16
-\ltj@tempcntb=\count188
-\ltj@tempcntc=\count189
-\ltj@tempdima=\dimen140
+\ltj@tempcntb=\count190
+\ltj@tempcntc=\count191
 \ltj@afbox=\box51
 )
 \ltj@@italic@inner=\luafunction26
@@ -261,8 +263,6 @@ Package: ltj-base 2021-03-16
 \ltj@@fakeboxbdd@inner=\luafunction37
 \ltj@@ins@xk@inner=\luafunction38
 \ltj@@ins@k@inner=\luafunction39
-\ltj@@stack=\count190
-\ltj@@group@level=\count191
 \ltjsetkanjiskip@inner=\luafunction40
 \ltjsetxkanjiskip@inner=\luafunction41
 \ltj@@getparam@one@inner=\luafunction42
@@ -313,20 +313,20 @@ LaTeX Info: Redefining \strut on input line 91.
 \ltj@@add@ffam@@inner=\luafunction60
 \ltj@@add@kfam@@inner=\luafunction61
 \ltj@@adjust@baseline@inner=\luafunction62
-LaTeX Info: Redefining \fontencoding on input line 645.
-LaTeX Info: Redefining \fontfamily on input line 688.
-LaTeX Info: Redefining \fontseries on input line 922.
-LaTeX Info: Redefining \fontseriesforce on input line 923.
-LaTeX Info: Redefining \fontshape on input line 943.
-LaTeX Info: Redefining \fontshapeforce on input line 954.
+LaTeX Info: Redefining \fontencoding on input line 646.
+LaTeX Info: Redefining \fontfamily on input line 689.
+LaTeX Info: Redefining \fontseries on input line 923.
+LaTeX Info: Redefining \fontseriesforce on input line 924.
+LaTeX Info: Redefining \fontshape on input line 944.
+LaTeX Info: Redefining \fontshapeforce on input line 955.
 \ltj@@jfont@@jfmonly@@inner=\luafunction63
 \ltj@@does@alt@set@@inner=\luafunction64
 )
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/patches/lltjdefs.sty
 Package: lltjdefs 2022-01-23 Default font settings of LuaTeX-ja
-luaotfload | db : Font names database loaded from /Users/hermite/Library/texlive
-/2022/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache: e
-xtra_lmroman10-regular.luc)
+luaotfload | db : Font names database loaded from /Users/kosugitti/Library/texli
+ve/2022/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache:
+ extra_lmroman10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
 (Font)              scaled to size 9.24713pt on input line 79.
 
@@ -343,10 +343,10 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 Package: lltjcore 2022-05-30 Patch to LaTeX2e Kernel for LuaTeX-ja
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2022-08-30 L3 programming layer (loader) 
+Package: expl3 2022-09-28 L3 programming layer (loader) 
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
-File: l3backend-luatex.def 2022-08-30 L3 backend support: PDF output (LuaTeX)
+File: l3backend-luatex.def 2022-09-28 L3 backend support: PDF output (LuaTeX)
 \l__color_backend_stack_int=\count193
 \l__pdf_internal_box=\box55
 ))
@@ -372,7 +372,7 @@ LaTeX Info: Redefining \underline on input line 266.
 )
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/patches/lltjp-atbegshi.
 sty
-Package: lltjp-atbegshi 2021-04-29 Patching \shipout hooks for LuaTeX-ja
+Package: lltjp-atbegshi 2022-08-12 Patching \shipout hooks for LuaTeX-ja
 \l__platex_shipout_dummy_box=\box68
 )
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/patches/lltjp-geometry.
@@ -394,13 +394,13 @@ Package: luatexja-compat 2020-08-08 Compatibility with pTeX
 \jsc@mmm=\dimen157
 \jsc@smallskipamount=\skip47
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 422.
+(Font)              scaled to size 9.24713pt on input line 424.
 \fullwidth=\dimen158
 (load cache: extra_lmroman8-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 571.
+(Font)              scaled to size 7.3977pt on input line 573.
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 571.
+(Font)              scaled to size 7.3977pt on input line 573.
 \c@part=\count196
 \c@chapter=\count197
 \c@section=\count198
@@ -412,8 +412,8 @@ LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
 \c@table=\count270
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
-LaTeX Info: Redefining \mc on input line 1280.
-LaTeX Info: Redefining \gt on input line 1281.
+LaTeX Info: Redefining \mc on input line 1282.
+LaTeX Info: Redefining \gt on input line 1283.
 \jsc@tocl@width=\dimen159
 \@lnumwidth=\dimen160
 \bibindent=\dimen161
@@ -497,7 +497,7 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 Package graphics Info: Driver file: luatex.def on input line 107.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-def/luatex.def
-File: luatex.def 2021/06/01 v1.2c Graphics/color driver for luatex
+File: luatex.def 2022/09/22 v1.2d Graphics/color driver for luatex
 ))
 \Gin@req@height=\dimen171
 \Gin@req@width=\dimen172
@@ -527,7 +527,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 y
 Package: luatexja-ruby 2022-07-03 v0.53
 \ltj@rubyattr=\attribute25
-Lua module: luatexja.ruby 2022-06-25 Ruby annotation
+Lua module: luatexja.ruby 2022-08-29 Ruby annotation
 Custom whatsit ruby_pre = 7
 Custom whatsit ruby_post = 8
 Inserting `ltj.ruby.pre' at position 5 in `pre_linebreak_filter'.
@@ -1147,7 +1147,7 @@ s/tikzlibrary3d.code.tex
 File: tikzlibrary3d.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ))
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/lltjext.sty
-Package: lltjext 2021-04-20 v1.2k-ltj-13 Macros for vertical writing
+Package: lltjext 2022-08-24 v1.2k-ltj-14 Macros for vertical writing
 \ltj@ext@dir=\count336
 \@floatbox=\box110
 \floatwidth=\dimen324
@@ -1230,9 +1230,9 @@ c-27c.sty
 Package: luatexja-fontspec-27c 2020-04-04 fontspec support of LuaTeX-ja
 \g__ltj_fontspec_altnumber_int=\count353
 ))
-luaotfload | cache : Lookup cache loaded from /Users/hermite/Library/texlive/202
-2/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache: 
-extra_biz-udmincho-medium.luc)
+luaotfload | cache : Lookup cache loaded from /Users/kosugitti/Library/texlive/2
+022/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache
+: extra_biz-udmincho-medium.luc)
 
 Package fontspec Info: Font family 'BIZUDMinchoMedium(0)' created for font
 (fontspec)             'BIZ UDMincho Medium' with options
@@ -1267,20 +1267,20 @@ JFM=prop}].
 (fontspec)             series/shapes:
 (fontspec)              
 
-LaTeX Font Info:    Redeclaring symbol font `mincho' on input line 40.
+LaTeX Font Info:    Redeclaring symbol font `mincho' on input line 41.
 LaTeX Font Info:    Overwriting symbol font `mincho' in version `normal'
 (Font)                  JY3/mc/m/n --> JY3/BIZUDPMinchoMedium(0)/m/n on input l
-ine 40.
+ine 41.
 LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 (Font)                  JY3/gt/m/n --> JY3/BIZUDPMinchoMedium(0)/m/n on input l
-ine 40.
+ine 41.
 LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 (Font)                  JY3/BIZUDPMinchoMedium(0)/m/n --> JY3/BIZUDPMinchoMediu
-m(0)/b/n on input line 40.
+m(0)/b/n on input line 41.
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 40.
+(Font)              scaled to size 9.24713pt on input line 41.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 40.
+(Font)              scaled to size 9.24713pt on input line 41.
 
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/jfm-prop.lua)
 (/usr/local/texlive/2022/texmf-dist/tex/latex/colortbl/colortbl.sty
@@ -1351,7 +1351,7 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 )))
 (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2022-06-20 v7.00s Hypertext links for LaTeX
+Package: hyperref 2022-09-22 v7.00t Hypertext links for LaTeX
 
 (/usr/local/texlive/2022/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
@@ -1387,7 +1387,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 \Hy@pagecounter=\count366
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2022-06-20 v7.00s Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2022-09-22 v7.00t Hyperref: PDFDocEncoding definition (HO)
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
@@ -1398,7 +1398,7 @@ Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 \Hy@SavedSpaceFactor=\count367
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2022-06-20 v7.00s Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2022-09-22 v7.00t Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Hyper figures OFF on input line 4162.
 Package hyperref Info: Link nesting OFF on input line 4167.
@@ -1406,10 +1406,12 @@ Package hyperref Info: Hyper index ON on input line 4170.
 Package hyperref Info: Plain pages OFF on input line 4177.
 Package hyperref Info: Backreferencing OFF on input line 4182.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4408.
+\stockwidth=\dimen342
+\stockheight=\dimen343
+Package hyperref Info: Bookmarks ON on input line 4410.
 \c@Hy@tempcnt=\count368
-LaTeX Info: Redefining \url on input line 4746.
-\XeTeXLinkMargin=\dimen342
+LaTeX Info: Redefining \url on input line 4748.
+\XeTeXLinkMargin=\dimen344
 
 (/usr/local/texlive/2022/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -1419,15 +1421,15 @@ Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
 \Fld@menulength=\count369
-\Field@Width=\dimen343
-\Fld@charsize=\dimen344
-Package hyperref Info: Hyper figures OFF on input line 6024.
-Package hyperref Info: Link nesting OFF on input line 6029.
-Package hyperref Info: Hyper index ON on input line 6032.
-Package hyperref Info: backreferencing OFF on input line 6039.
-Package hyperref Info: Link coloring OFF on input line 6044.
-Package hyperref Info: Link coloring with OCG OFF on input line 6049.
-Package hyperref Info: PDF/A mode OFF on input line 6054.
+\Field@Width=\dimen345
+\Fld@charsize=\dimen346
+Package hyperref Info: Hyper figures OFF on input line 6027.
+Package hyperref Info: Link nesting OFF on input line 6032.
+Package hyperref Info: Hyper index ON on input line 6035.
+Package hyperref Info: backreferencing OFF on input line 6042.
+Package hyperref Info: Link coloring OFF on input line 6047.
+Package hyperref Info: Link coloring with OCG OFF on input line 6052.
+Package hyperref Info: PDF/A mode OFF on input line 6057.
 \Hy@abspage=\count370
 \c@Item=\count371
 \c@Hfootnote=\count372
@@ -1435,7 +1437,7 @@ Package hyperref Info: PDF/A mode OFF on input line 6054.
 Package hyperref Info: Driver (autodetected): hluatex.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hluatex.def
-File: hluatex.def 2022-06-20 v7.00s Hyperref driver for luaTeX
+File: hluatex.def 2022-09-22 v7.00t Hyperref driver for luaTeX
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
@@ -1456,10 +1458,10 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip69
 )
-Package hyperref Info: Option `setpagesize' set `false' on input line 75.
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 75.
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 75.
-Package hyperref Info: Option `colorlinks' set `true' on input line 75.
+Package hyperref Info: Option `setpagesize' set `false' on input line 76.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 76.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 76.
+Package hyperref Info: Option `colorlinks' set `true' on input line 76.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 Package: tcolorbox 2022/06/24 version 5.1.1 text color boxes
 
@@ -1489,8 +1491,8 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
 (/usr/local/texlive/2022/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
 Library (tcolorbox): 'tcbbreakable.code.tex' version '5.1.1'
-(/usr/local/texlive/2022/texmf-dist/tex/generic/oberdiek/pdfcol.sty
-Package: pdfcol 2019/12/29 v1.6 Handle new color stacks for pdfTeX (HO)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/pdfcol/pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
 )
 Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
 \tcb@testbox=\box129
@@ -1536,69 +1538,6 @@ rs
 \f@nch@O@erf=\skip76
 \f@nch@O@olf=\skip77
 \f@nch@O@orf=\skip78
-)
-(/usr/local/texlive/2022/texmf-dist/tex/latex/nicematrix/nicematrix.sty
-Package: nicematrix 2022/08/24 v6.13 Enhanced arrays with the help of PGF/TikZ
-\g__nicematrix_env_int=\count384
-\g__nicematrix_NiceMatrixBlock_int=\count385
-\l__nicematrix_note_in_caption_int=\count386
-\l__nicematrix_columns_width_dim=\dimen345
-\l__nicematrix_col_width_dim=\dimen346
-\g__nicematrix_row_total_int=\count387
-\g__nicematrix_col_total_int=\count388
-\g__nicematrix_last_row_node_int=\count389
-\l__nicematrix_key_nb_rows_int=\count390
-\g__nicematrix_blocks_wd_dim=\dimen347
-\g__nicematrix_blocks_ht_dim=\dimen348
-\g__nicematrix_blocks_dp_dim=\dimen349
-\l__nicematrix_width_dim=\dimen350
-\l__nicematrix_tabular_width_dim=\dimen351
-\l__nicematrix_rule_width_dim=\dimen352
-\l__nicematrix_old_iRow_int=\count391
-\l__nicematrix_old_jCol_int=\count392
-\g__nicematrix_total_X_weight_int=\count393
-\l__nicematrix_X_columns_dim=\dimen353
-\l__nicematrix_x_initial_dim=\dimen354
-\l__nicematrix_y_initial_dim=\dimen355
-\l__nicematrix_x_final_dim=\dimen356
-\l__nicematrix_y_final_dim=\dimen357
-\l__nicematrix_tmpc_dim=\dimen358
-\l__nicematrix_tmpd_dim=\dimen359
-\g__nicematrix_width_last_col_dim=\dimen360
-\g__nicematrix_width_first_col_dim=\dimen361
-\l__nicematrix_row_min_int=\count394
-\l__nicematrix_row_max_int=\count395
-\l__nicematrix_col_min_int=\count396
-\l__nicematrix_col_max_int=\count397
-\g__nicematrix_static_num_of_col_int=\count398
-\l__nicematrix_rounded_corners_dim=\dimen362
-\l__nicematrix_line_width_dim=\dimen363
-\g__nicematrix_block_box_int=\count399
-\l__nicematrix_submatrix_extra_height_dim=\dimen364
-\l__nicematrix_submatrix_left_xshift_dim=\dimen365
-\l__nicematrix_submatrix_right_xshift_dim=\dimen366
-\l__nicematrix_first_row_int=\count400
-\l__nicematrix_first_col_int=\count401
-\l__nicematrix_last_row_int=\count402
-\l__nicematrix_last_col_int=\count403
-\c@tabularnote=\count404
-\c@nicematrix_draft=\count405
-\l__nicematrix_cell_space_top_limit_dim=\dimen367
-\l__nicematrix_cell_space_bottom_limit_dim=\dimen368
-\l__nicematrix_xdots_inter_dim=\dimen369
-\l__nicematrix_xdots_shorten_start_dim=\dimen370
-\l__nicematrix_xdots_shorten_end_dim=\dimen371
-\l__nicematrix_xdots_radius_dim=\dimen372
-\l__nicematrix_notes_above_space_dim=\dimen373
-\l__nicematrix_left_margin_dim=\dimen374
-\l__nicematrix_right_margin_dim=\dimen375
-\l__nicematrix_extra_left_margin_dim=\dimen376
-\l__nicematrix_extra_right_margin_dim=\dimen377
-\c__nicematrix_max_l_dim=\dimen378
-\l__nicematrix_position_int=\count406
-\l__nicematrix_start_int=\count407
-\l__nicematrix_multiplicity_int=\count408
-\l__nicematrix_brace_yshift_dim=\dimen379
 ))
 (/usr/local/texlive/2022/texmf-dist/tex/latex/docmute/docmute.sty
 Package: docmute 2012/03/22 v1.4 Input stand-alone documents
@@ -1683,16 +1622,16 @@ LaTeX Font Info:    ... okay on input line 6.
 
 (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count409
-\scratchdimen=\dimen380
+\scratchcounter=\count384
+\scratchdimen=\dimen347
 \scratchbox=\box133
-\nofMPsegments=\count410
-\nofMParguments=\count411
+\nofMPsegments=\count385
+\nofMParguments=\count386
 \everyMPshowfont=\toks56
-\MPscratchCnt=\count412
-\MPscratchDim=\dimen381
-\MPnumerator=\count413
-\makeMPintoPDFobject=\count414
+\MPscratchCnt=\count387
+\MPscratchDim=\dimen348
+\MPnumerator=\count388
+\makeMPintoPDFobject=\count389
 \everyMPtoPDFconversion=\toks57
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1763,7 +1702,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 6.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 6.
-\c@lstlisting=\count415
+\c@lstlisting=\count390
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
@@ -1776,7 +1715,7 @@ Package hyperref Info: Link coloring ON on input line 6.
 \@outlinefile=\write7
 
 \openout7 = tmp.out
-\docmute@nestinglevel=\count416
+\docmute@nestinglevel=\count391
 <../images/cover2.pdf, id=915, 597.23125pt x 845.1575pt>
 File: ../images/cover2.pdf Graphic file (type pdf)
 <use ../images/cover2.pdf>
@@ -3678,15 +3617,15 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' at position 1 in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' at position 2 in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-Removing  `ltj.process_input_buffer' from `process_input_buffer'.
-Inserting `ltj.listings_unicode' at position 1 in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' at position 2 in `process_input_buffer'.
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 16.0pt, for example:
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [204]
+Removing  `ltj.process_input_buffer' from `process_input_buffer'.
+Inserting `ltj.listings_unicode' at position 1 in `process_input_buffer'.
+Inserting `ltj.process_input_buffer' at position 2 in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' at position 1 in `process_input_buffer'.
@@ -3704,7 +3643,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [206]
-<../images/18_MCMC/Rplot18_01.png, id=3643, 4818.0pt x 2409.0pt>
+<../images/18_MCMC/Rplot18_01.png, id=3645, 4818.0pt x 2409.0pt>
 File: ../images/18_MCMC/Rplot18_01.png Graphic file (type png)
 <use ../images/18_MCMC/Rplot18_01.png>
 Package luatex.def Info: ../images/18_MCMC/Rplot18_01.png  used on input line 2
@@ -3714,7 +3653,7 @@ Package luatex.def Info: ../images/18_MCMC/Rplot18_01.png  used on input line 2
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../images/18_MCMC/Rplot18_02.png, id=3645, 4818.0pt x 2409.0pt>
+<../images/18_MCMC/Rplot18_02.png, id=3647, 4818.0pt x 2409.0pt>
 File: ../images/18_MCMC/Rplot18_02.png Graphic file (type png)
 <use ../images/18_MCMC/Rplot18_02.png>
 Package luatex.def Info: ../images/18_MCMC/Rplot18_02.png  used on input line 2
@@ -3781,7 +3720,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [214]
-<../images/19_modeling1/slide19_01.png, id=3758, 1282.7925pt x 745.78625pt>
+<../images/19_modeling1/slide19_01.png, id=3760, 1282.7925pt x 745.78625pt>
 File: ../images/19_modeling1/slide19_01.png Graphic file (type png)
 <use ../images/19_modeling1/slide19_01.png>
 Package luatex.def Info: ../images/19_modeling1/slide19_01.png  used on input l
@@ -3831,7 +3770,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' at position 1 in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' at position 2 in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/19_modeling1/Rplot19_01.png, id=3853, 722.7pt x 289.08pt>
+<../images/19_modeling1/Rplot19_01.png, id=3855, 722.7pt x 289.08pt>
 File: ../images/19_modeling1/Rplot19_01.png Graphic file (type png)
 <use ../images/19_modeling1/Rplot19_01.png>
 Package luatex.def Info: ../images/19_modeling1/Rplot19_01.png  used on input l
@@ -3906,7 +3845,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 [226]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/20_modeling2/Rplot20_01.png, id=3962, 4818.0pt x 2409.0pt>
+<../images/20_modeling2/Rplot20_01.png, id=3964, 4818.0pt x 2409.0pt>
 File: ../images/20_modeling2/Rplot20_01.png Graphic file (type png)
 <use ../images/20_modeling2/Rplot20_01.png>
 Package luatex.def Info: ../images/20_modeling2/Rplot20_01.png  used on input l
@@ -3919,7 +3858,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [227<../images/20_modeling2/Rplot20_01.png>]
-<../images/20_modeling2/Rplot20_02.png, id=3996, 4818.0pt x 2409.0pt>
+<../images/20_modeling2/Rplot20_02.png, id=3998, 4818.0pt x 2409.0pt>
 File: ../images/20_modeling2/Rplot20_02.png Graphic file (type png)
 <use ../images/20_modeling2/Rplot20_02.png>
 Package luatex.def Info: ../images/20_modeling2/Rplot20_02.png  used on input l
@@ -4037,7 +3976,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 ]
 第21章
-<../images/21_modeling3/Slide21_01.png, id=4167, 1191.45125pt x 750.805pt>
+<../images/21_modeling3/Slide21_01.png, id=4169, 1191.45125pt x 750.805pt>
 File: ../images/21_modeling3/Slide21_01.png Graphic file (type png)
 <use ../images/21_modeling3/Slide21_01.png>
 Package luatex.def Info: ../images/21_modeling3/Slide21_01.png  used on input l
@@ -4083,7 +4022,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [243]
-<../images/21_modeling3/Slide21_02.png, id=4297, 1259.70625pt x 536.0025pt>
+<../images/21_modeling3/Slide21_02.png, id=4299, 1259.70625pt x 536.0025pt>
 File: ../images/21_modeling3/Slide21_02.png Graphic file (type png)
 <use ../images/21_modeling3/Slide21_02.png>
 Package luatex.def Info: ../images/21_modeling3/Slide21_02.png  used on input l
@@ -4130,7 +4069,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [247]
-<../images/21_modeling3/Slide21_03.png, id=4406, 1262.7175pt x 600.2425pt>
+<../images/21_modeling3/Slide21_03.png, id=4408, 1262.7175pt x 600.2425pt>
 File: ../images/21_modeling3/Slide21_03.png Graphic file (type png)
 <use ../images/21_modeling3/Slide21_03.png>
 Package luatex.def Info: ../images/21_modeling3/Slide21_03.png  used on input l
@@ -4178,7 +4117,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 ]
 第22章
 [253]
-<../images/22_modeling4/Slide22_01.png, id=4490, 1103.12125pt x 813.0375pt>
+<../images/22_modeling4/Slide22_01.png, id=4492, 1103.12125pt x 813.0375pt>
 File: ../images/22_modeling4/Slide22_01.png Graphic file (type png)
 <use ../images/22_modeling4/Slide22_01.png>
 Package luatex.def Info: ../images/22_modeling4/Slide22_01.png  used on input l
@@ -4194,19 +4133,19 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [254]
-<../images/22_modeling4/Slide22_03.png, id=4507, 899.36pt x 632.3625pt>
+<../images/22_modeling4/Slide22_03.png, id=4509, 899.36pt x 632.3625pt>
 File: ../images/22_modeling4/Slide22_03.png Graphic file (type png)
 <use ../images/22_modeling4/Slide22_03.png>
 Package luatex.def Info: ../images/22_modeling4/Slide22_03.png  used on input l
 ine 91.
 (luatex.def)             Requested size: 418.25368pt x 294.08412pt.
-<../images/22_modeling4/Slide22_04.png, id=4508, 925.4575pt x 801.99625pt>
+<../images/22_modeling4/Slide22_04.png, id=4510, 925.4575pt x 801.99625pt>
 File: ../images/22_modeling4/Slide22_04.png Graphic file (type png)
 <use ../images/22_modeling4/Slide22_04.png>
 Package luatex.def Info: ../images/22_modeling4/Slide22_04.png  used on input l
 ine 97.
 (luatex.def)             Requested size: 418.25368pt x 362.46136pt.
-<../images/22_modeling4/Slide22_05.png, id=4509, 1067.99pt x 647.41875pt>
+<../images/22_modeling4/Slide22_05.png, id=4511, 1067.99pt x 647.41875pt>
 File: ../images/22_modeling4/Slide22_05.png Graphic file (type png)
 <use ../images/22_modeling4/Slide22_05.png>
 Package luatex.def Info: ../images/22_modeling4/Slide22_05.png  used on input l
@@ -4286,7 +4225,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [263]
-<../images/22_modeling4/Slide22_02.png, id=4689, 978.65625pt x 752.8125pt>
+<../images/22_modeling4/Slide22_02.png, id=4691, 978.65625pt x 752.8125pt>
 File: ../images/22_modeling4/Slide22_02.png Graphic file (type png)
 <use ../images/22_modeling4/Slide22_02.png>
 Package luatex.def Info: ../images/22_modeling4/Slide22_02.png  used on input l
@@ -4364,7 +4303,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' at position 1 in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' at position 2 in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/23_modeling5/Rplot23_01.png, id=4788, 4818.0pt x 2409.0pt>
+<../images/23_modeling5/Rplot23_01.png, id=4790, 4818.0pt x 2409.0pt>
 File: ../images/23_modeling5/Rplot23_01.png Graphic file (type png)
 <use ../images/23_modeling5/Rplot23_01.png>
 Package luatex.def Info: ../images/23_modeling5/Rplot23_01.png  used on input l
@@ -4405,7 +4344,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [273]
-<../images/23_modeling5/Slide23_01.png, id=4842, 563.10374pt x 400.49625pt>
+<../images/23_modeling5/Slide23_01.png, id=4844, 563.10374pt x 400.49625pt>
 File: ../images/23_modeling5/Slide23_01.png Graphic file (type png)
 <use ../images/23_modeling5/Slide23_01.png>
 Package luatex.def Info: ../images/23_modeling5/Slide23_01.png  used on input l
@@ -4442,13 +4381,13 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 
 ]
-<../images/24_linearModel/Rplot24_06.png, id=4914, 578.16pt x 289.08pt>
+<../images/24_linearModel/Rplot24_06.png, id=4916, 578.16pt x 289.08pt>
 File: ../images/24_linearModel/Rplot24_06.png Graphic file (type png)
 <use ../images/24_linearModel/Rplot24_06.png>
 Package luatex.def Info: ../images/24_linearModel/Rplot24_06.png  used on input
  line 93.
 (luatex.def)             Requested size: 334.60422pt x 167.3004pt.
-<../images/24_linearModel/Slide24_01.png, id=4917, 632.3625pt x 480.79625pt>
+<../images/24_linearModel/Slide24_01.png, id=4919, 632.3625pt x 480.79625pt>
 File: ../images/24_linearModel/Slide24_01.png Graphic file (type png)
 <use ../images/24_linearModel/Slide24_01.png>
 Package luatex.def Info: ../images/24_linearModel/Slide24_01.png  used on input
@@ -4472,7 +4411,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 [279<../images/24_linearModel/Rplot24_06.png><../images/24_linearModel/Slide24_0
 1.png>]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/24_linearModel/Rplot24_01.png, id=4950, 4818.0pt x 2409.0pt>
+<../images/24_linearModel/Rplot24_01.png, id=4952, 4818.0pt x 2409.0pt>
 File: ../images/24_linearModel/Rplot24_01.png Graphic file (type png)
 <use ../images/24_linearModel/Rplot24_01.png>
 Package luatex.def Info: ../images/24_linearModel/Rplot24_01.png  used on input
@@ -4494,7 +4433,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [281<../images/24_linearModel/Rplot24_01.png>]
-<../images/24_linearModel/Rplot24_02.png, id=5023, 4818.0pt x 2409.0pt>
+<../images/24_linearModel/Rplot24_02.png, id=5025, 4818.0pt x 2409.0pt>
 File: ../images/24_linearModel/Rplot24_02.png Graphic file (type png)
 <use ../images/24_linearModel/Rplot24_02.png>
 Package luatex.def Info: ../images/24_linearModel/Rplot24_02.png  used on input
@@ -4507,7 +4446,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [282]
-<../images/24_linearModel/Rplot24_03.png, id=5035, 4818.0pt x 2409.0pt>
+<../images/24_linearModel/Rplot24_03.png, id=5037, 4818.0pt x 2409.0pt>
 File: ../images/24_linearModel/Rplot24_03.png Graphic file (type png)
 <use ../images/24_linearModel/Rplot24_03.png>
 Package luatex.def Info: ../images/24_linearModel/Rplot24_03.png  used on input
@@ -4520,13 +4459,13 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [283<../images/24_linearModel/Rplot24_02.png>]
-<../images/24_linearModel/Rplot24_04.png, id=5049, 4818.0pt x 2409.0pt>
+<../images/24_linearModel/Rplot24_04.png, id=5051, 4818.0pt x 2409.0pt>
 File: ../images/24_linearModel/Rplot24_04.png Graphic file (type png)
 <use ../images/24_linearModel/Rplot24_04.png>
 Package luatex.def Info: ../images/24_linearModel/Rplot24_04.png  used on input
  line 270.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-<../images/24_linearModel/slide24_02.png, id=5051, 425.59pt x 523.9575pt>
+<../images/24_linearModel/slide24_02.png, id=5053, 425.59pt x 523.9575pt>
 File: ../images/24_linearModel/slide24_02.png Graphic file (type png)
 <use ../images/24_linearModel/slide24_02.png>
 Package luatex.def Info: ../images/24_linearModel/slide24_02.png  used on input
@@ -4558,7 +4497,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [286<../images/24_linearModel/slide24_02.png>]
-<../images/24_linearModel/Rplot24_05.png, id=5124, 4818.0pt x 2409.0pt>
+<../images/24_linearModel/Rplot24_05.png, id=5126, 4818.0pt x 2409.0pt>
 File: ../images/24_linearModel/Rplot24_05.png Graphic file (type png)
 <use ../images/24_linearModel/Rplot24_05.png>
 Package luatex.def Info: ../images/24_linearModel/Rplot24_05.png  used on input
@@ -4584,7 +4523,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [287]
-<../images/24_linearModel/slide24_03.png, id=5138, 740.7675pt x 560.0925pt>
+<../images/24_linearModel/slide24_03.png, id=5140, 740.7675pt x 560.0925pt>
 File: ../images/24_linearModel/slide24_03.png Graphic file (type png)
 <use ../images/24_linearModel/slide24_03.png>
 Package luatex.def Info: ../images/24_linearModel/slide24_03.png  used on input
@@ -4630,7 +4569,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 
 ]
-<../images/25_HLM/Rplot25_01.png, id=5193, 867.24pt x 289.08pt>
+<../images/25_HLM/Rplot25_01.png, id=5195, 867.24pt x 289.08pt>
 File: ../images/25_HLM/Rplot25_01.png Graphic file (type png)
 <use ../images/25_HLM/Rplot25_01.png>
 Package luatex.def Info: ../images/25_HLM/Rplot25_01.png  used on input line 49
@@ -4643,7 +4582,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [294]
-<../images/25_HLM/Slide25_01.png, id=5204, 541.02126pt x 565.11125pt>
+<../images/25_HLM/Slide25_01.png, id=5206, 541.02126pt x 565.11125pt>
 File: ../images/25_HLM/Slide25_01.png Graphic file (type png)
 <use ../images/25_HLM/Slide25_01.png>
 Package luatex.def Info: ../images/25_HLM/Slide25_01.png  used on input line 58
@@ -4676,13 +4615,13 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [297]
-<../images/25_HLM/Slide25_03.png, id=5300, 825.0825pt x 538.01pt>
+<../images/25_HLM/Slide25_03.png, id=5302, 825.0825pt x 538.01pt>
 File: ../images/25_HLM/Slide25_03.png Graphic file (type png)
 <use ../images/25_HLM/Slide25_03.png>
 Package luatex.def Info: ../images/25_HLM/Slide25_03.png  used on input line 18
 8.
 (luatex.def)             Requested size: 334.60422pt x 218.18839pt.
-<../images/25_HLM/Rplot25_02.png, id=5302, 578.16pt x 289.08pt>
+<../images/25_HLM/Rplot25_02.png, id=5304, 578.16pt x 289.08pt>
 File: ../images/25_HLM/Rplot25_02.png Graphic file (type png)
 <use ../images/25_HLM/Rplot25_02.png>
 Package luatex.def Info: ../images/25_HLM/Rplot25_02.png  used on input line 19
@@ -4701,7 +4640,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [299<../images/25_HLM/Slide25_03.png><../images/25_HLM/Rplot25_02.png>]
-<../images/25_HLM/Rplot25_03.png, id=5318, 578.16pt x 289.08pt>
+<../images/25_HLM/Rplot25_03.png, id=5320, 578.16pt x 289.08pt>
 File: ../images/25_HLM/Rplot25_03.png Graphic file (type png)
 <use ../images/25_HLM/Rplot25_03.png>
 Package luatex.def Info: ../images/25_HLM/Rplot25_03.png  used on input line 22
@@ -4720,7 +4659,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [301<../images/25_HLM/Rplot25_03.png>]
-<../images/25_HLM/Rplot25_04.png, id=5336, 578.16pt x 289.08pt>
+<../images/25_HLM/Rplot25_04.png, id=5338, 578.16pt x 289.08pt>
 File: ../images/25_HLM/Rplot25_04.png Graphic file (type png)
 <use ../images/25_HLM/Rplot25_04.png>
 Package luatex.def Info: ../images/25_HLM/Rplot25_04.png  used on input line 25
@@ -4741,7 +4680,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [302<../images/25_HLM/Rplot25_04.png>]
-<../images/25_HLM/slide25_04.png, id=5349, 719.68875pt x 636.3775pt>
+<../images/25_HLM/slide25_04.png, id=5351, 719.68875pt x 636.3775pt>
 File: ../images/25_HLM/slide25_04.png Graphic file (type png)
 <use ../images/25_HLM/slide25_04.png>
 Package luatex.def Info: ../images/25_HLM/slide25_04.png  used on input line 27
@@ -4770,7 +4709,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [305]
-<../images/25_HLM/Rplot25_05.png, id=5425, 867.24pt x 867.24pt>
+<../images/25_HLM/Rplot25_05.png, id=5427, 867.24pt x 867.24pt>
 File: ../images/25_HLM/Rplot25_05.png Graphic file (type png)
 <use ../images/25_HLM/Rplot25_05.png>
 Package luatex.def Info: ../images/25_HLM/Rplot25_05.png  used on input line 36
@@ -4797,14 +4736,14 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 ]
 第26章
-<../images/26_mixed/Rplot26_01.png, id=5447, 1156.32pt x 650.43pt>
+<../images/26_mixed/Rplot26_01.png, id=5449, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_01.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_01.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_01.png  used on input line 
 16.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
 [309<../images/26_mixed/Rplot26_01.png>]
-<../images/26_mixed/Rplot26_02.png, id=5461, 1156.32pt x 650.43pt>
+<../images/26_mixed/Rplot26_02.png, id=5463, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_02.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_02.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_02.png  used on input line 
@@ -4823,7 +4762,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [311<../images/26_mixed/Rplot26_02.png>]
-<../images/26_mixed/slide26_01.png, id=5480, 583.17876pt x 566.115pt>
+<../images/26_mixed/slide26_01.png, id=5482, 583.17876pt x 566.115pt>
 File: ../images/26_mixed/slide26_01.png Graphic file (type png)
 <use ../images/26_mixed/slide26_01.png>
 Package luatex.def Info: ../images/26_mixed/slide26_01.png  used on input line 
@@ -4836,7 +4775,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [312<../images/26_mixed/slide26_01.png>]
-<../images/26_mixed/slide26_02.png, id=5492, 736.7525pt x 548.0475pt>
+<../images/26_mixed/slide26_02.png, id=5494, 736.7525pt x 548.0475pt>
 File: ../images/26_mixed/slide26_02.png Graphic file (type png)
 <use ../images/26_mixed/slide26_02.png>
 Package luatex.def Info: ../images/26_mixed/slide26_02.png  used on input line 
@@ -4906,13 +4845,13 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [318]
-<../images/26_mixed/Rplot26_06.png, id=5606, 1156.32pt x 650.43pt>
+<../images/26_mixed/Rplot26_06.png, id=5608, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_06.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_06.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_06.png  used on input line 
 241.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-<../images/26_mixed/Rplot26_03.png, id=5608, 1156.32pt x 650.43pt>
+<../images/26_mixed/Rplot26_03.png, id=5610, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_03.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_03.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_03.png  used on input line 
@@ -4925,13 +4864,13 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [319<../images/26_mixed/Rplot26_06.png>]
-<../images/26_mixed/Rplot26_04.png, id=5619, 1156.32pt x 650.43pt>
+<../images/26_mixed/Rplot26_04.png, id=5621, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_04.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_04.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_04.png  used on input line 
 268.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-<../images/26_mixed/slide26_03.png, id=5621, 742.775pt x 570.13pt>
+<../images/26_mixed/slide26_03.png, id=5623, 742.775pt x 570.13pt>
 File: ../images/26_mixed/slide26_03.png Graphic file (type png)
 <use ../images/26_mixed/slide26_03.png>
 Package luatex.def Info: ../images/26_mixed/slide26_03.png  used on input line 
@@ -4991,7 +4930,7 @@ Overfull \hbox (28.8448pt too wide) in paragraph at lines 346--346
    1.00    3420.    2560.[] 
  []
 
-<../images/26_mixed/Rplot26_05.png, id=5672, 1156.32pt x 650.43pt>
+<../images/26_mixed/Rplot26_05.png, id=5674, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_05.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_05.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_05.png  used on input line 
@@ -5017,7 +4956,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [324<../images/26_mixed/Rplot26_05.png>]
-<../images/26_mixed/slide26_04.png, id=5734, 1007.765pt x 653.44125pt>
+<../images/26_mixed/slide26_04.png, id=5736, 1007.765pt x 653.44125pt>
 File: ../images/26_mixed/slide26_04.png Graphic file (type png)
 <use ../images/26_mixed/slide26_04.png>
 Package luatex.def Info: ../images/26_mixed/slide26_04.png  used on input line 
@@ -5039,7 +4978,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 ]
 第27章
 [327]
-<../images/27_IRTonBayes/Rplot27_01.png, id=5765, 1156.32pt x 1156.32pt>
+<../images/27_IRTonBayes/Rplot27_01.png, id=5767, 1156.32pt x 1156.32pt>
 File: ../images/27_IRTonBayes/Rplot27_01.png Graphic file (type png)
 <use ../images/27_IRTonBayes/Rplot27_01.png>
 Package luatex.def Info: ../images/27_IRTonBayes/Rplot27_01.png  used on input 
@@ -5052,7 +4991,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [328<../images/27_IRTonBayes/Rplot27_01.png>]
-<../images/27_IRTonBayes/Slide27_01.png, id=5777, 751.80875pt x 637.38126pt>
+<../images/27_IRTonBayes/Slide27_01.png, id=5779, 751.80875pt x 637.38126pt>
 File: ../images/27_IRTonBayes/Slide27_01.png Graphic file (type png)
 <use ../images/27_IRTonBayes/Slide27_01.png>
 Package luatex.def Info: ../images/27_IRTonBayes/Slide27_01.png  used on input 
@@ -5086,7 +5025,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' at position 1 in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' at position 2 in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/27_IRTonBayes/Rplot27_02.png, id=5848, 1156.32pt x 1156.32pt>
+<../images/27_IRTonBayes/Rplot27_02.png, id=5850, 1156.32pt x 1156.32pt>
 File: ../images/27_IRTonBayes/Rplot27_02.png Graphic file (type png)
 <use ../images/27_IRTonBayes/Rplot27_02.png>
 Package luatex.def Info: ../images/27_IRTonBayes/Rplot27_02.png  used on input 
@@ -5155,14 +5094,14 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 ]
 第28章
-<../images/28_ChangePoint/Rplot28_01.png, id=5995, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_01.png, id=5997, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_01.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_01.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_01.png  used on input
  line 15.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
 [339<../images/28_ChangePoint/Rplot28_01.png>]
-<../images/28_ChangePoint/Rplot28_02.png, id=6007, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_02.png, id=6009, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_02.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_02.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_02.png  used on input
@@ -5186,7 +5125,7 @@ Overfull \hbox (41.55083pt too wide) in paragraph at lines 77--78
  []
 
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/28_ChangePoint/Rplot28_03.png, id=6024, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_03.png, id=6026, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_03.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_03.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_03.png  used on input
@@ -5198,7 +5137,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [341<../images/28_ChangePoint/Rplot28_03.png>]
-<../images/28_ChangePoint/Rplot28_04.png, id=6058, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_04.png, id=6060, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_04.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_04.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_04.png  used on input
@@ -5211,7 +5150,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [342<../images/28_ChangePoint/Rplot28_04.png>]
-<../images/28_ChangePoint/slide28_01.png, id=6069, 816.04875pt x 491.8375pt>
+<../images/28_ChangePoint/slide28_01.png, id=6071, 816.04875pt x 491.8375pt>
 File: ../images/28_ChangePoint/slide28_01.png Graphic file (type png)
 <use ../images/28_ChangePoint/slide28_01.png>
 Package luatex.def Info: ../images/28_ChangePoint/slide28_01.png  used on input
@@ -5227,7 +5166,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 [343<../images/28_ChangePoint/slide28_01.png>]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/28_ChangePoint/Rplot28_05.png, id=6092, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_05.png, id=6094, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_05.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_05.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_05.png  used on input
@@ -5240,13 +5179,13 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [344]
-<../images/28_ChangePoint/Rplot28_06.png, id=6118, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_06.png, id=6120, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_06.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_06.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_06.png  used on input
  line 189.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-<../images/28_ChangePoint/slide28_02.png, id=6121, 728.7225pt x 516.93124pt>
+<../images/28_ChangePoint/slide28_02.png, id=6123, 728.7225pt x 516.93124pt>
 File: ../images/28_ChangePoint/slide28_02.png Graphic file (type png)
 <use ../images/28_ChangePoint/slide28_02.png>
 Package luatex.def Info: ../images/28_ChangePoint/slide28_02.png  used on input
@@ -5317,7 +5256,7 @@ Overfull \hbox (28.8448pt too wide) in paragraph at lines 252--252
    188.     188.      1.02[] 
  []
 
-<../images/28_ChangePoint/Rplot28_07.png, id=6153, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_07.png, id=6155, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_07.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_07.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_07.png  used on input
@@ -5333,7 +5272,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 [347]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/28_ChangePoint/Rplot28_08.png, id=6181, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_08.png, id=6183, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_08.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_08.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_08.png  used on input
@@ -5361,13 +5300,13 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 ]
 第29章
 [351]
-<../images/29_SSpace/slide29_01.png, id=6220, 688.5725pt x 402.50375pt>
+<../images/29_SSpace/slide29_01.png, id=6222, 688.5725pt x 402.50375pt>
 File: ../images/29_SSpace/slide29_01.png Graphic file (type png)
 <use ../images/29_SSpace/slide29_01.png>
 Package luatex.def Info: ../images/29_SSpace/slide29_01.png  used on input line
  34.
 (luatex.def)             Requested size: 334.60422pt x 195.58871pt.
-<../images/29_SSpace/slide29_02.png, id=6222, 944.52875pt x 699.61375pt>
+<../images/29_SSpace/slide29_02.png, id=6224, 944.52875pt x 699.61375pt>
 File: ../images/29_SSpace/slide29_02.png Graphic file (type png)
 <use ../images/29_SSpace/slide29_02.png>
 Package luatex.def Info: ../images/29_SSpace/slide29_02.png  used on input line
@@ -5396,7 +5335,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [354]
-<../images/29_SSpace/Rplot29_01.png, id=6277, 1156.32pt x 650.43pt>
+<../images/29_SSpace/Rplot29_01.png, id=6279, 1156.32pt x 650.43pt>
 File: ../images/29_SSpace/Rplot29_01.png Graphic file (type png)
 <use ../images/29_SSpace/Rplot29_01.png>
 Package luatex.def Info: ../images/29_SSpace/Rplot29_01.png  used on input line
@@ -5417,7 +5356,7 @@ Overfull \hbox (36.15077pt too wide) in paragraph at lines 132--133
  []
 
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/29_SSpace/Rplot29_02.png, id=6311, 1156.32pt x 650.43pt>
+<../images/29_SSpace/Rplot29_02.png, id=6313, 1156.32pt x 650.43pt>
 File: ../images/29_SSpace/Rplot29_02.png Graphic file (type png)
 <use ../images/29_SSpace/Rplot29_02.png>
 Package luatex.def Info: ../images/29_SSpace/Rplot29_02.png  used on input line
@@ -5439,7 +5378,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [357<../images/29_SSpace/Rplot29_02.png>]
-<../images/29_SSpace/slide29_03.png, id=6355, 646.415pt x 402.50375pt>
+<../images/29_SSpace/slide29_03.png, id=6357, 646.415pt x 402.50375pt>
 File: ../images/29_SSpace/slide29_03.png Graphic file (type png)
 <use ../images/29_SSpace/slide29_03.png>
 Package luatex.def Info: ../images/29_SSpace/slide29_03.png  used on input line
@@ -5508,13 +5447,13 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [362]
-<../images/29_SSpace/Rplot29_03.png, id=6491, 1156.32pt x 650.43pt>
+<../images/29_SSpace/Rplot29_03.png, id=6493, 1156.32pt x 650.43pt>
 File: ../images/29_SSpace/Rplot29_03.png Graphic file (type png)
 <use ../images/29_SSpace/Rplot29_03.png>
 Package luatex.def Info: ../images/29_SSpace/Rplot29_03.png  used on input line
  379.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-<../images/29_SSpace/Rplot29_04.png, id=6494, 1156.32pt x 650.43pt>
+<../images/29_SSpace/Rplot29_04.png, id=6496, 1156.32pt x 650.43pt>
 File: ../images/29_SSpace/Rplot29_04.png Graphic file (type png)
 <use ../images/29_SSpace/Rplot29_04.png>
 Package luatex.def Info: ../images/29_SSpace/Rplot29_04.png  used on input line
@@ -5557,7 +5496,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [365]
-<../images/29_SSpace/Rplot29_05.png, id=6557, 1156.32pt x 650.43pt>
+<../images/29_SSpace/Rplot29_05.png, id=6559, 1156.32pt x 650.43pt>
 File: ../images/29_SSpace/Rplot29_05.png Graphic file (type png)
 <use ../images/29_SSpace/Rplot29_05.png>
 Package luatex.def Info: ../images/29_SSpace/Rplot29_05.png  used on input line
@@ -5731,7 +5670,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [389]
-<../../common_contents/figures/computer_01.png, id=6858, 1177.39874pt x 559.088
+<../../common_contents/figures/computer_01.png, id=6860, 1177.39874pt x 559.088
 75pt>
 File: ../../common_contents/figures/computer_01.png Graphic file (type png)
 <use ../../common_contents/figures/computer_01.png>
@@ -5763,7 +5702,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [393]
-<../../common_contents/figures/computer_06.png, id=6906, 837.1275pt x 476.78125
+<../../common_contents/figures/computer_06.png, id=6908, 837.1275pt x 476.78125
 pt>
 File: ../../common_contents/figures/computer_06.png Graphic file (type png)
 <use ../../common_contents/figures/computer_06.png>
@@ -5838,7 +5777,7 @@ Overfull \hbox (44.15285pt too wide) in paragraph at lines 33--64
  [][] 
  []
 
-<../../common_contents/figures/JapaneseKeyChange.png, id=6987, 282.05376pt x 26
+<../../common_contents/figures/JapaneseKeyChange.png, id=6989, 282.05376pt x 26
 4.99pt>
 File: ../../common_contents/figures/JapaneseKeyChange.png Graphic file (type pn
 g)
@@ -5846,14 +5785,14 @@ g)
 Package luatex.def Info: ../../common_contents/figures/JapaneseKeyChange.png  u
 sed on input line 72.
 (luatex.def)             Requested size: 113.81102pt x 106.9241pt.
-<../../common_contents/figures/JPkeyAssign.png, id=6988, 925.4575pt x 517.935pt
+<../../common_contents/figures/JPkeyAssign.png, id=6990, 925.4575pt x 517.935pt
 >
 File: ../../common_contents/figures/JPkeyAssign.png Graphic file (type png)
 <use ../../common_contents/figures/JPkeyAssign.png>
 Package luatex.def Info: ../../common_contents/figures/JPkeyAssign.png  used on
  input line 78.
 (luatex.def)             Requested size: 334.60422pt x 187.26256pt.
-<../../common_contents/figures/usKeyAssign.png, id=6989, 837.1275pt x 545.03625
+<../../common_contents/figures/usKeyAssign.png, id=6991, 837.1275pt x 545.03625
 pt>
 File: ../../common_contents/figures/usKeyAssign.png Graphic file (type png)
 <use ../../common_contents/figures/usKeyAssign.png>
@@ -6213,15 +6152,15 @@ Package rerunfilecheck Info: Checksums for `tmp.out':
 )
 
 Here is how much of LuaTeX's memory you used:
- 50359 strings out of 477356
- 933187,1977958 words of node,token memory allocated
- 236901 words of node memory still in use:
-   11 hlist, 2 vlist, 5 rule, 319 glue, 839 kern, 1 sub_mlist, 1 glyph, 109389 a
-ttribute, 67 glue_spec, 5461 attribute_list, 4 write, 14 user_defined, 22 pdf_ac
-tion nodes
-   avail lists: 1:48,2:204794,3:2891,4:9485,5:2677,6:508,7:10889,8:480,9:8215,10
+ 48363 strings out of 477352
+ 597280,1977958 words of node,token memory allocated
+ 114303 words of node memory still in use:
+   11 hlist, 2 vlist, 5 rule, 320 glue, 4 kern, 1 sub_mlist, 1 glyph, 51004 attr
+ibute, 67 glue_spec, 4631 attribute_list, 4 write, 14 user_defined, 22 pdf_actio
+n nodes
+   avail lists: 1:25,2:100217,3:2891,4:9485,5:3232,6:508,7:10889,8:480,9:8215,10
 :50,11:246
- 64378 multiletter control sequences out of 65536+600000
+ 62394 multiletter control sequences out of 65536+600000
  166 fonts using 119443879 bytes
  118i,18n,113p,4285b,1215s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>
@@ -6280,10 +6219,10 @@ ve/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/
 2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/202
 2/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2022/t
 exmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on tmp.pdf (460 pages, 44121544 bytes).
+Output written on tmp.pdf (460 pages, 44124973 bytes).
 
-PDF statistics: 8759 PDF objects out of 8907 (max. 8388607)
- 7903 compressed objects within 80 object streams
- 3729 named destinations out of 4296 (max. 131072)
+PDF statistics: 8762 PDF objects out of 8907 (max. 8388607)
+ 7906 compressed objects within 80 object streams
+ 3730 named destinations out of 4296 (max. 131072)
  1994 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -159,33 +159,44 @@
 \[ \bm{A} = \bm{X \Lambda X}' \]
 と書くことができます。
 
-ここであらためて要素に注目しつつ，次のように行列$\bm{A}$を分解して行くことができます。
+ここであらためて要素に注目すると，行列$\bm{A}$が次のように分解されていることがわかります。
 
 \[
     \bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
 \]
 
-となります。この分解例は$2 \times 2$の簡単な例で確認してみましょう。
+となります。
+
+この分解例は$2 \times 2$の簡単な例で確認しておきましょう。
+たとえば$\bm{A} = \begin{pmatrix}\begin{pmatrix}a\\b\end{pmatrix},\begin{pmatrix}c\\d\end{pmatrix}\end{pmatrix}=\begin{pmatrix} a & c \\b & d\end{pmatrix}$という行列と，対角行列$\bm{\Psi} = \begin{pmatrix}\alpha & 0 \\ 0 & \beta \end{pmatrix}$があったとして，$\bm{A\Psi A}'$の計算をしてみたいと思います。
 \[ 
-    \begin{array}{ll}
-    & \begin{pmatrix} a & c\\ b & d \end{pmatrix}\begin{pmatrix}\alpha & 0\\ 0&\beta \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
-    &\\
-    =& \begin{pmatrix} \alpha a & \beta c \\ \alpha b & \beta d \end{pmatrix}
+    \begin{array}{lll}
+    \bm{A\Psi A}' &=& \begin{pmatrix} a & c\\ b & d \end{pmatrix}\begin{pmatrix}\alpha & 0\\ 0&\beta \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
+    &&\\
+    &=& \begin{pmatrix} \alpha a & \beta c \\ \alpha b & \beta d \end{pmatrix}
     \begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
-    &\\
-    =& \begin{pmatrix} \alpha aa + \beta cc & \alpha ab + \beta cd \\
+    &&\\
+    &=& \begin{pmatrix} \alpha aa + \beta cc & \alpha ab + \beta cd \\
         \alpha ab + \beta cd & \alpha bb + \beta dd \end{pmatrix}\\
         &\\
-    =& \alpha \begin{pmatrix} aa & ab\\ ab & bb \end{pmatrix} + 
+    &=& \alpha \begin{pmatrix} aa & ab\\ ab & bb \end{pmatrix} + 
     \beta \begin{pmatrix}cc & cd \\ cd & dd \end{pmatrix}\\
     &\\
-    =& \alpha \begin{pmatrix}a\\b\end{pmatrix}\begin{pmatrix}a &b\end{pmatrix} +
+    &=& \alpha \begin{pmatrix}a\\b\end{pmatrix}\begin{pmatrix}a &b\end{pmatrix} +
     \beta \begin{pmatrix} c\\d \end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}
     \end{array}
 \]
 
-さてさて。これらをまとめると，固有値は元の行列の対角要素の情報を表したものであり，全体の情報量はそのままに重要度の順に並べ替えたものである，といえるでしょう。
-これこそ\keytermL{因子分析}{いんしぶんせき}で取り出そうとしている因子であり，固有値の大きさはその因子の重要度である，ということがわかります！
+と，このようにスカラーとベクトルの積和の形に書き換えられるのですね\footnote{ただし，この計算が可能なのは分解する元の行列が実対称行列だからです。実対称行列は固有値と固有ベクトルで対角化可能であることが証明できます。実対称行列の固有値は全て十数ですし，固有値が全て実数であれば適当な直交行列をつかって対角化でき，実対称行列の固有ベクトルは互いに独立するのでこれらを使って直交行列を作ることができるからです。これらの性質は線形代数のテキストなどの証明を参照してください。また，計算プロセスからもわかるように，同じ要素を持つ列ベクトルと行ベクトルの積ですから，結果は対称になってしまうからです。}。
+
+さて，これらをまとめて考えると，
+\begin{enumerate}   
+    \item 固有値分解は行列を列ベクトルとその転置ベクトルの積の形に分解する。
+    \item 固有値の総和は元の行列の対角要素の総和である。
+    \item 元の行列の対角要素は各項目の分散を表している。
+\end{enumerate}
+ということですから，固有ベクトルは全体の情報量をそのままに重要度の大きさに並べ替えたもの，固有値分解は行列をその要素の重要度ごとに分解していくことである，といえます。
+これこそ\keytermL{因子分析}{いんしぶんせき}で取り出そうとしている因子であり，固有値の大きさはその因子の重要度として，共通次元の判別(どこまで共通次元とみなすか)に使われるのです。
 
 \section{固有値と固有ベクトルを求める}
 ここで少し数学の方に話を戻して，固有値と固有ベクトルの計算方法を考えましょう。
