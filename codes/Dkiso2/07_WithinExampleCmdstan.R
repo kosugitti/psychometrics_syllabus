@@ -8,6 +8,11 @@ library(tidyverse)
 library(cmdstanr)
 library(bayesplot)
 library(MASS)
+## MAP関数
+map_estimation <- function(z) {
+  density(z)$x[which.max(density(z)$y)]
+}
+
 # リバース・リバースエンジニアリング -------------------------------------------------------
 
 mu <- c(50, 50)

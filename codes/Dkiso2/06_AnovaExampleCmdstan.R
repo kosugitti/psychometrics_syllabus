@@ -7,6 +7,10 @@ rm(list = ls())
 library(tidyverse)
 library(cmdstanr)
 library(bayesplot)
+## MAP関数
+map_estimation <- function(z) {
+  density(z)$x[which.max(density(z)$y)]
+}
 
 # サンプルデータ -----------------------------------------------------------------
 

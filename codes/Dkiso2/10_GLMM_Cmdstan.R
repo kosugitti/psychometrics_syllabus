@@ -8,9 +8,11 @@ library(cmdstanr)
 library(posterior)
 library(bayesplot)
 color_scheme_set("brightblue")
+## MAP関数
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
 }
+
 
 
 # データの読み込み ----------------------------------------------------------------
