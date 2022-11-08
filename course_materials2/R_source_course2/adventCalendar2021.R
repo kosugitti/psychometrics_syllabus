@@ -61,27 +61,29 @@ sample %>%
 
 
 sample %>%
-  mutate(variables = str_split(name, pattern = "\\.", n = 3,simplify = T)) -> sample2
+  mutate(variables = str_split(name, pattern = "\\.", n = 3, simplify = T)) -> sample2
 
-sample2 %>% names
+sample2 %>% names()
 
 set.seed(1235)
 theta <- 0.6
 lambda <- 3.5
 N <- 10
-sample <- data.frame(FLG= rbinom(N,size=1, prob = theta) )
-sample %>% 
-  rowwise() %>% 
-  mutate(value = if_else(FLG==0,rpois(1,0),rpois(1,lambda)))
+sample <- data.frame(FLG = rbinom(N, size = 1, prob = theta))
+sample %>%
+  rowwise() %>%
+  mutate(value = if_else(FLG == 0, rpois(1, 0), rpois(1, lambda)))
 
 
 dat <- list(
-  A = c(150,120,130),
+  A = c(150, 120, 130),
   B = c(130),
-  C = rnorm(10,0,1)
+  C = rnorm(10, 0, 1)
 )
 
 dat %>% as.data.frame()
 
 
-dat %>% as.matrix() %>% t()
+dat %>%
+  as.matrix() %>%
+  t()

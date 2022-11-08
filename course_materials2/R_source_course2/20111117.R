@@ -8,14 +8,19 @@ baseball <- read_csv("baseballDecade.csv")
 dat <- baseball %>%
   filter(position == "投手") %>%
   filter(salary > 5000) %>%
-  group_by(Name) %>% print %>% 
-  nest() %>% print %>% 
+  group_by(Name) %>%
+  print() %>%
+  nest() %>%
+  print() %>%
   mutate(
     n = purrr::map_dbl(data, ~ NROW(.)),
     FLG = purrr::map_lgl(data, ~ anyNA(.$Win))
-  ) %>% print %>% 
-  filter(n == 10) %>% print %>% 
-  filter(!FLG) %>% print %>% 
+  ) %>%
+  print() %>%
+  filter(n == 10) %>%
+  print() %>%
+  filter(!FLG) %>%
+  print() %>%
   unnest(data) %>%
   select(Year, Name, salary, Win)
 
@@ -39,19 +44,20 @@ dat %>%
   mutate(salary = salary / 1000) %>%
   mutate(ID = as.factor(Name)) %>%
   mutate(ID = as.numeric(ID)) %>%
-  ggplot(aes(x = salary, y = Win,color=Name)) +
+  ggplot(aes(x = salary, y = Win, color = Name)) +
   geom_point() +
   ylim(0, 15) +
   xlim(0, 35) -> g1
 
 
-tbl1 <- dat %>%   dplyr::filter(Year == "2020年度") %>%
+tbl1 <- dat %>%
+  dplyr::filter(Year == "2020年度") %>%
   mutate(salary = salary / 1000) %>%
   ggpubr::ggtexttable()
 
 g <- ggpubr::ggarrange(g1, tbl1)
 
-g <- g1 + tbl1 + 
+g <- g1 + tbl1 +
   patchwork::plot_layout(ncol = 2, widths = c(2, 1))
 
 ggsave(g, filename = "../images/chapter25/Rplot25_01.png", dpi = 600, width = 12, height = 4)
@@ -165,8 +171,8 @@ dat <- baseball %>%
   dplyr::filter(position != "投手") %>%
   dplyr::filter(Year == "2020年度") %>%
   filter(salary > 5000) %>%
-  filter(AtBats>50) %>% 
-  filter(AtBats<400) %>% 
+  filter(AtBats > 50) %>%
+  filter(AtBats < 400) %>%
   select(Year, Name, salary, AtBats, Hit, Games, HR)
 
 model_binom <- cmdstanr::cmdstan_model("glmm_binomial2.stan")
@@ -202,15 +208,16 @@ dat <- data.frame(rbind(cbind(X1, Y1), cbind(X2, Y2), cbind(X3, Y3)))
 cor(dat[, 1:2])
 dat$group <- factor(rep(1:3, each = N), labels = c("Group A", "Group B", "Group C"))
 g1 <- ggplot(dat, aes(x = X1, y = Y1)) +
-  geom_point() + geom_smooth(method="lm",se=F,formula="y~x")
-  scale_colour_colorblind()
+  geom_point() +
+  geom_smooth(method = "lm", se = F, formula = "y~x")
+scale_colour_colorblind()
 g1
 
 g2 <- ggplot(dat, aes(x = X1, y = Y1, shape = group, color = group)) +
   geom_point() +
-  geom_smooth(method="lm",se=F,formula="y~x")+
+  geom_smooth(method = "lm", se = F, formula = "y~x") +
   xlab("") +
-  ylab("") 
+  ylab("")
 g2
 
 g <- gridExtra::grid.arrange(g1, g2, ncol = 2)
@@ -283,16 +290,16 @@ fit.stanfit %>%
 coeffs <- fit.stanfit %>%
   MCMC_result() %>%
   dplyr::filter(str_detect(Varname, pattern = "beta")) %>%
-  dplyr::select(Varname, MAP,U50,L50) %>%
+  dplyr::select(Varname, MAP, U50, L50) %>%
   dplyr::mutate(
     coef = str_sub(Varname, 1, 5),
     G = str_extract(Varname, pattern = "\\[.*?\\]")
-  ) %>% 
+  ) %>%
   dplyr::mutate(
     teamID = str_extract(G, pattern = "[0-9]+") %>% as.double()
   ) %>%
-  dplyr::select(-Varname) %>% 
-  tidyr::pivot_wider(names_from = coef, values_from = c(MAP,U50,L50))
+  dplyr::select(-Varname) %>%
+  tidyr::pivot_wider(names_from = coef, values_from = c(MAP, U50, L50))
 
 plot.tmp <- dat.tmp %>%
   dplyr::select(team, teamID) %>%
@@ -313,11 +320,14 @@ plot.data.set <- batter %>%
   group_nest(team) %>%
   right_join(plot.tmp)
 
-g <- plot.data.set %>% 
-  unnest(data) %>% 
-  ggplot(aes(x=salary,y=HR,group=team,color=team))+geom_point()+
-  geom_smooth(method="glm",formula="y~x",se=F,
-              method.args = list(family = poisson(link = 'log')))
+g <- plot.data.set %>%
+  unnest(data) %>%
+  ggplot(aes(x = salary, y = HR, group = team, color = team)) +
+  geom_point() +
+  geom_smooth(
+    method = "glm", formula = "y~x", se = F,
+    method.args = list(family = poisson(link = "log"))
+  )
 ggsave(g, filename = "../images/chapter25/Rplot25_04.png", dpi = 600, width = 8, height = 4)
 g
 
@@ -340,7 +350,7 @@ for (g in 1:12) {
       b0 = plot.data.set[g, ]$L50_beta0,
       b1 = plot.data.set[g, ]$L50_beta1, m = 0
     ), color = g, lty = 2) +
-    ggtitle(plot.data.set[g,]$team)
+    ggtitle(plot.data.set[g, ]$team)
 }
 
 g <- do.call(grid.arrange, plot.list)
@@ -352,7 +362,7 @@ g
 
 # ピッチャーのデータ ---------------------------------------------------------------
 
-dat.tmp <- pitcher%>%
+dat.tmp <- pitcher %>%
   mutate(
     NameID = as.factor(Name),
     teamID = as.factor(team)

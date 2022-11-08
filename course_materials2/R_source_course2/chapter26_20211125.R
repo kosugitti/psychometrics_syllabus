@@ -75,7 +75,7 @@ dat.tmp %>%
 g <- fit.df %>%
   dplyr::select(Varname, MAP, EAP) %>%
   dplyr::filter(str_detect(Varname, pattern = c("pred_class"))) %>%
-  mutate(Class = round(EAP) %>% factor(labels=c("一般","超一流"))) %>%
+  mutate(Class = round(EAP) %>% factor(labels = c("一般", "超一流"))) %>%
   mutate(ID = str_extract(Varname, pattern = "\\d+") %>% as.numeric()) %>%
   arrange(ID) %>%
   left_join(dat.tmp, by = "ID") %>%
@@ -107,7 +107,8 @@ data.frame(Seed = 0:20) %>% # 種子数を0から20と仮定する
 
 g <- ggplot(pois.dat, aes(x = Seed, y = Probability)) +
   geom_line(aes(color = Lambda)) +
-  geom_point()+theme(legend.position = "none")
+  geom_point() +
+  theme(legend.position = "none")
 ggsave(g, filename = "../images/chapter26/Rplot26_04.png", dpi = 600, width = 16, height = 9)
 g
 
@@ -132,17 +133,18 @@ fit.df <- fit.stanfit %>% MCMC_result()
 theta <- 0.61
 lambda <- 14.67
 N <- NROW(dat.tmp)
-g1 <- data.frame(FLG= rbinom(N,size=1, prob = theta) ) %>% 
-  rowwise() %>% 
-  mutate(Save = if_else(FLG==1,rpois(1,lambda),rpois(1,0))) %>% 
-  ggplot(aes(x=Save))+geom_histogram(binwidth=1)
+g1 <- data.frame(FLG = rbinom(N, size = 1, prob = theta)) %>%
+  rowwise() %>%
+  mutate(Save = if_else(FLG == 1, rpois(1, lambda), rpois(1, 0))) %>%
+  ggplot(aes(x = Save)) +
+  geom_histogram(binwidth = 1)
 g2 <- dat %>%
   dplyr::filter(position == "投手") %>%
   dplyr::filter(Games > 50) %>%
   ggplot(aes(x = Save)) +
-  geom_histogram(binwidth=1)
+  geom_histogram(binwidth = 1)
 library(patchwork)
-g <- g2/g1
+g <- g2 / g1
 ggsave(g, filename = "../images/chapter26/Rplot26_05.png", dpi = 600, width = 16, height = 9)
 g
 

@@ -7,7 +7,7 @@ options(mc.cores = parallel::detectCores())
 rstan_options(auto_write = TRUE)
 library(cmdstanr)
 cmdstanr::set_cmdstan_path("/home/rstudio/.cmdstanr/cmdstan-2.28.0")
-#cmdstanr::set_cmdstan_path("/Users/Napier/.cmdstanr/cmdstan-2.28.0")
+# cmdstanr::set_cmdstan_path("/Users/Napier/.cmdstanr/cmdstan-2.28.0")
 # データなど -------------------------------------------------------------------
 
 groupA <- c(30, 50, 70, 90, 60, 50, 70, 60)
@@ -52,22 +52,24 @@ g1 <- sampling2$draws() %>%
 
 plot(g1)
 
-g2 <- groupA %>% as.data.frame %>% 
-  ggplot(aes(x=.))+geom_histogram(binwidth=6)
+g2 <- groupA %>%
+  as.data.frame() %>%
+  ggplot(aes(x = .)) +
+  geom_histogram(binwidth = 6)
 
-ggsave(g1,filename = "../images/chapter20/Rplot20_01.png", dpi = 600, width = 8, height = 4)
+ggsave(g1, filename = "../images/chapter20/Rplot20_01.png", dpi = 600, width = 8, height = 4)
 
 pred <- sampling2$draws() %>%
   posterior::as_draws_df() %>%
   as_tibble() %>%
   dplyr::select(-lp__, -.chain, -.iteration) %>%
-  pivot_longer(-.draw) %>% 
-  dplyr::filter(str_detect(name,pattern="Xpred1")) %>% 
-  pivot_wider(names_from=name,values_from=value,id_cols=.draw) %>% 
-  dplyr::select(-.draw) %>% 
-  as.matrix 
+  pivot_longer(-.draw) %>%
+  dplyr::filter(str_detect(name, pattern = "Xpred1")) %>%
+  pivot_wider(names_from = name, values_from = value, id_cols = .draw) %>%
+  dplyr::select(-.draw) %>%
+  as.matrix()
 
-bayesplot::ppc_hist(y=groupA,yrep=pred[sample(nrow(pred),15),]) %>% 
+bayesplot::ppc_hist(y = groupA, yrep = pred[sample(nrow(pred), 15), ]) %>%
   ggsave(filename = "../images/chapter20/Rplot20_02.png", dpi = 600, width = 8, height = 4)
 
 

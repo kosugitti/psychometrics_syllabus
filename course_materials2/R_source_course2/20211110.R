@@ -21,11 +21,11 @@ g <- dat %>% ggplot(aes(x = weight, y = height)) +
 ggsave(g, filename = "../images/chapter24/Rplot24_01.png", dpi = 600, width = 8, height = 4)
 g
 
-resultlm <- lm(height~weight,dat)
+resultlm <- lm(height ~ weight, dat)
 
-lmFit <- data.frame(resultlm$fitted.values,dat$weight)
+lmFit <- data.frame(resultlm$fitted.values, dat$weight)
 
-g + stat_function(fun = dnorm, args = list(mean = lmFit[1,1], sd = 3), colour = "red") +
+g + stat_function(fun = dnorm, args = list(mean = lmFit[1, 1], sd = 3), colour = "red") +
   coord_flip()
 
 

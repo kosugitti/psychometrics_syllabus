@@ -89,23 +89,27 @@ sampling <- modelC$sample(
 sampling
 
 
-dat_raw <- data.frame(ID = 1:4,
-                      period1 = c(10,9,4,7),
-                      period2 = c(5,4,2,3),
-                      period3 = c(9,5,3,5))
+dat_raw <- data.frame(
+  ID = 1:4,
+  period1 = c(10, 9, 4, 7),
+  period2 = c(5, 4, 2, 3),
+  period3 = c(9, 5, 3, 5)
+)
 
-tidy_dat <- dat_raw %>% 
-  pivot_longer(-ID) %>% 
-  mutate(name = as.factor(name) %>% fct_relevel("period1","period2")) %>% 
+tidy_dat <- dat_raw %>%
+  pivot_longer(-ID) %>%
+  mutate(name = as.factor(name) %>% fct_relevel("period1", "period2")) %>%
   mutate(cond = as.numeric(name))
 
 modelC <- cmdstanr::cmdstan_model("Within.stan")
-dataSet <- list(L = NROW(tidy_dat),
-                N = max(tidy_dat$ID),
-                Lv = max(tidy_dat$cond),
-                id = tidy_dat$ID,
-                cond = tidy_dat$cond,
-                val = tidy_dat$value)
+dataSet <- list(
+  L = NROW(tidy_dat),
+  N = max(tidy_dat$ID),
+  Lv = max(tidy_dat$cond),
+  id = tidy_dat$ID,
+  cond = tidy_dat$cond,
+  val = tidy_dat$value
+)
 sampling <- modelC$sample(
   data = dataSet,
   chains = 4,

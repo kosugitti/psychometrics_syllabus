@@ -40,9 +40,9 @@ summary(result2, fit.measures = T, standardized = T)
 library(semPlot)
 semPaths(result2, what = "est")
 library(tidySEM)
-#png("../images/chapter13/Rplot13_01.png", width = 1000, height = 200)
+# png("../images/chapter13/Rplot13_01.png", width = 1000, height = 200)
 graph_sem(model = result2)
-#dev.off()
+# dev.off()
 
 ### FA
 model3 <- "
@@ -87,13 +87,13 @@ textual =~ x4 + x5 + x6
   speed ~ grade
 "
 result4.2 <- sem(model4.2, data = HolzingerSwineford1939)
-fit2 <- fitmeasures(result4.2) %>% transform
-fitmeasures(result4) %>% transform %>% 
-    bind_cols(fit2) %>% 
-    rename(before=1,after=2) %>% 
-    mutate_all(.fun=function(x) round(x,3)) %>% 
-    rownames_to_column("index") %>% 
-    filter(index %in% c("cfi","tli","gfi","agfi","aic","bic","rmsea","srma")) %>% 
-    mutate(index = stringr::str_to_upper(index)) %>% 
-    knitr::kable(format='latex',caption="修正前後での指標の変化",label="tbl::13_02")
-
+fit2 <- fitmeasures(result4.2) %>% transform()
+fitmeasures(result4) %>%
+  transform() %>%
+  bind_cols(fit2) %>%
+  rename(before = 1, after = 2) %>%
+  mutate_all(.fun = function(x) round(x, 3)) %>%
+  rownames_to_column("index") %>%
+  filter(index %in% c("cfi", "tli", "gfi", "agfi", "aic", "bic", "rmsea", "srma")) %>%
+  mutate(index = stringr::str_to_upper(index)) %>%
+  knitr::kable(format = "latex", caption = "修正前後での指標の変化", label = "tbl::13_02")

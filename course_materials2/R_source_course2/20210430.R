@@ -58,16 +58,17 @@ solve(A) %*% b
 # データの行列計算 ----------------------------------------------------------------
 
 dataset <- read_csv("baseballDecade.csv") %>%
-  dplyr::filter(Year=="2020年度") %>% 
+  dplyr::filter(Year == "2020年度") %>%
   dplyr::filter(position == "投手") %>%
   dplyr::select(Name, team, height, weight, salary, Win, Save) %>%
   na.omit() %>%
-  arrange(-Win) %>% print %>% 
+  arrange(-Win) %>%
+  print() %>%
   select(height, weight, salary) %>%
-  as.matrix() 
+  as.matrix()
 
 # write_csv(dat, "pitcher2020.csv")
-# 
+#
 # datafile <- read_csv("pitcher2020.csv")
 
 n <- nrow(dataset)
@@ -86,4 +87,4 @@ eig$values
 sum(eig$values)
 sum(diag(R))
 eig$vector
-eig$vector[,1]^2 %>% sum
+eig$vector[, 1]^2 %>% sum()

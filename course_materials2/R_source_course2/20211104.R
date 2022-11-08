@@ -24,13 +24,13 @@ fit <- model$sample(
 
 fit
 
-bayesplot::mcmc_areas(fit$draws(c("theta[1]", "theta[2]", "theta[3]"))) %>% 
-    ggsave(filename = "../images/chapter23/Rplot23_01.png", dpi = 600, width = 8, height = 4)
+bayesplot::mcmc_areas(fit$draws(c("theta[1]", "theta[2]", "theta[3]"))) %>%
+  ggsave(filename = "../images/chapter23/Rplot23_01.png", dpi = 600, width = 8, height = 4)
 fit
 
 # Kappa係数
 model2 <- cmdstanr::cmdstan_model("kappa.stan")
-dataSet <- list(Y=c(55,16,14,35))
+dataSet <- list(Y = c(55, 16, 14, 35))
 fit2 <- model2$sample(
   data = dataSet,
   chains = 4,

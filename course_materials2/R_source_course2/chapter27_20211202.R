@@ -12,8 +12,8 @@ fit3 <- model_3pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 dat.tmp <- dat %>%
   rowid_to_column("Pid") %>%
   pivot_longer(-Pid) %>%
-  mutate(Qid = str_extract(name, pattern = "\\d+") %>% as.numeric()) %>% 
-  dplyr::select(Pid,Qid,value)
+  mutate(Qid = str_extract(name, pattern = "\\d+") %>% as.numeric()) %>%
+  dplyr::select(Pid, Qid, value)
 
 # わざと欠損値を与える
 dat.tmp$value[1] <- NA
@@ -122,25 +122,28 @@ g
 # 推定値プロット -----------------------------------------------------------------
 
 g1 <- p <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
-  xlab("theta")+ggtitle("1PL model")
+  xlab("theta") +
+  ggtitle("1PL model")
 for (i in 1:10) {
   g1 <- g1 +
     stat_function(fun = oneParameters, args = list(b = tbl1$one_b[i]), color = palette()[i])
 }
 
 g2 <- p <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
-  xlab("theta")+ggtitle("2PL model")
+  xlab("theta") +
+  ggtitle("2PL model")
 for (i in 1:10) {
   g2 <- g2 +
     stat_function(fun = twoParameters, args = list(a = tbl2$two_a[i], b = tbl2$two_b[i]), color = palette()[i])
 }
 
 g3 <- p <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
-  xlab("theta")+ggtitle("3PL model")
+  xlab("theta") +
+  ggtitle("3PL model")
 for (i in 1:10) {
   g3 <- g3 +
-    stat_function(fun = threeParameters, args = list(a=tbl3$three_a[i],b=tbl3$three_b[i],c=tbl3$three_c[i]), color = palette()[i])
+    stat_function(fun = threeParameters, args = list(a = tbl3$three_a[i], b = tbl3$three_b[i], c = tbl3$three_c[i]), color = palette()[i])
 }
-g <- g1/g2/g3
+g <- g1 / g2 / g3
 ggsave(g, filename = "../images/chapter27/Rplot27_02.png", dpi = 600, width = 16, height = 16)
 g

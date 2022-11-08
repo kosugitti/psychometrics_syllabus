@@ -30,7 +30,7 @@ sample_cmdstan <- fit1cmdstan$draws() %>%
 
 # MCMCの結果の確認
 ## rstanの場合
-traceplot(fit1rstan,pars="mu")
+traceplot(fit1rstan, pars = "mu")
 ## cmdstanrの場合
 g1 <- fit1cmdstan$draws("mu") %>% bayesplot::mcmc_trace()
 plot(g1)
@@ -56,33 +56,32 @@ fit1cmdstan <- model$sample(
 
 ## 結果の解釈
 map_estimation <- function(z) {
-    density(z)$x[which.max(density(z)$y)]
+  density(z)$x[which.max(density(z)$y)]
 }
 
 
-sample_rstan %>% 
-    rowid_to_column("iter") %>%
-    dplyr::select(-lp__) %>% 
-    pivot_longer(-iter) %>% 
-    group_by(name) %>% 
-    summarise(
-        EAP = mean(value),
-        MED = median(value),
-        MAP = map_estimation(value),
-        U95 = quantile(value,prob=0.975),
-        L95 = quantile(value,prob=0.025)
-    )
+sample_rstan %>%
+  rowid_to_column("iter") %>%
+  dplyr::select(-lp__) %>%
+  pivot_longer(-iter) %>%
+  group_by(name) %>%
+  summarise(
+    EAP = mean(value),
+    MED = median(value),
+    MAP = map_estimation(value),
+    U95 = quantile(value, prob = 0.975),
+    L95 = quantile(value, prob = 0.025)
+  )
 
-sample_cmdstan %>% 
-    dplyr::select(-lp__,-.chain,-.iteration) %>% 
-    pivot_longer(-.draw) %>% 
-    group_by(name) %>% 
-    summarise(
-        EAP = mean(value),
-        MED = median(value),
-        MAP = map_estimation(value),
-        U95 = quantile(value,prob=0.975),
-        L95 = quantile(value,prob=0.025)
-    ) %>% 
-    knitr::kable(format="latex",digits = 3)
-
+sample_cmdstan %>%
+  dplyr::select(-lp__, -.chain, -.iteration) %>%
+  pivot_longer(-.draw) %>%
+  group_by(name) %>%
+  summarise(
+    EAP = mean(value),
+    MED = median(value),
+    MAP = map_estimation(value),
+    U95 = quantile(value, prob = 0.975),
+    L95 = quantile(value, prob = 0.025)
+  ) %>%
+  knitr::kable(format = "latex", digits = 3)

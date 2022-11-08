@@ -1,4 +1,4 @@
-rm(list=ls())
+rm(list = ls())
 library(lavaan)
 library(tidyverse)
 HolzingerSwineford1939
@@ -8,7 +8,7 @@ x4 ~ x5 + x6
 "
 result <- sem(model1, data = HolzingerSwineford1939)
 summary(result, fit.measures = TRUE)
-lm(x4 ~ x5+x6,data=HolzingerSwineford1939)
+lm(x4 ~ x5 + x6, data = HolzingerSwineford1939)
 
 model2 <- "
 x4 ~ x5
@@ -44,7 +44,7 @@ textual ~ visual
 speed ~ grade
 "
 
-result4 <- sem(model4,data = HolzingerSwineford1939)
+result4 <- sem(model4, data = HolzingerSwineford1939)
 summary(result4, fit.measures = T, standardized = T)
 
 modificationindices(result4)

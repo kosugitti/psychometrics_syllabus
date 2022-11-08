@@ -2,11 +2,11 @@ rm(list = ls())
 source("utilities.R")
 dat <- read_csv("weight.csv")
 g <- dat %>%
-  mutate(date = as.Date(date)) %>% 
+  mutate(date = as.Date(date)) %>%
   # dplyr::filter(date > "2019/01/01") %>%
   # dplyr::filter(date < "2022/01/01") %>%
   ggplot(aes(x = date, y = weight)) +
-  geom_point()+
+  geom_point() +
   scale_x_date(date_breaks = "6 month")
 g
 
@@ -20,9 +20,9 @@ dat1 <- dat %>%
   dplyr::filter(date < "2021/01/01")
 
 g <- dat1 %>%
-  mutate(date = as.Date(date)) %>% 
+  mutate(date = as.Date(date)) %>%
   ggplot(aes(x = date, y = weight)) +
-  geom_point()+
+  geom_point() +
   scale_x_date(date_breaks = "2 month")
 g
 ggsave(g, filename = "../images/chapter28/Rplot28_02.png", dpi = 600, width = 16, height = 9)
@@ -44,11 +44,12 @@ timeCheck <- fit.df %>%
 
 g <- dat1 %>%
   bind_cols(timeCheck) %>%
-  mutate(date = as.Date(date)) %>% 
+  mutate(date = as.Date(date)) %>%
   ggplot(aes(x = date, y = weight, color = as.factor(FLG))) +
-  geom_point() +  scale_x_date(date_breaks = "2 month")+
+  geom_point() +
+  scale_x_date(date_breaks = "2 month") +
   geom_hline(yintercept = 81.2, color = 1) +
-  geom_hline(yintercept = 83.1, color = 2) + 
+  geom_hline(yintercept = 83.1, color = 2) +
   theme(legend.position = "none")
 g
 ggsave(g, filename = "../images/chapter28/Rplot28_03.png", dpi = 600, width = 16, height = 9)
@@ -56,11 +57,12 @@ ggsave(g, filename = "../images/chapter28/Rplot28_03.png", dpi = 600, width = 16
 # 変化点検出 -------------------------------------------------------------------
 
 g <- dat %>%
-  mutate(date = as.Date(date)) %>% 
+  mutate(date = as.Date(date)) %>%
   dplyr::filter(date > "2021/01/01") %>%
   dplyr::filter(date < "2021/11/01") %>%
   ggplot(aes(x = date, y = weight)) +
-  geom_point()+scale_x_date(date_breaks = "2 month")
+  geom_point() +
+  scale_x_date(date_breaks = "2 month")
 g
 ggsave(g, filename = "../images/chapter28/Rplot28_04.png", dpi = 600, width = 16, height = 9)
 
@@ -86,7 +88,7 @@ g <- dat %>%
   dplyr::filter(date < "2021/11/01") %>%
   rowid_to_column("Date") %>%
   ggplot(aes(x = Date, y = weight)) +
-  geom_point() + 
+  geom_point() +
   geom_segment(x = 1, xend = Est$tau, y = Est$mu2, yend = Est$mu2, color = 2) +
   geom_segment(x = Est$tau, xend = dataSet$L, y = Est$mu1, yend = Est$mu1, color = 2) +
   geom_vline(xintercept = Est$tau, color = 3, lwd = 2)
@@ -96,11 +98,12 @@ ggsave(g, filename = "../images/chapter28/Rplot28_05.png", dpi = 600, width = 16
 # 折線回帰 --------------------------------------------------------------------
 
 g <- dat %>%
-  mutate(date = as.Date(date)) %>% 
+  mutate(date = as.Date(date)) %>%
   dplyr::filter(date > "2016/01/01") %>%
   dplyr::filter(date < "2016/12/01") %>%
   ggplot(aes(x = date, y = weight)) +
-  geom_point()+scale_x_date(date_breaks = "2 month")
+  geom_point() +
+  scale_x_date(date_breaks = "2 month")
 
 
 dat3 <- dat %>%
@@ -109,8 +112,8 @@ dat3 <- dat %>%
   rowid_to_column("cDate")
 
 
-g <- dat3 %>% 
-  mutate(date = as.Date(date)) %>% 
+g <- dat3 %>%
+  mutate(date = as.Date(date)) %>%
   ggplot(aes(x = date, y = weight)) +
   geom_point() +
   scale_x_date(date_labels = "%m/%d")
@@ -180,7 +183,8 @@ g <- ggplot() +
     xlim = c(Est2b$tau, NROW(dat3)),
     fun = function(x) Est2b$beta0b + Est2b$beta1b * x, aes(color = palette()[2]), lty = 2, lwd = 2
   ) +
-  geom_vline(xintercept = Est2b$tau, color = 3, lwd = 2)+theme(legend.position = "none")
+  geom_vline(xintercept = Est2b$tau, color = 3, lwd = 2) +
+  theme(legend.position = "none")
 
 ggsave(g, filename = "../images/chapter28/Rplot28_08.png", dpi = 600, width = 16, height = 9)
 
@@ -191,8 +195,8 @@ dat3.kadai <- dat %>%
   dplyr::filter(date > "2015/01/01") %>%
   dplyr::filter(date < "2015/12/10") %>%
   rowid_to_column("cDate")
-g <- dat3.kadai %>% 
-  mutate(date = as.Date(date)) %>% 
+g <- dat3.kadai %>%
+  mutate(date = as.Date(date)) %>%
   ggplot(aes(x = date, y = weight)) +
   geom_point() +
   scale_x_date(date_labels = "%m/%d")
@@ -226,6 +230,6 @@ g <- ggplot() +
     xlim = c(Est2b$tau, NROW(dat3.kadai)),
     fun = function(x) Est2b$beta0b + Est2b$beta1b * x, aes(color = palette()[2]), lty = 2, lwd = 2
   ) +
-  geom_vline(xintercept = Est2b$tau, color = 3, lwd = 2)+theme(legend.position = "none")
+  geom_vline(xintercept = Est2b$tau, color = 3, lwd = 2) +
+  theme(legend.position = "none")
 g
-
