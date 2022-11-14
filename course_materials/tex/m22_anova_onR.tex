@@ -220,7 +220,7 @@ Residuals  9  11.75  1.3056
 
 これだけですから，\texttt{lm}関数だけでいいじゃないかと考える人もいるかもしれません。基本的には問題ないのですが，分散分析は「群のサンプルサイズが違う場合」や，「分散の計算」においていくつかの計算バリエーションがあり，Rデフォルトの\texttt{lm}関数では十分対応できなくなるシーンが出てきます。
 
-そこで先ほど導入した，分散分析線用関数\texttt{anovakun}を使います。実際の使い方は次のようになります(\texttt{code:\ref{code:23_08}})。
+そこで先ほど導入した，分散分析専用関数\texttt{anovakun}を使います。実際の使い方は次のようになります(\texttt{code:\ref{code:23_08}})。
 \begin{lstlisting}[language=c++,label={code:23_08},caption={anovakunで実行}]
 anovakun(Example1[,2:3],"As",3,eps=T)
 \end{lstlisting}
