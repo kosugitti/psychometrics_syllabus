@@ -1,13 +1,15 @@
 # 心理学データ解析応用/伴走サイトコード -----------------------------------------------------
 #  Programmed by kosugitti
 #  Licence ; Creative Commons BY-SA license (CC BY-SA) version 4.0
-## Lesson 12. IRT models Cmdstan version.
+## Lesson 12. IRT models Rstan version.
 
 # 準備 ----------------------------------------------------------------------
 
 rm(list = ls())
 library(tidyverse)
-library(cmdstanr)
+library(rstan)
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = TRUE)
 library(bayesplot)
 library(MASS)
 
@@ -15,14 +17,14 @@ library(MASS)
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
 }
-
 ## MCMCサンプルをデータフレームにする関数
 MCMCtoDF <- function(fit) {
-  fit$draws() %>%
-    posterior::as_draws_df() %>%
+  fit %>%
+    rstan::extract() %>%
+    as.data.frame() %>%
     tibble::as_tibble() %>%
-    dplyr::select(-lp__, -.draw, -.chain, -.iteration) %>%
     tibble::rowid_to_column("iter") %>%
+    dplyr::select(-lp__) %>%
     tidyr::pivot_longer(-iter) -> MCMCsample
   return(MCMCsample)
 }
@@ -39,8 +41,6 @@ MCMCsummary <- function(MCMCsample) {
       L95 = quantile(value, prob = 0.025)
     )
 }
-
-
 
 # データの読み込み ----------------------------------------------------------------
 
@@ -73,7 +73,7 @@ g1 <- p +
   ggtitle("1PL model.困難度母数はそれぞれ1，-1，2")
 g2 <- p + stat_function(fun = twoParameters, args = list(a = 1, b = 1), color = palette()[2]) +
   stat_function(fun = twoParameters, args = list(a = 0.8, b = -1), color = palette()[3]) +
-  stat_function(fun = twoParameters, args = list(a = 2, b = 2), color = palette()[4]) + ylab("pass") +
+  stat_function(fun = twoParameters, args = list(a = 1.2, b = 2), color = palette()[4]) + ylab("pass") +
   ggtitle("2PL model.識別力母数はそれぞれ1，0.8，1.2")
 g3 <- p + stat_function(fun = threeParameters, args = list(a = 1, b = 1, c = 0), color = palette()[2]) +
   stat_function(fun = threeParameters, args = list(a = 0.8, b = -1, c = 0.2), color = palette()[3]) +
@@ -87,14 +87,14 @@ plot(g3)
 
 # Stanによる推定 ---------------------------------------------------------------
 
-model_1pl <- cmdstan_model("cmdstan/oneParameter.stan")
-model_2pl <- cmdstan_model("cmdstan/twoParameters.stan")
-model_3pl <- cmdstan_model("cmdstan/threeParameters.stan")
+model_1pl <- stan_model("rstan/oneParameter.stan")
+model_2pl <- stan_model("rstan/twoParameters.stan")
+model_3pl <- stan_model("rstan/threeParameters.stan")
 
 dataSet <- list(N = NROW(dat), M = NCOL(dat), resp = as.matrix(dat))
-fit1 <- model_1pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
-fit2 <- model_2pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
-fit3 <- model_3pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
+fit1 <- rstan::sampling(model_1pl, data = dataSet, iter = 6000, warmup = 1000)
+fit2 <- rstan::sampling(model_2pl, data = dataSet, iter = 6000, warmup = 1000)
+fit3 <- rstan::sampling(model_3pl, data = dataSet, iter = 6000, warmup = 1000)
 
 fit1 %>%
   MCMCtoDF() %>%
@@ -112,8 +112,9 @@ tbl1 <-
   MCMCtoDF() %>%
   MCMCsummary() %>%
   dplyr::select(name, EAP) %>%
-  dplyr::filter(str_detect(name, pattern = "[a-b]\\[\\d+\\]")) %>%
+  dplyr::filter(str_detect(name, pattern = "[a-b]\\.\\d+")) %>%
   dplyr::filter(!str_detect(name, pattern = "theta")) %>%
+  dplyr::filter(!str_detect(name, pattern = "prob")) %>%
   dplyr::mutate(Parameters = str_extract(name, pattern = "[ab]")) %>%
   dplyr::mutate(Qid = str_extract(name, "\\d+") %>% as.numeric()) %>%
   dplyr::select(-name) %>%
@@ -125,8 +126,9 @@ tbl2 <-
   MCMCtoDF() %>%
   MCMCsummary() %>%
   dplyr::select(name, EAP) %>%
-  dplyr::filter(str_detect(name, pattern = "[a-b]\\[\\d+\\]")) %>%
+  dplyr::filter(str_detect(name, pattern = "[a-b]\\.\\d+")) %>%
   dplyr::filter(!str_detect(name, pattern = "theta")) %>%
+  dplyr::filter(!str_detect(name, pattern = "prob")) %>%
   dplyr::mutate(Parameters = str_extract(name, pattern = "[ab]")) %>%
   dplyr::mutate(Qid = str_extract(name, "\\d+") %>% as.numeric()) %>%
   dplyr::select(-name) %>%
@@ -138,8 +140,9 @@ tbl3 <-
   MCMCtoDF() %>%
   MCMCsummary() %>%
   dplyr::select(name, EAP) %>%
-  dplyr::filter(str_detect(name, pattern = "[a-c]\\[\\d+\\]")) %>%
+  dplyr::filter(str_detect(name, pattern = "[a-c]\\.\\d+")) %>%
   dplyr::filter(!str_detect(name, pattern = "theta")) %>%
+  dplyr::filter(!str_detect(name, pattern = "prob")) %>%
   dplyr::mutate(Parameters = str_extract(name, pattern = "[abc]")) %>%
   dplyr::mutate(Qid = str_extract(name, "\\d+") %>% as.numeric()) %>%
   dplyr::select(-name) %>%
@@ -202,10 +205,10 @@ dataSet <- list(
   resp = dat.tmp$value
 )
 
-model_2pl_ver2 <- cmdstan_model("cmdstan/twoParameters2.stan")
+model_2pl_ver2 <- rstan::stan_model("rstan/twoParameters2.stan")
 
-fit2.2 <- model_2pl_ver2$sample(
+fit2.2 <- rstan::sampling(
+  model_2pl_ver2,
   data = dataSet,
-  chains = 4,
-  parallel_chains = 4
+  chains = 4
 )

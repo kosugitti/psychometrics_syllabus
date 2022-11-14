@@ -52,9 +52,9 @@ dataSet <- list(Lv = 3, N = 4, X = Example)
 fit <- model$sample(
   data = dataSet,
   chains = 4,
-  iter_sampling = 5000,
+  parallel_chains = 4,
   iter_warmup = 1000,
-  parallel_chains = 4
+  iter_sampling = 5000
 )
 
 fit %>%
@@ -83,9 +83,9 @@ dataSet <- list(Lv = Lv, L = NROW(dat), idx = dat$Idx, X = dat$value)
 fit <- model$sample(
   data = dataSet,
   chains = 4,
-  iter_sampling = 5000,
+  parallel_chains = 4,
   iter_warmup = 1000,
-  parallel_chains = 4
+  iter_sampling = 5000
 )
 
 fit %>%

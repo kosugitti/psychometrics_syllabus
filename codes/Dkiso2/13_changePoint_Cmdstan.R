@@ -1,15 +1,13 @@
 # 心理学データ解析応用/伴走サイトコード -----------------------------------------------------
 #  Programmed by kosugitti
 #  Licence ; Creative Commons BY-SA license (CC BY-SA) version 4.0
-## Lesson 13. Change Point models Rstan version.
+## Lesson 13. Change Point models Cmdstan version.
 
 # 準備 ----------------------------------------------------------------------
 
 rm(list = ls())
 library(tidyverse)
-library(rstan)
-options(mc.cores = parallel::detectCores())
-rstan_options(auto_write = TRUE)
+library(cmdstanr)
 library(bayesplot)
 library(MASS)
 
@@ -17,14 +15,14 @@ library(MASS)
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
 }
+
 ## MCMCサンプルをデータフレームにする関数
 MCMCtoDF <- function(fit) {
-  fit %>%
-    rstan::extract() %>%
-    as.data.frame() %>%
+  fit$draws() %>%
+    posterior::as_draws_df() %>%
     tibble::as_tibble() %>%
+    dplyr::select(-lp__, -.draw, -.chain, -.iteration) %>%
     tibble::rowid_to_column("iter") %>%
-    dplyr::select(-lp__) %>%
     tidyr::pivot_longer(-iter) -> MCMCsample
   return(MCMCsample)
 }
@@ -42,11 +40,13 @@ MCMCsummary <- function(MCMCsample) {
     )
 }
 
+
+
 # data plot ---------------------------------------------------------------
 
 dat <- read_csv("weight.csv")
 g <- dat %>%
-  mutate(date = as.Date(date)) %>%
+  dplyr::mutate(date = as.Date(date)) %>%
   # dplyr::filter(date > "2019/01/01") %>%
   # dplyr::filter(date < "2022/01/01") %>%
   ggplot(aes(x = date, y = weight)) +
@@ -62,19 +62,22 @@ dat1 <- dat %>%
   dplyr::filter(date < "2021/01/01")
 
 g <- dat1 %>%
-  mutate(date = as.Date(date)) %>%
+  dplyr::mutate(date = as.Date(date)) %>%
   ggplot(aes(x = date, y = weight)) +
   geom_point() +
   scale_x_date(date_breaks = "2 month")
 g
 
 
-model <- rstan::stan_model("rstan/changePoint1.stan")
+model <- cmdstanr::cmdstan_model("cmdstan/changePoint1.stan")
 dataSet <- list(L = NROW(dat1), W = dat1$weight)
-fit <- sampling(model,
+fit <- model$sample(
   data = dataSet,
   chains = 4,
-  seed = 12345
+  parallel_chains = 4,
+  seed = 12345,
+  iter_warmup = 1000,
+  iter_sampling = 5000
 )
 
 fit %>%
@@ -92,11 +95,10 @@ timeCheck <-
   dplyr::select(time, MAP) %>%
   dplyr::mutate(FLG = if_else(MAP > .5, 1, 0))
 
-
 ## プロット
 g <- dat1 %>%
   bind_cols(timeCheck) %>%
-  mutate(date = as.Date(date)) %>%
+  dplyr::mutate(date = as.Date(date)) %>%
   ggplot(aes(x = date, y = weight, color = as.factor(FLG))) +
   geom_point() +
   scale_x_date(date_breaks = "2 month") +
@@ -122,12 +124,15 @@ dat2 <- dat %>%
   dplyr::filter(date > "2021/01/01") %>%
   dplyr::filter(date < "2021/11/01")
 
-model <- rstan::stan_model("rstan/changePoint2.stan")
+model <- cmdstanr::cmdstan_model("cmdstan/changePoint2.stan")
 dataSet <- list(L = NROW(dat2), W = dat2$weight)
-fit <- sampling(model,
+fit <- model$sample(
   data = dataSet,
   chains = 4,
-  seed = 12345
+  parallel_chains = 4,
+  seed = 12345,
+  iter_warmup = 1000,
+  iter_sampling = 5000
 )
 
 ## 変化点検出
@@ -140,7 +145,6 @@ Est <-
   rename(mu1 = 1, mu2 = 2, sigma = 3, tau = 4)
 ## いつでしょう
 dat2[145, ]
-
 ## プロット
 g <- dat %>%
   dplyr::filter(date > "2021/01/01") %>%
@@ -170,13 +174,15 @@ dat3 <- dat %>%
   tibble::rowid_to_column("cDate")
 
 
-model <- rstan::stan_model("rstan/changePoint3.stan")
+model <- cmdstanr::cmdstan_model("cmdstan/changePoint3.stan")
 dataSet <- list(L = NROW(dat3), X = dat3$cDate, W = dat3$weight)
-fit <- rstan::sampling(
-  model,
+fit <- model$sample(
   data = dataSet,
   chains = 4,
-  seed = 8931
+  parallel_chains = 4,
+  seed = 8931,
+  iter_warmup = 1000,
+  iter_sampling = 5000
 )
 
 ## 変化点はいつ？
@@ -197,15 +203,18 @@ g <- ggplot() +
 g
 
 
-# 俺線ひっつけモデル ---------------------------------------------------------------
+# 折れ線ひっつけモデル ---------------------------------------------------------------
 
 
-model <- rstan::stan_model("rstan/changePoint3b.stan")
+model <- cmdstanr::cmdstan_model("cmdstan/changePoint3b.stan")
 dataSet <- list(L = NROW(dat3), X = dat3$cDate, W = dat3$weight)
-fit <- sampling(
-  model,
+fit <- model$sample(
   data = dataSet,
   chains = 4,
+  parallel_chains = 4,
+  seed = 8931,
+  iter_warmup = 1000,
+  iter_sampling = 5000
 )
 
 ## 折れたのはいつ？
@@ -230,7 +239,6 @@ g <- ggplot() +
   geom_vline(xintercept = Est2b$tau, color = 3, lwd = 2) +
   theme(legend.position = "none")
 g
-
 
 # 課題 ----------------------------------------------------------------------
 

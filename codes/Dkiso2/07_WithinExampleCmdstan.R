@@ -95,9 +95,9 @@ model <- cmdstanr::cmdstan_model("cmdstan/paired_t_tidy.stan")
 fit <- model$sample(
   data = dataSet,
   chains = 4,
-  iter_sampling = 5000,
+  parallel_chains = 4,
   iter_warmup = 1000,
-  parallel_chains = 4
+  iter_sampling = 5000
 )
 
 fit %>%

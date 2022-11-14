@@ -82,8 +82,8 @@ model <- rstan::stan_model("rstan/glm_poisson.stan")
 fit <- rstan::sampling(model,
   data = dataSet,
   chains = 4,
-  iter = 3000,
-  warmup = 2000
+  iter = 6000,
+  warmup = 1000
 )
 
 ### 結果の出力
@@ -116,7 +116,9 @@ dataSet <- list(
 fit <- rstan::sampling(
   model,
   data = dataSet,
-  chains = 4
+  chains = 4,
+  iter = 6000,
+  warmup = 1000
 )
 
 # 課題2，階層線形モデル -------------------------------------------------------------
@@ -151,7 +153,7 @@ model <- rstan::stan_model("rstan/glmm_poisson.stan")
 fit_glmm <- rstan::sampling(
   model,
   data = dataSet,
-  iter = 5000,
+  iter = 6000,
   warmup = 1000
 )
 

@@ -1,13 +1,15 @@
 # 心理学データ解析応用/伴走サイトコード -----------------------------------------------------
 #  Programmed by kosugitti
 #  Licence ; Creative Commons BY-SA license (CC BY-SA) version 4.0
-## Lesson 11. Mixture model Cmdstan version.
+## Lesson 11. Mixture model Rstan version.
 
 # 準備 ----------------------------------------------------------------------
 
 rm(list = ls())
 library(tidyverse)
-library(cmdstanr)
+library(rstan)
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = TRUE)
 library(bayesplot)
 library(MASS)
 
@@ -15,14 +17,14 @@ library(MASS)
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
 }
-
 ## MCMCサンプルをデータフレームにする関数
 MCMCtoDF <- function(fit) {
-  fit$draws() %>%
-    posterior::as_draws_df() %>%
+  fit %>%
+    rstan::extract() %>%
+    as.data.frame() %>%
     tibble::as_tibble() %>%
-    dplyr::select(-lp__, -.draw, -.chain, -.iteration) %>%
     tibble::rowid_to_column("iter") %>%
+    dplyr::select(-lp__) %>%
     tidyr::pivot_longer(-iter) -> MCMCsample
   return(MCMCsample)
 }
@@ -39,8 +41,6 @@ MCMCsummary <- function(MCMCsample) {
       L95 = quantile(value, prob = 0.025)
     )
 }
-
-
 
 # データの読み込み ----------------------------------------------------------------
 
@@ -67,14 +67,15 @@ dat.tmp <- dat %>%
   tibble::rowid_to_column("ID")
 
 dataSet <- list(K = 2, L = NROW(dat.tmp), Y = dat.tmp$salary.log)
-model <- cmdstanr::cmdstan_model("cmdstan/latent.stan")
+model <- rstan::stan_model("rstan/latent.stan")
 
 ## サンプリングの際に，Rhatがうまくいかないことがあれば，違うseed値でやり直してみてください。
-fit <- model$sample(
+fit <- sampling(model,
   data = dataSet,
   chains = 4,
-  parallel_chains = 4,
-  seed = 12345
+  seed = 12345,
+  iter = 6000,
+  warmup = 1000
 )
 
 fitDF <- fit %>% MCMCtoDF()
@@ -100,6 +101,8 @@ fitDF %>%
   geom_histogram(binwidth = 1000)
 
 
+
+
 # ゼロ過剰ポアソン ----------------------------------------------------------------
 
 ## データの素描
@@ -115,14 +118,15 @@ dat.tmp <- dat %>%
   dplyr::filter(Games > 50) %>%
   dplyr::select(Save)
 
-model <- cmdstan_model("cmdstan/ziPoisson.stan")
+model <- rstan::stan_model("rstan/ziPoisson.stan")
 
 dataSet <- list(L = NROW(dat.tmp), Y = dat.tmp$Save)
-fit <- model$sample(
+fit <- sampling(model,
   data = dataSet,
   chains = 4,
-  parallel_chains = 4,
-  seed = 12345
+  seed = 12345,
+  iter = 6000,
+  warmup = 1000
 )
 
 fit %>%
@@ -172,11 +176,12 @@ dat.tmp <- dat %>%
   dplyr::select(Save, salary) %>%
   dplyr::mutate(salary = salary / 1000)
 
-model <- cmdstan_model("cmdstan/ziPoisson2.stan")
+model <- rstan::stan_model("rstan/ziPoisson2.stan")
 dataSet <- list(L = NROW(dat.tmp), Y = dat.tmp$Save, X = dat.tmp$salary)
-fit <- model$sample(
+fit <- sampling(model,
   data = dataSet,
   chains = 4,
-  parallel_chains = 4,
-  seed = 12345
+  seed = 12345,
+  iter = 6000,
+  warmup = 1000
 )

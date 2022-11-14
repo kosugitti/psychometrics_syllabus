@@ -1,30 +1,30 @@
 # 心理学データ解析応用/伴走サイトコード -----------------------------------------------------
 #  Programmed by kosugitti
 #  Licence ; Creative Commons BY-SA license (CC BY-SA) version 4.0
-## Lesson 8. Kappa coefficients. rstan Version
+## Lesson 8. Kappa coefficients. Cmdstan Version
 
 # 準備 ----------------------------------------------------------------------
 
 rm(list = ls())
 library(tidyverse)
-library(rstan)
-options(mc.cores = parallel::detectCores())
-rstan_options(auto_write = TRUE)
+library(cmdstanr)
 library(bayesplot)
 library(MASS)
+
+
 
 ## MAP関数
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
 }
+
 ## MCMCサンプルをデータフレームにする関数
 MCMCtoDF <- function(fit) {
-  fit %>%
-    rstan::extract() %>%
-    as.data.frame() %>%
+  fit$draws() %>%
+    posterior::as_draws_df() %>%
     tibble::as_tibble() %>%
+    dplyr::select(-lp__, -.draw, -.chain, -.iteration) %>%
     tibble::rowid_to_column("iter") %>%
-    dplyr::select(-lp__) %>%
     tidyr::pivot_longer(-iter) -> MCMCsample
   return(MCMCsample)
 }
@@ -44,27 +44,28 @@ MCMCsummary <- function(MCMCsample) {
 
 # モデル ---------------------------------------------------------------------
 
-model <- rstan::stan_model("rstan/categorical1.stan")
-fit <- rstan::sampling(model,
+model <- cmdstanr::cmdstan_model("cmdstan/categorical1.stan")
+fit <- model$sample(
   data = list(K = 3, X = c(51, 45, 27)),
   chains = 4,
-  iter = 5000,
-  warmup = 1000
+  parallel_chains = 4,
+  iter_warmup = 1000,
+  iter_sampling = 5000
 )
-
 
 fit %>%
   MCMCtoDF() %>%
   MCMCsummary()
 
 # Kappa係数
-model <- rstan::stan_model("rstan/kappa.stan")
+model <- cmdstanr::cmdstan_model("cmdstan/kappa.stan")
 dataSet <- list(Y = c(55, 16, 14, 35))
-fit <- sampling(model,
+fit <- model$sample(
   data = dataSet,
   chains = 4,
-  iter = 5000,
-  warmup = 1000
+  parallel_chains = 4,
+  iter_warmup = 1000,
+  iter_sampling = 5000
 )
 
 fit %>%

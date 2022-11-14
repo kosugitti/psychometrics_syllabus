@@ -76,9 +76,9 @@ dataSet <- list(X1 = groupA, X2 = groupB, N1 = 8, N2 = 8, C = 3)
 fit <- model$sample(
   data = dataSet,
   chains = 4,
-  iter_sampling = 5000,
+  parallel_chains = 4,
   iter_warmup = 1000,
-  parallel_chains = 4
+  iter_sampling = 5000
 )
 
 fit
@@ -106,9 +106,9 @@ model <- cmdstanr::cmdstan_model("cmdstan/ttest03.stan")
 fit <- model$sample(
   data = dataSet,
   chains = 4,
-  iter_sampling = 5000,
+  parallel_chains = 4,
   iter_warmup = 1000,
-  parallel_chains = 4
+  iter_sampling = 5000
 )
 
 fit
@@ -136,9 +136,9 @@ model <- cmdstanr::cmdstan_model("cmdstan/ttest03.stan")
 fit <- model$sample(
   data = dataSet,
   chains = 4,
-  iter_sampling = 5000,
+  parallel_chains = 4,
   iter_warmup = 1000,
-  parallel_chains = 4
+  iter_sampling = 5000
 )
 
 fit

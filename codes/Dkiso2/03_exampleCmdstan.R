@@ -33,7 +33,7 @@ fit <- model$sample(
   chains = 4,
   parallel_chains = 4,
   iter_warmup = 1000,
-  iter_sampling = 4000
+  iter_sampling = 5000
 )
 
 

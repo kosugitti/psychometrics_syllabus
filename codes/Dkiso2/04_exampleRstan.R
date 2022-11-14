@@ -1,20 +1,20 @@
 # 心理学データ解析応用/伴走サイトコード -----------------------------------------------------
 #  Programmed by kosugitti
 #  Licence ; Creative Commons BY-SA license (CC BY-SA) version 4.0
-## Lesson 4. Alternatives for t-test. Cmdstanr Version
+## Lesson 4. Alternatives for t-test. Rstan Version
 
 # 準備 ----------------------------------------------------------------------
 
 rm(list = ls())
 library(tidyverse)
-library(cmdstanr)
 library(bayesplot)
+library(rstan)
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = TRUE)
 ## MAP関数
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
 }
-
-
 
 # データなど -------------------------------------------------------------------
 
@@ -27,28 +27,27 @@ t.test(groupA, groupB, var.equal = TRUE)
 
 
 # Modeling ----------------------------------------------------------------
-model <- cmdstanr::cmdstan_model("cmdstan/ttest01.stan")
+model <- rstan::stan_model("rstan/ttest01.stan")
 dataSet <- list(X1 = groupA, X2 = groupB, N1 = 8, N2 = 8)
 
-fit <- model$sample(
+fit <- rstan::sampling(model,
   data = dataSet,
   chains = 4,
-  iter_sampling = 5000,
-  iter_warmup = 1000,
-  parallel_chains = 4
+  iter = 6000,
+  warmup = 1000
 )
+
 
 ## 結果
 fit
-
 ## 可視化
-fit$draws() %>%
-  bayesplot::mcmc_areas(
-    pars = c("mu1", "mu2"),
-    prob = 0.5, # 50% intervals
-    prob_outer = 0.95, # 99%
-    point_est = "mean"
-  )
+plot(fit, pars = c("mu1", "mu2"), show_density = TRUE)
+
+
+
+
+
+
 
 # Welchの補正 ----------------------------------------------------------------
 
@@ -66,21 +65,21 @@ t.test(groupA, groupB, var.equal = FALSE)
 
 ## 同じモデルでこのデータで再推定
 dataSet <- list(X1 = groupA, X2 = groupB, N1 = 8, N2 = 8)
-fit <- model$sample(
+fit <- rstan::sampling(model,
   data = dataSet,
   chains = 4,
-  iter_sampling = 5000,
-  iter_warmup = 1000,
-  parallel_chains = 4
+  iter = 6000,
+  warmup = 1000
 )
+
 
 # サンプリングから計算 --------------------------------------------------------------
 
 ## MCMCサンプルをデータフレームにする
-fit$draws() %>%
-  posterior::as_draws_df() %>%
-  tibble::as_tibble() %>%
-  dplyr::select(-.draw, -.chain, -.iteration) -> MCMCsample
+fit %>%
+  rstan::extract() %>%
+  as.data.frame() %>%
+  as_tibble() -> MCMCsample
 
 MCMCsample %>%
   mutate(diff = mu1 - mu2) %>%
@@ -89,21 +88,20 @@ MCMCsample %>%
 
 # Generated quantities ----------------------------------------------------
 
-model <- cmdstanr::cmdstan_model("cmdstan/ttest03.stan")
+model <- rstan::stan_model("rstan/ttest03.stan")
 
 groupA <- c(30, 50, 70, 90, 60, 50, 70, 60)
 groupB <- c(30, 45, 60, 40, 60, 50, 40, 30)
 
 ## 生成量を計算するモデルを実行
 dataSet <- list(X1 = groupA, X2 = groupB, N1 = 8, N2 = 8)
-
-fit <- model$sample(
+fit <- sampling(model,
   data = dataSet,
   chains = 4,
-  iter_sampling = 5000,
-  iter_warmup = 1000,
-  parallel_chains = 4
+  iter = 6000,
+  warmup = 1000
 )
+
 
 fit
 

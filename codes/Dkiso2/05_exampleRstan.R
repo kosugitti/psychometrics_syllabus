@@ -30,7 +30,7 @@ dataSet <- list(X1 = groupA, X2 = groupB, N1 = 8, N2 = 8)
 fit <- rstan::sampling(model,
   data = dataSet,
   chains = 4,
-  iter = 5000,
+  iter = 6000,
   warmup = 1000
 )
 
@@ -76,9 +76,9 @@ dataSet <- list(X1 = groupA, X2 = groupB, N1 = 8, N2 = 8, C = 3)
 
 fit <- rstan::sampling(model,
   dataSet,
-  warmup = 1000,
-  iter = 4000,
-  chains = 4
+  chains = 4,
+  iter = 6000,
+  warmup = 1000
 )
 
 fit
@@ -106,7 +106,7 @@ model <- rstan::stan_model("rstan/ttest03.stan")
 fit <- rstan::sampling(model,
   data = dataSet,
   chains = 4,
-  sampling = 5000,
+  iter = 6000,
   warmup = 1000
 )
 
@@ -136,7 +136,7 @@ model <- rstan::stan_model("rstan/ttest03.stan")
 fit <- rstan::sampling(model,
   data = dataSet,
   chains = 4,
-  sampling = 5000,
+  iter = 6000,
   warmup = 1000
 )
 

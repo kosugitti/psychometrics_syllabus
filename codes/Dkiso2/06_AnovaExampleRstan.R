@@ -53,7 +53,7 @@ fit <- rstan::sampling(
   model,
   data = dataSet,
   chains = 4,
-  iter = 5000,
+  iter = 6000,
   warmup = 1000
 )
 
@@ -84,7 +84,7 @@ fit <- rstan::sampling(
   model,
   data = dataSet,
   chains = 4,
-  iter = 5000,
+  iter = 6000,
   warmup = 1000
 )
 

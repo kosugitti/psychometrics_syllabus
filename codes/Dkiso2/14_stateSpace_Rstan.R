@@ -1,13 +1,15 @@
 # 心理学データ解析応用/伴走サイトコード -----------------------------------------------------
 #  Programmed by kosugitti
 #  Licence ; Creative Commons BY-SA license (CC BY-SA) version 4.0
-## Lesson 14. State Space Model Cmdstan version.
+## Lesson 14. State Space Model Rstan version.
 
 # 準備 ----------------------------------------------------------------------
 
 rm(list = ls())
 library(tidyverse)
-library(cmdstanr)
+library(rstan)
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = TRUE)
 library(bayesplot)
 library(MASS)
 
@@ -15,14 +17,14 @@ library(MASS)
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
 }
-
 ## MCMCサンプルをデータフレームにする関数
 MCMCtoDF <- function(fit) {
-  fit$draws() %>%
-    posterior::as_draws_df() %>%
+  fit %>%
+    rstan::extract() %>%
+    as.data.frame() %>%
     tibble::as_tibble() %>%
-    dplyr::select(-lp__, -.draw, -.chain, -.iteration) %>%
     tibble::rowid_to_column("iter") %>%
+    dplyr::select(-lp__) %>%
     tidyr::pivot_longer(-iter) -> MCMCsample
   return(MCMCsample)
 }
@@ -40,11 +42,9 @@ MCMCsummary <- function(MCMCsample) {
     )
 }
 
-
 # データ読み込み -----------------------------------------------------------------
 
 dat <- read_csv("weight.csv")
-
 ## 素描
 g <- dat %>%
   dplyr::filter(date > "2020/01/01") %>%
@@ -58,13 +58,15 @@ dat1 <- dat %>%
   dplyr::filter(date > "2020/01/01") %>%
   dplyr::mutate(date = as.Date(date))
 
-model <- cmdstanr::cmdstan_model("cmdstan/StateSpace.stan")
+model <- rstan::stan_model("rstan/StateSpace.stan")
 dataSet <- list(L = NROW(dat1), W = dat1$weight)
-fit <- model$sample(
+fit <- rstan::sampling(model,
   data = dataSet,
   chains = 4,
-  parallel_chains = 4
+  iter = 6000,
+  warmup = 1000
 )
+
 
 Est1 <-
   fit %>%
@@ -83,7 +85,6 @@ g <- dat1 %>%
   geom_ribbon(fill = palette()[3], alpha = 0.2)
 plot(g)
 
-
 # 日付は連続か？ -----------------------------------------------------------------
 
 dat1 %>%
@@ -97,16 +98,15 @@ fullDays <- data.frame(date = as.Date("2020/01/01"):as.Date("2021/12/01")) %>%
   dplyr::left_join(dat1, by = "date") %>%
   tidyr::replace_na(list(weight = 999, bodyFat = 999))
 
-model <- cmdstanr::cmdstan_model("cmdstan/StateSpace2.stan")
+model <- rstan::stan_model("rstan/StateSpace2.stan")
 dataSet <- list(
   L = NROW(fullDays),
   W = fullDays$weight,
   Nmiss = sum(fullDays$weight == 999)
 )
-fit <- model$sample(
+fit <- rstan::sampling(model,
   data = dataSet,
-  chains = 4,
-  parallel_chains = 4
+  chains = 4
 )
 
 Est2 <- fit %>%
@@ -186,11 +186,11 @@ dataSet <- list(
   W = fullDays$weight,
   Nmiss = sum(fullDays$weight == 999)
 )
-fit <- model$sample(
+fit <- rstan::sampling(model,
   data = dataSet,
-  chains = 4,
-  parallel_chains = 4
+  chains = 4
 )
+
 
 
 Est3 <- fit %>%
@@ -223,12 +223,13 @@ plot(g)
 
 # 二階差分 --------------------------------------------------------------------
 
-model <- cmdstanr::cmdstan_model("cmdstan/StateSpace3.stan")
-fit <- model$sample(
+model <- rstan::stan_model("rstan/StateSpace3.stan")
+fit <- rstan::sampling(
+  model,
   data = dataSet,
   chains = 4,
-  parallel_chains = 4,
-  iter_sampling = 5000
+  iter = 6000,
+  warmup = 1000
 )
 
 Est4 <-

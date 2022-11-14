@@ -1,13 +1,15 @@
 # 心理学データ解析応用/伴走サイトコード -----------------------------------------------------
 #  Programmed by kosugitti
 #  Licence ; Creative Commons BY-SA license (CC BY-SA) version 4.0
-## Lesson 9. GLM Cmdstan Version
+## Lesson 9. GLM Rstan Version
 
 # 準備 ----------------------------------------------------------------------
 
 rm(list = ls())
 library(tidyverse)
-library(cmdstanr)
+library(rstan)
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = TRUE)
 library(bayesplot)
 library(MASS)
 
@@ -15,14 +17,14 @@ library(MASS)
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
 }
-
 ## MCMCサンプルをデータフレームにする関数
 MCMCtoDF <- function(fit) {
-  fit$draws() %>%
-    posterior::as_draws_df() %>%
+  fit %>%
+    rstan::extract() %>%
+    as.data.frame() %>%
     tibble::as_tibble() %>%
-    dplyr::select(-lp__, -.draw, -.chain, -.iteration) %>%
     tibble::rowid_to_column("iter") %>%
+    dplyr::select(-lp__) %>%
     tidyr::pivot_longer(-iter) -> MCMCsample
   return(MCMCsample)
 }
@@ -40,6 +42,7 @@ MCMCsummary <- function(MCMCsample) {
     )
 }
 
+
 # LM ----------------------------------------------------------------------
 
 dat <- read_csv("baseball2020.csv", locale = locale(encoding = "utf8"))
@@ -48,25 +51,22 @@ dat %>% ggplot(aes(x = weight, y = height)) +
   geom_point() +
   geom_smooth(formula = "y~x", method = "lm", se = FALSE)
 
-model <- cmdstan_model("cmdstan/LM.stan")
-fit <- model$sample(
+model <- rstan::stan_model("rstan/LM.stan")
+fit <- sampling(model,
   data = dataSet,
   chains = 4,
-  parallel_chains = 4,
-  iter_warmup = 1000,
-  iter_sampling = 5000
+  iter = 6000,
+  warmup = 1000
 )
 
 
 ## 簡易表示
-fit$print(c("beta0", "beta1", "sig"))
+print(fit, pars = c("beta0", "beta1", "sig"))
 ## MLと比較
 fitML <- lm(height ~ weight, data = dat)
 summary(fitML)
 
-fit.stanfit <- fit$output_files() %>% rstan::read_stan_csv()
-
-predY <- rstan::extract(fit.stanfit)$predY
+predY <- rstan::extract(fit)$predY
 # 事後予測分布の描画
 bayesplot::ppc_dens_overlay(y = dataSet$Y, yrep = predY[1:10, ])
 bayesplot::ppc_intervals(
@@ -76,6 +76,9 @@ bayesplot::ppc_intervals(
   prob = 0.5,
   prob_outer = 0.95
 )
+
+
+
 
 # ロジスティック回帰 ---------------------------------------------------------------
 
@@ -92,19 +95,18 @@ dat2 %>%
     method.args = list(family = binomial(link = "logit"))
   )
 
-model <- cmdstanr::cmdstan_model("cmdstan/logistic.stan")
+model <- rstan::stan_model("rstan/logistic.stan")
 dataSet <- list(N = NROW(dat2), Y = dat2$Pitcher, X = dat2$Games)
 
-fit.logistic <- model$sample(
+fit.logistic <- rstan::sampling(model,
   data = dataSet,
   chains = 4,
-  parallel_chains = 4,
-  iter_warmup = 1000,
-  iter_sampling = 2000
+  iter = 6000,
+  warmup = 1000
 )
 
 ## 簡易表示
-fit.logistic$print(c("beta0", "beta1"))
+print(fit.logistic, pars = c("beta0", "beta1"))
 
 ## プロットを考える
 ### 関数準備
@@ -135,6 +137,7 @@ dat2 %>%
     fun = plotFunc,
     args = list(b0 = result[1, ]$L95, b1 = result[2, ]$L95), color = palette()[4], lty = 2, alpha = 0.5
   )
+
 
 
 # 課題 ----------------------------------------------------------------------

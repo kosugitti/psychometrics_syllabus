@@ -64,7 +64,7 @@ model <- rstan::stan_model("rstan/paired_t.stan")
 fit <- rstan::sampling(model,
   data = dataSet,
   chains = 4,
-  iter = 5000,
+  iter = 6000,
   warmup = 1000
 )
 
@@ -96,7 +96,7 @@ model <- rstan::stan_model("rstan/paired_t_tidy.stan")
 fit <- rstan::sampling(model,
   data = dataSet,
   chains = 4,
-  iter = 5000,
+  iter = 6000,
   warmup = 1000
 )
 

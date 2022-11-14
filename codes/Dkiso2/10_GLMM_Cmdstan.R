@@ -85,7 +85,7 @@ fit <- model$sample(
   chains = 4,
   parallel_chains = 4,
   iter_warmup = 1000,
-  iter_sampling = 3000
+  iter_sampling = 5000
 )
 
 ### 結果の出力
@@ -117,6 +117,8 @@ fit <- model$sample(
   data = dataSet,
   chains = 4,
   parallel_chains = 4,
+  iter_warmup = 1000,
+  iter_sampling = 5000
 )
 
 # 課題2，階層線形モデル -------------------------------------------------------------
@@ -152,8 +154,8 @@ fit <- model$sample(
   data = dataSet,
   chains = 4,
   parallel_chains = 4,
-  iter_sampling = 5000,
-  iter_warmup = 1000
+  iter_warmup = 1000,
+  iter_sampling = 5000
 )
 
 fit %>%
