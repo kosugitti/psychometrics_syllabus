@@ -27,7 +27,7 @@ t.test(groupA, groupB, var.equal = TRUE)
 
 
 # Modeling ----------------------------------------------------------------
-model <- cmdstanr::cmdstan_model("rstan/ttest01.stan")
+model <- cmdstanr::cmdstan_model("cmdstan/ttest01.stan")
 dataSet <- list(X1 = groupA, X2 = groupB, N1 = 8, N2 = 8)
 
 fit <- model$sample(

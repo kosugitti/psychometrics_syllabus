@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.2.19}
+\lhead{version 1.2.20}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/cover2.pdf}
@@ -41,6 +41,7 @@
 \part{心理学データ解析応用2}
 \include{x16_Programming}
 \include{x17_Bayesian}
+\include{prepareStan}
 \include{x18_MCMC}
 \include{x19_modeling1}
 \include{x20_modeling2}
@@ -55,7 +56,6 @@
 \include{x29_SSpace}
 \include{x30_comparison}
 \appendix
-\include{prepareStan}
 \input{../../common_contents/FAQ} % FAQ page
 \input{../../common_contents/Computer}
 \input{../../common_contents/Greeks}
