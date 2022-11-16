@@ -58,10 +58,10 @@ dataSet <- list(X1 = groupA, X2 = groupB, N1 = 8, N2 = 8)
 modelR <- rstan::stan_model("rstan/ttest01.stan")
 
 fitR <- rstan::sampling(modelR,
-                       data = dataSet,
-                       chains = 4,
-                       iter = 6000,
-                       warmup = 1000
+  data = dataSet,
+  chains = 4,
+  iter = 6000,
+  warmup = 1000
 )
 
 
@@ -77,7 +77,7 @@ fitC <- modelC$sample(
 
 
 ### cmdstanの出力をstanfitオブジェクトにする
-fitR2 <- fitC$output_files() |> rstan::read_stan_csv() 
+fitR2 <- fitC$output_files() |> rstan::read_stan_csv()
 
 fitC$draws(c("mu1", "mu2")) %>%
   posterior::as_draws_df() %>%
@@ -88,7 +88,11 @@ fitR %>% bayestestR::describe_posterior()
 fitC$draws() %>% bayestestR::describe_posterior()
 fitR %>% bayestestR::hdi()
 fitR %>% bayestestR::map_estimate()
-fitR %>% MCMCtoDFrs() %>% MCMCsummary()
+fitR %>%
+  MCMCtoDFrs() %>%
+  MCMCsummary()
 ?map_estimate()
 
-fitC %>% MCMCtoDFcs() %>% MCMCsummary()
+fitC %>%
+  MCMCtoDFcs() %>%
+  MCMCsummary()
