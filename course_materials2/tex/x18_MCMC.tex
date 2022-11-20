@@ -119,7 +119,7 @@ Rからは\texttt{rstan}パッケージあるいは\texttt{cmdstanr}パッケー
 
 それではどのようにRから呼び出すのか，実際のコードを見てみましょう。呼び出し方は\texttt{rstan}パッケージと\texttt{cmdstanr}パッケージのどちらを使うかによって少し異なります。共通部分のあと，両方の呼び出し方について記述しますので，自分の環境にあった方を試してください。
 \paragraph{共通部分}
-どのパッケージを使うにしても，まずは次の5行分を書いておいてください(code\ref{code:18_02})。
+どのパッケージを使うにしても，環境をクリアしたり，必要なパッケージを読み込んだりする部分は共通です。今回は次の5行を共通部分として読み込んでおいてください(code\ref{code:18_02})。
 
 \begin{lstlisting}[language=C++,label={code:18_02},caption={環境の準備と共通部分}]
 rm(list = ls())
@@ -129,33 +129,9 @@ library(bayesplot)
 x <- c(-27.020, 3.570, 8.191, 9.898, 9.603, 9.945, 10.056)
 \end{lstlisting}
 
-\paragraph{rstanパッケージによる呼び出し}
-
-\texttt{rstan}パッケージを使う場合は次のように書きます(code\ref{code:18_03})。
-
-\begin{lstlisting}[language=C++,label={code:18_03},caption={rstanパッケージによる呼び出し}]
-library(rstan)
-options(mc.cores = parallel::detectCores())
-rstan_options(auto_write = TRUE)
-model <- stan_model("sevenScientist.stan")
-fit1rstan <- sampling(model, data = list(Y = x))
-sample <- fit1rstan %>%
-  rstan::extract() %>%
-  as.data.frame() %>%
-  as_tibble()
-\end{lstlisting}
-\paragraph{コード解説}
-\begin{description}
-   \item[1行目]　パッケージの呼び出し
-   \item[2-3行目] CPUの並列化や上書き保存など，パッケージの設定
-   \item[4行目] モデルのコンパイルを実行して\texttt{model}オブジェクトに入れます。コンパイルには少し時間がかかります。
-   \item[5行目] 乱数発生。ここでRのデータをStanに渡しています。実行すると画面に色々表示されるかと思います。
-   \item[6-9行目] 得られた乱数をデータセットに整形。まず\texttt{rstan::extract}でMCMCサンプルだけを取り出し，\texttt{as.data.frame}でデータフレーム型に，\verb|as_tibble|でtibble型に変換します。
-\end{description}
-
 \paragraph{cmdstanrパッケージによる呼び出し}
 
-\texttt{cmdstanr}パッケージを使う場合は次のように書きます(code\ref{code:18_04})。
+その上でさっそく\texttt{cmdstanr}パッケージを使って，Stanを呼び出し事後乱数生成機を作ってみましょう。これは次のようにコードを書きます(code\ref{code:18_04})。
 
 \begin{lstlisting}[language=C++,label={code:18_04},caption={cmdstanrパッケージによる呼び出し}]
 library(cmdstanr)
@@ -177,7 +153,34 @@ sample <- fit1cmdstan$draws() %>%
    \item[9-11行目] 得られた乱数をデータセットに整形。まず\verb|posterior::as_draws_df|でMCMCサンプルだけを取り出し，\verb|as_tibble|でtibble型に変換します。
 \end{description}
 
-どちらのパッケージで実行してもらっても結構ですが，コンパイル$\to$サンプリングという流れは同じです。またサンプリングの際に，Rからデータを渡すことになりますが，データはR環境では\texttt{x}というオブジェクト名だったものを，Stanの\texttt{data}ブロックで宣言した\texttt{Y}という変数にして渡すのだ，ということが書かれています。データは複数のものを与えることがあるので，\texttt{list}関数で並べて渡すことにします。そのほかの設定については，順次説明します。
+\paragraph{rstanパッケージによる呼び出し}
+
+\texttt{rstan}パッケージを使ってStanファイルを呼び出す場合は，少し書き方を変えて次のように書きます(code\ref{code:18_03})。
+
+\begin{lstlisting}[language=C++,label={code:18_03},caption={rstanパッケージによる呼び出し}]
+library(rstan)
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = TRUE)
+model <- stan_model("sevenScientist.stan")
+fit1rstan <- sampling(model, data = list(Y = x))
+sample <- fit1rstan %>%
+  rstan::extract() %>%
+  as.data.frame() %>%
+  as_tibble()
+\end{lstlisting}
+\paragraph{コード解説}
+\begin{description}
+   \item[1行目]　パッケージの呼び出し
+   \item[2-3行目] CPUの並列化や上書き保存など，パッケージの設定
+   \item[4行目] モデルのコンパイルを実行して\texttt{model}オブジェクトに入れます。コンパイルには少し時間がかかります。
+   \item[5行目] 乱数発生。ここでRのデータをStanに渡しています。実行すると画面に色々表示されるかと思います。
+   \item[6-9行目] 得られた乱数をデータセットに整形。まず\texttt{rstan::extract}でMCMCサンプルだけを取り出し，\texttt{as.data.frame}でデータフレーム型に，\verb|as_tibble|でtibble型に変換します。
+\end{description}
+
+
+どちらのパッケージで実行してもらっても結構ですが，コンパイル$\to$サンプリングという流れは同じです。
+
+またサンプリングの際に，Rからデータを渡すことになりますが，データはR環境では\texttt{x}というオブジェクト名だったものを，Stanの\texttt{data}ブロックで宣言した\texttt{Y}という変数にして渡すのだ，ということが書かれています。データは複数のものを与えることがあるので，\texttt{list}関数で並べて渡すことにします。そのほかの設定については，順次説明します。
 
 最終的に\verb|tibble|型でえられたMCMCサンプルのデータセットができあがります。これはパッケージによって少し変数名が異なりますが，内容は同じで，今回の設定だと4000行のデータになっているはずです。つまり事後分布からの乱数を4000個発生させたことになります。
 
@@ -198,6 +201,21 @@ sample <- fit1cmdstan$draws() %>%
 \section{MCMC結果の診断}
 さて，MCMCが実行できましたが，その中身を少しみてみましょう。サンプリング結果を代入したオブジェクト名をそのまま入力すると，要約された結果が示されます。パッケージによって出力例は少し異なりますが，ほぼ同じ情報が含まれています。
 
+\begin{SCcmd}{MCMCの結果出力(cmdstanrパッケージの場合)}{out18_03}
+   \begin{verbatim}
+ variable  mean median     sd   mad     q5    q95 rhat ess_bulk ess_tail
+   lp__   -9.70  -9.35   1.91  1.69 -13.28  -7.30 1.00      914     1694
+   mu      9.64   9.81   0.67  0.36   8.28  10.36 1.01      879     1101
+   sig[1] 54.19  31.91 105.83 16.95  15.41 142.60 1.01      663      215
+   sig[2] 10.48   6.71  20.30  3.96   2.88  25.82 1.00     1272      935
+   sig[3]  4.30   2.76   6.19  2.01   0.67  12.16 1.01     1281     1104
+   sig[4]  2.52   1.31   3.88  1.47   0.11   8.58 1.01      603      252
+   sig[5]  2.68   1.37   5.65  1.39   0.19   9.02 1.00     1291     1535
+   sig[6]  2.66   1.26   5.11  1.47   0.09   9.46 1.01      492      312
+   sig[7]  2.87   1.42   5.64  1.56   0.15   9.49 1.01      904     1049
+    \end{verbatim}
+\end{SCcmd}
+
 \begin{SCrstan}{MCMCの結果出力(rstanパッケージの場合)}{out18_02}
    \begin{verbatim}
 Inference for Stan model: sevenScientist.
@@ -217,27 +235,14 @@ lp__   -9.45    0.07  1.67 -13.80 -10.19 -9.10 -8.39  -7.07   570 1.01
     \end{verbatim}
 \end{SCrstan}
 
-\begin{SCcmd}{MCMCの結果出力(cmdstanrパッケージの場合)}{out18_03}
-   \begin{verbatim}
- variable  mean median     sd   mad     q5    q95 rhat ess_bulk ess_tail
-   lp__   -9.70  -9.35   1.91  1.69 -13.28  -7.30 1.00      914     1694
-   mu      9.64   9.81   0.67  0.36   8.28  10.36 1.01      879     1101
-   sig[1] 54.19  31.91 105.83 16.95  15.41 142.60 1.01      663      215
-   sig[2] 10.48   6.71  20.30  3.96   2.88  25.82 1.00     1272      935
-   sig[3]  4.30   2.76   6.19  2.01   0.67  12.16 1.01     1281     1104
-   sig[4]  2.52   1.31   3.88  1.47   0.11   8.58 1.01      603      252
-   sig[5]  2.68   1.37   5.65  1.39   0.19   9.02 1.00     1291     1535
-   sig[6]  2.66   1.26   5.11  1.47   0.09   9.46 1.01      492      312
-   sig[7]  2.87   1.42   5.64  1.56   0.15   9.49 1.01      904     1049
-    \end{verbatim}
-\end{SCcmd}
 
 ここで確認して欲しいのは，\keytermL{Rhat}{Rはっと}です。これは「複数チェインの収束の程度」を表しています。
 まずMCMCによってサンプルを得る方法は乱数だったことを思い出してください。乱数ですから毎回同じ数字からスタートするわけではありません。
 そしてある乱数は次の数字を生むステップになっており，一歩一歩，事後分布の形に近づいていくものです。しかし違う数字からスタートしても，目標とする事後分布は同じはずですから，最終的にはこのステップの鎖はよく絡まったもの，つまりどこからスタートしても同じあたりをウロウロするものになるはずです。ですから，MCMCがきちんとできているかどうか，事後分布を正しく代表した数字になっているかどうかを確認する必要があります。この\keytermL{Rhat}{Rはっと}という数字は，$1.0$であればピッタリ一致という数字で，$1.1$よりも小さければ十分「絡まっている」と判断できます。今回はいずれも十分な収束が得られたと言えるでしょう。
 
 このことを視覚的に確認することもできます。\keyterm{トレースプロット}{トレースプロット}{trace plot}というのがそれで，MCMCのステップを可視化し，十分に絡まっていることを見ておくのです(図\ref{fig::18_03})。
-ちなみにこの図，\texttt{rstan}パッケージの場合は\texttt{traceplot(fit1rstan)}と書くだけで描画されます。\texttt{cmdstanr}の場合はちょっと工夫が必要ですが，\verb|fit1cmdstan$draws("mu") %>% bayesplot::mcmc_trace()|とすれば描画できます。
+
+ちなみにこの図，\texttt{cmdstanr}の場合は\verb|fit1cmdstan$draws("mu") %>% bayesplot::mcmc_trace()|と\verb|bayesplot|パッケージの力を借りて描いています。\texttt{rstan}パッケージの場合は\texttt{traceplot(fit1rstan)}と書くだけで描画されます。
 
 \begin{figure}[h]
    \begin{center}
@@ -246,6 +251,7 @@ lp__   -9.45    0.07  1.67 -13.80 -10.19 -9.10 -8.39  -7.07   570 1.01
       \label{fig::18_03}
    \end{center}
 \end{figure}
+
 これについては悪い例を見た方が早いかもしれません。図\ref{fig::18_04}に，チェインが絡まない場合のトレースプロットを示しました。このように，複数のチェインがそれぞれバラバラ，迷子になっている場合は，手元に生成された乱数が事後分布の適切な代表になっていないと判断することになります。
 \begin{figure}[h]
    \begin{center}
@@ -257,13 +263,7 @@ lp__   -9.45    0.07  1.67 -13.80 -10.19 -9.10 -8.39  -7.07   570 1.01
 
 次に，\keyterm{有効サンプルサイズ}{ゆうこうさんぷるさいず}{effective sample size}を見ておきましょう。\texttt{rstan}パッケージを使っている例の場合は\verb|n_eff|，\texttt{cmdstanr}パッケージを使っている例の場合は\verb|ess_tail|を見ましょう。これはMCMCサンプルがうまく取れたかどうかを診断した結果で，ここが少なくとも3桁ほどなければ不十分なのだ，と考えます。いくらあったらいいかについては，どれだけMCMCサンプルを発生させたかに依存するので一概には言えませんが，少なくとも効果的に得られているのが100サンプルぐらいないとダメなんだ，ということです。
 
-ちなみに，MCMCサンプルのチェイン(発生させた系列数)や，MCMCサンプルの数は，関数のオプションで指定します。今回は指定なしだったので，デフォルトの値で4チェイン，各々1000サンプルずつ作るようになっていました。これらを明示的に設定するには次のようにします(code\ref{code:18_05},code\ref{code:18_06},)。
-\begin{lstlisting}[language=C++,label={code:18_05},caption={rstanパッケージによるオプション指定}]
-fit1rstan <- sampling(model,
-  data = list(Y = x),
-  chains = 4, iter = 5000, warmup = 1000
-)
-\end{lstlisting}
+ちなみに，MCMCサンプルのチェイン(発生させた系列数)や，MCMCサンプルの数は，関数のオプションで指定します。今回は指定なしだったので，デフォルトの値で4チェイン，各々1000サンプルずつ作るようになっていました。これらを明示的に設定するには次のようにします(code\ref{code:18_06},code\ref{code:18_05},)。
 
 \begin{lstlisting}[language=C++,label={code:18_06},caption={cmdstanrパッケージによるオプション指定}]
 fit1cmdstan <- model$sample(
@@ -275,70 +275,43 @@ fit1cmdstan <- model$sample(
 )
 \end{lstlisting}
 
+
+\begin{lstlisting}[language=C++,label={code:18_05},caption={rstanパッケージによるオプション指定}]
+fit1rstan <- sampling(model,
+  data = list(Y = x),
+  chains = 4, iter = 5000, warmup = 1000
+)
+\end{lstlisting}
+
 ここにある\texttt{chains}というのが生成するMCMCサンプルの連鎖系列の数です。「どこからスタートしても同じ事後分布にたどり着く」ことを検証するために，少なくとも複数のサンプルが必要で，デフォルトでは4本のチェインを作っていることになります。\texttt{cmdstanr}パッケージの方は，並列化する本数も別途\verb|parallel_chains|関数で指定します。
 
-また生成する乱数の数ですが，ここに\keyterm{ウォームアップ}{うぉーむあっぷ}{wamup}という単語が出てきています。これはMCMCサンプルの際，最初の数ステップは調整のための準備運動期間中なので，この期間に得られたMCMCサンプルは代表値として使わない，という意味です。\texttt{rstan}パッケージの場合，全体の反復(iter)回数からウォームアップの分を引き算して，残りの期間をチェイン数発生させることになります。今回の例では$(5000-1000)\times 4=16000$サンプルできあがることになります。
+また生成する乱数の数ですが，ここに\keyterm{ウォームアップ}{うぉーむあっぷ}{wamup}という単語が出てきています。これはMCMCサンプルの際，最初の数ステップは調整のための準備運動期間中なので，この期間に得られたMCMCサンプルは代表値として使わない，という意味です。\texttt{cmdstanr}パッケージの場合，捨てるステップ数とサンプルするステップ数を明示的に指定していますからわかりやすいですね。最終的に得られるMCMCサンプルの数は$4000\times 4=16000$で計算できます。\texttt{rstan}パッケージの場合，全体の反復(iter)回数からウォームアップの分を引き算しなければなりません。引き算した残りの期間をチェイン数発生させることになります。今回の例では$(5000-1000)\times 4=16000$サンプルできあがることになります。
 
-\texttt{cmdstanr}パッケージの場合は引き算ではなく，最初の1000回は捨てて，サンプリング期間$4000\times 4=16000$で計算できます。
 
 \section{MCMCの結果の解釈}
 さあ長々と話をしてきましたが，どうやらRhatや有効サンプルサイズにも問題がなかったので，MCMCは事後分布からの適切な代表値を産んでいたと考えられますから，その結果を考えてみましょうか。
 
-MCMCサンプルを取り出して作ったデータセットから，code\ref{code:18_07}のようなコードを書いてみましょう(前回作成した\verb|map_estimation|関数を読み込んでおく必要があります)。
-\texttt{rstan}パッケージの結果は各行が1回のサンプリングに該当しますが，それを明確にするためにまず行番号を\texttt{iter}変数として生成し，そのあとで並べ替えなどを行なっています。
+ここで，前の章(セクション\ref{preparedFunctions},Pp.\pageref{preparedFunctions})で準備した関数を使ってみましょう\footnote{伴走サイト\url{https://kosugitti.github.io/psychometrtics_syllabus/}からは，これらのRコードをダウンロードできます。Stanファイルは自分で準備し，読み込み先やファイル名などは適宜変更してください。}。これらをコード\ref{code:18_07}のように使うと結果が得られます。私の結果では出力\ref{MCMCout:out18_01}のようになりました。
 
-\begin{lstlisting}[language=C++,label={code:18_07},caption={rstanパッケージによる結果の要約}]
-sample_rstan %>% 
-    rowid_to_column("iter") %>%
-    dplyr::select(-lp__) %>% 
-    pivot_longer(-iter) %>% 
-    group_by(name) %>% 
-    summarise(
-        EAP = mean(value),
-        MED = median(value),
-        MAP = map_estimation(value),
-        U95 = quantile(value,prob=0.975),
-        L95 = quantile(value,prob=0.025)
-    )
+\begin{lstlisting}[language=C++,label={code:18_07},caption={stanの結果を準備し関数に与える}]
+fit %>% MCMCtoDF() %>% MCMCsummary()
 \end{lstlisting}
 
-\texttt{cmdstanr}パッケージの結果はチェイン番号，各チェインでの反復回数，延反復回数が変数として記録されているので，剰余変数を除外するだけでOKです(code\ref{code:18_08})。
-
-\begin{lstlisting}[language=C++,label={code:18_08},caption={cmdstanrパッケージによる結果の要約}]
-sample_cmdstan %>% 
-    dplyr::select(-lp__,-.chain,-.iteration) %>% 
-    pivot_longer(-.draw) %>% 
-    group_by(name) %>% 
-    summarise(
-        EAP = mean(value),
-        MED = median(value),
-        MAP = map_estimation(value),
-        U95 = quantile(value,prob=0.975),
-        L95 = quantile(value,prob=0.025)
-    )
-\end{lstlisting}
-
-もうこのコードの意味の説明は省略していいですね。この結果示される複数の代表値がありますが，私の結果では表\ref{tbl::18_01}のようになりました。
-
-
-\begin{table}[ht]
-   \caption{MCMCの結果}
-   \centering
-   \begin{tabular}{l|ccccc}
-      \hline
-      パラメータ & EAP    & MED    & MAP    & U95     & L95    \\
-      \hline
-      $\mu$      & 9.570  & 9.622  & 9.596  & 10.547  & 7.753  \\
-      $\sigma_1$ & 42.197 & 26.955 & 23.101 & 151.573 & 14.259 \\
-      $\sigma_2$ & 8.776  & 6.853  & 6.849  & 30.356  & 2.590  \\
-      $\sigma_3$ & 4.310  & 3.232  & 3.626  & 17.280  & 0.440  \\
-      $\sigma_4$ & 2.756  & 1.102  & 0.993  & 15.750  & 0.085  \\
-      $\sigma_5$ & 2.507  & 1.052  & 0.358  & 11.823  & 0.022  \\
-      $\sigma_6$ & 2.503  & 1.676  & 2.021  & 12.339  & 0.076  \\
-      $\sigma_7$ & 2.598  & 1.020  & 0.674  & 13.548  & 0.100  \\\hline
-   \end{tabular}
-   \label{tbl::18_01}
-\end{table}
+\begin{MCMCout}{}{out18_01}
+\begin{verbatim}
+# A tibble: 8 × 7
+  name         EAP       MED       MAP        SD       L95       U95
+  <chr>  <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!>
+1 mu         9.689     9.863     9.929     0.647     7.982    10.602
+2 sig[1]    45.886    31.238    26.266    70.414    14.011   158.906
+3 sig[2]    10.037     6.781     5.206    13.746     2.635    36.035
+4 sig[3]     4.609     2.872     2.067     8.394     0.494    18.808
+5 sig[4]     2.442     1.060     0.208     6.055     0.029    12.608
+6 sig[5]     2.856     1.421     1.085     9.126     0.109    12.860
+7 sig[6]     2.688     1.175     0.443     6.511     0.058    13.277
+8 sig[7]     2.715     1.251     0.234     6.232     0.037    13.120
+\end{verbatim}
+\end{MCMCout}
 
 ここでは\keyterm{事後確率最大値}{じごかくりつさいだいち}{Maximum A Posterior}を見ることにしましょう。
 これによると，$\mu$すなわち真の測定値は9.596ぐらいじゃないか，という推測がなされています。10より少し小さいくらいではないか，と思っていたようですが，こうして計算してみると確かにそれぐらいのようですね。

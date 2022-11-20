@@ -11,10 +11,35 @@ library(bayesplot)
 library(rstan)
 options(mc.cores = parallel::detectCores())
 rstan_options(auto_write = TRUE)
-
 ## MAP関数
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
+}
+## MCMCサンプルをデータフレームにする関数
+MCMCtoDF <- function(fit) {
+  fit %>%
+    rstan::extract() %>%
+    as.data.frame() %>%
+    tibble::as_tibble() %>%
+    tibble::rowid_to_column("iter") %>%
+    dplyr::select(-lp__) %>%
+    tidyr::pivot_longer(-iter) -> MCMCsample
+  return(MCMCsample)
+}
+
+## MCMCデータフレームを要約する関数
+MCMCsummary <- function(MCMCsample) {
+  MCMCsample %>%
+    dplyr::group_by(name) %>%
+    dplyr::summarise(
+      EAP = mean(value),
+      MED = median(value),
+      MAP = map_estimation(value),
+      SD = sd(value),
+      L95 = quantile(value, prob = 0.025),
+      U95 = quantile(value, prob = 0.975)
+    ) %>%
+    mutate(across(where(is.numeric), ~ num(., digits = 3)))
 }
 
 # データなど -------------------------------------------------------------------
@@ -35,7 +60,9 @@ fit <- rstan::sampling(model,
 )
 
 ## 結果
-fit
+fit %>%
+  MCMCtoDF() %>%
+  MCMCsummary()
 
 
 # 可視化 ---------------------------------------------------------------------
@@ -58,7 +85,7 @@ MCMCsample %>%
   xlim(-10, 150)
 
 ### 事後予測分布
-MCMCsample %>%
+pred <- MCMCsample %>%
   dplyr::filter(str_detect(name, pattern = "Xpred1")) %>%
   pivot_wider(names_from = name, values_from = value, id_cols = iter) %>%
   dplyr::select(-iter) %>%
@@ -81,7 +108,9 @@ fit <- rstan::sampling(model,
   warmup = 1000
 )
 
-fit
+fit %>%
+  MCMCtoDF() %>%
+  MCMCsummary()
 
 # パラメータリカバリ ---------------------------------------------------------------
 
@@ -111,7 +140,9 @@ fit <- rstan::sampling(model,
 )
 
 
-fit
+fit %>%
+  MCMCtoDF() %>%
+  MCMCsummary()
 
 
 # うまくいかない例 ----------------------------------------------------------------
@@ -140,7 +171,9 @@ fit <- rstan::sampling(model,
   warmup = 1000
 )
 
-fit
+fit %>%
+  MCMCtoDF() %>%
+  MCMCsummary()
 
 # 課題 ----------------------------------------------------------------------
 potatoA <- c(8.4, 11.3, 8.1, 11.2, 5.8, 6.3, 7.1, 10.9, 7.1, 6.5, 5.0, 3.0, 7.2, 6.5, 6.4, 6.4, 9.3, 8.3)

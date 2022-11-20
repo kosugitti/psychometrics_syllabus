@@ -5,15 +5,39 @@
 
 # 準備 ----------------------------------------------------------------------
 
-
 rm(list = ls())
 library(tidyverse)
 library(cmdstanr)
 library(bayesplot)
-
 ## MAP関数
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
+}
+
+## MCMCサンプルをデータフレームにする関数
+MCMCtoDF <- function(fit) {
+  fit$draws() %>%
+    posterior::as_draws_df() %>%
+    tibble::as_tibble() %>%
+    dplyr::select(-lp__, -.draw, -.chain, -.iteration) %>%
+    tibble::rowid_to_column("iter") %>%
+    tidyr::pivot_longer(-iter) -> MCMCsample
+  return(MCMCsample)
+}
+
+## MCMCデータフレームを要約する関数
+MCMCsummary <- function(MCMCsample) {
+  MCMCsample %>%
+    dplyr::group_by(name) %>%
+    dplyr::summarise(
+      EAP = mean(value),
+      MED = median(value),
+      MAP = map_estimation(value),
+      SD = sd(value),
+      L95 = quantile(value, prob = 0.025),
+      U95 = quantile(value, prob = 0.975)
+    ) %>%
+    mutate(across(where(is.numeric), ~ num(., digits = 3)))
 }
 
 
@@ -36,7 +60,9 @@ fit <- model$sample(
 )
 
 ## 結果
-fit
+fit %>%
+  MCMCtoDF() %>%
+  MCMCsummary()
 
 # 可視化 ---------------------------------------------------------------------
 
@@ -81,7 +107,9 @@ fit <- model$sample(
   iter_sampling = 5000
 )
 
-fit
+fit %>%
+  MCMCtoDF() %>%
+  MCMCsummary()
 
 # パラメータリカバリ ---------------------------------------------------------------
 
@@ -111,7 +139,9 @@ fit <- model$sample(
   iter_sampling = 5000
 )
 
-fit
+fit %>%
+  MCMCtoDF() %>%
+  MCMCsummary()
 
 
 # うまくいかない例 ----------------------------------------------------------------
@@ -141,7 +171,9 @@ fit <- model$sample(
   iter_sampling = 5000
 )
 
-fit
+fit %>%
+  MCMCtoDF() %>%
+  MCMCsummary()
 
 # 課題 ----------------------------------------------------------------------
 potatoA <- c(8.4, 11.3, 8.1, 11.2, 5.8, 6.3, 7.1, 10.9, 7.1, 6.5, 5.0, 3.0, 7.2, 6.5, 6.4, 6.4, 9.3, 8.3)

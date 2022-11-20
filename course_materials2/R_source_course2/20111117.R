@@ -255,7 +255,7 @@ pitcher %>%
   geom_smooth(method = "lm", formula = "y~x", se = F) +
   facet_wrap(~team)
 
-modelH <- cmdstan_model("hlm_poisson.stan")
+modelH <- cmdstan_model("cmdstan/hlm_poisson.stan")
 dat.tmp <- batter %>%
   mutate(
     NameID = as.factor(Name),
@@ -280,7 +280,11 @@ fit_glmm <- modelH$sample(
   iter_warmup = 1000
 )
 
-fit_glmm
+fit_glmm %>%
+  MCMCtoDF() %>%
+  dplyr::filter(str_detect(name, pattern = "tau|gamma")) %>%
+  MCMCsummary()
+
 
 fit.stanfit <- fit_glmm$output_files() %>% rstan::read_stan_csv()
 fit.stanfit %>%

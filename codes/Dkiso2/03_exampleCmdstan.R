@@ -7,7 +7,38 @@
 
 rm(list = ls())
 library(tidyverse)
+library(cmdstanr)
 library(bayesplot)
+## MAP関数
+map_estimation <- function(z) {
+  density(z)$x[which.max(density(z)$y)]
+}
+
+## MCMCサンプルをデータフレームにする関数
+MCMCtoDF <- function(fit) {
+  fit$draws() %>%
+    posterior::as_draws_df() %>%
+    tibble::as_tibble() %>%
+    dplyr::select(-lp__, -.draw, -.chain, -.iteration) %>%
+    tibble::rowid_to_column("iter") %>%
+    tidyr::pivot_longer(-iter) -> MCMCsample
+  return(MCMCsample)
+}
+
+## MCMCデータフレームを要約する関数
+MCMCsummary <- function(MCMCsample) {
+  MCMCsample %>%
+    dplyr::group_by(name) %>%
+    dplyr::summarise(
+      EAP = mean(value),
+      MED = median(value),
+      MAP = map_estimation(value),
+      SD = sd(value),
+      L95 = quantile(value, prob = 0.025),
+      U95 = quantile(value, prob = 0.975)
+    ) %>%
+    mutate(across(where(is.numeric), ~ num(., digits = 3)))
+}
 
 # データ ---------------------------------------------------------------------
 
@@ -36,31 +67,8 @@ fit <- model$sample(
   iter_sampling = 5000
 )
 
+# 結果の出力 -------------------------------------------------------------------
 
-# MCMCサンプルをデータフレームにする -----------------------------------------------------
-
-fit$draws() %>%
-  posterior::as_draws_df() %>%
-  tibble::as_tibble() %>%
-  dplyr::select(-lp__, -.draw, -.chain, -.iteration) %>%
-  tibble::rowid_to_column("iter") %>%
-  tidyr::pivot_longer(-iter) -> MCMCsample
-
-# MAP関数を作る ----------------------------------------------------------------
-
-map_estimation <- function(z) {
-  density(z)$x[which.max(density(z)$y)]
-}
-
-
-# 要約統計量を表示 ----------------------------------------------------------------
-
-MCMCsample %>%
-  dplyr::group_by(name) %>%
-  dplyr::summarise(
-    EAP = mean(value),
-    MED = median(value),
-    MAP = map_estimation(value),
-    U95 = quantile(value, prob = 0.975),
-    L95 = quantile(value, prob = 0.025)
-  )
+fit %>%
+  MCMCtoDF() %>%
+  MCMCsummary()

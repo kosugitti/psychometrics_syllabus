@@ -8,6 +8,40 @@
 rm(list = ls())
 library(tidyverse)
 library(bayesplot)
+library(rstan)
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = TRUE)
+## MAP関数
+map_estimation <- function(z) {
+  density(z)$x[which.max(density(z)$y)]
+}
+## MCMCサンプルをデータフレームにする関数
+MCMCtoDF <- function(fit) {
+  fit %>%
+    rstan::extract() %>%
+    as.data.frame() %>%
+    tibble::as_tibble() %>%
+    tibble::rowid_to_column("iter") %>%
+    dplyr::select(-lp__) %>%
+    tidyr::pivot_longer(-iter) -> MCMCsample
+  return(MCMCsample)
+}
+
+## MCMCデータフレームを要約する関数
+MCMCsummary <- function(MCMCsample) {
+  MCMCsample %>%
+    dplyr::group_by(name) %>%
+    dplyr::summarise(
+      EAP = mean(value),
+      MED = median(value),
+      MAP = map_estimation(value),
+      SD = sd(value),
+      L95 = quantile(value, prob = 0.025),
+      U95 = quantile(value, prob = 0.975)
+    ) %>%
+    mutate(across(where(is.numeric), ~ num(., digits = 3)))
+}
+
 
 # データ ---------------------------------------------------------------------
 
@@ -35,32 +69,8 @@ fit <- rstan::sampling(model,
   warmup = 1000
 )
 
-
-
-# MCMCサンプルをデータフレームにする -----------------------------------------------------
+# 結果の出力 -------------------------------------------------------------------
 
 fit %>%
-  rstan::extract() %>%
-  tibble::as_tibble() %>%
-  tibble::rowid_to_column("iter") %>%
-  dplyr::select(-lp__) %>%
-  tidyr::pivot_longer(-iter) -> MCMCsample
-
-# MAP関数を作る ----------------------------------------------------------------
-
-map_estimation <- function(z) {
-  density(z)$x[which.max(density(z)$y)]
-}
-
-
-# 要約統計量を表示 ----------------------------------------------------------------
-
-MCMCsample %>%
-  dplyr::group_by(name) %>%
-  dplyr::summarise(
-    EAP = mean(value),
-    MED = median(value),
-    MAP = map_estimation(value),
-    U95 = quantile(value, prob = 0.975),
-    L95 = quantile(value, prob = 0.025)
-  )
+  MCMCtoDF() %>%
+  MCMCsummary()

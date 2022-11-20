@@ -10,7 +10,6 @@ library(tidyverse)
 library(cmdstanr)
 library(bayesplot)
 library(MASS)
-
 ## MAP関数
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
@@ -35,9 +34,11 @@ MCMCsummary <- function(MCMCsample) {
       EAP = mean(value),
       MED = median(value),
       MAP = map_estimation(value),
-      U95 = quantile(value, prob = 0.975),
-      L95 = quantile(value, prob = 0.025)
-    )
+      SD = sd(value),
+      L95 = quantile(value, prob = 0.025),
+      U95 = quantile(value, prob = 0.975)
+    ) %>%
+    mutate(across(where(is.numeric), ~ num(., digits = 3)))
 }
 
 

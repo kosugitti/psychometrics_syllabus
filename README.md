@@ -87,10 +87,10 @@
 - [分散分析課題用データセット 2](codes/SampleData/chapter22exe2.csv)
 - [分散分析課題用データセット 3](codes/SampleData/chapter22exe3.csv)
 
-### 心理学データ解析応用 2
+### 心理学データ解析応用 2**2022.11update!**
 
-- [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)**2022.09.18update!**
-- [事前準備；cmdstanr の確認用コード](codes/Dkiso2/00_Appendix1_cmdstanr.R)**2022.09.18update!**
+- [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
+- [事前準備；cmdstanr の確認用コード](codes/Dkiso2/00_Appendix1_cmdstanr.R)
 - [第 01 回；プログラミングの基礎](codes/Dkiso2/01_BasicProgramming.R)
 - [第 02 回；プログラミングの基礎](codes/Dkiso2/02_randomVariables.R)
 - [第 03 回；stan の基礎(rstan)](codes/Dkiso2/03_exampleRstan.R)

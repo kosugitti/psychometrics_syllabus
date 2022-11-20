@@ -14,6 +14,31 @@ map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
 }
 
+## MCMCサンプルをデータフレームにする関数
+MCMCtoDF <- function(fit) {
+  fit$draws() %>%
+    posterior::as_draws_df() %>%
+    tibble::as_tibble() %>%
+    dplyr::select(-lp__, -.draw, -.chain, -.iteration) %>%
+    tibble::rowid_to_column("iter") %>%
+    tidyr::pivot_longer(-iter) -> MCMCsample
+  return(MCMCsample)
+}
+
+## MCMCデータフレームを要約する関数
+MCMCsummary <- function(MCMCsample) {
+  MCMCsample %>%
+    dplyr::group_by(name) %>%
+    dplyr::summarise(
+      EAP = mean(value),
+      MED = median(value),
+      MAP = map_estimation(value),
+      SD = sd(value),
+      L95 = quantile(value, prob = 0.025),
+      U95 = quantile(value, prob = 0.975)
+    ) %>%
+    mutate(across(where(is.numeric), ~ num(., digits = 3)))
+}
 
 
 # データなど -------------------------------------------------------------------
@@ -39,7 +64,9 @@ fit <- model$sample(
 )
 
 ## 結果
-fit
+fit %>%
+  MCMCtoDF() %>%
+  MCMCsummary()
 
 ## 可視化
 fit$draws() %>%
@@ -105,7 +132,9 @@ fit <- model$sample(
   iter_sampling = 5000
 )
 
-fit
+fit %>%
+  MCMCtoDF() %>%
+  MCMCsummary()
 
 
 # 課題 ----------------------------------------------------------------------

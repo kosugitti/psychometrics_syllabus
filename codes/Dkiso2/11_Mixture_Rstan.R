@@ -7,12 +7,10 @@
 
 rm(list = ls())
 library(tidyverse)
+library(bayesplot)
 library(rstan)
 options(mc.cores = parallel::detectCores())
 rstan_options(auto_write = TRUE)
-library(bayesplot)
-library(MASS)
-
 ## MAP関数
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
@@ -37,9 +35,11 @@ MCMCsummary <- function(MCMCsample) {
       EAP = mean(value),
       MED = median(value),
       MAP = map_estimation(value),
-      U95 = quantile(value, prob = 0.975),
-      L95 = quantile(value, prob = 0.025)
-    )
+      SD = sd(value),
+      L95 = quantile(value, prob = 0.025),
+      U95 = quantile(value, prob = 0.975)
+    ) %>%
+    mutate(across(where(is.numeric), ~ num(., digits = 3)))
 }
 
 # データの読み込み ----------------------------------------------------------------
@@ -81,7 +81,7 @@ fit <- sampling(model,
 fitDF <- fit %>% MCMCtoDF()
 
 fitDF %>%
-  dplyr::filter(str_detect(name, "mu")) %>%
+  dplyr::filter(str_detect(name, c("mu|sigma"))) %>%
   MCMCsummary()
 
 fitDF %>%
@@ -131,6 +131,7 @@ fit <- sampling(model,
 
 fit %>%
   MCMCtoDF() %>%
+  dplyr::filter(str_detect(name, c("theta|lambda"))) %>%
   MCMCsummary()
 
 ## 事後予測分布的に作ってみる

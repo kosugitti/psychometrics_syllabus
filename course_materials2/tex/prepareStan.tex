@@ -225,7 +225,7 @@ fit <- model$sample(
 \end{verbatim}
 \end{SCcmd}
 
-同じような情報ですが，ちょっと違うところもあるようです。前から順に，事後分布の平均値(\verb|mean|)，中央値(\verb|median|)，標準偏差(\verb|sd|)，中央値絶対偏差\footnote{\keyterm{中央値絶対偏差}{ちゅうおうちぜったいへんさ}{Median Absolute Deviation}とは，中央力のばらつきを表す指標で，各データ点の中央値からの偏差の絶対値をとり，その中央値を計算したものです。標準偏差とは違う分布の幅を表現する方法で，中央値を使って計算しますから外れ値に強いという特徴があります。}(\verb|mad|)，5\%,95\%パーセンタイルなど分布の特徴と，Rhatや有効サンプルサイズに関する情報(\verb|ess_bulk,ess_tail|)が示されています。しかし，まえがき・あとがきのようなものがなく，結果だけがシンプルに出力されていますね。
+同じような情報ですが，ちょっと違うところもあるようです。前から順に，事後分布の平均値(\verb|mean|)，中央値(\verb|median|)，標準偏差(\verb|sd|)，中央値絶対偏差\footnote{\keyterm{中央値絶対偏差}{ちゅうおうちぜったいへんさ}{Median Absolute Deviation}とは，中央力のばらつきを表す指標で，各データ点の中央値からの偏差の絶対値をとり，その中央値を計算したものです。標準偏差とは違う分布の幅を表現する方法で，中央値を使って計算しますから外れ値に強いという特徴があります。}(\verb|mad|)，5\%,95\%パーセンタイルなど分布の特徴\footnote{\verb|rstan|パッケージは2.5\%から97.5\%のパーセンタイル，すなわち囲まれる区間の面積が95\%です。\verb|cmdstanr|パッケージは5\%と95\%のパーセンタイル，すなわち囲まれる区間の面積が90\%です。なぜだかわかりませんが，ちょっとした違いがありますね。}と，Rhatや有効サンプルサイズに関する情報(\verb|ess_bulk,ess_tail|)が示されています。しかし，まえがき・あとがきのようなものがなく，結果だけがシンプルに出力されていますね。
 
 出力としては\verb|rstan|パッケージの方が丁寧で良いかもしれません。さて，\verb|cmdstanr|の出力は実はcsvファイルとして一時フォルダに保存されているので，これを\verb|rstan|パッケージの関数を使って\verb|stanfit|オブジェクトに変換することができます。関数の使い方の例は次のようになります。
 
@@ -238,6 +238,7 @@ fitR2 <- fitC$output_files() |> rstan::read_stan_csv()
 このコードを覚えておけば，\verb|rstan|パッケージ向けに書かれたものであっても，\verb|cmdstanr|パッケージで実行したあと同じ関数を適用できるので，使いやすいですね。
 
 \subsection{本書で利用する準備関数}
+\label{preparedFunctions}
 どちらのパッケージであっても，欲しいものは事後分布からの乱数をデータセットにしたものであり，そのデータセットさえ持っていれば，既存の関数を使わなくとも自分で工夫して加工すれば良いでしょう。
 
 そこで本書では，MCMCサンプルを抜きだしてデータセットに変換する関数を作り，これを利用して話を進めることにします。
@@ -350,9 +351,11 @@ MCMCsummary <- function(MCMCsample) {
       EAP = mean(value),
       MED = median(value),
       MAP = map_estimation(value),
+      SD = sd(value),
       U95 = quantile(value, prob = 0.975),
       L95 = quantile(value, prob = 0.025)
-    )
+    ) %>%
+    mutate(across(where(is.numeric), ~ num(., digits = 3)))
 }
 \end{lstlisting}
 \paragraph{コード解説}
@@ -360,19 +363,20 @@ MCMCsummary <- function(MCMCsample) {
   \item[1行目] 関数を作る宣言。引数として\verb|MCMCtoDF|関数の戻り値をとります。
   \item[2行目] 引数で引き受けたオブジェクトを加工していきます。
   \item[3行目] 変数名でデータをグループ化します。
-  \item[4-10行目] 記述統計の計算を通じて，EAP,MED,MAP,95\%区間を返します。
+  \item[4-10行目] 記述統計の計算を通じて，EAP,MED,MAP,SD,95\%区間を返します。
+  \item[11]行目 出力する数値データは，少数下3桁まで表示させるようにします。
 \end{description}
 
 この関数は，先ほどの\verb|MCMCtoDF|とセットで使い,次のような結果を得ます。
 \begin{Rscreen}{MCMCsummaryの結果}{outPREP_02}
   \begin{verbatim}
 > fit %>% MCMCtoDF() %>% MCMCsummary()
-# A tibble: 3 × 6
-  name    EAP   MED   MAP   U95   L95
-  <chr> <dbl> <dbl> <dbl> <dbl> <dbl>
-1 mu1    60.0  59.9  59.8  71.2  49.0
-2 mu2    40.0  40.0  40.1  51.3  29.0
-3 sig    15.5  15.0  14.2  22.7  10.9
+# A tibble: 3 × 7
+  name        EAP       MED       MAP        SD       L95       U95
+  <chr> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!>
+1 mu1      59.897    59.888    58.867     5.547    48.672    70.847
+2 mu2      39.958    39.935    39.748     5.523    28.973    50.943
+3 sig      15.519    15.062    14.646     3.074    10.877    22.788
   \end{verbatim}
 \end{Rscreen}
 ここにあるように，各変数のEAP推定値，MED推定値，MAP推定値，95\%確信区間が表示されます\footnote{この区間はコードから明らかなように，\verb|quantile|関数で計算しています。下から2.5\%，上から2.5\%を取り除くと95\%の区間が残ることになりますが，このように分布の両端を均等に切った区間を厳密には\keyterm{等裾区間}{とうすそくかん}{Equal-tailed interval;ETI}というのでした。これに対して，分布の最も信頼できる部分，かつ分布の大部分をカバーし，区間内部のすべての点が，区間外の任意の点よりも高い密度を持っているように推定するものを\keyterm{最高密度区間}{さいこうみつどくかん}{Highest-Density Interval;HDI}と呼びます。これらは左右対称の単峰分布であれば同じになるのですが，事後分布の形がぐちゃっとしている時は必ずしもそうなりません。両者の違いについては\citet{Maeda2017}を参考にしてください。また，HDIを出力する関数は\verb|bayestestR::hdi()|です。}。

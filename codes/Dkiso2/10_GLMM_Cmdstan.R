@@ -9,8 +9,6 @@ rm(list = ls())
 library(tidyverse)
 library(cmdstanr)
 library(bayesplot)
-library(MASS)
-
 ## MAP関数
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
@@ -35,9 +33,11 @@ MCMCsummary <- function(MCMCsample) {
       EAP = mean(value),
       MED = median(value),
       MAP = map_estimation(value),
-      U95 = quantile(value, prob = 0.975),
-      L95 = quantile(value, prob = 0.025)
-    )
+      SD = sd(value),
+      L95 = quantile(value, prob = 0.025),
+      U95 = quantile(value, prob = 0.975)
+    ) %>%
+    mutate(across(where(is.numeric), ~ num(., digits = 3)))
 }
 
 
@@ -93,6 +93,8 @@ fit %>%
   MCMCtoDF() %>%
   MCMCsummary()
 
+
+
 # 課題1，打率のデータ整形 ------------------------------------------------------------
 
 dat <- baseball %>%
@@ -121,6 +123,10 @@ fit <- model$sample(
   iter_sampling = 5000
 )
 
+fit %>%
+  MCMCtoDF() %>%
+  MCMCsummary()
+
 # 課題2，階層線形モデル -------------------------------------------------------------
 
 pitcher <- baseball %>%
@@ -148,7 +154,7 @@ dataSet <- list(
   Y = dat.tmp$Win
 )
 
-model <- cmdstan_model("cmdstan/glmm_poisson.stan")
+model <- cmdstan_model("cmdstan/hlm_poisson.stan")
 
 fit <- model$sample(
   data = dataSet,
@@ -160,4 +166,5 @@ fit <- model$sample(
 
 fit %>%
   MCMCtoDF() %>%
+  dplyr::filter(name %in% c("gamma0", "gamma1", "tau0", "tau1")) %>%
   MCMCsummary()

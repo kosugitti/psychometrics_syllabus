@@ -220,21 +220,19 @@ fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4)
    \item[12行目] cmdstanのサンプリング関数です。rstanパッケージを使う場合はrstanのサンプリング関数を使ってください。
 \end{description}
 
-推定した結果を見てみましょう。私の環境では出力\ref{SCrstan:out26_01}のようになりました。
-\begin{SCrstan}{推定結果}{out26_01}
-   \begin{verbatim}
-    Inference for Stan model: latent-202111261425-1-5e881d.
-4 chains, each with iter=2000; warmup=1000; thin=1; 
-post-warmup draws per chain=1000, total post-warmup draws=4000.
-
-         mean se_mean   sd 2.5%  25%  50%  75% 97.5% n_eff Rhat
-mu[1]    7.63    0.00 0.11 7.41 7.55 7.63 7.70  7.84   920    1
-mu[2]    9.71    0.01 0.29 9.16 9.49 9.72 9.97 10.15   453    1
-sigma[1] 0.66    0.00 0.06 0.54 0.61 0.65 0.70  0.79  1706    1
-sigma[2] 0.75    0.01 0.24 0.38 0.53 0.77 0.94  1.19   454    1
-    \end{verbatim}
-\end{SCrstan}
-対数をとった時の平均値が7.63と9.71ですから，指数関数を入れて読み直せば$\exp(7.63)=2059.05,\exp(9.71)=16481.6$となります。2000万円クラスの選手と，1億6500万円クラスの選手の2つのグループに分かれることが見て取れますね。
+推定した結果を見てみましょう。私の環境では出力\ref{MCMCout:out26_01}のようになりました。
+\begin{MCMCout}{}{out26_01}
+\begin{verbatim}
+# A tibble: 4 × 7
+  name           EAP       MED       MAP        SD       L95       U95
+  <chr>    <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!>
+1 mu[1]        7.624     7.624     7.638     0.107     7.415     7.826
+2 mu[2]        9.702     9.699    10.017     0.284     9.164    10.138
+3 sigma[1]     0.656     0.653     0.646     0.063     0.544     0.788
+4 sigma[2]     0.762     0.786     0.901     0.237     0.380     1.192
+\end{verbatim}
+\end{MCMCout}
+対数をとった時の平均値が7.624と9.702ですから，指数関数を入れて読み直せば$\exp(7.624)=2046.733,\exp(9.702)=16350.28x$となります。2000万円クラスの選手と，1億6500万円クラスの選手の2つのグループに分かれることが見て取れますね。
 事後予測分布から，所得平均の高い「超一流」選手と「一般的」な選手とに分けて分布を色分けしてみました(図\ref{fig:26_10})。データから，この選手がどちらのクラスに所属しているかも想像できるところがおもしろいですね。
 \begin{figure}[ht]
    \begin{center}
@@ -335,17 +333,16 @@ fit <- model$sample(
 )
 \end{lstlisting}
 
-推定した結果を見てみましょう。私の環境では出力\ref{SCcmd:out26_02}のようになりました。
-\begin{SCcmd}{推定結果}{out26_02}
-   \begin{verbatim}
-# A tibble: 3 × 10
-  variable      mean    median     sd    mad        q5       q95  rhat ess_bulk ess_tail
-  <chr>        <dbl>     <dbl>  <dbl>  <dbl>     <dbl>     <dbl> <dbl>    <dbl>    <dbl>
-1 lp__         -2214.    -2214.  1.01   0.682    -2216.    -2213  1.00    2011.    2641.
-2 theta        0.605     0.605   0.0261 0.0262   0.562     0.647  1.00    3434.    2748.
-3 lambda        14.7      14.7   0.260  0.266    14.2      15.1   1.00    3420.    2560.
-    \end{verbatim}
-\end{SCcmd}
+推定した結果を見てみましょう。私の環境では出力\ref{MCMCout:out26_02}のようになりました。
+\begin{MCMCout}{}{out26_02}
+\begin{verbatim}
+# A tibble: 2 × 7
+  name         EAP       MED       MAP        SD       L95       U95
+  <chr>  <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!>
+1 lambda    14.666    14.665    14.661     0.261    14.154    15.185
+2 theta      0.606     0.606     0.608     0.025     0.556     0.655
+\end{verbatim}
+\end{MCMCout}
 これを見ると，6割の確率でクローザー判定され，クローザーであれば$\lambda=14.7$ぐらいのポアソン分布でデータが生成されるということですね。
 事後予測分布のように，この確率モデルで出てくるデータを図\ref{fig:26_08}に示してみました。単一の分布では表現できないモデル化ができているのではないでしょうか。
 \begin{figure}[ht]
