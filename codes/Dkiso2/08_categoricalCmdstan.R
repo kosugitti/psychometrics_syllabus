@@ -56,6 +56,18 @@ fit %>%
   MCMCsummary()
 
 # Kappa係数
+### 定義に則って計算した場合
+a <- 55
+b <- 16
+c <- 14
+d <- 35
+n <- a + b + c + d
+p0 <- (a+d)/n
+pe <- ((a+b)*(a+c) + (b+d)*(c+d))/n/n
+(p0-pe)/(1-pe)
+
+
+### モデルによる推定
 model <- cmdstanr::cmdstan_model("cmdstan/kappa.stan")
 dataSet <- list(Y = c(55, 16, 14, 35))
 fit <- model$sample(
