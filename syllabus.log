@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.11.4)  16 NOV 2022 23:33
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.11.7)  24 NOV 2022 13:39
  restricted system commands enabled.
 **tmp
 (./tmp.tex
@@ -7,7 +7,7 @@ Lua module: luaotfload 2022-10-03 3.23 Lua based OpenType font support
 Lua module: lualibs 2022-10-04 2.75 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2022-10-04 2.75 ConTeXt Lua libraries -- extended c
 ollection.
-luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2022
+luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2022
 /texmf-var/luatex-cache/generic/names".
 luaotfload | init : Loading fontloader "fontloader-2022-10-03.lua" from kpse-res
 olved path "/usr/local/texlive/2022/texmf-dist/tex/luatex/luaotfload/fontloader-
@@ -19,7 +19,7 @@ Inserting `luaotfload.node_processor' in `hpack_filter'.
 Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
 Inserting `luaotfload.define_font' in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 2
-luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2022
+luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2022
 /texmf-var/luatex-cache/generic/names".
 Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
 Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
@@ -305,7 +305,7 @@ LaTeX Info: Redefining \fontshapeforce on input line 955.
 )
 (/usr/local/texlive/2022/texmf-dist/tex/luatex/luatexja/patches/lltjdefs.sty
 Package: lltjdefs 2022-01-23 Default font settings of LuaTeX-ja
-luaotfload | db : Font names database loaded from /Users/napier3/Library/texlive
+luaotfload | db : Font names database loaded from /Users/hermite/Library/texlive
 /2022/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache: e
 xtra_lmroman10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
@@ -1281,7 +1281,7 @@ Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
 \l__nicematrix_multiplicity_int=\count377
 \l__nicematrix_brace_yshift_dim=\dimen372
 )
-luaotfload | cache : Lookup cache loaded from /Users/napier3/Library/texlive/202
+luaotfload | cache : Lookup cache loaded from /Users/hermite/Library/texlive/202
 2/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache: 
 extra_biz-udmincho-medium.luc)
 
@@ -1549,12 +1549,13 @@ Library (tcolorbox): 'tcbtheorems.code.tex' version '5.1.1'
 \c@tcb@cnt@Rscreen=\count402
 \c@tcb@cnt@SCrstan=\count403
 \c@tcb@cnt@SCcmd=\count404
-\c@tcb@cnt@reidai=\count405
+\c@tcb@cnt@MCMCout=\count405
+\c@tcb@cnt@reidai=\count406
 
 ! TeX capacity exceeded, sorry [input stack size=10000].
 \cl@chapter ->\cl@chapter 
                           \@elt {tcb@cnt@Rscreen}
-l.97     }{reidai}
+l.99     }{reidai}
                 
 If you really absolutely need more capacity,
 you can ask a wizard to enlarge me.
@@ -1562,12 +1563,12 @@ you can ask a wizard to enlarge me.
 
 
 Here is how much of LuaTeX's memory you used:
- 39318 strings out of 477250
+ 39332 strings out of 477250
  125244,1373583 words of node,token memory allocated 901 words of node memory still in use:
    7 hlist, 4 rule, 1 dir, 3 kern, 1 glyph, 150 attribute, 64 glue_spec, 21 attr
 ibute_list, 2 if_stack, 1 write, 9 user_defined, 1 pdf_colorstack nodes
    avail lists: 1:5,2:156,3:4,4:4,5:6,6:1,7:7,9:8
- 59023 multiletter control sequences out of 65536+600000
+ 59037 multiletter control sequences out of 65536+600000
  30 fonts using 30193335 bytes
  10000i,1n,112p,1760b,343s stack positions out of 10000i,1000n,20000p,200000b,200000s
 !  ==> Fatal error occurred, no output PDF file produced!
