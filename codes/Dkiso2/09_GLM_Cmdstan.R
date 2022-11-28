@@ -42,7 +42,8 @@ MCMCsummary <- function(MCMCsample) {
 
 # LM ----------------------------------------------------------------------
 
-dat <- read_csv("baseball2020.csv", locale = locale(encoding = "utf8"))
+dat <- read_csv("BaseballDecade.csv") %>%
+  filter(Year == "2020年度")
 dataSet <- list(N = NROW(dat), Y = dat$height, X = dat$weight)
 dat %>% ggplot(aes(x = weight, y = height)) +
   geom_point() +
