@@ -35,7 +35,8 @@ MCMCsummary <- function(MCMCsample) {
       MAP = map_estimation(value),
       SD = sd(value),
       L95 = quantile(value, prob = 0.025),
-      U95 = quantile(value, prob = 0.975)
+      U95 = quantile(value, prob = 0.975),
+      Rhat = posterior::rhat_basic(value)
     ) %>%
     mutate(across(where(is.numeric), ~ num(., digits = 3)))
 }

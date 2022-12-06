@@ -37,50 +37,60 @@ dat %>%
 dat %>%
   ggplot(aes(x = salary, y = Win, color = Name)) +
   geom_point() +
-  facet_wrap(~Year)
+  facet_wrap(~Name, scales = "free")
 
 dat %>%
-  dplyr::filter(Year == "2020年度") %>%
+  #  dplyr::filter(Year == "2020年度") %>%
   mutate(salary = salary / 1000) %>%
   mutate(ID = as.factor(Name)) %>%
   mutate(ID = as.numeric(ID)) %>%
   ggplot(aes(x = salary, y = Win, color = Name)) +
   geom_point() +
+  scale_colour_colorblind() +
+  labs(title="年俸と勝ち星の関係")+
   ylim(0, 15) +
   xlim(0, 35) -> g1
 
 
 tbl1 <- dat %>%
-  dplyr::filter(Year == "2020年度") %>%
+  #  dplyr::filter(Year == "2020年度") %>%
   mutate(salary = salary / 1000) %>%
-  ggpubr::ggtexttable()
+  dplyr::select(Name, Year, salary) %>%
+  pivot_wider(id_cols = Name, names_from = Year, values_from = c(salary)) %>%
+  ggpubr::ggtexttable() %>% 
+  ggpubr::tab_add_title(text = "年俸の推移(単位;千万円)")
 
-g <- ggpubr::ggarrange(g1, tbl1)
+tbl2 <- dat %>%
+  dplyr::select(Name, Year, Win) %>%
+  pivot_wider(id_cols = Name, names_from = Year, values_from = c(Win)) %>%
+  ggpubr::ggtexttable() %>% 
+  ggpubr::tab_add_title(text='勝ち星の推移')
 
-g <- g1 + tbl1 +
-  patchwork::plot_layout(ncol = 2, widths = c(2, 1))
 
-ggsave(g, filename = "../images/chapter25/Rplot25_01.png", dpi = 600, width = 12, height = 4)
+g <- g1 + tbl1 + tbl2 +
+  patchwork::plot_layout(nrow = 3)
+g
+ggsave(g, filename = "../images/25_HLM/Rplot25_01.png", dpi = 600, width = 12, height = 8)
 # GLMM --------------------------------------------------------------------
 
 ### ポアソン分布で個体差を入れて
 #### リンク関数はlog,逆リンクはexp
-model_pois <- cmdstanr::cmdstan_model("glmm_poisson.stan")
+model_pois <- cmdstanr::cmdstan_model("cmdstan/glmm_poisson.stan")
 
 dat.tmp <- dat %>%
-  dplyr::filter(Year == "2020年度") %>%
   mutate(salary = salary / 1000) %>%
   mutate(ID = as.factor(Name)) %>%
   mutate(ID = as.numeric(ID))
 
 dataSet <- list(
   L = NROW(dat.tmp),
+  N = max(dat.tmp$ID),
   X = dat.tmp$salary,
   Y = dat.tmp$Win,
-  idIndex = dat.tmp$ID
+  index = dat.tmp$ID
 )
 
-model_pois <- cmdstanr::cmdstan_model("glmm_poisson.stan")
+model_pois <- cmdstanr::cmdstan_model("cmdstan/glmm_poisson.stan")
 fit <- model_pois$sample(
   data = dataSet,
   chains = 4,
@@ -100,7 +110,7 @@ fit$draws() %>%
   )
 
 pois_reg <- function(b0, b1, x, m) {
-  exp(b0 + b1 * x + m)
+  exp(b0 + b1 * x)
 }
 
 fit.stanfit <- fit$output_files() %>% rstan::read_stan_csv()
@@ -121,9 +131,9 @@ fit.MCMC <- fit.stanfit %>%
 
 
 g <- dat.tmp %>%
-  ggplot(aes(x = salary, y = Win)) +
+  ggplot(aes(x = salary, y = Win, color = Name)) +
   scale_colour_colorblind() +
-  geom_point() +
+  geom_point() 
   ylim(0, 15) +
   xlim(0, 35) +
   stat_function(fun = pois_reg, args = list(b0 = -0.144, b1 = 0.0621, m = -0.960), lty = 2) +
@@ -135,7 +145,7 @@ g <- dat.tmp %>%
 
 
 ### 個体差いれないポアソン分布
-model_pois_plain <- cmdstan_model("glm_poisson.stan")
+model_pois_plain <- cmdstan_model("cmdstan/glm_poisson.stan")
 dataSet <- list(
   L = NROW(dat.tmp),
   X = dat.tmp$salary,
@@ -150,20 +160,47 @@ fit <- model_pois_plain$sample(
   iter_sampling = 3000
 )
 
-fit$summary()
+fit.stanfitG <- fit$output_files() %>% rstan::read_stan_csv()
+
+fit.MCMC_g <- fit.stanfitG %>%
+  as.data.frame() %>%
+  as_tibble() %>%
+  dplyr::select(beta0, beta1) %>%
+  rowid_to_column("iter") %>%
+  pivot_longer(-iter) %>%
+  group_by(name) %>%
+  summarise(
+    EAP = mean(value),
+    MED = median(value),
+    MAP = map_estimation(value),
+    sd = sd(value)
+  )
+
+estb0 <- fit.MCMC[1,]$EAP
+estb1 <- fit.MCMC[2,]$EAP
+estm1 <- fit.MCMC[3,]$EAP
+estm2 <- fit.MCMC[4,]$EAP
+estm3 <- fit.MCMC[5,]$EAP
+estm4 <- fit.MCMC[6,]$EAP
+estm5 <- fit.MCMC[7,]$EAP
+estGb0 <- fit.MCMC_g[1,]$EAP
+estGb1 <- fit.MCMC_g[2,]$EAP
+
 g <- dat.tmp %>%
-  ggplot(aes(x = salary, y = Win)) +
+  ggplot(aes(x = salary, y = Win, color=Name)) +
   scale_colour_colorblind() +
   geom_point() +
   ylim(0, 15) +
   xlim(0, 35) +
-  stat_function(fun = pois_reg, args = list(b0 = -0.144, b1 = 0.0621, m = -0.960), lty = 2) +
-  stat_function(fun = pois_reg, args = list(b0 = -0.144, b1 = 0.0621, m = -0.091), lty = 2) +
-  stat_function(fun = pois_reg, args = list(b0 = -0.144, b1 = 0.0621, m = 1.720), lty = 2) +
-  stat_function(fun = pois_reg, args = list(b0 = -0.144, b1 = 0.0621, m = 0.153), lty = 2) +
-  stat_function(fun = pois_reg, args = list(b0 = -0.144, b1 = 0.0621, m = -0.680), lty = 2) +
-  stat_function(fun = pois_reg, args = list(b0 = 1.03, b1 = 0.0260, m = 0), color = palette()[2], lty = 2, lwd = 2)
-ggsave(g, filename = "../images/chapter25/Rplot25_02.png", dpi = 600, width = 8, height = 4)
+  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm1), lty = 2,color=1) +
+  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm2), lty = 2,color=2) +
+  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm3), lty = 2,color=3) +
+  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm4), lty = 2,color=4) +
+  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm5), lty = 2,color=5) +
+  stat_function(fun = pois_reg, args = list(b0 = estGb0, b1 = estGb1, m = 0), color = palette()[2], lty = 2, lwd = 2)
+
+g
+ggsave(g, filename = "../images/25_HLM/Rplot25_02.png", dpi = 600, width = 8, height = 4)
 
 # 二項分布の例で ----------------------------------------------------------
 
@@ -396,3 +433,4 @@ fit.stanfit <- fit_glmm$output_files() %>% rstan::read_stan_csv()
 fit.stanfit %>%
   MCMC_result() %>%
   dplyr::filter(str_detect(Varname, pattern = "tau|gamma"))
+

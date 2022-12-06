@@ -35,7 +35,8 @@ MCMCsummary <- function(MCMCsample) {
       MAP = map_estimation(value),
       SD = sd(value),
       L95 = quantile(value, prob = 0.025),
-      U95 = quantile(value, prob = 0.975)
+      U95 = quantile(value, prob = 0.975),
+      Rhat = posterior::rhat_basic(value)
     ) %>%
     mutate(across(where(is.numeric), ~ num(., digits = 3)))
 }
@@ -47,38 +48,38 @@ MCMCsummary <- function(MCMCsample) {
 baseball <- read_csv("baseballDecade.csv")
 
 dat <- baseball %>%
-  dplyr::filter(position == "投手") %>%
-  dplyr::filter(salary > 5000) %>%
-  dplyr::group_by(Name) %>%
-  tidyr::nest() %>%
-  dplyr::mutate(
+  filter(position == "投手") %>%
+  filter(team == "Swallows") %>%
+  group_by(Name) %>%
+  nest() %>%
+  mutate(
     n = purrr::map_dbl(data, ~ NROW(.)),
     FLG = purrr::map_lgl(data, ~ anyNA(.$Win))
   ) %>%
-  dplyr::filter(n == 10) %>%
-  dplyr::filter(!FLG) %>%
-  tidyr::unnest(data) %>%
-  dplyr::select(Year, Name, salary, Win)
+  filter(n > 7) %>%
+  filter(!FLG) %>%
+  unnest(data) %>%
+  select(Year, Name, salary, Win)
 
 # GLMM --------------------------------------------------------------------
 
 ### ポアソン分布で個体差を入れて
 ### データの加工
 dat.tmp <- dat %>%
-  dplyr::filter(Year == "2020年度") %>%
   dplyr::mutate(salary = salary / 1000) %>%
   dplyr::mutate(ID = as.factor(Name)) %>%
   dplyr::mutate(ID = as.numeric(ID))
 
 dataSet <- list(
   L = NROW(dat.tmp),
+  N = max(dat.tmp$ID),
   X = dat.tmp$salary,
   Y = dat.tmp$Win,
-  idIndex = dat.tmp$ID
+  index = dat.tmp$ID
 )
 
 ### コンパイルと推定
-model <- cmdstanr::cmdstan_model("cmdstan/glm_poisson.stan")
+model <- cmdstanr::cmdstan_model("cmdstan/glmm_poisson.stan")
 
 fit <- model$sample(
   data = dataSet,
@@ -99,8 +100,8 @@ fit %>%
 
 dat <- baseball %>%
   dplyr::filter(position != "投手") %>%
-  dplyr::filter(Year == "2020年度") %>%
-  dplyr::filter(salary > 5000) %>%
+  dplyr::filter(team == "Softbank") %>% 
+  dplyr::filter(salary > 2500) %>%
   dplyr::select(Year, Name, salary, AtBats, Hit, Games, HR)
 
 model <- cmdstanr::cmdstan_model("cmdstan/glmm_binomial.stan")
@@ -111,8 +112,12 @@ dat.tmp <- dat %>%
   dplyr::mutate(ID = as.numeric(ID))
 
 dataSet <- list(
-  L = NROW(dat.tmp), X = dat.tmp$salary,
-  Y = dat.tmp$HR, N = dat.tmp$Hit
+  L = NROW(dat.tmp), 
+  N = max(dat.tmp$ID),
+  index = dat.tmp$ID,
+  X = dat.tmp$salary,
+  Y = dat.tmp$HR, 
+  H = dat.tmp$Hit
 )
 
 fit <- model$sample(
@@ -130,7 +135,6 @@ fit %>%
 # 課題2，階層線形モデル -------------------------------------------------------------
 
 pitcher <- baseball %>%
-  dplyr::filter(Year == "2020年度") %>%
   dplyr::filter(position == "投手") %>%
   dplyr::filter(salary > 1000) %>%
   dplyr::mutate(salary = salary / 1000) %>%
