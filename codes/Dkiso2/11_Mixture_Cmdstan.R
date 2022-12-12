@@ -94,7 +94,7 @@ fitDF %>%
 fitDF %>%
   dplyr::filter(str_detect(name, pattern = c("pred_class"))) %>%
   MCMCsummary() %>%
-  mutate(Class = round(EAP)) %>%
+  mutate(Class = as.numeric(round(EAP))) %>%
   mutate(ID = str_extract(name, pattern = "\\d+") %>% as.numeric()) %>%
   arrange(ID) %>%
   left_join(dat.tmp, by = "ID") %>%
