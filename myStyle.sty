@@ -2,6 +2,8 @@
 \usepackage{bxpapersize}
 % 1行49文字。200行で一万文字程度(目安)
 \usepackage[top=30truemm,bottom=30truemm,includefoot,includehead,heightrounded]{geometry}
+\usepackage{amsmath} %AMS系数式パッケージ
+\usepackage{amssymb} %実数集合とかのフォント
 \usepackage{url} %URLをきれいに表示
 \usepackage{graphicx} %図版を読み込む
 \usepackage{lineno} %行番号表示パッケージ
@@ -12,9 +14,6 @@
 \usepackage{ulem} % 下線を引く
 \usepackage{bm} %ベクトル表記が楽になるパッケージ
 \usepackage{pdfpages} %PDFファイルを取り込むパッケージ。表紙の図版に。
-\usepackage{booktabs} %表の罫線パッケージ
-\usepackage{amsmath} %AMS系数式パッケージ
-\usepackage{amssymb} %実数集合とかのフォント
 \usepackage{wrapfig} % 図の周りに文章を配置するパッケージ
 \usepackage{multirow} % 表の縦結合
 \usepackage{tikz} % コマンドで図を書くパッケージ
@@ -26,6 +25,7 @@
 \usepackage{luatexja-fontspec}
 % \usepackage{nicematrix} % 階段行列に色付けしたり
 \usepackage[no-test-for-array]{nicematrix}
+\usepackage{booktabs} %表の罫線パッケージ
 % BIZ UDフォントを使う
 \newjfontface{\nonproportional}{BIZ UDMincho Medium}[YokoFeatures={JFM=ujis}]
 \setmainjfont[Ligatures={Common,TeX},
@@ -93,20 +93,22 @@ setpagesize=false,
 % breakableオプションが怪しいのでコラムそのものを廃止
 % \newtcbtheorem{Untiku}{うんちく}{fonttitle=\gtfamily\sffamily\bfseries,colframe=blue,colback=blue!7!,fontupper=\gtfamily\small}{Untiku}
 % 例題
-\newtcbtheorem[number within=chapter]{reidai}{例題}{
-    fonttitle=\gtfamily\sffamily\bfseries\upshape,
-    colframe=gray,
-    colback=white,
-    rightrule=0pt,
-    leftrule=0pt,
-    arc=7pt,
-    bottomrule=1pt
-    }{reidai}
+% \newtcbtheorem[number within=chapter]{reidai}{例題}{
+%     fonttitle=\gtfamily\sffamily\bfseries\upshape,
+%     colframe=gray,
+%     colback=white,
+%     rightrule=0pt,
+%     leftrule=0pt,
+%     arc=7pt,
+%     bottomrule=1pt
+%     }
+% {reidai}
+
 % hinto
-\newtcbtheorem[number within=chapter]{hinto}{ヒント}{
-    fonttitle=\gtfamily\sffamily\bfseries\upshape,
-    colframe=cyan,colback=gray!10,rightrule=0pt,leftrule=0pt,arc=7pt,bottomrule=1pt
-}{hinto}
+% \newtcbtheorem[number within=chapter]{hinto}{ヒント}{
+%     fonttitle=\gtfamily\sffamily\bfseries\upshape,
+%     colframe=cyan,colback=gray!10,rightrule=0pt,leftrule=0pt,arc=7pt,bottomrule=1pt
+% }{hinto}
 
 % figure環境の外でのcaption
 \usepackage{capt-of}
