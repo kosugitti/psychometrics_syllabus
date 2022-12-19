@@ -76,7 +76,7 @@
 - [家賃のデータ](codes/SampleData/yachin.csv)
 - [項目反応理論用のデータ](codes/SampleData/IRTsample.csv)
 - [体重推移のデータ](codes/SampleData/Weight.csv)
-- [M-1 グランプリの評定データ](codes/SampleData/M1score2021.csv)
+- [M-1 グランプリの評定データ](codes/SampleData/M1score2022.csv)
 
 ### 心理学データ解析基礎 2
 
@@ -87,7 +87,7 @@
 - [分散分析課題用データセット 2](codes/SampleData/chapter22exe2.csv)
 - [分散分析課題用データセット 3](codes/SampleData/chapter22exe3.csv)
 
-### 心理学データ解析応用 2**2022.11update!**
+### 心理学データ解析応用 2
 
 - [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
 - [事前準備；cmdstanr の確認用コード](codes/Dkiso2/00_Appendix1_cmdstanr.R)

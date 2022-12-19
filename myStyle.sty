@@ -93,22 +93,25 @@ setpagesize=false,
 % breakableオプションが怪しいのでコラムそのものを廃止
 % \newtcbtheorem{Untiku}{うんちく}{fonttitle=\gtfamily\sffamily\bfseries,colframe=blue,colback=blue!7!,fontupper=\gtfamily\small}{Untiku}
 % 例題
+
 % \newtcbtheorem[number within=chapter]{reidai}{例題}{
-%     fonttitle=\gtfamily\sffamily\bfseries\upshape,
-%     colframe=gray,
-%     colback=white,
-%     rightrule=0pt,
-%     leftrule=0pt,
-%     arc=7pt,
-%     bottomrule=1pt
-%     }
-% {reidai}
+\newtcbtheorem{reidai}{例題}{
+    fonttitle=\gtfamily\sffamily\bfseries\upshape,
+    colframe=gray,
+    colback=white,
+    rightrule=0pt,
+    leftrule=0pt,
+    arc=7pt,
+    bottomrule=1pt
+    }
+{reidai}
 
 % hinto
 % \newtcbtheorem[number within=chapter]{hinto}{ヒント}{
-%     fonttitle=\gtfamily\sffamily\bfseries\upshape,
-%     colframe=cyan,colback=gray!10,rightrule=0pt,leftrule=0pt,arc=7pt,bottomrule=1pt
-% }{hinto}
+\newtcbtheorem{hinto}{ヒント}{
+    fonttitle=\gtfamily\sffamily\bfseries\upshape,
+    colframe=cyan,colback=gray!10,rightrule=0pt,leftrule=0pt,arc=7pt,bottomrule=1pt
+}{hinto}
 
 % figure環境の外でのcaption
 \usepackage{capt-of}
