@@ -62,6 +62,7 @@ X <- mvrnorm(N, mu, SIG)
 
 dataSet <- list(N = N, X = X)
 model <- cmdstanr::cmdstan_model("cmdstan/paired_t.stan")
+model$check_syntax()
 fit <- model$sample(
   data = dataSet,
   chains = 4,
@@ -94,6 +95,7 @@ dataSet <- list(
 )
 
 model <- cmdstanr::cmdstan_model("cmdstan/paired_t_tidy.stan")
+model$check_syntax()
 fit <- model$sample(
   data = dataSet,
   chains = 4,

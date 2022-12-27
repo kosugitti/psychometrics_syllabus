@@ -29,6 +29,7 @@ schools_dat <- list(
 
 modelFile <- write_stan_file(stancode)
 model <- cmdstan_model(modelFile)
+model$check_syntax()
 fit.samp <- model$sample(
   data = schools_dat,
   iter_warmup = 1000,

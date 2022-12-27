@@ -69,6 +69,7 @@ dat.tmp <- dat %>%
 
 dataSet <- list(K = 2, L = NROW(dat.tmp), Y = dat.tmp$salary.log)
 model <- cmdstanr::cmdstan_model("cmdstan/latent.stan")
+model$check_syntax()
 
 ## サンプリングの際に，Rhatがうまくいかないことがあれば，違うseed値でやり直してみてください。
 fit <- model$sample(
@@ -119,6 +120,7 @@ dat.tmp <- dat %>%
   dplyr::select(Save)
 
 model <- cmdstan_model("cmdstan/ziPoisson.stan")
+model$check_syntax()
 
 dataSet <- list(L = NROW(dat.tmp), Y = dat.tmp$Save)
 fit <- model$sample(
@@ -177,6 +179,7 @@ dat.tmp <- dat %>%
   dplyr::mutate(salary = salary / 1000)
 
 model <- cmdstan_model("cmdstan/ziPoisson2.stan")
+model$check_syntax()
 dataSet <- list(L = NROW(dat.tmp), Y = dat.tmp$Save, X = dat.tmp$salary)
 fit <- model$sample(
   data = dataSet,

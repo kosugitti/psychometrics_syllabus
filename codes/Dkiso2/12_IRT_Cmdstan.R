@@ -92,6 +92,11 @@ model_1pl <- cmdstan_model("cmdstan/oneParameter.stan")
 model_2pl <- cmdstan_model("cmdstan/twoParameters.stan")
 model_3pl <- cmdstan_model("cmdstan/threeParameters.stan")
 
+model_1pl$check_syntax()
+model_2pl$check_syntax()
+model_3pl$check_syntax()
+
+
 dataSet <- list(N = NROW(dat), M = NCOL(dat), resp = as.matrix(dat))
 fit1 <- model_1pl$sample(data = dataSet, chains = 4, parallel_chains = 4, iter_warmup = 1000, iter_sampling = 5000)
 fit2 <- model_2pl$sample(data = dataSet, chains = 4, parallel_chains = 4, iter_warmup = 1000, iter_sampling = 5000)
@@ -204,7 +209,7 @@ dataSet <- list(
 )
 
 model_2pl_ver2 <- cmdstan_model("cmdstan/twoParameters2.stan")
-
+model_2pl_ver2$check_syntax()
 fit2.2 <- model_2pl_ver2$sample(
   data = dataSet,
   chains = 4,

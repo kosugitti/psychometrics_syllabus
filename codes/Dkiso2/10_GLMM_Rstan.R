@@ -98,7 +98,7 @@ fit %>%
 
 dat <- baseball %>%
   dplyr::filter(position != "投手") %>%
-  dplyr::filter(team == "Softbank") %>% 
+  dplyr::filter(team == "Softbank") %>%
   dplyr::filter(salary > 2500) %>%
   dplyr::select(Year, Name, salary, AtBats, Hit, Games, HR)
 
@@ -110,11 +110,11 @@ dat.tmp <- dat %>%
   dplyr::mutate(ID = as.numeric(ID))
 
 dataSet <- list(
-  L = NROW(dat.tmp), 
+  L = NROW(dat.tmp),
   N = max(dat.tmp$ID),
   index = dat.tmp$ID,
   X = dat.tmp$salary,
-  Y = dat.tmp$HR, 
+  Y = dat.tmp$HR,
   H = dat.tmp$Hit
 )
 

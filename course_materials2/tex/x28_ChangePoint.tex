@@ -74,7 +74,11 @@ dat1 <- dat %>%
 
 model <- cmdstanr::cmdstan_model("changePoint1.stan")
 dataSet <- list(L = NROW(dat1), W = dat1$weight)
-fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4, seed = 12345)
+fit <- model$sample(
+  data = dataSet, 
+  chains = 4, 
+  parallel_chains = 4, 
+  seed = 12345)
 \end{lstlisting}
 \begin{figure}[ht]
    \begin{center}
@@ -127,16 +131,16 @@ data{
 
 parameters{
   real<lower=1,upper=L> tau;
-  vector[2] mu;
+  ordered[2] mu;
   real<lower=0> sigma;
 }
 
 model{
   for(l in 1:L){
     if(l < tau){
-      W[l] ~ normal(mu[1],sigma);
-    }else{
       W[l] ~ normal(mu[2],sigma);
+    }else{
+      W[l] ~ normal(mu[1],sigma);
     }
   }
   
@@ -146,7 +150,7 @@ model{
 }
 \end{lstlisting}
 
-日々のデータが順に1からL行目まで並んでいるとします。パラメータ\verb|tau|があり，\verb|l|行目のデータが変化点\verb|tau|より前にあるときは$\mu_1,\sigma$の正規分布から，\verb|tau|より後になれば，$\mu_2,\sigma$の正規分布からデータが出てくると考えるのです。
+日々のデータが順に1からL行目まで並んでいるとします。パラメータ\verb|tau|があり，\verb|l|行目のデータが変化点\verb|tau|より前にあるときは$\mu_2,\sigma$の正規分布から，\verb|tau|より後になれば，$\mu_1,\sigma$の正規分布からデータが出てくると考えるのです。今回は後半の平均値が小さいことが明らかですから，$\mu$のベクトルを\verb|ordered|型で宣言してあります。ベクトル要素の小さい順に並びますから，前半が$\mu_2$，後半が$\mu_1$としています。
 
 これを実行して，変化点がいつになるのかを推定してみましょう。推定結果は出力\ref{MCMCout:out28_01}のようになりました。
 \begin{MCMCout}{}{out28_01}

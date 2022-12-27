@@ -44,6 +44,7 @@ MCMCsummary <- function(MCMCsample) {
 # モデル ---------------------------------------------------------------------
 
 model <- cmdstanr::cmdstan_model("cmdstan/categorical1.stan")
+model$check_syntax()
 fit <- model$sample(
   data = list(K = 3, X = c(51, 45, 27)),
   chains = 4,
@@ -63,13 +64,14 @@ b <- 16
 c <- 14
 d <- 35
 n <- a + b + c + d
-p0 <- (a+d)/n
-pe <- ((a+b)*(a+c) + (b+d)*(c+d))/n/n
-(p0-pe)/(1-pe)
+p0 <- (a + d) / n
+pe <- ((a + b) * (a + c) + (b + d) * (c + d)) / n / n
+(p0 - pe) / (1 - pe)
 
 
 ### モデルによる推定
 model <- cmdstanr::cmdstan_model("cmdstan/kappa.stan")
+model$check_syntax()
 dataSet <- list(Y = c(55, 16, 14, 35))
 fit <- model$sample(
   data = dataSet,

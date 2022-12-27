@@ -60,6 +60,7 @@ dat1 <- dat %>%
   dplyr::mutate(date = as.Date(date))
 
 model <- cmdstanr::cmdstan_model("cmdstan/StateSpace.stan")
+model$check_syntax()
 dataSet <- list(L = NROW(dat1), W = dat1$weight)
 fit <- model$sample(
   data = dataSet,
@@ -99,6 +100,7 @@ fullDays <- data.frame(date = as.Date("2020/01/01"):as.Date("2021/12/01")) %>%
   tidyr::replace_na(list(weight = 999, bodyFat = 999))
 
 model <- cmdstanr::cmdstan_model("cmdstan/StateSpace2.stan")
+model$check_syntax()
 dataSet <- list(
   L = NROW(fullDays),
   W = fullDays$weight,
@@ -229,6 +231,7 @@ plot(g)
 # 二階差分 --------------------------------------------------------------------
 
 model <- cmdstanr::cmdstan_model("cmdstan/StateSpace3.stan")
+model$check_syntax()
 fit <- model$sample(
   data = dataSet,
   chains = 4,

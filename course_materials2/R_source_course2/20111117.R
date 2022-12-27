@@ -47,7 +47,7 @@ dat %>%
   ggplot(aes(x = salary, y = Win, color = Name)) +
   geom_point() +
   scale_colour_colorblind() +
-  labs(title="年俸と勝ち星の関係")+
+  labs(title = "年俸と勝ち星の関係") +
   ylim(0, 15) +
   xlim(0, 35) -> g1
 
@@ -57,14 +57,14 @@ tbl1 <- dat %>%
   mutate(salary = salary / 1000) %>%
   dplyr::select(Name, Year, salary) %>%
   pivot_wider(id_cols = Name, names_from = Year, values_from = c(salary)) %>%
-  ggpubr::ggtexttable() %>% 
+  ggpubr::ggtexttable() %>%
   ggpubr::tab_add_title(text = "年俸の推移(単位;千万円)")
 
 tbl2 <- dat %>%
   dplyr::select(Name, Year, Win) %>%
   pivot_wider(id_cols = Name, names_from = Year, values_from = c(Win)) %>%
-  ggpubr::ggtexttable() %>% 
-  ggpubr::tab_add_title(text='勝ち星の推移')
+  ggpubr::ggtexttable() %>%
+  ggpubr::tab_add_title(text = "勝ち星の推移")
 
 
 g <- g1 + tbl1 + tbl2 +
@@ -133,8 +133,8 @@ fit.MCMC <- fit.stanfit %>%
 g <- dat.tmp %>%
   ggplot(aes(x = salary, y = Win, color = Name)) +
   scale_colour_colorblind() +
-  geom_point() 
-  ylim(0, 15) +
+  geom_point()
+ylim(0, 15) +
   xlim(0, 35) +
   stat_function(fun = pois_reg, args = list(b0 = -0.144, b1 = 0.0621, m = -0.960), lty = 2) +
   stat_function(fun = pois_reg, args = list(b0 = -0.144, b1 = 0.0621, m = -0.091), lty = 2) +
@@ -176,27 +176,27 @@ fit.MCMC_g <- fit.stanfitG %>%
     sd = sd(value)
   )
 
-estb0 <- fit.MCMC[1,]$EAP
-estb1 <- fit.MCMC[2,]$EAP
-estm1 <- fit.MCMC[3,]$EAP
-estm2 <- fit.MCMC[4,]$EAP
-estm3 <- fit.MCMC[5,]$EAP
-estm4 <- fit.MCMC[6,]$EAP
-estm5 <- fit.MCMC[7,]$EAP
-estGb0 <- fit.MCMC_g[1,]$EAP
-estGb1 <- fit.MCMC_g[2,]$EAP
+estb0 <- fit.MCMC[1, ]$EAP
+estb1 <- fit.MCMC[2, ]$EAP
+estm1 <- fit.MCMC[3, ]$EAP
+estm2 <- fit.MCMC[4, ]$EAP
+estm3 <- fit.MCMC[5, ]$EAP
+estm4 <- fit.MCMC[6, ]$EAP
+estm5 <- fit.MCMC[7, ]$EAP
+estGb0 <- fit.MCMC_g[1, ]$EAP
+estGb1 <- fit.MCMC_g[2, ]$EAP
 
 g <- dat.tmp %>%
-  ggplot(aes(x = salary, y = Win, color=Name)) +
+  ggplot(aes(x = salary, y = Win, color = Name)) +
   scale_colour_colorblind() +
   geom_point() +
   ylim(0, 15) +
   xlim(0, 35) +
-  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm1), lty = 2,color=1) +
-  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm2), lty = 2,color=2) +
-  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm3), lty = 2,color=3) +
-  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm4), lty = 2,color=4) +
-  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm5), lty = 2,color=5) +
+  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm1), lty = 2, color = 1) +
+  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm2), lty = 2, color = 2) +
+  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm3), lty = 2, color = 3) +
+  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm4), lty = 2, color = 4) +
+  stat_function(fun = pois_reg, args = list(b0 = estb0, b1 = estb1, m = estm5), lty = 2, color = 5) +
   stat_function(fun = pois_reg, args = list(b0 = estGb0, b1 = estGb1, m = 0), color = palette()[2], lty = 2, lwd = 2)
 
 g
@@ -433,4 +433,3 @@ fit.stanfit <- fit_glmm$output_files() %>% rstan::read_stan_csv()
 fit.stanfit %>%
   MCMC_result() %>%
   dplyr::filter(str_detect(Varname, pattern = "tau|gamma"))
-

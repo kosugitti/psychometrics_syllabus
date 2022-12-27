@@ -51,6 +51,8 @@ dat %>% ggplot(aes(x = weight, y = height)) +
   geom_smooth(formula = "y~x", method = "lm", se = FALSE)
 
 model <- cmdstan_model("cmdstan/LM.stan")
+model$check_syntax()
+
 fit <- model$sample(
   data = dataSet,
   chains = 4,
@@ -95,6 +97,7 @@ dat2 %>%
   )
 
 model <- cmdstanr::cmdstan_model("cmdstan/logistic.stan")
+model$check_syntax()
 dataSet <- list(N = NROW(dat2), Y = dat2$Pitcher, X = dat2$Games)
 
 fit.logistic <- model$sample(

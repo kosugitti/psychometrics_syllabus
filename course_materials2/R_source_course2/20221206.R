@@ -84,7 +84,7 @@ dat %>%
   mutate(ID = as.numeric(ID)) %>%
   ggplot(aes(x = salary, y = Win, color = Name)) +
   geom_point() +
-#  theme(legend.position = "none") +
+  #  theme(legend.position = "none") +
   labs(title = "年俸と勝ち星の関係") +
   ylim(0, 15) -> g1
 

@@ -49,6 +49,7 @@ x <- c(-27.020, 3.570, 8.191, 9.898, 9.603, 9.945, 10.056)
 ## cmdstanの場合
 library(cmdstanr)
 model <- cmdstanr::cmdstan_model("cmdstan/sevenScientist.stan")
+model$check_syntax()
 fit <- model$sample(
   data = list(Y = x),
 )

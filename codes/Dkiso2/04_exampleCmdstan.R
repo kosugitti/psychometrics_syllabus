@@ -54,6 +54,7 @@ t.test(groupA, groupB, var.equal = TRUE)
 
 # Modeling ----------------------------------------------------------------
 model <- cmdstanr::cmdstan_model("cmdstan/ttest01.stan")
+model$check_syntax()
 dataSet <- list(X1 = groupA, X2 = groupB, N1 = 8, N2 = 8)
 
 fit <- model$sample(
@@ -118,7 +119,7 @@ MCMCsample %>%
 # Generated quantities ----------------------------------------------------
 
 model <- cmdstanr::cmdstan_model("cmdstan/ttest03.stan")
-
+model$check_syntax()
 groupA <- c(30, 50, 70, 90, 60, 50, 70, 60)
 groupB <- c(30, 45, 60, 40, 60, 50, 40, 30)
 

@@ -37,7 +37,6 @@ MCMCsummary <- function(MCMCsample) {
       L95 = quantile(value, prob = 0.025),
       U95 = quantile(value, prob = 0.975),
       Rhat = posterior::rhat_basic(value)
-      
     ) %>%
     mutate(across(where(is.numeric), ~ num(., digits = 3)))
 }
@@ -71,6 +70,7 @@ g
 
 
 model <- cmdstanr::cmdstan_model("cmdstan/changePoint1.stan")
+model$check_syntax()
 dataSet <- list(L = NROW(dat1), W = dat1$weight)
 fit <- model$sample(
   data = dataSet,
@@ -127,6 +127,7 @@ dat2 <- dat %>%
   dplyr::filter(date < "2021/11/01")
 
 model <- cmdstanr::cmdstan_model("cmdstan/changePoint2.stan")
+model$check_syntax()
 dataSet <- list(L = NROW(dat2), W = dat2$weight)
 fit <- model$sample(
   data = dataSet,
@@ -162,7 +163,7 @@ g <- dat %>%
   geom_point() +
   geom_segment(x = 1, xend = Est$tau, y = Est$mu2, yend = Est$mu2, color = 2) +
   geom_segment(x = Est$tau, xend = dataSet$L, y = Est$mu1, yend = Est$mu1, color = 2) +
-  geom_vline(xintercept = Est$tau, color = 3, lwd = 2)
+  geom_vline(xintercept = Est$tau, color = 3, linewidth = 2)
 g
 
 # 折線回帰 --------------------------------------------------------------------
@@ -183,6 +184,7 @@ dat3 <- dat %>%
 
 
 model <- cmdstanr::cmdstan_model("cmdstan/changePoint3.stan")
+model$check_syntax()
 dataSet <- list(L = NROW(dat3), X = dat3$cDate, W = dat3$weight)
 fit <- model$sample(
   data = dataSet,
@@ -221,6 +223,7 @@ g
 
 
 model <- cmdstanr::cmdstan_model("cmdstan/changePoint3b.stan")
+model$check_syntax()
 dataSet <- list(L = NROW(dat3), X = dat3$cDate, W = dat3$weight)
 fit <- model$sample(
   data = dataSet,

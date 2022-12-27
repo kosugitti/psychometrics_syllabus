@@ -48,6 +48,7 @@ MCMCsummary <- function(MCMCsample) {
 
 
 model <- cmdstanr::cmdstan_model("cmdstan/BetweenAnova.stan")
+model$check_syntax()
 Example <- matrix(c(6, 6, 5, 5, 7, 4, 7, 6, 4, 3, 4, 6), ncol = 4, byrow = T)
 dataSet <- list(Lv = 3, N = 4, X = Example)
 
@@ -81,6 +82,7 @@ dat <- data.frame(
 )
 
 model <- cmdstanr::cmdstan_model("cmdstan/BetweenAnova2.stan")
+model$check_syntax()
 dataSet <- list(Lv = Lv, L = NROW(dat), idx = dat$Idx, X = dat$value)
 fit <- model$sample(
   data = dataSet,
