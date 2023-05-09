@@ -478,13 +478,13 @@ Rで逆行列を求めるには，\verb|solve|という関数があるので，�
 さて，これをベクトルや行列の空間的イメージとして見ると，原点さえ同じであれば必ずしもそれぞれの変数が作る空間にこだわらなくとも，分散の総和(を$n$倍したもの)は同じであることがわかりますね。大事なのはこの空間上にあるデータの散らばりであって，座標(基底)はどのようにとっても良いことです。
 
 ここで，ある行列$\bm{T}$を考えます。これは次のような要素からなります。
-\[ \bm{T} = \begin{pmatrix} \cos \theta & \sin \theta \\ -\sin\theta & \cos \theta \end{pmatrix} \]
+\[ \bm{T} = \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin\theta & \cos \theta \end{pmatrix} \]
 行列は座標変換装置なので，この行列も元の行列の座標を変えてしまいます。しかし，各ベクトルのノルムは$1$で，しかも2つの列ベクトルとして見ると互いに直交していることがわかります。確認してみましょう。
-\[ \begin{Vmatrix}\cos \theta \\-\sin \theta \end{Vmatrix}^2 =
-    (\cos\theta)^2+(-\sin\theta)^2 =\cos^2\theta +\sin^2\theta = 1\]
-\[ \begin{Vmatrix}\sin \theta \\\cos \theta \end{Vmatrix}^2 =
-    (\sin\theta)^2+(\cos\theta)^2 =\sin^2\theta +\cos^2\theta = 1\]
-\[ \left(\begin{pmatrix}\cos\theta\\-\sin\theta\end{pmatrix},\begin{pmatrix}\sin\theta\\\cos \theta\end{pmatrix}\right) = \cos\theta \times \sin \theta +(-\sin \theta)\times \cos \theta = 0 \]
+\[ \begin{Vmatrix}\cos \theta \\\sin \theta \end{Vmatrix}^2 =
+    (\cos\theta)^2+(\sin\theta)^2 =\cos^2\theta +\sin^2\theta = 1\]
+\[ \begin{Vmatrix}-\sin \theta \\\cos \theta \end{Vmatrix}^2 =
+    (-\sin\theta)^2+(\cos\theta)^2 =\sin^2\theta +\cos^2\theta = 1\]
+\[ \left(\begin{pmatrix}\cos\theta\\\sin\theta\end{pmatrix},\begin{pmatrix}-\sin\theta\\\cos \theta\end{pmatrix}\right) = \cos\theta \times (-\sin \theta) +\sin \theta\times \cos \theta = 0 \]
 このように，直交している次元で，かつノルムを変えない変換をする行列のことを\keytermL{直交行列}{ちょっこうぎょうれつ}といい，特に回転角度$\theta$で座標を変えるものを\keytermL{回転行列}{かいてんぎょうれつ}といいます。
 
 直交行列はノルムが1で互いに直交しますので，$\bm{T}'\bm{T}=\bm{I}$であり，$\bm{T}$の逆行列が転置行列になっているようなものです。回転行列で考えると，逆行列はちょうど逆回転の操作に対応します。
