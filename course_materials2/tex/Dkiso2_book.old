@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.2.41}
+\lhead{version 1.2.43}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/cover2.pdf}
@@ -56,8 +56,8 @@
 \include{x29_SSpace}
 \include{x30_comparison}
 \appendix
-\input{../../Scaling/tex/H01_ProofOfLikert}
 \input{../../common_contents/FAQ} % FAQ page
+\input{../../Scaling/tex/H01_ProofOfLikert}
 \input{../../common_contents/Computer}
 \input{../../common_contents/Greeks}
 \input{../../common_contents/keyboards}
