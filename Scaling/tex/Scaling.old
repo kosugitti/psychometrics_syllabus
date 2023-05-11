@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 1.0.10}
+\lhead{version 1.0.13}
 
 \usepackage{docmute}
 \begin{document}
@@ -33,7 +33,7 @@
 
 
 \appendix
-\include{LA01_Rcode}
+\include{H01_ProofOfLikert}
 \input{../../common_contents/Greeks}
 \addcontentsline{toc}{chapter}{引用文献}
 % 引用文献

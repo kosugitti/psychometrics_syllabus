@@ -1,8 +1,104 @@
-\section{標準正規分布からスコアを求める}
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+\chapter{標準正規分布から尺度値を求める計算方法}
 \label{ProofOfLikertScore}
 
-Likert法では，態度が標準正規分布すると仮定するのでした。標準正規分布をカテゴリの相対度数で分割し，あるカテゴリ$c$の上限の確率点$y_c$，下限の確率点$y_{c-1}$の差分を，相対度数$p_c$で割ることで，尺度値$\sigma_c$が下の式で得られます。
+Likert法では，態度が標準正規分布すると仮定するのでした。標準正規分布をカテゴリの相対度数で分割し，あるカテゴリ$c$の上限の確率点$z_c$，下限の確率点$z_{c-1}$の確率密度の差分を，相対度数$p_c$で割ることで，尺度値$Z_c$が下の式で得られます。
 
-\[ \sigma_c = \frac{(y_{c-1} - y_{c})}{p_c} \]
+\[ Z_c = \frac{(y_{z_{c-1}} - y_{z_c})}{p_c} \]
 
-ここで$Z_c$はカテゴリ$c$までの累積確率における確率密度，$p_c$はカテゴリ$c$の相対頻度です。
+ここで$y_{z_c}$は標準正規分布をカテゴリで区分し，当該カテゴリ$c$までの累積確率点$z_c$における確率密度，$p_c$はカテゴリ$c$の相対頻度です。図\ref{STDNormalLikert}に記号の対応関係を示しましたので，確認してください。
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[xscale=1.2,yscale=5]
+        \draw[->,>=stealth,semithick](-4,0)--(4,0)node[above]{$z$};%x軸
+        \draw[->,>=stealth,semithick](-4,0)--(-4,0.5)node[above left]{確率密度};%y軸
+        \coordinate (z1) at (-1.5,0);
+        \coordinate (z2) at (0.5,0);
+        \coordinate (Zc) at (-0.3562729,0);
+        \coordinate (pc) at (-0.3562729,0.17);
+        \node[below] at (z1) {$z_{c-1}$};%下限
+        \node[below] at (z2) {$z_{c}$};%上限
+        \node[below] at (Zc) {$Z_c$};%尺度値
+        \fill[cyan!40!white]plot[domain=-1.5:0.5,smooth]( \x,{exp(-0.5* \x * \x)/sqrt(2 * pi)})--(z2)--(z1);
+        \draw[thick,domain=-4:4,samples=100]plot( \x, {exp(-0.5* \x * \x)/sqrt(2 * pi)});
+        \coordinate (y1) at (-1.5,0.1295176);
+        \coordinate (y2) at (0.5,0.3520653);
+        \draw[thin] (y1)--(z1);
+        \draw[thin] (y2)--(z2);
+        \draw[dashed] (y1) -- (-4,0.1295176);
+        \draw[dashed] (y2) -- (-4,0.3520653);
+        \node[left] at (-4,0.1295176) {$y_{z_{c-1}}$};
+        \node[left] at (-4,0.3520653) {$y_{z_c}$};
+        \node at (pc) {$p_c$};
+        \fill (Zc) circle (0.2pt);
+        % \draw(-1.5,0)node[below right]
+        % \draw(0.5,0)node[below right]{$z_{c}$};%上限
+
+    \end{tikzpicture}
+    \label{STDNormalLikert}
+    \caption{標準正規分布と対応する記号の確認}
+\end{figure}
+
+尺度値$Z_c$を求める計算が確率密度$y_{z_{c-1}},y_{z_c}$と，相対度数$p_c$で算出されるというのは一見奇妙です。どうしてこのようになるのかを見ていきましょう。
+
+まず標準正規分布の確率密度の式を確認しておきます。確率点$z$における確率密度$y$は次の式で算出できます\footnote{$e^x$を$\exp(x)$と書くことも少なくありませんし，この$e$は自然対数の底で$e=2.718...$という実数です。この数字は微分しても変わらない，$(e^x)'=e^x$という便利な特徴を持っています。}。
+\[
+    y_z=f(z) = \frac{1}{\sqrt{2\pi}}e^{(-\frac{z^2}{2})}
+\]
+
+この関数は確率密度の曲線を表しており，確率はその面積です。$z_{c-1}$から$z_c$までの面積(確率)は，積分を使って
+\[
+    p_c = \int_{z_{c-1}}^{z_c} f(z) dz = \int_{z_{c-1}}^{z_c}\frac{1}{\sqrt{2\pi}}e^{( -\frac{z^2}{2})} dz
+\]
+で表されます。
+
+さて，ある確率点$z$における密度の高さを$f(z)$としたとき，$z$の微小な増分$\Delta z$を考えると，区間の面積$S=f(z)\Delta z$を考えることができますから，逆にある点$z$が知りたい時は
+\[ z = \frac{\sum Sz}{\sum S}\]
+とすれば良いことになります。積分はこの微増分$\Delta z$の極限を
+\[ \lim_{\Delta z \to 0}\Delta z = dz \]
+と考えることですから，ここで考えたいのは
+\[ Z_c = \frac{\int_{z_{c-1}}^{z_c} f(z) z dz}{\int_{z_{c-1}}^{z_c} f(z) dz} \]
+になります。分母は確率密度関数の積分ですから面積すなわち確率で，ここでは$p_c$であり，その面積を実データの相対度数で代えてもいいでしょう。
+
+分子については少し式の変形が必要です。記号を見やすくするために，$a=z_{c-1},b=z_c$と書き換えておきましょう。
+\[ 
+    \begin{aligned}
+    \int_{a}^b y z dz &= \int_a^b \frac{1}{\sqrt{2\pi}}e^{(-\frac{z^2}{2})} z dz\\
+    &=  \frac{1}{\sqrt{2\pi}}\int_a^b e^{(-\frac{z^2}{2})} z dz
+    \end{aligned}
+\]
+ここで変数変換をして，$u=-\frac{z^2}{2}$とすると
+\[
+    \begin{aligned}
+    \frac{du}{dz} &= -z\\
+    du &= -zdz 
+    \end{aligned}
+\]
+となり，積分の下限は$-a^2/2$,上限は$-b^2/2$になりますから，以下のように展開できます。
+\[
+    \begin{aligned}
+    (与式)&=-\frac{1}{\sqrt{2\pi}}\int_{-a^2/2}^{-b^2/2}e^u du\\
+    &\\
+    &\mbox{$\int e^u du$は$e^u$なので}\\
+    &\\
+    &=-\frac{1}{\sqrt{2\pi}}\left[e^u\right]_{-a^2/2}^{-b^2/2}\\
+    &\\
+    &=-\frac{1}{\sqrt{2\pi}}e^{(-\frac{b^2}{2})} -\left(-\frac{1}{\sqrt{2\pi}}e^{(-\frac{a^2}{2})}\right)
+    &\\
+    &=\frac{1}{\sqrt{2\pi}}e^{(-\frac{a^2}{2})}-\frac{1}{\sqrt{2\pi}}e^{(-\frac{b^2}{2})} \\
+    &\mbox{$y= \frac{1}{\sqrt{2\pi}}e^{(-\frac{z^2}{2})}$であることから，}\\
+    &= y_a - y_b\\
+    &= y_{z_{c-1}} - y_{z_c}
+    \end{aligned}
+\]
+以上のことから，リッカート法において標準正規分布をもとに尺度得点を決めるには，
+\[ Z_c = \frac{(y_{z_{c-1}} - y_{z_c})}{\int_{z_{c-1}}^{z_c}f(z)dz} = \frac{(y_{z_{c-1}} - y_{z_c})}{p_c} \]
+とすれば良いことになります。
+
+この計算に至る理論的背景は，より専門的には\keyterm{系列範疇法}{けいれつはんちゅうほう}{Method of Successive Categories}と呼ばれ，順序カテゴリに数値を付与する心理測定論，精神物理学理論からきています。詳しくは\citet{JPGuilfod}や\citet{1390001205397311616}も参照してください。
+\end{document}
