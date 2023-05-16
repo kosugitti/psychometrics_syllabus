@@ -23,13 +23,13 @@ newVer=${major}.${minor}.${plusOne}
 newval=`echo $val | sed -e "s/$version/$newVer/"`
 #echo $val | sed -e "s/$val/$newval/"
 echo "New version"$newVer
-echo "元のファイルはこうだぞ"
+echo "応用の教材，弦バージョンは次の通りです。"
 cat ${filename}.tex
-echo "かきかえるぞ"
+echo "かきかえます"
 cat ${filename}.tex | (rm ${filename}.tex; sed "s/$val/$newval/" > ${filename}.tex)
-echo "かきかえたぞ"
+echo "かきかえました"
 cat ${filname}.tex
-echo "コンパイル始めます"
+echo "コンパイルを始めます"
 cp ${filename}.tex tmp.tex
 
 echo "応用テキストの最新バージョンは"$newVer "です。" >| ../../Book_versions2.md
@@ -95,13 +95,13 @@ newVer=${major}.${minor}.${plusOne}
 newval=`echo $val | sed -e "s/$version/$newVer/"`
 #echo $val | sed -e "s/$val/$newval/"
 echo "New version"$newVer
-echo "元のファイルはこうだぞ"
+echo "応用シラバス，現在のバージョンは次の通りです。"
 cat ${filename}.tex
-echo "かきかえるぞ"
+echo "かきかえます"
 cat ${filename}.tex | (rm ${filename}.tex; sed "s/$val/$newval/" > ${filename}.tex)
-echo "かきかえたぞ"
+echo "かきかえました"
 cat ${filname}.tex
-echo "コンパイル始めます"
+echo "コンパイルを始めます"
 cp ${filename}.tex tmp.tex
 
 echo "応用シラバスの最新バージョンは"$newVer "です。" >| ../Syllabus_versions2.md

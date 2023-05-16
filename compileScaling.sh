@@ -41,13 +41,13 @@ newVer=${major}.${minor}.${plusOne}
 newval=`echo $val | sed -e "s/$version/$newVer/"`
 #echo $val | sed -e "s/$val/$newval/"
 echo "New version"$newVer
-echo "元のファイルはこうだぞ"
+echo "心理尺度テキストの現在のバージョンです"
 cat ${filename}.tex
-echo "かきかえるぞ"
+echo "かきかえます"
 cat ${filename}.tex | (rm ${filename}.tex; sed "s/$val/$newval/" > ${filename}.tex)
-echo "かきかえたぞ"
+echo "かきかえましたぞ"
 cat ${filname}.tex
-echo "コンパイル始めます"
+echo "コンパイルを始めます"
 cp ${filename}.tex tmp.tex
 
 echo "広大集中講義テキストの最新バージョンは"$newVer "です。" >| ../../Hiroshima_versions.md

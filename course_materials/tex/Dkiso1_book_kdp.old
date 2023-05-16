@@ -1,6 +1,6 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
-\geometry{twoside}
+\geometry{twoside,inner=32truemm,outer=20truemm}
 % 章の最初のページ番号を除く呪文
 \makeatletter
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
@@ -9,7 +9,6 @@
                     \@afterindentfalse
                     \secdef\@chapter\@schapter}
 \makeatother
-
 %% バッチ処理をするので\lheadは必ず4行目にあること
 \lhead{}
 \usepackage{docmute}
