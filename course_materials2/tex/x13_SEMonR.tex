@@ -143,7 +143,7 @@ summary(result2, fit.measures = T, standardized = T)
 
 これを図にしたのが図\ref{fig::13_01}です。ちなみにこの図もRのパッケージで書きました。パス図を自動的に書いてくれるパッケージとして\texttt{semPlot}パッケージ\citep{Charles2013}や\texttt{tidySEM}パッケージ\citep{tidySEM}などを使います。ここでは\texttt{tidySEM}パッケージの\verb|graph_sem|関数を使いました。
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/13_SEMonR/Rplot13_01.png}
     \caption{パス解析の図}
@@ -166,7 +166,7 @@ summary(result3, fit.measures = T, standardized = T)
 \end{lstlisting}
 
 これのモデル図は図\ref{fig::13_03}のようになります\footnote{この図は\citet{Onoshima2021}の関数を使っています。tikzを使って綺麗なモデルが描ける素晴らしい関数の提供に感謝。}。モデル上とくに指定はしてありませんが，潜在変数同士の相関係数も自動的に推定されています。パス係数は潜在変数からでてきていますから，\keytermL{因子負荷量}{いんしふかりょう}のように考えることができますね。
-\begin{figure}[h]
+\begin{figure}[ht]
   \begin{center}
     \includegraphics{../images/13_SEMonR/SEMonR_fig02.pdf}
     \caption{潜在変数モデル}
@@ -209,7 +209,7 @@ modificationindices(result4) %>%
 \end{description}
 
 まずは今回のモデルについても，図でみたほうがわかりやすいでしょう。結果を合わせて図\ref{fig::13_04}に示してみました。
-\begin{figure}[h]
+\begin{figure}[ht]
   \begin{center}
     \includegraphics{../images/13_SEMonR/SEMonR_fig03.pdf}
     \caption{構造方程式モデルへ}

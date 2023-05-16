@@ -7,10 +7,6 @@ cd $path
 ## backup
 cp ${filename}.tex ${filename}.old
 cp ${filename}.tex tmpK.tex
-
-echo "応用テキストの最新バージョンは"$newVer "です。" >| ../../Book_versions2.md
-
-
 ## LateX Main
 rm errorK.log
 lualatex tmpK

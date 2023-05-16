@@ -18,7 +18,7 @@
 
 また，変数同士の関係を表現する必要がありますが，関係には\keytermL{因果関係}{いんがかんけい}と\keytermL{相関関係}{そうかんかんけい}があります。調査データから因果関係を見出すのは原理的に不可能ですが，モデル上は一方が他方の原因になっている，と考えることがあります。回帰分析はその典型例で，説明変数が原因となって，被説明変数のあたいが結果的に変わる，という関係ですね。こうした関係を一方向の矢印で表現します。他方，相関関係は因果関係よりも緩やかで，何らかの関係がある，ということを意味しているに過ぎません。因果の向きが定まっているのではなく，どちらの向きにも影響しうる，ということで双方向矢印でもってこれを表現します。注意してほしいのは，ここでいう因果関係とは一方が原因，他方が結果という一方向的な影響を表してはいますが，本当に現象として因果的であるかどうかは一時点のデータセットから確定できるものではないという点です。回帰分析でいうところの，変数を説明・被説明の関係とみなすというのと同じ意味での因果関係に過ぎないことに注意してください。
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \begin{tikzpicture}
         \draw[thick]  (0,0)--(0,1)--(2,1)--(2,0)-- (0,0);
         \draw[thick]  (5,0.5) ellipse (1.2 and 0.5);
@@ -72,7 +72,7 @@
 \section{構造方程式}
 さて，構造方程式モデリングはその名の通り，構造を方程式で書いて表すことです。この時，方程式は大きく2種類に分けることができ，変数間の関係を表現するものを\keytermL{構造方程式}{こうぞうほうていしき}，(潜在)変数の組成について表現するものを\keytermL{測定方程式}{そくていほうていしき}といいます。ここではまず構造方程式の方から見ていきましょう。まずは図\ref{pathAnalysis}にある例からです。
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \begin{tikzpicture}
         \node (A) [draw,thick,rectangle,inner xsep=15pt] at (0,0) {$x_1$};
@@ -128,7 +128,7 @@
 \[ \bm{\Sigma_e} = \begin{pmatrix} \sigma_{1}^2 & 0 & 0 \\ 0 & \sigma_{e2}^2 & 0 \\ 0 & 0 & \sigma_{e3}^2 \end{pmatrix} \]
 
 続いて図\ref{SequentialModel}の例を見てみましょう
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \begin{tikzpicture}
         \node (A) [draw,thick,rectangle,inner xsep=15pt] at (0,3) {$x_1$};
@@ -189,7 +189,7 @@ $\bm{\Sigma} = \bm{T}\bm{\Sigma}_e\bm{T}' $となりますが，このときの�
 測定方程式とは，潜在変数をどのようにして構成するかを書いている方程式のことです。
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \begin{tikzpicture}
         \node (A) [draw,thick,rectangle,inner xsep=15pt] at (3,1.5) {$x_1$};
@@ -237,7 +237,7 @@ $\bm{\Sigma} = \bm{T}\bm{\Sigma}_e\bm{T}' $となりますが，このときの�
 \section{複雑なモデルの場合}
 
 では次に，図\ref{ComplexModel}のような複雑なモデルでも方程式で表せることを示しましょう。
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \begin{tikzpicture}
         \node (X1) [draw,thick,rectangle,inner xsep=15pt] at (-2,2) {$x_1$};
@@ -373,7 +373,7 @@ $\bm{\Sigma} = \bm{T}\bm{\Sigma}_e\bm{T}' $となりますが，このときの�
 \end{reidai}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \begin{tikzpicture}
         \node (X1) [draw,thick,rectangle,inner xsep=15pt] at (-2,2) {$x_1$};

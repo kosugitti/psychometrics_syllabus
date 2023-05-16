@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.5.9)  11 MAY 2023 16:39
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.5.12)  16 MAY 2023 16:09
  restricted system commands enabled.
 **tmp
 (./tmp.tex
@@ -7,7 +7,7 @@ Lua module: luaotfload 2022-10-03 3.23 Lua based OpenType font support
 Lua module: lualibs 2022-10-04 2.75 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2022-10-04 2.75 ConTeXt Lua libraries -- extended c
 ollection.
-luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2023
+luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2023
 /texmf-var/luatex-cache/generic/names".
 luaotfload | init : Loading fontloader "fontloader-2022-10-03.lua" from kpse-res
 olved path "/usr/local/texlive/2023/texmf-dist/tex/luatex/luaotfload/fontloader-
@@ -19,7 +19,7 @@ Inserting `luaotfload.node_processor' in `hpack_filter'.
 Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
 Inserting `luaotfload.define_font' in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 2
-luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2023
+luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2023
 /texmf-var/luatex-cache/generic/names".
 Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
 Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
@@ -38,7 +38,7 @@ Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'. L3 programm
-ing layer <2023-05-05>
+ing layer <2023-05-11>
 Inserting `tracingstacklevels' in `input_level_string'.
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/ltjsbook.cls
 Document Class: ltjsbook 2022/09/12 ltjsclasses 
@@ -309,7 +309,7 @@ LaTeX Info: Redefining \fontshapeforce on input line 955.
 )
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/patches/lltjdefs.sty
 Package: lltjdefs 2022-01-23 Default font settings of LuaTeX-ja
-luaotfload | db : Font names database loaded from /Users/hermite/Library/texlive
+luaotfload | db : Font names database loaded from /Users/napier3/Library/texlive
 /2023/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache: e
 xtra_lmroman10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
@@ -328,7 +328,7 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 Package: lltjcore 2023-02-26 Patch to LaTeX2e Kernel for LuaTeX-ja
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2023-05-05 L3 programming layer (loader) 
+Package: expl3 2023-05-11 L3 programming layer (loader) 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2023-04-19 L3 backend support: PDF output (LuaTeX)
@@ -1286,7 +1286,7 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count379
 \@thisrulewidth=\dimen374
 )
-luaotfload | cache : Lookup cache loaded from /Users/hermite/Library/texlive/202
+luaotfload | cache : Lookup cache loaded from /Users/napier3/Library/texlive/202
 3/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache: 
 extra_biz-udmincho-medium.luc)
 
@@ -1656,7 +1656,7 @@ LaTeX Font Info:    ... okay on input line 6.
 * \headheight=20.0pt
 * \headsep=14.31049pt
 * \topskip=12.76108pt
-* \footskip=0.0pt
+* \footskip=16.0pt
 * \marginparwidth=120.2127pt
 * \marginparsep=18.49426pt
 * \columnsep=18.49426pt
@@ -1831,13 +1831,7 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/sl' will be
 (Font)              scaled to size 9.24713pt on input line 24.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/sl' will be
 (Font)              scaled to size 9.24713pt on input line 24.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[2{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+ [2{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ])(load cache: extra_lmroman17-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
@@ -1881,20 +1875,8 @@ LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
 (Font)              scaled to size 11.09656pt on input line 14.
 (load cache: extra_lmsans10-regular.luc)
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-
 warning  (pdf backend): ignoring duplicate destination with the name 'page.2'
-[2])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[3] [4
+[2]) [3] [4
 
 ]
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
@@ -1905,47 +1887,11 @@ LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
 (Font)              scaled to size 23.00687pt on input line 20.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (Font)              scaled to size 23.00687pt on input line 20.
-(load cache: extra_lmsans17-regular.luc) (./tmp.toc [5]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[6]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[7]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[8]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[9]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[10])
+(load cache: extra_lmsans17-regular.luc) (./tmp.toc [5] [6] [7] [8] [9] [10])
 \tf@toc=\write8
 
 \openout8 = tmp.toc
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[11] [12
+ [11] [12
 
 ]
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
@@ -1963,7 +1909,8 @@ LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
 (Font)              scaled to size 4.62357pt on input line 25.
  [13] [14]
 \openout2 = x01_introduction.aux
- (./x01_introduction.tex
+
+(./x01_introduction.tex
 第1章
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 6.47299pt on input line 15.
@@ -1974,66 +1921,12 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 [15
 
 
-]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[16](load cache: extra_lmroman8-bold.luc)
+] [16](load cache: extra_lmroman8-bold.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
 (Font)              scaled to size 7.3977pt on input line 44.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
 (Font)              scaled to size 7.3977pt on input line 44.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[17]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[18]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[19]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[20]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[21]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[22]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[23])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[24]
+ [17] [18] [19] [20] [21] [22] [23]) [24]
 \openout2 = x02_scaling.aux
  (./x02_scaling.tex
 第2章
@@ -2042,25 +1935,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 
 
-]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[26]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[27]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[28]
+] [26] [27] [28]
 <../images/02_Scaling/Rplot02_01.png, id=1414, 7227.0pt x 4818.0pt>
 File: ../images/02_Scaling/Rplot02_01.png Graphic file (type png)
 <use ../images/02_Scaling/Rplot02_01.png>
@@ -2078,37 +1953,8 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 8.32242pt on input line 88.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 8.32242pt on input line 88.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[29<../images/02_Scaling/Rplot02_01.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[30]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[31]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[32])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[33]
+ [29<../images/02_Scaling/Rplot02_01.png>] [30] [31]
+[32]) [33]
 \openout2 = x03_testTheory.aux
  (./x03_testTheory.tex [34
 
@@ -2117,114 +1963,29 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 ]
 第3章
-[35]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[36]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[37]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[38]
+[35] [36] [37] [38]
 Overfull \hbox (18.15721pt too wide) detected at line 107
 [][][][]
  []
 
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 118.
-
+[39] [40]
 LaTeX Font Info:    Trying loading font information for OMS+lmr on input line 1
-18.
-(/usr/local/texlive/2023/texmf-dist/tex/latex/lm/omslmr.fd
+76.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying loading font information for OMS+lmsy on input line 
-118.
+176.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 118.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 118.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 118.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 118.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 119.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 119.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 120.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 120.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 122.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 122.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 122.
-
-
-LaTeX Warning: Command \textcircled invalid in math mode on input line 122.
-
-LaTeX Font Info:    Trying loading font information for OMS+lmss on input line 
-132.
-LaTeX Font Info:    No file OMSlmss.fd. on input line 132.
-
-LaTeX Font Warning: Font shape `OMS/lmss/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead on input line 132.
-
-LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 6.47299pt on input line 132.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[39]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[40]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[41])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[42]
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 176.
+ [41]) [42]
 \openout2 = x04_IRT.aux
- (./x04_IRT.tex
+
+(./x04_IRT.tex
 第4章
 [43
 
@@ -2238,13 +1999,7 @@ File: ../images/04_irt/Rplot04_01.png Graphic file (type png)
 Package luatex.def Info: ../images/04_irt/Rplot04_01.png  used on input line 29
 .
 (luatex.def)             Requested size: 334.60422pt x 223.04956pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[44<../images/04_irt/Rplot04_01.png>]
+ [44<../images/04_irt/Rplot04_01.png>]
 <../images/04_irt/Rplot04_02.png, id=1601, 7227.0pt x 4818.0pt>
 File: ../images/04_irt/Rplot04_02.png Graphic file (type png)
 <use ../images/04_irt/Rplot04_02.png>
@@ -2254,13 +2009,7 @@ Package luatex.def Info: ../images/04_irt/Rplot04_02.png  used on input line 41
 (load cache: extra_lmmono8-regular.luc)
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
 (Font)              scaled to size 7.3977pt on input line 49.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[45<../images/04_irt/Rplot04_02.png>]
+ [45<../images/04_irt/Rplot04_02.png>]
 <../images/04_irt/Rplot04_03.png, id=1622, 7227.0pt x 3613.5pt>
 File: ../images/04_irt/Rplot04_03.png Graphic file (type png)
 <use ../images/04_irt/Rplot04_03.png>
@@ -2269,37 +2018,20 @@ Package luatex.def Info: ../images/04_irt/Rplot04_03.png  used on input line 68
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (Font)              scaled to size 8.32242pt on input line 69.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[46<../images/04_irt/Rplot04_03.png>]
+ [46<../images/04_irt/Rplot04_03.png>]
 <../images/04_irt/Rplot04_04.png, id=1639, 7227.0pt x 3613.5pt>
 File: ../images/04_irt/Rplot04_04.png Graphic file (type png)
 <use ../images/04_irt/Rplot04_04.png>
 Package luatex.def Info: ../images/04_irt/Rplot04_04.png  used on input line 81
 .
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[47<../images/04_irt/Rplot04_04.png>]
+ [47<../images/04_irt/Rplot04_04.png>]
 <../images/04_irt/Rplot04_05.png, id=1661, 7227.0pt x 3613.5pt>
 File: ../images/04_irt/Rplot04_05.png Graphic file (type png)
 <use ../images/04_irt/Rplot04_05.png>
 Package luatex.def Info: ../images/04_irt/Rplot04_05.png  used on input line 10
 2.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [48<../images/04_irt/Rplot04_05.png>]
 <../images/04_irt/Rplot04_06.png, id=1675, 7227.0pt x 3613.5pt>
@@ -2322,24 +2054,8 @@ File: ../images/04_irt/Rplot04_08.png Graphic file (type png)
 Package luatex.def Info: ../images/04_irt/Rplot04_08.png  used on input line 15
 5.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[49<../images/04_irt/Rplot04_06.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
+ [49<../images/04_irt/Rplot04_06.png>]
 [50<../images/04_irt/Rplot04_07.png><../images/04_irt/Rplot04_08.png>])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
 [51]
 \openout2 = x05_GRM.aux
  (./x05_GRM.tex [52
@@ -2349,96 +2065,43 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 ]
 第5章
-[53]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[54]
+[53] [54]
 <../images/05_GRM/Rplot05_01.png, id=1746, 7227.0pt x 3613.5pt>
 File: ../images/05_GRM/Rplot05_01.png Graphic file (type png)
 <use ../images/05_GRM/Rplot05_01.png>
 Package luatex.def Info: ../images/05_GRM/Rplot05_01.png  used on input line 48
 .
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[55<../images/05_GRM/Rplot05_01.png>]
+ [55<../images/05_GRM/Rplot05_01.png>]
 <../images/05_GRM/Rplot05_02.png, id=1759, 7227.0pt x 3613.5pt>
 File: ../images/05_GRM/Rplot05_02.png Graphic file (type png)
 <use ../images/05_GRM/Rplot05_02.png>
 Package luatex.def Info: ../images/05_GRM/Rplot05_02.png  used on input line 61
 .
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[56<../images/05_GRM/Rplot05_02.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[57]
+ [56<../images/05_GRM/Rplot05_02.png>] [57]
 <../images/05_GRM/Rplot05_03.png, id=1800, 7227.0pt x 3613.5pt>
 File: ../images/05_GRM/Rplot05_03.png Graphic file (type png)
 <use ../images/05_GRM/Rplot05_03.png>
 Package luatex.def Info: ../images/05_GRM/Rplot05_03.png  used on input line 10
 7.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[58]
+ [58]
 <../images/05_GRM/Rplot05_04.png, id=1810, 7227.0pt x 3613.5pt>
 File: ../images/05_GRM/Rplot05_04.png Graphic file (type png)
 <use ../images/05_GRM/Rplot05_04.png>
 Package luatex.def Info: ../images/05_GRM/Rplot05_04.png  used on input line 12
 5.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[59<../images/05_GRM/Rplot05_03.png>]
+ [59<../images/05_GRM/Rplot05_03.png>]
 <../images/05_GRM/Slide05_01.png, id=1827, 1118.1775pt x 857.2025pt>
 File: ../images/05_GRM/Slide05_01.png Graphic file (type png)
 <use ../images/05_GRM/Slide05_01.png>
 Package luatex.def Info: ../images/05_GRM/Slide05_01.png  used on input line 14
 9.
 (luatex.def)             Requested size: 334.60422pt x 256.50874pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[60<../images/05_GRM/Rplot05_04.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[61<../images/05_GRM/Slide05_01.png>])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[62]
+ [60<../images/05_GRM/Rplot05_04.png>] [61<../images/05_GRM/Slide05_01.png>]) [
+62]
 \openout2 = x06_matrix.aux
  (./x06_matrix.tex
 第6章
@@ -2447,74 +2110,15 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 
 
-]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[64]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[65]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[66]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[67]
+] [64] [65] [66] [67]
 <../images/06_matrix/Slide06_01.png, id=1901, 867.24pt x 759.83875pt>
 File: ../images/06_matrix/Slide06_01.png Graphic file (type png)
 <use ../images/06_matrix/Slide06_01.png>
 Package luatex.def Info: ../images/06_matrix/Slide06_01.png  used on input line
  410.
 (luatex.def)             Requested size: 334.60422pt x 293.1707pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[68<../images/06_matrix/Slide06_01.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[69]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[70]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[71]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[72])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[73]
+ [68<../images/06_matrix/Slide06_01.png>] [69] [70]
+[71] [72]) [73]
 \openout2 = x07_matrixModel.aux
  (./x07_matrixModel.tex [74
 
@@ -2531,53 +2135,12 @@ LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
 [75]
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
 (Font)              scaled to size 5.54828pt on input line 58.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[76]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[77]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[78]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[79]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[80]
+ [76] [77] [78] [79] [80]
 Overfull \hbox (46.77382pt too wide) detected at line 374
 [][][][]
  []
 
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[81])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[82]
+[81]) [82]
 \openout2 = x08_Eigen.aux
  (./x08_Eigen.tex
 第8章
@@ -2586,49 +2149,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 
 
-]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[84]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[85]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[86]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[87]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[88]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[89])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[90]
+] [84] [85] [86] [87] [88] [89]) [90]
 \openout2 = x09_matrix_onR.aux
  (./x09_matrix_onR.tex
 第9章
@@ -2661,43 +2182,20 @@ LaTeX Font Info:    Font shape `JY3/gt/b/n' in size <10> not available
 (Font)              Font shape `JY3/gt/m/n' tried instead on input line 39.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (Font)              scaled to size 9.24713pt on input line 39.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[92]
+ [92]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
 [93]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[94]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [94]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[95]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [95]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -2705,76 +2203,29 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[96]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [96]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[97]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [97]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[98]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [98]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[99])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[100]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [99]) [100]
 \openout2 = x10_FA.aux
- (./x10_FA.tex
+ (./x1
+0_FA.tex
 第10章
 [101
 
 
 
 
-]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[102]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[103]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[104]
+] [102] [103] [104]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -2782,13 +2233,7 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[105]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [105]
 Overfull \hbox (9.94478pt too wide) in paragraph at lines 112--112
 [] \TU/lmtt/m/n/9 [1] 5.0369025 2.7440855 2.1076322 1.8318415 1.5356864 1.113158
 9 0.8462367 0.8114075[] 
@@ -2812,72 +2257,21 @@ File: ../images/10_FA/Rplot10_01.png Graphic file (type png)
 Package luatex.def Info: ../images/10_FA/Rplot10_01.png  used on input line 128
 .
 (luatex.def)             Requested size: 271.86234pt x 271.86462pt.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
 [106]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[107<../images/10_FA/Rplot10_01.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[108]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[109]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[110]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[111]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [107<../images/10_
+FA/Rplot10_01.png>] [108] [109] [110] [111]
+Removing  `ltj.process_input_buffer' from `process_input_buffer'.
+Inserting `ltj.listings_unicode' in `process_input_buffer'.
+Inserting `ltj.process_input_buffer' in `process_input_buffer'.
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [112]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[112]
-Removing  `ltj.process_input_buffer' from `process_input_buffer'.
-Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[113])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[114]
+[113]) [114]
 \openout2 = x11_IRTonR.aux
  (./x11_IRTonR.tex
 第11章
@@ -2889,57 +2283,22 @@ Inserting `ltj.process_input_buffer' in `process_input_buffer'. [115
 
 
 ]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[116]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[117]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[118]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [116] [117] [118]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[119]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [119]
 <../images/11_IRTonR/Rplot11_01.png, id=2505, 1204.5pt x 602.25pt>
 File: ../images/11_IRTonR/Rplot11_01.png Graphic file (type png)
 <use ../images/11_IRTonR/Rplot11_01.png>
 Package luatex.def Info: ../images/11_IRTonR/Rplot11_01.png  used on input line
  194.
 (luatex.def)             Requested size: 334.60422pt x 167.30554pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[120<../images/11_IRTonR/Rplot11_01.png>]
+ [120<../images/11_IRTonR/Rplot11_01.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
 [121]
 <../images/11_IRTonR/Rplot11_02.png, id=2532, 1204.5pt x 602.25pt>
 File: ../images/11_IRTonR/Rplot11_02.png Graphic file (type png)
@@ -2950,71 +2309,38 @@ Package luatex.def Info: ../images/11_IRTonR/Rplot11_02.png  used on input line
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[122<../images/11_IRTonR/Rplot11_02.png>]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [122<../images/11_
+IRTonR/Rplot11_02.png>]
 <../images/11_IRTonR/Rplot11_03.png, id=2551, 1204.5pt x 602.25pt>
 File: ../images/11_IRTonR/Rplot11_03.png Graphic file (type png)
 <use ../images/11_IRTonR/Rplot11_03.png>
 Package luatex.def Info: ../images/11_IRTonR/Rplot11_03.png  used on input line
  301.
 (luatex.def)             Requested size: 334.60422pt x 167.30554pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[123<../images/11_IRTonR/Rplot11_03.png>]
+ [123<../images/11_IRTonR/Rplot11_03.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[124]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [124]
 <../images/11_IRTonR/Rplot11_04.png, id=2580, 1204.5pt x 602.25pt>
 File: ../images/11_IRTonR/Rplot11_04.png Graphic file (type png)
 <use ../images/11_IRTonR/Rplot11_04.png>
 Package luatex.def Info: ../images/11_IRTonR/Rplot11_04.png  used on input line
  371.
 (luatex.def)             Requested size: 334.60422pt x 167.30554pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[125]
+ [125]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[126<../images/11_IRTonR/Rplot11_04.png>]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [126<../images/11_
+IRTonR/Rplot11_04.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.)
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[127]
+Removing  `ltj.listings_unicode' from `process_input_buffer'.) [127]
 \openout2 = x12_SEM.aux
- (./x12_SEM.tex [128
+
+(./x12_SEM.tex [128
 
 
 
@@ -3027,9 +2353,6 @@ File: ../images/12_SEM/Slide12_01.png Graphic file (type png)
 Package luatex.def Info: ../images/12_SEM/Slide12_01.png  used on input line 23
 .
 (luatex.def)             Requested size: 209.12683pt x 122.79588pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [129]
 <../images/12_SEM/Slide12_02.png, id=2632, 856.19875pt x 520.94624pt>
 File: ../images/12_SEM/Slide12_02.png Graphic file (type png)
@@ -3043,27 +2366,13 @@ File: ../images/12_SEM/Slide12_03.png Graphic file (type png)
 Package luatex.def Info: ../images/12_SEM/Slide12_03.png  used on input line 44
 .
 (luatex.def)             Requested size: 209.12683pt x 96.03748pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[130<../images/12_SEM/Slide12_01.png><../images/12_SEM/Slide12_02.png>]
+ [130<../images/12_SEM/Slide12_01.png><../images/12_SEM/Slide12_02.png>]
 <../images/12_SEM/Slide12_04.png, id=2647, 574.145pt x 292.09125pt>
 File: ../images/12_SEM/Slide12_04.png Graphic file (type png)
 <use ../images/12_SEM/Slide12_04.png>
 Package luatex.def Info: ../images/12_SEM/Slide12_04.png  used on input line 61
 .
 (luatex.def)             Requested size: 209.12683pt x 106.39178pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
 
 [131<../images/12_SEM/Slide12_03.png><../images/12_SEM/Slide12_04.png>]
 <../images/12_SEM/Slide12_05.png, id=2661, 1017.8025pt x 530.98375pt>
@@ -3073,53 +2382,10 @@ Package luatex.def Info: ../images/12_SEM/Slide12_05.png  used on input line 87
 .
 (luatex.def)             Requested size: 334.60422pt x 174.56079pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[132]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[133<../images/12_SEM/Slide12_05.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[134]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[135]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[136]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[137])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[138]
+[132] [133<../images/12_SEM/Slide12_05.png>] [134] [135] [136] [137]) [138]
 \openout2 = x13_SEMonR.aux
- (./x13_SEMonR.tex
+
+(./x13_SEMonR.tex
 第13章
 
 Overfull \hbox (52.37631pt too wide) in paragraph at lines 23--36
@@ -3135,19 +2401,7 @@ Overfull \hbox (52.37631pt too wide) in paragraph at lines 23--36
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[140]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[141]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [140] [141]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -3168,19 +2422,8 @@ File: ../images/13_SEMonR/SEMonR_fig02.pdf Graphic file (type pdf)
 Package luatex.def Info: ../images/13_SEMonR/SEMonR_fig02.pdf  used on input li
 ne 171.
 (luatex.def)             Requested size: 270.78096pt x 133.04672pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[142<../images/13_SEMonR/Rplot13_01.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[143<../images/13_SEMonR/SEMonR_fig02.pdf>]
+ [142<../images/13_SEMonR/Rplot13_01.png>] [143<../images/13_SEMonR/SEMonR_fig02
+.pdf>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -3191,43 +2434,8 @@ File: ../images/13_SEMonR/SEMonR_fig03.pdf Graphic file (type pdf)
 Package luatex.def Info: ../images/13_SEMonR/SEMonR_fig03.pdf  used on input li
 ne 214.
 (luatex.def)             Requested size: 270.78096pt x 147.05905pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[144<../images/13_SEMonR/SEMonR_fig03.pdf>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[145]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[146]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[147]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[148])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[149]
+ [144<../images/13_SEMonR/SEMonR_fig03.pdf>] [145]
+[146] [147] [148]) [149]
 \openout2 = x14_DualScaling.aux
  (./x14_DualScaling.tex [150
 
@@ -3236,53 +2444,18 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 ]
 第14章
-[151]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[152]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[153]
+[151] [152] [153]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[154]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[155]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [154] [155]
 <../images/14_DualScaling/Rplot14_01.png, id=2956, 4818.0pt x 4818.0pt>
 File: ../images/14_DualScaling/Rplot14_01.png Graphic file (type png)
 <use ../images/14_DualScaling/Rplot14_01.png>
 Package luatex.def Info: ../images/14_DualScaling/Rplot14_01.png  used on input
  line 202.
 (luatex.def)             Requested size: 334.60422pt x 334.57434pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[156<../images/14_DualScaling/Rplot14_01.png>])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
+ [156<../images/14_DualScaling/Rplot14_01.png>])
 [157]
 \openout2 = x15_MDS.aux
  (./x15_MDS.tex [158
@@ -3303,52 +2476,11 @@ File: ../images/15_MDS/Rplot15_01.png Graphic file (type png)
 Package luatex.def Info: ../images/15_MDS/Rplot15_01.png  used on input line 73
 .
 (luatex.def)             Requested size: 334.60422pt x 334.60081pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[160]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[161<../images/15_MDS/Rplot15_01.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[162]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[163]
+ [160] [161<../images/15_MDS/Rplot15_01.png>] [162] [163]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[164]
-
-LaTeX Warning: Command \d invalid in math mode on input line 235.
-
-Missing character: There is no ̣ (U+0323) in font cmmi10!
-Missing character: There is no ̣ (U+0323) in font cmmi7!
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[165]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [164] [165]
 <../images/15_MDS/Rplot15_02.png, id=3083, 578.16pt x 433.62pt>
 File: ../images/15_MDS/Rplot15_02.png Graphic file (type png)
 <use ../images/15_MDS/Rplot15_02.png>
@@ -3362,18 +2494,7 @@ Package luatex.def Info: ../images/15_MDS/Rplot15_03.png  used on input line 26
 8.
 (luatex.def)             Requested size: 334.60422pt x 334.6008pt.
 
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[166<../images/15_MDS/Rplot15_02.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[167<../images/15_MDS/Rplot15_03.png>]
+[166<../images/15_MDS/Rplot15_02.png>] [167<../images/15_MDS/Rplot15_03.png>]
 <../images/15_MDS/Rplot15_04.png, id=3110, 578.16pt x 578.16pt>
 File: ../images/15_MDS/Rplot15_04.png Graphic file (type png)
 <use ../images/15_MDS/Rplot15_04.png>
@@ -3387,30 +2508,8 @@ Package luatex.def Info: ../images/15_MDS/Rplot15_05.png  used on input line 32
 0.
 (luatex.def)             Requested size: 334.60422pt x 334.6008pt.
 
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[168]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[169<../images/15_MDS/Rplot15_04.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[170<../images/15_MDS/Rplot15_05.png>])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[171] [172
+[168] [169<../images/15_MDS/Rplot15_04.png>] [170<../images/15_MDS/Rplot15_05.pn
+g>]) [171] [172
 
 
 
@@ -3429,45 +2528,15 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[176]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[177]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[178]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [176] [177] [178]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[179]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [179]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[180]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [180]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -3475,13 +2544,7 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[181]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [181]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -3489,92 +2552,33 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[182]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [182]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[183])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[184]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [183]) [184]
 \openout2 = x17_Bayesian.aux
- (./x17_Bayesian.tex
+
+(./x17_Bayesian.tex
 第17章
 [185
 
 
 
 
-]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[186]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[187]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[188]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[189]
+] [186] [187] [188] [189]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[190]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [190]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[191]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [191]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[192]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [192]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -3582,13 +2586,7 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[193]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [193]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -3596,92 +2594,30 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[194])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[195]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [194]) [195]
 \openout2 = prepareStan.aux
- (./prepareStan.tex [196
+
+(./prepareStan.tex [196
 
 
 
 
 ]
 第18章
-[197]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[198]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[199]
+[197] [198] [199]
 <../images/prepare/fileStyle.png, id=3551, 481.8pt x 75.28125pt>
 File: ../images/prepare/fileStyle.png Graphic file (type png)
 <use ../images/prepare/fileStyle.png>
 Package luatex.def Info: ../images/prepare/fileStyle.png  used on input line 48
 .
 (luatex.def)             Requested size: 334.60422pt x 52.28297pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[200<../images/prepare/fileStyle.png>]
+ [200<../images/prepare/fileStyle.png>]
 <../images/prepare/R_stan.png, id=3567, 893.3375pt x 750.805pt>
 File: ../images/prepare/R_stan.png Graphic file (type png)
 <use ../images/prepare/R_stan.png>
 Package luatex.def Info: ../images/prepare/R_stan.png  used on input line 64.
 (luatex.def)             Requested size: 334.60422pt x 281.21895pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[201]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[202<../images/prepare/R_stan.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[203]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[204]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[205]
+ [201] [202<../images/prepare/R_stan.png>] [203] [204] [205]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -3689,13 +2625,7 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[206]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [206]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -3703,49 +2633,19 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[207]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[208]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [207] [208]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[209]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [209]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[210]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[211
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [210]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [211
 Missing character: There is no ℹ (U+2139) in font file:HaranoAjiGothic-Medium.
 otf:-kern;jfm=ujis!
 ]
@@ -3756,21 +2656,10 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[212])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[213]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [212]) [213]
 \openout2 = x18_MCMC.aux
- (./x18_MCMC.tex [214
+ (./x
+18_MCMC.tex [214
 
 
 
@@ -3784,52 +2673,22 @@ File: ../images/18_MCMC/slide18_01.png Graphic file (type png)
 Package luatex.def Info: ../images/18_MCMC/slide18_01.png  used on input line 2
 8.
 (luatex.def)             Requested size: 313.69025pt x 192.32915pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[216<../images/18_MCMC/slide18_01.png>]
+ [216<../images/18_MCMC/slide18_01.png>]
 <../images/18_MCMC/slide18_02.png, id=3800, 877.2775pt x 511.9125pt>
 File: ../images/18_MCMC/slide18_02.png Graphic file (type png)
 <use ../images/18_MCMC/slide18_02.png>
 Package luatex.def Info: ../images/18_MCMC/slide18_02.png  used on input line 4
 3.
 (luatex.def)             Requested size: 334.60422pt x 195.2552pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[217<../images/18_MCMC/slide18_02.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[218]
+ [217<../images/18_MCMC/slide18_02.png>] [218]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[219]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [219]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[220]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [220]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -3837,64 +2696,24 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [221] [222] [223]
+Removing  `ltj.process_input_buffer' from `process_input_buffer'.
+Inserting `ltj.listings_unicode' in `process_input_buffer'.
+Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[221]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[222]
-Overfull \hbox (6.40262pt too wide) in paragraph at lines 245--246
-[]\JY3/BIZUDPMinchoMedium(0)/m/n/10 ち な み に こ の 図 ， \TU/lmtt/m/
-n/10 cmdstanr \JY3/BIZUDPMinchoMedium(0)/m/n/10 の 場 合 は \TU/lmtt/m/n/10
- fit1cmdstan$draws("mu") %>% bayesplot::mcmc_trace()
- []
-
-
-Overfull \hbox (4.07796pt too wide) in paragraph at lines 245--246
-\JY3/BIZUDPMinchoMedium(0)/m/n/10 と \TU/lmtt/m/n/10 bayesplot \JY3/BIZUDPMinc
-hoMedium(0)/m/n/10 パ ッ ケ ー ジ の 力 を 借 り て 描 い て い 
-ま す 。 \TU/lmtt/m/n/10 rstan \JY3/BIZUDPMinchoMedium(0)/m/n/10 パ ッ 
-ケ ー ジ の 場 合 は \TU/lmtt/m/n/10 traceplot(fit1rstan)
- []
-
-<../images/18_MCMC/Rplot18_01.png, id=3912, 4818.0pt x 2409.0pt>
+<../images/18_MCMC/Rplot18_01.png, id=3922, 4818.0pt x 2409.0pt>
 File: ../images/18_MCMC/Rplot18_01.png Graphic file (type png)
 <use ../images/18_MCMC/Rplot18_01.png>
 Package luatex.def Info: ../images/18_MCMC/Rplot18_01.png  used on input line 2
-49.
+56.
 (luatex.def)             Requested size: 313.69025pt x 156.81105pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../images/18_MCMC/Rplot18_02.png, id=3914, 4818.0pt x 2409.0pt>
+<../images/18_MCMC/Rplot18_02.png, id=3924, 4818.0pt x 2409.0pt>
 File: ../images/18_MCMC/Rplot18_02.png Graphic file (type png)
 <use ../images/18_MCMC/Rplot18_02.png>
 Package luatex.def Info: ../images/18_MCMC/Rplot18_02.png  used on input line 2
-58.
+65.
 (luatex.def)             Requested size: 313.69025pt x 156.81105pt.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[223]
-Removing  `ltj.process_input_buffer' from `process_input_buffer'.
-Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[224<../images/18_MCMC/Rplot18_01.png><../images/18_MCMC/Rplot18_02.png>]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
+ [224<../images/18_MCMC/Rplot18_01.png><../images/18_MCMC/Rplot18_02.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -3903,40 +2722,22 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[225]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[226])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[227]
+Removing  `ltj.process_input_buffer' from `process_input_buffer'.
+Inserting `ltj.listings_unicode' in `process_input_buffer'.
+Inserting `ltj.process_input_buffer' in `process_input_buffer'.
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [225] [226]) [227
+]
 \openout2 = x19_modeling1.aux
- (./x19_modeling1.tex [228
+ (./x19_modeling1.tex
+[228
 
 
 
 
 ]
 第20章
-[229]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[230]
-<../images/19_modeling1/slide19_01.png, id=4007, 1282.7925pt x 745.78625pt>
+[229] [230]
+<../images/19_modeling1/slide19_01.png, id=4013, 1282.7925pt x 745.78625pt>
 File: ../images/19_modeling1/slide19_01.png Graphic file (type png)
 <use ../images/19_modeling1/slide19_01.png>
 Package luatex.def Info: ../images/19_modeling1/slide19_01.png  used on input l
@@ -3945,13 +2746,8 @@ ine 46.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[231<../images/19_modeling1/slide19_01.png>]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [231<../images/19_
+modeling1/slide19_01.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -3959,89 +2755,36 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[232]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[233]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [232] [233]
+Removing  `ltj.process_input_buffer' from `process_input_buffer'.
+Inserting `ltj.listings_unicode' in `process_input_buffer'.
+Inserting `ltj.process_input_buffer' in `process_input_buffer'.
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [234]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[234]
-Removing  `ltj.process_input_buffer' from `process_input_buffer'.
-Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/19_modeling1/Rplot19_01.png, id=4102, 722.7pt x 289.08pt>
+<../images/19_modeling1/Rplot19_01.png, id=4108, 722.7pt x 289.08pt>
 File: ../images/19_modeling1/Rplot19_01.png Graphic file (type png)
 <use ../images/19_modeling1/Rplot19_01.png>
 Package luatex.def Info: ../images/19_modeling1/Rplot19_01.png  used on input l
 ine 211.
 (luatex.def)             Requested size: 334.60422pt x 133.84296pt.
 
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
 [235<../images/19_modeling1/Rplot19_01.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[236]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[237]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [236] [237]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[238]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[239]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [238] [239]
 Overfull \hbox (62.6863pt too wide) in paragraph at lines 325--330
  [] 
  []
 
-)
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[240]
+) [240]
 \openout2 = x20_modeling2.aux
  (./x20_modeling2.tex
 第21章
@@ -4053,49 +2796,25 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 ]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[242]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [242]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/20_modeling2/Rplot20_01.png, id=4211, 4818.0pt x 2409.0pt>
+<../images/20_modeling2/Rplot20_01.png, id=4217, 4818.0pt x 2409.0pt>
 File: ../images/20_modeling2/Rplot20_01.png Graphic file (type png)
 <use ../images/20_modeling2/Rplot20_01.png>
 Package luatex.def Info: ../images/20_modeling2/Rplot20_01.png  used on input l
 ine 82.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[243<../images/20_modeling2/Rplot20_01.png>]
-<../images/20_modeling2/Rplot20_02.png, id=4245, 4818.0pt x 2409.0pt>
+ [243<../images/20_modeling2/Rplot20_01.png>]
+<../images/20_modeling2/Rplot20_02.png, id=4251, 4818.0pt x 2409.0pt>
 File: ../images/20_modeling2/Rplot20_02.png Graphic file (type png)
 <use ../images/20_modeling2/Rplot20_02.png>
 Package luatex.def Info: ../images/20_modeling2/Rplot20_02.png  used on input l
 ine 93.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[244<../images/20_modeling2/Rplot20_02.png>]
+ [244<../images/20_modeling2/Rplot20_02.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[245]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [245]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
@@ -4104,25 +2823,7 @@ Overfull \hbox (19.9506pt too wide) in paragraph at lines 164--166
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[246]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[247]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[248]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [246] [247] [248]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -4130,49 +2831,20 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[249]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [249]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[250]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[251]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [250]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [251]
 Overfull \hbox (62.6863pt too wide) in paragraph at lines 356--361
  [] 
  []
 
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[252])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[253]
+[252]) [253]
 \openout2 = x21_modeling3.aux
  (./x21_modeling3.tex [254
 
@@ -4181,52 +2853,26 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 ]
 第22章
-<../images/21_modeling3/Slide21_01.png, id=4416, 1191.45125pt x 750.805pt>
+<../images/21_modeling3/Slide21_01.png, id=4422, 1191.45125pt x 750.805pt>
 File: ../images/21_modeling3/Slide21_01.png Graphic file (type png)
 <use ../images/21_modeling3/Slide21_01.png>
 Package luatex.def Info: ../images/21_modeling3/Slide21_01.png  used on input l
 ine 18.
 (luatex.def)             Requested size: 334.60422pt x 210.85406pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'. [255]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[256<../images/21_modeling3/Slide21_01.png>]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [256<../images/21_
+modeling3/Slide21_01.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[257]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [257]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[258]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[259]
-<../images/21_modeling3/Slide21_02.png, id=4546, 1259.70625pt x 536.0025pt>
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [258]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [259]
+<../images/21_modeling3/Slide21_02.png, id=4552, 1259.70625pt x 536.0025pt>
 File: ../images/21_modeling3/Slide21_02.png Graphic file (type png)
 <use ../images/21_modeling3/Slide21_02.png>
 Package luatex.def Info: ../images/21_modeling3/Slide21_02.png  used on input l
@@ -4234,84 +2880,35 @@ ine 159.
 (luatex.def)             Requested size: 334.60422pt x 142.36713pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[260<../images/21_modeling3/Slide21_02.png>]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [260<../images/2
+1_modeling3/Slide21_02.png>]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[261]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[262]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [261]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [262]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[263]
-<../images/21_modeling3/Slide21_03.png, id=4656, 1262.7175pt x 600.2425pt>
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [263]
+<../images/21_modeling3/Slide21_03.png, id=4662, 1262.7175pt x 600.2425pt>
 File: ../images/21_modeling3/Slide21_03.png Graphic file (type png)
 <use ../images/21_modeling3/Slide21_03.png>
 Package luatex.def Info: ../images/21_modeling3/Slide21_03.png  used on input l
 ine 323.
 (luatex.def)             Requested size: 334.60422pt x 159.05434pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+Removing  `ltj.process_input_buffer' from `process_input_buffer'.
+Inserting `ltj.listings_unicode' in `process_input_buffer'.
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [264]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [265<../images/21_
+modeling3/Slide21_03.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[264]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[265<../images/21_modeling3/Slide21_03.png>]
-Removing  `ltj.process_input_buffer' from `process_input_buffer'.
-Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[266])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[267]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [266]) [267]
 \openout2 = x22_modeling4.aux
- (./x22_modeling4.tex [268
+ (./x
+22_modeling4.tex [268
 
 
 
@@ -4319,35 +2916,26 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 ]
 第23章
 [269]
-<../images/22_modeling4/Slide22_01.png, id=4739, 1103.12125pt x 813.0375pt>
+<../images/22_modeling4/Slide22_01.png, id=4745, 1103.12125pt x 813.0375pt>
 File: ../images/22_modeling4/Slide22_01.png Graphic file (type png)
 <use ../images/22_modeling4/Slide22_01.png>
 Package luatex.def Info: ../images/22_modeling4/Slide22_01.png  used on input l
 ine 52.
 (luatex.def)             Requested size: 334.60422pt x 246.61763pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[270]
-<../images/22_modeling4/Slide22_03.png, id=4756, 899.36pt x 632.3625pt>
+ [270]
+<../images/22_modeling4/Slide22_03.png, id=4762, 899.36pt x 632.3625pt>
 File: ../images/22_modeling4/Slide22_03.png Graphic file (type png)
 <use ../images/22_modeling4/Slide22_03.png>
 Package luatex.def Info: ../images/22_modeling4/Slide22_03.png  used on input l
 ine 91.
 (luatex.def)             Requested size: 418.25368pt x 294.08412pt.
-<../images/22_modeling4/Slide22_04.png, id=4757, 925.4575pt x 801.99625pt>
+<../images/22_modeling4/Slide22_04.png, id=4763, 925.4575pt x 801.99625pt>
 File: ../images/22_modeling4/Slide22_04.png Graphic file (type png)
 <use ../images/22_modeling4/Slide22_04.png>
 Package luatex.def Info: ../images/22_modeling4/Slide22_04.png  used on input l
 ine 97.
 (luatex.def)             Requested size: 418.25368pt x 362.46136pt.
-<../images/22_modeling4/Slide22_05.png, id=4758, 1067.99pt x 647.41875pt>
+<../images/22_modeling4/Slide22_05.png, id=4764, 1067.99pt x 647.41875pt>
 File: ../images/22_modeling4/Slide22_05.png Graphic file (type png)
 <use ../images/22_modeling4/Slide22_05.png>
 Package luatex.def Info: ../images/22_modeling4/Slide22_05.png  used on input l
@@ -4355,103 +2943,42 @@ ine 103.
 (luatex.def)             Requested size: 418.25368pt x 253.54932pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[271<../images/22_modeling4/Slide22_01.png>]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[272]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [271<../images/2
+2_modeling4/Slide22_01.png>]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [272]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[273<../images/22_modeling4/Slide22_03.png>]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[274<../images/22_modeling4/Slide22_04.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [273<../images/2
+2_modeling4/Slide22_03.png>]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [274<../images/22_
+modeling4/Slide22_04.png>]
 [275<../images/22_modeling4/Slide22_05.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[276]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [276]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[277]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [277]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[278]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[279]
-<../images/22_modeling4/Slide22_02.png, id=4938, 978.65625pt x 752.8125pt>
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [278] [279]
+<../images/22_modeling4/Slide22_02.png, id=4944, 978.65625pt x 752.8125pt>
 File: ../images/22_modeling4/Slide22_02.png Graphic file (type png)
 <use ../images/22_modeling4/Slide22_02.png>
 Package luatex.def Info: ../images/22_modeling4/Slide22_02.png  used on input l
 ine 371.
 (luatex.def)             Requested size: 334.60422pt x 257.38873pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[280<../images/22_modeling4/Slide22_02.png>]
+ [280<../images/22_modeling4/Slide22_02.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.)
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[281]
+Removing  `ltj.listings_unicode' from `process_input_buffer'.) [281]
 \openout2 = x23_modeling5.aux
- (./x23_modeling5.tex [282
+ (./x23_mod
+eling5.tex [282
 
 
 
@@ -4475,59 +3002,31 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 32.
 
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
 [284]
 
 LaTeX Warning: Command \O invalid in math mode on input line 56.
 
 Missing character: There is no Ø (U+00D8) in font cmmi10!
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
 [285]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[286]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [286]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/23_modeling5/Rplot23_01.png, id=5036, 4818.0pt x 2409.0pt>
+<../images/23_modeling5/Rplot23_01.png, id=5042, 4818.0pt x 2409.0pt>
 File: ../images/23_modeling5/Rplot23_01.png Graphic file (type png)
 <use ../images/23_modeling5/Rplot23_01.png>
 Package luatex.def Info: ../images/23_modeling5/Rplot23_01.png  used on input l
 ine 123.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[287<../images/23_modeling5/Rplot23_01.png>]
+ [287<../images/23_modeling5/Rplot23_01.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[288]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [288]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 167.
@@ -4540,13 +3039,8 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 167.
 
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
 [289]
-<../images/23_modeling5/Slide23_01.png, id=5091, 563.10374pt x 400.49625pt>
+<../images/23_modeling5/Slide23_01.png, id=5097, 563.10374pt x 400.49625pt>
 File: ../images/23_modeling5/Slide23_01.png Graphic file (type png)
 <use ../images/23_modeling5/Slide23_01.png>
 Package luatex.def Info: ../images/23_modeling5/Slide23_01.png  used on input l
@@ -4554,28 +3048,12 @@ ine 203.
 (luatex.def)             Requested size: 334.60422pt x 237.9835pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[290<../images/23_modeling5/Slide23_01.png>]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[291])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[292]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [290<../images/2
+3_modeling5/Slide23_01.png>]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [291]) [292]
 \openout2 = x24_linearModel.aux
- (./x24_linearModel.tex
+
+(./x24_linearModel.tex
 第25章
 [293
 
@@ -4583,37 +3061,25 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 
 ]
-<../images/24_linearModel/Rplot24_06.png, id=5163, 578.16pt x 289.08pt>
+<../images/24_linearModel/Rplot24_06.png, id=5169, 578.16pt x 289.08pt>
 File: ../images/24_linearModel/Rplot24_06.png Graphic file (type png)
 <use ../images/24_linearModel/Rplot24_06.png>
 Package luatex.def Info: ../images/24_linearModel/Rplot24_06.png  used on input
  line 93.
 (luatex.def)             Requested size: 334.60422pt x 167.3004pt.
-<../images/24_linearModel/Slide24_01.png, id=5166, 632.3625pt x 480.79625pt>
+<../images/24_linearModel/Slide24_01.png, id=5172, 632.3625pt x 480.79625pt>
 File: ../images/24_linearModel/Slide24_01.png Graphic file (type png)
 <use ../images/24_linearModel/Slide24_01.png>
 Package luatex.def Info: ../images/24_linearModel/Slide24_01.png  used on input
  line 104.
 (luatex.def)             Requested size: 334.60422pt x 254.40996pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[294]
+ [294]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[295<../images/24_linearModel/Rplot24_06.png><../images/24_linearModel/Slide24_0
-1.png>]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [295<../images/2
+4_linearModel/Rplot24_06.png><../images/24_linearModel/Slide24_01.png>]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/24_linearModel/Rplot24_01.png, id=5198, 4818.0pt x 2409.0pt>
+<../images/24_linearModel/Rplot24_01.png, id=5204, 4818.0pt x 2409.0pt>
 File: ../images/24_linearModel/Rplot24_01.png Graphic file (type png)
 <use ../images/24_linearModel/Rplot24_01.png>
 Package luatex.def Info: ../images/24_linearModel/Rplot24_01.png  used on input
@@ -4621,53 +3087,31 @@ Package luatex.def Info: ../images/24_linearModel/Rplot24_01.png  used on input
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[296]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[297<../images/24_linearModel/Rplot24_01.png>]
-<../images/24_linearModel/Rplot24_02.png, id=5271, 4818.0pt x 2409.0pt>
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [296]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [297<../images/24_
+linearModel/Rplot24_01.png>]
+<../images/24_linearModel/Rplot24_02.png, id=5277, 4818.0pt x 2409.0pt>
 File: ../images/24_linearModel/Rplot24_02.png Graphic file (type png)
 <use ../images/24_linearModel/Rplot24_02.png>
 Package luatex.def Info: ../images/24_linearModel/Rplot24_02.png  used on input
  line 235.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
 
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
 [298]
-<../images/24_linearModel/Rplot24_03.png, id=5283, 4818.0pt x 2409.0pt>
+<../images/24_linearModel/Rplot24_03.png, id=5289, 4818.0pt x 2409.0pt>
 File: ../images/24_linearModel/Rplot24_03.png Graphic file (type png)
 <use ../images/24_linearModel/Rplot24_03.png>
 Package luatex.def Info: ../images/24_linearModel/Rplot24_03.png  used on input
  line 249.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[299<../images/24_linearModel/Rplot24_02.png>]
-<../images/24_linearModel/Rplot24_04.png, id=5298, 4818.0pt x 2409.0pt>
+ [299<../images/24_linearModel/Rplot24_02.png>]
+<../images/24_linearModel/Rplot24_04.png, id=5304, 4818.0pt x 2409.0pt>
 File: ../images/24_linearModel/Rplot24_04.png Graphic file (type png)
 <use ../images/24_linearModel/Rplot24_04.png>
 Package luatex.def Info: ../images/24_linearModel/Rplot24_04.png  used on input
  line 270.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-<../images/24_linearModel/slide24_02.png, id=5300, 425.59pt x 523.9575pt>
+<../images/24_linearModel/slide24_02.png, id=5306, 425.59pt x 523.9575pt>
 File: ../images/24_linearModel/slide24_02.png Graphic file (type png)
 <use ../images/24_linearModel/slide24_02.png>
 Package luatex.def Info: ../images/24_linearModel/slide24_02.png  used on input
@@ -4675,94 +3119,36 @@ Package luatex.def Info: ../images/24_linearModel/slide24_02.png  used on input
 (luatex.def)             Requested size: 313.69025pt x 386.21144pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[300<../images/24_linearModel/Rplot24_03.png>]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [300<../images/2
+4_linearModel/Rplot24_03.png>]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[301<../images/24_linearModel/Rplot24_04.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[302<../images/24_linearModel/slide24_02.png>]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [301<../images/2
+4_linearModel/Rplot24_04.png>] [302<../images/24_linearModel/slide24_02.png>]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/24_linearModel/Rplot24_05.png, id=5375, 4818.0pt x 2409.0pt>
+<../images/24_linearModel/Rplot24_05.png, id=5381, 4818.0pt x 2409.0pt>
 File: ../images/24_linearModel/Rplot24_05.png Graphic file (type png)
 <use ../images/24_linearModel/Rplot24_05.png>
 Package luatex.def Info: ../images/24_linearModel/Rplot24_05.png  used on input
  line 365.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[303<../images/24_linearModel/Rplot24_05.png>]
-
-Class ltjsbook Warning: deprecated old font command `\it' used.
-(ltjsbook)              You should note, that since 1994 LaTeX2e provides a
-(ltjsbook)              new font selection scheme called NFSS2 with several
-(ltjsbook)              new, combinable font commands. This ltjsbook
-(ltjsbook)              class has defined the old font commands like
-(ltjsbook)              `\it' only for compatibility on input line 375.
-
-(load cache: extra_lmroman10-italic.luc)
+ [303<../images/24_linearModel/Rplot24_05.png>](load cache: extra_lmroman10-ital
+ic.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/it' will be
 (Font)              scaled to size 9.24713pt on input line 375.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/it' will be
 (Font)              scaled to size 9.24713pt on input line 375.
-<../images/24_linearModel/slide24_03.png, id=5391, 740.7675pt x 560.0925pt>
+<../images/24_linearModel/slide24_03.png, id=5397, 740.7675pt x 560.0925pt>
 File: ../images/24_linearModel/slide24_03.png Graphic file (type png)
 <use ../images/24_linearModel/slide24_03.png>
 Package luatex.def Info: ../images/24_linearModel/slide24_03.png  used on input
  line 382.
 (luatex.def)             Requested size: 334.60422pt x 252.99648pt.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[304<../images/24_linearModel/slide24_03.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[305]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[306]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[307])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[308]
+ [304<../images/24_linearModel/slide24_03.png>] [305] [306] [307]) [308]
 \openout2 = x25_HLM.aux
- (./x25_HLM.tex
+
+(./x25_HLM.tex
 第26章
 [309
 
@@ -4770,20 +3156,14 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 
 ]
-<../images/25_HLM/Rplot25_01.png, id=5446, 867.24pt x 578.16pt>
+<../images/25_HLM/Rplot25_01.png, id=5452, 867.24pt x 578.16pt>
 File: ../images/25_HLM/Rplot25_01.png Graphic file (type png)
 <use ../images/25_HLM/Rplot25_01.png>
 Package luatex.def Info: ../images/25_HLM/Rplot25_01.png  used on input line 50
 .
 (luatex.def)             Requested size: 334.60422pt x 223.07307pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[310]
-<../images/25_HLM/Slide25_01.png, id=5457, 541.02126pt x 565.11125pt>
+ [310]
+<../images/25_HLM/Slide25_01.png, id=5463, 541.02126pt x 565.11125pt>
 File: ../images/25_HLM/Slide25_01.png Graphic file (type png)
 <use ../images/25_HLM/Slide25_01.png>
 Package luatex.def Info: ../images/25_HLM/Slide25_01.png  used on input line 59
@@ -4791,143 +3171,61 @@ Package luatex.def Info: ../images/25_HLM/Slide25_01.png  used on input line 59
 (luatex.def)             Requested size: 334.60422pt x 349.51169pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[311<../images/25_HLM/Rplot25_01.png>]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[312<../images/25_HLM/Slide25_01.png>]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [311<../images/2
+5_HLM/Rplot25_01.png>]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [312<../images/25_
+HLM/Slide25_01.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[313]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[314]
-<../images/25_HLM/Slide25_03.png, id=5559, 825.0825pt x 538.01pt>
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [313] [314]
+<../images/25_HLM/Slide25_03.png, id=5566, 825.0825pt x 538.01pt>
 File: ../images/25_HLM/Slide25_03.png Graphic file (type png)
 <use ../images/25_HLM/Slide25_03.png>
 Package luatex.def Info: ../images/25_HLM/Slide25_03.png  used on input line 19
 0.
 (luatex.def)             Requested size: 334.60422pt x 218.18839pt.
-<../images/25_HLM/Rplot25_02.png, id=5561, 578.16pt x 289.08pt>
+<../images/25_HLM/Rplot25_02.png, id=5568, 578.16pt x 289.08pt>
 File: ../images/25_HLM/Rplot25_02.png Graphic file (type png)
 <use ../images/25_HLM/Rplot25_02.png>
 Package luatex.def Info: ../images/25_HLM/Rplot25_02.png  used on input line 19
 9.
 (luatex.def)             Requested size: 334.60422pt x 167.3004pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[315<../images/25_HLM/Slide25_03.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[316<../images/25_HLM/Rplot25_02.png>]
-<../images/25_HLM/Rplot25_03.png, id=5578, 578.16pt x 289.08pt>
+ [315<../images/25_HLM/Slide25_03.png>] [316<../images/25_HLM/Rplot25_02.png>]
+<../images/25_HLM/Rplot25_03.png, id=5584, 578.16pt x 289.08pt>
 File: ../images/25_HLM/Rplot25_03.png Graphic file (type png)
 <use ../images/25_HLM/Rplot25_03.png>
 Package luatex.def Info: ../images/25_HLM/Rplot25_03.png  used on input line 22
 4.
 (luatex.def)             Requested size: 334.60422pt x 167.3004pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[317<../images/25_HLM/Rplot25_03.png>]
-<../images/25_HLM/Rplot25_04.png, id=5590, 578.16pt x 289.08pt>
+ [317<../images/25_HLM/Rplot25_03.png>]
+<../images/25_HLM/Rplot25_04.png, id=5596, 578.16pt x 289.08pt>
 File: ../images/25_HLM/Rplot25_04.png Graphic file (type png)
 <use ../images/25_HLM/Rplot25_04.png>
 Package luatex.def Info: ../images/25_HLM/Rplot25_04.png  used on input line 25
 9.
 (luatex.def)             Requested size: 334.60422pt x 167.3004pt.
-
-
-LaTeX Warning: Command \u invalid in math mode on input line 267.
-
-Missing character: There is no ̆ (U+0306) in font cmmi7!
-
-LaTeX Warning: Command \u invalid in math mode on input line 267.
-
-Missing character: There is no ̆ (U+0306) in font cmmi7!
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[318]
-<../images/25_HLM/slide25_04.png, id=5602, 719.68875pt x 636.3775pt>
+ [318]
+<../images/25_HLM/slide25_04.png, id=5608, 719.68875pt x 636.3775pt>
 File: ../images/25_HLM/slide25_04.png Graphic file (type png)
 <use ../images/25_HLM/slide25_04.png>
 Package luatex.def Info: ../images/25_HLM/slide25_04.png  used on input line 27
 4.
 (luatex.def)             Requested size: 334.60422pt x 295.87364pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[319<../images/25_HLM/Rplot25_04.png>]
+ [319<../images/25_HLM/Rplot25_04.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[320<../images/25_HLM/slide25_04.png>]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[321]
-<../images/25_HLM/Rplot25_05.png, id=5680, 867.24pt x 867.24pt>
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [320<../images/2
+5_HLM/slide25_04.png>]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [321]
+<../images/25_HLM/Rplot25_05.png, id=5686, 867.24pt x 867.24pt>
 File: ../images/25_HLM/Rplot25_05.png Graphic file (type png)
 <use ../images/25_HLM/Rplot25_05.png>
 Package luatex.def Info: ../images/25_HLM/Rplot25_05.png  used on input line 36
 9.
 (luatex.def)             Requested size: 334.60422pt x 334.60963pt.
 )
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[322]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[323<../images/25_HLM/Rplot25_05.png>]
+[322] [323<../images/25_HLM/Rplot25_05.png>]
 \openout2 = x26_mixed.aux
  (./x26_mixed.tex [324
 
@@ -4936,58 +3234,34 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 ]
 第27章
-<../images/26_mixed/Rplot26_01.png, id=5702, 1156.32pt x 650.43pt>
+<../images/26_mixed/Rplot26_01.png, id=5708, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_01.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_01.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_01.png  used on input line 
 16.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
 [325<../images/26_mixed/Rplot26_01.png>]
-<../images/26_mixed/Rplot26_02.png, id=5714, 1156.32pt x 650.43pt>
+<../images/26_mixed/Rplot26_02.png, id=5720, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_02.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_02.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_02.png  used on input line 
 41.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[326]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[327<../images/26_mixed/Rplot26_02.png>]
-<../images/26_mixed/slide26_01.png, id=5733, 583.17876pt x 566.115pt>
+ [326] [327<../images/26_mixed/Rplot26_02.png>]
+<../images/26_mixed/slide26_01.png, id=5739, 583.17876pt x 566.115pt>
 File: ../images/26_mixed/slide26_01.png Graphic file (type png)
 <use ../images/26_mixed/slide26_01.png>
 Package luatex.def Info: ../images/26_mixed/slide26_01.png  used on input line 
 58.
 (luatex.def)             Requested size: 334.60422pt x 324.82254pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[328<../images/26_mixed/slide26_01.png>]
-<../images/26_mixed/slide26_02.png, id=5745, 736.7525pt x 548.0475pt>
+ [328<../images/26_mixed/slide26_01.png>]
+<../images/26_mixed/slide26_02.png, id=5751, 736.7525pt x 548.0475pt>
 File: ../images/26_mixed/slide26_02.png Graphic file (type png)
 <use ../images/26_mixed/slide26_02.png>
 Package luatex.def Info: ../images/26_mixed/slide26_02.png  used on input line 
 71.
 (luatex.def)             Requested size: 334.60422pt x 248.89369pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[329<../images/26_mixed/slide26_02.png>]
+ [329<../images/26_mixed/slide26_02.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -4997,98 +3271,52 @@ Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Overfull \hbox (23.343pt too wide) detected at line 106
-\OML/cmm/m/it/10 LL\OT1/cmr/m/n/10 (\OML/cmm/b/it/10 Y\OMS/lmss/m/n/10 j\OML/cm
+\OML/cmm/m/it/10 LL\OT1/cmr/m/n/10 (\OML/cmm/b/it/10 Y\OMS/cmsy/m/n/10 j\OML/cm
 m/m/it/10 \OT1/cmr/m/n/10 ) = [] [](\OML/cmm/m/it/10 bernoulli\OT1/cmr/m/n/10 
-(\OML/cmm/m/it/10 Y[]\OMS/lmss/m/n/10 j\OML/cmm/m/it/10 \OT1/cmr/m/n/10 )) = [
-](\OML/cmm/m/it/10 bernoulli\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Y[]\OMS/lmss/m/n/
+(\OML/cmm/m/it/10 Y[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 \OT1/cmr/m/n/10 )) = [
+](\OML/cmm/m/it/10 bernoulli\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Y[]\OMS/cmsy/m/n/
 10 j\OML/cmm/m/it/10 \OT1/cmr/m/n/10 )) + [](\OML/cmm/m/it/10 bernoulli\OT1/cm
-r/m/n/10 (\OML/cmm/m/it/10 Y[]\OMS/lmss/m/n/10 j\OML/cmm/m/it/10 \OT1/cmr/m/n/
+r/m/n/10 (\OML/cmm/m/it/10 Y[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 \OT1/cmr/m/n/
 10 )) + [](\OML/cmm/m/it/10 bernoulli\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Y[]\OMS/
-lmss/m/n/10 j\OML/cmm/m/it/10 \OT1/cmr/m/n/10 ))
+cmsy/m/n/10 j\OML/cmm/m/it/10 \OT1/cmr/m/n/10 ))
  []
 
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[330]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[331]
+[330] [331]
+Removing  `ltj.process_input_buffer' from `process_input_buffer'.
+Inserting `ltj.listings_unicode' in `process_input_buffer'.
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [332]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [333]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[332]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[333]
-Removing  `ltj.process_input_buffer' from `process_input_buffer'.
-Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[334]
-<../images/26_mixed/Rplot26_06.png, id=5860, 1156.32pt x 650.43pt>
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [334]
+<../images/26_mixed/Rplot26_06.png, id=5866, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_06.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_06.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_06.png  used on input line 
 239.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-<../images/26_mixed/Rplot26_03.png, id=5862, 1156.32pt x 650.43pt>
+<../images/26_mixed/Rplot26_03.png, id=5868, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_03.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_03.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_03.png  used on input line 
 252.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[335<../images/26_mixed/Rplot26_06.png>]
-<../images/26_mixed/Rplot26_04.png, id=5873, 1156.32pt x 650.43pt>
+ [335<../images/26_mixed/Rplot26_06.png>]
+<../images/26_mixed/Rplot26_04.png, id=5879, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_04.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_04.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_04.png  used on input line 
 266.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-<../images/26_mixed/slide26_03.png, id=5875, 742.775pt x 570.13pt>
+<../images/26_mixed/slide26_03.png, id=5881, 742.775pt x 570.13pt>
 File: ../images/26_mixed/slide26_03.png Graphic file (type png)
 <use ../images/26_mixed/slide26_03.png>
 Package luatex.def Info: ../images/26_mixed/slide26_03.png  used on input line 
 274.
 (luatex.def)             Requested size: 334.60422pt x 256.83452pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[336<../images/26_mixed/Rplot26_03.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[337<../images/26_mixed/Rplot26_04.png><../images/26_mixed/slide26_03.png>]
+ [336<../images/26_mixed/Rplot26_03.png>] [337<../images/26_mixed/Rplot26_04.png
+><../images/26_mixed/slide26_03.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -5099,27 +3327,15 @@ Overfull \hbox (9.1505pt too wide) in paragraph at lines 306--307
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[338]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [338]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/26_mixed/Rplot26_05.png, id=5928, 1156.32pt x 650.43pt>
+<../images/26_mixed/Rplot26_05.png, id=5934, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_05.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_05.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_05.png  used on input line 
 350.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[339<../images/26_mixed/Rplot26_05.png>]
+ [339<../images/26_mixed/Rplot26_05.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -5128,24 +3344,13 @@ Overfull \hbox (25.35066pt too wide) in paragraph at lines 384--385
  []
 
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/26_mixed/slide26_04.png, id=5953, 1007.765pt x 653.44125pt>
+<../images/26_mixed/slide26_04.png, id=5959, 1007.765pt x 653.44125pt>
 File: ../images/26_mixed/slide26_04.png Graphic file (type png)
 <use ../images/26_mixed/slide26_04.png>
 Package luatex.def Info: ../images/26_mixed/slide26_04.png  used on input line 
 396.
 (luatex.def)             Requested size: 334.60422pt x 216.95241pt.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[340])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[341<../images/26_mixed/slide26_04.png>]
+[340]) [341<../images/26_mixed/slide26_04.png>]
 \openout2 = x27_IRTonBayes.aux
  (./x27_IRTonBayes.tex [342
 
@@ -5155,20 +3360,14 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 ]
 第28章
 [343]
-<../images/27_IRTonBayes/Rplot27_01.png, id=6019, 1156.32pt x 1156.32pt>
+<../images/27_IRTonBayes/Rplot27_01.png, id=6025, 1156.32pt x 1156.32pt>
 File: ../images/27_IRTonBayes/Rplot27_01.png Graphic file (type png)
 <use ../images/27_IRTonBayes/Rplot27_01.png>
 Package luatex.def Info: ../images/27_IRTonBayes/Rplot27_01.png  used on input 
 line 41.
 (luatex.def)             Requested size: 334.60422pt x 334.60081pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[344<../images/27_IRTonBayes/Rplot27_01.png>]
-<../images/27_IRTonBayes/Slide27_01.png, id=6031, 751.80875pt x 637.38126pt>
+ [344<../images/27_IRTonBayes/Rplot27_01.png>]
+<../images/27_IRTonBayes/Slide27_01.png, id=6037, 751.80875pt x 637.38126pt>
 File: ../images/27_IRTonBayes/Slide27_01.png Graphic file (type png)
 <use ../images/27_IRTonBayes/Slide27_01.png>
 Package luatex.def Info: ../images/27_IRTonBayes/Slide27_01.png  used on input 
@@ -5176,23 +3375,12 @@ line 55.
 (luatex.def)             Requested size: 334.60422pt x 283.67754pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[345<../images/27_IRTonBayes/Slide27_01.png>]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [345<../images/2
+7_IRTonBayes/Slide27_01.png>]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[346]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [346]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
@@ -5202,65 +3390,31 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/27_IRTonBayes/Rplot27_02.png, id=6100, 1156.32pt x 1156.32pt>
+<../images/27_IRTonBayes/Rplot27_02.png, id=6106, 1156.32pt x 1156.32pt>
 File: ../images/27_IRTonBayes/Rplot27_02.png Graphic file (type png)
 <use ../images/27_IRTonBayes/Rplot27_02.png>
 Package luatex.def Info: ../images/27_IRTonBayes/Rplot27_02.png  used on input 
 line 177.
 (luatex.def)             Requested size: 334.60422pt x 334.60081pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[347]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[348]
+ [347] [348]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[349<../images/27_IRTonBayes/Rplot27_02.png>]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [349<../images/2
+7_IRTonBayes/Rplot27_02.png>]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[350]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[351]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [350] [351]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.)
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[352]
+Removing  `ltj.listings_unicode' from `process_input_buffer'.) [352]
 \openout2 = x28_ChangePoint.aux
- (./x28_ChangePoint.tex
+ (./x28_Cha
+ngePoint.tex
 第29章
-<../images/28_ChangePoint/Rplot28_01.png, id=6241, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_01.png, id=6247, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_01.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_01.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_01.png  used on input
@@ -5272,7 +3426,7 @@ Package luatex.def Info: ../images/28_ChangePoint/Rplot28_01.png  used on input
 
 
 <../images/28_ChangePoint/Rplot28_01.png>]
-<../images/28_ChangePoint/Rplot28_02.png, id=6251, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_02.png, id=6257, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_02.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_02.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_02.png  used on input
@@ -5280,45 +3434,28 @@ Package luatex.def Info: ../images/28_ChangePoint/Rplot28_02.png  used on input
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[354<../images/28_ChangePoint/Rplot28_02.png>]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [354<../images/2
+8_ChangePoint/Rplot28_02.png>]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/28_ChangePoint/Rplot28_03.png, id=6268, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_03.png, id=6274, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_03.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_03.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_03.png  used on input
  line 85.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-<../images/28_ChangePoint/Rplot28_04.png, id=6271, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_04.png, id=6277, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_04.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_04.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_04.png  used on input
  line 99.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[355]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[356<../images/28_ChangePoint/Rplot28_03.png><../images/28_ChangePoint/Rplot28_0
-4.png>]
-<../images/28_ChangePoint/slide28_01.png, id=6316, 816.04875pt x 491.8375pt>
+ [355] [356<../images/28_ChangePoint/Rplot28_03.png><../images/28_ChangePoint/Rp
+lot28_04.png>]
+<../images/28_ChangePoint/slide28_01.png, id=6322, 816.04875pt x 491.8375pt>
 File: ../images/28_ChangePoint/slide28_01.png Graphic file (type png)
 <use ../images/28_ChangePoint/slide28_01.png>
 Package luatex.def Info: ../images/28_ChangePoint/slide28_01.png  used on input
@@ -5326,58 +3463,37 @@ Package luatex.def Info: ../images/28_ChangePoint/slide28_01.png  used on input
 (luatex.def)             Requested size: 334.60422pt x 201.66968pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[357<../images/28_ChangePoint/slide28_01.png>]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [357<../images/2
+8_ChangePoint/slide28_01.png>]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/28_ChangePoint/Rplot28_05.png, id=6338, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_05.png, id=6344, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_05.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_05.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_05.png  used on input
  line 181.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
 
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
 [358]
-<../images/28_ChangePoint/Rplot28_06.png, id=6365, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_06.png, id=6371, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_06.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_06.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_06.png  used on input
  line 192.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-<../images/28_ChangePoint/slide28_02.png, id=6368, 728.7225pt x 516.93124pt>
+<../images/28_ChangePoint/slide28_02.png, id=6374, 728.7225pt x 516.93124pt>
 File: ../images/28_ChangePoint/slide28_02.png Graphic file (type png)
 <use ../images/28_ChangePoint/slide28_02.png>
 Package luatex.def Info: ../images/28_ChangePoint/slide28_02.png  used on input
  line 204.
 (luatex.def)             Requested size: 334.60422pt x 237.35742pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[359<../images/28_ChangePoint/Rplot28_05.png><../images/28_ChangePoint/Rplot28_0
-6.png>]
+ [359<../images/28_ChangePoint/Rplot28_05.png><../images/28_ChangePoint/Rplot28_
+06.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[360<../images/28_ChangePoint/slide28_02.png>]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [360<../images/2
+8_ChangePoint/slide28_02.png>]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/28_ChangePoint/Rplot28_07.png, id=6401, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_07.png, id=6407, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_07.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_07.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_07.png  used on input
@@ -5385,33 +3501,16 @@ Package luatex.def Info: ../images/28_ChangePoint/Rplot28_07.png  used on input
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[361]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [361]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/28_ChangePoint/Rplot28_08.png, id=6432, 1156.32pt x 650.43pt>
+<../images/28_ChangePoint/Rplot28_08.png, id=6438, 1156.32pt x 650.43pt>
 File: ../images/28_ChangePoint/Rplot28_08.png Graphic file (type png)
 <use ../images/28_ChangePoint/Rplot28_08.png>
 Package luatex.def Info: ../images/28_ChangePoint/Rplot28_08.png  used on input
  line 292.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[362<../images/28_ChangePoint/Rplot28_07.png>])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[363<../images/28_ChangePoint/Rplot28_08.png>]
+ [362<../images/28_ChangePoint/Rplot28_07.png>]) [363<../images/28_ChangePoint/R
+plot28_08.png>]
 \openout2 = x29_SSpace.aux
  (./x29_SSpace.tex [364
 
@@ -5421,42 +3520,25 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 ]
 第30章
 [365]
-<../images/29_SSpace/slide29_01.png, id=6468, 688.5725pt x 402.50375pt>
+<../images/29_SSpace/slide29_01.png, id=6474, 688.5725pt x 402.50375pt>
 File: ../images/29_SSpace/slide29_01.png Graphic file (type png)
 <use ../images/29_SSpace/slide29_01.png>
 Package luatex.def Info: ../images/29_SSpace/slide29_01.png  used on input line
  34.
 (luatex.def)             Requested size: 334.60422pt x 195.58871pt.
-<../images/29_SSpace/slide29_02.png, id=6470, 944.52875pt x 699.61375pt>
+<../images/29_SSpace/slide29_02.png, id=6476, 944.52875pt x 699.61375pt>
 File: ../images/29_SSpace/slide29_02.png Graphic file (type png)
 <use ../images/29_SSpace/slide29_02.png>
 Package luatex.def Info: ../images/29_SSpace/slide29_02.png  used on input line
  45.
 (luatex.def)             Requested size: 334.60422pt x 247.84686pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[366]
+ [366]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[367<../images/29_SSpace/slide29_01.png><../images/29_SSpace/slide29_02.png>]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[368]
-<../images/29_SSpace/Rplot29_01.png, id=6524, 1156.32pt x 650.43pt>
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [367<../images/2
+9_SSpace/slide29_01.png><../images/29_SSpace/slide29_02.png>]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [368]
+<../images/29_SSpace/Rplot29_01.png, id=6530, 1156.32pt x 650.43pt>
 File: ../images/29_SSpace/Rplot29_01.png Graphic file (type png)
 <use ../images/29_SSpace/Rplot29_01.png>
 Package luatex.def Info: ../images/29_SSpace/Rplot29_01.png  used on input line
@@ -5464,15 +3546,10 @@ Package luatex.def Info: ../images/29_SSpace/Rplot29_01.png  used on input line
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[369<../images/29_SSpace/Rplot29_01.png>]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [369<../images/2
+9_SSpace/Rplot29_01.png>]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/29_SSpace/Rplot29_02.png, id=6560, 1156.32pt x 650.43pt>
+<../images/29_SSpace/Rplot29_02.png, id=6566, 1156.32pt x 650.43pt>
 File: ../images/29_SSpace/Rplot29_02.png Graphic file (type png)
 <use ../images/29_SSpace/Rplot29_02.png>
 Package luatex.def Info: ../images/29_SSpace/Rplot29_02.png  used on input line
@@ -5481,51 +3558,23 @@ Package luatex.def Info: ../images/29_SSpace/Rplot29_02.png  used on input line
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[370]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[371<../images/29_SSpace/Rplot29_02.png>]
-<../images/29_SSpace/slide29_03.png, id=6604, 646.415pt x 402.50375pt>
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [370] [371<../imag
+es/29_SSpace/Rplot29_02.png>]
+<../images/29_SSpace/slide29_03.png, id=6610, 646.415pt x 402.50375pt>
 File: ../images/29_SSpace/slide29_03.png Graphic file (type png)
 <use ../images/29_SSpace/slide29_03.png>
 Package luatex.def Info: ../images/29_SSpace/slide29_03.png  used on input line
  202.
 (luatex.def)             Requested size: 334.60422pt x 208.34505pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[372<../images/29_SSpace/slide29_03.png>]
+ [372<../images/29_SSpace/slide29_03.png>]
+Removing  `ltj.process_input_buffer' from `process_input_buffer'.
+Inserting `ltj.listings_unicode' in `process_input_buffer'.
+Inserting `ltj.process_input_buffer' in `process_input_buffer'.
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [373]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[373]
-Removing  `ltj.process_input_buffer' from `process_input_buffer'.
-Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
 [374]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
@@ -5533,60 +3582,31 @@ Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[375]
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[376]
-<../images/29_SSpace/Rplot29_03.png, id=6742, 1156.32pt x 650.43pt>
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [375]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [376]
+<../images/29_SSpace/Rplot29_03.png, id=6748, 1156.32pt x 650.43pt>
 File: ../images/29_SSpace/Rplot29_03.png Graphic file (type png)
 <use ../images/29_SSpace/Rplot29_03.png>
 Package luatex.def Info: ../images/29_SSpace/Rplot29_03.png  used on input line
  383.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-<../images/29_SSpace/Rplot29_04.png, id=6745, 1156.32pt x 650.43pt>
+<../images/29_SSpace/Rplot29_04.png, id=6751, 1156.32pt x 650.43pt>
 File: ../images/29_SSpace/Rplot29_04.png Graphic file (type png)
 <use ../images/29_SSpace/Rplot29_04.png>
 Package luatex.def Info: ../images/29_SSpace/Rplot29_04.png  used on input line
  395.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[377<../images/29_SSpace/Rplot29_03.png>]
+ [377<../images/29_SSpace/Rplot29_03.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[378<../images/29_SSpace/Rplot29_04.png>]
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [378<../images/29_
+SSpace/Rplot29_04.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[379]
-<../images/29_SSpace/Rplot29_05.png, id=6809, 1156.32pt x 650.43pt>
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [379]
+<../images/29_SSpace/Rplot29_05.png, id=6815, 1156.32pt x 650.43pt>
 File: ../images/29_SSpace/Rplot29_05.png Graphic file (type png)
 <use ../images/29_SSpace/Rplot29_05.png>
 Package luatex.def Info: ../images/29_SSpace/Rplot29_05.png  used on input line
@@ -5595,18 +3615,8 @@ Package luatex.def Info: ../images/29_SSpace/Rplot29_05.png  used on input line
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[380<../images/29_SSpace/Rplot29_05.png>])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [380<../images/29_
+SSpace/Rplot29_05.png>])
 [381]
 \openout2 = x30_comparison.aux
  (./x30_comparison.tex [382
@@ -5616,51 +3626,9 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 ]
 第31章
-[383]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[384]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[385]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[386]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[387]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[388]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[389])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[390] (../../common_contents/FAQ.tex
+[383] [384] [385] [386] [387] [388] [389]) [390] (../../common_contents/FAQ.tex
 付録A
-<../../common_contents/figures/RstudioFileEditor.png, id=6922, 569.12625pt x 50
+<../../common_contents/figures/RstudioFileEditor.png, id=6928, 569.12625pt x 50
 8.90125pt>
 File: ../../common_contents/figures/RstudioFileEditor.png Graphic file (type pn
 g)
@@ -5673,36 +3641,24 @@ sed on input line 22.
 
 
 ]
-<../../common_contents/figures/RmdFile.png, id=6935, 892.33376pt x 721.69624pt>
+<../../common_contents/figures/RmdFile.png, id=6941, 892.33376pt x 721.69624pt>
 
 File: ../../common_contents/figures/RmdFile.png Graphic file (type png)
 <use ../../common_contents/figures/RmdFile.png>
 Package luatex.def Info: ../../common_contents/figures/RmdFile.png  used on inp
 ut line 35.
 (luatex.def)             Requested size: 334.60422pt x 270.62442pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[392<../../common_contents/figures/RstudioFileEditor.png>]
-<../../common_contents/figures/InsertChunk.png, id=6950, 1068.99374pt x 365.365
+ [392<../../common_contents/figures/RstudioFileEditor.png>]
+<../../common_contents/figures/InsertChunk.png, id=6956, 1068.99374pt x 365.365
 pt>
 File: ../../common_contents/figures/InsertChunk.png Graphic file (type png)
 <use ../../common_contents/figures/InsertChunk.png>
 Package luatex.def Info: ../../common_contents/figures/InsertChunk.png  used on
  input line 47.
 (luatex.def)             Requested size: 334.60422pt x 114.36024pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[393<../../common_contents/figures/RmdFile.png><../../common_contents/figures/In
-sertChunk.png>]
-<../../common_contents/figures/RmdKnit.png, id=6962, 1128.215pt x 311.1625pt>
+ [393<../../common_contents/figures/RmdFile.png><../../common_contents/figures/I
+nsertChunk.png>]
+<../../common_contents/figures/RmdKnit.png, id=6968, 1128.215pt x 311.1625pt>
 File: ../../common_contents/figures/RmdKnit.png Graphic file (type png)
 <use ../../common_contents/figures/RmdKnit.png>
 Package luatex.def Info: ../../common_contents/figures/RmdKnit.png  used on inp
@@ -5711,38 +3667,16 @@ ut line 57.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[394<../../common_contents/figures/RmdKnit.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[395]
-<../../common_contents/figures/FAQ01.png, id=6982, 1674.255pt x 1255.69125pt>
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [394<../../common_
+contents/figures/RmdKnit.png>] [395]
+<../../common_contents/figures/FAQ01.png, id=6988, 1674.255pt x 1255.69125pt>
 File: ../../common_contents/figures/FAQ01.png Graphic file (type png)
 <use ../../common_contents/figures/FAQ01.png>
 Package luatex.def Info: ../../common_contents/figures/FAQ01.png  used on input
  line 107.
 (luatex.def)             Requested size: 334.60422pt x 250.9422pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[396<../../common_contents/figures/FAQ01.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[397](load cache: extra_lmroman7-italic.luc)
+ [396<../../common_contents/figures/FAQ01.png>] [397](load cache: extra_lmroman7
+-italic.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/it' will be
 (Font)              scaled to size 6.47299pt on input line 183.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/it' will be
@@ -5751,115 +3685,33 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/it' will be
 (Font)              scaled to size 5.54828pt on input line 183.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/it' will be
 (Font)              scaled to size 5.54828pt on input line 183.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[398]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[399]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[400]) (../../Scaling/tex/H01_ProofOfLikert.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[401] [402
+ [398] [399] [400])
+(../../Scaling/tex/H01_ProofOfLikert.tex [401] [402
 
 ]
 付録B
-[403]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[404]) (../../common_contents/Computer.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[405] [406
+[403] [404]) (../../common_contents/Computer.tex [405] [406
 
 ]
 付録C
-[407]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[408]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[409]
-<../../common_contents/figures/computer_01.png, id=7103, 1177.39874pt x 559.088
+[407] [408] [409]
+<../../common_contents/figures/computer_01.png, id=7109, 1177.39874pt x 559.088
 75pt>
 File: ../../common_contents/figures/computer_01.png Graphic file (type png)
 <use ../../common_contents/figures/computer_01.png>
 Package luatex.def Info: ../../common_contents/figures/computer_01.png  used on
  input line 39.
 (luatex.def)             Requested size: 334.60422pt x 158.8898pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[410<../../common_contents/figures/computer_01.png>]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[411]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[412]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[413]
-<../../common_contents/figures/computer_06.png, id=7151, 837.1275pt x 476.78125
+ [410<../../common_contents/figures/computer_01.png>] [411]
+[412] [413]
+<../../common_contents/figures/computer_06.png, id=7157, 837.1275pt x 476.78125
 pt>
 File: ../../common_contents/figures/computer_06.png Graphic file (type png)
 <use ../../common_contents/figures/computer_06.png>
 Package luatex.def Info: ../../common_contents/figures/computer_06.png  used on
  input line 92.
 (luatex.def)             Requested size: 334.60422pt x 190.57089pt.
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[414]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[415<../../common_contents/figures/computer_06.png>]
+ [414] [415<../../common_contents/figures/computer_06.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -5870,39 +3722,9 @@ Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
-Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[416]
+Inserting `ltj.process_input_buffer' in `process_input_buffer'. [416]
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-Overfull \hbox (8.26627pt too wide) in paragraph at lines 158--159
-[]\JY3/BIZUDPMinchoMedium(0)/m/n/10 こ の 問 題 の 解 決 策 と し 
-て ， 日 付 を 入 れ る と い う も の が あ り ま す 。\TU/
-lmr/m/n/10 ,\TU/lmtt/m/n/10 soturon1001.docx\JY3/BIZUDPMinchoMedium(0)/m/n/10 
-， \TU/lmtt/m/n/10 soturon1005.docx
- []
-
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[417]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[418]) (../../common_contents/Greeks.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[419] [420
+[417] [418]) (../../common_contents/Greeks.tex [419] [420
 
 ]
 付録D
@@ -5915,7 +3737,7 @@ Overfull \hbox (44.15285pt too wide) in paragraph at lines 34--65
  [][] 
  []
 
-<../../common_contents/figures/JapaneseKeyChange.png, id=7232, 282.05376pt x 26
+<../../common_contents/figures/JapaneseKeyChange.png, id=7239, 282.05376pt x 26
 4.99pt>
 File: ../../common_contents/figures/JapaneseKeyChange.png Graphic file (type pn
 g)
@@ -5923,311 +3745,48 @@ g)
 Package luatex.def Info: ../../common_contents/figures/JapaneseKeyChange.png  u
 sed on input line 73.
 (luatex.def)             Requested size: 113.81102pt x 106.9241pt.
-<../../common_contents/figures/JPkeyAssign.png, id=7233, 925.4575pt x 517.935pt
+<../../common_contents/figures/JPkeyAssign.png, id=7240, 925.4575pt x 517.935pt
 >
 File: ../../common_contents/figures/JPkeyAssign.png Graphic file (type png)
 <use ../../common_contents/figures/JPkeyAssign.png>
 Package luatex.def Info: ../../common_contents/figures/JPkeyAssign.png  used on
  input line 79.
 (luatex.def)             Requested size: 334.60422pt x 187.26256pt.
-<../../common_contents/figures/usKeyAssign.png, id=7234, 837.1275pt x 545.03625
+<../../common_contents/figures/usKeyAssign.png, id=7241, 837.1275pt x 545.03625
 pt>
 File: ../../common_contents/figures/usKeyAssign.png Graphic file (type png)
 <use ../../common_contents/figures/usKeyAssign.png>
 Package luatex.def Info: ../../common_contents/figures/usKeyAssign.png  used on
  input line 85.
 (luatex.def)             Requested size: 334.60422pt x 217.85262pt.
-[423])
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[424]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[425<../../common_contents/figures/JapaneseKeyChange.png><../../common_contents/
-figures/JPkeyAssign.png><../../common_contents/figures/usKeyAssign.png>]
-[426
+[423]) [424] [425<../../common_contents/figures/JapaneseKeyChange.png><../../com
+mon_contents/figures/JPkeyAssign.png><../../common_contents/figures/usKeyAssign.
+png>] [426
 
 ]
 付録F
 (../../syllabus2/a01_introduction.tex [427]) (../../syllabus2/a02_scaling.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[428]) (../../syllabus2/a03_testTheory.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[429]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[430]) (../../syllabus2/a04_IRT.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[431]) (../../syllabus2/a05_GRM.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[432]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[433]) (../../syllabus2/a06_matrix.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[434]) (../../syllabus2/a07_matrixModel.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[435]) (../../syllabus2/a08_Eigen.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[436]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[437]) (../../syllabus2/a09_matrix_onR.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[438]) (../../syllabus2/a10_FA.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[439]) (../../syllabus2/a11_IRTonR.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[440]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[441]) (../../syllabus2/a12_SEM.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[442]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[443]) (../../syllabus2/a13_SEMonR.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[444]) (../../syllabus2/a14_DualuScaling.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[445]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[446]) (../../syllabus2/a15_MDS.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[447]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[448]) (../../syllabus2/a16_Programming.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[449]) (../../syllabus2/a17_Bayesian.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[450]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[451]) (../../syllabus2/a18_MCMC.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[452]) (../../syllabus2/a19_modeling1.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[453]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[454]) (../../syllabus2/a20_modeling2.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[455]) (../../syllabus2/a21_modeling3.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[456]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[457]) (../../syllabus2/a22_modeling4.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[458]) (../../syllabus2/a23_modeling5.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[459]) (../../syllabus2/a24_linearModel.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[460]) (../../syllabus2/a25_HLM.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[461]) (../../syllabus2/a26_mixed.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[462]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[463]) (../../syllabus2/a27_IRTonBayes.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[464]) (../../syllabus2/a28_ChangePoint.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[465]) (../../syllabus2/a29_SSpace.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[466]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[467]) (../../syllabus2/a30_comparison.tex
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[468]) (./tmp.bbl
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[469] [470
-
-] [471]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[472]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[473]) (./tmp.ind
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 16.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{16.0pt}.
-
-[474]
+[428]) (../../syllabus2/a03_testTheory.tex [429] [430])
+(../../syllabus2/a04_IRT.tex [431]) (../../syllabus2/a05_GRM.tex [432] [433])
+(../../syllabus2/a06_matrix.tex [434]) (../../syllabus2/a07_matrixModel.tex
+[435]) (../../syllabus2/a08_Eigen.tex [436] [437])
+(../../syllabus2/a09_matrix_onR.tex [438]) (../../syllabus2/a10_FA.tex [439])
+(../../syllabus2/a11_IRTonR.tex [440] [441]) (../../syllabus2/a12_SEM.tex
+[442] [443]) (../../syllabus2/a13_SEMonR.tex [444])
+(../../syllabus2/a14_DualuScaling.tex [445] [446]) (../../syllabus2/a15_MDS.tex
+[447] [448]) (../../syllabus2/a16_Programming.tex [449])
+(../../syllabus2/a17_Bayesian.tex [450] [451]) (../../syllabus2/a18_MCMC.tex
+[452]) (../../syllabus2/a19_modeling1.tex [453] [454])
+(../../syllabus2/a20_modeling2.tex [455]) (../../syllabus2/a21_modeling3.tex
+[456] [457]) (../../syllabus2/a22_modeling4.tex [458])
+(../../syllabus2/a23_modeling5.tex [459]) (../../syllabus2/a24_linearModel.tex
+[460]) (../../syllabus2/a25_HLM.tex [461]) (../../syllabus2/a26_mixed.tex
+[462] [463]) (../../syllabus2/a27_IRTonBayes.tex [464])
+(../../syllabus2/a28_ChangePoint.tex [465]) (../../syllabus2/a29_SSpace.tex
+[466] [467]) (../../syllabus2/a30_comparison.tex [468]) (./tmp.bbl [469]
+[470
+
+] [471] [472] [473]) (./tmp.ind [474]
 LaTeX Font Info:    Font shape `JT3/gt/b/n' in size <8> not available
 (Font)              Font shape `JT3/gt/m/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
@@ -6248,37 +3807,18 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
  [475
 
 
-]
+] [476] [477] [478
 
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 12.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{12.0pt}.
-
-[476]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 12.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{12.0pt}.
-
-[477]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 12.0pt, for example:
-(fancyhdr)                \setlength{\footskip}{12.0pt}.
-
-[478
-
-]) (./tmp.aux (./x01_introduction.aux) (./x02_scaling.aux)
-(./x03_testTheory.aux) (./x04_IRT.aux) (./x05_GRM.aux) (./x06_matrix.aux)
-(./x07_matrixModel.aux) (./x08_Eigen.aux) (./x09_matrix_onR.aux) (./x10_FA.aux) (./x11_IRTonR.aux) (./x12_SEM.aux) (./x13_SEMonR.aux) (./x14_DualScaling.aux)
-(./x15_MDS.aux) (./x16_Programming.aux) (./x17_Bayesian.aux) (./prepareStan.aux
-) (./x18_MCMC.aux) (./x19_modeling1.aux) (./x20_modeling2.aux)
+]) (./tmp.aux
+(./x01_introduction.aux) (./x02_scaling.aux) (./x03_testTheory.aux)
+(./x04_IRT.aux) (./x05_GRM.aux) (./x06_matrix.aux) (./x07_matrixModel.aux)
+(./x08_Eigen.aux) (./x09_matrix_onR.aux) (./x10_FA.aux) (./x11_IRTonR.aux)
+(./x12_SEM.aux) (./x13_SEMonR.aux) (./x14_DualScaling.aux) (./x15_MDS.aux)
+(./x16_Programming.aux) (./x17_Bayesian.aux) (./prepareStan.aux)
+(./x18_MCMC.aux) (./x19_modeling1.aux) (./x20_modeling2.aux)
 (./x21_modeling3.aux) (./x22_modeling4.aux) (./x23_modeling5.aux)
 (./x24_linearModel.aux) (./x25_HLM.aux) (./x26_mixed.aux) (./x27_IRTonBayes.aux
 ) (./x28_ChangePoint.aux) (./x29_SSpace.aux) (./x30_comparison.aux))
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
 
 Package rerunfilecheck Warning: File `tmp.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -6290,16 +3830,16 @@ Package rerunfilecheck Info: Checksums for `tmp.out':
 )
 
 Here is how much of LuaTeX's memory you used:
- 51308 strings out of 478309
+ 51764 strings out of 478313
  597273,1977958 words of node,token memory allocated
- 121226 words of node memory still in use:
-   11 hlist, 2 vlist, 5 rule, 350 glue, 4 kern, 1 sub_mlist, 1 glyph, 54073 attr
-ibute, 68 glue_spec, 4910 attribute_list, 4 write, 14 user_defined, 24 pdf_actio
+ 120602 words of node memory still in use:
+   11 hlist, 2 vlist, 5 rule, 350 glue, 4 kern, 1 sub_mlist, 1 glyph, 53787 attr
+ibute, 68 glue_spec, 4884 attribute_list, 4 write, 14 user_defined, 24 pdf_actio
 n nodes
-   avail lists: 1:30,2:99989,3:2892,4:7402,5:3220,6:504,7:10889,8:122,9:7111,10:
+   avail lists: 1:30,2:99989,3:2892,4:7402,5:3230,6:504,7:10889,8:122,9:7111,10:
 49,11:261
- 64219 multiletter control sequences out of 65536+600000
- 167 fonts using 119507943 bytes
+ 64670 multiletter control sequences out of 65536+600000
+ 166 fonts using 119375871 bytes
  118i,18n,113p,4285b,1157s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>
 </usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmmono12-regular.ot
@@ -6358,10 +3898,10 @@ ve/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/
 3/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2023/texm
 f-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on tmp.pdf (480 pages, 49122890 bytes).
+Output written on tmp.pdf (480 pages, 49125546 bytes).
 
-PDF statistics: 9027 PDF objects out of 10688 (max. 8388607)
- 8134 compressed objects within 82 object streams
- 3815 named destinations out of 4296 (max. 131072)
+PDF statistics: 9033 PDF objects out of 10688 (max. 8388607)
+ 8140 compressed objects within 82 object streams
+ 3820 named destinations out of 4296 (max. 131072)
  2010 words of extra memory for PDF output out of 10000 (max. 100000000)
 

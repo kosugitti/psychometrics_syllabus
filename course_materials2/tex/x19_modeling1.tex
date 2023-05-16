@@ -41,7 +41,7 @@ $$ t = \frac{\bar{X}_A-\bar{X}_B}{\sqrt{\frac{(n_1-1)\hat{\sigma_A}^2+(n_2-1)\ha
 仮定としておいてあるのは，両群ともに同一の正規分布から得られた標本であり，操作によってその平均値が異なっているはず，ということだけです。つまり実験群のデータは$X_{i,A}\sim N(\mu_A, \sigma)$，統制群のデータは$X_{i,B}\sim N(\mu_B,\sigma)$という分布が前提とされているのです。
 
 これをそのまま設計図にし，コードにしてみましょう。設計図として図\ref{fig::19_01}が，これをもとにコードが\texttt{code:\ref{stan::19_01}}のようにかけていればいいでしょう。コードが設計図をほぼそのまま文字起こししていることを確認してください。
-\begin{figure}[h]
+\begin{figure}[ht]
     \begin{center}
         \includegraphics[width=0.75\linewidth,keepaspectratio]{../images/19_modeling1/slide19_01.png}
         \caption{平均値の差を比べるときの設計図}

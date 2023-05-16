@@ -160,3 +160,10 @@ setpagesize=false,
 \newcommand{\2}{\mathrm{I}\hspace{-1.2pt}\mathrm{I}}
 \newcommand{\3}{\mathrm{I}\hspace{-1.2pt}\mathrm{I}\hspace{-1.2pt}\mathrm{I}}
 \newcommand{\4}{\mathrm{I}\hspace{-1.2pt}\mathrm{V}}
+% マル1,マル2,マル3,マル4
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+%% fancyhdr Warning対策
+\setlength{\footskip}{16pt}
