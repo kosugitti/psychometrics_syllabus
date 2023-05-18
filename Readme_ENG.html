@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Readme_ENG.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="the-syllabus-and-textbook-for-undergraduate-students-in-psychological-statistics">The syllabus and textbook for undergraduate students in psychological statistics</h1>
+<p>At the School of Human Sciences, Department of Psychology, Senshu University, &quot;Fundamentals of Psychological Data Analysis&quot; is a required course in the first year and &quot;Applied Psychological Data Analysis&quot; is an elective course in the second year.
+On this page, we provide teaching materials related to psychology and statistics that correspond to the progress report document for these classes.</p>
+<p><a href="Readme.html">The Japanese version of this website </a></p>
+<h2 id="the-design-principles-of-the-syllabus">The design principles of the syllabus</h2>
+<h3 id="basic-class">Basic Class</h3>
+<p>The syllabus places emphasis on the perspective of &quot;psychological statistics&quot; rather than &quot;statistics&quot; and strives to ensure that students understand its practical application, as well as its role and prerequisites in the field of psychology.</p>
+<p>This syllabus clearly demonstrates how the elements outlined in the standard syllabus for licensed psychologists are incorporated.</p>
+<p>Throughout the academic year, the syllabus focuses on the following five themes:</p>
+<ul>
+<li><strong>Understanding the population using inferential statistics</strong>: The purpose of statistics and psychological statistics is not only to analyze data obtained from samples but also to gain an understanding of the entire population using that data.</li>
+<li><strong>Inference using probability</strong>: To comprehend the population, various methods are employed, such as the method of moments based on representative values, maximum likelihood estimation utilizing probability distributions, and Bayesian methods.</li>
+<li><strong>Factorial designs and linear models</strong>: In psychology, factorial designs are frequently used to control experimental conditions and conduct analyses (average causal effects) based on differences in means. This process can be effectively represented using linear models as a whole.</li>
+<li><strong>Model comparison and decision making</strong>: To draw conclusions and make informed decisions based on population estimates, techniques such as model comparison and Null Hypothesis Statistical Testing (NHST) are essential.</li>
+<li><strong>Practical learning using R</strong>: Students are encouraged to develop not only theoretical understanding but also the ability to perform calculations independently, using the statistical software R.</li>
+</ul>
+<h3 id="advanced-course">Advanced Course</h3>
+<p>Targeted towards individuals who have already completed the foundational course, this course aims to provide advanced knowledge and understanding, enabling participants to comprehend psychology measurement, scale development, mathematical foundations, and mathematical modeling. The focus is on learning that emphasizes psychological applications without being overwhelmed by mathematical challenges.</p>
+<p>Throughout the year, the course centers around the following five themes:</p>
+<ul>
+<li><strong>Understanding psychological scaling</strong>: Participants will gain an understanding of how psychological questionnaires and analyses function as measures of the mind, and learn the principles and models behind them to effectively utilize them.</li>
+<li><strong>Understanding multivariate analysis</strong>: Participants will comprehend what can be learned from analyzing numerous variables obtained from research studies and surveys, as well as how to interpret those results.</li>
+<li><strong>Understanding mathematical coherence</strong>: By grasping the mathematical principles, particularly linear algebra, underlying multivariate analysis, participants will develop a comprehensive understanding of the mechanisms involved.</li>
+<li><strong>Understanding data generation mechanisms</strong>: Rather than passively analyzing data, participants will cultivate the ability to understand the mechanisms of data generation and perform analyses based on that understanding.</li>
+<li><strong>Practical learning using R and Stan</strong> : Participants will engage in hands-on calculations using the statistical software R and the probabilistic programming language Stan, enabling them to progress through analyses while verifying their results.</li>
+</ul>
+<p>Through this course, participants will acquire advanced knowledge that builds upon the foundational course, allowing them to understand psychology from the perspectives of measurement, scale development, mathematical foundations, and mathematical modeling. The focus is on applying this understanding to psychological applications, while ensuring that participants are not overwhelmed by mathematical challenges.</p>
+<h2 id="syllabus-and-textbook-updates-and-versions">Syllabus and Textbook Updates and Versions</h2>
+<p>These materials are regularly updated. Please check the version information located at the top left corner of each page or the last updated date mentioned on the first page.
+The version information follows <a href="https://semver.org/">Semantic Versioning 2.0 standards</a>, where the numbers separated by periods represent major, minor, and patch versions, respectively.
+Fixes for typos or errors correspond to patch versions, while the addition or modification of paragraphs or chapters, as well as structural changes to the entire content, indicate minor revisions. Major revisions signify significant policy changes or shifts in direction.</p>
+<p>{% include_relative Syllabus_versions1.md %}
+{% include_relative Syllabus_versions2.md %}
+{% include_relative Book_versions1.md %}
+{% include_relative Book_versions2.md %}</p>
+<h3 id="syllabus">syllabus</h3>
+<ul>
+<li><a href="syllabus.pdf">Basic Course syllabus</a></li>
+<li><a href="syllabus2.pdf">Advance Course syllabus</a></li>
+</ul>
+<h3 id="textbookpdf">Textbook(PDF)</h3>
+<p>This text is based on the course content. We recommend viewing it on a computer or tablet.</p>
+<ul>
+<li><a href="Dkiso1_book.pdf">Basic Course textbook</a></li>
+<li><a href="Dkiso2_book.pdf">Advance Course textbook</a></li>
+</ul>
+<h3 id="kindle-direct-publishing">Kindle Direct Publishing</h3>
+<p>For those who find it cumbersome to print all the materials, we offer paperback versions on Amazon.
+The paperback version of the foundational course is labeled as version 2.0.33, while the advanced course is labeled as version 1.2.55.</p>
+<ul>
+<li><a href="https://amzn.to/3tuDKn0">Basic Course textbook on KDP</a></li>
+<li><a href="https://amzn.to/3L8aecK">Advance Course textbook on KDP</a></li>
+</ul>
+<h2 id="sample-data-and-r-code">Sample Data and R code</h2>
+<h3 id="sample-data">Sample Data</h3>
+<ul>
+<li><a href="codes/SampleData/BaseballDecade.csv">Baseball Player Data for 10 Years</a></li>
+<li><a href="codes/SampleData/yachin.csv">Yachin Data</a></li>
+<li><a href="codes/SampleData/IRTsample.csv">Example Data for IRT</a></li>
+<li><a href="codes/SampleData/Weight.csv">Author's weight transition data</a></li>
+<li><a href="codes/SampleData/M1score2022.csv">M-1 GrandPrix Data</a></li>
+</ul>
+<h3 id="r-code-for-basic-course">R-code for Basic Course</h3>
+<ul>
+<li><a href="codes/Dkiso1/20_example.R">二群の平均値差</a></li>
+<li><a href="codes/Dkiso1/Chapter22ANOVA.R">R による分散分析のコード</a></li>
+<li><a href="codes/Dkiso1/Chapter22ANOVA.Rmd">R による分散分析のコード(Rmd ファイルバージョン)</a></li>
+<li><a href="codes/SampleData/chapter22exe1.csv">分散分析課題用データセット 1</a></li>
+<li><a href="codes/SampleData/chapter22exe2.csv">分散分析課題用データセット 2</a></li>
+<li><a href="codes/SampleData/chapter22exe3.csv">分散分析課題用データセット 3</a></li>
+</ul>
+<h3 id="r-code-for-advance-course">R-code for Advance Course</h3>
+<ul>
+<li><a href="codes/Dkiso2/00_Appendix1_rstan.R">事前準備；Rstan の確認用コード</a></li>
+<li><a href="codes/Dkiso2/00_Appendix1_cmdstanr.R">事前準備；cmdstanr の確認用コード</a></li>
+<li><a href="codes/Dkiso2/01_BasicProgramming.R">第 01 回；プログラミングの基礎</a></li>
+<li><a href="codes/Dkiso2/02_randomVariables.R">第 02 回；プログラミングの基礎</a></li>
+<li><a href="codes/Dkiso2/03_exampleRstan.R">第 03 回；stan の基礎(rstan)</a></li>
+<li><a href="codes/Dkiso2/03_exampleCmdstan.R">第 03 回；stan の基礎(cmdstan)</a></li>
+<li><a href="codes/Dkiso2/04_exampleRstan.R">第 04 回；平均値の差の検定(rstan)</a></li>
+<li><a href="codes/Dkiso2/04_exampleCmdstan.R">第 04 回；平均値の差の検定(cmdstan)</a></li>
+<li><a href="codes/Dkiso2/05_exampleRstan.R">第 05 回；生成量を使って(rstan)</a></li>
+<li><a href="codes/Dkiso2/05_exampleCmdstan.R">第 05 回；生成量を使って(cmdstan)</a></li>
+<li><a href="codes/Dkiso2/06_AnovaExampleRstan.R">第 06 回；多群の平均値の比較(rstan)</a></li>
+<li><a href="codes/Dkiso2/06_AnovaExampleCmdstan.R">第 06 回；多群の平均値の比較(cmdstan)</a></li>
+<li><a href="codes/Dkiso2/07_WithinExampleRstan.R">第 07 回；Within モデルの平均値の比較(rstan)</a></li>
+<li><a href="codes/Dkiso2/07_WithinExampleCmdstan.R">第 07 回；Within モデルの平均値の比較(cmdstan)</a></li>
+<li><a href="codes/Dkiso2/08_categoricalRstan.R">第 08 回；カテゴリカルモデルの分析(rstan)</a></li>
+<li><a href="codes/Dkiso2/08_categoricalCmdstan.R">第 08 回；カテゴリカルモデルの分析(cmdstan)</a></li>
+<li><a href="codes/Dkiso2/09_GLM_Rstan.R">第 09 回；一般化線形モデル(rstan)</a></li>
+<li><a href="codes/Dkiso2/09_GLM_Cmdstan.R">第 09 回；一般化線形モデル(cmdstan)</a></li>
+<li><a href="codes/Dkiso2/10_GLMM_Rstan.R">第 10 回；一般化線形混合モデル・階層線形モデル(rstan)</a></li>
+<li><a href="codes/Dkiso2/10_GLMM_Cmdstan.R">第 10 回；一般化線形混合モデル・階層線形モデル(cmdstan)</a></li>
+<li><a href="codes/Dkiso2/11_Mixture_Rstan.R">第 11 回；混合分布モデル(rstan)</a></li>
+<li><a href="codes/Dkiso2/11_Mixture_Cmdstan.R">第 11 回；混合分布モデル(cmdstan)</a></li>
+<li><a href="codes/Dkiso2/12_IRT_Rstan.R">第 12 回；IRT モデル(rstan)</a></li>
+<li><a href="codes/Dkiso2/12_IRT_Cmdstan.R">第 12 回；IRT モデル(cmdstan)</a></li>
+<li><a href="codes/Dkiso2/13_changePoint_Rstan.R">第 13 回；変化点検出・折線回帰(rstan)</a></li>
+<li><a href="codes/Dkiso2/13_changePoint_Cmdstan.R">第 13 回；変化点検出・折線回帰(cmdstan)</a></li>
+<li><a href="codes/Dkiso2/14_stateSpace_Rstan.R">第 14 回；状態空間モデル(rstan)</a></li>
+<li><a href="codes/Dkiso2/14_stateSpace_Cmdstan.R">第 14 回；状態空間モデル(cmdstan)</a></li>
+</ul>
+<h2 id="other-owrks">Other owrks</h2>
+<h3 id="summer-mathematics-boot-camp-2022">Summer Mathematics Boot Camp 2022</h3>
+<p>As part of the project titled &quot;Can Deep Learning Revolutionize Psychology? Theoretical and Practical Validation through Open Science,&quot; I had the opportunity to serve as a workshop instructor for a mathematics workshop in the summer of 2022. I am sharing the materials from that session here. (Updated on May 10, 2023 reOpen!)</p>
+<ul>
+<li><a href="LABC.pdf">Linear Algebra for Psychologists</a></li>
+</ul>
+<h3 id="september-2022-hiroshima-university-intensive-lecture-materials">September 2022 Hiroshima University Intensive Lecture Materials</h3>
+<p>As part of the &quot;Special Topics in Behavioral Science&quot; course held at Hiroshima University in the academic year 2022, I have compiled the lectures focusing on psychological measurement.
+I have uploaded the materials used in the class (Updated on May 11, 2023!).</p>
+<ul>
+<li><a href="Scaling.pdf">Psychological Educational Measurement Methods</a></li>
+</ul>
+<h2 id="licenses">Licenses</h2>
+<p><a href="https://researchmap.jp/kosugitti">Written by Kosugitti</a></p>
+<p><a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International License</a>.</p>
+
+</body>
+</html>
