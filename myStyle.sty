@@ -1,3 +1,7 @@
+% KDP用にPDF X1aにする
+\usepackage{luatex85}
+\usepackage[x-1a]{pdfx}
+
 \usepackage[longnamesfirst]{natbib}
 \usepackage{bxpapersize}
 % 1行49文字。200行で一万文字程度(目安)
@@ -26,6 +30,7 @@
 % \usepackage{nicematrix} % 階段行列に色付けしたり
 \usepackage[no-test-for-array]{nicematrix}
 \usepackage{booktabs} %表の罫線パッケージ
+\usepackage{accents} % \bar{\bar{X}}対策
 % BIZ UDフォントを使う
 \newjfontface{\nonproportional}{BIZ UDMincho Medium}[YokoFeatures={JFM=ujis}]
 \setmainjfont[Ligatures={Common,TeX},
@@ -167,3 +172,4 @@ setpagesize=false,
 
 %% fancyhdr Warning対策
 \setlength{\footskip}{16pt}
+
