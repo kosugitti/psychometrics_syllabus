@@ -1,0 +1,170 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+\chapter{Probability and Statistical Inference}
+\label{m16_inference}
+Now, the class will move into the latter half.
+The discussion begins with probability and statistical inference.
+
+Throughout this class, there is a theme of "seeing the unseen."
+For example, latent variables and errors, which cannot be directly observed, are representative examples. However, the discussion that begins here is a story about the concept of statistical inference, which is the process of inferring information about the entire population from a small sample of data.
+
+Please note that statistics is an endeavor to gain as much knowledge as possible from incomplete information. To accomplish this seemingly impossible task, we rely on the power of probability and make certain assumptions to guide our discussions.
+Please do not forget that it is a "pseudo" discipline based on this "assumption".
+
+\section{Population and Sample}
+Let's get started, shall we?
+As an example, let's consider a case where physical measurements were taken at a small school.
+In a very small school, there are only three students.
+The heights of the three individuals were 165cm, 173cm, and 182cm, respectively.
+So, what is the average height of these three people?
+
+You are a translator.
+\[ (165+173+182)/3=173.33\cdots\]
+Sure. Let's conclude that the height is roughly 173cm.
+
+Calculations of such representative values (see section \ref{m05_descriptives}) belong to the area of statistics called \keytermE{descriptive statistics}, which aims to describe the state of the data at hand.
+
+By the way, when we obtain some data like this, sometimes we want to make some inferences not only about the state of the data at hand but also with regard to something else. In this case, we have only learned about the characteristics of a certain school in a certain region. Moreover, since there are only three students in the school, it is often called a special case. The reason why we don't want to be told that the data at hand is a special case is that we actually wanted to know its general characteristics. Ensuring generality means that we want to broaden the subject of reference, such as how other schools are doing, how other regions are doing, how Japan as a whole is doing, and how the world is doing.
+
+Of course, it would be very difficult to measure the height of all children in Japan or the whole world, so it cannot be done overnight. However, instead of completely giving up, let's use the data we have on hand as a clue and try to guess the big picture. This is the basic aim of inferential statistics.
+
+To begin discussing the topic of inferential statistics, let's sort out some terminology. Please refer to Figure \ref{fig::16_01}.
+
+\input{m16_inference_escape_01}
+
+
+In inferential statistics, the entire world we want to know about is called the \keytermE{population}, and if we want to know, for example, the average height of Japanese elementary school students, then the population would be all elementary school students in Japan. The statistical characteristics of the population are called \keytermE{parameters}. \footnote{Recently, the term "parameter" has been misused to refer to the entire population surveyed. For example, the phrase "we need to increase the parameters because the data is limited" is meaningless if we understand the proper meaning of the term. It is likely that people are confusing it with the term "denominator".}
+
+As a parent parameter, it is distinguished by adding the word "population" to terms such as population mean for the mean of the population, population variance for the variance of the population, population correlation for the correlation coefficient of the population, and so on.
+
+It is common to assume that the population is a very large group, making it very difficult to survey everything. In Japan, a national census is conducted every five years, which is an attempt to survey the entire population of Japan (known as a complete enumeration survey). This survey can only be conducted once every five years, and it takes several years to compile the results. If psychologists wanted to know some psychological characteristics, the population would extend beyond Japan to encompass the entire world or all of humanity. Trying to measure the characteristics of this entire population would probably take a lifetime and still not be completed.
+As a translator, I will refrain from modifying the code in TeX and instead provide an English translation of the Japanese text:
+
+In order to understand the overall characteristics, we extract a portion and examine it in detail as a hint for considering the whole. The extracted portion from the population is referred to as the "sample," and the act of extracting it is called "sampling," which generally requires "random sampling." The word "random" may sound unfamiliar, but it means that there is no intention behind the selection. A sampling with some intention is, for example, selecting only tall people and measuring their average height as a hint for examining the whole. As a result, the calculated average will probably be higher than the average of the general population because only tall people were deliberately selected. On the other hand, randomly selecting a sample is an important point for understanding the characteristics of the whole. In social surveys, for example, it is necessary to determine how large a sample is needed from a certain population to estimate the average with a certain accuracy.
+Designs and techniques such as these are utilized in social research. However, methods of social surveying go beyond the realm of psychometrics, and will be covered in other texts. Sampling is like tasting the food; by thoroughly mixing the contents, even taking out just a small portion is enough to estimate the overall flavor.
+
+To distinguish them from parameters in the population, statistics of a sample, such as sample mean, sample variance, and sample correlation coefficient, are labeled with the word "sample". These numerical values are called \textit{sample statistics}. Descriptive statistics that have been calculated for a sample, such as mean, variance, standard deviation, and correlation coefficient, are all sample statistics, so we distinguish them by calling them statistics of a sample.
+Using the numeric values and statistics of this sample as a guide, making inferences about the population is referred to as \keytermE{statistical inference}{とうけいてきすいそく} in Japanese.
+
+In statistics, it is generally assumed that population parameters are unknown and denoted by Greek letters. The population mean is represented by $\mu$ (pronounced "mu"),
+The population variance is denoted by $\sigma^2$. The population correlation is denoted by $\rho$. Sample statistics, on the other hand, are numerical values that can be calculated and are typically represented by alphabetical letters. The sample mean is denoted by $\bar{X}$, while the sample correlation coefficient is denoted by $r_{xy}$.
+
+I will add an explanation about two words that can easily be misunderstood. The first is regarding the size and number of samples. Please refer to Figure \ref{fig::16_02}. We were discussing a sample taken from a certain school earlier, which included 3-year-old students. The number of people (observed frequency) included in the sample is called the \textit{sample size}. Let's say we conducted similar surveys at various other schools such as A school, B school, C school, etc., each time surveying 3 people. In this case, the number of obtained samples is called the \textit{number of samples}. One common mistake is to confuse these two terms. For example, instead of saying "We took a sample of $n$ people," saying "The sample size is $n$," may cause confusion and lead to questions such as "So, how many people did you take?" or "Did you conduct the survey that many times?" Please be careful when using these terms.
+
+\input{m16_inference_escape_02}
+
+
+Another example. In the example above, the average height was 173 cm. Of course, if a different sample were taken (i.e. three different people from a different school), the number would be different. Sample statistics are variables that vary depending on the sample taken. Although the mechanisms behind this are not understood, sample statistics are considered to be variables that fluctuate stochastically. Variables that fluctuate stochastically are called \textbf{random variables}, and sample statistics are random variables. Therefore, the number 173 represents the value of a random variable that happened to take on that value. This number is called the \textbf{observed value} of the random variable, or alternatively, the \textbf{observed value of the sample statistic}. We must distinguish between the sample statistic itself, which varies stochastically, and its realized values. \footnote{The face of a die is a random variable, but \epsdice{1} or \epsdice{3} are realized values of the random variable.}
+
+
+\section{Population Distribution and Models}
+Now that the terminology is in place, let’s think about how to estimate the actual mean. In the previous sample, we found that the average height (realized value of sample mean) was 173. Can we assume that the population mean is also 173? It seems a bit hasty, doesn't it? If we take a different sample, we will get a different number, so it seems a bit unreasonable to come up with an answer from just one sample.
+
+% そこで標本統計量がどのように変わるのかを考える，仕掛けが必要になってきます。標本統計量は確率変数で毎回変わった数字が出てくるわけですから，これがどのような確率分布\footnote{確率分布は，実現値の総覧であったことを思い出してください。$\to$第\ref{chapter6}講}に従うのかを考えることができれば，前進できそうですね。
+
+Let's consider the population distribution of numbers in the population. This is an assumption because we can't actually see all the numbers in the population. For example, there are countless variables that could affect height, such as the height of both parents, upbringing environment, daily sleep time, food intake, and amount of exercise, etc. It seems that everything is influencing it. Now, if countless conditions have accumulated and become one number, it seems reasonable to think that collecting such numbers would follow a normal distribution. While it is an assumption, if there is a rational reason to do so, it would be reasonable to assume that the shape of the distribution of the population is normal and proceed with the discussion. In fact, many studies in psychology assume a normal distribution of the population based on data. This is because even non-visible things such as emotions are thought to be created through exposure to countless influences.
+
+It is important to note that the distribution of the population or the distribution of numbers obtained as a result of psychological responses are all "models" or just "assumptions". The numbers obtained as a result of responses (also referred to as outcome variables) may require assuming a discrete distribution rather than a continuous distribution such as a normal distribution if they consist of three choices such as "yes," "no," or "neither".
+
+Psychology is a discipline that tries to see things that cannot be seen, whereas statistics is a discipline that tries to see the whole from partially incomplete data. It is important to remember that in order to make these seemingly impossible inferences, we rely on the power of assumptions (by putting models in place).
+
+\subsubsection{Meaning of Normal Distribution}
+\label{SevenNormalDistributions}
+I mentioned assuming a normal distribution for the population here. Furthermore, the normal distribution appears in many other contexts. In psychology (as well as other statistical models), the normal distribution is an important distribution with significant meaning.
+
+In this class during the first semester, one normal distribution was introduced as a distribution of errors. If you know how much the random errors are scattered, you can evaluate them accordingly. The classical test theory utilizes this characteristic by assuming that the data is the true value plus error ($X=t+e$).
+
+And now, we have come to use the normal distribution as a distribution that represents the overall trend of a group, without modifying the TeX code. In inferential statistics, we pay attention to where the average is located and use statistical methods to grasp the trend. Consideration of average height or average lifespan lies in such reasoning. At this point, we can say that we are considering individual characteristics as deviations from the average. This way of thinking is a model that reflects all of psychology. By exploring and comparing typical tendencies, we try to understand the overall trends of humanity. Of course, research approaches such as clinical psychology focus on variations within individuals, rather than overall tendencies.
+
+There are two main meanings to the normal distribution. The first is as the distribution of random error. We consider that errors follow a normal distribution with mean 0 and variance $\sigma^2$. The second meaning is as the tendency of the entire population. Although we cannot identify various factors that affect individuals, as a group, they exhibit a single tendency, meaning that there is an average value and the frequency of occurrence decreases as we move away from this point, indicating an overall pattern. From the former perspective, we consider that the measured value is equal to the true value plus the error, and from the latter perspective, we consider that the measured value is equal to the expected value plus individual differences (the expected value refers to the mean of a probability distribution).
+
+It can be said that normal distribution was re-evaluated as a characteristic distribution of the entire society when social surveys began, although it was originally discovered as a Gaussian flow of error distribution. \citet{Shiina2013} discusses seven other routes by which normal distribution was discovered.
+
+
+\section{Sample distribution and standard error}
+Assuming a distribution for the population, it is mathematically possible to derive the distribution of the sample statistic. Since this calculation is very specialized, those who are interested are encouraged to refer to other texts on mathematical statistics to gain a full understanding. However, let's briefly touch upon the essence of this concept.
+
+The essence of it is simply that if we assume a distribution for the population, we can understand the distribution of the sample statistics. Specifically, we can determine what probability distribution the sample statistic follows. If we know what probability distribution the sample statistic follows, we can understand how much the numbers will fluctuate for each sample (variance and standard deviation), and where the mean of the sample distribution lies (expected value). This means that even if we only have one sample for one survey, we can evaluate the accuracy of the realized values by understanding how much the numbers will fluctuate. Fortunately, it is known that if we take several samples from the population and calculate the mean of each sample, the distribution of those means becomes a normal distribution\footnote{This property is known as the \keytermE{central limit theorem}.}. Let's look at an example.
+
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Fri Aug 21 13:21:40 2020
+\input{m16_inference_escape_03}
+
+I have prepared table \ref{tbl::16_01} here. As it is a 10x10 table, there are 100 numbers in it. Let's assume that these are test scores for 100 people. Now, let's consider that these 100 people are the population (like in a world where there are only 100 people). The population mean is the average of these 100 numbers, and when we calculate it, we get $\mu=51.24$.
+
+Assuming that this is virtual data, it can be inferred that the population distribution follows a normal distribution\footnote{This data was generated using R by running the command \texttt{rnorm(100,50,10)}.}. Since there are only 100 data points, the histogram does not appear to follow a normal distribution closely, but when plotted, it looks like Figure \ref{fig::16_3}.
+
+\input{m16_inference_escape_04}
+
+Let's say we randomly sampled data with a sample size of 5, and obtained the following numbers: \footnote{Random sampling is very difficult. Even if we do it "at a glance" or "casually", some human bias will inevitably affect the result and it won't be completely random. For the purpose of this text, let's assume we rolled two 10-sided dice to select row and column numbers, and picked the number found at the intersection... or something similar. In practice, the random sampling function \texttt{sample} in R was used.}
+\input{m16_inference_escape_05}
+The mean (sample mean) of this is $\bar{X}_1=52.4$. Since the population mean is $\mu=51.24$, it is quite close.
+
+Next, let's take data from the same population with the same sample size again.
+
+\input{m16_inference_escape_06}
+
+The average of this was $\bar{X}_2=53.8$. In terms of the population mean, it is slightly skewed towards the larger end.
+
+After repeating the process again, it resulted in the table as shown in Table \ref{tbl::16_02}.
+
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Fri Aug 21 13:34:36 2020
+\input{m16_inference_escape_07}
+
+As you can see, the sample mean varies every time a sample is taken. It is distributed. The numerical value changes each time a sample is taken, so sometimes it can be closer to the population mean, and sometimes it can be farther away. However, if we take the \textbf{average} of these sample means, the result is $\bar{\bar{X}_i}=51.78$. Since the population mean is $\mu=51.24$, this average of sample means is closer to the true population mean that any individual sample mean.
+
+Let's now assume sampling from the same population with a sample size of 10.
+\input{m16_inference_escape_08}
+The mean here is $\bar{X}_1 = 54.8$. Although it is far from the population mean, let's assume we continue to take samples one after the other. The results of 10 samplings are shown in Table \ref{tbl::16_03}.
+
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Fri Aug 21 13:34:36 2020
+\input{m16_inference_escape_09}
+
+The average of the sample means at this time was $\bar{\bar{X}}=51.3$, which was closer to the population mean $\mu=51.24$ than the previous sample of size 5. Hmm.
+
+Now, what can we learn from these experiments? First of all, we can see that the sample mean is distributed. Each time we take a sample, the number changes. Moreover, we know from the knowledge of mathematical statistics that the sample mean follows a normal distribution. This means that the sample means listed in Table \ref{tbl::16_02} (realized values such as 51.60, 49.00, 50.60, etc.) are symmetrical single-peak distributions centered around the mean. Also, the further away from the mean, the smaller the probability of its occurrence should be.
+
+The sample distribution becomes a normal distribution, and ultimately, if we increase the sample size infinitely, the expected value or mean of the sample distribution will converge to the population mean. This is known as the \underline{law of large numbers}, which is the foundation of inferential statistics. In other words, by taking many samples, we can estimate the population mean!
+
+Based on this, comparing the two sample sizes ($n=5$ and $n=10$) shown in Tables \ref{tbl::16_02} and \ref{tbl::16_03}, the following can be observed. Firstly, it appears that larger sample sizes tend to produce numbers closer to the population mean. This is because having more data allows for more clues about the population of interest. This is also intuitively understandable. In this case, the average of the sample means was closer to the population mean for the sample size of 10 than for the sample size of 5.
+
+Also, increasing the sample size reduces the variability of the sample mean. Since more data is being taken, there is less risk of being swayed by extreme values.
+
+There is a term that represents the variability of this sample mean. Since the sample mean follows a normal distribution, this range, which is the standard deviation, represents the variability. The \textbf{standard deviation of the sample mean} is called the \keytermE{standard error}, which is a number representing the accuracy of the sample mean as an estimated value. In the case of a sample size of 5 in Table \ref{tbl::16_02}, the standard error is 2.92, and in the case of a sample size of 10 in Table \ref{tbl::16_03}, it is 2.48. As the sample size increases, the standard error decreases, which means that the measurement accuracy increases.
+
+Specifically, we know that the variance of a sample distribution is equal to the population variance, $\sigma^2$, divided by the sample size, $n$. The standard deviation of the sample distribution, also known as the standard error, is equal to $\frac{\sigma}{\sqrt{n}}$. Since the sample size is in the denominator, we know that as it increases, the standard error decreases (see Figure \ref{fig::16_05}). It is important to note that we do not modify the TeX code.
+
+\input{m16_inference_escape_10}
+
+Let's examine this using numerical simulation. Similar to before, we will use hypothetical numbers for analysis. This time, we generated one million data points and performed random sampling from them. By doing this, we can avoid the risk of repeatedly selecting the same samples (being resampled) even if we perform multiple random selections.
+Now, please take a look at Figure \ref{fig::16_4}. First, we randomly sampled 3, 5, 10, and 50 data points from a dataset of one million, 100 times each (100 samples in total). We then took the sample mean for each of these samples. We then investigated whether these sample means approach the population mean $\mu$ (represented by the blue dotted line) as we increase the number of samples for the mean, from the mean of sample 1, to the means of samples 1 and 2, to the means of samples 1, 2, and 3, and so on.
+\input{m16_inference_escape_11}
+As shown in Figure \ref{fig::16_4}, even with a small sample size, taking 100 samples appears to converge to the population mean. However, looking at the beginning of the line graph, there are large variations when the sample size is small (such as 3 or 5). As the sample size increases (i.e. n = 50), values close to the population mean are obtained from the beginning. The advantage of taking a lot of data is that the standard error becomes smaller.
+
+
+I will summarize what has been mentioned so far. There are two key points:
+
+1....
+
+2....
+\input{m16_inference_escape_12}
+
+
+\section{Summary}
+This time, we covered the basics of inferential statistics. First, we organized some terminology, such as population, sample, sample size, number of samples, parameter, sampling, estimation, and sampling distribution.
+Please read carefully as even slight differences in words or numbers can change the meaning or outcome.
+
+Next, we introduced the basic logic that by assuming a probability distribution for the population, we can infer about the population from a subset of samples without changing the TeX code.
+The discipline of inferential statistics involves making assumptions upon assumptions in order to infer things about things that cannot be directly observed. Some people may find this process off-putting due to the sheer number of assumptions involved. However, it must be recognized that estimating something when we have only a few clues about the big picture is inherently a difficult problem. To make any progress towards solving it, we must inevitably rely upon several assumptions. It is important to remember that the discussions surrounding these assumptions are strictly within the context of models and assumptions such as the normal distribution, and that this applies not just to inferential statistics but to psychology as a whole.
+
+By the way, the estimation of population parameters using the previously introduced sample statistics is called the *moment method*. Actually, there are other methods to estimate population parameters, but in any case, you need to be familiar with probabilistic expressions since you would be utilizing probability distributions.
+
+\section{Task}
+\paragraph{Difference between the Contents Learned in the First and Second Semesters} In the second semester, students delve into the field of inferential statistics. Can you explain in your own words why we learn inferential statistics and how it differs from what we learned in the first semester? Please write a response of 400-800 words.
+
+\end{document}

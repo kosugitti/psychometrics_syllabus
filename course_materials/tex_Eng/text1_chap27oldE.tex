@@ -1,0 +1,154 @@
+\documentclass{ltjsarticle}
+\usepackage{docmute} 
+\usepackage{myStyle} 
+
+\begin{document}
+
+\chapter{Bayesian Estimation with R}
+\label{chapter27}
+Even if you think Bayesian estimation seems good, it's no use if you can't actually calculate it by hand. So in the end, I'll explain a practical example of Bayesian estimation.
+If it is a simple model, it is possible to obtain the answer analytically from the calculation of the probability distribution, but here I will explain the method using MCMC algorithm for considering future situations. This method is provided in the \texttt{brms} package \citep{brmsCite1, brmsCite2} of R.
+Using the \texttt{brms} package in R makes it easy to implement generalized linear models. Simply changing the function name from \texttt{lm} to \texttt{brm} allows for Bayesian estimation of linear models using MCMC, with easy visualization of the results. Like the \texttt{lm} function, having the explanatory variables as discrete (factor) variables allows for estimation of the size of effects of factors, and the \texttt{conditional_effects} function in the \texttt{brms} package can be used to visualize marginalized results by each factor.
+\section{Preparing the Environment}
+First, prepare the environment. As usual, please follow these three steps:
+\paragraph{Starting RStudio} Please launch RStudio. There may be cases where administrator privileges are required, such as when installing packages.
+\paragraph{Opening the Project} It is recommended to use the project created in the previous time. You only need to change the script files in the same folder. Open the project from the menu (File -> Open Project), and confirm that the project is open, for example, in the upper right of RStudio ($\to$ refer to figure \ref{fig::20_01}).
+\paragraph{Opening an R Script} Prepare an R script file to write today's code. Go to File > New File > R Script, and display an empty R script screen. If a blank file is opened, there is no problem.
+
+Next, we will prepare the package for Bayesian estimation. We will install the \texttt{brms} package\footnote{This package is used for executing regression models in Bayesian analysis, using Stan, which is a probabilistic programming language that provides a software to generate random numbers.} for Bayesian data analysis. However, \textbf{before installing} this package, it is necessary to prepare a compiler required by this package.
+There is an explanation on the website of \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)} for more details, but if you are a Windows user, please first execute \texttt{code:\ref{code:27_01}}. \footnote{If you search for "RStan Getting Started (Japanese)", you will find it.} \footnote{For detailed introduction, see \cite{Baba201907}.}
+\input{text1_chap27old_escape_01}
+
+If Rtools, which is a compiler, is not present in the environment, a popup window will appear asking if you want to install Rtools. Click "Yes" and wait for about 1 minute for the installation to complete.
+
+For Mac users, go to \url{https://github.com/rmacoslib/r-macos-rtools} and select \texttt{macos-rtools-4.0.0.pkg} from the Release page to install\footnote{As of November 28th, 2020.}.
+% OSがCatalinaであれば，さらに
+% \begin{lstlisting}[language=c++,label={code:27_01},caption={オブジェクトに代入}]
+% install.packages("Rcpp", repos = "https://rcppcore.github.io/drat")
+% \end{lstlisting}
+% とする必要があります。
+
+With this, the preparations are ready, and now it is possible to install the \texttt{brms} package for the first time\footnote{Setting up this environment can be a heavy burden for beginners. Please feel free to contact me if you have any difficulties. If it is still too difficult, the server is available, so please let me know.}.
+We will import several related packages one after another, so it may take some time.
+You can install \texttt{brms} from the RStudio package or by entering \texttt{code:\ref{code:27_02}} as an R script to start the installation process.
+
+\input{text1_chap27old_escape_02}
+
+This process is for setting up the environment, so it only needs to be done once, and if the installation is successful, you will only need to call the package in the future.
+\section{Estimation in Regression Analysis}
+Let's now move on to the estimation of regression analysis. The data used here is about the grades of high school and university that was used in Chapter 10. As a review, let's execute \texttt{code:\ref{code:27_03}}.
+\input{text1_chap27old_escape_03}
+
+\paragraph{Code Explanation}
+\input{text1_chap27old_escape_04}
+
+The result of this was as follows (\texttt{console\ref{RS:out27_01}}).
+\input{text1_chap27old_escape_05}
+The regression coefficients are estimated to be a intercept of 288.74 and a slope of 93.72, and the test result shows that they are not zero for the null hypothesis. Furthermore, the fit of the entire model is shown with results such as $F(1,13)=39.85, p=0.000002688$ and $R^2=0.754$. Note that the $p$-value means $2.688\times 10^{-5}$, and the value of $R^2$ representing the fit is written as multiple R-squared here, but in papers, the corrected $R^2$ adjusted for the sample size is also used because this value can sometimes be overestimated.
+
+Let's proceed to Bayesian estimation of this right away. What will change and how?
+First, you need to load the package \texttt{brms} and simply change the regression analysis function from \texttt{lm} to \texttt{brm} (\texttt{code:\ref{code:27_04}}) and you're good to go.
+
+\input{text1_chap27old_escape_06}
+
+You may have seen various messages output on the screen, but for now, let's check the result of the regression analysis shown by running the last three lines.
+
+On the first line, it says "Family: gaussian". This indicates that the model uses a Gaussian curve. The explanation of the model is given on lines 2 and 3, followed by a description of the data on line 4. On line 6, it says "Samples:", which refers not to the data or the samples of the data, but to the samples of random numbers obtained through MCMC. The notation and explanation of MCMC will be summarized later.
+
+The results obtained through MCMC are calculated by generating random numbers every time. The results shown here are specific to my environment, so you may get slightly different numbers if you try it yourself. This is because the pseudo-random numbers generated by computers change when the environment changes. Since MCMC is just an approximate calculation, please judge whether it is roughly correct rather than whether it is an exact match. You may think this approach is too casual, but if you generate many random numbers, the results will be almost the same. Also, if you increase the number of generated random numbers by ten times, the accuracy will increase by one digit. Even so, it is not possible to achieve a perfect match. In such cases, you can obtain reproducible random numbers by fixing the starting point (seed) of the pseudo-random number.
+
+Coefficient values and others are written in the "Population-Level Effects" section, which shows that the estimated value (Estimate) of the intercept is 288.37, and the slope of the high school grades, which is the explanatory variable, is 93.86. Then, the standard error, the lower limit (l-95\%CI), and the upper limit (u-95\%CI) of the 95% confidence interval are shown. Instead of a hypothesis test, we can make a similar judgment by looking at whether or not the 95% interval crosses 0.
+
+Finally, another estimated value, $\sigma$, appears in the section labeled \texttt{Family Specific Parameters}\footnote{Please recall that in linear regression, the model is $Y_i \sim N(\beta_0 + \beta_1 X_i, \sigma)$ and there are three unknown variables: $\beta_0$, $\beta_1$, and $\sigma$.}.
+
+\texttt{console\ref{RS:out27_02}} is the basic result information. It shows that the maximum likelihood estimation using the \texttt{lm} function yields almost the same numbers as the result. The results are not very different, but the significant difference is that the estimated values are obtained as a distribution.
+\input{text1_chap27old_escape_07}
+To display this clearly, let's try using \texttt{plot(fit.brm)}. As shown in Figure \ref{fig::27_01}, the analysis results will be plotted.
+\input{text1_chap27old_escape_08}
+On the left side of this figure is the shape of the posterior distribution. Please note that the estimated values, 288.37 and 93.86, are the mean values (EAP estimates) of the distribution, not the peak (MAP estimate). If you want the MAP estimate, you need to separately introduce the \texttt{bayestestR} package \citep{bayestestR} and execute the \verb|map_estimate| function (code:\ref{code:27_05}).
+
+\input{text1_chap27old_escape_09}
+\paragraph{Code Explanation}
+\input{text1_chap27old_escape_10}
+
+Have you grasped the sense that the results are expressed as a distribution unlike the least squares method or maximum likelihood method? Next, I would like to focus on the fact that this distribution is generated by random numbers.
+"Evaluation of MCMC method"
+As stated earlier, MCMC is a random number generation method that draws a histogram of results by sampling from the posterior distribution. This is because the histogram draws the ridge line of the probability distribution. However, since it uses random numbers, the result may be different every time. It is also necessary to check if the random numbers are truly from the posterior distribution. Information about this is written around the 6th line of the output (\texttt{console\ref{RS:out27_03}}).
+\input{text1_chap27old_escape_11}
+"Let's decipher this and read it."
+
+The MCMC method proceeds step-by-step, producing the next random number one step at a time. The MCMC samples are the representative candidates for the parameters that need to be estimated. Figure \ref{fig::27_02} shows the extracted data saved internally. The values of the random numbers obtained at each step are written for the intercept (\verb|b_intercept|), slope (\texttt{b}), and scatter of error (\texttt{sigma}). For example, the slope goes from $77.55104 \to 100.42599 \to 133.46551 \to 77.90979 \to \cdots$, producing the next random number based on the previous value. There are actually three variables here, and they are sampled from the joint probability space consisting of these three variables, enclosed in a red frame. In other words, three sets are sampled in each step, such as $(336.0793,77.55104,32.49790)\to(283.5139,100.42599,41.52797)\to\cdots$. This is accumulated step by step, and the jagged line in the middle of the figure shows the steps. The histogram, which is obtained by summarizing and accumulating it, becomes the posterior distribution, which is the basic principle.
+
+\input{text1_chap27old_escape_12}
+
+
+Based on this, let's take a look at the output. First, it says "4 chains". This means that MCMC executed 4 steps in parallel. MCMC proceeds step by step, generating the next random number one step at a time. However, depending on where it starts, there is a possibility that it will end up with a completely different answer. Even in the middle of a step, it may have wandered off to a strange place. To check these concerns, instead of running a single Markov chain, multiple chains are run at the same time, and it is determined that "each chain reaches the same place" to ensure that sampling is done correctly.
+
+Next is \texttt{iter}. This is the total number of steps, and in this case, it means that each chain has taken 2000 steps. Next, \texttt{warmup} is the warm-up period or burn-in period. The steps at the beginning of the chain may depend on the initial value and may not be suitable as representative values of the posterior distribution. To represent the posterior distribution properly, the first period is not used, and it is recorded that this is the first 1000 steps. For each chain, 2000 steps are taken, and 1000 steps are used because the first 1000 steps are discarded. However, since there are four chains, only 1000 steps are accepted. This means that there are a total of 4000 samples. The posterior distribution is drawn with a histogram of 4000 points. \texttt{total post-warmup samples = 4000} means that. Finally, there is \texttt{thin=1}, which means thinning. This means the interval between steps used as samples. In this case, it is 1, so every sample (1 step at a time) is collected, but if it is 2 or 3, it means that the results are only saved every 2 or 3 steps.
+
+Please refer to Figure \ref{fig::27_03}. This figure is called a trace plot and is the one that was in the middle of the previous Figure \ref{fig::27_02}, or the one on the right hand side of the output from \texttt{plot} in Figure \ref{fig::27_01}. The plot visualizes where the chain wanders while connecting the steps of the chain along the horizontal axis. The figure above shows that even when starting from multiple starting points, the chain wraps around and samples the same area. On the other hand, the chain is disentangled in the lower part of the figure. Such a case is evidence that sampling did not go well, indicating that there was some problem such as a bad model, insufficient conditions for identifying the parameters, and so on.
+\input{text1_chap27old_escape_13}
+As such, it is necessary to check the behavior of the MCMC after the results are output. On the output screen, if the last evaluated $\hat{R}$ (Rhat) of the chains is 1, it is written that it has converged\footnote{Converge means coming together in one place. The word for ending the spread of the coronavirus is written as "shuusoku" in Japanese.}, and in the Rhat column of this result, all values ​​are 1.00, so it can be diagnosed that the MCMC is successfully extracting representative values ​​from the posterior distribution without problems (\texttt{console\ref{RS:out27_04}}).
+
+\input{text1_chap27old_escape_14}
+
+"Estimating the Factors and Planning"
+Next, let's look at an example of factorial planning. We have already explained how to estimate it using a linear model, so it's okay to just change the function from \texttt{lm} to \texttt{brm}. Let's use a two-factor example to explain (\texttt{code:\ref{code:27_06}}).
+
+\input{text1_chap27old_escape_15}
+\paragraph{Code Explanation}
+\input{text1_chap27old_escape_16}
+The result of executing this is as follows (\texttt{console\ref{RS:out27_05}}).
+\input{text1_chap27old_escape_17}
+The data are assumed to follow a normal distribution (\texttt{Family: gaussian}) in order to generate them. After describing the model form and features of the MCMC samples, the estimated values are presented. The way the estimated values are read is the same as with \texttt{lm}, but there are differences, such as the presence of the 95% interval and \texttt{Rhat} used to evaluate the convergence of MCMC. A narrow 95% interval means that the results can be confidently stated, while a wide interval indicates the need for more data and a lower confidence level. Moreover, as the 95% interval of the primary effect in this case crosses 0, it cannot be rejected if we consider the null hypothesis that the slope is 0. As for the interaction, it has a large effect, moving at least by 3.69 and up to 10.42 points.
+
+Although it is possible to directly evaluate the size (of something), it is particularly easy to understand when drawing plots like the one below (\texttt{code:\ref{code:27_07}}).
+\input{text1_chap27old_escape_18}
+The three figures displayed (\ref{fig::27_04}) represent the main effects of temperature and brand, as well as the interaction effect. Each figure includes the EAP estimated value (point) and a 95% confidence interval. By looking at these figures, it is clear that there is overlap in the confidence interval for the main effect of temperature, whereas there is not for the main effect of brand. Additionally, the interaction effect shows a larger difference in brands when it is warmer, and a weaker effect of brand when it is colder. It is also apparent that brand B has a clear difference depending on temperature. These figures are not the result of a null hypothesis test, therefore there is no issue with multiple testing, and there is no need to recalculate using a new statistical method. Inference can be advanced in a very intuitive manner.
+\input{text1_chap27old_escape_19}
+\section{Estimation of Within-Group Model}
+Finally, I will explain the group model. Please recall the intervention effects model from Chapter \ref{chapter22}. The linear model with group factors can be represented as follows.
+\[ X_{ij} = \mu_i + \beta_0 + \beta_{ij} + \varepsilon_{ijk}\]
+The important point here is that, unlike the model of inter-group factors, individual mean values $\mu_i$ are assumed. Writing this as a probabilistic model, we can express it as follows:
+\[ X_{ij} \sim Normal( \mu_i + \beta_0 + \beta_{ij} ,\sigma)\]
+This is where it gets average, represented by a linear model, please confirm that the scatter of error $\varepsilon$ is expressed by the standard deviation $\sigma$ of the normal distribution. There are no other differences.
+By the way, the individual difference $i$ represents the starting state before intervention, and it is considered to take various values. However, we can also assume that the distribution of this individual part follows a normal distribution. In other words,
+\[ \mu_i \sim Normal(\mu_G, \tau) \]
+As for the standard deviation representing individual variation, a new symbol $\tau$ (tau) has been prepared. To express this in a linear model, it is equivalent to considering the hierarchical structure where a normal distribution is enclosed within another normal distribution. To estimate this using \texttt{brms}, write the following code (\texttt{code:\ref{code:27_08}}).
+\input{text1_chap27old_escape_20}
+\paragraph{Code Explanation}
+\input{text1_chap27old_escape_21}
+Please note that the writing style of the linear model has changed. Connecting the dependent and independent variables with a tilde is the same as before, but in addition to this, there is a notation of \texttt{(1|ID)}. The content inside these parentheses represents 1 as the intercept, which means that it changes for each variable \texttt{ID}.
+
+The result of executing this is as follows (\texttt{console\ref{RS:out27_06}}).
+\input{text1_chap27old_escape_22}
+Please note that there are two main categories in the results: \texttt{Group-Level Effects} and \texttt{Population-Level Effects}. For the between-group factor, there was only an element of \texttt{Population-Level Effects}. This is called a \keytermE{fixed effect} and indicates that there is a common effect for all individuals. On the other hand, \texttt{Group-Level Effects} are called \keytermE{random effects} and indicate that they can vary probabilistically among individuals or cases. In this case, the first individual difference (starting point, intercept) varies among individuals, so there is \texttt {sd (Intercept)}. This means that the starting point can vary by about 2 points depending on the person, which can be seen here.
+
+The interpretation of the fixed effects is the same as for the between-group factors. Compared to the first period (Time1), the mean scores in the second period are $-3.99$, and in the third period are $-2.00$. Looking at the interval width, it can be seen that they are lower than the first period. However, even if the drop between the first and third periods is just barely not zero, it might be advisable to add more data and verify it more cautiously.
+
+\section{Task/Assignment}
+Please execute each of the three tasks we covered in Chapter \ref{chapter23} using the \texttt{brms} package. For your convenience, we will briefly recite the problem settings below.
+Task 1: Analyzing as a linear model.
+In a Japanese language class at a certain school, a teacher used individual texts for each of four classes to conduct classes and verify the effectiveness of the texts by conducting the same test.
+There are 10 students in each class, and their test results are shown in Table \ref{L23::exe1}. Please answer the following questions based on this data after conducting Bayesian estimation for regression analysis.
+
+\input{text1_chap27old_escape_23}
+
+
+"Task 2: Analysis of Variance for Between-Design."
+At another school, they have three types of textbooks, labeled A, B, and C. Two teachers will each use one of these textbooks to teach. This is an experiment that will be conducted using six classes in each grade, with 12 students in each class.
+The test scores after class are shown in Table \ref{L23::exe2}. Please answer about the results of performing a Bayesian estimation of regression analysis on this data.
+
+\input{text1_chap27old_escape_24}
+
+"Task 3: ANOVA of Within-Design"
+At another school, where there is only one type of textbook and one teacher, we conducted a tracking survey to see if grades changed over four different periods.
+The scores for each test period are shown in Table \ref{L23::exe3}. Please answer the following instructions regarding the results.
+
+Note that this dataset is included in the \texttt{Lesson8exe3.csv} file, but please use the rearranged dataset by executing the following code (\texttt{code:\ref{code:27_09}}) when conducting the analysis.
+\input{text1_chap27old_escape_25}
+\paragraph{Code Explanation}
+\input{text1_chap27old_escape_26}
+\input{text1_chap27old_escape_27}
+
+\end{document}

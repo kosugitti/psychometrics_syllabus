@@ -1,0 +1,10 @@
+\begin{description}
+   \item[Line 3] Create a data frame from an object. The values of the data are assigned to the variable \texttt{value}, and the variable \texttt{condition} is used to differentiate the values based on conditions. The \texttt{rep} function in \texttt{condition} repeats a specified character or number, and in this case, it creates ten 1s using \texttt{rep(1,10)}. Running only this part of the code will help to understand its operation (see output \ref{RS:out20_02} in R).
+      \begin{Rscreen}{Output of rep function}{out20_02}
+         \begin{verbatim}
+> rep(1,10)
+[1] 1 1 1 1 1 1 1 1 1 1\end{verbatim}
+      \end{Rscreen}
+   \item[Line 4] The variable \texttt{condition} created earlier is converted into a factor type (labeled nominal scale level).
+   \item[Line 5] It is a t-test, but with a different format. The tilde \texttt{\~} is used to express the dependent variable as \verb|~| independent variable.  
+\end{description}

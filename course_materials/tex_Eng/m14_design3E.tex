@@ -1,0 +1,280 @@
+\documentclass{ltjbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+\chapter{Experimental Design 3: One-Factor Model (Within)}
+\label{m14_design3}
+
+So far, we have looked at experimental design as a linear model. We have seen that one-factor and two-factor designs correspond to simple regression analysis and \keytermE{multiple regression analysis}, respectively, and that when there are more than two factors, combination effects appear.
+However, all the discussions up until now have been about intergroup factors in the plan. So, I would like to shift our focus towards intragroup factors in the plan and see how they can be incorporated.
+\section{In the case of the Within Plan}
+When considering examples in terms of within-group factors, for this discussion we will start with numerical examples and then proceed towards representation in a linear model.
+
+This time, let's talk about the factorial design of within-subjects plan with one factor and three levels. The key point is that the data has a corresponding relationship or is measured repeatedly. Imagine a situation where the same person is asked to provide data multiple times.
+
+A clinical psychologist is using an intervention method to approach mental care. They are applying this method to four clients and checking whether their level of depression improves. When scores like those in Table \ref{tbl::22_05} are obtained, they want to consider whether this intervention method is effective.
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Fri Sep 11 14:57:29 2020
+\input{m14_design3_escape_01}
+Let's visualize this data in a graph. The key point is that the three survey time points (Time1, 2, 3) are not independent, and share a common client ID number. Assuming the x-axis represents time, since it holds significance, we can connect data points from the same person with a line.
+
+\input{m14_design3_escape_02}
+Looking at Figure \ref{fig::22_05}, there seems to be a downward trend from the first period (Time1) to the second period (Time2), although there may be individual variations. From the second period to the third period (Time3), there appears to be an upward trend. It is important to verify this intuition with data.
+
+The aspect we want to consider here is "individual differences may occur." This refers to the fact that there may be 7 points difference between someone who starts at 10 points (ID=1) and someone who starts at 4 points (ID=3). However, in this case, we consider this individual difference to not be a part of the desired effect. The desired effect is the impact of the three levels of the "time" factor, $b_j$. Mathematically, we can express the data $y_{ij}$ for individual $i$ in period $j$ as follows:
+
+\[ y_{ij} = b_0 + d_i + b_j X_{ij} + e_{ij} \]
+
+Please consider $X_{ij}$ as a symbol that represents whether there is an effect of $b_j$ in the $j$th period ($1$) or not ($0$). Specifically, if we write the effects of $i$'s three periods $j=1,2,3$ explicitly, it is as follows.
+\input{m14_design3_escape_03}
+
+Also, please note that a new variable $d_i$ has emerged. This variable represents a number that varies depending on $i$, and does not have a subscript indicating the time period $j. Therefore, it represents "consistent individual average value over time." Since $b_0$ does not have subscripts for either $i$ or $j, it represents the overall average value that does not change regardless of the individual or time period.
+
+\input{m14_design3_escape_04}
+
+This is shown in Figure \ref{fig::22_06}. In addition to the overall average $b_0$, horizontal lines representing individual averages $d_i$ are drawn. Individual averages are each person's baseline and do not change over time. The timing effect $b_j$ affects all four people equally, as indicated by the lack of subscript $i$. Even if the effect is the same, the numbers obtained as data vary because individual averages differ. Of course, there are errors $e_{ij}$ that cannot be accounted for even considering individual differences and effects, and as before, $b_j$ is relative, meaning that when all levels are added up, they will be zero. Moreover, individual average values $d_i$ can also be seen as relative since there is a separate overall average $b_0$. As we have randomly assigned, if there are no effects or individual differences, the point of the overall average line should be in line horizontally, which is the basic idea.
+
+Let's consider using specific numbers. We calculated the row average, column average, and overall average in Table \ref{tbl::22_05}.
+The row-wise average is an individual average. For the first person (ID=1), their average is 8, so they have a personal difference of +2.5 when considering the overall average.
+Furthermore, the average in the column direction is the average for each level, which is the effect we want to see this time. Since the average for the first period (Time1) is 7.5, this means that there was an effect of +2.0 when considering the overall average.
+
+Individual data, such as the data for period 2 with ID=1, should follow the theoretical calculation and have a personal difference of $+2.5$ and a time effect of $-2.0$, adding up to the overall mean of $5.5$ to produce a value of $6.0$. However, the actual value is $5$, which represents an error that cannot be accounted for in the theoretical calculation.
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Fri Sep 11 14:57:29 2020
+\input{m14_design3_escape_05}
+The table \ref{tbl::22_07} shows the calculation of the effects, individual differences, and errors, without modifying the TeX code. As usual, the sum is 0, so we can compare the relative magnitude by calculating the sum of squares.
+
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Fri Sep 11 15:52:17 2020
+\input{m14_design3_escape_06}
+
+As described here, it is now possible to calculate errors for each cell and for individual $i$ at period $j$. This is the strength of within-group factorial design.
+
+\section{Comparison between between-group designs and within-group designs}
+I would like to touch upon the structural differences between "Between Design" and "Within Design" plans. Please note that the TeX code has not been modified.
+
+In the group project, we were able to calculate individual differences based on the information about who each person was, and analyzed the data accordingly, without modifying the TeX code.
+However, what if we analyze the data from the group plan as if it were an inter-group plan? If the numbers in Table \ref{tbl::22_06} are the same, then of course the total sum of squares (variance) is the same. However, if individual information is missing, then only the effects and errors can be separated. In other words, an inter-group plan includes individual differences within the errors, and it is in a state where it is difficult to distinguish between "Is this an error or an individual difference?" (see Figure \ref{fig::22_07}).
+
+In the end, we evaluate the effects in relation to the magnitude of the error. Please note that we will cover statistical evaluation and methods of value judgment in later inferential statistics, so for now, understanding the elements to be compared is sufficient. If the numerator (or effect size) is the same data, then a smaller denominator is relatively larger. Errors in between-group designs include random errors and individual differences, whereas errors in within-group designs only include individual differences. Therefore, it can be concluded that the \underline{precision of analysis of within-group designs is higher than that of between-group designs}.
+
+You may think that it would be ideal if all research were within-subject designs. However, in reality, having the same person provide data repeatedly can be very burdensome (within-subject designs are also called repeated measures designs). In terms of research ethics or practical considerations, it is often necessary to use between-subject designs. Therefore, when designing experimental plans, it is important to consider the costs of researchers and participants who assist with the research.
+
+\input{m14_design3_escape_07}
+
+
+\section{Representation and Degrees of Freedom in Linear Models}
+\label{GeneralLinearModel}
+So far, we have explained that experimental designs are a type of linear model, even when the explanatory variables are discrete.
+Some people may struggle with mathematical expressions, but it's important to emphasize that factorial design is just a specialized pattern of a first-degree function, expressed either as $y=ax+b$ or following the expression used in regression analysis, $y=b_0 + b_1x$.
+
+The reason for discussing things in that way is that regression analysis and factorial design are actually the same \keytermE{model}, so once you understand that, you can ask yourself, "What happens if I change this part of the model?" or "What if I modify this part instead?" and continue to develop it. In fact, the analyses used in psychological research are descendants of regression analysis, so it is important to be able to view them from multiple perspectives such as "What does it mean in terms of factorial design?" and "How can it be expressed in terms of linear models" in order to make effective use of them in the future.
+
+It is commonly referred to as a general linear model, indicating that it can be explained by the factorial plan and linear models as a first step. Please note that the term "general" here does not imply "commonly" or "widely distributed", but rather "identical to other things" or "unchanged through other things".
+Let's take a closer look at this.
+
+Regression analysis models, which involve continuous variables as explanatory variables, are typically expressed through the following equation.
+\[ y_i = b_0 + b_1 x_i + e_i \]
+
+Under regression analysis, what lies beneath is correlation. Therefore, it can be assumed that variables $x_i$ and $y_i$ can take on any value on the x and y axes, respectively. We use $b_1$ to indicate how much the dependent variable increases when the explanatory variable increases by one unit, at the level of an interval scale or higher.
+
+In the case of factorial design, the explanatory variables are discrete. By discrete, it means that they are at the nominal level of measurement.
+For example, when assigning the number 1 to the control group and the number 2 to the experimental group, this is a type of quantification. However, if we code them as 1 and 2, mathematically, it would mean that the group coded as 2 is twice the size of the group coded as 1, making it difficult to write and communicate generally. Let's consider a coding method that is mathematically valid and meaningful in substance.
+
+The simplest method is to designate the control group as 0 and the experimental group as 1. For example, if person ID=1 is in the control group, then $x_1=0$, and if person ID=4 is in the experimental group, then $x_4=1$. By doing this, the regression model for the control group becomes as follows.
+
+\[ y_i = b_0 + b_1 \times 0 + e_i = b_0 + e_i \]
+Similarly, the regression equation for the experimental group is as follows.
+
+\[ y_i = b_0 + b_1 \times 1 + e_i = b_0 + b_1 + e_i \]
+
+Both groups have $b_0$, which represents the mean value of the group without treatment. The scatter of the control group data can be explained by the model that assumes all of it is due to error $e_i$.
+
+On the other hand, the experimental group has an additional $b_1$ in addition to the nothing state $b_0$, with all other changes being explained by the error term $e_i$. Let's confirm that the magnitude of the effect $b_1$ does not have a subscript $i$, because it does not vary individually. The total amount of $b_1$ becomes the magnitude of the effect, but the sum of the error term $e_i$ to be compared becomes zero, so we square and compare them instead of comparing them directly.
+
+Without modifying the TeX code, please allow me to translate the Japanese text into English:
+
+This way of expression is to look at the magnitude of the effect $b_1$ compared to the control group, and I think it is a relatively easy-to-understand expression. But what if there are three levels? How should they be represented?
+
+It is okay. The basic idea remains the same. Let’s take the example from the previous session of dividing into three groups: "give water every day", "give water occasionally", and "do not give water". Let's start by creating an equation based on the group that gives water every day as the first group.
+
+\[
+You are a translator.
+$y_{i1} = b_0 + e_{i1}$ & \mbox{Group receiving daily watering}
+$y_{i2} = b_0 + b_1 + e_{i2}$ means "sometimes giving group".
+$y_{i3} = b_0 + b_2 + e_{i3}$: "Control group without intervention given"
+You are a translator.
+\]
+
+In this way, the "water-giving group" becomes $b_0 + e_i$. The term $e_i$ represents the error/individual differences, so this equation means that each individual in the water-giving group is composed of the group mean and the error.
+Next, for the second group, the equation is $b_0 + b_1 + e_i$. This is the average of the group that received water, which means that compared to that group, the average of the "sometimes" group increased by $b_1$, and there is also variation in individual differences within the group. Similarly, for the group that did not receive water, the average differs by $b_2$ compared to $b_0$.
+
+However, I wonder why they started with the "group that gives water". Was it easier to understand meaningfully compared to a group that doesn't give water? But when there are many other levels, such as A, B, C...X group in other scenes, it may not be possible to provide a reasonable explanation for why a particular group was chosen as the standard.
+
+In factor analysis, it is assumed that the basic state is the one where all individuals are treated as one group, prior to the operation of "grouping", which is used to calculate the effects. Therefore, in principle, the state before dividing, i.e., the state where all individuals are treated as one group, is fundamental.
+Therefore, let's consider the basic state as $b_0$ (overall average), and the effect of watering daily as $b_1$, the effect of watering occasionally as $b_2$, and the effect of not watering as $b_3".
+
+Then, the data for each of the three groups can be expressed as follows:
+
+%amsmathパッケージ
+\[
+Please do not modify the TeX code. Translate this Japanese text to English:
+You are a translator.
+$y_{i} = b_0 + b_1 + e_{i}$ represents the group that waters the plants daily.
+$y_{i} = b_0 + b_2 + e_{i}$ corresponds to the occasionally-elevated group.
+$y_{i} = b_0 + b_3 + e_{i}$ represents the "No-gift" group.
+You are a translator.
+\]
+
+Here, $b_0$ refers to the overall mean. If there is no effect of different water levels, then everything can be explained by the overall mean plus individual variation. Is that okay?
+
+This makes it easier to express the equation in the form of a linear function using $X$. Here, $X$ is defined as $X=\{0,1\}$ and represents whether the corresponding term is "applicable/assigned ($1$)" or "not applicable/not assigned ($0$)" according to the rule.
+For example, if the $i$-th data is "group that gives water every day," it is represented as $X_{i1}=1,X_{i2}=0,X_{i3}=0$. In other words, it is a "group that gives water" ($1$) and not a "group that gives water sometimes" or a "group that does not give water" ($0$). Based on this, the equation can be rewritten as follows.
+\[
+I am a translator.
+You are a translator.
+$y_{i} = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + e_{i}$ & \mbox{Group that gives water every day}
+y_{i} = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + e_{i} & \mbox{occasionally raised group} \\
+y_i = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + e_i & \mbox{Non-treatment group}
+You are a translator.
+\]
+
+All the groups have become the same equation! Each group can be represented by the same equation: $y_{i} = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + e_i$. Therefore, it has been greatly simplified.
+You could also write it as follows using the $\sum$ symbol, since the group $j$ is repeated:
+
+\[ y_i = b_0 + \sum_{j=1}^3 b_j X_{ij} + e_i \]
+
+Furthermore, it's not aesthetically pleasing to have only $b_0$ displayed in the table! By setting $X_{i0}=1$, we can express it in an even smarter way.
+
+\[ y_i = \sum_{j=0}^3 b_j X_{ij} + e_i \]
+
+Sure, I understand.
+
+By the way, this is a bit of a side note, but using the matrix form, which is a way of expressing numbers grouped together, makes the expression even easier. The assignment of the $i$th data to a group can be expressed as a set of numbers, or a \keytermE{vector} $\bm{X}_i = (1,0,0)$, for example.
+
+Matrices, which are called \keytermE{gyouretsu} in Japanese, are used to handle vectors as sets. By using matrices, datasets can be represented as follows.
+\[
+Please translate this Japanese text into English without modifying the TeX code:
+
+   \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}
+I'm sorry, but "=" is already in English and doesn't need to be translated.
+Please do not modify the TeX code. The Japanese text translates to:
+
+\begin{pmatrix} b_0 \\ b_0 \\ \vdots \\ b_0 \end{pmatrix}
+I'm sorry, the text provided for translation is just "+". There is no context or meaning to be translated. Could you please provide a proper sentence or text for me to translate?
+Please translate this Japanese text into English without modifying the TeX code: 
+
+  \begin{pmatrix} b_1 & 0 & 0 \\ 0 & b_2 & 0 \\ \vdots &\vdots & \vdots\\ 0 & 0 & b_3 \end{pmatrix}
+I'm sorry, but there is no text to translate. The input only contains "+". Can you please provide the Japanese text that you would like to have translated into English using TeX code without modification?
+Please do not modify the TeX code. The Japanese text translates to:
+
+\begin{pmatrix} e_1 \\ e_2 \\ \vdots \\ e_n \end{pmatrix}
+\]
+Here, the second term on the right-hand side represents the result of the calculation of $b_{ij}X_{ij}$, and it can be expressed as a multiplication expression as follows\footnote{If you are not familiar with matrices and vectors, you may be wondering how this multiplication works. This type of representation is part of a system called linear algebra, which provides a convenient notation for dealing with many variables, as in psychological statistics. In the advanced course on applied data analysis, we will deal with matrices, but we will start from the basics of addition and multiplication, so don't worry. Instead, enjoy the beauty of the representation.}.
+\[
+Please translate this Japanese text into English without modifying the TeX code:
+
+   \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}
+I'm sorry, but the prompt you provided is not a text to be translated. It is a symbol, the equal sign (=). Please provide a text to be translated from Japanese to English using TeX code without modification.
+Please translate the following Japanese text into English without altering the TeX code:
+
+   \begin{pmatrix} 1 & 1 & 0 & 0 \\ 1 & 0 & 1 & 0 \\ \vdots  & \vdots & \vdots & \vdots \\ 1 & 0 & 0 & 1 \end{pmatrix}
+Please translate this Japanese text into English without modifying the TeX code:
+
+\begin{pmatrix} b_0 \\ b_1 \\ b_2 \\ b_3 \end{pmatrix}
+I'm sorry, but "+", without any context, cannot be translated as it is not a meaningful word or sentence in either Japanese or English. Could you please provide additional information or text to translate?
+Please translate this Japanese text into English without modifying the TeX code:
+
+\begin{pmatrix} e_1 \\ e_2 \\ \vdots \\ e_n \end{pmatrix}
+\]
+
+Replacing matrices and vectors with symbols, we have $\bm{y} = \bm{Xb} + \bm{e}$. Here, $\bm{X}$ is called the \keytermE{design matrix}, representing which factors are assigned.
+
+
+
+Now, please take a closer look at the equation here. Don't you feel like there are too many symbols compared to when there were only two levels? With just two groups, the control group was represented by $b_0$ and the experimental group by $b_1$; only two coefficients were needed. But with three levels, we now have to consider four coefficients, namely $b_0, b_1, b_2, b_3$. Why do we need four coefficients instead of three?
+
+Actually, there is one important constraint missing from this equation. When considering the effect in terms of the relative size from the overall average, we need to center around the overall average since it is "relative". In other words, we need a constraint where the sum of effects adds up to zero. This constraint can be expressed as follows in equation form.
+
+\[ b_1 + b_2 + b_3 = 0 \]
+
+Expanding this equation yields the following result.
+\[ b_3 = 0 - (b_1 + b_2) = -b_1 - b_2 \]
+Based on this, if we rewrite equation \ref{eq13_01}, it will be as follows:
+
+\[
+I am a translator.
+You are a translator.
+y_i = b_0 + b_1 + e_i       & \mbox{Treatment group where water is supplied daily} \\
+"y_i = b_0 + b_2 + e_i" is a group that is sometimes raised.
+y_i = b_0 - b_1 - b_2 + e_i & \mbox{Non-treated group}
+You are a translator.
+\]
+
+By doing so, the coefficient of the model equation becomes three, which are $b_0$, $b_1$, and $b_2$. Since there are three coefficients at three levels, the calculation is consistent.
+By the way, if we express the overall average using the same method as level 2, it would be as follows.
+
+\[
+You are a translator.
+y_i = b_0 + b_1 + e_i & \mbox{Treatment Group}
+y_i = b_0 - b_1 + e_i & \mbox{Experimental group} \\
+You are a translator.
+\]
+
+When expressed in this way, it is easier to understand that since the total sum of the effects $b_1$ and the total sum of errors $e_i$ are both 0, it is necessary to square them in order to perform the calculations.
+
+The point that was trying to be conveyed here is that "the magnitude of the effect or error is relative, and since the positive and negative values ​​are of the same magnitude, they cancel each other out when added together, so to evaluate the magnitude, it is necessary to square it to remove the sign," and that "the coefficient that represents the size of the effect can only be obtained by subtracting the number of levels by 1 for that factor." The second point is especially relevant to inferential statistics, where probability distributions are applied when evaluating the effect, and it is related to a parameter called the "degrees of freedom." It was explained in advance to have a better understanding when it appears around the 21st lecture on ANOVA. So please keep it in mind until then.
+
+
+\section{Thinking in terms of distributions}
+\label{thinkWithDistribution}
+Now, let me tell you a slightly advanced story as we reach the end of the first semester.
+
+Regardless of the nature of the causal inference, it was believed that the scattering of data was due to effects, individual differences, and random errors. In other words, it was inferred that all values should be the same if these factors were absent and their magnitudes were estimated.
+
+Please remember here to use the concept of probability to control errors when considering them. Gauss' error theory tells us that errors follow a normal distribution with a mean of $0$ and a variance of $\sigma^2$. If we let $e_i$ represent an error, we can express it as follows.
+\[ e_{i} \sim Normal(0, \sigma) \]
+
+
+In the case of intergroup planning, the value of each item $y_i$ is divided into the intercept $b_0$, the effect $b_1$, and the error.
+\[ y_i = b_0 + b_1 + e_i \] \[e_i \sim Normal(0, \sigma) \]
+
+Putting figures inside equations may be prohibited, but in terms of visualization, it could be represented as follows.
+\input{m14_design3_escape_08}
+
+Please note that while $e_i$ follows a normal distribution, the term $b_0+b_1$ does not vary probabilistically. If you consider the fact that this term does not vary probabilistically, it is similar to adding a constant value to the equation. Adding a number to a probability distribution shifts its position. The normal distribution is characterized by its position and width, so looking at the entire right-hand side, the term $b_0+b_1$ is also a means of shifting the position of the normal distribution.
+
+The shifted distribution has a mean of $b_0+b_1$ for the normal distribution, so when we rearrange the entire equation, it becomes as follows.
+
+\[ y_i \sim Normal(b_0+b_1 , \sigma) \]
+
+The key point of this expression is that it is not $y=$ but rather $y\sim$. This means that the data has changed to follow a normal distribution.
+The linear model (factorial design) can be described as fitting a mathematical formula (model) to the location parameter of a probability distribution.
+
+Further and further.
+In the case of group planning, it was possible to calculate individual differences $d_i$. These individual differences should represent a probabilistic tendency when collected in large numbers, especially if they are related to individual innate characteristics, they can be said to follow a normal distribution. Since we want to capture relative individual differences this time, let's temporarily set the average as $\psi$\footnote{$\psi$ is a Greek letter read as psai. The capital letter is $\Psi$, which is the first letter of the word Psychology in Greek.}. Based on this, the expression is as follows.
+\[ d_i \sim Normal(\psi , \delta) \]
+
+Now, in the case of within-group designs, it means that two different normal distributions are mixed together. Written in equation form, it would be as follows.
+\[ y_{ij} = b_0 + d_i + b_{ij} + e_{ij}\]\[ d_i \sim N(\psi,\delta), e_{ij} \sim N(0,\sigma) \]
+
+If we visualize this equation, it takes the following form.
+\input{m14_design3_escape_09}
+
+In models that take probability into account, there are two distributions mixed in the data of intra-group designs. This is sometimes called a \textbf{mixed effect model}. In the inter-group design mentioned earlier, the data follows a normal distribution that is shifted by $b_0+b_1$ to obtain the mean, but in the intra-group design, $b_0+b_1+d_i$ is already probabilistically distributed, and that becomes the mean of the probability distribution that the data follows. In other words, the model is represented by a normal distribution of errors nested within a normal distribution of individual differences. The term "mixed" refers to the mixing of distributions. In more complex models, other variables and factors that explain individual differences are used to model the distribution of individual differences. In such cases, the effect that affects the entire population regardless of individual differences is called a \textbf{fixed effect}, while the effect that can vary together with individual differences is called a \textbf{random effect}. Please remember these names even if just by name.
+
+
+In this lecture, we will move on to inferential statistics, where we will estimate and evaluate regression coefficients, effects, and error sizes while considering the distributions included in the linear model.
+To do this, the procedure is to consider how the data is distributed and compare it to the shape of a theoretical distribution. Specifically, this involves procedures such as considering the coefficients of a roughly fitting linear model, estimating the magnitude of the effects planned in the linear model, and comparing the size of the distribution of errors and the size of the distribution of effects. Basically, it is sufficient to know that these are procedures based on linear models.
+
+Furthermore, inference using statistical models can continue to develop. As the number of factors increases, it is acceptable to have multiple mixed distributions. By expanding our imagination and being able to assemble various parts into the model, psychological research and experiments can feel more creative. Research in psychology and statistical analysis can be enjoyable.
+
+
+
+
+\section{Task}
+\paragraph{Example of Analysis for Within-Subjects Design} We have prepared data for a one-factor, three-level within-subjects design, similar to the one discussed in this lecture, as shown in Table \ref{m14_example}. Let's practice calculating the effect of the factor, individual differences, and error (sums of squares).
+\input{m14_design3_escape_10}
+
+\end{document}

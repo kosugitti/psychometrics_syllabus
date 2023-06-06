@@ -1,0 +1,10 @@
+\begin{enumerate}
+    \item The title on the first row of this table is not necessary for the analysis as it contains irrelevant information.
+    \item The cells are merged in the first row. As the data set should be rectangular like a \texttt{data.frame}, the existence of rows that disrupt the size of the data is not appropriate.
+    \item The name of the university is on the second row. Columns A to D seem to be data for university C, and columns F to I seem to be data for university D. However, it is not suitable to mix multiple data in one data set.
+    \item The variable names "height" and "weight" have multiple numbers in one cell. Although they are separated by commas and look comprehensible, they will be treated as strings rather than numbers mechanically (because of the commas). The data is not in a proper format.
+    \item Column 2 of the variable contains answers with the words "strongly agree" and numbers. Because multiple types of data are included in one column, it cannot be analyzed (we cannot aggregate strings and numbers. In this case, it will be treated as a string variable.).
+    \item "Average" is written on the 7th row, but average is a quantity that can be calculated from the data, so it should be calculated in R. The result of the calculation should not be entered into the data.
+    \item Variable 3 for Mr. Sugita from University D on row 6 in column I is blank. Although it may be that the data could not be obtained, it should be indicated that it is a missing value.
+    \item There are multiple sheets named "University in Tokyo" and "University in Kanagawa". All information should be included on a single sheet as a data file. If the data can be analyzed simultaneously, it should be consolidated into a single sheet. 
+\end{enumerate}

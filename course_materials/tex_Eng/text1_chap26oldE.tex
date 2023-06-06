@@ -1,0 +1,69 @@
+\documentclass{ltjsarticle}
+\usepackage{docmute} 
+\usepackage{myStyle} 
+
+
+\begin{document}
+
+\chapter{Regression analysis and testing for differences in means using Bayesian methods}
+\label{chapter26}
+Just as regression analysis can be solved by maximum likelihood estimation, it is also possible to solve it using Bayesian methods. In this lecture, we will consider Bayesian estimation for linear models and factorial designs. In Bayesian estimation, we will evaluate the estimation method while paying attention to how the prior distribution is placed and how the results are interpreted, and compare the results with those of maximum likelihood estimation. In psychology, there are many studies that combine the normal distribution model and factorial design to estimate the average causal effect, but in this lecture, we will also consider how to interpret the parameters to be estimated and the posterior distribution in factorial design using Bayesian methods.
+
+\section{Estimation of Parameters through Bayes' Method}
+
+
+\section{Probability model for regression analysis}
+The conversation veered off track a bit. After summarizing the three estimation methods, let's move on to talking about maximum likelihood estimation and Bayesian estimation for regression analysis.
+
+Once again, let's review the formula for regression analysis. When we have a set of data pairs, $X_i$ and $Y_i$, we can use the variable $X$ to predict $Y$ by fitting a linear model. A linear model is simply a first-degree equation.
+\[\hat{Y}_i = b_0 + b_1 X_i \]
+Assuming that an error $e$ is added to the predicted value $\hat{Y}$, we obtain the actual value $Y$.
+\[ Y_i= b_0 + b_1 X_i + e_i  \]
+In the eighth chapter, we used the method of least squares, which involves fitting this equation to the data and finding the intercept so that the error is minimized. However, we only discussed data that we had at hand. Now, I want to introduce the essence of inferential statistics, which means that the data we have is merely a sample, and we want to consider how it fits into the population as a whole.
+
+In order to perform maximum likelihood estimation, it is necessary to express the formula of this regression analysis as a probability model. Among the symbols that appear in this model, if asked what changes stochastically, the most obvious is the error $e$. And it is known that this follows a normal distribution thanks to Gauss's ingenious idea. In mathematical terms,
+\[ e_i \sim Normal(0,\sigma) \]
+This means that it is confirmed again that the average error is 0 here. Also, although the average is 0, the errors are scattered within a certain range, and this is represented by the standard deviation $\sigma$.
+
+Now, we have learned that the error is determined stochastically, but the relationship between $X$ and $\hat{Y}$ is not probabilistic. Although the intercept and slope are unknown (denoted as $\beta_0$ and $\beta_1$ regarding the intercept and slope in the population), if they are known, the relationship between $\hat{Y}_i$ and $X_i$ is deterministic. In other words, instead of using the symbol $\sim$ to represent "following a probability distribution", we can use the equals sign to describe that "the left-hand side is \textbf{like this}".
+\[ \hat{Y}_i = \beta_0 + \beta_1 X_i \]
+This is a linear model. The ideal prediction value $\hat{Y}$, which is not affected by errors, can be described as a linear function of $X_i$. In reality, the actual data $Y_i$ includes errors that deviate from $\hat{Y}$.
+\[ Y_i = \hat{Y}_i + e_i  \]
+This can be written as follows.
+
+Now, let's combine these. By eliminating $\hat{Y}$ from the last equation (by substitution in a linear model), we get:
+\[ Y_i =  \beta_0 + \beta_1 X_i+ e_i \]
+This means that the part $\beta_0 + \beta_1 X_i$ does not change stochastically and should be noted as a constant.
+\input{text1_chap26old_escape_01}
+The error $e_i$ is probabilistically scattered around the mean of 0, but the preceding part is not probabilistic, so as a whole formula combining these two parts, it appears to have a probabilistic scattering attached to the end.
+\input{text1_chap26old_escape_02}
+
+Now, if this "non-randomness" were to infiltrate into the probability distribution, it would create an effect that shifts the average value of the error $e_i$ by $\beta_0 + \beta_1 X_i$. In other words, this would affect the entire dataset.
+\[ Y_i \sim Normal(\beta_0 + \beta_1 X_i , \sigma) \]
+This can be written as follows. This becomes the probability model of regression analysis.
+
+\section{Maximum likelihood estimation and Bayesian estimation in regression analysis}
+"In the case of maximum likelihood estimation"
+If you can write a probability model like this, then all you need to do is to estimate "What values of $\beta_0$, $\beta_1$, and $\sigma$ make the data most likely to come from this probability model?" by following it.
+
+When you properly write the equation for the normal distribution, the probability density function that produces the value "x" is:
+\[ p(x) = \frac{1}{\sqrt{2\pi \sigma}}exp\left( \frac{(x-\mu)^2}{2\sigma^2}\right)\]
+It is possible that it may be difficult to imagine as there is a formula $\beta_0 + \beta_1 X_i$ in place of the average $\mu$, but the probability density of obtaining certain data $Y_i$ is as follows.
+\[ p(Y_i) = \frac{1}{\sqrt{2\pi \sigma}}exp\left( \frac{(Y_i-\mu)^2}{2\sigma^2}\right)\]
+Therefore, substituting $\mu=\hat{Y_i} = \beta_0 + \beta_1 X_i$, we have...
+\[ p(Y_i) = \frac{1}{\sqrt{2\pi \sigma}}exp\left( \frac{(Y_i-\beta_0 - \beta_1 X_i)^2}{2\sigma^2}\right)\]
+The data is given as $i = 1,2, \cdots, n$, and they are obtained independently from the same population. The likelihood $L$ when all of these data are available at once can be written using the product symbol $\prod$, as it is the product of all of the probability densities ($p(Y_i)$) given above. Don't forget that it's just like flipping a coin and getting heads, heads, and tails, so you would multiply the probabilities of getting heads together and then multiply by the probability of getting tails.
+\[ L(Y_i | \beta_0,\beta_1,\sigma) = \prod_{i=1}^N \frac{1}{\sqrt{2\pi \sigma}}exp\left( \frac{(Y_i-\beta_0 - \beta_1 X_i)^2}{2\sigma^2}\right)\]
+This means that $L(Y_i | \beta_0,\beta_1,\sigma)$ is a likelihood using the notation of conditional probability when $\beta_0,\beta_1,\sigma$ are specified. Since this is a product of probabilities (densities), the resulting numbers become very small and difficult to calculate. Therefore, we take the logarithm in practice.
+\[ \log L(Y_i | \beta_0,\beta_1,\sigma) = \sum_{i=1}^N \log \left[ \frac{1}{\sqrt{2\pi \sigma}}exp\left( \frac{(Y_i-\beta_0 - \beta_1 X_i)^2}{2\sigma^2}\right)\right]\]
+This will be calculated by R. In other words, in actuality R will calculate this for you.
+
+By the way, the result of this maximum likelihood estimation matches that of the least squares method.
+\subsection{In case of Bayesian estimation}
+In the case of Bayesian estimation, the likelihood is fundamentally the same. The difference lies in representing unknowns as probabilities. In this case, there are three unknowns: $\beta_0, \beta_1,$ and $\sigma$. Assuming some kind of prior distribution (whether it is uninformed, weakly informed, or based on previous research) allows the posterior distribution to be calculated.
+\input{text1_chap26old_escape_03}
+As a result of combining data, posterior distributions of $\beta_0, \beta_1,$ and $\sigma$ can be obtained. Unlike in maximum likelihood estimation or least squares method, please note that the estimated values do not appear as point values, but rather as probability distributions. While the answer itself is a distribution, it can be represented by using the \keytermE{Maximum A Posteriori Estimation (MAP)} value, which is the mode of the posterior distribution, or the \keytermE{Expected A Posteriori Estimation (EAP)} value, which is the mean. It should be noted that the distribution of $\sigma$ is skewed, since it cannot be negative, and thus the median or the MAP estimate may be a better estimate than the EAP estimate. Estimation results using Bayesian methods do not differ significantly from those using maximum likelihood estimation or least squares method. Specific practical examples will be covered in the next exercise.
+
+\section{Assignment}
+
+\end{document}

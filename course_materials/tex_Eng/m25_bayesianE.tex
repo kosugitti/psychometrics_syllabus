@@ -1,0 +1,197 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+\chapter{The basics of Bayesian inference}
+\label{m25_bayesian}
+So far, we have explained estimation methods using maximum likelihood and moment methods, both of which give the same answer but differ in their thinking approach. Now, we will explain another estimation method, called Bayesian method. To do so, it is important to first understand the fundamental principle of Bayesian method. For those who want to know the purpose upfront, let us state it briefly: Bayesian method, like maximum likelihood method, uses a probability model, but whereas maximum likelihood has the strange property that its likelihood is not a probability, the Bayesian method outputs its answer as a probability. The mechanism by which likelihood is turned into probability will be explained from here on, although it may seem circuitous.
+
+\section{Bayes' Theorem}
+Bayes is a person's name, and Thomas Bayes (1702-1761) was an English Presbyterian minister and mathematician. The estimation method that originated from his idea of the "inverse probability rule" has become very important in the modern era of the 21st century. The law that Bayes came up with is very simple and can be expressed in the following equation.
+\[ P(A|B) = \frac{P(B|A)P(A)}{P(B)} \]
+
+I would like to explain the meaning of this equation while introducing various terms related to probability.
+
+To make the conversation more understandable, let's proceed with specific numerical examples.
+For example, suppose that a certain school has 40 male students and 60 female students. What is the probability of selecting a male student at random? If we denote this probability as $P(\mbox{Male})$,
+\[P(\mbox{Male})=\frac{40}{(100)}=0.4\]
+It's quickly apparent, isn't it?
+
+Let's introduce the concept of "joint probability" in the following text without modifying the TeX code. This will be explained using the example of adding information on grade level in Table \ref{tbl::24_02} regarding the school mentioned earlier.
+
+\input{m25_bayesian_escape_01}
+
+To represent symbolically, let the variable for gender be A, where $A_1=$ male and $A_2=$ female, and the variable for grade be B, where $B_1=$ 1st year, $B_2=$ 2nd year, and $B_3=$ 3rd year.
+
+When selecting someone at random, what is the probability that they are a "3rd year boy"? This is a joint probability of both the grade being 3 and the gender being male, denoted as $P(A_i,B_j)$. From the table, we can calculate this as follows. It is important to note that this translation assumes that the original text is in proper mathematical notation.
+\[ P(A_3,B_1)= \frac{13}{100}=0.13 \]
+
+Let us consider the term "marginal probability," which is defined as the sum of all probabilities for a given partition. In other words, it refers to the total in the "sum" column in Table \ref{tbl::24_02}. For example, the "marginal probability for male students" can be obtained by adding up the probabilities for male students in each grade level: 1st year male students + 2nd year male students + 3rd year male students.
+In terms of equations, it means the following.
+
+\[ \sum_{i=1}^3 p(A_i,B_j) = p(B_j) \]
+\[ \sum_{j=1}^2 p(A_i,B_j) = p(A_i) \]
+
+Please translate this Japanese text into English without modifying the TeX code:
+
+Please think that we are adding up all the numbers, so we are no longer talking about the probability of that variable. This process of adding up all the probabilities for one variable is called \textbf{marginalization}.
+
+Next step, let's introduce something called "conditional probability". Suppose we randomly select a student and know beforehand that "the selected student is female"\footnote{For example, in a scene where their name or appearance makes their gender obvious. While it's now difficult to determine someone's sex just by their name, let's assume that their names clearly reveal their gender as they did in the past.}. What is the probability that the student is in their second year? This question is referred to as the "probability with given condition of being female", and expressed as $P(\rm{2nd \ year}|\rm{female})$. The two partitions are separated by a vertical bar, with the condition written afterwards. It can also be read as "the probability of a second-year student given the condition of being female".
+
+The situation has become a bit complicated, but the calculation of the probability itself is not that difficult. Since it is determined that the person is female, only the denominator changes. In other words,
+\[P(A_2|B_2)=\frac{20}{60}=0.333... \]
+You are a translator.
+
+Simply put, calculating a conditional probability involves changing the denominator. This type of probability can also be calculated by dividing the joint probability by a marginal probability. In other words,
+\[ P(A_2|B_2) = \frac{P(A_2,B_2)}{P(B_2)}=\frac{0.2}{0.6}=0.333... \]
+This is how it turns out.
+
+We considered the probability of adding a condition that the grade changes when the gender is given as a condition. When the gender is a freshman, sophomore, or junior, the denominator changes and the conditional probability also changes. As such, we can see that there is a relationship between these two variables, gender and grade, where the probability of the grade changes when the gender changes. Conversely, if one variable changes but does not affect the other, the two variables are considered to be independent.
+In probability, "independent" means that the following relation holds for all $i$, $j$, and $k$:
+
+\[ p(A_i| B_j) = p(A_i|B_k) \]
+
+We have discussed various examples of events that are (probabilistically) independent. For example, we talked about coin tossing and how each trial is independent (see Section \ref{iidexample}, p. \pageref{iidexample}). This means that the outcome of one coin toss does not affect the outcome of the next one\footnote{In what situation would one coin toss affect the next one? It is difficult to imagine such a scenario, but perhaps we could imagine a coin with a mind of its own, deciding to land on tails after landing on heads, or a coin that has fallen on the ground and become lopsided, making one face more likely to show up than the other. However, since coins do not have minds and are hard objects, these scenarios are indeed far-fetched.}.
+
+If we are independent here, then from the expression expansion so far, we can see that...
+
+\input{m25_bayesian_escape_02}
+Count $B_k$ for all states of $k$ here, i.e., marginalize B.
+\input{m25_bayesian_escape_03}
+
+As can be seen from here, if A and B are independent, the product of their probabilities is equal to their joint probability. To calculate the probability of independent events occurring, simply multiply their individual probabilities together. We have used this method before when calculating the probability of flipping a coin or rolling a dice twice in a row, expressing it as their product.
+We have been using expressions such as $\theta^2$ for the case where a coin with a probability of $\theta$ of landing heads comes up heads twice in a row, and $\theta \times (1-\theta)$ for the case where it comes up heads then tails, or vice versa.
+The reason why independent events can be expressed by multiplication is based on such reasoning.
+
+
+Well, now we're done with the terminology preparation. From here on out, the expansion of the equations will start to become interesting.
+
+As we mentioned before, conditional probability is just the joint probability divided by the marginal probability. In other words,
+\[ P(B_j | A_i) = \frac{P(B_j,A_i)}{P(A_i)} \]
+Multiply both sides by the denominator on the right-hand side.
+\[ P(A_i)P(B_j|A_i) = P(B_j,A_i) \]
+Regardless of what A and B are, this generally holds. For example, even if the symbols are reversed as $P(B_j|A_i)$, the statement remains true.
+\[ P(A_i|B_j) = \frac{P(A_i,B_j)}{P(B_j)} \]
+From
+\[P(B_j)P(A_i|B_j) = P(A_i,B_j) \]
+I don't mind doing it as a translator.
+
+
+By the way, "a two-year-old boy" and "a boy who is two years old" mean the same thing. In other words, they are equivalent.
+\[P(B_j,A_i) = P(A_i, B_j) \]
+Please concatenate the above equations:
+\[P(A_i)P(B_j|A_i) = P(B_j)P(A_i|B_j) \]
+You can do that. If we divide both sides by $P(B_j)$ and write it out neatly, we get:
+\[ P(A_i | B_j )=\frac{P(B_j|A_i)P(A_i)}{P(B_j)} \]
+You did it! You have derived Bayes' theorem.
+
+
+So, what makes this so great? Instead of rejecting formulas as simply a "series of symbols", let's savor and understand their meanings.
+
+\section{Meaning of Bayes' theorem}
+\subsection{On the Direction of Causality}
+The amazing thing about Bayes' theorem is that the content of the conditional probabilities in the left-hand and right-hand sides is \textbf{flipped}.
+What joy is there in flipping this over?
+On the left side of Bayes' theorem, there is $P(A|B)$, and the right side contains $P(B|A)$ in the numerator. You can forget about $P(A)$ (the second term in the numerator) and $P(B)$ (the denominator) for now,
+\[ P(A|B) = P(B|A) \times \frac{P(A)}{P(B)}\]
+You can also read it as " $P(A|B)$ is a function of $P(B|A)$." without modifying the TeX code.
+
+Consider A as the "model of the mind" and B as "data."
+When we consider the workings of the mind, we create a model. "Perhaps that person behaved in a particular way because their state of mind was X," is an example of thinking about the mind using a model. Researchers create hypotheses and models that suggest that if a person's state of mind is X, they will behave in a manner that we call A. In other words, $P(\mbox{data}|\mbox{model})$ is what psychology is attempting to accomplish.
+
+However, in reality, all we can obtain is data. We cannot know what is going on in someone's mind, but we have the fact that they took certain actions. We want to use this fact to verify how accurate our model is or what the parameters of the model are. In other words, the pursuit of research is to consider the probability of the model given the data, or $P(\rm{model}|\rm{data})$. Bayes' theorem may illustrate the reasoning behind taking data to verify models. The important point is that in uncertain situations, we can only make probabilistic judgments, and Bayes' theorem allows us to calculate the probability by reversing the direction of the condition. When we want to know the probability that a cause generates a specific result, we can use the result to consider how likely the cause was. That is the key point of Bayes' theorem. It is sometimes called the "rule of inverse probability" because it shows that the direction of causality can be reversed. It is said that when Bayes himself discovered this rule, he hesitated to publish the result, feeling something like a sense of sin about overturning the world that God decided.
+
+\subsection{Rethinking the Number Called Probability}
+So far, the explanation of Bayes' Theorem has been based on discrete numbers such as gender and grade, but it also holds true for continuous random variables. In the case of continuous random variables, the operation of adding up all probabilities is replaced by integration, but this is essentially unchanged. In general, it can be written as:
+
+\[ f(\bm{\theta}|\bm{x}) = \frac{f(\bm{x}|\bm{\theta})f(\bm{\theta})}{f(\bm{x})} \]
+
+The text in Japanese translates into English as follows:
+
+Here $\bm{\theta}$ denotes parameters, and since there can be multiple parameters, it is denoted using vector notation (bold). $\bm{x}$ represents data and since there can be multiple sets of data, it is also denoted in bold. Please think of $f$ as a continuous probability function.
+As I explained earlier, this function is...
+
+\[ f(\bm{\theta}|\bm{x}) = f(\bm{x}|\bm{\theta}) \times \frac{f(\bm{\theta})}{f(\bm{x})} \]
+
+You may also think about it. Here, $f(\bm{x}|\bm{\theta})$ is the probability of observing the data given the parameters, so it is called the likelihood. The left-hand side of the equation is $f(\bm{\theta}|\bm{x})$, which is the probability of the parameters given the data. This is called the posterior probability, and on the other hand, $f(\bm{\theta})$ on the left-hand side is called the prior probability.
+Bayes' formula is a formula that converts probability to probability.
+
+By the way, what exactly is \keytermE{probability}? What does the prior probability about parameters actually mean?
+
+Now, please recall the axioms of probability. Probability is defined as a number that satisfies the following conditions.
+\input{m25_bayesian_escape_04}
+There are two ways of thinking about probability: the frequentist approach and the subjective probability approach. Regardless of which approach one takes, as long as this axiom is satisfied, the calculation of probability is possible. This is what we have been discussing without modifying the TeX code.
+
+I think probability has been explained in a frequentist sense up until high school mathematics. That is to say, if you toss a coin or roll a die \textbf{infinitely} many times, the parameter values will approach 1/2 or 1/6, respectively. This idea that repeating infinitely many times leads to convergence to a single value is based on mathematical proof of probabilistic convergence, but in reality, it is impossible to perform infinite repetitions. Even in psychological experiments, we sometimes perform null hypothesis testing with the assumption of infinite repetitions of the same experiment, but if someone were to point out that this assumption is fundamentally impossible, there is not much we can do about it\footnote{Furthermore, since we make an impossible assumption of null hypothesis, one might feel like this is taking place in a world that does not exist.}. This approach of considering probability in terms of relative frequencies and ratios based on an infinite number of repetitions is called \keytermE{frequentism}.
+
+In contrast, weather forecasts express the certainty of beliefs in terms of probabilities. Saying that the probability of it being sunny tomorrow is 30\% is still strange, since it implies that if tomorrow were repeated infinitely, it would be sunny 30\% of the time. What kind of loop have we gotten ourselves into, to imagine an infinite succession of tomorrows?
+In that sense, the numbers we are familiar with in everyday life represent the strength of our convictions, i.e. how much we believe in an event. Saying that it will rain 100% tomorrow means that we completely believe in that state, while a 50% chance of precipitation means that we consider the possibility of rain and no rain to be equal. Also, when considering relative frequency or proportions, we calculate the average number obtained by dividing the entire population. In this frequency-oriented approach, the winning team in the first game of a baseball season would have a 100% winning percentage. This is because they only played in one game. However, no one really believes that "this team will never lose this season" in earnest, or that a batter who goes hitless in their first at-bat will never hit again and have a batting average of 0. We actually believe in a slightly lower winning percentage or a higher batting average, but we cannot express it that way. In that sense, it may be more natural to use probability as a "number that represents certainty."
+
+In other words, there are two main ways of interpreting probabilities as numbers. Neither is necessarily correct or superior to the other. Both satisfy the three axioms mentioned earlier, so they are both valid notions of probability\footnote{In fact, these axioms simply summarize the common foundation and minimal rules of various notions of probability, so they naturally apply to both types.}\footnote{Incidentally, the conditions required for subjective probability to hold are discussed in detail in \citep{Gilboa2014} and elsewhere. Additionally, \citep{shigemasu2019} lists the following three conditions for subjective probability to hold: 1. The likelihood of every uncertain event can be compared with each other, 2. Judgments about likelihood do not contradict each other, 3. There exists an experiment that creates a uncertain state that can take any value between zero and one, where zero denotes an impossible state and one denotes a certain event. While it cannot be assumed that humans always follow these rules when making judgments, rational judgments should be made according to these normative principles. Arguing that such a state cannot exist is a misguided counterargument. Economics assumes humans make rational value judgments and builds theories on this assumption, and decision theory under uncertainty is in the same lineage and provides the theoretical foundation for the application of Bayesian statistics.}.
+
+Some people may think it's strange that the use of such words as "frequentist" and "subjective" probability can change the meaning of mathematical rules and numbers according to personal beliefs. There is the idea that mathematical rules are eternal and universal truths that exist independently of human beings. It's not about wanting to decide superiority or inferiority based on opposing beliefs or ideologies, but it is a fact that the way of thinking about the population differs between frequentist and Bayesian approaches. In the frequentist approach, it is believed that if trials are repeated infinitely, the answer will eventually be obtained, in other words "the truth is always one". However, since it cannot be directly known, we can only gradually approach it. As shown in the top row of Figure 25.06, a confidence interval can be taken for each trial, but the decision of whether it crosses the true value (which is shown as 0.5 in the figure) is a binary one, either 0 or 1.
+
+Bayesian estimation based on subjective probability takes into account the fact that the parameter value is initially unknown, and expresses this uncertainty in terms of probability. Initially, the probability is considered vague and ranges widely throughout the domain. By accumulating data with each trial, this probability is gradually narrowed down and the confidence in the estimation is increased to the point where one can say, "It is probably around here." This is the basic idea of Bayesian estimation.
+\input{m25_bayesian_escape_05}
+
+In the following, we will explain estimation using Bayesian methods, but it is not certain whether the true value is determined as only one constant value. One can consider the idea that the population parameter is determined as a constant, but only known probabilistically, or one can think that the population parameter itself is distributed stochastically. Either way is acceptable\footnote{The difference in thinking resembles the differences in the philosophy of Bohr and Einstein in the interpretation of quantum mechanics. Einstein said "God does not play dice" and believed that there was something definite in physical phenomena. On the other hand, the Copenhagen interpretation led by Bohr stated that physical phenomena exist ultimately stochastically, where even Schrodinger's cat is in a superposition of alive and dead states (unknown until observed). Quantum mechanics is dominant in modern physics, but one can understand Einstein's feelings.}\footnote{There are various schools of thought within Bayesian statistics, and occasional disputes occur on Twitter. The point of contention lies in whether to accept "subjective probability" or not, with the subjective Bayesian school believing that "people cannot obtain all information, so one can only make the best judgement within the range of information they have obtained." On the other hand, the information-theoretic school argues that "the information obtained is merely samples generated from some probability distribution that varies stochastically, and inference is made for the true distribution from these samples." The latter is the discussion advocated by Japanese mathematical statisticians (Hirotugu Akaike, Sumio Watanabe), who have proposed useful indicators such as Akaike's information criterion (AIC) and Watanabe-Akaike information criterion (WAIC), and are therefore well known in Japan. However, the subjective Bayesian school has established rigorous theories on how subjective probability judgement is possible since ancient times, and is perhaps more reasonable worldwide.}.
+
+In modern times, or as a user of statistics, it is pragmatic to have an approach of "what is useful is the correct way". Nonetheless, it is important to pay a little attention to the meaning differences of what is expressed by these methods.
+
+\section{Example of Inference using Bayes' Theorem}
+So, what can we understand by applying Bayes' theorem?
+Assuming that you understand the mathematical meaning of how prior probabilities are converted to posterior probabilities, and that inference information can be updated, in what actual situations can this be used?
+Let's take a look at two examples here without modifying the TeX code.
+
+\subsection{Utilizing Pre-existing Information}
+I would like to consider an example of diagnosing a disease, regarding what can be inferred from the presence of prior probabilities.
+
+Did you know that the results of PCR tests, which determine whether or not someone is infected with COVID-19, also have a probability element? It's possible to test positive even if you're not really infected, which is called a "false positive." Conversely, it's also possible to test negative even if you're actually infected, known as a "false negative." Both are probabilistic events. \footnote{Those who are intuitive may notice that this is the same as the two types of errors (Type I and Type II) learned in Section \ref{TypeI_II_Error} of hypothesis testing ($\to$ Section \ref{TypeI_II_Error}, Pp.\pageref{TypeI_II_Error}). False positives are referred to as Type I errors and false negatives as Type II errors. The significance level was introduced as the false positive rate (when there is no real difference but we claim that there is, or when we claim that someone is infected when they're not because of impatience).}
+
+Being infected with COVID-19 $\to$ Testing positive is a causal relationship, but in reality, we infer that testing positive $\to$ might be infected with COVID-19. Let's write this in the language of probability theory that we learned today.
+
+When in an infected state, a positive reaction can be expressed as a conditional probability. That is, $P(\text{positive}|\text{infection})$. Now, let's assume that the infection rate itself has been estimated separately as $P(\text{infection})$. Furthermore, even if we don't know whether or not an individual is infected, we can consider the probability of a positive result alone, $P(\text{positive})$. Once we have all these probabilities, we can use the theorem we mentioned earlier.
+"Without modifying the TeX code, please translate the following Japanese text to English: 
+
+\[ \frac{P(\text{positive}|\text{infection})P(\text{infection})}{P(\text{positive})} = P(\text{infection}|\text{positive})\]"
+You can calculate the probability of actually being sick from the result of testing positive. In other words, you can calculate the probability of truly having the disease.
+
+In many cases, when we test positive for something, we tend to think "It's over, I'm screwed." This would be an accurate judgement if the test was completely reliable, detecting all positives and producing zero false positives. However, in reality, it's a problem that requires probabilistic judgement. Let's consider a specific example using numbers.
+Here, we will discuss an example of the numerical results of breast cancer screening (mammography).\footnote{This is because there has been epidemiological knowledge on breast cancer for a long time, and the approximate incidence rate is known beforehand. On the other hand, regarding COVID-19, the situation is constantly changing even as of 2021, so the prior probability is not yet established...}
+\input{m25_bayesian_escape_06}
+When applied to the previous formula, this can be interpreted as follows:
+\[\frac{0.9\times0.01}{0.9\times0.01+0.08\times0.99}=0.102 \]
+
+This means that it's just over 10%\footnote{For those who may be struggling with the calculation, don't worry! There's an easier way to think about it. Calculating probabilities involving percentages and relative frequencies can be confusing because they involve decimals, so you can convert them back to absolute frequencies instead. For example, if we consider a population of 10,000 people, 1\% or 100 people would have breast cancer and the other 9,900 people would not. Among those who test positive, there are 90 people who have breast cancer and test positive ($100\times0.9=90$) and 792 people who do not have breast cancer but test positive ($9,900\times0.08=792$), making a total of 882 people. Out of those who tested positive, the actual proportion of people who have breast cancer is 0.102 or 10.2%.}. This changes the impression quite a bit, doesn't it? The reason why multiple PCR tests are conducted is due to a similar background.
+
+In this way, with a prior probability, it is possible to calculate the probability of "a diagnosed person being sick" by retracing back. Did you understand the meaning of the word "inverse probability" a little?
+
+\subsection{The Monty Hall Problem}
+
+Next, we will take up the famous example known as the Monty Hall problem. Monty Hall is the name of a person who was the host of the TV show "Let's make a deal", and this story comes from a game played on that show. The problem is as follows.
+
+\input{m25_bayesian_escape_07}
+
+Intuitively, you might think that whether you change your chosen door or not, the probability of getting a new car is not affected and remains at 1/3. However, in reality, the probability of winning doubles if you switch your chosen door.
+
+You may be thinking, "Why does it matter? Whether we change it or not, the probability doesn't change, right?"
+
+Actually not explicitly stated, but the point of this story is that the host Monty knows the answer and, in order to make the TV show more exciting, he will \underline{always open the door with the goat (the wrong one)}. If the host said something like "Let's open this one, wow, a new car. Ta-dah!" it would be awkward. By opening the wrong door, the host is also adding new information. Therefore, we should be able to update the information and our confidence should change.
+
+Using the three doors labeled A, B, and C, there is a prize located behind one of them. However, since the likelihood is equal for all three, each door has a 1/3 chance of containing the prize.
+Assuming you have chosen door A, the probability of it being correct is 1/3. The probability of door B or C being correct is 2/3, as it is not door A.
+Which door will Monty open? He cannot open door A as it would ruin the show. Therefore, he has no choice but to open door B or C. If there is a new car behind door B, Monty cannot open it. Therefore, he will have to open door C, and the goat will be revealed. So far, the probability of winning was 2/3 for doors B and C. However, since it is impossible for door C to be a winner, the probability is updated to B=2/3 and C=0.
+Assuming that your initial choice was Door A, since it had a probability of 1/3, if you are asked "Would you like to change from A to B?", it would be more advantageous to change your choice as it would yield twice the gains (with probabilities A=1/3, B=2/3, C=0).
+
+Let's consider a scenario where there are not just three doors, but rather 100. To make it easier to understand, let's say there are 100 doors, and you choose door number one. Then Monty goes on to open door number 100, then 99, then 98, and so on, all the way down to door number three, revealing a goat behind each one. Even with this knowledge, would you still not switch to door number two when asked? You might wonder why Monty didn't just open any of the other 99 doors, and instead chose to specifically leave door number two unopened?
+
+There are various explanations for the Monty Hall problem. If you are not convinced, it is recommended to search on Wikipedia or other sources for more information.
+
+It may sound tedious, but the key point here is that "when information is brought, the probability can be updated." Using prior probability and the information brought, we update the confidence level progressively, and this is the Bayesian approach.
+Next time, let's consider inference using Bayesian methods in concrete terms.
+
+\section{Tasks}
+\paragraph{Calculation of Posterior Probability} It is known that a certain disease affects 0.05\% of the population. When tested for this disease, the probability of a person who has it testing positive is 70\%. On the other hand, the probability of a person who does not have it testing positive is 0.1\%. What is the probability that a person who tests positive for this test actually has the disease?
+
+\end{document}

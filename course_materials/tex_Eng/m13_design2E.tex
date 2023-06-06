@@ -1,0 +1,256 @@
+\documentclass{ltjbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+\chapter{Experimental Design 2: Between-Subjects Design}
+\label{m13_design2}
+
+I am a translator. 
+
+Regarding the experimental design, we explained the organization of terms and methods for evaluating effects. Last time, we discussed a single-factor experimental design, but this time we will consider adding a second factor.
+
+\section{Two-factor case}
+\label{Between2way}
+Next, we would like to proceed with the between-group design involving two factors.
+Two-factor design is an experimental design, for example, as follows.
+
+\input{m13_design2_escape_01}
+
+In this example, the factors are "water" and "fertilizer", and their levels are "increase" and "not increase", respectively. Therefore, it is a $2 \times 2$ experimental design.
+
+You can proceed with the example of Morning Glory, but using a coffee tasting case, as in Table \ref{tbl::13_01}, might be easier to imagine from a psychological standpoint.
+
+\input{m13_design2_escape_02}
+
+There are two manufacturers, each producing canned coffee, and they request evaluations on the taste when it is made into both hot coffee and iced coffee. Three people each try under the respective conditions, and when evaluated on a scale of 20 points, the results are shown in Table \ref{tbl::13_01}\footnote{It's not beautiful to have a comma in the subscript. However, I couldn't think of a better way.}. This is illustrated in Figure \ref{fig::13_01}.
+As you can see, brand A receives high ratings when served as hot coffee, but the difference between the two disappears when served as iced coffee.
+I think it may be best not to sell brand B as a hot coffee, but perhaps the three people who happened to have tried brand B as a hot coffee just don't like coffee in general.
+I would like to consider how much effect temperature and brand have compared to such errors.
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Fri Sep 11 14:11:29 2020
+\input{m13_design2_escape_03}
+
+The discussion was about how a single-factor design can be viewed as a linear model in statistics.
+The two-factor design can also be considered as a linear model without modifying the TeX code. In this case, we are dealing with a two-factor design, where the factors are "temperature" and "brand", requiring two effects $b_1$ and $b_2$. Writing this in equation form yields the following:
+\input{m13_design2_escape_04}
+
+The left-hand side $y_i$ here refers to the evaluation of the person with ID $i$, for example, $y_1=13$, $y_2=11$, ..., and $y_{12}=9".
+Please consider that $X_{ij}$ indicates which option was assigned to subject $i$ when factor $j$ was applied. $j=1$ represents the temperature factor, while $j=2$ represents the brand factor. Therefore, $X_{i1}$ indicates whether subject $i$ drank Hot or Cold under temperature factor. Specifically, $X_{11}$ stands for the Hot condition, while $X_{71}$ stands for the Cold condition. This is a nominal scale level and we need to assign some numbers to Hot and Cold. Any numbers could be used, but for easy mathematical understanding, we will assign +1 to Hot and -1 to Cold. By doing so, we can express $b_1$ as the measure of the temperature effect. Since Hot and Cold have different signs but the same magnitudes, they only reflect the relative size of the two conditions\footnote{We can also use 0 for Hot and 1 for Cold. Then, it will represent the magnitude of the change from the Cold condition to the Hot condition. We will cover it in the next lecture in more detail.}. Please proceed reading, keeping in mind that numbers such as $X_{11}=+1$ and $X_{71}=-1$ will be used. Similarly, $X_{i2}$ indicates the brand level that was assigned, with brand A representing +1 and brand B representing -1. Let's write it down specifically.
+
+
+\[
+You are a translator.
+Please provide the Japanese text to be translated into English. The TeX code "\left\{" is not a text to be translated.
+You are a translator.
+Please translate the following Japanese text to English without modifying the TeX code:
+
+      y_1    & = & b_0 + b_1 X_{11} + b_2 X_{12} + e_1        & = & b_0 + b_1 + b_2 + e_1    & \mbox{Hotで銘柄A}  \\
+
+Translated text: 
+
+      y_1    & = & b_0 + b_1 X_{11} + b_2 X_{12} + e_1        & = & b_0 + b_1 + b_2 + e_1    & \mbox{Brand A under Hot condition}  \\
+\vdots &   & \vdots                                     &   & \vdots                   &                    \\
+(This is already in Japanese. It is essentially a symbol used in math and science to represent an ellipsis, or a series of dots representing the continuation of a sequence or pattern.) 
+
+Please provide a Japanese text for me to translate to English.
+Please do not modify the TeX code. Please translate the following Japanese text into English:
+
+y_4   = b_0 + b_1 X_{41} + b_2 X_{42} + e_4 = b_0 + b_1 - b_2 + e_4   (for brand B in the Hot condition)
+\vdots &   & \vdots                                 &   & \vdots                   &                    \\
+(Translation:)
+
+\vdots &   & \vdots                                     &   & \vdots                   &                    \\
+y_7 &=& b_0 + b_1 X_{71} + b_2 X_{72} + e_7 &=& b_0 - b_1 + b_2 + e_7 &\mbox{for Cold and Brand A}\\
+
+In the above equation, $y_7$ is the response variable, $X_{71}$ and $X_{72}$ are predictor variables, $b_0$, $b_1$, and $b_2$ are the corresponding regression coefficients, and $e_7$ is the error term. The equation is applicable for the condition of "Cold" and the brand "A".
+\vdots &   & \vdots                                     &   & \vdots                   &                    \\
+（"..."の意）
+Please translate this Japanese text into English without modifying the TeX code:
+
+      y_{10} & = & b_0 + b_1 X_{10,1} + b_2 X_{10,2} + e_{10} & = & b_0 - b_1 - b_2 + e_{10} & \mbox{for brand B in Cold} \\
+\vdots &   & \vdots &   & \vdots                   &                    \\
+(This is the Japanese text written using TeX code. The translation is:) 
+
+You are a translator. 
+
+(The following TeX code remains unchanged.) 
+
+\vdots &   & \vdots                                     &   & \vdots                   &                    \\
+You are a translator.
+Please do not modify the TeX code. Here is the English translation of this Japanese text: "\\right."
+\]
+
+Please note that $X_{ij}$ represents a nominal scale level that only indicates a category in this context, without any numerical value.
+
+Looking again at equations \ref{eq13_03} and \ref{eq13_04}, we can see that they have the same form as the linear model, especially the \keytermE{multiple regression analysis} model where there are multiple explanatory variables. We covered multiple regression analysis in Lecture \ref{m10_MultipleRegression}, and I think you can confirm that the model equation for factor analysis has the same form as that of multiple regression analysis. Factor analysis is a linear model.
+
+
+\section{Calculating Effect Size}
+
+Let's estimate the magnitude of the effect and the size of the error. The approach is the same even in the case of two factors.
+As it was randomly assigned, all scattering of data without any human intervention should be attributed to errors (individual differences). Since the errors should cancel each other out, theoretically they should all coincide with the mean value.
+
+However, since there are different interventions by individuals such as temperature operations and differences in manufacturers, and since it is a human action, individual differences have also been added. Therefore, I think that the data became scattered.
+
+Assuming that all should be the same ideally, and without conducting any experiments or observing any individual differences, the ideal value of the data should perfectly match the overall mean, $\bar{X}_{gm} = 9.75$. However, the effect of temperature, $b_1$, comes into play. As shown on the left side of Figure \ref{fig::13_02}, let's calculate the average value of only the Hot group, after grouping by temperature.
+\[ \bar{y}_{H} = \frac{1}{6}\sum_{i=1}^6 y_i = \frac{1}{6} (13+11+12+7+6+8)= 9.5 \]
+Similarly, the average for only the Cold group is as follows.
+\[ \bar{y}_{C} = \frac{1}{6}\sum_{i=7}^{12}y_i = \frac{1}{6}(9+9+9+13+11+9) = 10.0 \]
+Here, considering the group mean minus the overall mean as the effect, assigning to the Hot group results in an effect of -0.25, while assigning to the Cold group results in an effect of +0.25.
+
+Similarly, let's consider the effect of the manufacturer. We will disregard the effect of temperature (without separating by the effect of temperature) and extract only the data for brand A to calculate the mean value\footnote{This equation is not very aesthetically pleasing! The contents of $\sum$ are split into two parts, but this is unavoidable because $i$ is simply a sequential number here. In this case, $i$ represents the ID, so please confirm which numbers are being added from which positions.}.
+\[ \bar{y}_{A} = \frac{1}{6}\left(\sum_{i=1}^3y_{i} + \sum_{i=7}^9y_i \right)= \frac{1}{6}(13+11+12+9+9+9) = 10.5 \]
+Similarly, let's calculate the average value of brand B.
+\[ \bar{y}_{B} = \frac{1}{6}\left(\sum_{i=4}^6y_i + \sum_{i=10}^{12}y_i \right) =\frac{1}{6}(7+6+8+13+11+9)= 9.0 \]
+
+Since the group average minus the overall average equals the effect, we can see that Brand A has an effect of $0.75$ higher than the overall average, while relatively Brand B has an effect of $0.75$ lower than the overall average ($-0.75$ increase effect). This is without modifying the TeX code.
+
+In Figure \ref{fig::13_02}, I plotted the mean values for each group and drew a horizontal line for the overall mean (9.75). Looking at this, you can see that the effect of each group is relatively the same size, with the overall mean ($b_0$) acting as a dividing point.
+\input{m13_design2_escape_05}
+
+Now that we understand these effects, let's put together the addition of values. We will add each effect to the overall average. If we consume brand A as a hot coffee, the overall average of $9.75$ will be affected by the hot effect ($-0.25$) as well as the brand A effect ($+0.75$) resulting in an average of $10.25$. However, this assumes that we consumed brand A as a hot coffee...
+
+\[ \bar{y}_{H,A} = \frac{1}{3}\sum_{i=1}^3 y_i =  \frac{1}{3}(13+11+12)=12 \]
+
+Oh, it didn't work.
+
+\section{Interaction}
+\label{interaction}
+\subsection{Calculation of Interactions}
+In fact, this kind of thing also happens with other combinations. The difference from the group average is the error, but the group average does not match the theoretical value. Specifically, I calculated it in Table \ref{tbl::13_02}. The total effect and group average should theoretically match, but what happened here?
+\input{m13_design2_escape_06}
+
+The hot coffee (-0.25) of stock A (+0.75) is priced at 10.25, and since the group average is 12.0, there is a difference of +1.75 (12.0-10.25). This is also one of the effects to be considered. This is the combination effect that occurs \textbf{only} when combining "A" and "hot", and is called an \keytermE{interaction}. (As a side note, in a statistical context, "interaction" is translated as "交互作用", while in a social psychology context, it is translated as "相互作用".)
+
+Interaction refers to the special effect that arises from the combination of levels. In contrast to interaction, the average of the groups we have seen so far is referred to as the \keytermE{main effect}. The linear model mentioned in Equation \ref{eq13_03} must be updated to include the interaction term, as shown in Equation \ref{eq13_04}.
+
+\input{m13_design2_escape_07}
+
+This interaction, as mentioned in Equation \ref{eq13_05}, is an independent source of influence separate from the main effects. Therefore, it is possible to have only interaction without main effects. For example, in this case, differences in temperature or brand may not be clear, but if brand B becomes incredibly delicious when warmed up, that would be an example of only interaction.
+
+In other words, interaction is like a condition that says "but only if he's handsome". Even if cool lines or gestures don't necessarily increase one's evaluation (although they could be a bonus), they are especially good when done by handsome men. On the other hand, if someone who isn't handsome does them, it can have the opposite effect, so keep that in mind. (Note: This analogy is not necessarily politically correct, as it encourages physical appearance-based evaluations for romantic relationships, which is not ideal. Personally, I find the example of hot sake versus cold sake to be more relatable, but that might not be appropriate for those who don't drink alcohol or are underage. In the text, I used coffee as an example, but if you have any better ideas or analogies, please let me know.)
+
+Now, the effect of this combination is also relative, and we must ensure that the sum of all effects adds up to zero. To evaluate it relatively means that the effects simply add up to zero. Let's calculate and verify the size of the other interactions.
+
+When the effect of Condition Cold ($-0.25$) for Stock A ($+0.75$) is added to the overall average, the result is $8.75$ with a group average of $7.0$, indicating an interaction effect of $-1.75$. Similarly, for Stock B the Hot condition has an effect of $-1.75$, while the Cold condition has an effect of $+1.75$, such that the four elements cancel each other out and the total is $0$. With this in mind, let's update equation $\ref{eq13_04}$.
+
+\[
+You are a translator.
+Please provide the Japanese text that needs to be translated. The TeX code you provided is incomplete and cannot be translated on its own.
+Please translate this Japanese text into English without modifying the TeX code:
+
+   \begin{array}{cccccc}
+
+y_1  &=& b_0 + b_1 X_{11} + b_2 X_{12} + b_3 X_{13} + e_1 &=& b_0 + b_1 + b_2 + b_3 + e_1 & \mbox{for brand A in Hot}
+Translate as: 
+
+\vdots & & \vdots & & \vdots
+Without modifying the TeX code, please translate the Japanese text to English:
+
+      y_4    & =      & b_0 + b_1 X_{41} + b_2 X_{42} + b_3 X_{43}+ e_4          & = & b_0 + b_1 - b_2 - b_3 + e_4    & \mbox{Hotで銘柄B}  \\
+
+Translated text: 
+
+y_4   &=     & b_0 + b_1X_{41} + b_2X_{42} + b_3X_{43} + e_4  &= & b_0 + b_1 - b_2 - b_3 + e_4 & \mbox{Brand B under the Hot category}
+\vdots & & \vdots & & \vdots \\
+
+(This is already the TeX code and does not need translation)
+Please translate this Japanese text into English without modifying the TeX code:
+    
+    y_7    & =      & b_0 + b_1 X_{71} + b_2 X_{72} + b_3 X_{73}+ e_7          & = & b_0 - b_1 + b_2 - b_3 + e_7    & \mbox{Coldで銘柄A} \\
+
+y_7 = b_0 + b_1 X_{71} + b_2 X_{72} + b_3 X_{73}+ e_7 = b_0 - b_1 + b_2 - b_3 + e_7 (Cold, Brand A).
+\vdots & \vdots & \vdots                                                                                                                                                            \\
+
+Please translate this Japanese text into English:
+
+You are a translator.
+Please translate the following Japanese text to English without modifying the TeX codes:
+
+      y_{10} & =      & b_0 + b_1 X_{10,1} + b_2 X_{10,2} + b_3 X_{10,3}+ e_{10} & = & b_0 - b_1 - b_2+ b_3  + e_{10} & \mbox{Coldで銘柄B} \\
+      
+The equation shows that for a certain stock B at the Cold condition, the value of y at position 10 is equal to b_0 - b_1 - b_2 + b_3 + e_10, where b_0, b_1, b_2, and b_3 are constants, while X_{10,1}-X_{10,3} and e_{10} denote variables.
+\vdots & & \vdots & & \vdots & \\
+You are a translator.
+Please do not modify the TeX code. The Japanese text translates to "\right." in English.
+\]
+
+The signs of the interaction term ($b_3$) alternate between plus and minus, following the sequence of +,-,-,+ from top to bottom. Let me add an explanation as to why this is the case.
+
+As this is a $2 \times 2$ design, as shown in figure \ref{fig::13_03}, we can see that the main effects are based on the average values around that area. For example, with the first factor, which is temperature (hereafter referred to as factor A), the effect of "Hot (level a1)" or "Cold (level b1)" is calculated based on the average value of a group of columns obtained by collapsing the other factor, manufacturer, and represented by $b_1$. Since the comparison between these levels is relative, levels 1 and 2 are opposite in sign, represented by $+b_1$ and $-b_1$. Similarly, with the second factor, which is brand (hereafter referred to as factor B), the effect is calculated by collapsing the levels of factor A into a single group of rows, obtaining the average values, and represented by $+b_2$ and $-b_2$ for relative comparison.
+
+In contrast, interaction is the effect occurring within the cells for each combination. The main effects for each factor are calculated in the row and column directions, thus the interactions need to be summed to zero in both directions, otherwise the overall calculation will not be correct. For example, if there is an interaction effect $b_3$ at level a1b1 in the top left of Figure \ref{fig::13_04}, we need to make sure that the sum for the same level a1 is not zero in the column direction, which means $-b_3$ should be added in the a1b2 level. Additionally, in order to ensure that the sum for the row direction is also not zero, a2b1 also needs to be $-b_3$. Then, for a2b2, in order to make the sum zero in both the row and column directions, we need to add $+b_3$. In this way, the sign of the interaction effect is determined in relation to the surroundings. The magnitude of the interaction is determined such that regardless of the row and column direction, the sum is always zero even if the number of levels is increased.
+
+\input{m13_design2_escape_08}
+
+When you calculate with interactions, including up to the combination level, the calculation of the group average becomes consistent. However, when you consider each individual level, there will still be discrepancies, which are individual differences or errors that cannot be avoided. By calculating this, you can determine the amount of error.
+
+\input{m13_design2_escape_09}
+Table \ref{tbl::13_04} shows the magnitude of each effect and the sum of their squares. The sum of squares, abbreviated as SS, which is obtained by squaring and adding the values, is particularly used for width calculation to compare magnitudes. The evaluation column also includes a sum of squares, which represents the squared differences between each evaluation and the overall average. The sum of squares for evaluations reflects the variability of the data as a whole, and it can be observed that the overall sum of squares is equal to the sum of squares for temperature effects, sum of squares for brands, sum of squares for interaction, and sum of squares for errors ($56.25=0.75+6.75+36.75+12.00$). For two-factor plans, the variability of the data taking into account interactions could also be decomposed by using addition.
+
+\subsection{Patterns of interaction}
+Let's go back to Figure \ref{fig::13_01} again and look at the scores for the 2-level $\times$2-level. The horizontal axis represents two levels of temperature, which is a nominal scale level and therefore inappropriate for a discrete variable. However, as you can see by connecting the same conditions with lines (Figure \ref{fig::m13_05}), it is apparent that they cross. One typical pattern of observed interaction is when the average points cross as shown here.
+
+\input{m13_design2_escape_10}
+
+Just to confirm, the main effect is to look at the difference in means for each group. When looking at the effect of temperature, we only focus on the Hot/Cold factor and look at the means regardless of the manufacturer's level.
+As for examining the effect of the manufacturer, regardless of the temperature level, we focus on the difference between brand A and B. Figure \ref{fig::m13_06} displays the location of the main effect added to the crossed lines from earlier.
+On the left side of Figure \ref{fig::m13_06} is where you compare the main effect of temperature, while on the right side is where you examine the main effect of manufacturer. The main effect essentially averages out the other group levels, as seen here. Some people might find it easier to understand through tables, just like in Figure \ref{fig::13_03}, but if you had trouble understanding it through tables, visualizing it through the graph might help.
+
+\input{m13_design2_escape_11}
+
+By the way, interaction does not necessarily refer to only situations like this crossed one. Essentially, it refers to effects that are only seen when combined rather than the main effect, so there are other ways that interaction can appear. Let's look at various patterns in order.
+
+The example with no interaction and main effects for factors A and B respectively is shown in Figure \ref{MainOnly}. There is a main effect for factor A as there is a difference between its first and second levels, and there is a main effect for factor B only, meaning there is a difference in their average when comparing between left and right.
+
+If only one factor has an effect, it would be represented in Figures \ref{factorAonly} and \ref{factorBonly}. In Figure \ref{factorAonly}, only factor A is present as there is no difference between the left and right sides and the only difference is in the top and bottom regions. Figure \ref{factorBonly}, on the other hand, has a difference between the left and right sides, but the level of factor A remains the same. Additionally, this figure does not include an interaction so the pattern is relatively easy to compare.
+
+The example shown in Figure \ref{AllEffects} includes both main effects and interactions. There are differences between the upper and lower comparisons, as well as between the left and right comparisons. In addition, the fact that the lines connecting left and right are not parallel indicates that there are effects of special combinations somewhere.
+
+Figure \ref{interactionOnly} shows an extreme example pattern, such as in a coffee tasting. Even though the averages of the first and second levels are the same for factor A and factor B, the way the effects appear is clearly unidirectional. This pattern only shows interaction without any main effects present.
+
+\input{m13_design2_escape_12}
+
+In this example of coffee tasting, it seems that the difference between the groups is stronger than the effect size, leading to the pattern shown in Figure \ref{interactionOnly}. Evaluating how large the effects must be to be considered meaningful will be covered in the later course on inferential statistics. There, you will learn how to assess the effect size and determine significance, but for now, please understand the calculation method and the patterns of appearance. In any case, this serves as a reminder of the importance of \textbf{presenting data in figures}.
+
+
+\subsection{As the Combinations Increase}
+By the way, in this case, we were discussing the consideration of the effect of combinations of factors, or interactions. This time it was an example with two factors, but when it comes to three factors, the number of combinations increases even more. Below, I have written the combinations of elements for each factor plan.
+\[
+I am a translator.
+\mbox{One-Way ANOVA} & \mbox{Total Variation} & = & \mbox{Factor A} + \mbox{Error}
+\mbox{Intra-group planning} & \mbox{Total variation} & = & \mbox{Factor A} + \mbox{Individual differences} + \mbox{Error}
+"Two-factor between-group design" & "Total Variance" & = & "Factor A" + "Factor B" + "Interaction AB" + "Error"
+"Three-Factor Between-Subjects Design: Total Variance = Factor A + Factor B + Factor C + AxB Interaction + AxC Interaction + BxC Interaction."
+& & & +\mbox{Interaction ABC} +\mbox{Error}
+"Four-Factor Inter-Group Design" & "Total Variation" & = & "Factor A" + "Factor B" + "Factor C" + "Factor D".
+Please translate this Japanese text to English without altering the TeX code:
+
+                    & &   & + \text{Interaction AB} + \text{Interaction AC} + \text{Interaction AD}+\text{Interaction BC} \\
+& & & + \mbox{interaction BD} + \mbox{interaction CD} + \mbox{interaction ABC} + \mbox{interaction ABD}
+& & & +\mbox{Interaction BCD} +\mbox{Interaction ABCD} +\mbox{Error}
+You are a translator.
+\]
+If there are three factors, in addition to the main effects (effects A, B, and C), it is necessary to consider not only the primary interactions AB, AC, and BC, but also the secondary interaction when all three are present, known as the ABC interaction. I also attempted to write about four factors, but it is beyond my comprehension.
+
+As can be seen from this, a factorial design should not be made as complex as possible. As the number of factors increases, the number of elements to consider increases, making it ultimately difficult to achieve a unified interpretation. As a recommendation, it seems better to limit the research plan to two factors for phenomena without interaction.
+
+\section{Task}
+Assuming an experimental design of a 2x2 grid, participants were arranged such that there were n people in each cell and were asked to perform a specific task. We will refer to the two factors as A and B, and denote the first level of factor A as $a_1$. Please note that the TeX code has not been modified.
+
+The average score under the condition of $a_1b_1$ is 65 points.
+The average score under the condition of $a_1b_2$ is 45 points.
+The average score under the condition of $a_2b_1$ is 41 points.
+The average score was 49 points under the condition of $a_2b_2$.
+
+
+At this time, please calculate the following size. The size of the effect can be expressed as the difference between the group mean and the overall mean.
+\input{m13_design2_escape_13}
+
+Please refer to Table \ref{tbl::13_05}, which presents the averages of the different combinations of levels.
+
+\input{m13_design2_escape_14}
+
+
+\end{document}

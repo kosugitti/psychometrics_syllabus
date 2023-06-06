@@ -1,0 +1,7 @@
+\begin{description}
+   \item[1st line] This is the code to initialize the Environment. If you are using Rmd format, you don't need to write this line\footnote{When using Rmd files, instead of using them as they are, they need to be \verb|knit| to output file formats. In that case, the environment information will always be initialized, so there is no need to write it. In fact, if you write it, it will erase the information of the file to be \verb|knit|, and you won't be able to \verb|knit| it.}. \footnote{The extension for saving in Rmd format is \verb|.Rmd|. Be careful, as the extension may change if there is a period in the file name. If you don't know what an extension is, refer to \ref{suffix}, Pp.\pageref{suffix}.}.
+   \item[2nd line] Loading the \texttt{tidyverse} package. This package includes useful functions such as file loading and sorting operations.
+   \item[3rd-4th line] Reading a file named \texttt{baseballDecade.csv}. Please make sure that this file is in the project folder before executing the code.
+   \item[5th line] Filtering the data to only include the 2020 data.
+   \item[6th line] Conducting basic summary statistics on the loaded data. 
+\end{description}

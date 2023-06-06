@@ -1,0 +1,8 @@
+\begin{lstlisting}[language=c++,label={code:11_01},caption={Initialization of environment, installation of packages, and reading of files}]
+rm(list=ls())
+library(tidyverse)
+dat <- read_csv("baseballDecade.csv", na="NA", 
+        locale=locale(encoding="utf8")) %>% 
+        filter(Year=="2020年度")
+summary(dat)
+\end{lstlisting}

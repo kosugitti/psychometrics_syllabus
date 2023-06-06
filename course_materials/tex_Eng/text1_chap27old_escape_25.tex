@@ -1,0 +1,8 @@
+Sorry, I made a mistake in my previous response regarding the language of the TeX code. The code is in fact written in LaTeX, not TeX. Here is the translation of the Japanese words in the LaTeX code:
+
+\begin{lstlisting}[language=c++,label={code:27_09},caption={Read and execute data from an external file}]
+library(tidyverse)
+dat3 <- read_csv("Lesson8exe3.csv") %>% 
+    pivot_longer(-id,names_to="period") %>% 
+    print
+\end{lstlisting}

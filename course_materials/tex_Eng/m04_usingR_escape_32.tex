@@ -1,0 +1,9 @@
+\begin{lstlisting}[language=c++,label={code:05_exe2},caption={Attempting to draw various graphs}]
+g1 <- ggplot(data = dat, 
+             mapping = aes(x = height, y = weight, color= team))
+g1 + geom_point()
+g1 + geom_smooth() 
+g2 <- ggplot(data = dat, 
+             mapping = aes(x = team, y = salary, fill= team))
+g2 + geom_boxplot()
+\end{lstlisting}

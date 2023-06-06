@@ -1,0 +1,8 @@
+\begin{lstlisting}[language=c++,label={code:11_02},caption={Initialization of the environment, installation of packages, and reading of files}]
+batter <- dat %>%
+  dplyr::filter(position != "pitcher") %>%
+  dplyr::select(height, weight)
+g <- ggplot(batter, aes(x = height, y = weight))
+g <-  g + geom_point()
+g
+\end{lstlisting}

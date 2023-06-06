@@ -133,6 +133,7 @@ for(i in 1:N){
 この関数は，\verb|log_sum_exp(x,y)|とすると$\log(\exp(x)+\exp(y))$という操作をします。この関数に渡すものがベクトルであれば，
 
 \[ \verb|log_sum_exp|\left( \begin{pmatrix} x_1\\x_2\\ \vdots \\ x_n \end{pmatrix} \right) = \log\left(\sum_{i=1}^n exp(x_i) \right) \]
+
 という操作をすることになります。
 
 これを使って混合分布モデルの実装をしていきましょう。

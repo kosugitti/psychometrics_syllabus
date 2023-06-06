@@ -1,0 +1,19 @@
+\begin{lstlisting}[language=c++,label={code:27_03},caption={Trying regression analysis}]
+# Input data
+high_school <- c(2.13,2.42,2.26,3.87,3.90,2.43,3.44,
+2.15,2.18,3.00,3.42,2.55,3.19,3.05,2.52)
+university <- c(460,500,473,620,690,512,582,
+550,485,650,593,528,585,569,518)
+# Assemble into data frame
+results <- data.frame(high_school,university)
+
+# Visualize the data
+ggplot(results,aes(x = high_school, y = university)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = F)
+
+# Linear model is lm function. Write in dependent variable ~ explanatory variable form
+fit <- lm(university ~ high_school, data = results)
+# Display results in an easy-to-understand way
+summary(fit)
+\end{lstlisting}

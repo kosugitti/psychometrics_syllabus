@@ -1,0 +1,7 @@
+\begin{align*}
+    r_{xy} & =  \frac{1}{N}\sum_{i=1}^N (z_{x_i} - \bar{z_x})(z_{y_i} - \bar{z_y})            & \mbox{The mean of the z-scores is 0}     \\
+           & = \frac{1}{N}\sum_{i=1}^N z_{x_i} z_{y_i}                                        & \mbox{Let's return to the formula for z-scores}      \\
+           & = \frac{1}{N}\sum_{i=1}^N \frac{(x_i - \bar{x})}{s_x} \frac{(y_i -\bar{y})}{s_y} & \mbox{$i$ is only related to the numerator} \\
+           & = \frac{\frac{1}{N}\sum_{i=1}^N (x_i - \bar{x})(y_i -\bar{y})}{s_xs_y}           & \mbox{The numerator is covariance}         \\
+           & = \frac{s_{xy}}{s_xs_y}                                                          &                        \\
+\end{align*}

@@ -1,0 +1,23 @@
+\begin{Rscreen}{lm output}{out27_01}
+   \begin{verbatim}
+> summary(fit)
+
+Call:
+lm(formula = daigaku ~ koukou, data = seiseki)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-31.425 -21.896  -6.906  -1.207  80.110 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   288.74      43.00   6.715 1.44e-05 ***
+koukou         93.72      14.85   6.313 2.69e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 34.36 on 13 degrees of freedom
+Multiple R-squared:  0.754,	Adjusted R-squared:  0.7351 
+F-statistic: 39.85 on 1 and 13 DF,  p-value: 2.688e-05
+\end{verbatim}
+\end{Rscreen}

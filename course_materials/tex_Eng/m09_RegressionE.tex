@@ -1,0 +1,150 @@
+\documentclass{ltjbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+\chapter{Fundamentals of Linear Models}
+\label{m09_Regression}
+
+You have learned about descriptive statistics and visualization, measurement of "invisible" things through test theory, and inference of correlation and causation.
+
+So, what will happen from here on? Well, we're finally getting to the main topic.
+Assuming there are errors in the data, what we want to know is the true value, which is the average of the entire dataset after the errors have been eliminated.
+One of the purposes of science is prediction and control\footnote{The other is "explanation."}. Individual data may contain errors (individual differences), but overall there will be some kind of trend, and that trend is represented by a model. By writing this model in mathematical terms, we can make predictions, and if we can make predictions, we can consider corresponding measures.
+
+The theme of this lecture, "Psychostatistics for Seeing the Invisible," will now unfold to mean \textbf{finding overall patterns through data}.
+
+\section{Correlation and Models}
+Predicting models or trends may seem like a complicated topic, but it's really not. And all without modifying TeX code.
+
+For example, let's consider the topic of "academic performance", which is often of great concern. For instance, let's assume that data on high school grades and college entrance exam results are available, as shown in Table \ref{tbl09_01}.
+
+\input{m09_Regression_escape_01}
+
+I have converted the high school data to a 5-point scale because it is used as a reference. As for the college data, I converted it to a 1000-point scale. Since this is a virtual data, any arbitrary scale could have been used, but I wanted to use an example where the units were different.
+
+Now, it's fundamental to visualize the data. Let's visualize it. Since we want to see the relationship between two variables, a scatter plot that takes high school grades in the X-axis and college grades in the Y-axis is suitable. Figure \ref{fig::09_01} shows the scatter plot that I created.
+
+\input{m09_Regression_escape_02}
+When you look at a scatter plot, you can see some trends in the data. You can see that the points are scattered from the bottom left to the top right.
+Yes, it appears that there is a \textbf{positive correlation} in this data.
+
+Of course, the presence of a correlation does not necessarily imply causation, as we know. However, in this case, high school grades precede university grades temporally and are both understandable as reflecting a person's ability. Therefore, it is reasonable to predict from this correlation (both theoretically and socially), and when we hear that someone has good high school grades, we naturally think and predict that "this person is probably smart, and their university grades will also be high."
+
+Predictions are possible even without assuming causality. For example, the number of fire stations in a town and the number of fires have a high correlation coefficient, but no one would assume that fire stations cause fires. However, if we know that there is a correlation, we can predict that a town with many fire stations is likely to have more fires. Correlation is not the only tool for prediction either. Since correlation only represents linear relationships between variables, the correlation coefficient tends to be low for phenomena that are not linear. For example, we can predict that a person is unhealthy if their blood pressure is too high or too low (refer to the previous discussion).
+
+It is important to note that, as can be seen from the scatter plot in Figure \ref{fig::09_01}, there appears to be a high correlation and a linear relationship. We want to represent this linear relationship using a \textit{function}.
+
+If the data is obtained in numerical form, the relationship between variables can be expressed as a function. Functions are generally written in the following form:
+\[ y = f(x) \]
+This means that when some number is entered into $x$, it undergoes some processing by the function $f$, and the resulting number becomes $y$.
+Psychology is the science that approaches phenomena using mathematical positivism, expressing relationships between variables with functions. This function is also called a \keytermE{model}. Although models are idealized abstractions, in science they refer to mathematical functions. Of course, in a given phenomenon, there can be various possible forms for this model, or function.
+
+By the way, it seems there is a linear relationship in this data from the bottom left to the upper right.
+You probably learned about linear functions in middle school mathematics. A linear function can be expressed as follows.
+
+\[ y = ax + b \]
+
+This is the \keytermE{linear function}, which is the most commonly used in psychology. You might think, "That's it?" After learning about various types of functions such as polynomials, quadratics, and trigonometric functions, it might seem simple to just use $y=ax+b$.
+
+However, there are some differences from the linear equations you may have learned in middle school. In middle school, you may have been given questions such as "Find the slope $a$ and y-intercept $b$ of the linear function that passes through two given points $P$ and $Q$." However, as you can see in this scatter plot, there are multiple points and we cannot simply draw a line by selecting any two of them. Moreover, there is no straight line that passes through all of the points.
+
+\input{m09_Regression_escape_03}
+
+The top figure in Figure \ref{fig::09_02} was an attempt to draw a line passing through all the points, but it inevitably turned out to be a curve. The bottom figure is a straight line, but it doesn't pass through all the points. However, the goal is to find a straight line that fits the data as closely as possible, although it's impossible to describe everything perfectly. Because data can have errors and individual differences, there may be places where the linear relationship does not fit, but the challenge here is to exclude those points and consider the ideal relationship as a straight line.
+
+Linear functions can draw various lines by changing the slope $a$ and the $y$-intercept $b$. The goal here is to \textbf{draw a straight-line relationship that best fits the data}.
+
+This is a bit of a digression, but when data is not in a linear relationship or when the goal is to fit the data as closely as possible, it is necessary to abandon the restriction of a straight line. This is called a non-linear function, and AI (artificial intelligence) or machine learning aims to increase the predictive accuracy of data using these non-linear functions. However, non-linear functions become n-degree polynomials, so it is difficult to understand what they mean. Even if it is not understood, it may be said that it is good if it fits the data, but in academic approaches such as psychology, we want a theory that is generally understandable to humans, so functions that cannot be explained are unnecessary. Therefore, let's look for places that can be roughly explained by a linear method, even if it is not a perfect fit to the data.
+
+\section{Forecasting and Linear Models}
+
+Let's look for a perfect linear relationship, represented by the invisible equation y=ax+b.
+
+Let me reconsider the notation of symbols and their correspondence with data. While we won't find functions like $y=ax+b$ that we typically see in junior high school mathematics, we do have a lot of data points available this time. Each point in Figure \ref{fig::09_01} corresponds to each row in Table \ref{tbl09_01}.
+The coordinates of the points in this graph represent data values. For example, the point at the top right represents the combination of E's data values, which are $(3.90, 690)$. Since there are many combinations of $x$ and $y$ values, the coordinates should be written as $(x_i, y_i)$. The variable $y_i$ is the predicted or dependent variable, as it is the variable being explained. The variable $x_i$ is the predictor or independent variable, as it is the variable explaining the other.
+Based on this, the desired equation can be expressed as follows.
+
+\[ \hat{y_i} = b_0 + b_1 x_i \]
+
+The symbol above the $y$ in $\hat{y_i}$ is called a "hat". We couldn't write $y_i$ because the function doesn't fit perfectly. The hat symbol represents that it is merely a theoretical predicted value. Additionally, $b_1$ was used instead of $a$ and $b_0$ was used instead of $b$. These symbols are arbitrary, but $b_1$ is used to denote the coefficient of the first explanatory variable. The number $1$ represents the first variable. The intercept does not have an explanatory variable, so it is denoted as $b_0$ and considered the 0th variable. Although we do not know the values of $b_0$ and $b_1$ yet, if we do, we can predict the value of the variable $y$ for a given number inserted into $x_i$.
+
+The straight line outlined by this process, denoted as $\hat{y}$, is the set of solutions for the function represented by the linear combination $b_0 + b_1 x_i$. We do not know the values of $b_0$ and $b_1$, so we will search for them from now on. However, the combinations of $x_i$ and $y_i$ are known as data. For example, J's data, denoted as $x_{10}$ and $y_{10}$, respectively, are $x_{10}=3.0$ and $y_{10}=650$. However, $\hat{y_{10}}$ lies significantly below the actual data point (as shown in Figure \ref{fig::09_03}). This means that the prediction of this function is inaccurate for J's data. We refer to this inaccuracy as \textit{error} or \textit{residuals}, denoted as $e_i$. As indicated by the subscript $i$, which represents personal differences, the residual occurs for all data.
+\input{m09_Regression_escape_04}
+The residual is defined as follows.
+\[ e_i = y_i - \hat{y_i} \]
+The difference between the predicted value $\hat{y_i}$ and the actual value $y_i$ is the error $e_i". This equation can be expanded as follows.
+\[ y_i = \hat{y_i} + e_i = b_0 + b_1 x_i + e_i \]
+Here, the left-hand side represents the data (actual values). An equation has been created to predict the data from the model.
+
+The notation is now ready, and all that's left is to determine the values of $b_0$ and $b_1$. $b_0$ represents the height at which the line starts, and $b_1$ represents the angle or slope of the line. Without determining these two values, any type of line can be drawn. It is not possible to find a line that perfectly fits all of the data points, so the goal is to find the line that looks the best overall. How can we mathematically express this "best overall" line?
+
+\section{Least Squares Method}
+\label{LeastSquare}
+\input{m09_Regression_escape_05}
+
+I tried drawing two lines, A and B, above Figure \ref{fig::09_04}. With a model like line A, some data points match the prediction (i.e., the line goes through them) while all the other data points are below the line, indicating that the predicted values are all higher than the actual values. Conversely, with a model like line B, all but one of the actual data points are above the model line (i.e., the predicted values are too low). Therefore, in both cases, there is a significant deviation from the overall trend. It's important to note that the TeX code will not be altered.
+
+A good model formula is one that doesn't fit every data point perfectly but is equally offset in both positive and negative directions (Figure \ref{fig::09_04}).
+Although there may be errors in individual cases, it is generally best to determine the intercept and slope so they run exactly along the median line.
+Let's consider this mathematically. Each individual error can be expressed as follows.
+
+\[e_i = y_i - \hat{y_i} \]
+
+The objective is to make it go through the center as a whole. By "as a whole", we mean when the errors are summed up. "Going through the center" means that the amount of positive and negative errors is equal, resulting in a total of zero.
+
+\[\sum_{i=1}^N e_i = 0 \]
+
+This is the goal, but it is equivalent to averaging to zero, so we do not know how large the error was. We are seeking a line that minimizes the error as much as possible, but it is difficult if we cannot evaluate the magnitude of the error.
+Please remember that, as with the normal distribution, the width of an error is more important than its position (which is centered at zero). We evaluate its magnitude based on the width, not the position. To consider a measure of width, which represents the scatter, we consider the value of this measure squared, as in the case of variance.
+
+\[\sum_{i=1}^N e_i^2=\sum_{i=1}^N (y_i - \hat{y_i})^2 = \sum_{i=1}^N (y_i - (b_0 + b_1x_i))^2=Q(b_0,b_1) \]
+
+As indicated at the end of this equation, in the end a function of the unknown variables $b_0$ and $b_1$ will emerge. Let's denote it as $Q$, and solve the equation under the condition that $Q$ takes the minimum value, in order to find $b_0$ and $b_1$.
+
+The function that was introduced lastly, denoted as $Q$, is a squared function that varies based on the intercept $b_0$ and slope $b_1$. Since we want to calculate the extreme value of the function, we need to differentiate it. In this case, since the function is composed of two variables, we need to use the method of partial differentiation. For a more detailed explanation of this method, please refer to \citet{kosugi2018} or \citet{Nishiuchi201712}. However, this topic goes beyond the scope of this course, so we will skip the detailed calculations here.
+
+This is a method of fitting a model to data by minimizing errors, or a method of estimating unknowns based on the criterion of minimizing errors, and it is called the \textbf{least squares method}. It's worth noting that this method was invented by Gauss, who derived the normal distribution. That's pretty amazing, isn't it?
+
+To calculate the coefficients using the least squares method, the specific calculation formula is as follows:
+
+\[ b_0 = \bar{y}-b_1\bar{x} \]
+\[ b_1 = r_{xy}\frac{s_y}{s_x} \]
+
+Here, $r_{xy}$ represents the correlation coefficient between variables $x$ and $y$, $s_x$ and $s_y$ represent the standard deviations of $x$ and $y$, and $\bar{x}$ and $\bar{y}$ represent the mean values of $x$ and $y$, respectively. All of these descriptive statistical values can be calculated from data, and we were able to obtain the intercept and slope.
+Of course, you could calculate the answer by inputting the specific numbers, but in fact, using statistical packages such as R can provide you with the answer instantly. Understanding the calculation process is also important, however, it is necessary to first understand that solutions can be obtained from the data and conditions, and to double-check the conditions and criteria for what is being sought.
+
+Let's look at some numerical examples. Descriptive statistics calculated from the data in Table \ref{tbl09_01} are first $r_{xy}=0.868357$, $s_x=0.6185097$, and $s_y=66.75292$. The slope is then computed.
+\[ b_1 = 0.868357 \times \frac{66.75292}{0.6185097} = 93.71779 \]
+Next, using this $b_1$ and $\bar{x} = 2.834, \bar{y} = 554.333$, we will calculate the intercept.
+\[ b_0 = 554.3333 - 93.71779 \times 2.834 = 288.7371 \]
+
+In other words, the prediction equation suggests that the error can be minimized by drawing a straight line that evenly separates all data points.
+\[ \hat{y_i} = 288.7371 + 93.71779 x_i \]
+
+This analysis method is called \keytermE{regression analysis}. We have created a function to predict variable $Y$ from variable $X$ using the same data, but we can also consider a function to predict variable $X$ from variable $Y$, $x=g(y)$, and calculate the coefficients. Using these functions alternately, as $y^1=f(x)\to x^1=g(y^1)\to y^2=f(x^1)\to x^2=g(y^2)\to \cdots$, eventually $x^n$ approaches the mean value of variable $X$ and $y^n$ approaches the mean value of variable $Y$. Because it goes around in a cycle and returns to the mean, it is called \textbf{regression}. The coefficients obtained by regression analysis are also called \keytermE{regression coefficients}.
+
+The intercept term of the regression coefficient, $b_0$, refers to the value when $x=0$. In this example, it represents what grades you can get in college if you have 0 points for your entrance exam. In other words, it can be considered the baseline.
+What is $b_1$ representing the slope here? It represents the rate of increase in $\hat{y}$ when the variable $x$ increases by 1. In this example, it is the expected increase in college performance when internal grades improve by 1 point.
+In a linear model, a \textbf{weighted linear combination} is used to get $\hat{y_i}$ to be as close to $y_i$ as possible by stretching variables ($b_1$) and elevating them ($b_0$ being the baseline). This expression system of stretching and elevating the variables for some criterion can be seen in various statistical models.
+
+\section{Evaluation of Predictions}
+We were able to obtain the regression coefficients, which is very exciting news! I mean, think about it. we were able to understand the relationship between the data and the function. When we know the relationship, we can input a number for $x$ in the equation $y=f(x)$ and get a value for $y$. By inputting the actual data points $x_i$, we can determine $\hat{y_i}$, which tells us how far away that data point is from the model. Furthermore, we can quantify the size of the error. And of course, we can predict the future! Instead of using actual data, we can input a new number and get a predicted value. For example, in this case, if we were to say "the student's high school grades were 2," we could calculate that the student would earn $476.1727$ in college by using the equation $288.7371+2\times93.71779$. Knowing this beforehand is fantastic!
+
+Actually, the basis of all the fuss around things like BIG data and AI is this. It's about fitting a model to the data and making predictions based on it, using a large amount of data to be put into equations and using multiple predictor variables. While there is a need to expand this model, the basic idea is to "fit the model to the data to make predictions." This time, we used the simplest form, a linear model. However, by making the model more complex, we can make predictions about human behavior, market trends, and even which horse will win in the next race.
+
+I want to draw your attention to the fact that being able to make these calculations and being able to predict outcomes accurately are two separate things. We cannot say for certain whether a student who obtains only 2 points in their internal assessment would score 476 points at university. This coefficient was calculated to best fit the obtained data, but it does not account for all points and is only a moderate fit. Therefore, there is always an unpredictable remaining portion, known as "residuals".
+
+When fitting a model to data for analysis, it is necessary to evaluate the degree of fit separately. The index used to evaluate this fit is called the "fit index" or "goodness of fit index" (適合度 in Japanese).
+In the case of regression analysis, the predicted value is represented by $\hat{y_i}$, while the actual data is represented by $y_i$. The relationship between the two is given by $\hat{y_i}-y_i=e_i$. To express how close the predicted and actual values are, we will consider the correlation coefficient $r_{\hat{y}y}$ between the two. As a correlation coefficient, this number falls within the range of $-1\le r_{\hat{y}y} \le 1$. However, even if the correlation is negative, if it is high, it can still indicate agreement between the two, so the sign here is not of much interest. Therefore, let us square this correlation coefficient and call it the \textbf{$R^2$ value}, which is considered an index of appropriateness. The \textbf{$R^2$ value} is also known as the \keytermE{coefficient of determination}.
+
+The $R^2$ value can be shown to be related to the following equation when calculated (For detailed calculation formula, please refer to Pp.133 of \citet{kosugi2018}).
+\[ R^2 = \frac{s_{\hat{y}}^2}{s_y^2} \]
+In words, it refers to the \textbf{proportion of the variance of the predicted variable explained by the variance within it}. In other words, it indicates the percentage of information about the predicted variable that is accounted for by the predictive model.
+
+Regarding the data in question, the $R^2$ value was 0.754. As the predictive model explains about 75\%, we might say it is a fairly good model.
+If you come across discussions on regression analysis in papers, be sure to pay attention to the $R^2$ or similar measures of goodness of fit. Even if results are obtained, if the explanatory power is very low, it means that there is practically no explanation and it can be of no use in prediction.
+
+\section{Task}
+Let's find the regression coefficients. Calculate the intercept and slope when conducting a regression analysis to predict high school achievements from university entrance exam results using the data in Table 9.1. Note that since we are predicting high school achievements from university exam results, the direction of causality (time direction) is reversed. While we cannot determine causality from this, if there is a correlation in the data, we can conduct regression analysis; it is up to the users to determine how to interpret and communicate these findings.
+\end{document}

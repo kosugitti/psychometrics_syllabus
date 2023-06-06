@@ -1,0 +1,218 @@
+\documentclass{ltjbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+\begin{document}
+
+\chapter{Analysis of Variance with R}
+\label{m22_anovaOnR}
+So far, we have explained the approach of considering experimental design as a linear model or within the framework of null hypothesis testing.
+I would like to collect the topic that I postponed earlier, which stated that detailed calculations will be done with R. Let's learn how the calculations progress, how the results are displayed, and how to interpret the results with exercises using R.
+\section{Key Points for Conducting Analysis of Variance in R}
+Let's start by launching R. As a quick review, I'll write again about the first step before starting the task.
+\paragraph{Starting RStudio}
+Please start RStudio. There may be cases where administrator privileges are required, such as when installing packages.
+\paragraph{Opening the Project}I think it would be fine to use the same project we created last time. You just need to change the script file in the same folder. Open the project from the menu (File$\to$Open Project), and make sure the project is open, for example, in the top right of RStudio (see Figure \ref{fig::20_01}).
+\paragraph{Opening an R Script} 
+
+To write today's code, let's prepare an R script file. Go to \verb|File > New File > R Script| and open a blank R script screen. If a completely blank file opens up, you're good to go.
+\input{m22_anova_onR_escape_01}
+
+Alright, are you ready to go now?
+\subsection{Types of numbers}
+This time, the task is to calculate factorial designs in R, and the key point to note here is the variable type.
+As I've been repeating, as with the regression analysis we did in the previous term, the factorial design we're dealing with now has the same form of a linear model. The only difference would be that the explanatory variables in regression analysis are continuous, whereas the explanatory variables in factorial design are discrete (categorical). Therefore, when analyzing with R, even if the form of the function is the same, we must clarify that the type of variables is different.
+
+There are various types of numbers in R. You can store different variables in objects, but the types of variables stored in them include the following:
+\input{m22_anova_onR_escape_02}
+To check these types, you need to examine how the object is structured. You can use the \texttt{str} function to see the contents of the object.
+
+Please enter the \texttt{code:\ref{code:23_01}} while reviewing Lesson \ref{m04_usingR}.
+\input{m22_anova_onR_escape_03}
+\paragraph{Explanation of the Code}
+\input{m22_anova_onR_escape_04}
+
+Assuming no modification to the TeX code, please translate the following Japanese text to English:
+
+"Well, if you execute the last line 7, it should output the following to the console (see \texttt{R output \ref{RS:out23_01}})."
+\input{m22_anova_onR_escape_05}
+As shown here, the \texttt{name} variable of the \texttt{obj} object is of type chr, while the other three variables are of type numeric. Let's now convert the gender variable to a factor type (\texttt{code:\ref{code:23_02}}).
+
+\input{m22_anova_onR_escape_06}
+
+The output of this will be like \texttt{R output \ref{RS:out23_02}}.
+\input{m22_anova_onR_escape_07}
+As shown here, gender is a factor with two levels, each labeled as "male" and "female."
+
+Keeping the variable as a factor means that the variable is at a nominal scale level in R. This means that conducting regression analysis with this type of variable is appropriate. Conversely, failing to keep the variable as a factor and conducting ordinary regression analysis with it as a quantitative variable will yield incorrect results\footnote{Specifically, assigning quantitative numbers such as 1, 2, 3 to the three levels and conducting analysis creates an ordinal relationship and equal interval between each level, which is inappropriate. Please remember that when visualizing factorial designs, the x-axis is interchangeable (i.e. without any order).}.
+
+\subsection{Load Functions for Analysis of Variance}
+By analyzing it as a factor type, one can estimate the effect size, but to "judge" it, it is necessary to discuss it within the framework of null hypothesis testing.
+
+I also want to remind you that even if it is judged significant by comparing the between-group and within-group sums of squares with analysis of variance, it is not clear "where it is significant", so post-hoc tests are necessary. R has functions that automatically perform analysis of variance and Tukey's multiple comparisons tests by default, but they are separate functions, and it can be cumbersome to do each one individually. There is a convenient function that automatically performs this main analysis -> post-hoc testing sequence.
+
+Mr. Ryuta Iseki's "anovakun" is available online for public use\footnote{\url{http://riseki.php.xdomain.jp/index.php?ANOVA君}} without modifying the TeX code. This function is not available as a package that can be downloaded from CRAN, so you need to either download a file that contains the local "anovakun" function you've written (as of November 2021, the file is "anovakun_486.txt") and load it, or download it directly from the internet using R. In either case, you need to use R's "source" function, and if you are using the downloaded file, you need to execute the loading code after downloading the file to your project folder (\texttt{code:\ref{code:23_03}}).
+
+\input{m22_anova_onR_escape_08}
+
+If you want to download directly from the internet, execute \texttt{code:\ref{code:23_04}} while being connected to the Internet.\footnote{It can be tedious to transcribe the link. It is recommended to search for "ANOVA-kun" on Google, go to Professor Ikeda's website, and then right-click the link to the ANOVA-kun source file, which says "Click the icon below to save the file." By the way, this address is using a link shortener service called bit.ly to shorten the length of the link.}
+
+
+\input{m22_anova_onR_escape_09}
+
+When these codes are executed, there should be a lot of functions in R's environment (Figure \ref{fig::22_01}). If they are in there, then it's OK.
+\input{m22_anova_onR_escape_10}
+Let's now take a look at its actual usage.
+\section{Practical Implementation of One-Way Between-Subjects Design}
+Let's start with the discussion about the One-Way Between-Subjects ANOVA. As an example, we will use the data from Lesson \ref{m21_anova}. Let me briefly repeat the data here (Table \ref{table::23_01}).
+\input{m22_anova_onR_escape_11}
+Let's start by analyzing this as a linear model. Assemble a data frame as shown in \texttt{code:\ref{code:23_05}}.
+
+\input{m22_anova_onR_escape_12}
+
+\paragraph{Code Explanation}
+\input{m22_anova_onR_escape_13}
+
+\subsection{Analysis as a Linear Model}
+To analyze as a linear model, we use the \texttt{lm} function as we did in the previous section (see \texttt{code:\ref{code:23_06}}).
+
+\input{m22_anova_onR_escape_14}
+
+The first line uses the lm function to store the result in the object result.lm1. Remember that the dependent variable and independent variable are connected by a tilde "~". The second line outputs the result, which should be displayed as "R output \ref{RS:out23_03}". The TeX code is not modified.
+\input{m22_anova_onR_escape_15}
+When you look at this, you can see that the estimated value of the intercept (Intercept) is 5.5, followed by the coefficients of two explanatory variables. Although the characters are strung together, they correspond to the relationships between "condition" and "exp1", and between "condition" and "exp2", respectively. I think the meaning of the results will be clearer when you see Figure \ref{fig::23_02}.
+\input{m22_anova_onR_escape_16}
+
+In the 21st lecture, we discussed linear models without modifying any of the TeX code.
+\[ X_{ij} = \beta_0 + \beta_j + \varepsilon_{ij} \]
+I was assuming that $\beta_0$ was the overall average. The modeling was based on the overall average, and the effects $\beta_j$ for each level were examined.
+\[ X_{ij} = \bar{X}_1 + \beta_j + \varepsilon_{ij} \]
+It is in the form of (Fig. \ref{fig::23_02}). Essentially, it is no different. If you think of it as the average difference of $+0.5$ in experimental group 1 and $-1.25$ in experimental group 2 compared to the control group, that would be fine. The Std. Error and t-values that follow are the standard error of the estimated regression coefficients and the test results of whether the null hypothesis that the coefficient is zero can be rejected, respectively.\footnote{They are also the estimated values of the population means for each group, but the standard error is calculated for the entire linear model (under the distribution conditioned on other explanatory variables), rather than conducting univariate t-tests for each group. For more information, see p.118 of \citet{Haebara200206}.}
+
+As this is a linear model, it provides fit statistics such as Multiple R-squared and Adjusted R-squared. However, more importantly, the last line displays the overall significance of the linear model. This is equivalent to the results obtained by analysis of variance, which provides another approach to factorial design. Let's examine this analysis result from the perspective of analysis of variance.
+
+\subsection{Analysis as a Null Hypothesis Test}
+This is the result of an analysis of variance, specifically for the null hypothesis of factor planning. Since it is the same as a linear model, you can simply modify the output obtained this time. The simplest way to do this is to input the results of the aforementioned linear model into the \texttt{anova} function, which will generate the following analysis of variance table (\texttt{code:\ref{code:23_07}},\texttt{R output\ref{RS:out23_04}}).
+
+
+\input{m22_anova_onR_escape_17}
+
+
+\input{m22_anova_onR_escape_18}
+From here, it can be determined that there was no statistically significant difference, with $F(2,9)=2.4894, p=0.1379$. Please confirm where and how you read these numbers.
+
+Some people may think that only the \texttt{lm} function is sufficient for this task without modifying the TeX code. While it may generally work fine, there are some variations in calculations for analysis of variance, especially when the sample sizes of groups are different or when calculating the variance. This can lead to situations where the default \texttt{lm} function in R is insufficient.
+
+You can use the dedicated analysis of variance function \texttt{anovakun} that was introduced earlier without modifying the TeX code. The actual usage is as follows (\texttt{code:\ref{code:23_08}}).
+\input{m22_anova_onR_escape_19}
+
+First, you need to give only the necessary data for analysis to \texttt{anovakun}. In this case, the \texttt{id} column in the data frame is not needed, so we limit the data to only the second and third columns (from the second to the third column) using \texttt{Example1[,2:3]}\footnote{The square brackets $\left[, \right]$ are used to specify rows and columns in a data frame. To specify only the first row, use \texttt{Example1[1,]}, to specify only the first column, use \texttt{Example1[,1]}, and to access only the element in the first row and first column, use \texttt{Example1[1,1]}.}. The \texttt{As} written next is unique to the \texttt{anovakun} syntax. Here, the \texttt{s} means "subject," and you write the between-group factor to the left of this and the \keytermE{within-group factor} to the right. Since this is a one-factor between-subjects design, we place Factor A on the left. If you write it as \texttt{sA}, it indicates a one-factor within-subjects design, and if you write it as \texttt{AsB}, Factor A is between-subjects and Factor B is within-subjects, indicating a mixed design. Finally, by entering the number of levels for Factor A in this one-factor design, the \texttt{anovakun} function will perform all the analyses. As an option, if you turn on the switch to display the effect size $\varepsilon^2$ (\texttt{eps=T}), it will also display the effect size (\texttt{Output\ref{RS:out23_05}} in R output).
+
+\input{m22_anova_onR_escape_20}
+The average, standard deviation, and analysis of variance table for each group are displayed. Please review them and make note of which numbers to refer to for each group.
+
+You are a translator. 
+
+Without modification of the TeX code, please translate the following Japanese text into English:
+
+"Just this sentence may not seem particularly useful with anovakun, but it is capable of handling various factorial designs, so you will gradually come to appreciate its benefits."
+\section{Practical Application of Two-Way Between-Subjects Designs}
+Next, let's move on to the two-factor plan. Let me repost the data for reference (Table \ref{tbl::23_02}).
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Fri Sep 11 14:11:29 2020
+\input{m22_anova_onR_escape_21}
+Convert this into a data frame. Since temperature and manufacturer are of nominal scale level, we will convert them into factor type (\texttt{code:\ref{code:23_09}}).
+\input{m22_anova_onR_escape_22}
+\subsection{Analysis as a Linear Model}
+The data is now ready, so all that remains is to analyze it. If the experimental design involves more than two factors, it's important to consider interactions. To represent this in a linear model, we can use the following code (\texttt{code:\ref{code:23_10}}).
+\input{m22_anova_onR_escape_23}
+Here, the explanatory variables are connected with an asterisk (*). This includes both main effects and interactions in the model. The results should be displayed as shown in \texttt{R output \ref{RS:out23_06}}.
+
+\input{m22_anova_onR_escape_24}
+This is describing the results when the \texttt{temp} variable is in the first level (Hot) and the \texttt{maker} variable is in the first level (Brand A). When comparing groups where only the temperature is different under the same manufacturer (Brand A), the average value of \texttt{tempCold} is -3.0. Next, when comparing the group with manufacturer B (\texttt{makerB}) to the Hot group, the average value is -5.0, and when both are changed, it becomes +7.0. Each has standard error and t-values, but this only rejects the null hypothesis that the slope is 0 and does not tell us the magnitude of the effect.
+
+Furthermore, at the end, the $F$ statistic is displayed. When the degrees of freedom are $(3,8)$, $p=0.004641$, indicating that the null hypothesis model of a flat line is different from the entire linear model. However, it is not clear where the differences lie specifically and what is causing them.
+
+Let's analyze it using an analysis of variance model that allows us to test for differences between each group.
+\subsection{Analysis as a Null Hypothesis Test}
+Let's try the hypothesis test version of the factor planning. Similar to earlier, we input the results of the linear model into the \texttt{anova} function, which is default in R (\texttt{code:\ref{code:23_11}}). The TeX code is not modified.
+\input{m22_anova_onR_escape_25}
+
+The result will be as shown in "R output \ref{RS:out23_07}" without modifying the TeX code.
+\input{m22_anova_onR_escape_26}
+Not only does it provide an ANOVA table, but it also includes symbols such as dots (.) and asterisks (*) to make it clear whether the results are significant or not. The last row of the table is labeled "Signif. codes," and it explains that if there is one asterisk, the results are significant at the 5% level; if there are two asterisks, the results are significant at the 1% level; and if there are three asterisks, the results are significant at the 0.1% level. Unfortunately, the "maker" factor does not show significance at the 5% level, but the interaction term (temp:maker) is significant. It's worth noting that the use of terms like "significant trend" or "difference in trend" in psychology is incorrect and should be avoided, as the significance level is an arbitrary decision and the size of the effect is what really matters, regardless of whether it passes a predetermined threshold.
+
+However, as it stands, the situation is such that "the interaction is significant, but it is unclear where the differences lie." The null hypothesis that the four population means are equal ($\mu_{11}=\mu_{12}=\mu_{21}=\mu_{22}$) has only been rejected, and additional testing is necessary to determine where the differences lie. It is crucial to add a post-hoc test.
+
+You are a translator.
+\input{m22_anova_onR_escape_27}
+As before, you don't need the id and num columns for `anovakun`, so from line 3 to 5, you provide only the factors A and B and the dependent variable. The design is an A$\times$B within-subjects design, so you list A and B as factors to the left of the subject column `s`. Both factors have 2 levels, so you indicate 2 levels for each. Finally, `eps=T` is a switch to turn on (TRUE) the display of effect sizes, $\varepsilon^2$.
+
+The result is displayed as shown in \texttt{R output \ref{RS:out23_08}}.
+\input{m22_anova_onR_escape_28}
+
+First, the average values and standard deviations for each level are displayed, followed by an analysis of variance table.
+Upon looking at this, it appears that there was no main effect of factor A (temperature) ($F(1,8)=0.500,p=0.4996$)\footnote{There should be an asterisk, but in this case "$ns$" is used to indicate that the result is not significant.}, and the effect of factor B was not significant at the 5% level (indicated with a "$+$" symbol as being significant at the 10% level). However, there was a significant interaction at the 5% level, which is the same as before. Looking at the effect size ($\varepsilon^2$), we see that the interaction accounted for 62% of the total variance, indicating a fairly large effect.
+
+Next, the Post Analysis section shows the results of post-hoc tests. "Simple Effects for 'A x B' Interaction" means that we are looking at whether there were effects of the other levels when limited to each level of the interaction between A and B. For example, the first row shows "A at b1", which means we are looking at the effect of factor A (temperature) at the first level of factor B (brand). The rest is similar, but these are more detailed checks on the variance analysis table. From this, we can see that there is no difference between brands at cold temperatures (B at a2), but the other differences seem statistically significant.
+
+To make the results easier to interpret, I have drawn a line in the corresponding area for the figure in \ref{fig::23_03}. Please compare the results and check for any differences.
+\input{m22_anova_onR_escape_29}
+
+Also, when reporting these results, it is recommended to write as follows.
+\input{m22_anova_onR_escape_30}
+\section{Actual Implementation of One-Factor Within-Subjects Design}
+Finally, let's try an example using the Within-subjects design. We will use the table \ref{tbl::23_03} as virtual data.
+\input{m22_anova_onR_escape_31}
+
+Convert this to a data frame format (\texttt{code:\ref{code:23_13}}).
+\input{m22_anova_onR_escape_32}
+
+To represent it as a linear model, some complicated operations are required\footnote{Specifically, it becomes a hierarchical linear model where regression analysis is performed for each individual, and the intercepts, which represent individual differences, follow a higher-level probability distribution. To introduce the probability model that will be discussed in the next session, it is necessary to introduce a separate package, even when executing it in R, and it is not a feasible amount to handle in the remaining time of this session. Therefore, we have omitted it. If you are interested, let's meet in the second year's data analysis application course.}. Therefore, this time I would like to introduce only the variance analysis approach.
+Analysis using the null hypothesis test.
+The input for the \texttt{anovakun} model in the group is as follows (\texttt{code:\ref{code:23_14}}).
+\input{m22_anova_onR_escape_33}
+No modifications to the TeX code, please. Here is the English translation of the Japanese text:
+
+There is no need to add additional specifications for the dataset, variables, or effect size options. The key point is that the design is specified to the right of "sA" and "s". When this is executed, the results will be displayed as shown in the \texttt{R output \ref{RS:out23_09}}.
+
+First, descriptive statistics for each group are calculated. Then, we have "<< SPHERICITY INDICES >>". This refers to the sphericity test, which is used in testing for sphericity. Just as we used Welch's correction in the t-test, in the analysis of variance, it is assumed that the variances are the same. If this assumption is not met, a correction must be made. In particular, for within-subject designs, instead of assuming that all variances (covariances) are equal, it is assumed that the space extends equally in all directions. This is because the within-subject design assumes a hierarchical model where each individual has a linear model with different intercepts (individual differences), which makes it a little complicated. It is difficult to assume that the variances of each individual are the same, but at least we want to maintain the assumption that the variance-covariance matrix (a square matrix in which the diagonal elements are variances and the off-diagonal elements are covariances) is homogeneous by considering the correlations (covariances) between the levels. As the number of levels increases, the space that represents this correlation relationship expands into a multi-dimensional space, ultimately becoming spherical. This is what is referred to as the sphericity test.
+\input{m22_anova_onR_escape_34}
+If this assumption is not met, correction methods such as the Greenhouse-Geisser correction or Huynh-Feldt-Lecoutre correction must be applied. This is verified in this section (\texttt{R output\ref{RS:out23_10}}). In this case, since $p$ is 1.000 and $ns$ (not significant), the data is not significantly skewed and therefore no correction is necessary. However, if there were a significant difference in the roundness situation, then corrections such as degrees of freedom would be necessary, and \texttt{anovakun} could specify them as an option. Despite the multiple testing problem, in this case we seem to be able to proceed as is. Honestly, it can be frustrating when analyses such as analysis of variance and null hypothesis testing require strict procedures but corrections and adjustments are applied to various places. Personally, I think that Bayesian statistical approaches, which do not have such problems, are better, but I'm impressed that many people have persevered with this kind of thing.
+\input{m22_anova_onR_escape_35}
+Finally, a analysis of variance table appeared. Looking at the \texttt{Source} column, the \texttt{s} represents individual differences. Since this is not included in the test, calculations such as $F$ value are not conducted. The effects of the factors start from \texttt{A} below, and the \texttt{s x A}, which represents individual differences caused by A, is where the comparison error is located. The $F$ value is 16.00, with a statistically significant $p$ value of 0.0039 (incidentally, the effect size is $\varepsilon^2=0.3896$), so it can be concluded that there is a difference in one of the levels.
+
+There is a post-analysis using Sheffer's method following "<< POST ANALYSES >>". According to this, the pair of a1-a2 is significantly different with a1 > a2, while the other pairs are not significant.
+
+As a result, it would be good to report it as follows, for example.
+\input{m22_anova_onR_escape_36}
+
+I have finished explaining above.
+There are probably many people who think that analysis of variance is a tedious and cumbersome task. While this may be true, if you go ahead and execute it haphazardly, there is a possibility of flawed research practices due to misuse or misinterpretation. Therefore, it is important to pay close attention to the details, understand the meaning of each component, and how it should be interpreted.
+
+In addition, if it involves things like a three-factor plan or a mixed plan, the output can become longer and longer when interpreting the analysis of variance tables and post-hoc analyses. However, instead of getting distracted, try calmly looking at it. Basically, it's just applying similar assumptions and work processes repeatedly. It's not complex or difficult, but it might seem overwhelming and burdensome. If you can get used to reading it carefully and calmly at this point, analysis of variance may appear to be a surprisingly straightforward model.
+
+However, since we are still practicing the practical judgment criteria of the null hypothesis test, there is a possibility that certain assertions (whether there was or wasn't a significant difference) may distort future interpretations, and it is impossible to avoid the problem of multiple testing from a probabilistic decision perspective. To overcome this, it is necessary to have a more detailed understanding of probabilistic models and to consider methods other than the moment method (which estimates population parameters with mean and unbiased variance). In the following lectures, we will explain these in detail. Note that although analysis of variance is considered outdated, null hypothesis testing is still practiced in academic papers, so we teach it as a classic literary skill for you to read and understand.
+\section{Assignment}
+Task 1: Analysis as a linear model.
+In a Japanese language class at a certain school, a teacher used individual texts for each of the four classes and verified the effectiveness of the texts by conducting the same test.
+There are 10 students in each class, and their test results are as follows (Table \ref{L23::exe1}). Please answer the following instructions regarding these results. Also note that this dataset is contained in the \texttt{chapter22exe1.csv} file.
+\input{m22_anova_onR_escape_37}
+
+\input{m22_anova_onR_escape_38}
+
+Task 2: Analysis of Variance for Between-Design.
+At a different school, texts were divided into three types A, B, and C, and two teachers, $\aleph$ and $\nabla$, were assigned to teach using each type of text. This was an experiment using six classes of 12 students each year.
+The test scores after class are shown in Table \ref{L23::exe2}. Please answer the following instructions regarding the results. Note that this dataset is in the \texttt{chapter22exe2.csv} file.
+\input{m22_anova_onR_escape_39}
+
+\input{m22_anova_onR_escape_40}
+
+\paragraph{Task 3 One-Way ANOVA in Within-Subject Design}
+In another school, there was one type of text and one teacher, but we tracked whether the grades changed in four different periods.
+The scores for each test period are shown in Table \ref{L23::exe3}. Please follow the following instructions and answer about the results. Note that this dataset is contained in the \texttt{chapter22exe3.csv} file.
+
+\input{m22_anova_onR_escape_41}
+
+\input{m22_anova_onR_escape_42}
+
+\end{document}

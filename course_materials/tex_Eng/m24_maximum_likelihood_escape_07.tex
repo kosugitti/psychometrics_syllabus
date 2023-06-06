@@ -1,0 +1,8 @@
+\begin{lstlisting}[language=c++,label={code:24_01},caption={Comparison of Two Estimation Methods}]
+# Least Squares Estimation
+result.LS <- lsfit(x = batter$height, y = batter$weight)
+result.LS$coefficients
+# Maximum Likelihood Estimation
+result.LM <- lm(weight ~ height, data = batter)
+result.LM
+\end{lstlisting}

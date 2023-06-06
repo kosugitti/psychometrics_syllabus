@@ -1,0 +1,202 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{myStyle} 
+
+\begin{document}
+"Practical hypothesis testing with R"
+\label{chapter20}
+
+
+\label{chapter20}
+Until now, we have learned various statistical hypothesis testing methods, but unless we know how to apply them in practice, it will be like drawing a picture of a rice cake. This time, please deepen your understanding by actually performing null hypothesis testing using the statistical environment R. We will use R as the statistical environment and RStudio as its supplement.
+There are various statistical packages available, but no matter which package or software you use, you can obtain similar output. The important thing is to understand the meaning rather than memorizing the output display location.
+
+\section{Review of Basic Operations; Descriptive Statistics}
+\subsection{Checking the Environment}
+Please review how to use R and RStudio first. RStudio is an integrated environment for using R.
+\paragraph{Starting RStudio} Please start RStudio. In cases such as when installing packages, administrative privileges may be required.
+\paragraph{Opening a Project} RStudio can manage files and execution environments as "projects". Projects create a single folder (directory), so it is best to save script files (.R files) within it. For this class or section, please create a new project\footnote{You may reuse the project used in Chapter \ref{chapter4}.}. Once you have created or opened a project, confirm that the project is open, for example by looking at the upper right corner of RStudio ($\to$ Figure \ref{fig::20_01}).
+\input{text1_chap20old_escape_01}
+
+\paragraph{Opening an R script} Prepare an R script file to write today's code. Go to \verb|File > NewFile > R Script| and display a screen with a blank R script. Once a completely blank file has opened, you are ready to go.
+
+"Creating a dataset"
+"Assigning variables to data."
+As we did in Chapter \ref{chapter16}, let's practice creating a small population and taking several samples from it. Please input \texttt{code:\ref{code:20_01}}. \footnote{\# is a commented-out section that explains what calculation is being performed on that line. You do not necessarily have to enter it, however, adding comments will make it easier to read later. }
+
+\input{text1_chap20old_escape_02}
+
+In R, there is a probability function where if you put \texttt{r} in front of the function name, it generates a random number. This was mentioned in Chapter 7.
+The normal distribution is called \verb|normal distribution|, and in R we use the function \texttt{normal}, so normal \underline{random numbers} are written as \texttt{rnorm}. Also, since the position and width of the normal distribution change depending on the mean and standard deviation, we can make $N$ random numbers with specified mean and standard deviation by taking them as arguments\footnote{Arguments are read as "hikisuu". This refers to the numbers or options given to a function.} in \texttt{rnorm(N, mean, sd)} (I write it like this here for generalization, but actually the specific numbers are put in place of $N$, $mean$, and $sd$. For example, if you want to create 100 random numbers with a mean of 50 and a standard deviation of 10, you can write \texttt{rnorm(100, 50, 10)}.\footnote{You can also explicitly specify the arguments. Like \texttt{rnorm(n=100, mean=50, sd=10)}. In this case, there are no restrictions on the order of the arguments, so you can also write \texttt{rnorm(mean=50, n=100, sd=10)}. Conversely, if you don't specify them, they're interpreted as the number of numbers, mean, and standard deviation in order from the front.})
+
+Now regarding this code, on the 4th line, we used the \texttt{rnorm} function to generate 100 random numbers with mean 5 and standard deviation 1. We consider this as the population. We assign it to object $X$ using the arrow symbol (\verb|<-|). As this is the population, we can calculate the population mean using the \texttt{mean(X)} function.
+
+Next, in the \texttt{sample} function, five samples are randomly selected from the population created under the variable name \texttt{X} and assigned to an object (such as in line 8). The mean of the samples can also be calculated using the \texttt{mean} function on each object.
+
+Please check how appropriate the sample mean is as an estimate of the population mean. Is it the case that the average of the sample means is closer to the population mean? \footnote{Since we are generating the data with random numbers, it may not always be the case. In such cases, try several times or increase the sample size of the population and sample and verify. It may be difficult to collect data from 100 people or repeat sampling many times, but it is easy to change the situation settings in a machine.}
+
+Next, let's calculate the standard deviation (\texttt{code:\ref{code:20_01}}). Please note that the sample for s1 may differ depending on the individual execution environment, so we will not show the output here. The function for calculating the standard deviation is \texttt{sd}, and the variance can be obtained using \texttt{var}.
+\input{text1_chap20old_escape_03}
+The standard deviation is the positive square root of the variance, so it has the same meaning as a statistical measure. For confirmation, the last equation is included. The symbol \texttt{\^} on line 6 represents the calculation operator for raising to a power.
+
+By the way, I would like to draw your attention to the fact that the standard deviation (and variance) functions that R has by default are based on the unbiased variance. This means that they are calculated by dividing the sum of squared differences by n-1, not by n, where n is the total number of data points. If you want to calculate the sample variance or sample standard deviation, you need to write out the formula and calculate it yourself. Let's check it by writing the code in \texttt{code:\ref{code:20_03}}.
+\input{text1_chap20old_escape_04}
+
+The formula for sample variance (2nd line) consists of nested expressions. First, the mean is subtracted from the dataset $s1$ with \texttt{s1 - mean(s1)}. Although the mean is only one value, $s1$ is a vector with five elements. In such a case, R automatically reuses the mean and subtracts it from each element of $s1$. Therefore, a vector of mean deviations is created here. Then, these deviations are squared with \texttt{\^ 2}, summed, and divided by the number of elements by using the \texttt{mean} function.
+
+In terms of confirmation, we are performing a calculation where we multiply the unbiased variance by 4 (since it is divided by $N-1=4$), and then divide by $N=5$.
+
+\subsection{Using Probability Distribution Functions}
+Next, using the example in Chapter \ref{chapter17}, let's try to calculate the probability function. Please be sure to review the difference in how to call the probability variables in R (Figure \ref{fig::20_02}).
+\input{text1_chap20old_escape_05}
+
+Based on this, the first step is to estimate the interval with 95% confidence interval. As we want 95% of the area around the peak, we need to have an estimate for it.
+\input{text1_chap20old_escape_06}
+It goes through the following procedure (Figure \ref{fig::20_03}). In the code, you can use \texttt{code:\ref{code:20_04}} to be OK.
+\input{text1_chap20old_escape_07}
+
+\input{text1_chap20old_escape_08}
+Let's do interval estimation with this. This time, we took a sample from a population with a mean of 5 and a standard deviation of 1. For example, if we want to do interval estimation for the first object, $s1$, we can calculate it using \texttt{code:\ref{code:20_05}}. We can represent it without a negative sign by calculating it with the probability point of 0.025 from the bottom instead of using -1.96.
+\input{text1_chap20old_escape_09}
+
+
+However, this is when the population variance is known, which is not usually the case, so we use the t-distribution. In R, the function name for the t-distribution is simply "t", so by using "dt, pt, qt" etc., you can obtain the probability density, cumulative probability, and probability point. However, don't forget that the degree of freedom "df" is required as an argument. The interval estimation using this method is as shown in the following code (\texttt{code:\ref{code:20_06}}), taking note of the degree of freedom and using the sample variance \texttt{sd(s1)} in place of the population variance.
+\input{text1_chap20old_escape_10}
+"However, some people may find writing equations more troublesome than they thought. Actually, there is an easier way to do it. It is to use the function of t-test in R. Speaking of t-tests, you might think of testing the difference in means between two groups, but we will do that in the next section. For now, please execute \texttt{code:\ref{code:20_07}}."
+\input{text1_chap20old_escape_11}
+This is a testing method for examining whether the sample mean obtained from a population with a mean of 5 significantly deviates from the population mean. When executed, in my environment, results similar to \texttt{console\ref{RS:out20_01}} were obtained\footnote{It should be noted that since sample s1 may vary depending on the execution environment, the results may differ from the numbers on your screen. It is important to understand the meaning of the output.}.
+
+\input{text1_chap20old_escape_12}
+Various outputs are being generated, but on the 5th line from the bottom, it should say 95 percent confidence interval, with \texttt{CI[4.154629,6.689527]} being shown, which is the same as the previous calculation result. Below that, please confirm that the sample mean \texttt{5.422078} is also the same result as \texttt{mean(s1)}.
+
+By the way, this function \texttt{t.test} has default settings of \texttt{mean = 0} and \texttt{conf.level = 0.95}.
+
+"t-Test with Correspondence"
+Now, let's use the function we previously saw, \texttt{t.test}. This function, as expected, is a tool to perform t-tests. Let's try using it in a actual testing scenario.
+
+This is about calculating a t-test with correspondence, specifically the test of the difference in means between two levels within a single factor group. In the previous section, there were complicated formulas, but this time the calculations will be done by a machine, so as usual, be sure to carefully check the output.
+
+For example, we will use the data of 10 participants in Table \ref{fig::19_01}. Execute the code \texttt{\ref{code:20_08}} to store the original data in an object.
+\input{text1_chap20old_escape_13}
+
+\paragraph{Explanation of the Code}
+\input{text1_chap20old_escape_14}
+Now, while this script was written to be easy to understand intuitively, it is also possible to express the same thing in a different way (\texttt{code:\ref{code:20_09}}).
+
+\input{text1_chap20old_escape_15}
+This is the same as before for the first and second lines.
+\input{text1_chap20old_escape_16}
+This is a way to create a data frame, so it would be good to see what form the data frame is in (\texttt{console\ref{RS:out20_03}}).
+
+\input{text1_chap20old_escape_17}
+During actual data analysis, it is common to read data files from an external source or analyze data that has already been formatted into a data frame. In R, it is common to represent the functional relationship between independent and dependent variables using the tilde symbol, so we have explained how to use it in both ways.
+
+Well, the results obtained are as shown in \texttt{console\ref{RS:out20_04}}.
+\input{text1_chap20old_escape_18}
+
+I see that the t-value is shown on the third line from the top. The actual value of the t-statistic under the null hypothesis is $t(9)=-2.4783$, and the probability of this occurring is $p=0.01754$. The alternative hypothesis is that the true difference in means is less than 0. In the R code, this is expressed as the first variable being less than the second variable. The one-tailed test is performed because the \texttt{t.test} function was called with the argument \texttt{alternative="less"}. If \texttt{alternative="greater"} is used instead, the test would be for the opposite one-tailed test (the score for the prior data is greater than that of the posterior data). If nothing is specified (\texttt{alternative="two.sided"}), a two-tailed test is performed.
+
+Please refer to the previous chapter ($\to$ Lecture \ref{chapter19}) to understand how to interpret these results and how to include them in your report.
+
+"Unpaired t-test without correspondence"
+Let's consider testing the difference in means between two independent groups with no corresponding response, in other words, testing data from a one-factor between-subjects (2-level design) study. Continuing from the previous chapter, let's analyze the data in Table \ref{tbl::19_02}. Without delving into complex calculations, please input \texttt{code:\ref{code:20_10}} and execute the analysis.
+\input{text1_chap20old_escape_19}
+The contents of the script are almost the same as before. The major difference is that there are no arguments for the \texttt{t.test} function, and neither the \texttt{paired} nor the \texttt{alternative} option is present. This is because the function is using the default settings. In R, the \texttt{t.test} function performs a two-sided test without pairing by default.
+
+The result should be displayed as follows (\texttt{console\ref{RS:out20_05}}).
+\input{text1_chap20old_escape_20}
+Please confirm whether the result matches the one obtained from manual calculation from the previous time.
+
+Hmm? The degree of freedom is 7.195? Wasn't it supposed to be 8 degrees of freedom (the degree of freedom for the experimental group is $5-1=4$, the degree of freedom for the control group is also $5-1=4$, and adding the two together gives $4+4=8$)?
+
+"Welch's correction"
+That's correct, the degrees of freedom for the t-test should be 8, but it's coming out as a strange number. This is because there is another procedure involved in the test that hasn't been explained yet.
+
+Please remember the assumptions that were made for the test. While assuming the null hypothesis that the difference in population means is zero is a hypothesis, it is also an assumption that precedes it. Specifically, the assumption was that the two groups were obtained from normal distributions, and although there is a difference in the mean values, the assumption was made that the population standard deviation was the same.
+
+What if this assumption is violated? If we cannot assume normal distribution in the population, we cannot perform a t-test. For example, if the data pertains to differences in annual income or involves numerical figures relating to ratios or angles, we cannot assume normal distribution and therefore cannot conduct a t-test. Even if we assume normal distribution, we may need to reconsider our estimation method if the population standard deviation differs.
+
+This problem is solved by adjusting the degrees of freedom of the t-value. The so-called t-test until now has been a calculation method for cases where the assumption of equal variance is satisfied (which also involves homogeneity of variance), and when this assumption is not met, an adjustment called \keytermE{Welch's correction}(ウェルチの補正) is necessary.
+
+The \texttt{t.test} function in R returns, by default, the result of applying Welch's correction, which is based on a more lenient assumption. This is done to avoid having to check whether the variances are equal, which can be a cumbersome procedure. The first line of the output also states that the test used is the Welch Two Sample t-test. Using this method, the results are:
+\input{text1_chap20old_escape_21}
+I report that the value of $t$, which in the case of a two-sided test does not have any meaning for the sign, has been calculated. Let's not only consider whether there is a difference, but also pay attention to the 95% confidence interval of the difference. According to the results, the 95% confidence interval for the difference was CI[-12.609577, 3.409577]. Since the range of the difference is from -12 to +3 and includes the null hypothesis that the difference = 0, it is not significant.
+
+
+By the way, when assuming equal variances, you can use the options of the \texttt{t.test} function (\texttt{code:\ref{code:20_11}}).
+
+\input{text1_chap20old_escape_22}
+
+With this, you can obtain results like \texttt{console\ref{RS:out20_06}}.
+
+\input{text1_chap20old_escape_23}
+With this method, the degrees of freedom are also integers (although the determination result remains unchanged).
+
+Verification of Post-hoc Effect Size
+Although the exam is over, we are wondering if this experimental data had a "winning strategy". In other words, we are curious if the difference of the population mean in the overall population is large enough to make a significant impact. We do not know the population value, but we have been estimating it using statistical data. Therefore, let's consider after collecting the data, how large the effect size was.
+
+It is also possible to easily calculate effect size using R. R offers various statistical functions with the addition of packages, and introducing the \textsf{effsize} package \citep{effsize} for effect sizes makes calculation simple. Please refer to chapter \ref{chapter19} for information on effect size. Here, we introduce the recommended method of calculating Hedges' g (\texttt{code:\ref{code:20_12}}).
+
+\input{text1_chap20old_escape_24}
+First, in the second line, load the package\footnote{If you do not have this package, you need to download it from the internet and save it locally (on your PC). This download is called "installing a package" and can be done using the \texttt{install.packages} function. To install the package for this example, enter \texttt{install.packages("effsize")} and run it. Pay attention to capitalization! Also, you do not need to do this every time, once you download it is enough.}, and in the following line, compute the Cohen's d with Hedges' correction.
+
+The result is shown as \texttt{console\ref{RS:out20_07}}.
+\input{text1_chap20old_escape_25}
+
+As indicated by "g estimate: -0.7715342 (medium)" in the text, the estimated value is 0.77 and this is of medium size. Although there seems to be a moderate difference, it may not have been significant in this case due to the small sample size. If it had been properly designed in advance and conducted as an experimental procedure, it would have been improved.
+
+Calculating effect size can also be done retrospectively by considering how much difference there is likely to be in the standardized mean values ​​from this sample. Of course, it can also be used to design sample sizes (considering how many samples are needed) by assuming the difference in the mean values ​​beforehand. Make sure to include the calculated sample effect size in the report.
+
+\input{text1_chap20old_escape_26}
+
+\subsection{Appendix}
+As an appendix, I will add two points. Please read them if you have time or interest.
+\paragraph{Calculating Effect Size for Paired t-test} When performing a paired $t$-test and seeking to obtain its effect size, you should turn on the paired option as shown in the following code example (\texttt{code:\ref{code:20_13}}).
+
+\input{text1_chap20old_escape_27}
+However, if you are using a writing style that includes tilde (~), when using \texttt{code:\ref{code:20_14}}, the output will display a warning message like the one shown in \texttt{console:\ref{RS:out20_08}}.
+\input{text1_chap20old_escape_28}
+
+\input{text1_chap20old_escape_29}
+This warning is saying that "the variable for identifying individual correspondence is not included in the dataset, so the results may be incorrect. Please use the following format." To address this, you should use \texttt{code:\ref{code:20_15}}.
+\input{text1_chap20old_escape_30}
+The key point here is to create a variable to identify the ID in the 5th line. \footnote{The function \texttt{rep} repeats \texttt{1:10} twice. In R, numbers connected with a colon indicate a sequence.} We have also rewritten the formula for calculating the effect size in the proposed format of the warning.
+
+"How to Design a Sample Size"
+In an unsupported t-test, even though the effect size was 0.7, it did not show statistical significance. It was suggested that this may be due to the small sample size, but then how many pieces of data were needed? We can obtain a hint by inputting the code shown in \texttt{code:\ref{code:20_16}} into R.
+\input{text1_chap20old_escape_31}
+Here, we set \texttt{delta=0.7} based on the assumption that there is a standardized mean difference of 0.7. We used this value because it was suggested by the results of the post-hoc power analysis conducted earlier. However, it is acceptable to estimate a smaller or larger value as well. Additionally, we set \texttt{power=0.8}, which is the \textit{power} discussed in Section \ref{sec::18_05}. We aimed to reduce the Type II error (false negative) to approximately 20\% and achieve an 80\% probability of detecting a significant difference ($1-\beta=0.8$). The significance level is 5\% ($\alpha=0.05$), which is set as \texttt{sig.level=0.05} in the script.
+
+Now, looking at the output of this, it was shown as follows (\texttt{console\ref{RS:out20_09}}).
+\input{text1_chap20old_escape_32}
+As mentioned here, if you are conducting a study with an effect size of 0.7 and a power of 0.8, you would want to gather around 33 to 34 people. However, in this case, only 5 people were gathered. This is shown in \texttt{code:\ref{code:20_17}} and \texttt{console:\ref{RS:out20_10}}.
+
+\input{text1_chap20old_escape_33}
+
+\input{text1_chap20old_escape_34}
+As stated here, the statistical power is 0.16, which means that even if this study was conducted 100 times, it would correctly identify statistically significant differences only about 16 times, given a sample size of n=5. It's like playing a losing game.
+\section{Task/Assignment}
+Task 1: Sample Statistics and One-Sample Test.
+Assuming that data like that in Table \ref{exe:20_1} has been obtained, please follow the following instructions and answer the questions about the results.
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Fri Oct 16 12:52:58 2020
+\input{text1_chap20old_escape_35}
+\input{text1_chap20old_escape_36}
+
+"Task 2: Paired t-test with corresponding data."
+Please answer the following instructions regarding the results obtained from pre- and post-intervention psychological tests, as shown in Table \ref{exe:20_2}.
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Fri Oct 16 12:59:41 2020
+\input{text1_chap20old_escape_37}
+
+\input{text1_chap20old_escape_38}
+
+Task 3: Unpaired t-test without matching.
+Please provide the table results of the psychological tests for the control group and the experimental group, as shown in Table \ref{exe:20_3}. Follow the instructions below and answer the questions regarding the results.
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Fri Oct 16 13:05:51 2020
+\input{text1_chap20old_escape_39}
+
+\input{text1_chap20old_escape_40}
+
+\end{document}

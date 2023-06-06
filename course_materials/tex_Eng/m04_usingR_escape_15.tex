@@ -1,0 +1,13 @@
+\begin{lstlisting}[language=c++,label={code:usingR_filter2},caption={filter function}]
+# Extract only those who are at least 180cm tall
+dat %>% filter(height >= 180)
+# Extract only those who weigh 100kg or less
+dat %>% filter(weight <=100)
+# Extract only pitchers
+dat %>% filter(position == "投手") # 投手 means pitcher
+# Extract only fielders, which are those who are not pitchers
+dat %>% filter(position != "投手") # 野手 means fielder
+# Extract those who meet either condition
+dat %>% filter(position == "捕手" | position == "内野手" | 
+                  position =="外野手") # 捕手 means catcher, 内野手 means infielder, 外野手 means outfielder
+\end{lstlisting}

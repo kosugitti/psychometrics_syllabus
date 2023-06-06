@@ -1,0 +1,21 @@
+\begin{lstlisting}[language=c++,label={code:20_01},caption={Repeated Sampling}]
+# Clear workspace
+rm(list=ls())
+### Create population
+X <- rnorm(100,5,1)
+## Population mean
+mean(X)
+### Create sample 1
+s1 <- sample(X,5)
+## Sample mean
+mean(s1)
+## Repeat the following
+s2 <- sample(X,5)
+mean(s2)
+s3 <- sample(X,5)
+mean(s3)
+s4 <- sample(X,5)
+mean(s4)
+s5 <- sample(X,6)
+mean(s5)
+\end{lstlisting}

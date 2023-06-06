@@ -22,18 +22,27 @@
 
 x軸が潜在能力$\theta$を表していると考えれば，縦軸は能力に応じた\keytermL{通過率}{つうかりつ}になると考えられます。この関数を左右に動かす位置パラメータ，$b_j$を加えたモデルが\keyterm{1パラメータ・ロジスティックモデル}{1ぱらめーたろじすてぃっくもでる}{One Parameter Logistic model}であり，次の式\ref{1PLmodel}で表現されるのでした。
 
-\begin{equation}     p_j(\theta) = \frac{1}{1+exp(-1.7(\theta-b_j))} \label{1PLmodel} \end{equation}
+\begin{equation}     
+  p_j(\theta) = \frac{1}{1+exp(-1.7(\theta-b_j))} 
+  \label{1PLmodel}
+\end{equation}
 
 ここで$p_j(\theta)$は項目$j$に対する$\theta$の通過率であり，$b_j$は\keyterm{困難度}{こんなんど}{difficulty}母数と言われるものです。
 
 さらに項目を特徴づけるために，傾きの大きさを表すパラメータ，$a_j$を加えたモデルが\keyterm{2パラメータ・ロジスティックモデル}{2ぱらめーたろじすてぃっくもでる}{Two Parameter Logistic model}です。モデル式は式\ref{2PLmodel}で表されます。
 
-\begin{equation}     p_j(\theta) = \frac{1}{1+exp(-1.7a_j(\theta-b_j))} \label{2PLmodel} \end{equation}
+\begin{equation} 
+  p_j(\theta) = \frac{1}{1+exp(-1.7a_j(\theta-b_j))} 
+  \label{2PLmodel}
+\end{equation}
 
 $a_j$はのことをとくに\keyterm{識別力}{しきべつりょく}{discriminant}と呼ぶのでした。$a_j$の値によって傾きがどのように変わるかを，図\ref{fig::27_01}の二段目をみて確認しておきましょう。
 
 最後に，第\ref{x04_IRT}講では紹介していませんでしたが，3つ目のパラメータである$c_j$，\keyterm{当て推量母数}{あてすいりょうぼすう}{guessing parameter}を入れたモデルも紹介しておきます。モデルは式\ref{3PLmodel}のように表されます。
-\begin{equation}     p_j(\theta) = c_j + \frac{1-c_j}{1+exp(-1.7a_j(\theta-b_j))} \label{3PLmodel} \end{equation}
+\begin{equation}
+  p_j(\theta) = c_j + \frac{1-c_j}{1+exp(-1.7a_j(\theta-b_j))}
+  \label{3PLmodel}
+\end{equation}
 ここには切片のように定数$c_j$が入っていますから，関数のベースラインが上に上がるイメージです。これはつまり，学力$\theta$にかかわらず一定の正答率を有するということで，「適当に答えても当たる確率」ということから当て推量とよばれています。
 
 \begin{figure}[ht]

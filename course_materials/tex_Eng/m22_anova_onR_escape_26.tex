@@ -1,0 +1,15 @@
+\begin{Rscreen}{Output of ANOVA table}{out23_07}
+   \begin{verbatim}
+> anova(result.lm2)
+Analysis of Variance Table
+
+Response: value
+           Df Sum Sq Mean Sq F value   Pr(>F)   
+temp        1   0.75    0.75     0.5 0.499576   
+maker       1   6.75    6.75     4.5 0.066688 . 
+temp:maker  1  36.75   36.75    24.5 0.001121 **
+Residuals   8  12.00    1.50                    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{verbatim}
+\end{Rscreen}

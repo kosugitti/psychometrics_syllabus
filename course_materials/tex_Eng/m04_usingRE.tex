@@ -1,0 +1,299 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+\VerbatimFootnotes
+\chapter{Using the Statistical Environment R}
+\label{m04_usingR}
+
+\section{Document creation with Rmarkdown}
+\label{Rmarkdown}
+Last time, we did various statistical processes such as calculating and inputting data in R. In addition to these R computing features, RStudio also has document creation capabilities as an integrated development environment. Here, we would like to explain about document creation using RStudio.
+
+Spreadsheet software and document creation software are separate things but they are often sold and used as a set. These are collectively referred to as office software. Microsoft offers the Office series, which includes Word, Excel, and PowerPoint, while Apple offers Pages, Numbers, and Keynote, among others. There are also free software options such as the LibreOffice series, which includes Writer, Calc, and Impress Presentation - software for document creation, spreadsheet usage, and presentations, respectively. It is common to use these types of software to perform numerical calculations with spreadsheet software, write reports using document files, and present in slideshow format using presentation software. While creating such documents, it is common to make tables and graphs in spreadsheet software and copy and paste them into document or presentation files. This method works fine for shorter documents, but problems such as pasting the wrong figure or using outdated figures due to forgotten updates can arise, especially as documents become longer or deal with more data. This is often referred to as "copy-paste contamination."
+
+If document creation, including the creation of figures and numerical calculations, is done in the same environment, this problem can be eliminated. RStudio provides such an environment. R has a calculation environment, so if there is a mechanism for incorporating it into a document, it would be ideal. RStudio supports this with a format called Rmarkdown. Rmarkdown is a file format unique to RStudio that incorporates R into a document format called Markdown. When you go to \verb|File > New File > R Markdown| from the menu, there is a prompt asking which output file format is needed in the end (Figure \ref{fig::05_08}). As shown here, the output can be in various file formats, such as HTML, PDF, and Word\footnote{To output in PDF format, another system called TeX is also required, but it can be installed from RStudio.}. For now, let us select HTML. Enter an appropriate document title in Title and your name in Author, and then click OK.
+
+\input{m04_usingR_escape_01}
+
+\input{m04_usingR_escape_02}
+
+Then a file in Rmarkdown format will be opened. This file already contains some text, which serves as an example of how to write. Figure \ref{fig::05_09} shows a screenshot of the first few lines. Please read the following annotations while checking if your environment looks the same\footnote{Of course, Title and Author should have been replaced with your own information.}.
+
+The first 6 lines of this file are where the setup for the entire document is made. You generally do not need to modify anything here.
+The first and sixth lines contain "---" which is an important delimiter and should not be modified. The second line is the title, the third line is the author, the fourth line is the creation date, and the fifth line is the output format. These should reflect the specifications specified in Figure \ref{fig::05_08}. While you can change these, please be careful as deviating from the formatting rules may cause issues later on.
+
+The main text begins from the 7th line. If you look closely, you can see gray and white zones in the background. The gray zone (lines 8 - 10, 18 - 20, etc.) is where the R code called "chunk" is written. The white zone (lines 11 - 17, 21 - 25, etc.) is where the document, or main text, is written. You can delete all the sample text from the 7th line and onwards. In fact, when you write reports or other documents, it's a good idea to delete it. But for now, let's leave it as it is and click the "knit" button at the top of the file. "Knit" means to weave the text together. If the file has not been saved yet, a window will appear prompting you to enter a file name. You can choose any name and run it. If this is your first time, RStudio will try to download the necessary packages for "knit" from the internet. It will ask if you want to download them. Please select "OK".
+
+\input{m04_usingR_escape_03}
+
+In Figure \ref{fig::05_10}, we have compared the Rmarkdown file and its output\footnote{If knit has completed successfully, it should be displayed in the Viewer pane.}. Can you see the correspondence between them? The title, author's name, and date that were inputted in the settings are displayed prominently. The main body of the text follows these elements.
+
+In the output, the text starts with "R Markdown". This corresponds to the section marked with "\verb|##|" in the original file. In Rmarkdown files, the "#" symbol indicates the level of the heading, rather than commenting out text\footnote{If you have trouble with the formatting not showing up as headings, make sure to add a space after the "#" symbol. R will not recognize it as a heading without the delimiter!}. "#," indicates level 2, "###" indicates level 3 and so on, with lower levels indicating larger font sizes. \footnote{While this course does not cover report writing in detail, keep in mind that academic writing is structured with paragraphs, headings and subheadings. Scientific papers and academic documents have a hierarchical structure, with paragraphs, headings and subheadings. In psychology papers, specifically, paragraphs are typically structured into "Introduction," "Method," "Results," and "Discussion," and deviation from this style is typically not encouraged.}
+
+For text without headings, it is output as part of the body text. What stands out are the parts of the R area with gray background. For example, the 19th line of the original file has "\texttt{summary(cars)}" written. This is an R command that displays a summary of the "\texttt{cars}" object using the "\texttt{summary}" function. While \textbf{only this instruction is written in the text}, the result is shown on the right, displaying both the command that was executed in the gray background and the results (the descriptive statistics of the "speed" and "dist" variables). Additionally, the 27th line of the original file has "\texttt{plot(pressure)}" written, which is a command to draw a plot using the "\texttt{plot}" function, and it should also be reflected in the file.
+
+Instead of copying and pasting the calculation results into a document, it is sufficient to simply explain the calculation process. By doing so, the recipient of this output document can confirm what kind of calculations were performed and what the results were. This eliminates the risk of "copy-paste contamination"! This is a very convenient and revolutionary method that guarantees the clarity and accuracy of the method when creating scientific papers.
+
+"Write it yourself"
+Please delete all lines below line 7 of the original file and write your own Rmarkdown according to your preference.
+The goal is to write as follows: \texttt{code:\ref{code:05_08}}.
+To insert a chunk area to write R code, press the button shown in Figure \ref{fig::05_11} and select R. As written in \texttt{code:\ref{code:05_08}}, you can also use three backticks and write r in curly braces (\verb|```{r}|), followed by closing with backticks.
+
+Chunks display buttons for settings and temporary execution (Figure \ref{fig::05_12}). When you click the execute button, the results are displayed below knit, allowing you to confirm if the intended results have been shown.
+
+\input{m04_usingR_escape_04}
+
+\input{m04_usingR_escape_05}
+
+\input{m04_usingR_escape_06}
+
+Did you succeed? If there are any errors or mistakes in the code or settings, knit will abort, so be sure to read the error messages and respond accordingly. As for RMarkdown, it is explained in detail in a book by \citet{Takahashi201805}, and other references like \citet{Kinosady2021} and \citet{kosugi2019} can also be helpful\footnote{At the Senshu University Kuni-Sato Lab and Kosugi Lab, writing the thesis in RMarkdown is recommended. Not only is it convenient from the perspective of reproducibility, but we also co-develop a Senshu University-specific package, \texttt{senshuRmd}, which can be used to conform to the document standards and automatically generate citation lists.}.
+
+
+Using Rmarkdown, I learned that you can combine R scripts (instructions for calculations) and report text into one, and output them in the desired format by knitting. What is drawn in the script is only the instruction for computation, and the procedure for processing data is described. In other words, even if the data is changed, the calculation procedure can be carried out in a fixed form.
+
+Suppose you have a job where you consistently receive similar data and have to create the same types of reports repeatedly. While this is hypothetical, it is not uncommon to have to compile monthly or yearly data in the real world. It's absurd to repetitively calculate the same figures using a mouse if the procedure and wording stays the same, with just the numbers changing. With Rmarkdown, you can easily swap out data and send it to the same template. It's perfect for situations like this.
+
+Of course, it was also scientifically important to keep a record of the calculation procedure. As an example of research practice, when data is obtained, the data file should not be processed and all processing should be done using R scripts/R markdown to check for any possible falsification of the calculation results. Open science movements are also spreading, as data obtained through research is made public to be checked by various people.
+\section{Loading External Data}
+In actual research settings, it is common to use spreadsheet software for data input\footnote{When it comes to inputting numerical data, spreadsheet software is clearly advantageous, and it is difficult to input data using statistical software such as R.}. There are also best practices for data input, which are discussed in Section \ref{MakingData}, Pp. \pageref{MakingData}. While commercial software can be used for input, analyzing the data is the job of R.
+
+If your data file is located externally, you need to import it into R. Importing external data is a pre-analytical procedure, but it also is a scene where beginners are prone to run into trouble. We will explain the steps, so please read them carefully.
+
+\subsection{Loading Data Files}
+\label{readCSV}
+Now, let's start analyzing by loading this practice dataset.
+Download "Data for baseball players for 10 years" from the course syllabus website\footnote{\url{https://kosugitti.github.io/psychometrtics_syllabus/}} and save it in the project folder. Do not modify the TeX code.
+
+This dataset was scraped from Pro Baseball Data Freak\footnote{\url{https://baseball-data.com/}}, and contains data on professional baseball players for the past 10 years starting in 2011. Please refer to Table \ref{BaseballDecade} for details on the contents of the data.
+\input{m04_usingR_escape_07}
+
+To load this data file, you need to use a function to read it. While you can use the basic function that R has, which is the \texttt{read.csv} function, let's try using a more convenient function from a package here.
+
+Here, we will proceed with creating a plain R script file, not using Rmarkdown.
+Before beginning the task, please make sure that the data file is located within the project folder and that you have opened the project\footnote{By opening the project, R sets the current directory (working directory/folder) to that folder. This makes it possible to refer to the files using only the file name. If you haven't opened the project or want to reference files from different folders, you will need to specify a relative path in place of the file name. For more information on specifying file locations, see Appendix \ref{computer} on Pp.\pageref{setLocation}.}. Then, open a new file from \verb|File > New File > R Script| or write and execute the code in Listing \ref{code:05_09} below the previous R script file.
+
+\input{m04_usingR_escape_08}
+
+\input{m04_usingR_escape_09}
+
+By doing this, external files can be read. The \verb|tidyverse| package shown here is a package for data manipulation in R\footnote{Refer to Appendix \ref{FreaquentlyAskedQuestions}, Pp. \pageref{FreaquentlyAskedQuestions} for errors such as inability to read files or character garbling.}.
+Data manipulation that makes it easier to analyze the created data is referred to as \keytermE{Data Handling}. In the following section, we will provide a brief explanation of data handling methods and how to effectively manipulate data.
+% \begin{tcolorbox}[title=FAQ；ファイルの文字化け,fonttitle=\gtfamily\sffamily\bfseries,colframe=blue,colback=blue!3!]
+% 　ここでWindowsユーザの多くがエラーに遭遇します。「資料として配布されたファイルが文字化けして読み込めません」という相談が毎年頻発します。
+
+% 　理由はWindows特有の過保護な親切設計と，いまだに局所的な古い文字コードを使っていることにあります。
+% 資料ファイルはcsv形式でダウンロードして使ってもらうようにしています。こちらは世界標準のUTF-8でエンコードしてあります。
+% Windowsでこれをダウンロードすると，親切にも「ダウンロードしたら開くよね」といって勝手にExcelで開きます。みなさんもファイルの中身が見られたら安心ですね。でもそれを保存する時に，うっかり中身を触ってしまうようなことがあれば，文字コードを変えて上書き保存してしまいます。これで文字化けします。Excelなどで開かずに，直接Rで読み込むことがポイントです。
+
+% 　また読込の時にエラーが生じるのであれば，WindowsのRにおける文字コードが勝手に日本ローカルに設定されて違う文字コードで読み込んでしまうことになります。
+% そんな時は読み込み関数に\verb|locale=locale(encoding=”utf8")|をオプションとして追加すると良いでしょう。
+% \end{tcolorbox}
+
+\subsection{Data Handling}
+\label{dataHandling}
+I will translate this Japanese text into English without modifying the TeX code:
+
+Here, we will talk about data handling. Data handling means processing data. Even when conducting advanced statistical analysis, it is necessary to first prepare the original data in a format that is easy to analyze.
+Interestingly, there is also a book written solely about data handling. \citet{Kinosady2021} focuses specifically on preparing and processing data to make it easier to analyze, without delving into the analysis itself. It's a highly recommended book to have on hand.
+
+Here, we have extracted and introduced some commonly used basic functions.
+
+"tidyverse package"
+Here, we will explain how to use the tidyverse package, which is a specialized package for handling data. This package is a collection of packages, in other words, a package that combines useful tools, much like a "beginner's cooking set". The TeX code will not be modified.
+
+
+As installation should already be completed from the previous section (\ref{HowToUseRpackage}, Pp. \pageref{HowToUseRpackage}), let us load and handle this.
+Downloading and installing only need to be done once in the same environment, so you don't need to do them every time you start or run it. However, you must \textbf{implement} the packages before running it. Downloading and installing are like purchasing goods, while implementing is like putting them on. \footnote{In the game "Dragon Quest," weapons and armor are purchased at a weapon shop, but simply possessing them does not count as wearing them, and their effects will not be activated. It is necessary to take the action of "wearing" the purchased weapons and armor. When purchasing at a weapon shop, the shopkeeper warns you with the phrase "Are you going to wear it now?".}
+The function to be implemented is \verb|library|, and when executed, it will be displayed as shown in Figure \ref{RS:library_tidyverse}.
+
+\input{m04_usingR_escape_10}
+Here it shows that the packages \verb|ggplot2,purrr,tibble,dplyr,tidyr,stringr,readr,forcats| have been loaded, and that the functions \verb|filter| and \verb|lag| from the loaded \verb|dplyr| package have overwritten functions from other packages due to a conflict. This is generally not important information, but for those who may be interested, it is worth noting that there can be naming conflicts between functions from different packages, and to circumvent this, one can specify which package's function to use by using the double colon operator (\verb|::|). In this case, the line \verb|dplyr::filter| has masked the \verb|stats::filter| function, meaning that when using the function \verb|filter| without specifying a package, the \verb|dplyr| implementation of the function will be used. If you would like to use the \verb|stats| implementation of \verb|filter| later on, you can do so by specifying \verb|stats::filter|. Additionally, it is worth noting that the \verb|stats| package is one of the fundamental packages that are loaded when starting R.
+
+Let's use the \verb|tidyverse| package to handle data.
+I will now introduce some functions. They may seem like single pieces of Lego blocks that you don't know what to do with, but when you combine them, you can do great things...! So please bear with me.
+"Column Selection: Select"
+First, let's talk about the function for column selection, \verb|select|. As you can see in Table \ref{BaseballDecade}, the baseball data that was loaded earlier has many variables. When you want to extract only the variables for height (\verb|height|) and weight (\verb|weight|) from this data, you can use this function.
+The result of Code \ref{code:usingR_select} is Output \ref{RS:usingR_select}.
+\input{m04_usingR_escape_11}
+\input{m04_usingR_escape_12}
+It can be confirmed that the variables have been narrowed down to two.
+
+There is an important point here, which is the pipe operator, \verb|%>%|. This means passing the previous object as the first argument to the next function. For example, if you want to transform $y=f(x)$ and then $z=g(y)$, you might think in your head that it goes from $x$ to $y$ to $z$, but in code, you need to write $y \leftarrow x$, then $z \leftarrow y$, in reverse order. Alternatively, you could nest them like $z=g(f(x))$, which can make it harder to read. This is where \verb|%>%| comes in, allowing you to chain the transformations together in the same order you would think of them in your head\footnote{When reading this, pronounce it as "then". For example, "passing through dat, then selecting". If you're confused, there was a comedy skit in a Japanese TV show called "Gottsu Ee Kanji" that used the phrase "keirete" in a similar way, so you might want to look it up.}\footnote{It can be a hassle to type the percent sign, then the greater than sign, then another percent sign. RStudio has a keyboard shortcut, \verb|Ctrl+Shift+M|, which will insert the operator for you. There are plenty of other shortcuts like this, which you can find by going to RStudio's Help menu and choosing "Cheat Sheets". This will open up a one- or two-page summary of various commands you can use.}.
+
+Paragraph: Line selection: filter.
+Next is row selection. Here we use a function called \verb|filter|. If, for example, we want to select only the data for the year 2020 from the 6546 rows of data we just loaded, we would need to select a specific row. We use \verb|filter| for this purpose. The output for code \ref{code:usingR_filter} is shown in output \ref{RS:usingR_filter}.
+\input{m04_usingR_escape_13}
+\input{m04_usingR_escape_14}
+The resulting dataset is 664 rows by 17 variables. Since it was about 6,500 rows for 10 years, cutting it down to just one year reduces the data size to about one-tenth of the original.
+
+Here in the \verb|filter| function, it is written as \verb|Year == "2020年度"|. This means that only the rows where the value of the \verb|Year| variable is "2020年度" should be extracted. The double equals sign \verb|==| is like a function that checks whether the left-hand side is equal to the right-hand side. If there's only one equals sign, R interprets it as an assignment operator, meaning the same as \verb|<-|. (Actually, normally you could have written \verb|dat=read_csv(***)|, but we used \verb|<-| here to avoid confusion with the symbol for an equation.)
+
+There are various ways to use this conditional expression. Some examples are shown in Code \ref{code:usingR_filter2}, so please run and see how they work.
+\input{m04_usingR_escape_15}
+When extracting only the outfielders, the symbol \verb|!=| appeared, which means $\neq$. Since $\neq$ cannot be input, it is represented by \verb|!| to denote negation. This data contains both pitcher and outfielder data and the variable \texttt{position} indicates playing position, so the outfielder data includes catchers, infielders and outfielders. The expression for selecting either A, B or C uses the expression \verb"|" but, due to length, it was excluded based on the condition of "not being a pitcher".
+
+So far, we have explained about column selection using \texttt{select} and row selection using \texttt{filter}. Please try to understand the difference between the two concepts visually (see Figure \ref{fig::11_02}) without modifying the TeX code.
+\input{m04_usingR_escape_16}
+
+\paragraph{Generating variables; mutate}
+Now let's create a function called "mutate" for creating variables. For example, batting average is calculated by dividing the number of hits by the number of at-bats.
+The dataset for this analysis includes the number of hits (\verb|Hit|) and at bats (\verb|AtBats|), but does not include data on batting averages. To create this data, we can use the code in \ref{code:usingR_mutate}.
+\input{m04_usingR_escape_17}
+This time, I selected the variables first and then put them into the \verb|mutate| function. Of course, it is also acceptable to put them directly into the function.
+In any case, I think it is clear that variables can be created with this.
+
+"Creating new variables" like this is quite important. For example, when there are missing values in the data, you might want to replace them with a different number. If you use the same variable name for the variable created with the \verb|mutate| function as an existing variable name, it will be \textbf{overwritten}, allowing you to replace it with the new value."
+
+In practical data science, it is common to create another variable that represents the features of the data by combining variables. This processing is called \textit{feature engineering}.
+
+By manipulating variables like this, you can continuously create new variables from existing ones. In other words, when processing data, use these functions to manipulate the data while keeping track of the changes in R. If you manipulate data in a spreadsheet program, there is a possibility of \underline{data fabrication} being suspected. It's important to approach open science by recording in R how you fixed incomplete data such as input errors or missing values, regardless of the imperfections. It is important to keep the data file as is and openly indicate all processing steps during the analysis.
+
+\section{Grammar of Graphs}
+Now, let me introduce the grammar for drawing graphs.
+
+\subsection{Drawing Graphs}
+As mentioned in Section \ref{dataVisualization}, page \pageref{dataVisualization}, \textbf{visualizing data} is fundamental, and programming these visualizations is important from the perspective of objectivity and reproducibility. Proper visualizations enable appropriate information reading, while inappropriate visualizations can lead to wrong impressions, even unintentionally. Therefore, it is important to articulate why and how we are visualizing data. Chapter 1 of \citet{Kieran2018} discusses graph design from the perspective of perceptual and cognitive psychology. I recommend reading it.
+
+Here, we will explain how to create plots using the \texttt{ggplot2} package \citep{ggplot2} following the \keytermE{Grammar of Graphics} for visualization. The TeX code will not be modified.
+\paragraph{Grammar of Visualization}
+When creating a visualization using the grammar of graphics, we proceed as follows with the drawing code.
+\input{m04_usingR_escape_18}
+Based on this, please continue with the code from earlier without modifying the TeX code. (Note: it is necessary to ensure that the packages and data have already been loaded before writing the continuation. The \texttt{ggplot2} package required for drawing is already loaded simultaneously when loading the \texttt{tidyverse} package.) Enter \texttt{code:\ref{code:05_10}}.
+
+\input{m04_usingR_escape_19}
+
+\input{m04_usingR_escape_20}
+In this first line, it specifies to use an object called \texttt{dat} and map the height variable (\verb|height|) of the \texttt{dat} object on the x-axis and the weight variable (\verb|weight|) on the y-axis. The function \texttt{aes} stands for aesthetic and refers to considering the aesthetic correspondence of the data. It is the part where you set the function information that represents the correspondence relationship, such as what color corresponds to what, what size corresponds to what, and which variable corresponds to the grouping.
+
+Now, as shown here, when you create an object specifying only the dimensions of the data and display it, only a canvas with a gray background is displayed in place of the plot (upper left of Figure \ref{fig::05_15})\footnote{If you are a Mac user, you may see only square tofu-like characters instead of axis labels. This is a character encoding issue and can be fixed by running the following code: \verb|old <- theme_set(theme_gray(base_family = "HiraKakuProN-W3"))|. Alternatively, try searching for "Mac ggplot2 tofu character encoding" or similar.}.
+
+Please keep the TeX code unchanged and translate the following Japanese text into English:
+
+Starting from this as a base, we will add elements one after another. Please write and run the next codes, \texttt{code:\ref{code:05_11}} and \texttt{code:\ref{code:05_12}}.
+
+\input{m04_usingR_escape_21}
+
+\input{m04_usingR_escape_22}
+
+\input{m04_usingR_escape_23}
+
+\input{m04_usingR_escape_24}
+
+
+\input{m04_usingR_escape_25}
+
+
+Have you been able to see how the figure changes over time? The "g1" object was just a blank canvas, but by adding dots (scatter plot) and lines (model fitting), the graph is gradually created.
+This is achieved by sequentially adding objects. Although we created objects one by one for the purpose of understanding, it can be expressed in a single sentence once you become familiar with it.
+
+The function used in this case, \verb|geom_|, is an abbreviation of geometry. It is used to perform various mappings. Commonly used ones include the following:
+\input{m04_usingR_escape_26}
+With these combinations, various graphs can be displayed. It can be easily done by making slight alterations, so let's play around with changing them in various ways.
+
+Finally, let's run the following code \texttt{code:\ref{code:05_13}}.
+\input{m04_usingR_escape_27}
+
+\input{m04_usingR_escape_28}
+
+The function \verb|facet_wrap| has now appeared. \verb|facet_| is a function that considers division and segmentation. While various information can be written in the data, organizing it by suitable groups can reveal insights. In this case, the instruction is to divide the data using the variable \verb|team|, and the resulting figure is shown in the bottom right of figure \ref{fig::05_15}, for instance.
+
+There is an aspect to the grammar of visualization that is best learned through practice rather than instruction. By looking at various examples, we can practice deciphering the grammar and understanding how a particular graph was created. Examples outputted using ggplot can be found on websites such as \url{https://www.r-graph-gallery.com/ggplot2-package.html}.
+
+\section{Assignment}
+You are a translator. 
+
+Please create a task using an Rmarkdown file. Title it as "Task 5" and in the "Author" section, include your student ID and name. Choose HTML as the output format. The submitted file must be a complete.Rmd file without errors. Note that files with the wrong format or incomplete output (that have errors) will be returned.
+\paragraph{Calculating Descriptive Statistics} Please follow these steps to calculate the descriptive statistics of the data, without modifying the TeX code.
+
+\input{m04_usingR_escape_29}
+
+\input{m04_usingR_escape_30}
+
+\input{m04_usingR_escape_31}
+
+\paragraph{Trying to draw a figure 1} Please execute \texttt{code:\ref{code:05_exe1}} using the same dataset.
+\input{m04_usingR_escape_32}
+
+\input{m04_usingR_escape_33}
+\paragraph{Drawing a Figure 2} Using the \verb|dat| object, please draw the same figure as Figure \ref{fig::05_16}. Only data from the year 2020 should be used.
+\input{m04_usingR_escape_34}
+
+\newpage
+\section{Appendix}
+\subsection{Creating Data}
+\label{MakingData}
+I'll digress a bit, but let me explain how to create data files.
+% Rのコードでそれを実行するとなると大変です。また実際の研究のシーンであれば，機械が大量にデータをファイルに出力するといっこともあるでしょう。Web調査を行った結果なども，表計算ソフトで利用できる形に出力されるのが一般的です。
+% ここではそうしたファイルからデータを読み込む方法について説明します。
+
+If you only have a few pieces of data, you can input them one by one into a \texttt{data.frame} using the method explained above. However, if you want to create a file by manually inputting the data, it's more convenient to use spreadsheet software. One thing to keep in mind is that \textbf{only one piece of data can be entered into one cell}. We will be working with and manipulating the data later, but it's best to keep the data in its plain form as much as possible beforehand (using already-processed ingredients in a different dish can be difficult!).
+
+For example, Figure \ref{fig::05_13} is an example of bad data file creation. Please take a close look at it first, and consider what is wrong. There are at least seven problems.
+\input{m04_usingR_escape_35}
+
+The section that has become difficult-to-analyze and not-good-quality data is as follows.
+\input{m04_usingR_escape_36}
+How many of you noticed? The main point through these issues is to "put sufficient information in one dataset and one cell". It's fine to create a table and show it with this kind of input, but the purpose here is to analyze numerical data, so information that is not in numbers, layout, or information that can be calculated from here is excess information that is not needed for analysis. By the way, underlines, text colors, and cell colors are automatically omitted during analysis (because they are not data). Spreadsheet software is software that calculates numbers as a table, so be aware that it is different from grid paper or layout documents.
+
+In addition, what is inconvenient during analysis is the relationship between characters and numbers. When multiple numbers are included in one cell, it is often necessary to use punctuation marks (even spaces are considered characters by machines!), but having mixed types and levels of characters and variables also contributes to information overload.
+
+The dataset shown in Figure \ref{fig::05_14} is what fixed the issues this time. It is a single dataset that contains only one type of variable in each column, without unnecessary or excessive information. Note that the \texttt{NA} in variable 3 stands for "No Answer" and represents the missing value. When reading the dataset, it is possible to specify the character used to represent missing values, so this should not be a problem.
+\input{m04_usingR_escape_37}
+
+In this way, the basic principle of data input is to create a single dataset with no omissions or redundancies, where \textbf{one case's information is input per line}.
+
+The data files created in this way should be saved in CSV format using UTF-8 character encoding as a basic rule ($\to$ see Appendices \ref{computer} and \ref{suffix}, p. \pageref{suffix}). When saving the file, be sure to specify the file format and use the extension \texttt{.csv}. CSV files are ASCII files and can be viewed from any PC as long as the character encoding is set to the world standard UTF-8. It is inappropriate from a scientific research perspective to require specific OS or applications developed by a particular company to view the data.
+
+By the way, in December 2020, the Ministry of Internal Affairs and Communications established a unified rule for the representation of machine-readable data \citep{soumu}. It includes the following checklist items:
+\input{m04_usingR_escape_38}
+Please try to follow these standards when creating your own data.
+In spreadsheet software, you may want to calculate representative values or create graphs. However, since you already have a statistical environment, it is recommended to do such processing and visualization in R, and store the data as "plain materials that anyone can handle".
+
+
+\subsection{Tidy Data}
+As seen during data input, the data file is typically composed of one piece of information per cell, with no duplicates, aggregation, objects, or character strings.
+As shown in Figure \ref{fig::05_14}, each line typically contains data for one person (one case, one observation, or one record), and each column represents a variable. This is known as a \keytermE{wide-format} data input, where the data expands horizontally as the number of variables increases.
+
+Please refer to Table \ref{tbl::usingR_not_tidy} here. By looking at this data, we can quickly see that "Osaka is cloudy in the afternoon."
+\input{m04_usingR_escape_39}
+However, this judgment is made by quickly scanning the "Osaka" row and "afternoon" column of the chart and obtaining the information "cloudy" at the intersection. If you want information for the evening or late night, you would change the column. This is because each variable is different for each column. Referring to the names of the rows and columns requires two actions of moving the gaze horizontally and vertically.
+
+However, is the "column name (variable name)" referred to here also a variable and part of the data? From this perspective, let's make it so that all the information can be understood just by looking at one row. Table \ref{tbl::usingR_tidy} contains the same information as Table \ref{tbl::usingR_not_tidy}, but it is designed to show all the information in one line.
+
+\input{m04_usingR_escape_40}
+
+The type of data in the form shown in Table \ref{tbl::usingR_tidy} is called long-format data.
+By keeping the data in this format, it becomes easier to deal with missing information (null values) and select specific records, among other benefits.
+
+The concept of \keytermE{tidy data} was proposed by \citet{Hadley2014} as a way to achieve data that is easily analyzed. Tidy data refers to a data format that has the following four characteristics.
+\input{m04_usingR_escape_41}
+In the previous example of weather, there are three pieces of information included in the table: time, location, and weather. This is an example of organized data where all the information is presented in a single row.
+Wide data may be easier for humans to understand sometimes, but in analyzing data, long and tidy data often prove to be more convenient. For example, in the upcoming visualization, tidy data is a more convenient form. This is because the features of each column, such as the column assigned to the X-axis, the column assigned to the Y-axis, and the column specifying color or shape, can be assigned to the visualization settings.
+
+As seen here, the information contained in both long/wide formats is the same, but they are used interchangeably depending on the purpose. Implementing this is also an application of data handling techniques. Let's take a closer look.
+
+Conversion between Long and Wide Formats
+Let's consider transforming the data into tidy long format. Please execute the following code \ref{code:usingR_pivot_longer}.
+\input{m04_usingR_escape_42}
+
+\input{m04_usingR_escape_43}
+
+If you execute the code up to the third line, the output will be as shown in \ref{RS: usingR_pivot_longer1}. A column named \verb|ID| is created. The \verb|pivot_longer| function replaces the variables \verb|Year, Name, Position| and their values as a pair with the variable name as the key using the \verb|ID| column.
+\input{m04_usingR_escape_44}
+When you reach the end, the result should look like the output in \ref{RS:usingR_pivot_longer2}.
+\input{m04_usingR_escape_45}
+This is now in an orderly data format. That is, the variable name is in the \verb|name| section and the value of that variable is in the \verb|value| section. The first line shows that the value of variable \verb|Year| for ID number 1 is \verb|2020|, and the second line shows that the value of variable \verb|Name| for ID number 1 is \verb|Kikuchi Ryosuke|. In this way, it was converted into long format.
+
+By the way, you can also specify the variable name for the newly created variable. In the example of Code \ref{code:usingR_pivot_longer2}, the variable name was set to \verb|Variables| and the variable for the values was set to \verb|Value|.
+\input{m04_usingR_escape_46}
+
+Now, let's consider the reverse situation where we have created long-form data. There may be cases where we want to convert the data back to wide-form. Please execute the following code \ref{code:usingR_pivot_wider}.
+\input{m04_usingR_escape_47}
+This is just one line, but there are various arguments for it. Firstly, you need to specify which variable to use as a key to arrange horizontally using \verb|id_cols|. This is because it arranges things with the same ID side by side. Next, you need to specify which column the variable name comes from and where the value comes from.
+
+The basic usage of the \verb|pivot_longer| and \verb|pivot_wider| functions is just like this, but you can also customize variable names when creating variables, or handle cases where empty cells are created. For more information, please refer to Chapter 3 of \citet{Kinosady2021} and other resources.
+
+\end{document}

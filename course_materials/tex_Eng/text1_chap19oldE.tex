@@ -1,0 +1,225 @@
+\documentclass{ltjsarticle}
+\usepackage{docmute} 
+\usepackage{myStyle} 
+
+
+\begin{document}
+Chapter: Testing for Differences in Means
+\label{chapter19}
+The most commonly used practice in psychology is the test for differences in means. As we learned in experimental design, it's used in conjunction with RCTs to understand the size of the effect as the difference in group means that are observed.
+In this lecture, we will first consider testing the difference in means between two groups. In the case of paired two groups, it actually becomes a judgment on one "distribution of differences", so we can have a similar discussion as before.
+In the case of two groups without correspondence, it is the simplest case of a linear model. By connecting the discussions of factorial design (linear model) and statistical testing, it leaves the way open to expand to multiple factors. In numerical examples, by thinking while generating simulated data according to the hypothesis, it becomes easier to imagine what results will come out in any experiment.
+
+\section{One Factor Within-Subjects Design, 2 Levels}
+Up until now, we have explained the concept of the null hypothesis test and its formal procedure, and discussed specific ways to report results and how to interpret them, using examples such as the testing of mean values and correlation coefficients.
+
+In this article, we will be discussing testing the difference in means between two groups, which is a common practice in psychological research.
+As mentioned in Chapter \ref{chapter11}, the basic framework of experiments is to "see the difference between the intervened group and the non-intervened group in terms of the difference in group means". It is a model to examine whether the "difference" in the average values of two groups, the experimental group and the control group, is significant.
+
+In terms of experimental design terminology, this can be described as a one-factor, mixed-factor, two-level design. For those who are unsure about the terms factor, between-group/within-group, and level, please refer back to the materials in Chapter 12 for confirmation.
+
+In this section, we will first discuss experimental designs with a single factor and within-group (also known as repeated measures), in particular, the design with two levels. This experimental design only has two levels of measurement within the group, meaning it is an experiment to observe whether there was an effect before and after the intervention. To be specific, within-group designs not only include repeated measures but also include cases where there is correspondence between the data. For example, in a twin study or a study of two individuals in an intimate relationship (which is generally referred to as "intimate relationships" in social psychology and is a good expression that is not limited to gender), as there is a correspondence relationship between the pairs and there is a high possibility of mutual influence, it is thought that there is a correlation between the two variables. In such situations, it is necessary to conduct an analysis that takes into account the underlying factors that they share. Within-group designs are also referred to as "analyses with correspondence."
+
+Let's assume this is a study that took pre and post data. For example, regarding psychological health status, a questionnaire survey was conducted in advance, and then some kind of clinical intervention was performed (such as relaxation technique training), and after a certain period of time, a post-survey was conducted on the same person. This is the research design, as shown in Figure \ref{fig::19_01}.
+
+\input{text1_chap19old_escape_01}
+
+Assuming that the subjects gathered in advance were collected randomly from the population and that the health status scores determined by the preliminary survey followed a normal distribution, if the same test is conducted afterwards and there is an overall effect despite individual differences, it can be said that this clinical intervention is excellent. While individual client changes are important, it is natural to want to verify changes in the population and differences in the population mean more generally by borrowing the power of inferential statistics. Therefore, by estimating the population mean from the sample mean and assuming that the population distribution is normal, the width of the sample mean fluctuation can also be assumed. This is used to estimate the likely location of the population mean and consider how it differs between before and after. Also, since we do not know the population mean or standard deviation, we consider the unbiased variance calculated from the sample as an estimate. When estimating from sample statistics, it follows a t-distribution, not a normal distribution, so we also use a t-distribution for estimation. We consider testing using this estimated value, and this test is called a t-test, which is a commonly used pattern because it uses a t-distribution for estimation and testing. By the way, the t in t-test comes from the fact that the test uses a t-distribution. There are actually many other estimations and tests that use a t-distribution besides the mean difference test, but this is a widely used pattern, so the two-sample mean difference test is called a t-test. By the way, please note that the t in t-test is lowercase. The uppercase T is used for other tests and can be confusing.
+
+
+Now, we want to know if there has been any change before and after a certain event. Fortunately, we know that the difference between the normally distributed random variable X and the normally distributed random variable Y, X-Y, is also normally distributed. Since there is corresponding data available, we can use this feature to determine if there has been any change before and after the event.
+
+As an example of numerical values, let's consider two groups as shown in Table 1.
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Wed Sep  2 09:32:58 2020
+\input{text1_chap19old_escape_02}
+Here there are 10 experiment participants. Table \ref{tbl19::01} shows their respective pre and post scores, as well as the difference between them. Using equations, we define the pre-score as $X_1$, post-score as $X_2$, and the difference as $D$.
+\[ D = X_2 - X_1 \]
+However, concerning the average as well...
+\[ \bar{D} = \bar{X_2} - \bar{X_1} \]
+The relationship is established. And this $D$ follows a normal distribution with a mean of $\mu_D$ and a standard deviation of $\sigma_D$.
+\[ D \sim N(\mu_D,\sigma_D)\]
+This is a difficult text to translate because "より" is just a particle that indicates comparison or contrast between two things or concepts. Without any context or additional information, it's hard to provide an accurate translation. 
+
+However, some possible translations of "より" in a sentence could be:
+
+- "than"
+- "compared to"
+- "rather than"
+- "more than"
+- "in contrast to"
+
+For example:
+
+- 私は犬より猫が好きです。(Watashi wa inu yori neko ga suki desu.) - I like cats more than dogs.
+- この電子書籍の方が紙の本よりも安いです。(Kono denshi shoseki no hou ga kami no hon yori mo yasui desu.) - This e-book is cheaper than a printed book.
+- 彼女は忙しいので、電話よりもメールの方が便利です。(Kanojo wa isogashii node, denwa yori mo meru no hou ga benri desu.) - She's busy, so email is more convenient than calling.
+\[ \bar{D} \sim N(\mu_D,\frac{\sigma_D}{\sqrt{n}}) \]
+This means that if we know $\sigma_D$ here, it would be great, but since we don't know it, we will use the unbiased variance of $D$ as its estimate.
+\[ t = \frac{\bar{D}-\mu_D}{\hat{\sigma_D}/\sqrt{n}} \]
+This will result in following a t-distribution with $n-1$ degrees of freedom. If anyone has trouble understanding this series of steps when represented mathematically, please refer back to Lesson \ref{m17_estimation_and_test} for confirmation.
+
+Now, let's try interval estimation before hypothesis testing. The 95% interval of the $t$ distribution with degrees of freedom $n-1=10-1=9$ is $\pm 2.262157$ \footnote{For reference, in R, use \texttt{qt(0.975,df=9)}.}. Using this value for our calculations,
+\[ -2.262 < \frac{\bar{D}-\mu_D}{\hat{\sigma_D}/\sqrt{n}} < 2.262 \]
+Therefore, multiply both sides by the denominator.
+\[ -2.262 \times \hat{\sigma_D}/\sqrt{n} < \bar{D}-\mu_D < 2.262 \times \hat{\sigma_D}/\sqrt{n} \]
+Moving $\bar{D}$ to the other side of the equation.
+\[ \bar{D}-2.262 \times \hat{\sigma_D}/\sqrt{n} < \mu_D < \bar{D}+2.262\times \hat{\sigma_D}/\sqrt{n} \]
+Here, $\bar{D} = 2.400,$ and $\hat{\sigma_D} = 3.062$, so...
+\[ 0.2097 < \mu_D < 4.590 \]
+We can see that although the difference in the sample was 2.4 points, the estimated difference in the population mean is also 2.4 points and the 95% confidence interval estimate is around [0.21, 4.59]. In other words, even if we estimate conservatively within a 95% range, it is still above 0.21, indicating that there is a difference and it is not negligible.
+
+Let's consider this in terms of the logic of examination.
+\paragraph{Setting the hypothesis}
+In order to conduct the research, it is necessary to establish both a null hypothesis and an alternative hypothesis. The null hypothesis indicates that there is no difference between the before and after conditions, and there is no effect. If we express this using symbols, it would be $\mu_D=0$. On the other hand, the alternative hypothesis indicates that there is a clinical effect, which means that the difference in the dependent variable should be greater than 0. In other words, it would be $\mu_D > 0$.
+\paragraph{Select Test Statistic} As we are estimating the mean value, the appropriate test statistic would be $t$.
+"Set the probability that becomes the basis for judgment." Let's decide the outcome with a significance level alpha of 5%, as we did this time."
+\paragraph{Calculate the realized value of the test statistic} As we have conducted interval estimation earlier, we did not calculate $\frac{\bar{D}-\mu_D}{\hat{\sigma_D}/\sqrt{n}}$. Let's do that now. \underline{If we follow the null hypothesis, $\mu_D=0$}, so...
+\[t= \frac{\bar{D}-\mu_D}{\hat{\sigma_D}/\sqrt{n}}  = \frac{2.4-0}{3.062/\sqrt{10}}  = 2.479\]
+This $t=2.479$ follows a t-distribution with 9 degrees of freedom. The probability of getting a t-value greater than or equal to this observed value is $p=0.0175$.
+"Judging whether the initially defined hypothesis is correct or incorrect."
+The calculated value of this t-test under the null hypothesis is smaller than the 5% significance level. Therefore, we can say that it is unusual. Since something unusual has occurred, it is possible that our assumptions are incorrect. In other words, it is strange to assume that there is no difference. We will reject the null hypothesis and accept the alternative hypothesis.
+
+"The way to report the results is,"
+\input{text1_chap19old_escape_03}
+It would be as follows. Here,
+
+By the way, do you remember the results of the interval estimation earlier? When considering with a range of 95%, the difference may be at least 0.21 and at most 4.59. Since the lower limit of this range is not zero (i.e. the null hypothesis), we can reject the null hypothesis just by looking at this range. However, if the interval estimation shows a range that includes zero or a negative value for the lower limit when considering with a lower limit and a positive value for the upper limit, then no significant result can be obtained even through hypothesis testing. The information obtained from this interval estimation also indicates how much the estimated mean value can vary, which can serve as a useful indicator of the reliability of the experiment. Therefore, we can modify the previous reporting example a bit and report this range along with the estimated mean value to provide a better indication of the experiment's credibility.
+
+\input{text1_chap19old_escape_04}
+In that case, it would be even better\footnote{You may think that cutting at the 5% level or reporting the range at the 95% level provide the same redundant information. Indeed, the report of "significant difference" in null hypothesis testing can be seen from the confidence interval, but the opposite is not true (the p-value is not information about the distribution). Therefore, it is not necessary to say "significant/not significant". The reason why this expression is still used is only a remnant of the past century.}.
+
+\section{One-factor Between-design, 2-level}
+"Let's first consider interval estimation."
+Next, let's consider an example of a design without corresponding versions, or a Between-subject design. In this case, there is no correspondence between the two groups, and the estimation is made for each mean value. Then, the question becomes whether there is a difference between the estimated values.
+
+\input{text1_chap19old_escape_05}
+
+Let's take a look at some specific numerical examples.
+% latex table generated in R 4.0.2 by xtable 1.8-4 package
+% Wed Sep  2 10:43:49 2020
+\input{text1_chap19old_escape_06}
+This time, we set $n=5$. Imagine randomly assigning five experiment participants to an experimental group and a control group. After giving the experimental group a certain cognitive task, we conducted a memory test to measure their performance. The test scores are recorded in the value column. Now, do you think there is a difference in average scores between the group that performed the cognitive task and the group that did not?
+
+In this case, we use a t-distribution to estimate the population mean from the sample mean, even though the population standard deviation is unknown. Both the experimental and control groups have a sample size of n=5, so we use a t-distribution with degrees of freedom n-1=5-1=4 to estimate. Using this method, we can estimate the mean of the control group.
+From $\bar{X}_{ctl} =20.60$ and $\hat{\sigma_{ctl}}=4.393$,
+\[15.145 < \mu_{ctl}<26.055 \]
+It is as follows. The experimental group had an average ($\bar{X}_{exp}$) of 25.20.
+From $\hat{\sigma_{exp}}=6.221$.
+\[17.476<\mu_{exp}< 32.924 \]
+This is.
+
+Is there a difference? It's unclear! If we estimate it broadly, the control group may have had a sample average of around 26.05, and the experimental group may have had a sample average of around 17.48 if we estimate it narrowly. It's difficult to make a judgement with just interval estimation.
+"Let's Settle It with a Test, Shall We?" (literal translation) or "Let's Decide the Outcome with a Test" (idiomatic translation)
+Here comes the role of hypothesis testing. Similar to the previous example, we use the characteristic that "the difference between two normal distributions is also a normal distribution" to perform the test. Assuming a random sample is taken from a normal distribution population $N(\mu, \sigma)$, the sample mean $\bar{X}$ follows $N(\mu, \frac{\sigma}{\sqrt{n}})$. Now, considering the difference between the sample means of two groups, $\bar{X}_1 - \bar{X}_2$, we know that the distribution follows a mean of $\mu_1 - \mu_2$ and a standard deviation of $\sigma/\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}$. However, since we do not know the value of $\sigma$, we need to replace it with an unbiased estimator. In this case, since there are two groups, using the unbiased variance of either the experimental group or the control group alone would be problematic. Thus, we need to combine the two groups and use the pooled unbiased estimator of variance.
+\[ \hat{\sigma^2}_{pooled} = \frac{(n_1-1)\hat{\sigma_1^2}+(n_2-1)\hat{\sigma_2^2}}{n_1+n_2 - 2}\]
+We use "pooled", which means amassed or combined. Since this is an estimate of the variance, the positive square root of this serves as an estimate of the standard deviation of the difference in distribution.
+You can use the following formula: \[\hat{\sigma}_{pooled} = \sqrt{\frac{(n_1-1)\hat{\sigma_1^2}+(n_2-1)\hat{\sigma_2^2}}{n_1+n_2 - 2}}\]
+
+It's getting a bit complicated, but using this, we can calculate the statistic as follows.
+
+\[ t = \frac{\bar{X_1}-\bar{X_2}-(\mu_1-\mu_2)}{\sqrt{\frac{(n_1-1)\hat{\sigma_1^2}+(n_2-1)\hat{\sigma_2^2}}{n_1+n_2 - 2}}\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\]
+
+Oh, please don't shut down yourself! The math equations are written just to make the story clear. You may feel confused with all the characters in the equation, but don't worry, there's no need to memorize it. This is a teaching material, so we'll explain it for now, but in reality, statistical software can give us the answer with built-in functions. The most important thing is to understand the context, so don't worry if you don't fully understand the equation at first glance. Instead, let's be amazed that only sample statistics are included in the formula of $t$.
+
+Anyone who thought "You're lying, there are $\mu_1$ and $\mu_2$," has a keen eye. Indeed, this is an area that is not understood (hence it is written in Greek letters), but we will use this to conduct the test now. In testing, we establish a null hypothesis. The null hypothesis is full of "no's," so we assume that there is no difference between the two group means. In other words, $\mu_1=\mu_2$ or $\mu_1-\mu_2=0$. You're doing well! Under the null hypothesis, we can set $\mu_1-\mu_2$ in the denominator to $=0$, so...
+\[ t = \frac{\bar{X_1}-\bar{X_2}}{\sqrt{\frac{(n_1-1)\hat{\sigma_1^2}+(n_2-1)\hat{\sigma_2^2}}{n_1+n_2 - 2}}\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\]
+Next, it was determined that it can be completely calculated from the sample statistics. Let us proceed with the testing.
+\paragraph{Setting the hypothesis} Both the null hypothesis and the alternative hypothesis are necessary. As mentioned earlier, the null hypothesis is that $\mu_1=\mu_2$, and the alternative hypothesis is the negation of this statement, which is $\mu_1 \neq \mu_2$.
+\paragraph{Selecting the test statistic} As we are estimating the mean value, the test statistic we should use is $t$.
+"Set the probability that becomes the criteria for judgement. Let's decide with a significance level of alpha, which in this case is 5%."
+\paragraph{Calculating the realized value of the test statistic} This is a bit tricky, but following the formula, let's denote the control group as $X_1$ and the experimental group as $X_2$. Then, we have $\bar{X_1}=20.60, \hat{\sigma}_1=4.393, \bar{X_2}=25.20, \hat{\sigma}_2=6.221$.
+
+\[ t = \frac{20.60-25.20}{\sqrt{(4.393^2+6.221^2)/5}} = -1.3506\]
+
+Since this has become $(n_1-1)+(n_2-1)=n_1+n_2-2=10-2=8$ degrees of freedom, it follows a $t$ distribution with degrees of freedom of 8. From this, the probability of obtaining a more extreme $t$ value is $p=0.1068".
+\subsection{Testing and Direction}
+Here, caution is necessary. The null hypothesis for this test was that the population means of two groups are not equal. Not equal could mean that $\mu_1>\mu_2$ or $\mu_1<\mu_2$. When calculating the value of the test statistic in this case, the numerator was computed as $\bar{X_1}-\bar{X_2}$, but it could have also been computed as $\bar{X_2}-\bar{X_1}$. If calculated in the latter way, the value of $t$ would be 1.3506.
+
+Let's take a look at the concept of the $t$ value while considering the $t$ distribution. In this case, the actual value of $t$ was -1.3506, but when calculating the probability of getting an even more extreme number, we used \texttt{1-qt(1.3506,df=8)} without considering the sign. This calculation in R, can be visualized as the blue area in the figure above (refer to Figure \ref{fig::19_03}), obtained by subtracting the area up to 1.3506 from 100%. It may sound convoluted to explain this as "inversion of inversion", but it is essentially equivalent to \texttt{qt(-1.3506,df=8)}.
+
+\input{text1_chap19old_escape_07}
+
+And the value of $t$ is determined by subtracting the mean value of the control group from that of the experimental group, or vice versa. Since the hypothesis did not consider which calculation method to use, either is possible. Therefore, there is twice the possibility of occurrence, and it should be considered in terms of area (as shown in the bottom of Figure 19.03).
+
+This is called the "direction" of the test. If it means "one side should be larger than the other," it is sufficient to consider only one side. This is called a \keytermE{one-sided test}. In the previous section, we conducted a one-sided test assuming a "positive" effect of clinical intervention. If there is a possibility that clinical intervention may cause harm, the area must be doubled and considered.
+"In any case, even so, the conclusion that $0.0175\times2=0.035$ fell below the 5% level of significance and was significant does not change."
+
+This time, we are only interested in the "difference" between the experimental group and the control group. We think that experimental manipulation may either improve or decrease performance, but it is definitely different, so we will use a "two-sided test" and the occurrence probability of t will be $p=0.2136".
+
+
+Let's summarize. When making a report, it should be done in the following manner.
+\input{text1_chap19old_escape_08}
+
+Regarding the test for the difference between means of two groups, the procedure is as follows. It is worth repeating that the actual calculation is done by the machine, so please make sure to have a solid understanding of the procedural knowledge of what the numbers mean and how to judge the results obtained from it.
+
+Furthermore, since we have seen specific examples of testing here, please try to utilize this technique in your daily life as well.
+If there are two groups and their average values are different, is it due to chance or not? Can we generalize this? This inferential statistical concept can be applied to various aspects of our daily lives. Once you acquire knowledge and skills, try to come up with concrete examples and test them. For instance, if a dispute arises between siblings over their fried potatoes, claiming that "my brother's fries always have longer ones, it's not fair!" you can measure the length of each fry, calculate the average, and conduct a t-test to determine whether it is due to chance or if it is a recurring phenomenon. In fact, I tested this at a pub and found no significant difference in the length of fries between each table. Furthermore, I was impressed by how closely the length of fries resembled a normal distribution.
+
+\section{Reverse Engineering}
+These examples of tests will become more concrete and easier to understand with a real understanding of psychology experimentation and the collection of data. As previously stated, it is also useful to expand the imagination to apply the t-test to events in one's daily life as a form of training. However, it may be difficult to grasp the explanation provided in this course, which often involves a sequence of equations (even if the calculations are done by the software, not manually). To understand psychological statistics, one needs both mathematical and computer science skills and knowledge. The latter includes an understanding of computer use in general, such as how to use R. Recently, there has been an increasing level of specialization, and mastering either aspect has become challenging, let alone mastering both. Nevertheless, these skills and knowledge are applicable in applying applied techniques, so I hope that you will approach them with a sense of curiosity, or a sense of playfulness and mischief, to apply them to your daily life.
+
+When there is no specific data available, there is another way to imagine it. You can consider creating numerical examples and verifying them yourself. If you don't have data on hand, you can create it yourself. Designing "how the data is generated" from a god's eye view is equivalent to visualizing the data generation mechanism, and it is the first step in directly verifying the question "what's going on in the mind" that you wanted to investigate.
+
+I believe that in the beginning, it was mentioned that psychology can only infer what is going on inside the mind, as it cannot directly observe it. Psychological statistics is a discipline that seeks to explore the unseen through statistical inference, which prompts one to consider whether something is amiss. However, it may be difficult to imagine what inferential statistics entails, as it is necessary to rely on these results to assess the validity of one's conjectures. By changing one's approach from a passive waiting posture to an active one, and by designing data-generating mechanisms that can be used to estimate and test hypotheses, and by scrutinizing the logic underlying these processes, one might gain a greater understanding of what it feels like to work in this discipline.
+
+"Mechanism for generating data that can be subjected to t-tests."
+Let's consider performing a test for the difference (between groups/inter-group) without any correlation. This time, let's reverse our thinking and focus on what the population looks like.
+
+Let's assume that the population follows a normal distribution. For example, let's say it has a distribution like the standard scores with a mean of 50 and a standard deviation of 10. Suppose we take a sample of 10 people from this population; in R, we can obtain this by using random numbers through the command \texttt{rnorm(10,mean=50, sd=10)} (\texttt{console\ref{RS:out19_01}}).
+
+\input{text1_chap19old_escape_09}
+
+Let's call the one just extracted "Group 1". Another group, "Group 2", was taken out with 10 people from a distribution with a mean of 55 and a standard deviation of 10 (\texttt{console\ref{RS:out19_02}}).
+
+\input{text1_chap19old_escape_10}
+
+In these two groups, performing a non-corresponding t-test gives a result of t(18)=2.4821, p=0.02315, which is considered significant. As the population means are different at 50 and 55, this may seem obvious and not particularly interesting. However, after conducting similar tests multiple times, occasionally there may be a result of "not significant." As an experiment, this was tried 10 times (see Table 19.03). Surprisingly, out of the 10 times, 8 showed no significant difference, despite there being a 5 point difference in the population means.
+
+\input{text1_chap19old_escape_11}
+
+Where do you think the cause of this lies? Of course, since every sample is generated by random numbers, it is possible that the difference in the average values of group 1 and group 2 did not turn out to be large by chance, depending on the randomness of the numbers. Even if you roll dice with different expected values, the outcomes are unpredictable and there is no guarantee that one will always be larger than the other. However, upon closer examination, if this were a psychology experiment undertaken by all of you, and not generated randomly by a machine like this time, what would happen? It would be difficult if, after gathering 20 friends each time, you could not obtain significant results due to bad luck. This is because it would mean that you have made incorrect judgments.
+
+It is inevitable that there will be random scattering, but what should we do? One way is to increase the difference in the average value. This time, the difference was 5 points between 50 and 55, but if it is 10 points or 50 points between 50 points and 60 points or 100 points, it may work well.
+
+
+\input{text1_chap19old_escape_12}
+
+As an experiment, we set the mean values of two groups to 50 points and 60 points and conducted 10 trials, which resulted in Table \ref{tbl::19_04}. Among the 10 trials, the significant difference was correctly identified in 9 trials. It is unfortunate that it is not a 100% reliable judgment, but it is clear that if the actual difference is large, there is a higher possibility of determining "there is a difference" in the test.
+
+However, it is not just a matter of difference. The dispersion of data in the population also affects the test results. For example, even if there is a 10-point difference between the population means of 50 and 60, what happens if the population standard deviation is large, say 20 and 30? Let's try this out. One of the advantages of simulation is that it is easy to test.
+
+I generated random numbers with a mean of 50 and a standard deviation of 20. However, despite the mean being 50, there are numbers such as 13.64088 being generated (\texttt{console\ref{RS:out19_03}}). This is because the distribution has a wide range, so occasionally such numbers will be generated.
+\input{text1_chap19old_escape_13}
+
+I also generated 10 random numbers with a mean of 60 and a standard deviation of 20. This time, even though the mean is still 60, we can see large numbers like 82.41425 (\texttt{console\ref{RS:out19_04}})
+\input{text1_chap19old_escape_14}
+
+Now, let's perform a t-test. Skipping the calculations, we obtained a significant difference with $t(18) = 2.48,\ p = 0.0232$. However, repeating this test 10 times resulted in only a 20% accuracy rate, as shown in Table \ref{tbl::19_05}. This indicates that due to the wide range of the population, the variation in the sample numbers is also large, leading to a decrease in accuracy of the test.
+
+\input{text1_chap19old_escape_15}
+
+Now, let's summarize the knowledge gained up until this point.
+\input{text1_chap19old_escape_16}
+We can observe that there are two different population distributions with different mean differences in Figure \ref{fig::19_04}. The top distribution has a larger mean difference compared to the bottom distribution, and it is more likely that taking a sample from the top distribution will result in a statistically significant difference.
+
+We have drawn different populations with different standard deviations in Figure \ref{fig::19_05}. The upper one has a small standard deviation and the lower one has a large one. The difference in means is the same. In this case, it is natural to judge that taking a sample from a population like the upper one is statistically significant.
+
+\input{text1_chap19old_escape_17}
+
+In reality, we do not know the shape of the population. Especially when it comes to psychological responses, we cannot truly know how scores are distributed in the population. However, we can assume that it has a normal distribution. We then perform some operations, but we cannot know the actual effect of these operations. Before conducting research, we must carefully consider this. Even if we can change a person's mental state through some manipulation, if the change is too small, it may not be detected. Similarly, even if the change is large (such as increasing the difference in average values), if there is a lot of individual variation, it may not be detected.
+
+As the average increases and the standard deviation decreases, the degree of detection increases. Therefore, place the difference in means in the numerator and the standard deviation in the denominator.
+
+\[ EffectSize =  \frac{\mu_1-\mu_2}{\sigma} \]
+
+We call the result of this, which we created by standardizing the difference, the \keytermE{effect size}. Essentially, it represents the extent to which it is easy to detect a significant difference. However, it is important to repeat that the goal is not to try to achieve a significant difference. Rather, even for excellent research themes, we simply want to convey the fact that it is highly likely that we cannot accurately judge the results unless they are done with large effect sizes. Psychological research involves studying things that are invisible and delicate. Additionally, the quality of the data may be compromised due to errors that can easily creep in when data is collected about the complexities of the mind. Therefore, we proceed with the research while hypothesizing whether the effect is big or small based on previous studies. As you become more interested in various psychological phenomena, this will become clearer in different specialized areas. Regardless, it is important to keep in mind that when using statistical tests, it is possible to encounter situations where "the effect cannot be detected as well as we expected."
+
+In addition, considering the previous discussion (refer to section \ref{sec::18_04}).
+\input{text1_chap19old_escape_18}
+We can understand that the test statistic is generally the effect size in the sample multiplied by the sample size, which equals the test statistic. By considering how much the effect size is, we can calculate how many samples are needed to detect it at a significant level. In actual research, sample size is determined in this way. Additionally, it should be reiterated that increasing sample size for the purpose of achieving statistical significance is a flawed research practice. It goes against the goals of research, universities, and science, which aim to seek the truth rather than fabricate results for the sake of graduating or being recognized by society. Let us be cautious and avoid such practices.
+
+In reality, how much sample is necessary can also be verified through simulation. While it can be calculated based on the insights of mathematical statistics, it may be difficult to imagine in complicated formulas. In such cases, it is helpful to generate random numbers like "There's probably about a XX-point difference in the average score, so..." and test and check how accurately one can make judgments based on what percentage.
+\section{Task or Assignment}
+
+\end{document}

@@ -1,0 +1,152 @@
+\documentclass{ltjbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+\VerbatimFootnotes
+\chapter{Correlation and Causation}
+\label{m08_CorrelationCausation}
+In this article, we would like to discuss about the relationship between multiple variables.
+You are a translator.
+The descriptive statistics so far (mean, median, mode, variance, standard deviation, quartiles, percentiles, minimum, maximum, and range) were all calculated for a single variable. Now, let's consider indicators that show the relationship between two variables, such as height and weight or Japanese language scores and mathematics scores.
+\section{Indices of Relationships between Variables}
+Before discussing indicators, let's consider visualization. When plotting multiple variables, a \textbf{scatter plot} is intuitively and visually effective if the variables are continuous. The TeX code should not be modified for this translation.
+
+\input{m08_CorrelationCausation_escape_01}
+
+\input{m08_CorrelationCausation_escape_02}
+
+Figure \ref{fig::04_09} shows a plot of height and weight data\footnote{This data is the same as the one used in Chapter \ref{m04_usingR}, and contains the dataset of professional baseball players in 2020.}. A portion of the data is shown in Table \ref{tab::04_04}\footnote{There are a total of 924 data points.}. As indicated by the labels on the X and Y axes, which represent height and weight, respectively, both variables are plotted simultaneously. A noticeable point which has a different color and size is marked in the lower left corner of the plot. This represents the case of player ID=1, Seone, as shown in Table \ref{tab::04_04}. He has a height and weight of 175cm and 68kg, respectively, and if you look at the corresponding X and Y axis, you can see that it is exactly at that point. In this way, each point corresponds to one case, which is the characteristic feature of a scatter plot.
+
+It seems that we can say the following from looking at this. Namely, there is a tendency for taller people to have a larger body weight, and for shorter people to have a smaller body weight. This is because there are no points in the region where the height is high and the weight is light (bottom right of the graph) or where the height is low and the weight is heavy (top left of the graph), so we can assume that such people do not exist. As in this figure, if the points plotted in the scatter plot are in the direction of increasing from bottom left to top right, we can suppose that there is some relationship between the two variables. Whatever the nature of that relationship may be, we can think, "I wonder what's going on" or predict, "If you're tall, you're likely to be heavy". Even if we don't know what position the new player coming to the team next year will play or what skills they have, if we know that their height is 200cm, we can predict that they won't weigh 60kg or something like that.
+
+Throughout the first and second semesters, the focus of this course has been on "seeing the unseen". You've speculated about correlations between variables here. It may even be fair to say that you've predicted relationships that seem likely. To discover indirect relationships in the data, it's important to understand the relationships between variables. Can you appreciate that?
+
+The relationship shown in Figure \ref{fig::04_09} is called a "positive correlation," in particular. This is because the direction is the same, meaning that if one is large, the other is also large, and if one is small, the other is also small, and so on. Conversely, there is also a "negative correlation." This is when one is large and the other is small, or vice versa, so the scatter plot shows points that slope downward to the right. Despite being a negative correlation, it is still a relationship, so it can be predicted.
+
+Data that shows no bias towards either tendency is said to have no correlation, or be uncorrelated. When plotted on a scatter graph, the data points will take on a dispersed shape, resembling a circle. Without any correlation, there is no relationship or pattern, making prediction impossible. In personality psychology, it is understood that there is no correlation between blood type and personality. However, some people may argue, "But I'm type A and many people say I have a meticulous personality!" This is a common question that arises in psychology courses. Can you identify what is wrong with this argument? The psychologists’ claim is that there is no correlation- no relationship or general tendency. Therefore, the fact that some type A individuals are meticulous and some are not is unrelated. The same goes for type B, O, and AB; some people of those blood types are meticulous while others are not. Being uncorrelated means that there is nothing to be inferred from it.
+
+In this way, variable relationships are an important indicator in many respects. Just as without variance information cannot be extracted, without correlation relationships, related information cannot be extracted. Keeping this in mind, let's consider quantifying variable relationships.
+
+\paragraph{Covariance} The strength of the relationship between two variables is measured by the \keytermE{covariance}. Let's consider the example from Figure \ref{fig::04_09}, where we have the height variable $x$ and weight variable $y$. The data for athlete Sone with ID=1 can be represented as $x_1=175, y_1=68$. Using all the data, we can compute the mean height and mean weight, which we denote by $\bar{x}$ and $\bar{y}$ respectively. The covariance is given by the following formula.
+\[ s_{xy} = \frac{1}{N}\sum_{i=1}^N (x_i - \bar{x})(y_i - \bar{y})\]
+Don't you think that this resembles a variance formula when you look closely? The variance formula is typically written as follows:
+\[ s_{x}^2 = \frac{1}{N}\sum_{i=1}^N (x_i - \bar{x})^2 \]
+If we expand the squared portion, it becomes the following.
+\[ s_{xx} = \frac{1}{N}\sum_{i=1}^N (x_i - \bar{x})(x_i - \bar{x}) \]
+Comparing $s_{xy}$ and $s_{xx}$ in this way makes it easy to understand, but it can also be said that variance is the covariance between variable $x$ and $x$ itself.
+
+Let's look at it from a slightly different perspective. Covariance can also be described as the average of the product of the \uline{deviations from the respective means for each variable}. $(x_i - \bar{x})$ represents how much the value for variable x deviates from the mean for individual i, with a positive value indicating that it is above the mean and a negative value indicating that it is below the mean. $(y_i - \bar{y})$ is a similar notion, but for variable y and for the same individual i in the data. Therefore, if individual i is above the mean for both variable x and variable y, then the product $(x_i - \bar{x})(y_i - \bar{y})$ will be a positive number, because positive times positive equals positive.
+Similarly, if a person's value is below average for either variable, multiplying negatives results in a positive, so this number will increase.
+The reason this number becomes smaller is when one variable is above average while the other variable is below average for a certain person. In this case, the multiplied number becomes negative, reducing the overall sum. Adding up such numbers for each person ($\sum_{i=1}^N$) results in a positive correlation if the final sum is positive or a negative correlation if the final sum is negative.
+
+One thing to note is that the magnitude of covariance depends on the unit of measurement of the variables. For example, in the case of covariance between height and weight, the unit of height is typically measured in centimeters (with 3 digits), while weight is measured in kilograms (with 2 digits). When multiplied together to calculate their average, the result can be a number with 2-3 digits, and the unit becomes cm$\times$kg, which is not easily understandable. However, if we convert height to millimeters and weight to inches, the magnitude of covariance will change accordingly. It is important to keep in mind that even if the relationship between the variables remains the same, changing the units of measurement can alter the numerical values.
+
+\paragraph{Correlation Coefficient} The next step is to use the \keytermE{correlation coefficient}, which is a measure that shows the relationship between variables regardless of unit. In this context, we are only discussing Pearson's product-moment correlation coefficient, although there are various other correlation coefficients, such as ordinal correlation, polychoric correlation coefficient, poliserial correlation coefficient, and tetrachoric correlation coefficient. Covariance, on the other hand, is dependent on the units of the original data, and therefore, it is inconvenient to have a measure of the size of the relationship between variables that is unit-dependent, as we cannot compare different sets of relationships between variables. For example, which relationship is stronger: the relationship between height and weight or the relationship between language and math grades? We cannot answer this question by looking at covariance. So, what can we do to standardize the units for each variable?
+
+Yes, it's standardization. You simply need to recalculate each data into z-scores. Let's consider the covariance of these z-scores, denoted as $z_x$ for the z-score of variable $x$. The correlation coefficient of variables $x$ and $y$ is denoted as $r_{xy}$.
+\input{m08_CorrelationCausation_escape_03}
+
+I was able to expand it like this. The correlation coefficient is obtained by dividing the covariance by the standard deviation of each respective variable. This number can be calculated even for two variables with different units, and since the units are standardized, it falls within the range of $-1 \le r_{xy} \le 1$.
+
+\input{m08_CorrelationCausation_escape_04}
+
+Figure \ref{fig::04_10} shows plots of various correlation coefficients. By the way, the height and weight data of the baseball players mentioned earlier have a correlation coefficient of $r=0.601$. It is important to have a general idea of scatter plots and also to remember to create a plot whenever you collect data.
+
+
+\section{Pitfalls of Correlation Coefficients}
+Now, let's go over a few key points to keep in mind when looking at correlation coefficients.
+
+Before we dive into the discussion of correlations, let's start with a word of caution.
+Let's suppose we have a dataset like the one shown in Table \ref{tbl:m08_01}.\footnote{This dataset is part of the \verb|datasauRus| package in R \citep{matejka2017same}.}
+\input{m08_CorrelationCausation_escape_05}
+The datasets, "circle," "dino," and "star," all have two variables, X and Y, but there is little difference in their means and standard deviations. Additionally, the correlation coefficient is -0.06, indicating that they are nearly uncorrelated and have no apparent relationship.
+
+However, as it turns out, when we plot these variables, as shown in Figure \ref{fig::m08_02}, we can see that they are not completely unrelated.
+\input{m08_CorrelationCausation_escape_06}
+
+In actual data, I don't think this is the case, but this is a warning that "just looking at numbers may not provide enough information." When we obtain a lot of data, we may feel tempted to quickly calculate numbers on a computer. However, when analyzing actual data, this can be an area that is overlooked (because computing correlation coefficients can be too easy). While numerical analysis is easy, we must always be aware that we may be missing something. Let's always be careful and attentive to this fact.
+
+I will give an example where we need to think carefully even if there is a correlation.
+
+Trap #1: It Might Not Be a Straight Line
+On the upper left of figure \ref{fig::04_10} there is an example with $r=-1$, while on the lower right there is an example with $r=+1$. It is important to understand that the correlation coefficient represents a linear relationship between the variables, being a straight line when it reaches the extremes $\pm1$. In other words, the correlation coefficient is a measure of the linear relationship between variables and does not express well a curved relationship. Figure \ref{fig::04_11} shows an example of a scatter plot with a curved relationship. The correlation coefficient for this data is $r=0.005$. It is hardly related! So are we to say that there is no relationship between the variable on the X axis and the variable on the Y axis? For instance, if the X axis represents the temperature of coffee and the Y axis represents its taste, we know that coffee does not taste good when too hot or too cold, but there is an optimal temperature range where it tastes best. Similarly, if the X axis represents blood pressure and the Y axis represents physical health, a high blood pressure does not necessarily mean poor health and vice versa. Thus, it is important to keep in mind that for data related to psychology or organization, for instance, it is often crucial for the data to exhibit moderation. Concluding that there is no relationship between two variables due to a low correlation coefficient based on a measure that represents linearity only, is therefore mistaken.
+
+\input{m08_CorrelationCausation_escape_07}
+
+\paragraph{Pitfall 2: It may not be the overall trend}
+On the contrary, the correlation coefficient of two variables was $r=0.922$. Can we say that there is a strong correlation between these two variables? Hold on, let's take a deep breath and draw a scatter plot first. For instance, the data may look like the one in Figure \ref{fig::04_12}.
+\input{m08_CorrelationCausation_escape_08}
+Figure \ref{fig::04_12} shows that while the correlation coefficient is indeed high, there is one data point that is clearly in an odd position. Just as the mean may be pulled by outliers, correlation coefficients that incorporate the mean into their calculations are also susceptible to outliers. When this extreme value is removed, the correlation coefficient drops to $r=0.3$. Looking only at the small group on the left, we should consider that there is no relationship between the variables. This too is a pitfall that may go unnoticed without graphing the data.
+
+Trap 3: Is Part of Your Data Cut Off?
+Let's say you collected data from an entrance exam for a certain university. You gathered information on both entrance exam grades and post-admission grades, and now you want to investigate how much entrance exam grades are related to post-admission grades. It's a common assumption that if you entered with high grades, you'll continue to excel afterward, but actually, the correlation coefficient may only be around $r=0.4$. So, it's wrong to assume that there's little relationship between entrance exam grades and future performance, or that entrance exams are meaningless.
+
+In Figure \ref{fig::04_13}, the exam scores are plotted on the X-axis, and the post-admission scores are plotted on the Y-axis. The overall correlation coefficient is 0.7. However, university entrance exams can be ruthless, as anyone who doesn't achieve a certain score won't be admitted to the university. This means that we only have access to the black data points to the right of a certain line (60 points), and it would be a mistake to assume that the low correlation coefficient is due to these points alone. It's important to note that this type of data is known as truncated data, which is more of a data issue than a correlation issue. Therefore, we must be mindful of the nature of the data and carefully consider and analyze it.
+
+\input{m08_CorrelationCausation_escape_09}
+
+Pitfall 4: Data contains various types of information mixed together.
+Please look at the left side of Figure \ref{fig::04_14}. This is an upward sloping scatter plot, suggesting that there may be a relationship between variables. In fact, the calculated correlation coefficient is $r=0.67$. You might think that looking at the scatter plot alone is enough, but it's not that simple.
+Actually, this data is an overall trend that mixes data from three groups. I have color-coded each group on the right side of the graph. Oh, looking at it this way, isn't each group showing a downward trend on the lower right side? This is actually true, as Group A has a correlation of $r_A=-0.29$, Group B has a correlation of $r_B=-0.42$, and Group C has a correlation of $r_C=-0.35$, all of which show negative correlations. However, when viewed as a whole, there is also a positive correlation, which is why it can be seen.
+
+\input{m08_CorrelationCausation_escape_10}
+
+Assuming that the X-axis represents time spent on gaming and the Y-axis represents academic performance, the overall conclusion would be that playing games leads to better grades. However, when looking at it from a school (or group) perspective, the conclusion could be the opposite. In this case, the apparent difference in academic performance could simply reflect the initial differences in the performance levels of the three schools. Therefore, if external indicators show that there are differences between groups, it is necessary to add this information when plotting and to check whether the mixed effects of data occur or not. While plotting is fundamental, it is also important to pay attention to the way in which it is done. Additionally, even if the differences between groups are not known, it is possible that there could be some inherent differences or clusters. Taking into consideration the characteristics of the respondents, a statistical method involving dividing them into various clusters for analysis is also possible. It is important to remember the approach of considering data from various angles. In the field of marketing, this is sometimes called segmentation, which refers to analyzing the consumer market. "Clusters" became a common term due to COVID-19, but the word itself does not carry any negative connotations and means a grouping or mass.
+
+Pseudocorrelation
+
+Now, we have talked about various things to be careful about in correlation coefficients, but let me also point out the possibility that the correlation may exist purely by chance.
+
+It is known that there is a high correlation between the following variables, for example\footnote{Source: \url{http://tylervigen.com/spurious-correlations}}.
+\input{m08_CorrelationCausation_escape_11}
+
+Just because there is a correlation does not necessarily mean there is meaning behind it. For example, just because Hollywood actor Nicolas Cage stars in a lot of movies does not mean that the number of pool drowning deaths in the US will increase, nor does it mean that divorce rates will decrease if you stop using margarine. It could just be a coincidence that the correlation coefficient appears high when looking at the data.
+
+This type of relationship is referred to as \textbf{spurious correlation}. We analyze psychological phenomena that are not visible to the naked eye using correlation as a clue, but we must be careful not to jump to conclusions based on superficial relationships that happen to be observed.
+
+\section{Causality}
+
+I pointed out various issues, but if there is a correlation between variables, we can infer many things. In that sense, a correlation is an important indicator that also serves as a starting point for research.
+
+As mentioned earlier, physiological indicators such as height and weight usually have correlations. So, when you hear that "the new classmate is 185cm tall," you wouldn't imagine that they weigh less than 50kg (even though it is possible). This relationship between variables makes us imagine a functional relationship where one variable determines the other.
+
+However, it should be noted that having \keytermE{correlational relationships} and having \keytermE{causal relationships} are separate things. For example, there is a story that people who have a messy desk are less likely to be successful\footnote{Kanada, H. (2020). 汚いデスクは出世できない！3つの視点. Retrieved from \url{https://ameblo.jp/dolphin55/entry-12589304622.html}}. Can we say that "if you clean your desk, you will succeed" after hearing this? Let us assume that this was a hypothesis based on empirical data. The underlying data would involve collecting a large number of people with clean and messy desks and comparing their success levels. Success levels might be difficult to define, so it could be annual income, or even numbers arranged in an ordinal scale such as executive director, president, managing director, division manager, and section manager. And let us assume that there was indeed a correlation between the two; that is, the higher the income and position, the cleaner the desk, and vice versa. Can we say that cleaning your desk will lead to success? The answer is no.
+
+Let's assume that there are two variables, A and B, that are correlated. That is, there is some kind of relationship between the two variables. However, causality refers to the meaning that one variable is the cause and the other is the effect. You cannot determine whether $A \to B$ or $B \to A$ from correlation alone. For example, it's unknown whether the reason a desk is clean is because someone got promoted or if someone got promoted (and was given a secretary, for example), resulting in a clean desk. In this way, correlation has looser constraints (only indicating a relationship) while causality requires verifying various conditions in addition to that.
+
+In media and other forms of reporting, there is no shortage of misleading examples, whether due to ignorance or intention. Examples such as "the more kind-hearted you are, the less income you have" and "children become more violent when they watch violent scenes on TV" are often discussed by mistakenly equating correlation with causation. There are also products that advertise negative ions, which use the argument that natural environments such as waterfalls have high levels of negative ions, which help people relax, so releasing negative ions will also help people relax. However, this argument manipulates causation by reversing it, and it is illogical to assume that as the number of fire trucks in a city increases, the number of fires also increases, or that fire departments go around starting fires. Anyone can see that this is an absurd idea.
+
+To refer to a causal relationship, which is deeper than a correlation, there are additional conditions required. Summarizing them, they are as follows: assuming A as the causal variable and B as the effect variable,
+\input{m08_CorrelationCausation_escape_12}
+You also have to consider things like how to assert causality from events, which is a philosophical problem, and there are famous thinkers such as J.S. Mill and D. Hume who have pondered on this. Furthermore, causality is a hot topic in statistics, with various techniques developed in recent years to infer causality statistically. When asserting the causal relationship that "watching violent content leads to children becoming violent" in Figure \ref{fig::m08_causal}, I have listed some examples of influential factors that should be considered. Only after rejecting all the relationships such as the background variables (educational variables), mediating variables (the child's personality), and reverse causality, can we assert that "watching violent content is the cause of violent behaviour" \underline{having seen it}.
+
+\input{m08_CorrelationCausation_escape_13}
+
+
+In psychology, many things are handled in which it is difficult to identify causal relationships beyond correlation. Therefore, when considering causal relationships, we must always be aware of whether there are other independent variables or whether the causal direction is not reversed. It is problematic to think that A is the only cause when there are routes to arrive at a certain result R, such as $A \to R, B\to R, C\to R \ldots$, and it may overlook variables that have a stronger impact. It is also unknown whether "liking violent movies makes one violent" or "being violent makes one like violent movies," or both may be true. In addition, there is an anecdote that when Takeshi Kitano was asked by a journalist about the influence of violent movies on actual violent acts, he responded by saying, "Then why isn't the world getting better even though there are so many good stories like 'Onami Daicho'?" This illustrates the importance of considering other possibilities and inverse possibilities. To deepen research, it is essential to develop a habit of \keytermE{critical thinking} and to doubt and carefully consider things\footnote{Some people misunderstand critical thinking as a way of negating, denigrating, or refuting things. However, it means to doubt and take a closer look. Some people may be reluctant to doubt others, but this act of doubting is an act of "getting to know better," and blindly believing is also a way of saying "I don't want to think about it, I don't want to know about it." This is also expressed in the manga "Liar Game."}.
+
+\section{The Pitfall of Confounding}
+\label{confounding}
+As previously mentioned, psychology studies the invisible mind, and since it cannot be directly manipulated, one can only speculate its presence through correlations among variables. And as discussed earlier, correlation does not imply causation, but only serves as a hint that there may be a relationship.
+
+Still, we try to gather those clues and somehow find a subject of study. It has been shown that it is one of the workings of the mind to look too much for the cause of an event\footnote{This is called the Fundamental Attribution Error in social psychology.}, but we tend to think of phenomena as a result caused by the mind, in other words, we tend to assume causality where there may be none.
+
+It is difficult to establish causality because the underlying variables that may be causing the relationship are not always easy to identify. As shown in Figure \ref{fig::m08_causal}, there may be variables that are related to both the cause and effect variables, and these factors that affect both the cause and effect variables are called \textit{confounding factors}. The term "confounding" literally means "entangled, intertwined," and it is a challenging problem when we cannot isolate the causal relationship we really want to observe.
+
+For example, let's consider the following scenario. Imagine a bookstore running a paperback book fair as part of a promotional campaign. Cute posters are made and a section is created with the slogan "Read More Paperbacks!" The sales of paperback books for that month are seen to increase, and naturally everyone thinks that the fair and posters were effective. The correlation between the effort put into the campaign and the increase in sales seems obvious. However, is that really the case? Did the campaign really have that much of an impact? For instance, it's possible that TV commercials promoting paperback books were also being aired during that same period. Alternatively, it could just be that the sales of paperback books tend to increase during certain times of the year. Besides the cause of "putting effort into the promotional campaign," there could be a variety of confounding factors at play.
+
+To consider the causal effect, we must compare the "no promotion" case and the "promotion" case while keeping \underline{all other factors the same}. Without creating both conditions under the same date, location, and time, we cannot make a correct causal inference. It would be ideal if we could confirm the "world line where promotion was not done \footnote{The term "world line" refers to the dimension of time that moves in a unidirectional direction from the past to the future. It is used to refer to the world that exists on the line when time is represented by a line. Although it is a common expression and not a technical term, it seems to be a concept that appeared in the time machine SF, such as the second film of the movie "Back to the Future" where Doc explains it by drawing a line, and anime "STEINS; GATE." On the other hand, in quantum physics, there is the "multiverse theory" as a possibility of the existence of multiple worlds in parallel. El Psy Kongroo.}, but that is practically impossible (known as the fundamental problem of causal inference \citep{Yasui2019}).
+
+If you want to investigate causality, you need to experimentally control for other factors. As you learned in elementary and middle school, it is only through a controlled experiment where all other conditions are the same that you can understand the effects. Of course, in studies of humans and society, it is impossible to have everyone in the same conditions, including individual differences, but researchers make various efforts to solve this difficult problem as much as possible. As explained in lecture \ref{m12_design1}, the best method is the Randomized Controlled Trials (RCT) method. Additionally, the Regression Analysis method, which will be explained in future lectures, can also assist in statistically controlling variables. For more specialized information, please refer to other texts (\citet{Yasui2019} and \citet{Takahashi20220210}), but researchers are working diligently to solve the fundamental problem of causal inference using skillful techniques.
+
+At this point in time, we can only determine correlation, so we fundamentally cannot determine causation. There is also the underlying issue of causation that cannot be completely controlled. However, scientists are putting in their best efforts to identify all possible confounding factors in advance and take all necessary measures to minimize them. It is important to keep these concepts in mind when discussing this topic.
+
+
+\section{Task}
+Calculating the Correlation Coefficient
+Table \ref{tbl::m04_05again} is a re-posting of Table \ref{tbl::04_05}, but with an additional column $z_x z_y$. Please calculate the covariance and correlation coefficients of the newly added column, as well as the covariance and correlation coefficients of the original data $X$ and $Y$. Also, please check where the covariance and correlation coefficients appear in the table. Note that you do not need to calculate the values shown as "------" in the table.
+\input{m08_CorrelationCausation_escape_14}
+
+
+\end{document}

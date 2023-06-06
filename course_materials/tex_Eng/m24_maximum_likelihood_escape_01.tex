@@ -1,0 +1,10 @@
+\begin{center}
+   \begin{tikzpicture}[xscale = 0.8, yscale = 4]
+      \coordinate (A) at (-2,0);
+      \draw (A) node[left] {$y_i = \beta_0 + \beta_1 x_i + $};
+      \draw [domain=-2:2] plot(\x, {exp((-(\x)^2)/2)/(sqrt(2*pi))-0.1}); % This plots a bell curve
+      \draw [dashed] (0,0.4)--(0,-0.05); % This draws a dashed line
+      \draw (-2,-0.05)--(2,-0.05); % This draws the x-axis
+      \node (zero) at (0,-0.05)[below]{$0$}; % This names the point on the x-axis as zero
+   \end{tikzpicture}
+\end{center}

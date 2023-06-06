@@ -1,0 +1,432 @@
+\documentclass{ltjbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+
+\chapter{Design of experiments and testing for differences in means}
+\label{m21_anova}
+So far, we have mainly discussed hypothesis testing that involves the statistical decision-making process of comparing means.
+Here, we will integrate the discussion of hypothesis testing into the story of moving from linear models to factorial designs that we learned at the end of the first term. The addition of probabilistic decision-making procedures to linear models results in a unique system called Analysis Of Variance (ANOVA).
+
+I will summarize the contents of this chapter in advance.
+\input{m21_anova_escape_01}
+
+As described here, first you need to recall the linear model that you worked on in the first semester. Then, using the distribution that follows the ratio of the sums of squares calculated as the "size" of the effects and errors, you will conduct hypothesis testing. Please note that hypothesis testing involves only a decision based on the competition between the null hypothesis and the alternative hypothesis, and also pay attention to what was set as the null hypothesis as you continue reading.
+
+\section{Comparison of Means and Model Comparison}
+
+Since the second half of the term, the use of probability has changed to focus on the population. Previously, probability was introduced on the basis that errors followed a normal distribution. However, the approach to errors that are affected by various factors has come from another aspect of normal distribution. Additionally, by distinguishing between population and sample, the distribution of the population can be assumed, and the distribution of the sample statistic can be considered, which is used to estimate the parameters. Not only do we estimate the parameters, but we also explain the process of conducting practical judgment through the null hypothesis test.
+
+\input{m21_anova_escape_02}
+
+When we first talked about hypothesis testing, we said that it is a model comparison ($\to$ Section \ref{ModelComparison1}, Pp. \pageref{ModelComparison1}, and Section \ref{ModelComparison2}, Pp. \pageref{ModelComparison2}). Hypothesis testing is the process of comparing a null hypothesis and an alternative hypothesis to determine which one is more likely. It's like making a decision about which model is the winner.
+
+The word "model" here may give a different impression than the expression of the previous (linear) model, since it includes phrases such as assuming the null hypothesis to be $\mu_1 - \mu_2 = 0. However, this is also a model, and moreover, a linear model. I will now explain how to conceptually integrate "hypothesis testing" and "linear models".
+
+As an example, we prepared the following data (Figure \ref{fig::21_01}). This is a plot of the average values of two groups (let's assume they are an experimental group and a control group) without correspondence. The average values shown here are sample means, so as you can see, there is a difference. By the way, the black dots are the observed values ​​of each individual in each group.
+
+% \subsection{平均値差の検定として考える}
+% まずは最近ずっと取り組んでいる，この標本平均から母平均を推測することを考えましょう。私たちは目の前のデータのこと「だけ」について考えているのではなく，議論を一般化したいのですから。母集団に正規分布を仮定すると，標本標準偏差や$t$分布を使って母平均を推測できるのでしたね。
+
+% さて，ここで帰無仮説検定の，母平均に差がないというのはどういう状況でしょうか。$\mu_1 - \mu_2 =0$ というのはつまり，$\mu_1 = \mu_2$ということと同じですから，同じ平均値を持つ正規分布からデータが得られたと仮定した，ということになります(図\ref{fig::21_04})\footnote{とくに$t$検定においては標準偏差も同じと仮定しますから，同一の正規分布になります}。
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/21_anova/slide21_04.png}
+%     \caption{母集団が上になるように元の図を回転しています}
+%     \label{fig::21_04}
+% \end{figure}
+
+% それぞれの標本平均から推定される，母平均の位置は幅を持って推定されますから，その幅がどの程度重複しているのかを考える必要があります。同じだと言えるほど重複しているのか，イエスかノーか，と差し迫った状況では何らかの基準を持って決めないといけませんから，間違って差があると言ってしまう可能性を低く抑えつつ(有意水準$\alpha=0.05$にするのが一般的)，結論を出しましょうというのが帰無仮説検定でしたね。
+
+\subsection{Experimental Plan from the Perspective of God}
+Let's look at the same data from a different perspective here.
+
+In this example, we do not know the characteristics of psychological variables, which are dependent variables, because they are not visible. However, considering that mental issues are the result of countless factors, assuming a normal distribution is natural. In other words, both the experimental group and the control group are samples from the same normal population, which can be viewed as the same humans from a larger perspective.
+
+The participants were randomly assigned to the experimental and control groups by the experimenter in a randomized controlled trial (RCT). If there were no individual differences, we could simply compare the scores of one person from each group and consider it. However, since we are dealing with humans, individual differences cannot be avoided. Therefore, we consider gathering multiple people to offset individual differences. We will look at the difference in the means of each group to see the effect of the manipulation.
+
+If there is no effect in this experiment, the average values of the two groups will be the same. In this case, since there is no difference between the treatment group and control group, the overall average should be the sum of the scores of both groups. No effect means the overall average. However, if you look at each group separately, there is a difference from the overall average. As shown in Figure 21.03, the control group has a relatively low average, while the treatment group has a relatively high average. This difference is the effect of the experiment, indicated by the short green arrow in Figure 21.03.
+
+\input{m21_anova_escape_03}
+
+% このことを，数式的な表現で考えてみたいと思います。
+% まず，各群のデータを$X_{ij}$で表します。ここで$i$は実験参加者の番号，$j$は実験群か統制群かを表す記号だと思ってください。仮想データとの対応を表\ref{tbl::21_01}に示しておきます\footnote{ここでのデータは第\ref{chapter19},\ref{chapter20}講の一要因群間2水準の$t$検定データと同じで，表は\ref{tbl::19_02}に少し手を加えたものです。手を加えた部分は，数式表現の列(notation)はもちろんなのですが，IDのところを通し番号から群ごとの番号に変えました。こうすることで，各群$N=5$だな，ということがわかりやすくなったかと思います。}。
+
+% \begin{table}[ht]
+%     \centering
+%     \caption{仮想データ例と記号の対応} 
+%     \begin{tabular}{rlcr}
+%       \hline
+%     ID & condition & notation & value \\ 
+%       \hline
+%     1 & control & $X_{11}$ & 25 \\ 
+%       2 & control & $X_{21}$& 15 \\ 
+%       3 & control & $X_{31}$& 24 \\ 
+%       4 & control & $X_{41}$& 17 \\ 
+%       5 & control &  $X_{51}$&22 \\ 
+%       1 & experimental & $X_{12}$& 31 \\ 
+%       2 & experimental & $X_{22}$& 28 \\ 
+%       3 & experimental & $X_{32}$& 30 \\ 
+%       4 & experimental & $X_{42}$& 19 \\ 
+%       5 & experimental & $X_{52}$& 18 \\ 
+%        \hline
+%     \end{tabular}
+%     \label{tbl::21_01}
+% \end{table}
+
+Now, the average for each group can be written as follows:
+\[ \bar{X}_1 =\frac{1}{5} \sum_{i=1}^5 X_{i1} \]
+\[ \bar{X}_2 =\frac{1}{5} \sum_{i=1}^5 X_{i2} \]
+In addition, the grand mean can be written as follows: \footnote{"gm" is an abbreviation for "grand mean."}
+\[ \bar{X}_{gm} = \frac{1}{10} \sum_{i} \sum_{j} X_{ij} \]
+This is the sample mean, but what we really want to discuss is the (hypothetical) population mean without any differences between groups. While $\bar{X}_{gm}$ can be used as an estimate for the population mean, the great thing about models is that we can idealize and abstract, so let's use the Greek letter $\beta$ as an unknown parameter for the overall mean and denote it as $\beta_0$.
+
+Next, let's call the effect of groupings $\beta_1$. Then, the model for the average of each group is as follows:
+\[ \mu_1= \beta_0 + \beta_1 \]
+\[ \mu_2 = \beta_0  -\beta_1 \]
+This can be expressed as "θ", as the left-hand side also denotes the mean of each group, and is represented by a Greek letter that signifies an unknown variable.
+
+Next, individual differences here are errors that cannot be controlled in this experiment, and it is unknown in which direction they will affect the group average. To express this, it can be said that...
+\[ X_{ij} = \mu_j + \varepsilon_{ij} \]
+This means that you are a translator.
+\[ X_{i1} = \beta_0 + \beta_1 + \varepsilon_{i1} \]
+\[ X_{i2} = \beta_0 - \beta_1 + \varepsilon_{i2} \]
+You can write it as follows. Here's a trick: the plus and minus signs attached to $\beta_1$ can be thought of as multiplying by $+1$ or $-1$. If we express what is determining these signs as $X_{1}=+1,X_{2}=-1$, we can write it all together as follows.
+\input{m21_anova_escape_04}
+Do you recognize this text from somewhere? Yes, it has the same form as the regression analysis we did earlier (refer to section \ref{m09_Regression}).
+
+Let's briefly review regression analysis here. The idea is that when we have two variables, $x_i$ and $y_i$, we assume that there is some functional relationship between them. Since a functional relationship means that one variable determines the other, we can predict one variable if we know the other by expressing this relationship as a mathematical equation. So, what is the simplest functional relationship? It is the linear function $y=ax+b$ which we learned in middle school. However, unlike in middle school, we now have a lot of data, and we cannot draw a line that fits perfectly to all of the data, so we need to think about drawing a line that fits most of the data with some margin of error. This line is called the regression line or the best fit line. If we denote the predicted value by this function (linear function or linear model) as $\hat{y}_i$, then...
+
+\[ \hat{y}_i = b_0 + b_1x_i \]
+Because data $y_i$ is accompanied by an error $e_i$ when appearing with a predicted value $\hat{y}_i$,
+\[ y_i = \hat{y}_i + e_i  \]
+So, to integrate this,
+\[ y_i = b_0 + b_1 x_i + e_i \]
+The intention was to do so.
+
+Well well. Although the symbols have changed from $y_i, x_i$ and $b_0, b_1$ to $\beta_0$ and $\beta_1", the basic form is still a linear function of the form $y=ax+b$ (see Figure \ref{fig::21_05}).
+\input{m21_anova_escape_05}
+
+
+Earlier, I said that "no effect" means the overall average. If we represent the effect with the symbol $\beta_1$, then "no effect" means $\beta_1=0$. In that case, the term $\beta_1X_j$ disappears. This means that the data comes from a single normal distribution, with an overall average of $\beta_0$ and added errors $\varepsilon_{ij}$.
+
+One common normal distribution. Two groups with the same normal distribution that cannot be separated. It's about time we connected this to the null hypothesis test. Saying there is no effect is exactly the null hypothesis. In other words, the null hypothesis is a linear model with a flat line crossing the group means, where the slope is zero and for figure \ref{fig::21_03} it's $\beta_1=0$. Testing for the difference in mean values is the logic for concluding that the group means are not on a flat line, i.e. the slope isn't zero, and the alternative model being compared is some "non-zero slope" model.
+\input{m21_anova_escape_06}
+The null hypothesis assumes that the slope is zero, while the alternative hypothesis is a loose model that states that anything other than zero is acceptable. Therefore, even if the null hypothesis is rejected, we can only claim that there "might be some difference," but we cannot strongly argue that "if not zero, then what?" Hypothesis testing should be used as a supplement, and it is important to consider the substantive size of the difference, such as how much it is leaning, what the confidence interval of the difference is, and how large the effect size (standardized mean difference) is.
+
+During the previous regression analysis ($\to$ Chapter \ref{m09_Regression}, Section \ref{LeastSquare}, Pp.\pageref{LeastSquare}), we used the least squares method to calculate regression coefficients. However, at that time we did not introduce statistical inference. We simply explained that we could calculate the coefficients that best fit the data. We only talked about sample data, so we wrote the coefficients as $b_0$ and $b_1$. However, if we consider this within the framework of statistical inference, what we want to know is the slope in the population, which is a population parameter. Therefore, this time we will use Greek letters such as $\beta_1$ and $\varepsilon_{ij}$ to represent the coefficients.
+
+I've been talking about how hypothesis testing for differences in means and regression analysis are essentially the same thing. Both rely on the assumption of normal distribution, and while their origins may differ subtly in terms of whether they represent the distribution of "overall trends assumed for psychological phenomena" or "error distribution," mathematically speaking they are the same thing. Therefore, regardless of which approach you take, you can use them in the same way.
+
+Some people may wonder whether we use the least squares method to estimate the mean within the framework of inferential statistics, just as we obtain the coefficients of a regression analysis using the least squares method. Actually, this is an extremely interesting point. However, because the framework of inferential statistics involves using a probability distribution called the normal distribution, we need to use a different approach from the analysis that aims to minimize errors analytically. We will explain two methods for estimating parameters using a probability distribution: the Maximum Likelihood method and the Bayesian method. However, to cut to the chase, the good news is that the answers obtained using the least squares method and the Maximum Likelihood method are \textbf{exactly the same}.
+
+By the way, the methods for estimating population parameters from sample mean and sample variance that have been used so far are classified as "Moment method". In any case, if the data is the same, the estimated values will be roughly the same. Since we are trying to estimate the same thing, it would be troublesome if the estimates are different.
+
+\section{One-Way Between-Subjects ANOVA Test}
+So far, we have talked about comparing the averages of two levels, but what happens when we have three or more levels?
+This can be thought of as an extension of the linear model framework, in essence. For example, suppose we have data like that shown in Table \ref{table::21_02}. There is one factor with three levels, making this an example of a between-group design.
+\input{m21_anova_escape_07}
+The mean of each group is $\bar{X}_1 = 5.5,\bar{X}_2 = 6.0,\bar{X}_3 = 4.25$, and the overall mean is $\bar{X}_{gm}= 5.25$.
+In the context of hypothesis testing, the null hypothesis becomes the hypothesis that "there is no difference in the population mean," so symbolically, it can be expressed as $\mu_1 = \mu_2 = \mu_3$ .
+In terms of linear models, as shown in Figure \ref{fig::21_06}, a linear model without slope, i.e., a horizontal line of $X_{ij} = \bar{X}_{gm} + \varepsilon_{ij}$, can be considered.
+
+\input{m21_anova_escape_08}
+
+The alternative hypothesis negates the null hypothesis, implying there is a difference somewhere in the population mean or there is a slope (i.e. not a straight line with no slope). However, note that when we say "not a straight line," we cannot just deduce whether it is an upward sloping or downward sloping line because the levels 1/2/3 on the horizontal axis are just nominal level measures. It means that the reason why we chose 1 as the control group while assigning 2 or 3 to "Group A" or "Group B" is not significant, and any other arrangement would be equally acceptable. In fact, nominal level measures require that there is a one-to-one correspondence between the object and the numbers used, but it does not imply any order significance for the numbers. In Figure \ref{fig::21_06}, we can see that the trend is rising toward level 2 but declining from level 2 to level 3, and it cannot be represented by a single straight line. However, if we change the order to level 3/1/2, we can assign an upward sloping line (see Figure \ref{fig::21_07}). Of course, we could also arrange the order to be 2/1/3 and apply a downward sloping line. Either way, the information contained in the data is the same. Therefore, let us limit the alternative hypothesis to "not a straight line" and "population mean is not the same."
+
+\input{m21_anova_escape_09}
+
+\input{m21_anova_escape_10}
+
+
+The analysis method that adds elements of the null hypothesis test to the factor planning is called \keytermE{Analysis of Variance}{ANOVA}. Sometimes it is abbreviated as ANOVA. Although it is called "variance" analysis, please note that what is being tested is the "difference in mean values". The reason why it is called variance analysis is related to the fact that the slope of the line cannot be simply determined to be either upward or downward. Because it can vary positively or negatively, the calculation is squared to eliminate sign effects.
+
+During the first term, we calculated the magnitude of the effect by squaring it, but we left out how to compare the effect with the error.
+The reason for this is that without the framework of inferential statistics, we cannot refer to methods of comparison, and without the framework of null hypothesis testing, we cannot refer to criteria for judgment. However, we can now explain using these frameworks. We can consider the distribution of the sum of squares, that is, the squared and combined values, and calculate the statistical quantity from the theoretical distribution. Let's take a closer look at this method.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% →Dkiso1_12.texにもらっていきます(2021.05.14)
+% \section{線形モデルとしてみた一要因多水準計画}
+% まずは線形モデルとして，一要因多水準の要因計画を見るとどう解釈できるかを説明します。ポイントは\underline{平方和の分解}と\underline{分散の比による比較}です。
+% \subsection{平方和の分解}
+% 群わけされてないデータ全体を考えてみてください(表\ref{tbl::21_01}のvalue列がそうです)。全体平均は5.25，全体の不偏分散は 1.659です。この全体平均は，帰無仮説的な状態，つまり群わけの効果がなく全部が1つの平均値になるならば，というラインです。言い換えると効果とか個性(誤差)がなければ，すべての数字が5.25だったはずなのです。ですが，実際の数字は6($=X_{11}$ほか)とか3($=X_{32}$)といった数字です。この違いを生んでいるのが何なのか，を考えるヒントが分散の中に埋め込まれているはずなのです\footnote{言い方を変えると，分散がゼロであれば何の情報も得られないのでした。テストが全員同じ点だったら，何が原因で成績が上がるのかがわかりません。同じスコアにしかならないんだから。これだとやる気が生じないでしょう?}。なので分散分析では，この分散を分解することを考えます。
+
+% ところで，分散は「平均からの差(平均偏差)」の「二乗」を「平均する(総和して足した数で割る)」という3ステップで計算します。分散分析では最後の「足した数で割る」の箇所を取り除き，平均偏差の二乗和(Sum of Squares, SS)で考えます。実質的に分散と同じ情報を持っている数字です。この「平均からの差」こそ，今探している情報そのものです。これがゼロなら全体平均に一致しますし，分散もゼロになるからです。
+
+% 具体的な数字で考えてみましょう。3つの群それぞれの平均を考えてみます。
+% 実験者によって群に分けるという介入がなければ，全員のスコアは5.25だったはずなのでした。しかし，第1水準の平均は5.5になっています。つまり，ここの群に入ると平均で$5.5-5.25=0.25$のプラスの効果が出てくるということです。逆に第3水準の平均は4.25ですから，ここの軍に振り分けられると平均で$4.25-5.25=-1.0$のマイナスの効果が出てくるということになります。このように，全体平均と群平均の差が「群わけの効果」であると言えるわけです。
+
+% さらに細かくみてみましょう。$X_{11}$は，第1水準の群に入れられた人ですから，+0.25の効果が出ているはず。全体平均が5.25でプラス0.25の効果なので，5.5であるべき人なのですが，実際の観測値は6です。この$6-5.5=0.5$の差，これは実験の群わけによる効果ではないので個人差だ，ということになります。ここでは実験外の要因ですから個人差＝誤差と言って良いでしょう。
+
+% これを少し数式で表現しておきます。データは$X_{ij}$で，第$j$群の第$i$番目の人を表すのでした。このデータは，全体平均$\beta_0$と，群の効果(これを$\beta_j$と表しましょう)と個人差に分解できるということで，式で表すと次のようになります。
+% \[ X_{ij} = \beta_0 + \beta_j + \varepsilon_{ij} \]
+% ここで全体平均$\beta_0$の推定値をデータから$\bar{X}_{gm}$とすると，効果$\beta_j$の推定値は
+% \[ \beta_j  = \bar{X}_j - \bar{X}_{gm}\]
+% で計算できます\footnote{話を単純化するために，効果の項は1つの記号$\beta_j$で代表させていますが，本当はこれにも符号を表現する係数$X_j$をつけて$X_{ij}=\beta_0 + \beta_{1j} X_j + \varepsilon_{ij}$とすることで話の一貫性を持たせることができます。ただ，今回は水準が3つあるので$\beta_{11}+\beta_{12}+\beta_{13}=0$という「効果の平均は$0$，相対的に考える」という条件と合わせて考えると，$X_j$をうまく一文字で表すのに困るのです。これは行列表現を使うことで解決できる(し，もっと利点がある)のですが，それは2年次のデータ解析応用の授業で扱う予定です。}。
+
+% 記号だと分かりにくいかもしれませんが，データで考えると表\ref{table::21_03}のようになります。
+% \begin{table}[ht]
+%     \centering
+%     \caption{一要因3水準Between計画のデータを分解する}
+%     \begin{tabular}{rccrrrr}
+%       \hline
+%     id & condition & notation & value($X_{ij}$) & 全体平均($\bar{X}_{gm}$) & 群の効果($\beta_j$) & 誤差($\varepsilon_{ij}$)\\ 
+%       \hline
+%       1 & 1 & $X_{11}$ & 6 & 5.25 & $+0.25$ & $+0.50$\\ 
+%       2 & 1 & $X_{12}$ & 6 & 5.25 & $+0.25$ & $+0.50$\\ 
+%       3 & 1 & $X_{13}$ & 5 & 5.25 & $+0.25$ & $-0.50$\\ 
+%       4 & 1 & $X_{14}$ & 5 & 5.25 & $+0.25$ & $-0.50$\\ 
+%       1 & 2 & $X_{21}$ & 7 & 5.25 & $+0.75$ & $+1.00$\\ 
+%       2 & 2 & $X_{22}$ & 4 & 5.25 & $+0.75$ & $-2.00$ \\ 
+%       3 & 2 & $X_{23}$ & 7 & 5.25 & $+0.75$ & $+1.00$\\ 
+%       4 & 2 & $X_{24}$ & 6 & 5.25 & $+0.75$ & $+0.00$\\ 
+%       1 & 3 & $X_{31}$ & 4 & 5.25 & $-1.00$ & $-0.25$\\ 
+%       2 & 3 & $X_{32}$ & 3 & 5.25 & $-1.00$ & $-1.25$\\ 
+%       3 & 3 & $X_{33}$ & 4 & 5.25 & $-1.00$ & $-0.25$\\ 
+%       4 & 3 & $X_{34}$ & 6 & 5.25 & $-1.00$ & $+1.75$\\ 
+%        \hline\hline
+%        合計 &&&&& 0.00 & 0.00\\\hline
+%     \end{tabular}
+%     \label{table::21_03}
+%     \end{table}
+% この表\ref{table::21_03}，「全体の平均」の列は全部同じです。群わけがなければ，全員5.25だったはずだ，というわけです。次に「群の効果」列を見てもらいたいのですが，これは3つの群(condition列に対応)ごとに同じです。また，これは相対的な大きさなので，全部足し合わせるとゼロになります。最後に誤差の列。これの計算は$\varepsilon_{ij} = X_{ij} - \bar{X}_{gm}-\beta_j$でできます。
+
+% このように，平均からの差を考えると，効果あるいは誤差が計算できることになります。ただし，効果や誤差はプラスであったりマイナスであったりしますから，影響力の大きさとして比較できません。最後の合計欄にあるように，全部足し合わせるとゼロになってしまうのです。そこで，これを二乗して(平均偏差の平方和にして)，比較することを考えます。
+
+% 分散分析の最初のポイント，平方和の分解とは，全体の平方和を「効果」と「誤差」に分解することである，というのがご理解いただけましたでしょうか。
+% \subsection{分散の比による比較}
+% 次はこれの比較です。以前，「差があるとはどういうことか」で説明したように($\to$セクション\ref{fig::ch11D_133})，群に分けたことによって生まれた違いは，個人差の違いと比較して初めてその効果を明確にできます(図\ref{fig::21_08}に再掲)。この考え方は，効果量の話とも一貫するものです。
+
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/21_anova/slide21_08.png}
+%     \caption{平均値の差(群の効果)が同じ2つの実験の例。左側は群間の分散(緑の矢印)に比べて群内の分散(青の矢印)が大きいため，効果があるとは言いにくい。右側の例では，統制群の最大値が実験群の最小値にも及ばないほどなので，効果があると言いやすい。}
+%     \label{fig::21_08}
+% \end{figure}
+
+% ということで，この効果を(帰無仮説検定で)判定するときには分散の比を使います。母分散の比についての確率分布も既に知られていて，これを$F$分布と言います。それではこの分布を使って判定する方法を説明していきましょう。
+
+\subsection{Procedure of Hypothesis Testing}
+Analysis of variance is a method for testing differences in means across multiple levels. As a type of hypothesis testing, the formal procedures are followed.
+\paragraph{Hypothesis Setting}
+
+It is necessary to have a null hypothesis and an alternative hypothesis. As mentioned earlier, the null hypothesis assumes no difference in population means, which can be expressed as $H_0: \mu_1 = \mu_2 = \mu_3$, and the alternative hypothesis is its negation. At this point, some people may wonder, "Wait, what?" Indeed, there are various ways to negate this null hypothesis. That is to say,
+\input{m21_anova_escape_11}
+There are four possible patterns to consider. Actually, all of these are part of the alternative hypotheses. As a linear model, it is only necessary that it is not a horizontal line, meaning that there should be a (statistically significant) slope somewhere.
+\paragraph{Choosing a test statistic} While estimating the mean value, we focus on testing the variance, so we will use a distribution called the $F$-distribution. Note that the TeX code remains unchanged.
+\paragraph{Setting the probability for criteria of judgment} Let's assume we're going to stick with the significance level $\alpha$ of 5% for this round as well.
+\paragraph{Calculating the Observed Value of the Test Statistic} Calculation of the observed value of test statistic $F$ can be done using the table \ref{table::21_03} as previously mentioned. By squaring the column for the group effect and the column for error effect, and then summing them up, we can calculate the sum of squares.
+
+In other words, we consider the following\footnote{Since the group effects $\beta_j$ are of the same magnitude and there are only $n=4$ of them, we represent them as $n\sum_j \beta_j$.}.
+
+\[\sum_{i}\sum_{j} (X_{ij} - \bar{X}_{gm})^2 = n\sum_j \beta_j + \sum_{i}\sum_{j} \varepsilon_{ij} \]
+
+\input{m21_anova_escape_12}
+Please take a look at the last row of Table \ref{tbl::21_04}. The sum of squares of mean deviations ($\sum_{i}\sum_{j}(X_{ij} - \bar{X}_{gm})^2$) is 18.25, which can be decomposed into the sum of squares of effects ($n\sum_j \beta_j$) of 6.50 and the sum of squares of errors ($\sum_{i}\sum_{j}$) of 11.75.
+
+It becomes a competition to compare 11.75 and 6.50 and determine which one is larger. However, if we compare their sum of squares, of course, the error will have a larger value. The important point to consider is how large the variance is for each unit. The error, 11.75, was produced by the entire dataset, while the effect, 6.50, was produced by three different levels. This difference is taken into account when calculating statistical values.
+
+The test statistic $F$ follows a probability distribution of the ratio of variances. It is currently in the form of a squared sum and not yet a variance. You only need to square and add the values, but you have to divide by a certain number. When considering this divisor, the entire thing is $N-1$ (assuming an unbiased variance), but factors and errors need to be considered separately based on the number of elements that produced them (minus 1) and the number of elements that caused the errors (minus 1). The average size of each element is referred to as the \keytermE{mean square}.
+
+As the group effect created this sum of squares at three levels, we consider one unit to be $2$ ($3-1$), and the MS is determined.
+\[ 6.50 / (3-1) = 3.250\]
+The text in Japanese translates to:
+
+"The size of one unit of error is created from the difference between each group's mean and each value, without modifying the TeX code, and since there are four people assigned to each group, we consider that there are three degrees of freedom for error in each group."
+
+I hope this helps!
+\[ 11.75/3(4-1)=11.75/9 = 1.306\]
+You are a translator.
+
+The test statistic for F-distribution is the ratio of MS. Here, we want to see "how much more effective was it compared to the error," so we calculate the F-value by dividing the MS of the effect by the MS of the error without altering the TeX code.
+You are a translator.
+\[F = 3.250/1.306 = 2.489\]
+You are a translator.
+
+The $F$ value follows an F distribution. As it is a distribution of the ratio, two degrees of freedom are needed to determine the shape of the distribution - one for the numerator and one for the denominator. The degrees of freedom are values calculated from the previous unit, with $df_1 = 2$ for the numerator and $df_2 = 9$ for the denominator. By calculating the occurrence probability from the $F$ distribution with those degrees of freedom, we obtain the value of 0.1379077\footnote{In R, the probability function for the F distribution is \texttt{f}. Thus, to calculate this probability, we can use the expression \texttt{1-pf(2.489,df1=2,df2=9)}.}. It cannot be said to be significant at the 5% level.
+\paragraph{Analysis of Variance Table}
+Many people may have thought, "What a cumbersome calculation!" At least, I was confused when I first learned it. To start, it is important to understand the concepts of "dividing the variance (sum of squares)" and "comparing variances using the ratio." This is because computers can handle these types of complicated calculations for us.
+
+I will postpone that exercise until next time, but it is common to report the results calculated by machine in the form of an ANOVA (Analysis of Variance) Table, which summarizes the results as shown in Table \ref{tbl::21_05}.
+\input{m21_anova_escape_13}
+
+As shown in this table, please confirm that the calculation flows from sum of squares (SS) to degrees of freedom (df), then to mean squares (MS) and finally to the F ratio of the ratio, with the calculation of the p-value. Remember not to modify the TeX code.
+
+When reporting results in a report or other document, include this table.
+You are a translator.
+When conducting a one-way analysis of variance with three levels, there was no statistically significant difference observed between the levels, with $F(2,9)=2.489, p=0.138$. The TeX code was not altered.
+You are a translator.
+Please translate this Japanese text into English without modifying the TeX code: "などとします。"
+
+"What is the effect size?"
+In hypothesis testing, it is important to report not only whether a difference exists or not, but also the degree or magnitude of the difference. In the analysis of variance, the effect size is the ratio of the variance of the effect to the total variance, that is, effect size = variance of effect / total variance = 1 - (variance of error / total variance). This is known as epsilon squared, represented as $\varepsilon^2$ (sometimes also indicated by eta squared, which has a similar meaning).
+
+However, since we do not know the variance of the effect in the population or the variance of the error in the population, we can only estimate the sample effect size using the unbiased sample variance. In this case, the overall sample (unbiased) variance is 1.659091, which is obtained by dividing 18.25, the value at the bottom of the "square of mean deviation" column in Table 21.04, by 11 (the degrees of freedom).
+
+\[ \varepsilon^2 = 1 - \frac{1.306}{1.659} = 0.2127788 \]
+
+"It would be best to report it together."
+
+\subsection{Post-hoc test}
+I have explained that null hypothesis testing and linear models are simply different perspectives on the same thing, but personally, I find null hypothesis testing to be more troublesome. There are many constraints and the calculation process can be cumbersome. I think it would be easier to just evaluate the magnitude of the slope as it is in the linear model, but some people may find that there are too many formulas involved. Although the calculation for analysis of variance can be intricate, it can still be done by hand.
+
+% Now, let's talk again about the framework of hypothesis testing. Specifically, we will talk about analysis of variance as a combination of factor planning and statistical inference. This involves comparing the null hypothesis (horizontal line model) with the alternative hypothesis (all models which are not the horizontal line model). If you recall, for a one-factor three-level model, the alternative hypothesis corresponds to which of the following options: \underline{insert correct option here}?
+You are a translator.
+Please translate this Japanese text to English without modifying the TeX code:
+
+     %     \item $\mu_1 \neq \mu_2$ but it's unclear whether $\mu_3$ is equal to $\mu_1$ or $\mu_2$.
+% 
+\item It is known that $\mu_1 \neq \mu_3$, but it is unclear whether $\mu_1 = \mu_2$ or $\mu_3 = \mu_2$.
+%     \item Although $\mu_2$ is not equal to $\mu_3$, it is unclear whether $\mu_2=\mu_1$ or $\mu_3=\mu_1$ with respect to $\mu_1$.
+        \item $\mu_1 \neq \mu_2 \neq \mu_3$, which means all of them are different from each other.
+You are a translator.
+Now, when the result of the analysis of variance is judged to be "significant," meaning the null hypothesis has been rejected and the alternative hypothesis accepted, we may wonder which of the multiple alternative hypotheses that were considered is actually valid. However, we cannot determine this. All we know is that the null hypothesis is false.
+
+So, what should we do? One easy solution would be to systematically test the various alternative sub-models suggested above. For example, we could conduct three independent t-tests for each pair of groups (i.e. Group 1 vs Group 2, Group 1 vs Group 3, Group 2 vs Group 3) without matching their observations. Some people may think this approach is sufficient and stop here. However, as the number of levels increases, so does the number of possible pairwise comparisons: six pairs for four levels (1-2, 1-3, 1-4, 2-3, 2-4, 3-4) and ten pairs for five levels (1-2, 1-3, 1-4, 1-5, 2-3, 2-4, 2-5, 3-4, 3-5, 4-5). Although the workload may increase as the number of levels increases, we should persevere knowing that the computer will do the calculations for us.
+
+However, this approach does not work well as it is. As we learned in Section \ref{alphaInfration} on page \pageref{alphaInfration} in the previous Lecture \ref{m19_NHST2}, repeated testing increases the risk of Type I errors.
+The reason for this is that the null hypothesis test involves making a probabilistic judgement, which means that when there is a significant difference, there is an error (type 1 error) at the significance level of alpha. If this probabilistic judgement is repeated, it can actually cause problems.
+
+Let's consider an analogy. Suppose there is a skilled stockbroker who has a good eye for the market and the stocks he chooses usually go up in value. Of course, he may occasionally make mistakes, let's assume that the probability of failure is 1 in 20 times. That means a failure rate of 5%. Assuming that customers who invest with him have a 95% chance of making a profit, the broker can make a profit for his clients in 95% of cases. Now, suppose he receives a request from a group of 10 people. If he needs to introduce each of them to a different investment opportunity, can he use his 95% win rate to ensure that all of them make a profit this time around?
+
+% The 5% failure rate (95% success rate) mentioned in this context refers to the issue of Type 1 errors, where there is a risk of rejecting the null hypothesis (no difference) even though it is actually true. The fact that there are 10 requests this time can be thought of as conducting tests for each pair, similar to a 5-level factor plan.
+The probability of making a correct judgment in one test is 95\%, but the probability of making two consecutive correct judgments is $0.95\times0.95=0.9025$. This means that the alpha level has increased to approximately 10\% ($1-0.9025=0.0975$). Similarly, in a group of 10 people, there is a probability of approximately 40\% ($1-0.95^{10}=0.4013$) that there will be at least one incorrect judgment.
+
+%Even with a 5% chance of danger and 95% accuracy, since it is a probabilistic judgment, repeating it can result in unexpectedly large numbers. Therefore, it is not appropriate to think that it is fine to repeat t-tests from the beginning even if there are many levels, and it is also not good to repeat t-tests when adding additional tests after conducting analysis of variance and achieving significance.
+
+So, what should we do next? Following the analysis of variance, we have what is called a \keytermE{post-hoc analysis}{下位検定 (かいけんてい)} or simply a \keytermE{post-hoc analysis}{事後検定 (じごけんてい)}. Various methods for conducting such an analysis have been proposed, and it's hard to say which is good or bad (there are entire books dedicated to this topic alone \citep{BA33892274}). However, to help you out, I'll introduce two methods.
+
+\paragraph{Bonferroni's Method} The problem at hand is essentially an inflation of the $\alpha$ level, so one solution is to adjust it downwards. For instance, with three alternative hypotheses and a desire to maintain a 5\% significance level overall, one could judge each hypothesis at the level of $0.05/3=0.017$. This is an intuitive and transparent criterion. There are also various improved versions of this approach, such as the Holm method, Shaffer's procedure, and Holland-Copenhaver's method.
+
+\paragraph{Tukey's HSD method} This is the most common and widely used method\footnote{However, "commonly used" does not necessarily mean "correct" or "superior." Each method has different assumptions, premises, areas of focus, and emphases, and "commonly used" often only means that statistical software packages frequently calculate this statistic.}. In this method, a different statistical value $q$ is calculated for each pair, and it is determined whether this value clears the reference line.
+
+In addition, there are various methods and options available through statistical packages. Therefore, it is important to accurately record and report "which analysis method was used and how the judgments were made."
+
+% Above all, it is important to remember that these judgments are all techniques for "probabilistically" determining the presence or absence of differences. Judgments of presence or absence reduce a lot of data or information into 1 bit. Simply reporting that there was a difference does not convey whether it was a slight or significant difference. Since these judgments are also probabilistic, there is a possibility of error. Depending on the method, even lower-level testing may or may not detect differences. Therefore, seeking a method in which differences will be detected is actually a misuse of scientific practice\footnote{This harmful practice is called p-hacking.}. Instead, it is important to directly evaluate the magnitude of the difference or the effect size, and consider the range in which the estimated parameters might fall, in terms of the practice of science.
+
+% In this section, we have explained the problems with repeating statistical tests and their avoidance strategies. However, historically speaking, even among professional scholars in research practice, these issues have not always been given sufficient importance. Although we discussed an example of three levels of analysis in one analysis, if three experiments are conducted in a single paper and a t-test is performed for each, the same "inflation of $\alpha$ level" problem will arise. While confirming phenomena across multiple experiments is important, because probabilistic judgments are being made, the overall significant level must be planned systematically throughout\footnote{The $\alpha$ level per analysis is called family-wise $\alpha$, and the $\alpha$ level per paper is called experimental-wise $\alpha$.}. However, in reality, it is not uncommon for many t-tests to be repeated for one study or for no adjustment to be made for the $\alpha$ level across multiple experiments. Unfortunately, there is a reality that research has been accumulated in the past that has been "wrong". Unless each person takes this issue seriously, it will become a crisis for the industry as a whole.
+
+The null hypothesis test requires a highly specialized and delicate technique to be properly understood and used; however, due to machines easily performing the calculations, incorrect use of the technique has become widespread. To counteract this, one must either acquire correct knowledge or simply avoid using the null hypothesis test. There are methods that do not require a one-bit judgment using the null hypothesis test. One method is to simply report the size, such as confidence intervals or effect size. Another is to use Bayesian estimation of probability models rather than estimation using moment methods. We may have an opportunity to discuss this latter topic in the latter half of this course.
+
+\section{Testing the Two-Factor Planning Model}
+% Analysis of variance is a method of testing for differences in means across multiple levels. As the number of factors increases to two or more, it is certain to have three or more levels, making it necessary to use analysis of variance. Following the formal procedure of null hypothesis testing, let's consider the following.
+Let's continue and consider testing a two-factor experimental design.
+
+Here, we would like to provide an example using the data from the two brands of coffee (Section \ref{Between2way}, Pp. \pageref{Between2way}) that we discussed in Lesson \ref{m13_design2}. The question is whether to drink the coffee hot or iced.
+"The factors are the brand and temperature, so we must also take into account the interaction, since it is a two-factor design."
+Here, we reprint Table \ref{tbl::13_04}. The table shows the size of each effect and error, as well as the calculated sum of squares.
+Please translate this Japanese text into English without modifying the TeX code:
+You are a translator.
+\caption{Re-posted: Calculation of the Sum of Squares}
+Please provide the text to be translated. The given code is unrelated to the text.
+You are a translator.
+Overall Average & Temperature Effect & Brand Effect & Interaction & Error & Evaluation \\
+You are a translator.
+9.75, -0.25, +0.75, +1.75, +1.00, and 13.
+9.75, -0.25, +0.75, +1.75, -1.00, and 11
+9.75 & -0.25 & +0.75 & +1.75 & 0.00 & 12 \\ \hline
+9.75 & -0.25 & -0.75 & -1.75 & 0.00  & 7     \\
+
+(Note: This is numerical data and does not require translation.)
+9.75 & -0.25 & -0.75 & -1.75 & -1.00 & 6 were given.
+9.75 & -0.25 & -0.75 & -1.75 & +1.00 & 8     \\ \hline 
+
+(This is not a translation as the original text is already in English and does not require translation. The text is a table of numerical values.)
+9.75 & +0.25 & +0.75 & -1.75 & 0.00 & 9
+9.75 & +0.25 & +0.75 & -1.75 & 0.00 & 9  \\ 
+
+9.75 & +0.25 & +0.75 & -1.75 & 0.00  & 9     \\ \hline
+9.75 & +0.25 & -0.75 & +1.75 & +2.00 & 13
+9.75 & +0.25 & -0.75 & +1.75 & 0.00  & 11 are the values.
+9.75 & +0.25 & -0.75 & +1.75 & -2.00 & 9
+Please translate this Japanese text into English without modifying the TeX code: 
+
+               \hline\hline
+Square Sum & 0.75 & 6.75 & 36.75 & 12.00 & 56.25 \\\hline
+Please do not modify the TeX code. Translate this Japanese text into English:
+You are a translator.
+You are a translator.
+
+Utilizing the property that the ratio of the sum of squares follows an F-distribution, a hypothesis test can be made based on this.
+The formal procedure is as follows.
+\paragraph{Setting the Hypotheses} It is necessary to have a null hypothesis and an alternative hypothesis. As mentioned before, the null hypothesis states that there is no difference in the population mean. In this case, it means that there is no difference in the population mean, no matter where you sample from. For the first factor, which is the first level of temperature, and the second factor which is the second level of manufacturer (Brand B), let the population mean be $\mu_{12}$. Then the null hypothesis becomes $H_0: \mu_{11}=\mu_{12}=\mu_{21}=\mu_{22}$. The alternative hypothesis is the negation of the null hypothesis.
+\paragraph{Choosing a Test Statistic} While estimating the mean value, in order to test the variance, we use a distribution called the $F$-distribution. There will be no modification to the original TeX code.
+\paragraph{Setting the criteria for decision-making probability} Let's set the significance level $\alpha$ at 5\% again to make a decision.
+\paragraph{Calculation of the observed value of the test statistic} The observed value of the test statistic $F$ is calculated based on the sums of squares shown in Table \ref{tbl::21_06}. After adjusting for degrees of freedom and standardizing by the magnitude of effects per unit, we compare the values and summarize them in the analysis of variance table.
+% Wed Oct 28 11:03:41 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrrr}
+  \hline
+ & Species & Sepal.Length & Sepal.Width & Petal.Length \\ 
+  \hline
+1 & setosa & 5.01 & 3.42 & 1.46 \\ 
+  2 & versicolor & 5.94 & 2.77 & 4.26 \\ 
+  3 & virginica & 6.59 & 2.97 & 5.55 \\ 
+   \hline
+\end{tabular}
+\caption{Iris Dataset} 
+\end{table}
+
+Translation: 
+
+You are a translator. Please translate this Japanese text into English without modifying the TeX code: 
+
+        % latex table generated in R 4.0.2 by xtable 1.8-4 package
+        % Wed Oct 28 11:03:41 2020
+        \begin{table}[ht]
+        \centering
+        \begin{tabular}{rlrrr}
+        \hline
+        & Species & Sepal.Length & Sepal.Width & Petal.Length \\
+        \hline
+        1 & setosa & 5.01 & 3.42 & 1.46 \\
+        2 & versicolor & 5.94 & 2.77 & 4.26 \\
+        3 & virginica & 6.59 & 2.97 & 5.55 \\
+        \hline
+        \end{tabular}
+        \caption{Iris Dataset}
+        \end{table}
+You are a translator.
+Please translate this Japanese text into English without modifying the TeX code:
+You are a translator.
+\caption{ANOVA表}
+Please provide the Japanese text that needs to be translated. The given code is not related to the text.
+You are a translator.
+& Df    & SS    & MS    & F value & $p$   \\
+& (degrees of freedom) & (sum of squares) & (mean square) & & (probability) \\
+You are a translator.
+Temperature & 1.000 & 0.750 & 0.750 & 0.500 & 0.500 \\
+Manufacturer & 1,000 & 6.750 & 6.750 & 4.500 & 0.067
+Interaction & 1.000 & 36.750 & 36.750 & 24.500 & 0.001 \\
+Error & 8.000 & 12.000 & 1.500 & & \\
+You are a translator.
+Please do not modify the TeX code.
+You are a translator.
+You are a translator.
+
+Here, let's confirm that the process involves using the sum of squares (SS) to determine degrees of freedom (df), calculating the mean square (MS) to determine the F ratio for the ratio test, and obtaining the p-value. The TeX code will not be altered.
+
+Looking at this, we can see that there is no main effect for temperature ($F(1,8)=0.50,p=0.500$) or for manufacturer ($F(1,8)=4.50,p=0.067$), but there is an interaction effect ($F(1,8)=24.50,p=0.001$). Since there are only two levels for each factor, there is no need to conduct post-hoc tests for the main effects. However, since there is an interaction effect, we need to further analyze where the differences lie. We can divide the data into the different levels of each factor (first and second levels of factor A and B) and explore where the differences lie. In this example, we would need to test four different patterns: 1. Is there a difference between brand A and B when the coffee is hot? 2. Is there a difference between brand A and B when the coffee is iced? 3. Is there a difference between hot and iced coffee for brand A? 4. Is there a difference between hot and iced coffee for brand B? Of course, we need to correct for multiple testing, using methods such as Bonferroni or Tukey's correction.
+
+It is recommended to also calculate effect size and report it. Since these calculations are often done automatically by statistical packages, we'll save the details for exercises in R. In the meantime, let's focus on the big picture.
+\section{Tasks}
+
+\paragraph{Let's write an ANOVA table for the Between plan} I gave a snack to three children each, but they started fighting because they claimed there were differences in the length of the snacks.
+To verify the validity of their claims, four stick-shaped candies were sampled from each candy bag and their lengths were measured. The results are presented in Table \ref{anovaExample1}.
+Each effect has been calculated. Let's use this to write an analysis of variance table.
+
+\input{m21_anova_escape_14}
+Please fill in the numbers that correspond to (a) to (o) in Table \ref{Example1Ans}.
+\input{m21_anova_escape_15}
+
+Let's write an ANOVA Table for a two-factor design.
+There are two fast food chain stores (A/B) in this town, both serving hamburgers (H) and cheeseburgers (C) on their menus.
+We bought three hamburgers and three cheeseburgers from each store and measured their weight. The results are shown in Table \ref{anovaExample2}.
+The effects of differences between shops, differences in menus, the effects of interactions, and the squared errors are calculated without modifying the TeX code.
+Let's use this to write an analysis of variance table.
+\input{m21_anova_escape_16}
+
+Please provide the numbers that correspond to (ka)-(ko) in Table \ref{Example2Ans}.
+
+\input{m21_anova_escape_17}
+\end{document}

@@ -1,0 +1,9 @@
+\begin{lstlisting}[language=c++,label={code:11_05},caption={Other information on regression analysis}]
+batter <- batter %>% 
+    dplyr::mutate(residuals = result$residuals,
+                    yhat = result$fitted.values) 
+batter
+summary(batter)
+plot(batter)
+cor(batter)
+\end{lstlisting}

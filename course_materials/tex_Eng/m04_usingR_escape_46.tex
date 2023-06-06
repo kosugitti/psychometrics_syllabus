@@ -1,0 +1,6 @@
+\begin{lstlisting}[language=c++,label={code:usingR_pivot_longer2},caption={Specifying the variable names to output}]
+        dat %>%
+        select(Year, Name, position) %>%
+        rownames_to_column("ID") %>%
+        pivot_longer(-ID, names_to = "Variables", values_to = "Value")
+\end{lstlisting}
