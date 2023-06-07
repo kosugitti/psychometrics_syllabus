@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.5.18)  18 MAY 2023 15:20
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.5.12)  7 JUN 2023 08:04
  restricted system commands enabled.
 **tmp
 (./tmp.tex
@@ -7,7 +7,7 @@ Lua module: luaotfload 2022-10-03 3.23 Lua based OpenType font support
 Lua module: lualibs 2022-10-04 2.75 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2022-10-04 2.75 ConTeXt Lua libraries -- extended c
 ollection.
-luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2023
+luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2023
 /texmf-var/luatex-cache/generic/names".
 luaotfload | init : Loading fontloader "fontloader-2022-10-03.lua" from kpse-res
 olved path "/usr/local/texlive/2023/texmf-dist/tex/luatex/luaotfload/fontloader-
@@ -19,7 +19,7 @@ Inserting `luaotfload.node_processor' in `hpack_filter'.
 Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
 Inserting `luaotfload.define_font' in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 2
-luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2023
+luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2023
 /texmf-var/luatex-cache/generic/names".
 Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
 Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
@@ -38,7 +38,7 @@ Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'. L3 programm
-ing layer <2023-05-15>
+ing layer <2023-05-11>
 Inserting `tracingstacklevels' in `input_level_string'.
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/ltjsbook.cls
 Document Class: ltjsbook 2022/09/12 ltjsclasses 
@@ -309,7 +309,7 @@ LaTeX Info: Redefining \fontshapeforce on input line 955.
 )
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/patches/lltjdefs.sty
 Package: lltjdefs 2022-01-23 Default font settings of LuaTeX-ja
-luaotfload | db : Font names database loaded from /Users/hermite/Library/texlive
+luaotfload | db : Font names database loaded from /Users/napier3/Library/texlive
 /2023/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache: e
 xtra_lmroman10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
@@ -328,7 +328,7 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 Package: lltjcore 2023-02-26 Patch to LaTeX2e Kernel for LuaTeX-ja
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2023-05-15 L3 programming layer (loader) 
+Package: expl3 2023-05-11 L3 programming layer (loader) 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2023-04-19 L3 backend support: PDF output (LuaTeX)
@@ -1191,7 +1191,7 @@ Package: luatexja-fontspec-27c 2020-04-04 fontspec support of LuaTeX-ja
 \g__ltj_fontspec_altnumber_int=\count350
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/latex/nicematrix/nicematrix.sty
-Package: nicematrix 2023/05/15 v6.19 Enhanced arrays with the help of PGF/TikZ
+Package: nicematrix 2023/04/19 v6.18 Enhanced arrays with the help of PGF/TikZ
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/array.sty
 Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
@@ -1205,7 +1205,7 @@ Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
 )
 \g__nicematrix_env_int=\count351
 \g__nicematrix_NiceMatrixBlock_int=\count352
-\g__nicematrix_notes_caption_int=\count353
+\l__nicematrix_note_in_caption_int=\count353
 \l__nicematrix_columns_width_dim=\dimen325
 \l__nicematrix_col_width_dim=\dimen326
 \g__nicematrix_row_total_int=\count354
@@ -1294,7 +1294,7 @@ Package: accents 2006/05/12 v1.4 Math Accent Tools
 \cc@group=\count381
 \cc@skewchar=\count382
 )
-luaotfload | cache : Lookup cache loaded from /Users/hermite/Library/texlive/202
+luaotfload | cache : Lookup cache loaded from /Users/napier3/Library/texlive/202
 3/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache: 
 extra_biz-udmincho-medium.luc)
 
@@ -3993,14 +3993,14 @@ Package rerunfilecheck Info: Checksums for `tmp.out':
 )
 
 Here is how much of LuaTeX's memory you used:
- 50381 strings out of 478364
+ 50389 strings out of 478313
  597245,1977958 words of node,token memory allocated
  133017 words of node memory still in use:
    11 hlist, 2 vlist, 5 rule, 464 glue, 4 kern, 1 glyph, 59066 attribute, 70 glu
 e_spec, 5380 attribute_list, 4 write, 14 user_defined, 34 pdf_action nodes
    avail lists: 1:40,2:77887,3:1791,4:9761,5:2419,6:492,7:16020,8:82,9:9418,10:4
 9,11:200
- 64116 multiletter control sequences out of 65536+600000
+ 64175 multiletter control sequences out of 65536+600000
  153 fonts using 107479791 bytes
  118i,18n,113p,4285b,1164s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
@@ -4053,7 +4053,7 @@ local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/loc
 al/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/
 texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
 live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on tmp.pdf (466 pages, 62093687 bytes).
+Output written on tmp.pdf (466 pages, 62093481 bytes).
 
 PDF statistics: 8171 PDF objects out of 8907 (max. 8388607)
  7181 compressed objects within 72 object streams
