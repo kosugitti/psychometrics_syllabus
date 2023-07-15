@@ -1,13 +1,14 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.5.18)  18 MAY 2023 15:29
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.6.21)  15 JUL 2023 14:38
  restricted system commands enabled.
 **tmp
 (./tmp.tex
-LaTeX2e <2022-11-01> patch level 1
+LaTeX2e <2023-06-01> patch level 1
+L3 programming layer <2023-06-16>
 Lua module: luaotfload 2022-10-03 3.23 Lua based OpenType font support
 Lua module: lualibs 2022-10-04 2.75 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2022-10-04 2.75 ConTeXt Lua libraries -- extended c
 ollection.
-luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2023
+luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2023
 /texmf-var/luatex-cache/generic/names".
 luaotfload | init : Loading fontloader "fontloader-2022-10-03.lua" from kpse-res
 olved path "/usr/local/texlive/2023/texmf-dist/tex/luatex/luaotfload/fontloader-
@@ -19,7 +20,7 @@ Inserting `luaotfload.node_processor' in `hpack_filter'.
 Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
 Inserting `luaotfload.define_font' in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 2
-luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2023
+luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2023
 /texmf-var/luatex-cache/generic/names".
 Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
 Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
@@ -37,10 +38,9 @@ Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
 Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
-Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'. L3 programm
-ing layer <2023-05-15>
-Inserting `tracingstacklevels' in `input_level_string'.
-(/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/ltjsbook.cls
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `tracingstacklevels' in `input_level_string'. (/usr/local/texlive/202
+3/texmf-dist/tex/luatex/luatexja/ltjsbook.cls
 Document Class: ltjsbook 2022/09/12 ltjsclasses 
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/luatexja.sty
 Package: luatexja 2023-05-03 Japanese Typesetting with Lua(La)TeX
@@ -55,8 +55,8 @@ Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX
 Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
 \@catcodetablestackcnt=\count183
 )
-\CatcodeTableOther=\catcodetable12
-\CatcodeTableExpl=\catcodetable13
+\CatcodeTableOther=\catcodetable14
+\CatcodeTableExpl=\catcodetable15
 )
 (/usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
@@ -74,15 +74,15 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-\pdftexcmds@toks=\toks16
+\pdftexcmds@toks=\toks17
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (/usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks17
-\XKV@tempa@toks=\toks18
+\XKV@toks=\toks18
+\XKV@tempa@toks=\toks19
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/keyval.tex))
 \XKV@depth=\count184
@@ -98,12 +98,12 @@ Package: svn-prov 2010/04/24 v3.1862 Package Date/Version from SVN Keywords
 )
 Package: everyhook 2014/11/26 v1.2 (SVN Rev: 12)\ Hooks for low level TeX every
 X primitives.
-\everypar=\toks19
-\frozen@everymath=\toks20
-\frozen@everydisplay=\toks21
-\everyhbox=\toks22
-\everyvbox=\toks23
-\everycr=\toks24
+\everypar=\toks20
+\frozen@everymath=\toks21
+\frozen@everydisplay=\toks22
+\everyhbox=\toks23
+\everyvbox=\toks24
+\everycr=\toks25
 )
 \ltjlineendcomment=\count186
 \ltj@dimen@zw=\dimen139
@@ -230,35 +230,35 @@ Package: ltj-base 2021-03-16
 \ltj@tempcntc=\count191
 \ltj@afbox=\box51
 )
-\ltj@@italic@inner=\luafunction26
-\ltj@@start@time@measure@inner=\luafunction27
-\ltj@@stop@time@measure@inner=\luafunction28
-\ltj@@jfont@inner=\luafunction29
-\ltj@zw@inner=\luafunction30
-\ltj@zh@inner=\luafunction31
-\ltj@reset@globaldefs@inner=\luafunction32
-\ltj@restore@globaldefs@inner=\luafunction33
-\ltj@@disihb@inner=\luafunction34
-\ltj@@ihb@inner=\luafunction35
-\ltj@@fakeparbegin@inner=\luafunction36
-\ltj@@fakeboxbdd@inner=\luafunction37
-\ltj@@ins@xk@inner=\luafunction38
-\ltj@@ins@k@inner=\luafunction39
-\ltjsetkanjiskip@inner=\luafunction40
-\ltjsetxkanjiskip@inner=\luafunction41
-\ltj@@getparam@one@inner=\luafunction42
-\ltj@alljachar@inner=\luafunction43
-\ltj@@lua@populate@insertwhatsit@inner=\luafunction44
-\ltj@@vadjust@begin@inner=\luafunction45
-\ltj@@vadjust@dirhook@inner=\luafunction46
-\ltj@@vadjust@check@dir@inner=\luafunction47
-\ltj@@box@dirhook@inner=\luafunction48
-\ltj@@reset@badness@inner=\luafunction49
-\ltj@@lua@raisebox@inner=\luafunction50
-\ltj@@vsplit@inner=\luafunction51
-\ltj@@lua@unboxcheckdir@inner=\luafunction52
-\ltj@@lua@uncopycheckdir@inner=\luafunction53
-\ltj@@lua@uncopy@restore@whatsit@inner=\luafunction54
+\ltj@@italic@inner=\luafunction25
+\ltj@@start@time@measure@inner=\luafunction26
+\ltj@@stop@time@measure@inner=\luafunction27
+\ltj@@jfont@inner=\luafunction28
+\ltj@zw@inner=\luafunction29
+\ltj@zh@inner=\luafunction30
+\ltj@reset@globaldefs@inner=\luafunction31
+\ltj@restore@globaldefs@inner=\luafunction32
+\ltj@@disihb@inner=\luafunction33
+\ltj@@ihb@inner=\luafunction34
+\ltj@@fakeparbegin@inner=\luafunction35
+\ltj@@fakeboxbdd@inner=\luafunction36
+\ltj@@ins@xk@inner=\luafunction37
+\ltj@@ins@k@inner=\luafunction38
+\ltjsetkanjiskip@inner=\luafunction39
+\ltjsetxkanjiskip@inner=\luafunction40
+\ltj@@getparam@one@inner=\luafunction41
+\ltj@alljachar@inner=\luafunction42
+\ltj@@lua@populate@insertwhatsit@inner=\luafunction43
+\ltj@@vadjust@begin@inner=\luafunction44
+\ltj@@vadjust@dirhook@inner=\luafunction45
+\ltj@@vadjust@check@dir@inner=\luafunction46
+\ltj@@box@dirhook@inner=\luafunction47
+\ltj@@reset@badness@inner=\luafunction48
+\ltj@@lua@raisebox@inner=\luafunction49
+\ltj@@vsplit@inner=\luafunction50
+\ltj@@lua@unboxcheckdir@inner=\luafunction51
+\ltj@@lua@uncopycheckdir@inner=\luafunction52
+\ltj@@lua@uncopy@restore@whatsit@inner=\luafunction53
 (load cache: ltj-kinsoku_default.luc)
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/ltj-latex.sty
 Package: ltj-latex 2022-10-15 LaTeX support of LuaTeX-ja
@@ -269,7 +269,7 @@ Package: lltjfont 2023-04-13 Patch to NFSS2 for LuaTeX-ja
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/base/tuenc.def
 File: tuenc.def 2021/04/29 v2.0v Standard LaTeX file
-\@remove@tlig@@@=\luafunction55
+\@remove@tlig@@@=\luafunction54
 LaTeX Font Info:    Redeclaring font encoding TU on input line 105.
 )
 \Cht=\dimen143
@@ -287,29 +287,29 @@ LaTeX Font Info:    Redeclaring font encoding TU on input line 105.
 \tstrutbox=\box53
 \zstrutbox=\box54
 LaTeX Info: Redefining \strut on input line 91.
-\ltj@@add@fenc@@inner=\luafunction56
-\ltj@@add@kyenc@@inner=\luafunction57
-\ltj@@add@ktenc@@inner=\luafunction58
-\ltj@@is@kyenc@@inner=\luafunction59
-\ltj@@is@ktenc@@inner=\luafunction60
-\ltj@@is@kenc@@inner=\luafunction61
-\ltj@@is@ffam@@inner=\luafunction62
-\ltj@@add@ffam@@inner=\luafunction63
-\ltj@@add@kfam@@inner=\luafunction64
-\ltj@@adjust@baseline@inner=\luafunction65
+\ltj@@add@fenc@@inner=\luafunction55
+\ltj@@add@kyenc@@inner=\luafunction56
+\ltj@@add@ktenc@@inner=\luafunction57
+\ltj@@is@kyenc@@inner=\luafunction58
+\ltj@@is@ktenc@@inner=\luafunction59
+\ltj@@is@kenc@@inner=\luafunction60
+\ltj@@is@ffam@@inner=\luafunction61
+\ltj@@add@ffam@@inner=\luafunction62
+\ltj@@add@kfam@@inner=\luafunction63
+\ltj@@adjust@baseline@inner=\luafunction64
 LaTeX Info: Redefining \fontencoding on input line 646.
 LaTeX Info: Redefining \fontfamily on input line 689.
 LaTeX Info: Redefining \fontseries on input line 923.
 LaTeX Info: Redefining \fontseriesforce on input line 924.
 LaTeX Info: Redefining \fontshape on input line 944.
 LaTeX Info: Redefining \fontshapeforce on input line 955.
-\ltj@@jfont@@jfmonly@@inner=\luafunction66
-\ltj@@does@alt@set@@inner=\luafunction67
-\ltj@@cipath@clear@inner=\luafunction68
+\ltj@@jfont@@jfmonly@@inner=\luafunction65
+\ltj@@does@alt@set@@inner=\luafunction66
+\ltj@@cipath@clear@inner=\luafunction67
 )
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/patches/lltjdefs.sty
 Package: lltjdefs 2022-01-23 Default font settings of LuaTeX-ja
-luaotfload | db : Font names database loaded from /Users/hermite/Library/texlive
+luaotfload | db : Font names database loaded from /Users/napier3/Library/texlive
 /2023/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache: e
 xtra_lmroman10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
@@ -328,7 +328,7 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 Package: lltjcore 2023-02-26 Patch to LaTeX2e Kernel for LuaTeX-ja
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2023-05-15 L3 programming layer (loader) 
+Package: expl3 2023-06-16 L3 programming layer (loader) 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2023-04-19 L3 backend support: PDF output (LuaTeX)
@@ -350,7 +350,7 @@ Inserting `l3color' in `luaotfload.parse_color'.
 \@CL=\box66
 \@CR=\box67
 (load cache: extra_lmmono9-regular.luc)
-\@bannertoken=\toks25
+\@bannertoken=\toks26
 \@@paperheight=\dimen155
 \@@paperwidth=\dimen156
 \@@topmargin=\dimen157
@@ -368,7 +368,7 @@ l writing mode
  (/usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 )))
-\ltj@temp@cctb=\catcodetable14
+\ltj@temp@cctb=\catcodetable16
 )
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/luatexja-compat.sty
 Package: luatexja-compat 2020-08-08 Compatibility with pTeX
@@ -462,10 +462,10 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 \Gm@layoutheight=\dimen170
 \Gm@layouthoffset=\dimen171
 \Gm@layoutvoffset=\dimen172
-\Gm@dimlist=\toks26
+\Gm@dimlist=\toks27
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2022/04/08 v2.17n AMS math features
+Package: amsmath 2023/05/13 v2.17o AMS math features
 \@mathmargin=\skip53
 
 For additional information on amsmath, use the `?' option.
@@ -474,7 +474,7 @@ Package: amstext 2021/08/26 v2.01 AMS text
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks27
+\@emptytoks=\toks28
 \ex@=\dimen173
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -514,21 +514,21 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \dotsspace@=\muskip16
 \c@parentequation=\count285
 \dspbrk@lvl=\count286
-\tag@help=\toks28
+\tag@help=\toks29
 \row@=\count287
 \column@=\count288
 \maxfields@=\count289
-\andhelp@=\toks29
+\andhelp@=\toks30
 \eqnshift@=\dimen176
 \alignsep@=\dimen177
 \tagshift@=\dimen178
 \tagwidth@=\dimen179
 \totwidth@=\dimen180
 \lineht@=\dimen181
-\@envbody=\toks30
+\@envbody=\toks31
 \multlinegap=\skip54
 \multlinetaggap=\skip55
-\mathdisplay@stack=\toks31
+\mathdisplay@stack=\toks32
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 )
@@ -568,9 +568,16 @@ File: luatex.def 2022/09/22 v1.2d Graphics/color driver for luatex
 \Gin@req@width=\dimen183
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lineno/lineno.sty
-Package: lineno 2023/01/19 line numbers on paragraphs v5.1
+Package: lineno 2023/05/20 line numbers on paragraphs v5.3
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
 \linenopenalty=\count290
-\output=\toks32
+\output=\toks33
 \linenoprevgraf=\count291
 \linenumbersep=\dimen184
 \linenumberwidth=\dimen185
@@ -584,7 +591,7 @@ Package: lineno 2023/01/19 line numbers on paragraphs v5.1
 \bframesep=\dimen188
 \bframebox=\box71
 \linenoamsmath@ams@eqpen=\count297
-LaTeX Info: Redefining \\ on input line 3131.
+LaTeX Info: Redefining \\ on input line 3180.
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
@@ -630,7 +637,7 @@ Package: fancyvrb 2023/01/19 4.5a verbatim text (tvz,hv)
 \UL@box=\box73
 \UL@hyphenbox=\box74
 \UL@skip=\skip56
-\UL@hook=\toks33
+\UL@hook=\toks34
 \UL@height=\dimen189
 \UL@pe=\count302
 \UL@pixel=\dimen190
@@ -701,10 +708,10 @@ File: ppluatex.def 2022/12/19 v0.5x Pdfpages driver for LuaTeX (AM)
 )
 \pdfpages@includegraphics@status=\count306
 \AM@pagebox=\box76
-\AM@global@opts=\toks34
+\AM@global@opts=\toks35
 \AM@pagecnt=\count307
-\AM@toc@title=\toks35
-\AM@lof@heading=\toks36
+\AM@toc@title=\toks36
+\AM@lof@heading=\toks37
 \c@AM@survey=\count308
 \AM@templatesizebox=\box77
 )
@@ -713,7 +720,7 @@ File: ppluatex.def 2022/12/19 v0.5x Pdfpages driver for LuaTeX (AM)
 \WF@size=\dimen256
 \c@WF@wrappedlines=\count309
 \WF@box=\box78
-\WF@everypar=\toks37
+\WF@everypar=\toks38
 Package: wrapfig 2003/01/31  v 3.6
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/multirow/multirow.sty
@@ -728,7 +735,7 @@ Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
-\pgfutil@everybye=\toks38
+\pgfutil@everybye=\toks39
 \pgfutil@tempdima=\dimen258
 \pgfutil@tempdimb=\dimen259
 )
@@ -745,12 +752,12 @@ Package: pgf 2023-01-15 v3.1.10 (3.1.10)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks39
-\pgfkeys@temptoks=\toks40
+\pgfkeys@pathtoks=\toks40
+\pgfkeys@temptoks=\toks41
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfil
 tered.code.tex
-\pgfkeys@tmptoks=\toks41
+\pgfkeys@tmptoks=\toks42
 ))
 \pgf@x=\dimen260
 \pgf@y=\dimen261
@@ -768,9 +775,9 @@ tered.code.tex
 \c@pgf@countb=\count312
 \c@pgf@countc=\count313
 \c@pgf@countd=\count314
-\t@pgf@toka=\toks42
-\t@pgf@tokb=\toks43
-\t@pgf@tokc=\toks44
+\t@pgf@toka=\toks43
+\t@pgf@tokb=\toks44
+\t@pgf@tokc=\toks45
 \pgf@sys@id@count=\count315
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
@@ -804,9 +811,9 @@ Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
 \pgfmath@dimen=\dimen270
 \pgfmath@count=\count318
 \pgfmath@box=\box80
-\pgfmath@toks=\toks45
-\pgfmath@stack@operand=\toks46
-\pgfmath@stack@operation=\toks47
+\pgfmath@toks=\toks46
+\pgfmath@stack@operand=\toks47
+\pgfmath@stack@operation=\toks48
 )
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
 tex)
@@ -957,8 +964,8 @@ Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 \pgffor@iter=\dimen297
 \pgffor@skip=\dimen298
-\pgffor@stack=\toks48
-\pgffor@toks=\toks49
+\pgffor@stack=\toks49
+\pgffor@toks=\toks50
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
 e.tex
@@ -1137,7 +1144,7 @@ Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
 \LT@rows=\count336
 \c@LT@tables=\count337
 \c@LT@chunks=\count338
-\LT@p@ftn=\toks50
+\LT@p@ftn=\toks51
 )
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/addons/luatexja-fontspe
 c.sty
@@ -1191,14 +1198,14 @@ Package: luatexja-fontspec-27c 2020-04-04 fontspec support of LuaTeX-ja
 \g__ltj_fontspec_altnumber_int=\count350
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/latex/nicematrix/nicematrix.sty
-Package: nicematrix 2023/05/15 v6.19 Enhanced arrays with the help of PGF/TikZ
+Package: nicematrix 2023/06/04 v6.20 Enhanced arrays with the help of PGF/TikZ
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/array.sty
 Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
 \col@sep=\dimen323
 \ar@mcellbox=\box117
 \extrarowheight=\dimen324
-\NC@list=\toks51
+\NC@list=\toks52
 \extratabsurround=\skip67
 \backup@length=\skip68
 \ar@cellbox=\box118
@@ -1294,7 +1301,7 @@ Package: accents 2006/05/12 v1.4 Math Accent Tools
 \cc@group=\count381
 \cc@skewchar=\count382
 )
-luaotfload | cache : Lookup cache loaded from /Users/hermite/Library/texlive/202
+luaotfload | cache : Lookup cache loaded from /Users/napier3/Library/texlive/202
 3/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache: 
 extra_biz-udmincho-medium.luc)
 
@@ -1349,7 +1356,7 @@ LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/jfm-prop.lua)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
-\everycr=\toks52
+\everycr=\toks53
 \minrowclearance=\skip69
 \rownum=\count383
 )
@@ -1359,7 +1366,7 @@ Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count384
 \lst@gtempboxa=\box119
-\lst@token=\toks53
+\lst@token=\toks54
 \lst@length=\count385
 \lst@currlwidth=\dimen377
 \lst@column=\count386
@@ -1388,12 +1395,12 @@ Package: luatexbase-cctb 2015/10/04 v1.3 luatexbase interface to LuaTeX (legacy
  subpackage) 
 )
 \ltj@lst@japanese@min=\count392
-\CatcodeTableLTJlistings=\catcodetable15
+\CatcodeTableLTJlistings=\catcodetable17
 \ltj@lst@frame@lslimit=\dimen381
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\lst@WFtoken=\toks54
+\lst@WFtoken=\toks55
 \lst@WF=\write5
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/generic/stringenc/stringenc.sty
@@ -1404,11 +1411,8 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 )))
 (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2023-04-22 v7.00x Hypertext links for LaTeX
+Package: hyperref 2023-05-16 v7.00y Hypertext links for LaTeX
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
@@ -1422,7 +1426,7 @@ Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2022-05-17 v2.50 Cross-referencing by name of section
+Package: nameref 2023-05-16 v2.51 Cross-referencing by name of section
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
@@ -1430,17 +1434,14 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
- (/usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-))
+)
 \c@section@level=\count393
 )
 \@linkdim=\dimen382
 \Hy@linkcounter=\count394
 \Hy@pagecounter=\count395
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2023-04-22 v7.00x Hyperref: PDFDocEncoding definition (HO)
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2023-05-16 v7.00y Hyperref: PDFDocEncoding definition (HO)
 )
 (/usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
@@ -1448,17 +1449,17 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 \Hy@SavedSpaceFactor=\count396
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2023-04-22 v7.00x Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2023-05-16 v7.00y Hyperref: PDF Unicode definition (HO)
 )
-Package hyperref Info: Hyper figures OFF on input line 4182.
-Package hyperref Info: Link nesting OFF on input line 4187.
-Package hyperref Info: Hyper index ON on input line 4190.
-Package hyperref Info: Plain pages OFF on input line 4197.
-Package hyperref Info: Backreferencing OFF on input line 4202.
+Package hyperref Info: Hyper figures OFF on input line 4167.
+Package hyperref Info: Link nesting OFF on input line 4172.
+Package hyperref Info: Hyper index ON on input line 4175.
+Package hyperref Info: Plain pages OFF on input line 4182.
+Package hyperref Info: Backreferencing OFF on input line 4187.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4449.
+Package hyperref Info: Bookmarks ON on input line 4434.
 \c@Hy@tempcnt=\count397
-LaTeX Info: Redefining \url on input line 4787.
+LaTeX Info: Redefining \url on input line 4772.
 \XeTeXLinkMargin=\dimen383
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
@@ -1471,13 +1472,13 @@ Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 \Fld@menulength=\count398
 \Field@Width=\dimen384
 \Fld@charsize=\dimen385
-Package hyperref Info: Hyper figures OFF on input line 6066.
-Package hyperref Info: Link nesting OFF on input line 6071.
-Package hyperref Info: Hyper index ON on input line 6074.
-Package hyperref Info: backreferencing OFF on input line 6081.
-Package hyperref Info: Link coloring OFF on input line 6086.
-Package hyperref Info: Link coloring with OCG OFF on input line 6091.
-Package hyperref Info: PDF/A mode OFF on input line 6096.
+Package hyperref Info: Hyper figures OFF on input line 6051.
+Package hyperref Info: Link nesting OFF on input line 6056.
+Package hyperref Info: Hyper index ON on input line 6059.
+Package hyperref Info: backreferencing OFF on input line 6066.
+Package hyperref Info: Link coloring OFF on input line 6071.
+Package hyperref Info: Link coloring with OCG OFF on input line 6076.
+Package hyperref Info: PDF/A mode OFF on input line 6081.
 \Hy@abspage=\count399
 \c@Item=\count400
 \c@Hfootnote=\count401
@@ -1485,7 +1486,7 @@ Package hyperref Info: PDF/A mode OFF on input line 6096.
 Package hyperref Info: Driver (autodetected): hluatex.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hluatex.def
-File: hluatex.def 2023-04-22 v7.00x Hyperref driver for luaTeX
+File: hluatex.def 2023-05-16 v7.00y Hyperref driver for luaTeX
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
@@ -1511,12 +1512,12 @@ Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 78.
 Package hyperref Info: Option `bookmarksopen' set `true' on input line 78.
 Package hyperref Info: Option `colorlinks' set `true' on input line 78.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2023/03/17 version 6.0.3 text color boxes
+Package: tcolorbox 2023/06/19 version 6.0.4 text color boxes
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks55
-\verbatim@line=\toks56
+\every@verbatim=\toks56
+\verbatim@line=\toks57
 \verbatim@in@stream=\read4
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/environ/environ.sty
@@ -1538,7 +1539,7 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@temp=\box128
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
-Library (tcolorbox): 'tcbbreakable.code.tex' version '6.0.3'
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.0.4'
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pdfcol/pdfcol.sty
 Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
 )
@@ -1548,7 +1549,7 @@ Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
 \tcb@totallowerbox=\box131
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
-Library (tcolorbox): 'tcbskins.code.tex' version '6.0.3'
+Library (tcolorbox): 'tcbskins.code.tex' version '6.0.4'
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
 Package: tikzfill.image 2022/07/20 v1.0.0 Image filling library for TikZ
 
@@ -1561,9 +1562,9 @@ File: tikzlibraryfill.image.code.tex 2022/07/20 v1.0.0 Image filling library
 \l__tikzfill_img_box=\box132
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
-Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.0.3'
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.0.4'
 )) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
-Library (tcolorbox): 'tcbtheorems.code.tex' version '6.0.3'
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.0.4'
 )
 \c@tcb@cnt@Rscreen=\count407
 \c@tcb@cnt@SCrstan=\count408
@@ -1626,7 +1627,7 @@ LaTeX Font Info:    Trying loading font information for TS1+cmr on input line 6
 .
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
-File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
+File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 6.
 LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 6.
@@ -1685,12 +1686,12 @@ LaTeX Font Info:    ... okay on input line 6.
 \scratchbox=\box133
 \nofMPsegments=\count415
 \nofMParguments=\count416
-\everyMPshowfont=\toks57
+\everyMPshowfont=\toks58
 \MPscratchCnt=\count417
 \MPscratchDim=\dimen387
 \MPnumerator=\count418
 \makeMPintoPDFobject=\count419
-\everyMPtoPDFconversion=\toks58
+\everyMPtoPDFconversion=\toks59
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1768,8 +1769,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 \c@lstlisting=\count420
  (/usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks59
-\inpenc@posthook=\toks60
+\inpenc@prehook=\toks60
+\inpenc@posthook=\toks61
 )
 Package hyperref Info: Link coloring ON on input line 6.
  (./tmp.out) (./tmp.out)
@@ -3309,33 +3310,33 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 File: ../images/26_mixed/Rplot26_06.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_06.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_06.png  used on input line 
-239.
+240.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
  [312]
 <../images/26_mixed/Rplot26_03.png, id=5771, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_03.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_03.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_03.png  used on input line 
-252.
+253.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
  [313<../images/26_mixed/Rplot26_06.png><../images/26_mixed/Rplot26_03.png>]
 <../images/26_mixed/Rplot26_04.png, id=5781, 1156.32pt x 650.43pt>
 File: ../images/26_mixed/Rplot26_04.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_04.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_04.png  used on input line 
-266.
+267.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
 <../images/26_mixed/slide26_03.png, id=5783, 356.532pt x 273.6624pt>
 File: ../images/26_mixed/slide26_03.png Graphic file (type png)
 <use ../images/26_mixed/slide26_03.png>
 Package luatex.def Info: ../images/26_mixed/slide26_03.png  used on input line 
-274.
+275.
 (luatex.def)             Requested size: 334.60422pt x 256.85014pt.
  [314<../images/26_mixed/Rplot26_04.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Overfull \hbox (9.1505pt too wide) in paragraph at lines 306--307
+Overfull \hbox (9.1505pt too wide) in paragraph at lines 307--308
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -3349,13 +3350,13 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 File: ../images/26_mixed/Rplot26_05.png Graphic file (type png)
 <use ../images/26_mixed/Rplot26_05.png>
 Package luatex.def Info: ../images/26_mixed/Rplot26_05.png  used on input line 
-350.
+351.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
  [316]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Overfull \hbox (25.35066pt too wide) in paragraph at lines 384--385
+Overfull \hbox (25.35066pt too wide) in paragraph at lines 385--386
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -3365,7 +3366,7 @@ mixed/Rplot26_05.png>]
 File: ../images/26_mixed/slide26_04.png Graphic file (type png)
 <use ../images/26_mixed/slide26_04.png>
 Package luatex.def Info: ../images/26_mixed/slide26_04.png  used on input line 
-396.
+397.
 (luatex.def)             Requested size: 334.60422pt x 216.96077pt.
 ) [318<../images/26_mixed/slide26_04.png>]
 \openout2 = x27_IRTonBayes.aux
@@ -3381,14 +3382,14 @@ Package luatex.def Info: ../images/26_mixed/slide26_04.png  used on input line
 File: ../images/27_IRTonBayes/Rplot27_01.png Graphic file (type png)
 <use ../images/27_IRTonBayes/Rplot27_01.png>
 Package luatex.def Info: ../images/27_IRTonBayes/Rplot27_01.png  used on input 
-line 41.
+line 50.
 (luatex.def)             Requested size: 334.60422pt x 334.60081pt.
  [320<../images/27_IRTonBayes/Rplot27_01.png>]
 <../images/27_IRTonBayes/Slide27_01.png, id=5931, 360.8682pt x 305.943pt>
 File: ../images/27_IRTonBayes/Slide27_01.png Graphic file (type png)
 <use ../images/27_IRTonBayes/Slide27_01.png>
 Package luatex.def Info: ../images/27_IRTonBayes/Slide27_01.png  used on input 
-line 55.
+line 64.
 (luatex.def)             Requested size: 334.60422pt x 283.69307pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
@@ -3411,7 +3412,7 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 File: ../images/27_IRTonBayes/Rplot27_02.png Graphic file (type png)
 <use ../images/27_IRTonBayes/Rplot27_02.png>
 Package luatex.def Info: ../images/27_IRTonBayes/Rplot27_02.png  used on input 
-line 177.
+line 186.
 (luatex.def)             Requested size: 334.60422pt x 334.60081pt.
  [323] [324<../images/27_IRTonBayes/Rplot27_02.png>]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
@@ -3837,6 +3838,11 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (./x21_modeling3.aux) (./x22_modeling4.aux) (./x23_modeling5.aux)
 (./x24_linearModel.aux) (./x25_HLM.aux) (./x26_mixed.aux) (./x27_IRTonBayes.aux
 ) (./x28_ChangePoint.aux) (./x29_SSpace.aux) (./x30_comparison.aux))
+ ***********
+LaTeX2e <2023-06-01> patch level 1
+L3 programming layer <2023-06-16>
+ ***********
+
 
 Package rerunfilecheck Warning: File `tmp.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -3848,16 +3854,16 @@ Package rerunfilecheck Info: Checksums for `tmp.out':
 )
 
 Here is how much of LuaTeX's memory you used:
- 51791 strings out of 478364
+ 50060 strings out of 478031
  746614,1977958 words of node,token memory allocated
  117949 words of node memory still in use:
    11 hlist, 2 vlist, 5 rule, 354 glue, 4 kern, 1 glyph, 52559 attribute, 68 glu
 e_spec, 4773 attribute_list, 4 write, 14 user_defined, 24 pdf_action nodes
    avail lists: 1:37,2:119034,3:2940,4:12301,5:3291,6:522,7:9829,8:122,9:11744,1
 0:49,11:262
- 64667 multiletter control sequences out of 65536+600000
+ 64520 multiletter control sequences out of 65536+600000
  166 fonts using 119375871 bytes
- 118i,18n,113p,4285b,1222s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 125i,18n,128p,4285b,1223s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>
 </usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmmono12-regular.ot
 f></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman7-italic.o
@@ -3915,7 +3921,7 @@ ve/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/
 3/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2023/texm
 f-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on tmp.pdf (450 pages, 49108279 bytes).
+Output written on tmp.pdf (450 pages, 49108482 bytes).
 
 PDF statistics: 8897 PDF objects out of 8907 (max. 8388607)
  8035 compressed objects within 81 object streams
