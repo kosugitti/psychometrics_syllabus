@@ -1,0 +1,13 @@
+\begin{lstlisting}[language=c++,label={code:16_12x},caption={さまざまなデータの型}]
+# 数字をセットで持つvector型，matrix型
+x <- c(1, 2, 5, 8, 9)
+A <- matrix(c(1, 2, 3, 4, 5, 6), ncol = 2, nrow = 3)
+# 型にこだわりなくなんでも収納list型
+dataSet <- list(name = c("kosugi","koji"),
+                v1 = c(1,2,4,5,3,5,6),
+                v2 = matrix(c(1,2,3,4),ncol=2))
+# 矩形に整えられたlist型であるdata.frame
+df <- data.frame(list(name=c("kosugi","suzuki"),
+           V1 = c(176,173),
+           V2 = c(83,55)))
+\end{lstlisting}

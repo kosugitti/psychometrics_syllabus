@@ -1,18 +1,17 @@
-\begin{lstlisting}[language=c++,label={code:03_01},caption={Drawing Code by using ggplot2}]
-
-# Scatter plot
+\begin{lstlisting}[language=c++,label={code:03_01},caption={ggplot2による描画コード}]
+# 散布図
 g1 <- ggplot(sample, aes(x = height, y = weight, 
 			colour = team, fill = team)) +
   			geom_point()
 
-# Box plot
+# ボックスプロット
 g2 <- sample %>%
   select(position, height) %>%
   na.omit() %>%
   ggplot(aes(x = position, y = height, fill = position)) +
   geom_boxplot()
 
-# Violin plot
+# バイオリンプロット
 g3 <- sample %>%
   select(position, height) %>%
   na.omit() %>%
@@ -20,7 +19,7 @@ g3 <- sample %>%
   geom_violin(alpha = 0.7) +
   geom_jitter(alpha = 0.3)
 
-# Bar plot
+# バープロット
 g4 <- sample %>%
   select(height, position) %>%
   na.omit() %>%
@@ -30,8 +29,8 @@ g4 <- sample %>%
   geom_bar(stat = "identity", alpha = 0.7) +
   ylim(0, 200) +
   geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = .5)
-
-# Histogram
+  
+# ヒストグラム
 g5 <- sample %>% ggplot(aes(x = height)) +
   geom_histogram(binwidth = 1)
 
@@ -42,9 +41,8 @@ g6 <- ggplot(sample, aes(x = height, y = weight,
   ylab("weight") +
   facet_wrap(~team)
 
-# Line graph
+# 折れ線グラフ
 g7 <- weight %>% ggplot(aes(x = date, y = weight)) +
   geom_point() +
   geom_line()
-
 \end{lstlisting}

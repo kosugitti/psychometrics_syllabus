@@ -1,0 +1,15 @@
+\begin{lstlisting}[language=C++,label={code:PRE_07summary},caption={MCMCの要約を報告するコード}]
+MCMCsummary <- function(MCMCsample) {
+  MCMCsample %>%
+    dplyr::group_by(name) %>%
+    dplyr::summarise(
+      EAP = mean(value),
+      MED = median(value),
+      MAP = map_estimation(value),
+      SD = sd(value),
+      U95 = quantile(value, prob = 0.975),
+      L95 = quantile(value, prob = 0.025)
+    ) %>%
+    mutate(across(where(is.numeric), ~ num(., digits = 3)))
+}
+\end{lstlisting}

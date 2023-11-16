@@ -1,15 +1,15 @@
-\begin{lstlisting}[language=c++,label={code:20_01},caption={Repeated Sampling}]
+\begin{lstlisting}[language=c++,label={code:20_01},caption={繰り返しサンプリングする}]
 # Clear workspace
 rm(list=ls())
-### Create population
+### 母集団を作る
 X <- rnorm(100,5,1)
-## Population mean
+## 母平均
 mean(X)
-### Create sample 1
+### 標本1を作る
 s1 <- sample(X,5)
-## Sample mean
+## 標本平均
 mean(s1)
-## Repeat the following
+## 以下繰り返し
 s2 <- sample(X,5)
 mean(s2)
 s3 <- sample(X,5)

@@ -1,0 +1,9 @@
+\begin{lstlisting}[language=C++,label={code:18_06},caption={cmdstanrパッケージによるオプション指定}]
+fit1cmdstan <- model$sample(
+  data = list(Y = x),
+  chains = 4,
+  parallel_chains = 4,
+  iter_warmup = 1000,
+  iter_sampling = 4000
+)
+\end{lstlisting}

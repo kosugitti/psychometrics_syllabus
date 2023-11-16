@@ -1,0 +1,26 @@
+\begin{lstlisting}[language=c++,label={code:24_01},caption={一般線形モデルを実行するコード}]
+dat <- read_csv("baseballDecade.csv") %>% filter(Year=="2020年度")
+dataSet <- list(N = NROW(dat), Y = dat$height, X = dat$weight)
+## cmdstanrで実行する場合
+modelC <- cmdstan_model("LM.stan")
+fit <- modelC$sample(
+  data = dataSet,
+  chains = 4,
+  parallel_chains = 4,
+  iter_warmup = 1000,
+  iter_sampling = 2000
+)
+## 実行後のファイルをstanfit形式に置き換えておく
+fit.stanfit <- fit$output_files() %>% rstan::read_stan_csv()
+## 事後予測を取り出す
+predY <- rstan::extract(fit.stanfit)$predY
+# 事後予測分布の描画
+bayesplot::ppc_dens_overlay(y = dataSet$Y, yrep = predY[1:10, ])
+bayesplot::ppc_intervals(
+    y = dataSet$Y,
+    yrep = predY,
+    x = dataSet$X,
+    prob = 0.5,
+    prob_outer = 0.95
+)
+\end{lstlisting}

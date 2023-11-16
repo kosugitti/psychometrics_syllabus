@@ -4,250 +4,328 @@
 
 \begin{document}
 \VerbatimFootnotes
+% \chapter{記述統計量}
 \chapter{Descriptive Statistics}
 \label{m05_descriptives}
 
-So far, we have discussed why statistics is necessary in psychology, what computers are, and what kind of data is input into computers. That was the preparation. From here on out, we will delve into the specifics of psychological statistics.
+% さて，ここまでで心理学においてなぜ統計学が必要か，計算機とはどういうものか，計算機に与えるデータはどういうものか，という話をしてきました。下準備はそこまでです。いよいよ，今回から心理統計の具体的な話に入っていきます。
+So far, we have discussed why statistics are necessary in psychology, what a computer is, and what kind of data is given to the computer. That's all for the preparation. From now on, we will get into the specifics of psychological statistics.
 
-First, allow me to introduce three frameworks in psychological statistics.
+% 初めに，心理統計の3つの枠組みを紹介しておきます。
+First, I will introduce three frameworks of psychological statistics.
 \input{m05_descriptives_escape_01}
 
-As described here, descriptive statistics is the first step. The goal is to describe the characteristics of the data at hand. While visualizations can also be descriptive, this time we will focus on describing the characteristics of the data with numbers. Representative values for multiple data sets are referred to as representative values or measures of central tendency.
+% ということで，ここにあるように記述統計学が最初のステップになります。手元にあるデータの特徴を記述することが目的になります。記述という意味では可視化もそうなのですが，今回は数字によってデータの特徴を記述することを考えます。複数のデータの代表的な値ですから，代表値と言われたりします。
+So, as stated here, descriptive statistics become the first step. The purpose is to describe the features of the available data. While visualization also means describing, this time we consider describing data characteristics numerically. Since it is a representative value of multiple data, it is often referred to as the representative value.
 
-Let's say that you have quantified your research topic into numerical data. If your reaction was merely to admire the variety of digits, then that defeats the purpose of quantifying it. The basic step is to \textbf{present the data in a graph}. Make graphs right away, and make various kinds of them. As I mentioned last time, making graphs is a must. Now, it's important to analyze the data from the graphs. To summarize important features or differences in the data is even better. Therefore, you need to consider representative values.
+% 研究対象を数値化したとしましょう。それを眺めて「いろいろな数字があるなあ」と感心していたのでは，数値化した意味がありません。得られた\textbf{データは図にする}のが基本です。すぐに図にします。いろいろな図にします。前回も話しましたが，とにかく図にします。しなければなりません。さて，図を見て考えをまとめるのが重要なのですが，具体的にどういう特徴があるのか，あるいはどういう違いがあるのかといったことを，要約して表現できればなお良いですね。そこで代表値を考えることになります。
+Let's say we have quantified the object of study. If you're just admiring the variety of numbers and thinking "wow there are so many numbers", then there's no point in quantifying. The basic thing to do with the obtained \textbf{data is to make it into graphs}. You do that immediately. You make it into various graphs. As we discussed last time, you have to make graphs. It's necessary. Now, it's important to gather your thoughts by looking at the graph, but it would be even better if you can summarize and express specific features or differences. That's where you'll start thinking about representative values.
 
-It may seem blunt, but it is essentially impossible to represent a large set of data using just one representative value without modifying the TeX code. Because everyone is different, a dataset is significant precisely because of its diversity, and yet it is expressed as a single number. The representative value is determined by evaluating in some aspect, and it is nothing more than a representative value in that evaluation dimension. In other words, one representative value alone is not sufficient to understand the entire dataset. Also, making a single value representative means sacrificing some information. No matter what the representative value is, some information is always missing. Therefore, when dealing with statistical data, it is essential to use multiple representative values to make a multi-faceted judgement. Please keep this in mind and understand it well.
+% いきなり身も蓋もないことをいうようですが，たくさんの数値を1つの代表値を使って記述する，というのは基本的に無理があります。十人十色，いろいろな違いがあるからこそ，そのデータセットは意味があるのに，たった1つの数字に変えて表現するのですから。代表値は，何らかの側面で評価することで1つに定まるものであって，あくまでもその評価次元での代表値に過ぎません。つまり，1つの代表値だけで全体が分かるわけではないのです。あるいは，1つの代表値にするということは，少し無理をして情報を削ぎ落とすということでもあります。代表値は何であれ，必ず何らかの情報が欠け落ちているのです。ですから，統計データを扱うときは，複数の代表値を使って多角的に判断するのが基本です。そのことをまずしっかり理解しておいてください。
+It may seem rather abrupt to say this, but fundamentally, it's impossible to represent numerous different values with one representative number. There is a saying "ten people, ten colors" - and it's the variety that adds significance to that dataset. And yet we try to represent all that with just one number. A representative value is something that is determined by evaluating something on some dimension, and it is just a representative value in that dimension. In other words, you can't understand the whole thing just from one representative value. Or rather, converting to one representative value involves cutting out some information. Regardless of what the representative value is, some information is always lost. Therefore, when dealing with statistical data, it is basic to use multiple representative values and make multi-faceted judgments. Please be sure to understand this point first.
 
-Without altering the TeX code, please allow me to translate the Japanese text into English:
+% その上で，代表値を2つの種類に分けて説明します。ひとつは中心化傾向の指標，もうひとつは散らばりの指標です。
+With that in mind, we will explain the representative values in two types. One is an indicator of central tendency, the other is an indicator of dispersion.
 
-"Then, these values can be classified into two types for explanation. One is an indicator of central tendency, and the other is an indicator of variability."
+% \section{中心化傾向の指標}
+\section{Indicator of Centralization Trend}
+% \subsection{平均値mean}
+\subsection{Mean Value}
 
-\section{Measures of Central Tendency}
-\subsection{Mean}
+% \keyterm{平均値}{へいきんち}{mean}\footnote{英語ではaverageというのも平均を意味します。meanの方がより意味が狭く，averageはより広い意味で代表的であるという違いがあるようです。}，より正確には算術平均\footnote{他にも調和平均，幾何平均などがあります。}は最もよく知られた代表値でしょう。計算方法は，すべてのデータをたしあわせて，足したデータの個数で割る，というものです。
+Mean\footnote{In English, average also means mean. It seems that "mean" is more specific, while "average" is a more broad and typical representation.}, more precisely arithmetic mean\footnote{There are also harmonic mean, geometric mean, etc.}, is probably the most well-known representative value. The method of calculation is to add all the data together and then to divide by the number of data.
 
-
-You are a translator. 
-
-"Mean, more precisely arithmetic mean, is probably the most well-known measure of central tendency. The calculation method involves adding all of the data together and dividing the sum by the number of data points."
-
-Figure \ref{fig::04_01} shows the amount of money held by five individuals. In this example, the mean value can be calculated as follows.
+% 図\ref{fig::04_01}に5人の所持金を示しています。この例では，平均値は次のように計算できますね。
+Figure \ref{fig::04_01} shows the amount of money owned by 5 people. In this example, you can calculate the average value as follows.
 \[ (15000+30000+20000+10000+20000)/5=19000 \]
 
-\input{m05_descriptives_escape_02}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/05_descriptives/slide04_01.png}
+    \caption{5人の所持金データ}
+    \label{fig::04_01}
+\end{figure}
 
-\paragraph{Introduction to characters and symbols}
-Now let's learn the general notation for representing this using symbols in the future.
-Variables are generally represented by $x$ or $y$ in mathematics.
-There are data for five people in this case, and when referring to the differences between the data for the first person, the second person, and so on, we use subscripts indicated by small numbers placed slightly below and to the right of the alphabet, such as $x_1$, $x_2$, and so on. These are known as subscripts.
-In this case, we had only one variable, which was the amount of money. However, in some cases, we may have many data and variables. In such cases, variables are represented by $x_{ij}$ with two subscripts. Here, $i$ represents the case (individual, observation number), and $j$ represents the variable number. \footnote{In this lecture, we follow this rule. There is not necessarily a rule that determines that the individual comes first and the variable comes later, but when introducing such symbols, it is common to specify which character corresponds to which. In this lecture, if it is not explicitly stated, please assume that the first subscript represents the individual and the second subscript represents the variable.}
+\paragraph{文字と記号の導入}
+さてこれを，今後のために記号で一般的に表記する方法について知っておきましょう。
+変数は一般に$x$や$y$で表されます。
+今回は5人分のデータがありますが，1人目のデータ，2人目のデータ，といった違いを表すときは$x_1,x_2,\cdots$のようにアルファベットの右斜め下に小さく数字を添えます。添字と言います。
+さて今回は所持金という1つの変数でしたが，2つ目の変数，3つ目の変数・・・とたくさんのデータが手に入ることもあります。そのようなとき，変数は$x_{ij}$と添字を2つ書いて表現します。ここで$i$がケース(個体，観測番号)を表し，$j$が何番目の変数であるかを表す，というルールにします\footnote{この講義ではこのルールで通します。必ずしも個体が前で変数が後，という決まりがあるわけではありませんが，このような記号を導入するときはどの文字が何に対応しているか明記することが一般的です。この講義でとくに明記していなければ，前の添字が個体で後ろの添字が変数を表すのだと思ってください。}。
 
-I will now introduce the addition symbol. We will use $\sum$ to represent a summation. This symbol is the capital Greek letter S, and is derived from the first letter of the word "summation". It is read as "sum". We can add subscripts and superscripts to this symbol to give it meaning, as follows:
+次に足し算の記号を紹介します。$\sum$で総和を表すことにします。この記号はギリシア文字の大文字のSで，足し合わせるsummationの頭文字をとって$\sum$，サムと読みます。この記号には上と下に文字を追加して，次のような意味で使います。
 \[ \sum_{i=1}^5 x_i= x_1 + x_2 + x_3 + x_4 + x_5  \]
-As shown here, there is a character "i" underneath the symbol $\sum$. This symbol represents the mathematical operation of adding up a sequence of values for the variable represented by "i" as it changes from 1 to 5. In the case of $\sum_{i=1}^5 x_i$, the variable $x_i$ changes as "i" ranges from 1 to 5, so the symbol implies adding up all the values of $x_i$ with changing subscripts. The symbol $\sum$ can also be used without explicitly stating the range of the variable when it is clear from context.
+% ここにあるように，$\sum$の下に$i$という文字があります。この文字$i$が$1$から始まって$5$まで変化し総和する，という数学記号です。$\sum_{i=1}^5 x_i$の$x_i$という変数について，$i$が1から5まで変わるわけですから，右辺にあるように添字が変わりながらすべて足し合わせる，という意味の記号です。この$\sum$も，文脈から考えてどこからどこまで足すのかが明らかな場合，上下の添字は省略されることがあります。
+As shown here, there is a character "$i$" under the "$\sum$". This is a mathematical symbol which means sum up while the character "$i$" changes from $1$ to $5$. For the variable "$x_i$" of "$\sum_{i=1}^5 x_i$," because "$i$" changes from $1$ to $5$, it means to sum all by changing the subscript as on the right side. This "$\sum$", when it's clear from the context where to sum from and to, the superscript and subscript may be omitted.
 
-Now, let's talk about the average of the five numbers we mentioned earlier. The addition can be expressed as $x_1+x_2+\cdots+x_5=\sum_{i=1}^5 x_i$ without modifying the TeX code. Dividing this sum by 5 gives us the average, which is $\frac{1}{5}\sum x_i = 19000$. By using symbols like this, the average value can be generally expressed as follows.
+% さて，先ほどの5人の平均ですが，足し算の場所は$x_1+x_2+\cdots+x_5=\sum_{i=1}^5 x_i$と書けます。これを5で割れば平均になりますから，$\frac{1}{5}\sum x_i = 19000$というわけです。このように記号で表現しておくと，平均値は一般に次のように表すことができます。
+Now, regarding the average of the five people mentioned earlier, the place for addition can be written as $x_1+x_2+\cdots+x_5=\sum_{i=1}^5 x_i$. If this is divided by 5, it becomes the average, so $\frac{1}{5}\sum x_i = 19000$. By expressing it this way in symbols, the average can generally be represented as follows.
 
 \[ \bar{x} = \frac{1}{N}\sum_{i=1}^N x_i \]
 
-We had five people this time, but it can be extended to handling $N$ data in general without modifying the TeX code. The left side is the average value $\bar{x}$, which is commonly denoted as x-bar.
-\subsection{Median}
+今回は5人でしたが，一般に$N$個のデータを扱うときにまで拡張できました。左辺は平均値$\bar{x}$で，エックスバーで表すことが一般的です。
+\subsection{中央値median}
+次の代表値は\keyterm{中央値}{ちゅうおうち}{median}です。データを大きさの順に並べて行って，ちょうど真ん中のケースの値をその代表値として使う，というものです。さきほどの図\ref{fig::04_01}の場合は，並べ替えると$10000<15000<20000=20000<30000$となります。上から3番目(下からでもいいです)が20000円ですから，中央値は20000円ということになります。
 
+今回はたまたま，5人のケースですから真ん中は3番目となりましたが，データの数が偶数しかなかったらどうするか，という問題があります。その場合は，真ん中に来た2つの値の算術平均でもって中央値とすることが一般的です。
 
-The following representative value is the \keytermE{median}: When data is sorted in order of size, the value of the middle case is used as the representative value. In the case of the previous figure \ref{fig::04_01}, when sorted, it becomes $10000<15000<20000=20000<30000$. The third item from the top (or bottom) is 20000 yen, so the median is 20000 yen.
+\subsection{最頻値mode}
+最後に\keyterm{最頻値}{さいひんち}{mode}についてです。漢字の成り立ちからわかるように，頻度が最も多いものを代表値とするのが最頻値です。さきほどの図\ref{fig::04_01}の場合は，10000円が1人，15000円が1人，30000円が1人ですが20000円持っている人が2人いましたので，最頻値は20000円になります。
 
-This time, it happened to be a case of five people, so the middle was the third one, but there is a problem of what to do if there are only even numbers of data. In that case, it is common to use the arithmetic mean of the two values in the middle as the median.
+このように，データの中心をどのように考えるかによっても3つも考え方があり，それぞれが一致するわけではないのです。それぞれの意義がありますので，見比べながら考える必要があります。
 
-\subsection{Mode, the most frequent value}
-Finally, let's talk about the \keytermE{mode}{さいひんち}{最頻値} in statistics. As you can tell from the Kanji characters, the mode is the representative value that represents the most frequently occurring value among the data. In the case of the figure \ref{fig::04_01} presented earlier, only one person had 10000 yen, only one person had 15000 yen, and only one person had 30000 yen. However, since two people had 20000 yen, the mode becomes 20000 yen.
+では練習です。次の表\ref{tbl::04_01}のようなデータがあった場合，平均値，中央値，最頻値はそれぞれどうなるでしょう？
 
-There are three different ways of thinking about the center of the data, and they do not necessarily agree with each other. Each one has its own significance, so it is necessary to consider them while comparing them.
+\begin{table}[ht]
+    \centering
+    \caption{5人の所持金データその2}
+    \begin{tabular}{lllll}
+        A     & B     & C     & D     & E      \\\hline
+        10000 & 10000 & 20000 & 25000 & 100000 \\
+    \end{tabular}
+    \label{tbl::04_01}
+\end{table}
 
-Let's practice. If we have data like the one in Table \ref{tbl::04_01}, what would be the mean, median, and mode?
+この場合，平均は33000円，中央値は20000円，最頻値は10000円となりました。平均値が他の2つより大きくなりましたね。これは\keyterm{外れ値}{はずれち}{outlier}があるからです。Eさんが，平均値をぐっと押し上げているのです。平均値は量的な中心をとりますので，1人でも遠く離れたところに位置すると全体的に中心が引っ張られます。中央値は順番の情報しか使いませんので，大金持ちが1人いても1位だ，と判断するだけです。最頻値は度数の問題ですので，大金持ちが1人いても度数1にしかなりません。平均値は外れ値に弱い，あるいは中央値や最頻値がそれに強いというだけです。
 
-\input{m05_descriptives_escape_03}
+では平均値は使い物にならないのでしょうか？ もちろんそうではなくて，左右対称に散らばっているようなデータであれば，平均値は良い代表値になります。データの散らばりが左右対称ではなく歪んでいるようであれば，平均値は適切な代表値になりません。
 
-In this case, the mean is 33,000 yen, the median is 20,000 yen, and the mode is 10,000 yen. As you can see, the mean is higher than the other two values. This is because there is an outlier, E, who is significantly increasing the average. The mean takes into account the quantitative center point, so even if one person is far away from the rest, it can significantly affect the overall center. The median only considers the ordering information, so it simply recognizes the highest value regardless of the magnitude. The mode is based on frequency, so even if there is one wealthy person, it only counts as a frequency of 1. This reveals that the mean is weak against outliers, while the median and mode are robust against them.
+図\ref{fig::04_02}は，厚生労働省による「国民生活基礎調査」で示されたデータです\footnote{\url{https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa19/dl/03.pdf}}。これを見ると所得分布は左側に歪んでおり，平均値は552万3千円ですが，中央値は437万円，最頻値は200-300万円のクラスということになります。最頻値は一番データ点が多いところですので，「国民の平均所得は552万円です」と言われると多くの人が(この例では少なくとも55.9\%の人が)，「えっ，私の年収低すぎ・・・?」という印象を抱きます。もちろん所得分布が低い方に歪んでいる状況も悪いのですが，代表値として平均値を使うことがそもそも適切でない例ともいえます\footnote{もちろん為政者の目から見れば，平均は550万円もあるんだから日本は豊かだ，とアピールできるので良い指標なのかもしれません。数字に悪意はなく，何の数字をどのように使うのかという人の側に問題があるだけです。}。ニュース報道などでは平均値しか報道されませんが，それでは不当な印象を与えることになります。\textbf{データは図にする}ことが大事なのです。
+\begin{figure}[ht]
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/05_descriptives/slide04_02.png}
+    \caption{所得金額階級別世帯数の相対度数分布}
+    \label{fig::04_02}
+\end{figure}
 
-Is the mean useless then? Of course not. If the data is symmetrically distributed, with values evenly spread out on both sides, then the mean is a good measure of central tendency. However, if the distribution of data is skewed, with values clustered on one side, the mean is not an appropriate measure of central tendency.
+ところで，最頻値は頻度を数えるものですから，間隔尺度水準以上の連続的な数字の場合はいくつかの区間に区切って数えることになります。図\ref{fig::04_02}の例もそうですね。ただしこの時，最頻値は区間幅の区切り方が違うと結果が変わってしまうことに注意しましょう。図\ref{fig::04_03}の2つのヒストグラムは，実は同じデータなのです。違いは区間幅binwidthのとり方で，左図は15点間隔，右図は5点間隔でグラフを書きました。最頻値はそれぞれ赤で囲ったところになりますが，左図の場合の最頻値は40-55点クラス，右図の場合は47-52点のクラスになります。最頻値の場合は，どのような区間幅でカウントするかということにも注意が必要ですね。
+\begin{figure}[ht]
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/05_descriptives/slide04_03.png}
+    \caption{区間幅の区切り方で結果が変わる}
+    \label{fig::04_03}
+\end{figure}
 
-Figure \ref{fig::04_02} shows data obtained from the "National Living Basic Survey" conducted by the Ministry of Health, Labour and Welfare \footnote{\url{https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa19/dl/03.pdf}}. Looking at this data, the income distribution is skewed to the left, with an average value of 5.523 million yen, but a median value of 4.37 million yen and a mode value in the 2-3 million yen class. The mode value represents the point with the most data, so when people are told that "the average national income is 5.52 million yen", many people (at least 55.9\% in this example) will feel the impression of "Is my annual income too low...?". Of course, the fact that the income distribution is skewed towards the lower end of the scale is also a bad situation, but it can be said that using the average value as a representative value is not appropriate in the first place\footnote{Of course, from the perspective of politicians, the fact that the average is 5.5 million yen means that Japan is wealthy, and it may be a good indicator to appeal to people with such numbers. There is no malice in the numbers, and the problem lies on the side of how people use what numbers in what way.}. In news coverage, only the average value is reported, but this can create an unfair impression. It is important to \textbf{visualize data} when discussing these issues.
-\input{m05_descriptives_escape_04}
+では，ここで出てきた3つの中心化傾向の指標をいったんまとめておきましょう。
 
-By the way, since the mode counts the frequency, when dealing with continuous numbers of an interval scale or higher, it is necessary to divide them into several intervals and count them. The example in Figure \ref{fig::04_02} is such a case. However, note that the mode's result can change depending on how the intervals are classified. The two histograms in Figure \ref{fig::04_03} actually represent the same data. The difference lies in how binwidth (the width of the intervals) is chosen: the left histogram has intervals of 15 points, while the right has intervals of 5 points. The modes are marked in red for each histogram, but in the left histogram, the mode is in the 40-55 point interval, whereas in the right histogram, it is in the 47-52 point interval. Therefore, you should also pay attention to the interval width when counting the mode.
-\input{m05_descriptives_escape_05}
+\begin{description}
+    \item[平均値] データを全部使って計算しており，外れ値がなければ全データが反映される良い指標。実際，統計分析で最も活躍している指標です。左右対称の分布に適しています。
+    \item[中央値] 外れ値の影響を受けにくい指標で，ちょうど真ん中，という意味も分かり易いです。ただ，分布の真ん中の数字だけしか使ってません。データが偶数個のときの中央値の計算はいくつかあり得ます。
+    \item[最頻値] 外れ値の影響を受けにくく，左右対称でない分布の時も意味が分かり易いです。データの値ではなく度数分布にのみ注目しており，度数分布の区間幅が変わると変わってしまうという欠点があります。
+\end{description}
 
-Let's summarize the three indicators of centralization tendencies discussed here.
+\section{散らばりの指標}
+\subsection{分散と標準偏差}
+つぎは散らばりの指標について考えていきましょう。データの中心がどこにあるか，というだけではわからないこともあるのです。表\ref{tbl::04_02}のような2つのデータがあったとしましょう。これを図示したのが図\ref{fig::04_04}です。
 
-\input{m05_descriptives_escape_06}
+\begin{table}[ht]
+    \centering
+    \caption{2つのデータ}
+    \begin{tabular}{ll}
+        A & B \\\hline
+        4 & 1 \\
+        4 & 2 \\
+        5 & 3 \\
+        5 & 5 \\
+        5 & 5 \\
+        5 & 7 \\
+        6 & 8 \\
+        6 & 9 \\\hline
+    \end{tabular}
+    \label{tbl::04_02}
+\end{table}
 
-\section{Measures of Dispersion}
-\subsection{Variance and Standard Deviation}
-Next, let's consider the dispersion indicators. It is not always clear where the center of the data is just based on that information. Let's say we have two sets of data, like the ones shown in Table \ref{tbl::04_02}. This is illustrated in Figure \ref{fig::04_04}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/05_descriptives/Rplot04_01.png}
+    \caption{2つのデータを見比べてみよう}
+    \label{fig::04_04}
+\end{figure}
 
-\input{m05_descriptives_escape_07}
+このデータ，A/Bグループについてそれぞれ平均値，中央値，最頻値はどうなるでしょう。何と，平均値はA群もB群も5，中央値もA/B群ともに5，最頻値もA/B群ともに5となります。中心化傾向の指標だけでは，A群とB群の違いが表現できません。こんなにも違う見た目をしているのに！
 
-\input{m05_descriptives_escape_08}
+この2つの群は何が違うかといって，図\ref{fig::04_05}を見れば明らかなように中心から左右にどれほど散らばっているかが違うのです。
 
-What would happen to the averages, medians, and modes of groups A and B for this data? Surprisingly, both groups have an average of 5, a median of 5, and a mode of 5. Using measures of central tendency alone does not express the difference between Group A and Group B. Even though they have such different appearances!
+\begin{figure}[ht]
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/05_descriptives/slide04_05.png}
+    \caption{中心から各データ点が平均的にどの程度離れているか}
+    \label{fig::04_05}
+\end{figure}
 
-As for the difference between these two groups, as is evident from Figure \ref{fig::04_05}, the degree of scattering from the center to the left and right is different.
-
-\input{m05_descriptives_escape_09}
-
-"Distribution"
-The representative value that expresses this well is the variance, which is the "degree to which individual data points are typically separated from the mean." The key point of quantification is to consider how far each individual data point is from the center. This is expressed mathematically as follows:
+\paragraph{分散}
+これをうまく表現する代表値は，\keyterm{分散}{ぶんさん}{variance}があります。指標化のポイントは，「中心から個々のデータ点が平均的にどの程度離れているか」を考慮することにあります。数式では次のように表されます。
 
 \[ s_x^2  = \frac{1}{N}\sum_{i=1}^N (x_i - \bar{x})^2 \]
 
-The term $(x_i - \bar{x})$ in this equation represents how far each data point $x_i$ is from the mean $\bar{x}$. This is called the \textit{mean deviation}. The term is then squared. The reason for this is important: if we do not square the value, then the sum of the mean deviations would always be zero\footnote{Try it out!}. This is because the positive and negative values would cancel each other out. Squaring the value removes the sign, so that we do not lose any information\footnote{We could also use the absolute value, but it is hard to express this symbolically in equations.}
+% この式にある$(x_i - \bar{x})$は，各データ点$x_i$が平均$\bar{x}$から離れている程度を表しています。これをとくに\keyterm{平均偏差}{へいきんへんさ}{mean deviation}と言います。それを二乗していますね。これがポイントで，二乗しておかないと平均偏差の総和はゼロになってしまうからです\footnote{検算してみよう!}。プラスとマイナスが打ち消し合うからゼロになってしまうわけで，符号の影響をなくすべく二乗しているのだと思ってください。符号をなくすのには絶対値でもいいのですが，絶対値は数式で書けないから使いにくいのです\footnote{絶対値は$|x|$と書くじゃないか，と思った人もいるかもしれません。おしい，もう一歩。この記号の中身，計算式を考えてみてください。$0\le x$のとき，$|x|=x$です。$x<0$のとき，$|x|=-x$です。これ，「・・・の時」という条件で分岐してて，この箇所が数式で書けてないですよね。}
+The $(x_i - \bar{x})$ in this formula represents the extent to which each data point $x_i$ deviates from the mean $\bar{x}$. This is specifically referred to as the mean deviation. This is squared. The point is, if it is not squared, the sum of the mean deviations will end up being zero\footnote{Let's check it out!}. The pluses and minuses cancel each other out, resulting in zero, so think of this as squaring to eliminate the impact of the sign. Although absolute value could be used to eliminate the sign, it is difficult to use because it cannot be written out in formula form\footnote{You might think absolute value is written as $|x|$, right? Almost there, just one more step. Think about the contents of this symbol, the equation. When $0\le x$, $|x|=x$. When $x<0$, $|x|=-x$. See, this condition "when..." branches out, and this part cannot be written in formula form, right?}.
 
-Shall we actually calculate it? The variance of group A is as follows:
+% 実際に計算してみましょうか。A群の分散は，次のようになります。
+Shall we actually do the calculation? The variance of group A is as follows.
 \[ \frac{1}{8}((4-5)^2+(4-5)^2+(5-5)^2+(5-5)^2+(5-5)^2+(5-5)^2+(6-5)^2+(6-5)^2) \]
 \[ =\frac{1}{8}(1^2+1^2+0^2+0^2+0^2+0^2+1^2+1^2) = \frac{4}{8}=0.5\]
+% B群の分散は，次のようになります。
 The variance of group B is as follows.
 \[ \frac{1}{8}((1-5)^2+(2-5)^2+(3-5)^2+(5-5)^2+(5-5)^2+(7-5)^2+(8-5)^2+(9-5)^2)\]
 \[ =\frac{1}{8}(4^2+3^2+2^2+0^2+0^2+2^2+3^2+4^2) = \frac{58}{8}=7.25 \]
-As we can see, the variance of Group A is 0.5, while that of Group B is 7.25, indicating that Group B has a larger dispersion.
+% このように，A群の分散は0.5，B群の分散は7.25と，B群の方が散らばりが大きいことがわかります。
+Thus, the variance of group A is 0.5, and the variance of group B is 7.25, indicating that group B has a greater spread.
 
-Variance represents the dispersion of data. The larger the variance, the greater the dispersion of the data.
-On the other hand, when the variance becomes zero, it means that there is no dispersion in the data.
-If the variance of the actual data is zero, it means there is no information to be obtained from it.
-Because, for example, if all students in a class score 100 on a test, the variance is 0. In this case, we cannot gain insights such as "what kind of studying leads to better grades?" or "how can we support students with lower grades?" from it. In a dataset with a variance of 0, there are no individual differences, so we cannot obtain any useful information. In other words, variance is a crucial indicator in that it represents the maximum amount of "meaning" or "information" that can be obtained from the data!
+% 分散はデータの散らばりを表現しています。分散が大きい方がデータの散らばりが大きい，というわけですね。
+Variance represents the scatter of data. A larger variance indicates greater scatter in the data, that's what it means.
+% 逆に分散がゼロになると，そのデータには散らばりがない，ということです。
+Conversely, if the variance becomes zero, it means that there is no dispersion in the data.
+% 実際取ったデータの分散がゼロだと，そこから得られる情報がない，ということになります。
+If the variance of the actual data taken is zero, it means that there is no information to be gained from it.
+% なぜなら，たとえばクラスの全員がテストで100点を取ると，分散は0です。この時は「どういう勉強をすれば成績が上がるか」とか「成績が低い人をどうサポートすれば良いか」という知見を得ることができません。分散が0のデータセットには，個々の違いがないので情報が得られないのです。つまり，分散はそのデータから取り出せる「意味」「情報」の上限という点で非常に重要な指標なのです！
+Because, for example, if everyone in the class scores 100 on the test, the variance is zero. At this time, we cannot gain knowledge such as "what kind of study should we do to improve our grades" or "how should we support those with low grades". In a dataset with zero variance, there is no information because there are no individual differences. In other words, variance is a very important indicator in terms of the "meaning" and "information" that can be extracted from the data!
 
-By the way, the equation for dispersion can be expanded as follows:
+% ちなみに分散の式は，次のように展開することができます。
+By the way, the formula for variance can be expanded as follows:
 \[
-Please translate this Japanese text into English without changing the TeX code:
-You are a translator. 
-
-Please translate this Japanese text into English without modifying the TeX code:
-
-        s_x^2 & = & \frac{1}{N}\sum_{i=1}^N (x_i - \bar{x})^2
-You are a translator.
-You are a translator. 
-
-Please translate this Japanese text into English without modifying the TeX code:
-
+    \begin{array}{lllr}
+        s_x^2 & = & \frac{1}{N}\sum_{i=1}^N (x_i - \bar{x})^2                                                                                           \\
+        \\
               & = & \frac{1}{N}\sum_{i=1}^N (x_i^2 - 2x_i\bar{x} + \bar{x}^2)                                                                           \\
-&   &                                                                                                          & \mbox{The summation symbol can be distributed, so}\\
-& = & \frac{1}{N}\sum_{i=1}^N x_i^2 - 2\frac{1}{N}\sum_{i=1}^N x_i\bar{x} + \frac{1}{N}\sum_{i=1}^N \bar{x}^2) \\
-&=& \frac{1}{N} \sum_{i=1}^N x_i^2 - \frac{2}{N} \bar{x} \sum_{i=1}^N x_i + \frac{1}{N} \bar{x}^2 \sum_{i=1}^N 1 \\
-&=& \frac{1}{N} \sum_{i=1}^N x_i^2 - 2\bar{x}^2 + \bar{x}^2 \\
-&=& \frac{1}{N} \sum_{i=1}^N x_i^2 - \bar{x}^2 \\
-where && \bar{x} = \frac{1}{N} \sum_{i=1}^N x_i
-& & & \mbox{Adding a constant N times is equivalent to multiplying by N.}
-You are a translator. 
-
-Please translate this Japanese text to English without modifying the TeX code: 
-
-              & = & \frac{1}{N}\sum_{i=1}^N x_i^2 - 2\frac{1}{N}N\bar{x}\sum_{i=1}^N x_i + \frac{1}{N}N\bar{x}^2)
-Please translate this Japanese text into English without modifying the TeX code: 
-
-              &   &                                                                                                                                                     \\
-You are a translator. 
-
-Translate this Japanese text into English without modifying the TeX code:
-
-              & = & \frac{1}{N}\sum_{i=1}^N x_i^2 - 2\bar{x}\frac{1}{N}\sum_{i=1}^N x_i + \bar{x}^2)
-Please translate this Japanese text into English without modifying the TeX code:
-You are a translator.
-
-& = & \frac{1}{N}\sum_{i=1}^N x_i^2 - 2\bar{x}\bar{x}+ \bar{x}^2)
-Please translate this Japanese text into English without modifying the TeX code: 
-
-               &   &                                                                                                                                     \\
-You are a translator.
-
-(Note: This sentence does not include any TeX code and therefore cannot be translated using TeX commands.)
-Please translate this Japanese text into English without modifying the TeX code: 
-
-             &   &                                                                                                                                                     \\
-You are a translator. 
-
-& = & \frac{1}{N}\sum_{i=1}^N x_i^2 - \bar{x}^2
-You are a translator.
+              &   &                                                                                                          & \mbox{$\sum$ 記号は分配できるから} \\
+              & = & \frac{1}{N}\sum_{i=1}^N x_i^2 - 2\frac{1}{N}\sum_{i=1}^N x_i\bar{x} + \frac{1}{N}\sum_{i=1}^N \bar{x}^2)                            \\
+              &   &                                                                                                          & \mbox{定数をN回足すのはN倍と同じなので} \\
+              & = & \frac{1}{N}\sum_{i=1}^N x_i^2 - 2\frac{1}{N}N\bar{x}\sum_{i=1}^N x_i + \frac{1}{N}N\bar{x}^2)                                       \\
+              &   &                                                                                                                                     \\
+              & = & \frac{1}{N}\sum_{i=1}^N x_i^2 - 2\bar{x}\frac{1}{N}\sum_{i=1}^N x_i + \bar{x}^2)                                                    \\
+              &   &                                                                                                                                     \\
+              & = & \frac{1}{N}\sum_{i=1}^N x_i^2 - 2\bar{x}\bar{x}+ \bar{x}^2)                                                                         \\
+              &   &                                                                                                                                     \\
+              & = & \frac{1}{N}\sum_{i=1}^N x_i^2 - 2\bar{x}^2+ \bar{x}^2)                                                                              \\
+              &   &                                                                                                                                     \\
+              & = & \frac{1}{N}\sum_{i=1}^N x_i^2 - \bar{x}^2
+    \end{array}
 \]
-When performing calculations, it may be faster to first square all variables and compute the average, so this is often done. However, in today's world with the advancement of electronic computers, the need for manual calculation of variance has diminished significantly.
-Standard Deviation
-By the way, the variance is calculated from the squared values of the original data. Therefore, it is important to note that the units of variance are different from the original scale. That is, if the original data was in units of cm, then the variance is in units of $cm^2$. As a result, the numbers tend to get larger and it can be difficult to grasp the magnitude of the variance. This is a disadvantage of using the variance as a measure of dispersion.
+% て計算するときなどは，先に全ての変数を二乗したり，変数の平均の計算をしたりしますので，こちらの方が計算が早くなるかもしれません。もっとも電子計算機の発展している現代において，手計算で分散を求めることなんか少なくなりましたけどね。
+When calculating, you may square all variables first, or calculate the average of the variables, so this method may be faster. However, in the current era of advanced electronic computing, there are fewer instances where variance is calculated manually.
+% \paragraph{標準偏差}
+Sure, but you haven't provided any Japanese text to translate. Please provide the text you want to be translated.
+% ところで，分散は元のデータを二乗した値から計算しているのでした。ですから，その単位が元の尺度と異なることに注意が必要です。つまり，元がcm位のデータであれば，分散は$cm^2$の単位になっているのです。ですから数字が必然的に大きくなりがちですし，分散の大きさが実際どれぐらいなのか，という実感が持ちにくいという欠点があります。
+By the way, the variance was calculated from the squared value of the original data. Therefore, it is important to note that its unit is different from the original scale. In other words, if the original data is in cm, then the variance is in $cm^2$. Therefore, the numbers tend to be inevitably large, and there is a drawback that it is difficult to get a feel for how large the variance is in reality.
 
-So let's consider converting the units back to their original form. Since they have become larger by being squared, taking the square root should bring them back to their original values.
+% そこで，単位を元に戻すことを考えます。二乗して大きくなっているのですから，平方根をとってやれば元に戻りますね。
+So, let's think about returning the unit to its original state. Since it is getting bigger by being squared, taking the square root should return it to its original state.
 \[ s_x = \sqrt{\frac{1}{N}\sum_{i=1}^N (x_i - \bar{x})^2} \]
-The computed $s_x$ as shown is known as the \keytermE{standard deviation}, and is abbreviated as SD. Since taking the square root is all that is required, this can be computed rapidly. For example, in the previous case, the SD for group A is 0.7071, and for group B is 2.6925.
+このようにして計算された$s_x$のことを\keyterm{標準偏差}{ひょうじゅんへんさ}{standard deviation}(SD)と言います。これはルートを取るだけですので，すぐに計算できますね。さきほどの例ですと，A群のSDは0.7071，B群のSDは2.6925です。
 
 
-\paragraph{Quartiles and IQR}
-There are other indicators to express the range. While the variance and standard deviation are indicators related to the mean value, there is an indicator called "quantile" that is related to the median. Literally, it refers to the number that corresponds to the dividing point when the data is divided into four parts.
-The median is defined as the middle number when the data is arranged in ascending order, but when the data is divided into quarters, as shown in Figure \ref{fig::04_06}, the lower quarter is called the first quartile and the upper quarter is called the third quartile. This means that the median is the same as the second quartile.
+\paragraph{\ruby{四分位}{しぶんい}数 とIQR}
+他にも範囲を表現する指標はあります。分散や標準偏差が平均値に関する指標であったのに対し，中央値に関係した指標として\keyterm{四分位}{しぶんい}{Quantile}というのがあります。文字通り，データを四分割した時の切れ目にあたる数字のことです。
+中央値はデータを大きい順に並べ替えて，ちょうど真ん中になる数字という話でしたが，四分割した場合は図\ref{fig::04_06}にあるように，下の方が第1四分位，上の方が第3四分位ということになります。中央値は第2四分位と同じことになるのですね。
 
-\input{m05_descriptives_escape_10}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/05_descriptives/slide04_06.png}
+    \caption{四分位とIQR}
+    \label{fig::04_06}
+\end{figure}
 
-The width using the first quartile and the third quartile, that is, the number obtained by subtracting the first quartile from the third quartile, is called the Interquartile Range (IQR). It is a simpler measure than the mean which is less affected by outliers and easy to understand since it is in the same units as the original data, unlike the standard deviation.
-Now, some people may prefer not a four-part division but a five-part division. Or maybe even a three-part division would be fine. The point is, it's possible to consider values divided in some ratio. This is referred to as the "percentile," which represents a value corresponding to some ratio. For example, the first quartile is the same as the 25th percentile and the third quartile is the same as the 75th percentile. If this expression can be used, it is possible to divide it by any number. Depending on the shape of the distribution, it may also be necessary to display values such as the 95th percentile or the 5th percentile.
+この第1と第3をつかった幅，つまり第3四分位数から第1四分位数を引いた数字のことを\keyterm{四分位範囲}{しぶんいはんい}{Inter-quantile Rangel IQR}と呼びます。中央値と同じように外れ値の影響を受けにくく，また標準偏差のように元データと同じ単位ですので，理解しやすい指標です。
+さてここで，四分割じゃなくて五分割がいい，と思った人もいるかもしれません。いや三分割でも何分割でもいいんですが，要するになんらかの割合で区切った値というのを考えることは可能ですよね。この「割合に応じた値」のことを，\keyterm{パーセンタイル}{ぱーせんたいる}{Percentile}と言います。たとえば第1四分位は25パーセンタイル，第3四分位は75パーセンタイルと同じ意味です。この表現が使えるのなら，任意の数字で分割できるのでいいですね。分布の形状によっては，95パーセンタイルとか5パーセンタイルといった値を表示することもあります。
 
-In Chapter \ref{m04_usingR}, we mentioned box plots. You may have learned about them under the name "box-and-whisker plots" in high school mathematics. This method of visualization represents the range of data using boxes and whiskers. Typically, the middle line of the box represents the median, the lower line represents the first quartile, and the upper line represents the third quartile. However, there are two ways to represent the whiskers. Figure \ref{fig::04_07} shows the same data with two different methods: one is to represent the whiskers as the "maximum and minimum values" (top), and the other is to represent them as "up to 1.5 times the interquartile range (IQR)" (bottom). Please note which method is being used, as in the context of data analysis, the latter method is more commonly used to represent outliers with a dot beyond the whiskers. While there is no definitive "right" way between these methods, we remind you of the latter method as it is more frequently used in the future.
-\input{m05_descriptives_escape_11}
-\paragraph{Maximum, Minimum, Range}
-Here we introduce the simplest measures of dispersion for numerical data. The \keytermE{maximum}{さいだいち}{Max} refers to the largest value in the data, whereas the \keytermE{minimum}{さいしょうち}{Min} is the smallest value. The \keytermE{range}{はんい}{Range} is simply the difference between the maximum and minimum values. Easy enough, right?
+ところで第\ref{m04_usingR}章で，ボックスプロットについて言及しました。みなさんはもしかすると\keyterm{箱ひげ図}{はこひげず}{boxplot}という名称で，高校までの数学で学んだことがあるかもしれません。この図示の方法は，データがどのぐらいの幅を持っているかを箱とひげで表現しています。箱の真ん中にあるのが中央値，箱の下のラインが第1四分位，上のラインが第3四分位を表すのが一般的です。ですが，髭に当たる部分については2通りの書き方があります。図\ref{fig::04_07}にあるのは同じデータですが，ひげの長さを「最大値から最小値まで」とする方法(上段)もありますし，「IQRの1.5倍まで」とする方法(下段)もあります。どちらの方法で描画されているのか，注意するようにしてください\footnote{高校数学，引いてはセンター試験などでは最大値から最小値まで表す，という記法が使われているようですが，データ分析の文脈ではIQRの1.5倍までをひげにして，それ以上の数字は外れ値として点で表す方法が一般的です。どちらが正しいとも言えないのですが，今後は後者の書き方に出会うことの方が多いと思いますので，注意を促すために書いています。}。
+\begin{figure}[ht]
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/05_descriptives/slide04_07.png}
+    \caption{ボックスプロット(箱ひげ図)の2通りの書き方}
+    \label{fig::04_07}
+\end{figure}
+\paragraph{最大値，最小値，範囲}
+次に最も簡単な散らばりを示す数値を紹介します。\keyterm{最大値}{さいだいち}{Max}はデータのなかで一番大きな値を指します。\keyterm{最小値}{さいしょうち}{Min}は逆に，データの中で一番小さな値です。\keyterm{範囲}{はんい}{Range}は最大値から最小値を引いたものです。これは単純ですね。
 
 
-So far, we have explained the indicators of central tendency and scatter. As mentioned earlier, these representative values have limitations in expressing the data. In papers and other documents, it is essential to first provide descriptive statistics for the acquired data. By describing the mean, median, standard deviation, maximum and minimum values of the data, you can understand what kind of data it was (without having to write down all the data points). On the other hand, using only the mean value alone is insufficient as it only represents the middle of the data, and it's impossible to determine if the data is skewed. Additionally, if the data is not symmetrical, statistical analysis techniques frequently used may not apply. Ignoring this fact and analyzing the data carelessly may lead to incorrect conclusions. Please do not hesitate to view the data from different angles (display and confirm multiple representative values). Fortunately, many statistical packages can instantly calculate these values, so there is no need to struggle with the calculation.
+さてここまでで，中心化傾向の指標と散らばりの指標について説明してきました。冒頭でお伝えしたように，これらの代表値は1つだけで表現できることに限界があります。論文などでは，取得したデータについての記述統計量をまず記載することが基本です。データの平均値，中央値，標準偏差，最大値と最小値などを記載することで，どういうデータだったかが(データ点すべてを書かなくても)見えてきます。逆にいうと，平均値だけではデータの真ん中を示すだけですし，歪んだデータになっているかもしれないことが読み取れません。ちなみにデータが左右対称でない場合，よく使われる統計的分析手法が適用できないこともあります。それを無視してデータを分析すると，間違った結論に辿り着くかもしれないのです。データをさまざまな角度でみる(描画し，複数の代表値を確認する)ことを厭わないでください。幸い，多くの統計パッケージはすぐにこれらの指標を算出してくれますので，計算の苦労はありません。
 
-\section{Relative Positions of Data}
+\section{データの相対的位置}
 \label{zScore}
-Now we can view the entire dataset through representative values. We can now see the mean and standard deviation here, but let's consider using them to represent the relative position of each data point.
+さてデータ全体を代表値で見ることができるようになりました。ここで平均値と標準偏差を見ることができるようになりましたが，これを使って各データ点の相対的な位置を表現することを考えましょう。
 
-Many of the objects of study in psychology do not have an absolute zero point. For example, when considering personality, there is no such thing as a personality trait that simply "does not exist." Of course, there are people who are brighter, more diligent, or more emotionally unstable than others. However, these are all relative positions among many people, and there is no person who does not exist on a dimension of brightness or darkness simply because they are not bright. In other words, at best, the data features an interval scale level. When considering these traits in comparison to others, it is necessary to think about ways to express relative positions.
+心理学の研究対象の多くは，絶対ゼロ点を持たないものです。たとえば性格というのを考えると，とある性格特性が「ない」ということはありません。もちろん他の人とくらべてより明るい人だとか，より勤勉な人だとか，より情緒が不安定な人だ，といったことはあります。しかしこれらはいずれも，多くの人の中での相対的な位置であって，明るい人でない＝暗い人ではあっても，明るいか暗いといった次元に存在しない人，というのはありません。すなわちデータの特徴として間隔尺度水準であることがせいぜいなのです。そうした他者との比較において考える時，相対的な位置を表現する方法を考えなければなりません。
 
-Let's assume that we place the center point that determines the relative position at the average value, since there is no zero point. "The deviation from the average" can be expressed as $x_i - \bar{x}$, so the data on a student's grades is presented in Table \ref{tbl::04_03}.  Looking at this, you might think that this person is good at English because their score is the highest. However, when compared to the class average, it's actually lower, surprisingly revealing that they may not be good at English relatively. It's difficult to rely solely on the raw scores\footnote{At the junior high school my daughter attended, they showed us a printout summarizing her test results, but it only displayed her raw score and average score, making it a completely meaningless list of numbers. I told her to protest to the school, but it was never fixed until she graduated.}. Now, looking at the deviation, we see that the average deviation for both Japanese and math is +14. Although we may want to consider that Japanese and math are equally good, is this way of thinking really valid?
-\input{m05_descriptives_escape_12}
-Actually, this is still not enough. This is because when we look at the standard deviation of this class, there is about a twofold difference between Japanese and math. The difference in standard deviation is due to the difference in the distribution of the data. We have plotted this in Figure 4.8. This is an example of the scores of this test assuming a symmetric distribution.
+ゼロ点が存在しないので，相対的な位置を決める中心点を平均値におくとしましょう。平均値に比べてその人がどの程度離れているか，というのは平均偏差ですから$x_i - \bar{x}$で表現できます。表\ref{tbl::04_03}にとある学生の成績のデータを載せてみました。これをみると，この人の素点は英語が最も高く，この人は英語が得意なんだな，と思うかもしれません。でもクラス平均と比べてみると，あらびっくり，むしろ平均より低いので，相対的に英語は苦手なんじゃないか，ということがわかります。素点だけでは困りますよね\footnote{私の娘が通っていた中学校では，定期試験の結果を表にまとめたプリントを親に見せてくれるのですが，本人の素点と本人の平均点しか表示されておらず，まったく無意味な数値の羅列でした。学校に抗議するよう娘には伝えたのですが，卒業まで決して直ることはありませんでした。}。さて，偏差を見ると国語と数学のどちらもその平均偏差は$+14$です。なるほど，国語と数学は同じぐらい出来がいいのだな，と考えたいところですが，果たしてこの考え方もあっているでしょうか？
+\begin{table}[ht]
+    \centering
+    \caption{成績の比較}
+    \begin{tabular}{ccccc}
+        科目 & 成績$X_i$ & クラス平均$\bar{X}$ & 偏差($x_i - \bar{x}$) & SD($s_x$) \\\hline
+        英語 & 86      & 90             & -4                  & 8         \\
+        国語 & 67      & 53             & 14                  & 10        \\
+        数学 & 44      & 30             & 14                  & 5         \\
+    \end{tabular}
+    \label{tbl::04_03}
+\end{table}
+実はこれでもまだ足りません。というのも，このクラスの標準偏差をみると，国語と数学では倍ほど違いがあります。標準偏差の違いは，データの散らばり方の違いです。図\ref{fig::04_08}にプロットしてみました。このテストの点数が，左右対称の分布をしているとした時の例です。
 
-\input{m05_descriptives_escape_13}
-At the top row of Figure \ref{fig::04_08}, you can see the English distribution and the position of this person. The peak of the distribution, where the most people scored, is around 90 points, and this person is to the left of it, indicating a relatively lower score. On the second and third row, there are Japanese and mathematics scores respectively, and it can be seen that this person is relatively better at those subjects. At the same time, it is noticeable that the Japanese scores have a wider distribution, while mathematics scores have a lower average and smaller range of scatter. As Japanese scores have a wider distribution, it appears that there are people who scored higher than this person. On the other hand, since the range of mathematics scores is narrow, there are hardly any people who can score higher than this person. This implies that this person has a fairly high level of mathematical ability.
-In considering relative positions, we must take into account how wide the data is spread. Therefore, we divide the deviation from the mean by the standard deviation and consider how many standard deviations away from the mean the data is. Let us call this score $z_i$, and compute it as follows.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/05_descriptives/slide04_08.png}
+    \caption{データの散らばりと相対的な位置}
+    \label{fig::04_08}
+\end{figure}
+図\ref{fig::04_08}の最上段には英語の分布とこの人の位置が書いてあります。分布のピーク＝最も人が多いところは90点ぐらいのところにあり，この人はそれの左側ですから相対的にやや劣ることがわかります。二段目・三段目に国語と数学があり，相対的に優れていることがわかります。同時に，国語の分布はやや幅広く，数学は平均点が低く散らばりの幅も少ないことがわかります。国語は幅広ですから，この人よりも高い点数を取る人もいるようです。一方数学は幅が狭いため，この人よりも高い点数を取れる人がほとんどいません。ということは，かなり上位の数学力を持っていることになります。
+このように，相対的な位置を考えるときはこのデータがどれぐらい広がっているかを考えなければなりません。そこで平均からの偏差を標準偏差で割り，標準偏差いくつ分はずれているのかを考えましょう。この点数を$z_i$とし，次のように計算します。
 
 \[ z_i = \frac{(x_i - \bar{x})}{s_x}\]
 
-This score, $z_i$, is called a \keytermE{standardized score}, or sometimes simply a z-score. By looking at this person's grades standardized in this way, we can see that their English score is $-0.5$, their Japanese score is $+1.4$, and their math score is $+2.8$. These numbers show that the person's math proficiency stands out more than their Japanese proficiency, even though they are still proficient in both subjects.
+% このスコア$z_i$を\keyterm{標準化スコア}{ひょうじゅんかすこあ}{standardized score}と言います。もっと簡単にzスコアということもあります。このように標準化したスコアでこの人の成績をみてみますと，英語は$-0.5$，国語は$+1.4$，数学は$+2.8$となります。国語の優秀さよりも数学の優秀さのほうが際立っていることが，数字で表されましたね。
+This score $z_i$ is called a "standardized score", and it can also simply be referred to as a z-score. If we look at this person's grades using this standardized score, English is $-0.5$, Language is $+1.4$, and Mathematics is $+2.8$. Numerically, it shows that the excellence in Mathematics stands out more than in Language.
 
-This standardized score has an average of 0 and a variance of 1 (with a standard deviation of 1 as well). This is natural as we expressed it as the number of standard deviations from the mean. In other words, by removing the mean and standard deviation, we can compare multiple variables irrespective of their unit of measurement. For example, we previously compared scores in Japanese and math. Without standardizing the scores, the comparison would have been influenced by their scale. However, once standardized, we could compare scores even if the maximum score for Japanese was 200 and for math was 1000. This is because we are only concerned with their relative position. In the same way, we can compare variables with completely different units, such as height and weight. Even in the case of psychological data with unclear units, we can understand the relative brightness and seriousness of a person using the standardized score, and it becomes possible to compare them. Standardized scores are essential in psychological research.
+% この標準化されたスコアは平均が0ですし，標準化されたスコアの分散は1になっています(標準偏差も1です)。平均を取り除いて標準偏差いくつ分なのか，という表現にしたのですから当然ですね。言い方を変えると，この数字からは平均や分散を取り除いたことで，単位の大きさに左右されずに複数の変数で比較できるようになったということです。先ほど，国語と数学の点数を比較しました。素点だと平均や分散によって変わってくるので，それを取り除いたことで比較できたのですが，これは国語が200点満点，数学が1000点満点だったりしても可能です。相対的な位置だけの問題になっているからです。他にも，身長と体重と言った単位がまったく違うものを比較できます。心理学のデータは単位がよくわからないのですが，このスコアにすると相対的にどれぐらい「明るい人」「真面目な人」なのか，ということがわかり，比較できるようになります。標準化スコアは心理学研究の中でなくてはならないものなのです。
+This standardized score has an average of 0, and the variance of the standardized score is 1 (the standard deviation is also 1). This is only natural since the expression has been made in terms of how many standard deviations it is, by removing the average. In other words, this number has become comparable across multiple variables without being influenced by the size of the units by having removed the average and variance. Earlier, we compared scores in language and math. The raw scores would vary depending on the average and variance, but since we removed these, we were able to make a comparison. This is possible even if the language score is out of 200 points and the math score is out of 1000 points. This is because it is only a matter of relative position. You can also compare completely different units, such as height and weight. In psychology data, the units are often unclear, but with this score, you can understand relatively how much of a 'bright person' or 'serious person' someone is, making it possible to compare. The standardized score is indispensable in psychological research.
 
-You are probably familiar with "deviation score" (偏差値, hensachi) which is related to academic performance. In fact, deviation score is equivalent to z-score. However, z-score can become negative and has a smaller unit, so it is converted to have a mean of 50 and a standard deviation of 10.
-\[ \text{Deviation value} = 10z_i + 50 \]
-The deviation value for this person is calculated using the formula mentioned. In this example, the person's deviation values are 45 for English, 64 for Japanese, and 78 for Mathematics.
+% またみなさんは\keyterm{偏差値}{へんさち}{deviation score}というのを知っていると思います。学業成績に関係してくるアレですね。偏差値は，実はこのzスコアと同じです。ただzスコアだとマイナスになったり，単位が小さくなったりするので，平均50，標準偏差10になるように変換して，
+I believe you all know something called a "deviation score". That thing related to academic achievement. The deviation score is actually the same as this z-score. However, because the z-score can be negative or have small units, it is converted to an average of 50 and a standard deviation of 10.
+\[ \text{偏差値}= 10z_i + 50 \]
+という計算で算出します。今回の例でいうと，この人の偏差値は英語で45，国語は64，数学は78ということになります。
 
-\section{Standardized Differences}
+\section{標準化された差}
 \label{std_effectsize}
-The characteristic of standardized scores is that they are \underline{unitless}. For example, height can be expressed in centimeters and weight in kilograms, but naturally, no one would look at data such as 170cm and 60kg and think, "Wow, 170 is bigger than 60!" It's elementary arithmetic to not compare things with different units. It should be noted that in Japan, nobody uses the pound-yard system and globally, it is standard to use the metric and CGS unit systems in scientific papers, including those in psychology. There was even a time when it was said that "The biggest achievement of Pockemon Go! was that it got Americans to use the metric system" when it was popular in the United States.
+標準化されたスコアの特徴は，\underline{単位がない}ことです。たとえば身長はcm，体重はkgで表現できますが\footnote{日本にはポンド・ヤード法を使う人はいないと思います。世界的にもメートル法，CGS単位系で表記することがスタンダードで，心理学の論文もそれに倣っています。かつてPockemon Go!が米国で流行した時に「Pockemon Goの一番の功績はアメリカ人にメートル法を使わせたことだ」と言われたことがありました。}，当然のことながら170cm，60kgというデータを見て「わあ170のほうが60より大きいね」と思う人はいないわけです。単位が違うものを比較してはいけません，というのは算数の初歩で習うことですね。
 
-However, if we standardize these numbers and assume a height z-score of 0.3 and a weight z-score of 1.8, we can compare them. Standardizing removes the units, so we see that they are 0.3 and 1.8 standard deviations above the mean, respectively. This means that "the weight has a larger deviation from the mean" or, in other words, "the weight is heavier relative to the height, meaning the individual is overweight." We can compare the values of 0.3 and 1.8 to come to this conclusion. If the standardized scores are negative, we know that they are below the mean, which means that if the height and weight z-scores are -0.3 and +1.8, for example, we can conclude that "the height is below the mean and the weight is above the mean, and the weight has a larger deviation from the mean," or in other words, "this individual is quite overweight."
+しかしこの数字も標準化して，身長のzスコアが0.3，体重のzスコアが1.8だとすると，これは比較できます。標準化すると単位がなくなり，平均から標準偏差0.3分，1.8分大きいわけですから，「体重の方が平均からの偏差が大きい」すなわち「身長の割に体重が重い＝おでぶちゃん」ということがわかります。0.3と1.8を比べて考えられるのです。また標準化されたスコアがマイナスであれば，平均より下回っているわけですから，たとえば身長と体重のzスコアが-0.3と+1.8であれば「身長は平均より低く，体重は平均より高い。しかも体重の平均からの偏差のほうが大きい」すなわち「かなりおでぶちゃん」ということもできるのです。
 
-In psychology, we measure things that are invisible\footnote{As for how we do that, we'll discuss it in the next session or in the second year course on "Applied Data Analysis".}. Variables such as the degree of depression, level of self-esteem, and strength of aggression are quantified using \keytermE{psychological scales}. These scales are developed and calculated with great care, but they do not have units. It is impossible to express the degree of depression in units such as centimeters, kilograms, decibels, lux, or joules\footnote{There is a joke that suggests pain could be quantified in units of "Hanage," which is defined as the pain caused by plucking a single nose hair, but even for something as commonplace as pain, there are no units to measure it. There was a book called New Units \citep{Hanage2017} that collected various such jokes, but unfortunately, it has gone out of print.}. When scoring, we collect data from a large number of people, and represent the distribution of scale points as a kind of standardized score, which allows us to compare scores relatively. Also, by standardizing the scores, we can compare different measures, which enables us to verify hypotheses such as "the higher the degree of depression, the stronger the aggression." Standardization is an essential process in psychology.
+さて心理学では目に見えないものを測ります\footnote{どうやって測るの?!ということについては次回あるいは2年次の「データ解析応用」でお話しします。}。抑うつの程度，自尊心の高さ，攻撃性の強さなどは，しっかりと計算されて開発された\keyterm{心理尺度}{しんりしゃくど}{Psychological Scales}で数値化されるのです。しかしこれらには単位がありません。抑うつの程度がセンチメートルやキログラム，デシベルやルクスやジュールで表現できるはずがないのです\footnote{痛みの単位を1Hanageとし，鼻毛を一本抜いた時の痛みと定義する，というジョークがありますが，痛みのような日常的なものであっても単位はないのです。ちなみにこうしたジョークだけを集めた「新しい単位」\citep{Hanage2017}という本がありましたが絶版になってしまいました。残念。}。スコアリングするときは，非常に多くの人からデータを集め，尺度点の分布を描いて偏差値のような形で表現し，相対的に比較することになります。また標準化することで異なる測度の比較もできますから，「抑うつの程度が高いと攻撃性が強くなる」といった仮説を検証することもできるようになります。心理学にとって，標準化はなくてはならないプロセスなのです。
 
-The standardization process is also useful when comparing between groups.
+また群間の比較に際しても標準化プロセスは有用です。
 
-For example, let's consider the average height of men and women. Suppose the survey results show that the average height for men is 170cm and for women is 165cm. The difference is 5cm. Whether this difference is considered large or small depends on the situation, but if it is shown as a fact, it is a quantity worth considering. However, when discussing such matters, we may hear voices like "But I know many short men around me" or "My sister is taller than me." These types of problems are a so-called "subject bias," where we tend to have opinions or feelings that "not all men or women are like that" when we start talking about men or women as a subject. However, both data and opinions are not wrong. The issue of whether there is a difference when viewed as a whole group, and whether there is a difference when discussed individually, are two different levels of conversations, and cannot be compared with each other.
+たとえば，男性と女性の平均身長を考えてみたとします。男性の平均身長が170cm，女性の平均身長が165cmだということが調査の結果わかったとしましょう。その差は5cmです。これが大きいと見るか小さいと見るかは，もちろん状況によりけりだとは思いますが，事実としてそうなっていることが示されたのであれば，一考の価値がある量だということになります。しかしこのような話をすると「え，でも私の周りには背の低い男性も多いよ」とか「俺の姉ちゃんは俺よりでかいよ」というような声が聞こえてきそうです。この手の問題は，所謂「主語が大きい」話というやつで，「男性が」「女性が」という主語で話し始めると「そうでない男性もいる」「該当しない女性もいる」という意見・感想を持ちやすいわけです。しかしデータも感想も間違っているわけではありません。集団全体で見た時に差があるかどうかという話と，個別の話をした時に差があるかどうかという話はレベルが違うので一概に比較することができるものではないからです。
 
-Moreover, the difference in perception is more noticeable when the dispersion between groups is large. Figure \ref{fig::m05_08} depicts several scenarios. The top-left graph portrays a case where the difference between groups is large, and the group dispersion is small. In such a case, the difference is noticeable, and the group overlaps are minimal, so it is apparent that there is a difference. However, what happens when the same difference exists, but the group dispersion is large? The bottom-left graph represents a scenario where there is a difference between the groups, but the group dispersion is also large. In such a case, since there is a significant overlap, it is easy to feel that "there are also other differences" when someone mentions "there is a difference between the groups." On the other hand, the right column presents a scenario where the difference is small. If the difference is small, as in the top row, and the dispersion is small as well, people tend to say "there are exceptions, but there is still a difference." However, if the difference is small while the dispersion is large, as in the bottom-right graph, many exceptions may be observed, making it difficult to perceive the difference.
+また，こうした「実感の差」が出るのは群の分散が大きい時です。図\ref{fig::m05_08}にはいくつかのパターンを描いてみました。左上の図は群間の差が大きく，群の分散が小さい場合です。このようなときは差がはっきりとみて取れますし，群の重なりも小さいので「差がある」といわれたらなるほど，と思います。しかし同じ差があっても，群の分散が大きいとどうなるでしょうか。左の下には群間の差があるものの，群の分散も大きい場合を示しました。このときは重複も結構ありますから，「群間に差がある」という話をされても「でも違うこともあるよね」と感じやすいでしょう。右列は差が小さい時で，上段のように差が小さくても分散が小さければ「例外もあるけど差があるね」となりがちですが，右下のように差が小さく分散が大きい場合は例外も多く観測されますから実感が持ちにくいでしょう。
 
-\input{m05_descriptives_escape_14}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/05_descriptives/m05_01.png}
+    \caption{差のパターン。左列は右列に比べて群間差が大きく，下段は上段に比べて分散が大きい。}
+    \label{fig::m05_08}
+\end{figure}
 
-Talking about gender differences is a typical case of the bottom right quadrant where there is a difference when aggregated, but there is a large individual difference. If you say things like "men are strong" or "women eat less", you will immediately get flamed. While there is a difference in the average value as a fact, it often cannot express enough by itself.
+男女差の話などは典型的な右下のケースで，集約すると差があるのですが個人差が大きく，「男性は力持ち」だとか「女性は少食」などというとすぐ炎上するでしょう。事実として平均値差はあるのですが，それだけでは十分に表現できていないことが多すぎるのです。
 
-What should I do then? Standardization can be helpful here again. That is, we can simply consider how much larger the difference between groups is compared to the \underline{standard deviation}. This standardized difference is particularly referred to as the \keytermE{effect size}{効果量} in Japanese.
+ではどうすれば良いのでしょうか。ここで標準化がまた役に立ちます。つまり群間の差は\underline{標準偏差に比べて}どれぐらい大きいのか，ということを考えればいいのです。この\underline{標準化された差}のことをとくに\keyterm{効果量}{こうかりょう}{effect size}と言います。
 
 \[ ef = \frac{\bar{X_1} - \bar{X_2}}{s_x} \]
 
-In the example given, a value of 4 is used when the difference is large, and a value of 0.4 is used when the difference is small. The standard deviations are 2 and 0.2. When considering effect size, the upper left cell has a value of $4/0.2=20$, the lower left cell has a value of $4/2=2$, the upper right cell has a value of $0.4/0.2=2$, and the lower right cell has a value of $0.4/2=0.2$. We can see that the upper left and lower right values have very different meanings when quantified like this.
+% 図の例では，差が大きいときそれは4，小さいときは0.4としています。標準偏差は2と0.2です。効果量で考えると，左上は$4/0.2=20$，左下は$4/2=2$,右上は$0.4/0.2=2$，右下は$0.4/2=0.2$となります。左上と右下では意味が全然違うというのが数値化できましたね。
+In the example of the figure, the difference is 4 when it is large and 0.4 when it is small. The standard deviation is 2 and 0.2. Considering it in terms of effect size, the top left is $4/0.2=20$, the bottom left is $4/2=2$, the top right is $0.4/0.2=2$, and the bottom right is $0.4/2=0.2$. We can quantify that the meaning is totally different between the top left and the bottom right.
 
-In the later stages of the course ($\to$ Lecture \ref{m17_estimation_and_test}), discussion arises on how to statistically detect differences between groups. When we say "detect differences" statistically, we are able to determine whether there are differences or not, but as seen in all cases in Figure \ref{fig::m05_08}, the difference is not zero. The important consideration is the effect size, or the difference when standardized. Of course, it is best if we can verify the substantial size when there are units present.
+% 後期になると群の差を統計的にどのように検出するか，という話がでてきます($\to$第\ref{m17_estimation_and_test}講)。統計的に「差を検出する」というときは，差があるかないかがわかるのですが，図\ref{fig::m05_08}のどの場合でも差はゼロではないですよね。問題は効果量，つまり標準化した時の差を考えることが重要です。もちろん単位がある状態で，実質的な大きさを検証できればそれに越したことはありません。
+In the latter period, we will talk about how to statistically detect group differences (→ Lecture \ref {m17_estimation_and_test}). When we say "detect a difference" statistically, we can know whether there is a difference or not, but in any case in Figure \ref{fig::m05_08}, the difference is not zero. The important thing is to consider the effect size, in other words, the difference when standardized. Of course, if you can verify the substantial size while there are units, there is nothing better than that.
 
-When doing actual data analysis, it is important to visualize and consider units and distributions, and not to rely solely on surface-level indicators.
-\section{Task}
-\paragraph{Calculating Representative Values} If we have data $X = \{17 , 15,  30 , 30, 43 \}$, what are the mean, median, and mode?
-\paragraph{Standardization Calculation} Please fill in all the blanks in the table \ref{tbl::04_05} below.
+% 実際にデータ分析するときは，可視化したり単位・分布に気をつけながら考えること，表面的な指標だけで考えないようにすること，が重要なポイントです。
+When actually analyzing data, it is important to consider visualization, to pay attention to units and distribution, and to not think only about superficial indicators.
+% \section{課題}
+\section{Assignment}
+% \paragraph{代表値を算出する}データ$X = \{17 , 15,  30 , 30, 43 \}$があったとき，平均値，中央値，最頻値はそれぞれ何になりますか。
+\paragraph{Calculating Representative Values} When you have data $X = \{17 , 15, 30 , 30, 43 \}$, what would the average, median, and mode be respectively?
+% \paragraph{標準化の計算}次の表\ref{tbl::04_05}の表の空欄をすべて埋めてください。
+\paragraph{Standardization Calculation} Please fill in all the blanks in the table as per Table \ref{tbl::04_05}.
 
-\input{m05_descriptives_escape_15}
+\input{m05_descriptives_escape_02}
 
 
 

@@ -1,0 +1,8 @@
+\begin{lstlisting}[language=c++,label={code:09_08},caption={相関行列の固有値分解}]
+    eig <- eigen(R)
+    eig$values
+    sum(eig$values)
+    sum(diag(R))
+    eig$vector
+    eig$vector[,1]^2 %>% sum
+\end{lstlisting}

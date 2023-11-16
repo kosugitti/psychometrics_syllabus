@@ -3,196 +3,290 @@
 \usepackage{myStyle} 
 
 \begin{document}
-"Practical hypothesis testing with R"
+% \chapter{Rによる帰無仮説検定の実際}
+\chapter{Practical Null Hypothesis Testing Using R}
 \label{chapter20}
 
 
 \label{chapter20}
-Until now, we have learned various statistical hypothesis testing methods, but unless we know how to apply them in practice, it will be like drawing a picture of a rice cake. This time, please deepen your understanding by actually performing null hypothesis testing using the statistical environment R. We will use R as the statistical environment and RStudio as its supplement.
-There are various statistical packages available, but no matter which package or software you use, you can obtain similar output. The important thing is to understand the meaning rather than memorizing the output display location.
+% ここまでさまざまな統計的仮説検定を学んできましたが，実践上はどのように行うのかを知らなければ絵に描いた餅になります。今回は統計環境Rで帰無仮説検定を行う方法について，実際に手を動かして理解を深めてください。統計環境はRを，その補助としてRStudioを用います。
+We've learned various statistical hypothesis tests so far, but it's useless unless we know how to actually conduct them in practice. This time, let's deepen our understanding by using our hands to perform a null hypothesis test in the statistical environment R. We use R as our statistical environment, and RStudio for support.
+% 統計パッケージは以外にも色々ありますが，どのようなパッケージ，ソフトを使っても同様の出力が得られます。大事なことは，出力画面の位置で内容を覚えるのではなく，意味的な理解をしておくことです。
+There are various statistical packages available, and similar outputs can be obtained no matter which package or software you use. The important thing is not to memorize the content by the position of the output screen, but to have a semantic understanding of it.
 
-\section{Review of Basic Operations; Descriptive Statistics}
+% \section{基本的操作のおさらい；記述統計}
+\section{Reviewing Basic Operations; Descriptive Statistics}
+% \subsection{環境の確認}
 \subsection{Checking the Environment}
-Please review how to use R and RStudio first. RStudio is an integrated environment for using R.
-\paragraph{Starting RStudio} Please start RStudio. In cases such as when installing packages, administrative privileges may be required.
-\paragraph{Opening a Project} RStudio can manage files and execution environments as "projects". Projects create a single folder (directory), so it is best to save script files (.R files) within it. For this class or section, please create a new project\footnote{You may reuse the project used in Chapter \ref{chapter4}.}. Once you have created or opened a project, confirm that the project is open, for example by looking at the upper right corner of RStudio ($\to$ Figure \ref{fig::20_01}).
+% まずはRとRStudioの使い方を再確認してください。RStudioはRを使うための統合環境です。
+Please first reconfirm how to use R and RStudio. RStudio is an integrated environment for using R.
+% \paragraph{RStudioの起動}RStudioを起動してください。パッケージのインストールをするときなど，管理人権限が必要になるケースがあります。
+\paragraph{Launching RStudio} Please launch RStudio. There may be cases, such as when installing packages, where administrator privileges are required.
+% \paragraph{プロジェクトを開く}RStudioは「プロジェクト」としてファイルや実行環境を管理できます。プロジェクトは1つのフォルダ(ディレクトリ)を作成しますから，その中にスクリプトファイル(.Rファイル)を保存すると良いでしょう。この授業用，あるいは今回のセクション用にプロジェクトを新規作成してください\footnote{第\ref{chapter4}講で使ったプロジェクトを再利用しても構いません。}。プロジェクトを新規作成，あるいは開くことができたら，RStudioの右上などで，プロジェクトが開いていることを確認しましょう($\to$図\ref{fig::20_01})。
+\paragraph{Open a Project}
+RStudio can manage files and execution environments as "projects". A project creates a folder (directory), so it might be a good idea to save script files (.R files) in it. Please create a new project for this class or for this particular section\footnote{You may reuse the project used in lecture \ref{chapter4}.}. Once you are able to create or open a project, make sure the project is open in RStudio, such as at the top right ($\to$Figure \ref{fig::20_01}).
 \input{text1_chap20old_escape_01}
 
-\paragraph{Opening an R script} Prepare an R script file to write today's code. Go to \verb|File > NewFile > R Script| and display a screen with a blank R script. Once a completely blank file has opened, you are ready to go.
+% \paragraph{Rスクリプトを開く}今日のコードを書くためのRスクリプトファイルを準備します。\verb|File > NewFile > R Script|と進み，何も書いてないRスクリプトの画面を表示させてください。真っ白いファイルが開いたら準備完了です。
+\paragraph{Open an R script} You will prepare an R script file to write the code for today. Navigate to \verb|File > NewFile > R Script| and display the screen of an empty R script. Once a completely blank file is opened, the preparation is complete.
 
-"Creating a dataset"
-"Assigning variables to data."
-As we did in Chapter \ref{chapter16}, let's practice creating a small population and taking several samples from it. Please input \texttt{code:\ref{code:20_01}}. \footnote{\# is a commented-out section that explains what calculation is being performed on that line. You do not necessarily have to enter it, however, adding comments will make it easier to read later. }
+% \subsection{データセットを作る}
+\subsection{Creating the Dataset}
+% \paragraph{データに変数を代入}
+\paragraph{Substituting Variables into Data}
+% 第\ref{chapter16}講でやったように，小さなサイズの母集団を作ってそこから標本をいくつも取り出す練習をしてみましょう。\texttt{code:\ref{code:20_01}}を入力してください\footnote{\#はコメントアウトで「この行で何を計算しているか」を説明している箇所です。みなさんが必ずしも入力する必要はありません。ただ，コメントアウトをつけておくと後で読み返しやすくなります。}。
+As we did in Lecture \ref{chapter16}, let's practice creating a small population and then extracting many samples from it. Please enter the \texttt{code:\ref{code:20_01}}\footnote{\# is a comment out where it explains "what this line of code is calculating". You don't necessarily have to enter it, but it will be easier to read again later if you leave the input commented out.}.
 
 \input{text1_chap20old_escape_02}
 
-In R, there is a probability function where if you put \texttt{r} in front of the function name, it generates a random number. This was mentioned in Chapter 7.
-The normal distribution is called \verb|normal distribution|, and in R we use the function \texttt{normal}, so normal \underline{random numbers} are written as \texttt{rnorm}. Also, since the position and width of the normal distribution change depending on the mean and standard deviation, we can make $N$ random numbers with specified mean and standard deviation by taking them as arguments\footnote{Arguments are read as "hikisuu". This refers to the numbers or options given to a function.} in \texttt{rnorm(N, mean, sd)} (I write it like this here for generalization, but actually the specific numbers are put in place of $N$, $mean$, and $sd$. For example, if you want to create 100 random numbers with a mean of 50 and a standard deviation of 10, you can write \texttt{rnorm(100, 50, 10)}.\footnote{You can also explicitly specify the arguments. Like \texttt{rnorm(n=100, mean=50, sd=10)}. In this case, there are no restrictions on the order of the arguments, so you can also write \texttt{rnorm(mean=50, n=100, sd=10)}. Conversely, if you don't specify them, they're interpreted as the number of numbers, mean, and standard deviation in order from the front.})
+% Rでの確率関数は，関数の名前の前に\texttt{r}をつければ乱数を発生させる，というのがありましたね($\to$第\ref{chapter7}講)。
+The probability function in R generates random numbers by prefixing the function name with \texttt{r}, as you may remember ($\to$ Lecture \ref{chapter7}).
+% 正規分布は\verb|normal distribution|で，Rの中では\texttt{normal}という関数を使いますから，正規\underline{乱数}は\texttt{rnorm}と書くのでした。また，正規分布は平均と標準偏差によって位置や幅が変わりますから，これを引数\footnote{引数は「ひきすう」と読みます。関数に与える数字やオプションの指定などのことを総称してこのように呼びます。}にとって\texttt{rnorm(N, mean, sd)}とすることで，平均と標準偏差を指定した乱数を$N$個作ることができるのでした(ここでは一般化するためにこのように書いていますが，実際は$N,mean,sd$のところには入れたい数字が入ります。平均50,標準偏差10の乱数を100個つくるのであれば，\texttt{rnorm(100,50,10)}のように\footnote{引数を明示的に指定することもできます。\texttt{rnorm(n=100,mean=50,sd=10)}のようにです。このようにする場合は，引数の順序に制限がなくなりますから，\texttt{rnorm(mean=50,n=100,sd=10})のように書いても構いません。逆に明示しない場合は，前から順に個数，平均，標準偏差だ，と解釈されます。})
+The normal distribution is used as \verb|normal distribution|, and in R, we use the function \texttt{normal}, so the normal \underline{random number} was written as \texttt{rnorm}. Also, since the normal distribution changes its position and width depending on the mean and standard deviation, by taking these as arguments, it's possible to create $N$ random numbers with specified mean and standard deviation using \texttt{rnorm(N, mean, sd)} (This is written for generalization here, but in reality, the numbers you want to enter are entered where $N,mean,sd$ are. If you want to create 100 random numbers with a mean of 50 and a standard deviation of 10, for example, you would use \texttt{rnorm(100,50,10)}) Note: you can also specify arguments explicitly. For example, like this: \texttt{rnorm(n=100,mean=50,sd=10)}. With this method, there's no limit on the order of arguments, so you can also write \texttt{rnorm(mean=50,n=100,sd=10)}. Conversely, if you don't specify explicitly, it will be interpreted as count, mean, and standard deviation in order from the front.
+(A "footnote" in Japanese is called "hikisuu", which means arguments- numbers or options given to functions, etc. are generally called this.)
 
-Now regarding this code, on the 4th line, we used the \texttt{rnorm} function to generate 100 random numbers with mean 5 and standard deviation 1. We consider this as the population. We assign it to object $X$ using the arrow symbol (\verb|<-|). As this is the population, we can calculate the population mean using the \texttt{mean(X)} function.
 
-Next, in the \texttt{sample} function, five samples are randomly selected from the population created under the variable name \texttt{X} and assigned to an object (such as in line 8). The mean of the samples can also be calculated using the \texttt{mean} function on each object.
+% さてここのコードですが，4行目の\texttt{rnorm}関数で平均5，標準偏差1の乱数を100個作りました。これを母集団と考えます。オブジェクト$X$に代入するため，\verb|<-|（「小なり」と「ハイフン」)で矢印記号を作っています。これが母集団ですから，母平均は\texttt{mean(X)}で計算できます。
+As for the code here, we created 100 random numbers with an average of 5 and a standard deviation of 1 using the rnorm function in line 4. We consider this as the population. In order to assign it to the object $X$, we used \verb|<-| (a "less than" sign and "hyphen") to create a symbol of an arrow. As this is the population, the population mean can be computed by \texttt{mean(X)}.
 
-Please check how appropriate the sample mean is as an estimate of the population mean. Is it the case that the average of the sample means is closer to the population mean? \footnote{Since we are generating the data with random numbers, it may not always be the case. In such cases, try several times or increase the sample size of the population and sample and verify. It may be difficult to collect data from 100 people or repeat sampling many times, but it is easy to change the situation settings in a machine.}
+% 次に\texttt{sample}関数で，変数名\texttt{X}として作った母集団から5個のサンプルを無作為に抜き出してオブジェクトに代入しています(8行目など)。サンプルの平均はまた，それぞれのオブジェクトを\texttt{mean}関数で計算できます。
+Next, I'm using the \texttt{sample} function to randomly extract 5 samples from the population created as variable \texttt{X} and assign them to an object (as in line 8). The mean of the samples can also be calculated for each object using the \texttt{mean} function.
 
-Next, let's calculate the standard deviation (\texttt{code:\ref{code:20_01}}). Please note that the sample for s1 may differ depending on the individual execution environment, so we will not show the output here. The function for calculating the standard deviation is \texttt{sd}, and the variance can be obtained using \texttt{var}.
+% 標本平均が母平均の推定値として，どれほど適切なのかをチェックしてみてください。また標本平均の平均のほうが，より母平均に近くなっている・・・でしょうか？ \footnote{データを乱数で作っているので，実現値次第では必ずしもそうならないことがあります。その場合は何度か試してみるか，母集団・標本のサイズを大きくして検証してください。実際に100人分のデータを集めたり，何度もサンプリングを繰り返すのは大変ですが，機械の中でやることですので簡単に状況設定を弄ることができます。}
+Please check how appropriate the sample average is as an estimate for the population average. Also, is the average of the sample averages closer to the population average... perhaps? \footnote{Since creating data by random numbers, depending on the actual values, it may not necessarily be the case. In that case, please try it multiple times or verify it by increasing the size of the population/sample. It's tough to actually gather data for 100 people or repeat sampling many times, but this is done within a machine, so you can easily manipulate the situation.}
+
+% 続いて標準偏差を計算してみましょう\footnote{これ以降，s1のサンプルは個々人の実行環境によって違うと思いますので，アウトプットは示していません。}(\texttt{code:\ref{code:20_01}})。標準偏差の関数は\texttt{sd}です。また，分散は\texttt{var}で得られます。
+Next, let's calculate the standard deviation \footnote{From this point on, I think the output of the sample will vary depending on individual execution environment, so I won't show the output} (\texttt{code:\ref{code:20_01}}). The function for the standard deviation is \texttt{sd}. Also, you can get the variance with \texttt{var}.
 \input{text1_chap20old_escape_03}
-The standard deviation is the positive square root of the variance, so it has the same meaning as a statistical measure. For confirmation, the last equation is included. The symbol \texttt{\^} on line 6 represents the calculation operator for raising to a power.
+% 標準偏差は分散の正の平方根ですから，統計量として持っている意味は同じです。確認のために最後の1つの式を入れました。6行目で\texttt{\^}とあるのは累乗の計算記号です。
+The standard deviation is the positive square root of the variance, so it has the same meaning as a statistic. I put the last equation in for confirmation. The "\^" in the sixth line is a symbol for calculating the power.
 
-By the way, I would like to draw your attention to the fact that the standard deviation (and variance) functions that R has by default are based on the unbiased variance. This means that they are calculated by dividing the sum of squared differences by n-1, not by n, where n is the total number of data points. If you want to calculate the sample variance or sample standard deviation, you need to write out the formula and calculate it yourself. Let's check it by writing the code in \texttt{code:\ref{code:20_03}}.
+% ところで注意してもらいたいのですが，Rがデフォルトで持っている標準偏差(と分散)の関数は，不偏分散に基づいています。つまり，足したデータの総数ではなく，総数$-1$で割ったものになっています。標本分散，標本標準偏差が欲しい時は，計算式を書いて計算しなければなりません。\texttt{code:\ref{code:20_03}}を書いて確認してみましょう。
+By the way, I would like to remind you that the standard deviation (and variance) function that R has by default is based on the unbiased variance. In other words, it is not divided by the total number of data added, but by the total number $-1$. If you want the sample variance or sample standard deviation, you have to write the formula and calculate it yourself. Let's try to confirm by writing \texttt{code:\ref{code:20_03}}.
 \input{text1_chap20old_escape_04}
 
-The formula for sample variance (2nd line) consists of nested expressions. First, the mean is subtracted from the dataset $s1$ with \texttt{s1 - mean(s1)}. Although the mean is only one value, $s1$ is a vector with five elements. In such a case, R automatically reuses the mean and subtracts it from each element of $s1$. Therefore, a vector of mean deviations is created here. Then, these deviations are squared with \texttt{\^ 2}, summed, and divided by the number of elements by using the \texttt{mean} function.
+% 標本分散の式(2行目)は，複数の式が入れ子になっています。まず\texttt{s1 - mean(s1)}でデータセット$s1$から平均を引いています。平均値は1つ，$s1$は5つの要素がなるベクトルですが，このような場合Rは平均を自動的に使い回し，$s1$の各要素から平均値を引き算するようにしています。つまり，平均偏差ベクトルがここで作られています。それを\texttt{\^　2}で二乗し，総和して総数で割る=\texttt{mean}関数を使う，という計算です。
+The formula for sample variance (line 2) is a sequence of nested formulas. First of all, in \texttt{s1 - mean(s1)}, we subtract the mean from the dataset $s1$. While the mean is one value, $s1$ is a vector composed of five elements. In this case, R automatically reuses the mean to subtract it from each element of $s1$. In other words, the mean deviation vector is created here. Then, by \texttt{\^ 2}, squared it, added them all up, and divided by the total number - using the \texttt{mean} function is the process.
 
-In terms of confirmation, we are performing a calculation where we multiply the unbiased variance by 4 (since it is divided by $N-1=4$), and then divide by $N=5$.
+% 確認のところは，不偏分散が$N-1=4$で割っているものですから，4倍して$N=5$で割り直す，という計算をしています。
+For the confirmation part, since the unbiased variance is dividing by $N-1=4$, I am multiplying by 4 and recalculating by dividing by $N=5$.
 
-\subsection{Using Probability Distribution Functions}
-Next, using the example in Chapter \ref{chapter17}, let's try to calculate the probability function. Please be sure to review the difference in how to call the probability variables in R (Figure \ref{fig::20_02}).
+% \subsection{確率分布関数の利用}
+\subsection{Usage of Probability Distribution Function}
+% 次に第\ref{chapter17}講での例を使って，確率関数の計算をしてみましょう。Rによる確率変数の呼び出し方の違いをもう一度確認しておいてください(図\ref{fig::20_02})。
+Let's calculate the probability function using the example from Lecture \ref{chapter17}. Please reconfirm the different ways to call probability variables in R (figure \ref{fig::20_02}).
 \input{text1_chap20old_escape_05}
 
-Based on this, the first step is to estimate the interval with 95% confidence interval. As we want 95% of the area around the peak, we need to have an estimate for it.
+% これを踏まえて，まずは95\%信頼区間で区間推定するところです。ピークを挟んで95\%の面積が欲しいのですから，
+Considering this, the first step is to estimate the interval at a 95% confidence interval. We want an area of 95% that straddles the peak.
 \input{text1_chap20old_escape_06}
-It goes through the following procedure (Figure \ref{fig::20_03}). In the code, you can use \texttt{code:\ref{code:20_04}} to be OK.
+% という手順になるのでした(図\ref{fig::20_03})。コードでは\texttt{code:\ref{code:20_04}}のようにすればOKです。
+The procedure would be as shown (Figure\ref{fig::20_03}). In the code, it should be okay if you do it like \texttt{code:\ref{code:20_04}}.
 \input{text1_chap20old_escape_07}
 
 \input{text1_chap20old_escape_08}
-Let's do interval estimation with this. This time, we took a sample from a population with a mean of 5 and a standard deviation of 1. For example, if we want to do interval estimation for the first object, $s1$, we can calculate it using \texttt{code:\ref{code:20_05}}. We can represent it without a negative sign by calculating it with the probability point of 0.025 from the bottom instead of using -1.96.
+% これで区間推定してみましょう。今回は母平均5,母標準偏差1のところからサンプルをとってきています。たとえば1つ目のオブジェクト，$s1$について区間推定するならば，\texttt{code:\ref{code:20_05}}として計算できることになります\footnote{-1.96のところを，下から0.025の確率点で算出することでマイナス符号をつけないで表現できています。}。
+Let's try interval estimation. This time, we are taking samples from a population mean of 5 and a population standard deviation of 1. For example, if we were to do interval estimation for the first object, $s1$, we could calculate it as \texttt{code:\ref{code:20_05}}\footnote{The -1.96 can be expressed without a minus sign by calculating it at the 0.025 probability point from the bottom.}.
+
 \input{text1_chap20old_escape_09}
 
 
-However, this is when the population variance is known, which is not usually the case, so we use the t-distribution. In R, the function name for the t-distribution is simply "t", so by using "dt, pt, qt" etc., you can obtain the probability density, cumulative probability, and probability point. However, don't forget that the degree of freedom "df" is required as an argument. The interval estimation using this method is as shown in the following code (\texttt{code:\ref{code:20_06}}), taking note of the degree of freedom and using the sample variance \texttt{sd(s1)} in place of the population variance.
+% ただし，これは母分散がわかっている場合であって，実際はわからないので$t$分布を使うのでした。Rにおける$t$分布の関数名はそのまま\texttt{t}なので，これを\texttt{dt,pt,qt}などとすれば確率密度や累積確率，確率点がわかります。ただし，引数として自由度$df$が必要なことを忘れないで。これを使った区間推定は，\texttt{code:\ref{code:20_06}}のようになります\footnote{自由度の設定と，母分散の変わりに標本分散\texttt{sd(s1)}とすることに注意。}。
+However, this is the case when the population variance is known, and in practice, it is not known, so we use a $t$ distribution. In R, the function name for the $t$ distribution is simply \texttt{t}, so if you use this as \texttt{dt, pt, qt}, etc., you will know the probability density, cumulative probability, and probability points. But don't forget that you need the degrees of freedom $df$ as an argument. Interval estimation using this is as in \texttt{code:\ref{code:20_06}}\footnote{Pay attention to the setting of degrees of freedom and using sample variance \texttt{sd(s1)} instead of population variance.}.
 \input{text1_chap20old_escape_10}
-"However, some people may find writing equations more troublesome than they thought. Actually, there is an easier way to do it. It is to use the function of t-test in R. Speaking of t-tests, you might think of testing the difference in means between two groups, but we will do that in the next section. For now, please execute \texttt{code:\ref{code:20_07}}."
+% それにしても，数式を書くので何やら思ったより面倒だな，と思った人もいるかもしれません。実はもっと簡単な方法があります。それは，Rの$t$検定の関数を使う方法です。$t$検定といえば，2群の平均値差についての検定が思いつきますが，それは次のセクションでやることにして，\texttt{code:\ref{code:20_07}}を実行してください。
+Even so, some people might find it more troublesome than anticipated to write formulas. In fact, there is a simpler method. That is using the $t$-test function in R. When you think of a $t$-test, the thought of testing for a difference in the mean value of two groups might come to mind, but let's do that in the next section. For now, please execute \texttt{code:\ref{code:20_07}}.
 \input{text1_chap20old_escape_11}
-This is a testing method for examining whether the sample mean obtained from a population with a mean of 5 significantly deviates from the population mean. When executed, in my environment, results similar to \texttt{console\ref{RS:out20_01}} were obtained\footnote{It should be noted that since sample s1 may vary depending on the execution environment, the results may differ from the numbers on your screen. It is important to understand the meaning of the output.}.
+% これは，母平均が5である母集団から得られた標本の平均が，母集団から有意に離れているかどうかを検定するという検定方法になります。これを実行すると，私の環境では\texttt{console\ref{RS:out20_01}}のような結果が得られました\footnote{繰り返しになりますがs1のサンプルは実行環境によって違うと思いますので，結果はみなさんの手元の数字と異なると思います。出力のどこがどういう意味であるかを見ることが肝要です。}。
+This is a testing method to check whether the mean of a sample obtained from a population with a mean mother of 5 is significantly different from the population. When I ran this, in my environment, I got a result like \texttt{console\ref{RS:out20_01}}\footnote{I repeat, but I think the sample of s1 varies depending on the execution environment, so I think the result will be different from your numbers. The important thing is to see what each part of the output means.}.
 
 \input{text1_chap20old_escape_12}
-Various outputs are being generated, but on the 5th line from the bottom, it should say 95 percent confidence interval, with \texttt{CI[4.154629,6.689527]} being shown, which is the same as the previous calculation result. Below that, please confirm that the sample mean \texttt{5.422078} is also the same result as \texttt{mean(s1)}.
+% いろいろ出力されていますが，下から5行目に95\%信頼区間(95 percent confidence interval)とあり，\texttt{CI[4.154629,6.689527}]と先ほどの計算結果と同じものが示されているはずです。その下，標本平均\texttt{5.422078}も，\texttt{mean(s1)}と同じ結果になっていることを確認してください。
+Various outputs are displayed, but the fifth line from the bottom says "95% confidence interval" and should show the same result as the previous calculation, \texttt{CI[4.154629,6.689527]}. Just below that, please confirm that the sample mean \texttt{5.422078} is the same result as \texttt{mean(s1)}.
 
-By the way, this function \texttt{t.test} has default settings of \texttt{mean = 0} and \texttt{conf.level = 0.95}.
+% ちなみにこの関数\texttt{t.test}は，デフォルトで\texttt{mean=0,conf.level=0.95}の設定になっています。
+By the way, this function \texttt{t.test} is set to \texttt{mean=0,conf.level=0.95} by default.
 
-"t-Test with Correspondence"
-Now, let's use the function we previously saw, \texttt{t.test}. This function, as expected, is a tool to perform t-tests. Let's try using it in a actual testing scenario.
+% \section{対応のあるt検定}
+\section{Paired t-test}
+% さて，先にみた関数関数\texttt{t.test}は，当然$t$検定用の関数ですので，実際に検定のシーンで使ってみましょう。
+Well, the function \texttt{t.test} we saw earlier is naturally a function for the t-test, so let's actually use it in a test scene.
 
-This is about calculating a t-test with correspondence, specifically the test of the difference in means between two levels within a single factor group. In the previous section, there were complicated formulas, but this time the calculations will be done by a machine, so as usual, be sure to carefully check the output.
+% 対応のあるt検定，つまり一要因群内(Within)2水準の平均値差の検定をどう計算するか，です。前節では面倒な計算式がありましたが，今回その辺の計算は機械がやってくれますので，例によって出力をしっかり確認するようにしましょう。
+This is about how to calculate a paired t-test, or a test of the difference in means for two levels within one factor. In the last section, we had complicated calculations, but this time the machine does all that for us, so let's make sure to properly check the output as usual.
 
-For example, we will use the data of 10 participants in Table \ref{fig::19_01}. Execute the code \texttt{\ref{code:20_08}} to store the original data in an object.
+% 例として，表\ref{fig::19_01}の10人の参加者データを使います。元になるデータをオブジェクトに格納する\texttt{code:\ref{code:20_08}}を実行しましょう。
+As an example, we will use the data of 10 participants from Table \ref{fig::19_01}. Let's execute \texttt{code:\ref{code:20_08}} to store the original data into an object.
 \input{text1_chap20old_escape_13}
 
-\paragraph{Explanation of the Code}
+% \paragraph{コード解説}
+\paragraph{Code Explanation}
 \input{text1_chap20old_escape_14}
-Now, while this script was written to be easy to understand intuitively, it is also possible to express the same thing in a different way (\texttt{code:\ref{code:20_09}}).
+% さて，このスクリプトは直感的にわかりやすく書きましたが，同じことを別の表現をすることもできます(\texttt{code:\ref{code:20_09}})。
+Okay, while this script is written to be intuitively understandable, it can also be expressed in another way (code: reference code 20_09).
 
 \input{text1_chap20old_escape_15}
-This is the same as before for the first and second lines.
+% これは1，2行目は先ほどと同じですが，
+This is the same as before for the first and second lines,
+
 \input{text1_chap20old_escape_16}
-This is a way to create a data frame, so it would be good to see what form the data frame is in (\texttt{console\ref{RS:out20_03}}).
+% こちらはデータフレームを作った書き方ですから，データフレームがどういう形なのかみておくと良いでしょう(\texttt{console\ref{RS:out20_03}})。
+Here is how to create a data frame, so it's a good idea to see what the data frame looks like (\texttt{console\ref{RS:out20_03}}).
 
 \input{text1_chap20old_escape_17}
-During actual data analysis, it is common to read data files from an external source or analyze data that has already been formatted into a data frame. In R, it is common to represent the functional relationship between independent and dependent variables using the tilde symbol, so we have explained how to use it in both ways.
+% 実際のデータ分析の時は、外部からデータファイルを読み込んだり，既にデータフレームに整形されたものを分析することが多いかと思います。このチルダを使って独立変数，従属変数の形に表すのがRでは一般的な関数関係の表現形ですから，これを機にどちらの使い方でもできるように解説しました。
+I believe that in actual data analysis, you often read data files from outside or analyze things that have already been shaped into data frames. Using this tilde to represent independent and dependent variables is a common expression of function relationships in R, so I explained how to use it in either way.
 
-Well, the results obtained are as shown in \texttt{console\ref{RS:out20_04}}.
+% さて，こうして得られる結果は\texttt{console\ref{RS:out20_04}}の通りです。
+Well, the result obtained in this way is as shown in console\ref{RS:out20_04}.
 \input{text1_chap20old_escape_18}
 
-I see that the t-value is shown on the third line from the top. The actual value of the t-statistic under the null hypothesis is $t(9)=-2.4783$, and the probability of this occurring is $p=0.01754$. The alternative hypothesis is that the true difference in means is less than 0. In the R code, this is expressed as the first variable being less than the second variable. The one-tailed test is performed because the \texttt{t.test} function was called with the argument \texttt{alternative="less"}. If \texttt{alternative="greater"} is used instead, the test would be for the opposite one-tailed test (the score for the prior data is greater than that of the posterior data). If nothing is specified (\texttt{alternative="two.sided"}), a two-tailed test is performed.
+% 上から三行目に$t$値が出ていますね。帰無仮説の下での$t$統計量の実現値は$t(9)=-2.4783$であり，これが出現する確率は$p=0.01754$です。対立仮説は，平均値の差が0より小さい(true difference in means is less than 0)という対立仮説になっています\footnote{Rでは前の変数が後ろの変数に比べて大か，小かを表現します。}。これが片側検定になっているのは，\texttt{t.test}関数の引数に\texttt{alternative="less"}と書いたからで，これを\texttt{alternative="greater"}とすれば逆の片側検定(事前データのスコアの方が事後データのスコアより大きい)を検定することになり，とくに何も書かないか\texttt{alternative="two.sided"}とすれば両側検定になります。
+The $t$ value appears in the third line from the top. Under the null hypothesis, the realization of the $t$ statistic is $t(9)=-2.4783$, which has a probability of occurrence of $p=0.01754$. The alternative hypothesis is that the true difference in means is less than 0. This is expressed in R as the former variable being larger or smaller than the latter variable. This is a one-sided test because the \texttt{t.test} function argument is written as \texttt{alternative="less"}. If we write this as \texttt{alternative="greater"}, we will test the reverse one-sided test (pre-score is larger than post-score), and if we don’t write anything or write \texttt{alternative="two.sided"}, it will be a two-sided test.
 
-Please refer to the previous chapter ($\to$ Lecture \ref{chapter19}) to understand how to interpret these results and how to include them in your report.
+% 前の章($\to$第\ref{chapter19}講)を参考に，このような結果をどう解釈し，どうレポートに記載するかを確認しておいてください。
+Please refer to the previous chapter (see Chapter 19) to understand how to interpret these results and how to report them.
 
-"Unpaired t-test without correspondence"
-Let's consider testing the difference in means between two independent groups with no corresponding response, in other words, testing data from a one-factor between-subjects (2-level design) study. Continuing from the previous chapter, let's analyze the data in Table \ref{tbl::19_02}. Without delving into complex calculations, please input \texttt{code:\ref{code:20_10}} and execute the analysis.
+% \section{対応のないt検定}
+\section{Untested T-Test}
+% 今度は対応のない，独立した2群の平均値差の検定，言い換えるならば一要因群間(Between)2水準計画のデータの検定を考えましょう。同じく前の章から，表\ref{tbl::19_02}のデータを分析することを考えます。難しい計算は抜きにして，\texttt{code:\ref{code:20_10}}を入力し，分析を実行してください。
+Let's consider the test of the mean difference between two independent groups, in other words, the test of the data of a one-factor between-group (Between) 2-level plan. Similarly, from the previous chapter, we will consider analyzing the data in Table \ref{tbl::19_02}. Omit the difficult calculations, input \texttt{code:\ref{code:20_10}}, and execute the analysis.
 \input{text1_chap20old_escape_19}
-The contents of the script are almost the same as before. The major difference is that there are no arguments for the \texttt{t.test} function, and neither the \texttt{paired} nor the \texttt{alternative} option is present. This is because the function is using the default settings. In R, the \texttt{t.test} function performs a two-sided test without pairing by default.
+% スクリプトの内容については、先ほどとほぼ同じです。大きな違いは，\texttt{t.test}関数の引数がなくなったところで，\texttt{paired}オプションもなければ，\texttt{alternative}オプションもありません。ないのは、デフォルトの状態を使っているからで，Rの\texttt{t.test}関数はデフォルトで対応のない，両側検定の$t$検定をやってくれるのです。
+The content of the script is almost the same as before. The big difference is that the \texttt{t.test} function has no arguments, and there is no \texttt{paired} option or \texttt{alternative} option. The reason why they don't exist is because we are using the default state, and R's \texttt{t.test} function will perform an independent two-sample t-test by default.
 
-The result should be displayed as follows (\texttt{console\ref{RS:out20_05}}).
+% 結果は次のように表示されるはずです(\texttt{console\ref{RS:out20_05}})。
+The result should be displayed as follows (console\ref{RS:out20_05}).
 \input{text1_chap20old_escape_20}
-Please confirm whether the result matches the one obtained from manual calculation from the previous time.
+% 前回，手計算した結果と同じになっているかどうか確認してください。
+Please check whether it matches the results calculated by hand last time.
 
-Hmm? The degree of freedom is 7.195? Wasn't it supposed to be 8 degrees of freedom (the degree of freedom for the experimental group is $5-1=4$, the degree of freedom for the control group is also $5-1=4$, and adding the two together gives $4+4=8$)?
+% んん？ 自由度が7.195? 自由度って8になるんじゃなかったでしたっけ(実験群の自由度が$5-1=4$，統制群の自由度も$5-1=4$，足して2つで$4+4=8$)。
+Hmm? The degrees of freedom is 7.195? Weren't the degrees of freedom supposed to be 8 (The degrees of freedom of the experimental group is $5-1=4$, that of the control group is also $5-1=4$, adding them both $4+4=8$)?
 
-"Welch's correction"
-That's correct, the degrees of freedom for the t-test should be 8, but it's coming out as a strange number. This is because there is another procedure involved in the test that hasn't been explained yet.
+% \subsection{Welchの補正}
+\subsection{Welch's Correction}
+% そうです，t検定の自由度は$8$のはずなのですが，変な数字で出ていますね。これは，検定に関わるまだ説明していない別の手続きがあったからです。
+Yes, the degrees of freedom for the t-test should be $8$, but now it's showing a strange number. This is because there was another procedure involved in the test that I haven't explained yet.
 
-Please remember the assumptions that were made for the test. While assuming the null hypothesis that the difference in population means is zero is a hypothesis, it is also an assumption that precedes it. Specifically, the assumption was that the two groups were obtained from normal distributions, and although there is a difference in the mean values, the assumption was made that the population standard deviation was the same.
+% 検定にはどのような仮定があったか，思い出してください。母平均の差をゼロとする，という帰無仮説をおくのも仮定ではありますが，さらにその前にあった仮定です。それは，2つの群が正規分布から得られていること，とくに平均値に差はあるけれども，母標準偏差は同じところから取ってきていた，という仮定があったのです。
+Please remember what assumptions were made in the test. The null hypothesis is assumed to be zero for the difference in the population mean, but before that, there was another assumption. It is assumed that the two groups are drawn from a normal distribution. In particular, even though there are differences in the mean values, the assumption was that the population standard deviations were taken from the same place.
 
-What if this assumption is violated? If we cannot assume normal distribution in the population, we cannot perform a t-test. For example, if the data pertains to differences in annual income or involves numerical figures relating to ratios or angles, we cannot assume normal distribution and therefore cannot conduct a t-test. Even if we assume normal distribution, we may need to reconsider our estimation method if the population standard deviation differs.
+% もしこの仮定が崩れていたら？ 母集団に正規分布が仮定できなければ，$t$検定はできません。たとえば年収の差とか，データが比率や角度についての数字であったりすると，正規分布を仮定できないので$t$検定はできないのです。正規分布は正規分布だったとしても，母標準偏差がちがっているなら，推定の仕方も考え直さないといけないかもしれません。
+What if this assumption collapses? If you cannot assume a normal distribution in the population, you cannot perform a t-test. For example, it is not possible to perform a t-test if the data is about differences in annual income, ratios, or angles, as you cannot assume a normal distribution. Even if it was a normal distribution, if the population standard deviation is different, you may need to rethink the way you estimate.
 
-This problem is solved by adjusting the degrees of freedom of the t-value. The so-called t-test until now has been a calculation method for cases where the assumption of equal variance is satisfied (which also involves homogeneity of variance), and when this assumption is not met, an adjustment called \keytermE{Welch's correction}(ウェルチの補正) is necessary.
+% この問題は，$t$値の自由度を調整することで解決されています。前回までのいわゆる$t$検定は，等分散の仮定が満たされているケース(分散の均一性などということもあります)の計算方法であり，この仮定が満たされていない場合は\keyterm{Welchの補正}{Welchのほせい}{Welch's correlation}(ウェルチの補正)とよばれる調整が必要です。
+This issue is resolved by adjusting the degrees of freedom of the $t$ value. The so-called $t$ test up to the last time is a calculation method for cases where the assumption of equal variance is satisfied (there are also things like homogeneity of variance), and when this assumption is not met, an adjustment called Welch's correlation (also known as Welch's correction) is necessary.
 
-The \texttt{t.test} function in R returns, by default, the result of applying Welch's correction, which is based on a more lenient assumption. This is done to avoid having to check whether the variances are equal, which can be a cumbersome procedure. The first line of the output also states that the test used is the Welch Two Sample t-test. Using this method, the results are:
+% Rの\texttt{t.test}関数は，より仮定の緩やかな，Welchの補正をかけた結果をデフォルトで返してくれます。まず分散が等しいかどうかチェックして云々，という手続きが面倒なので，最初から補正しておこう，ということですね。結果の一行目にもWelch Two Sample t-testと書いてあります。これを使って，結果は
+The \texttt{t.test} function in R returns the Welch's corrected result by default, which assumes more relaxed conditions. It's tedious to check whether the variances are equal first, so it's a good idea to correct them from the start. The first line of the result also reads "Welch Two Sample t-test". This is used to provide the result.
 \input{text1_chap20old_escape_21}
-I report that the value of $t$, which in the case of a two-sided test does not have any meaning for the sign, has been calculated. Let's not only consider whether there is a difference, but also pay attention to the 95% confidence interval of the difference. According to the results, the 95% confidence interval for the difference was CI[-12.609577, 3.409577]. Since the range of the difference is from -12 to +3 and includes the null hypothesis that the difference = 0, it is not significant.
+% と報告します\footnote{$t$の値は，両側検定の場合符号に意味がないのでマイナスを取って記載します。}。差があるかどうかの判断だけでなく，差の95\%信用区間にも目を向けておきましょう。結果から，差の95\%信頼区間はCI[-12.609577,3.409577]でした。差は-12から+3までの幅があり，帰無仮説である差$=0$を含んでいるので，有意になりません。
+I will report it as such\footnote{In the case of a two-sided test, the sign of the value $t$ doesn't matter so I will ignore any negatives.}. Let’s not only judge whether there's a difference, but also look at the 95% confidence interval of the difference. From the results, the 95% confidence interval of the difference was found to be CI[-12.609577,3.409577]. The difference ranges from -12 to +3, and since it includes the null hypothesis that the difference $=0$, it is not significant.
 
 
-By the way, when assuming equal variances, you can use the options of the \texttt{t.test} function (\texttt{code:\ref{code:20_11}}).
+% ところで，分散が同じだ，と仮定できる場合は\texttt{t.test}関数のオプションを使います(\texttt{code:\ref{code:20_11}})。
+By the way, when we can assume that the variance is the same, we use the option of the t.test function (code:\ref{code:20_11}).
 
 \input{text1_chap20old_escape_22}
 
-With this, you can obtain results like \texttt{console\ref{RS:out20_06}}.
+% これで，\texttt{console\ref{RS:out20_06}}のような結果を得ることができます。
+With this, you can get a result similar to \texttt{console\ref{RS:out20_06}}.
 
 \input{text1_chap20old_escape_23}
-With this method, the degrees of freedom are also integers (although the determination result remains unchanged).
+% このやり方ですと，自由度も整数になっていますね(判定結果は変わりませんが)。
+With this method, the degrees of freedom also become integers (although the judgment result does not change).
 
-Verification of Post-hoc Effect Size
-Although the exam is over, we are wondering if this experimental data had a "winning strategy". In other words, we are curious if the difference of the population mean in the overall population is large enough to make a significant impact. We do not know the population value, but we have been estimating it using statistical data. Therefore, let's consider after collecting the data, how large the effect size was.
+% \subsection{事後的な効果量の検証}
+\subsection{Verification of Post Hoc Effect Size}
+% 検定が終わった後ではありますが，このデータの実験は「勝ち目がある」ものだったのでしょうか。つまり，母集団における母平均の差が十分大きなものなのかどうかが気になります。母数は分かりませんが，これまでも分からないものは標本統計量で置き換えて推定してきたわけですから，データを取った後になって，これはどれぐらい効果量の大きなデータだったのか，を考えてみましょう。
+Although the test is over, was this experiment a "sure win"? In other words, I'm curious whether the difference in the population mean in the population was large enough. I don't know the population parameters, but so far we have been estimating by replacing the unknowns with sample statistics, so let's think about how large the effect size of the data was after collecting the data.
 
-It is also possible to easily calculate effect size using R. R offers various statistical functions with the addition of packages, and introducing the \textsf{effsize} package \citep{effsize} for effect sizes makes calculation simple. Please refer to chapter \ref{chapter19} for information on effect size. Here, we introduce the recommended method of calculating Hedges' g (\texttt{code:\ref{code:20_12}}).
+% 効果量の計算についても，Rを使って簡単に行うことができます。Rではパッケージを追加することでさまざまな統計関数が増えますが，効果量についての\textsf{effsize}パッケージ\citep{effsize}を導入すれば，この計算も簡単にできます。効果量については第\ref{chapter19}講で触れましたので確認しておいてください。ここではより推奨される，Hedgesのgの算出の仕方を紹介します(\texttt{code:\ref{code:20_12}})。
+Calculating the effect size can also be easily done using R. In R, various statistical functions can be increased by adding packages, but if you introduce the effsize package for effect size, you can easily do this calculation. Please check back on lecture 19 as we have touched on effect size. Here, we introduce the way to calculate Hedges' g, which is more recommended. (code: 20_12).
 
 \input{text1_chap20old_escape_24}
-First, in the second line, load the package\footnote{If you do not have this package, you need to download it from the internet and save it locally (on your PC). This download is called "installing a package" and can be done using the \texttt{install.packages} function. To install the package for this example, enter \texttt{install.packages("effsize")} and run it. Pay attention to capitalization! Also, you do not need to do this every time, once you download it is enough.}, and in the following line, compute the Cohen's d with Hedges' correction.
+% ここではまず2行目でパッケージを読み込み\footnote{このパッケージを持っていない場合は，当然インターネットからダウンロードしてローカル(手元のPC)に保存しておく必要があります。このダウンロードは「パッケージのインストール」と呼ばれ，\texttt{install.packages}関数で行うことができます。今回パッケージのインストールを行う場合は，\texttt{install.packages("effsize")}と入力し，実行してください。大文字小文字の違いにも気を付けて！また，これは一度ダウンロードすれば，毎回する必要はありません。}，次の行でcohenのdをHedgesの補正をかけて算出せよ，としています。
+First, in the second line, we load the package \footnote{Of course, if you don't have this package, you need to download it from the internet and save it on your local PC. This download is called "package installation", and can be done with the \texttt{install.packages} function. If you need to install the package this time, please enter \texttt{install.packages("effsize")} and execute it. Be careful about the difference between uppercase and lowercase letters! Also, once you download this, you don't need to do it every time.}, and in the following line, we calculate Cohen's d with Hedges' correction.
 
-The result is shown as \texttt{console\ref{RS:out20_07}}.
+% 結果は\texttt{console\ref{RS:out20_07}}のように示されます。
+The results are displayed as shown in \texttt{console\ref{RS:out20_07}}.
 \input{text1_chap20old_escape_25}
 
-As indicated by "g estimate: -0.7715342 (medium)" in the text, the estimated value is 0.77 and this is of medium size. Although there seems to be a moderate difference, it may not have been significant in this case due to the small sample size. If it had been properly designed in advance and conducted as an experimental procedure, it would have been improved.
+% \texttt{g estimate: -0.7715342 (medium)}とあるように，推定値は0.77で，これは中ぐらい(medium)の大きさだよ，ということです。中程度の違いがありそうなのに，今回有意にならなかったのは、サンプルサイズが小さかったからかもしれません。事前にきちんと設計してやっておけば，実験手続きとしてより良くなったでしょう。
+As stated, "\texttt{g estimate: -0.7715342 (medium)}", the estimated value is 0.77, which is of moderate size. The fact that there seems to be a moderate difference but it didn't turn out to be significant this time could be due to the small sample size. It would be better for the experimental procedure to have been properly designed in advance.
 
-Calculating effect size can also be done retrospectively by considering how much difference there is likely to be in the standardized mean values ​​from this sample. Of course, it can also be used to design sample sizes (considering how many samples are needed) by assuming the difference in the mean values ​​beforehand. Make sure to include the calculated sample effect size in the report.
+
+% 効果量の計算はこのように，事後的に行って今回の標本から標準化された平均値の差がどれぐらいありそうか，と考えることもできます。もちろん事前に平均値の差を想定して，そこから例数設計(どれぐらいのサンプルを取れば良いか考える)するのにも使います。今回ここで求めた標本効果量も，レポートに書くようにしましょう。
+The calculation of the effect size can be done post hoc, allowing us to consider how much difference there might be in the standardized mean values from this sample. Of course, it is also used in sample design planning (thinking about how many samples should be taken) by imagining the difference in mean values in advance. Also, the sample effect size calculated here should be written in the report.
 
 \input{text1_chap20old_escape_26}
 
+% \subsection{補遺}
 \subsection{Appendix}
-As an appendix, I will add two points. Please read them if you have time or interest.
-\paragraph{Calculating Effect Size for Paired t-test} When performing a paired $t$-test and seeking to obtain its effect size, you should turn on the paired option as shown in the following code example (\texttt{code:\ref{code:20_13}}).
+% 付録的に2点付け加えます。時間的に余裕がある・興味がある場合はご一読ください。
+I will add two points as an appendix. Please read it if you have time or are interested.
+% \paragraph{対応のあるt検定の効果量を計算する}対応のある$t$検定をして，その効果量を求める場合は，次のようにpairedオプションをオンにしておきます(\texttt{code:\ref{code:20_13}})。
+\paragraph{Calculating the effect size of a paired t-test} When you conduct a paired t-test and want to calculate its effect size, you turn on the paired option as follows (\texttt{code:\ref{code:20_13}}).
 
 \input{text1_chap20old_escape_27}
-However, if you are using a writing style that includes tilde (~), when using \texttt{code:\ref{code:20_14}}, the output will display a warning message like the one shown in \texttt{console:\ref{RS:out20_08}}.
+% ただし，チルダを使った書き方をしている場合，\texttt{code:\ref{code:20_14}}のようにすると，出力に次のような警告が付されます(\texttt{console\ref{RS:out20_08}})。
+However, if you are writing with a tilde, adding it as \texttt{code:\ref{code:20_14}} will attach the following warning to the output (\texttt{console\ref{RS:out20_08}}).
 \input{text1_chap20old_escape_28}
 
 \input{text1_chap20old_escape_29}
-This warning is saying that "the variable for identifying individual correspondence is not included in the dataset, so the results may be incorrect. Please use the following format." To address this, you should use \texttt{code:\ref{code:20_15}}.
+% この警告は，「対応のある個々人を識別する変数がデータセットに入ってないので，間違った結果になっているかもしれませんよ。次の書式を使ってください」と言ってます。これに対応するためには、\texttt{code:\ref{code:20_15}}のようにします。
+This warning is saying, "The variables identifying each corresponding individual may not be present in the dataset, which could result in incorrect results. Please use the following format." To address this, do as \texttt{code:\ref{code:20_15}} suggests.
 \input{text1_chap20old_escape_30}
-The key point here is to create a variable to identify the ID in the 5th line. \footnote{The function \texttt{rep} repeats \texttt{1:10} twice. In R, numbers connected with a colon indicate a sequence.} We have also rewritten the formula for calculating the effect size in the proposed format of the warning.
+% ここでのポイントは5行目にIDを識別する変数を作り\footnote{関数\texttt{rep}で\texttt{1:10}を2回繰り返しています。Rではコロンで繋げた数字は，連番を意味します。}，効果量を計算する式を警告の提案通りのフォーマットに書き換えています。
+The point here is that a variable to identify the ID is created in line 5 \footnote{In R, the numbers connected with a colon mean a series, so the function \texttt{rep} is repeating \texttt{1:10} twice.}. The formula to calculate effect size is rewritten in the format suggested by the warning.
 
-"How to Design a Sample Size"
-In an unsupported t-test, even though the effect size was 0.7, it did not show statistical significance. It was suggested that this may be due to the small sample size, but then how many pieces of data were needed? We can obtain a hint by inputting the code shown in \texttt{code:\ref{code:20_16}} into R.
+% \paragraph{例数設計のしかた}
+\paragraph{How to Design Sample Sizes}
+% 対応のない$t$検定で，効果量が0.7あるのに有意になりませんでした。これはサンプルサイズが小かったからかも，ということでしたが，では何人分のデータがあればよかったのでしょうか。\texttt{code:\ref{code:20_16}}ようにRに入力することで，そのヒントが得られます。
+In a t-test without matching, the effect size was 0.7 but was not significant. It was suggested that this might be due to the small sample size, but how much data would have been enough? By inputting it into R as shown in code:\ref{code:20_16}, you can get a hint.
 \input{text1_chap20old_escape_31}
-Here, we set \texttt{delta=0.7} based on the assumption that there is a standardized mean difference of 0.7. We used this value because it was suggested by the results of the post-hoc power analysis conducted earlier. However, it is acceptable to estimate a smaller or larger value as well. Additionally, we set \texttt{power=0.8}, which is the \textit{power} discussed in Section \ref{sec::18_05}. We aimed to reduce the Type II error (false negative) to approximately 20\% and achieve an 80\% probability of detecting a significant difference ($1-\beta=0.8$). The significance level is 5\% ($\alpha=0.05$), which is set as \texttt{sig.level=0.05} in the script.
+% ここで，\texttt{delta=0.7}としたのは，標準化された平均値差が0.7あるとして，という考え方です。これは先ほどの事後的検定力分析の結果，それぐらいあったんじゃないの？ と思われたのでその値を使いました。もっと小さく見積もったり，逆にもう少し大きく見積もったりしても構いません。また，\texttt{power=0.8}としましたが，これは\keyterm{検定力}{けんていりょく}{power}で，セクション\ref{sec::18_05}で出てきたものです。Type II Error，つまり差があるのにあると言えない間違い($\beta$)を20\%ぐらいに抑え，80\%の確率で当てたいとしました($1-\beta=0.8$)。また，有意水準は5\%です($\alpha=0.05$,スクリプトの中では\texttt{sig.level=0.05}としています)。
+The reason why we used \texttt{delta=0.7} here is because we assumed that there is a difference of 0.7 in the standardized mean value. This value was used because we thought that this might be approximately the result from the previous post-hoc power analysis. You can assume a smaller value or conversely, a slightly larger value. We also used \texttt{power=0.8}, which is the test power, mentioned in Section \ref{sec::18_05}. It's a Type II Error, in other words a mistake of not being able to say there's a difference when there is one ($\beta$), we tried to keep it within about 20%, and we wanted to get it right with 80% probability ($1-\beta=0.8$). The significance level is 5% ($\alpha=0.05$, in the script it's \texttt{sig.level=0.05}).
 
-Now, looking at the output of this, it was shown as follows (\texttt{console\ref{RS:out20_09}}).
+% さて，これの出力結果を見ると，次のように示されました(\texttt{console\ref{RS:out20_09}})。
+Now, looking at the output of this, it was shown as follows (console\ref{RS:out20_09}).
 \input{text1_chap20old_escape_32}
-As mentioned here, if you are conducting a study with an effect size of 0.7 and a power of 0.8, you would want to gather around 33 to 34 people. However, in this case, only 5 people were gathered. This is shown in \texttt{code:\ref{code:20_17}} and \texttt{console:\ref{RS:out20_10}}.
+% ここの$n$にあるように，効果量0.7，検定力0.8で研究するのであれば，33か34人は集めたいところ，だったわけです。逆に今回は5人しか集めていませんでしたが，これを使って，\texttt{code:\ref{code:20_17}}とすると，\texttt{console\ref{RS:out20_10}}のように示されます。
+As shown here by $n$, if you want to conduct a study with an effect size of 0.7 and a power of 0.8, you would want to gather about 33 or 34 people, that was the case. On the contrary, this time we only gathered 5 people, but if we use this and set it to \texttt{code:\ref{code:20_17}}, it will be displayed as \texttt{console\ref{RS:out20_10}}.
 
 \input{text1_chap20old_escape_33}
 
 \input{text1_chap20old_escape_34}
-As stated here, the statistical power is 0.16, which means that even if this study was conducted 100 times, it would correctly identify statistically significant differences only about 16 times, given a sample size of n=5. It's like playing a losing game.
-\section{Task/Assignment}
-Task 1: Sample Statistics and One-Sample Test.
-Assuming that data like that in Table \ref{exe:20_1} has been obtained, please follow the following instructions and answer the questions about the results.
+% ここにあるように，検定力は0.16，つまりサンプルサイズ$n=5$であれば，この研究は100回やっても「有意差あり」と正しく判断できるのは16回ほどしかなかった，ということになります。分の悪い勝負に出たというところでしょうか。
+As stated here, the test power is 0.16, which means that if the sample size $n = 5$, this study would correctly judge to have "significant difference" only about 16 times, even if it was done 100 times. Perhaps it suggests that you've embarked on a risky contest.
+% \section{課題}
+\section{Task}
+% \paragraph{課題1 標本統計量と一標本検定}
+Sure, the translation of your Japanese text into English is as follows:
+
+Paragraph 1: Sample Statistics and One-Sample Test
+% 表\ref{exe:20_1}のようなデータが得られたとして，次の各指示に従い，結果について回答してください。
+Assuming you've received data as shown in Table \ref{exe:20_1}, please follow each of the following instructions and answer about the results.
 % latex table generated in R 4.0.2 by xtable 1.8-4 package
 % Fri Oct 16 12:52:58 2020
 \input{text1_chap20old_escape_35}
 \input{text1_chap20old_escape_36}
 
-"Task 2: Paired t-test with corresponding data."
-Please answer the following instructions regarding the results obtained from pre- and post-intervention psychological tests, as shown in Table \ref{exe:20_2}.
+% \paragraph{課題2 対応のあるt検定}
+\paragraph{Assignment 2 Paired t-test}
+% 表\ref{exe:20_2}にあるように，ある介入の事前・事後の心理検査の成績が得られたとして，次の各指示に従い，結果について回答してください。
+As shown in Table \ref{exe:20_2}, given the pre and post psychological test scores of an intervention, please follow the instructions and respond to the results.
 % latex table generated in R 4.0.2 by xtable 1.8-4 package
 % Fri Oct 16 12:59:41 2020
 \input{text1_chap20old_escape_37}
 
 \input{text1_chap20old_escape_38}
 
-Task 3: Unpaired t-test without matching.
-Please provide the table results of the psychological tests for the control group and the experimental group, as shown in Table \ref{exe:20_3}. Follow the instructions below and answer the questions regarding the results.
+% \paragraph{課題3 対応のないt検定}
+\paragraph{Assignment 3 Unpaired t-test}
+% 表\ref{exe:20_3}にあるように，統制群と実験群の心理検査の成績が得られたとして，次の各指示に従い，結果について回答してください。
+As shown in Table \ref{exe:20_3}, assuming that the results of psychological tests for the control group and the experimental group have been obtained, please follow each of the following instructions to answer about the results.
 % latex table generated in R 4.0.2 by xtable 1.8-4 package
 % Fri Oct 16 13:05:51 2020
 \input{text1_chap20old_escape_39}

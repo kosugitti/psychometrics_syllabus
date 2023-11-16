@@ -1,0 +1,21 @@
+\begin{lstlisting}[language=c++,label={code:24_02},caption={ロジスティック回帰分析を実行するRコード}]
+dat2 <- dat %>%
+  dplyr::mutate(Pitcher = if_else(position == "投手", 0, 1)) %>%
+  dplyr::filter(salary > 5000) %>%
+  dplyr::select(Games, Pitcher) %>%
+  na.omit()
+
+model <- cmdstanr::cmdstan_model("cmdstan/logistic.stan")
+dataSet <- list(N = NROW(dat2), Y = dat2$Pitcher, X = dat2$Games)
+
+fit.logistic <- model$sample(
+  data = dataSet,
+  chains = 4,
+  parallel_chains = 4,
+  iter_warmup = 1000,
+  iter_sampling = 5000
+)
+
+## 簡易表示
+fit.logistic$print(c("beta0", "beta1"))
+\end{lstlisting}

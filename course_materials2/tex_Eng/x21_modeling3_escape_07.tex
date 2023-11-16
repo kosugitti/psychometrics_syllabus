@@ -1,0 +1,21 @@
+\begin{lstlisting}[language=C++,label={stan::21_04},caption={制約を入れたコード}]
+...
+parameters{
+  real gm;
+  real delta1;
+  real delta2;
+  real<lower=0> sig;
+}
+
+transformed parameters{
+    real delta3;
+    real mu1;
+    real mu2;
+    real mu3;
+    delta3 = 0 - (delta1 + delta2);
+    mu1 = gm + delta1;
+    mu2 = gm + delta2;
+    mu3 = gm + delta3;
+}
+...
+\end{lstlisting}

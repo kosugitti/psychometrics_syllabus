@@ -4,169 +4,333 @@
 
 \begin{document}
 \VerbatimFootnotes
+% \chapter{JASPによるベイズ推定の実践}
 \chapter{Practical Bayesian Estimation with JASP}
+
 \label{m28_jasp}
-In the previous discussion, we introduced methods for using Bayesian estimation to make judgments, such as using HDI and ROPE, and using the Bayesian factor.
+% さて前回は，ベイズ推定を使った判断の方法について，\keytermL{HDI}{HDI}と\keytermL{ROPE}{ROPE}をつかって考える方法と，\keytermL{ベイズファクター}{べいずふぁくたー}をつかって考える方法などを紹介してきました。
+So in the last session, we introduced decision-making methods using Bayesian estimation, like the method of thinking with HDI and ROPE, as well as the method of thinking with Bayesian factors.
 
-Let's learn specific methods for performing Bayesian estimation, as merely sketching out methods without being able to actually compute them would be like drawing pictures of mochi.
-\section{Methods for Bayesian estimation}
+% これらの方法も，実際に計算できなければ絵に描いた餅，ということでベイズ推定を実際に行う方法について具体的な方法を学んでいきましょう。
+These methods are of no use if you can't actually calculate them, so let's learn some concrete methods for actually performing Bayesian estimation.
+% \section{ベイズ推定の方法}
+\section{Method of Bayesian Estimation}
+% \subsection{解析的な方法}
 \subsection{Analytical Methods}
-To actually perform Bayesian estimation, it is well understood that one can simply use the Bayes' theorem to make the calculation.
-Bayes' theorem was as follows:
+% ベイズ推定を実際に行うには，もちろんベイズの定理をつかって計算すればよい，ということは誰にでもわかることですね。
+Of course, anyone knows that to actually perform Bayesian estimation, all you have to do is use Bayes' theorem to calculate.
+% ベイズの定理は次のようなものでした。
+The Bayes' theorem was something like this.
 \[ P(A|B) = \frac{P(B|A)P(A)}{P(B)} \]
-You are right, indeed we can calculate it this way. However, for instance, if we want to use this calculation method to find the mean $\mu$ and standard deviation $\sigma$ of a normal distribution, the $P(B|A)$ is the likelihood function.
+なるほど，確かにこれを計算すればよいのですが，たとえば正規分布の平均値$\mu$と$\sigma$をこの計算方法で求めようという場合，$P(B|A)$は尤度ですから，
 \[ P(X|\mu,\sigma) = \prod_{i=1}^N \frac{1}{\sqrt{2\pi \sigma}}exp\left( - \frac{(X_i-\mu)^2}{2\sigma^2}\right) \]
-This can be expressed as follows. Next, the prior distribution, $P(A)$, represents the prior belief about the parameters, so we need to represent $P(\mu,\sigma)$ as some probability distribution. As it is a multidimensional probability distribution, we can sense that it could become complicated.
-The denominator $P(B)$ is the marginal likelihood of the model over the entire parameter space, given by the calculation $\int_\mu \int_\sigma P(X|\mu,\sigma)P(\mu,\sigma) d\mu d\sigma$. The symbol $\int \int$ represents the integration, but the calculation becomes quite complex due to multiple integrations. In this case, there were two parameters, but when there are more, the calculation becomes practically impossible. While Bayes' theorem itself has been known for a long time, one reason why it was not put into practical use is because of the complexity of this integration calculation.
+% というように表せます。続いて事前分布，$P(A)$はパラメータについての事前の信念ですから，$P(\mu,\sigma)$を何らかの確率分布として表す必要があります。多次元確率分布ですから，面倒なことになりそうな予感がビシビシ伝わってきますね。
+It can be expressed like this. Next, since the prior distribution, $P(A)$, represents the prior belief about the parameters, we need to represent $P(\mu,\sigma)$ as some kind of probability distribution. It's a multidimensional probability distribution, so you might be getting a strong sense that it's going to be complicated.
+% 分母の$P(B)$は，パラメータ全区間についてのモデルの周辺尤度ですから，$\int_\mu \int_\sigma P(X|\mu,\sigma)P(\mu,\sigma) d\mu d\sigma$という計算になります。$\int \int$って！これは積分記号ですが，積分が複数重なるのでまぁ計算が面倒です。今回はパラメータが2つでしたが，これ以上になると実質的に計算できないレベルで難しいものです。ベイズの定理そのものは古くから発見されていましたが，なかなか実用化されなかった理由のひとつは，この積分計算の複雑さにあったのです。
+The denominator $P(B)$ is the marginal likelihood of the model over the entire parameter range, which is calculated as $\int_\mu \int_\sigma P(X|\mu,\sigma)P(\mu,\sigma) d\mu d\sigma$. Double integral! This is an integral sign, but the computation is complex because there are multiple integrals overlapping. This time there were two parameters, but if there are more than this, it becomes essentially uncomputable and difficult. One of the reasons why Bayes' theorem, which was discovered long ago, was not readily put to practical use was this complexity of the integral calculation.
 
-If you still want to perform Bayesian estimation, the way to do it is to find a "prior distribution that has the same functional form as the posterior distribution." For example, if the likelihood is the Bernoulli distribution or the binomial distribution, assuming a beta distribution as the prior distribution results in a posterior distribution with the same beta distribution form. This becomes apparent by expanding the calculation formula, and such distributions that have this property are referred to as conjugate prior distributions. Occasionally, these special combinations can be found, and if successful, the answer can be obtained through calculation. However, if the parameters become more numerous, the posterior distribution becomes a shape that is difficult to understand, a form that cannot be calculated even though the formula can be written, or something that cannot be generalized, and it becomes impossible to proceed.
+% それでもベイズ推定したいという場合はどうするかというと，「事前分布と事後分布が同じ関数の形になるもの」をうまく探し出す，というやり方でした。たとえば尤度が\keytermL{ベルヌーイ分布}{べるぬーいぶんぷ}や\keytermL{二項分布}{にこうぶんぷ}であったときに，事前分布に\keytermL{ベータ分布}{べーたぶんぷ}というのを想定すると，事後分布もなんとベータ分布の形をしてくれるのです。これは計算式の展開から明らかで，こうした特徴を持っている分布のことを\keyterm{共役事前分布}{きょうやくじぜんぶんぷ}{conjugate prior distribution}といいます。時折こうした特別な組み合わせが見つかりますから，うまくいけば計算で答えが出せるのですが，パラメータが多くなると事後分布は何だかよくわからない形，式はかけるけど計算できない形，一般化できない何かになってしまい，お手上げです。
+Even if you want to estimate Bayes, what you do is search for "things that have the same function form of the prior distribution and the posterior distribution". For example, if the likelihood is a Bernoulli distribution or a binomial distribution, if you assume a beta distribution as the prior distribution, the posterior distribution will also be in the form of a beta distribution. This is clear from the expansion of the calculation formula, and distributions with these characteristics are called "conjugate prior distributions". Occasionally, you will find such special combinations, so if you're clever, you can compute the answer, but as the parameters increase, the posterior distribution becomes an incomprehensible form, a shape that can be formulated but cannot be computed, something that cannot be generalized, and you're at a loss.
+% \subsection{グリッドサーチ}
 \subsection{Grid Search}
-The next method to be introduced is called grid search. In Lecture \ref{m26_bayesian2}, we used the following expression:
-The formula translates to: "The posterior distribution is proportional to the likelihood multiplied by the prior distribution, without modifying the TeX code."
-This means that when computing the posterior distribution, it is sufficient to focus on the proportional relationship $\propto$ and ignore the denominator. This is because the denominator is just a number used to ensure that the area under the curve is 1, i.e. to convert the product of the likelihood and prior distribution into a probability. What we are interested in is the peak of the posterior distribution, such as the MAP estimate, and the shape and slope of the distribution. Hence, as long as we know the shape and slope of the distribution, we do not need to worry about the actual values of the posterior distribution.
+% 次にご紹介する方法は，グリッドサーチという方法です。第\ref{m26_bayesian2}講で，次のような表現をしました。
+The next method we will introduce is the grid search method. In the previous lecture, we have expressed it as follows.
+\[ P(\mbox{事後分布}) \propto \mbox{尤度}\times \mbox{事前分布}\]
+これはつまり，事後分布の計算をするには分母の計算は無視して比例の関係$\propto$に注目しましょう，ということです。というのも，分母は面積を1，すなわち尤度と事前分布の積を確率にするための数字でしかなく，我々が興味があるのは事後分布のMAP推定値など，事後分布のピークがどこにあるかということだったりするので，山の形状・勾配さえわかれば，標高はとくに気にならないわけです。
 
-So, let's express the prior and posterior distributions as a formula without modifying the TeX code (this is tedious, but it can be done if you try). For example, if we have a combination of the Bernoulli likelihood function and the Beta distribution, the parameter is only $\theta$, so we divide the parameter into appropriate sizes and substitute them into the formula to find where the probability becomes high. If it seems like the peak of the posterior distribution is higher for $\theta=0.6$ than for $\theta=0.3, we can further divide the parameter into smaller sizes like $\theta=0.55,0.575,0.600,0.625$...and repeat the process to get an approximate estimation of "the peak is around here." Computers are good at this kind of iteration, so it should be possible with enough time. By the way, of course, this is just an example chosen to simplify the explanation, and in reality, it becomes a story about applying it to more complex models. For a normal distribution model, the two parameters, $\mu$ and $\sigma$, are divided into smaller sizes. The divided sections are called grids, so searching by dividing into grids is called grid search.
+ですから，事前分布と事後分布の積を数式で表現して(これは面倒ですが頑張ればできます)，パラメータに適当な数字を入れていくとします。たとえばベルヌーイ尤度関数とベータ分布の組み合わせでしたら，パラメータは$\theta$だけですから，$\theta=0.0$，$\theta=0.3$，$\theta=0.6$・・・などパラメータを適当なサイズに区切り，式に代入して確率が高くなるところを探します。もし$\theta=0.3$より$\theta=0.6$のほうが事後分布のピークが高くなりそうであれば，$\theta=0.55,0.575,0.600,0.625...$のようにさらに細かく区切り，さらにさらに・・・と繰り返していけば「ピークはこの辺りでしょう」という近似的な推定ができるでしょう。計算機はこの手の反復が得意ですから，時間を掛ければ何とかできるはずなのです。ちなみにもちろんこれは話を簡単にするために，解析的にも解ける例をわざわざ出しているだけで，本当はもっと複雑なモデルに対して適用する話になります。正規分布モデルであれば，$\mu,\sigma$の2つのパラメータそれぞれについて細かく区切るわけです。区切られた区画のことをグリッドと言いますので，グリッドに分けて探す，すなわちグリッドサーチです。
 
-While this method may be effective in finding peaks, there is the possibility of missing out on even higher peaks if the posterior distribution has multiple peaks like a mountain range. Additionally, as the number of parameters increases, the computation becomes much more time-consuming, rendering this method impractical as a solution. It is safe to say that this approach is not a realistic solution to the problem.
-\input{m28_jasp_escape_01}
-\subsection{Markov Chain Monte Carlo Method}
-Finally, we must mention the significant contributions that Markov Chain Monte Carlo (MCMC) methods have made to the advancement of modern Bayesian statistics.
-This method, known as MCMC (Markov Chain Monte Carlo), combines two techniques: Markov chains and Monte Carlo algorithms. A Markov chain, also known as a Markov process, is a method of creating transition rules that will lead to the desired probability distribution state. Monte Carlo methods, on the other hand, are algorithms that generate random numbers. By combining these two techniques, it is possible to create a random number generator that can provide samples even when the shape of the probability distribution is unknown.
+この方法はうまくピークを探せるかもしれませんが，ピークが複数ある山脈のような事後分布になると，ひょっとしたらもっと高いところがあるのに見つけられないということがあるかもしれません。またパラメータの数がもっともっと多くなると，計算ももっともっと時間がかかるということで，大変計算量の多い方法になってしまい，これも現実的な解法ではないと言えるでしょう。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/28_JASP/slide28_01.png}
+   \caption{スライスしてピークを探すグリッドサーチ法}
+   \label{fig::28_01}
+\end{figure}
+\subsection{MCMC法}
+さて最後に，現代ベイズ統計の盛り上げに一役も二役も買っている，\keyterm{マルコフチェインモンテカルロ法}{まるこふちぇいんもんてかるろほう}{Marcov Chain Monte-Carlo}の登場です。
+通称\keytermL{MCMC}{MCMC}と呼ばれるこの手法は，マルコフチェインとモンテカルロの2つの技術が組み合わさったものでです。マルコフチェイン(\keytermL{マルコフ連鎖}{まるこふれんさ}ともいいます)は，目標となる確率分布状態になるような推移規則を作る方法であり，モンテカルロ法は乱数を発生させるアルゴリズムです。この2つが合体することで，確率分布の形がわからなくてもサンプルが得られるような，乱数発生器を作る方法が生まれたのです。
 
-As mentioned briefly in Section \ref{randomVariablesMethod} on page \pageref{randomVariablesMethod} of Lecture \ref{m07_probability}, one approach to approximating probability distributions is by generating random numbers. In R, common probability distribution functions such as the normal distribution, binomial distribution, t-distribution, and F-distribution are preloaded and ready to use. For example, by using \verb|dnorm|, one can calculate the density of the normal distribution (\verb|norm|), and by using \verb|qt|, one can get the probability point (\verb|q|) of a certain range in the t-distribution. Additionally, the function \verb|rnorm(N,mean,sd)| can generate N random numbers with any mean and standard deviation. By generating a large number of random numbers, the resulting histogram reproduces the shape of the normal distribution as shown in Figure \ref{fig::28_02}.
-\input{m28_jasp_escape_02}
+第\ref{m07_probability}講(セクション\ref{randomVariablesMethod}，Pp.\pageref{randomVariablesMethod})で少し触れたように，乱数発生は確率分布を近似するための1つのアプローチです。Rには正規分布や二項分布，t分布やF分布など，有名な確率分布関数に関しては自前で準備しており，\verb|dnorm|のようにすれば正規分布\verb|norm|の密度\verb|d|ensityを算出するとか，\verb|qt|のようにすれば\verb|t|分布におけるある確率を取る範囲の確率点\verb|q|を返すといったことができるのでした。さらに\verb|rnorm(N,mean,sd)|という関数は，任意の平均と標準偏差をもつ正規乱数をN個生成できます。大量に乱数を発生させると，そのヒストグラムは正規分布の形を再生するのです(図\ref{fig::28_02})。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/07_probability/Rplot08_06.png}
+   \caption{乱数が増えると正規分布の形に近づく。左上から順に100,1000,10000,100000点の乱数を発生させて描いたヒストグラム}
+   \label{fig::28_02}
+\end{figure}
 
-Generating random numbers within a computer is purely \textbf{pseudo}. This is because the world inside the computer is a fully calculated world. It is contradictory to generate "regular" and "irregular" number sequences. In computer science, various studies have been conducted on how to generate numbers that follow a calculation rule, but appear random. One of these random number generation techniques is the \textbf{Monte Carlo method}\footnote{By the way, Monte Carlo is a city in Monaco where casinos are famous. This name is given because it generates random numbers like a roulette at a casino.}.
+コンピュータの中で乱数を発生させるのはあくまでも\textbf{擬似的}です。コンピュータの世界は計算され尽くした世界だからです。「規則正しく」「規則のない数列を生成する」というのは矛盾していますね。計算機科学の中では，この矛盾を解決し，計算規則には則っているのだけれども規則のないような数字を発生させる方法について，いろいろな研究がなされてきました。そうした乱数発生技術の1つとして\textbf{モンテカルロ法}ができてきたのです\footnote{ちなみにモンテカルロとは，モナコの地区の一つでカジノが有名な都市です。カジノのルーレットのように乱数を発生させるという意味でこの名前がついています。}。
 
-However, what we are interested in is the posterior distribution. If we could approximate the posterior distribution with random numbers, it would be beneficial. However, the form of the posterior distribution is an unnamed probability distribution that cannot be generalized, even though it can be expressed mathematically. There is a method called \textbf{Markov chain} to connect the state of the posterior distribution to the technique of generating random numbers. Markov chains are models of probability transition states that study stabilizing the transition patterns in a situation where the state of time t is determined by the previous step, t-1. By adjusting this stabilized pattern to become the posterior distribution and generating random numbers for each transition step, a sequence of representative numbers for the posterior distribution can be obtained.
+ただし，ここで我々が求めたいのは事後分布です。事後分布も乱数で近似できればありがたいのですが，事後分布の形は数式で書けても一般化できない名も無き確率分布なのでした。この事後分布の状態を乱数発生技術とつなげる方法として\textbf{マルコフ連鎖}というのがあります。マルコフ連鎖とは確率の推移に関する考え方で，ある時点$t$の状態はその1ステップ前，$t-1$時点によって確定するという状況の中で，推移のパターンを安定させることを研究する，確率推移状態のモデルです。この安定したパターンが事後分布になるように上手く調節し，推移ステップごとに乱数を生成すると，うまく事後分布を代表する数字の列が出来上がるという仕組みです。
 
-In essence, a method has been developed to generate random numbers from \underline{any probability distribution}, without changing the TeX code. While the function of the posterior distribution may be complex, generating a large number of random numbers from it allows us to draw a histogram that represents the shape of the posterior distribution. With modern statistical environments, it is easy to compute large amounts of data and create corresponding visualizations. Data processing for tens or hundreds of thousands of data points (MCMC samples from the posterior distribution) can be accomplished in just a few moments.
+非常に大雑把な説明ですが，要するに\underline{どんな確率分布であってもそこからの乱数を発生させる方法}が開発された，ということだと考えてくれればOKです。事後分布の関数は難しいかもしれませんが，そこから大量の乱数を発生させることができれば，それのヒストグラムを描いたらその稜線が事後分布の形を表していることになります。大量のデータを計算したりそこから描画したりするのは，最近の統計環境であれば簡単で，数万・数十万のデータ(事後分布からの代表値=MCMCサンプル)でも一瞬でその手のデータ処理をしてくれます。
 
-One advantage of this random number generation method is that it is not difficult to deal with multiple parameters. When you have two parameters, $\mu$ and $\sigma$, that you want to find, the parameter values are spread out in a two-dimensional space. For example, if you want to know the distribution of only $\mu$, you have to analytically integrate $\sigma$ over the entire range and eliminate it \footnote{This is the process called \keytermE{marginalization} that we did in the previous session.}.
+またこの乱数発生法のメリットとして，複数のパラメータがあっても困らないということがあります。求めたいパラメータが$\mu$と$\sigma$の2つある場合，パラメータは2次元空間に広がっていますから，たとえば$\mu$だけの分布が知りたい場合，解析的に考えると$\sigma$を全領域にわたって積分し，消してしまわないといけないことになります\footnote{前回やった\keytermL{周辺化}{しゅうへんか}というやつです。}。
 
-However, when it comes to random number generation, there is no particular need to be conscious of integration or marginalization elimination. Figure \ref{fig::28_03} shows a scatter plot generated from random numbers in two-dimensional space, as well as the corresponding density plot after marginalization. This density plot essentially just shows a histogram of each variable. By considering each variable individually, one can effectively eliminate the influence of other variables, without needing to consider cumbersome calculations such as integration.
-\input{m28_jasp_escape_03}
+しかし乱数発生法の場合，この積分や周辺化消去についてはとくに意識する必要はありません。図\ref{fig::28_03}には2次元空間から乱数を発生させた散布図と，周辺化した密度プロットを描きましたが，この密度プロット，要するに変数ごとのヒストグラムを書いただけです。積分のような面倒なことを考えなくても，変数ごとに考えることがすなわち，他の変数の影響を排除して考えたことになるからです。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/28_JASP/Rplot28_01.png}
+   \caption{周辺化は変数ごとのヒストグラムでよいことになる}
+   \label{fig::28_03}
+\end{figure}
 
-Using random numbers, integration calculations become easy. Even in multi-dimensional cases, you only need to aggregate the variables of interest, and partial aggregation of a variable (parameter) becomes the integration over that range. There is no easier or more reliable way than this.
+乱数を使うとこのように，積分の計算が簡単になります。多次元の場合でも注目する変数だけ集計すればよいことになりますし，ある変数(パラメータ)の部分的な集計がその範囲の積分になるのですから。こんなに簡単で確実な方法はありません。
 
-Thanks to the use of these MCMC methods, it has become easy to practice Bayesian statistics. To implement this MCMC method, a programming environment with a random number generation function is required. Several representative languages, called stochastic programming languages, can be used for this purpose, such as JAGS \citep{JAGS} and Stan \citep{stan2017}. These languages can calculate the product of likelihood and prior distribution by setting data, probability models, and prior distributions, and then generate random numbers from the result. These languages must be used in conjunction with other statistical environments such as R. R can use packages such as rstan and cmdstanr to communicate with Stan, and perform aggregation and visualization. (See Figure \ref{fig::28_04}).
-\input{m28_jasp_escape_04}
+こうしたMCMC法をつかった推定ができたおかげで，簡単にベイズ統計を実践できるようになりました。このMCMC法を実現するには，乱数発生法を持ったプログラミング環境が必要です。これら\keyterm{確率的プログラミング言語}{かくりつてきぷろぐらみんぐげんご}{stocastic programming language}と呼ばれる代表的なものとして，\keytermL{JAGS}{JAGS}\citep{JAGS}や\keytermL{Stan}{Stan}\citep{stan2017}と呼ばれるものがあります\footnote{以前はBUGSやWinBUGSという言語がありました。BUGSは1989年から開発が始まり，後継のWinBUGSは2007年に最新版が出て終わりました。古いテキストを探すと，これらのソフトを使う例が載っています(\citet{Lee201709}など)。その後発としてJAGSが，さらに乱数発生アルゴリズムに改良を加えたStanは2021年現在も最新版が開発され，リリースされ続けています。}。これらはいずれも，データと確率モデル，事前分布を設定すれば，尤度と事前分布の積を内部で計算し，そこからの乱数を発生させてくれます\footnote{これらの詳しい使い方については，姉妹講義であるデータ解析応用の方で取り扱いますので，興味があれば是非履修してください。}。これらの言語は単体で使うのではなく，Rなど他の統計環境から呼び出して使います。Rは\verb|rstan|パッケージや\verb|cmdstanr|パッケージをつかってStanと連携をとり，乱数発生はStanに，集計や描画はRでできるようにしています(図\ref{fig::28_04})。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/28_JASP/slide28_02.png}
+   \caption{RからStanを使うときのイメージ}
+   \label{fig::28_04}
+\end{figure}
 
-The program code for Stan, including the recipe for generating random numbers, can be edited on RStudio, allowing for Bayesian analysis to be conducted.
+Stan用のプログラムコード，すなわち乱数発生のためのレシピもRStudio上で編集できますので，これを使えばベイズ分析ができます。
 
-Some people may feel that it is still difficult and daunting. But don't worry, there are R packages available, such as "brms" \citep{brmsCite1,brmsCite2} and "blavaaan" \citep{blavaanCite1,blavaanCite2}, that allow you to use Stan for analysis without writing Stan code.
-There are also statistical packages that make Bayesian analysis much easier, without modifying the TeX code. Let's take a look at one such incredibly simple statistical analysis software called \keytermE{JASP}{JASP}.
+それでも難しそう，敷居が高いと感じる人がいるかもしれません。大丈夫，Stanのコードを書かなくてもStanを使って分析するためのRパッケージというのもあります(\verb|brms|\citep{brmsCite1,brmsCite2}や\verb|blavaaan|\citep{blavaanCite1,blavaanCite2}など)。
+そしてさらに，もっと簡単にベイズ分析ができるような統計パッケージがあります。さっそくそのチョー簡単な統計解析ソフト，\keytermL{JASP}{JASP}をみてみましょう。
 
-\section{Introduction to JASP}
-JASP is also a free software, like R. This is an open-source project supported by the University of Amsterdam.
-If you search for JASP, you'll be directed to the main site \url{https://jasp-stats.org/} (see Figure \ref{fig::28_05}). At the time of writing this text\footnote{December 17th, 2021 at 2:48 pm}, the latest version is ver0.16.
-\input{m28_jasp_escape_05}
-Here, there is a download button (Download JASP) which, when clicked, provides access to JASP compatible with various operating systems.
-Download the version that suits your environment, and try installing the app\footnote{macOS users who manage software packages using Homebrew can install it with \verb|brew install JASP --cask|.}.
-\input{m28_jasp_escape_06}
-Once the installation process is completed successfully, let's try to launch JASP. I believe that the startup screen for JASP has already been translated to Japanese. There, you will find an explanation of JASP's characteristics which include \textbf{Free, Friendly, and Flexible}. In particular, the description of "Flexible" emphasizes that this software seamlessly combines traditional and Bayesian analysis methods, which is a unique feature not found in any other package.
-\input{m28_jasp_escape_07}
+\section{JASPの導入}
+JASPもまたRと同じくフリーソフトウェアです。こちらはアムステル大学から支援を受けたオープンソースプロジェクトだとされています。
+JASPと検索すると，メインのサイト\url{https://jasp-stats.org/}にアクセスできるようになるでしょう(図\ref{fig::28_05})。本稿執筆時点\footnote{2021年12月17日14時48分}で最新版はver0.16となっています。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/28_JASP/JASP_web01.png}
+   \caption{JASPのWebサイト}
+   \label{fig::28_05}
+\end{figure}
+ここに，ダウンロードのボタン(Download JASP)がありますのでクリックすると，各種OSに対応したJASPが用意されています。
+自分の環境に合ったものをダウンロードし，アプリをインストールしてみましょう\footnote{macOSユーザでHomebrewによるソフトのパッケージ管理をしているひとは，\verb|brew install JASP --cask|でインストールすることができます。}。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/28_JASP/JASP_web02.png}
+   \caption{自分の環境に合ったものをダウンロードしよう}
+   \label{fig::28_06}
+\end{figure}
+インストールが無事終了したら，起動してみましょう。JASPの起動画面がすでに日本語化されていると思います。そこにはJASPの特徴である，\textbf{フリー，フレンドリー，フレキシブル}の説明があります。とくに「フレキシブル」のところにあるように，このソフトは他のどのパッケージにもない特徴として，伝統的な分析方法とベイズ的な分析方法をシームレスにつなげているという特徴が明記されています。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/28_JASP/JASP_wakeup.png}
+   \caption{起動画面のご挨拶も是非一読してください}
+   \label{fig::28_07}
+\end{figure}
 
-There is also a statement below that says, "JASP is being developed at a furious pace!" Although the version of JASP is not yet even 1.0, it has already reached a level of usability and development is continuing. By the way, the author is also part of the Japanese localization team\footnote{For more details, see \url{https://jasp-stats.org/2021/10/28/日本語でjaspが使えるようになりました/}}, so if there are any unnatural translated terms, misspelled words, or mistranslations, please let us know\footnote{Or you can contact the JASP users' group at \url{https://github.com/jasp-user-jp/jasp-user-jp}.}.
+また下の方には「JASPは猛烈なスピードで開発されています！」とあります。JASPのバージョンはまだ1.0にも満たないものですが，すでに十分使えるレベルになっているのに加え，開発も進んでいます。ちなみに日本語化チームには著者も加わっており\footnote{詳しくは\url{https://jasp-stats.org/2021/10/28/日本語でjaspが使えるようになりました/}}，もし不自然な訳語や誤った表記，誤訳などがあるようでしたらご連絡ください\footnote{あるいはJASPユーザの会\url{https://github.com/jasp-user-jp/jasp-user-jp}に連絡いただいても結構です。}。
 
-Let's try it out a little bit.
-Click on the three lines in the top left corner of the screen to open the main menu. From here, select "Open" -> "Computer" to load data files from your own PC.
-\input{m28_jasp_escape_08}
-As an example, let's try to read a data file (csv) of baseball players.\footnote{This sample data is provided on the accompanying website of this article.}
-\input{m28_jasp_escape_09}
-Once loaded, the data file will be displayed. You may notice that some variables have symbols next to them, such as those resembling Venn diagrams or measuring scales. In JASP, data is classified into three types: \textbf{nominal}, \textbf{ordinal}, and \textbf{scale}. Scales are a combination of \textbf{interval} and \textbf{ratio} types. Scales allow for arithmetic operations such as addition, subtraction, multiplication, and division, which sets them apart from the other two types.
+少し触ってみましょう。
+画面の左上にある3本線をクリックするとメインメニューが開きます。ここで「開く」$\to$「コンピュータ」と進むと，自分のPCにあるデータファイルを読み込むことができます。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.75\linewidth]{../images/28_JASP/JASP_01.png}
+   \caption{ファイルを読み込む}
+   \label{fig::28_08}
+\end{figure}
+例として，野球選手のデータファイル(csv)を読み込んでみます\footnote{このサンプルデータは本稿の伴走サイトにて提供されています。}。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.75\linewidth]{../images/28_JASP/JASP_02.png}
+   \caption{ファイルを読み込みました}
+   \label{fig::28_09}
+\end{figure}
+読み込んだらデータファイルが表示されます。ここで変数の横に，ベン図のような記号がついていたり，物差しのような記号がついていたりするのがわかると思います。JASPではデータを\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}，\keytermL{順序尺度水準}{じゅんじょしゃくどすいじゅん}，\textbf{スケール}の3つに分類します。スケールは\keytermL{間隔尺度水準}{かんかくしゃくどすいじゅん}と\keytermL{比率尺度水準}{ひりつしゃくどすいじゅん}を合わせたものです。スケールになると加減乗除など算術的処理ができるので，それ以外の2つと区別するのですね。
 
-When you click on the variable name, these three levels will be displayed. If there are any incorrect classifications, let's fix them.
+変数名のところをクリックすると，これら3つの水準が表示されますので，もし間違った分類があるようでしたら修正しておきましょう。
 
-When you click on "Descriptive statistics" in the menu, it will provide you with easy-to-understand summaries of various variables, as the name suggests.
-For example, if you want to view the height variable \verb|height| and weight variable \verb|weight| for each team, then you just need to input the variable \verb|team| in the "Split" section (by clicking on the right-facing triangle button, the selected variable will move into the box), and input the variables to be analyzed in the top box. The calculation results will be automatically displayed on the right-hand side of the screen (see Figure \ref{fig::28_09}). It's easy, isn't it?
-\input{m28_jasp_escape_10}
+メニューにある「記述統計」をクリックすると，その名の通りさまざまな変数の情報を簡単に要約してくれます。
+たとえば身長変数\verb|height|と体重変数\verb|weight|をチームごとにみてみたい，というのであれば，「分割」のところに\verb|team|変数を投入し(右に向いた三角形ボタンを押すと，選ばれた変数がボックス内に移動します)，分析対象の変数を上のボックスに投入すればよく，右の画面に自動的に計算結果が出てきます(図\ref{fig::28_09})。簡単ですね！
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/28_JASP/JASP_03.png}
+   \caption{記述統計の出力}
+   \label{fig::28_10}
+\end{figure}
 
-The descriptive statistics menu has options for "plots" and "statistical measures" that can be specified towards the bottom.
-Clicking here will display various options. For example, in plotting, you can choose a color palette for specifying colors, and additional features such as box plots, scatter plots, and regression lines can be selected (see Figure \ref{fig::28_10}).
-\input{m28_jasp_escape_11}
+記述統計メニューは，下の方に「プロット」や「統計量」についてのオプション指定ができる場所があります。
+ここをクリックすると，さまざまなオプションが表示されます。たとえばプロットでは，色を指定するカラーパレットが選べますし，箱ヒゲ図，散布図，回帰直線の追加などが選べます(図\ref{fig::28_10})。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.75\linewidth]{../images/28_JASP/JASP_04.png}
+   \caption{プロットオプション}
+   \label{fig::28_11}
+\end{figure}
 
-\input{m28_jasp_escape_12}
-Of course, ggplot2 is better suited for fine adjustments of figures, but this should be sufficient to grasp the overall idea\footnote{Although there is an online publication of JASP-compliant text with Japanese translations, there are also descriptions stating that "detailed adjustments are better done with ggplot2." Please see the JASP tutorial website at \url{https://jasp-user-jp.github.io/LSwithJASP/} for more information.}.
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/28_JASP/JASP_plot01.png}
+   \caption{ボックスプロットや散布図}
+   \label{fig::28_12}
+\end{figure}
+もちろん細かな図版の調整には\keytermL{ggplot2}{ggplot2}の方が向いているのですが，これでも概略を掴むには十分ですね\footnote{JASPに準拠したテキストがオンラインで公開されていて，そちらも日本語訳が進められているのですが，そこでも「細かい調整はggplot2でないとね」といった内容の記述があります。詳しくはJASPで統計を学ぼう!のサイト\url{https://jasp-user-jp.github.io/LSwithJASP/}をご覧ください。}。
 
-These plots can also be copied or saved as image files by clicking the lower triangle beside the figure without modifying the TeX code (Figure \ref{fig::28_13}).
-\input{m28_jasp_escape_13}
-If JASP is capable of adjusting the images without modifying the TeX code, it can be used for creating presentation materials, for example.
+これらのプロットは，図の横にある下三角をクリックすると，コピーしたり画像ファイルとして保存することもできます(図\ref{fig::28_13})。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.5\linewidth]{../images/28_JASP/JASP_plot02.png}
+   \caption{JASPの図オブジェクトは保存できる}
+   \label{fig::28_13}
+\end{figure}
+JASPだけで画像の調整がうまくいくのであれば，プレゼン資料の作成などに利用できるでしょう。
 
-\section{Correlation and Regression Analysis with JASP}
-As already mentioned, one of the features of JASP is the ability to perform a single analysis using both conventional (based on frequentist probability) and Bayesian (based on subjective probability) methods in parallel. When you click on the menu, you can choose between the traditional and Bayesian approaches (Figure \ref {fig :: 28_14}).
-\input{m28_jasp_escape_14}
-Another feature is that there is an abundance of sample data.
-Not only can JASP access sample data, but it can also access research data that is publicly available on the web called OSF\footnote{Open Science Framework, an activity that suggests publishing raw data used in research in response to reproducibility issues in psychology, etc. For further information, please refer to \url{https://osf.io/gceur/}.}, and retrieve data from there (Figure \ref{fig::28_15}).
-\input{m28_jasp_escape_15}
+\section{JASPによる相関・回帰分析}
+JASPの特徴はすでに述べたように，1つの分析法を従来型(頻度主義的確率に基づくもの)とベイズ型(朱kん確率に基づくもの)の両方で並列的に行えることです。メニューをクリックすると，伝統的な方法とベイジアン(ベイズ的な)が選べるようになっています(図\ref{fig::28_14})。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/28_JASP/JASP_05.png}
+   \caption{一つのメニューで二つの分析}
+   \label{fig::28_14}
+\end{figure}
+また，もう1つの特徴として，サンプルデータが豊富なことが挙げられます。
+JASPが持っているサンプルデータだけでなく，OSF\footnote{Open Science Frameworkの略で，心理学の再現性問題などのとも相まって，研究で使ったロウデータそのものを公開したらいいじゃないか，という活動です。詳しくは\url{https://osf.io/gceur/}を参照してください。}とよばれるWeb上で公開されている研究データにアクセスし，そこからデータを取ってくることもできるようになっているのです(図\ref{fig::28_15})。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/28_JASP/JASP_06.png}
+   \caption{サンプルデータも豊富にある}
+   \label{fig::28_15}
+\end{figure}
 
-Let's select some suitable sample data here and take a look at the correlation coefficient and regression analysis.
-I have chosen the data called "Big5". If you go to the data library $\to$ 4.Regression $\to$ Big Five Personality Traits, you can see the data. This is a well-known personality psychology concept that consists of 5 dimensions of personality that are revealed through the results of personality tests. These dimensions are: Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism. As this data is related to personality scores, there are likely to be correlations with other variables.
+ここで適当なサンプルデータを選んで，相関係数や回帰分析を見てみることにしましょう。
+\verb|Big5|というデータを選びました。データライブラリ$\to$4.Regression $\to$Big Five Personality Traitsと進めばデータが表示されます。これはパーソナリティ心理学の領域ではよく知られ散る，性格テストの結果から明らかになる性格の5次元で，解放性Openness，誠実性Conscientiousness，外向性Extraversion，協調性Agreebleness，神経症傾向Neuroticismのスコアからなります。性格に関するスコアですから，当然相関がありそうな変数ですね。
 
-If you simply want a regular correlation coefficient, select Regression from the menu, then select Traditional/Correlation. Just move all the variables to the box on the right and the correlation matrix will be displayed in the results section.
-\input{m28_jasp_escape_16}
-The default options have checkboxes for "Pearson's r" and "reporting significance."
-The so-called correlation coefficient is formally called the \textbf{Pearson product-moment correlation coefficient}, but in JASP it can also be calculated as Spearman's rank correlation coefficient, which can be applied to data measured on ordinal scales, or as Kendall's tau-b correlation coefficient. The report of significance is accompanied by a checkmark, and the $p$-value is displayed in a table. Please remember that we are comparing the model that assumes a null hypothesis of no correlation between the variables, that is, the population correlation coefficient $\rho$ is zero, and the alternative hypothesis that the population correlation coefficient is non-zero. For example, the correlation coefficient between neuroticism and extraversion is $r=-0.3650$, and the data obtained from this point are somewhat unusual if we assume that the population correlation $\rho=0$ ($p<.001$). By checking the box "Flag significant correlations", asterisks are added to indicate statistically significant results, with more asterisks indicating smaller $p$-values. However, this is a bad habit! A small $p$-value does not necessarily mean a large correlation, and does not provide evidence for the correctness of the hypothesis.
+普通の相関係数が欲しいだけでしたら，メニューの回帰$\to$伝統的・相関を選びます。すべての変数を右側のボックスに移動するだけで，結果のところに相関行列が表示されます。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.5\linewidth]{../images/28_JASP/JASP_cor1.png}
+   \caption{伝統的な相関分析}
+   \label{fig::28_16}
+\end{figure}
+オプションのところにはデフォルトで，「ピアソンのr」と「有意性の報告」にチェックが入っています。
+いわゆる相関係数は\textbf{ピアソンの積率相関係数}というのが正式名称ですが，JASPでは順序尺度水準の数字に適用できるスピアマンの順位相関係数や，ケンドールのタウbと呼ばれる相関係数にすることもできます。また，有意性の報告にチェックが入っていて，表には$p$値がでています。思い出して欲しいのですが，帰無仮説検定として「母相関$\rho$はゼロである」という無相関を仮定したモデルと，「母相関はゼロではない」という対立仮説を比べています。たとえば神経症傾向と外向性の相関係数は$r=-0.3650$であり，これが母相関$\rho=0$のところから得られたデータだと考えるにはちょっと珍しすぎるよね($p<.001$)ということが示されています。オプションで「有意な相関のフラグを立てる」にチェックを入れると，有意なところにはアスタリスクマークがつき，$p$値が小さいほどアスタリスクの数は増えることでそれを示しています\footnote{これが良くない風習ですね！$p$値が小さくても，相関係数が大きいことを意味しませんし，仮説の正しさを支持するものでもありません。}
 
-Let's try the same analysis with a Bayesian approach. Simply go to Regression -> Bayesian Correlation in the menu. The selection of variables is also the same procedure.
-The additional option for analysis results includes the Bayes factor instead of $p$-values.
-The models being compared here are similar to non-Bayesian analyses, where we compare model 0 with a zero population correlation to model 1, which allows for a non-zero population correlation. This comparison is done using the Bayes factor, $BF_{10}$, which represents the ratio of how much the data supports model 1 compared to model 0.
-Just now, a statistically significant correlation between neuroticism and extraversion was found, supporting Model 1 by a factor of 6.765e+12, or 6.765 trillion. Bayes factors can sometimes be very large numbers, and can also be influenced greatly by changing the prior distribution, so it may be safe to assume that the factor is not zero.
+同じ分析をベイズ的にやってみましょう。メニューの中で回帰$\to$ベイジアン・相関と進むだけです。変数の選び方も同じ操作です。
+分析結果の追加オプションには，$p$値ではなく\keytermL{ベイズファクター}{べいずふぁくたー}が入っています。
+ここで比較するモデルは非ベイズ的分析と同じで，母相関がゼロというモデル0と，ゼロではないというモデル1を比べて$BF_{10}$，すなわちモデル0にくらべてモデル1がどれほどデータに支持されるかという比率を表してくれます。
+先ほど有意で合った，神経症傾向と外向性の相関については\verb|6.765e+12|，すなわち6765000000000倍もモデル1を支持しています。ベイズファクターはこのように，時折とても大きな数字になることがありますし，事前分布を変えれば変わることも大きいので，とりあえず0ではないと思うぐらいでいいかもしれません。
 
-Let's check the confidence interval instead. The 95\% \underline{confidence interval} is [-0.270, -0.424], which means it is highly unlikely for the correlation coefficient to be larger (closer to 0) than -0.270, probably around 2.5\% chance. Depending on how much we set the \keytermE{ROPE}{Region of Practical Equivalence} to be, we should conclude that it is not at the same level as being uncorrelated.
-By the way, the confidence interval using the conventional method is [-0.271, -0.425]. It is almost the same as the Bayesian credible interval. However, in this case, there is a 95% probability that the true correlation coefficient is contained within this interval. In other words, it means "the probability of mistakenly stating that the correlation coefficient exists within this range is 5%."
+それよりも，信用区間のところをチェックしてみましょう。95\%\underline{確信区間}が[-0.270,-0.424]ですから，相関係数が-0.270よりも大きくなる(0に近づく)ことはほぼない，2.5\%ぐらいしかあり得ないだろう，ということがわかります。\keytermL{ROPE}{ROPE}をどの程度に置いておくかによりますが，「ほぼ無相関と同じレベル」とは言えないと判断すべきでしょう。
+ちなみに従来法での信用区間は，[-0.271,-0.425]です。ベイズ確信区間とほとんど同じですね。ただしこちらの場合は，この区間の中に真の相関係数が含まれる確率が95\%，言い換えるなら「この範囲に相関係数があると言って間違える確率が5\%」という意味です。
 
-\section{Comparing Means}
-Now, let's compare the average values as a final step.
-From the main menu, navigate to Open $\to$ Data Library $\to$ 2.T-Tests$\to$ and select Directed Reading Activities located at the top. It seems to be an experiment plan that examines differences between an experimental group and a control group.
-Select t-test for traditional and independent samples from the menu.
-Therefore, the only scaling variable "drp" is entered as a dependent variable and "group" is inserted as a grouping variable.
-Let's choose both Student's t-test assuming homogeneity of variance and Welch's method, which doesn't assume the process.
-The alternative hypothesis assumes that there is a difference between two groups (Group 1 $\neq$ Group 2), and we can choose to check assumptions or effect sizes as appropriate. Please note that the TeX code should not be modified.
-\input{m28_jasp_escape_17}
-As a result, Table \ref{tab:ttest} is shown. In the case of the assumption of equal variances, you can see from the Student's row that $t(42)=-2.267, p=0.029, d=-0.684$ \footnote{The $t$-distribution is named after the pen name "Student" used by William Sealy Gosset, who wrote a paper on it. Unadjusted t-tests for heteroscedasticity are called Student's t-tests. Gosset worked for the Guinness Brewery and was not allowed to publish papers under his real name, hence the pen name.}.
+\section{平均値の比較}
+それでは最後に平均値の比較をしてみましょう。
+メインメニューから，開く$\to$データライブラリ$\to$2.T-Tests$\to$と進んで，一番上にあるDirected Reading Activitiesを選びます。実験群と統制群に分かれて，さを検証する実験計画のようです。
+メニューからt検定$\to$伝統的・独立したサンプルのt検定を選びます。
+そこで，従属変数に唯一のスケール変数\verb|drp|をいれ，グループ化変数に\verb|group|を投入します。
+検定は等分散性を仮定したスチューデント法と，その過程をしないウェルチの方法，両方を選んでみましょう。
+対立仮説は二群に差がある(グループ1$\neq$グループ2)とし，仮定のチェックや効果量など，適当に選んでみましょう。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.5\linewidth]{../images/28_JASP/JASP_ttest.png}
+   \caption{伝統的なt検定}
+   \label{fig::28_17}
+\end{figure}
+結果として，表\ref{tab:ttest}が示されます。ここで，分散が等しいという仮定の場合はStudentの行をみて，$t(42)=-2.267,p=0.029,d=-0.684$であることが読み取れます\footnote{$t$分布はペンネームStudentさんが書いた論文が元になっているので，異分散のための補正のないt検定はStudentのt検定，と言います。ちなみに著者はWilliam Sealy Gossetであることが明らかになっています。彼を雇用するギネスビール社が本名仕様を許さなかったため，ペンネームで論文を投稿したと言われています。}
 
-If corrections are necessary, refer to Welch. Then, it is found that $t(37.855)=-2.311$, $p=0.026$, and $d=-0.691$.
+補正が必要な場合は，Welchの方を見ましょう。このとき$t(37.855)=-2.311,p=0.026,d=-0.691$であるということがわかります。
 %----- Requires booktabs package -----%
 
 
-\input{m28_jasp_escape_18}
+\begin{table}[ht]
+   \centering
+   \caption{独立したサンプルのt検定}
+   \label{tab:ttest}
+   {
+      \begin{tabular}{lrrrrr}
+         \toprule
+         $ $ & 検定    & 統計量   & df       & p       & コーエン(Cohen)のd \\
+         \cmidrule[0.4pt]{1-6}
+         drp & Student & $-2.267$ & $42.000$ & $0.029$ & $-0.684$           \\
+         $ $ & Welch   & $-2.311$ & $37.855$ & $0.026$ & $-0.691$           \\
+         \bottomrule
+      \end{tabular}
+   }
+\end{table}
 
-When should we refer to the Student row, and when should we refer to the Welch row? In general, it is best to refer to the Welch row which has looser assumptions, but whether or not we can assume equal variances can be determined through checking the "assumption."
-There is a Shapiro-Wilk test (Table \ref{tab:Shapiro-Wilk}) used to test whether the data follows a normal distribution, which is a fundamental assumption to begin with when making assumptions. Next, there is a Levene test (Table \ref{tab:Levene}) used to test whether the variances can be considered the same.
+ではどういう時にStudent行をみて，どういう時はWelch行を見ればいいのでしょうか。基本的に仮定が緩いWelchのほうをみればよいのですが，分散が同じと見做せるかどうかは「仮定のチェック」を見れば良いでしょう。
+仮定のチェックには，そもそもの前提である「データは正規分布に従っているのか」を検定する，シャピロ・ウィルク検定があります(表\ref{tab:Shapiro-Wilk})。つづいて分散が同じと見做せるかどうかを検定するレヴィーン検定(表\ref{tab:levene})があります。
 
-Please note that these tests have a null hypothesis of "following a normal distribution" and "having equal variance", and an alternative hypothesis of "not following" and "not having equal variance", respectively. That is, when the analysis results are statistically significant, it means that "they do not follow" and "they do not have equal variance". If the Shapiro-Wilk test is statistically significant, you should not perform a t-test in the first place. If the Levene's test is statistically significant, it means that the assumption of equal variance has been violated, so you should look at Welch's test instead.
+ここで注意して欲しいのは，これらの検定は帰無仮説が「正規分布に従っている」「分散が等しいといえる」であり，対立仮説は「従っていない」「等分散ではない」になります。つまり，ここでは分析結果が有意になると，「従っていない」「分散が等しくない」ということになります。シャピロ・ウィルク検定で有意になると，そもそもt検定をしてはいけません。レヴィーンの検定で有意になると，分散が等しいという仮定が破られているわけですから，Welchの方を見るべきです。
 %----- Requires booktabs package -----%
 
-\input{m28_jasp_escape_19}
+\begin{table}[ht]
+   \centering
+   \caption{正規性の検定 (シャピロ・ウィルク)}
+   \label{tab:Shapiro-Wilk}
+   {
+      \begin{tabular}{lrrr}
+         \toprule
+             &         & W       & p       \\
+         \cmidrule[0.4pt]{1-4}
+         drp & Control & $0.972$ & $0.732$ \\
+         $ $ & Treat   & $0.966$ & $0.652$ \\
+         \bottomrule
+         % \addlinespace[1ex]
+         % \multicolumn{4}{p{0.5\linewidth}}{\textit{注} 有意な結果は、正規性からの逸脱を示唆しています。} \\
+      \end{tabular}
+   }
+\end{table}
 %----- Requires booktabs package -----%
-Fortunately, in this case, the result of the Levine's test was not significant with $p=0.132$, so we can proceed with the Student's t-test.
-\input{m28_jasp_escape_20}
-It's a bit cumbersome, isn't it? In the hypothesis testing phase, we support the null hypothesis, but in the actual testing phase, we support the alternative hypothesis. It makes me want to say, "I thought we weren't supposed to actively support the null hypothesis!" And because we're repeating the testing process, the level of significance may no longer be 5%.
+今回は幸い，レヴィーンの検定で$p=0.132$でしたから有意ではなく，Studentのt検定でいいということになります。
+\begin{table}[ht]
+   \centering
+   \caption{Levene'sの分散の等質性の検定}
+   \label{tab:levene}
+   {
+      \begin{tabular}{lrrr}
+         \toprule
+             & F       & df  & p       \\
+         \cmidrule[0.4pt]{1-4}
+         drp & $2.362$ & $1$ & $0.132$ \\
+         \bottomrule
+      \end{tabular}
+   }
+\end{table}
+それにしても少し面倒ですね。仮定のチェックのところでは帰無仮説を応援し，本番の検定では対立仮説の方を応援する，という形になってしまいます。帰無仮説を積極的に支持できないじゃなかったのかよ，と言いたくなります。なにより検定を繰り返して行っていますから，$\alpha$水準が5\%ではなくなっているかもしれません。
 
-No such anxiety is needed in the case of Bayesian statistics. Let's proceed with Bayesian analysis right away.
-Next, select t-test for Bayesian independent samples from the menu.
-The selection process for dependent variables and grouping variables is the same.
+そんな不安も，ベイズ統計の場合は必要ありません。早速ベイジアン分析をしてみましょう。
+今度はメニューからt検定$\to$ベイジアン・独立したサンプルのt検定を選びます。
+従属変数やグループ化変数の選び方は同じです。
 
-The result was shown as Table \ref{tab:bayesianTtest}. Since $BF_{10}=2.217$, the alternative hypothesis (Model 1) that there is a difference is supported about 2.2 times more than the null hypothesis (Model 0) which assumes no difference. In other words, the alternative hypothesis is somewhat more favorable. However, it is premature to conclude that "there is a difference" since a general rule of thumb for BF is that it should be greater than 3.
+結果は表\ref{tab:bayesianTtest}のように表されました。$BF_{10}=2.217$ですから，差がないという帰無仮説(モデル0)に比べて，差があるという対立仮説(モデル1)は2.2倍ぐらい支持されています。どちらかというと対立仮説の方が優勢，という感じですが，BFの1つの目安は3を超えるぐらいというのがありますので，「差があった」と断言するにはちょっと気が早いかもしれません。
 %----- Requires booktabs package -----%
 
-\input{m28_jasp_escape_21}
-Looking at descriptive statistical plots, this becomes clear (see Figure \ref{fig::28_18}).
-\input{m28_jasp_escape_22}
-When looking at this, it seems that the 95% confidence intervals for the experimental and control groups overlap quite a bit. When there is overlap, it's best to hold off on hasty judgments, regardless of the size of the ROPE, and wait to consider the data (evidence) further before making any decisions.
+\begin{table}[ht]
+   \centering
+   \caption{ベイジアン独立サンプルのt検定}
+   \label{tab:bayesianTtest}
+   {
+      \begin{tabular}{lrr}
+         \toprule
+             & BF$_{1}$$_{0}$ & エラー \% \\
+            \cmidrule[0.4pt]{1-3}
+         drp & $2.217$        & $0.002$   \\
+         \bottomrule
+      \end{tabular}
+   }
+\end{table}
+このことは記述統計的なプロットを見るとはっきりします(図\ref{fig::28_18})。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.5\linewidth]{../images/28_JASP/JASP_ttestPlot.png}
+   \caption{二群の平均値と確信区間}
+   \label{fig::28_18}
+\end{figure}
+これをみると，実験群と統制群の95\%確信区間は重複しているところが結構ありそうです。重複している場合は，ROPEがどれぐらいであるにせよ，性急な判断はやめて保留し，データ(エビデンス)をもっと追加してから考えた方がいいでしょう。
 
-Let's take a look at the output of "prior distribution" and "posterior distribution" (Figure \ref{fig::28_19}), without modifying the TeX code.
-\input{m28_jasp_escape_23}
+ここでもう1つ，「事前分布と事後分布」の出力を見てみましょう(図\ref{fig::28_19})。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/28_JASP/JASP_ttestBF.png}
+   \caption{事前分布と事後分布}
+   \label{fig::28_19}
+\end{figure}
 
-This shows the prior and posterior distributions of the estimated value $\delta$ of the effect size $d$. The effect size represents the standardized difference in mean values, and in the prior distribution, a Cauchy distribution centered around 0 is assumed. In other words, subjectively, before conducting the test, there is a faint belief that "maybe there's no difference". When we overlay the posterior distribution calculated from the data (i.e. the likelihood and prior probability), we can see that the density at $\delta=0$ is lower than that of the prior distribution.
-It is known that the density ratio at a specific point of the prior distribution and the posterior distribution is equal to the Bayes factor, and calculating the Bayes factor using this method is called the Savage-Dickey method\citep{Lee201709}. Calculating the Bayes factor requires integrating the marginal likelihood, which can be difficult, but if there is a relationship between a hypothesis for a point, such as the null hypothesis, and a competing hypothesis that includes it, then the density ratio of the prior and posterior distributions can be used.
+これは効果量$d$の推定値$\delta$の事前分布と事後分布を示しています。効果量は標準化された平均値の差を表しており，事前分布では0を中心としたコーシー分布が置かれています。つまり，検定前の主観確率としては「差はないんじゃないかな」とうっすら思っている，という状態です。これにデータ(尤度と事前確率)から計算された事後分布を重ねると，$\delta=0$の密度が事前分布よりも低い位置にきていますね。
+この事前分布と事後分布の，特定の点についての密度比はベイズファクターに一致することが知られており，この方法でベイズファクターを計算するのは\keytermL{サヴェージ・ディッキー法}{さゔぇーじ・でぃっきーほう}と呼ばれています\citep{Lee201709}。ベイズファクターの計算には，周辺尤度の積分が必要でなかなか難しい，というところだったのですが，帰無仮説のような点の仮説と，それを包含する対立仮説の関係にある場合，この事前分布と事後分布の密度比が利用できるのです。
 
-Anyway, looking at this, it has only dropped a little. Also, the confidence interval for $\delta$ is [-1.173, -0.006]. The upper limit is almost zero. Zero means there is no difference, so it may be a bit tough to claim that there is a difference with this data.
+ともかくこれを見ると，ちょこっと下がっただけ。また$\delta$の確信区間は[-1.173,-0.006]です。上限がほとんどゼロですね。ゼロというのは差がないということですから，今回のデータを持って差があるよ，というのはちょっと厳しいかもしれません。
 
-Here is a note. Some people may think, after seeing the results of both the conventional method and the \keytermE{Bayesian method}{ベイズ法}, "Hmm, if the conventional method shows a significant difference and the Bayesian method doesn't show it as strongly, why not just report the conventional method and hide the fact that there may not be a significant difference?" However, this attitude of "let's hide something that might be bad for me" lacks scientific integrity. In this case, both the results support the alternative hypothesis, but if the difference is more subtle, the results of the conventional method and the Bayesian method might differ. Whether there is a difference or not, it is important to consider "what this data is really telling us" by carefully thinking about both results. It is more important to strive for a correct understanding of the phenomenon, rather than selectively using only favorable results or making shortsighted judgments about whether there is a difference or not. Therefore, it is important to report all of the confidence intervals, credible intervals, $p$ values, effect sizes, Bayesian factors, and everything else, and work on truly understanding the phenomenon.
+ここで注意を1つ。従来法と\keytermL{ベイズ法}{べいずほう}の両方の結果を見て，あれ？従来法なら有意差ありで，ベイズ法ならそこまで強く言えないんなら，従来法だけレポートに書いたいいんじゃない，と思った人。そういう「ちょっと自分にまずいことは隠しておこう」という態度は科学的誠実さには欠けますよ。今回はいずれも対立仮説の方が支持されていますが，もっと微妙な差であればもしかすると，従来法とベイズ法の結果が異なることがあるかもしれません。そのような場合でも今回の場合でも，両方の結果を記載して「このデータが本当に伝えていることは何か」をしっかり考えることの方が重要です。自分に都合の良い結果だけ利用するのではなく，差があるかないかという短絡的な判断で論じるのではなく，信頼区間や確信区間，$p$値も効果量もベイズファクターもすべて記載して，現象の正しい理解をすることの方が重要なのですから。
 
 
-Anyway, by using a software called JASP, it became clear that both methods can be easily compared. In the future, we can expect to see more research examples reporting analysis results in the form of a combination of t-test and BF.
-Please try various data analysis through JASP, too.
+ともかく，JASPというソフトを使うと，簡単に両方の手法が比較できることがわかっていただけたかと思います。今後は，t検定とBFの併記のような形で，分析結果を報告する研究例が増えてくるでしょう。
+皆さんもJASPを通じて，さまざまなデータの分析を手軽に試してみてください。
 \end{document}

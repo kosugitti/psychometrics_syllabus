@@ -1,0 +1,32 @@
+\begin{lstlisting}[language=C++,label={stan::20_02},caption={優越率や閾上率を計算するコード}]
+data{
+    int<lower=0> N1; // Number of Subjects in Group 1
+    int<lower=0> N2; // Number of Subjects in Group 2
+    array[N1] real X1; // Data in Group 1
+    array[N2] real X2; // Data in Group 2
+    int<lower=0> C; //constant 
+}
+
+...
+
+generated quantities{
+    real Xpred1;
+    real Xpred2;
+    int<lower=0,upper=1> FLG1;
+    int<lower=0,upper=1> FLG2;
+    Xpred1 = normal_rng(mu1,sig1);
+    Xpred2 = normal_rng(mu2,sig2);
+    //probability of dominance
+    if(Xpred1 > Xpred2){
+        FLG1 = 1;
+    }else{
+        FLG1 = 0;
+    }
+    //probability beyond threshold
+    if(Xpred1 - Xpred2 > C ){
+        FLG2 = 1;
+    }else{
+        FLG2 = 0;
+    }
+}
+\end{lstlisting}

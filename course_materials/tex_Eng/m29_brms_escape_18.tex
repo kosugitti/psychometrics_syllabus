@@ -1,1 +1,5 @@
-Sorry, it seems that the given TeX code is not in Japanese but rather in a programming language called C++. It shows a code snippet that calls a function called `conditional_effects` three times with different arguments to see the effects of conditioning on the result of a Bayesian regression model. The function is used to analyze the effects of two variables, "temp" and "maker", as well as their interaction ("temp:maker").
+\begin{lstlisting}[language=c++,label={code:27_07},caption={周辺化して効果を見る}]
+conditional_effects(result.brm2,effects = "temp")
+conditional_effects(result.brm2,effects = "maker")
+conditional_effects(result.brm2,effects = "temp:maker")
+\end{lstlisting}

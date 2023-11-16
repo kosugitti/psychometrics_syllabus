@@ -4,158 +4,289 @@
 
 \begin{document}
 \VerbatimFootnotes
-\chapter{Regression analysis using R}
+% \chapter{Rをつかった回帰分析}
+\chapter{Regression Analysis Using R}
 \label{m11_MRonR}
 
-So far, we have explained in words the mechanisms of regression analysis and \keytermE{multiple regression analysis}. However, it's all in vain if you can't calculate the results yourself. We haven't explained the method of calculating the regression coefficients for multiple regression analysis, but when calculating with R, it can be expressed without distinguishing between simple regression and multiple regression. Let's learn how to do it all at once here.
+% さてここまでは，回帰分析や\keyterm{重回帰分析}{じゅうかいきぶんせき}{Multiple Regression Analysis}の仕組みを言葉で説明してきましたが，自分で計算できなければ絵に描いた餅です。重回帰分析の回帰係数を求める方法についてはとくに説明してきませんでしたが，Rで計算する時は単回帰・重回帰の区別なく表現できるので，ここで一気に習得してしまいましょう。
+So far, we have been explaining the mechanisms of regression analysis and \keyterm{multivariate regression analysis}{じゅうかいきぶんせき}{Multiple Regression Analysis} in words, but it's of no use if you can't calculate it yourself. We haven't specifically explained how to calculate the regression coefficient for multiple regression analysis, but when calculating with R, you can express it without distinguishing between simple regression and multiple regression, so let's learn it all at once here.
 
-\section{Reconfirming the R environment}
-We have explained how to use R in Chapters \ref{m03_introR} and \ref{m04_usingR}. Let's proceed while reviewing them.
+% \section{Rの環境再確認}
+\section{Reconfirming the Environment of R}
+% 第\ref{m03_introR},\ref{m04_usingR}章でRの使い方について解説してきました。思い出しながら進めていきましょう。
+We have explained how to use R in Chapters \ref{m03_introR}, \ref{m04_usingR}. Let's proceed while recalling.
 
-\subsection{Preparation of Environment (Verification)}
-First, let's prepare the environment. We assume that R and RStudio have already been installed\footnote{If you haven't installed them yet, please go back to Chapter \ref{m03_introR} and catch up. You can search for "RStudio installation" online, and you'll find many sites with helpful guidance.}. The following text will be based on this assumption.
+% \subsection{環境の準備(確認)}
+\subsection{Preparation (Confirmation) of Environment}
+% まずは環境の準備です。既にRやRStudioのインストールは終わっているものとして話を進めます\footnote{まだだよー！という人は第\ref{m03_introR}章に戻って追いついてきてください。ネットでRStudio インストールといったキーワードで検索すると，親切にも案内してくれているサイトに色々出会えるでしょう。}。
+Firstly, let's prepare the environment. We'll proceed assuming you've already installed R and RStudio\footnote{If you haven't yet, please catch up on Chapter \ref{m03_introR}. If you search the internet with keywords such as "RStudio installation", you'll find various websites that kindly guide you through the process.}.
 
-Please follow these three steps to prepare for the execution.
-\paragraph{Starting RStudio}Please start RStudio. Note that in some cases, such as when installing packages, you may need administrative privileges. If you are using Windows, it may be a good idea to run as an administrator.
-\paragraph{Opening a project} It is fine to use the project created the last time. Let's create a new script file in the same folder as last time. Select "Open Project" from the menu (File $\to$ Open Project), and choose the \texttt{.Rproj} file in the desired folder. This file contains information about the project, and selecting it will set the working directory to the corresponding folder. You can confirm whether the project has been opened by checking the upper right corner or menu bar in RStudio.
-\paragraph{Opening an R script} Let's prepare an R script file to write today's code. Go to File > New File > R Script and open a blank R script file. Once you have opened the blank file, you can proceed to write your code. You can also continue writing in the Rmd file if that is more convenient.
 
-You are now prepared to write code in the script section.
+% 次の3つのステップをたどって，実行の準備をしてください。
+Please follow the next three steps to get prepared for execution.
+% \paragraph{RStudioの起動}RStudioを起動してください。パッケージのインストールをするときなど，管理人権限が必要になるケースがありますので，Windowsユーザは管理人として実行するようにしたほうが良いかもしれません。
+\paragraph{Starting RStudio} Please start RStudio. When installing packages, etc., there may be cases where administrator privileges are needed, so Windows users may want to run as an administrator.
+% \paragraph{プロジェクトを開く}プロジェクトは前回作成したもので結構です。前回と同じフォルダの中で，新しくスクリプトファイルを作っていくことにしましょう。メニューからプロジェクトを開くを選び(File$\to$Open Project)，目的のフォルダのにある\texttt{.Rproj}ファイルを選択してください。それがプロジェクト情報を持っているファイルで，それを選択することでワーキングディレクトリが当該フォルダにセットされます。プロジェクトが開いたかどうかはRStudioの右上やメニューバーなどで，確認できます。
+\paragraph{Open Project} You can use the same project you created last time. You can create a new script file in the same folder as last time. Choose "Open project" from the menu (File$\to$Open Project) and select the ".Rproj" file in the target folder. That file holds the project information, and selecting it sets the working directory to that folder. You can check whether the project is open or not in the upper right of RStudio or from the menu bar.
+% \paragraph{Rスクリプトを開く}今日のコードを書くためのRスクリプトファイルを準備します。File > NewFile > R Scriptと進み，何も書いてないRスクリプトの画面を表示させてください。真っ白いファイルが開いたら問題ありません。Rmdファイルで書き進めてもらっても結構です。
+\paragraph{Open R Script} Prepare an R script file to write today's code. Please go to File > NewFile > R Script and display the screen of the R script where nothing is written. If a blank file opens, there is no problem. You may proceed by writing in an Rmd file.
 
-There should be a lot of data related to statistics to the point where it becomes too much to manually input. This time, we will also read the data from a file to use. When reading from a file, it's important to pay attention to the text encoding. If the encoding is different, it may result in garbled characters when reading ASCII data\footnote{If you're not sure what this means, please refer to Appendix \ref{computer}.}. For people using Windows with the non-standard encoding Shift-JIS (CP-932), they may need to specify the world-standard UTF-8 when reading.
+% これでスクリプトのところにコードを書いていく準備ができました。
+Now you are ready to write some code in your script.
 
-This time, let's load the data of the same baseball players as in the exercise of Chapter \ref{m04_usingR}. Please run the following three lines.
+% 統計に関するデータは，手入力するのが嫌になる程度にはたくさんのデータがあるはずです。今回もデータをファイルから読み込んで使うことにします。ファイルから読み込むときに注意が必要なのが，テキストエンコードです。ASCIIデータを読み込みますが，エンコードが違うと文字化けが生じてしまいます\footnote{なんのことかわからない，という人は付録\ref{computer}を参照してください。}。OSがWindowsで世界非標準のエンコードShift-JIS(CP-932)を使っている人は，世界標準のUTF-8を指定して読み込む必要があるかもしれません。
+There should be plenty of data about statistics, to the extent that you get tired of entering it by hand. We will also use data loaded from a file this time. What needs to be careful when loading from a file is text encoding. We load ASCII data, but if the encoding is different, the characters will be garbled\footnote{If you do not know what it means, please refer to Appendix\ref{computer}.}. If your OS is Windows and you are using the non-standard world encoding Shift-JIS (CP-932), you may need to specify and load the world standard UTF-8.
+
+% 今回，第\ref{m04_usingR}章の課題と同じ野球選手のデータを読み込んでみましょう。次の3行を実行してください。
+This time, let's load the same baseball player data that we used in Chapter \ref{m04_usingR}. Please execute the following three lines.
 
 \input{m11_Regression_onR_escape_01}
 
+% \paragraph{コード解説}
 \paragraph{Code Explanation}
 \input{m11_Regression_onR_escape_02}
 
+% \subsection{散布図の描画}
 \subsection{Drawing Scatter Plots}
-When you have data, the first thing to do is visualize it. Don't forget the promise to \textbf{make data into a figure}.
-There are various variables in this case, but I would like to extract only the data of the batter's height and weight and create a figure.
+% データが手に入ったとき，最初にすることは可視化です。\textbf{データは図にする}という約束は忘れないでくださいね。
+When you get the data, the first thing you do is visualize it. Don't forget the rule to 'turn the data into a chart'.
+% 今回はさまざまな変数があるのですが，ここで打者の身長と体重のデータだけ抜き出して図にしてみたいと思います。
+There are various factors this time, but I would like to extract only the data of the batter's height and weight and create a chart.
 
 \input{m11_Regression_onR_escape_03}
+% \paragraph{コード解説}
 \paragraph{Code Explanation}
 \input{m11_Regression_onR_escape_04}
 
-As long as the resulting figure looks like Figure \ref{fig::11_01}, it is OK.
+% 結果的に図\ref{fig::11_01}のような図ができていればOKです。
+If you end up with a figure like the one in Figure \ref{fig::11_01}, then it's OK.
 
 \input{m11_Regression_onR_escape_05}
 
-Regarding the operations in lines 1-3, what I wanted to do here was to extract the variables for height and weight from the "dat" object, but only for data related to batters. Please note that the TeX code should not be modified.
-These operations are implemented using the \texttt{filter} function and the \texttt{select} function in the \texttt{dplyr} package, which is included in the \texttt{tidyverse} package. For more information on the difference between these two functions, please refer to Section \ref{dataHandling}, Pp. \pageref{dataHandling}.
-Anyway, with this, a scatter plot of the desired data can be created, and it appears that there is a positive correlation.
-It seems okay to assume a linear relationship. By the way, you can draw a straight line with \texttt{ggplot} by writing the following code.
+% さて1-3行目の操作ですが，ここでやりたかったことは\texttt{dat}オブジェクトの中から打者のデータに限って，身長と体重の変数を抜き出すことでした。
+Now regarding the operation in lines 1-3, what I wanted to do here was to extract variables of height and weight specifically from the batter's data in the \texttt{dat} object.
+% これらの操作は\texttt{tidyverse}パッケージに含まれる\texttt{dplyr}パッケージの\texttt{filter}関数と\texttt{select}関数で実装されます。この両者の違いについては，セクション\ref{dataHandling},Pp.\pageref{dataHandling}を参照してください。
+These operations are implemented with the \texttt{filter} function and the \texttt{select} function of the \texttt{dplyr} package included in the \texttt{tidyverse} package. For the difference between the two, please refer to section \ref{dataHandling}, Pp.\pageref{dataHandling}.
+% ともかくこれで欲しいデータの散布図が書け，どうやら正の相関がありそうだということがわかりました。
+Anyway, with this we could draw the scatter plot of the data we wanted and we found out that there seems to be a positive correlation.
+% 直線関係を仮定しても良さそうです。ちなみに次のコードを書くと\texttt{ggplot}で直線を書くことができますよ。
+It seems okay to assume a linear relationship. By the way, you can draw a straight line with \texttt{ggplot} if you write the following code.
 
 \input{m11_Regression_onR_escape_06}
+% \paragraph{コード解説}
 \paragraph{Code Explanation}
 \input{m11_Regression_onR_escape_07}
 
-\section{Executing Linear Regression}
-Let's now perform regression analysis. Regression analysis is called a linear model because it fits a linear function. The \texttt{lm} function, which stands for the initials of this, is a linear regression model. Let's try running the following code (\texttt{code:\ref{code:11_04}}).
+% \section{線形回帰の実行}
+\section{Implementing Linear Regression}
+% それではここから回帰分析を行います。回帰分析は線形関数を当てはめるので\keyterm{線形モデル}{せんけいもでる}{linerar model}と呼ばれますが，これの頭文字をとった\texttt{lm}関数が線形回帰モデルです。次の\texttt{code:\ref{code:11_04}}を実行してみましょう。
+Then, we will conduct a regression analysis. Regression analysis fits a linear function, so it is called a \keyterm{linear model}{せんけいもでる}{linerar model}, but the function named \texttt{lm}, which takes the initials of this, is a linear regression model. Let's execute the following \texttt{code:\ref{code:11_04}}.
 \input{m11_Regression_onR_escape_08}
 
+% \paragraph{コード解説}
 \paragraph{Code Explanation}
 \input{m11_Regression_onR_escape_09}
 
-What's important here is the expression of the regression equation in the first line. In R, $y\sim x$ represents $y=f(x)$, which expresses the relationship between the dependent variable $y$ and the independent variable $x$. This notation, called \keytermE{formula}, is used not only for regression equations but for expressing the relationship between dependent and independent variables with the $\sim$ sign. Although the expression used here used the function \texttt{lm}, when expressing the relationship between independent and dependent variables with non-linear models, it is still represented as \verb|y ~ x|. Getting used to this notation makes it easy to understand that both this analysis and that analysis are simply $y=f(x)$ in form. This time, it represents predicting weight using height.
+% ここで重要なのは，1行目の回帰式の表現です。Rでは$y\sim x $という書き方で，$y=f(x)$を表現します。これは回帰式に限らず，一般的に従属変数$y$と独立変数$x$の関係を$\sim$でつなげる，という\keyterm{式}{しき}{formula}の書き方なのです。今回は\texttt{lm}という関数を使って表現しましたが，線形モデルではない関数で独立変数，従属変数の関係を書く時も\verb|y ~ x|で表現します。この表記に慣れると，あの分析もこの分析も，形としては$y=f(x)$なんだな，ということがわかりやすくていいですね。今回は，体重を身長で予測したということになっています。
+What's important here is the expression of the regression formula in the first line. In R, $y\sim x $ is used to express y = f(x). This is a standard way of expressing the relationship between the dependent variable y and the independent variable x by connecting them with $\sim$, it's a formula expression. In this case, we have used a function called lm to express this, but even when using a function other than a linear model to write the relationship between independent and dependent variables, it is expressed as y ~ x. Once you get used to this notation, it's easy to see that all analyses, in their basic form, are y = f(x), which is very helpful. In our case, we are predicting weight based on height.
 
-The output results of this analysis are shown in Output \ref{RS:out11_01}.
+
+% この分析の出力結果が出力\ref{RS:out11_01}の通りです。
+The output of this analysis is as shown in output\ref{RS:out11_01}.
 
 \input{m11_Regression_onR_escape_10}
 
-There seems to be various things going on, but let's check them one by one. First, we have the word \texttt{Residuals}, which represents the descriptive statistics of the residuals $e_i$. It would be good to check how large the residuals can be.
-The term "Coefficientes" refers to coefficients. Here we have regression coefficients. It may be a little difficult to read, but it is in tabular form, and the section labeled "Estimate" represents the estimated value, which is the value we are interested in finding for the regression coefficient. The TeX code will not be modified.
+% 何やら色々出ていますが，順に確認していきましょう。まず\texttt{Residuals}とありますが，ここは残差$e_i$の記述統計情報を表しています。どれぐらい残差が大きく出るのか，確認すると良いでしょう。
+Various things are appearing, but let's check them in order. First, where it says \texttt{Residuals}, it represents descriptive statistical information of residuals $e_i$. It would be good to see how large the residuals are.
+
+% 次の\texttt{Coefficientes}は係数という意味です。ここに回帰係数が出ています。少しみにくいかもしれませんが，表形式になっていて，\texttt{Estimate}と書かれたところが推定値，今回知りたい回帰係数の値になっています。
+The \texttt{Coefficientes} here means coefficients. Here, the regression coefficients are shown. It might be a little hard to see, but it's in table format and the part where \texttt{Estimate} is written is the estimated value, which is the value of the regression coefficient we want to know this time.
+% 回帰式は次のようになります。
 The regression equation is as follows.
 
 \[ \hat{y} = -124.91755 + 1.16670 \times height \]
 
-Please make sure to confirm which number corresponds to what result. Also, by obtaining this equation, you can understand that by inputting a new number for height, it is possible to predict weight.
+どの数字が結果の何に対応しているか確認しておいてください。また，この式が得られたということは身長のところに新しい数字を入れると体重の予測ができるということもわかってもらえると思います。
 
-There is also various other information available, but it pertains to inferential statistics that will be discussed in the latter part of the course, so it's okay if you don't know it yet. To briefly explain, an estimated value is not a value obtained from the data used in this study. Instead, it means that when considering this data as a sample taken from a larger population, the value obtained from this sample can be used to make inferences about the relationship in the population. You may think that instead of estimating from the sample, we can consider the characteristics of the sample to obtain the answer using the least squares method, but I'm not explaining that now. Luckily, the value obtained using the maximum likelihood method, which is used here, and the regression coefficients obtained using the least squares method match. Also, we calculate the potential difference in estimated values when using a different sample other than the one used in this study, which is depicted in the "Std.Error" part. Accordingly, we examine the likelihood of the regression coefficient being 0, indicating that the explanatory variable isn't predictive, and derive conclusions from the "t value" and "Pr(>|t|)" parts while considering what can be inferred from this analysis.
-More important than that is the line below, which says \texttt{Multiple R-squared}. This is the so-called $R^2$ value and indicates how well the model fits the data. In this case, $R^2=0.4096$, which means that the correlation coefficient between the predicted values $\hat{y}$ and the dependent variable $y$ is about 0.62, and the proportion of variance explained is about 40.9\%. As for the goodness-of-fit, it can be said to be somewhat poor.
+その他にもいろいろな情報が出ていますが，その内容は後期でお話しする推測統計に関するところですので，今のところはまだ知らなくてOKです\footnote{それでも少し解説しておきます。まず推定値というのは今回のデータから得られる値ではなく，このデータが大きな母集団から撮られた標本だと考えたときに，標本のデータから母集団の関係を推測するならこの値になる，という意味があるからです。今回のデータについての最小二乗法での答えが欲しいのですから，標本から推定するのではなく，標本の特徴を考えてればいいじゃない，と思うかもしれません。いやほんとその通りなので，今はまだ説明しないのです。幸い，最小二乗法で求めた回帰係数の値と，推定法(ここでは最尤法という方法を使っていますが)による答えが一致しますから，悩まなくてもいいのですが。また，今回の標本ではなく別の標本だった場合，この推定値がどれぐらい違う値になる可能性があったかを計算して出しています。それが\texttt{Std.Error}のところです。それを踏まえて考えると，回帰係数が0，すなわち説明変数がまったく予測しないという状態になる可能性がどれぐらいあるか，というのを検証しているのが\texttt{t value}や\texttt{Pr(>|t|)}のところで，これをみながら今回の分析から何が言えるかを結論づけたりするわけです。}。
+それよりも大事なのは下から二行目にある，\texttt{Multiple R-squared}というところです。これがいわゆる$R^2$値であり，モデルの\keytermL{適合度}{てきごうど}を表しています。今回は$R^2=0.4096$ですから，予測値$\hat{y}$と従属変数$y$の相関係数が0.62ぐらい，分散説明率が40.9\% ぐらいだったということがわかります。悪い当てはまとしては，やや悪いといったところでしょうか。
 
-\section{What we can learn from residuals}
-Inside the object that stores the results returned by the \texttt{lm} function in this case, there is other information such as the predicted values $\hat{y_i}$ and the residuals $e_i$. To confirm that these are not fictional values but calculated values, let's display them.
+\section{残差からわかること}
+今回の\texttt{lm}関数から返される結果を格納したオブジェクトの中には，他にも予測値$\hat{y_i}$や残差$e_i$といった情報が含まれています。それらが架空の値ではなく，算出されたここの値であるということを確認するために，表示させてみましょう。
+
+\begin{lstlisting}[language=c++,label={code:11_05},caption={回帰分析のその他の情報}]
+batter <- batter %>% 
+    dplyr::mutate(residuals = result$residuals,
+                    yhat = result$fitted.values) 
+batter
+summary(batter)
+plot(batter)
+cor(batter)
+\end{lstlisting}
+
+\paragraph{コード解説}
+\begin{description}
+   \item[1-3行目] \verb|batter|オブジェクトに\verb|batter|オブジェクトを加工したものを上書きしていきます。加工内容は，\verb|dplyr|パッケージの\verb|mutate|関数を使って変数を追加することです。追加する変数名は\verb|residuals|と\verb|yhat|で，\verb|residuals|には\verb|result|オブジェクトの\verb|residuals|変数を，\verb|yhat|には\verb|result|オブジェクトの\verb|fitted.values|変数をあてがっています。
+   \item[4行目] 上書きされた\verb|batter|オブジェクトを表示させています。長くなりますので，上の方の一部分だけが表示されます。
+   \item[5行目] 上書きされた\verb|batter|オブジェクトの要約統計量を表示させています。
+   \item[6行目] \verb|batter|オブジェクトのプロットを描いています。
+   \item[7行目] \verb|batter|オブジェクトの相関係数を計算しています。
+\end{description}
+
+回帰分析の結果を代入したオブジェクト\verb|result|には，\verb|residuals|変数として残差が含まれています。同じく\verb|fitted.values|変数として予測値が含まれています。4行目の出力結果の一部を見てみましょう(出力\ref{RS:out11_02})。
+\begin{Rscreen}{回帰分析の出力結果}{out11_02}
+   \begin{verbatim}
+# A tibble: 329 × 4
+   height weight residuals  yhat
+    <dbl>  <dbl>     <dbl> <dbl>
+ 1    171     72   -2.59    74.6
+ 2    181     98   11.7     86.3
+ 3    177     91    9.41    81.6
+ 4    180     85   -0.0882  85.1
+ 5    171     84    9.41    74.6
+\end{verbatim}
+\end{Rscreen}
+
+これを見ると，たとえば1行目のデータは身長171cm体重72kgの選手であり，回帰式$-124.91755 + 1.16670 \times height$を使った計算結果は74.6ということがわかります。74.6という予測値$\hat{y_1}$は，実際の値$y_1$と比べて2.59ずれていますので，$\hat{y_1}-y_1$で-2.59となっています。以下同様で，329人分のデータそれぞれについて予測値と残差が計算できました。
+
+またプロットを見てみましょう。これは\texttt{ggplot}を使っての出力ではなくRオリジナルの出力例ですが(そのせいか少し色気のない出力ですが)，これを見て幾つか気づく点があると思います。
+1つは\verb|height|と\verb|yhat|の組み合わせが直線になっているところですね。次の\verb|cor|関数でも，対応するところが1.0になっています。これは当然で，身長データを伸ばしてずらしたのが予測値であり，この両者はいわば一対一対応，100\%の相関関係にあることがわかります。また，説明変数\verb|height|と残差\verb|residuals|の組み合わせは丸に近く，相関係数はほぼ0.0です\footnote{いやいや，何か数字があるよとツッコミが入りそうですね。計算結果のところには$5.451636e-16$という表示があるかと思います。この表現は，桁数があまりにも大きいので普通の十進法で表現できなかった場合に出てくるもので，$e+$のところが10の累乗を表しています。今回は$e-16$ですから，$10^{-16}=0.00000000000000001$というごく小さな値を，$5.451636$にかけた値が答えとなっています。数学的にはちょうど$0.0$になることが証明できるのですが，機械の計算は丸め誤差などがあるので少しずれが生じます。が実質的にゼロだということです。}。説明変数と残差の間に相関関係があるというのは，原理的におかしなことですよね。説明変数は従属変数をできるだけ説明しようとしていて，その残りが残差なのですから，残差のところに説明変数と関係する要素があるとすれば，それは残差ではなく従属変数のまだ説明できる箇所だということになってしまうからです。
+
+同様に，残差\verb|residuals|と予測値\verb|yhat|の相関関係もほぼ0.0になっています。これも原理的には$0.0$になるのです。回帰分析は説明変数によって，説明できる部分(予測値)と説明できない部分(残差)にきっちり分離するのですから，分離されたもの同士に関係が残っているはずがないのです。数理的な導出は\citet{kosugi2018}のP.127--135を見て貰えばわかりますが，データを見ることで一目瞭然だと思います。
+\section{重回帰分析}
+では続いて\keytermL{重回帰分析}{じゅうかいきぶんせき}に行きましょう。Rにおいて重回帰分析を行う時は，説明項を1つ追加するだけでいいので，作業としては簡単なものです。ただし結果の解釈には注意が必要であることを忘れずに。
+
+\begin{lstlisting}[language=c++,label={code:11_06},caption={重回帰分析のデータを作って可視化}]
+batter2 <- dat %>%
+    dplyr::filter(position != "投手") %>%
+    dplyr::select(HR, Hit, salary) %>%
+    na.omit()
+g1 <- ggplot(batter2, aes(x = HR, y = salary)) +
+    geom_point()
+g1
+g2 <- ggplot(batter2, aes(x = Hit, y = salary)) +
+    geom_point()
+g2
+cor(batter2)
+\end{lstlisting}
+
+\paragraph{コード解説}
+\begin{description}
+   \item[1-4行目]\texttt{batter2}というオブジェクトを作っています。これは\texttt{dat}オブジェクトを加工して作っており，2行目で野手(投手でない人)を選択し，3行目で変数として本塁打，安打，salaryを選択しています。4行目は欠損値を一括で取り除く処理をしています。ホームランを打っていない人などはデータに含められないからです。
+   \item[5-7行目] x軸に本塁打の数，y軸に年俸(\verb|salary|)をとった散布図を書いています。
+   \item[8-10行目]  x軸に安打の数，y軸に年俸(\verb|salary|)をとった散布図を書いています。
+   \item[11行目] データの相関関係を数字でみています。
+\end{description}
+
+プロットを見ると，ホームランの数や安打の数が増えるほど，年俸は上がっているようです(図\ref{fig::11_03})。さすがプロ野球は実力勝負の世界，グランドには銭が埋まっているというやつです。少しデータの左端の方，つまりホームランや安打を打たない人が数多くいるため，よく打つ人に引っ張られて相関係数が大きく出ている可能性はありますし，安打と本塁打の間にも相関があるので少し気になりますが，ひとまずはこれで分析することにしましょう。
+
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/11_MultipleRegressionOnR/Rplot11_02.png}
+   \caption{本塁打，安打と年俸の関係}
+   \label{fig::11_03}
+\end{figure}
+
+回帰分析のコード\texttt{code:\ref{code:11_07}}と出力\ref{RS:out11_03})は次の通りです。
+
+\begin{lstlisting}[language=c++,label={code:11_07},caption={重回帰分析の実行}]
+result2 <- lm(salary ~ HR + Hit, data = batter2)
+summary(result2)
+\end{lstlisting}
+
+\begin{Rscreen}{回帰分析の出力結果}{out11_03}
+   \begin{verbatim}
+Call:
+lm(formula = salary ~ HR + Hit, data = batter2)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-22581  -2394  -1025    264  40723 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1620.46     575.40   2.816  0.00516 ** 
+HR            659.15     104.09   6.333 7.98e-10 ***
+Hit            53.88      16.61   3.245  0.00130 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 7761 on 326 degrees of freedom
+Multiple R-squared:  0.378,	Adjusted R-squared:  0.3742 
+F-statistic: 99.06 on 2 and 326 DF,  p-value: < 2.2e-16
+
+\end{verbatim}
+\end{Rscreen}
+
+結果の読み取りはよろしいでしょうか。重回帰式は次のようになります。係数をどこから読み取るか，確認してくださいね。
+\[ \hat{y} = 1620.46 + 659.15 \times HR + 53.88 \times Hit \]
+
+% これをみると，安打の数が同じくらいであれば，ホームラン一本につき660万円年俸が上昇するようです。また本塁打の数が同じぐらいであれば，ヒット一本で53万円年俸が上昇します。
+When we see this, it seems that if the number of hits is about the same, the annual salary increases by 6.6 million yen per home run. Also, if the number of home runs is about the same, the annual salary increases by 530,000 yen per hit.
+% またこのモデルの$R^2$は$0.378$ですから，予測モデルは全体の37\%ぐらいしか説明できておらず，あまり良いモデルとは言えないということがわかりました。
+The $R^2$ of this model is $0.378$, which means that the predictive model can only explain about 37% of the whole, and it is understood that this is not a very good model.
+
+% ヒットも本塁打も単位は「本」ですので，解釈も同じようにできて簡単かもしれません。あるいはヒットと本塁打は意味が違う，というのであれば直接の比較はおかしいことになります。
+Both hits and home runs are counted in 'books', so it may be easy to interpret them in the same way. Alternatively, if a hit and a home run have different meanings, direct comparison may be inaccurate.
+% ここでは後者の可能性を考えて，変数同士の単位が違うから標準化しよう，という方向で分析を進めたいと思います。
+Here, considering the latter possibility, I would like to proceed with the analysis in the direction of standardizing because the units of the variables are different.
+
+% データセットの各変数を標準化する必要がありますが，それには\texttt{scale}関数を使います。
+It is necessary to standardize each variable in the dataset, for which we use the \texttt{scale} function.
 
 \input{m11_Regression_onR_escape_11}
 
+
+% \paragraph{コード解説}
 \paragraph{Code Explanation}
 \input{m11_Regression_onR_escape_12}
 
-The object "result", which contains the results of the regression analysis, includes the residuals as a variable called "residuals". It also includes predicted values as a variable called "fitted.values". Let's take a look at a part of the output from the fourth line (Output \ref{RS:out11_02}).
 \input{m11_Regression_onR_escape_13}
 
-When looking at this, for example, the data on the first line is for a player who is 171cm tall and weighs 72kg, and the calculation using the regression equation of $-124.91755+1.16670\times height$ shows a resulting value of 74.6. The predicted value $\hat{y_1}$ of 74.6 differs from the actual value $y_1$ by 2.59, so the difference $\hat{y_1}-y_1$ is -2.59. Similarly, predictions and residuals could be calculated for each of the 329 data points.
-
-Let's take a look at the plot again. This is not an output using \texttt{ggplot}, but rather an example of the original R output (which is why it's a bit less visually appealing), but you may notice a few things when looking at it.
-One of the places where the combination of \verb|height| and \verb|yhat| is linear. The next \verb|cor| function also shows a corresponding value of 1.0. This is natural because the predicted value is the height data stretched and shifted, so these two are one-to-one correspondence, with a correlation of 100%. Additionally, the combination of the explanatory variable \verb|height| and the residuals \verb|residuals| is closer to a circle, and the correlation coefficient is almost 0.0\footnote{Wait a minute; it seems like there is some number shown somewhere. You might notice the display of $5.451636e-16$ in the calculation results. This expression means that the value is too large to be expressed in normal decimal notation, and the part "e+" represents a power of 10. In this case, it's "e-16", so the value $10^{-16}=0.00000000000000001$ is multiplied by 5.451636, giving us the answer. Although it can be mathematically proven to be exactly 0.0, machine calculations have round-off errors, resulting in a slight deviation. However, it is effectively zero.}. It's fundamentally odd to have a correlation between the explanatory variable and the residuals. The explanatory variable tries to explain the dependent variable as much as possible, and the remainder is the residuals. Therefore, if there is an element related to the explanatory variable in the residuals, it means that it is still an explainable part of the dependent variable, not the residuals.
-
-Similarly, the correlation between the residuals and predicted values, \verb|residuals| and \verb|yhat|, is also almost 0.0. This is theoretically supposed to be $0.0$, as regression analysis separates the explained part (predicted values) and the unexplained part (residuals) precisely based on the explanatory variables, so there should be no relationship left between the separated parts. Although the mathematical derivation can be found in \citet{kosugi2018}, pages 127--135, it should be obvious by looking at the data.
-\section{Multiple Regression Analysis}
-Next, let's move on to \keytermE{multiple regression analysis}{じゅうかいきぶんせき}. Performing multiple regression analysis in R is a simple task, as you only need to add one explanatory variable. However, it is important to remember that careful interpretation of the results is necessary. Note that the TeX code will not be modified.
-
-\input{m11_Regression_onR_escape_14}
-
-\paragraph{Code Explanation}
-\input{m11_Regression_onR_escape_15}
-
-Looking at the plot, it seems like the more home runs and hits a player gets, the higher their salary is (see Figure \ref{fig::11_03}). It's no wonder that professional baseball is a world where skill determines success, and where there's money to be made on the field. There are a lot of players on the left side of the data who don't hit many home runs or make many hits, so there's a possibility that the high correlation coefficient is being influenced by the strong performers. Additionally, there seems to be a correlation between hits and home runs which is a bit concerning. However, for now let's proceed with our analysis using this dataset.
-
-\input{m11_Regression_onR_escape_16}
-
-The code for linear regression (code:\ref{code:11_07}) and the output (RS:out11_03) are as follows:
-
-\input{m11_Regression_onR_escape_17}
-
-\input{m11_Regression_onR_escape_18}
-
-Are you able to read the results? The multiple regression equation is as follows. Please confirm where to read the coefficients from.
-\[ \hat{y} = 1620.46 + 659.15 \times HR + 53.88 \times Hit \]
-
-When looking at this, it appears that the salary increases by 6.6 million yen per year for each home run hit, provided that the number of hits remains the same. Similarly, if the number of home runs remains the same, the salary increases by 530,000 yen per year for each hit.
-Furthermore, since the $R^2$ value of this model is 0.378, we can see that the predictive model only explains about 37% of the overall variation, indicating that it is not a very good model.
-
-Hits and home runs are both measured in "hits," so it may be easy to interpret them in the same way. However, if you say that hits and home runs have different meanings, then direct comparison would be incorrect.
-Here, we would like to proceed with the analysis in the direction of standardizing, considering the possibility of different units between variables.
-
-You need to standardize each variable in the dataset, which can be done using the \texttt{scale} function without modifying the TeX code.
-
-\input{m11_Regression_onR_escape_19}
-
-
-\paragraph{Code Explanation}
-\input{m11_Regression_onR_escape_20}
-
-\input{m11_Regression_onR_escape_21}
-
-Let's take a look at the results (output \ref{RS:out11_04})). Do you understand how to read the estimated values? There is also a display of \verb|e-01| here, but this means the same as $10^{-1}=\frac{1}{10}=0.1$. The results of the standardized regression analysis are as follows.
+% 結果を見てみましょう(出力\ref{RS:out11_04}))。推定値の読み方，わかるでしょうか。ここにも\verb|e-01|なんて表示があるのですが，これは$10^{-1}=\frac{1}{10}=0.1$と同じ意味です。標準化した回帰分析の結果は次の通りです。
+Let's take a look at the results (Output \ref{RS:out11_04}). Can you understand how to read the estimated values? There is also a display like \verb|e-01| here, which means the same as $10^{-1}=\frac{1}{10}=0.1$. The result of the standardized regression analysis is as follows.
 
 \[ \hat{y} = 0.4298 HR + 0.2202 Hit \]
 
-When comparing them, it seems that hits have a stronger impact on salary increases than home runs.
-In this regression equation, we did not include an intercept. The estimated value is $1.006e-16$, which is almost zero since it is multiplied by $e-16=10^{-16}$. In principle, it should be zero, so we did not include it here.
-You can also confirm that it has not changed when $R^2$ was not standardized. This is because it does not affect the relative relationship.
+これを見比べると，ホームランよりもヒットのほうが年俸の上昇には強い影響を与えているようですね。
+ここでの回帰式では切片を記入しませんでした。推定値は$1.006e-16$であり，これは$e-16=10^{-16}$がかけられていますからほぼゼロになっています。原理的にも$0$であるはずなので，ここでは書きませんでした。
+また$R^2$が標準化しなかったときと変わっていないことも確認できますね。相対的な関係には影響しないので，このようになります。
 
-We have learned that the calculation itself can be done in an instant. However, it is not meaningful if you do not understand what you were doing or why you were doing it, or if you misinterpret the results. The research begins only when you think about what can be inferred from these results and how to read them correctly. Therefore, do not just say "I did it" but use statistical techniques as a tool to deepen your thought process by asking "why", "how", and "what does it mean".
+計算自体は一瞬でできることがわかりましたね。でも計算ができた時に，何をやっていたのかわからないとか，何のためにやっていたのかわからない，ということでは意味がありません。またもちろん，結果の読み取り方が間違っていてもいけませんし，この結果から何が言えるだろうか，と考えることで初めて研究が始まるのです。「やった，できた」だけではなく，「なぜ，どうやって，どういう意味か」と考えを深めるためのツールとして，統計技術を使い倒してみてください。
 
-\section{Task}
-Please submit your assignment in an Rmd file. Make sure to include your student ID number in the file name when submitting.
+\section{課題}
+課題はRmdファイルで提出していただきます。提出するファイル名には学籍番号を含めてください。
 
-Please enter the necessary mathematical formulas within the R chunk.
-Outside of R chunks, please describe the interpretation or reading of the results in words.
+Rチャンクの中に，必要な計算式を記入してください。
+Rチャンクの外に，結果の読み取りや解釈を，言葉で記述してください。
 
 
 
-\subsection{Task}
-The following data (Table \ref{tbl::ex11_01}) shows a study of rent prices near Mukogaoka Station, consisting of the size of the room (\verb|heibei|, measured in $m^2$), the age of the building (\verb|chiku|), the number of minutes it takes to walk from the station (\verb|ekitoho|), and the rent price (\verb|yachin|)\footnote{This data was obtained by researching rental housing websites in May 2019.}.
-Note that this data is distributed as \texttt{yachin.csv}.
-\input{m11_Regression_onR_escape_22}
-\paragraph{Task} Perform a regression analysis with rent as the dependent variable and square meters as the independent variable, and determine the regression equation.
-\paragraph{Task} You have found a property that is 15 square meters and has a rent of 60,000 yen. Based on this data, can it be considered a good deal? Please assess based on the data.
-\paragraph{Task} Conduct multiple regression analysis with rent as the dependent variable and square footage and age of the building as the independent variables, without modifying the TeX code. Please obtain the regression equation.
-\paragraph{Task} Perform multiple linear regression analysis with rent as the dependent variable, and square footage, age of the building, and distance from the train station as the independent variables, and derive the regression equation.
-\paragraph{Task} 
-You are given three models: model1 which is a simple linear regression model with independent variable A only, model2 which is a multiple linear regression model with independent variables A and B, and model3 which is a multiple linear regression model with independent variables A, B, and C. When comparing the goodness of fit for each model regarding a dependent variable, which model has the best fit? Please explain why. Note that you must not alter the TeX code.
+\subsection{課題}
+次のデータ(表\ref{tbl::ex11_01})は，向ヶ丘駅周辺の家賃について調べたもので，部屋の広さ(\verb|heibei|，単位$m^2$)と，築年数(\verb|chiku|)，駅から徒歩何分かかるか(\verb|ekitoho|)，家賃(\verb|yachin|)からなるものです\footnote{2019年5月に実際に賃貸住宅サイトを利用して調べたものです。}。
+なおこのデータは\texttt{yachin.csv}として配布しています。
+\begin{table}[ht]
+   \caption{家賃相場}
+   \centering
+   \begin{tabular}[t]{rrrr}
+      \hline
+      heibei & chiku & ekitoho & yachin \\
+      \hline
+      41.40  & 14    & 10      & 8.60   \\
+      20.28  & 16    & 9       & 6.10   \\
+      18.20  & 28    & 10      & 4.20   \\
+      19.87  & 16    & 13      & 5.70   \\
+      20.28  & 19    & 7       & 6.30   \\
+      23.18  & 20    & 14      & 5.40   \\
+      19.87  & 17    & 12      & 6.25   \\
+      19.87  & 20    & 17      & 5.80   \\
+      \hline
+   \end{tabular}
+   \label{tbl::ex11_01}
+\end{table}
+\paragraph{課題}家賃を従属変数，平米を説明変数とした回帰分析を行い，回帰式を求めてください。
+\paragraph{課題}15平米で家賃6万円の物件を新たに見つけました。この物件はこのデータに照らし合わせて，お得な物件だと言えるでしょうか。データに基づいて判断してください。
+\paragraph{課題}家賃を従属変数，平米と築年数を説明変数とした重回帰分析を行い，回帰式を求めてください。
+\paragraph{課題}家賃を従属変数，平米と築年数と駅からの距離を説明変数とした重回帰分析を行い，回帰式を求めてください。
+\paragraph{課題}ある従属変数に対して，説明変数Aだけの単回帰分析をした時(これをmodel1とします)，説明変数AとBを用いた重回帰分析を行なった時(これをmodel2とします)，説明変数A,B,Cを用いた重回帰分析を行なった時(model3)をそれぞれ比べると，モデルの適合度が一番良いのはどのモデルになるでしょうか。またそれはなぜそうなるのか，考察してください。
 \end{document}

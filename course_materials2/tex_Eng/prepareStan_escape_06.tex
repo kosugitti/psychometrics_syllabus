@@ -1,0 +1,5 @@
+\begin{itemize}
+  \item RStudioのコードチェック機能は新しいコードの書き方に対応しておらず\footnote{RStudioのバージョン2022.07.2 Build 576で確認しました。}，新しい書き方をするとエディタ上でエラーの警告(赤いバッテンがつきます)が出ますし，チェックボタンを押してもSYNTAX ERRORが出ます。
+  \item \verb|rstan|パッケージは使っているStanが古いこともあって，新しい書き方のコードをコンパイルしようとするとエラーになります。RStudioと同じ，SYNTAX ERRORが出ます。
+  \item \verb|cmdstanr|パッケージは逆に，新しいStanの書き方を推奨していますので，「その書き方は古いよ」という警告を出してきます。Declaration of arrays by placing brackets after a variable name is deprecated and will be removed in Stan 2.32.0. Instead use the array keyword before the type. This can be changed automatically using the auto-format flag to stanc.という警告がでますが，これは「配列のカッコを変数の後ろに置く書き方はもうダメで，Stan2.32以降は無くなります。型の前にarrayと書くようにしてください。これはauto-formatフラグを立てることで自動的に変更するようになります。」という意味です。
+\end{itemize}

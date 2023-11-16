@@ -1,0 +1,54 @@
+\begin{lstlisting}[language=c++,label={code:29_04b},caption={プロット用にデータを整形する関数とプロットのコード}]
+Est2 <- fit2.df %>%
+  dplyr::filter(str_detect(Varname, "mu")) %>%
+  dplyr::filter(!str_detect(Varname, "muZero")) %>%
+  dplyr::mutate(ID = str_extract(Varname, pattern = "\\d+") %>% 
+  as.numeric()) %>%
+  arrange(ID) %>%
+  select(ID, MAP, U95, L95)
+
+Est2miss <- fit2.df %>%
+  dplyr::filter(str_detect(Varname, "Miss_W")) %>%
+  dplyr::mutate(ID = str_extract(Varname, pattern = "\\d+") %>% 
+  as.numeric()) %>%
+  arrange(ID) %>%
+  select(ID, MAP, U95, L95)
+
+### plot用の関数を準備
+plotFunction <- function(fullDays, Est, MissEst) {
+  tmp <- fullDays %>%
+    rowid_to_column("ID") %>%
+    left_join(Est, by = "ID") %>%
+    rowwise() %>%
+    mutate(FLG = if (weight != 999) {1} else {2})
+  misJ <- 1
+  tmp$weight2 <- NA
+  tmp$weight2U <- NA
+  tmp$weight2L <- NA
+  for (i in 1:NROW(tmp)) {
+    if (tmp$FLG[i] == 2) {
+      tmp$weight2[i] <- MissEst$MAP[misJ]
+      tmp$weight2U[i] <- MissEst$U95[misJ]
+      tmp$weight2L[i] <- MissEst$L95[misJ]
+      misJ <- misJ + 1
+    } else {
+      tmp$weight2[i] <- tmp$weight[i]
+      tmp$weight2U[i] <- tmp$weight[i]
+      tmp$weight2L[i] <- tmp$weight[i]
+    }
+  }
+  return(tmp)
+}
+
+plot.tmp <- plotFunction(fullDays, Est2, Est2miss)
+g <- ggplot(data = plot.tmp) +
+  geom_point(aes(x = date, y = weight2)) +
+  geom_errorbar(aes(x = date, y = weight2, ymin = weight2L, 
+                    ymax = weight2U, color = palette()[2])) +
+  geom_point(aes(x = date, y = MAP, color = palette()[3])) +
+  geom_errorbar(aes(x = date, y = MAP, ymin = L95, 
+                    ymax = U95, color = palette()[4])) +
+  scale_x_date(date_breaks = "1 month", 
+                limits = as.Date(c("2020-01-01", "2020-05-01"))) +
+  theme(legend.position = "none")
+\end{lstlisting}

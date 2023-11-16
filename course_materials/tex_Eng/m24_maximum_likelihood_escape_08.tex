@@ -1,32 +1,7 @@
-Translation:
-
-\begin{Rscreen}{Comparison Result}{out24_01}
-   \begin{verbatim}
-> # Estimation by least squares method
-> result.LS <- lsfit(x = batter$height, y = batter$weight)
-> result.LS$coefficients
-  Intercept           X 
--124.917552    1.166698 
-> # Maximum likelihood estimation
-> result.LM <- lm(weight ~ height, data = batter)
-> summary(result.LM)
-
-Call:
-lm(formula = weight ~ height, data = batter)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--20.9217  -4.9213  -0.4214   4.0783  28.9118 
-
-Coefficients:
-              Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -124.91755   13.89317  -8.991   <2e-16 ***
-height         1.16670    0.07746  15.063   <2e-16 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 7.435 on 327 degrees of freedom
-Multiple R-squared:  0.4096,	Adjusted R-squared:  0.4078 
-F-statistic: 226.9 on 1 and 327 DF,  p-value: < 2.2e-16
-    \end{verbatim}
-\end{Rscreen}
+\begin{itemize}
+   \item 回帰係数が$1.166$である確率は$p<0.05$なので，滅多に得られる数字ではないから統計的に意味がない。
+   \item 回帰係数の有意性検定が示しているのは，傾きが0であるという帰無仮説のもとで今回の係数$1.166$が得られる確率が小さい($p<0.05$)ということだから，統計的に意味がある。
+   \item 今回のデータから考えると，回帰係数を$1.166$としたときに尤度が最も高くなる。
+   \item 今回のデータから考えると，回帰係数を$1.166$としたときに残差の総量(二乗和)が最も小さくなる。
+   \item 今回のデータから考えると，回帰係数が$1.166$となる確率は95\%以上である。
+\end{itemize}

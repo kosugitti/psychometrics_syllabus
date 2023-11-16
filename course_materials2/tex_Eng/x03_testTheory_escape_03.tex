@@ -1,0 +1,8 @@
+\begin{align*}
+     & Var(X)  =  \frac{1}{n}\sum_{i=j}^n (X_j - \bar{X})^2                                                                                              & \mbox{定義より}         \\
+     & = \frac{1}{n}\sum_{j=1}^n  ((t_j + e_j) - (\bar{t} + \bar{e}))^2                                                                                  & \mbox{Xをテスト理論のモデルに} \\
+     & = \frac{1}{n}\sum_{j=1}^n (  (t_j - \bar{t}) + (e_j - \bar{e}) )^2                                                                                & \mbox{同じ記号でまとめる}    \\
+     & = \frac{1}{n}\sum_{j=1}^n (  (t_j - \bar{t})^2 + 2(t_j - \bar{t})(e_j - \bar{e}) + (e_j - \bar{e})^2  )                                           & \mbox{展開する}         \\
+     & = \frac{1}{n}\sum_{i=1}^n (t_j - \bar{t})^2 +\frac{1}{n}\sum_{j=1}^n 2(t_j - \bar{t})(e_j - \bar{e})  + \frac{1}{n}\sum_{j=1}^n (e_j - \bar{e})^2 & \mbox{$\sum$を分配}    \\
+     & =  Var(t) + 2Cov(te) + Var(e)
+\end{align*}

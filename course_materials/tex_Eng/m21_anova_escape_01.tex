@@ -1,11 +1,11 @@
 \begin{enumerate}
-   \item If the independent variable in regression analysis is discrete, it becomes a factorial design. Both regression analysis and factorial design can be represented by a linear model, so they are collectively called the \keytermE{General Linear Model}{いっぱんせんけいもでる}{一般線形モデル}.
+   \item 回帰分析における独立変数が離散的であれば，要因計画となる。回帰分析も要因計画もいずれも線形モデルで表現できるので，まとめて\keyterm{一般線形モデル}{いっぱんせんけいもでる}{General Linear Model}と呼ぶ。
          \begin{itemize}
-            \item The difference between the group mean and the overall mean is called the effect ($\to$ Lecture \ref{m12_design1}, section \ref{generalLinear}, Pp.\pageref{generalLinear}).
-            \item To verify the overall effect of the effect, calculate the \keytermE{Sum of Squares}{へいほうわ}{平方和: SS} (Section \ref{HowToEvaluateTheDifference}, Pp.\pageref{HowToEvaluateTheDifference}).
-            \item An example of when the number of factors increases is \keytermE{Multiple regression analysis}{じゅうかいきぶんせき}{重回帰分析}, but be careful about interactions ($\to$ Lecture \ref{m13_design2}, section \ref{interaction}, Pp.\pageref{interaction}).
-            \item If it is a within-group factor, you can also calculate the variance (sum of squares) of individual differences ($\to$ Lecture \ref{m14_design3}).
+            \item 全体平均からの群平均の差分を効果と呼ぶ($\to$第\ref{m12_design1}講,セクション\ref{generalLinear}，Pp.\pageref{generalLinear})。
+            \item 効果の全体を検証するためには\keyterm{平方和}{へいほうわ}{Sum of Squares:SS}を計算するのでした(セクション\ref{HowToEvaluateTheDifference}，Pp.\pageref{HowToEvaluateTheDifference})。
+            \item 要因の数が増えるのは\keytermL{重回帰分析}{じゅうかいきぶんせき}になるようなもの。ただし交互作用には注意して($\to$第\ref{m13_design2}講，セクション\ref{interaction}，Pp.\pageref{interaction})。
+            \item 群内要因であれば，個人差の分散(平方和)も算出できる($\to$第\ref{m14_design3}講)。
          \end{itemize}
-   \item The distribution that the ratio of the sum of squares follows is called an F-distribution, and by using it, we can verify how rare the \textbf{effect on error} in the sample is.
-   \item To further analyze which group difference caused the null hypothesis to be rejected, \keytermE{multiple comparisons}{たじゅうひかく}{多重比較} is performed for more detailed analysis. 
+   \item 平方和の比率が従う分布としてF分布というのが知られており，これを使うと標本の\textbf{誤差に対する効果の大きさ}がどれほど珍しいものであるのかを検証できる。
+   \item 帰無仮説が棄却されたことが，どの群間差で生じたのかを明らかにするために，\keyterm{多重比較}{たじゅうひかく}{multiple comparison}を行うことでさらに精緻に分析する。
 \end{enumerate}

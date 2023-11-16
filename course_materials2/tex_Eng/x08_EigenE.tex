@@ -1,0 +1,298 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+% \chapter{固有値と固有ベクトルと因子分析モデルの関係}
+\chapter{The Relationship between Eigenvalues, Eigenvectors, and Factor Analysis Models}
+\label{x08_eigen}
+
+% \section{固有値と固有ベクトル}
+\section{Eigenvalues and Eigenvectors}
+% 今回は正方行列にみられるおもしろい特徴である，\keyterm{固有値}{こゆうち}{eigenvalue}と\keyterm{固有ベクトル}{こゆうべくとる}{eigenvector}についての話から始めます。
+This time, we will start with a discussion on interesting features found in square matrices, namely, eigenvalues and eigenvectors.
+% ある正方行列$\bm{A}$，列ベクトル$\bm{x}$，スカラー$\lambda$が次のような関係にあった時，$\lambda$を固有値，$\bm{x}$を固有ベクトルと言います。
+When a square matrix $\bm{A}$, column vector $\bm{x}$, and scalar $\lambda$ have the following relationships, $\lambda$ is called the eigenvalue and $\bm{x}$ is called the eigenvector.
+
+\[ \bm{Ax} = \lambda\bm{x} \]
+
+一見すると，$\bm{x}$が両辺に入っていますから，$\bm{A}$が$\lambda$に置き換わった等式に見えます。しかし一方は行列で，他方はスカラーです。こんな奇妙なことが本当にあるのでしょうか？
+具体的な数値例をみてみましょう。
+
+\[
+    \bm{A} = \begin{pmatrix}
+        1 & 6 \\ 2 & 5
+    \end{pmatrix}
+    ,\bm{x} = \begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}
+\]
+
+% を例にします。この時次の関係が成り立ちます。
+For example, at this time the following relationship holds.
+
+\[
+    \bm{Ax} =
+    \begin {pmatrix}
+    1 & 6 \\
+    2 & 5 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        7 \\ 7
+    \end{pmatrix}
+    =7
+    \begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}
+    =7 \bm{x}
+\]
+
+% 確かに成立する組み合わせがありますね。この行列$\bm{A}$に対して，7が固有値，$(1,1)$が固有ベクトルになっています。
+Certainly, there is a valid combination. For this matrix $\bm{A}$, 7 is the eigenvalue, and $(1,1)$ is the eigenvector.
+% また，実はこの行列$\bm{A}$については，-1も固有値であり，そのときの固有ベクトルは$(-3,1)$も固有ベクトルです。
+Moreover, in fact, for this matrix $ \bm {A} $, -1 is also an eigenvalue, and the eigenvector at that time is also the eigenvector $(-3,1)$.
+
+% この固有値分解こそ，因子分析を元とする多変量解析の中心的な数学原理なのです。多変量解析の世界においては，分散共分散行列やそれを標準化した相関行列など，変数同士の関係を分析のスタートにおくのでした。これらの行列は正方行列ですから，その固有値や固有ベクトルを計算することで正方行列の特徴を別の視点から分解して考えられるようになります。
+This eigenvalue decomposition is the central mathematical principle of multivariate analysis based on factor analysis. In the world of multivariate analysis, we start the analysis with the relationship between variables, such as variance-covariance matrix or standardized correlation matrix. These matrices are square matrices, so by calculating their eigenvalues and eigenvectors, it's possible to decompose the features of the square matrix from a different perspective.
+
+% \subsection{固有値の特徴}
+\subsection{Characteristics of Eigenvalues}
+% この固有値の数学的特徴は色々あるのですが，データ分析をする上で重要な点を押さえておきましょう。
+There are various mathematical characteristics of this eigenvalue, but let's focus on the important points for data analysis.
+
+% 固有値の特徴として，\textbf{固有値の総和が正方行列の対角要素の総和に合致する}，というのがあります。数式で表現すると，次のようになります。
+As a feature of eigenvalues, there is that \textbf{the sum of the eigenvalues matches the sum of the diagonal elements of the square matrix}. If expressed in mathematical terms, it is as follows.
+
+\[ \sum_{i=1}^N \lambda_i = trace(\bm{A}) = \sum_{i=1}^N a_{ii} \]
+
+ここで$a_{ij}$は行列$\bm{A}$の要素であり，$a_{ii}$は$i$行$i$列目，つまり対角要素です。
+この正方行列$\bm{A}$のサイズは$N$で，対角要素の総和をとくに\keyterm{トレース}{とれーす}{trace}といい$trace(\bm{A})$と表します。
+それが固有値の総和とイコールになる，ということを表しています。サイズ$N$の正方行列からは固有値が$N$個算出できることがわかっており，それをすべて足し合わせたものがトレースと同じになっているのですね。先ほどの例で言えば，$\bm{A}$のトレースは$1+5=6$で，固有値の総和は$7-1=6$であり，確かにこの関係が成立していることがわかります。
+
+分散共分散行列のトレースは，分散の総和を意味します。項目同士の関係を表した行列であれば，分散はその項目から得られる情報の大きさであり，それを総和するということは，その調査研究・項目群から得られる情報の総和であると言ってもいいでしょう。
+相関行列のトレースは，対角項に入っているのが$r_{ii}=1.0$ですから，項目の数と一致します。1つの項目の情報量を1.0に基準化してN項目分の情報がある，ということを表しています。
+
+固有値と行列の関係は冒頭で示したように，$\bm{Ax}=\lambda \bm{x}$であり，正方行列の特徴をスカラーにしてしまうというものです。得られる$N$個の固有値は，元の正方行列のエッセンスをスカラーにして表現しているわけです。
+
+ところで$\bm{A}$を$n$次正方対称行列，つまり$n \times n$サイズの対称行列だとすると，$n$個の固有値が求められます。これを$\lambda_1,\lambda_2,\cdots,\lambda_n$として，対応する固有ベクトルを$\bm{x}_1,\bm{x}_2,\cdots,\bm{x}_n$とします。ここで各固有ベクトルのノルムが1であるとしましょう。行列と固有値・固有ベクトルの関係から，
+\[ \bm{Ax}_i = \lambda_i\bm{x}_i\]
+% となりますが，このベクトルを並べた行列$\bm{X}=\begin{pmatrix}\bm{x}_1&\bm{x}_2& \cdots & \bm{x}_n\end{pmatrix}$を考えると，
+However, consider the matrix $\bm{X}=\begin{pmatrix}\bm{x}_1&\bm{x}_2& \cdots & \bm{x}_n\end{pmatrix}$ in which these vectors are arranged.
+\[ \bm{AX} = \bm{X \Lambda} \]
+と書くことができます。ここで$\bm{\Lambda}$は
+\[ \bm{\Lambda} =
+    \begin{pmatrix} \lambda_1 & 0         & \cdots & 0         \\
+                0         & \lambda_2 & \cdots & 0         \\
+                \vdots    & \vdots    & \ddots & \vdots    \\
+                0         & 0         & \cdots & \lambda_n\end{pmatrix}
+\]
+% のような行列です。
+It's a matrix like this.
+
+% この両辺に$\bm{X}'$をかけると
+When you multiply both sides by $\bm{X}'$
+\[ \bm{AXX}' = \bm{X \Lambda X}' \]
+となりますが，固有ベクトルの性質とノルムを整えていることから$\bm{XX}'=\bm{I}$であり，そこから
+\[ \bm{A} = \bm{X \Lambda X}' \]
+% と書くことができます。
+You can write it this way.
+
+% ここであらためて要素に注目すると，行列$\bm{A}$が次のように分解されていることがわかります。
+When we refocus on the elements, we can see that the matrix $\bm{A}$ is decomposed as follows.
+
+\[
+    \bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
+\]
+% となります。
+You didn't provide any Japanese text to translate. Could you please provide the text?
+
+% この分解例は$2 \times 2$の簡単な例で確認しておきましょう。
+Let's confirm with a simple example of $2 \times 2$ decomposition.
+% たとえば$\bm{A} = \begin{pmatrix}\begin{pmatrix}a\\b\end{pmatrix},\begin{pmatrix}c\\d\end{pmatrix}\end{pmatrix}=\begin{pmatrix} a & c \\b & d\end{pmatrix}$という行列と，対角行列$\bm{\Psi} = \begin{pmatrix}\alpha & 0 \\ 0 & \beta \end{pmatrix}$があったとして，$\bm{A\Psi A}'$の計算をしてみたいと思います。
+For instance, let's take a matrix $\bm{A} = \begin{pmatrix}\begin{pmatrix}a\\b\end{pmatrix},\begin{pmatrix}c\\d\end{pmatrix}\end{pmatrix}=\begin{pmatrix} a & c \\b & d\end{pmatrix}$, and a diagonal matrix $\bm{\Psi} = \begin{pmatrix}\alpha & 0 \\ 0 & \beta \end{pmatrix}$. I would like to calculate $\bm{A\Psi A}'$.
+\[ 
+    \begin{array}{lll}
+    \bm{A\Psi A}' &=& \begin{pmatrix} a & c\\ b & d \end{pmatrix}\begin{pmatrix}\alpha & 0\\ 0&\beta \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
+    &&\\
+    &=& \begin{pmatrix} \alpha a & \beta c \\ \alpha b & \beta d \end{pmatrix}
+    \begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
+    &&\\
+    &=& \begin{pmatrix} \alpha aa + \beta cc & \alpha ab + \beta cd \\
+        \alpha ab + \beta cd & \alpha bb + \beta dd \end{pmatrix}\\
+        &\\
+    &=& \alpha \begin{pmatrix} aa & ab\\ ab & bb \end{pmatrix} + 
+    \beta \begin{pmatrix}cc & cd \\ cd & dd \end{pmatrix}\\
+    &\\
+    &=& \alpha \begin{pmatrix}a\\b\end{pmatrix}\begin{pmatrix}a &b\end{pmatrix} +
+    \beta \begin{pmatrix} c\\d \end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}
+    \end{array}
+\]
+
+% と，このようにスカラーとベクトルの積和の形に書き換えられるのですね\footnote{ただし，この計算が可能なのは分解する元の行列が実対称行列だからです。実対称行列は固有値と固有ベクトルで対角化可能であることが証明できます。実対称行列の固有値は全て十数ですし，固有値が全て実数であれば適当な直交行列をつかって対角化でき，実対称行列の固有ベクトルは互いに独立するのでこれらを使って直交行列を作ることができるからです。これらの性質については線形代数のテキストなどの証明を参照してください。また計算プロセスからもわかるように，同じ要素を持つ列ベクトルと行ベクトルの積ですから，結果は対称になってしまうからです。}。
+And thus, we can rewrite it in the form of the product sum of a scalar and a vector\footnote{However, the reason we can perform this calculation is because the matrix we are decomposing is a real symmetric matrix. It can be proven that real symmetric matrices can be diagonalized by eigenvalues ​​and eigenvectors. All the eigenvalues ​​of the real symmetric matrix are real numbers, and if all eigenvalues ​​are real numbers, it can be diagonalized by using an appropriate orthogonal matrix, because the eigenvectors of the real symmetric matrix are independent of each other, so you can use these to create an orthogonal matrix. Please refer to the proofs in textbooks on linear algebra, etc. for these properties. Also, as can be seen from the calculation process, since this is the product of a column vector and a row vector with the same elements, the result becomes symmetric.}.
+
+
+% さて，これらをまとめて考えると，
+Now, when we consider all of these things,
+\input{x08_Eigen_escape_01}
+% ということですから，固有ベクトルは全体の情報量をそのままに重要度の大きさに並べ替えたもの，固有値分解は行列をその要素の重要度ごとに分解していくことである，といえます。
+Therefore, it can be said that the eigenvector is something that reorders the total amount of information in order of importance, and eigenvalue decomposition is the process of decomposing a matrix according to the importance of its elements.
+
+% これこそ\keytermL{因子分析}{いんしぶんせき}で取り出そうとしている因子であり，固有値の大きさはその因子の重要度として，共通次元の判別(どこまで共通次元とみなすか)に使われるのです。
+This is the factor that factor analysis is trying to extract, and the size of the eigenvalue is used as the importance of that factor and is used to determine the common dimensions (how far it is considered as common dimensions).
+
+% \section{固有値と固有ベクトルを求める}
+\section{Finding Eigenvalues and Eigenvectors}
+% ここで少し数学の方に話を戻して，固有値と固有ベクトルの計算方法を考えましょう。
+Let's go back to some math here, and consider how to calculate eigenvalues and eigenvectors.
+% 元の式を書き換えて次のような方程式を考えます。
+We rewrite the original formula and consider the following equation.
+
+\[ (\bm{A} - \lambda\bm{I})\bm{x} = \bm{0} \]
+
+固有ベクトルは$\bm{x}=\bm{0}$すなわち全部ゼロであれば当然成り立ちますから(自明な解といいます)，これは除外することにします($\bm{x}\neq \bm{0}$)。
+行列の表現は連立方程式の解を求めることと同じなのでした。$\bm{A} - \lambda\bm{I}$を連立方程式の係数行列だと考えれば，それが\keytermL{逆行列}{ぎゃくぎょうれつ}を持つと左辺にそれをかけてしまえば全部ゼロの答えになってしまいますから，そうでない答えを求めるには，この係数行列が逆行列を持たないことが重要です。
+
+さて，この授業の中では説明してきませんでしたが，方程式が解を持つかどうかを決定する計算方法があります。これを\keyterm{行列式}{ぎょうれつしき}{determinant}といい\footnote{行列式は数値であり，解が求まるかどうか決定determinantする，という意味なのに，日本語訳はなぜか「式」といいます。変なの。}，この値がゼロでなければその方程式は解を持つ，ということがわかっています。説明しなかったのは，この値を求める計算がとても面倒だからで，詳しくは線形代数のテキストにお任せするとして\footnote{たとえば\citet{Murakami20160301}の第3章をみてください。}，ここでは簡便のために$2\times2$方程式の行列について紹介します。
+
+$2 \times 2$の係数行列，$\bm{P}=\begin{pmatrix} a&b\\c&d \end{pmatrix}$の逆行列は次の式で求められることがわかっています。
+\[ \bm{P}^{-1}= \frac{1}{ad-bc}\begin{pmatrix}d & -b \\ -c &a \end{pmatrix} \]
+% この式から考えると，$ad - bc$のところが0になるとこの計算はできませんから，逆行列が存在しないことになります。この$ad-bc$にあたるところが行列式であり，$|\bm{P}|$とか$det(\bm{P})$のように表します。
+Considering from this equation, if the part of $ad - bc$ becomes 0, this calculation is not possible, meaning that the inverse matrix does not exist. The part corresponding to $ad-bc$ is the determinant, represented as $|\bm{P}|$ or $det(\bm{P})$.
+% $ad-bc$が0でなければ方程式は解けるのですが，今回の場合は解けると自明になってしまうので困ります。今回は$ad-bc=0$でなければならないのです。つまり一般的に書くと次のようになります。
+If $ad-bc$ is not zero, the equation can be solved, but in this case, it would become obvious if it could be solved, so it's a problem. This time, it must be that $ad-bc=0$. In other words, generally, it can be written as follows.
+
+\[ | \bm{A} - \lambda \bm{I} | = 0 \]
+
+$\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式は次のようになります。
+
+\[   \begin{vmatrix} a-\lambda & b \\ c & d - \lambda \end{vmatrix} = 0 \]
+\[ (a-\lambda)(d-\lambda) - bc = 0 \]
+
+この方程式をとくに\keytermL{固有方程式}{こゆうほうていしき}といいますが，これを解いてやれば良いことになりますね。具体的に$\begin{pmatrix}1&6\\2&5\end{pmatrix}$の例で計算してみましょう。
+\[ \begin{vmatrix}1-\lambda & 6 \\ 2 & 5-\lambda\end{vmatrix}=0\]
+\[ (1-\lambda)(5-\lambda) - 12 = 0 \]
+\[ \lambda^2 - 6\lambda -7 = 0 \]
+\[ (\lambda-7)(\lambda+1)=0\]
+ここから$\lambda=7,-1$が得られますね。
+
+では固有ベクトルはどうなるでしょうか。固有値7の例で計算してみます。
+\[ \begin{pmatrix} 1 & 6 \\ 2 & 5 \end{pmatrix}\begin{pmatrix} x\\y\end{pmatrix} = 7 \begin{pmatrix} x\\y\end{pmatrix} \]
+\[ x + 6y = 7x \to 6x = 6y \to x=y \]
+\[ 2x+5y = 7y \to 2x = xy \to x=y \]
+
+% あれっ？ なんじゃこりゃ？ と思った人もいるかもしれません。でもこれ，間違いではありません。実は固有ベクトルは大きさが定まっておらず，今回の例で言えば$x=y$つまり$x:y=1:1$の関係であればあらゆる値が成立してしまうのです。
+Huh? What's this? Some of you may be wondering. But this is not a mistake. In fact, eigenvectors do not have a fixed magnitude, and in this case, if $x=y$, that is, if the relationship $x:y=1:1$ exists, any value will hold.
+% 固有ベクトルが$(1,1)$でも$(2,2)$でも$(100,100)$でも，$\bm{Ax}=\lambda \bm{x}$の関係に影響しませんから，普通はベクトルの長さ(\keyterm{ノルム}{のるむ}{norm})を1.0に規格化するという方策が取られます\footnote{ノルムとは，要素の二乗和の平方根，$\sqrt{x_1^2 + x_2^2 \cdots x_n^2}$のことです。}。
+The eigenvalue doesn't affect the relationship of $\bm{Ax} = \lambda \bm{x}$, whether if the eigenvector is $(1,1)$, $(2,2)$, or $(100,100)$. Therefore, it is common practice to normalize the length (norm) of the vector to 1.0\footnote{The norm refers to the square root of the sum of the squares of the elements, $\sqrt{x_1^2 + x_2^2 \cdots x_n^2}$.}.
+% 先ほど「固有ベクトルを適当な大きさに選んでやれば」というような表現をしましたが，それはベクトルの大きさはいくらでもいいからできることなのですね。
+Earlier, I used an expression like "choose the size of the eigenvector appropriately", which means that it can be done because the size of the vector can be anything.
+
+% さてここでみたように，$2\times2$の方程式であれば固有方程式を解くことはできるのですが，行列のサイズがどんどん大きくなると一般的に解けなくなって行くことは想像にかたくないと思います。実際我々は正方行列として，項目の情報が詰まった分散共分散行列とか相関行列を使いますから，それが2項目しかないなんてことはなくて，もっともっと大きなサイズになります。そうすると計算機を使って近似的に答えを求めて行くことになります。
+As we can see here, we can solve the characteristic equation for a $2\times2$ system, but it is not hard to imagine that we generally cannot solve it as the size of the matrix grows larger. In fact, we use the variance covariance matrix or the correlation matrix, which are filled with information on items, as square matrices, so it is not the case that there are only two items, and the size becomes much larger. Therefore, we will have to use a computer to find an approximate answer.
+
+% \section{固有値と固有ベクトルの幾何学的意味}
+\section{Geometric Significance of Eigenvalues and Eigenvectors}
+
+% 固有値，固有ベクトルについて，今度は違う側面から見直してみましょう。
+Let's take another look at eigenvalues and eigenvectors from a different perspective.
+
+% ある正方行列から固有値$\lambda$と固有ベクトル$\bm{a}$が得られたとします。このベクトル$\bm{a}$のすべての要素を定数$c$倍したベクトル$\bm{b}=c\bm{a}$を考えると，これもやはり同じ関係が成り立ちます。
+Suppose we have obtained the eigenvalue $\lambda$ and eigenvector $\bm{a}$ from a square matrix. If we consider the vector $\bm{b}=c\bm{a}$, which is all elements of this vector $\bm{a}$ multiplied by a constant $c$, the same relationship still holds.
+\input{x08_Eigen_escape_02}
+% 先ほどの計算でも明らかになりましたが，固有ベクトルの値は絶対的なものではなく，要素間の相対的大きさを反映しているに過ぎないのでしたね。
+As become clear from the previous calculation, the value of the eigenvector is not absolute, it simply reflects the relative sizes of the elements.
+
+% さてこれを幾何学的に，図形として考えてみましょう。要素が2つのベクトルは，2次元座標に表現できます。ベクトル$\bm{x}=(x,y)$という座標を表しているというわけです。固有ベクトルも要素が2つであれば，座標で表現できます。先ほどの，要素を$c$倍しても固有ベクトルとしての性質は変わらない，という話は，「固有ベクトルは大きさに意味はなく，方向を表したもの」ということになります。では何の方向を指し示しているのでしょうか。
+Let's consider this geometrically, as a figure. A vector with two elements can be represented in two-dimensional coordinates. The vector $\bm{x}=(x,y)$ represents these coordinates. If the eigenvector also has two elements, it can be expressed in coordinates. The previous statement, that multiplying an element by $c$ does not change the properties of the eigenvector, means that "the eigenvector is not about size, but about direction". So which direction is it pointing?
+
+% 固有値と固有ベクトルの話の最初にあった，$\bm{Ax}=\lambda\bm{x}$というのを見直してみましょう。$\bm{x}$がなんらかの座標を表していると考えると，それに正方行列をかけるとはどういう意味でしょうか。次の計算式を見てください。
+Let's review the equation $\bm{Ax}=\lambda\bm{x}$, which first appeared in the discussion on eigenvalues and eigenvectors. What does it mean to multiply a square matrix by a coordinate represented by $\bm{x}$? Please look at the following calculation.
+\input{x08_Eigen_escape_03}
+
+% これをみると，座標$\bm{x}=\begin{pmatrix}1\\2\end{pmatrix}$に$\bm{A}$をかけたことで，座標が$\begin{pmatrix}2\\6\end{pmatrix}$に変わった，と見ることもできますね。このように，ある座標が別の座標に移ることをとくに「変換」と呼びます\footnote{より一般的にいうと，以下のようになります。:集合$X$の各元$x$に集合$Y$の元$f(x)$を対応させる対応$f$のことを, 集合$X$から集合$Y$への写像(mapping)，関数(function)，あるいは変換(transformation)という。}。つまり\textbf{正方行列はなんらかの変換を施すもの}だ，と考えることができます。
+Looking at this, you can see that by applying $\bm{A}$ to the coordinates $\bm{x}=\begin{pmatrix}1\\2\end{pmatrix}$, the coordinates have changed to $\begin{pmatrix}2\\6\end{pmatrix}$. In this way, the movement of one coordinate to another is specifically called a "transformation"\footnote{More generally, it can be expressed as follows: A correspondence $f$ that corresponds each element $x$ of the set $X$ to the element $f(x)$ of the set $Y$ is called a mapping, function, or transformation from the set $X$ to the set $Y$.}. In other words, \textbf{a square matrix can be thought of something that performs some kind of transformation}.
+
+% 今回の例では，行列$\bm{A}$には次のような性質があります。
+In this example, the matrix $\bm{A}$ has the following properties.
+\input{x08_Eigen_escape_04}
+
+\input{x08_Eigen_escape_05}
+
+% そう，お気づきのように，これは固有値・固有ベクトルです。この行列の固有値・固有ベクトルはそれぞれ$\lambda_1=2,\bm{x}_1=(1,0)$，$\lambda_2=3,\bm{x}_2=(0,1)$であることがわかります。この固有値，固有ベクトルの組み合わせをじっとみていると，おもしろい特徴がわかって来ます。
+Yes, as you may have noticed, these are eigenvalues and eigenvectors. It can be seen that the eigenvalues and eigenvectors of this matrix are each $\lambda_1=2,\bm{x}_1=(1,0)$ and $\lambda_2=3,\bm{x}_2=(0,1)$. When we carefully observe the combinations of these eigenvalues and eigenvectors, we begin to understand interesting characteristics.
+
+% 今回の行列から得られた2つの固有ベクトル，$(1,0)$と$(0,1)$は，2次元平面の単位ベクトルと呼ばれるものです。\textbf{2次元座標の任意の点は，これら2つのベクトルの任意の線型結合で表現できます}。座標$(a,b)$は$a\times(1,0)$と$b\times(0,1)$からなるベクトルですから，$\begin{pmatrix}1 & 0\\0 & 1\end{pmatrix}\begin{pmatrix}a\\b\end{pmatrix}=\begin{pmatrix}a\\b\end{pmatrix}$というように，です。
+The two eigenvectors obtained from this matrix, $(1,0)$ and $(0,1)$, are what we call unit vectors in two-dimensional space. Any point in the two-dimensional coordinates can be expressed as an arbitrary linear combination of these two vectors. The coordinates $(a,b)$ are vectors consisting of $a\times(1,0)$ and $b\times(0,1)$, so they can be expressed as $\begin{pmatrix}1 & 0\\0 & 1\end{pmatrix}\begin{pmatrix}a\\b\end{pmatrix}=\begin{pmatrix}a\\b\end{pmatrix}$.
+
+% このように，単位ベクトルは2次元世界の基礎となる単位ともいうべきもので，ここで$(1,0)$はx座標の，$(0,1)$はy座標の基盤となるベクトルであるということができます(これをとくに\textbf{基底}といいます)。つまり，正方行列$\bm{A}$から得られる固有ベクトルは，その正方行列が作る空間の基盤を明らかにするものであったのです。
+Thus, unit vectors can be said to be the fundamental units of the 2D world, with $(1,0)$ being the base vector for the x-coordinate and $(0,1)$ being the base vector for the y-coordinate (this is particularly called a \textbf{basis}). In other words, the eigenvectors obtained from the square matrix $\bm{A}$ were those that reveal the basis of the space created by that square matrix.
+
+% では固有値はどうでしょうか？ 今回はx座標を2倍，y座標を3倍に引き延ばす変換をしたわけですが，この座標の歪み(重み)が固有値に対応していますね。つまり，固有値と固有ベクトルは新しい座標に変換する，その変換先の空間的性質を表していることになります。元の座標空間は$(1,0),(0,1)$で作られる空間ですが，変換先の空間は$(2,0),(0,3)$で作られている空間，ということになります。
+So how about the eigenvalues? This time, we made a transformation that stretches the x-coordinate twice and the y-coordinate three times, which corresponds to the distortion (weight) of this coordinate. In other words, the eigenvalues and eigenvectors represent the spatial properties of the new coordinates that they transform. The original coordinate space is a space created by $(1,0),$ $(0,1),$ but the transformed space is a space created by $(2,0),$ $(0,3).$
+
+% つまり，正方行列は空間を変換するもの，あるいは正方行列の中に固有ベクトルを基底とした空間があるもの，ということです。
+In other words, a square matrix is something that transforms space, or there is a space with eigenvectors as the basis inside a square matrix.
+
+% すべての正方行列に，こういった「変換」という解釈ができるのであれば，相関行列にも同様のことがいえるでしょう。相関行列は正方行列ですので，固有値分解できるのです。相関行列を固有値分解することは，相関行列の中に潜む次元(dimension)を抽出してくることです。固有ベクトル(因子負荷行列)は，正方行列によって変換される，変換先の単位ベクトルのことだったのです。そして，固有値はその次元のゆがみ(重み，重要性)という意味があったのです。
+If all square matrices can be interpreted in this way as 'transformations', the same should apply to correlation matrices. Correlation matrices are square matrices, so they can be eigendecomposed. Eigendecomposing a correlation matrix is extracting the dimension hidden in the correlation matrix. An eigenvector (factor load matrix) was a unit vector transformed by the square matrix. And the eigenvalue had the meaning of the distortion (weight, importance) of that dimension.
+
+% \section{因子分析の数学的理解}
+\section{Mathematical Understanding of Factor Analysis}
+% さあ因子分析に戻って考えてみましょう。因子分析のモデルは次のようなものでした。
+Now let's get back to factor analysis. The model of factor analysis was as follows.
+\input{x08_Eigen_escape_06}
+
+% ここで，左辺の正方行列を相関行列$\bm{R}$とし，$\lambda \bm{xx'} = \bm{aa'}$となるようにベクトルの大きさを整えてみましょう。これは$\lambda$を分解してベクトルの中に溶け込ませるようなものですから，$\bm{a} = \sqrt{\lambda}\bm{x}$とすればよいでしょう。すると相関行列は次のように分解できます。
+Here, let's assume that the square matrix on the left side is the correlation matrix $\bm{R}$ and adjust the magnitude of the vector so that $\lambda \bm{xx'} = \bm{aa'}$. Since this involves decomposing $\lambda$ and blending it into the vector, it's appropriate to use $\bm{a} = \sqrt{\lambda}\bm{x}$. Then, the correlation matrix can be decomposed as follows.
+\input{x08_Eigen_escape_07}
+\input{x08_Eigen_escape_08}
+
+% ここでは共通因子の数が$m$個だとわかっている体で分解していますが，基本的にはサイズ$N$の行列からは$N$個の固有値がずらーっと並ぶわけです。それをどこかで「共通しているのはここまで」と判断し，残りは誤差であるとしてまとめて$\bm{dd'}$にしているだけですね。このように数学的にはここからが共通因子，ここからが独自因子といった区別をすることなく，最後のひとかけらまで固有値分解を行なっているのですが，その次元の重要度でもって共通因子と誤差因子に(研究者が恣意的に)分割しているのが因子分析のやっていることなのです。
+Here we are decomposing in a field where we know there are $m$ common factors, but basically, $N$ eigenvalues line up from a matrix of size $N$. We judge somewhere that 'this is common up to here' and the rest is considered an error and collectively made into $\bm{dd'}$. While mathematically we are carrying out an eigenvalue decomposition to the last piece without distinguishing between common factors from here, and unique factors from there, factor analysis is about dividing into common factors and error factors (arbitrarily by the researcher) based on the importance of those dimensions.
+
+% 一般に，$N$よりも$m$のほうがグッと少なくなります。たとえばYG性格検査では$N=120$であり，$m$はせいぜい5から10数個です。120項目のつくる120次元空間の中で，そこに働きかけても方向の変わらない基礎的な少数の次元にのみ注目すれば，効率よく情報圧縮ができるというものです。
+Generally, $m$ becomes much less than $N$. For example, in the YG personality test, $N=120$ and $m$ is at most a few from 5 to 10. In the 120-dimensional space created by 120 items, by focusing only on a small number of fundamental dimensions that do not change their direction even when acting on it, it is possible to compress information efficiently.
+
+% 相関係数を固有値分解すると，その固有値はすべて足し合わせるとサイズ$N$になるのでした。元のデータから計算される相関行列は，1つの項目が一単位分の情報を持っていると考えますが，固有値分解はそれを次元の重要性順に並べ替えます。固有値は項目いくつ分の重要度があるかということを表す指標だと考えることができます。どこから共通因子でどこからが誤差か，ということを考えるときに，たとえば固有値が1.0よりも小さくなるようであれば，項目1つ分の情報もないのだからということで誤差因子だと判断することがあります。
+When decomposing the correlation coefficient into eigenvalues, the sum of all the eigenvalues becomes size $N$. The correlation matrix calculated from the original data is considered to have one unit of information per item, but the eigenvalue decomposition rearranges it in the order of the importance of dimensions. Eigenvalues can be thought of as indicators of how many items are important. When considering where the common factor is and where the error is, for example, if the eigenvalue becomes less than 1.0, it may be judged as an error factor because it does not even have the information of one item.
+
+% ところで因子分析モデルの$\bm{A}$，因子負荷行列ですが，これは共通因子の固有ベクトルをセットで扱ったものです。つまり，$\bm{A} = \bm{a_1,a_2,\cdots,a_m}$と縦ベクトルを並べたものになっています。エレメントワイズで表現すると次のようになります。
+By the way, the $\bm{A}$ in the factor analysis model is the factor loading matrix, which deals with the eigen vectors of the common factors in a set. In other words, $\bm{A} = \bm{a_1,a_2,\cdots,a_m}$ is made up of arranging the vertical vectors. If you express it element-wise, it will be as follows.
+
+\[
+    \bm{A} = \left (
+    \begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1N} \end{pmatrix},
+    \begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2N} \end{pmatrix},
+    \cdots,
+    \begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots\\ a_{mN} \end{pmatrix},
+    \right )
+\]
+
+% ここで$\bm{AA'}$の間に単位行列$\bm{I}$ を挟んでも，別に結果は変わりませんよね。単位行列はかけても変わらないのが特徴ですから，$\bm{AA'}=\bm{AIA}$です。ここでの$\bm{I}$のサイズは$m \times m$であることに注意しつつ聞いてください。
+Inserting the identity matrix $\bm{I}$ between $\bm{AA'}$ does not change the result. The identity matrix has the property that it does not change when multiplied, so $\bm{AA'}=\bm{AIA}$. Please note that the size of $\bm{I}$ here is $m \times m$.
+
+% $\bm{I} = \bm{TT'}=\bm{T'T}$になるような$m$次の行列を使うと，$\bm{AA'} = \bm{ATT'A'}$の関係は保たれたままです。この$\bm{T}$はこれまた行列の座標を変えてしまう変換行列であり，これを挟むことができるということは\textbf{因子負荷量の値はなんでもあり}だということになってしまいます。この変換行列$\bm{T}$はとくに\keyterm{回転行列}{かいてんぎょうれつ}{rotation matrix}とも呼ばれますが，因子分析はこのようにどんな回転でもできる，\textbf{回転に関する不定性}があるのです。あらゆる因子負荷量の組み合わせがあり得る，というのは困りものなので，なんらかの形で因子負荷行列$\bm{A}$に制約をかける必要があります。言い方を変えれば，色々な制約の中ではあっても好きな値を取ることができますから，ユーザにとって便利な基準を考えてやれば良いでしょう。因子分析では一般に，\keytermL{因子軸の回転}{いんしじくのかいてん}を行いますが，それはこうした理由からです。
+If we use an $m$-order matrix that satisfies $\bm{I} = \bm{TT'}=\bm{T'T}$, the relationship of $\bm{AA'} = \bm{ATT'A'}$ remains intact. This $\bm{T}$ is a transformation matrix that changes the coordinates of another matrix, and the ability to use it implies that the \textbf{factor loadings can take any value}. This transformation matrix $\bm{T}$ is also called a rotation matrix, but factor analysis has such ambiguity with regard to rotation, meaning it can be rotated in any way. It's troublesome to have all possible combinations of factor loadings, so there needs to be some kind of constraint on the factor loading matrix $\bm{A}$. In other words, even if there are various constraints, you can take any value you like, so it would be helpful to consider a convenient criterion for the user. In factor analysis, \keytermL{factor axis rotation} is generally performed, and this is why.
+
+
+% ちなみに$\bm{TT'}$に
+By the way, in $\bm{TT'}$
+% $diag(\bm{T\Phi T'})=\bm{I}_m$という
+The text translates to: "$diag(\bm{T\Phi T'})=\bm{I}_m$" is stated.
+% 制約のある行列$\bm{\Phi}$を挟んでやっても，元の計算モデルに影響はありません。
+Even if you sandwich the constrained matrix $\bm{\Phi}$, it does not affect the original calculation model.
+% この$\bm{\Phi}$は\keyterm{因子間相関}{いんしかんそうかん}{factor correlations}とよばれ，相関を持った因子軸の回転，すなわち\keyterm{斜交回転}{しゃこうかいてん}{oblique rotation}も色々なものが考えられています\footnote{これに対して$\bm{TT'}=\bm{I}$のような因子間相関がない(単位行列)な回転を\keyterm{直交回転}{ちょっこうかいてん}{orthogonal rotation}といいます。}。
+This $\bm{\Phi}$ is called \keyterm{factor correlations}, and various types of rotation of correlated factor axes, that is, \keyterm{oblique rotations} are considered. On the other hand, rotations where there is no factor correlation (like a unit matrix) such as $\bm{TT'}=\bm{I}$ are called \keyterm{orthogonal rotations}.
+
+
+% ずいぶんややこしい話になってきました。この後は実践形式で因子分析を理解していければと思います。
+The discussion has become quite complicated. I hope to understand factor analysis in a practical format from now on.
+
+% \section{課題}
+\section{Assignment}
+\input{x08_Eigen_escape_09}

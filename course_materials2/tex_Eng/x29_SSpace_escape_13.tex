@@ -1,0 +1,7 @@
+\begin{lstlisting}[language=c++,label={code:29_03},caption={連続したデータを作り欠損値に借りの値を代入する}]
+fullDays <- 
+  data.frame(date = as.Date("2020/01/01"):as.Date("2021/12/01")) %>%
+  mutate(date = as.Date(date, origin = "1970-01-01")) %>%
+  left_join(dat1, by = "date") %>%
+  tidyr::replace_na(list(weight = 999, bodyFat = 999))
+\end{lstlisting}

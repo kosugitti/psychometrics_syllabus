@@ -1,10 +1,10 @@
 \begin{enumerate}
-    \item The title on the first row of this table is not necessary for the analysis as it contains irrelevant information.
-    \item The cells are merged in the first row. As the data set should be rectangular like a \texttt{data.frame}, the existence of rows that disrupt the size of the data is not appropriate.
-    \item The name of the university is on the second row. Columns A to D seem to be data for university C, and columns F to I seem to be data for university D. However, it is not suitable to mix multiple data in one data set.
-    \item The variable names "height" and "weight" have multiple numbers in one cell. Although they are separated by commas and look comprehensible, they will be treated as strings rather than numbers mechanically (because of the commas). The data is not in a proper format.
-    \item Column 2 of the variable contains answers with the words "strongly agree" and numbers. Because multiple types of data are included in one column, it cannot be analyzed (we cannot aggregate strings and numbers. In this case, it will be treated as a string variable.).
-    \item "Average" is written on the 7th row, but average is a quantity that can be calculated from the data, so it should be calculated in R. The result of the calculation should not be entered into the data.
-    \item Variable 3 for Mr. Sugita from University D on row 6 in column I is blank. Although it may be that the data could not be obtained, it should be indicated that it is a missing value.
-    \item There are multiple sheets named "University in Tokyo" and "University in Kanagawa". All information should be included on a single sheet as a data file. If the data can be analyzed simultaneously, it should be consolidated into a single sheet. 
+    \item 1行目にこの表のタイトルのようなものが入っていますが，これは分析には使わない情報なので不要です。
+    \item 1行目はセルを結合しています。データセットは\texttt{data.frame}型のように矩形であるべきなので，データのサイズを狂わせる行の存在は不適切です。
+    \item 2行目には大学名が入っているようです。AからD列はC大学，FからIはD大学のデータのようですが，1つのデータセットに複数のデータが混在しているのはよくありません。
+    \item 身長と体重，という変数名のところには1つのセルに複数の数字が入っています。カンマで区切られており，見た目にはわかりますが，機械的には(カンマのせいで)数字ではなく文字列として扱われます。データがデータになっていないのです。
+    \item 変数2の列は「非常にそう思う」という言葉の回答と，数字が入っています。1つの列の中に複数の種類のデータが含まれるので分析できません(文字と数字の集計ができない。ちなみにこの場合は文字変数として扱われます)。
+    \item 7行目に平均とありますが，データの平均はデータから計算できる量なので，Rで算出するものです。データの中に計算結果を入れておくべきではありません。
+    \item I列6行目，D大学の杉田さんに関する変数3の箇所が空欄です。これはデータが入手できなかったところかもしれませんが，これは欠損値であることを明示すべきです。
+    \item 「東京の大学」と「神奈川の大学」という複数のシートがあります。データファイルとしては1つのシートにすべての情報が入っていなければなりません。同時に分析できるデータなのであれば，一枚のシートにまとめるべきです。
 \end{enumerate}

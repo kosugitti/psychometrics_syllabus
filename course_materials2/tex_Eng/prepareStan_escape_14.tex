@@ -1,0 +1,11 @@
+\begin{description}
+  \item[1行目] 関数を作る宣言。引数として\verb|stanfit|オブジェクトをとります。
+  \item[2行目] 引数で引き受けたオブジェクトを加工していきます。
+  \item[3行目] まずはMCMCサンプルを抜き出します。
+  \item[4行目] data.frame型にします。
+  \item[5行目] tibble型にします。別にしなくてもいいんですが，著者の好みです。
+  \item[6行目] 行番号を表す変数\verb|iter|を作ります。
+  \item[7行目] 変数の中から\verb|lp__|を除外します。
+  \item[8行目] 行番号変数は残して，tidyなデータにし，\verb|MCMCsample|というオブジェクトに保存します
+  \item[9行目] 戻り値として\verb|MCMCsample|を返します。
+\end{description}

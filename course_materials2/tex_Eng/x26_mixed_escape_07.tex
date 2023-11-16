@@ -1,0 +1,14 @@
+\begin{lstlisting}[language=c++,label={code:26_01},caption={混合分布モデルのコード}]
+dat <- read_csv("baseballDecade.csv")
+dat.tmp <- dat %>%
+  filter(position != "投手") %>%
+  filter(Games > 50) %>%
+  filter(team == "Tigers") %>%
+  mutate(salary.log = log(salary)) %>%
+  dplyr::select(salary.log, Name) %>%
+  rowid_to_column("ID")
+
+dataSet <- list(K = 2, L = NROW(dat.tmp), Y = dat.tmp$salary.log)
+model <- cmdstanr::cmdstan_model("latent.stan")
+fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4)
+\end{lstlisting}

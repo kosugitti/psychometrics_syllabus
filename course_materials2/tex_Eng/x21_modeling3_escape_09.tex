@@ -1,0 +1,45 @@
+\begin{lstlisting}[language=C++,label={stan::21_05},caption={群の数を一般化したコード}]
+data{
+  int<lower=0> Lv;              // 水準数
+  int<lower=0> N;               // 各群のサンプルサイズ       
+  array[Lv,N] real X;           // 変数の値
+}
+
+parameters{
+  real gm;                      // 全体平均
+  array[Lv-1] real raw_delta;   // 全体からの差。水準数マイナス1個
+  real<lower=0> sig;            // 誤差の分散
+}
+
+transformed parameters{
+  array[Lv] real delta;           // 差の大きさを作り直す
+  array[Lv] real mu;              // 再構成される群ごとの平均
+  
+  for(i in 1:(Lv-1)){
+    delta[i] = raw_delta[i];    // ほとんどコピー
+  }
+  
+  delta[Lv] = 0 - sum(raw_delta); // 総和が0になるように最後だけ書き換える
+
+  for(i in 1:Lv){
+    mu[i] = gm + delta[i];        // 群ごとに再構成
+  }
+  
+}
+
+model{
+  // Likelihood
+  for(l in 1:Lv){
+      for(i in 1:N){
+          X[l,i] ~ normal(mu[l],sig);
+          
+      }
+  }
+    
+  // Prior
+  gm ~ uniform(0,100);
+  raw_delta ~ normal(0,100);
+  sig ~ cauchy(0,5);
+}
+
+\end{lstlisting}

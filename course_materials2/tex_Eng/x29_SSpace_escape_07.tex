@@ -1,0 +1,8 @@
+\begin{description}
+   \item[1-3行目] データファイルから該当する日程だけ抜き出します。日付を\verb|Date|形式に変換しています。
+   \item[5-11行目] \verb|cmdstanr|でコンパイルしてサンプリングするところです。
+   \item[13行目] \verb|cmdstanr|で作ったファイルを\verb|stanfit|オブジェクトに変換しています。\verb|rstan|パッケージを使っている人はこの行を実行する必要がありません。
+   \item[14-28行目] MCMCサンプルを集計し，\keytermL{EAP}{EAP}，\keytermL{MED}{MED}，\keytermL{MAP}{MAP}推定値，SD，確信区間などを出しています。
+   \item[30-34行目] 推定された状態$\mu_i$を取り出しています。
+   \item[36-43行目] もとのデータと推定値を合体させ，プロットしています。
+\end{description}

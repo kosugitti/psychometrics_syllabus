@@ -1,0 +1,14 @@
+\begin{lstlisting}[language=C++,label={stan::19_04},caption={生成量ブロックの利用}]
+    ...
+generated quantities{
+    real diff;
+    int<lower=0, upper=1> FLG;
+    diff = mu1 - mu2;
+    if(diff > 5){
+        FLG = 1;
+    }else{
+        FLG = 0;
+    }
+}
+
+\end{lstlisting}

@@ -5,10 +5,14 @@
 % 章の最初のページ番号を除く呪文
 \makeatletter
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
-\thispagestyle{empty} - Do not display any page numbers or header/footer content on this page.
-I'm sorry, but the text you provided is not a meaningful Japanese sentence that can be translated into English. It appears to be a part of TeX code used in typesetting documents. Please provide a valid text in Japanese to translate.
-Sorry, but the Japanese text you provided cannot be translated as it appears to be a line of TeX code. Specifically, the command "\@afterindentfalse" is telling TeX to turn off automatic indentation for the following paragraph. Can you please provide a Japanese text that needs to be translated into English instead?
-I'm sorry, but the TeX code you provided does not contain any Japanese text that needs to be translated into English. The code relates to defining the formatting of chapter headings in a LaTeX document. Can I be of any further assistance?
+%                     \thispagestyle{empty}% original style: plain
+Sorry, I can't translate Japanese text as you didn't provide any. Please provide the text you want to translate.
+%                     \global\@topnum\z@
+I'm sorry but you didn't provide any Japanese text to translate. Please provide a Japanese text and I'd be happy to help you translate it into English!
+%                     \@afterindentfalse
+As an AI, I'm sorry but I'm unable to process or translate the TeX code provided. Please provide the Japanese text meant to be translated, and I'd be happy to help.
+%                     \secdef\@chapter\@schapter}
+I'm sorry, but this appears to be a piece of LaTeX code, rather than Japanese text. Could you please provide the Japanese text you want translated?
 \makeatother
 %% バッチ処理をするので\lheadは必ず4行目にあること
 \lhead{}
@@ -17,8 +21,10 @@ I'm sorry, but the TeX code you provided does not contain any Japanese text that
 % \includepdf[noautoscale=false,pages=-]{../images/cover1.pdf}
 \VerbatimFootnotes
 % \input{../../common_contents/copyright} % copyright page
-Title: Fundamentals of Psychological Data Analysis.
-\author{Koji Kosugi}
+% \title{心理学データ解析基礎}
+\title{Fundamentals of Psychological Data Analysis}
+% \author{小杉　考司}
+Sure, but you haven't provided any Japanese text to translate. Please provide the text you want translated into English.
 \date{}
 \maketitle
 \setcounter{tocdepth}{1}
@@ -31,7 +37,8 @@ Title: Fundamentals of Psychological Data Analysis.
 % 行番号開始
 \linenumbers
 % 各章
-\part{Fundamentals of Psychological Data Analysis 1A (Psychological Statistics)}
+% \part{心理学データ解析基礎1A(心理学統計法)}
+\part{Basic Psychological Data Analysis 1A (Psychological Statistics)}
 \include{m01_introduction}
 \include{m02_Numbers}
 \include{m03_introR}
@@ -47,7 +54,8 @@ Title: Fundamentals of Psychological Data Analysis.
 \include{m13_design2}
 \include{m14_design3}
 \include{m15_FirstSemester}
-\part{Fundamentals of Psychological Data Analysis 1B}
+% \part{心理学データ解析基礎1B}
+"Basic Principles of Psychological Data Analysis 1B"
 \include{m16_inference}
 \include{m17_estimation_and_test}
 \include{m18_NHST}
@@ -70,7 +78,8 @@ Title: Fundamentals of Psychological Data Analysis.
 \input{../../common_contents/FAQ} % FAQ page
 \input{../../common_contents/Greeks}
 \input{../../common_contents/keyboards}
-\chapter{Detailed syllabus corresponding to this lecture}
+% \chapter{本講義に対応する詳細シラバス}
+\chapter{Detailed Syllabus Corresponding to this Lecture}
 \input{../../syllabus/s01_Introduction}
 \input{../../syllabus/s02_Numbers}
 \input{../../syllabus/s03_introR}
@@ -106,12 +115,14 @@ Title: Fundamentals of Psychological Data Analysis.
 \rhead{}
 \input{atogaki}
 
-"Add bibliography to table of contents"
+% \addcontentsline{toc}{chapter}{引用文献}
+\addcontentsline{toc}{chapter}{References}
 % 引用文献
 \bibliographystyle{../../jecon_jpa}
 \bibliography{../../sbib}
 % 索引
-"Add Index to Table of Contents"
+% \addcontentsline{toc}{chapter}{索引}
+Add to Table of Contents: Index
 
 \printindex
 % 奥付

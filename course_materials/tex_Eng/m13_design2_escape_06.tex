@@ -1,23 +1,19 @@
-\begin{table}[ht]
-   \centering
-   \caption{Example data with two factors}
-   \begin{tabular}{rrrccr}
-      \hline
-      Overall mean & Temperature effect & Manufacturer effect & Sum of effects & Group mean & Evaluation \\
-      \hline
-      9.75     & -0.25      & +0.75          & \multirow{3}{*} {10.25} & \multirow{3}{*}{12.0} & 13   \\
-      9.75     & -0.25      & +0.75          &                         &                       & 11   \\
-      9.75     & -0.25      & +0.75          &                         &                       & 12   \\ \hline
-      9.75     & -0.25      & -0.75          & \multirow{3}{*} {8.75}  & \multirow{3}{*}{7.0}  & 7    \\
-      9.75     & -0.25      & -0.75          &                         &                       & 6    \\
-      9.75     & -0.25      & -0.75          &                         &                       & 8    \\ \hline
-      9.75     & +0.25      & +0.75          & \multirow{3}{*} {10.75} & \multirow{3}{*}{9.0}  & 9    \\
-      9.75     & +0.25      & +0.75          &                         &                       & 9    \\
-      9.75     & +0.25      & +0.75          &                         &                       & 9    \\ \hline
-      9.75     & +0.25      & -0.75          & \multirow{3}{*} {9.25}  & \multirow{3}{*}{11.0} & 13   \\
-      9.75     & +0.25      & -0.75          &                         &                       & 11   \\
-      9.75     & +0.25      & -0.75          &                         &                       & 9    \\
-      \hline
+\begin{figure}[ht]
+   \begin{tabular}{cc}
+      %---- 最初の図 ---------------------------
+      \begin{minipage}[t]{0.45\hsize}
+         \centering
+         \includegraphics[keepaspectratio,width=0.5\linewidth]{../images/13_design2/slide13_01.png}
+         \caption{主効果の計算は周辺の平均値から計算する}
+         \label{fig::13_03}
+      \end{minipage} &
+      %---- 2番目の図 --------------------------
+      \begin{minipage}[t]{0.45\hsize}
+         \centering
+         \includegraphics[keepaspectratio,width=0.5\linewidth]{../images/13_design2/slide13_02.png}
+         \caption{交互作用はセルの内部で相殺するように}
+         \label{fig::13_04}
+      \end{minipage}
+      %---- 図はここまで ----------------------
    \end{tabular}
-   \label{tbl::13_02}
-\end{table}
+\end{figure}

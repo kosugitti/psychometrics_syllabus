@@ -1,0 +1,331 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+% \chapter{一般化線形モデル}
+\chapter{Generalized Linear Models}
+\VerbatimFootnotes
+\label{x24_linearModel}
+% \section{一般線形モデル}
+\section{General Linear Model}
+% ここまで検定と線形モデルが同じ形をしていることについては，何度か指摘してきました。
+I've pointed out several times so far that the test and linear models have the same shape.
+% 検定モデルは，
+Sorry, you didn't provide any Japanese text to translate. Could you please provide the Japanese text?
+\[ Y_{i} = \beta_0 + \beta_1 X_{i} + \varepsilon_{i}\]
+という形をしており，ここでとくに$X_{i}$が統制群に属するか，実験群に属するかを0/1で表現したものであったことを再確認しておきましょう。たとえば二水準モデルの場合，統制群の場合$X_i=0$ですから，データは$Y_i = \beta_0 + 0\times \beta_1+ \varepsilon_{i} = \beta_0+ \varepsilon_{i}$であり全体平均に誤差がついただけの値になります。実験群の場合は$Y_i = \beta_0 + 1 \times \beta_1 + \varepsilon_{i}= \beta_0 + \beta_1+ \varepsilon_{i}$になりますから，この$\beta_1$の部分が効果の大きさを表しているのでした。
+
+水準数が増えても同じことです。3水準モデルの場合はベクトルを使って表記した方がわかりやすいので，データセットを$\bm{Y}$と表すと，
+\begin{equation}
+   \bm{Y}=\bm{X\beta}+\bm{\varepsilon}
+   \label{chap24eq1}
+\end{equation}
+であり，詳しく書くと
+\[
+   \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}
+   =
+   \begin{pmatrix} 1      & 1      & 0      \\
+                1      & 0      & 1      \\
+                \vdots & \vdots & \vdots \\
+                1      & -1     & -1\end{pmatrix}
+   \begin{pmatrix} \beta_0 \\ \beta_1 \\ \beta_2 \end{pmatrix}
+   +
+   \begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \vdots \\ \varepsilon_n \end{pmatrix}
+\]
+% のようになります\footnote{$\beta_3 = 0 - (\beta_1 + \beta_2)$となっていることに注意。}。ここで行列$\bm{X}$はその群に属しているかどうか(その群の効果が発動するかどうか)を0/1で表している\keyterm{デザイン行列}{でざいんぎょうれつ}{design matrix}であり，有無という状態に一対一対応した\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}の数字です。説明変数が名義尺度水準になっているだけで，これが間隔尺度水準以上の\textbf{量的な}データであれば，\keyterm{回帰分析}{かいきぶんせき}{regression analysis}になるわけです。回帰分析は一般に，
+Please note that it becomes as follows \footnote{Please note that $\beta_3 = 0 - (\beta_1 + \beta_2)$.}. Here, the matrix $\bm{X}$ is a \keyterm{design matrix} that represents whether each group belongs or not (whether the effect of the group is activated) with 0/1, and it's a number that corresponds one-to-one with the presence or absence of a \keytermL{nominal scale level}. Just because the explanatory variables have become nominal scale levels, if this is \textbf{quantitative} data of an interval scale level or more, it becomes \keyterm{regression analysis}. Regression analysis is generally,
+
+\[ Y_i = \beta_0 + \beta_1 X_{i1} +  \beta_2 X_{i2} + \cdots + \varepsilon \]
+あるいはベクトルで書くと
+\begin{equation}
+   \bm{Y}=\bm{X\beta}+\bm{\varepsilon}
+   \label{chap24eq2}
+\end{equation}
+となります。この通り式で書くと\ref{chap24eq1}と\ref{chap24eq2}にはなんら違いがないことがわかりますね。
+
+このように\textbf{要因計画と線形モデルは同じである}，ということを含意して，これをまとめて\keyterm{一般線形モデル}{いっぱんせんけいもでる}{General Linear Model}と言います\footnote{一般，というのは同じだという意味があって，辞書には「私は彼女と同じい罪を犯したも一般だ」といった用法が載っています。}。
+
+\subsection{回帰分析の確率モデル}
+ところで，この一般線形モデルでは誤差が正規分布に従うという仮定を置いていました。すなわち，$\varepsilon \sim N(0,\sigma)$というわけです\footnote{誤差の平均はゼロであるのは，偶然誤差の仮定から必然的です。}。線形モデルの部分，すなわち$\hat{Y}_i = \beta_0 + \beta_1 X_i$のところは確率的ではありませんから，データ全体では次のようになっていることになります。
+
+\[
+   y_i =
+   \tcboxmath[
+      enhanced,         % これは必須
+      frame hidden,     % 枠を消す. これも enhanced 必須
+      colback=cyan!10,
+      overlay={
+            \node[below,blue] at (frame.south) {確率的でないところ};
+         }
+   ]{
+      \beta_0 \quad +\quad \beta_1 x_i
+   }
+   +
+   \tcboxmath[
+      enhanced,         % これは必須
+      frame hidden,     % 枠を消す. これも enhanced 必須
+      colback=red!10,
+      overlay={
+            \node[below,red] at (frame.south) {確率的};
+         }
+   ]{
+      e_i
+   }
+\]
+
+\vspace{0.5cm}
+
+% 誤差$e_i$は平均0を中心に確率的に散らばりますが，その前のところは確率的ではありませんので，これを組み合わせた式全体としては，最後に確率的な散らばりがひっついているような形になります。数式ではありませんが，イメージでいうと次のような形でしょうか。
+The error $e_i$ is scattered probabilistically around a mean of 0, but the previous part is not probabilistic, so the entire formula that combines these will look like something with a probabilistic scatter attached at the end. It's not a mathematical expression, but perhaps the image looks something like this.
+\input{x24_linearModel_escape_01}
+
+% このことから，モデル全体の確率的挙動は，
+From this, the probabilistic behavior of the entire model is,
+\input{x24_linearModel_escape_02}
+% ということになります。これが正規分布の確率モデル的表現です。一般線形モデルですから，説明変数$X$が連続的でも離散的でも同じモデルです。また，この正規分布は平均とSDでその形状が定められるのでした。平均は分布の位置を表すので，別名\keyterm{位置母数}{いちぼすう}{location parameter}といいます。ちなみにSDのことは別名\keyterm{尺度母数}{しゃくどぼすう}{scale parameter}と呼ぶことがあります。一般線形モデルは平均的な位置を線形で予測して，データはそれに付随した誤差が幅$\sigma$でぶれる，と考えます。そういう意味では，図\ref{fig:24_08}のように，回帰線にそって誤差分布があり，結果として実現値が得られているイメージ図のほうがわかりやすいかもしれません。
+It turns out that this is a statistical representation of the normal distribution. Since it's a general linear model, the explanatory variable $X$ can be either continuous or discrete, it's the same model. Also, this normal distribution determined by the mean and standard deviation (SD). The mean represents the location of the distribution, hence it is also known under the term 'location parameter'. The SD, incidentally, can also be called the 'scale parameter'. The general linear model predicts the average location linearly, and it's assumed that the data varies within an error range of $\sigma$. In that sense, diagram \ref{fig:24_08} might be easier to understand. It imagines that there's an error distribution along the regression line, and as a result, actual values are obtained.
+
+\input{x24_linearModel_escape_03}
+
+
+% これを確認した上で，では回帰分析をベイズ的に推定するコードを書いてみましょう。設計図も一応準備しておきます。
+After confirming this, let's try writing a code to estimate regression analysis in a Bayesian way. We will also prepare a blueprint just in case.
+% 図\ref{fig:24_01}では，$\mu$が$\beta_0+\beta_1 X_i$で作られているので，矢印のところは$\sim$ではなく$=$になっています。また，未知数$\beta_0,\beta_1$については平均0，SD100のとても幅の広い正規分布を置いています。一様分布でもいいのですが，原理的に$\pm \infty$までの幅があり，どこか1つの値に収束するだろう＝単峰性があるだろう，ということで正規分布を選んでいます。誤差SD$\sigma$については，半コーシー分布\footnote{正の値しか取らないように，コーシー分布を0のところで半分に折り畳んだ形にした分布です。Stan上では\verb|lower=0|の制限をかけることで正の範囲からしかサンプリングしない，ということで表現します。}
+In Figure \ref{fig:24_01}, $\mu$ is made up of $\beta_0+\beta_1 X_i$, so the place where the arrow points is denoted by $=$, not $\sim$. For the unknowns $\beta_0,\beta_1$, we have set a very wide normal distribution with a mean of 0 and a standard deviation of 100. A uniform distribution would also be fine, but in principle, the width is up to $\pm \infty$ and it is likely to converge to one value = there is likely to be unimodality. In other words, we have chosen a normal distribution. For the error SD$\sigma$, we use a half-Cauchy distribution\footnote{This is a distribution that has been folded in half at 0 of the Cauchy distribution, to only take positive values. On Stan, we express this by setting a \verb|lower=0| restriction to only sample from the positive range.}.
+\input{x24_linearModel_escape_04}
+% 設計図をそのままコードに起こせば一丁上がりです。事後予測分布も生成するコードを書いてみました。
+If you transcribe the design exactly as is into code, it will be done. I also tried writing code to generate a posterior predictive distribution.
+\input{x24_linearModel_escape_05}
+
+% これがどのような挙動をするのか，実際のデータセットを使って検証してみましょう。
+Let's verify how this behaves using an actual dataset.
+% サンプルデータとして，\texttt{baseball2020.csv}を使います。このデータセットはプロ野球データFreak\footnote{\url{https://baseball-data.com/}}さんから取ってきたものです\footnote{データセットはシラバスのサイトでも提供していますし，著者の個人サイト(\url{https://kosugitti.github.io/kosugitti10/index.html})にはスクレイピングのコードを公開しています。}。
+We will use \texttt{baseball2020.csv} as sample data. This dataset was taken from Pro Baseball Data Freak\footnote{\url{https://baseball-data.com/}}\footnote{The dataset is also available on the syllabus site, and the code for scraping is posted on the author's personal site (\url{https://kosugitti.github.io/kosugitti10/index.html}).}.
+
+% この野球データセットにはさまざまな情報が含まれていますが，身長と体重のデータだけ取り出して回帰分析をしてみましょう。身長を体重から予測することにします。ここで身長は正規分布に従っていると考えられますから，一般線形モデルが適切ですね。データの散布図を書いて，線形関係にありそうかどうか確認しておきます(図\ref{fig:24_02}。
+This baseball dataset contains various information, but let's extract only the data on height and weight and perform a regression analysis. We will predict height from weight. Here, height is considered to follow a normal distribution, so a general linear model is appropriate. Let's draw a scatter plot of the data to confirm whether there seems to be a linear relationship (Figure \ref{fig:24_02}).
+
+\input{x24_linearModel_escape_06}
+
+% そこそこ相関がありそうですね。では回帰モデルを当てはめてみましょう。
+It seems like there is some correlation. Let's try fitting a regression model then.
+\input{x24_linearModel_escape_07}
+% \paragraph{コード解説}
+\paragraph{Code Explanation}
+\input{x24_linearModel_escape_08}
+
+% 今回の分析結果を単純に表示するなら，次のようになります(出力\ref{SCcmd:out24_01})。
+If we simply display the results of the analysis this time, it would look like this (Output \ref{SCcmd: out24_01}).
+\input{x24_linearModel_escape_09}
+% これまで習ってきた\keyterm{最尤法}{さいゆうほう}{Maximum Likelihood method}の結果と出力の違いを比較しましょう(出力\ref{RS:out24_02})。
+Let's compare the difference between the results of the Maximum Likelihood method we've learned so far and the output (Output Ref: RS:out24_02).
+\input{x24_linearModel_escape_10}
+% 最尤法では，切片が144.45986，傾きが0.42775という\keytermL{点推定}{てんすいてい}だけが表示される形になっていますが，MCMCを使ったベイズ推定では切片の平均(\keytermL{EAP推定値}{EAP})が144.43，中央値(\keytermL{MED推定値}{MED})が144.42，95\%確信区間が[141.97,146.83]となっています。同じく傾きの平均が0.43，中央値も0.43，95\%区間が[0.40,0.46]となっています。結果が分布として得られますから，初めから幅を持った推定になっていることが確認できます。
+In the maximum likelihood method, only the point estimation, which shows that the intercept is 144.45986 and the slope is 0.42775, is displayed. However, in Bayesian estimation using MCMC, the average (EAP estimate) of the intercept is 144.43, the median (MED estimate) is 144.42, and the 95% confidence interval is [141.97,146.83]. Likewise, the average of the slope is 0.43, the median is also 0.43, and the 95% interval is [0.40,0.46]. Since the result is obtained as a distribution, you can confirm that the estimation has a range from the beginning.
+
+% 事後予測分布(図\ref{fig:24_03})をみると，いくつか予測幅から外れているデータ点はありますが，概ね回帰線の範囲に捉えられており，線形モデルの当てはまりがそこそこ良いことが確認できます。
+Looking at the posterior predictive distribution (Figure \ref{fig:24_03}), although there are some data points that fall outside the predictive interval, they are generally captured within the range of the regression line, and we can confirm that the fit of the linear model is reasonably good.
+% 事後予測分布が元データとよく当てはまるということは，データ生成メカニズムとして正規分布や線形モデルを想定したわれわれのモデルが悪くないんだ，と解釈していいでしょう。
+The fact that the posterior predictive distribution fits well with the original data means that our model, which assumes a normal distribution and linear model as the data generation mechanism, is not bad, and we can interpret it as such.
+\input{x24_linearModel_escape_11}
+
+% \section{データに合わせた確率分布}
+\section{Probability Distribution Tailored to Data}
+% 今回は身長が従属変数，体重が独立変数でした。ここで独立変数を\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}のもの，すなわち離散変数だと考えると要因計画のようになります。Stanのコードは書き換える必要がありますが，線形モデルとして表現できるところは同じです\footnote{実際，Rの最尤推定関数の\verb|lm|は，説明変数が\verb|factor|型であれば関数を書き換えることなく，分散分析のような結果出力をしてくれるのでした。}。
+In this instance, height was the dependent variable and weight was the independent variable. If we consider the independent variable to be something of a nominal scale level, that is, a discrete variable, it would be similar to a factorial design. The Stan code will need to be rewritten, but it can still be represented as a linear model just like before\footnote{In fact, R's maximum likelihood estimation function, \verb|lm|, can output results like an analysis of variance without rewriting the function if the explanatory variable is a \verb|factor| type.}.
+
+% では\textbf{従属変数}を離散変数に置き換えたらどうなるでしょうか。
+What would happen if we replace the \textbf{dependent variable} with a discrete variable?
+% 野球のデータの例で考えます。野球は野手と投手に大きく分けることができます。投手は野手と違って毎日登板するということはありませんから，当然のことながら出場試合数は野手と比べ物になりません\footnote{メジャーリーガーの大谷選手は特殊すぎるケースです。投手は一試合で100球程度投げますが，当然徐々に握力が弱くなり，身体的な疲労も翌日，翌々日まで残り続けるものなのだそうです。彼は投げた次の日にDHで打席に立ちますから，とんでもないことです。}。
+Let's consider an example of baseball data. Baseball can be broadly divided into fielders and pitchers. Unlike fielders, pitchers don't play every day, so naturally, the number of games they play is incomparable to fielders. Shohei Ohtani in the major league is an exceptional case. A pitcher throws around 100 pitches per game, but naturally, their grip strength gradually weakens and physical fatigue continues until the next day and the day after. It's incredible that he stands in the batter's box as a designated hitter the day after he pitches.
+% 図\ref{fig:24_04}には，年収5000万円を超える一流の選手たちに限定し，試合数で野手か投手かを予測するような分析ができないかと，回帰直線を引いたものを示してあります。
+Figure \ref{fig:24_04} shows a regression line drawn to predict whether players are fielders or pitchers based on the number of games, focusing only on top-tier players who earn over 50 million yen.
+\input{x24_linearModel_escape_12}
+% この直線はどうみても，データにうまく当てはまっているとは言えませんね。
+No matter how you look at this line, you can't say it fits the data well.
+
+% 従属変数が離散的，とくに今回は野手か投手か，という二択の問題になっていますから，データとしては0/1しかないわけです。この二種類の数字が正規分布から出てくると考えるのは，流石におかしなことになってしまうでしょう。
+The dependent variable is discrete, specifically in this case it's a binary choice of whether a player is a fielder or a pitcher, so the data only contains 0/1. Considering these two types of numbers come out from a normal distribution would be quite absurd.
+
+% そこで前回学んだ\keytermL{離散確率分布}{りさんかくりつぶんぷ}の登場です。データが二値しか取らないというのは，コインの表と裏のようなものですから\keyterm{ベルヌーイ分布}{べるぬーいぶんぷ}{Bernoulli Distribution}に従うと考えるのが自然です。ベルヌーイ分布はパラメータ$\theta$で表(1)が，$1-\theta$で裏(0)がでるというように，パラメータが1つで，このパラメータがそもそも「表が出る確率」を表しているわけです。
+Here's where the discrete probability distribution we learned about last time comes in. If the data only takes two values, it's natural to think it follows a Bernoulli Distribution, like the heads and tails of a coin. The Bernoulli distribution is one where the parameter θ indicates "heads" (1), and 1-θ indicates "tails" (0), so there's only one parameter, which basically represents the "probability of heads".
+% 今回は野手であれば1，投手であれば0というように考えることにしましょう。野手か投手かを表す変数で，野手になる確率$\theta$が試合数によって変わる(予測できる)ということを考えるのです。
+This time, let's think of fielders as 1 and pitchers as 0. We are considering the probability $\theta$ of becoming a field player, a variable that signifies whether one is a field player or a pitcher, which can vary (and is predictable) depending on the number of games.
+% この予測の仕方については，「試合数が多いのは野手である確率が高い」という線形的な関係が考えられますから，$\theta_i = \beta_0 + \beta_1 X_i$という式を考えることにします。ここで$X_i$は試合数を表す変数ですね。
+Regarding this prediction method, because we can consider a linear relationship such as "The more games played, the higher probability of being a field player", we will consider the formula $\theta_i = \beta_0 + \beta_1 X_i$. Here, $X_i$ is a variable representing the number of games.
+
+% ところがここで，注意すべきことが1つあります。$\theta$は野手になる(表が出る)確率ですから，0から1の範囲の数字しか取れません。プロ野球の試合数は1試合から140試合ぐらいありますので，この数字をそのまま伸ばしたり($\beta_1$倍)ずらしたり($\beta_0$を加える)しても，0から1の範囲に収めるのは難しそうです。しかも上手くその範囲に収めたとしても，そもそも直線なのでどうあってもデータと合致しないことになるでしょう。そこで，この数字をロジスティック関数で変換することを考えます。
+However, there is one important thing to note here. $\theta$ is the probability of becoming an infielder i.e., the probability of getting a 'Heads' so it can only take numbers within the range of 0 to 1. The number of professional baseball games ranges from one game to about 140 games, so even if we extend or shift this number directly (multiplied by $\beta_1$) or add $\beta_0$, it seems difficult to fit the result in the range of 0 to 1. Moreover, even if we successfully fit it into this range, since it's a linear line after all, it will not match with the data anyway. Therefore, we can consider transforming this number with the logistic function.
+
+
+% ロジスティック関数とは次のような式で表されるものです。
+The logistic function is represented by the following formula.
+\[ y = \frac{1}{1+\exp(-x)} \]
+ここで$\exp(x)=e^x$であり，正規分布の式の中にも出てくる関数です\footnote{$e$はネイピア数とも呼ばれる自然対数の底，約2.7182...の実数です。}。関数の形は図にするとよくわかります(図\ref{fig:24_05})\footnote{すでに第\ref{x04_IRT}講で出てきた関数ですが，あの時は累積正規分布に近似する関数として紹介していました。今回は$\pm \infty$の範囲の数字を0から1に変換するものとして改めて紹介しています。なお，今回は累積正規分布への近似を目的としているわけではないので，係数1.7は外してあります。}。
+
+\begin{figure}[ht]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/24_linearModel/Rplot24_04.png}
+      \caption{ロジスティック関数}
+      \label{fig:24_05}
+   \end{center}
+\end{figure}
+
+このS字カーブは，xがどのように変わってもyは必ず0から1の範囲に入りますので，今回の目的にもってこいです。つまり，今回「野手か投手か」を判断する結果変数$Y_i$は，次のような分布に従っていると考えます。
+
+\[ Y_i \sim Bernoulli(\theta) = Bernoulli(logistic(\beta_0 + \beta_1 X_i)) \]
+
+% これを使ってモデルを書いてみましょう。まずは設計図です(図\ref{fig:24_06})
+Let's try writing a model using this. First, here's the blueprint (Figure \ref{fig:24_06}).
+\input{x24_linearModel_escape_13}
+
+% ここまで書ければ，Stanコードに起こすことも簡単ですね。Stanには\verb|inv_logit|という関数がありますのでそれを使うと良いでしょう。
+If you can write up to this point, it's also easy to convert it into Stan code. Stan has a function called \verb|inv_logit|, so it would be good to use that.
+\input{x24_linearModel_escape_14}
+
+% Code\ref{stan::24_02}がこのモデルになります。ベルヌーイ分布を使っているのでベルヌーイ回帰と読んでもいいのですが，一般には\keyterm{ロジスティック回帰}{ろじすてぃっくかいき}{logistic regression}と呼ばれています。
+Code \ref{stan::24_02} becomes this model. Although it can be read as a Bernoulli regression because it uses a Bernoulli distribution, it is generally called logistic regression.
+% これに適切なデータセットを与えて(Rコード\ref{code:24_02})，推定した結果が出力\ref{SCrstan:out24_03}になります。
+When you provide an appropriate dataset to this (R code \ref{code:24_02}), the estimated result will be output \ref{SCrstan:out24_03}.
+
+\input{x24_linearModel_escape_15}
+% \paragraph{コード解説}
+\paragraph{Code Explanation}
+\input{x24_linearModel_escape_16}
+
+\input{x24_linearModel_escape_17}
+% 出力結果はグラフにした方がわかりやすいでしょう。図\ref{fig:24_06b}にあるように，上下の黒い点がデータ点，真ん中を通るS字カーブが回帰線になります。
+The output results would be easier to understand if presented in a graph. As shown in Figure \ref{fig:24_06b}, the black dots at the top and bottom represent data points, and the S-shaped curve going through the middle represents the regression line.
+% 回帰線は\keytermL{MAP推定値}{MAPすいていち}で描きましたが，50\%，95\%の幅であり得る可能性の範囲についても薄く書き足しています。これを見ると，ちょうど50試合目ぐらいの時にカーブがY軸0.5，すなわち表裏半々の点を通りますから，50試合以上出ている人はより野手と判断されがち，と考えれば良いでしょう。
+The regression line was drawn using the MAP estimate, but I have also lightly added the possible range in widths of 50% and 95%. Looking at this, around the 50th game mark, the curve crosses the Y-axis at 0.5, which means half and half of front and back. So, you might think that people who have played more than 50 games are more likely to be judged as fielder.
+\input{x24_linearModel_escape_18}
+
+% さて，このように従属変数が離散的である場合に，離散確率分布をつかって線形モデルを当てはめることができるのをみてきました。
+Now, we have seen that when the dependent variable is discrete, we can fit a linear model using a discrete probability distribution.
+% 図\ref{fig:24_06b}に示されているように，出力される関数はS字のカーブ型をしていますが，予測モデルとしては\textbf{線形}です。今回$\theta_i = \beta_0 + \beta_1 X_i$としたように，$\theta$は線形モデルであり，予測変数$X_i$が線型結合されているので，これも広い意味で線形モデルになるわけです。
+As shown in Figure \ref{fig:24_06b}, the output function has an S-curve shape, but it is a \textbf{linear} prediction model. As stated this time, $\theta_i = \beta_0 + \beta_1 X_i$, $\theta$ is a linear model, and the predictor variable $X_i$ is linearly combined, so this is also a linear model in a broad sense.
+% 線型結合したものを，そのまま確率分布に入れることができなかったので，変数を変換してモデルの中に組み込むという工夫が必要でした。この変換関数のことをとくに\keyterm{リンク関数}{りんくかんすう}{Link function}と言います。線型結合とパラメータの形をつなげる(linkする)関数だからです。
+It was not possible to directly put the linear combinations into the probability distribution, so it was necessary to convert the variables and incorporate them into the model. This conversion function is specifically called a \keyterm{link function}. This is because its a function that links (connects) the linear combination and the form of the parameters.
+
+% このように，リンク関数をかませてさまざまな確率分布に対応させる線形モデルを総称して，\keyterm{一般化線形モデル}{いっぱんかせんけいもでる}{Genrealized Linear Model;GLM}といいます。この章の初めに出てきた\keytermL{一般線形モデル}{いっぱんせんけいもでる}とは違いますので注意してくださいね。日本語では「化」があるかないか，英語では```{\itshape --ed}がつくかどうかだけの違いですが，一般線形モデルが正規分布一般だったものに対し，それ以外の確率分布にまで一般化したのがこちらです。
+Thus, linear models that correspond to various probability distributions with a link function are collectively known as the Generalized Linear Model (GLM). Please note that this is different from the General Linear Model that was mentioned at the beginning of this chapter. In Japanese, the difference is whether there is a "ka" (化) or not, and in English, whether there is "--ed" or not. While the General Linear Model is just for the normal distribution, this is the generalization to other probability distributions.
+
+% ちなみに今回はベイズ推定で一般化線形モデルを実践してみましたが，最尤法による推定も可能です。可能ではあるのですが，ベイズ推定の方が拡張性が高いこと，確率モデルとしてまとめて理解しやすいと筆者は考えています。
+By the way, this time we tried practicing a generalized linear model with Bayesian estimation, but it is also possible to estimate using the maximum likelihood method. Although it is possible, the author believes that Bayesian estimation is more scalable and easier to understand as a probability model.
+% \citet{Kubo2012}は線形モデルの発展段階を推定法とともに，図\ref{fig:24_07}のように表しています。一般線形モデルは\keytermL{最小二乗法}{さいしょうにじょうほう}による推定でも十分だったのですが，確率モデルとして考えたときに\keytermL{最尤法}{さいゆうほう}による推定が必要になってきました。さらに複数の分布を混ぜるような\keyterm{一般化線形混合モデル}{いっぱんかせんけいこんごうもでる}{Generalized Mixed Linear Model}にまで発展すると，最尤法でカバーしきれないところが出てきました(網掛けが部分的になっていることでそれを表しています)。分布の上に分布がくるような，幾重にも層が厚くなるモデルのことを階層モデルと言いますが，そうなってくるともはや最尤法では推定できません。ここで「形はわからなくても乱数は発生させられる」という\keytermL{MCMC}{MCMC}の方法が出てきます。MCMCはすでに説明した通り($\to$Pp.\pageref{MCMC})，乱数による事後分布の近似法です。この方法はベイズ統計学に基づいた方法ですから，\keytermL{ベイズ推定}{べいずすいてい}ともいわれるわけです。ベイズ推定は最尤推定の結果と解釈の仕方が少し異なりますから，そこに注意する必要がありますが，ほぼ無敵の推定法と言ってもいいでしょう。
+\citet{Kubo2012} illustrates the developmental stages of linear models along with their estimation methods, as shown in Figure \ref{fig:24_07}. Although it was sufficient to estimate the general linear model by the method of least squares, the maximum likelihood method became necessary when considering it as a probabilistic model. Further, when it develops into a generalized mixed linear model, which mixes multiple distributions, there are areas that cannot be covered by the maximum likelihood method (indicated by partial shading). When we say hierarchical model, it refers to models where the layers of distributions are piled up one over another, which can no longer be estimated by the maximum likelihood method. Here, the method of Markov Chain Monte Carlo (MCMC) comes into play, which allows you to generate random numbers even if you do not know the form of the distribution. MCMC, as already explained (→Pp.\pageref{MCMC}), is a method to approximate the posterior distribution by random numbers. Since this method is based on Bayesian statistics, it is also called Bayesian estimation. Bayesian estimation differs slightly in its results and interpretations from maximum likelihood estimation, so be careful about that point. However, you could say it's almost an unbeatable method of estimation.
+
+\input{x24_linearModel_escape_19}
+
+
+
+% \section{リンク関数とパラメータの解釈}
+\section{Interpretation of Link Functions and Parameters}
+% さてここでもう一度，先ほどのロジスティック回帰分析の結果をみてみましょう。EAP推定値でいくと，$\beta_0 = -2.77,\beta_1=0.05$でしたから，$\hat{Y}_i = -2.77 + 0.05X_i$という関係だったことがわかります。
+Let's take another look at the results of the logistic regression analysis mentioned earlier. Using the EAP estimate, $\beta_0 = -2.77,\beta_1=0.05$, so we find the relation $\hat{Y}_i = -2.77 + 0.05X_i$.
+
+% ところで一般線形モデルのうちは，この傾きは説明変数が一単位増えた時に，従属変数がどれぐらい増えるのかを表す数字でした。これが正規分布に従うモデルであれば，出場試合数が一試合増えれば野手に0.05ポイント近づく，という考え方をするのでした。しかし今回は事情が違います。この$\hat{Y}_i$はこのあと，$\frac{1}{1+exp(-\theta_i)}$と変換されてしまいますので，$X_i$が$X_i+1$になった値も変換されて確率の数字に変わっていくはずです。
+By the way, in the general linear model, this slope was a number representing how much the dependent variable increased when the explanatory variable increased by one unit. If this is a model that follows a normal distribution, the idea was that if the number of games played increased by one game, it would get 0.05 points closer to the batter. However, the situation is different this time. This $\hat{Y}_i$ will be transformed into $\frac{1}{1+exp(-\theta_i)}$, so the value when $X_i$ becomes $X_i+1$ should also be transformed into a probability number.
+% ここで少し，数式的な展開を追って何が起こっているか考えてみましょう。
+Let's think about what's happening here by following a little mathematical expansion.
+
+% まずは\keytermL{ロジスティック関数}{ろじすてぃっくかんすう}の表記を，少し改めます。同じことなのですが，$\exp(x) = e^x$に書き改めて
+First, let's revise the notation for the \keytermL{logistic function}. This might look different, but we're merely rewriting $\exp(x) = e^x$.
+\[ \frac{1}{1+\exp(-x)} = \frac{1}{1+e^{-x}} = \frac{1}{1+\frac{1}{e^x}} \]
+とします\footnote{指数計算のルールで，マイナス乗は逆数になります。$a^{-n}=\frac{1}{a}$です。}。
+ここで最後の形に$\frac{e^x}{e^x}$をかけまして，
+\[ \frac{1}{1+\frac{1}{e^x}}=\frac{e^x}{e^x+1} \]
+% としましょう。さらに，$\hat{Y} = \beta_0 + \beta_1 X$で，ベルヌーイ分布のパラメータ$\theta$はこれによって変換されたものを代入することになりますから，
+Okay. The text translates to:
+
+"Let's proceed. Further, in $\hat{Y} = \beta_0 + \beta_1 X$, the parameter $\theta$ of the Bernoulli distribution will be substituted by the one transformed from this."
+\input{x24_linearModel_escape_20}
+% という関係が成り立ちます\footnote{最後の一行は，指数の反対が対数で，$\log_e^x=a$は$e^a=x$をあらわしていますから，指数を取るために両辺に$\log$をかけています。}。つまり，
+This relation is established\footnote {The last line is, since the exponent's opposite is the logarithm, and $\log_e^x=a$ indicates $e^a=x$, we are multiplying both sides by $\log$ to obtain the exponent. }. In other words,
+\[ \log\left(\frac{\theta}{1-\theta}\right) =  \beta_0 + \beta_1 X \]
+ということですね。
+
+この式の右辺は線形モデルです。左辺は\keyterm{ロジット関数}{ろじっとかんすう}{logit function}と呼ばれるものです。線形モデルはロジット関数を意味し，ベルヌーイ分布のパラメータ$\theta$は確率を表す数字でした。ですから係数の解釈は，線形モデルの方で一単位増えたことは，ロジット関数が一単位増えたことを意味するわけです。ちょっとややこしいですが，線形モデルを確率のパラメータにするには，ロジット関数の逆をすることですから，\textbf{ロジスティック関数は逆ロジット関数}とも呼ばれています。そう言えば，Stanの関数も\verb|inv_logit|でしたね\footnote{\texttt{inv}はinverse,「逆」の意味です。}。
+\begin{itemize}
+   \item 確率の数字$\to$線形モデルにつなげる；ロジット関数；$\log \left( \frac{\theta}{1-\theta} \right) $
+   \item 線形モデル$\to$確率の範囲に収める；ロジスティック関数あるいは逆ロジット関数；$\frac{1}{1+exp(-x)}$
+\end{itemize}
+
+また，線形モデルが表していたのは確率の比ですが，それの対数($\log$)をとったものでした。
+対数の中身は確率$\theta$と確率$1-\theta$の比率ですから，裏が出る確率に比べて何倍表が出やすいか，といったことを表しているのです。これをとくに\keyterm{オッズ}{おっず}{Odds}と言います。賭け事の勝率などを表す言葉ですね。オッズの対数がロジットです。ロジットが正の数であれば分子の方が分母より大きい，つまりより表が出やすいことになり，負の数であれば分母の方がより大きい，つまり裏の方が出やすいということになります。
+
+さて話は戻って，線形モデルで説明変数が一単位増えた時のことを考えてみましょう。わかりやすくするために，増える前を$A$，増えた後を$B$とします。
+\[ A = \frac{1}{1+exp(-(\beta_0 + \beta_1X)} \]
+\[ B = \frac{1}{1+exp(-(\beta_0 + \beta_1(X+1))} \]
+これはロジット関数を使って元に戻せますから，
+\[ \log\left( \frac{A}{1-A} \right) = \beta_0 + \beta_1 X \]
+\[ \log\left(\frac{B}{1-B} \right)= \beta_0 + \beta_1 (X+1)  = \beta_0 + \beta_1X + \beta_1\]
+ここで傾き$\beta_1$のことを考えたいのですが，$\beta_1$はこの式の関係から，
+\[ \beta_1 = \log\left(\frac{B}{1-B} \right) - \log\left( \frac{A}{1-A} \right) \]
+% ということになりますね。ここで対数の差分は割り算ですから\footnote{$\log_a \frac{M}{N} = \log_a M-\log_a N$です。たとえば$8=2^3,16=2^4$ですから，$\log_2{16}{8} = \log_2 2 = 1$は$\log_2 16 - \log_2 8 = 4 - 3 = 1$と同じことです。}，
+That's what it comes down to. Here, the difference of logs is division, therefore\footnote{$\log_a \frac{M}{N} = \log_a M-\log_a N$. For example, $8=2^3,16=2^4$, so $\log_2{16}{8} = \log_2 2 = 1$ is equivalent to $\log_2 16 - \log_2 8 = 4 - 3 = 1$.},
+\[ \beta_1 = \log\left( \frac{ \frac{B}{1-B} }{ \frac{A}{1-A} } \right) \]
+となります。右辺が非常にややこしい形をしていますので，$\log$を外してあげましょう。
+\[ \exp(\beta_1) =  \frac{B}{1-B}  \Big/  \frac{A}{1-A}  \]
+% 右辺はAのオッズに対するBのオッズになりました。オッズの比なのでこれを\keyterm{オッズ比}{おっずひ}{Odds ratio}と言います。左辺はロジスティック回帰分析の係数を\verb|exp|関数に入れたものですが，これが説明変数の増加前のオッズと増加後のオッズの比率です。つまり一単位増加した時にどれぐらい生じやすくなるかの比の上昇率が，$\exp(\beta_1)$だというわけです。
+The right side has become the odds of B against A. Since this is a ratio of odds, we call it an "odds ratio". The left side is what happens when you put the coefficients of logistic regression analysis into the exp function, but this is the ratio of the odds before and after the increase in the explanatory variable. In other words, the increase rate of the ratio of how likely it is to occur when it increases by one unit is $\exp(\beta_1)$.
+
+% ややこしいですね！具体的な数字で考えてみますと，今回$\beta_1=0.05$だったわけですから，$\exp(0.05)=1.051271$です。つまり，一試合多く出ている選手はそうでない選手に比べて，1.05倍野手と判断される確率が高い，ということになります。
+This is tricky, isn't it? If you think about it in specific numbers, this time $\beta_1=0.05$, so $\exp(0.05)=1.051271$. In other words, a player who's played in more games has a 1.05 times higher probability of being judged as a fielder compared to a player who hasn't.
+
+% \section{まとめ}
+\section{Conclusion}
+% 今日の話を簡単にまとめておきます。
+I will summarize today's discussion briefly.
+\input{x24_linearModel_escape_21}
+% 一般化線形モデルを導入したことで，要するにリンク関数がわかっていれば色々な確率分布が使えるんだな，ということが見えてきたのではないでしょうか。
+By introducing the generalized linear model, in essence, as long as we understand the link function, we see that we can use various probability distributions, don't we?
+
+% これは従属変数の形に関わることですので，心理学的実践の上でも注意が必要です。
+This relates to the form of the dependent variable, so caution is needed in psychological practice as well.
+% たとえば「記憶のトレーニングをすると思い出せる単語の数が増える」といった研究をする時，従属変数は「思い出した単語の数」になると思いますが，実験群と統制群とでこれを\keytermL{t検定}{tけんてい}する，というのが間違っていることはもうお分かりですね。「思い出した数」のようにカウントできる数字はマイナスになることはなく，0以上の正の整数しか取りません。これは正規分布ではなく，\keyterm{ポアソン分布}{ぽあそんぶんぷ}{poisson distribution}に従うことになります。
+For example, when conducting research such as "memory training increases the number of words one can recall", the dependent variable would be the "number of words recalled", you understand already that it's incorrect to perform a t-test between the experimental and control groups for this, don't you? Numbers that you can count, like the "number recalled", can never be negative, they only take positive integers that are 0 or above. This follows not a normal distribution, but a Poisson distribution.
+% またたとえば「記憶のトレーニングをすると，50の単語リストのうち思い出せる単語の割合が増える」と言った研究をする時，従属変数は今度は「思い出せた率」ということになると思います。これを実験群と統制群でt検定する，というのが間違っているのも明らかですね。「思い出せた率」という比率のデータは0から1の範囲の実数で，正規分布ではないからです。これは前回やりました\keyterm{二項分布}{にこうぶんぷ}{binomial distribution}に従うことになります。
+For example, when conducting research that suggests "if you train your memory, the proportion of words you can remember from a list of 50 words will increase," I think the dependent variable this time would be the "recall rate." It is clear that it is wrong to do a t-test on the experimental group and control group for this. This is because the data for the "recall rate," a ratio, is a real number in the range of 0 to 1 and does not follow a normal distribution. It follows the binomial distribution that we learned about last time.
+
+% ポアソン分布に従うような変数の場合は，リンク関数として対数関数$\log$が用いられます(逆リンク関数は指数関数$\exp$)。また二項分布に従う変数の場合はリンク関数としてロジット関数(逆リンク関数はロジスティック関数)を用います。
+In the case of a variable that follows a Poisson distribution, the logarithmic function $\log$ is used as the link function (the inverse link function is the exponential function $\exp$). For variables that follow a binomial distribution, the logit function is used as the link function (the inverse link function is the logistic function).
+% 何気ない「度数」「比率」のようなデータを分析しようという時に，とりあえず数字が得られているから正規分布でいいや，と考えるのは間違いです。データの性質に応じたモデルを描くように心がけましょう。
+When you're trying to analyze seemingly casual data like "degrees" and "ratios", it's a mistake to think that you can just use a normal distribution because you have some numbers. Let's make an effort to construct models that match the nature of the data.
+
+% \section{課題}
+\section{Assignment}
+% 野球選手のデータの中で，とくに野手に限って考えます。
+Within the data of baseball players, especially considering only fielders.
+
+% 年俸の高い選手は，成績が良いから高い契約金が得られるのでしょう。言い換えると，年俸で成績がある程度予測できるかもしれません。
+Highly paid players probably get high contracts because they perform well. In other words, their performance might be somewhat predictable based on their annual salary.
+% そこで打率を従属変数に，年俸を独立変数にした一般化線形モデルを考えたいと思います。
+So, I would like to consider a generalized linear model with a batting average as the dependent variable and annual salary as the independent variable.
+% 選手によっては試合への出場回数が違いますので，打席数$N$で安打数が$K$本である，という情報を用いましょう。これは二項分布に従うモデルということになります。
+Since the number of times a player participates in a game varies, let's use the information that the number of hits is $K$ in $N$ at-bats. This follows a binomial distribution model.
+
+% また，独立変数の年俸(変数\verb|saraly|)は個人差が非常に大きいので，標準化してから使うようにしましょう。
+Also, the independent variable, annual salary (variable \verb|saraly|), has a very large individual difference, so let's use it after standardizing.
+% 元のデータを加工するコードは提供しますので，二項分布に従う一般線形モデルのStanコードを書いてください。
+I will provide the code to process the original data, so please write the Stan code for the general linear model that follows the binomial distribution.
+% また結果から，年俸が1単位上昇するとどういうことが言えるでしょうか。併せて報告してください。
+What can be said about a situation where the annual salary increases by one unit? Please report on this as well.
+
+
+% 考察を導くための計算をするR/Stanコードとともに，回答を提出してください。Rmdファイルでの提出が望ましいですが，メモやコメントアウト，Wordファイル，Googleドキュメントなどでの提出も可とします。なお提出されたコード単体でバグがなく動くことが確認できないものは，未提出扱いになります。コードの書き方などわからないところがあれば，曜日別TAか小杉までメールで連絡し，指導を受けてください。
+Please submit your answers along with the R/Stan code used for calculation to guide the discussion. While it is preferable to submit in Rmd file, you may also submit through notes, comments out, Word files, Google documents, etc. Please note that submissions whose code does not work without bugs in standalone will be treated as not submitted. If you don't understand how to write the code, get in touch by email with the day-specific TA or Kosugi, and receive guidance.
+
+% \paragraph{ヒント}
+As a text translator, I would need to see the Japanese text that you would like to be translated into English. Your command currently did not include any Japanese text.
+% 打席数と安打数とのデータがありますから，打率は計算したら出るように思えます。しかしここでは，打率を直接データとして与えるわけではありません。安打数が打席数に伴う二項分布から出現したものとし，打率は推定するべきパラメータとして考えます。
+Since there is data on both the number of at-bats and the number of hits, it seems that the batting average can be calculated. However, in this case, the batting average is not given directly as data. The number of hits is considered to have emerged from a binomial distribution associated with the number of at-bats and the batting average is considered as a parameter to be estimated.
+% その打率に線形モデルの構造を入れるようにしてください。
+Please incorporate the structure of a linear model into that batting average.
+
+% 打率を安打数と打席数から計算するのは，確率変数の実現値から計算する標本平均を使うことと同じです。つまり，標本平均が母平均の推定値になるという\keytermL{モーメント法}{もーめんとほう}によるアプローチなのです。この方法では，シーズン初日，一打席だけ出場して1本ヒットを打つと，打率100\%だというのと同じです。あるいはその初打席でヒットが出なければ，その人は打率0\%なのでしょうか？本当にそんなことを信じている人はいませんよね。つまり1回の実現値だけで全体の推定値とするには偏りがある，ということはわかっているわけです。モーメント法による推定，あるいは\keytermL{頻度主義統計学}{ひんどしゅぎとうけいがく}による考え方では，無限回の試行の平均値，無限に打席に立ち続けた時に収束していく先の値として確率が定義されています。これに対して\keytermL{ベイズ統計学}{ベイズ統計学}では，確実さの指標として確率を用いますから，初打席の結果がどうであれ「本当はこんなもんじゃないよな」という事前分布との組み合わせで，真の打率を推定することになります。
+Calculating the batting average from the number of hits and the number of at-bats is the same as using the sample average calculated from the actual values of the random variables. In other words, it's an approach using the \keytermL{moment method}{もーめんとほう}, where the sample average becomes the estimated value of the population average. With this method, if you get a hit in your first at-bat on the first day of the season, your batting average is 100%. Or if you don't get a hit in your first at-bat, are you batting .000? Nobody really believes that. In other words, we understand that there is a bias in estimating the overall value from just one occurrence. 
+
+The estimation by the moment method, or the \keytermL{frequentist statistical theory}{ひんどしゅぎとうけいがく}, defines probability as the value that converges as you continue to bat infinitely, or the average of repeated trials. In contrast, in \keytermL{Bayesian statistics}{ベイズ統計学}, probability is used as a measure of certainty, so no matter the outcome of the first at-bat, the true batting average is estimated by combining it with the prior distribution that says "I know it's not really like this".
+\end{document}

@@ -1,35 +1,8 @@
-\begin{figure}[ht]
-   \centering
-   \begin{tikzpicture}
-      \coordinate (A) at (1,1);
-      \coordinate (B) at (2,2);
-      \coordinate (C) at (5,2);
-      \coordinate (D) at (7,1);
-      \coordinate (E) at (1,3);
-      \coordinate (F) at (7,3);
-      \coordinate (G) at (1,5);
-      \coordinate (H) at (7,5);
-      \coordinate (I) at (1,7);
-      \coordinate (J) at (2.5,6.5);
-      \coordinate (K) at (5,6.5);
-      \coordinate (L) at (7,7);
-      \draw[->] (B)--(C);
-      \draw[->] (G)--(E);
-      \draw[->] (H)--(F);
-      \draw[->] (J)--(K);
-      \node (I1) at (0.3,6.5) {$\hat{y}_i  = \beta_0 + \beta_1x_i \ldots$(1)};
-      \node (I2) at (0.54,6)  {${y}_i  = \hat{y}_i + e_i \ldots$(2)};
-      \node (I3) at (0.5,5.5)  {$e_i \sim N(0,\sigma) \ldots$(3)};
-      \node (L1) at (7,6)  {$e_i \sim N(0,\sigma)$};
-      \node (L2) at (7,6.5) {${y}_i  = \beta_0 + \beta_1x_i + e_i$};
-      \node (A1) at (0.5,2.5) {$\hat{y}_i  = \beta_0 + \beta_1x_i$};
-      \node (A2) at (0.5,2) {$y_i \sim N(\hat{y}_i,\sigma)$};
-      \node (D1) at (7,2) {$y_i \sim N(\beta_0 + \beta_1 x_i,\sigma)$};
-      \node (P1) at (3.5,6.5)[above] {Substitute (1) into (2)};
-      \node (P2) at (1,4)[left] {Substitute (3) into (2)};
-      \node (P3) at (7,4)[right] {};
-      \node (P4) at (3.5,2)[below] {};
-   \end{tikzpicture}
-   \caption{Combining the probability model and prediction model}
-   \label{m24_two_way_root}
-\end{figure}
+\begin{lstlisting}[language=c++,label={code:24_01},caption={二つの推定法の比較}]
+# 最小二乗法の推定
+result.LS <- lsfit(x = batter$height, y = batter$weight)
+result.LS$coefficients
+# 最尤推定
+result.LM <- lm(weight ~ height, data = batter)
+result.LM
+\end{lstlisting}
