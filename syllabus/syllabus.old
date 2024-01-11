@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsarticle}
 \usepackage{../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 2.0.15}
+\lhead{version 2.0.16}
 \begin{document}
 
 \title{心理学データ解析基礎1(心理学統計法)\\心理学データ解析1AB\\心理学データ解析基礎2}
@@ -40,35 +40,35 @@
 	\caption{テーマと講義との対応}
 	\label{processTable}
 	\begin{tabular}[t]{lccccccc}
-		                         & 記述統計 & 確率 & モデル & 推測・推定 & 検定 & 演習 & page                                 \\\hline\hline
-		心理学と統計法の関係     &          &      &        &            &      &      & p.\pageref{s01_Introduction}         \\
-		数値データの種類         & 1        &      &        &            &      &      & p.\pageref{s02_Numbers}              \\
-		統計環境Rの導入          &          &      &        &            &      & 1    & p.\pageref{s03_introR}               \\
-		統計環境Rの利用          & 2        &      &        &            &      & 2    & p.\pageref{s04_usingR}               \\
-		記述統計量               & 3        &      &        &            &      &      & p.\pageref{s05_descriptives}         \\
-		測定の基礎               &          &      & 1      &            &      &      & p.\pageref{s06_ctt}                  \\
-		誤差と確率               &          & 1    &        &            &      &      & p.\pageref{s07_probability}          \\
-		相関と因果               &          &      & 2      &            &      &      & p.\pageref{s08_CorrelationCausation} \\
-		単回帰分析               &          &      & 3      &            &      &      & p.\pageref{s09_Regression}           \\
-		重回帰分析               &          &      & 4      &            &      &      & p.\pageref{s10_MultipleRegression}   \\
-		Rをつかった回帰分析      &          &      & 5      &            &      & 3    & p.\pageref{s11_Regression_onR}       \\
-		実験計画法1              &          &      & 6      &            &      &      & p.\pageref{s12_design1}              \\
-		実験計画法2              &          &      & 7      &            &      &      & p.\pageref{s13_design2}              \\
-		実験計画法3              &          &      & 8      &            &      &      & p.\pageref{s14_design3}              \\\hline
-		確率と統計的推論         &          & 2    &        & 1          &      &      & p.\pageref{s16_inference}            \\
-		推論と判断               &          & 3    &        &            & 1    &      & p.\pageref{s17_estimation_and_test}  \\
-		帰無仮説検定             &          & 4    &        &            & 2    &      & p.\pageref{s18_NHST}                 \\
-		帰無仮説検定の注意点     &          & 5    &        &            & 3    &      & p.\pageref{s19_NHST2}                \\
-		二群の平均値差           &          & 6    & 9      & 2          & 4    & 4    & p.\pageref{s20_ttest}                \\
-		要因計画と平均値差の検定 &          & 7    & 10     &            & 5    &      & p.\pageref{s21_anova}                \\
-		Rによる分散分析          &          & 8    & 11     & 3          & 6    & 5    & p.\pageref{s22_anova_onR}            \\
-		確率分布とデータの関係   &          & 9    & 12     & 4          &      &      & p.\pageref{s23_likelihood}           \\
-		回帰分析の最尤推定       &          & 10   & 13     & 5          &      &      & p.\pageref{s24_maximum_likelihood}   \\
-		ベイズ推定の基礎         &          & 11   &        & 6          &      &      & p.\pageref{s25_bayesian1}            \\
-		ベイズ推定の実際         &          & 12   & 14     & 7          &      &      & p.\pageref{s26_bayesian2}            \\
-		ベイズ推定と判断         &          & 13   & 15     & 8          &      &      & p.\pageref{s27_bayesian3}            \\
-		JASPによるベイズ推定     &          & 14   &        & 9          &      & 6    & p.\pageref{s28_jasp}                 \\
-		Rによるベイズ推定        &          & 15   & 16     & 10         &      & 7    & p.\pageref{s29_brms}                 \\\hline
+		             & 記述統計 & 確率 & モデル & 推測・推定 & 検定 & 演習 & page                                 \\\hline\hline
+		心理学と統計法の関係   &      &    &     &       &    &    & p.\pageref{s01_Introduction}         \\
+		数値データの種類     & 1    &    &     &       &    &    & p.\pageref{s02_Numbers}              \\
+		統計環境Rの導入     &      &    &     &       &    & 1  & p.\pageref{s03_introR}               \\
+		統計環境Rの利用     & 2    &    &     &       &    & 2  & p.\pageref{s04_usingR}               \\
+		記述統計量        & 3    &    &     &       &    &    & p.\pageref{s05_descriptives}         \\
+		測定の基礎        &      &    & 1   &       &    &    & p.\pageref{s06_ctt}                  \\
+		誤差と確率        &      & 1  &     &       &    &    & p.\pageref{s07_probability}          \\
+		相関と因果        &      &    & 2   &       &    &    & p.\pageref{s08_CorrelationCausation} \\
+		単回帰分析        &      &    & 3   &       &    &    & p.\pageref{s09_Regression}           \\
+		重回帰分析        &      &    & 4   &       &    &    & p.\pageref{s10_MultipleRegression}   \\
+		Rをつかった回帰分析   &      &    & 5   &       &    & 3  & p.\pageref{s11_Regression_onR}       \\
+		実験計画法1       &      &    & 6   &       &    &    & p.\pageref{s12_design1}              \\
+		実験計画法2       &      &    & 7   &       &    &    & p.\pageref{s13_design2}              \\
+		実験計画法3       &      &    & 8   &       &    &    & p.\pageref{s14_design3}              \\\hline
+		確率と統計的推論     &      & 2  &     & 1     &    &    & p.\pageref{s16_inference}            \\
+		推論と判断        &      & 3  &     &       & 1  &    & p.\pageref{s17_estimation_and_test}  \\
+		帰無仮説検定       &      & 4  &     &       & 2  &    & p.\pageref{s18_NHST}                 \\
+		帰無仮説検定の注意点   &      & 5  &     &       & 3  &    & p.\pageref{s19_NHST2}                \\
+		二群の平均値差      &      & 6  & 9   & 2     & 4  & 4  & p.\pageref{s20_ttest}                \\
+		要因計画と平均値差の検定 &      & 7  & 10  &       & 5  &    & p.\pageref{s21_anova}                \\
+		Rによる分散分析     &      & 8  & 11  & 3     & 6  & 5  & p.\pageref{s22_anova_onR}            \\
+		確率分布とデータの関係  &      & 9  & 12  & 4     &    &    & p.\pageref{s23_likelihood}           \\
+		回帰分析の最尤推定    &      & 10 & 13  & 5     &    &    & p.\pageref{s24_maximum_likelihood}   \\
+		ベイズ推定の基礎     &      & 11 &     & 6     &    &    & p.\pageref{s25_bayesian1}            \\
+		ベイズ推定の実際     &      & 12 & 14  & 7     &    &    & p.\pageref{s26_bayesian2}            \\
+		ベイズ推定と判断     &      & 13 & 15  & 8     &    &    & p.\pageref{s27_bayesian3}            \\
+		JASPによるベイズ推定 &      & 14 &     & 9     &    & 6  & p.\pageref{s28_jasp}                 \\
+		Rによるベイズ推定    &      & 15 & 16  & 10    &    & 7  & p.\pageref{s29_brms}                 \\\hline
 	\end{tabular}
 \end{table}
 

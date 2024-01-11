@@ -11,22 +11,22 @@
 私のモーニング・ルーティンとして，朝目が覚めるとトイレに行きます。そして体重計にのり，体重と体脂肪を測定します。その後顔を洗って\footnote{体の内側の水分を出し，表皮に水分をつけないようにすることで，しっかりと肉の量を測ろうとしているのでこの順番になります。}，計測値をiPhoneのアプリに書き込むというのがあります\footnote{ついでにいうと，書き込んだ結果はツイートします。フォロワーの中には私の体重の推移を楽しみにしている人がいるのです。おかしな世の中です。}。このルーチンも早いもので10年近く続けていることになります(一時期やめていたこともありましたが，最古のレコードは2012年06月08日です)。ともかく，このデータを使って，いろいろ遊んでみようと思います。
 
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_01.png}
-      \caption{体重の時系列的推移}
-      \label{fig:28_01}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_01.png}
+		\caption{体重の時系列的推移}
+		\label{fig:28_01}
+	\end{center}
 \end{figure}
 
 \section{混合分布モデルの応用}
 データが10年分というのはちょっと多いですから，少し時期を区切ることにします。
 2019年から2020年の2年間に限定したデータが，図\ref{fig:28_02}になります。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_02.png}
-      \caption{2019-2020年のデータ}
-      \label{fig:28_02}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_02.png}
+		\caption{2019-2020年のデータ}
+		\label{fig:28_02}
+	\end{center}
 \end{figure}
 
 これをみると，うーん残念なことに，2020年になると体重が増えてしまっているようですね。2019年は81kg台をうろうろしていたようですが，2020年になると83kg台になっているようです。
@@ -81,11 +81,11 @@ fit <- model$sample(
   seed = 12345)
 \end{lstlisting}
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_03.png}
-      \caption{2つの体重のモード}
-      \label{fig:28_03}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_03.png}
+		\caption{2つの体重のモード}
+		\label{fig:28_03}
+	\end{center}
 \end{figure}
 
 結果の図を見ると，どうやら2019年の初期にも2回ぐらい平均値が高い，「重いモード」が混在しており\footnote{誰がデブモードやねん}，2019年の10月ごろからそちらの比率が増えています。もっとも，2020年の1月にも「軽いモード」に入っている点はあるようですね。
@@ -95,11 +95,11 @@ fit <- model$sample(
 ここでは2つのモードのどちらからデータが出てきているのか，ということだけを考えているのでこれでいいのですが，体重というのはそもそも時系列的な変化をするものですから，どこかで重くなった，どこかで軽くなった，というような時系列的なつながりについての情報が，うまくモデル化されていないように思えます。そこで，横軸が時間的な連続であるということに注意して，今度は2021年1月から11月までのデータを見てみましょう。その区間を取り出したのが図\ref{fig:28_04}になります。
 
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_04.png}
-      \caption{大きく変化したデータ}
-      \label{fig:28_04}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_04.png}
+		\caption{大きく変化したデータ}
+		\label{fig:28_04}
+	\end{center}
 \end{figure}
 
 これは2つのモードがあるというより，途中で大きく変化したというべきではないでしょうか。とくに2021年5月ごろから4kgほど体重がぐぐぐっと下がることがあり，6月以降は下がった体重のレベルに落ち着いているようです。
@@ -115,11 +115,11 @@ fit <- model$sample(
 
 ベイズ統計はわからないことを確率で表現し，データでその確率情報をアップデートしていくというものです。今回はいつ変化したのがわかりませんから，その変化した時期を$\tau$とし，データ区間の中にその日があると考えて，その区間の一様分布を事前分布とします。その時期$\tau$を境に，データが出てくる分布の位置パラメータがずれると考えるのです。設計図は次のようになります(図\ref{fig:28_05})
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/slide28_01.png}
-      \caption{変化点検出のモデル設計図}
-      \label{fig:28_05}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/slide28_01.png}
+		\caption{変化点検出のモデル設計図}
+		\label{fig:28_05}
+	\end{center}
 \end{figure}
 
 設計図をもとに，コードにしてみたのがコード\ref{stan::28_02}になります。
@@ -154,7 +154,7 @@ model{
 
 これを実行して，変化点がいつになるのかを推定してみましょう。推定結果は出力\ref{MCMCout:out28_01}のようになりました。
 \begin{MCMCout}{}{out28_01}
-\begin{verbatim}
+	\begin{verbatim}
 # A tibble: 4 × 7
   name        EAP       MED       MAP        SD       L95       U95
   <chr> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!>
@@ -167,7 +167,7 @@ model{
 
 データの145行目がちょうどその変化点だといって，ほぼ間違いないようですね。145行目はといいますと，データから5月23日だったことがわかります。
 \begin{Rscreen}{いつでしょう}{out28_01}
-   \begin{verbatim}
+	\begin{verbatim}
 > dat2[145, ]
 # A tibble: 1 × 3
   date                weight bodyFat
@@ -177,22 +177,22 @@ model{
 
 違いがわかるようにデータとモデルの推定値を合わせたのが，図\ref{fig:28_06}です。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_05.png}
-      \caption{検出された変化点と平均値の違い}
-      \label{fig:28_06}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_05.png}
+		\caption{検出された変化点と平均値の違い}
+		\label{fig:28_06}
+	\end{center}
 \end{figure}
 このようにして，ここで様相が変わったのだなということを，データから見出すことができました。
 
 \section{折線回帰}
 先ほどは，変化点を機に平均値が変わる，というモデルでした。では次のような分布の場合はどうなるでしょうか。今度は2016年に注目してみました(図\ref{fig:28_07})。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_06.png}
-      \caption{2016年の変化}
-      \label{fig:28_07}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_06.png}
+		\caption{2016年の変化}
+		\label{fig:28_07}
+	\end{center}
 \end{figure}
 この年はダイエットを志した時期で，最初の半年ぐらいでぐんぐん体重が落ちていってるのがわかります。そして残念なことに，8月ごろでしょうか，ダイエットが終わりリバウンドが始まったのがよくみて取れますね\footnote{このときのダイエット法は，1.ラーメンのスープは飲まない，2.夕食と晩酌は分ける(食べながら飲むのではなく，食べ終わって，お酒だけ飲む),3.お酒を飲むときにおつまみは食べない，という3か条を守るというものでした。お酒が飲みたいので食事の量を減らし，すぐに飲むことにしたので体重が減り，食事の前に飲んでしまえばいいんじゃないかという裏技を見つけてダイエットが崩壊したのを覚えています。}。
 
@@ -200,11 +200,11 @@ model{
 変化点の前はどんどん数字が減っていき，変化点のあとはどんどん数字が大きくなっていく，というのが実態です。回帰分析をしたら，変化点前は負の傾きが，変化点後は正の傾きが推定されそうな，そんなデータになっていますね。
 ということで，そのイメージができたのであれば，そのままモデルを描いてしまいましょう。設計図が少しごちゃっとしてしまいましたが，ポイントは傾きの係数を前半は負，後半は正に限定しているところでしょうか(図\ref{fig:28_08})。また，変化点は大体このあたり・・・ということでデータの100行目(2016/04/29)から250行目(2016/10/15)の間に置いてみました。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/slide28_02.png}
-      \caption{折線回帰モデル設計図}
-      \label{fig:28_08}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/slide28_02.png}
+		\caption{折線回帰モデル設計図}
+		\label{fig:28_08}
+	\end{center}
 \end{figure}
 
 設計図をもとに，コードにしてみたのがコード\ref{stan::28_03}になります。
@@ -242,7 +242,7 @@ model{
 回帰係数を正・負に限定するところは，パラメータの宣言で\verb|<lower=0>|や\verb|<upper=0>|としていることで表現しています。あとはデータが出てくる正規分布の平均に，線形モデルが入っているだけですね。
 これを実行すると，出力\ref{MCMCout:out28_02}のような結果が得られます。データの187行目(2016/08/01)あたりが変化点ですかね。95\%区間で言うと185行目(2016/07/30)から188行目(2016/08/02)の間に変化点があると言えそうです。
 \begin{MCMCout}{}{out28_02}
-   \begin{verbatim}
+	\begin{verbatim}
 # A tibble: 6 × 7
   name           EAP       MED       MAP        SD       L95       U95
   <chr>    <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!>
@@ -258,11 +258,11 @@ model{
 
 
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_07.png}
-      \caption{折線回帰モデル推定結果}
-      \label{fig:28_09}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_07.png}
+		\caption{折線回帰モデル推定結果}
+		\label{fig:28_09}
+	\end{center}
 \end{figure}
 
 
@@ -288,11 +288,11 @@ transformed parameters{
 \end{lstlisting}
 このコード\ref{stan::28_03}にあるように，\verb|beta0b|を計算式から出すようにして，改めて推定をした結果が図\ref{fig:28_10}になります。これだと変化点が前にずれて，データの169行目(2016/07/10)で心がポッキリ折れていることがわかります。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_08.png}
-      \caption{変化点を合わせた折線回帰モデル}
-      \label{fig:28_10}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/28_ChangePoint/Rplot28_08.png}
+		\caption{変化点を合わせた折線回帰モデル}
+		\label{fig:28_10}
+	\end{center}
 \end{figure}
 
 このように，モデリングの力を借りるとわからなかった変化点がどこにあるのか，そしてその変化点の前後で予測モデルを変えるといったようなことが簡単に表現できます。ただの回帰分析であっても，データにあったモデルを考えることでさまざまな応用可能性が出てくるのではないでしょうか。

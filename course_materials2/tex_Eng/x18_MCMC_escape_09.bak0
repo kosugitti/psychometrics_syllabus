@@ -1,0 +1,6 @@
+\begin{description}
+   \item[1行目] パッケージの呼び出し
+   \item[2行目] モデルのコンパイルを実行して\texttt{model}オブジェクトに入れます。コンパイルには少し時間がかかります。
+   \item[4-8行目] 乱数発生。ここでRのデータをStanに渡したり，並列化の指定をしたりします。実行すると画面に色々表示されるかと思います。
+   \item[9-11行目] 得られた乱数をデータセットに整形。まず\verb|posterior::as_draws_df|でMCMCサンプルだけを取り出し，\verb|as_tibble|でtibble型に変換します。
+\end{description}

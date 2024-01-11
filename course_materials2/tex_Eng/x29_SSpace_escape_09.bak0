@@ -1,0 +1,7 @@
+\begin{lstlisting}[language=c++,label={code:29_02},caption={日付は連続かな?}]
+dat1 %>%
+  mutate(lag = lag(date)) %>%
+  mutate(date = as.Date(date), lag = as.Date(lag)) %>%
+  mutate(FLG = date - lag) %>%
+  dplyr::filter(FLG > 1)
+\end{lstlisting}

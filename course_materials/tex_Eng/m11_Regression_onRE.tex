@@ -126,16 +126,16 @@ cor(batter)
 
 \paragraph{コード解説}
 \begin{description}
-   \item[1-3行目] \verb|batter|オブジェクトに\verb|batter|オブジェクトを加工したものを上書きしていきます。加工内容は，\verb|dplyr|パッケージの\verb|mutate|関数を使って変数を追加することです。追加する変数名は\verb|residuals|と\verb|yhat|で，\verb|residuals|には\verb|result|オブジェクトの\verb|residuals|変数を，\verb|yhat|には\verb|result|オブジェクトの\verb|fitted.values|変数をあてがっています。
-   \item[4行目] 上書きされた\verb|batter|オブジェクトを表示させています。長くなりますので，上の方の一部分だけが表示されます。
-   \item[5行目] 上書きされた\verb|batter|オブジェクトの要約統計量を表示させています。
-   \item[6行目] \verb|batter|オブジェクトのプロットを描いています。
-   \item[7行目] \verb|batter|オブジェクトの相関係数を計算しています。
+	\item[1-3行目] \verb|batter|オブジェクトに\verb|batter|オブジェクトを加工したものを上書きしていきます。加工内容は，\verb|dplyr|パッケージの\verb|mutate|関数を使って変数を追加することです。追加する変数名は\verb|residuals|と\verb|yhat|で，\verb|residuals|には\verb|result|オブジェクトの\verb|residuals|変数を，\verb|yhat|には\verb|result|オブジェクトの\verb|fitted.values|変数をあてがっています。
+	\item[4行目] 上書きされた\verb|batter|オブジェクトを表示させています。長くなりますので，上の方の一部分だけが表示されます。
+	\item[5行目] 上書きされた\verb|batter|オブジェクトの要約統計量を表示させています。
+	\item[6行目] \verb|batter|オブジェクトのプロットを描いています。
+	\item[7行目] \verb|batter|オブジェクトの相関係数を計算しています。
 \end{description}
 
 回帰分析の結果を代入したオブジェクト\verb|result|には，\verb|residuals|変数として残差が含まれています。同じく\verb|fitted.values|変数として予測値が含まれています。4行目の出力結果の一部を見てみましょう(出力\ref{RS:out11_02})。
 \begin{Rscreen}{回帰分析の出力結果}{out11_02}
-   \begin{verbatim}
+	\begin{verbatim}
 # A tibble: 329 × 4
    height weight residuals  yhat
     <dbl>  <dbl>     <dbl> <dbl>
@@ -172,19 +172,19 @@ cor(batter2)
 
 \paragraph{コード解説}
 \begin{description}
-   \item[1-4行目]\texttt{batter2}というオブジェクトを作っています。これは\texttt{dat}オブジェクトを加工して作っており，2行目で野手(投手でない人)を選択し，3行目で変数として本塁打，安打，salaryを選択しています。4行目は欠損値を一括で取り除く処理をしています。ホームランを打っていない人などはデータに含められないからです。
-   \item[5-7行目] x軸に本塁打の数，y軸に年俸(\verb|salary|)をとった散布図を書いています。
-   \item[8-10行目]  x軸に安打の数，y軸に年俸(\verb|salary|)をとった散布図を書いています。
-   \item[11行目] データの相関関係を数字でみています。
+	\item[1-4行目]\texttt{batter2}というオブジェクトを作っています。これは\texttt{dat}オブジェクトを加工して作っており，2行目で野手(投手でない人)を選択し，3行目で変数として本塁打，安打，salaryを選択しています。4行目は欠損値を一括で取り除く処理をしています。ホームランを打っていない人などはデータに含められないからです。
+	\item[5-7行目] x軸に本塁打の数，y軸に年俸(\verb|salary|)をとった散布図を書いています。
+	\item[8-10行目]  x軸に安打の数，y軸に年俸(\verb|salary|)をとった散布図を書いています。
+	\item[11行目] データの相関関係を数字でみています。
 \end{description}
 
 プロットを見ると，ホームランの数や安打の数が増えるほど，年俸は上がっているようです(図\ref{fig::11_03})。さすがプロ野球は実力勝負の世界，グランドには銭が埋まっているというやつです。少しデータの左端の方，つまりホームランや安打を打たない人が数多くいるため，よく打つ人に引っ張られて相関係数が大きく出ている可能性はありますし，安打と本塁打の間にも相関があるので少し気になりますが，ひとまずはこれで分析することにしましょう。
 
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/11_MultipleRegressionOnR/Rplot11_02.png}
-   \caption{本塁打，安打と年俸の関係}
-   \label{fig::11_03}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/11_MultipleRegressionOnR/Rplot11_02.png}
+	\caption{本塁打，安打と年俸の関係}
+	\label{fig::11_03}
 \end{figure}
 
 回帰分析のコード\texttt{code:\ref{code:11_07}}と出力\ref{RS:out11_03})は次の通りです。
@@ -195,7 +195,7 @@ summary(result2)
 \end{lstlisting}
 
 \begin{Rscreen}{回帰分析の出力結果}{out11_03}
-   \begin{verbatim}
+	\begin{verbatim}
 Call:
 lm(formula = salary ~ HR + Hit, data = batter2)
 
@@ -266,23 +266,23 @@ Rチャンクの外に，結果の読み取りや解釈を，言葉で記述し�
 次のデータ(表\ref{tbl::ex11_01})は，向ヶ丘駅周辺の家賃について調べたもので，部屋の広さ(\verb|heibei|，単位$m^2$)と，築年数(\verb|chiku|)，駅から徒歩何分かかるか(\verb|ekitoho|)，家賃(\verb|yachin|)からなるものです\footnote{2019年5月に実際に賃貸住宅サイトを利用して調べたものです。}。
 なおこのデータは\texttt{yachin.csv}として配布しています。
 \begin{table}[ht]
-   \caption{家賃相場}
-   \centering
-   \begin{tabular}[t]{rrrr}
-      \hline
-      heibei & chiku & ekitoho & yachin \\
-      \hline
-      41.40  & 14    & 10      & 8.60   \\
-      20.28  & 16    & 9       & 6.10   \\
-      18.20  & 28    & 10      & 4.20   \\
-      19.87  & 16    & 13      & 5.70   \\
-      20.28  & 19    & 7       & 6.30   \\
-      23.18  & 20    & 14      & 5.40   \\
-      19.87  & 17    & 12      & 6.25   \\
-      19.87  & 20    & 17      & 5.80   \\
-      \hline
-   \end{tabular}
-   \label{tbl::ex11_01}
+	\caption{家賃相場}
+	\centering
+	\begin{tabular}[t]{rrrr}
+		\hline
+		heibei & chiku & ekitoho & yachin \\
+		\hline
+		41.40  & 14    & 10      & 8.60   \\
+		20.28  & 16    & 9       & 6.10   \\
+		18.20  & 28    & 10      & 4.20   \\
+		19.87  & 16    & 13      & 5.70   \\
+		20.28  & 19    & 7       & 6.30   \\
+		23.18  & 20    & 14      & 5.40   \\
+		19.87  & 17    & 12      & 6.25   \\
+		19.87  & 20    & 17      & 5.80   \\
+		\hline
+	\end{tabular}
+	\label{tbl::ex11_01}
 \end{table}
 \paragraph{課題}家賃を従属変数，平米を説明変数とした回帰分析を行い，回帰式を求めてください。
 \paragraph{課題}15平米で家賃6万円の物件を新たに見つけました。この物件はこのデータに照らし合わせて，お得な物件だと言えるでしょうか。データに基づいて判断してください。

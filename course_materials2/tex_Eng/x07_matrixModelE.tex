@@ -41,9 +41,9 @@ The average score of each reaction is expressed as follows. First, a vector with
 
 % これを使って平均値(列)ベクトル$\bm{m}$を次のように表すことができます。
 You can use this to express the mean value (column) vector $\bm{m}$ as follows.
-\[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} = 
-\begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} = 
-\begin{pmatrix}\bar{x_.1} \\ \bar{x_.2}\\ \vdots \\\bar{x_.m} \end{pmatrix} \]
+\[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} =
+	\begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} =
+	\begin{pmatrix}\bar{x_.1} \\ \bar{x_.2}\\ \vdots \\\bar{x_.m} \end{pmatrix} \]
 
 % ここで$\bar{x_.1}$は1つめの添字$i$を足し合わせて割ることでなくしていますから，$\bar{x_1}$のように省略して書くことがあります。このときの$1$は「第一番目の変数」という意味であり，個人の情報がなくなっている変数を意味していることに注意してください。
 Here, $\bar{x_.1}$ is not referring to removing the sum of the first index $i$, so we may sometimes write it in a simplified form as $\bar{x_1}$. This $1$ refers to the "first variable", and please note that it means the variable that no longer contains individual information.
@@ -52,13 +52,13 @@ Here, $\bar{x_.1}$ is not referring to removing the sum of the first index $i$, 
 So, let's consider the matrix $\bm{V}$ that has deviations from the average as its elements.
 \[
 	\begin{array}{ccl}
-		\bm{V} & = & \bm{X} - \bm{1} \bm{m}'                                                                                                               \\
-		       &   &                                                                                                                                       \\
+		\bm{V} & = & \bm{X} - \bm{1} \bm{m}'                                                                                                                  \\
+		       &   &                                                                                                                                          \\
 		       & = & \bm{X} - \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix} \begin{pmatrix} \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m} \end{pmatrix} \\
-		       &   &                                                                                                                                       \\
+		       &   &                                                                                                                                          \\
 		       & = & \bm{X} - \begin{pmatrix} \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m} \\
                 \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m} \\
-                \vdots    & \vdots    & \ddots & \vdots    \\
+                \vdots     & \vdots     & \ddots & \vdots     \\
                 \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m}\end{pmatrix}
 	\end{array}
 \]
@@ -228,18 +228,18 @@ If you think of $x_i$ as a vector that changes for each individual, the matrix r
 	\caption{群間要因(3水準)のデータセット例}
 	\begin{tabular}{ccc}
 		参加者番号 & 群わけ & 従属変数 \\\hline
-		1          & A      & 3        \\
-		2          & A      & 3        \\
-		3          & A      & 4        \\
-		4          & A      & 4        \\
-		5          & B      & 6        \\
-		6          & B      & 7        \\
-		7          & B      & 8        \\
-		8          & B      & 9        \\
-		9          & C      & 7        \\
-		10         & C      & 6        \\
-		11         & C      & 5        \\
-		12         & C      & 4        \\\hline
+		1     & A   & 3    \\
+		2     & A   & 3    \\
+		3     & A   & 4    \\
+		4     & A   & 4    \\
+		5     & B   & 6    \\
+		6     & B   & 7    \\
+		7     & B   & 8    \\
+		8     & B   & 9    \\
+		9     & C   & 7    \\
+		10    & C   & 6    \\
+		11    & C   & 5    \\
+		12    & C   & 4    \\\hline
 	\end{tabular}
 	\label{tbl::07_01}
 \end{table}

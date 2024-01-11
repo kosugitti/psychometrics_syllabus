@@ -95,10 +95,10 @@ Now, let's say this test was taken by a class of $n$ people. From there, we can 
 
 これを展開すると次のようになります。
 \begin{align*}
-     & \bar{X}  =  \frac{1}{n}\sum_{i=1}^n X_i                         &                 & \mbox{} \\
-     & =  \frac{1}{n}\sum_{i=1}^n (t_i + e_i)                          & \mbox{定義より}           \\
-     & =  \frac{1}{n} \sum_{i=1}^n  t_i + \frac{1}{n}\sum_{i=1}^n  e_i & \mbox{分配して}           \\
-     & =  \bar{t} + \bar{e}                                            & \mbox{}                   \\
+	 & \bar{X}  =  \frac{1}{n}\sum_{i=1}^n X_i                         &             & \mbox{} \\
+	 & =  \frac{1}{n}\sum_{i=1}^n (t_i + e_i)                          & \mbox{定義より}           \\
+	 & =  \frac{1}{n} \sum_{i=1}^n  t_i + \frac{1}{n}\sum_{i=1}^n  e_i & \mbox{分配して}           \\
+	 & =  \bar{t} + \bar{e}                                            & \mbox{}               \\
 \end{align*}
 
 さて，ここでポイントです。$\bar{e}$は偶然誤差の平均を表しています。偶然誤差は一貫性のない誤差なので，プラスに出るかマイナスに出るかわかりませんが，\textbf{理屈上，その平均は$0$である}と考えられます。これがなんらかの定数$c$であれば，それは系統誤差であり補正すべき大きさですが，そうではなくまったく何の傾向もない\textbf{偶然にすぎない}のですから。この特徴，$\bar{e}=0$を代入すると上の式は，

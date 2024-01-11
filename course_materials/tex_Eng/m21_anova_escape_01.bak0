@@ -1,0 +1,11 @@
+\begin{enumerate}
+   \item 回帰分析における独立変数が離散的であれば，要因計画となる。回帰分析も要因計画もいずれも線形モデルで表現できるので，まとめて\keyterm{一般線形モデル}{いっぱんせんけいもでる}{General Linear Model}と呼ぶ。
+         \begin{itemize}
+            \item 全体平均からの群平均の差分を効果と呼ぶ($\to$第\ref{m12_design1}講,セクション\ref{generalLinear}，Pp.\pageref{generalLinear})。
+            \item 効果の全体を検証するためには\keyterm{平方和}{へいほうわ}{Sum of Squares:SS}を計算するのでした(セクション\ref{HowToEvaluateTheDifference}，Pp.\pageref{HowToEvaluateTheDifference})。
+            \item 要因の数が増えるのは\keytermL{重回帰分析}{じゅうかいきぶんせき}になるようなもの。ただし交互作用には注意して($\to$第\ref{m13_design2}講，セクション\ref{interaction}，Pp.\pageref{interaction})。
+            \item 群内要因であれば，個人差の分散(平方和)も算出できる($\to$第\ref{m14_design3}講)。
+         \end{itemize}
+   \item 平方和の比率が従う分布としてF分布というのが知られており，これを使うと標本の\textbf{誤差に対する効果の大きさ}がどれほど珍しいものであるのかを検証できる。
+   \item 帰無仮説が棄却されたことが，どの群間差で生じたのかを明らかにするために，\keyterm{多重比較}{たじゅうひかく}{multiple comparison}を行うことでさらに精緻に分析する。
+\end{enumerate}

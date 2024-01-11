@@ -33,22 +33,22 @@
 
 
 これを使って平均値(列)ベクトル$\bm{m}$を次のように表すことができます。
-\[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} = 
-\begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} = 
-\begin{pmatrix}\bar{x_.1} \\ \bar{x_.2}\\ \vdots \\\bar{x_.m} \end{pmatrix} \]
+\[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} =
+	\begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} =
+	\begin{pmatrix}\bar{x_.1} \\ \bar{x_.2}\\ \vdots \\\bar{x_.m} \end{pmatrix} \]
 
 ここで$\bar{x_.1}$は1つめの添字$i$を足し合わせて割ることでなくしていますから，$\bar{x_1}$のように省略して書くことがあります。このときの$1$は「第一番目の変数」という意味であり，個人の情報がなくなっている変数を意味していることに注意してください。
 
 さて，平均からの偏差を要素に持つ行列$\bm{V}$を考えたとします。
 \[
 	\begin{array}{ccl}
-		\bm{V} & = & \bm{X} - \bm{1} \bm{m}'                                                                                                               \\
-		       &   &                                                                                                                                       \\
+		\bm{V} & = & \bm{X} - \bm{1} \bm{m}'                                                                                                                  \\
+		       &   &                                                                                                                                          \\
 		       & = & \bm{X} - \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix} \begin{pmatrix} \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m} \end{pmatrix} \\
-		       &   &                                                                                                                                       \\
+		       &   &                                                                                                                                          \\
 		       & = & \bm{X} - \begin{pmatrix} \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m} \\
                 \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m} \\
-                \vdots    & \vdots    & \ddots & \vdots    \\
+                \vdots     & \vdots     & \ddots & \vdots     \\
                 \bar{x_.1} & \bar{x_.2} & \cdots & \bar{x_.m}\end{pmatrix}
 	\end{array}
 \]
@@ -200,18 +200,18 @@
 	\caption{群間要因(3水準)のデータセット例}
 	\begin{tabular}{ccc}
 		参加者番号 & 群わけ & 従属変数 \\\hline
-		1          & A      & 3        \\
-		2          & A      & 3        \\
-		3          & A      & 4        \\
-		4          & A      & 4        \\
-		5          & B      & 6        \\
-		6          & B      & 7        \\
-		7          & B      & 8        \\
-		8          & B      & 9        \\
-		9          & C      & 7        \\
-		10         & C      & 6        \\
-		11         & C      & 5        \\
-		12         & C      & 4        \\\hline
+		1     & A   & 3    \\
+		2     & A   & 3    \\
+		3     & A   & 4    \\
+		4     & A   & 4    \\
+		5     & B   & 6    \\
+		6     & B   & 7    \\
+		7     & B   & 8    \\
+		8     & B   & 9    \\
+		9     & C   & 7    \\
+		10    & C   & 6    \\
+		11    & C   & 5    \\
+		12    & C   & 4    \\\hline
 	\end{tabular}
 	\label{tbl::07_01}
 \end{table}
@@ -362,11 +362,11 @@
 \begin{equation}
 	\begin{array}{lll}
 		\bm{R} & = & \frac{1}{N} \bm{Z}'\bm{Z}                                                                                                                                                      \\
-		       &   & \hspace{8cm}\text{$\bm{Z}$を因子分析のモデル式にして}                                                                                                                          \\
+		       &   & \hspace{8cm}\text{$\bm{Z}$を因子分析のモデル式にして}                                                                                                                                       \\
 		       & = & \frac{1}{N}(\bm{F} \bm{A} ' + \bm{U} \bm{D})'(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                                 \\
-		       &   & \hspace{8cm}\text{前の項の転置を中に入れます}                                                                                                                                  \\
+		       &   & \hspace{8cm}\text{前の項の転置を中に入れます}                                                                                                                                               \\
 		       & = & \frac{1}{N}\left \{ (\bm{F} \bm{A} ')'+(\bm{U} \bm{D})' \right \}(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                             \\
-		       &   & \hspace{8cm}\text{転置のカッコを外すときは順番を入れ替えて転置}                                                                                                                \\
+		       &   & \hspace{8cm}\text{転置のカッコを外すときは順番を入れ替えて転置}                                                                                                                                      \\
 		       & = & \frac{1}{N}(\bm{A} \bm{F} ' + \bm{D}' \bm{U} ')(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                               \\
 		       &   & \hspace{8cm}                                                                                                                                                                   \\
 		       & = & \frac{1}{N}\bm{A} \bm{F}' \bm{F} \bm{A}' + \frac{1}{N} \bm{A} \bm{F}' \bm{U} \bm{D} + \frac{1}{N} \bm{D}' \bm{U} ' \bm{F} \bm{A} ' + \frac{1}{N} \bm{D}' \bm{U}' \bm{U} \bm{D} \\

@@ -177,8 +177,8 @@ The function to perform eigenvector decomposition is \texttt{eigen}. The calcula
 % 固有値が大きい方から$1.7043160,0.9486112,0.3470728$となっています。ここでは変数が3つあって，それぞれの情報の大きさは相関行列で標準化されていて$1.0$です。この行列がもっている$3.0$の分散を，$1.7 : 0.9 : 0.3$に再分配したことになります。ちなみに固有値の総和\verb|sum(eig$values)|は，行列のトレース\verb| sum(diag(R))|と等しくなっていることが確認できます。
 The eigenvalues are in descending order of $1.7043160, 0.9486112, 0.3470728$. Here, there are three variables, and the size of each piece of information is standardized in the correlation matrix to $1.0$. This matrix has redistributed the variance of $3.0$ to $1.7: 0.9: 0.3. By the way, you can confirm that the sum of the eigenvalues \verb|sum(eig$values)| is equal to the trace of the matrix \verb| sum(diag(R))|.
 
-% また，固有ベクトルはそれぞれの固有値に対して計算されます。各列が各固有値に対応しており，第一固有値1.7に対応する固有ベクトルは$(0.68,0.68,0.26)$です。固有ベクトルは向きだけあって大きさがありませんから，この数字はノルムすなわち二乗和したものが1になるようにして算出されているのがわかります。
-Moreover, eigenvectors are calculated for each eigenvalue. Each column corresponds to each eigenvalue, and the eigenvector corresponding to the first eigenvalue 1.7 is $(0.68,0.68,0.26)$. Since eigenvectors only have direction and not magnitude, you can see that these numbers are calculated so that their norms, or the square sums, become 1.
+	% また，固有ベクトルはそれぞれの固有値に対して計算されます。各列が各固有値に対応しており，第一固有値1.7に対応する固有ベクトルは$(0.68,0.68,0.26)$です。固有ベクトルは向きだけあって大きさがありませんから，この数字はノルムすなわち二乗和したものが1になるようにして算出されているのがわかります。
+	Moreover, eigenvectors are calculated for each eigenvalue. Each column corresponds to each eigenvalue, and the eigenvector corresponding to the first eigenvalue 1.7 is $(0.68,0.68,0.26)$. Since eigenvectors only have direction and not magnitude, you can see that these numbers are calculated so that their norms, or the square sums, become 1.
 \input{x09_matrix_onR_escape_26}
 
 % このような数値計算を駆使して，因子分析や回帰分析が実際に計算されているのですね。

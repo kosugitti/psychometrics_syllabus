@@ -18,33 +18,33 @@
 $\bm{\hat{y}}$はこの空間の中にあるベクトルで，実際のデータベクトル$\bm{y}$はこの右辺が張る空間に射影されたものとみることができます(図\ref{RegressionModel})。
 
 \begin{figure}
-    \centering
-    \begin{tikzpicture}[scale=0.7]
-        \fill[cyan!10] (-3,-4)--(-1,4)--(7,4)--(6,-4)--cycle; %四角形を赤:青=30:70の色で塗る
-        \coordinate[label=above left:$o$] (o)at (0,0);
-        \coordinate (y) at (2.5,5);
-        \coordinate (x1) at (4,2.2);
-        \coordinate (x2) at (3,-3);
-        \coordinate (haty) at (2.5,0);
-        \coordinate (b1) at ($(o)!(haty)!(x1)$);
-        \coordinate (b2) at ($(o)!(haty)!(x2)$);
-        \draw[->, >=Latex,very thick] (o) -- (y);
-        \draw[->, >=Latex,thick] (o) -- (x1);
-        \draw[->, >=Latex,thick] (o) -- (x2);
-        \draw[->, >=Latex,very thick] (o) -- (haty);
-        \draw[dashed] (y) -- node[midway,right]{$\bm{e}$}(haty);
-        \draw[dashed] (haty) --(b1);
-        \draw[dashed] (haty) --(b2);
-        \node[above] at (y) {$\bm{y}$};
-        \node[below] at (haty) {$\bm{\hat{y}}$};
-        \node[right] at (x1) {$\bm{x1}$};
-        \node[right] at (x2) {$\bm{x2}$};
-        \node[above] at (b1) {$\beta_1\bm{x}_1$};
-        \node[below left] at (b2) {$\beta_2\bm{x}_2$};
-        \node[below left] at (7,4) {$\bm{W(X)}$};
-    \end{tikzpicture}
-    \caption{説明変数の空間に被説明変数ベクトルを射影する}
-    \label{RegressionModel}
+	\centering
+	\begin{tikzpicture}[scale=0.7]
+		\fill[cyan!10] (-3,-4)--(-1,4)--(7,4)--(6,-4)--cycle; %四角形を赤:青=30:70の色で塗る
+		\coordinate[label=above left:$o$] (o)at (0,0);
+		\coordinate (y) at (2.5,5);
+		\coordinate (x1) at (4,2.2);
+		\coordinate (x2) at (3,-3);
+		\coordinate (haty) at (2.5,0);
+		\coordinate (b1) at ($(o)!(haty)!(x1)$);
+		\coordinate (b2) at ($(o)!(haty)!(x2)$);
+		\draw[->, >=Latex,very thick] (o) -- (y);
+		\draw[->, >=Latex,thick] (o) -- (x1);
+		\draw[->, >=Latex,thick] (o) -- (x2);
+		\draw[->, >=Latex,very thick] (o) -- (haty);
+		\draw[dashed] (y) -- node[midway,right]{$\bm{e}$}(haty);
+		\draw[dashed] (haty) --(b1);
+		\draw[dashed] (haty) --(b2);
+		\node[above] at (y) {$\bm{y}$};
+		\node[below] at (haty) {$\bm{\hat{y}}$};
+		\node[right] at (x1) {$\bm{x1}$};
+		\node[right] at (x2) {$\bm{x2}$};
+		\node[above] at (b1) {$\beta_1\bm{x}_1$};
+		\node[below left] at (b2) {$\beta_2\bm{x}_2$};
+		\node[below left] at (7,4) {$\bm{W(X)}$};
+	\end{tikzpicture}
+	\caption{説明変数の空間に被説明変数ベクトルを射影する}
+	\label{RegressionModel}
 \end{figure}
 
 セクション\ref{ProjectionMatrix}(Pp.\pageref{ProjectionMatrix})でみたように，射影行列$\bm{P}$は基底ベクトルを使って$\bm{P} = \bm{A}(\bm{A}'\bm{A})^{-1}\bm{A}'$と表されるということでしたから，回帰分析の場合は
@@ -58,31 +58,31 @@ $\bm{\hat{y}}$はこの空間の中にあるベクトルで，実際のデータ
 
 
 \begin{figure}[ht]
-    \centering
-    \begin{tikzpicture}[scale=1]
-        \coordinate (o) at (0,1);
-        \coordinate (E) at (10,2);
-        \coordinate (y) at (4,4);
-        \coordinate (haty) at ($(o)!(y)!(E)$);
-        \coordinate (P) at ($(o)!0.75!(E)$);
-        \draw[cyan!10,line width=2pt] (o) -- (E);
-        \draw[dashed] (y) --node[midway,left]{$\bm{e}$} (haty);
-        \draw[dashed] (y) --node[midway,right]{$\bm{y}-\bm{P}$} (P);
-        \node[above] at (y) {$\bm{y}$};
-        \node[below] at (haty) {$\bm{\hat{y}}$};
-        \node[below] at (P) {$\bm{P}$};
-        \node[auto] at (E) {$\bm{W(X)}$};
-    \end{tikzpicture}
-    \caption{垂線が最短距離であることを考える}
-    \label{minQ}
+	\centering
+	\begin{tikzpicture}[scale=1]
+		\coordinate (o) at (0,1);
+		\coordinate (E) at (10,2);
+		\coordinate (y) at (4,4);
+		\coordinate (haty) at ($(o)!(y)!(E)$);
+		\coordinate (P) at ($(o)!0.75!(E)$);
+		\draw[cyan!10,line width=2pt] (o) -- (E);
+		\draw[dashed] (y) --node[midway,left]{$\bm{e}$} (haty);
+		\draw[dashed] (y) --node[midway,right]{$\bm{y}-\bm{P}$} (P);
+		\node[above] at (y) {$\bm{y}$};
+		\node[below] at (haty) {$\bm{\hat{y}}$};
+		\node[below] at (P) {$\bm{P}$};
+		\node[auto] at (E) {$\bm{W(X)}$};
+	\end{tikzpicture}
+	\caption{垂線が最短距離であることを考える}
+	\label{minQ}
 \end{figure}
 距離の式を展開していくと，次のような関係が得られます。
 \[
-    \begin{array}{lll}
-        \| \bm{y} - \bm{P} \|^2 & = & \| \bm{y}-\bm{\hat{y}} + \bm{P} - \bm{\hat{y}} \|^2                                       \\
-                                & = & \|\bm{y} - \bm{\hat{y}}\|^2 + \|\bm{P}-\bm{\hat{y}}\|^2 + 2\bm{e}'(\bm{P} - \bm{\hat{y}}) \\
-                                & = & \| \bm{e} \|^2 + \|\bm{P}-\bm{\hat{y}}\|^2
-    \end{array}
+	\begin{array}{lll}
+		\| \bm{y} - \bm{P} \|^2 & = & \| \bm{y}-\bm{\hat{y}} + \bm{P} - \bm{\hat{y}} \|^2                                       \\
+		                        & = & \|\bm{y} - \bm{\hat{y}}\|^2 + \|\bm{P}-\bm{\hat{y}}\|^2 + 2\bm{e}'(\bm{P} - \bm{\hat{y}}) \\
+		                        & = & \| \bm{e} \|^2 + \|\bm{P}-\bm{\hat{y}}\|^2
+	\end{array}
 \]
 つまり，別のベクトル$\bm{P}$との距離はどうやっても$\bm{e} = \bm{y}-\bm{\hat{y}}$以上になるので，$\bm{e}$が最短だということになります。この$\bm{e}$のノルムを最小にするのが\keytermL{最小二乗法}{さいしょうにじょうほう}ですが，距離を最小にするので二乗なんだな，と考えることができます。
 
@@ -143,29 +143,29 @@ Rで逆行列を求めるには，\verb|solve|という関数があるので，�
     \end{lstlisting}
 今回は微小な誤差を追加しましたので，行列は
 \[
-    \bm{A} =
-    \begin{pmatrix}
-        1 & 3 & 3.0005855 \\
-        3 & 3 & 3.0007095 \\
-        5 & 1 & 0.9998907 \\
-        2 & 2 & 1.9995465 \\
-        4 & 2 & 2.0006059 \\
-    \end{pmatrix},
-    \bm{M} =
-    \begin{pmatrix}
-        55.00000 & 29.00000 & 29.00368 \\
-        29.00000 & 27.00000 & 27.00408 \\
-        29.00368 & 27.00408 & 27.00816 \\
-    \end{pmatrix}
+	\bm{A} =
+	\begin{pmatrix}
+		1 & 3 & 3.0005855 \\
+		3 & 3 & 3.0007095 \\
+		5 & 1 & 0.9998907 \\
+		2 & 2 & 1.9995465 \\
+		4 & 2 & 2.0006059 \\
+	\end{pmatrix},
+	\bm{M} =
+	\begin{pmatrix}
+		55.00000 & 29.00000 & 29.00368 \\
+		29.00000 & 27.00000 & 27.00408 \\
+		29.00368 & 27.00408 & 27.00816 \\
+	\end{pmatrix}
 \]
 です。ほとんど変わらない大きさですが，これの逆行列は，
 \[
-    \bm{M}^{-1} =
-    \begin{pmatrix}
-        0.0430067   & -36.95954 & 36.90777 \\
-        -36.9595434 & 1260304   & -1260074 \\
-        36.9077732  & -1260074  & 1259844  \\
-    \end{pmatrix}
+	\bm{M}^{-1} =
+	\begin{pmatrix}
+		0.0430067   & -36.95954 & 36.90777 \\
+		-36.9595434 & 1260304   & -1260074 \\
+		36.9077732  & -1260074  & 1259844  \\
+	\end{pmatrix}
 \]
 という無茶苦茶な大きさになってしまいました。
 
@@ -176,79 +176,79 @@ Rで逆行列を求めるには，\verb|solve|という関数があるので，�
 
 
 \begin{figure}
-    \centering
-    \begin{tikzpicture}[scale=0.65]
-        \coordinate (o) at (0,0);
-        \coordinate (b1a) at (-5,5);
-        \coordinate (b1b) at (5,-5);
-        \coordinate (b2a) at (-5,-5);
-        \coordinate (b2b) at (5,5);
-        \coordinate (y1) at (0.3,4);
-        \coordinate (y2) at (-0.3,4);
-        \coordinate (yhat1) at (0.5,-3);
-        \coordinate (yhat2) at (-0.5,-3);
-        \coordinate (y1b1) at ($(b1a)!(yhat1)!(b1b)$);
-        \coordinate (y1b2) at ($(b2a)!(yhat1)!(b2b)$);
-        \coordinate (y2b1) at ($(b1a)!(yhat2)!(b1b)$);
-        \coordinate (y2b2) at ($(b2a)!(yhat2)!(b2b)$);
-        \draw[->,>=Latex,thick] (b1a)--(b1b);
-        \draw[->,>=Latex,thick] (b2a)--(b2b);
-        \draw[->,>=Latex,very thick] (o) -- (y1);
-        \draw[->,>=Latex,very thick] (o) -- (y2);
-        \draw[->,>=Latex,very thick,gray!80] (o) -- (yhat1);
-        \draw[->,>=Latex,very thick,gray!80] (o) -- (yhat2);
-        % \draw[dashed] (y1) -- (yhat1);
-        % \draw[dashed] (y2) -- (yhat2);
-        \draw[dashed] (yhat1) -- (y1b1);
-        \draw[dashed] (yhat1) -- (y1b2);
-        \draw[dashed] (yhat2) -- (y2b1);
-        \draw[dashed] (yhat2) -- (y2b2);
-        \node[below right] at (b1b) {$\bm{b}_1$};
-        \node[below right] at (b2b) {$\bm{b}_2$};
-        \node[above right] at (y1) {$\bm{y}$};
-        \node[above left] at (y2) {$\bm{y}'$};
-        \node[above right] at (y1b1) {$\beta_1\bm{x}_1$};
-        \node[above left] at (y1b2) {$\beta_2\bm{x}_2$};
-        \node[above right] at (y2b1) {$\beta_1'\bm{x}_1$};
-        \node[above left] at (y2b2) {$\beta_2'\bm{x}_2$};
-    \end{tikzpicture}
-    \begin{tikzpicture}[scale=0.65]
-        \coordinate (o) at (0,0);
-        \coordinate (b1a) at (-5,4);
-        \coordinate (b1b) at (5,-4);
-        \coordinate (b2a) at (-5,0);
-        \coordinate (b2b) at (5,-0);
-        \coordinate (y1) at (0.3,4);
-        \coordinate (y2) at (-0.3,4);
-        \coordinate (yhat1) at (0.5,-3);
-        \coordinate (yhat2) at (-0.5,-3);
-        \coordinate (y1b1) at ($(b1a)!(yhat1)!(b1b)$);
-        \coordinate (y1b2) at ($(b2a)!(yhat1)!(b2b)$);
-        \coordinate (y2b1) at ($(b1a)!(yhat2)!(b1b)$);
-        \coordinate (y2b2) at ($(b2a)!(yhat2)!(b2b)$);
-        \draw[->,>=Latex,thick] (b1a)--(b1b);
-        \draw[->,>=Latex,thick] (b2a)--(b2b);
-        \draw[->,>=Latex,very thick] (o) -- (y1);
-        \draw[->,>=Latex,very thick] (o) -- (y2);
-        \draw[->,>=Latex,very thick,gray!80] (o) -- (yhat1);
-        \draw[->,>=Latex,very thick,gray!80] (o) -- (yhat2);
-        % \draw[dashed] (y1) -- (yhat1);
-        % \draw[dashed] (y2) -- (yhat2);
-        \draw[dashed] (yhat1) -- (y1b1);
-        \draw[dashed] (yhat1) -- (y1b2);
-        \draw[dashed] (yhat2) -- (y2b1);
-        \draw[dashed] (yhat2) -- (y2b2);
-        \node[below right] at (b1b) {$\bm{b}_1$};
-        \node[below right] at (b2b) {$\bm{b}_2$};
-        \node[above right] at (y1) {$\bm{y}$};
-        \node[above left] at (y2) {$\bm{y}'$};
-        \node[above right] at (y1b1) {$\beta_1\bm{x}_1$};
-        \node[above right] at (y1b2) {$\beta_2\bm{x}_2$};
-        \node[above right] at (y2b1) {$\beta_1'\bm{x}_1$};
-        \node[below left] at (y2b2) {$\beta_2'\bm{x}_2$};
-    \end{tikzpicture}
-    \caption{左;サンプルが変わると少し係数がぶれる。右；サンプルが変わっただけで$\beta_2$の符号も変わってしまう。}
-    \label{Multico}
+	\centering
+	\begin{tikzpicture}[scale=0.65]
+		\coordinate (o) at (0,0);
+		\coordinate (b1a) at (-5,5);
+		\coordinate (b1b) at (5,-5);
+		\coordinate (b2a) at (-5,-5);
+		\coordinate (b2b) at (5,5);
+		\coordinate (y1) at (0.3,4);
+		\coordinate (y2) at (-0.3,4);
+		\coordinate (yhat1) at (0.5,-3);
+		\coordinate (yhat2) at (-0.5,-3);
+		\coordinate (y1b1) at ($(b1a)!(yhat1)!(b1b)$);
+		\coordinate (y1b2) at ($(b2a)!(yhat1)!(b2b)$);
+		\coordinate (y2b1) at ($(b1a)!(yhat2)!(b1b)$);
+		\coordinate (y2b2) at ($(b2a)!(yhat2)!(b2b)$);
+		\draw[->,>=Latex,thick] (b1a)--(b1b);
+		\draw[->,>=Latex,thick] (b2a)--(b2b);
+		\draw[->,>=Latex,very thick] (o) -- (y1);
+		\draw[->,>=Latex,very thick] (o) -- (y2);
+		\draw[->,>=Latex,very thick,gray!80] (o) -- (yhat1);
+		\draw[->,>=Latex,very thick,gray!80] (o) -- (yhat2);
+		% \draw[dashed] (y1) -- (yhat1);
+		% \draw[dashed] (y2) -- (yhat2);
+		\draw[dashed] (yhat1) -- (y1b1);
+		\draw[dashed] (yhat1) -- (y1b2);
+		\draw[dashed] (yhat2) -- (y2b1);
+		\draw[dashed] (yhat2) -- (y2b2);
+		\node[below right] at (b1b) {$\bm{b}_1$};
+		\node[below right] at (b2b) {$\bm{b}_2$};
+		\node[above right] at (y1) {$\bm{y}$};
+		\node[above left] at (y2) {$\bm{y}'$};
+		\node[above right] at (y1b1) {$\beta_1\bm{x}_1$};
+		\node[above left] at (y1b2) {$\beta_2\bm{x}_2$};
+		\node[above right] at (y2b1) {$\beta_1'\bm{x}_1$};
+		\node[above left] at (y2b2) {$\beta_2'\bm{x}_2$};
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=0.65]
+		\coordinate (o) at (0,0);
+		\coordinate (b1a) at (-5,4);
+		\coordinate (b1b) at (5,-4);
+		\coordinate (b2a) at (-5,0);
+		\coordinate (b2b) at (5,-0);
+		\coordinate (y1) at (0.3,4);
+		\coordinate (y2) at (-0.3,4);
+		\coordinate (yhat1) at (0.5,-3);
+		\coordinate (yhat2) at (-0.5,-3);
+		\coordinate (y1b1) at ($(b1a)!(yhat1)!(b1b)$);
+		\coordinate (y1b2) at ($(b2a)!(yhat1)!(b2b)$);
+		\coordinate (y2b1) at ($(b1a)!(yhat2)!(b1b)$);
+		\coordinate (y2b2) at ($(b2a)!(yhat2)!(b2b)$);
+		\draw[->,>=Latex,thick] (b1a)--(b1b);
+		\draw[->,>=Latex,thick] (b2a)--(b2b);
+		\draw[->,>=Latex,very thick] (o) -- (y1);
+		\draw[->,>=Latex,very thick] (o) -- (y2);
+		\draw[->,>=Latex,very thick,gray!80] (o) -- (yhat1);
+		\draw[->,>=Latex,very thick,gray!80] (o) -- (yhat2);
+		% \draw[dashed] (y1) -- (yhat1);
+		% \draw[dashed] (y2) -- (yhat2);
+		\draw[dashed] (yhat1) -- (y1b1);
+		\draw[dashed] (yhat1) -- (y1b2);
+		\draw[dashed] (yhat2) -- (y2b1);
+		\draw[dashed] (yhat2) -- (y2b2);
+		\node[below right] at (b1b) {$\bm{b}_1$};
+		\node[below right] at (b2b) {$\bm{b}_2$};
+		\node[above right] at (y1) {$\bm{y}$};
+		\node[above left] at (y2) {$\bm{y}'$};
+		\node[above right] at (y1b1) {$\beta_1\bm{x}_1$};
+		\node[above right] at (y1b2) {$\beta_2\bm{x}_2$};
+		\node[above right] at (y2b1) {$\beta_1'\bm{x}_1$};
+		\node[below left] at (y2b2) {$\beta_2'\bm{x}_2$};
+	\end{tikzpicture}
+	\caption{左;サンプルが変わると少し係数がぶれる。右；サンプルが変わっただけで$\beta_2$の符号も変わってしまう。}
+	\label{Multico}
 \end{figure}
 
 \subsection{分散分析による空間の分解}
@@ -274,54 +274,54 @@ Rで逆行列を求めるには，\verb|solve|という関数があるので，�
 データ全体$\mathbb{R}$は，この射影によって部分空間$\bm{W(X)}$と$\bm{W(X)}^{\perp}$に分解されます。相補性の考え方から$\bm{I}-\bm{P_A}$が$\bm{W(X)}^{\perp}$に対応しています。実験計画の場合，デザイン行列で把握しきれない変動は誤差だと考えるわけですから，$\bm{W(X)}^{\perp}$が誤差ベクトルの作る部分空間であり，そこに射影する射影行列は$\bm{P_e}=\bm{I}-\bm{P_A}$だと考えることができます。
 
 具体的な数値例で見てみます。射影行列は，
-\[ 
-    \begin{array}{lll}
-    \bm{P_A} &=& \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}' \\
-             &=& \begin{pmatrix}1&0\\1&0\\ 0&1\\0&1\end{pmatrix} \left( 
-                \begin{pmatrix} 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \end{pmatrix}
-                \begin{pmatrix} 1 & 0 \\ 1 & 0 \\ 0 & 1 \\ 0 & 1 \end{pmatrix}
-             \right)^{-1}
-             \begin{pmatrix} 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \end{pmatrix} \\
-             &&\\
-             &=&
-             \begin{pmatrix}1&0\\1&0\\ 0&1\\0&1\end{pmatrix} 
-             \begin{pmatrix}2 & 0 \\ 0 & 2 \end{pmatrix}^{-1}
-             \begin{pmatrix} 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \end{pmatrix} \\
-             &&\\
-             &=&
-             \begin{pmatrix}1&0\\1&0\\ 0&1\\0&1\end{pmatrix} 
-             \begin{pmatrix}0.5 & 0 \\ 0 & 0.5 \end{pmatrix}
-             \begin{pmatrix} 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \end{pmatrix} \\
-             &&\\
-             &=&
-             \begin{pmatrix} 0.5 & 0.5 & 0 & 0 \\ 0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & 0.5 \\ 0 & 0 & 0.5 & 0.5 \end{pmatrix}
-    \end{array}
+\[
+	\begin{array}{lll}
+		\bm{P_A} & = & \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}'                      \\
+		         & = & \begin{pmatrix}1&0\\1&0\\ 0&1\\0&1\end{pmatrix} \left(
+		\begin{pmatrix} 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \end{pmatrix}
+		\begin{pmatrix} 1 & 0 \\ 1 & 0 \\ 0 & 1 \\ 0 & 1 \end{pmatrix}
+		\right)^{-1}
+		\begin{pmatrix} 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \end{pmatrix}          \\
+		         &   &                                                        \\
+		         & = &
+		\begin{pmatrix}1&0\\1&0\\ 0&1\\0&1\end{pmatrix}
+		\begin{pmatrix}2 & 0 \\ 0 & 2 \end{pmatrix}^{-1}
+		\begin{pmatrix} 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \end{pmatrix}          \\
+		         &   &                                                        \\
+		         & = &
+		\begin{pmatrix}1&0\\1&0\\ 0&1\\0&1\end{pmatrix}
+		\begin{pmatrix}0.5 & 0 \\ 0 & 0.5 \end{pmatrix}
+		\begin{pmatrix} 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \end{pmatrix}          \\
+		         &   &                                                        \\
+		         & = &
+		\begin{pmatrix} 0.5 & 0.5 & 0 & 0 \\ 0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & 0.5 \\ 0 & 0 & 0.5 & 0.5 \end{pmatrix}
+	\end{array}
 \]
 となります\footnote{$2\times 2$の逆行列は，セクション\ref{inverse_form},Pp.\pageref{inverse_form}を思い出してください。}。これの直交補空間への射影行列は，
 \[
-    \begin{array}{lll}
-        \bm{P_e} &=& \bm{I} - \bm{P_A}   \\
-                & = &  \begin{pmatrix} 1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\0 & 0 & 1 & 0 \\0 & 0 & 0 & 1\end{pmatrix} -
-                \begin{pmatrix} 0.5 & 0.5 & 0 & 0 \\ 0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & 0.5 \\ 0 & 0 & 0.5 & 0.5 \end{pmatrix} \\
-                &&\\
-                &=& 
-                \begin{pmatrix} 0.5 & -0.5 & 0 & 0 \\ -0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & -0.5 \\ 0 & 0 & -0.5 & 0.5 \end{pmatrix} 
-    \end{array}
+	\begin{array}{lll}
+		\bm{P_e} & = & \bm{I} - \bm{P_A}                                                                               \\
+		         & = & \begin{pmatrix} 1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\0 & 0 & 1 & 0 \\0 & 0 & 0 & 1\end{pmatrix} -
+		\begin{pmatrix} 0.5 & 0.5 & 0 & 0 \\ 0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & 0.5 \\ 0 & 0 & 0.5 & 0.5 \end{pmatrix} \\
+		         &   &                                                                                                 \\
+		         & = &
+		\begin{pmatrix} 0.5 & -0.5 & 0 & 0 \\ -0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & -0.5 \\ 0 & 0 & -0.5 & 0.5 \end{pmatrix}
+	\end{array}
 \]
 となります。
 
 データベクトルをこれらの空間に射影するとどういうことが起きるか，計算してみましょう。まずはデザイン行列の空間へ射影しましょう。
 \[
-    \bm{P_A}\bm{y} = \begin{pmatrix} 0.5 & 0.5 & 0 & 0 \\ 0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & 0.5 \\ 0 & 0 & 0.5 & 0.5 \end{pmatrix}
-    \begin{pmatrix} 2\\3\\4\\5 \end{pmatrix} =
-    \begin{pmatrix} 2.5\\2.5\\4.5\\4.5 \end{pmatrix}
+	\bm{P_A}\bm{y} = \begin{pmatrix} 0.5 & 0.5 & 0 & 0 \\ 0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & 0.5 \\ 0 & 0 & 0.5 & 0.5 \end{pmatrix}
+	\begin{pmatrix} 2\\3\\4\\5 \end{pmatrix} =
+	\begin{pmatrix} 2.5\\2.5\\4.5\\4.5 \end{pmatrix}
 \]
 ここにあるように，実験群・統制群それぞれへの平均値が計算されました。また，$\bm{P_E}$を使った射影の結果は次のようになります。
 
 \[
-    \bm{P_E}\bm{y} = \begin{pmatrix} 0.5 & -0.5 & 0 & 0 \\ -0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & -0.5 \\ 0 & 0 & -0.5 & 0.5 \end{pmatrix} 
-    \begin{pmatrix} 2\\3\\4\\5 \end{pmatrix} =
-    \begin{pmatrix} -0.5\\0.5\\-0.5\\0.5 \end{pmatrix}
+	\bm{P_E}\bm{y} = \begin{pmatrix} 0.5 & -0.5 & 0 & 0 \\ -0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & -0.5 \\ 0 & 0 & -0.5 & 0.5 \end{pmatrix}
+	\begin{pmatrix} 2\\3\\4\\5 \end{pmatrix} =
+	\begin{pmatrix} -0.5\\0.5\\-0.5\\0.5 \end{pmatrix}
 \]
 
 これは一瞬分かりにくいかもしれませんが，それぞれの群平均からの差を表していますね。群平均からの個々の値の差を誤差と考えるわけですから，まさにその通りになっています。
@@ -330,58 +330,58 @@ Rで逆行列を求めるには，\verb|solve|という関数があるので，�
 
 全体平均は全て同じ大きさを持つベクトル$\bm{G}'=\begin{pmatrix}1 & 1 & 1 & 1\end{pmatrix}$が張る空間だと考えることができます。この射影行列を考えます。
 \[
-    \begin{array}{lll}
-        \bm{P_G} &=& \bm{G}(\bm{G}'\bm{G})^{-1}\bm{G}' \\
-        &=&  \begin{pmatrix} 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \end{pmatrix}
-    \end{array}
+	\begin{array}{lll}
+		\bm{P_G} & = & \bm{G}(\bm{G}'\bm{G})^{-1}\bm{G}'                                                                                                              \\
+		         & = & \begin{pmatrix} 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \end{pmatrix}
+	\end{array}
 \]
 ここにデータを射影してみると，
 \[
-    \bm{P_G}\bm{y} = \begin{pmatrix} 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \end{pmatrix}
-    \begin{pmatrix} 2\\3\\4\\5 \end{pmatrix} =
-    \begin{pmatrix} 3.5\\3.5\\3.5\\3.5 \end{pmatrix}
+	\bm{P_G}\bm{y} = \begin{pmatrix} 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \end{pmatrix}
+	\begin{pmatrix} 2\\3\\4\\5 \end{pmatrix} =
+	\begin{pmatrix} 3.5\\3.5\\3.5\\3.5 \end{pmatrix}
 \]
 となります。
 
 図\ref{projectionANOVA}には，空間の分解と射影行列を併記してみました。左図はデータ空間の分解で，右図はそれに対応する射影行列の分解パターンです。そこには要因の効果を取り出す射影行列$\bm{P_F}$がありますが，これは誤差を取り除いた空間から，全体平均を写像で潰した残りの空間として表現されています。
 \begin{figure}
-    \centering
-    \begin{tikzpicture}[scale=0.70]
-        \coordinate (o) at (3,3);
-        \coordinate (a) at (1.5,1.7);
-        \coordinate (a2) at (1.5,1);
-        \coordinate (b) at (4.5,1.7);
-        \coordinate (c) at (0,-0.5);
-        \coordinate (d) at (3,-0.5);
-        \node[inner xsep=20,above] at (o) {$\mathbb{R}$};
-        \node[below] at (a) {$\bm{W(X)}$};
-        \node[rectangle,below] at (b) {$\bm{W(X)^{\perp}}$};
-        \node[rectangle,below] at (c) {$\bm{W(G)}$};
-        \node[rectangle,below] at (d) {$\bm{W_G^{\perp}(X)}$};
-        \draw[-] (o)--(a);
-        \draw[-] (o)--(b);
-        \draw[-] (a2)--(c);
-        \draw[-] (a2)--(d);
-    \end{tikzpicture}
-    \begin{tikzpicture}[scale=0.70]
-        \coordinate (o) at (3,3);
-        \coordinate (a) at (1.5,1.7);
-        \coordinate (a2) at (1.5,1);
-        \coordinate (b) at (4.5,1.7);
-        \coordinate (c) at (0,-0.5);
-        \coordinate (d) at (3,-0.5);
-        \node[inner xsep=20,above] at (o) {$\bm{I}$};
-        \node[below] at (a) {$\bm{P_A}$};
-        \node[rectangle,below] at (b) {$\bm{P_e}=\bm{I}-\bm{P_A}$};
-        \node[rectangle,below] at (c) {$\bm{P_G}$};
-        \node[rectangle,below] at (d) {$\bm{P_F}=\bm{P_A}-\bm{P_G}$};
-        \draw[-] (o)--(a);
-        \draw[-] (o)--(b);
-        \draw[-] (a2)--(c);
-        \draw[-] (a2)--(d);
-    \end{tikzpicture}
-    \caption{分散分析による空間の分解}
-    \label{projectionANOVA}
+	\centering
+	\begin{tikzpicture}[scale=0.70]
+		\coordinate (o) at (3,3);
+		\coordinate (a) at (1.5,1.7);
+		\coordinate (a2) at (1.5,1);
+		\coordinate (b) at (4.5,1.7);
+		\coordinate (c) at (0,-0.5);
+		\coordinate (d) at (3,-0.5);
+		\node[inner xsep=20,above] at (o) {$\mathbb{R}$};
+		\node[below] at (a) {$\bm{W(X)}$};
+		\node[rectangle,below] at (b) {$\bm{W(X)^{\perp}}$};
+		\node[rectangle,below] at (c) {$\bm{W(G)}$};
+		\node[rectangle,below] at (d) {$\bm{W_G^{\perp}(X)}$};
+		\draw[-] (o)--(a);
+		\draw[-] (o)--(b);
+		\draw[-] (a2)--(c);
+		\draw[-] (a2)--(d);
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=0.70]
+		\coordinate (o) at (3,3);
+		\coordinate (a) at (1.5,1.7);
+		\coordinate (a2) at (1.5,1);
+		\coordinate (b) at (4.5,1.7);
+		\coordinate (c) at (0,-0.5);
+		\coordinate (d) at (3,-0.5);
+		\node[inner xsep=20,above] at (o) {$\bm{I}$};
+		\node[below] at (a) {$\bm{P_A}$};
+		\node[rectangle,below] at (b) {$\bm{P_e}=\bm{I}-\bm{P_A}$};
+		\node[rectangle,below] at (c) {$\bm{P_G}$};
+		\node[rectangle,below] at (d) {$\bm{P_F}=\bm{P_A}-\bm{P_G}$};
+		\draw[-] (o)--(a);
+		\draw[-] (o)--(b);
+		\draw[-] (a2)--(c);
+		\draw[-] (a2)--(d);
+	\end{tikzpicture}
+	\caption{分散分析による空間の分解}
+	\label{projectionANOVA}
 \end{figure}
 射影行列の関係から，
 \[ \bm{I} = \bm{P_G} +\bm{P_F}+\bm{P_e} \]
@@ -393,15 +393,15 @@ Rで逆行列を求めるには，\verb|solve|という関数があるので，�
 
 これを踏まえて考えると，分散分析表の構成は，次のように表現できます。
 \begin{table}[ht]
-    \centering
-    \caption{射影行列による分散分析表の構成}
-    \begin{tabular}{cccc}
-        source & SS                                  & df             & MS                                   \\\hline
-        Factor & $\bm{y}'\bm{P_Fy}$                  & $tr(\bm{P_F})$ & $\bm{y}'\bm{P_Fy}$ / $tr(\bm{P_F})$  \\
-        Error  & $\bm{y}'\bm{P_ey} $                 & $tr(\bm{P_e})$ & $\bm{y}'\bm{P_ey} $ / $tr(\bm{P_e})$ \\\hline
-        Total  & $\bm{y}'\bm{Iy} - \bm{y}'\bm{P_Gy}$                                                         \\\hline
-    \end{tabular}
-    \label{projectionANOVAtable}
+	\centering
+	\caption{射影行列による分散分析表の構成}
+	\begin{tabular}{cccc}
+		source & SS                                  & df             & MS                                   \\\hline
+		Factor & $\bm{y}'\bm{P_Fy}$                  & $tr(\bm{P_F})$ & $\bm{y}'\bm{P_Fy}$ / $tr(\bm{P_F})$  \\
+		Error  & $\bm{y}'\bm{P_ey} $                 & $tr(\bm{P_e})$ & $\bm{y}'\bm{P_ey} $ / $tr(\bm{P_e})$ \\\hline
+		Total  & $\bm{y}'\bm{Iy} - \bm{y}'\bm{P_Gy}$                                                         \\\hline
+	\end{tabular}
+	\label{projectionANOVAtable}
 \end{table}
 
 
@@ -414,19 +414,19 @@ Rで逆行列を求めるには，\verb|solve|という関数があるので，�
 またデザイン行列(セクション\ref{designMatrix}，Pp.\pageref{designMatrix})のところで制約条件について触れましたが，そのこととこの射影行列がつながってきます(Pp.\ref{Desing_constraint}の脚注にかいた伏線の回収です!)。
 デザイン行列$\bm{X}$に，はじめから切片をいれ，また制約条件を入れない書き方をしてみましょう。すなわち，
 \[
-    \bm{X} = \begin{pmatrix}1 & 1 & 0 \\1 & 1 & 0 \\1 & 0 & 1 \\1 & 0 & 1 \end{pmatrix}
+	\bm{X} = \begin{pmatrix}1 & 1 & 0 \\1 & 1 & 0 \\1 & 0 & 1 \\1 & 0 & 1 \end{pmatrix}
 \]
 のように考えたとします。このとき，計算途中で含まれる逆行列の計算，$(\bm{X}'\bm{X})^{-1}$が計算不能になってしまうのです。この行列を掃き出し法などで計算すると分かりますが，階数が2しかないのです。つまり作れる空間は2次元までであり，切片をそのひとつと数えるのであれば，残りは効果があるかないかという要素しか残らないからです。
 
 
 \begin{reidai}{}{}
-    4人の被験者をA,B群に2人ずつ振り分けて，群間差を見る分散分析をしたいと思います。
-    データベクトル$\bm{y} = \begin{pmatrix}1&3&4&6\end{pmatrix}'$とデザイン行列の関係は，
-    \[ \begin{pmatrix}1\\3\\4\\6\\\end{pmatrix} = \begin{pmatrix}1\\1\\1\\1\\\end{pmatrix}\mu +
-        \begin{pmatrix} 1 & 0\\1 & 0 \\ 0 & 1 \\ 0 & 1\end{pmatrix}
-        \begin{pmatrix}\beta_1\\\beta_2\end{pmatrix} +
-        \begin{pmatrix}e_1\\e_2\\e_3\\e_4\end{pmatrix} \]
-    というようにかけるでしょう。ここから，$\bm{P_G},\bm{P_F},\bm{P_e}$を構成し，また分散分析表を計算してみましょう。
+	4人の被験者をA,B群に2人ずつ振り分けて，群間差を見る分散分析をしたいと思います。
+	データベクトル$\bm{y} = \begin{pmatrix}1&3&4&6\end{pmatrix}'$とデザイン行列の関係は，
+	\[ \begin{pmatrix}1\\3\\4\\6\\\end{pmatrix} = \begin{pmatrix}1\\1\\1\\1\\\end{pmatrix}\mu +
+		\begin{pmatrix} 1 & 0\\1 & 0 \\ 0 & 1 \\ 0 & 1\end{pmatrix}
+		\begin{pmatrix}\beta_1\\\beta_2\end{pmatrix} +
+		\begin{pmatrix}e_1\\e_2\\e_3\\e_4\end{pmatrix} \]
+	というようにかけるでしょう。ここから，$\bm{P_G},\bm{P_F},\bm{P_e}$を構成し，また分散分析表を計算してみましょう。
 \end{reidai}
 \section{分散共分散行列}
 \label{covMat}
@@ -444,35 +444,35 @@ Rで逆行列を求めるには，\verb|solve|という関数があるので，�
 \[ \sum_i^n d_i^2 = tr(\bm{V}'\bm{V}) \]
 とすることができます。
 \begin{figure}
-    \centering
-    \begin{tikzpicture}[scale=0.70]
-        \coordinate (o) at (0,0);
-        \coordinate (x1) at (-5,0);
-        \coordinate (x2) at (5,0);
-        \coordinate (y1) at (0,-5);
-        \coordinate (y2) at (0,5);
-        \coordinate (s1) at (3,3);
-        \coordinate (s2) at (-0.8,1.5);
-        \coordinate (s3) at (1.5,1);
-        \coordinate (s4) at (2,-1);
-        \coordinate (s5) at (-2,-3);
-        \coordinate (s6) at (-2,-1.5);
-        \fill[cyan!10] (o) circle[x radius=5,y radius=2.5,rotate=45];
-        \foreach\P in{s1,s2,s3,s4,s5,s6}\fill[black](\P) circle(0.06);
-        \draw[dashed] (s1) -- (3,0);
-        \draw[dashed] (s1) -- (0,3);
-        \draw[->,>=Latex,thick] (x1)--(x2);
-        \draw[->,>=Latex,thick] (y1)--(y2);
-        \draw(o) -- (s1);
-        \draw[dashed,very thin](o) to [out=75,in=185]node[midway,above,rotate=53]{$d_i^2$} (s1);
-        \node[below right] at (x2) {V1};
-        \node[left] at (y2) {V2};
-        \node[below] at (3,0) {$x_{i1}-\bar{x}_1$};
-        \node[left] at (0,3) {$x_{i2}-\bar{x}_2$};
-        \node[above right] at (s1) {$x_i$};
-    \end{tikzpicture}
-    \caption{平均偏差行列をつかった空間}
-    \label{SpaceOfDiff}
+	\centering
+	\begin{tikzpicture}[scale=0.70]
+		\coordinate (o) at (0,0);
+		\coordinate (x1) at (-5,0);
+		\coordinate (x2) at (5,0);
+		\coordinate (y1) at (0,-5);
+		\coordinate (y2) at (0,5);
+		\coordinate (s1) at (3,3);
+		\coordinate (s2) at (-0.8,1.5);
+		\coordinate (s3) at (1.5,1);
+		\coordinate (s4) at (2,-1);
+		\coordinate (s5) at (-2,-3);
+		\coordinate (s6) at (-2,-1.5);
+		\fill[cyan!10] (o) circle[x radius=5,y radius=2.5,rotate=45];
+		\foreach\P in{s1,s2,s3,s4,s5,s6}\fill[black](\P) circle(0.06);
+		\draw[dashed] (s1) -- (3,0);
+		\draw[dashed] (s1) -- (0,3);
+		\draw[->,>=Latex,thick] (x1)--(x2);
+		\draw[->,>=Latex,thick] (y1)--(y2);
+		\draw(o) -- (s1);
+		\draw[dashed,very thin](o) to [out=75,in=185]node[midway,above,rotate=53]{$d_i^2$} (s1);
+		\node[below right] at (x2) {V1};
+		\node[left] at (y2) {V2};
+		\node[below] at (3,0) {$x_{i1}-\bar{x}_1$};
+		\node[left] at (0,3) {$x_{i2}-\bar{x}_2$};
+		\node[above right] at (s1) {$x_i$};
+	\end{tikzpicture}
+	\caption{平均偏差行列をつかった空間}
+	\label{SpaceOfDiff}
 \end{figure}
 
 さて，これをベクトルや行列の空間的イメージとして見ると，原点さえ同じであれば必ずしもそれぞれの変数が作る空間にこだわらなくとも，分散の総和(を$n$倍したもの)は同じであることがわかりますね。大事なのはこの空間上にあるデータの散らばりであって，座標(基底)はどのようにとっても良いことです。
@@ -481,9 +481,9 @@ Rで逆行列を求めるには，\verb|solve|という関数があるので，�
 \[ \bm{T} = \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin\theta & \cos \theta \end{pmatrix} \]
 行列は座標変換装置なので，この行列も元の行列の座標を変えてしまいます。しかし，各ベクトルのノルムは$1$で，しかも2つの列ベクトルとして見ると互いに直交していることがわかります。確認してみましょう。
 \[ \begin{Vmatrix}\cos \theta \\\sin \theta \end{Vmatrix}^2 =
-    (\cos\theta)^2+(\sin\theta)^2 =\cos^2\theta +\sin^2\theta = 1\]
+	(\cos\theta)^2+(\sin\theta)^2 =\cos^2\theta +\sin^2\theta = 1\]
 \[ \begin{Vmatrix}-\sin \theta \\\cos \theta \end{Vmatrix}^2 =
-    (-\sin\theta)^2+(\cos\theta)^2 =\sin^2\theta +\cos^2\theta = 1\]
+	(-\sin\theta)^2+(\cos\theta)^2 =\sin^2\theta +\cos^2\theta = 1\]
 \[ \left(\begin{pmatrix}\cos\theta\\\sin\theta\end{pmatrix},\begin{pmatrix}-\sin\theta\\\cos \theta\end{pmatrix}\right) = \cos\theta \times (-\sin \theta) +\sin \theta\times \cos \theta = 0 \]
 このように，直交している次元で，かつノルムを変えない変換をする行列のことを\keytermL{直交行列}{ちょっこうぎょうれつ}といい，特に回転角度$\theta$で座標を変えるものを\keytermL{回転行列}{かいてんぎょうれつ}といいます。
 
@@ -491,37 +491,37 @@ Rで逆行列を求めるには，\verb|solve|という関数があるので，�
 
 さて分散の総和(を$n$倍したもの)という特徴は変えずに，座標だけ切り替えるためにこの行列を使います。
 \begin{figure}
-    \centering
-    \begin{tikzpicture}[scale=0.70]
-        \coordinate (o) at (0,0);
-        \coordinate (x1) at (-4.045085,-2.938926);
-        \coordinate (x2) at (4.045085,2.938926);
-        \coordinate (y1) at (2.938926,-4.045085);
-        \coordinate (y2) at (-2.938926,4.045085);
-        \coordinate (s1) at (3,3);
-        \coordinate (s2) at (-0.8,1.5);
-        \coordinate (s3) at (1.5,1);
-        \coordinate (s4) at (2,-1);
-        \coordinate (s5) at (-2,-3);
-        \coordinate (s6) at (-2,-1.5);
-        \coordinate (sv1) at ($(o)!(s1)!(x1)$);
-        \coordinate (sv2) at ($(o)!(s1)!(y1)$);
-        \fill[cyan!10] (o) circle[x radius=5,y radius=2.5,rotate=45];
-        \foreach\P in{s1,s2,s3,s4,s5,s6}\fill[black](\P) circle(0.06);
-        \draw[->,>=Latex,thick] (x1)--(x2);
-        \draw[->,>=Latex,thick] (y1)--(y2);
-        \draw[dashed](sv1) -- (s1);
-        \draw[dashed](sv2) -- (s1);
-        \draw(o) -- (s1);
-        \node[below right] at (sv1) {$y_{i1}$};
-        \node[below left] at (sv2) {$y_{i2}$};
-        % \draw[dashed,very thin](o) to [out=75,in=185]node[midway,above,rotate=53]{$d_i^2$} (s1);
-        \node[below right] at (x2) {V1'};
-        \node[above right] at (y2) {V2'};
-        \node[above right] at (s1) {$x_i$};
-    \end{tikzpicture}
-    \caption{座標を回転させる}
-    \label{SpaceOfDiffroated}
+	\centering
+	\begin{tikzpicture}[scale=0.70]
+		\coordinate (o) at (0,0);
+		\coordinate (x1) at (-4.045085,-2.938926);
+		\coordinate (x2) at (4.045085,2.938926);
+		\coordinate (y1) at (2.938926,-4.045085);
+		\coordinate (y2) at (-2.938926,4.045085);
+		\coordinate (s1) at (3,3);
+		\coordinate (s2) at (-0.8,1.5);
+		\coordinate (s3) at (1.5,1);
+		\coordinate (s4) at (2,-1);
+		\coordinate (s5) at (-2,-3);
+		\coordinate (s6) at (-2,-1.5);
+		\coordinate (sv1) at ($(o)!(s1)!(x1)$);
+		\coordinate (sv2) at ($(o)!(s1)!(y1)$);
+		\fill[cyan!10] (o) circle[x radius=5,y radius=2.5,rotate=45];
+		\foreach\P in{s1,s2,s3,s4,s5,s6}\fill[black](\P) circle(0.06);
+		\draw[->,>=Latex,thick] (x1)--(x2);
+		\draw[->,>=Latex,thick] (y1)--(y2);
+		\draw[dashed](sv1) -- (s1);
+		\draw[dashed](sv2) -- (s1);
+		\draw(o) -- (s1);
+		\node[below right] at (sv1) {$y_{i1}$};
+		\node[below left] at (sv2) {$y_{i2}$};
+		% \draw[dashed,very thin](o) to [out=75,in=185]node[midway,above,rotate=53]{$d_i^2$} (s1);
+		\node[below right] at (x2) {V1'};
+		\node[above right] at (y2) {V2'};
+		\node[above right] at (s1) {$x_i$};
+	\end{tikzpicture}
+	\caption{座標を回転させる}
+	\label{SpaceOfDiffroated}
 \end{figure}
 適当な角度$\theta$を決めて，もとになっている座標をグイッと回転させたところで，各データ点の原点からの距離に変化はありません。つまり，データ行列全体の持つ情報の総量は変化していないのです。新しくなった座標
 \[ \begin{pmatrix}y_{i1}\\y_{i2}\end{pmatrix} = \bm{T}\begin{pmatrix}x_{i1}\\x_{i2}\end{pmatrix} \]

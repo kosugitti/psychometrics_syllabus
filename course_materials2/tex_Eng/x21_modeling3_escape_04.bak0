@@ -1,0 +1,29 @@
+\begin{lstlisting}[language=C++,label={stan::21_03},caption={パラメータ変換を入れたコード}]
+...
+parameters{
+  real mu1;
+  real delta1;
+  real delta2;
+  real<lower=0> sig;
+}
+
+transformed parameters{
+    real mu2;
+    real mu3;
+    mu2 = mu1 + delta1;
+    mu3 = mu1 + delta2;
+}
+
+model{
+  // likelihood
+  X1 ~ normal(mu1,sig);
+  X2 ~ normal(mu2,sig);
+  X3 ~ normal(mu3,sig);
+  // prior
+  mu1 ~ uniform(0,100);
+  delta1 ~ normal(0,100);
+  delta2 ~ normal(0,100);
+  sig ~ cauchy(0,5);
+}
+
+\end{lstlisting}

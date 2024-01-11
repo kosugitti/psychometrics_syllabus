@@ -38,27 +38,27 @@ The point we want to consider here is the part that says "although there are ind
 
 ここで$X_{ij}$はまたしても，第$j$期に$b_j$の効果がある($1$)かない($0$)かを表している記号だと思ってください。具体的には，$i$さんの3つの時期$j=1,2,3$の効果を隠さずに書くとしたら，次のようになっていることに注意です。
 \begin{equation}
-   \begin{array}{ll}
-      y_{i1} & = b_0 + d_i + b_1 X_{i1} + b_2 X_{i2} + b_3 X_{i3} + e_{i1}       \\
-             & = b_0 + d_i + b_1 \times 1 + b_2 \times 0 + b_3 \times 0 + e_{i1} \\
-             & = b_0 + d_i + b_1 + e_{i1}                                        \\
-      y_{i2} & = b_0 + d_i + b_1 X_{i1} + b_2 X_{i2} + b_3 X_{i3} + e_{i2}       \\
-             & = b_0 + d_i + b_1 \times 0 + b_2 \times 1 + b_3 \times 0 + e_{i2} \\
-             & = b_0 + d_i + b_2 + e_{i2}                                        \\
-      y_{i3}
-             & = b_0 + d_i + b_1 X_{i1} + b_2 X_{i2} + b_3 X_{i3} + e_{i3}       \\
-             & = b_0 + d_i + b_1 \times 0 + b_2 \times 0 + b_3 \times 1 + e_{i3} \\
-             & = b_0 + d_i + b_3 + e_{i3}                                        \\
-   \end{array}
+	\begin{array}{ll}
+		y_{i1} & = b_0 + d_i + b_1 X_{i1} + b_2 X_{i2} + b_3 X_{i3} + e_{i1}       \\
+		       & = b_0 + d_i + b_1 \times 1 + b_2 \times 0 + b_3 \times 0 + e_{i1} \\
+		       & = b_0 + d_i + b_1 + e_{i1}                                        \\
+		y_{i2} & = b_0 + d_i + b_1 X_{i1} + b_2 X_{i2} + b_3 X_{i3} + e_{i2}       \\
+		       & = b_0 + d_i + b_1 \times 0 + b_2 \times 1 + b_3 \times 0 + e_{i2} \\
+		       & = b_0 + d_i + b_2 + e_{i2}                                        \\
+		y_{i3}
+		       & = b_0 + d_i + b_1 X_{i1} + b_2 X_{i2} + b_3 X_{i3} + e_{i3}       \\
+		       & = b_0 + d_i + b_1 \times 0 + b_2 \times 0 + b_3 \times 1 + e_{i3} \\
+		       & = b_0 + d_i + b_3 + e_{i3}                                        \\
+	\end{array}
 \end{equation}
 
 また，ポイントとして，新たに$d_i$というのが出てきていることに注意してください。これは$i$に伴って変わる数字で，時期$j$の添字がついていませんから，「時期を通して一貫した個人の平均値」ということになります。$b_0$は$i$も$j$もついていませんから，個人にも時期にも関係なく変化しない全体の平均値を表しています。
 
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/14_design3/slide14_01.png}
-   \caption{線形モデルで表現}
-   \label{fig::22_06}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/14_design3/slide14_01.png}
+	\caption{線形モデルで表現}
+	\label{fig::22_06}
 \end{figure}
 
 これを図で表したのが図\ref{fig::22_06}です。全体平均$b_0$とは別に，個別の平均$d_i$の水平線が引かれています。個人平均は個々人のベースラインですので，時期によって変わりません。時期の効果$b_j$は4人に等しく影響します。添字$i$がないことでこれを表現しています。効果は同じであったとしても，個人の平均が違うので，データとして得られる数字はさまざまになっている，というわけです。もちろん個人差，効果を考慮しても析出できない誤差$e_{ij}$がありますし，これまで同様$b_{j}$は相対的，つまりすべての水準を足し合わせると$0$になってしまうものです。また，個人の平均値$d_i$も相対的なものとして捉えられます。全体平均$b_0$が別にあるからですね。これまで同様に無作為に割り付けているので，何の効果も個人差もなかったら，全体平均の横一線に並ぶはずだ，というのが基本的なアイデアだからです。
@@ -71,48 +71,48 @@ The point we want to consider here is the part that says "although there are ind
 % latex table generated in R 4.0.2 by xtable 1.8-4 package
 % Fri Sep 11 14:57:29 2020
 \begin{table}[ht]
-   \centering
-   \caption{水準ごとの平均から効果を考える}
-   \begin{tabular}{lrrr|r}
-      \hline
-      ID   & Time1 & Time2 & Time3 & 平均 \\
-      \hline
-      1    & 10    & 5     & 9     & 8    \\
-      2    & 9     & 4     & 5     & 6    \\
-      3    & 4     & 2     & 3     & 3    \\
-      4    & 7     & 3     & 5     & 5    \\
-      \hline
-      平均 & 7.5   & 3.5   & 5.5   & 5.5  \\\hline
-   \end{tabular}
-   \label{tbl::22_06}
+	\centering
+	\caption{水準ごとの平均から効果を考える}
+	\begin{tabular}{lrrr|r}
+		\hline
+		ID & Time1 & Time2 & Time3 & 平均  \\
+		\hline
+		1  & 10    & 5     & 9     & 8   \\
+		2  & 9     & 4     & 5     & 6   \\
+		3  & 4     & 2     & 3     & 3   \\
+		4  & 7     & 3     & 5     & 5   \\
+		\hline
+		平均 & 7.5   & 3.5   & 5.5   & 5.5 \\\hline
+	\end{tabular}
+	\label{tbl::22_06}
 \end{table}
 こうして，効果，個人差，誤差を計算して表にしたのが表\ref{tbl::22_07}です。例によって総和すると0ですので，平方和を計算することで相対的な大きさを比較できるようになります。
 
 % latex table generated in R 4.0.2 by xtable 1.8-4 package
 % Fri Sep 11 15:52:17 2020
 \begin{table}[ht]
-   \centering
-   \caption{効果，個人差，誤差を析出する}
-   \begin{tabular}{llrcrrr}
-      \hline
-      ID     & 時期  & スコア & 全体平均 & 個人差 & 効果 & 誤差 \\
-      \hline
-      1      & Time1 & 10     & 5.5      & +2.5   & +2.0 & 0.0  \\
-      1      & Time2 & 5      & 5.5      & +2.5   & -2.0 & -1.0 \\
-      1      & Time3 & 9      & 5.5      & +2.5   & 0.0  & +1.0 \\
-      2      & Time1 & 9      & 5.5      & +0.5   & +2.0 & +1.0 \\
-      2      & Time2 & 4      & 5.5      & +0.5   & -2.0 & 0.0  \\
-      2      & Time3 & 5      & 5.5      & +0.5   & 0.0  & -1.0 \\
-      3      & Time1 & 4      & 5.5      & -2.5   & +2.0 & -1.0 \\
-      3      & Time2 & 2      & 5.5      & -2.5   & -2.0 & +1.0 \\
-      3      & Time3 & 3      & 5.5      & -2.5   & 0.0  & 0.0  \\
-      4      & Time1 & 7      & 5.5      & -0.5   & +2.0 & 0.0  \\
-      4      & Time2 & 3      & 5.5      & -0.5   & -2.0 & 0.0  \\
-      4      & Time3 & 5      & 5.5      & -0.5   & 0.0  & 0.0  \\
-      \hline\hline
-      平方和 &       &        &          & 39.0   & 32.0 & 6.0  \\\hline
-   \end{tabular}
-   \label{tbl::22_07}
+	\centering
+	\caption{効果，個人差，誤差を析出する}
+	\begin{tabular}{llrcrrr}
+		\hline
+		ID  & 時期    & スコア & 全体平均 & 個人差  & 効果   & 誤差   \\
+		\hline
+		1   & Time1 & 10  & 5.5  & +2.5 & +2.0 & 0.0  \\
+		1   & Time2 & 5   & 5.5  & +2.5 & -2.0 & -1.0 \\
+		1   & Time3 & 9   & 5.5  & +2.5 & 0.0  & +1.0 \\
+		2   & Time1 & 9   & 5.5  & +0.5 & +2.0 & +1.0 \\
+		2   & Time2 & 4   & 5.5  & +0.5 & -2.0 & 0.0  \\
+		2   & Time3 & 5   & 5.5  & +0.5 & 0.0  & -1.0 \\
+		3   & Time1 & 4   & 5.5  & -2.5 & +2.0 & -1.0 \\
+		3   & Time2 & 2   & 5.5  & -2.5 & -2.0 & +1.0 \\
+		3   & Time3 & 3   & 5.5  & -2.5 & 0.0  & 0.0  \\
+		4   & Time1 & 7   & 5.5  & -0.5 & +2.0 & 0.0  \\
+		4   & Time2 & 3   & 5.5  & -0.5 & -2.0 & 0.0  \\
+		4   & Time3 & 5   & 5.5  & -0.5 & 0.0  & 0.0  \\
+		\hline\hline
+		平方和 &       &     &      & 39.0 & 32.0 & 6.0  \\\hline
+	\end{tabular}
+	\label{tbl::22_07}
 \end{table}
 
 ここにあるように，個人$i$の時期$j$における誤差，と各セルに細かく誤差が計算できるようになりました。これが群内要因計画の強みなのです。
@@ -128,10 +128,10 @@ The point we want to consider here is the part that says "although there are ind
 であれば，すべての研究が群内計画であればよいのに，と思うかもしれません。ただし現実的な問題として，同じ人に何度も何度もデータを提供してもらうのは，非常に負担をかけることになります(群内計画は反復測定計画とも呼ばれるのでした)。研究倫理的な観点，あるいは計画上の手間を考えると，群間計画にせざるを得ないということが少なくありません。研究者，研究に協力してくれる人，のコストを考えて実験計画はデザインする必要があるということです。
 
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/22_anovaOnR/slide22_04.png}
-   \caption{群内計画と群間計画の違い}
-   \label{fig::22_07}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/22_anovaOnR/slide22_04.png}
+	\caption{群内計画と群間計画の違い}
+	\label{fig::22_07}
 \end{figure}
 
 
@@ -177,11 +177,11 @@ This way of expression is about looking at the size of the effect $b_1$ compared
 It's okay, the basic way of thinking doesn't change this time either. Let's assume that we had three groups from the previous example, "watering every day", "watering occasionally", and "not watering". Based on that, let's consider the first group, "watering every day", as the basis and try to formulate.
 
 \[
-   \begin{cases}
-      y_{i1} = b_0 + e_{i1}       & \mbox{毎日水をあげる群} \\
-      y_{i2} = b_0 + b_1 + e_{i2} & \mbox{ときどきあげる群} \\
-      y_{i3} = b_0 + b_2 + e_{i3} & \mbox{あげない群}
-   \end{cases}
+	\begin{cases}
+		y_{i1} = b_0 + e_{i1}       & \mbox{毎日水をあげる群} \\
+		y_{i2} = b_0 + b_1 + e_{i2} & \mbox{ときどきあげる群} \\
+		y_{i3} = b_0 + b_2 + e_{i3} & \mbox{あげない群}
+	\end{cases}
 \]
 
 % このようにすると，まず「水をあげる群」は$b_0+e_i$となっています。$e_i$は誤差・個体差を表しているので，この式は水をあげる群の各個体は，群平均と誤差からなるということを意味しています。
@@ -203,12 +203,12 @@ In that case, the data of the three groups can each be expressed as follows.
 
 %amsmathパッケージ
 \[
-   \label{eq13_01}
-   \begin{cases}
-      y_{i} = b_0 + b_1 + e_{i} & \mbox{毎日水をあげる群} \\
-      y_{i} = b_0 + b_2 + e_{i} & \mbox{ときどきあげる群} \\
-      y_{i} = b_0 + b_3 + e_{i} & \mbox{あげない群}
-   \end{cases}
+	\label{eq13_01}
+	\begin{cases}
+		y_{i} = b_0 + b_1 + e_{i} & \mbox{毎日水をあげる群} \\
+		y_{i} = b_0 + b_2 + e_{i} & \mbox{ときどきあげる群} \\
+		y_{i} = b_0 + b_3 + e_{i} & \mbox{あげない群}
+	\end{cases}
 \]
 
 % ここで$b_0$とあるのは，全体平均です。水のあげかたの違いになんの効果もなければ，すべて全体平均＋個体差で説明できてしまうはずだからです。よろしいでしょうか。
@@ -220,12 +220,12 @@ In this way, it became easier to express it like a linear function using $X$. He
 % たとえば$i$番目のデータが「毎日水をあげる群」だったとすると，$X_{i1}=1,X_{i2}=0,X_{i3}=0$のように表します。すなわち，「水をあげる群」であり($1$)，「ときどきあげる群」「あげない群」ではない($0$)とするのです。これを踏まえて式を書き改めると，次のようになります。
 For example, if the $i^{th}$ data is the "Water Daily Group," it would be represented as $X_{i1}=1, X_{i2}=0, X_{i3}=0$. That is, it denotes being in the "Water Daily Group" ($1$) and not in the "Water Sometimes Group" or "Do Not Water Group" ($0$). Taking this into account, the equation can be rewritten as follows.
 \[
-   \label{eq13_01b}
-   \begin{cases}
-      y_{i} = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + e_{i} & \mbox{毎日水をあげる群} \\
-      y_{i} = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + e_{i} & \mbox{ときどきあげる群} \\
-      y_{i} = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + e_{i} & \mbox{あげない群}
-   \end{cases}
+	\label{eq13_01b}
+	\begin{cases}
+		y_{i} = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + e_{i} & \mbox{毎日水をあげる群} \\
+		y_{i} = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + e_{i} & \mbox{ときどきあげる群} \\
+		y_{i} = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + e_{i} & \mbox{あげない群}
+	\end{cases}
 \]
 
 % すべて同じ式になってしまいました！どの群も$y_{i} = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + e_i $という1つの式で表現できていますから，非常に簡略化できましたね。
@@ -248,23 +248,23 @@ By the way, this is a bit of a digression, but when representing numerical data 
 % ベクトルをセットで扱うのが\keytermL{行列}{ぎょうれつ}と呼ばれるもので，これを使うとデータセットは次のように表現できます。
 The concept of dealing with vectors as a set is called a matrix, and using this, data sets can be represented as follows.
 \[
-   \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}
-   =
-   \begin{pmatrix} b_0 \\ b_0 \\ \vdots \\ b_0 \end{pmatrix}
-   +
-   \begin{pmatrix} b_1 & 0 & 0 \\ 0 & b_2 & 0 \\ \vdots &\vdots & \vdots\\ 0 & 0 & b_3 \end{pmatrix}
-   +
-   \begin{pmatrix} e_1 \\ e_2 \\ \vdots \\ e_n \end{pmatrix}
+	\begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}
+	=
+	\begin{pmatrix} b_0 \\ b_0 \\ \vdots \\ b_0 \end{pmatrix}
+	+
+	\begin{pmatrix} b_1 & 0 & 0 \\ 0 & b_2 & 0 \\ \vdots &\vdots & \vdots\\ 0 & 0 & b_3 \end{pmatrix}
+	+
+	\begin{pmatrix} e_1 \\ e_2 \\ \vdots \\ e_n \end{pmatrix}
 \]
 % ここで右辺の第二項は$b_{ij}X_{ij}$の計算結果を表したもので，これを掛け算の式のまま表現すると，次のように書くことができます\footnote{行列とベクトルを習っていない人は，この掛け算どうなってるの？と思われるかもしれません。こうした行列の表現は線形代数と呼ばれるもので，心理統計のように変数が多くなったときの簡便的な表記法についての体系です。この授業の発展形である，データ解析応用の授業では行列を扱いますが，足し算掛け算から丁寧にやっていきますのでご心配なく。むしろ美しく表現できることにときめいてください。}。
 The second term on the right-hand side represents the calculation result of $b_{ij}X_{ij}$. Expressing this in the form of a multiplication equation, it can be written as follows\footnote{Those who are not familiar with matrices and vectors might wonder, how does this multiplication work? This form of matrix representation is known as linear algebra, and it is a system for convenient notation when dealing with many variables like in psychological statistics. Matrices are dealt with in the advanced course of this class, Data Analysis Applications, but we will start carefully from addition and multiplication, so there is no need to worry. Rather, please be fascinated by the beauty of the expressions.}.
 \[
-   \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}
-   =
-   \begin{pmatrix} 1 & 1 & 0 & 0 \\ 1 & 0 & 1 & 0 \\ \vdots  & \vdots & \vdots & \vdots \\ 1 & 0 & 0 & 1 \end{pmatrix}
-   \begin{pmatrix} b_0 \\ b_1 \\ b_2 \\ b_3 \end{pmatrix}
-   +
-   \begin{pmatrix} e_1 \\ e_2 \\ \vdots \\ e_n \end{pmatrix}
+	\begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}
+	=
+	\begin{pmatrix} 1 & 1 & 0 & 0 \\ 1 & 0 & 1 & 0 \\ \vdots  & \vdots & \vdots & \vdots \\ 1 & 0 & 0 & 1 \end{pmatrix}
+	\begin{pmatrix} b_0 \\ b_1 \\ b_2 \\ b_3 \end{pmatrix}
+	+
+	\begin{pmatrix} e_1 \\ e_2 \\ \vdots \\ e_n \end{pmatrix}
 \]
 
 % こうした上で行列やベクトルを記号で置き換えると，$\bm{y} = \bm{Xb} + \bm{e}$となり，このとき$\bm{X}$のことを(どの要因が割り当てられているかを表している行列という意味で)\keyterm{デザイン行列}{でざいんぎょうれつ}{design matrix}といいます。
@@ -286,12 +286,12 @@ In fact, there is one important \textbf{constraint} that is missing from this fo
 Considering this, if we rewrite equation \ref{eq13_01}, it becomes as follows.
 
 \[
-   \label{eq13_02}
-   \begin{cases}
-      y_i = b_0 + b_1 + e_i       & \mbox{毎日水をあげる群} \\
-      y_i = b_0 + b_2 + e_i       & \mbox{ときどきあげる群} \\
-      y_i = b_0 - b_1 - b_2 + e_i & \mbox{あげない群}
-   \end{cases}
+	\label{eq13_02}
+	\begin{cases}
+		y_i = b_0 + b_1 + e_i       & \mbox{毎日水をあげる群} \\
+		y_i = b_0 + b_2 + e_i       & \mbox{ときどきあげる群} \\
+		y_i = b_0 - b_1 - b_2 + e_i & \mbox{あげない群}
+	\end{cases}
 \]
 
 % こうすると，モデル式の係数は$b_0,b_1,b_2$の3つになり，3水準で係数が3つなので計算が合いますね。
@@ -300,10 +300,10 @@ By doing this, the coefficients of the model equation become the three "$b_0, b_
 By the way, if you want to express it using the overall average, even in the case of two levels, it would be as follows.
 
 \[
-   \begin{cases}
-      y_i = b_0 + b_1 + e_i & \mbox{統制群} \\
-      y_i = b_0 - b_1 + e_i & \mbox{実験群} \\
-   \end{cases}
+	\begin{cases}
+		y_i = b_0 + b_1 + e_i & \mbox{統制群} \\
+		y_i = b_0 - b_1 + e_i & \mbox{実験群} \\
+	\end{cases}
 \]
 
 % このように表記すると，効果$b_1$の総和も0，誤差$e_i$の総和も0なので，二乗しないと計算できないなあということが理解しやすいかと思います。
@@ -355,8 +355,8 @@ Well, in the case of within-group plans, it would mean that two different normal
 
 この式をイメージで表すと，次のような形になります。
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/14_design3/slide14_03.png}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/14_design3/slide14_03.png}
 \end{figure}
 
 このように確率をふまえたモデルで考えると，群内計画のデータには2つの分布が混ざり込んでいるので，\keyterm{混合効果モデル}{こんごうこうかもでる}{Mixed Effect Model}と呼ぶことがあります。先ほどの群間計画では，$b_0+b_1$で平均値をずらした正規分布にデータが従うことになりましたが，群内計画では$b_0+b_1+d_i$がすでに確率的に分布し，それが平均値となった確率分布がデータの従う分布になる，つまり(誤差の)正規分布の中に(個人差の)正規分布が入れ子になった形でモデルが表現されたことになります。分布が混ざったので\textbf{混合}というのですね。またより複雑なモデルの場合，この個人差を説明する他の変数や要因をつかって，個人差の分布もモデル化することになります。そのような場合，個人差に関係なく全体に及ぼす効果のことを\keyterm{固定効果}{こていこうか}{Fixed Effect}，個人差とともに変わりうる効果のことを\keyterm{変量効果}{へんりょうこうか}{Random Effect}と呼んで区別することがあります。名前だけでも覚えておいてください。
@@ -373,20 +373,20 @@ Well, in the case of within-group plans, it would mean that two different normal
 \section{課題}
 \paragraph{Within計画の分析例}本講で扱ったのと同じような，一要因3水準Within計画のデータを表\ref{m14_example}のように用意しました。要因の効果，個人差，誤差の大きさ(平方和)を計算する練習をしてみましょう。
 \begin{table}[ht]
-   \centering
-   \caption{効果，個人差，誤差の計算練習}
-   \begin{tabular}{l|ccc}
-      \hline
-      ID & Time1 & Time2 & Time3 \\
-      \hline
-      A  & 48    & 48    & 40    \\
-      B  & 49    & 51    & 45    \\
-      C  & 58    & 59    & 46    \\
-      D  & 46    & 44    & 37    \\
-      E  & 52    & 52    & 46    \\
-      \hline
-   \end{tabular}
-   \label{m14_example}
+	\centering
+	\caption{効果，個人差，誤差の計算練習}
+	\begin{tabular}{l|ccc}
+		\hline
+		ID & Time1 & Time2 & Time3 \\
+		\hline
+		A  & 48    & 48    & 40    \\
+		B  & 49    & 51    & 45    \\
+		C  & 58    & 59    & 46    \\
+		D  & 46    & 44    & 37    \\
+		E  & 52    & 52    & 46    \\
+		\hline
+	\end{tabular}
+	\label{m14_example}
 \end{table}
 
 \end{document}

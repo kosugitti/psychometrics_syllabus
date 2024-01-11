@@ -22,35 +22,35 @@
 
 x軸が潜在能力$\theta$を表していると考えれば，縦軸は能力に応じた\keytermL{通過率}{つうかりつ}になると考えられます。この関数を左右に動かす位置パラメータ，$b_j$を加えたモデルが\keyterm{1パラメータ・ロジスティックモデル}{1ぱらめーたろじすてぃっくもでる}{One Parameter Logistic model}であり，次の式\ref{1PLmodel}で表現されるのでした。
 
-\begin{equation}     
-  p_j(\theta) = \frac{1}{1+exp(-1.7(\theta-b_j))} 
-  \label{1PLmodel}
+\begin{equation}
+	p_j(\theta) = \frac{1}{1+exp(-1.7(\theta-b_j))}
+	\label{1PLmodel}
 \end{equation}
 
 ここで$p_j(\theta)$は項目$j$に対する$\theta$の通過率であり，$b_j$は\keyterm{困難度}{こんなんど}{difficulty}母数と言われるものです。
 
 さらに項目を特徴づけるために，傾きの大きさを表すパラメータ，$a_j$を加えたモデルが\keyterm{2パラメータ・ロジスティックモデル}{2ぱらめーたろじすてぃっくもでる}{Two Parameter Logistic model}です。モデル式は式\ref{2PLmodel}で表されます。
 
-\begin{equation} 
-  p_j(\theta) = \frac{1}{1+exp(-1.7a_j(\theta-b_j))} 
-  \label{2PLmodel}
+\begin{equation}
+	p_j(\theta) = \frac{1}{1+exp(-1.7a_j(\theta-b_j))}
+	\label{2PLmodel}
 \end{equation}
 
 $a_j$はのことをとくに\keyterm{識別力}{しきべつりょく}{discriminant}と呼ぶのでした。$a_j$の値によって傾きがどのように変わるかを，図\ref{fig::27_01}の二段目をみて確認しておきましょう。
 
 最後に，第\ref{x04_IRT}講では紹介していませんでしたが，3つ目のパラメータである$c_j$，\keyterm{当て推量母数}{あてすいりょうぼすう}{guessing parameter}を入れたモデルも紹介しておきます。モデルは式\ref{3PLmodel}のように表されます。
 \begin{equation}
-  p_j(\theta) = c_j + \frac{1-c_j}{1+exp(-1.7a_j(\theta-b_j))}
-  \label{3PLmodel}
+	p_j(\theta) = c_j + \frac{1-c_j}{1+exp(-1.7a_j(\theta-b_j))}
+	\label{3PLmodel}
 \end{equation}
 ここには切片のように定数$c_j$が入っていますから，関数のベースラインが上に上がるイメージです。これはつまり，学力$\theta$にかかわらず一定の正答率を有するということで，「適当に答えても当たる確率」ということから当て推量とよばれています。
 
 \begin{figure}[ht]
-  \begin{center}
-    \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/27_IRTonBayes/Rplot27_01.png}
-    \caption{上から順に，1，2，3パラメータロジスティックモデル。どこがどう変わっていくか確認しておこう。}
-    \label{fig::27_01}
-  \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/27_IRTonBayes/Rplot27_01.png}
+		\caption{上から順に，1，2，3パラメータロジスティックモデル。どこがどう変わっていくか確認しておこう。}
+		\label{fig::27_01}
+	\end{center}
 \end{figure}
 \subsection{確率モデル側から}
 さて今度は同じモデルをデータとの対応の観点から見てみましょう。
@@ -60,11 +60,11 @@ $a_j$はのことをとくに\keyterm{識別力}{しきべつりょく}{discrimi
 
 これまで利用してきた技術の応用で考えることができますから，すぐにでも実装できそうですね！
 \begin{figure}[ht]
-  \begin{center}
-    \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/27_IRTonBayes/Slide27_01.png}
-    \caption{確率モデルとしての設計図。ロジスティック関数とベルヌーイ分布の組み合わせでテスト理論のモデルが表現できる。}
-    \label{fig::27_02}
-  \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/27_IRTonBayes/Slide27_01.png}
+		\caption{確率モデルとしての設計図。ロジスティック関数とベルヌーイ分布の組み合わせでテスト理論のモデルが表現できる。}
+		\label{fig::27_02}
+	\end{center}
 \end{figure}
 
 \section{ロジスティックモデルでの実装}
@@ -160,33 +160,33 @@ fit3 <- model_3pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 \end{lstlisting}
 分析結果を見てみましょう。\keytermL{EAP推定値}{EAP}はそれぞれ表\ref{tbl::27_01}，図\ref{fig::27_03}のようになりました。
 \begin{table}[ht]
-  \caption{それぞれのパラメータ推定値}
-  \centering
-  \begin{tabular}[t]{c|c|cc|ccc}
-    \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{1PL} & \multicolumn{2}{c|}{2PL} & \multicolumn{3}{c}{3PL}                          \\\hline
-    Qid                   & $b_j$                    & $a_j$                    & $b_j$                   & $a_j$ & $b_j$  & $c_j$ \\
-    \hline
-    1                     & 0.727                    & 0.347                    & 1.716                   & 2.865 & 1.567  & 0.221 \\
-    2                     & -1.605                   & 0.724                    & -2.140                  & 1.818 & -0.761 & 0.557 \\
-    3                     & -1.175                   & 1.124                    & -1.229                  & 2.900 & -0.626 & 0.338 \\
-    4                     & -1.077                   & 0.955                    & -1.222                  & 2.033 & -0.535 & 0.362 \\
-    5                     & 0.577                    & 0.691                    & 0.771                   & 2.451 & 0.946  & 0.159 \\
-    6                     & 1.271                    & 0.694                    & 1.742                   & 1.100 & 1.659  & 0.050 \\
-    7                     & 0.564                    & 0.692                    & 0.753                   & 1.027 & 0.941  & 0.099 \\
-    8                     & 1.590                    & 0.360                    & 3.650                   & 1.581 & 3.355  & 0.084 \\
-    9                     & 0.514                    & 0.484                    & 0.893                   & 0.836 & 1.205  & 0.142 \\
-    10                    & -0.864                   & 1.214                    & -0.887                  & 2.547 & -0.395 & 0.298 \\
-    \hline
-  \end{tabular}
-  \label{tbl::27_01}
+	\caption{それぞれのパラメータ推定値}
+	\centering
+	\begin{tabular}[t]{c|c|cc|ccc}
+		\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{1PL} & \multicolumn{2}{c|}{2PL} & \multicolumn{3}{c}{3PL}                          \\\hline
+		Qid                   & $b_j$                    & $a_j$                    & $b_j$                   & $a_j$ & $b_j$  & $c_j$ \\
+		\hline
+		1                     & 0.727                    & 0.347                    & 1.716                   & 2.865 & 1.567  & 0.221 \\
+		2                     & -1.605                   & 0.724                    & -2.140                  & 1.818 & -0.761 & 0.557 \\
+		3                     & -1.175                   & 1.124                    & -1.229                  & 2.900 & -0.626 & 0.338 \\
+		4                     & -1.077                   & 0.955                    & -1.222                  & 2.033 & -0.535 & 0.362 \\
+		5                     & 0.577                    & 0.691                    & 0.771                   & 2.451 & 0.946  & 0.159 \\
+		6                     & 1.271                    & 0.694                    & 1.742                   & 1.100 & 1.659  & 0.050 \\
+		7                     & 0.564                    & 0.692                    & 0.753                   & 1.027 & 0.941  & 0.099 \\
+		8                     & 1.590                    & 0.360                    & 3.650                   & 1.581 & 3.355  & 0.084 \\
+		9                     & 0.514                    & 0.484                    & 0.893                   & 0.836 & 1.205  & 0.142 \\
+		10                    & -0.864                   & 1.214                    & -0.887                  & 2.547 & -0.395 & 0.298 \\
+		\hline
+	\end{tabular}
+	\label{tbl::27_01}
 \end{table}
 
 \begin{figure}[ht]
-  \begin{center}
-    \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/27_IRTonBayes/Rplot27_02.png}
-    \caption{推定値を使って描いた各モデルのICC}
-    \label{fig::27_03}
-  \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/27_IRTonBayes/Rplot27_02.png}
+		\caption{推定値を使って描いた各モデルのICC}
+		\label{fig::27_03}
+	\end{center}
 \end{figure}
 
 \section{整然データでの分析}
@@ -197,7 +197,7 @@ fit3 <- model_3pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 
 整然データは，1行に1つの数字が入っているようなデータで(セクション\ref{tidyDataForm}，Pp.\pageref{tidyDataForm}参照)，その行を見るだけですべての情報が手に入るようなデータです。行列型のデータは，人のIDを行ラベルで，変数のIDを列ラベルでみなければなりませんので，参照方向が1つに定められていません。具体的には次のような形のデータになります(\texttt{Rの出力\ref{RS:out27_01}})。この形式ですと，一行で誰の(\verb|Pid|)，どの問いに対する(\verb|Qid|)反応か(\verb|value|)ということがわかりますね。
 \begin{Rscreen}{整然データになったテストデータ}{out27_01}
-  \begin{verbatim}
+	\begin{verbatim}
 # A tibble: 20 × 3
      Pid   Qid value
    <int> <dbl> <dbl>
@@ -256,10 +256,10 @@ model{
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-  \item[dataブロック] データ長\verb|L|，最大被検者数\verb|N|，最大項目数\verb|M|，被検者識別変数\verb|Pid|，項目識別変数\verb|Qid|，L行目の反応\verb|resp|としてデータを受け取ります。
-  \item[parametersブロック] これまでと同じです。
-  \item[transformed parametersブロック] ここも手を加える必要がありません。
-  \item[modelブロック] L行目の反応に対して，識別変数で特定された確率をつかってモデルを当てはめます。
+	\item[dataブロック] データ長\verb|L|，最大被検者数\verb|N|，最大項目数\verb|M|，被検者識別変数\verb|Pid|，項目識別変数\verb|Qid|，L行目の反応\verb|resp|としてデータを受け取ります。
+	\item[parametersブロック] これまでと同じです。
+	\item[transformed parametersブロック] ここも手を加える必要がありません。
+	\item[modelブロック] L行目の反応に対して，識別変数で特定された確率をつかってモデルを当てはめます。
 \end{description}
 これの結果はこれまでのモデルと変わりませんが，欠損値に対応できたはずですので，元の完全データに技と欠損値を与えて改変し，結果がどう変わるかを確認してみましょう。
 \begin{lstlisting}[language=c++,label={code:27_02},caption={tidyデータにして技と欠損値を与える}]
@@ -275,17 +275,17 @@ dat.tmp$value[11:13] <- NA
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-  \item[1行目] \verb|dat|に入っている行列型・完全データを変形していきます。
-  \item[2行目] 一行ごとに被検者の反応が入っていますので，行番号を被検者識別変数\verb|Pid|として作ります。
-  \item[3行目] データを縦長にします。その時のキーとなるのは，先ほど作った\verb|Pid|で，この変数は除いて縦長にする関数が\verb|pivot_longer|です。
-  \item[4行目] 少し技巧的ですが，ここまでの段階で変数は\verb|Pid,name,value|という3つになっています。なかでも\verb|name|変数には元データの変数名が入っていますので，これを加工して問題番号を取り出します。\verb|str_extract| 関数の\verb|str|とは\verb|string|，すなわち文字列を扱う関数であるという意味です。\verb|str_extract|は文字列から条件に合ったものを抜き出すextractというもので，条件を\verb|pattern|で指定しています。ここで\verb|\\d+|とあるのは\keyterm{正規表現}{せいきひょうげん}{regular expression}というもので，文字列を一定の規則に従って特定の文字列を表現する方法です。ここでは数字だけを抜き出しています\footnote{少し丁寧にいうと，\verb|\d|は正規表現で数字を意味する記号です。ただ，バックスラッシュ(\verb|\|)がそのままでは正規表現の記号だと認識されず特殊文字だという宣言をしている(エスケープシーケンス，といいます)だけになってしまいます。そこで，「特殊文字のバックスラッシュだよ」を表すために重ねて\verb|\\|としています。また，\verb|+|は正規表現でいうところの「直前の文字が1回以上繰り返される」という意味です。今回は10という数字が出てくる可能性があり，\verb|\\d|だけだと1しか抜き出せないので，数字が連なっていたら全体を取り出すようにしています。要するに，数字を全部取り出しましょう，が正規表現では\verb|\\d+|になるわけです。}。また，このようにして取り出せた数字は文字列としての数字ですので，これを\verb|as.numeric|関数に送ることで，数値であることを教えています。
-  \item[5行目] 被検者識別変数，項目識別変数，反応の値だけにデータを限定しています。
-  \item[7行目] ここでこのデータセットの1行目に欠損値\verb|NA|を上書きしています。わざと欠損させたのです。
-  \item[8行目] 同じく11行目から13行目までも欠損値に上書きしてしまいました。
+	\item[1行目] \verb|dat|に入っている行列型・完全データを変形していきます。
+	\item[2行目] 一行ごとに被検者の反応が入っていますので，行番号を被検者識別変数\verb|Pid|として作ります。
+	\item[3行目] データを縦長にします。その時のキーとなるのは，先ほど作った\verb|Pid|で，この変数は除いて縦長にする関数が\verb|pivot_longer|です。
+	\item[4行目] 少し技巧的ですが，ここまでの段階で変数は\verb|Pid,name,value|という3つになっています。なかでも\verb|name|変数には元データの変数名が入っていますので，これを加工して問題番号を取り出します。\verb|str_extract| 関数の\verb|str|とは\verb|string|，すなわち文字列を扱う関数であるという意味です。\verb|str_extract|は文字列から条件に合ったものを抜き出すextractというもので，条件を\verb|pattern|で指定しています。ここで\verb|\\d+|とあるのは\keyterm{正規表現}{せいきひょうげん}{regular expression}というもので，文字列を一定の規則に従って特定の文字列を表現する方法です。ここでは数字だけを抜き出しています\footnote{少し丁寧にいうと，\verb|\d|は正規表現で数字を意味する記号です。ただ，バックスラッシュ(\verb|\|)がそのままでは正規表現の記号だと認識されず特殊文字だという宣言をしている(エスケープシーケンス，といいます)だけになってしまいます。そこで，「特殊文字のバックスラッシュだよ」を表すために重ねて\verb|\\|としています。また，\verb|+|は正規表現でいうところの「直前の文字が1回以上繰り返される」という意味です。今回は10という数字が出てくる可能性があり，\verb|\\d|だけだと1しか抜き出せないので，数字が連なっていたら全体を取り出すようにしています。要するに，数字を全部取り出しましょう，が正規表現では\verb|\\d+|になるわけです。}。また，このようにして取り出せた数字は文字列としての数字ですので，これを\verb|as.numeric|関数に送ることで，数値であることを教えています。
+	\item[5行目] 被検者識別変数，項目識別変数，反応の値だけにデータを限定しています。
+	\item[7行目] ここでこのデータセットの1行目に欠損値\verb|NA|を上書きしています。わざと欠損させたのです。
+	\item[8行目] 同じく11行目から13行目までも欠損値に上書きしてしまいました。
 \end{description}
 こうしてできたデータセットは次のようになります(\texttt{Rの出力\ref{RS:out27_02}})。
 \begin{Rscreen}{整然データになったテストデータ}{out27_02}
-  \begin{verbatim}
+	\begin{verbatim}
 # A tibble: 20 × 3
      Pid   Qid value
    <int> <dbl> <dbl>
@@ -334,7 +334,7 @@ fit2.2 <- model_2pl_ver2$sample(
 最後に，推定結果を確認しておきましょう。1人目の被検者は1つ，2人目の被検者は3つの欠損がありました。つまり他の被検者は10問分の情報を持っているのに，この2人はそれぞれ9問，7問分しか情報が得られなかったことになります。
 そのことが結果の推定値にどう変わるのかというと，出力\ref{MCMCout:out27_03}の通りです。
 \begin{MCMCout}{}{out27_03}
-\begin{verbatim}
+	\begin{verbatim}
 # A tibble: 3 × 7
   name           EAP       MED       MAP        SD       L95       U95
   <chr>    <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!>

@@ -1,0 +1,22 @@
+\begin{lstlisting}[language=C++,label={stan::21_02},caption={差分を直接推定するコード}]
+...
+parameters{
+  real mu1;
+  real delta1;
+  real delta2;
+  real<lower=0> sig;
+}
+
+model{
+  // likelihood
+  X1 ~ normal(mu1,sig);
+  X2 ~ normal(mu1+delta1,sig);
+  X3 ~ normal(mu1+delta2,sig);
+  // prior
+  mu1 ~ uniform(0,100);
+  delta1 ~ normal(0,100);
+  delta2 ~ normal(0,100);
+  sig ~ cauchy(0,5);
+}
+
+\end{lstlisting}

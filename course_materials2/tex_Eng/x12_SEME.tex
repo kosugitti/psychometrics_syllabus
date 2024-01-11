@@ -114,12 +114,12 @@ For example, the regression analysis model shown in Figure \ref{fig::12_01} coul
 図\ref{fig::12_02}に表した因子分析モデルも，同様に次のような方程式で表せるのでした(項目が3つの場合)。
 
 \[ \left \{
-    \begin{array}{rcl}
-        x_1 & = & \lambda_1 f + e_1 \\
-        x_2 & = & \lambda_2 f + e_2 \\
-        x_3 & = & \lambda_3 f + e_3 \\
-    \end{array}
-    \right .
+	\begin{array}{rcl}
+		x_1 & = & \lambda_1 f + e_1 \\
+		x_2 & = & \lambda_2 f + e_2 \\
+		x_3 & = & \lambda_3 f + e_3 \\
+	\end{array}
+	\right .
 \]
 
 % ここで$f$は因子得点，$\lambda_j$は因子負荷量，あるいはパス係数を表しています。
@@ -160,23 +160,23 @@ Here, we will explain the coefficients in Figure \ref{fig::12_05}. Greek letters
 % それを踏まえて，モデルの方程式を書くと，次のようになります。
 Considering that, when we write the equation of the model, it becomes as follows.
 \[ \left \{
-    \begin{array}{rcl}
-        V_1 & = & f_1 + e_1             \\
-        V_2 & = & \lambda_{21}f_1 + e_2 \\
-        V_3 & = & \lambda_{31}f_1 + e_3 \\
-        V_4 & = & f_2 + e_4             \\
-        V_5 & = & \lambda_{52}f_2 + e_5 \\
-        V_6 & = & \lambda_{62}f_2 + e_6 \\
-        f_2 & = & \gamma_{21}f_1 + d
-    \end{array}
-    \right .
+	\begin{array}{rcl}
+		V_1 & = & f_1 + e_1             \\
+		V_2 & = & \lambda_{21}f_1 + e_2 \\
+		V_3 & = & \lambda_{31}f_1 + e_3 \\
+		V_4 & = & f_2 + e_4             \\
+		V_5 & = & \lambda_{52}f_2 + e_5 \\
+		V_6 & = & \lambda_{62}f_2 + e_6 \\
+		f_2 & = & \gamma_{21}f_1 + d
+	\end{array}
+	\right .
 \]
 % ややこしいだけで，書けるのは書けましたね！そして当然，これは行列表現した方が楽ではないか，というアイデアが浮かぶと思います。その通りで，エレメントワイズにまずは書いてみましょう。
 It was a bit complicated, but you were able to write it, right? And naturally, I think you'll come up with the idea that it would be easier to represent this in matrix form. That's right, let's first write it out element-wise.
 
 \[
-    \begin{pmatrix} V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \\ f_2 \\f_1 \end{pmatrix} =
-    \begin{pmatrix} 0 & 0 & 0 & 0 & 0 & 0 & 0            & 1            \\
+	\begin{pmatrix} V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \\ f_2 \\f_1 \end{pmatrix} =
+	\begin{pmatrix} 0 & 0 & 0 & 0 & 0 & 0 & 0            & 1            \\
                 0 & 0 & 0 & 0 & 0 & 0 & 0            & \lambda_{21} \\
                 0 & 0 & 0 & 0 & 0 & 0 & 0            & \lambda_{31} \\
                 0 & 0 & 0 & 0 & 0 & 0 & 1            & 0            \\
@@ -184,8 +184,8 @@ It was a bit complicated, but you were able to write it, right? And naturally, I
                 0 & 0 & 0 & 0 & 0 & 0 & \lambda_{62} & 0            \\
                 0 & 0 & 0 & 0 & 0 & 0 & 0            & \gamma_{21}  \\
                 0 & 0 & 0 & 0 & 0 & 0 & 0            & 0\end{pmatrix}
-    \begin{pmatrix} V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \\ f_2 \\f_1 \end{pmatrix} +
-    \begin{pmatrix} e_1 \\ e_2 \\ e_3 \\ e_4 \\ e_5 \\ e_6 \\ d \\f_1 \end{pmatrix}
+	\begin{pmatrix} V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \\ f_2 \\f_1 \end{pmatrix} +
+	\begin{pmatrix} e_1 \\ e_2 \\ e_3 \\ e_4 \\ e_5 \\ e_6 \\ d \\f_1 \end{pmatrix}
 \]
 
 % 左辺のベクトルの最後に$f_1$が入っているところがポイントで，これは方程式的には$f_1=f_1$というだけの式なのですが，これを入れたおかげで全体を整合的に表現できましたね。
@@ -199,8 +199,8 @@ If we set $\bm{P} = (\bm{I}-\bm{G})$ here,
 \[ \bm{v} = \bm{P}^{-1}\bm{e} \]
 ということになります。これをエレメントワイズで書くと次のようになります。
 \[
-    \begin{pmatrix} V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \\ f_2 \\f_1 \end{pmatrix} =
-    \begin{pmatrix} 1 & 0 & 0 & 0 & 0 & 0 & 0             & -1            \\
+	\begin{pmatrix} V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \\ f_2 \\f_1 \end{pmatrix} =
+	\begin{pmatrix} 1 & 0 & 0 & 0 & 0 & 0 & 0             & -1            \\
                 0 & 1 & 0 & 0 & 0 & 0 & 0             & -\lambda_{21} \\
                 0 & 0 & 1 & 0 & 0 & 0 & 0             & -\lambda_{31} \\
                 0 & 0 & 0 & 1 & 0 & 0 & -1            & 0             \\
@@ -208,14 +208,14 @@ If we set $\bm{P} = (\bm{I}-\bm{G})$ here,
                 0 & 0 & 0 & 0 & 0 & 1 & -\lambda_{62} & 0             \\
                 0 & 0 & 0 & 0 & 0 & 0 & 1             & -\gamma_{21}  \\
                 0 & 0 & 0 & 0 & 0 & 0 & 0             & 1\end{pmatrix}
-    \begin{pmatrix} e_1 \\ e_2 \\ e_3 \\ e_4 \\ e_5 \\ e_6 \\ d \\f_1 \end{pmatrix}
+	\begin{pmatrix} e_1 \\ e_2 \\ e_3 \\ e_4 \\ e_5 \\ e_6 \\ d \\f_1 \end{pmatrix}
 \]
 
 % さて，変数からなるベクトル$\bm{v}$ではありますが，観測変数は$V_1$から$V_6$までしかありませんから，そこだけを取り出す行列$\bm{F}=\{ \bm{I},\bm{O} \}$を考えます。ここでは次のような行列です。
 Well, we have a vector $\bm{v}$ consisting of variables, but we only have observation variables from $V_1$ to $V_6$, so we consider a matrix $\bm{F}=\{ \bm{I},\bm{O} \}$ that extracts only those. Here is what the matrix looks like.
 \[
-    \bm{F} =
-    \begin{pmatrix} 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	\bm{F} =
+	\begin{pmatrix} 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
                 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
                 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
                 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
@@ -226,7 +226,7 @@ Well, we have a vector $\bm{v}$ consisting of variables, but we only have observ
 With this, you can rewrite the relationship as follows.
 
 \[
-    \bm{g} = \begin{pmatrix}  V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \end{pmatrix} = \bm{FP^{-1}e}
+	\bm{g} = \begin{pmatrix}  V_1 \\ V_2 \\ V_3 \\ V_4 \\ V_5 \\ V_6 \end{pmatrix} = \bm{FP^{-1}e}
 \]
 % さて，ではデータだけのベクトル$\bm{g}$から分散共分散行列を構成するとしましょう。データベクトル$\bm{g}$は平均が0だと仮定します\footnote{ずいぶんと勝手な仮定だな，と思うかもしれませんが，分析の元になる変数ベクトルを標準化したと思っていただければそれほどおかしなことでもない，と考えてもらっても構いません。あるいは単に変数ごとの平均をとった平均偏差ベクトルを作って，それをデータだとしたと考えてください。}。そうすると分散共分散行列$\bm{\Sigma}$は次のようになります。
 Now, let's construct a variance-covariance matrix from the vector $\bm{g}$ of data alone. We assume that the data vector $\bm{g}$ has a mean of 0\footnote{You may think that's a rather arbitrary assumption, but you might not think it's so strange if you think of it as standardizing the variable vector that forms the basis for the analysis. Alternatively, you can think of it as creating a mean deviation vector by averaging each variable and considering that as the data.}. In this case, the variance-covariance matrix $\bm{\Sigma}$ will be as follows.
@@ -236,7 +236,7 @@ Now, let's construct a variance-covariance matrix from the vector $\bm{g}$ of da
 % ここで式の中にある$\bm{ee'}$は誤差などの未知数で作った分散共分散行列になっています。誤差は他の変数との共分散がないと考えられるので，これは結局対角行列です。
 The $\bm{ee'}$ in the formula here represents a covariance matrix created from unknowns such as errors. Since it is considered that the error has no covariance with other variables, this is ultimately a diagonal matrix.
 \[
-    \bm{ee'}= \begin{pmatrix}  V(e_1) &        &        &        &        &  &        &      &        \\
+	\bm{ee'}= \begin{pmatrix}  V(e_1) &        &        &        &        &  &        &      &        \\
                         & V(e_2) &        &        &        &  &        &      &        \\
                         &        & V(e_3) &        &        &  &        &      &        \\
                         &        &        & V(e_4) &        &  &        &      &        \\

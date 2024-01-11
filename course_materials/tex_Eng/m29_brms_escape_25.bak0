@@ -1,0 +1,6 @@
+\begin{lstlisting}[language=c++,label={code:27_09},caption={Read data from an external file and execute}]
+library(tidyverse)
+dat3 <- read_csv("Lesson8exe3.csv") %>% 
+    pivot_longer(-id,names_to="period") %>% 
+    print
+\end{lstlisting}

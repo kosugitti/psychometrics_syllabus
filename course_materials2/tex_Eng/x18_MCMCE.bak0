@@ -1,0 +1,245 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+% \chapter{ベイジアンアプローチと確率的プログラミング1}
+\chapter{Bayesian Approach and Stochastic Programming1}
+% それではいよいよ，\keytermL{データ生成モデリング}{でーたせいせいもでりんぐ}とベイズ推定による実践例を見ていくことにしましょう。
+Alright, let's finally move on to see practical examples of data generation modeling and Bayesian estimation.
+\label{x18_MCMC}
+% \section{7人の科学者}
+\section{Seven Scientists}
+% ここでは \citet{Lee201709}より「7人の科学者」の例を紹介します。そこでのカバーストーリーは次のようなものです。
+I will introduce an example of "7 scientists" from \citet{Lee201709} here. The cover story there is as follow.
+
+\input{x18_MCMC_escape_01}
+
+% さあ，これをみて「あれ，どこが統計的な問題なんだ？」と思った人もいるかもしれません。なんらかの測定をして，データのばらつきがあるんだけど，それが測定者によって違うらしい，というのはわかったかと思いますが，これをどうやって統計的な問いにするのでしょうか。まず，ストーリーの背後に「正確な測定値(真の値)はわからないけど，定数のはず」という前提があることを確認しましょう。測定の基本として測定誤差があるので真の値を特定出来はしませんが，測定を繰り返すと真の値に近づいていくはずではあります。また，今回の測定結果は7人それぞれ別の人による測定であることから，測定誤差の出方が測定毎すなわち測定者毎に異なるだろう，という仮説もあります。
+Okay, some of you may be wondering, "Hmm, where's the statistical issue?" I think you'll understand that there is some variation in the data from the measurements, and it seems to differ by who is making the measurements, but how can we express this as a statistical question? First, let's confirm the premise that despite the exact measurement values (true values) being unknown, they should be constants. There are measurement errors in the fundamentals of measurement, so you can't identify the true value, but if you repeat the measurement you should get closer to the true value. Also, since the measurements in this case are from seven different people, there is a hypothesis that the way measurement errors occur will differ per measurement, or in this case, per measurer.
+
+
+% これらを踏まえて謎解きをしていきましょう。わからない量を確率の言葉で表現し，データを使って少しでも正解に近づこうとするのが統計のやり方です。
+Taking these into account, let's solve the mystery. The way of statistics is to express unknown quantities in terms of probability, and to use data to get as close to the correct answer as possible.
+% まずここでわからない量は，「正確な測定値」と「個人毎の誤差の大きさ」です。誤差は正規分布に従うと思われますから，データ$Y$は$Y\sim N(\mu, \sigma)$と表すことができます。データ生成メカニズムという意味では，「正規分布に従ってデータが作られる」と言ってもいいかもしれません。また，正確な測定値はここでは$\mu$ということになります\footnote{正確な測定値$\mu$に誤差$N(0,\sigma)$がついてデータになる，すなわち$Y=\mu+N(0,\sigma)$ということですが，誤差の平均は$0$で$\mu$の分だけ正規分布がズレる，そして「分布に従う」を表現する$\sim$を使いたいので，$Y\sim N(\mu,\sigma)$となるのです。}。また，データは7点あって，それぞれ$Y_1,Y_2,\cdots,Y_7$，あるいは一般に$Y_i$と書くことにしましょう。ここで添字の$i$は第$i$回目の測定でもありますし，測定者$i$のことでもあります。この測定者$i$毎に誤差の出方の大きさが変わります。誤差の大小，言い換えれば測定の精度は誤差のSDで表現されていますから，$\sigma$が個人毎に変わる，すなわち$\sigma_i$と書くことができます。これが今回のデータ生成モデルです！
+The unknown quantities here first are, the "exact measurement values" and "the size of the error for each individual". Since the error is assumed to follow a normal distribution, the data $Y$ can be represented as $Y\sim N(\mu, \sigma)$. In terms of the data generation mechanism, one could say that "the data is generated following a normal distribution". Also, the exact measurement value is represented as $\mu$ here\footnote{ The exact measurement value $\mu$ becomes data with the error $N(0,\sigma)$ added, in other words, $Y=\mu+N(0,\sigma)$. The mean of the error is $0$, the normal distribution shifts by the value of $\mu$, and we want to use $\sim$ to express that it "follows the distribution", hence $Y\sim N(\mu,\sigma)$.}. Also, there are 7 data points, each of which will be written as $Y_1,Y_2,\cdots,Y_7$ or generally as $Y_i$. Here, the subscript $i$ represents both the $i$th measurement and the $i$th operator. The size of the error varies for each operator $i$. The size of the error, or in other words, the accuracy of the measurement is expressed by the standard deviation of the error, so $\sigma$ changes for each individual, and can be written as $\sigma_i$. This is the data generation model for this time!
+
+% ここまでのことをイメージ図であらわすと図\ref{fig::18_01}のようになります。この図の書き方のポイントは，まずデータを一番下に置くことです。次にこのデータがどこから来たのかな，ということを矢印で表現して書きます。データは誤差を伴うなどで，毎回定数にならないでしょうから，\keytermL{確率分布}{かくりつぶんぷ}をその上に書くことになります。確率分布にはその形状を定めるパラメータがあるはずですから，それを書き加えればOKです。
+The image diagram of what has been discussed so far looks like Figure \ref{fig::18_01}. The key to drawing this diagram is to first place the data at the bottom. Then, use arrows to express where the data is coming from. Since data does not always become constant due to errors, it will be necessary to write the probability distribution on top of it. The probability distribution is likely to have parameters that determine its shape, so it is okay if you add them.
+
+
+\input{x18_MCMC_escape_02}
+
+% しかしここでも，$\mu$と$\sigma_i$は結局なんなんだ，どういう数字なんだということがわからないままです。わからない量は確率の言葉で表現するのがベイジアンの生き様。ここは未知のパラメータがどうやって出てくるかなんてわからないところなので，「わからない」ことを確率で表現する必要があります。パラメータに対して「この辺りにあるだろう」と事前に想定する確率分布のことを\keyterm{事前分布}{じぜんぶんぷ}{prior distribution}というのでした。
+However, even here, we still don't know what $\mu$ and $\sigma_i$ ultimately are, what kind of numbers they are. It's the Bayesian way of life to express quantities we don't know in terms of probability. Since we don't know how unknown parameters come up here, we need to express "unknown" in probability. The probability distribution that we assume beforehand for the parameters, saying "they're probably around here," is called the \keyterm{prior distribution}.
+
+% ここでは$\mu$は平均0，SD100の正規分布からきていることにしましょう。正規分布というのは左右対称で平均値・中央値・最頻値が一致する単峰の分布です。これは正確な測定値を表しているのでしたから，なんらかの値を取るとしても1つの値だろう，というのは無理のない仮定でしょう。複数の値を取る可能性があるのなら多峰性の分布を仮定したらいいと思いますが，今回はそうではないだろう，と仮定するのです。平均0でSD100ということは，-300から+300の範囲にある可能性が99.7\% だということでもあります\footnote{正規分布は，平均$\pm$1SDの範囲に全体の68\%が，$\pm$2SDの範囲に95\%が，$\pm$3SDの範囲に99.7が入ることが理論的にわかっているのでした。わからない人はRで計算して確認すること！}。実際のデータが$-27$から$10$ぐらいの範囲に入っているので，$-300$から$+300$の間というのも十分過ぎるぐらい広めの範囲にしてある数字と言えるでしょう。このように，うっすら情報を持っているけどほとんど意味がない程度に縛りをかけるのを，\keyterm{弱情報事前分布}{じゃくじょうほうじぜんぶんぷ}{weakly informative prior distribution}と言います。たとえばこれが身長のデータであれば，$\pm$3mの範囲は十分すぎ，なんなら負の数は取るはずがないので過剰な安全策を置いているとも言えます。それでも「なんらかの事前分布を持つのは，主観的な思い込みだ」というのであれば，$\pm \infty$の一様分布を考えるか，ベイズ法をやめるかということになります。
+Let's say here that $\mu$ comes from a normal distribution with a mean of 0 and standard deviation (SD) of 100. The normal distribution is a single-peaked distribution that is symmetrical and has the same mean, median, and mode. Since this represents accurate measurements, it's reasonable to assume that it would take a single value. If there is a possibility of taking multiple values, I think it would be a good idea to assume a multimodal distribution, but in this case, we're assuming that this is not the case. The fact that the mean is 0 and the SD is 100 also means that there is a 99.7% chance that it could be anywhere between -300 and +300\footnote{It is theoretically known that in a normal distribution, 68% of the total is within the range of $\pm$1SD, 95% is within $\pm$2SD, and 99.7% is within $\pm$3SD. If you're not sure, you can check by calculating it in R!}. Since the actual data falls within the range of about -27 to 10, saying that it's from -300 to +300 also suggests that this is quite an overly generous range. This notion of applying very loose constraints with vague information, is called a weakly informative prior distribution. For instance, if this data were about height, the range of $\pm$3m would be too much, and even the assumptions of negative numbers could be taken as an excessive safety measure. However, if you think that having any prior distribution is a subjective bias, you might consider either a uniform distribution over the range from $\pm \infty$ or stop using Bayesian method.
+
+
+% 次に$\sigma_i$です。これは標準偏差パラメータなので負の数を取ることはあり得ません。ここでは\keyterm{半コーシー分布}{はんこーしーぶんぷ}{half-cauchy distribution}を事前分布におくことにします。コーシー分布とは正規分布によくにた形ですが，正規分布より裾が重く\footnote{より極端な値が出る可能性が多いという意味です}，標準偏差(分散)の事前分布に適していると言われている分布です\citep{gelman2006prior}\footnote{この論文では他にも，studentのt分布などを提案していますが，パラメータ数がより少ないコーシー分布を選びました。}。このコーシー分布は正規分布のように左右対称ですが，0を中心に半分に折りたたんで正の値しか取らないように考えたのが半コーシー分布です。今回はスケールパラメータに$5$を置いていますが，とくにこの数字に深い意味はありません。気になるようでしたら$10$でも$100$でも変えていただいて結構です\footnote{半コーシー分布がどんな数字になるのか気になる，という人はRで\texttt{rcauchy}関数を使って乱数を発生させ，その挙動を見てみればいいでしょう。乱数発生によって大体の分布感(分布の感覚?)を得ることができる，ということを思い出してください。}。
+Next is $\sigma_i$. This is a standard deviation parameter and must not take negative numbers. Here, we place the \keyterm{half-Cauchy distribution} as the prior distribution. The Cauchy distribution is similar to the normal distribution, but its tails are heavier than the normal distribution (meaning there is a higher likelihood of extreme values), and it is a distribution that is said to be suitable for the prior distribution of standard deviations (variance) \citep{gelman2006prior}. Although the Cauchy distribution is symmetric like a normal distribution, the half-Cauchy distribution is thought to fold in half around 0 so that it only takes positive values. This time the scale parameter is set at $5$, but there is no deep meaning in this number. If you are concerned about it, feel free to change it to $10$ or $100$. Those who wonder what the half-Cauchy number would look like should generate a random number using the \texttt{rcauchy} function in R, and look at its behavior. Please remember that you can roughly get the feel for the distribution (distribution sense?) by generating random numbers.
+
+
+% これらをおくことで，モデルの設計図ができあがりました(図\ref{fig::18_02})。あとはこれをもとに，\keyterm{確率的プログラミング言語}{かくりつてきぷろぐらみんぐげんご}{stocastic programming language}に書き起こしていけば良いでしょう。
+These have been arranged, and a design for the model has been completed (Figure \ref{fig :: 18_02}). After this, it should be good to write it down in a stochastic programming language based on this.
+\input{x18_MCMC_escape_03}
+
+% \section{Stanコードの書き方}
+\section{How to write Stan code}
+% では図\ref{fig::18_02}という設計図に基づいて，Stanのコードを書いていきましょう。
+Let's write the Stan code based on the blueprint in Figure \ref{fig::18_02}.
+
+% \subsection{Stanコードの文法}
+\subsection{Syntax of Stan code}
+% Stanは事後分布からの乱数を生成するための言語です。その言語仕様はCやC++ににているところがあります。Rで書くのと違うところとして「ブロック単位の記述」「セミコロンによる行の区切り」「変数の宣言」の3つを押さえておきましょう。
+Stan is a language for generating random numbers from the posterior distribution. Its language specification has similarities to C and C++. Compared to writing in R, there are three key differences to note: "block unit description", "line division by semicolon", and "variable declaration".
+
+% \paragraph{ブロック単位の記述}
+\paragraph{Description of Blocks}
+% Stanに書くべきことは\textbf{ブロック}の中に記述します。ブロックは中括弧(\{ ... \})で括ったもので，次の6つの種類があります。
+You should write what you want to put in Stan inside a \textbf{block}. A block is something enclosed within curly braces (\{ ... \}), and there are six types of them.
+\input{x18_MCMC_escape_04}
+
+% Stanのプログラムに含まれるブロックは，この順番でなければならないと決まっているので注意してください。
+Please note that the blocks included in the Stan program must be in this order.
+% この中で，1,3,5番目，すなわち\texttt{data,parameters,model}ブロックが基本的に必要なもので，2.4.6番目のブロックはその派生や応用です。まずは基本ブロックから説明します。
+In this context, the 1st, 3rd, and 5th, i.e. the \texttt{data, parameters, model} blocks are basically necessary, and the 2nd, 4th, 6th blocks are their derivatives and applications. Let me explain from the basic blocks.
+
+% \texttt{data}ブロックはStanと外部とのやりとりをするブロックです。外部からデータを取り込んで，それに基づいて乱数を発生させます。Stanで計算せずに外部から与えるものはすべてこのブロックの中で書く必要があります。
+The \texttt {data} block is a block that interacts with Stan and the outside world. It imports data from the outside and generates random numbers based on it. Everything that is given externally without being calculated in Stan must be written in this block.
+% \texttt{parameters}ブロックは，パラメータ，すなわちStanで推定したいものを書くところです。Stanは事後分布からの乱数発生機であり，事後分布は\keytermL{確率分布}{かくりつぶんぷ}ですからその形状はパラメータによって特徴づけられます。事後分布の形が分からないというのは，事後分布のパラメータがどのような値になっているのか分からない，ということと同じ意味です。その「分からない」「知りたい」パラメータをリストアップしておくブロックです。
+The \texttt{parameters} block is where you write the parameters, that is, what you want to estimate in Stan. Stan is a random number generator from the posterior distribution, and since the posterior distribution is a \keytermL{probability distribution}{かくりつぶんぷ}, its shape is characterized by parameters. Not knowing the shape of the posterior distribution means not knowing what values the parameters of the posterior distribution have. This is a block where you list up those "unknown" and "want to know" parameters.
+% \texttt{model}ブロックは，確率モデルすなわち尤度と事前分布を書くところです。ここで書かれた尤度と事前分布が，\texttt{data}ブロックのデータと組み合わさって，事後分布がStan内部で計算され，そこからの乱数が次々取り出されてくることになるのです。
+The \texttt{model} block is where you write the probability model, namely the likelihood and prior distribution. The likelihood and prior distributions written here are combined with the data in the \texttt{data} block, the posterior distribution is calculated internally in Stan, and random numbers are drawn from there one after another.
+
+% \paragraph{セミコロンによる行の区切り}
+\paragraph{Line separation by semicolon}
+% このブロックの中に，Stan言語の文を書いていくことになるのですが，ここで1つ覚えておいて欲しいのが，\textbf{Stanの句点はセミコロン}ということです。句点がない文章は読みにくいどころか，機械にとっては意味不明な文字列になりかねませんので，必ず1つの命令・一文がおわったらセミコロンで閉じるようにしてください。これを忘れてエラーになるのが初心者にもっとも多いミスのひとつです。
+You will be writing sentences in the Stan language in this block, but one thing you should keep in mind is that \textbf{the period in Stan is a semicolon}. Sentences without periods are not only hard to read, but could also become meaningless strings to machines, so please always close a sentence or command with a semicolon. Forgetting to do this and making an error is one of the most common mistakes beginners make.
+
+% \paragraph{変数の宣言}
+\paragraph{Declaration of Variables}
+% たとえばRでは数字でも分析結果でも，オブジェクトに代入でき，オブジェクト名は任意につけることができました。またオブジェクトはいつどのタイミングで発生させてもOKで，思いついたらすぐオブジェクトに代入，ということができました。
+For example, in R, you could assign both numbers and analysis results to objects and could arbitrarily name the object. Also, it was okay to generate an object at any time. As soon as you thought of it, you could assign it to an object.
+% Stanをはじめ，いくつかの高級言語ではこれに厳格な制限をかけるものがあります。すなわち，どんなオブジェクトを作るかを最初に\keyterm{宣言}{せんげん}{declaration}する必要があるのです。Stanでは使われるオブジェクト(変数)が，どういう数字になるものなのか，どの範囲の数字になるのかをブロックの最初に宣言します。この数字の種類のことを\keyterm{型}{かた}{type}といい，その宣言された数字の型に適合しない数字はエラーとなって弾かれます。なんでそんな窮屈な，と思うかもしれませんが，逆に「ありえない数字は許さない」という意味で，エラーを未然に防いでくれることにもなるのです。
+Some advanced languages, including Stan, impose strict restrictions on these. That is, you need to initially "declare" what kind of object you are going to create. In Stan, you declare what type of object (variable) is going to be used, and what range of numbers it will be, at the beginning of the block. This type of number is called a "type", and numbers that do not conform to the declared type are rejected as errors. You might think that's restrictive, but conversely, in the sense of "not allowing impossible numbers", it also helps to prevent errors in advance.
+
+% 変数の形として，Stanは整数(\keytermL{int型}{intがた})，実数(\keytermL{real型}{realがた})，ベクトル(\keytermL{vector型}{vectorがた})，行列(\keytermL{matrix型}{matrixがた})などがあり，また範囲を\texttt{lower}や\texttt{upper}で指定します。たとえば標準偏差は負の数を取らないので，標準偏差の変数を宣言したいときは，\verb|real<lower=0> sig;|のように書きます。
+As forms of variables, Stan has integers (int type), real numbers (real type), vectors (vector type), matrices (matrix type), etc., and the range is specified with \texttt{lower} or \texttt{upper}. For example, since the standard deviation does not take negative numbers, when you want to declare the variable of the standard deviation, you write it like \verb|real<lower=0> sig;|.
+% \subsection{Stanコードを書いてみよう}
+\subsection{Let's try writing Stan code}
+% されこれらを踏まえてコードを書いてみるわけですが，設計図を書いたときにデータを下に，それに紐づく確率分布を上に上に，と下から上に書いていったように，\texttt{model}ブロック$\to$\texttt{parameters}ブロック$\to$\texttt{data}ブロック，と書き進んでいったほうがわかりやすいでしょう。
+Taking these into consideration, I will write the code. Like I wrote the blueprint, data at the bottom, and the probability distribution associated with it at the top, it would be easier to understand if I proceeded to write the 'model' block -> 'parameters' block -> 'data' block, from bottom to top.
+
+% Stanのコードはメモ帳など，エディタで開くことのできるテキストファイルでいいのですが，拡張子を\texttt{.stan}にしておきましょう。RStudioで書く場合は，\texttt{.stan}にしておくとStanのファイルだと認識してくれるので，ブロックや型宣言の用語などを強調表示してくれるようになります。RStudioでコードを書き始めるときは，ファイル(File)＞新しいファイル(New File)と進むとStanというファイルがあります。これを選ぶとすでにStanのサンプルコードが書かれているファイルが出てきますが，そのファイルの中身は全部消して，次のコード\ref{stan::18_01}のように書き，ファイル名をつけて保存しましょう。ここでは\texttt{sevenScientist.stan} とファイル名をつけたものとします。
+The Stan code can be a text file that can be opened with an editor such as Notepad, but let's keep the extension as \texttt{.stan}. If you write in RStudio, with the extension set to \texttt{.stan}, RStudio recognizes it as a Stan file and will highlight terminologies like blocks and type declarations. When you start writing code in RStudio, there is a Stan file when you go to File > New File. If you choose this, a file with already written Stan sample code will pop up, but delete all the contents of that file, write like the next code \ref{stan::18_01}, and name and save the file. Here, we will name the file as \texttt{sevenScientist.stan}.
+
+\input{x18_MCMC_escape_05}
+% \paragraph{コード解説}
+\paragraph{Code Explanation}
+\input{x18_MCMC_escape_06}
+
+% いかがでしょうか。書き方(文法)がわかると比較的単純，あるいは率直な書き方をしていることがお分かりいただけるかと思います。尤度と事前分布とデータを書くだけで，Stanは事後分布からの乱数を生成してくれます。確率密度関数を書いたり解いたりしなくても，結果の近似計算ができるというのはとても便利なことではないでしょうか。
+What do you think? If you understand the grammar, you would realize that it's relatively simple, or written in a straightforward manner. By just writing the likelihood, prior distribution, and data, Stan will generate random numbers from the posterior distribution for you. Isn't it very useful to be able to approximate results without having to write or solve probability density functions?
+% \section{Stanを使ったMCMCの実践}
+\section{Practical Application of MCMC using Stan}
+% さてStanファイルが準備できましたから，これはいったん保存しておいて，今度はこれをRの方から利用してやることになります。
+Now that the Stan file is ready, let's save it for now, and this time we will use it from R.
+% Rからは\texttt{rstan}パッケージあるいは\texttt{cmdstanr}パッケージを使って，Stanを呼び出して結果を返してもらう，という流れです。Stanの言語は一度機械語に翻訳(コンパイル)されるので，その間はしばらく待つ必要がありますが，それが終わるとStanから事後分布の乱数が次々生成され，Rに返ってきます。Rはそれら乱数からのサンプルを事後分布の代表値からなるデータセットとして扱って，記述統計や可視化を通じて確率分布の解釈に使うのですね。
+The flow is to use the `rstan` or `cmdstanr` package from R to call Stan and get the results. Since the Stan language needs to be translated (compiled) into machine language once, you need to wait a while during that time, but once that's over, random numbers of the posterior distribution will be generated one after another from Stan, returning to R. R treats these samples from random numbers as a dataset consisting of representative values of the posterior distribution, using them to interpret the probability distribution through descriptive statistics and visualization.
+
+% それではどのようにRから呼び出すのか，実際のコードを見てみましょう。呼び出し方は\texttt{rstan}パッケージと\texttt{cmdstanr}パッケージのどちらを使うかによって少し異なります。共通部分のあと，両方の呼び出し方について記述しますので，自分の環境にあった方を試してください。
+Let's take a look at the actual code to see how to call from R. The way to call varies slightly depending on whether you use the \texttt{rstan} package or the \texttt{cmdstanr} package. After the common parts, I will describe how to call both, so please try the one that suits your environment.
+% \paragraph{共通部分}
+\paragraph{Common part}
+% どのパッケージを使うにしても，環境をクリアしたり，必要なパッケージを読み込んだりする部分は共通です。今回は次の5行を共通部分として読み込んでおいてください(code\ref{code:18_02})。
+No matter what package you use, the part where you clear the environment or load the necessary package is the same. This time, please load the following five lines as the common part (code \ref{code: 18_02}).
+
+\input{x18_MCMC_escape_07}
+
+% \paragraph{cmdstanrパッケージによる呼び出し}
+\paragraph{Calling via the cmdstanr package}
+
+% その上でさっそく\texttt{cmdstanr}パッケージを使って，Stanを呼び出し事後乱数生成機を作ってみましょう。これは次のようにコードを書きます(code\ref{code:18_04})。
+Let's use the \texttt{cmdstanr} package to call Stan and create a post-random number generator. This is how you write the code (code\ref{code:18_04}).
+
+\input{x18_MCMC_escape_08}
+% \paragraph{コード解説}
+\paragraph{Code Explanation}
+
+\input{x18_MCMC_escape_09}
+
+% \paragraph{rstanパッケージによる呼び出し}
+\paragraph{Calling with the rstan package}
+
+% \texttt{rstan}パッケージを使ってStanファイルを呼び出す場合は，少し書き方を変えて次のように書きます(code\ref{code:18_03})。
+When calling a Stan file using the \texttt{rstan} package, you slightly change the way you write it as follows (code\ref{code:18_03}).
+
+\input{x18_MCMC_escape_10}
+% \paragraph{コード解説}
+You didn't provide any Japanese text to translate. Could you please provide the text?
+\input{x18_MCMC_escape_11}
+
+
+% どちらのパッケージで実行してもらっても結構ですが，コンパイル$\to$サンプリングという流れは同じです。
+No matter which package you run, the process of compile -> sampling will be the same.
+
+% またサンプリングの際に，Rからデータを渡すことになりますが，データはR環境では\texttt{x}というオブジェクト名だったものを，Stanの\texttt{data}ブロックで宣言した\texttt{Y}という変数にして渡すのだ，ということが書かれています。データは複数のものを与えることがあるので，\texttt{list}関数で並べて渡すことにします。そのほかの設定については，順次説明します。
+During the sampling, data will be passed from R, and it is written that the object name, which was \texttt{x} in the R environment, will be passed as the variable \texttt{Y} declared in the Stan \texttt{data} block. Since multiple data may be provided, we will arrange them using the \texttt{list} function. I will explain the other settings in order.
+
+% 最終的に\verb|tibble|型でえられたMCMCサンプルのデータセットができあがります。これはパッケージによって少し変数名が異なりますが，内容は同じで，今回の設定だと4000行のデータになっているはずです。つまり事後分布からの乱数を4000個発生させたことになります。
+In the end, you will get a dataset of MCMC samples in the form of a tibble. The variable names vary slightly depending on the package, but the content is the same, and with this configuration, it should be a data set of 4000 rows. This means that you have generated 4000 random numbers from the posterior distribution.
+
+% そしてこの各行が1回のサンプリングで得られた\textbf{事後分布からの代表値}です。一部を見てみましょう(出力\ref{RS:out18_01})。
+And each of these lines represents a \textbf{representative value from the posterior distribution} obtained in one sampling. Let's take a look at some of them (output \ref{RS:out18_01}).
+% 1回目のサンプリングで，$9.98,23.4,4.63,1.13,0.123,5.17,0.0264,1.24,-9.10$という数字のセットがあります。変数名にあるように，前から$\mu, \sigma_1,\sigma_2,\cdots,\sigma_7$の代表値と，\verb|lp__|の値が得られています。最後の\verb|lp__|は\keyterm{対数尤度}{たいすうゆうど}{log posterior}の略で，ここでは正確には事後対数尤度と呼ばれるものです。今回の代表値から計算された尤度の対数ということで，パラメータの推定値とは違いますのでここでは気にしないことにしましょう。ということで改めて，1回目のサンプリングで$9.98,23.4,4.63,1.13,0.123,5.17,0.0264,1.24$という数字のセットが得られました。このように，今回求めたかったパラメータは8つあったわけですが，その8次元からなる空間の1つの座標点を取り出した1回目，ということです。2回目は$9.90,27.2,13.1,2.86,1.23,0.779,0.0449,0.446$というセットでした。以下3,4,..と続き，4000サンプルを得たわけです。このように結果は8次元からなるパラメータの\keyterm{同時確率空間}{どうじかくりつくうかん}{joint probability space}から得られており，一行一行が1回1回のサンプリングステップなのです。
+In the first sampling, we have a set of numbers: $9.98,23.4,4.63,1.13,0.123,5.17,0.0264,1.24,-9.10$. As indicated by the variable name, we have obtained values for $\mu, \sigma_1,\sigma_2,\cdots,\sigma_7$ and \verb|lp__| in that order. The last \verb|lp__| is an abbreviation for the log posterior or logarithmic likelihood, which in this context is more accurately called the posterior log likelihood. This value, which is different from estimated parameters, is the logarithm of the likelihood calculated from the current representative values, so let's not worry about it here. So again, in the first sampling, we obtained a set of numbers: $9.98,23.4,4.63,1.13,0.123,5.17,0.0264,1.24$. In this way, while we wanted to determine 8 parameters this time, the first time represents extracting one point from the 8-dimensional space formed by these parameters. The second time, we got the set: $9.90,27.2,13.1,2.86,1.23,0.779,0.0449,0.446$. This continues for the 3rd, 4th,..., times until we obtain 4000 samples. The results are obtained from the joint probability space of the 8-dimensional parameters, where each row corresponds to each sampling step.
+
+\input{x18_MCMC_escape_12}
+
+% \section{MCMC結果の診断}
+\section{Diagnosis of MCMC Results}
+% さて，MCMCが実行できましたが，その中身を少しみてみましょう。サンプリング結果を代入したオブジェクト名をそのまま入力すると，要約された結果が示されます。パッケージによって出力例は少し異なりますが，ほぼ同じ情報が含まれています。
+Well, we were able to run the MCMC, but let's take a look inside a little bit. When you enter the object name that you assigned the sampling results to, it shows the summarized results. The output may vary slightly by package, but it contains roughly the same information.
+
+\input{x18_MCMC_escape_13}
+
+\input{x18_MCMC_escape_14}
+
+
+% ここで確認して欲しいのは，\keytermL{Rhat}{Rはっと}です。これは「複数チェインの収束の程度」を表しています。
+I would like you to check here is \keytermL{Rhat}{R hat}. This indicates the 'degree of convergence of multiple chains'.
+% まずMCMCによってサンプルを得る方法は乱数だったことを思い出してください。乱数ですから毎回同じ数字からスタートするわけではありません。
+Remember first that the method of obtaining samples by MCMC was random numbers. Because it's a random number, it doesn't always start from the same number.
+% そしてある乱数は次の数字を生むステップになっており，一歩一歩，事後分布の形に近づいていくものです。しかし違う数字からスタートしても，目標とする事後分布は同じはずですから，最終的にはこのステップの鎖はよく絡まったもの，つまりどこからスタートしても同じあたりをウロウロするものになるはずです。ですから，MCMCがきちんとできているかどうか，事後分布を正しく代表した数字になっているかどうかを確認する必要があります。この\keytermL{Rhat}{Rはっと}という数字は，$1.0$であればピッタリ一致という数字で，$1.1$よりも小さければ十分「絡まっている」と判断できます。今回はいずれも十分な収束が得られたと言えるでしょう。
+And a certain random number becomes the step to generate the next number, step by step, it's getting closer to the shape of the posterior distribution. However, since we should have the same target posterior distribution even if we start from a different number, in the end, this chain of steps should become something well entangled, meaning it should be wandering around the same area no matter where it starts. Therefore, you need to check whether MCMC is working properly, and whether it has become a number that properly represents the posterior distribution. This number, called "Rhat," can be considered as "well entangled" if it is less than $1.1$ and it represents a perfect match if it is $1.0$. In this case, we can say that sufficient convergence has been obtained in both cases.
+
+% このことを視覚的に確認することもできます。\keyterm{トレースプロット}{トレースプロット}{trace plot}というのがそれで，MCMCのステップを可視化し，十分に絡まっていることを見ておくのです(図\ref{fig::18_03})。
+You can also visually confirm this. A trace plot is used for this, visualizing the steps of MCMC and ensuring that it is sufficiently entangled (Figure \ref{fig::18_03}).
+
+% ちなみにトレースプロットの描画のコードは,code\ref{code:18_03x}の通りです。パッケージによって少し作法が違うので注意してください。\texttt{cmdstanr}で推定したものを使う場合は，\verb|bayesplot|パッケージの力を借りて描画します。
+By the way, the code to draw the trace plot is as in code \ref{code: 18_03x}. Please be careful as the practice varies slightly depending on the package. When using what you estimated with \ texttt {cmdstanr}, you draw with the help of the \verb| bayesplot | package.
+
+\input{x18_MCMC_escape_15}
+
+\input{x18_MCMC_escape_16}
+
+% これについては悪い例を見た方が早いかもしれません。図\ref{fig::18_04}に，チェインが絡まない場合のトレースプロットを示しました。このように，複数のチェインがそれぞれバラバラ，迷子になっている場合は，手元に生成された乱数が事後分布の適切な代表になっていないと判断することになります。
+It might be quicker to see a bad example of this. Figure \ref{fig::18_04} shows the trace plot when the chains are not tangled. In this case, if multiple chains are scattered and lost on their own, you should conclude that the random numbers generated in your hand do not properly represent the posterior distribution.
+\input{x18_MCMC_escape_17}
+
+% 次に，\keyterm{有効サンプルサイズ}{ゆうこうさんぷるさいず}{effective sample size}を見ておきましょう。\texttt{rstan}パッケージを使っている例の場合は\verb|n_eff|，\texttt{cmdstanr}パッケージを使っている例の場合は\verb|ess_tail|を見ましょう。これはMCMCサンプルがうまく取れたかどうかを診断した結果で，ここが少なくとも3桁ほどなければ不十分なのだ，と考えます。いくらあったらいいかについては，どれだけMCMCサンプルを発生させたかに依存するので一概には言えませんが，少なくとも効果的に得られているのが100サンプルぐらいないとダメなんだ，ということです。
+Next, let's look at the \keyterm{effective sample size}. In the case of using the \texttt{rstan} package, check \verb|n_eff| and in the case of using the \texttt{cmdstanr} package, check \verb|ess_tail|. This is the result of diagnosing whether the MCMC sample was successfully taken, and if this is not at least three digits, it is considered insufficient. Although it is impossible to say conclusively how much should be there, as it depends on how much MCMC sample was produced, it is at least necessary to have about 100 samples effectively obtained.
+
+% ちなみに，MCMCサンプルのチェイン(発生させた系列数)や，MCMCサンプルの数は，関数のオプションで指定します。今回は指定なしだったので，デフォルトの値で4チェイン，各々1000サンプルずつ作るようになっていました。これらを明示的に設定するには次のようにします(code\ref{code:18_06},code\ref{code:18_05},)。
+By the way, the number of series (chains) of MCMC samples and the number of MCMC samples are specified by the function options. This time they were not specified, so it was set to create 4 chains each with 1000 samples by default. To explicitly set these, use the following (code\ref{code:18_06}, code\ref{code:18_05}).
+
+\input{x18_MCMC_escape_18}
+
+
+\input{x18_MCMC_escape_19}
+
+% ここにある\texttt{chains}というのが生成するMCMCサンプルの連鎖系列の数です。「どこからスタートしても同じ事後分布にたどり着く」ことを検証するために，少なくとも複数のサンプルが必要で，デフォルトでは4本のチェインを作っていることになります。\texttt{cmdstanr}パッケージの方は，並列化する本数も別途\verb|parallel_chains|関数で指定します。
+The \texttt{chains} mentioned here refers to the number of Markov Chain Monte Carlo sample sequences it generates. In order to verify that "you can reach the same posterior distribution no matter where you start from," you need at least multiple samples, and by default, it is set to generate four chains. In the case of the \texttt{cmdstanr} package, the number of parallelizations is specified separately by the \verb|parallel_chains| function.
+
+% また生成する乱数の数ですが，ここに\keyterm{ウォームアップ}{うぉーむあっぷ}{wamup}という単語が出てきています。これはMCMCサンプルの際，最初の数ステップは調整のための準備運動期間中なので，この期間に得られたMCMCサンプルは代表値として使わない，という意味です。\texttt{cmdstanr}パッケージの場合，捨てるステップ数とサンプルするステップ数を明示的に指定していますからわかりやすいですね。最終的に得られるMCMCサンプルの数は$4000\times 4=16000$で計算できます。\texttt{rstan}パッケージの場合，全体の反復(iter)回数からウォームアップの分を引き算しなければなりません。引き算した残りの期間をチェイン数発生させることになります。今回の例では$(5000-1000)\times 4=16000$サンプルできあがることになります。
+The number of random numbers to generate again includes a word called "warm-up". This means that during the MCMC sample, the first few steps are during the exercise period for tuning, so the MCMC samples obtained during this period are not used as representative values. In case of the `cmdstanr` package, the number of steps to discard and the number of steps to sample are explicitly specified, so it is easy to understand. The number of MCMC samples obtained in the end can be calculated as $4000\times 4=16000$. In the case of the `rstan` package, the total number of iterations need to subtract the warm-up portion. The remainder left after the subtraction will generate the chain count. In this example, it would result in $(5000-1000)\times 4=16000$ samples.
+
+
+% \section{MCMCの結果の解釈}
+\section{Interpretation of MCMC Results}
+% さあ長々と話をしてきましたが，どうやらRhatや有効サンプルサイズにも問題がなかったので，MCMCは事後分布からの適切な代表値を産んでいたと考えられますから，その結果を考えてみましょうか。
+Well, I've been talking at length, but since there doesn't seem to have been any problems with the Rhat or the effective sample size, we can assume that the MCMC was producing appropriate representative values from the posterior distribution, so let's consider the results.
+
+% ここで，前の章(セクション\ref{preparedFunctions},Pp.\pageref{preparedFunctions})で準備した関数を使ってみましょう\footnote{伴走サイト\url{https://kosugitti.github.io/psychometrtics_syllabus/}からは，これらのRコードをダウンロードできます。Stanファイルは自分で準備し，読み込み先やファイル名などは適宜変更してください。}。これらをコード\ref{code:18_07}のように使うと結果が得られます。私の結果では出力\ref{MCMCout:out18_01}のようになりました。
+Here, let's try using the functions we prepared in the previous chapter (Section \ref{preparedFunctions}, Pp.\pageref{preparedFunctions})\footnote{You can download these R codes from the accompanying site \url{https://kosugitti.github.io/psychometrtics_syllabus/}. Please prepare the Stan files yourself, and change the reading destination and file name as appropriate.}. You can get the results by using them like Code \ref{code:18_07}. In my case, the output was like \ref{MCMCout:out18_01}.
+
+\input{x18_MCMC_escape_20}
+
+\input{x18_MCMC_escape_21}
+
+% ここでは\keyterm{事後確率最大値}{じごかくりつさいだいち}{Maximum A Posterior}を見ることにしましょう。
+Let's take a look at the \keyterm{Maximum A Posterior probability} here.
+% これによると，$\mu$すなわち真の測定値は9.596ぐらいじゃないか，という推測がなされています。10より少し小さいくらいではないか，と思っていたようですが，こうして計算してみると確かにそれぐらいのようですね。
+Based on this, a guess has been made that the true measurement value, that is µ, is probably around 9.596. It seems they thought it would be slightly less than 10, but when calculated like this, it does seem to be around that much.
+% そして7人それぞれの測定精度が$\sigma_i$として算出されています。これをみると，最初の測定者は23.101，2番目の人は6.849になっています。これが大きいということは，誤差の幅広さを表しているのですから，測定精度が悪いということを意味します。確かに最初の二人は非常に精度が悪く，他のベテラン測定者が0.3とか0.9ぐらいの誤差であることに比べれば，圧倒的に悪いということが言えますね。
+And the measurement accuracy of each of the seven people was calculated as $\sigma_i$. Looking at this, the first measurer is 23.101, and the second person is 6.849. This means that if the value is large, it indicates the width of the margin of error, and therefore that the measurement accuracy is poor. Indeed, the first two people measure very inaccurately, which can be said to be overwhelmingly poor compared to other experienced measurers with errors of only about 0.3 or 0.9.
+
+% もちろんこれは点推定値で，真の測定値が9.596に違いないとか，最初の人の測定精度が23.101だと断言すると，おそらくほぼ確実に外れた予測ということになるでしょう。そこで幅を持った予測，すなわち\keyterm{区間推定}{くかんすいてい}{interval estimation}を行えば良いのです。区間を考えれば，真の測定値は10.547から7.753の範囲にあるだろうとか，最初の測定者の精度も最悪151.573，最善なら14.259ぐらいである可能性があるわけです。
+Of course, as this is a point estimate, it would probably become a nearly certain outlier prediction to assert that the true measurement value is without a doubt 9.596, or that the first person's measurement accuracy is 23.101. Therefore, it would be good to make a prediction with a range, i.e., perform \keyterm{interval estimation}. If we consider the interval, it would mean that the true measurement value might be in the range of 10.547 to 7.753, and there's a possibility that the first measurer's accuracy could be at best 14.259 and at worst 151.573.
+
+% ベイズ推定のポイントとして，これらは事後分布，すなわち\textbf{確率分布による予測}であるということが挙げられます。真の測定値$\mu$のありそうな範囲が10.547から7.753にある確率が95\%だ，という言い方ができるところです。\keytermL{モーメント法}{もーめんとほう}による\keyterm{信頼区間}{しんらいくかん}{confidential intervals}とは違い，ベイズ法の予測は\keyterm{確信区間}{かくしんくかん}{Credible Intervals}という言い方になります\footnote{信頼区間の場合は，ここにあると予測したとして，その予測が当たる確率を表しています。すなわち当たるか外れるか，0/1の話をしているのであって，この「範囲に存在する」という大きさ・幅の話をしているわけではないことに注意です。}。
+A point of Bayesian estimation is that these are posterior distributions, in other words, \textbf{predictions based on probability distributions}. The fact that it can be said that there is a 95% chance that the likely range of the true measurement value $\mu$ is from 10.547 to 7.753. Unlike the \keytermL{method of moments}{confidence intervals}, Bayesian predictions are referred to as \keyterm{credible intervals}\footnote{In the case of confidence intervals, it represents the probability that the prediction is correct if it is predicted to be here. In other words, it is talking about whether it hits or misses, a story of 0/1, and not about the "range of existence", the size or width.}.
+
+% いかがでしたでしょうか。今回はモデリングとベイズ推測の実際，Stanコードの書き方を実践してみました。
+How was it? This time, we tried practical modeling and Bayesian inference, and writing Stan code.
+% この「7人の科学者」がおもしろい点は，少ないサンプル(たった7件のデータ！)で推測ができること，簡単なコードで検証できること，というのもありますが，なにより標準偏差(分散)を検証対象とすることにあると私は思います。心理学の実験のほとんどが，平均の比較，操作の効果の話になっているのですが，データの散らばりというのも測定精度のように心理学的に意味のあるものとして考えられ，検証の対象にしたっていいのです。もちろん正規分布でなくてもいいですし，さまざまな分布のさまざまなパラメータに意味があるなら，それをわからないものとして検証しようと言える，というのはとても可能性が広がる話ではないでしょうか。
+The interesting thing about these "Seven Scientists" is not only that they can infer from a small sample (only 7 pieces of data!) and can verify with simple code, but I think it is mainly about considering the standard deviation (variance) as the subject of verification. Most psychological experiments are about comparing means and the effects of interventions, but data dispersion can also be considered psychologically meaningful like measurement accuracy and can be targeted for verification. Of course, it doesn't have to be a normal distribution and if various parameters of various distributions have meaning, one could propose to test what we don't understand - wouldn't that expand the possibilities?
+% \section{課題}
+\section{Assignment}
+% 次の計算をするR/Stanコードを記述し，提出してください。なお提出されたコード単体でバグがなく動くことが確認できないものは，未提出扱いになります。コードの書き方などわからないところがあれば，曜日別TAか小杉までメールで連絡し，指導を受けてください。
+Please write and submit the R/Stan code for the following calculations. Please note that if there are bugs in the submitted code, it will be treated as not submitted. If you have any questions about how to write the code, please contact TA by day of the week or Kosugi by email and receive guidance.
+\input{x18_MCMC_escape_22}
+
+\end{document}

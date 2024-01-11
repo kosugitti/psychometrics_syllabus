@@ -1,0 +1,32 @@
+\begin{Rscreen}{下位検定の出力}{out23_10}
+
+   \begin{verbatim}
+<< POST ANALYSES >>
+
+< MULTIPLE COMPARISON for "A" >
+
+== Shaffer's Modified Sequentially Rejective Bonferroni Procedure ==
+== The factor < A > is analysed as dependent means. == 
+== Alpha level is 0.05. == 
+ 
+--------------------------
+  A   n    Mean    S.D. 
+--------------------------
+ a1   4  7.5000  2.6458 
+ a2   4  3.5000  1.2910 
+ a3   4  5.5000  2.5166 
+--------------------------
+
+----------------------------------------------------------
+  Pair     Diff  t-value  df       p   adj.p            
+----------------------------------------------------------
+ a1-a2   4.0000   5.6569   3  0.0109  0.0328  a1 > a2 * 
+ a1-a3   2.0000   2.8284   3  0.0663  0.0663  a1 = a3   
+ a2-a3  -2.0000   2.8284   3  0.0663  0.0663  a2 = a3   
+----------------------------------------------------------
+
+
+output is over --------------------///
+
+\end{verbatim}
+\end{Rscreen}

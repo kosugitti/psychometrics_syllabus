@@ -1,0 +1,4 @@
+\begin{lstlisting}[language=c++,label={code:20_06},caption={母分散がわからない場合}]
+    mean(s1)+qt(0.025,df=4)*(sd(s1)/sqrt(5))
+    mean(s1)+qt(0.975,df=4)*(sd(s1)/sqrt(5))
+\end{lstlisting}

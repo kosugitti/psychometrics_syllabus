@@ -78,11 +78,11 @@ If you add more parameters, it becomes the \keyterm{Two Parameter Logistic Model
 ここで$a$という母数(パラメータ)が入ってきました。これは$a=1$だともとのモデルのままなのですが，これが小さくなると曲線が傾き，大きくなると曲線のカーブが強くなります(図\ref{fig::04_04})。曲線が緩やかになると(図\ref{fig::04_03}の赤線)，$\theta$の違いに対して通過率の変化が乏しくなります。言い換えると感度が悪くなるわけです。逆に曲線の立ち上がりが強くなると(図\ref{fig::04_04}の青線)，$\theta$ がある一定のところを超えるかどうかで正答率がグッと変化することになります。つまりこのパラメータは，回答者の能力$\theta$を分類する力の強さを表しているのです。このパラメータのことをとくに\keyterm{識別力}{しきべつりょく}{discriminant}と呼びます。
 
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_04.png}
-        \caption{識別力母数の入ったロジスティック曲線。2PLロジスティックモデルともいう。点線が$a=1$の標準的曲線。赤が$a=0.5$，青が$a=1.5$の例}
-        \label{fig::04_04}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_04.png}
+		\caption{識別力母数の入ったロジスティック曲線。2PLロジスティックモデルともいう。点線が$a=1$の標準的曲線。赤が$a=0.5$，青が$a=1.5$の例}
+		\label{fig::04_04}
+	\end{center}
 \end{figure}
 
 一般にはここまで紹介した2PLモデルがよく用いられます。他にも3，4，5つとパラメータが増えたモデルもありますが\footnote{詳しくは\url{http://antlers.rd.dnc.ac.jp/~shojima/exmk/jindex.htm}を参照してください。3つめのパラメータはあて推量母数，4つ目は上方漸近母数，5つ目は非対称母数と呼ばれています。}，もとのロジスティック曲線に特徴を付け足していったもので，曲線をずらしたり，曲げたりしながらもとのデータにうまく当てはまるようにしつつ，その特徴を解釈できるように工夫しています。
@@ -99,30 +99,30 @@ If you add more parameters, it becomes the \keyterm{Two Parameter Logistic Model
 他にも項目\texttt{I0017}は困難度が2.17，識別力は0.69です。困難度が最も高いグラフで，図の曲線は一番右にあるラインになっています。ただ識別力がやや低いので，曲線はよりなだらかになっていますね。困難度が高いので，$\theta=0$でも7.24\%しか正答できません。難しい！$\theta=2$で45.10\%ですから，かなり能力の高い人でも半分は間違えるような問題です。ちなみにこれは標本分散の期待値が母分散からどれぐらいずれるのかを計算する問題でした。
 
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_05.png}
-        \caption{実際のテストに2PLモデルを適用した例}
-        \label{fig::04_05}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_05.png}
+		\caption{実際のテストに2PLモデルを適用した例}
+		\label{fig::04_05}
+	\end{center}
 \end{figure}
 
 % latex table generated in R 4.0.4 by xtable 1.8-4 package
 % Wed Mar 17 09:22:06 2021
 \begin{table}[ht]
-    \centering
-    \caption{各項目の困難度と識別力}
-    \label{tbl::04_01}
-    \begin{tabular}{rlrr}
-        \hline
-          & 項目ID & 困難度 & 識別力 \\
-        \hline
-        1 & I0013  & -1.02  & 1.05   \\
-        2 & I0017  & 2.17   & 0.69   \\
-        3 & I0022  & -1.92  & 1.30   \\
-        4 & I0041  & -0.79  & 0.62   \\
-        5 & M0605  & 0.68   & 1.15   \\
-        \hline
-    \end{tabular}
+	\centering
+	\caption{各項目の困難度と識別力}
+	\label{tbl::04_01}
+	\begin{tabular}{rlrr}
+		\hline
+		  & 項目ID  & 困難度   & 識別力  \\
+		\hline
+		1 & I0013 & -1.02 & 1.05 \\
+		2 & I0017 & 2.17  & 0.69 \\
+		3 & I0022 & -1.92 & 1.30 \\
+		4 & I0041 & -0.79 & 0.62 \\
+		5 & M0605 & 0.68  & 1.15 \\
+		\hline
+	\end{tabular}
 \end{table}
 
 \section{被験者母数の推定}
@@ -132,31 +132,31 @@ If you add more parameters, it becomes the \keyterm{Two Parameter Logistic Model
 たとえばこのICCにおいて，$\theta$が0.5のときの通過率は86.05\%ですが，言い換えればこの項目に正解した人が$\theta=0.5$である可能性も高そうです。$\theta=-2$の通過率は14.71\%ぐらいですから，能力がこんなに低いとは思えませんし，1つの項目の話でしかないですが，希望的観測をするなら$\theta$がもっと高い可能性もあるでしょう\footnote{$\theta$のありそうな「確率」とは言ってないことに注意してください。すぐにわかることですが，このICCの下の面積を積分しても1.0にはなりませんのでこれは確率ではなく，\keyterm{尤度}{ゆうど}{likelihood}のほうなのです！}。
 
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_06.png}
-        \caption{実際のテスト項目\texttt{I0013}に正答した人の能力がありそうな領域}
-        \label{fig::04_06}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_06.png}
+		\caption{実際のテスト項目\texttt{I0013}に正答した人の能力がありそうな領域}
+		\label{fig::04_06}
+	\end{center}
 \end{figure}
 
 次に，困難度のより高い項目である\texttt{I0017}には\textbf{誤答}したとしましょう。その人は，\texttt{I0017}のICCの下の領域には\textbf{ない}はずです。項目\texttt{I0013}のICCの下で，かつ，項目\texttt{I0017}のICCの上にあるはずなので，図\ref{fig::04_07}のように塗りつぶされた領域の中に入ります。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_07.png}
-        \caption{つぎのテスト項目\texttt{I0013}には誤答した人の能力がありそうな領域}
-        \label{fig::04_07}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_07.png}
+		\caption{つぎのテスト項目\texttt{I0013}には誤答した人の能力がありそうな領域}
+		\label{fig::04_07}
+	\end{center}
 \end{figure}
 
 この2つの曲線の間にある，濃く彩られた領域の幅が，回答者の能力値がありそうな程度を表しているのです。図\ref{fig::04_07}には$\theta=0$の可能性の大きさを矢印で示してありますが，$\theta$の値はここだけに限らずこの曲線の幅のどこかです。ただ$\theta=2$や$\theta=-2$よりは$\theta=0$のほうが，より「ありそう」な値だということがわかります。
 
 ここでさらに同じ人に，項目\texttt{M0605}の質問をして，この人がそれにも正解したとしましょう。この人の能力$\theta$のありそうな範囲はさらに絞り込むことができます(図\ref{fig::04_08})。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_08.png}
-        \caption{さらにテスト項目\texttt{M0605}には正答した人の能力がありそうな領域}
-        \label{fig::04_08}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_08.png}
+		\caption{さらにテスト項目\texttt{M0605}には正答した人の能力がありそうな領域}
+		\label{fig::04_08}
+	\end{center}
 \end{figure}
 項目\texttt{I0013}よりは難しい質問に正解したわけですから，$\theta=0$の可能性はグッと小さくなり，それよりも$\theta=2$ぐらいの方がありそうだ，ということになってきます。このように，1つ1つの項目からこの人の能力$\theta$がどのあたりにありそうか，というのを絞っていき，テストに含まれる項目全部を使えば，かなり狭い領域で「この辺りにあるはずだ」と推定できるでしょう。
 

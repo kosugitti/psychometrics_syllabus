@@ -16,17 +16,17 @@
 またこの古典的テスト理論から，いくつかの重要な考えを読み取ることができます。ひとつは誤差についての考え方です。このモデルを$X_j = t_j + e_j$のように，ある個人の変化しない属性について，$j$回測定したとします。この時，測定の平均は次のように計算できます\footnote{この式は，ある測定を多くの個人$i$に対して行ったものとして，$X_i = t_i + e_i$と考えることもできますが，添字が異なるだけで式の展開に違いはありません。}。
 
 \begin{align*}
-     & \bar{X}  =  \frac{1}{n}\sum_{j=1}^n X_j                           &             & \mbox{} \\
-     & =  \frac{1}{n}\sum_{i=j}^n (t_j + e_j)                            & \mbox{定義より}           \\
-     & =  \frac{1}{n} \sum_{j=1}^n  t_j +  \frac{1}{n} \sum_{j=1}^n  e_j & \mbox{分配して}           \\
-     & =  \bar{t} + \bar{e}                                              & \mbox{}               \\
+	 & \bar{X}  =  \frac{1}{n}\sum_{j=1}^n X_j                           &             & \mbox{} \\
+	 & =  \frac{1}{n}\sum_{i=j}^n (t_j + e_j)                            & \mbox{定義より}           \\
+	 & =  \frac{1}{n} \sum_{j=1}^n  t_j +  \frac{1}{n} \sum_{j=1}^n  e_j & \mbox{分配して}           \\
+	 & =  \bar{t} + \bar{e}                                              & \mbox{}               \\
 \end{align*}
 
 さて古典的テスト理論では，誤差に関して次のことが仮定されます。
 \begin{itemize}
-    \item 誤差の平均はゼロ。つまり誤差が出現するときは，「正に偏る」「負に偏る」といった一貫した傾向がないと考える。
-    \item 真のスコアと誤差との相関はゼロ。つまり誤差は真のスコアに関係なく影響してくるもので，真のスコアと共変動するようであれば偶然によるものとはいえない。
-    \item 異なる測定誤差間の相関はゼロ。誤差同士がなにか意味のある変動をしているのであれば，それはもう偶然によるものとはいえない。
+	\item 誤差の平均はゼロ。つまり誤差が出現するときは，「正に偏る」「負に偏る」といった一貫した傾向がないと考える。
+	\item 真のスコアと誤差との相関はゼロ。つまり誤差は真のスコアに関係なく影響してくるもので，真のスコアと共変動するようであれば偶然によるものとはいえない。
+	\item 異なる測定誤差間の相関はゼロ。誤差同士がなにか意味のある変動をしているのであれば，それはもう偶然によるものとはいえない。
 \end{itemize}
 
 これらはいずれも，誤差が「偶然によって現れる影響で，制御不可能なもの」という考え方からは自然な仮定だといえるでしょう。より詳しくいえば，誤差は測定に応じて毎回一定の傾向で生じる\keyterm{系統誤差}{けいとうごさ}{systematic error}と，まったく傾向のつかめない\keyterm{偶然誤差}{ぐうぜんごさ}{random error}に分けて考えられますが，系統誤差は測定に際して工夫して取り除くべき問題であり，ここでは，まったくの偶然による誤差についての議論だからです。
@@ -35,12 +35,12 @@
 
 また平均は$0$ですが分散はゼロではありません\footnote{ガウスの考えた誤差論から，誤差は確率\keyterm{正規分布}{せいきぶんぷ}{Gaussian Curve}に従うと考えられます。}。このテストの分散を考えると，次のようなことがわかります。
 \begin{align*}
-     & Var(X)  =  \frac{1}{n}\sum_{i=j}^n (X_j - \bar{X})^2                                                                                              & \mbox{定義より}         \\
-     & = \frac{1}{n}\sum_{j=1}^n  ((t_j + e_j) - (\bar{t} + \bar{e}))^2                                                                                  & \mbox{Xをテスト理論のモデルに} \\
-     & = \frac{1}{n}\sum_{j=1}^n (  (t_j - \bar{t}) + (e_j - \bar{e}) )^2                                                                                & \mbox{同じ記号でまとめる}    \\
-     & = \frac{1}{n}\sum_{j=1}^n (  (t_j - \bar{t})^2 + 2(t_j - \bar{t})(e_j - \bar{e}) + (e_j - \bar{e})^2  )                                           & \mbox{展開する}         \\
-     & = \frac{1}{n}\sum_{i=1}^n (t_j - \bar{t})^2 +\frac{1}{n}\sum_{j=1}^n 2(t_j - \bar{t})(e_j - \bar{e})  + \frac{1}{n}\sum_{j=1}^n (e_j - \bar{e})^2 & \mbox{$\sum$を分配}    \\
-     & =  Var(t) + 2Cov(te) + Var(e)
+	 & Var(X)  =  \frac{1}{n}\sum_{i=j}^n (X_j - \bar{X})^2                                                                                              & \mbox{定義より}         \\
+	 & = \frac{1}{n}\sum_{j=1}^n  ((t_j + e_j) - (\bar{t} + \bar{e}))^2                                                                                  & \mbox{Xをテスト理論のモデルに} \\
+	 & = \frac{1}{n}\sum_{j=1}^n (  (t_j - \bar{t}) + (e_j - \bar{e}) )^2                                                                                & \mbox{同じ記号でまとめる}    \\
+	 & = \frac{1}{n}\sum_{j=1}^n (  (t_j - \bar{t})^2 + 2(t_j - \bar{t})(e_j - \bar{e}) + (e_j - \bar{e})^2  )                                           & \mbox{展開する}         \\
+	 & = \frac{1}{n}\sum_{i=1}^n (t_j - \bar{t})^2 +\frac{1}{n}\sum_{j=1}^n 2(t_j - \bar{t})(e_j - \bar{e})  + \frac{1}{n}\sum_{j=1}^n (e_j - \bar{e})^2 & \mbox{$\sum$を分配}    \\
+	 & =  Var(t) + 2Cov(te) + Var(e)
 \end{align*}
 ここで$Cov$とは共分散を表しています。第二項の$2Cov(te)$は真のスコアと誤差との共分散(を2倍したもの)を表していることになりますが，共分散(相関)がそもそも線形関係を表す指標であったことを思い出してください。相関係数は共分散を標準化したものだったわけですが，そういう意味ではこの$Cov(te)$というのは真のスコアと誤差との相関関係を表しているようなものです。さて，ここでも誤差の仮定から，相関はゼロです。すなわち，誤差とはどのような傾向もなく出現するもの，という考えられているのです。どのような傾向もないわけですから，当然なにかと相関関係にあるはずがない，すなわち$Cov(te)=0$であるとなります。
 
@@ -64,8 +64,8 @@
 さて先ほどは一因子，あるいは単因子ともいいますが，測定したい特徴が1つだけのモデルでした。しかし，知能検査や性格検査の場合は潜在的な特性がいくつあるのかすら議論のたねになります\footnote{Spearman,C.E.は知能の2因子説を唱え，一般因子general factorと特殊因子specific factorsに区分しました。g因子のような優れた才能が1つあれば，そのほかの能力もそれに影響されて現れてくるという考え方で，二次因子分析的モデルです。これに対してThurstone,L.L.は多因子説を取ります。Reasoning ability,Verbal comprehension,Word Frequency, Numerical facility,Memory, Spacial Orientation,Perceptual Speedという要素を見出しています。他にも知能についてのモデルはいろいろありますが，1940年代から因子分析モデルによってデータを説明しようという流れができてきたようです。}。そこで因子の数が1つではなく，複数ある多因子モデルを考えることにします。多因子モデルは次のように表現されます。
 
 \begin{equation}
-    z_{ij} = a_{j1}f_{i1} + a_{j2}f_{i2}+a_{j3}f_{i3} + \cdots + a_{jm}f_{im} + d_j u_{ij}
-    \label{factor}
+	z_{ij} = a_{j1}f_{i1} + a_{j2}f_{i2}+a_{j3}f_{i3} + \cdots + a_{jm}f_{im} + d_j u_{ij}
+	\label{factor}
 \end{equation}
 
 記号の意味は単因子モデルと基本的には同じです。$z_{ij}$は個人$i$の項目$j$に対する反応を標準得点で表したものであり，$a_{jm}$は第m因子の\keytermL{因子負荷量}{いんしふかりょう}，$f_{im}$は第$m$因子の\keytermL{因子得点}{いんしとくてん}を表しています。因子の数が複数あるモデルですから，$a_{j1},a_{j2},\cdots, a_{jm}$とか$f_{i1},f_{i2},\cdots, f_{im}$のように因子の番号と項目・個人の添字の組み合わせになっていることを確認してください。ここでは因子を$m$個あるとしています。この因子はどの項目にも共通して働くので，\keyterm{共通因子}{きょうつういんし}{common factor}と呼ばれます。また最後の$e_{ij}$が$d_j u_{ij}$となっていますが，これは誤差についても他の因子と形を同じくし，項目に依存するものとそれ以外に区別しているだけです。この誤差因子については，
@@ -77,106 +77,106 @@
 
 左辺の$z_{ij}$は観測されたデータから算出できるものですが，右辺の因子負荷量，因子得点はいずれも未知数です。この未知数だらけの方程式を解くために，因子について以下のような条件を置きます。
 \begin{itemize}
-    \item 共通因子の因子得点，独自因子の因子得点は，標準化されている。すなわち，いずれの因子得点も平均点は0であり，分散は1である。
-    \item 独自因子は共通因子，他の独自因子と相関しない。
+	\item 共通因子の因子得点，独自因子の因子得点は，標準化されている。すなわち，いずれの因子得点も平均点は0であり，分散は1である。
+	\item 独自因子は共通因子，他の独自因子と相関しない。
 \end{itemize}
 この他に，状況に応じて因子同士の間に相関を仮定します。
 \begin{itemize}
-    \item 共通因子同士の相関を認めないのを「直交因子モデル」，認めるのを「斜交因子モデル」と呼ぶ。
+	\item 共通因子同士の相関を認めないのを「直交因子モデル」，認めるのを「斜交因子モデル」と呼ぶ。
 \end{itemize}
 
 その上で，2つの変数，$j$と$k$の標準得点から，
 \begin{equation}
-    r_{jk}=\frac{1}{n} \sum_{i=1}^{n} z_{ij}z_{ik}
+	r_{jk}=\frac{1}{n} \sum_{i=1}^{n} z_{ij}z_{ik}
 \end{equation}
 
 のように，相関係数が算出されることをふまえ，先ほどの因子分析の基本代数式(式\ref{factor})をこの式に代入してみましょう。
 \begin{equation}
-    \begin{array}{ccl}
-        r_{jk} & = & \displaystyle{\frac{1}{n} \sum_{i=1}^{n} z_{ij}z_{ik}}                                                                                                                  \\
-               & = & \displaystyle{\frac{1}{n} \sum_{i=1}^{n}}(a_{j1}f_{i1}+a_{j2}f_{i2}+ \ldots \ +a_{jm}f_{im}+d_{j}u_{ij})(a_{k1}f_{i1}+a_{k2}f_{i2}+ \ldots \ +a_{km}f_{im}+d_{k}u_{ik})
-    \end{array}
+	\begin{array}{ccl}
+		r_{jk} & = & \displaystyle{\frac{1}{n} \sum_{i=1}^{n} z_{ij}z_{ik}}                                                                                                                  \\
+		       & = & \displaystyle{\frac{1}{n} \sum_{i=1}^{n}}(a_{j1}f_{i1}+a_{j2}f_{i2}+ \ldots \ +a_{jm}f_{im}+d_{j}u_{ij})(a_{k1}f_{i1}+a_{k2}f_{i2}+ \ldots \ +a_{km}f_{im}+d_{k}u_{ik})
+	\end{array}
 \end{equation}
 
 これは代数の計算としてやっていくと，非常に煩雑で間違いが起きやすそうです。そこで，少し視覚化してわかりやすくしてみましょう。
 多項式の掛け算は，各項目の総当たり戦ですので，列方向に$z_{ij}$，行方向に$z_{ik}$の各要素を置いて，要素同士の組み合わせ表を作ります(図\ref{x03_multiply})。
 
 \begin{figure}[ht]
-    \[
-        \begin{array}{rl|cccccc|}
-                    &                                                       & \multicolumn{6}{c}{z_{ij}=}                                                                                                                                                                                                                                                                                                        \\
-                    &                                                       & a_{j1}f_{i1} +                                                          & a_{j2}f_{i2}+                                                            & a_{j3}f_{i3} +                                                         & \cdots\cdots +                                                          & a_{jm}f_{im} + & d_jU_{ij} \\\hline
-                    & \begin{array}{c}a_{k1}f_{i1}\\+\end{array}            & \multicolumn{1}{>{\columncolor{red!9}}c}{}                              & \multicolumn{4}{>{\columncolor{cyan!9}}c}{}                              & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                                                                                                  \\
-            z_{ik}= & \begin{array}{c}a_{k2}f_{i2}\\+\end{array}            & \multicolumn{1}{>{\columncolor{cyan!9}}c}{}                             & \multicolumn{1}{>{\columncolor{red!9}}c}{\circled{1}}    & \multicolumn{3}{>{\columncolor{cyan!9}}c}{\circled{2}} & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                         \\
-                    & \begin{array}{c}a_{k3}f_{i3}\\+\end{array}            & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}                             & \multicolumn{1}{>{\columncolor{red!9}}c}{}                               & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}                            & \multicolumn{1}{>{\columncolor{green!9}}c}{\circled{3}}                              \\
-                    & \hspace{10pt}\begin{array}{c}\vdots\\+\end{array}     & \multicolumn{3}{>{\columncolor{cyan!9}}c}{\circled{2}}  & \multicolumn{1}{>{\columncolor{red!9}}c}{}                               & \multicolumn{1}{>{\columncolor{cyan!9}}c}{}                            & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                         \\
-                    & \begin{array}{c}a_{km}f_{im}\\+\end{array}            & \multicolumn{4}{>{\columncolor{cyan!9}}c}{}                             & \multicolumn{1}{>{\columncolor{red!9}}c}{}                               & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                                                                                                  \\
-                    & \hspace{7pt}\begin{array}{c}\\ d_kU_{ik} \\ \end{array} & \multicolumn{5}{>{\columncolor{green!9}}c}{\circled{3}} & \multicolumn{1}{>{\columncolor{yellow!9}}c}{\circled{4}}                                                                                                                                                                                 \\\hline
-        \end{array}
-    \]
-    \caption{項目同士の総当たりを考える}
-    \label{x03_multiply}
+	\[
+		\begin{array}{rl|cccccc|}
+			        &                                                         & \multicolumn{6}{c}{z_{ij}=}                                                                                                                                                                                                                                        \\
+			        &                                                         & a_{j1}f_{i1} +                                          & a_{j2}f_{i2}+                                            & a_{j3}f_{i3} +                                         & \cdots\cdots +                                          & a_{jm}f_{im} + & d_jU_{ij} \\\hline
+			        & \begin{array}{c}a_{k1}f_{i1}\\+\end{array}              & \multicolumn{1}{>{\columncolor{red!9}}c}{}              & \multicolumn{4}{>{\columncolor{cyan!9}}c}{}              & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                                                                  \\
+			z_{ik}= & \begin{array}{c}a_{k2}f_{i2}\\+\end{array}              & \multicolumn{1}{>{\columncolor{cyan!9}}c}{}             & \multicolumn{1}{>{\columncolor{red!9}}c}{\circled{1}}    & \multicolumn{3}{>{\columncolor{cyan!9}}c}{\circled{2}} & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                         \\
+			        & \begin{array}{c}a_{k3}f_{i3}\\+\end{array}              & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}             & \multicolumn{1}{>{\columncolor{red!9}}c}{}               & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}            & \multicolumn{1}{>{\columncolor{green!9}}c}{\circled{3}}                              \\
+			        & \hspace{10pt}\begin{array}{c}\vdots\\+\end{array}       & \multicolumn{3}{>{\columncolor{cyan!9}}c}{\circled{2}}  & \multicolumn{1}{>{\columncolor{red!9}}c}{}               & \multicolumn{1}{>{\columncolor{cyan!9}}c}{}            & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                         \\
+			        & \begin{array}{c}a_{km}f_{im}\\+\end{array}              & \multicolumn{4}{>{\columncolor{cyan!9}}c}{}             & \multicolumn{1}{>{\columncolor{red!9}}c}{}               & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                                                                  \\
+			        & \hspace{7pt}\begin{array}{c}\\ d_kU_{ik} \\ \end{array} & \multicolumn{5}{>{\columncolor{green!9}}c}{\circled{3}} & \multicolumn{1}{>{\columncolor{yellow!9}}c}{\circled{4}}                                                                                                                                                 \\\hline
+		\end{array}
+	\]
+	\caption{項目同士の総当たりを考える}
+	\label{x03_multiply}
 \end{figure}
 
 図\ref{x03_multiply}に示されたのは個人$i$についてのものであり，これが人数分ある，すなわち$\sum_{i=1}^n$をつけないといけないことに注意してください。
 さて図を軽く色分けしてあるのですが，ここにあるように計算すべき領域を4つに分けて考えていきましょう。
 \begin{description}
-    \item[\circled{1}の領域] 因子$p$と$p$の積和部分(同じ因子同士の掛け合わせ)
-    \item[\circled{2}の領域] 因子$p$と$q$の積和部分(異なる因子同士の掛け合わせ)
-    \item[\circled{3}の領域] 因子$p$($q$)と独自因子の積和部分
-    \item[\circled{4}の領域] 独自因子同士の積和部分
+	\item[\circled{1}の領域] 因子$p$と$p$の積和部分(同じ因子同士の掛け合わせ)
+	\item[\circled{2}の領域] 因子$p$と$q$の積和部分(異なる因子同士の掛け合わせ)
+	\item[\circled{3}の領域] 因子$p$($q$)と独自因子の積和部分
+	\item[\circled{4}の領域] 独自因子同士の積和部分
 \end{description}
 
 この各パートを順に計算していきましょう。まず\circled{1}ですが，たとえば第一因子については
 \begin{equation}
-    \frac{1}{n}\sum_{i=1}^{n}a_{j1}a_{k1}F_{i1}^2
+	\frac{1}{n}\sum_{i=1}^{n}a_{j1}a_{k1}F_{i1}^2
 \end{equation}
 となることがわかります。ここで，$a_{j1}$と$a_{k1}$は$n$には関係がない($\sum$は$i$が$1$から$n$まで変化することを意味しているが，係数$i$はどちらにも入っていない)ので，総和して割る意味がないことに気づきます。そうなると，必然的にこの式は，
 \begin{equation}
-    \frac{1}{n}\sum_{i=1}^{n}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{n}\sum F_{i1}^2
+	\frac{1}{n}\sum_{i=1}^{n}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{n}\sum F_{i1}^2
 \end{equation}
 となります。この$F_{i1}$は因子得点であり，上の仮定より標準化されたものだということになります。さて，標準得点と標準得点の積和平均は相関係数になることをもう一度思い出してください！そうすると，これは自分自身との相関係数を表していることになりますから，当然$F_{i1}^2=1.0$であることがわかります。
 
 結局，\circled{1}のエリアは
 \begin{equation}
-    \frac{1}{n}\sum_{i=1}^{n}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{n}\sum F_{i1}^2=a_{j1}a_{k1}
+	\frac{1}{n}\sum_{i=1}^{n}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{n}\sum F_{i1}^2=a_{j1}a_{k1}
 \end{equation}
 と，とてもあっさり書き下すことができるのです。
 
 つづいて\circled{2}を見てみましょう。ここは異なる因子がかけ合わさった部分ですね。落ち着いて，第一因子と第二因子を例にして考えてみましょう。この箇所で得られるのは，
 \begin{equation}
-    \frac{1}{n}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{n}\sum F_{i1}F_{i2}
+	\frac{1}{n}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{n}\sum F_{i1}F_{i2}
 \end{equation}
 ということになります。ここで，$F_{i1}$および$F_{i2}$はそれぞれ第一，第二因子における個人$i$の因子得点を意味しています。因子得点は標準化されていることをもう一度思い出すと，これは第一因子と第二因子の相関係数になります。ここで，この因子分析が直交因子モデルだと考えますと，因子同士に相関がないわけですから，数字としては$0$で消えてしまいます。するとこの部分は，
 
 \begin{equation}
-    \frac{1}{n}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{n}\sum F_{i1}F_{i2}=0
+	\frac{1}{n}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{n}\sum F_{i1}F_{i2}=0
 \end{equation}
 となることがわかりました。つまり，この領域\circled{2}は，すべて$0$になってしまうのです。
 
 
 続いて\circled{3}の部分について考えてみましょう。これはある共通因子と独自因子の積和部分です。例によって標準得点同士の関係から，相関係数を算出することになりますが，独自因子は共通因子と無相関であることを考えると，
 \begin{equation}
-    \frac{1}{n}\sum a_{i1}F_{i1}d_{j}U_{ij}=a_{ik}d_{j} \frac{1}{n}\sum U_{ij}F_{i1} =0
+	\frac{1}{n}\sum a_{i1}F_{i1}d_{j}U_{ij}=a_{ik}d_{j} \frac{1}{n}\sum U_{ij}F_{i1} =0
 \end{equation}
 とこのように，この箇所もすべて$0$になってしまいます。
 
 最後の\circled{4}に至っては，独自因子と独自因子の積和ですから，これも
 \begin{equation}
-    \frac{1}{n}\sum d_{j}d_{k}U_{ij}U_{ik}=d_{j}d_{k}\frac{1}{n}\sum U_{ij}U_{ik}=0
+	\frac{1}{n}\sum d_{j}d_{k}U_{ij}U_{ik}=d_{j}d_{k}\frac{1}{n}\sum U_{ij}U_{ik}=0
 \end{equation}
 のように$0$になります。結局，消えて無くなるのがほとんどで，残るのは\textcircled{1}の部分だけであり，$r_{jk}$を考えるときはそこだけ考慮すればよいことになります。
 
 整理すると，
 \begin{equation}
-    r_{jk}=a_{j1}a_{k1}+a_{j2}a_{k2}+ \cdots +a_{jm}a_{km}
+	r_{jk}=a_{j1}a_{k1}+a_{j2}a_{k2}+ \cdots +a_{jm}a_{km}
 \end{equation}
 ということがわかります。つまり，項目$j$と項目$k$の相関係数は，項目$j$の因子負荷量と項目$k$の因子負荷量を，すべての因子について総和したものであるということです。因子分析の基本モデルから導出されるこの定理を，とくに\textbf{因子分析の第二定理}と呼びます。
 
 ここで同じ項目同士の相関を考えてみましょう。項目$j$と項目$j$の相関係数は，もちろん$1.0$になりますね。これを因子分析の基本式で表すと，次のように表現できます。
 \begin{equation}
-    \label{facteo1}
-    r_{jj}=a_{j1}^2+a_{j2}^2+ \cdots + a_{jm}^2 + d_j^2 = 1.0
+	\label{facteo1}
+	r_{jj}=a_{j1}^2+a_{j2}^2+ \cdots + a_{jm}^2 + d_j^2 = 1.0
 \end{equation}
 
 さて，この式が意味するのはなんでしょうか。意味を考えてみると，ある項目それ自身との相関係数は，因子負荷の二乗和からなっている，ということがわかります。これこそ\textbf{因子分析の第一定理}と呼ばれるものであり，解けるはずのなかった方程式を解くための鍵となる式なのです。
@@ -201,7 +201,7 @@
 
 内容はまったく同じですが，確認しておきましょう。標準得点行列$\bm{Z}$を因子負荷行列$\bm{A}$と因子得点行列$\bm{F}$をつかって，次のように表します。
 \begin{equation}
-    \bm{Z} = \bm{F} \bm{A} ' + \bm{U} \bm{D}
+	\bm{Z} = \bm{F} \bm{A} ' + \bm{U} \bm{D}
 \end{equation}
 
 ここで，各行列の要素のサイズ感をつかんでおきましょう。まず$\bm{R}$というのは相関行列ですから，$m$個項目があるのでサイズは$m \times m$ の正方行列になります。次に$\bm{F}$ですが，これは因子得点の行列です。得点は人数分ありますから行は$n$，因子の数が列になるのでこれを$p$とすると$n\times p$です。$\bm{A}$は因子負荷行列。因子負荷行列は因子の数と項目の数の組み合わせだけあるわけですから，$m \times p$になりますね。$\bm{U}$は独自因子得点です。得点ですから人数分，独自性分は各項目にありますから，サイズとしては$n \times m$になります。最後に$\bm{D}$ですが，これは独自因子の負荷量です。項目の数だけあるのですが，列ベクトルや行ベクトルで表現すると計算の時にサイズが変わって不便なことになります。ですから，対角項に$d_j$をもつ正方行列$m \times m$として表現しています。
@@ -209,25 +209,25 @@
 サイズを確認したところで，実際に行列計算をしてみましょう。
 
 \begin{equation}
-    \begin{array}{lll}
-        \bm{R} & = & \frac{1}{n} \bm{Z}'\bm{Z}                                                                                                                                                      \\
-               &   & \hspace{8cm}\text{$\bm{Z}$を因子分析のモデル式にして}                                                                                                                                       \\
-               & = & \frac{1}{n}(\bm{F} \bm{A} ' + \bm{U} \bm{D})'(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                                 \\
-               &   & \hspace{8cm}\text{前の項の転置を中に入れます}                                                                                                                                               \\
-               & = & \frac{1}{n}\left \{ (\bm{F} \bm{A} ')'+(\bm{U} \bm{D})' \right \}(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                             \\
-               &   & \hspace{8cm}\text{転置のカッコを外すときは順番を入れ替えて転置}                                                                                                                                      \\
-               & = & \frac{1}{n}(\bm{A} \bm{F} ' + \bm{D}' \bm{U} ')(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                               \\
-               &   & \hspace{8cm}                                                                                                                                                                   \\
-               & = & \frac{1}{n}\bm{A} \bm{F}' \bm{F} \bm{A}' + \frac{1}{n} \bm{A} \bm{F}' \bm{U} \bm{D} + \frac{1}{n} \bm{D}' \bm{U} ' \bm{F} \bm{A} ' + \frac{1}{n} \bm{D}' \bm{U}' \bm{U} \bm{D} \\
-    \end{array}
+	\begin{array}{lll}
+		\bm{R} & = & \frac{1}{n} \bm{Z}'\bm{Z}                                                                                                                                                      \\
+		       &   & \hspace{8cm}\text{$\bm{Z}$を因子分析のモデル式にして}                                                                                                                                       \\
+		       & = & \frac{1}{n}(\bm{F} \bm{A} ' + \bm{U} \bm{D})'(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                                 \\
+		       &   & \hspace{8cm}\text{前の項の転置を中に入れます}                                                                                                                                               \\
+		       & = & \frac{1}{n}\left \{ (\bm{F} \bm{A} ')'+(\bm{U} \bm{D})' \right \}(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                             \\
+		       &   & \hspace{8cm}\text{転置のカッコを外すときは順番を入れ替えて転置}                                                                                                                                      \\
+		       & = & \frac{1}{n}(\bm{A} \bm{F} ' + \bm{D}' \bm{U} ')(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                               \\
+		       &   & \hspace{8cm}                                                                                                                                                                   \\
+		       & = & \frac{1}{n}\bm{A} \bm{F}' \bm{F} \bm{A}' + \frac{1}{n} \bm{A} \bm{F}' \bm{U} \bm{D} + \frac{1}{n} \bm{D}' \bm{U} ' \bm{F} \bm{A} ' + \frac{1}{n} \bm{D}' \bm{U}' \bm{U} \bm{D} \\
+	\end{array}
 \end{equation}
 と，このように展開できました。記号を見ているとわかりにくいので，サイズ感を確認しましょう。最終的には，次のようになっています。
 \[
-    \underset{m \times m}{\bm{R}} =
-    \frac{1}{n} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
-    \frac{1}{n} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}} +
-    \frac{1}{n} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
-    \frac{1}{n} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}}
+	\underset{m \times m}{\bm{R}} =
+	\frac{1}{n} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
+	\frac{1}{n} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}} +
+	\frac{1}{n} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
+	\frac{1}{n} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}}
 \]
 
 ここで，要素ごとに計算していた時のことを思い出してください。第二項$\frac{1}{n} \bm{A} \bm{F}'\bm{U} \bm{D}'$と第三項$\bm{D}' \bm{U}' \bm{F} \bm{A}'$の中にある，$\bm{F}' \bm{U}$と$\bm{U}' \bm{F}$のところは，共通因子得点と独自因子得点の積ですし，いずれも標準化されていますから，$\frac{1}{n}$と合わせて考えると，これは相関係数を表していることになります。また，共通因子と独自因子は相関しませんので，これはイコール$\bm{0}$となり，この2つの項が消えてしまうのでした。
@@ -235,7 +235,7 @@
 また，第一項の$\frac{1}{n}\bm{F} ' \bm{F}$は，共通因子同士の相関を表しています。$\bm{F'F}=\bm{C}$とすると，これは因子得点間相関$\bm{C}$を表すことになります。これが直交であると仮定する，つまり他の因子と相関しないと考えると，$\bm{C} = \bm{I}$，つまり単位行列です。単位行列は計算に影響を与えませんから，$\bm{AF'FA'}=\bm{ACA'}=\bm{AIA'}=\bm{AA'}$となり，この式は簡単に次のように変形できます。
 
 \begin{equation}
-    \bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
+	\bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
 \end{equation}
 先ほどの代数的展開を，そのまま行列で表現しただけですが，この方がシンプルに表現できていますね。この表現は，因子分析の第一定理と第二定理の両方を含んで一度に表せているのです。
 
@@ -245,33 +245,33 @@
 この式は，間に入る$\bm{\Lambda}$が対角行列であり，$\bm{X}$が各固有ベクトルを列に持つ行列であることを考えると，次のように書くこともできます。
 \[ \bm{R} = \lambda_1\bm{x}_1\bm{x}_1'+\lambda_2\bm{x}_2\bm{x}_2'+\cdots+ \lambda_n\bm{x}_n\bm{x}_n'\]
 念のため，$2 \times 2$の簡単な例で確認してみましょう。
-\[ 
-    \begin{array}{ll}
-    & \begin{pmatrix} a & c\\ b & d \end{pmatrix}\begin{pmatrix}\alpha & 0\\ 0&\beta \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
-        &\\
-    =& \begin{pmatrix} \alpha a & \beta c \\ \alpha b & \beta d \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
-    &\\
-    =& \begin{pmatrix} \alpha aa + \beta cc & \alpha ab + \beta cd \\
-        \alpha ab + \beta cd & \alpha bb + \beta dd \end{pmatrix}\\
-        &\\
-    =& \alpha \begin{pmatrix} aa & ab\\ ab & bb \end{pmatrix} + 
-    \beta \begin{pmatrix}cc & cd \\ cd & dd \end{pmatrix}\\
-    &\\
-    =& \alpha \begin{pmatrix}a\\b\end{pmatrix}\begin{pmatrix}a &b\end{pmatrix} +
-    \beta \begin{pmatrix} c\\d \end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}
-    \end{array}
+\[
+	\begin{array}{ll}
+		  & \begin{pmatrix} a & c\\ b & d \end{pmatrix}\begin{pmatrix}\alpha & 0\\ 0&\beta \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix} \\
+		  &                                                                                                                                        \\
+		= & \begin{pmatrix} \alpha a & \beta c \\ \alpha b & \beta d \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix}                       \\
+		  &                                                                                                                                        \\
+		= & \begin{pmatrix} \alpha aa + \beta cc & \alpha ab + \beta cd \\
+                \alpha ab + \beta cd & \alpha bb + \beta dd\end{pmatrix}                                                                            \\
+		  &                                                                                                                                        \\
+		= & \alpha \begin{pmatrix} aa & ab\\ ab & bb \end{pmatrix} +
+		\beta \begin{pmatrix}cc & cd \\ cd & dd \end{pmatrix}                                                                                      \\
+		  &                                                                                                                                        \\
+		= & \alpha \begin{pmatrix}a\\b\end{pmatrix}\begin{pmatrix}a &b\end{pmatrix} +
+		\beta \begin{pmatrix} c\\d \end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}
+	\end{array}
 \]
 
 さて$\lambda \bm{xx'} = \bm{aa'}$となるようにベクトルの大きさを整えてみましょう。これは$\lambda$を分解してベクトルの中に溶け込ませるようなものですから，$\bm{a} = \sqrt{\lambda}\bm{x}$とすればよいでしょう。行列のままで表現するなら，固有値の平方根を対角にもつ行列$\bm{\Lambda}^{\frac{1}{2}}$を使って次のように表現できます。
 
 \[
-    \bm{R} = \bm{X\Lambda X}' = \bm{X \Lambda^{\frac{1}{2}}\Lambda^{\frac{1}{2}} X}' =
-    \bm{AA}'
+	\bm{R} = \bm{X\Lambda X}' = \bm{X \Lambda^{\frac{1}{2}}\Lambda^{\frac{1}{2}} X}' =
+	\bm{AA}'
 \]
 
 つまり$\bm{A}=\bm{X\Lambda^{\frac{1}{2}}}$と考えることができます。これは$n$次元ベクトルが$n$個並んでいることになりますが，ある基準で区切って$m$個のベクトルだけを共通因子，残りはまとめて誤差因子と考えて次のように書き直してみましょう。
 \begin{equation}
-    \bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}' =\bm{AA}'+\bm{D}
+	\bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}' =\bm{AA}'+\bm{D}
 \end{equation}
 
 ここでは共通因子の数が$m$個だとわかっている体で分解していますが，基本的にはサイズ$n$の行列からは$n$個の固有値がずらーっと並んでいたのです。それをどこかで「共通しているのはここまで」と判断し，残りは誤差であるとしてまとめて$\bm{dd'}$にしてみました。このように数学的にはここからが共通因子，ここからが独自因子といった区別をすることなく，最後のひとかけらまで固有値分解を行なっているのですが，その次元の重要度でもって共通因子と誤差因子に(研究者が恣意的に)分割しているのが因子分析のやっていることなのです。
@@ -285,7 +285,7 @@
                 r_{21}    & 1-d_2^2 & \cdots & r_{2m}   \\
                 \vdots    & \vdots  & \ddots & \vdots   \\
                 r_{m1}    & r_{m2}  & \cdots & 1- d_m^2\end{pmatrix}
-    = \begin{pmatrix} h_1^2  & r_{12} & \cdots & r_{1m} \\
+	= \begin{pmatrix} h_1^2  & r_{12} & \cdots & r_{1m} \\
                 r_{21} & h_2^2  & \cdots & r_{2m} \\
                 \vdots & \vdots & \ddots & \vdots \\
                 r_{m1} & r_{m2} & \cdots & h_m^2\end{pmatrix}
@@ -299,12 +299,12 @@
 ところで因子分析モデルの$\bm{A}$，因子負荷行列ですが，これは共通因子の固有ベクトルをセットで扱ったものです。つまり，$\bm{A} = \begin{pmatrix}\bm{a}_1 & \bm{a}_2 & \cdots \bm{a}_p \end{pmatrix}$と縦ベクトルを並べたものになっています。エレメントワイズで表現すると次のようになります。
 
 \[
-    \bm{A} = \left (
-    \begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1m} \end{pmatrix},
-    \begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2m} \end{pmatrix},
-    \cdots,
-    \begin{pmatrix}  a_{p1}\\a_{p2}\\\vdots\\ a_{pm} \end{pmatrix}
-    \right )
+	\bm{A} = \left (
+	\begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1m} \end{pmatrix},
+	\begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2m} \end{pmatrix},
+	\cdots,
+	\begin{pmatrix}  a_{p1}\\a_{p2}\\\vdots\\ a_{pm} \end{pmatrix}
+	\right )
 \]
 
 ここで$\bm{AA'}$の間に単位行列$\bm{I}$ を挟んでも，別に結果は変わりません。つまり$\bm{AA'}=\bm{AIA}$です。
@@ -322,67 +322,67 @@ $diag(\bm{T\Phi T'})=\bm{I}_m$という
 直交回転と斜交回転の違いを考えるときに，強調される座標について注意が必要です。直交の場合，座標の取り方に悩むことはありませんが，斜交の場合は「軸に垂線を下ろす」という考え方ももちろんありますが(正射影)，「他の軸に平行な線を引く」(平行射影)という考え方もできるからです。
 
 \begin{figure}[ht]
-    \centering
-    \begin{tikzpicture}[scale=0.45]
-        \coordinate (o) at (0,0);
-        \coordinate (x1) at (-5,0);
-        \coordinate (x2) at (5,0);
-        \coordinate (y1) at (0,-5);
-        \coordinate (y2) at (0,5);
-        \coordinate (s1) at (3,3);
-        \coordinate (s2) at (-0.8,1.5);
-        \coordinate (s3) at (1.5,1);
-        \coordinate (s4) at (2,-1);
-        \coordinate (s5) at (-2,-3);
-        \coordinate (s6) at (-2,-1.5);
-        \foreach\P in{s1,s2,s3,s4,s5,s6}\fill[black](\P) circle(0.06);
-        \draw[dashed] (s1) -- (3,0);
-        \draw[dashed] (s1) -- (0,3);
-        \draw[->,>=Latex,thick] (x1)--(x2);
-        \draw[->,>=Latex,thick] (y1)--(y2);
-        \node[below right] at (x2) {F1};
-        \node[left] at (y2) {F2};
-        \node[above right] at (s1) {$x_i$};
-    \end{tikzpicture}
-    \begin{tikzpicture}[scale=0.45]
-        \coordinate (o) at (0,0);
-        \coordinate (x1) at (-5,0);
-        \coordinate (x2) at (5,0);
-        \coordinate (y2) at (2.5,5);
-        \coordinate (y1) at (-2.5,-5);
-        \coordinate (s1) at (3,3);
-        \coordinate (s2) at (-0.8,1.5);
-        \coordinate (s3) at (1.5,1);
-        \coordinate (s4) at (2,-1);
-        \coordinate (s5) at (-2,-3);
-        \coordinate (s6) at (-2,-1.5);
-        \coordinate (s1a) at (0.5,-2);
-        \coordinate (s1b) at (-2,3);
-        \coordinate (sv1) at ($(o)!(s1)!(x1)$);
-        \coordinate (sv2) at ($(o)!(s1)!(y1)$);
-        \path[name path=sx1] (s1) -- (s1a);
-        \path[name path=sx2] (s1) -- (s1b);
-        \foreach\P in{s1,s2,s3,s4,s5,s6}\fill[black](\P) circle(0.06);
-        \draw[->,>=Latex,thick,name path=xAxis] (x1)--(x2);
-        \draw[->,>=Latex,thick,name path=yAxis] (y1)--(y2);
-        \path[name intersections = {of = sx1 and xAxis, by = sw1}];
-        \path[name intersections = {of = sx2 and yAxis, by = sw2}];
-        \draw[dashed](sv1) -- (s1);
-        \draw[dashed](sv2) -- (s1);
-        \draw[dashed](sw1) -- (s1);
-        \draw[dashed](sw2) -- (s1);
-        \draw(o) -- (s1);
-        \node[below] at (sv1) {$s_{i1}$};
-        \node[above left] at (sv2) {$s_{i2}$};
-        \node[below] at (sw1) {$p_{i1}$};
-        \node[left] at (sw2) {$p_{i2}$};
-        % \draw[dashed,very thin](o) to [out=75,in=185]node[midway,above,rotate=53]{$d_i^2$} (s1);
-        \node[below right] at (x2) {F1};
-        \node[above right] at (y2) {F2};
-        \node[above right] at (s1) {$x_i$};
-    \end{tikzpicture}
-    \caption{直交の場合は正射影と平行射影が同じになる(左図)が，斜交の場合はそうではない(右図)}
-    \label{ParallelProjection}
+	\centering
+	\begin{tikzpicture}[scale=0.45]
+		\coordinate (o) at (0,0);
+		\coordinate (x1) at (-5,0);
+		\coordinate (x2) at (5,0);
+		\coordinate (y1) at (0,-5);
+		\coordinate (y2) at (0,5);
+		\coordinate (s1) at (3,3);
+		\coordinate (s2) at (-0.8,1.5);
+		\coordinate (s3) at (1.5,1);
+		\coordinate (s4) at (2,-1);
+		\coordinate (s5) at (-2,-3);
+		\coordinate (s6) at (-2,-1.5);
+		\foreach\P in{s1,s2,s3,s4,s5,s6}\fill[black](\P) circle(0.06);
+		\draw[dashed] (s1) -- (3,0);
+		\draw[dashed] (s1) -- (0,3);
+		\draw[->,>=Latex,thick] (x1)--(x2);
+		\draw[->,>=Latex,thick] (y1)--(y2);
+		\node[below right] at (x2) {F1};
+		\node[left] at (y2) {F2};
+		\node[above right] at (s1) {$x_i$};
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=0.45]
+		\coordinate (o) at (0,0);
+		\coordinate (x1) at (-5,0);
+		\coordinate (x2) at (5,0);
+		\coordinate (y2) at (2.5,5);
+		\coordinate (y1) at (-2.5,-5);
+		\coordinate (s1) at (3,3);
+		\coordinate (s2) at (-0.8,1.5);
+		\coordinate (s3) at (1.5,1);
+		\coordinate (s4) at (2,-1);
+		\coordinate (s5) at (-2,-3);
+		\coordinate (s6) at (-2,-1.5);
+		\coordinate (s1a) at (0.5,-2);
+		\coordinate (s1b) at (-2,3);
+		\coordinate (sv1) at ($(o)!(s1)!(x1)$);
+		\coordinate (sv2) at ($(o)!(s1)!(y1)$);
+		\path[name path=sx1] (s1) -- (s1a);
+		\path[name path=sx2] (s1) -- (s1b);
+		\foreach\P in{s1,s2,s3,s4,s5,s6}\fill[black](\P) circle(0.06);
+		\draw[->,>=Latex,thick,name path=xAxis] (x1)--(x2);
+		\draw[->,>=Latex,thick,name path=yAxis] (y1)--(y2);
+		\path[name intersections = {of = sx1 and xAxis, by = sw1}];
+		\path[name intersections = {of = sx2 and yAxis, by = sw2}];
+		\draw[dashed](sv1) -- (s1);
+		\draw[dashed](sv2) -- (s1);
+		\draw[dashed](sw1) -- (s1);
+		\draw[dashed](sw2) -- (s1);
+		\draw(o) -- (s1);
+		\node[below] at (sv1) {$s_{i1}$};
+		\node[above left] at (sv2) {$s_{i2}$};
+		\node[below] at (sw1) {$p_{i1}$};
+		\node[left] at (sw2) {$p_{i2}$};
+		% \draw[dashed,very thin](o) to [out=75,in=185]node[midway,above,rotate=53]{$d_i^2$} (s1);
+		\node[below right] at (x2) {F1};
+		\node[above right] at (y2) {F2};
+		\node[above right] at (s1) {$x_i$};
+	\end{tikzpicture}
+	\caption{直交の場合は正射影と平行射影が同じになる(左図)が，斜交の場合はそうではない(右図)}
+	\label{ParallelProjection}
 \end{figure}
 
 図\ref{ParallelProjection}にあるように，正射影の座標($s_{i1},s_{i2}$)を\keyterm{因子構造}{いんしこうぞう}{Factor structure}とよび，平行射影の座標($p_{i1},p_{i2}$)を\keyterm{因子パターン}{いんしぱたーん}{Factor Pattern}と呼んで区別します。
@@ -392,17 +392,17 @@ $diag(\bm{T\Phi T'})=\bm{I}_m$という
 
 データ行列から各変数の平均を引いた，平均偏差行列$\bm{V}$を作ったとします。$n$人$m$変数からなるデータセットにおいて，分散共分散行列$\bm{S}$は，
 \[\begin{array}{lll}
-        \bm{S} & = & \frac{1}{n}\bm{V}'{V} \\
-               & = & \frac{1}{n}
-        \begin{pmatrix} x_{11} - \bar{x}_1 & x_{21}-\bar{x}_1 & \cdots & x_{n1}-\bar{x}_1 \\
+		\bm{S} & = & \frac{1}{n}\bm{V}'{V} \\
+		       & = & \frac{1}{n}
+		\begin{pmatrix} x_{11} - \bar{x}_1 & x_{21}-\bar{x}_1 & \cdots & x_{n1}-\bar{x}_1 \\
                 x_{12} - \bar{x}_2 & x_{22}-\bar{x}_2 & \cdots & x_{n2}-\bar{x}_2 \\
                 \vdots             & \vdots           & \ddots & \vdots           \\
                 x_{1m} - \bar{x}_m & x_{2m}-\bar{x}_m & \cdots & x_{nm}-\bar{x}_m\end{pmatrix}
-        \begin{pmatrix} x_{11} - \bar{x}_1 & x_{12}-\bar{x}_2 & \cdots & x_{1m}-\bar{x}_m \\
+		\begin{pmatrix} x_{11} - \bar{x}_1 & x_{12}-\bar{x}_2 & \cdots & x_{1m}-\bar{x}_m \\
                 x_{21} - \bar{x}_1 & x_{22}-\bar{x}_2 & \cdots & x_{2m}-\bar{x}_m \\
                 \vdots             & \vdots           & \ddots & \vdots           \\
                 x_{n1} - \bar{x}_1 & x_{n2}-\bar{x}_2 & \cdots & x_{nm}-\bar{x}_m\end{pmatrix}
-    \end{array}
+	\end{array}
 \]
 として計算できます。
 
@@ -415,73 +415,73 @@ $diag(\bm{T\Phi T'})=\bm{I}_m$という
 $\bm{U}$は各列が互いに直交していますから，$\bm{UW}$は平均偏差を$\sqrt{n}$で割った，いわばスケールダウンした座標を回転させて新しい座標に移したことと同じです。
 
 \[\begin{array}{l}
-        \bm{U}'\bm{W}'\bm{WU} =                                  \\
-        \bm{U}' \frac{1}{\sqrt{n}}
-        \begin{pmatrix} x_{11} - \bar{x}_1 & x_{21}-\bar{x}_1 & \cdots & x_{n1}-\bar{x}_1 \\
+		\bm{U}'\bm{W}'\bm{WU} =                                  \\
+		\bm{U}' \frac{1}{\sqrt{n}}
+		\begin{pmatrix} x_{11} - \bar{x}_1 & x_{21}-\bar{x}_1 & \cdots & x_{n1}-\bar{x}_1 \\
                 x_{12} - \bar{x}_2 & x_{22}-\bar{x}_2 & \cdots & x_{n2}-\bar{x}_2\end{pmatrix}
-        \frac{1}{\sqrt{n}}
-        \begin{pmatrix} x_{11} - \bar{x}_1 & x_{12}-\bar{x}_2 \\
+		\frac{1}{\sqrt{n}}
+		\begin{pmatrix} x_{11} - \bar{x}_1 & x_{12}-\bar{x}_2 \\
                 x_{21} - \bar{x}_1 & x_{22}-\bar{x}_2 \\
                 \vdots             & \vdots           \\
                 x_{n1} - \bar{x}_1 & x_{n2}-\bar{x}_2\end{pmatrix}\bm{U} \\
-        =
-        \begin{pmatrix}\lambda_1 & 0 \\ 0 & \lambda_2 \end{pmatrix} = \bm{\Lambda}
-    \end{array}
+		=
+		\begin{pmatrix}\lambda_1 & 0 \\ 0 & \lambda_2 \end{pmatrix} = \bm{\Lambda}
+	\end{array}
 \]
 
 二変数のイメージを図\ref{PCASpace}に示しました。各次元の座標の二乗和が，各変数の分散に該当しますし，新しい座標の分散がそれぞれの固有値に対応しています。回転させてもデータ点が全体的に占める面積(楕円の領域)に変化はありません。行列から得られる固有値を大きい順に並べたとき，最大固有値に対応する固有ベクトルは，分散を最大にする軸であると言えます。
 
 \begin{figure}[ht]
-    \centering
-    \begin{tikzpicture}
-        \coordinate (o) at (0,0);
-        \coordinate (x1) at (-5,0);
-        \coordinate (x2) at (5,0);
-        \coordinate (y1) at (0,-5);
-        \coordinate (y2) at (0,5);
-        \coordinate (s1) at (3,3);
-        \coordinate (s2) at (-0.8,1.5);
-        \coordinate (s3) at (1.5,1);
-        \coordinate (s4) at (2,-1);
-        \coordinate (s5) at (-2,-3);
-        \coordinate (s6) at (-2,-1.5);
-        \coordinate (Nx1) at (-4.045085,-2.938926);
-        \coordinate (Nx2) at (4.045085,2.938926);
-        \coordinate (Ny1) at (2.938926,-4.045085);
-        \coordinate (Ny2) at (-2.938926,4.045085);
-        \coordinate (Nsv1) at ($(o)!(s1)!(Nx1)$);
-        \coordinate (Nsv2) at ($(o)!(s1)!(Ny1)$);
-        \fill[cyan!10] (o) circle[x radius=5,y radius=2.5,rotate=45];
-        \foreach\P in{s1,s2,s3,s4,s5,s6}\fill[black](\P) circle(0.06);
-        \draw[dashed] (s1) -- (3,0);
-        \draw[dashed] (s1) -- (0,3);
-        \draw[->,>=Latex,thick] (x1)--(x2);
-        \draw[->,>=Latex,thick] (y1)--(y2);
-        \draw[->,>=Latex,thick,red] (Nx1)--(Nx2);
-        \draw[->,>=Latex,thick,red] (Ny1)--(Ny2);
-        \draw[dashed,red](Nsv1) -- (s1);
-        \draw[dashed,red](Nsv2) -- (s1);
-        % \draw(o) -- (s1);
-        % \draw[dashed,very thin](o) to [out=75,in=185]node[midway,above,rotate=53]{$d_i^2$} (s1);
-        \node[below right] at (x2) {W1};
-        \node[left] at (y2) {W2};
-        \node[below] at (3,0) {$\frac{x_{i1}-\bar{x}_1}{\sqrt{n}}$};
-        \node[left] at (0,3) {$\frac{x_{i2}-\bar{x}_2}{\sqrt{n}}$};
-        \node[above right] at (s1) {$x_i$};
-        \node[above] at (Nx2) {$P_1$};
-        \node[above] at (Ny2) {$P_2$};
-    \end{tikzpicture}
-    \caption{スケールダウンした平均偏差行列をつかって表したデータ空間}
-    \label{PCASpace}
+	\centering
+	\begin{tikzpicture}
+		\coordinate (o) at (0,0);
+		\coordinate (x1) at (-5,0);
+		\coordinate (x2) at (5,0);
+		\coordinate (y1) at (0,-5);
+		\coordinate (y2) at (0,5);
+		\coordinate (s1) at (3,3);
+		\coordinate (s2) at (-0.8,1.5);
+		\coordinate (s3) at (1.5,1);
+		\coordinate (s4) at (2,-1);
+		\coordinate (s5) at (-2,-3);
+		\coordinate (s6) at (-2,-1.5);
+		\coordinate (Nx1) at (-4.045085,-2.938926);
+		\coordinate (Nx2) at (4.045085,2.938926);
+		\coordinate (Ny1) at (2.938926,-4.045085);
+		\coordinate (Ny2) at (-2.938926,4.045085);
+		\coordinate (Nsv1) at ($(o)!(s1)!(Nx1)$);
+		\coordinate (Nsv2) at ($(o)!(s1)!(Ny1)$);
+		\fill[cyan!10] (o) circle[x radius=5,y radius=2.5,rotate=45];
+		\foreach\P in{s1,s2,s3,s4,s5,s6}\fill[black](\P) circle(0.06);
+		\draw[dashed] (s1) -- (3,0);
+		\draw[dashed] (s1) -- (0,3);
+		\draw[->,>=Latex,thick] (x1)--(x2);
+		\draw[->,>=Latex,thick] (y1)--(y2);
+		\draw[->,>=Latex,thick,red] (Nx1)--(Nx2);
+		\draw[->,>=Latex,thick,red] (Ny1)--(Ny2);
+		\draw[dashed,red](Nsv1) -- (s1);
+		\draw[dashed,red](Nsv2) -- (s1);
+		% \draw(o) -- (s1);
+		% \draw[dashed,very thin](o) to [out=75,in=185]node[midway,above,rotate=53]{$d_i^2$} (s1);
+		\node[below right] at (x2) {W1};
+		\node[left] at (y2) {W2};
+		\node[below] at (3,0) {$\frac{x_{i1}-\bar{x}_1}{\sqrt{n}}$};
+		\node[left] at (0,3) {$\frac{x_{i2}-\bar{x}_2}{\sqrt{n}}$};
+		\node[above right] at (s1) {$x_i$};
+		\node[above] at (Nx2) {$P_1$};
+		\node[above] at (Ny2) {$P_2$};
+	\end{tikzpicture}
+	\caption{スケールダウンした平均偏差行列をつかって表したデータ空間}
+	\label{PCASpace}
 \end{figure}
 
 主成分分析を別の表現で説明するなら，複数の変数$x_1,x_2,\cdots,x_m$があったときに，合成変数$P_i$を
 \[ p_i = w_1x_{i1} + w_2x_{i2}+\cdots+w_mx_{im} \]
 の分散を最大にするように$w_j$を決めることともいわれます。これはむしろ，上の行列計算を逆に読み解くようなものですね。ここで$x_{ij}$は平均からの偏差であるとすれば，
 \[\bm{p} = w_1\begin{pmatrix}x_{11}-\bar{x}_1\\x_{21}-\bar{x}_1\\\vdots\\\x_{n1}-\bar{x}_1\end{pmatrix}
-    +w_2 \begin{pmatrix}x_{12}-\bar{x}_2\\x_{22}-\bar{x}_2\\\vdots\\\x_{n2}-\bar{x}_2\end{pmatrix}
-    +\cdots+
-    +w_m \begin{pmatrix}x_{1m}-\bar{x}_m\\x_{2m}-\bar{x}_m\\\vdots\\\x_{nm}-\bar{x}_m\end{pmatrix}
+	+w_2 \begin{pmatrix}x_{12}-\bar{x}_2\\x_{22}-\bar{x}_2\\\vdots\\\x_{n2}-\bar{x}_2\end{pmatrix}
+	+\cdots+
+	+w_m \begin{pmatrix}x_{1m}-\bar{x}_m\\x_{2m}-\bar{x}_m\\\vdots\\\x_{nm}-\bar{x}_m\end{pmatrix}
 \]
 となります。
 これは$\bm{w} =\scriptsize \begin{pmatrix}w_1\\w_2\\\vdots\end{pmatrix}$ という重みベクトルを平均偏差ベクトルにかけて，
@@ -496,9 +496,9 @@ $\bm{U}$は各列が互いに直交していますから，$\bm{UW}$は平均偏
 \subsection{因子分析と主成分分析の違い}
 主成分分析と因子分析は，似ているような似ていないようなところがあります。両者の違いについて，次のように言われることがあります。
 \begin{itemize}
-    \item 主成分分析は一成分だけ求めるものであり，複数の共通成分といった考え方はしない。
-    \item 因子分析は軸の回転をするが，主成分分析は軸の回転をしない。
-    \item 主成分分析は分散共分散行列を対象に行われるものであり，因子分析は相関行列を対象に分析するものである。
+	\item 主成分分析は一成分だけ求めるものであり，複数の共通成分といった考え方はしない。
+	\item 因子分析は軸の回転をするが，主成分分析は軸の回転をしない。
+	\item 主成分分析は分散共分散行列を対象に行われるものであり，因子分析は相関行列を対象に分析するものである。
 \end{itemize}
 しかしこれらは，数学的には不必要な制約，解釈をしているといえます。
 

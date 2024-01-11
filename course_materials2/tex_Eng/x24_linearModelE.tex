@@ -18,20 +18,20 @@ Sorry, you didn't provide any Japanese text to translate. Could you please provi
 
 水準数が増えても同じことです。3水準モデルの場合はベクトルを使って表記した方がわかりやすいので，データセットを$\bm{Y}$と表すと，
 \begin{equation}
-   \bm{Y}=\bm{X\beta}+\bm{\varepsilon}
-   \label{chap24eq1}
+	\bm{Y}=\bm{X\beta}+\bm{\varepsilon}
+	\label{chap24eq1}
 \end{equation}
 であり，詳しく書くと
 \[
-   \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}
-   =
-   \begin{pmatrix} 1      & 1      & 0      \\
+	\begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}
+	=
+	\begin{pmatrix} 1      & 1      & 0      \\
                 1      & 0      & 1      \\
                 \vdots & \vdots & \vdots \\
                 1      & -1     & -1\end{pmatrix}
-   \begin{pmatrix} \beta_0 \\ \beta_1 \\ \beta_2 \end{pmatrix}
-   +
-   \begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \vdots \\ \varepsilon_n \end{pmatrix}
+	\begin{pmatrix} \beta_0 \\ \beta_1 \\ \beta_2 \end{pmatrix}
+	+
+	\begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \vdots \\ \varepsilon_n \end{pmatrix}
 \]
 % のようになります\footnote{$\beta_3 = 0 - (\beta_1 + \beta_2)$となっていることに注意。}。ここで行列$\bm{X}$はその群に属しているかどうか(その群の効果が発動するかどうか)を0/1で表している\keyterm{デザイン行列}{でざいんぎょうれつ}{design matrix}であり，有無という状態に一対一対応した\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}の数字です。説明変数が名義尺度水準になっているだけで，これが間隔尺度水準以上の\textbf{量的な}データであれば，\keyterm{回帰分析}{かいきぶんせき}{regression analysis}になるわけです。回帰分析は一般に，
 Please note that it becomes as follows \footnote{Please note that $\beta_3 = 0 - (\beta_1 + \beta_2)$.}. Here, the matrix $\bm{X}$ is a \keyterm{design matrix} that represents whether each group belongs or not (whether the effect of the group is activated) with 0/1, and it's a number that corresponds one-to-one with the presence or absence of a \keytermL{nominal scale level}. Just because the explanatory variables have become nominal scale levels, if this is \textbf{quantitative} data of an interval scale level or more, it becomes \keyterm{regression analysis}. Regression analysis is generally,
@@ -39,8 +39,8 @@ Please note that it becomes as follows \footnote{Please note that $\beta_3 = 0 -
 \[ Y_i = \beta_0 + \beta_1 X_{i1} +  \beta_2 X_{i2} + \cdots + \varepsilon \]
 あるいはベクトルで書くと
 \begin{equation}
-   \bm{Y}=\bm{X\beta}+\bm{\varepsilon}
-   \label{chap24eq2}
+	\bm{Y}=\bm{X\beta}+\bm{\varepsilon}
+	\label{chap24eq2}
 \end{equation}
 となります。この通り式で書くと\ref{chap24eq1}と\ref{chap24eq2}にはなんら違いがないことがわかりますね。
 
@@ -50,28 +50,28 @@ Please note that it becomes as follows \footnote{Please note that $\beta_3 = 0 -
 ところで，この一般線形モデルでは誤差が正規分布に従うという仮定を置いていました。すなわち，$\varepsilon \sim N(0,\sigma)$というわけです\footnote{誤差の平均はゼロであるのは，偶然誤差の仮定から必然的です。}。線形モデルの部分，すなわち$\hat{Y}_i = \beta_0 + \beta_1 X_i$のところは確率的ではありませんから，データ全体では次のようになっていることになります。
 
 \[
-   y_i =
-   \tcboxmath[
-      enhanced,         % これは必須
-      frame hidden,     % 枠を消す. これも enhanced 必須
-      colback=cyan!10,
-      overlay={
-            \node[below,blue] at (frame.south) {確率的でないところ};
-         }
-   ]{
-      \beta_0 \quad +\quad \beta_1 x_i
-   }
-   +
-   \tcboxmath[
-      enhanced,         % これは必須
-      frame hidden,     % 枠を消す. これも enhanced 必須
-      colback=red!10,
-      overlay={
-            \node[below,red] at (frame.south) {確率的};
-         }
-   ]{
-      e_i
-   }
+	y_i =
+	\tcboxmath[
+		enhanced,         % これは必須
+		frame hidden,     % 枠を消す. これも enhanced 必須
+		colback=cyan!10,
+		overlay={
+				\node[below,blue] at (frame.south) {確率的でないところ};
+			}
+	]{
+		\beta_0 \quad +\quad \beta_1 x_i
+	}
+	+
+	\tcboxmath[
+		enhanced,         % これは必須
+		frame hidden,     % 枠を消す. これも enhanced 必須
+		colback=red!10,
+		overlay={
+				\node[below,red] at (frame.south) {確率的};
+			}
+	]{
+		e_i
+	}
 \]
 
 \vspace{0.5cm}
@@ -165,11 +165,11 @@ The logistic function is represented by the following formula.
 ここで$\exp(x)=e^x$であり，正規分布の式の中にも出てくる関数です\footnote{$e$はネイピア数とも呼ばれる自然対数の底，約2.7182...の実数です。}。関数の形は図にするとよくわかります(図\ref{fig:24_05})\footnote{すでに第\ref{x04_IRT}講で出てきた関数ですが，あの時は累積正規分布に近似する関数として紹介していました。今回は$\pm \infty$の範囲の数字を0から1に変換するものとして改めて紹介しています。なお，今回は累積正規分布への近似を目的としているわけではないので，係数1.7は外してあります。}。
 
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/24_linearModel/Rplot24_04.png}
-      \caption{ロジスティック関数}
-      \label{fig:24_05}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/24_linearModel/Rplot24_04.png}
+		\caption{ロジスティック関数}
+		\label{fig:24_05}
+	\end{center}
 \end{figure}
 
 このS字カーブは，xがどのように変わってもyは必ず0から1の範囲に入りますので，今回の目的にもってこいです。つまり，今回「野手か投手か」を判断する結果変数$Y_i$は，次のような分布に従っていると考えます。
@@ -248,8 +248,8 @@ This relation is established\footnote {The last line is, since the exponent's op
 
 この式の右辺は線形モデルです。左辺は\keyterm{ロジット関数}{ろじっとかんすう}{logit function}と呼ばれるものです。線形モデルはロジット関数を意味し，ベルヌーイ分布のパラメータ$\theta$は確率を表す数字でした。ですから係数の解釈は，線形モデルの方で一単位増えたことは，ロジット関数が一単位増えたことを意味するわけです。ちょっとややこしいですが，線形モデルを確率のパラメータにするには，ロジット関数の逆をすることですから，\textbf{ロジスティック関数は逆ロジット関数}とも呼ばれています。そう言えば，Stanの関数も\verb|inv_logit|でしたね\footnote{\texttt{inv}はinverse,「逆」の意味です。}。
 \begin{itemize}
-   \item 確率の数字$\to$線形モデルにつなげる；ロジット関数；$\log \left( \frac{\theta}{1-\theta} \right) $
-   \item 線形モデル$\to$確率の範囲に収める；ロジスティック関数あるいは逆ロジット関数；$\frac{1}{1+exp(-x)}$
+	\item 確率の数字$\to$線形モデルにつなげる；ロジット関数；$\log \left( \frac{\theta}{1-\theta} \right) $
+	\item 線形モデル$\to$確率の範囲に収める；ロジスティック関数あるいは逆ロジット関数；$\frac{1}{1+exp(-x)}$
 \end{itemize}
 
 また，線形モデルが表していたのは確率の比ですが，それの対数($\log$)をとったものでした。

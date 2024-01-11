@@ -1,0 +1,14 @@
+\begin{lstlisting}[language=c++,label={code:20_04},caption={パラメータリカバリ・検証}]
+## t検定(モーメント法による推定と判定)
+t.test(X1,X2)
+## ベイズ推定(MCMCによるベイズ推定と差の分布)
+dataSet <- list(X1 = X1, X2 = X2, N1 = N, N2 = N, C = 3)
+modelC <- cmdstanr::cmdstan_model("ttest03.stan")
+sampling2 <- modelC$sample(
+  data = dataSet,
+  chains = 4,
+  iter_sampling = 5000,
+  iter_warmup = 1000,
+  parallel_chains = 4
+)
+\end{lstlisting}

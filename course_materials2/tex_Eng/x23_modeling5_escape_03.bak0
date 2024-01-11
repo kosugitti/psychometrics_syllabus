@@ -1,0 +1,14 @@
+\begin{lstlisting}[language=C++,label={stan::23_01},caption={多項分布からのデータ生成モデル}]
+data{
+    int K;
+    array[K] int X;
+}
+
+parameters{
+    simplex[K] pi;
+}
+
+model{
+    X ~ multinomial(pi);
+}
+\end{lstlisting}

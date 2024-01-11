@@ -1,0 +1,11 @@
+\begin{description}
+   \item[3行目] オブジェクトからデータフレームを作成。データの値は変数\texttt{value}に，これを条件ごとに区別する条件変数\texttt{condition}と共に作ります。\texttt{condition}の中にある\texttt{rep}関数は，ある文字・数字を繰り返すもので，ここでは\texttt{rep(1,10)}で1を10個作っています。ここだけ実行するとその動作がよくわかりますよ(\texttt{console\ref{RS:out20_02}})。
+      \begin{Rscreen}{repの出力}{out20_02}
+         \begin{verbatim}
+> rep(1,10)
+[1] 1 1 1 1 1 1 1 1 1 1
+    \end{verbatim}
+      \end{Rscreen}
+   \item[4行目] 先ほど作った\texttt{condition}変数をファクター型(要因型，ラベル付き名義尺度水準)に置き換えています。
+   \item[5行目] t検定ですが，書式が変わっています。チルダ\texttt{\~}を使って，従属変数\verb|~|独立変数という書き方に変えています。
+\end{description}

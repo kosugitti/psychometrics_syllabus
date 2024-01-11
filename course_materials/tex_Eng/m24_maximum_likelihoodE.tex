@@ -57,28 +57,28 @@ This is a linear model. The ideal predictive value $\hat{y}$, which is not distu
 This implies that. Remember that $ \beta_0 + \beta_1 x_i$ does not change probabilistically.
 
 \[
-   y_i =
-   \tcboxmath[
-      enhanced,         % これは必須
-      frame hidden,     % 枠を消す. これも enhanced 必須
-      colback=cyan!10,
-      overlay={
-            \node[below,blue] at (frame.south) {確率的でないところ};
-         }
-   ]{
-      \beta_0 \quad +\quad \beta_1 x_i
-   }
-   +
-   \tcboxmath[
-      enhanced,         % これは必須
-      frame hidden,     % 枠を消す. これも enhanced 必須
-      colback=red!10,
-      overlay={
-            \node[below,red] at (frame.south) {確率的};
-         }
-   ]{
-      e_i
-   }
+	y_i =
+	\tcboxmath[
+		enhanced,         % これは必須
+		frame hidden,     % 枠を消す. これも enhanced 必須
+		colback=cyan!10,
+		overlay={
+				\node[below,blue] at (frame.south) {確率的でないところ};
+			}
+	]{
+		\beta_0 \quad +\quad \beta_1 x_i
+	}
+	+
+	\tcboxmath[
+		enhanced,         % これは必須
+		frame hidden,     % 枠を消す. これも enhanced 必須
+		colback=red!10,
+		overlay={
+				\node[below,red] at (frame.south) {確率的};
+			}
+	]{
+		e_i
+	}
 \]
 
 \vspace{0.5cm}
@@ -108,8 +108,8 @@ So here, the center of $e_i$ is $0$, and $\beta_0 + \beta_1 x_i$ is added to it.
 
 あるいは，式\ref{eq24_02}と\ref{eq24_03}から先に，
 \begin{eqnarray}
-   \hat{y}_i &=& \beta_0 + \beta_1 x_i \label{eq24_05}\\
-   y_i &\sim& N(\hat{y}_i,\sigma) \label{eq24_06}
+	\hat{y}_i &=& \beta_0 + \beta_1 x_i \label{eq24_05}\\
+	y_i &\sim& N(\hat{y}_i,\sigma) \label{eq24_06}
 \end{eqnarray}
 と考えて，この式\ref{eq24_06}の$\hat{y}_i$に式\ref{eq24_05}を代入しても，
 \[ y_i \sim N(\beta_0 + \beta_1x_i, \sigma) \]

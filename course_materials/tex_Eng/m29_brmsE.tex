@@ -186,16 +186,16 @@ conditional_effects(result.brm3)
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-   \item[1-5行目] データフレーム形にデータを組み上げています。前回と同じデータなのですが，組み方が少し変わっている点に注意してください。確認のために，\texttt{Example3}がどのような形になっているか一度表示してみるといいでしょう。
-   \item[6行目] 説明変数の中で名義尺度水準のものを要因型であると設定しています。
-   \item[8行目] 線形モデルを実行しています。\texttt{brm}としてあること，\texttt{(1|ID)}という項が増えていることに注意してください。
-   \item[9-10行目] 結果を出力させています。
+	\item[1-5行目] データフレーム形にデータを組み上げています。前回と同じデータなのですが，組み方が少し変わっている点に注意してください。確認のために，\texttt{Example3}がどのような形になっているか一度表示してみるといいでしょう。
+	\item[6行目] 説明変数の中で名義尺度水準のものを要因型であると設定しています。
+	\item[8行目] 線形モデルを実行しています。\texttt{brm}としてあること，\texttt{(1|ID)}という項が増えていることに注意してください。
+	\item[9-10行目] 結果を出力させています。
 \end{description}
 線形モデルの書き方が変わったことに注意してください。従属変数と独立変数をチルダで繋ぐのはこれまでと同じなのですが，これに加えて\texttt{(1|ID)}という表記があります。このカッコの中身は1が切片を表しており，それが変数\texttt{ID}ごとに変わるよ，ということを意味しています。
 
 これを実行した結果が次のようになります(\texttt{Rの出力\ref{RS:out27_06}})。
 \begin{Rscreen}{ランダム切片モデル}{out27_06}
-   \begin{verbatim}
+	\begin{verbatim}
 Family: gaussian 
 Links: mu = identity; sigma = identity 
 Formula: value ~ time + (1 | ID) 
@@ -234,10 +234,10 @@ scale reduction factor on split chains (at convergence, Rhat = 1).
 各クラスには10人の生徒がいて，それぞれのテスト結果は表\ref{L23::exe1}の通りです。このデータについて，回帰分析のベイズ推定を行った上で，次の各問いに答えてください。
 
 \begin{enumerate}
-   \item 切片の推定値はいくらになりましたか。おおよそで結構ですので，EAP推定値を答えてください。
-   \item 回帰分析を行った結果，テキストAにくらべてテキストBの平均値はどれぐらい違うと思われますか。おおよそで結構ですので，95\%区間を答えてください。
-   \item 回帰分析を行った結果，テキストAにくらべてテキストCの平均値はどれぐらい違うと思われますか。おおよそで結構ですので，95\%区間を答えてください。
-   \item 回帰分析を行った結果，テキストAにくらべてテキストDの平均値に違いがあると断言しても良いでしょうか。\verb|conditional_effects|の図をみて判断してください。
+	\item 切片の推定値はいくらになりましたか。おおよそで結構ですので，EAP推定値を答えてください。
+	\item 回帰分析を行った結果，テキストAにくらべてテキストBの平均値はどれぐらい違うと思われますか。おおよそで結構ですので，95\%区間を答えてください。
+	\item 回帰分析を行った結果，テキストAにくらべてテキストCの平均値はどれぐらい違うと思われますか。おおよそで結構ですので，95\%区間を答えてください。
+	\item 回帰分析を行った結果，テキストAにくらべてテキストDの平均値に違いがあると断言しても良いでしょうか。\verb|conditional_effects|の図をみて判断してください。
 \end{enumerate}
 
 
@@ -246,10 +246,10 @@ scale reduction factor on split chains (at convergence, Rhat = 1).
 授業後のテストの点数が表\ref{L23::exe2}の通りです。このデータに対して回帰分析のベイズ推定を行った上で，その結果について回答してください。
 
 \begin{enumerate}
-   \item 切片の推定値はいくらになりましたか。おおよそで結構ですので，EAP推定値を答えてください。
-   \item テキストA,B,Cの効果はどのように判断すれば良いでしょうか。\verb|conditional_effects|の図をみて考察してください。
-   \item 教員A,Bの効果ははどのように判断すれば良いでしょうか。\verb|conditional_effects|の図をみて考察してください。
-   \item 交互作用として，どのような特徴があるでしょうか。\verb|conditional_effects|の図をみて考察してください。
+	\item 切片の推定値はいくらになりましたか。おおよそで結構ですので，EAP推定値を答えてください。
+	\item テキストA,B,Cの効果はどのように判断すれば良いでしょうか。\verb|conditional_effects|の図をみて考察してください。
+	\item 教員A,Bの効果ははどのように判断すれば良いでしょうか。\verb|conditional_effects|の図をみて考察してください。
+	\item 交互作用として，どのような特徴があるでしょうか。\verb|conditional_effects|の図をみて考察してください。
 \end{enumerate}
 
 \paragraph{課題3 Withinデザインの分散分析}
@@ -265,13 +265,13 @@ dat3 <- read_csv("Lesson8exe3.csv") %>%
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-   \item[1行目] データファイル\texttt{Lesson8exe3.csv}を読み込んでいます
-   \item[2行目] id列をキーにデータを縦型にしています
-   \item[3行目] データを表示させています
+	\item[1行目] データファイル\texttt{Lesson8exe3.csv}を読み込んでいます
+	\item[2行目] id列をキーにデータを縦型にしています
+	\item[3行目] データを表示させています
 \end{description}
 \begin{enumerate}
-   \item 個人差について正しく述べている文章を選んでください。
-   \item 時期の効果について正しく述べている文章を選んでください。
+	\item 個人差について正しく述べている文章を選んでください。
+	\item 時期の効果について正しく述べている文章を選んでください。
 \end{enumerate}
 
 \end{document}

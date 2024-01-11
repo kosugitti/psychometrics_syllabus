@@ -1,0 +1,325 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+% \chapter{帰無仮説検定}
+\chapter{Null Hypothesis Testing}
+\label{m18_NHST}
+% 前回は標本から母平均を区間推定する方法について説明しました。今回は，これを使って「差があるかないか」という判断をする方法について考えます。
+Last time, we explained how to interval estimate the mother mean from the specimen. This time, we will consider how to use this to determine whether there is a difference or not.
+
+% 母平均を区間推定することで，「このあたりにある，と予測したらXX\%の確率で当たる」という範囲を定めることができました。この推定を実験群・統制群それぞれについて行うとすると，実験群の平均値はこの範囲，統制群の平均値はこの範囲にあると予測する，という言い方をすることになります。
+By interval estimation of the population mean, we were able to define a range that says, "If predicted to be around this range, there is an XX% chance of being correct." If this estimation is carried out for both the experimental group and the control group, it would mean that the average value of the experimental group is predicted to be in this range, and the average value of the control group is predicted to be in this range.
+% その範囲が重複していなければ，実験群と統制群の平均値は異なると言い切れるでしょうが，信頼区間が重複することは当然起こり得ます。そのときどうやって「差がある」「差がない」という判断をするのか，ということが問題になるのです。
+If the ranges do not overlap, we can definitively say that the average values of the experimental group and the control group are different. However, it is natural that confidence intervals can overlap. The question then becomes how to make judgments such as "there is a difference" and "there is no difference".
+% この判断は\keyterm{検定}{けんてい}{test}と呼ばれます。とくにその形式から，\keyterm{帰無仮説検定}{きむかせつけんてい}{Null Hypothesis Significane Test}，略して\textbf{NHST}と呼ばれます。
+This judgment is called a "test". Especially from the format, it is called a "Null Hypothesis Significance Test", abbreviated as "NHST".
+
+\label{ModelComparison1}
+% どこに注意が必要なのでしょうか？ いろいろな問題があるのですが，ここでは説明しながら代表的なものを1つ挙げてみましょう。検定は\underline{モデル比較}の考え方の一種です。統計的なモデル，というのは本講義の中では一貫して述べてきたように，データに対する理想形+誤差の考え方で，回帰分析に代表される線形的なモデルが代表的なものです。モデル比較とは，複数のモデルを用意した時にどちらのモデルがより良いか，という優劣を決めることです。統計的検定は，とくに\keyterm{帰無仮説検定}{きむかせつけんてい}{Null Hypothesis Significance Test}と呼ばれ，帰無仮説($H_0$と表記)と対立仮説($H_1$と表記)という2つのモデルを戦わせ，どちらが良いかを決定することにあります。
+Where should we pay attention? There are various problems, but let's mention one representative example here while explaining. Testing is a kind of model comparison. A statistical model, as consistent with this lecture, is a way of thinking about an ideal form plus error for data, with linear models such as regression analysis being typical. Model comparison is the process of determining which model is better when multiple models are prepared. Statistical tests, especially Null Hypothesis Significance Tests, involve pitting two models, the null hypothesis (denoted as H0) and the alternative hypothesis (denoted as H1), against each other to determine which one is better.
+
+% つまり，検定は「推定」に「判断」が加わったものです。判断は，何らかの価値に基づいて，あるいは実践的な必要性に応えるためになされることです。
+In other words, a test is a 'estimate' with added 'judgment'. A Judgment is something that is made based on some sort of value, or in response to a practical necessity.
+% たとえば感染症対策として新しい薬を開発し，この効果があるかどうというときに，「効果あり」とか「効果なし」という判断をするのですね。この判断が必要なのは，効果がないのに投薬をすると時間とお金の無駄，ひいては何らかの副作用で人命に影響が出るかもしれない，というシーンだからです。
+For example, when developing a new drug for infectious disease control and evaluating its effectiveness, we need to decide whether it has an "effect" or "no effect". The need for this judgement arises from the fact that administering drugs without any effect might waste time and money, and could possibly impact human lives due to potential side effects.
+% 幸い，心理学において人命が関わるような実験というのはほとんどあり得ませんが，実験や介入を行った効果があるのかどうかを判断するのにわかりやすいので，これまでよく使われてきました。実際とてもよく使われているのですが，同時に\underline{多くの誤用・悪用}を生んでしまいました。あまりにも間違った使われ方，悪い使われ方が広まっていることから，アメリカ統計学会や権威ある科学雑誌であるNatureが「間違えた使い方はダメだぞ」という声明を出しており\citep{wasserstein2016asa,amrhein2019scientists}，「統計学は瀕死だ」という人もいるほどです\citep{Toyoda202003}。念のためにいっておきますが，帰無仮説検定は間違った理論だ，というわけではありません。理論的に筋は通っているのですが，理論的仮定を犯さずに実践し，正しく解釈するのに細心の注意が必要だ，ということです\footnote{これらの声明のタイトルもよく見ると，``p-valuie''($p$値)や``statistical significance''(統計的有意)について注意が必要だ，ということであって，帰無仮説検定``significance test''そのものが間違っているというわけではないのです。}。
+Fortunately, in psychology, there are hardly any experiments involving human lives, but they have been widely used because it is easy to determine whether there are effects of the experiments or interventions. It is actually used very well, but at the same time it has led to many misuse and abuse. Due to the widespread misuse and bad use, the American Statistical Association and the authoritative scientific journal, Nature, have issued statements saying "it is not permissible to use it incorrectly" \citep {wasserstein2016asa, amrhein2019scientists}, and there are even people saying "statistics are on their deathbed" \citep {Toyoda202003}. To be clear, the null hypothesis test is not an incorrect theory. Although theoretically it makes sense, careful attention is required to practice without violating theoretical assumptions and to correctly interpret \footnote {If you look closely at the titles of these statements, they are saying that caution is required regarding "p-value" and "statistical significance", not that null hypothesis testing "significance test" is incorrect.}.
+
+% これら誤用・悪用を生み出す根本的な原因は，帰無仮説検定が「効果があった，なかった」という1bit判断\footnote{1bitは付録\ref{computer}にあるように，2進数のデジタルデータの最小単位で，0/1の2つの状態しかありません。}を提供することにあります。判断に迷うような推定結果を，とある基準でYes/Noに振り分けますが，そうするとそのインパクトが大きくなりすぎるのです。たとえばやり方によっては，二群にわけた群の平均の差が0.1点でも「差がある！」と判断することになったりします。これが二群の身長の差であれば，0.1cmは気にならないどころか実質的に意味のない差なのですが，「結果としてこの介入(投薬)をする群と，しない群を比較すると\textbf{成長に差が見られた！}」なんて伝わってしまうかもしれません。またこの0.1点の差が男女の平均獲得賃金(単位・100万円)などであれば大きく意味が違います。この場合は男女差は1円だってあるべきではないのです。つまり，本来，差があるかどうかという程度の問題はドメイン知識\footnote{ドメインとはその領域のことです。生物学的な身長の話をしているのか，産業社会学的な賃金体系の話をしているのか，といった話題にまつわる領域のことだと思ってください}に照らし合わせて考えなければならないものなのです。心理学のような目に見えない対象を研究する場合は，この判断が非常に難しく，どの程度の量であれば検出することに意味があるのか，どの程度なら無視して良いのか，ということについて，統一的な見解が作りにくいのです。心理学の場合は，\underline{判断の前の推定こそ重要}であって，1bitに落とし込まれた派手な結果だけに目移りすることがないよう，注意する必要があります。
+The fundamental cause of these misuses and abuses lies in the fact that null hypothesis testing provides a 1-bit judgment of "effect was present, was not present". This binary system, 1 bit, as explained in Appendix \ref{computer}, is the smallest unit of digital data in binary, with only two states, 0/1. It categorizes ambiguous estimation results into Yes/No based on some standard, but this can significantly magnify the impact. For example, depending on the method, even a difference of 0.1 point in the average of two groups might be judged as "there is a difference!". If this difference is in the height of two groups, a difference of 0.1cm is not only negligible but also essentially meaningless. However, it might be interpreted as "We observed a difference in growth between the group that underwent this intervention (medication) and the group that did not!". Moreover, if this 0.1 point difference is the average wage earned by men and women (unit: 1 million yen), the significance is drastically different. In this case, there should not be even a 1 yen difference between men and women. Therefore, the question of whether or not there is a difference should originally be considered in light of domain knowledge, whether we are talking about biological height or an industrial sociological wage system. When studying subjects that are not visible to the eye, such as psychology, this judgment is very difficult. It is challenging to form a unified view about how much quantity makes sense to detect and how much can be ignored. In the case of psychology, it is essential that the estimation before the judgment is prioritized, and care should be taken not to be distracted by flashy results reduced to 1-bit.
+
+
+% さて，いきなり警句から始まってしまってすみません。上に書いたことには充分注意しつつ，具体的に説明を始めていきたいと思います。
+Apologies for starting off abruptly with a caution. While paying close attention to what I've written above, I would like to begin the detailed explanation.
+
+% ここにあるように，2つのモデルを比較することになるのですが，ステップの最後の段階に「間違っているか正しいかを判断する」とあります。どのモデルがどれぐらい良いか，という程度の問題ではなく，「いいか，悪いか」「イエスか，ノーか」という1bit判断\footnote{1bitは第\ref{sec::4c}で説明したように，2進数のデジタルデータの最小単位で，0/1の2つの状態しかありません。}になってしまうこと，これがマズいのです。先ほども述べたように，差があるかどうかで言えば男女差はいろいろなところで検出\textbf{できます}。が，この場合どれほどあるのか，という大きさの方が問題なのです。やり方によっては，二群の平均身長の差が0.1cmでも「差がある！」と喚き立てることができます。普通はその程度の差は気にならないと思いますが，差が「ある」か「ない」かと言われれば，「ある」わけです。では僅かな差を気にしないようにすれば良いですか？ いいえ，そうでもなくて，たとえば平均獲得賃金であれば，男女差は1円だってあるべきではないのです。つまり，程度問題としてはドメイン知識\footnote{ドメインとはその領域のことです。生物学的な身長の話をしているのか，産業社会学的な賃金体系の話をしているのか，といった話題にまつわる領域のことだと思ってください}に照らし合わせて考えなければなりません。心理学のような目に見えない対象を研究する場合は，この判断が非常に難しく，どの程度の量であれば検出することに意味があるのか，どの程度なら無視して良いのか，ということについて，統一的な見解が作りにくい，という背景もあります。だからと言って，「ある」か「ない」か，だけの話にするのは危険だ，ということは肝に銘じておいてください。
+
+As presented here, we will compare two models, but in the final stage of the steps, there is a decision to be made on whether it is 'wrong or right'. This is not a matter of how good each model is, but a binary judgment of 'good or bad', 'yes or no'\footnote{1 bit, as explained in Section \ref{sec::4c}, is the smallest unit of digital data in binary, having only two states: 0/1.}. This is problematic because it turns into a single-bit decision. As mentioned earlier, gender differences can be detected in various ways if it's just about whether there is a difference or not. But in this case, the extent of the difference is the issue. Depending on the method, one can even shout that there is a difference if the average height of two groups differs by 0.1 cm. Normally, you wouldn't care about such a small difference, but if asked whether there is a difference or not, the answer would be 'yes'. So, should we ignore such slight differences? No, it's not that simple. For instance, in average earned wages, there should not even be a 1 yen difference between genders. In other words, the degree of the issue must be considered in light of domain knowledge\footnote{Domain refers to the area of discussion. Whether we're talking about biological height, or the wage system in industrial sociology, and so on.}. In fields like psychology, where the subject of study is intangible, it's very difficult to judge what amount is significant enough to detect and what can be ignored. There is also a background issue that it is hard to form a unified view on how much is significant or negligible. However, reducing it to just a matter of 'exists or not' is dangerous, and this should be kept in mind.
+
+
+% 前回は，帰無仮説と対立仮説という2つのモデルを戦わせる意思決定法，帰無仮説検定のやり方について導入的なお話をしました。今回は，これをいくつかの具体例に当てはめて考えていくことにしましょう。具体的な計算式や確率的な数字は，統計パッケージで自動的に計算されます。その利便性のおかげで，帰無仮説検定がさまざまな学問領域に広く行き渡ったことは既に指摘した通りですが，同時に「手続きが簡単だから，内容も簡単」だと思っていると，誤用・悪用になりますので，よく注意してください。例えるなら，車の運転がマニュアルトランスミッションからオートマチックになったことで，比較的簡単に運転できるようになりましたが，それで交通量が増えて事故が多発するようでは，かえって社会的には良くないことかもしれない，ということです\footnote{電子レンジの普及のように，簡単になって利便性が増し，危険性もそうない技術的なものもあります。車の例えも，危険性と利便性のバランスでいくと，十分許容範囲なのかもしれませんが，帰無仮説検定は利便性も危険性もどちらも大きい，ハイリスク・ハイリターンな技術なのです。}
+In our last session, we introduced the method of decision-making that pits two models against each other: null hypothesis and alternative hypothesis, known as null hypothesis testing. This time, let's apply this to some specific examples. The concrete formulas and probabilistic numbers are automatically calculated by statistical packages. As I've already pointed out, the convenience of this has led to the widespread adoption of null hypothesis testing across various academic fields. However, be very cautious: if you think the process is simple because the procedures are easy, it can lead to misuse and abuse. For analogy, think of how driving became relatively easier as cars shifted from manual to automatic transmission. However, if this ease of driving leads to increased traffic and more accidents, it might actually be detrimental to society\footnote{Like the proliferation of microwaves, some technologies have become simpler and more convenient without significantly increasing danger. The car analogy, in terms of balancing danger and convenience, might still be within acceptable limits. However, null hypothesis testing is a high-risk, high-reward technique with both significant convenience and danger.}.
+
+
+\section{Null Hypothesis Significance Test:NHST}
+
+% 先回りしていうのも気が引けますが，この検定というのは古くから使われてきた方法で，さまざまな業界に広まった方法です。その理由は，計算プロセスが比較的単純であることから，多くの統計パッケージの中に組み込まれたからです。ただし，実践に際しては緻密な設計が必要であり，判断する上での多くの注意点が存在します。そういう意味で非常に繊細な技術なのですが，一方でボタンをポチポチと押すだけで瞬時に答えが出るものですから，とてもよく使われているのですが，\underline{多くの誤用・悪用}を生んでしまいました。あまりにも間違った使われ方，悪い使われ方が広まっていることから，アメリカ統計学会や権威ある科学雑誌であるNatureが「間違えた使い方はダメだぞ」という声明を出しており\citep{wasserstein2016asa,amrhein2019scientists}，「統計学は瀕死だ」という人もいるほどです\citep{Toyoda202003}。これから帰無仮説検定について学んでいきますが，みなさんはこれらの先人の過ちを繰り返さないように，慎重に慎重に読み進めていってください。念のためにいっておきますが，帰無仮説検定は間違った理論だ，というわけではありません。正しいのですが，理論的仮定を犯さずに実践し，正しく解釈するのに細心の注意が必要だ，ということです\footnote{これらの声明のタイトルもよく見ると，``p-valuie''($p$値)や``statistical significance''(統計的有意)について注意が必要だ，ということであって，帰無仮説検定``significance test''そのものが間違っているというわけではないのです。}\footnote{そんな危うい技術いやだよ，もう少し簡単なものないの，と言われると，幸いにして答えはYesです。その方法についても後ほど(第\ref{chapter25}講以降)説明しますが，最近できた代替方法に比べて帰無仮説検定の考え方の方が先に広まってしまっているため，これまでの心理学形の論文や今まさに掲載されている論文なども，帰無仮説検定を使って書かれているのがほとんどです。みなさんは先行研究を読むためにも，この技術を知らなければなりません。ただしこれらの先行研究は，過去(あるいは今も現在進行形で? )の「間違ったやり方」で結論が出ている可能性もある，と眉に唾しながら読み解く必要があるでしょう。}。
+I hesitate to say this preemptively, but the testing method we are discussing has been used for a long time and has spread across various industries. The reason for its popularity is its relatively simple calculation process, which has been integrated into many statistical packages. However, its practical application requires meticulous design, and there are many points of caution in making decisions. In this sense, it's a very delicate technique, but on the other hand, it's widely used because it can instantly provide answers with just a few clicks. Unfortunately, this has led to \underline{many misuses and abuses}. Its incorrect and harmful usage has become so widespread that the American Statistical Association and authoritative scientific journals like Nature have issued statements warning against its misuse \citep{wasserstein2016asa,amrhein2019scientists}, to the extent that some claim "statistics is dying" \citep{Toyoda202003}. As we learn about null hypothesis testing, please proceed cautiously, ensuring not to repeat the mistakes of those before us. Just to be clear, null hypothesis testing is not a flawed theory in itself. It is correct but requires meticulous attention to practice without violating theoretical assumptions and to interpret results correctly\footnote{The titles of these statements, if you look closely, indicate the need for caution regarding "p-value" ($p$ values) and "statistical significance," not that the null hypothesis testing "significance test" itself is incorrect.}\footnote{You might think, "I don't want to deal with such a precarious technique; isn't there something simpler?" Fortunately, the answer is Yes. I will explain this alternative method later (from Lecture \ref{chapter25}), but null hypothesis testing has become widespread earlier than recent alternatives. Most of the psychological research papers written so far, and even those being published right now, use null hypothesis testing. Therefore, you need to know this technique to understand prior research. However, be aware that these studies might have concluded based on "incorrect methods" of the past (or even currently?).}.
+
+% \section{帰無仮説検定の手続き}
+\section{Procedure for Null Hypothesis Testing}
+% 統計的帰無仮説検定の手続きは一般に，次のようなステップですすみます。
+The procedure of a statistical null hypothesis test generally proceeds in the following steps.
+\input{m18_NHST_escape_01}
+
+% このステップについて，順に見ていきましょう。
+Let's take a look at this step one by one.
+% \subsection{仮説を設定する}
+\subsection{Setting a Hypothesis}
+% まず最初のステップは仮説を設定するところです。帰無仮説検定では，\keyterm{帰無仮説}{きむかせつ}{Null Hypothesis}と\keyterm{対立仮説}{たいりつかせつ}{Alternative Hypothesis}という2つの仮説を用意します。検定は差があるかないかの判断をすることですから，差があるとするモデル，差がないとするモデルを勝負させて，どちらに軍配が上がるかを見ようとすることです。
+The first step is to set a hypothesis. In the null hypothesis test, we prepare two hypotheses: the \keyterm{null hypothesis} and the \keyterm{alternative hypothesis}. Testing is about judging whether there is a difference or not. Therefore, we will pit a model that assumes a difference against a model that assumes no difference, and see which one is more likely.
+
+% 帰無仮説はNullという言葉があるように，空っぽ，空虚な仮説です\footnote{ゼロとNullは違います。ゼロはゼロという数字があるといえますが，Nullはその数字すらない，虚無です。余談ですが，ネットスラングの「ぬるぽ」とはNull pointer Exceptionの意味で，ポインタが行き着かない例外（参照されたメモリ番地が存在しないエラー)という意味です。}。普通，比較するときには何らかの違いがあるとか，効果がある，というようなことをいいたいわけですが，これに対してNull，つまり違いがない，効果がないというような仮説を一方の側に用意します。帰無仮説というのは，無に帰してほしい，なくなって欲しい仮説ということで名付けられています。
+The null hypothesis, as implied by the word "null", is empty, void hypothesis\footnote{"Zero" and "null" are different. Zero denotes the existence of a digital number, while null refers to the absence of any digit — it represents nothingness. As an aside, the internet slang "nullpo" refers to Null Pointer Exception, which means an exception when a pointer doesn't arrive (an error when the referred memory address does not exist).}. Usually, when comparing, we expect some differences or effects, but against these expectations, we create a null hypothesis — an assumption that there is no difference, or no effect. The null hypothesis is named as such because we want it to return to null, to become absent.
+
+% これに対して，対立仮説はAlternative(別の可能性，代わりになるもの，という意味)であり，「差がある」「効果がある」という仮説になります。研究者としてはこちら側を応援したいところです。応援したい側があるのに，帰無仮説のようなものを置くのは，NHSTの判断の仕方が背理法的なものになっているからです。つまり，差がないという帰無仮説を立てて考えると，おかしな事実が生じるのであれば，帰無仮説を棄却できる。\textbf{だから}対立仮説を採択できる。これが基本的な筋道です。
+In contrast, the alternative hypothesis is the alternative (meaning another possibility, something that can replace), which is a hypothesis of "there is a difference," "there is an effect." As a researcher, you want to support this side. Even though you want to support this side, the reason why you place something like a null hypothesis is because the judgment method of NHST (Null Hypothesis Significance Testing) is reductio ad absurdum. That is, if you consider the null hypothesis that there is no difference, if an absurd fact occurs, you can reject the null hypothesis. Therefore, one can adopt the alternative hypothesis. This is the basic rationale.
+
+% 注意が必要なのは，もしかすると「効果がない」という研究がしたいことがあるかもしれない，ということですね。呪いやインチキはなかったんだ，ということを証明するのも科学の役割のような気がしますが，それではこの場合，なくなって欲しい帰無仮説は「差がある」で，対立仮説は「差がない」になるのでしょうか？ いいえ，そうはなりません。
+It's worth noting that sometimes research may aim to prove that 'there is no effect'. It seems to be a part of science to prove that curses or frauds are non-existent. In this case, you might think that the null hypothesis you want to negate is 'there is a difference', and the alternative hypothesis is 'there is no difference', right? But it's not that simple.
+
+% たとえば，二群の母平均に差があるかどうかを検定したいとしましょう。母平均をそれぞれ$\mu_1,\mu_2$とします。このとき，帰無仮説は$H_0 : \mu_1 = \mu_2$であり，対立仮説は$H_1:\mu_1 \neq \mu_2$になります。これをよく見てください。，帰無仮説と対立仮説は実は同等の仮説で戦っているわけではないことに気づきましたでしょうか。帰無仮説は「2つの母平均は一致する」と言ってます。対立仮説は「2つの母平均は一致しない」と言ってます。帰無仮説の「一致する」という言い方は，イコールの状態ですから，1つしかありません。これに対して対立仮説は「一致しない」としか言ってません。$\mu_1>\mu_2$なのか，$\mu_1<\mu_2$なのか，はたまた$\mu_1 > \mu_2 + 0.5$($\mu_1$と$\mu_2$は0.5以上離れている)なのか，あるいはもっと大きな，小さな差があるのかどうか・・・こうした詳細については何も言及していません。つまり，2つのモデル比較といいながら，実はフェアではなく，一方はというモデル，他方はそれ以外全部，という非対称な関係があります。
+
+For example, let's say you want to test whether there is a difference between the population means of two groups, denoted as $\mu_1,\mu_2$. In this case, the null hypothesis is $H_0 : \mu_1 = \mu_2$, and the alternative hypothesis is $H_1:\mu_1 \neq \mu_2$. If you look closely, you'll realize that the null and alternative hypotheses are not actually equal contenders. The null hypothesis asserts that the two population means are equal. This statement of equality represents only one specific condition. On the other hand, the alternative hypothesis simply states that the two means are not equal. It doesn't specify whether $\mu_1>\mu_2$\ , $\mu_1<\mu_2$, or if $\mu_1 > \mu_2 + 0.5$(differ by more than 0.5), or any other detailed scenarios.So, while we say we are comparing two models, it's not exactly fair: one model is $H_0 : \mu_1 = \mu_2$, and the other is everything else. This asymmetry exists in the relationship between the two.
+
+% どうしてそうなるのか，というのはこの後の検定の実際のロジックを進めていく時の，計算方法の中で明らかになっていきますが，ともかく帰無仮説はこうした「2つの平均の差がない」という特殊な一点張りの状況に立脚するものですから，「差がない」という仮説は立てようがないのです。「差がない」，というのは差が0.1なのか0.2なのか0.3なのか0.31なのか0.32なのか，0.321なのか0.322なのか・・・というどの状況なのかが特定できないからです\footnote{面倒ですが，「差が0.3ジャストである」という帰無仮説vs「差が0.3ジャストではない」という対立仮説の勝負なら，帰無仮説検定の文脈で検証することはできます。計算が面倒で一般化できなくなりますし，差が0.31でも0.301でも0.3001でも違う計算をすることになりますので，実際的ではありませんが。}
+The reason for this will become clear as we delve into the actual logic and calculation methods of testing. However, the null hypothesis is based on the special situation of 'no difference between the two means', so it's not possible to hypothesize 'no difference' because it doesn't specify whether the difference is 0.1, 0.2, 0.3, 0.31, 0.32, 0.321, 0.322, etc.\footnote{It's cumbersome, but you could test a null hypothesis like 'the difference is exactly 0.3' against an alternative hypothesis of 'the difference is not exactly 0.3' within the context of null hypothesis testing. However, it's impractical because the calculations become complex and non-generalizable, as different calculations would be needed for differences of 0.31, 0.301, 0.3001, etc.}
+
+% ともかくまずは，帰無仮説と対立仮説という2つを立てて戦わせる，というところを理解していただければと思います。
+For now, understanding the concept of pitting the null hypothesis against the alternative hypothesis is a good starting point.
+
+% \subsection{統計的仮説検定に用いられる検定統計量を選択する}
+\subsection{Choosing a Test Statistic Used in Statistical Hypothesis Testing}
+% たとえば平均値が違うといいたいのか，比率が違うといいたいのか，相関係数に意味があるのか，度数のばらつきが違うといいたいのか，などなど，研究のシーンに応じて考えたい標本統計量は変わります。
+For example, depending on the research scene, the sample statistic you want to consider varies, whether you want to say the average is different, the ratio is different, there is meaning in the correlation coefficient, or whether you want to say the variation in frequency is different, etc.
+
+% また，標本統計量をそのまま比較できない場合は，そこから計算して検定用の検定統計量を計算することになります。これまでの例では，たとえば平均の推定をするときに$t$分布を使うという話がありました。平均の比較をする時は，この$t$分布に従う統計量，すなわち$t$値が検定統計量になります。
+Also, if we cannot directly compare sample statistics, we need to calculate a test statistic for the test from there. In the examples we've seen so far, for instance, we discussed using a t-distribution when estimating means. When comparing means, this statistic that follows a t-distribution, that is, the t-value, becomes the test statistic.
+% しかし，相関係数などは推定に使う分布が簡単なものではないものがあります。その場合でも，母数の推定や信頼区間を考えなくても，検定の判断ができる簡単に計算できる統計量に変換するという迂回路を取ることができます。
+However, there are cases where the distribution used for estimation is not simple, such as the correlation coefficient. Even in such cases, you can take a detour of converting it into an easy-to-calculate statistic that can be used to make test judgments without considering parameter estimation and confidence intervals.
+
+% 相関係数の検定はこの迂回ルートをとって，$t$分布を使った検定を行います。他にも$F$とか$\chi^2$(カイ二乗，といいます)といった統計量を計算することがあります。
+The test for correlation coefficient takes this detour and performs a test using the $t$-distribution. There are also cases where statistical values such as $F$ and chi-squared (also called chi-square) are calculated.
+
+% どのシーンでどの統計量が必要なのか，については数理統計学の力を借りてますので，天下り式に覚えるしかないところですが，逆に言えばいくつかの典型例を知っていれば数学的な展開を必要とせずに，結果を手に入れられるのだと思って奮い立ってください。
+In which scene and what kind of statistics are needed, we rely on the power of mathematical statistics, so it's something that you have to memorize in a top-down way. But on the contrary, if you know some typical examples, you can get the results without needing any mathematical development, so please take heart.
+
+% \subsection{仮説選定判断の基準になる確率を設定する}
+\subsection{Setting the Probability that Serves as the Criterion for Hypothesis Selection Judgement}
+\label{ModelComparison2}
+% 検定はモデル比較の結果，優劣を定める勝負です。推定の結果を考察するにあたって，帰無仮説と対立仮説のどちらに軍配をあげるかという，「実践上での意思決定ツール」でもあるわけです。ですので，事前に「こうなったら決着したとしましょう」というルールを決めておかなければなりません。分析の前に判断ルールを決めておかないと，あとでルールの方が変わってしまうと困りますので，必ず事前に決めておく必要があります。
+The test is a contest to determine superiority or inferiority as a result of model comparison. When considering the results of the estimation, it is also a "practical decision-making tool" as to whether to favor the null hypothesis or the alternative hypothesis. Therefore, you must set a rule in advance that says, "Let's consider it settled if this happens." If you don't set the judgement rules before the analysis, you will have trouble if the rules change later, so you always need to decide in advance.
+
+% この確率のことを，\keyterm{有意水準}{ゆういすいじゅん}{significance level}といいます。有意significantとは，統計的に意味が有る，ということであり\footnote{優位と誤変換しないように注意してください。普通の変換では優位のほうが先に候補になりますが，心理学畑出身の人は有意のほうが先に変換候補に出るようになるでしょう。}，これ以上の開きが出たら勝負あったと判断します，という基準です。これは確率の言葉で表現しますが，心理学では一般に5\%が用いられます。なぜ5なのか。とくに意味はありません。6でも4でも良かったのですが，最初に統計的検定をやった人が「根拠はないけどとりあえず5で」と始めたのが，いまだに使われています。ということで，こだわる必要はないのですが，一般的に5\%，ときどき1\%や0.1\%，10\%という数字が使われることがあります。どの数字でも，別に深い理由はありません。
+This probability is called the \keyterm{significance level}. 'Significant' means statistically meaningful\footnote{Be careful not to mistranslate it as 'superior'. Usually, 'superior' comes up first among the translation candidates, but for those who are from the field of psychology, 'significant' would likely be the first to come up.}, this is the standard for determining that the game is set if the gap is greater than this. This is expressed in terms of probability, but in psychology, 5\% is generally used. Why 5? There is no particular reason. It could have been 6 or 4, but the person who first conducted the statistical test started with 'there is no basis, but let's start with 5', and this is still being used. So, there's no need to be particular about it, but generally, numbers like 5\%, sometimes 1\%, 0.1\%, and 10\% are used. There is no deep reason for using any particular number.
+
+% ちなみにこの数字は，あくまでも優劣の判定基準であって，データそのものに言及する数字ではありませんし，仮説の正しさ，仮説モデルとデータの適合度を表す数字ではないことに注意が必要です。
+By the way, this number is only a criterion for judging superiority or inferiority, not a number referring to the data itself, and care must be taken because it is not a number that represents the correctness of the hypothesis or the fit of the hypothesis model and the data.
+
+% \subsection{実際のデータから検定統計量の実現値を計算する}
+\subsection{Calculating Realized Values of Test Statistics from Actual Data}
+
+% 実際のデータを当てはめて，検定統計量を計算します。
+Actually apply the data and calculate the test statistic.
+% \subsection{最初に定めた仮説が間違っているか正しいかを判断する}
+\subsection{Determining Whether the Initial Hypothesis is Correct or Incorrect}
+% ここまではルールの設定でした。このあとは，ルールに従って2つのモデル(仮説)を戦わせていきます。
+Up until now, it was about setting the rules. From now on, we will have two models (hypotheses) compete according to these rules.
+
+% 実際のデータから，検定統計量がどれぐらいの数字になるのかを計算し，それが出現する確率を計算します。この確率をとくに\keyterm{$p$値}{pち}{p-value}と言います。この$p$値が有意水準を上(下)回ったかどうかが，勝敗の結果になります。ちなみに勝った方の仮説を\keyterm{採択}{さいたく}{accept}し，他方を\keyterm{棄却}{ききゃく}{reject}する，という言い方をします。
+From the actual data, we calculate how large the test statistic will be and calculate the probability of it occurring. This probability is particularly known as the p-value. Whether this p-value exceeds (or falls below) the significance level determines the result of the victory or defeat. By the way, the winning hypothesis is said to be "accepted" and the other is said to be "rejected".
+
+% これが一連の流れです。このように手続きは形式的に定まっていますので，途中の計算は統計ソフトウェアが自動的にやってくれます。ですから計算の手間はほとんどないのですが，それだけに安易に使って安直に結果だけに飛びつくということがないように，注意が必要です。
+This is the flow of the process. Since the procedure is formally defined like this, the statistical software automatically does the intermediate calculations for you. Therefore, there is little computation effort, but it is important to avoid using it carelessly and jumping to conclusions based purely on the results.
+
+% 計算方法など，具体的な内容は次回になります。基本的な流れをまずは掴んでおいてください。このモデル比較は程度問題ではなく優劣の話であること，厳密に言えば統計的な話というより，実践上・実用上の意思決定の問題になっていることに注意が必要です。
+
+Let's leave the specifics, like calculation methods, for the next time. For now, grasp the basic flow. Remember that this model comparison is not about the degree of difference but rather about superiority. More precisely, it's not just a statistical discussion but also a practical and pragmatic decision-making issue.
+
+% 既に述べたように，帰無仮説検定は，現代ではさまざまな角度から批判がなされています。その批判の1つが，モデルの当てはまりのよさや程度の話ではなくて，結局のところ採択か棄却か，という「勝ち負け」という紋切り型の二値判断になってしまうことです。論文などを読んでいて「統計的に差がある」と書いてあれば，なるほど差があるのでしょう，効果があるのでしょうと思って，その実際的な大きさまで考察しなくなることがあります。もしかすると，あなたの読む先行研究でもごく僅かな差を「差があったのだ！」と針小棒大に歌い上げているかもしれません。皆さんは，同じような過ちを犯さないように注意しつつ，作法としての帰無仮説検定をこれからしっかり身につけていってください。
+As I've already mentioned, null hypothesis testing is subject to various criticisms in the modern context. One key criticism is that it boils down to a binary decision of 'win or lose', rather than discussing the goodness of fit or degree of the model. When reading research papers that state 'there is a statistical difference', it's easy to simply accept that there is a difference or an effect without considering the practical significance of its magnitude. Your preceding research might even be exaggerating very minor differences as significant findings. As you learn about null hypothesis testing, be aware of these pitfalls. While understanding and applying it as a method, be cautious not to repeat the same mistakes.
+% \section{1つの平均値の検定}
+\section{Testing of a Mean Value}
+% 具体的な例で考えていきましょう。まずは平均値の推定の時と同じく，母集団のSDがわかっている場合に標準正規分布を使っての検定を，次に母集団のSDがわからない時の，t分布を使っての検定を見ていくことにします。
+Let's consider specific examples. First, we will look at testing using the standard normal distribution, the same as when estimating the mean, assuming the standard deviation (SD) of the population is known. Next, we will examine testing using the t-distribution when the SD of the population is unknown.
+% \subsection{母SDがわかっている場合}
+\subsection{When the SD of Mother is Known}
+% ではまず，1つの平均値の推定を使って，検定をしてみましょう。「推定を使って検定」というのは変な表現に聞こえるかもしれませんが，推定は「母数はこれぐらいではないか」という予測の話であり，検定は「母数がそのようであれば，このように結論づける」という意思決定の話なのです\footnote{意思決定なんかしなくていいじゃない，と思うかもしれません。確かに科学的探究であれば，母数がどの程度であるかというのを知ることで十分なのです。しかし，帰無仮説検定は農学で生まれ，医学領域にも広まっている技術です。これ以上実験を続けて良いかどうか，この治療薬を投与し続けて良いかどうか，といった実際的な問題がそこにはあり，効果があるとしたらこれぐらい，ない可能性もなくはない...という態度を続けていると前に進まないので，何らかの基準が必要だという事情もあります。心理学においても，より実際的な場面では意思決定が必要になることもありましょう。}。
+Let's start with a test using the estimation of a single mean. The phrase 'testing using estimation' might sound odd, but estimation is about predicting 'the population parameter might be around this value', and testing is about decision-making: 'if the population parameter is like this, we conclude like this'\footnote{You might think, why make a decision at all? Indeed, in scientific inquiry, knowing the extent of the population parameter may be sufficient. However, null hypothesis testing originated in agriculture and spread to the medical field. There, practical issues arise, such as whether to continue an experiment or keep administering a treatment. If one continues with an attitude of 'there might be an effect around this much, but there's also a non-zero chance of no effect...', progress can be hindered. Some criterion is needed, and this is where decision-making comes into play. In psychology too, practical situations may require decision-making.}. 
+
+In essence, while estimation and testing might seem different, they are both integral parts of statistical analysis. Estimation gives a predictive view of the population parameter, and testing provides a framework for making decisions based on that estimation. This approach is particularly vital in fields where practical decisions based on statistical evidence are crucial.
+
+% さて，話を進めるために，具体的な例をあげてみましょう。ある学校で，学力テストしたとします。その学校で無作為に49人分の記録を取り出したところ，平均が52点でした。このテスト，全国平均は50点で，SDが9の正規分布であることがわかっていたとします。これとそのまま比べると，その学校の成績が良い，ということになりますが，たった2点差でそのように結論づけて良いかどうか，というのがここでの問題です。
+Now, let's move the conversation along with a specific example. Suppose a test was given at a certain school. Random records of 49 people were taken from the school, and the average score was 52. The national average for this test is known to be 50, and the standard deviation is 9 from a normal distribution. Compared to that, this school's grades are good, from this simple comparison. However, the question here is whether it is appropriate to conclude based solely on a mere 2-point difference.
+
+% 帰無仮説検定のステップを思い出しましょう。まずは仮説を設定します。
+Let's recall the steps of the null hypothesis testing. First, we set a hypothesis.
+% ここでやりたいことは，「この学校の成績が良いかどうかの判断」です。言い換えると，全国平均の分布が母集団でそれの平均やSDがわかっているのですから，この標本の平均は母平均と同じなのか，異なっているのかが知りたいのです。標本ですからたまたま高い点数が出ること(そしてその逆)もありますが，この標本平均から推測される母平均と，このテストの理論的な平均値(全国平均)の違いが\textbf{統計的に有意な差なのかどうか}が知りたいわけです。数式で表現すると，標本平均は$\bar{X}$で，$\bar{X} \sim N(\mu, \frac{\sigma}{\sqrt{n}})$ですから，この時の$\mu=50$が帰無仮説，$\mu \neq 50$が対立仮説ということになります。
+What we want to do here is "determine whether this school's grades are good or not". In other words, since we know the average and SD of the national distribution, we want to know whether the average of this sample is the same as the parent average, or different. It's a sample, so it can occasionally get high scores (and vice versa), but we want to know whether the difference between the parent average inferred from this sample average and the theoretical average of this test (the national average) is a statistically significant difference. In formula terms, the sample average is $\bar{X}$, and since $\bar{X} \sim N(\mu, \frac{\sigma}{\sqrt{n}})$, the null hypothesis at this time is $\mu=50$, and the alternative hypothesis is $\mu \neq 50$.
+
+% 次に検定統計量ですが，平均値の推定，しかも理論的に平均50，SD9の正規分布との照合ですから，推定したい対象の特徴がもうわかっている特殊なケースです。これは変換すれば標準正規分布に従うのですから，標準化されたZ得点が検定統計量になります。
+Next is the test statistic, which is a special case where the characteristics of the object to be estimated are already known because it is an estimation of the mean value and a comparison with a normal distribution with a theoretical mean of 50 and a standard deviation (SD) of 9. Since this follows the standard normal distribution if converted, the standardized Z-score becomes the test statistic.
+
+% 第3のステップは基準になる確率を設定する，でした。勝敗を決めるルールの決定ですね。これはとくに意味もなく，慣例に従って0.05(5\%)としておきましょう。
+The third step was to set the benchmark probability. It's the decision of the rules that determine the outcome. This doesn't have any particular meaning, let's just follow convention and set it at 0.05 (5\%).
+
+% これで準備が終わりました。実際の検定統計量の計算です。平均$\mu$，分散$\sigma^2$の正規分布する母集団からの標本の場合，標本平均の標本分布も正規分布に従い，
+The preparations are now completed. This is the actual calculation of the test statistics. In the case of a sample from a population that follows a normal distribution with mean $\mu$ and variance $\sigma^2$, the sample distribution of the sample mean also follows a normal distribution.
+\[ \bar{X} \sim N(\mu,\frac{\sigma}{\sqrt{n}}) \]
+
+% になります。今回の場合は，
+In this case,
+
+\[ 52 \sim N(50,9/\sqrt{49}) \]
+
+% だと考えられます。標準化することで標準正規分布を使うことができますから，
+% It is believed so. By standardizing, we can use the standard normal distribution.
+
+\[ (52-50)/(9/7) \sim N(0,1) \]
+
+% として，$ (52-50)/(9/7) =2/1.285714=1.555... $を得ます。この1.556(下三桁までで四捨五入しました)という数字はどのあたりに位置するのでしょう？
+
+% そこで確率の計算をしてみましょう。これが次のステップの，実際のデータから検定統計量の実現値を計算する，というやつです。標準正規分布において，1.556より大きな数字が得られる確率は\footnote{これまた確率の，とくに連続変数のややこしいところで，1.556という数字が出てくる確率はゼロです。ユークリッド幾何学でいうところの，点は位置があって大きさがないというのと同じで，点の確率は大きさがないのです。確率は面積ですから，1.556\underline{より大きな数字}が得られる確率，というのが本当は正しい表現です。}，$p=0.05985405$でした\footnote{これはRで次のように計算しています：\texttt{1-pnorm(1.556,mean=0,sd=1)}}。5.9\%なのですね。
+
+% 最後に判定です。5\%が判定ラインだったわけですが，今回得られた「確率変数の実現値」は5\%より大きな確率です。つまり大きい＝出現する可能性が大きい，よくある話だったわけです。そんなにレアな数字じゃない。つまり，たまたま今回の標本が，平均から2点大きくなるようなことは十分あり得る話だということです。この学校の生徒は優秀だー！と言いたいところなんですが，偶然それぐらいの差がでることがあるのであれば，そこまで胸を張っていうことができません。ということで，軍配としては帰無仮説の勝ち，つまり，「その学校の成績が特段良いわけではない」「統計的には差がない」ということになります。
+
+% 図で確認しておきましょう。図\ref{fig::18_01b}には標準正規分布と今回の判定に係る数字を記載しました。今回計算した統計量は，標準正規分布にしたがいます。標準正規分布で5\% という基準を考えると，$\pm1.96$を超えた領域になります。今回のデータがこの領域に入るほどのものであれば，帰無仮説は棄却することになりますが，今回はその領域に入らない，つまり「このサンプルからこの平均値が出てくることも，あるよ」ということで棄却できないのでした。帰無仮説を棄却する領域のことを一般に\keytermL{棄却域}{ききゃくいき}といい，この数字を越えれば棄却域に入るというギリギリの数字のことを\keytermL{臨界値}{りんかいち}といいます。今回の臨界値は$\pm1.96$で，両端が棄却域，今回の1.55という実現値は棄却域に入らなかったので帰無仮説の勝ち，ということです。
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/18_NHST/slide18_02.png}
+%     \caption{棄却域と臨界値}
+%     \label{fig::18_01b}
+% \end{figure}
+
+
+% \subsection{母SDがわかっていない場合}
+% 先ほどの例は，母SDがわかっているという話でした。第\ref{m17_estimation_and_test}講でも同じことを言いましたが，まあ母数がわかっていれば苦労はないわけで，それが分からないから推測するのですよね。
+
+% ということで，母SDの代わりに標本SD(\keytermL{不偏分散}{ふへんぶんさん}の正の平方根)を使って推定することとします。そのさいは(標準)正規分布が使えないので，サンプルサイズに応じた$t$分布を使うのでした。同じデータ例でやってみましょう。今度は標本の標準偏差が必要ですので，これが$\hat{\sigma}=10$だったとします。
+
+% 帰無仮説・対立仮説はさきほどと同じく，$\mu=50$か$\mu \neq 50$です。ただし推測に使う統計量が$t$になるわけです。
+% 判断基準も同じく慣例にならって，なんとなく5\%にしておきましょう。
+% 検定統計量$t$は$t = \frac{\bar{X}-\mu}{\hat{\sigma}/\sqrt{n}}$で求めることができますから，
+
+\[ t = (52-50)/(10/7) = 1.4 \]
+% となります。これが自由度$n-1=48$の$t$分布に従うので，自由度48の$t$分布において1.4以上の数字が出る確率を求めますと，$p=0.08397194$となりました\footnote{これはRで次のように計算しています：\texttt{1-pt(1.4,df=48)}}。8.3\%なのですね。
+
+This will follow a t-distribution with degrees of freedom $n-1=48$. So, to find the probability of getting a value above 1.4 in a t-distribution with 48 degrees of freedom, we get $p=0.08397194$. \footnote {This is calculated in R as follows: \texttt {1-pt (1.4, df = 48)}}. So it's 8.3\%, isn't it?
+
+% これで判定です。5\%の判定ラインより大きな確率が出ましたので，これは滅多にないことではない。なくはないのだから，よくある話。珍しいことじゃない。つまり，母平均から外れて大きい数字，とまでは言えないねということになります。
+This is the verdict. It returned a probability higher than the 5\% determination line, which is not a rare occurrence. Because it's not nonexistent, it's a common story. It's not unusual. In other words, it is not necessarily a larger number than the average.
+
+% 今回の判定に関するイメージを図\ref{fig::18_02b}に示しました。今回は自由度48のt分布を描き，検定統計量の実現値を示しています。実現値が棄却域に入るか入らないか，という判断をしてもいいですし，今回のように直接確率を算出して5\%になるかどうかの判定をしてもらっても結構です\footnote{直接確率を計算する方が楽なのに，と思う方もいるかもしれません。これは歴史的な経緯があって，今でこそRなどを使って簡単に確率点が計算できますが，そういう機械がなかった頃は数字の表を見て判断していたのです。第\ref{m07_probability}講義のコラム\ref{NumberTable},Pp.\pageref{NumberTable}で数表のことをご紹介しましたが，あれを見て臨界値の大小で棄却域に入ったかどうかを判断する，というのが一般だった時の名残だと思ってください。}。
+The image regarding the judgment this time is shown in Figure \ref{fig::18_02b}. This time, we drew a t-distribution with 48 degrees of freedom and showed the realized value of the test statistic. You can judge whether or not the realized value enters the rejection area, or you can judge whether the probability calculated directly is 5\% or not as in this case\footnote{Some people may think it's easier to calculate the probability directly. This has a historical background. Now we can easily calculate probability points using R, but in the past, we made judgments by looking at tables of numbers when such machines didn't exist. We introduced the number table in the column \ref{NumberTable} of the lecture \ref{m07_probability}, Pp.\pageref{NumberTable}, but please think of it as a remnant of the time when it was common to judge whether or not it entered the rejection area by the size of the critical value looking at it.}.
+
+\input{m18_NHST_escape_02}
+
+% いかがでしたでしょうか。今回のデータでは(母SDがわかっていても，わかっていなくても)帰無仮説を棄却することはできませんでした。何だか持って回った言い方をしているように感じられるかもしれませんし，いまいちイメージが掴みにくいかもしれません。そこで，今度はまた別のケース，相関係数の例で考えてみたいと思います。徐々に手続きと結論の出し方に慣れていくと思います。
+How was that? With this data, we couldn't reject the null hypothesis, whether we knew the parent SD or not. This may feel like we're beating around the bush, and you might find it hard to grasp the image. So, next we'll consider another case using the example of correlation coefficients. I think you'll gradually get used to the procedure and the way conclusions are drawn.
+
+% \section{相関係数の検定}
+\section{Testing the correlation coefficient}
+% 今度は相関係数の検定の話をしましょう。
+Let's talk about testing the correlation coefficient this time.
+% 心理学では，平均値を推測するだけでなく，相関係数をテーマに研究することも少なくありません。実験など，介入の前後や群間の比較であれば平均値の話になりますが，こうした因果関係が明確でなく，何らかの関係があるかもしれない，という見込みで探索的に現象を解明していくこともよくあります。たとえばうつ病と起床時間に関係があるのかもしれない。自尊心の高さは学業成績と関係があるのかもしれない。恋愛に対する態度には性格が関係しているのかもしれないetc...。何だか心理学っぽい話になってきましたね！
+In psychology, not only do we estimate averages, but we often conduct research on correlation coefficients. In experiments or comparisons before and after an intervention, or between groups, we discuss averages. But it is also common to explore and clarify phenomena prospectively, when the causal relationship is not clear, but there may be some relationship. For example, there might be a connection between depression and wake-up time. Self-esteem might be related to academic performance. Attitude towards romance may be related to personality, etc... It sounds like psychology, doesn't it?
+
+% さて最後の例，恋愛に対する態度と性格の関係，を研究したいとしましょう。先行研究から，「恋愛についての積極性」を測定する尺度と，外向的な性格かどうかを測定する尺度があったとします\footnote{ここでは軽〜く書いていますが，心理的な状態を測定する物差しのことを\keyterm{尺度}{しゃくど}{scale}といい，この尺度を作る・使い方を考えるのも心理学の重要な研究領域なのです。この領域をとくに\keytermL{心理測定法}{しんりそくていほう}といいますが，テスト理論の発展系である因子分析モデルや構造方程式モデリングによって，調査項目に対する反応を細やかに検証する世界があります。それでなくても目に見えないものを測定するのですから，きちんと測定できているかどうかは大問題です。また世の中には論文化され，公開されている心理尺度はたくさんありますが，自分の研究に借用するときは「本当に自分が測りたいものと，この尺度が測ろうとするものが同じなのか」「今の，私の研究対象に同じ測定方法で測って同じ結果が得られるのか」，など常に批判的な態度を持っておく必要があります。}。この尺度を使って，協力者を20人募って回答を求め，標本相関係数を算出したところ，$r=0.5$という数字が得られたとします(相関係数の算出については第\ref{m08_CorrelationCausation}講を思い出してください)\footnote{ちなみに，標本相関係数の期待値(標本を何度もとったときの標本相関係数の平均値)は，母相関に\textbf{一致しません}。つまり不偏分散を計算したように，不偏相関係数を計算しなければならないのですが，簡単な式で表現できないので標本相関係数のままで推定することが慣例になっています\citep{Haebara200206,Hirakawa2021}。また区間推定をする場合は，標本相関係数の標準誤差を考えなければなりません。標本相関係数の標準誤差の推定値$\hat{\sigma}_r$は，次の式で与えられます。
+Let's say you want to investigate the relationship between attitudes towards love and personality. Suppose we have a scale from previous research that measures "positivity towards love" and whether one has an extroverted personality\footnote{I'm writing lightly here, but the measure of psychological state is called a \keyterm{scale}, and thinking about how to make and use this scale is an important research area in psychology. This area is particularly called \keytermL{psychometrics}, and there is a world where responses to survey items are verified in detail by factor analysis models and structural equation modeling, which are developments of test theory. After all, it's a big issue whether we can measure properly something that we can't see. There are many psychological scales that have been published and made public in the world, but when borrowing for your own research, you need to keep a critical attitude, questioning: "Is what I want to measure really the same as what this scale is trying to measure?" "Can I get the same results by measuring my current research subject with the same method?"}. 
+
+Using this scale, we asked 20 respondents, and when we calculated the sample correlation coefficient, we got a figure of $r=0.5$ (recall Lecture \ref{m08_CorrelationCausation} on the calculation of the correlation coefficient)\footnote{By the way, the expected value of the sample correlation coefficient (the average of the sample correlation coefficients when the sample is taken many times) does not \textbf{match} the population correlation. In other words, like when we calculated the unbiased variance, we have to calculate the unbiased correlation coefficient, but it has become customary to estimate as it is because it cannot be expressed by a simple formula\citep{Haebara200206,Hirakawa2021}. Furthermore, when interval estimation is performed, the standard error of the sample correlation coefficient must be considered. The estimated value of the standard error of the sample correlation coefficient, $\hat{\sigma}_r$, is given by the following formula:
+
+$$\hat{\sigma}_r= \frac{1-r^2}{\sqrt{n}}$$
+
+Since this is a mathematical formula, its language is universal. Therefore, there is no need for translation. The translation would be the formula itself:
+
+$$\hat{\sigma}_r= \frac{1-r^2}{\sqrt{n}}$$
+
+%     今回の場合ですと，$\hat{\sigma}_r = \frac{1-0.5^2}{\sqrt{20} }= 0.1677$となります。ただし標本相関係数の標本分布は正規分布ではありませんので，区間推定をするにはFisherのZ変換という手続きが必要です。}。
+In this case, $\hat{\sigma}_r = \frac{1-0.5^2}{\sqrt{20} }= 0.1677$. However, since the sample distribution of the sample correlation coefficient is not normal, the Fisher's Z transformation procedure is necessary to make interval estimates.}
+
+% さて，標本相関係数は$r=0.5$ですが，母相関係数はどうでしょうか。母集団でもこの2変数は関係がある，と言って良いでしょうか。標本の話を母集団に広めるには推定，そして結論づけるには検定をするのでした。検定のステップを踏んで話を進めましょう。
+So, the sample correlation coefficient is $r=0.5$, but what about the population correlation coefficient? Can we say that these two variables are related in the population as well? In order to generalize the discussion about the sample to the population, we need to make estimates, and to draw conclusions, we need to do testing. Let's proceed with the discussion by going through the steps of the test.
+
+% \paragraph{仮説の設定：相関係数の場合}
+\paragraph{Hypothesis Setting: In the case of the correlation coefficient}
+% まずは仮説の設定です。帰無仮説と対立仮説が必要なのでした。帰無仮説はNullな仮説ですから，今回は「相関関係がない」というのがそれになります。
+First is setting up the hypothesis. We need a null hypothesis and an alternative hypothesis. The null hypothesis is a null hypothesis, so in this case it would be "there is no correlation".
+% 母相関はギリシア文字$\rho$(ローとよむ)で表されますから，数学的な表現をすると帰無仮説は$H_0: \rho =0$です。母相関が$0.0$と一致する，という強い主張ですね。
+The population correlation is denoted by the Greek letter $\rho$ (pronounced as rho), so the null hypothesis is expressed mathematically as $H_0: \rho=0$. That's a strong statement, implying that the population correlation matches $0.0$.
+% これに対する対立仮説は，これの否定ですから$H_1:\rho \neq 0$です。既にこの2つのモデル対決，帰無仮説はピンポイント予測ですから，かなり狭い可能性のような気もしますが，帰無仮説検定の話の上ではこうならざるを得ないのです。
+The alternative hypothesis for this is $H_1: \rho \neq 0$, which negates this. Although these two model confrontations, the null hypothesis is a pinpoint prediction, it may seem like a fairly narrow possibility, but this is inevitable in the discussion of null hypothesis testing.
+
+% というのも，帰無仮説検定は背理法のロジックを使う，というところにその話の味噌があります。まずは極端かもしれませんが，帰無仮説の世界を想定しておき，それに従っていくとおかしなことが起こるなら，帰無仮説を棄却する，という話の進め方です。母相関が0な世界を想定してみましょう--幸い，最近はコンピュータを使って簡単にシミュレーションをできます。相関係数が0の世界があり，そこから20人のサンプルをとっていくとしましょう。
+The crux of the matter is in the use of a null hypothesis test, which makes use of a reductio ad absurdum logic. The approach is to first assume an extreme zeros condition, and if something odd happens when conforming to it, the null hypothesis is discarded. Let's imagine a world where the population correlation is zero - thankfully, it's easy to simulate this with a computer nowadays. Let's say we have a world where the correlation coefficient is zero, and from there, we draw a sample of 20 people.
+
+\input{m18_NHST_escape_03}
+
+% 図\ref{fig::18_01}に示したのは，母相関$\rho=0$の世界から乱数を10万点発生させ，そこからランダムに20個の点を取り出した例です。黒い点の塊はほぼ円で，二変数に相関がないというデータを具現化したものが示されています。小さな赤い点がそこから20個取り出した場合で，今回この20個の点による標本相関係数は$r=0.143$でした。理論的には$\rho=0$の世界からのサンプルなのですから，$r$も0であって欲しいかもしれませんが，一部の標本だけ取り出すとぴったり0になることはありません。同様のサンプルを何度も繰り返すと，標本相関係数は$r_2=0.32, r_3=-0.46,r_4=-0.26....$といろいろな数字を取ります。この分布が標本分布になるのです。
+The scenario shown in Figure \ref{fig::18_01} is when random numbers are generated from a world with a mother correlation $\rho=0$ for 100,000 points, and 20 points are randomly extracted from them. The cluster of black points is almost a circle, showing a data that embodies no correlation between the two variables. The small red points are cases where 20 are taken from there, and the sample correlation coefficient due to these 20 points was $r=0.143$. Theoretically, since it is a sample from a world of $\rho=0$, you may want $r$ to be 0 as well, but if you only take out a part of the sample, it will not exactly be zero. If you repeat similar samples, the sample correlation coefficient will take various numbers such as $r_2=0.32, r_3=-0.46,r_4=-0.26....$. This distribution becomes the sample distribution.
+
+
+% このように，いったん「母相関は$\rho=0$」，としてから標本を取り出したとして，その標本分布がどうなるかを考え，たまたま今回得られた標本相関係数(今回の例では0.5でしたが)が出てくる確率はどれぐらいか，を考えます。その確率が非常に小さければ，滅多にないことが目の前のデータで生じたわけですから，これは前提である「母相関は$\rho=0$」という仮定の方がおかしい，ということで帰無仮説を捨てるわけです。ここが背理法になっているわけですね。また，帰無仮説として「母相関はありまぁす！」という仮定を置くのも難しいところなのがわかっていただけるかと思います。相関が「ある」といって，どの程度あるのかは無数に考えられるのに対し，相関が「ない」の場合は一意に定まるからです。
+In this way, we consider the distribution of the samples after assuming "the population correlation is $\rho=0$", and consider the probability of obtaining the sample correlation coefficient that we happened to get this time (which was 0.5 in this example). If that probability is very small, it means that a rare event has occurred in the data in front of us. Therefore, we discard the null hypothesis because it suggests that the assumption that "the population correlation is $\rho=0$" is incorrect. This is where the proof by contradiction comes in. I hope you understand that it's also difficult to set the null hypothesis as "There is population correlation!". While it's conceivable to infinite degrees when the correlation "exists", the case where the correlation "does not exist" is uniquely determined.
+
+% \paragraph{検定統計量を定める}
+\paragraph{Determining the test statistic}
+
+% ここで，標本相関係数の標本分布は，自由度$n-2$の$t$分布に従うことがわかっています\footnote{ここでも数理統計学の結果だけお借りしましょう！}。ただ，そのまま相関係数を使うのではなくて，標本相関係数を次の式で変換する必要があります。
+Here, it is known that the sampling distribution of the sample correlation coefficient follows the t-distribution with degrees of freedom $n-2$\footnote{Here too, let's just borrow the results of mathematical statistics!}. However, rather than using the correlation coefficient as is, it is necessary to transform the sample correlation coefficient using the following formula.
+
+\[ t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}} \]
+
+% \paragraph{判断基準の設定}
+% 今回も慣例に倣って0.05(5\%)にしましょう。
+
+% \paragraph{検定統計量の算出}
+
+% 今回の例では，
+
+\[ t = \frac{0.5 \times \sqrt{18}}{\sqrt{1-0.25}} = 2.44949 \]
+
+% となりました。
+It has become so.
+
+% \paragraph{では判定を}
+Please provide the Japanese text you want to be translated into English.
+
+% 今回得られた数字，$t=2.45$よりも大きい数字が自由度18のt分布から出てくる確率はどれぐらいでしょう？ これを計算すると\footnote{Rで\texttt{1-pt(2.45,df=18)}とします。}その確率は$p=0.01237173$です。またここでは，$\rho=0.0$の元で標本相関係数が$0.5$より大きくなる確率を考えているのですが，この偏った相関係数の出方は$|r|>0.5$についての話ですから，左右対称の分布であることから$p=0.0124\times2=0.0248$と考えるべきです。いずれにせよ，絶対値0.5以上の標本相関係数が得られる確率は5\%よりも小さい数字で，勝負の判定としては「滅多にないことが起こった」と言って良いわけですから，これは帰無仮説がおかしい。そもそも母相関が$\rho=0$であれば，たまたま標本から相関係数$r=0.5$が出てくるなんて，ありえへん，というわけです。そこで結論は，帰無仮説の棄却，対立仮説の採択となります。図\ref{fig::18_03b}にt分布，臨界値，実現値の関係を図示しましたので，確認しておいてください。
+How likely are you to get a number greater than the number $t=2.45$ we obtained this time from a t-distribution with 18 degrees of freedom? If you calculate this, the probability is $p=0.01237173$. Moreover, we are considering the probability that the sample correlation coefficient is greater than $0.5$ under $\rho=0.0$. Since this skewed correlation coefficient is about $|r|>0.5$, and it has a symmetrical distribution, it should be considered $p=0.0124\times2=0.0248$. In either case, the probability of obtaining a sample correlation coefficient of an absolute value of 0.5 or more is less than 5\%, which means "something that rarely happens" in terms of determining the game. So, this means that the null hypothesis is strange. If the parent correlation is $\rho=0$ to begin with, it is unlikely for a correlation coefficient $r=0.5$ to suddenly appear from a sample. So, the conclusion is to reject the null hypothesis and adopt the alternate hypothesis. Please check Figure \ref{fig::18_03b} where I have depicted the relationship between the t-distribution, critical value, and realized value.
+
+\input{m18_NHST_escape_04}
+
+
+
+% いかがだったでしょうか。
+How was it?
+% 区間推定とは少し違ったロジックですが，判定基準を設けて2つの仮説(モデル)を戦わせることで，判定はできるようになりました。
+It's a little different logic from interval estimation, but by setting a criterion and pitting two hypotheses (models) against each other, we have been able to make judgments.
+% 次回はこの判定結果の報告の仕方や，帰無仮説検定のもたらした問題点などについて考えていきたいと思います。
+Next time, I would like to consider the way we report these assessment results, and the problems raised by the null hypothesis test.
+
+% \section{課題}
+\section{Assignment}
+% \paragraph{母SDがわかっている場合の平均値の検定をしてみる}
+Let's try conducting a test of the mean value when the standard deviation is known.
+% 母平均が40，母SDが10の母集団分布から，サンプルサイズ$n=16$の標本を取ったときの標本平均値が$\bar{X}=45$でした。
+The sample mean was $\bar{X}=45$ when a sample of size $n=16$ was taken from a population distribution with a population mean of 40 and a population standard deviation of 10.
+% この標本から推測される平均値が，母集団と比べて有意に異なっているかどうかを判断したいと思います。
+I would like to determine whether the average value inferred from this sample is significantly different from the population.
+% このとき，次の問いに答えてください。
+Please answer the following question at this time.
+\input{m18_NHST_escape_05}
+
+% \paragraph{t分布を使った区間推定}
+\paragraph{Interval Estimation Using the t-distribution}
+% 母平均が40，母SDはわからないのですが，サンプルサイズ$n=16$の標本を取ったときの標本平均値が$\bar{X}=45$，標本の不偏SDが$\hat{\sigma}=9$でした。
+The population mean is 40, the population standard deviation (SD) is unknown, but when a sample of size $n=16$ was taken, the sample mean was $\bar{X}=45$, and the unbiased estimate of the sample standard deviation was $\hat{\sigma}=9$.
+% この標本から推測される平均値が，母集団と比べて有意に異なっているかどうかを判断したいと思います。
+I would like to determine whether the average value inferred from this specimen is significantly different from the population.
+% このとき，次の問いに答えてください。
+Please answer the following question at this time.
+\input{m18_NHST_escape_06}
+
+% \paragraph{t分布を使った相関係数の検定}
+\paragraph{Testing Correlation Coefficients Using t-distribution}
+% サンプルサイズ$N=49$で標本相関係数$r = 0.3$という結果が得られたとします。この時この標本相関係数が統計的に意味があると言っていいかどうかを判断したいと思います。
+Let's say we have obtained a sample correlation coefficient r = 0.3 with a sample size N = 49. Now, we want to determine whether this sample correlation coefficient is statistically meaningful or not.
+% このとき，次の問いに答えてください。
+At this time, please answer the following question.
+
+\input{m18_NHST_escape_07}
+
+\end{document}

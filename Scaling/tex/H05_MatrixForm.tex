@@ -10,13 +10,13 @@
 ここまで行列の形ばかり見て来ましたが，狙いはあくまでも調査研究など，多変量データを扱う場面での利用です。なぜ多変量データ分析をする際にこのような知識が必要なのか，思うかもしれません。ですが，得られるデータは行列として扱うと表現が大変便利なのです。たとえば質問項目が$m$個あって，調査対象者$n$人から回答を得たとすると，データは次のように表現できます。
 
 \[
-    \bm{X}=
-    \begin{pmatrix}
-        x_{11} & x_{12} & \cdots & x_{1m} \\
-        x_{21} & x_{22} & \cdots & x_{2m} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        x_{n1} & x_{n2} & \cdots & x_{nm} \\
-    \end{pmatrix}
+	\bm{X}=
+	\begin{pmatrix}
+		x_{11} & x_{12} & \cdots & x_{1m} \\
+		x_{21} & x_{22} & \cdots & x_{2m} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		x_{n1} & x_{n2} & \cdots & x_{nm} \\
+	\end{pmatrix}
 \]
 
 データ全体をこうして，ひとつの記号で表現できたら便利ですよね。これらを使ったデータの表記に慣れておきましょう。
@@ -31,23 +31,23 @@
 
 これを使って平均値(列)ベクトル$\bm{m}$を次のように表すことができます。
 \[ \bm{m} = \frac{1}{n} \bm{X}' \bm{1} =
-    \begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} =
-    \begin{pmatrix}\bar{x}_{.1} \\ \bar{x}_{.2}\\ \vdots \\\bar{x}_{.m} \end{pmatrix} \]
+	\begin{pmatrix} 1/n\sum_{i=1}^{n} x_{i1} \\ 1/n\sum_{i=1}^{n} x_{i2} \\ \vdots \\ 1/n\sum_{i=1}^{n} x_{im} \end{pmatrix} =
+	\begin{pmatrix}\bar{x}_{.1} \\ \bar{x}_{.2}\\ \vdots \\\bar{x}_{.m} \end{pmatrix} \]
 
 ここで$\bar{x}_{.1}$は1つめの添字$i$を足し合わせて割ることでなくしていますから，$\bar{x}_1$のように省略して書くことがあります。このときの$1$は「第一番目の変数」という意味であり，個人の情報がなくなっている変数を意味していることに注意してください。
 
 さて，平均からの偏差を要素に持つ行列$\bm{V}$を考えたとします。
 \[
-    \begin{array}{ccl}
-        \bm{V} & = & \bm{X} - \bm{1} \bm{m}'                                                                                                                  \\
-               &   &                                                                                                                                          \\
-               & = & \bm{X} - \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix} \begin{pmatrix} \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \end{pmatrix} \\
-               &   &                                                                                                                                          \\
-               & = & \bm{X} - \begin{pmatrix} \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \\
+	\begin{array}{ccl}
+		\bm{V} & = & \bm{X} - \bm{1} \bm{m}'                                                                                                                        \\
+		       &   &                                                                                                                                                \\
+		       & = & \bm{X} - \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix} \begin{pmatrix} \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \end{pmatrix} \\
+		       &   &                                                                                                                                                \\
+		       & = & \bm{X} - \begin{pmatrix} \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \\
                 \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m} \\
-                \vdots     & \vdots     & \ddots & \vdots     \\
+                \vdots       & \vdots       & \ddots & \vdots       \\
                 \bar{x}_{.1} & \bar{x}_{.2} & \cdots & \bar{x}_{.m}\end{pmatrix}
-    \end{array}
+	\end{array}
 \]
 この行列$\bm{V}$のサイズは$n \times m$であることに注意してください。
 これはまた，次のように表すこともできます。
@@ -56,10 +56,10 @@
 
 これを使うと，たとえば分散共分散行列$\bm{S}$は次のようになります。
 \[ \bm{S} = \frac{1}{n} \bm{V}' \bm{V} = \begin{pmatrix}
-        s_1^2  & s_{12} & \cdots & s_{1m} \\
-        s_{21} & s_2^2  & \cdots & s_{2m} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        s_{m1} & s_{m2} & \cdots & s_m^2\end{pmatrix} \]
+		s_1^2  & s_{12} & \cdots & s_{1m} \\
+		s_{21} & s_2^2  & \cdots & s_{2m} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		s_{m1} & s_{m2} & \cdots & s_m^2\end{pmatrix} \]
 ここで$s_j$とあるのは第$j$変数の標準偏差を，$s_{jk}$とあるのは第$j$変数と第$k$変数の共分散です。添え字は変数番号になっています。
 また，ここでもサイズに注目してください。$\bm{V}'\bm{V}$は，サイズで言うと$m \times n$と$n \times m$の積ですから，$m \times m$ になります。この行列は正方対称行列です。
 
@@ -89,34 +89,34 @@
 具体的な数値例をみてみましょう。
 
 \[
-    \bm{A} = \begin{pmatrix}
-        1 & 6 \\ 2 & 5
-    \end{pmatrix}
-    ,\bm{x} = \begin{pmatrix}
-        1 \\ 1
-    \end{pmatrix}
+	\bm{A} = \begin{pmatrix}
+		1 & 6 \\ 2 & 5
+	\end{pmatrix}
+	,\bm{x} = \begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
 \]
 
 を例にします。この時次の関係が成り立ちます。
 
 \[
-    \bm{Ax} =
-    \begin {pmatrix}
-    1 & 6 \\
-    2 & 5 \\
-    \end{pmatrix}
-    \begin{pmatrix}
-        1 \\ 1
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        7 \\ 7
-    \end{pmatrix}
-    =7
-    \begin{pmatrix}
-        1 \\ 1
-    \end{pmatrix}
-    =7 \bm{x}
+	\bm{Ax} =
+	\begin {pmatrix}
+	1 & 6 \\
+	2 & 5 \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		7 \\ 7
+	\end{pmatrix}
+	=7
+	\begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
+	=7 \bm{x}
 \]
 
 確かに成立する組み合わせがありますね。この行列$\bm{A}$に対して，7が固有値，$(1,1)$が固有ベクトルになっています。
@@ -146,7 +146,7 @@
 \[ \bm{AX} = \bm{X \Lambda} \]
 と書くことができます。ここで$\bm{\Lambda}$は
 \[ \bm{\Lambda} =
-    \begin{pmatrix} \lambda_1 & 0         & \cdots & 0         \\
+	\begin{pmatrix} \lambda_1 & 0         & \cdots & 0         \\
                 0         & \lambda_2 & \cdots & 0         \\
                 \vdots    & \vdots    & \ddots & \vdots    \\
                 0         & 0         & \cdots & \lambda_n\end{pmatrix}
@@ -162,38 +162,38 @@
 ここであらためて要素に注目すると，行列$\bm{A}$が次のように分解されていることがわかります。
 
 \[
-    \bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
+	\bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
 \]
 
 となります。
 
 この分解例は$2 \times 2$の簡単な例で確認しておきましょう。
 たとえば$\bm{A} = \begin{pmatrix}\begin{pmatrix}a\\b\end{pmatrix},\begin{pmatrix}c\\d\end{pmatrix}\end{pmatrix}=\begin{pmatrix} a & c \\b & d\end{pmatrix}$という行列と，対角行列$\bm{\Psi} = \begin{pmatrix}\alpha & 0 \\ 0 & \beta \end{pmatrix}$があったとして，$\bm{A\Psi A}'$の計算をしてみたいと思います。
-\[ 
-    \begin{array}{lll}
-    \bm{A\Psi A}' &=& \begin{pmatrix} a & c\\ b & d \end{pmatrix}\begin{pmatrix}\alpha & 0\\ 0&\beta \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
-    &&\\
-    &=& \begin{pmatrix} \alpha a & \beta c \\ \alpha b & \beta d \end{pmatrix}
-    \begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
-    &&\\
-    &=& \begin{pmatrix} \alpha aa + \beta cc & \alpha ab + \beta cd \\
-        \alpha ab + \beta cd & \alpha bb + \beta dd \end{pmatrix}\\
-        &\\
-    &=& \alpha \begin{pmatrix} aa & ab\\ ab & bb \end{pmatrix} + 
-    \beta \begin{pmatrix}cc & cd \\ cd & dd \end{pmatrix}\\
-    &\\
-    &=& \alpha \begin{pmatrix}a\\b\end{pmatrix}\begin{pmatrix}a &b\end{pmatrix} +
-    \beta \begin{pmatrix} c\\d \end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}
-    \end{array}
+\[
+	\begin{array}{lll}
+		\bm{A\Psi A}' & = & \begin{pmatrix} a & c\\ b & d \end{pmatrix}\begin{pmatrix}\alpha & 0\\ 0&\beta \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix} \\
+		              &   &                                                                                                                                        \\
+		              & = & \begin{pmatrix} \alpha a & \beta c \\ \alpha b & \beta d \end{pmatrix}
+		\begin{pmatrix}a & b\\ c & d \end{pmatrix}                                                                                                                 \\
+		              &   &                                                                                                                                        \\
+		              & = & \begin{pmatrix} \alpha aa + \beta cc & \alpha ab + \beta cd \\
+                \alpha ab + \beta cd & \alpha bb + \beta dd\end{pmatrix}                                                                            \\
+		              &                                                                                                                                            \\
+		              & = & \alpha \begin{pmatrix} aa & ab\\ ab & bb \end{pmatrix} +
+		\beta \begin{pmatrix}cc & cd \\ cd & dd \end{pmatrix}                                                                                                      \\
+		              &                                                                                                                                            \\
+		              & = & \alpha \begin{pmatrix}a\\b\end{pmatrix}\begin{pmatrix}a &b\end{pmatrix} +
+		\beta \begin{pmatrix} c\\d \end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}
+	\end{array}
 \]
 
 と，このようにスカラーとベクトルの積和の形に書き換えられるのですね\footnote{ただし，この計算が可能なのは分解する元の行列が実対称行列だからです。実対称行列は固有値と固有ベクトルで対角化可能であることが証明できます。実対称行列の固有値は全て十数ですし，固有値が全て実数であれば適当な直交行列をつかって対角化でき，実対称行列の固有ベクトルは互いに独立するのでこれらを使って直交行列を作ることができるからです。これらの性質は線形代数のテキストなどの証明を参照してください。また，計算プロセスからもわかるように，同じ要素を持つ列ベクトルと行ベクトルの積ですから，結果は対称になってしまうからです。}。
 
 さて，これらをまとめて考えると，
-\begin{enumerate}   
-    \item 固有値分解は行列を列ベクトルとその転置ベクトルの積の形に分解する。
-    \item 固有値の総和は元の行列の対角要素の総和である。
-    \item 元の行列の対角要素は各項目の分散を表している。
+\begin{enumerate}
+	\item 固有値分解は行列を列ベクトルとその転置ベクトルの積の形に分解する。
+	\item 固有値の総和は元の行列の対角要素の総和である。
+	\item 元の行列の対角要素は各項目の分散を表している。
 \end{enumerate}
 ということですから，固有ベクトルは全体の情報量をそのままに重要度の大きさに並べ替えたもの，固有値分解は行列をその要素の重要度ごとに分解していくことである，といえます。
 これこそ\keytermL{因子分析}{いんしぶんせき}で取り出そうとしている因子であり，固有値の大きさはその因子の重要度として，共通次元の判別(どこまで共通次元とみなすか)に使われるのです。
@@ -245,7 +245,7 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 
 ある正方行列から固有値$\lambda$と固有ベクトル$\bm{a}$が得られたとします。このベクトル$\bm{a}$のすべての要素を定数$c$倍したベクトル$\bm{b}=c\bm{a}$を考えると，これもやはり同じ関係が成り立ちます。
 \begin{equation}
-    \bm{A}\bm{b}=  \lambda c \bm{a} =\lambda \bm{b}
+	\bm{A}\bm{b}=  \lambda c \bm{a} =\lambda \bm{b}
 \end{equation}
 先ほどの計算でも明らかになりましたが，固有ベクトルの値は絶対的なものではなく，要素間の相対的大きさを反映しているに過ぎないのでしたね。
 
@@ -253,40 +253,40 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 
 固有値と固有ベクトルの話の最初にあった，$\bm{Ax}=\lambda\bm{x}$というのを見直してみましょう。$\bm{x}$がなんらかの座標を表していると考えると，それに正方行列をかけるとはどういう意味でしょうか。次の計算式を見てください。
 \begin{equation}
-    \bm{Ax}=
-    \begin{pmatrix}
-        2 & 0 \\
-        0 & 3
-    \end{pmatrix}
-    \begin{pmatrix}
-        1 \\
-        2
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        2 \\
-        6
-    \end{pmatrix}
+	\bm{Ax}=
+	\begin{pmatrix}
+		2 & 0 \\
+		0 & 3
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\
+		2
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		2 \\
+		6
+	\end{pmatrix}
 \end{equation}
 
 これをみると，座標$\bm{x}=\begin{pmatrix}1\\2\end{pmatrix}$に$\bm{A}$をかけたことで，座標が$\begin{pmatrix}2\\6\end{pmatrix}$に変わった，と見ることもできますね。このように，ある座標が別の座標に移ることをとくに「変換」と呼びます\footnote{より一般的にいうと，以下のようになります。:集合$X$の各元$x$に集合$Y$の元$f(x)$を対応させる対応$f$のことを, 集合$X$から集合$Y$への写像(mapping)，関数(function)，あるいは変換(transformation)という。}。つまり\textbf{正方行列はなんらかの変換を施すもの}だ，と考えることができます。
 
 今回の例では，行列$\bm{A}$には次のような性質があります。
 \begin{equation}
-    \begin{pmatrix}
-        2 & 0 \\
-        0 & 3
-    \end{pmatrix}
-    \begin{pmatrix}
-        1 \\
-        0
-    \end{pmatrix}
-    = 2 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+	\begin{pmatrix}
+		2 & 0 \\
+		0 & 3
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\
+		0
+	\end{pmatrix}
+	= 2 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
 \end{equation}
 
 \begin{equation}
-    \begin{pmatrix} 2 & 0\\ 0 & 3 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
-    = 3 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+	\begin{pmatrix} 2 & 0\\ 0 & 3 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+	= 3 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
 \end{equation}
 
 そう，お気づきのように，これは固有値・固有ベクトルです。この行列の固有値・固有ベクトルはそれぞれ$\lambda_1=2,\bm{x}_1=(1,0)$，$\lambda_2=3,\bm{x}_2=(0,1)$であることがわかります。この固有値，固有ベクトルの組み合わせをじっとみていると，おもしろい特徴がわかって来ます。
@@ -307,7 +307,7 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 
 内容はまったく同じですが，確認しておきましょう。標準得点行列$\bm{Z}$を因子負荷行列$\bm{A}$と因子得点行列$\bm{F}$をつかって，次のように表します。
 \begin{equation}
-    \bm{Z} = \bm{F} \bm{A} ' + \bm{U} \bm{D}
+	\bm{Z} = \bm{F} \bm{A} ' + \bm{U} \bm{D}
 \end{equation}
 
 ここで，各行列の要素のサイズ感をつかんでおきましょう。まず$\bm{R}$というのは相関行列ですから，$m$個項目があるのでサイズは$m \times m$ の正方行列になります。次に$\bm{F}$ですが，これは因子得点の行列です。得点は人数分ありますから行は$n$，因子の数が列になるのでこれを$p$とすると$n\times p$です。$\bm{A}$は因子負荷行列。因子負荷行列は因子の数と項目の数の組み合わせだけあるわけですから，$m \times p$になりますね。$\bm{U}$は独自因子得点です。得点ですから人数分，独自性分は各項目にありますから，サイズとしては$n \times m$になります。最後に$\bm{D}$ですが，これは独自因子の負荷量です。項目の数だけあるのですが，列ベクトルや行ベクトルで表現すると計算の時にサイズが変わって不便なことになります。ですから，対角項に$d_j$をもつ正方行列$m \times m$として表現しています。
@@ -315,25 +315,25 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 サイズを確認したところで，実際に行列計算をしてみましょう。
 
 \begin{equation}
-    \begin{array}{lll}
-        \bm{R} & = & \frac{1}{n} \bm{Z}'\bm{Z}                                                                                                                                                      \\
-               &   & \hspace{8cm}\text{$\bm{Z}$を因子分析のモデル式にして}                                                                                                                                       \\
-               & = & \frac{1}{n}(\bm{F} \bm{A} ' + \bm{U} \bm{D})'(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                                 \\
-               &   & \hspace{8cm}\text{前の項の転置を中に入れます}                                                                                                                                               \\
-               & = & \frac{1}{n}\left \{ (\bm{F} \bm{A} ')'+(\bm{U} \bm{D})' \right \}(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                             \\
-               &   & \hspace{8cm}\text{転置のルールより}                                                                                                                                      \\
-               & = & \frac{1}{n}(\bm{A} \bm{F} ' + \bm{D}' \bm{U} ')(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                               \\
-               &   & \hspace{8cm}                                                                                                                                                                   \\
-               & = & \frac{1}{n}\bm{A} \bm{F}' \bm{F} \bm{A}' + \frac{1}{n} \bm{A} \bm{F}' \bm{U} \bm{D} + \frac{1}{n} \bm{D}' \bm{U} ' \bm{F} \bm{A} ' + \frac{1}{n} \bm{D}' \bm{U}' \bm{U} \bm{D} \\
-    \end{array}
+	\begin{array}{lll}
+		\bm{R} & = & \frac{1}{n} \bm{Z}'\bm{Z}                                                                                                                                                      \\
+		       &   & \hspace{8cm}\text{$\bm{Z}$を因子分析のモデル式にして}                                                                                                                                       \\
+		       & = & \frac{1}{n}(\bm{F} \bm{A} ' + \bm{U} \bm{D})'(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                                 \\
+		       &   & \hspace{8cm}\text{前の項の転置を中に入れます}                                                                                                                                               \\
+		       & = & \frac{1}{n}\left \{ (\bm{F} \bm{A} ')'+(\bm{U} \bm{D})' \right \}(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                             \\
+		       &   & \hspace{8cm}\text{転置のルールより}                                                                                                                                                    \\
+		       & = & \frac{1}{n}(\bm{A} \bm{F} ' + \bm{D}' \bm{U} ')(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                               \\
+		       &   & \hspace{8cm}                                                                                                                                                                   \\
+		       & = & \frac{1}{n}\bm{A} \bm{F}' \bm{F} \bm{A}' + \frac{1}{n} \bm{A} \bm{F}' \bm{U} \bm{D} + \frac{1}{n} \bm{D}' \bm{U} ' \bm{F} \bm{A} ' + \frac{1}{n} \bm{D}' \bm{U}' \bm{U} \bm{D} \\
+	\end{array}
 \end{equation}
 と，このように展開できました。記号を見ているとわかりにくいので，サイズ感を確認しましょう。最終的には，次のようになっています。
 \[
-    \underset{m \times m}{\bm{R}} =
-    \frac{1}{n} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
-    \frac{1}{n} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}} +
-    \frac{1}{n} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
-    \frac{1}{n} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}}
+	\underset{m \times m}{\bm{R}} =
+	\frac{1}{n} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
+	\frac{1}{n} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}} +
+	\frac{1}{n} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
+	\frac{1}{n} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}}
 \]
 
 ここで，要素ごとに計算していた時のことを思い出してください。第二項$\frac{1}{n} \bm{A} \bm{F}'\bm{U} \bm{D}'$と第三項$\bm{D}' \bm{U}' \bm{F} \bm{A}'$の中にある，$\bm{F}' \bm{U}$と$\bm{U}' \bm{F}$のところは，共通因子得点と独自因子得点の積ですし，いずれも標準化されていますから，$\frac{1}{n}$と合わせて考えると，これは相関係数を表していることになります。また，共通因子と独自因子は相関しませんので，これはイコール$\bm{0}$となり，この2つの項が消えてしまうのでした。
@@ -341,7 +341,7 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 また，第一項の$\frac{1}{n}\bm{F} ' \bm{F}$は，共通因子同士の相関を表しています。$\bm{F'F}=\bm{C}$とすると，これは因子得点間相関$\bm{C}$を表すことになります。これが直交であると仮定する，つまり他の因子と相関しないと考えると，$\bm{C} = \bm{I}$，つまり単位行列です。単位行列は計算に影響を与えませんから，$\bm{AF'FA'}=\bm{ACA'}=\bm{AIA'}=\bm{AA'}$となり，この式は簡単に次のように変形できます。
 
 \begin{equation}
-    \bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
+	\bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
 \end{equation}
 先ほどの代数的展開を，そのまま行列で表現しただけですが，この方がシンプルに表現できていますね。この表現は，因子分析の第一定理と第二定理の両方を含んで一度に表せているのです。
 
@@ -349,12 +349,12 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 \section{因子分析の数学的理解}
 さあ因子分析に戻って考えてみましょう。因子分析のモデルは次のようなものでした。
 \begin{equation}
-    \bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
+	\bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
 \end{equation}
 
 ここで，左辺の正方行列を相関行列$\bm{R}$とし，$\lambda \bm{xx'} = \bm{aa'}$となるようにベクトルの大きさを整えてみましょう。これは$\lambda$を分解してベクトルの中に溶け込ませるようなものですから，$\bm{a} = \sqrt{\lambda}\bm{x}$とすればよいでしょう。すると相関行列は次のように分解できます。
 \begin{equation}
-    \bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
+	\bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
 \end{equation}
 
 ここでは共通因子の数が$m$個だとわかっている体で分解していますが，基本的にはサイズ$N$の行列からは$N$個の固有値がずらーっと並ぶわけです。それをどこかで「共通しているのはここまで」と判断し，残りは誤差であるとしてまとめて$\bm{dd'}$にしているだけですね。このように数学的にはここからが共通因子，ここからが独自因子といった区別をすることなく，最後のひとかけらまで固有値分解を行なっているのですが，その次元の重要度でもって共通因子と誤差因子に(研究者が恣意的に)分割しているのが因子分析のやっていることなのです。
@@ -366,12 +366,12 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 ところで因子分析モデルの$\bm{A}$，因子負荷行列ですが，これは共通因子の固有ベクトルをセットで扱ったものです。つまり，$\bm{A} = \begin{pmatrix}\bm{a}_1 & \bm{a}_2 & \cdots& \bm{a}_m \end{pmatrix}$と縦ベクトルを並べたものになっています。エレメントワイズで表現すると次のようになります。
 
 \[
-    \bm{A} = \left (
-    \begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1N} \end{pmatrix},
-    \begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2N} \end{pmatrix},
-    \cdots,
-    \begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots\\ a_{mN} \end{pmatrix}
-    \right )
+	\bm{A} = \left (
+	\begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1N} \end{pmatrix},
+	\begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2N} \end{pmatrix},
+	\cdots,
+	\begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots\\ a_{mN} \end{pmatrix}
+	\right )
 \]
 
 ここで$\bm{AA'}$の間に単位行列$\bm{I}$ を挟んでも，別に結果は変わりませんよね。単位行列はかけても変わらないのが特徴ですから，$\bm{AA'}=\bm{AIA}$です。ここでの$\bm{I}$のサイズは$m \times m$であることに注意しつつ聞いてください。

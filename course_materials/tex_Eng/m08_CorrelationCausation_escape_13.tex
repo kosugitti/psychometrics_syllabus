@@ -1,16 +1,16 @@
 \begin{figure}[ht]
-    \centering
-    \begin{tikzpicture}
-        \node[draw, circle,fill=blue!20] (A) at (10,0) {Violent Images};
-        \node[draw, circle, right=2cm of A,fill=blue!20] (B) {Violent Behavior};
-        \node[draw, circle, left=2cm of A] (C) {Educational Policy};
-        \node[draw, circle, below left=15pt and 11pt of B] (D) {Personality Variables};
-        \draw[thick,->] (A) to (B);
-        \draw[out=45,in=135,dashed,<-] (A) to (B);
-        \draw[dashed,->] (C) to (A);
-        \draw[dashed,->] (D) to (A);
-        \draw[dashed,->] (D) to (B);
-    \end{tikzpicture}
-    \caption{It is difficult to identify causation. Make sure there are no dotted paths.}
-    \label{fig::m08_causal}
+	\centering
+	\begin{tikzpicture}
+		\node[draw, circle,fill=blue!20] (A) at (10,0) {Violent Images};
+		\node[draw, circle, right=2cm of A,fill=blue!20] (B) {Violent Behavior};
+		\node[draw, circle, left=2cm of A] (C) {Educational Policy};
+		\node[draw, circle, below left=15pt and 11pt of B] (D) {Personality Variables};
+		\draw[thick,->] (A) to (B);
+		\draw[out=45,in=135,dashed,<-] (A) to (B);
+		\draw[dashed,->] (C) to (A);
+		\draw[dashed,->] (D) to (A);
+		\draw[dashed,->] (D) to (B);
+	\end{tikzpicture}
+	\caption{It is difficult to identify causation. Make sure there are no dotted paths.}
+	\label{fig::m08_causal}
 \end{figure}

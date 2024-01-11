@@ -1,0 +1,183 @@
+
+
+\paragraph{連立方程式を解く}次の連立方程式を解きなさい。
+\[
+    \left\{\begin{array}{rr}x-2 y+3 z= & 1 \\ 3 x+y-5 z= & -4 \\ -2 x+6 y-9 z= & -2\end{array}\right.
+\]
+
+
+\paragraph{逆行列}
+最後に\keytermL{逆行列}{ぎゃくぎょうれつ}のお話をします。逆行列は割り算のイメージです。ある行列にその逆行列をかけると単位行列になる，つまり割ると1になるような行列のことです。
+
+正確に表現すると，ある正方行列$\bm{A}$に対し，$\bm{A}\bm{X}=\bm{I}$となるような行列$\bm{X}$が存在するとき，これを$\bm{A}$の\keyterm{逆行列}{ぎゃくぎょうれつ}{inverse}と呼び，$\bm{A}^{-1}$で表します。正方行列でない場合に逆行列はありませんし，正方行列であっても逆行列が存在しない場合もあります。逆行列の例をみてみましょう。
+$\bm{A}=\begin{pmatrix}2&1\\5&3\end{pmatrix}$とすると，次の計算が成り立ちます。
+\begin{equation*}
+    \bm{AB}=\begin{pmatrix}2&1\\5&3\end{pmatrix}\begin{pmatrix}3&-1\\-5&2\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}
+\end{equation*}
+このとき$\bm{B}$は$\bm{A}$の逆行列，すなわち$\bm{A}^{-1}=\bm{B}$といえます。
+
+とくに対角行列の逆行列は，対角成分の逆数をそれぞれ対角成分とする行列になります。
+\begin{equation*}
+    \bm{D} = \begin{pmatrix} d_1    & 0      & \cdots & 0      \\
+                0      & d_2    & \cdots & 0      \\
+                \vdots & \vdots & \ddots & \vdots \\
+                0      & 0      & \cdots & d_n\end{pmatrix}
+    \mbox{のとき，}
+    \bm{D}^{-1} = \begin{pmatrix} \frac{1}{d_1} & 0             & \cdots & 0             \\
+                0             & \frac{1}{d_2} & \cdots & 0             \\
+                \vdots        & \vdots        & \ddots & \vdots        \\
+                0             & 0             & \cdots & \frac{1}{d_n}\end{pmatrix}
+\end{equation*}
+
+逆行列は，行列の世界の割り算のようなものです。これでひととおり四則演算の定義ができました。
+
+\section{行列を使うと便利なこと}
+\label{MatrixAndEauqtion}
+さて，ここまでで行列の計算の話をして来ましたが，どこが良いのかいまいちピンとこない，という人もいるかもしれません。そこで最後にどうしてこのような計算をするのか，何が良いのかを説明してみたいと思います。
+
+さらにこの方法を改良した，ガウス−ジョルダンの消去法というものがあります。この手法による係数の変化を，行列表記で見ていくことにします。
+
+まず第一段目は同じです。
+\[
+    \begin{pmatrix} 1 & -2 & -5  \\
+                0 & 1  & 2   \\
+                0 & -7 & -12\end{pmatrix}
+    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
+    =
+    \begin{pmatrix} 3 \\ -1 \\ 3 \end{pmatrix}
+\]
+次に，第二の方程式を用いて第一と第三の式から$y$の係数を消してしまいます。
+\[
+    \begin{pmatrix} 1 & 0 & -1 \\
+                0 & 1 & 2  \\
+                0 & 0 & -2\end{pmatrix}
+    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
+    =
+    \begin{pmatrix} 1 \\ -1 \\ 4 \end{pmatrix}
+\]
+最後に，第三の式の$z$の係数を1にして，第一，第二式の$z$の係数を消してしまいましょう。
+\[
+    \begin{pmatrix} 1 & 0 & 0 \\
+                0 & 1 & 0 \\
+                0 & 0 & 1\end{pmatrix}
+    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
+    =
+    \begin{pmatrix} -1 \\ 3 \\ -2 \end{pmatrix}
+\]
+
+最後の形を見ると，左辺は単位行列になっていますから，
+\[
+    \begin{pmatrix}
+        x \\
+        y \\
+        z
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        -1 \\
+        3  \\
+        -2
+    \end{pmatrix}
+\]
+と解が求められたことがわかります。
+ここで注目すべきは，連立方程式の解を求めるプロセスは係数行列を単位行列に変えていくプロセスだった，ということです。係数行列が単位行列になれば，それはもう答えを出したことになるのです。
+
+さて，係数行列を$\bm{A}$とすると，その逆行列$\bm{A}^{-1}$があれば$\bm{A}^{-1}\bm{A} = \bm{I}$となるのでした。であれば，連立方程式の右辺にあったベクトルに$\bm{A}^{-1}$をかけてやれば，一気に答えが求まるではないですか。
+
+実際に見て見ましょう。
+\[
+    \begin{pmatrix} 1 & -2 & -5 \\
+                5 & 4  & 3  \\
+                3 & 1  & -3\end{pmatrix}
+    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
+    =
+    \begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
+\]
+この連立方程式に対して，次のような操作をします。
+\[
+    \begin{pmatrix} 1 & -2 & -5 \\
+                5 & 4  & 3  \\
+                3 & 1  & -3\end{pmatrix}^{-1}
+    \begin{pmatrix} 1 & -2 & -5 \\
+                5 & 4  & 3  \\
+                3 & 1  & -3\end{pmatrix}
+    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
+    =
+    \begin{pmatrix} 1 & -2 & -5 \\
+                5 & 4  & 3  \\
+                3 & 1  & -3\end{pmatrix}^{-1}
+    \begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
+\]
+
+とします\footnote{数値的には
+$\begin{pmatrix} 1 & -2 & -5 \\
+                5 & 4  & 3  \\
+                3 & 1  & -3\end{pmatrix}^{-1}
+    =
+    \begin{pmatrix} 15/28 & 11/28 & -1/2 \\
+                -6/7  & -3/7  & 1    \\
+                1/4   & 1/4   & -1/2\end{pmatrix}
+$
+という行列です}。すると左辺は単位行列になりますから，次のように計算すれば一気に答えが求まることになるのです。
+\[
+    \begin{pmatrix} 1 & 0 & 0 \\
+                0 & 1 & 0 \\
+                0 & 0 & 1\end{pmatrix}
+    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
+    =
+    \begin{pmatrix} -1 \\ 3 \\ -2 \end{pmatrix}
+\]
+つまり，連立方程式を解くという問題が，係数行列の逆行列を求める問題になります。また，逆行列は存在しないこともある，ということでしたが，その場合その連立方程式は解けない，ということになります。
+
+
+
+
+\section{ 因子分析モデルの行列表現}
+ということで，因子分析モデルの代数的表現ですが，これも行列を使って表現すると非常にシンプルに表現できるということを説明していきましょう。
+
+内容はまったく同じですが，確認しておきましょう。標準得点行列$\bm{Z}$を因子負荷行列$\bm{A}$と因子得点行列$\bm{F}$をつかって，次のように表します。
+\begin{equation}
+    \bm{Z} = \bm{F} \bm{A} ' + \bm{U} \bm{D}
+\end{equation}
+
+ここで，各行列の要素のサイズ感をつかんでおきましょう。まず$\bm{R}$というのは相関行列ですから，$m$個項目があるのでサイズは$m \times m$ の正方行列になります。次に$\bm{F}$ですが，これは因子得点の行列です。得点は人数分ありますから行は$n$，因子の数が列になるのでこれを$p$とすると$n\times p$です。$\bm{A}$は因子負荷行列。因子負荷行列は因子の数と項目の数の組み合わせだけあるわけですから，$m \times p$になりますね。$\bm{U}$は独自因子得点です。得点ですから人数分，独自性分は各項目にありますから，サイズとしては$n \times m$になります。最後に$\bm{D}$ですが，これは独自因子の負荷量です。項目の数だけあるのですが，列ベクトルや行ベクトルで表現すると計算の時にサイズが変わって不便なことになります。ですから，対角項に$d_j$をもつ正方行列$m \times m$として表現しています。
+
+サイズを確認したところで，実際に行列計算をしてみましょう。
+
+\begin{equation}
+    \begin{array}{lll}
+        \bm{R} & = & \frac{1}{N} \bm{Z}'\bm{Z}                                                                                                                                                      \\
+               &   & \hspace{8cm}\text{$\bm{Z}$を因子分析のモデル式にして}                                                                                                                                       \\
+               & = & \frac{1}{N}(\bm{F} \bm{A} ' + \bm{U} \bm{D})'(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                                 \\
+               &   & \hspace{8cm}\text{前の項の転置を中に入れます}                                                                                                                                               \\
+               & = & \frac{1}{N}\left \{ (\bm{F} \bm{A} ')'+(\bm{U} \bm{D})' \right \}(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                             \\
+               &   & \hspace{8cm}\text{転置のカッコを外すときは順番を入れ替えて転置}                                                                                                                                      \\
+               & = & \frac{1}{N}(\bm{A} \bm{F} ' + \bm{D}' \bm{U} ')(\bm{F} \bm{A} ' + \bm{U} \bm{D})                                                                                               \\
+               &   & \hspace{8cm}                                                                                                                                                                   \\
+               & = & \frac{1}{N}\bm{A} \bm{F}' \bm{F} \bm{A}' + \frac{1}{N} \bm{A} \bm{F}' \bm{U} \bm{D} + \frac{1}{N} \bm{D}' \bm{U} ' \bm{F} \bm{A} ' + \frac{1}{N} \bm{D}' \bm{U}' \bm{U} \bm{D} \\
+    \end{array}
+\end{equation}
+と，このように展開できました。記号を見ているとわかりにくいので，サイズ感を確認しましょう。最終的には，次のようになっています。
+\[
+    \underset{m \times m}{\bm{R}} =
+    \frac{1}{N} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
+    \frac{1}{N} \underset{m \times p}{\bm{A}} \underset{p \times n}{\bm{F}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}} +
+    \frac{1}{N} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times p}{\bm{F}} \underset{p \times m}{\bm{A}'} +
+    \frac{1}{N} \underset{m \times m}{\bm{D}'} \underset{m \times n}{\bm{U}'} \underset{n \times m}{\bm{U}} \underset{m \times m}{\bm{D}}
+\]
+
+ここで，要素ごとに計算していた時のことを思い出してください。第二項$\frac{1}{N} \bm{A} \bm{F}'\bm{U} \bm{D}'$と第三項$\bm{D}' \bm{U}' \bm{F} \bm{A}'$の中にある，$\bm{F}' \bm{U}$と$\bm{U}' \bm{F}$のところは，共通因子得点と独自因子得点の積ですし，いずれも標準化されていますから，$\frac{1}{N}$と合わせて考えると，これは相関係数を表していることになります。また，共通因子と独自因子は相関しませんので，これはイコール$\bm{0}$となり，この2つの項が消えてしまうのでした。
+
+また，第一項の$\frac{1}{N}\bm{F} ' \bm{F}$は，共通因子同士の相関を表しています。$\bm{F'F}=\bm{C}$とすると，これは因子得点間相関$\bm{C}$を表すことになります。これが直交であると仮定する，つまり他の因子と相関しないと考えると，$\bm{C} = \bm{I}$，つまり単位行列です。単位行列は計算に影響を与えませんから，$\bm{AF'FA'}=\bm{ACA'}=\bm{AIA'}=\bm{AA'}$となり，この式は簡単に次のように変形できます。
+
+\begin{equation}
+    \bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
+\end{equation}
+先ほどの代数的展開を，そのまま行列で表現しただけですが，この方がシンプルに表現できていますね。この表現は，因子分析の第一定理と第二定理の両方を含んで一度に表せているのです。
+
+いかがでしょうか。行列表現の便利さがわかっていただければ，と思います。しかしこれでもまだ謎は残りますね。我々が追っている謎は，行列からどのようにして因子負荷量を計算するのか，です。それを知るためには，もう1つ線形代数から明らかになる特徴を知らなければなりません。次回をどうぞお楽しみに。
+\section{課題}
+\paragraph{行列計算を確認しておこう}$ \bm{V} = ( \bm{I} -\frac{1}{n}\bm{1} \bm{1} ')\bm{X} $の要素を書き下してみよう。平均偏差行列ができているでしょうか。
+\paragraph{行列計算を確認しておこう2}$ \bm{S},\bm{Z},\bm{R}$も，面倒でも要素レベルまで書き下してみよう。
+\paragraph{行列計算を確認しておこう3}因子分析モデルの行列計算の結果出てくる，$\bm{R} = \bm{A} \bm{A} ' + \bm{D}^2$の要素を確認し，エレメントワイズで表現していた式との対応を確認しよう。
+

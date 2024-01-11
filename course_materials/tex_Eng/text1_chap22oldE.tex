@@ -24,7 +24,7 @@ Okay, let's talk from the perspective of the null hypothesis testing framework a
 Well, when the result of the analysis of variance has been judged to be "significant", that is, the null hypothesis has been rejected and the alternative hypothesis has been accepted, which of the alternative hypotheses is being validated? Actually, we don't know. We only know that it's not the null hypothesis.
 
 % じゃあどうするか。簡単に思いつくのは，上のいくつかの対立仮説サブモデルを，虱潰しに検証していくことです。すなわち，1群と2群，1群と3群，2群と3群というペアにして，対応のない$t$検定を3回やれば良いのでは，と考える方もいるでしょう。水準数が4つになると1-2,1-3,1-4,2-3,2-4,3-4の6ペア，5つになると1-2,1-3,1-4,1-5,2-3,2-4,2-5,3-4,3-5,4-5の10ペア・・・と水準数が増えれば手間は増えますが，なぁに機械が計算してくれるんだから努力で勝負！というところですね。
-So what do we do? 
+So what do we do?
 An easy idea that comes to mind is to verify the competing hypothesis sub-models one by one. In other words, some might think it would be good to conduct an independent t-test three times, with pairs such as Group 1 and Group 2, Group 1 and Group 3, and Group 2 and Group 3.
 As the number of levels increases to four, we have 1-2, 1-3, 1-4, 2-3, 2-4, 3-4 pairs. When it becomes five, there are 1-2, 1-3, 1-4, 1-5, 2-3, 2-4, 2-5, 3-4, 3-5, 4-5 pairs... The more levels increase, the more work it takes. But hey, the machine does the calculation for us, so it's all about putting in the effort!
 

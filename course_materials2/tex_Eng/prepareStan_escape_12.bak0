@@ -1,0 +1,3 @@
+\begin{lstlisting}[language=C++,label={code:PRE_04},caption={cmdstanrの出力をrstanのオブジェクトに変える}]
+fitR2 <- fitC$output_files() |> rstan::read_stan_csv() 
+\end{lstlisting}

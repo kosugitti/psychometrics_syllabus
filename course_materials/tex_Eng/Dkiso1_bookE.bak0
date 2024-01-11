@@ -1,0 +1,111 @@
+\documentclass{ltjsbook}
+\usepackage{../../myStyle}
+%% バッチ処理をするので\lheadは必ず4行目にあること
+\lhead{version 2.0.35}
+\usepackage{docmute}
+\begin{document}
+\includepdf[noautoscale=false,pages=-]{../images/cover1.pdf}
+\VerbatimFootnotes
+\input{../../common_contents/copyright} % copyright page
+% \title{心理学データ解析基礎}
+\title{Basics of Psychological Data Analysis}
+% \author{小杉　考司}
+\author{Koji Kosugi}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+
+
+\input{preface1E} % preface
+
+\tableofcontents
+
+% 行番号開始
+\linenumbers
+% 各章
+% \part{心理学データ解析基礎1A(心理学統計法)}
+\part{Fundamentals of Psychological Data Analysis 1A (Statistical methods in Psychology)}
+\include{m01_introductionE}
+\include{m02_NumbersE}
+\include{m03_introRE}
+\include{m04_usingRE}
+\include{m05_descriptivesE}
+\include{m06_cttE}
+\include{m07_probabilityE}
+\include{m08_CorrelationCausationE}
+\include{m09_RegressionE}
+\include{m10_MultipleRegressionE}
+\include{m11_Regression_onRE}
+\include{m12_design1E}
+\include{m13_design2E}
+\include{m14_design3E}
+\include{m15_FirstSemesterE}
+% \part{心理学データ解析基礎1B}
+\part{Basic Psychological Data Analysis 1B}
+\include{m16_inferenceE}
+\include{m17_estimation_and_testE}
+\include{m18_NHSTE}
+\include{m19_NHST2E}
+\include{m20_ttestE}
+\include{m21_anovaE}
+\include{m22_anova_onRE}
+\include{m23_likelihoodE}
+\include{m24_maximum_likelihoodE}
+\include{m25_bayesianE}
+\include{m26_bayesian2E}
+\include{m27_bayesian3E}
+\include{m28_jaspE}
+\include{m29_brmsE}
+\include{m30_SecondSemesterE}
+
+% 行番号終了
+\appendix
+\input{../../common_contents/Computer}
+\input{../../common_contents/FAQ} % FAQ page
+\input{../../common_contents/Greeks}
+\input{../../common_contents/keyboards}
+% % \chapter{本講義に対応する詳細シラバス}
+% \chapter{Detailed Syllabus Corresponding to this Lecture}
+% \input{../../syllabus/s01_Introduction}
+% \input{../../syllabus/s02_Numbers}
+% \input{../../syllabus/s03_introR}
+% \input{../../syllabus/s04_usingR}
+% \input{../../syllabus/s05_descriptives}
+% \input{../../syllabus/s06_ctt}
+% \input{../../syllabus/s07_probability}
+% \input{../../syllabus/s08_CorrelationCausation}
+% \input{../../syllabus/s09_Regression}
+% \input{../../syllabus/s10_MultipleRegression}
+% \input{../../syllabus/s11_Regression_onR}
+% \input{../../syllabus/s12_design1}
+% \input{../../syllabus/s13_design2}
+% \input{../../syllabus/s14_design3}
+% \input{../../syllabus/s15_FirstSemester}
+% \input{../../syllabus/s16_inference}
+% \input{../../syllabus/s17_estimation_and_test}
+% \input{../../syllabus/s18_NHST}
+% \input{../../syllabus/s19_NHST2}
+% \input{../../syllabus/s20_ttest}
+% \input{../../syllabus/s21_anova}
+% \input{../../syllabus/s22_anova_onR}
+% \input{../../syllabus/s23_likelihood}
+% \input{../../syllabus/s24_maximum_likelihood}
+% \input{../../syllabus/s25_bayesian}
+% \input{../../syllabus/s26_bayesian2}
+% \input{../../syllabus/s27_bayesian3}
+% \input{../../syllabus/s28_jasp}
+% \input{../../syllabus/s29_brms}
+% \input{../../syllabus/s30_SecondSemester}
+\nolinenumbers
+
+% \addcontentsline{toc}{chapter}{引用文献}
+\addcontentsline{toc}{chapter}{References}
+% 引用文献
+% \bibliographystyle{../../jecon_jpa}
+% \bibliography{../../sbib}
+% 索引
+% \addcontentsline{toc}{chapter}{索引}
+\addcontentsline{toc}{chapter}{Index}
+
+\printindex
+\end{document}

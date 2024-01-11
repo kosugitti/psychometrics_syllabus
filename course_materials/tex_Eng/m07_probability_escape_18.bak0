@@ -1,0 +1,12 @@
+\begin{Rscreen}{Output example of functions related to probability}{out08_01}
+    \begin{verbatim}
+> dnorm(x = 0, mean = 0, sd = 1)
+[1] 0.3989423
+> pnorm(q = 1.0, mean = 0, sd = 1)
+[1] 0.8413447
+> qnorm(p = 0.841, mean = 0, sd = 1)
+[1] 0.9985763
+> rnorm(n = 10, mean = 0, sd = 1)
+[1] -1.00458071 -1.16956265  0.59980728 -0.07192335  0.66660905 -0.10629118 -0.94452719 -0.04108743  2.39762300 -0.10580504
+\end{verbatim}
+\end{Rscreen}

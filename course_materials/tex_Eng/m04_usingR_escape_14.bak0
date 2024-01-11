@@ -1,0 +1,20 @@
+\begin{Rscreen}{filter関数の出力結果}{usingR_filter}
+    \begin{verbatim}
+> dat %>% filter(Year == "2020年度")
+# A tibble: 664 × 17
+   Year     Name    team  salary bloodType height weight UniformNum position
+   <chr>    <chr>   <chr>  <dbl> <chr>      <dbl>  <dbl> <chr>      <chr>   
+ 1 2020年度 菊池　… Carp   30000 A型          171     72 33         内野手  
+ 2 2020年度 鈴木　… Carp   28000 A型          181     98 1          外野手  
+ 3 2020年度 Ｋ．ジ… Carp   27250 不明         193     95 42         投手    
+ 4 2020年度 會澤　… Carp   18000 B型          177     91 27         捕手    
+ 5 2020年度 大瀬良… Carp   17500 AB型         187     95 14         投手    
+ 6 2020年度 長野　… Carp   17000 O型          180     85 5          外野手  
+ 7 2020年度 田中　… Carp   15000 A型          171     84 2          内野手  
+ 8 2020年度 中﨑　… Carp   14500 B型          186     99 21         投手    
+ 9 2020年度 野村　… Carp   12000 AB型         177     89 19         投手    
+10 2020年度 松山　… Carp    8500 B型          176     96 55         外野手  
+# … with 654 more rows, and 8 more variables: Games <dbl>, AtBats <dbl>,
+#   Hit <dbl>, HR <dbl>, Win <dbl>, Lose <dbl>, Save <dbl>, Hold <dbl>
+\end{verbatim}
+\end{Rscreen}

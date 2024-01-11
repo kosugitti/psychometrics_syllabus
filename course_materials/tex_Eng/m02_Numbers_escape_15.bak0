@@ -1,0 +1,48 @@
+\begin{lstlisting}[language=c++,label={code:03_01},caption={ggplot2による描画コード}]
+# 散布図
+g1 <- ggplot(sample, aes(x = height, y = weight, 
+			colour = team, fill = team)) +
+  			geom_point()
+
+# ボックスプロット
+g2 <- sample %>%
+  select(position, height) %>%
+  na.omit() %>%
+  ggplot(aes(x = position, y = height, fill = position)) +
+  geom_boxplot()
+
+# バイオリンプロット
+g3 <- sample %>%
+  select(position, height) %>%
+  na.omit() %>%
+  ggplot(aes(x = position, y = height, fill = position)) +
+  geom_violin(alpha = 0.7) +
+  geom_jitter(alpha = 0.3)
+
+# バープロット
+g4 <- sample %>%
+  select(height, position) %>%
+  na.omit() %>%
+  group_by(position) %>%
+  summarise(mean = mean(height), sd = sd(height)) %>%
+  ggplot(aes(x = position, y = mean, fill = position)) +
+  geom_bar(stat = "identity", alpha = 0.7) +
+  ylim(0, 200) +
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = .5)
+  
+# ヒストグラム
+g5 <- sample %>% ggplot(aes(x = height)) +
+  geom_histogram(binwidth = 1)
+
+g6 <- ggplot(sample, aes(x = height, y = weight, 
+            colour = team, fill = team, shape = position)) +
+  geom_point() +
+  xlab("height") +
+  ylab("weight") +
+  facet_wrap(~team)
+
+# 折れ線グラフ
+g7 <- weight %>% ggplot(aes(x = date, y = weight)) +
+  geom_point() +
+  geom_line()
+\end{lstlisting}

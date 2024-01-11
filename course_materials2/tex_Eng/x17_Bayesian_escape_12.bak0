@@ -1,0 +1,6 @@
+\begin{lstlisting}[language=c++,label={code:17_05},caption={確率分布の可視化2}]
+N <- 1000
+X <- rnorm(N, mean = 0, sd = 1) %>% as.data.frame()
+ggplot(data = X, aes(x = .)) +
+  geom_histogram()
+\end{lstlisting}

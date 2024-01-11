@@ -146,9 +146,9 @@ Table \ref{tbl:x15_distance} extracts only Mole riders and Lunge ties as a pair 
 \paragraph{Code Explanation}
 \input{x15_MDS_escape_09}
 %     \item[12行目] 変数として一列目に演者名が入っていますが，これを行列の行名に入れています。\verb|matrix|型は行名・列名をデータの外に持つのです。
-    \item[Line 12] The performer's name is in the first column as a variable, which is then put into the matrix row name. The \verb|matrix| type has row and column names outside of the data.
+\item[Line 12] The performer's name is in the first column as a variable, which is then put into the matrix row name. The \verb|matrix| type has row and column names outside of the data.
 %     \item[13-14行目] 変数としての演者名を除いて，パイプで\verb|dist|関数に入れ，距離行列を作っています。
-    Lines 13-14: Except for the performer name as a variable, we are creating a distance matrix by inputting it into the \verb|dist| function via pipe.
+Lines 13-14: Except for the performer name as a variable, we are creating a distance matrix by inputting it into the \verb|dist| function via pipe.
 \end{description}
 % できた距離行列は，表\ref{tbl:x15_distMat}のようになっています。モグライダーとランジャタイの距離が，先ほどの例で計算した値と一致していることを確認してください。またこれは\keytermL{正方対称行列}{せいほうたいしょうぎょうれつ}ですから下三角だけ表示しておいます。また，対角が$0$になっています。自分自身との距離はゼロだからです。
 The resulting distance matrix is as shown in Table \ref{tbl:x15_distMat}. Please confirm that the distance between the Mole Rider and the Langjatai matches the value we calculated earlier. Since this is a \keytermL{symmetric matrix}{せいほうたいしょうぎょうれつ}, only the lower triangle is displayed. Also, the diagonal is set to $0$. This is because the distance to oneself is zero.
@@ -163,37 +163,37 @@ All that's left is to pass this distance matrix to the \verb|isoMDS| function. T
 これを目安に，次元数を1から7まで変化させながら，Stress値がどうなるかを表したのが図\ref{fig::15_02}になります\footnote{どうして7までか，というと評定者が7名だからです。7名それぞれの評価次元があると考えると，この距離空間の中には最大7次元あるはずですから。あるいは10組の演者がいますから，組み合わせの自由度から考えて9次元まで試してもいいと思います。}。
 
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/15_MDS/Rplot15_02.png}
-        \caption{Stress値の減衰}
-        \label{fig::15_02}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/15_MDS/Rplot15_02.png}
+		\caption{Stress値の減衰}
+		\label{fig::15_02}
+	\end{center}
 \end{figure}
 
 まるで因子分析の\keytermL{スクリープロット}{すくりーぷろっと}のようですね。横軸に次元数，縦軸にStress値を置いた折れ線グラフですが，当然のことながら反映させるMDS空間の次元数が増えるとデータとの距離が縮んでいきます。
 \citet{kruskal1964multidimensional}の基準によれば，Stress値は表\ref{tbl:x15_stress}のように評価できます。この基準でいくと，今回は2次元で4.9\%(0.0049534)ですから，2次元解でOKとしましょう。
 
 \begin{table}[ht]
-    \centering
-    \caption{Stress値の評価}
-    \begin{tabular}{cc}
-        Stress           & Goodness of Fit \\\hline
-        20\%             & poor            \\
-        10\%             & fair            \\
-        5\%              & good            \\
-        $2\frac{1}{2}$\% & excellent       \\
-        0\%              & ``perfect''     \\\hline
-    \end{tabular}
-    \label{tbl:x15_stress}
+	\centering
+	\caption{Stress値の評価}
+	\begin{tabular}{cc}
+		Stress           & Goodness of Fit \\\hline
+		20\%             & poor            \\
+		10\%             & fair            \\
+		5\%              & good            \\
+		$2\frac{1}{2}$\% & excellent       \\
+		0\%              & ``perfect''     \\\hline
+	\end{tabular}
+	\label{tbl:x15_stress}
 \end{table}
 
 演者をプロットしたのが図\ref{fig::15_03}です。東西南北というか，上下左右の軸に特に意味はありませんから，因子分析のように因子軸の解釈や命名をすることはありません。近くにプロットされた対象は評価が似ていたんだな，ということがわかりますし，相対的な位置関係から，「ハライチとももは芸風が真逆だな」とか「ロングコートダディは中心に近いから中庸的な笑い，悪く言えばキャラが立ってないんだな」といったことが読み取れます。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/15_MDS/Rplot15_03.png}
-        \caption{非計量MDSのプロット}
-        \label{fig::15_03}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/15_MDS/Rplot15_03.png}
+		\caption{非計量MDSのプロット}
+		\label{fig::15_03}
+	\end{center}
 \end{figure}
 この図\ref{fig::15_01}や図\ref{fig::15_03}のようにMDSで作られた座標のことを特に\keyterm{布置}{ふち}{configure}といいます。特に非計量MDSは優劣・大小関係という順序尺度水準の評定だけからでも，その空間的な特徴を描くことができますから，心理尺度のもつ仮定や測定モデルを考える必要がないため，今後その重要性が再発見されていくのではないかと思います。
 
@@ -223,11 +223,11 @@ In this method, we formulate the force $V(P)$ acting on each point P as follows.
 
 この方法で，先ほどのM-1プロットに，著者の評価をAbelson Mapの方法で描き加えてみましょう。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/15_MDS/Rplot15_05.png}
-        \caption{Abelson Mappingによるお笑い力の等高線図}
-        \label{fig::15_05}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/15_MDS/Rplot15_05.png}
+		\caption{Abelson Mappingによるお笑い力の等高線図}
+		\label{fig::15_05}
+	\end{center}
 \end{figure}
 図\ref{fig::15_05}の右にある，ランジャタイの周りにたくさんの線が引かれていますが，いわばこれは低気圧のようにここのパワーが弱い(と著者は思っている)ところになります。実は，真空ジェシカの左側に通っているラインが平均点のラインですから，ここを境に著者は「面白い」と「面白くない」を区分しているとも言えます。ハライチやオズワルドの周りにある等高線は山の高さ，パワーの強さを表しているラインですね。
 

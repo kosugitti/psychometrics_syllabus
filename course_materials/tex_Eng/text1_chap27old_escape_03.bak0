@@ -1,0 +1,19 @@
+\begin{lstlisting}[language=c++,label={code:27_03},caption={回帰分析をやってみる}]
+# データを入力
+koukou <- c(2.13,2.42,2.26,3.87,3.90,2.43,3.44,
+2.15,2.18,3.00,3.42,2.55,3.19,3.05,2.52)
+daigaku <- c(460,500,473,620,690,512,582,
+550,485,650,593,528,585,569,518)
+# データフレーム型に組み上げる
+seiseki <- data.frame(koukou,daigaku)
+
+# データは図にする
+ggplot(seiseki,aes(x = koukou, y = daigaku)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = F)
+
+# 線形モデルはlm関数。従属変数~説明変数の形で書く
+fit <- lm(daigaku ~ koukou, data = seiseki)
+# 結果をわかりやすく表示
+summary(fit)
+\end{lstlisting}

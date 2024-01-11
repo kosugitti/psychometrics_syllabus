@@ -134,7 +134,7 @@ Once the code starts running, I think the estimation will proceed smoothly. Howe
 \paragraph{Program Explanation}
 \input{x29_SSpace_escape_20}
 %    \item[関数の結果を受けとる] \verb|plot.tmp|は描画用の一時データオブジェクトです。ここに全期間のデータと，今回の状態推定値，欠損推定値を入れておきます。
-   \item [Receiving the results of the function] \verb|plot.tmp| is a temporary data object for drawing. Store all period data, current state estimation values, and missing estimation values in this object.
+\item [Receiving the results of the function] \verb|plot.tmp| is a temporary data object for drawing. Store all period data, current state estimation values, and missing estimation values in this object.
 %    \item[描画する] x軸は全日程です。まずは体重$W_j$を\verb|geom_point|と\verb|geom_errorbar|でプロットします。欠損の場合は推定値が入っています。次のポイントとエラーバーのgeomは，状態$\mu$のものになります。
 \item[Plotting] The x-axis corresponds to the entire schedule. First, the weight $W_j$ is plotted using \verb|geom_point| and \verb|geom_errorbar|. If missing, an estimated value will be used. The next geom of points and error bars will be those of the state $\mu$.
 
@@ -213,11 +213,11 @@ model{
 
 このコードと年末までのデータ，そしてプロット関数を使って推定した結果が次の図\ref{fig:29_08}になります。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/29_SSpace/Rplot29_05.png}
-      \caption{2階差分トレンドの予測}
-      \label{fig:29_08}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/29_SSpace/Rplot29_05.png}
+		\caption{2階差分トレンドの予測}
+		\label{fig:29_08}
+	\end{center}
 \end{figure}
 
 これを見ると，それまでの増加傾向を反映して，年末には84kg，最悪の場合86.6kgまで増えている可能性があることがわかります\footnote{なんてこった，まだ執筆中は答えが出ていませんが，この予測通りになったらとんでもないことですよ。だって私は20代66kgだったんです。あの頃から20kgも増えている自分の未来なんて想像したくないですよ。またダイエット始めるかなぁ。}\footnote{2021/01/15追記。2021/12/31,6:07AMの記録は82.3kg,体脂肪率26.6\%でした。ちゃんと確信区間の中に入ってますね！}。

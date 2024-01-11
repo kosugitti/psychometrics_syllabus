@@ -80,10 +80,10 @@ For example, let's say we have a single-factor, three-level between-groups desig
 
 これをベイズ推定して，それぞれの群の平均値が得られたとしましょう。結果を図\ref{fig::26_06}に，各群の平均値の推定結果とその95\%区間とともに示しました。この結果から「差があるかどうか」という意思決定をどのようにすれば良いでしょうか。
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/26_bayesian2/slide26_06.png}
-    \caption{ベイズ推定による推定結果}
-    \label{fig::26_06}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/26_bayesian2/slide26_06.png}
+	\caption{ベイズ推定による推定結果}
+	\label{fig::26_06}
 \end{figure}
 
 意思決定に際して，帰無仮説検定は「帰無仮説と対立仮説というモデル対決」に持ち込んでいき，5\%の判定ミスを許容した上で決断するのでした。どうしてこのような形になっているかというと，母平均はどこか一点にあって，われわれはそれを探っているから，究極的には推定が「あっているか間違っているか」の2択にしかならないからです。
@@ -96,8 +96,8 @@ That's all!これで終わりです。帰無仮説検定の場合は差があっ
 
 \[ \mbox{有意差} < \mbox{標準化された差(効果量)} < \mbox{実質的な差} \]
 
- の順に意味があるのです。データが実質的にどれぐらい違うのか，標準偏差いくつ分ぐらい違うのか，ということが大事なのであって，判断結果で有意差があるかどうかは大したことではありません。
- 
+の順に意味があるのです。データが実質的にどれぐらい違うのか，標準偏差いくつ分ぐらい違うのか，ということが大事なのであって，判断結果で有意差があるかどうかは大したことではありません。
+
 There is a sequence of meaning. It's important how much the data actually differs, or about how much standard deviation it differs. Whether there is a significant difference in the judgment results is not a big deal.
 
 % とはいえ，確信区間や信用区間を見て「差があるかなあ，ないかなあ」と思いを馳せるだけでは，レポートには書きにくいですね。そこで事前に，どれぐらいの差があれば良いと判断するかという基準を決めておく，というのがいいかもしれません。

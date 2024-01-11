@@ -54,13 +54,13 @@ Assuming a square matrix as the correlation matrix $\bm{R}$, and the vector size
 % このことから，相関行列を固有値分解すれば共通因子負荷量が得られることがわかります。しかしこれには1つ問題があります。この式の最後の項目，$\bm{d} \bm{d}'$がわからないのです。行列の形で書くと因子分析モデルは次のようになります。
 From this, it follows that by eigenvalue decomposition of the correlation matrix, we can obtain common factor loadings. However, there is one problem with this. We don't know the last term of this equation, $\bm{d} \bm{d}'$. If we write the factor analysis model in matrix form, it will be as follows.
 \[
-   \bm{R} = \bm{AA'}+\bm{D^2}
+	\bm{R} = \bm{AA'}+\bm{D^2}
 \]
 % ここで$\bm{D}$は対角項に$d_j^2$をもつ対角行列です。共通因子を得るために分解するべき行列は，次のようになります。
 Here, $\bm{D}$ is a diagonal matrix with $d_j^2$ on its diagonal elements. The matrix to be decomposed for obtaining common factors is as follows.
 
 \[
-   \bm{R}\dagger = \bm{R}-\bm{D^2} = \bm{AA'}
+	\bm{R}\dagger = \bm{R}-\bm{D^2} = \bm{AA'}
 \]
 % $\bm{R}$は相関行列であり，その対角は$1.0$ですが，分解すべき行列$\bm{R}\dagger$は対角項に$1-d_j^2=h_j^2$が入った行列でなければなりません。それを固有値分解してはじめて，共通因子成分が得られるわけです。そしてこの$d_j^2$の大きさは，事前にわかっていないので，計算の最初にはなんとかしてこれを埋める必要があります。これを\keytermL{共通性の推定問題}{きょうつうせいのすいていもんだい}といいます。
 $\bm{R}$ is the correlation matrix, and although its diagonal is $1.0$, the matrix $\bm{R}\dagger$ to be decomposed must have $1-d_j^2=h_j^2$ on the diagonal. Only by decomposing it into its eigenvalues can we obtain the common factor components. Further, we don't know the size of this $d_j^2$ in advance, so at the start of the calculation, we somehow need to fill this in. This is called the "commonness estimation problem".
@@ -205,12 +205,12 @@ The factor analysis matrix model was as follows.
 \[ \bm{R}= \bm{AA'}+\bm{D}^2 \]
 ここで$\bm{AA'}$に単位行列$\bm{I}$を挟んでも，$\bm{AA'}=\bm{AIA'}$で結果は変わりませんね。ここで$\bm{I} = \bm{TT'}$となるような行列$\bm{T}$があっても同じです。たとえば2因子構造の時に，次のような行列$\bm{T}$を考えたとすると，$\bm{TT'}=\bm{I}$であることがわかります。
 \[
-   \bm{T} = \begin{pmatrix} cos \theta & -sin \theta \\ sin \theta & cos\theta \end{pmatrix}
+	\bm{T} = \begin{pmatrix} cos \theta & -sin \theta \\ sin \theta & cos\theta \end{pmatrix}
 \]
 \[
-   \bm{TT'}=\begin{pmatrix} cos \theta & -sin \theta \\ sin \theta & cos\theta \end{pmatrix}
-   \begin{pmatrix} cos \theta & sin \theta \\ -sin \theta & cos\theta \end{pmatrix}
-   =\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} =\bm{I}
+	\bm{TT'}=\begin{pmatrix} cos \theta & -sin \theta \\ sin \theta & cos\theta \end{pmatrix}
+	\begin{pmatrix} cos \theta & sin \theta \\ -sin \theta & cos\theta \end{pmatrix}
+	=\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} =\bm{I}
 \]
 % このような$\bm{T}$は回転行列と言われます。原点を中心に，座標を角度$\theta$で回転させるからです。$\theta$の値は任意なので，因子負荷行列は，$\theta$に応じて無数にあることになります。であれば，使い勝手の良い角度で回転してやればいいとも言えるわけです。
 Such $\bm{T}$ is called a rotation matrix. This is because it rotates the coordinates around the origin by an angle $\theta$. Since the value of $\theta$ is arbitrary, there are an infinite number of factor load matrices depending on $\theta$. Therefore, you could say that you can rotate it at a convenient angle.
@@ -228,7 +228,7 @@ In the case of orthogonal rotation, the angle is right angle, which means there 
 出力\ref{RS:out10_02}に因子負荷行列を表示しました。あの$\bm{A}$が計算されていますよ！
 
 \begin{Rscreen}{因子負荷行列}{out10_02}
-   \begin{verbatim}
+	\begin{verbatim}
 Factor Analysis using method =  ml
 Call: fa(r = dat, nfactors = 5, rotate = "geominQ", fm = "ml")
 Standardized loadings (pattern matrix) based upon correlation matrix
@@ -266,7 +266,7 @@ O4   24  0.11  0.33  0.13 -0.02  0.39 0.26 0.74 2.4
 出力\ref{RS:out10_03}にはその他の情報として，各因子の因子負荷行列の二乗和(\verb|SSloadings|)，分散説明率(\verb|Proportion Var|)，累積分散説明率(\verb|Cumulative Var|)，全体を1とした時の説明比率(\verb|Proportion Explained|)，その累積(\verb|Cumulative Proportion|)が表示されています。回転するまえは固有値と\keytermL{因子負荷量}{いんしふかりょう}の二乗和が合致するのですが，回転した後の場合はそうはならないので，これらをみてどれぐらい説明できているかを考えます。とくに類遺跡分散説明率が，今回は5因子で41\%しかありません。59\%をゴミとして捨てたようなものですから，これでよかったのかな，と思案するところです。
 
 \begin{Rscreen}{因子分析結果2}{out10_03}
-   \begin{verbatim}
+	\begin{verbatim}
 ML2  ML1  ML5  ML3  ML4
 SS loadings           2.50 2.24 2.05 1.95 1.61
 Proportion Var        0.10 0.09 0.08 0.08 0.06
@@ -279,7 +279,7 @@ Cumulative Proportion 0.24 0.46 0.66 0.84 1.00
 その下出力\ref{RS:out10_04}には，因子間相関が表示されています。これをみると，第2因子(ML1)と第3因子(ML5)との間に$-0.34$という中程度の負の相関がみられます。直交回転はこれを0として解釈してしまいますから，スッキリはするのですがデータには適合してないところかもしれません。このように，分析する時はまず斜交回転を行い，因子間相関がなべて低い場合は直交で分析をやり直す，というステップを経ます。
 
 \begin{Rscreen}{因子分析結果3}{out10_04}
-   \begin{verbatim}
+	\begin{verbatim}
  With factor correlations of 
       ML2   ML1   ML5   ML3   ML4
 ML2  1.00  0.11  0.06 -0.12  0.06

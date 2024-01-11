@@ -55,11 +55,11 @@ Conversely, from this relationship, the covariance, $\sigma_{jk}$, can be repres
 ではこれを使ってモデルの設計図を書いてみましょう。設計図は図\ref{fig::22_01}のようになるでしょう。
 
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/22_modeling4/Slide22_01.png}
-        \caption{対応ある二群のデータ生成モデル設計図}
-        \label{fig::22_01}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/22_modeling4/Slide22_01.png}
+		\caption{対応ある二群のデータ生成モデル設計図}
+		\label{fig::22_01}
+	\end{center}
 \end{figure}
 
 あとはこれを使ってコードを書くだけです。
@@ -72,44 +72,44 @@ Conversely, from this relationship, the covariance, $\sigma_{jk}$, can be repres
 またStanには，\verb|matrix|型という行列の型もあります。\verb|matrix[N,M] X;|のように宣言してやると，サイズ$N \times M$の行列変数Xが1つ用意されます。\verb|matrix[N,M] X[L];|のように宣言すると，サイズ$N \times M$の行列変数XをL個用意することになります。他にも特殊な型として，\verb|cov_matrix|型とか\verb|corr_matrix|型などがあります。これらは正方行列ですから，サイズの指定は1つでよく，たとえば\verb|cov_matrix[2]|とすれば$2 \times 2$の正方行列を用意したことになります。Stanにおける変数や配列の型について，\citet{Matsuura201610}を参考にまとめたものを表\ref{tbl:22_01}に，イメージ図を図\ref{fig:22_03},\ref{fig:22_04},\ref{fig:22_05}に示します。
 
 \begin{table}[ht]
-    \centering
-    \caption{Stanの配列と型}
-    \begin{tabular}{ccc}
-        型の例       & 宣言例                  & 解説                                             \\\hline
-        整数         & \verb|int X|            & 整数ひとつ                                       \\
-        実数         & \verb|real X|           & 実数ひとつ                                       \\
-        範囲つき実数 & \verb|real<lower=0> X|  & 0より大きい数字の入るX                           \\
-        整数の配列   & \verb|int X[N]|         & N個の整数                                        \\
-        実数の配列   & \verb|real X[N,M]|      & $N\times M$個の実数からなる2次元配列             \\
-        実数の配列   & \verb|real X[N,M,L]|    & $N\times M\times L$個の実数からなる3次元配列     \\
-        ベクトル     & \verb|vector[K] X|      & 長さKのベクトルひとつ                            \\
-        ベクトル     & \verb|vector[K] X[N]|   & 長さKのベクトルがN個                             \\
-        ベクトル     & \verb|vector[K] X[N,M]| & 長さKのベクトルが$N\times M$個                   \\
-        行列         & \verb|matrix[J,K] X|    & サイズ$J\times K$の行列がひとつ                  \\
-        行列         & \verb|matrix[J,K] X[N]| & サイズ$J\times K$の行列がN個                     \\
-        特別な行列   & \verb|cov_matrix[J] X|  & サイズ$J\times J$の正方対称行列がひとつ          \\
-        特別な行列   & \verb|corr_matrix[J] X| & 対角が1のサイズ$J\times J$の正方対称行列がひとつ \\\hline
-    \end{tabular}
-    \label{tbl:22_01}
+	\centering
+	\caption{Stanの配列と型}
+	\begin{tabular}{ccc}
+		型の例    & 宣言例                     & 解説                               \\\hline
+		整数     & \verb|int X|            & 整数ひとつ                            \\
+		実数     & \verb|real X|           & 実数ひとつ                            \\
+		範囲つき実数 & \verb|real<lower=0> X|  & 0より大きい数字の入るX                     \\
+		整数の配列  & \verb|int X[N]|         & N個の整数                            \\
+		実数の配列  & \verb|real X[N,M]|      & $N\times M$個の実数からなる2次元配列         \\
+		実数の配列  & \verb|real X[N,M,L]|    & $N\times M\times L$個の実数からなる3次元配列 \\
+		ベクトル   & \verb|vector[K] X|      & 長さKのベクトルひとつ                      \\
+		ベクトル   & \verb|vector[K] X[N]|   & 長さKのベクトルがN個                      \\
+		ベクトル   & \verb|vector[K] X[N,M]| & 長さKのベクトルが$N\times M$個            \\
+		行列     & \verb|matrix[J,K] X|    & サイズ$J\times K$の行列がひとつ            \\
+		行列     & \verb|matrix[J,K] X[N]| & サイズ$J\times K$の行列がN個             \\
+		特別な行列  & \verb|cov_matrix[J] X|  & サイズ$J\times J$の正方対称行列がひとつ        \\
+		特別な行列  & \verb|corr_matrix[J] X| & 対角が1のサイズ$J\times J$の正方対称行列がひとつ   \\\hline
+	\end{tabular}
+	\label{tbl:22_01}
 \end{table}
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_03.png}
-    \caption{変数の型とサイズ(1)}
-    \label{fig:22_03}
+	\centering
+	\includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_03.png}
+	\caption{変数の型とサイズ(1)}
+	\label{fig:22_03}
 \end{figure}
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_04.png}
-    \caption{変数の型とサイズ(2)}
-    \label{fig:22_04}
+	\centering
+	\includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_04.png}
+	\caption{変数の型とサイズ(2)}
+	\label{fig:22_04}
 \end{figure}
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_05.png}
-    \caption{変数の型とサイズ(3)}
-    \label{fig:22_05}
+	\centering
+	\includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_05.png}
+	\caption{変数の型とサイズ(3)}
+	\label{fig:22_05}
 \end{figure}
 
 
@@ -148,10 +148,10 @@ model{
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-    \item[dataブロック] サンプルサイズNのデータですが，ペアになっている数字なので\verb|vector[2]|で宣言した変数XをN個用意しています。
-    \item[parametersブロック] パラメータとして，平均をベクトル，標準偏差や相関係数はスカラで宣言しています。標準偏差や相関係数の範囲指定にも注意してください。
-    \item[transformed parametersブロック] 各標準偏差，相関係数を使って分散共分散行列SIGを構成しています。わかりやすくするために，各要素について書き下して書いています。
-    \item[modelブロック] 尤度はデータベクトルが多次元正規分布関数\verb|multi_normal|から出てきていることを示しています。多次元正規分布関数の引数は，ベクトルと行列です。
+	\item[dataブロック] サンプルサイズNのデータですが，ペアになっている数字なので\verb|vector[2]|で宣言した変数XをN個用意しています。
+	\item[parametersブロック] パラメータとして，平均をベクトル，標準偏差や相関係数はスカラで宣言しています。標準偏差や相関係数の範囲指定にも注意してください。
+	\item[transformed parametersブロック] 各標準偏差，相関係数を使って分散共分散行列SIGを構成しています。わかりやすくするために，各要素について書き下して書いています。
+	\item[modelブロック] 尤度はデータベクトルが多次元正規分布関数\verb|multi_normal|から出てきていることを示しています。多次元正規分布関数の引数は，ベクトルと行列です。
 \end{description}
 
 この書き方ですと，三群に拡張した時に大変になるのは目に見えていますね。こんな時のために，ベクトルと行列用関数をつかって書いておく方法があります。
@@ -185,16 +185,16 @@ model{
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-    \item[dataブロック] データのサイズKも外侮から指定できる変数とし，それを使ってサイズKのベクトルXをN個用意しています。
-    \item[parametersブロック] パラメータとして，平均と標準偏差をベクトルで，相関係数も行列として宣言しました。標準偏差ベクトルの範囲指定の方法に注意してください。
-    \item[transformed parametersブロック] Stanの関数\verb|quad_form_diag|を使って分散共分散行列を作成しました。この関数は，正方行列$\bm{X}$とベクトル$\bm{v}$から，$diag(\bm{v}) \bm{X} diag(\bm{v})$という計算をするものです。ここで\verb|diag|はk個の要素を対角項に持つ$k \times k$の対角行列を作ることを意味します。今回の例で具体的に説明しましょう。ここでの正方行列は相関行列で，ベクトルは標準偏差を要素に持つ\verb|sds|ですから，
-        \[ \begin{pmatrix}\sigma_1&0\\0&\sigma_2\end{pmatrix}\begin{pmatrix}1&\rho_{12}\\\rho_{12}&1\end{pmatrix}\begin{pmatrix}\sigma_1&0\\0&\sigma_2\end{pmatrix} =
-            \begin{pmatrix} \sigma_1 & \sigma_1\rho_{12}\\ \sigma_2\rho_{12} & \sigma_2\end{pmatrix}\begin{pmatrix}\sigma_1 & 0\\ 0 & \sigma_2\end{pmatrix} =
-            \begin{pmatrix}\sigma_1^2 & \sigma_1\sigma_2\rho_{12} \\ \sigma_1\sigma_2\rho_{12} & \sigma_2^2\end{pmatrix} \]
-%         となり，分散共分散行列が構成されていることがわかりますね。
-Next, we understand that the variance-covariance matrix has been constructed.
-%     \item[modelブロック] 注目すべきポイントは相関行列の事前分布です。相関行列の事前分布には，Stanでは\verb|lkj_corr|という関数を使うのが一般的で，この引数が1になっているのは無情報分布であることを意味しています。
-\item[model block] The point of interest is the prior distribution of the correlation matrix. In Stan, it is common to use a function called \verb|lkj_corr| for the prior distribution of the correlation matrix, and its argument being 1 means it's a non-informative distribution.
+	\item[dataブロック] データのサイズKも外侮から指定できる変数とし，それを使ってサイズKのベクトルXをN個用意しています。
+	\item[parametersブロック] パラメータとして，平均と標準偏差をベクトルで，相関係数も行列として宣言しました。標準偏差ベクトルの範囲指定の方法に注意してください。
+	\item[transformed parametersブロック] Stanの関数\verb|quad_form_diag|を使って分散共分散行列を作成しました。この関数は，正方行列$\bm{X}$とベクトル$\bm{v}$から，$diag(\bm{v}) \bm{X} diag(\bm{v})$という計算をするものです。ここで\verb|diag|はk個の要素を対角項に持つ$k \times k$の対角行列を作ることを意味します。今回の例で具体的に説明しましょう。ここでの正方行列は相関行列で，ベクトルは標準偏差を要素に持つ\verb|sds|ですから，
+	      \[ \begin{pmatrix}\sigma_1&0\\0&\sigma_2\end{pmatrix}\begin{pmatrix}1&\rho_{12}\\\rho_{12}&1\end{pmatrix}\begin{pmatrix}\sigma_1&0\\0&\sigma_2\end{pmatrix} =
+		      \begin{pmatrix} \sigma_1 & \sigma_1\rho_{12}\\ \sigma_2\rho_{12} & \sigma_2\end{pmatrix}\begin{pmatrix}\sigma_1 & 0\\ 0 & \sigma_2\end{pmatrix} =
+		      \begin{pmatrix}\sigma_1^2 & \sigma_1\sigma_2\rho_{12} \\ \sigma_1\sigma_2\rho_{12} & \sigma_2^2\end{pmatrix} \]
+	      %         となり，分散共分散行列が構成されていることがわかりますね。
+	      Next, we understand that the variance-covariance matrix has been constructed.
+	      %     \item[modelブロック] 注目すべきポイントは相関行列の事前分布です。相関行列の事前分布には，Stanでは\verb|lkj_corr|という関数を使うのが一般的で，この引数が1になっているのは無情報分布であることを意味しています。
+	\item[model block] The point of interest is the prior distribution of the correlation matrix. In Stan, it is common to use a function called \verb|lkj_corr| for the prior distribution of the correlation matrix, and its argument being 1 means it's a non-informative distribution.
 
 \end{description}
 
@@ -287,11 +287,11 @@ And another important thing. $\mu_i$ is an individual difference component that 
 
 と考えることにしましょう。これを設計図に書き込んだのが，図\ref{fig::22_02}です。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/22_modeling4/Slide22_02.png}
-        \caption{階層的データ生成モデル}
-        \label{fig::22_02}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/22_modeling4/Slide22_02.png}
+		\caption{階層的データ生成モデル}
+		\label{fig::22_02}
+	\end{center}
 \end{figure}
 
 このように，相関があることを個人$i$に紐づけられた変数として表現し，個人差からの差分として対応のあるモデルを考えることができます。

@@ -1,0 +1,12 @@
+\begin{lstlisting}[language=c++,label={code:16_01},caption={インデントのないコード}]
+data {
+int<lower=0> N;
+array[N] y;}
+parameters {
+real mu;
+real<lower=0> sigma;}
+model {
+for(i in 1:N)
+y[i]~normal(mu, sigma);}
+}
+\end{lstlisting}

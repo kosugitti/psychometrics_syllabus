@@ -26,32 +26,32 @@
 図\ref{fig::02_02}や\ref{fig::02_03}に，WindowsやMacでファイルを見るための画面(アプリケーション名がそれぞれエクスプローラ，ファインダーと異なります)を示しています。いずれもアイコンの色や形は違いますが，フォルダの中にフォルダやファイルが含まれる，という形になっているのがわかると思います。
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/03_introR/computer_02.png}
-    \caption{Windowsのエクスプローラ画面}
-    \label{fig::02_02}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/03_introR/computer_02.png}
+	\caption{Windowsのエクスプローラ画面}
+	\label{fig::02_02}
 \end{figure}
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/03_introR/computer_03.png}
-    \caption{Mac OSのファインダー画面}
-    \label{fig::02_03}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/03_introR/computer_03.png}
+	\caption{Mac OSのファインダー画面}
+	\label{fig::02_03}
 \end{figure}
 
 ここでWindowsの画面にある，エクスプローラの上部を見てみましょう。この例では「PC>ローカルディスク(C:)>ユーザー＞kosugitti>」とありますね。日本語の文字が入っているので2バイト文字なのかと思いきや，ここをクリックしてみると「C:¥Users¥kosugitti」と出てきます。実はこちらが本当の名前で，ローカルディスクとかユーザーと表示されていたのは使い手に優しく表現しているだけのイリュージョンなのです。ここでC:とあるのはドライブと呼ばれ\footnote{なんでCから始まってて，AやBじゃないんだ，と思われるかもしれませんが，これにも歴史的経緯があります。かつてのパソコンは，フロッピーディスクドライブ(FDD)が2器ついているのが基本で，それらにA,Bと割り振られていました。その後に出てきた内蔵ハードディスクドライブはCとするのが順当だったわけです。その後FDDは時代とともに使われなくなりドライブも無くなったのですが，ドライブレター(ドライブに割り当てた文字)は残ったのです。}，記憶装置の実体を指します。この場合はパソコンに内蔵されたハードディスクドライブです\footnote{ハードディスクドライブ(HDD)とは，FDDの中に入っている磁気媒体の円盤が積み重なったもので，FDDよりも大容量のデータを保管できます。FDDが1MBぐらいであるのに対し，HDDは数TBのものが現在主流です。}。このCドライブの中に，Usersというフォルダがあり，その中にkosugittiというユーザが使う領域がある，という区分になっています\footnote{最初にパソコンを購入した時に，このパソコンで使うユーザの名前は何ですかと聞かれると思います。その時に入力したものがユーザ名になりますが，その時に2バイト文字でユーザ名を入力していると，その後のアプリケーションがうまく動かないエラーが出てくることになったりします。}。
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/03_introR/computer_04.png}
-    \caption{Windowsのフォルダ階層}
-    \label{fig::02_04}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/03_introR/computer_04.png}
+	\caption{Windowsのフォルダ階層}
+	\label{fig::02_04}
 \end{figure}
 図\ref{fig::02_05}にはMacの画面を示していますが，ここでもドライブ，フォルダ，フォルダ，という構造になっていること，ユーザのなかにnapierというユーザ名があることなどが確認できると思います。Ubuntuなど別のOSでもこうした仕組みは同じです。これらの画面を見ながら自分で使うファイル，作ったファイルがどこにあるのかをはっきり把握できるようにしておいてください。
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/03_introR/computer_05.png}
-    \caption{Mac OSのフォルダ階層}
-    \label{fig::02_05}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/03_introR/computer_05.png}
+	\caption{Mac OSのフォルダ階層}
+	\label{fig::02_05}
 \end{figure}
 
 これからの大学生活で，皆さんはいろいろな授業でレポートを書いたり，統計計算をしたりします。
@@ -91,31 +91,31 @@ Syunsuke Fukuda先生の初心者向けRのインストールガイド\footnote{
 大きくみると画面が四分割されたようになります。この4つの領域を基本として話を進めていきます\footnote{RStudio version1.4から，列を追加することができるようになりましたので，必ずしも四分割で使わなければならないというわけではありません。どこに何があるのかを把握していればOKです。ちなみに列を増やしたり配置を変えたりするのは，\verb|Tool > Global Option > Pane Layout|から可能です。}。
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.75\linewidth]{../images/03_introR/Screen1.png}
-    \caption{RStudio起動初期の画面}
-    \label{fig::05_01}
+	\centering
+	\includegraphics[keepaspectratio,width=0.75\linewidth]{../images/03_introR/Screen1.png}
+	\caption{RStudio起動初期の画面}
+	\label{fig::05_01}
 \end{figure}
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.75\linewidth]{../images/03_introR/Screen2.png}
-    \caption{新しくスクリプトファイルを開く}
-    \label{fig::05_02}
+	\centering
+	\includegraphics[keepaspectratio,width=0.75\linewidth]{../images/03_introR/Screen2.png}
+	\caption{新しくスクリプトファイルを開く}
+	\label{fig::05_02}
 \end{figure}
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.75\linewidth]{../images/03_introR/Screen3.png}
-    \caption{RStudioの画面}
-    \label{fig::05_03}
+	\centering
+	\includegraphics[keepaspectratio,width=0.75\linewidth]{../images/03_introR/Screen3.png}
+	\caption{RStudioの画面}
+	\label{fig::05_03}
 \end{figure}
 
 \paragraph{コンソール・ペイン}
 デフォルトでは画面の左下になりますが，\keyterm{コンソール}{こんそーる}{Rの出力}ペインにあるのがRそのものです。
 RStudioはRを取り込んで使いやすくする環境を提供するもの，という話をしましたが，とりこまれたRだけの画面が左下にあります。そこにはRのバージョン情報や，次のような注意書きが書かれています。
 \begin{Rscreen}{}{}
-    \begin{verbatim}
+	\begin{verbatim}
 	R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
 	Copyright (C) 2020 The R Foundation for Statistical Computing
 	Platform: x86_64-apple-darwin17.0 (64-bit)
@@ -147,22 +147,22 @@ RStudioはRを取り込んで使いやすくする環境を提供するもの，
 
 \paragraph{コード解説}
 \begin{description}
-    \item[1行目] コメントアウト。\verb|#|記号で始まる行は，その後ろに何を書かれていてもRは無視します。なので，この記号を冒頭に描いて，ここに何をしているかという説明を書き入れています。このコメントは，あとで見直す時に何をしていたか判るためのものなので，必ず書かなければならないというものではないのですが，あればあるほど親切で丁寧なコードと言えるでしょう。
-    \item[2-5行目] 順に和，差，積、商を求めるコードです。積\verb|*|と商\verb|/|の記号はPCではこのように書きますので注意してください。
-    \item[6行目] これは関数を使って答えを出しています。\texttt{sqrt}関数は正の平方根を返します。
+	\item[1行目] コメントアウト。\verb|#|記号で始まる行は，その後ろに何を書かれていてもRは無視します。なので，この記号を冒頭に描いて，ここに何をしているかという説明を書き入れています。このコメントは，あとで見直す時に何をしていたか判るためのものなので，必ず書かなければならないというものではないのですが，あればあるほど親切で丁寧なコードと言えるでしょう。
+	\item[2-5行目] 順に和，差，積、商を求めるコードです。積\verb|*|と商\verb|/|の記号はPCではこのように書きますので注意してください。
+	\item[6行目] これは関数を使って答えを出しています。\texttt{sqrt}関数は正の平方根を返します。
 \end{description}
 
 書いたあと，スクリプトペインの右上にある\texttt{Run}を押すと一行ずつ実行されていきます。あるいは，CTRL+Enterでもスクリプトをコンソールに送り込むことができます。マウスで複数行を選んで\texttt{Run}ボタンを押すと囲んだ箇所を実行することもできます。このスクリプトペイン全体を実行したいときは\texttt{Source}ボタンを押します。
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/03_introR/Screen4.png}
-    \caption{スクリプトを実行する}
-    \label{fig::05_04}
+	\centering
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/03_introR/Screen4.png}
+	\caption{スクリプトを実行する}
+	\label{fig::05_04}
 \end{figure}
 
 これらのボタンを押すと，コードがコンソールに送られて実行結果が返ってきます(図\ref{fig::05_04})。コンソールに示されているものは，この資料では次のような囲みで表現します(\texttt{Rの出力\ref{RS:out05_01}})が，さて，みなさんの環境で同じ結果が得られましだでしょうか。
 \begin{Rscreen}{四則演算}{out05_01}
-    \begin{verbatim}
+	\begin{verbatim}
 > # 四則演算
 > 1+2
 [1] 3
@@ -189,11 +189,11 @@ Historyは履歴を表すタブです。ここをみると，今実行した過�
 \paragraph{Files/Plots/Packages/Help/Viewer・ペイン}
 右下のペインはよく使う便利なところです。
 \begin{enumerate}
-    \item Filesペインは，ファイル操作をする場所です。ファイルのコピー，移動，フォルダの作成などができます。エクスプローラやFinderと同じようなものだと思ってください。
-    \item Plotsペインは図の出力を確認するところです。ここで作られた図を適当なサイズやファイル形式に変換して出力することもできます。
-    \item Packagesペインは，Rのパッケージを管理するところです。Rはパッケージを追加することで機能がアップしますが，この追加やアップデートをこのペインで実行すると便利です。
-    \item Helpペインは，関数のヘルプが表示されるところです。表記はすべて英語なのが残念ですが。
-    \item ViewerペインはHTMLなどの出力をみる画面です。
+	\item Filesペインは，ファイル操作をする場所です。ファイルのコピー，移動，フォルダの作成などができます。エクスプローラやFinderと同じようなものだと思ってください。
+	\item Plotsペインは図の出力を確認するところです。ここで作られた図を適当なサイズやファイル形式に変換して出力することもできます。
+	\item Packagesペインは，Rのパッケージを管理するところです。Rはパッケージを追加することで機能がアップしますが，この追加やアップデートをこのペインで実行すると便利です。
+	\item Helpペインは，関数のヘルプが表示されるところです。表記はすべて英語なのが残念ですが。
+	\item ViewerペインはHTMLなどの出力をみる画面です。
 \end{enumerate}
 これらは必要に応じてみていくことになりますので，ここでは大体のイメージが掴めていればOKです。またこれらのペインは場所を変えることも可能ですので，自分の良いようにレイアウトしてみてください。
 
@@ -207,18 +207,18 @@ RStudioを使う時の基本は，プロジェクトによる管理です。分�
 メニューバーから\verb|File > New Project|と進んでください。すると「New Directory」「Existing Directory」「Version Control」の選択肢が出てきます。New Directoryは新しいディレクトリ\footnote{計算機におけるディレクトリとフォルダは同じ意味です。}を作ってそこで関連ファイルをまとめますよ，という意味です。Existing Directoryはすでに存在するディレクトリをまとめる場所にしますよ，という意味です。みなさんの環境に応じて使い分けてください。ここでは新しくフォルダを作る例を説明します\footnote{Version Controlはパスしましたが、研究をする上ではこれが重要になってきます。つまり，何月何日にどのような作業をしたか，という記録をすべて残しておく必要があるからです。研究ノートやラボノートと言われる記録をつける時に必要です。この記録は不正をしていない証拠にもなります。ここを選ぶとGitやSubversionといったバージョン管理ソフトと連携できます。バージョン管理ソフトについては付録の\ref{versionControl}も参照してください。}。
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/03_introR/Screen5.png}
-    \caption{プロジェクトを作る場所を選ぶ}
-    \label{fig::05_05}
+	\centering
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/03_introR/Screen5.png}
+	\caption{プロジェクトを作る場所を選ぶ}
+	\label{fig::05_05}
 \end{figure}
 
 図\ref{fig::05_05}には\verb|New Directory > New Project|と進んだ次のウィンドウを示しています。黒く塗りつぶしているところは私の個人的なPC環境の内容が反映されるので誤魔化しているのですが，みなさんの環境にあった場所(DocumentとかDesktopと言った場所)を選び，上の空白になっているところに新しいプロジェクト名(たとえば\text{toukei}など\footnote{半角英数のみで作るべきです。})を入力してOKとします。するとしばらくすると，画面が変わるはずです。一見同じ状態のようにも見えますが，実はところどころ違いがあります。気がつきましたか？
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/03_introR/Screen6.png}
-    \caption{プロジェクトで開いている場合}
-    \label{fig::05_06}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/03_introR/Screen6.png}
+	\caption{プロジェクトで開いている場合}
+	\label{fig::05_06}
 \end{figure}
 図\ref{fig::05_06}にはプロジェクトを開いている時のRStudio画面を示しています。赤く丸で囲っているところが，プロジェクトを開いていない時との違いがある箇所です\footnote{MacOSの例なのでWindows版では上のバーのところなど，違いもあります。}。これをみると，コンソールペインやFileペインの場所に，今指定したフォルダの位置が示されていることがわかります\footnote{この例では\verb|C:\Users\napier\Desktop\toukei|です。napierは私のPCの名前，toukeiはプロジェクト名です。}。このプロジェクトが開いているフォルダに移動していることが重要で，このフォルダの中が今作業している場所として認識されるので，このフォルダの中にあるファイルにはファイル名だけでアクセスできるようになります。プロジェクトが違ったり，プロジェクトの起動をしていなかったりすると，作業している場所\footnote{ワーキングディレクトリといいます。詳しくは付録の\ref{setLocation}を参照。}が変わりますので，注意が必要です\footnote{実際に授業をしていて，ファイルへのアクセスエラーで相談を受ける原因第2位です。第1位はファイルエンコードの問題です。}。
 
@@ -262,10 +262,10 @@ Rは豊富なパッケージが利用できることがその特徴で\footnote{
 また，パッケージの中には関係するパッケージを一まとめにしたパッケージというのもあります。インターネットへのアクセスは必要ですが，優れたパッケージを無償で入手できますので，便利なものをいくつか決めていれとくと良いでしょう。本講義で必要なパッケージは随時指定しますが，ひとまずは\texttt{tidyverse}パッケージ\citep{tidyverse}を入れておきましょう\footnote{この\texttt{tidyverse}パッケージは，実はパッケージのパッケージですので，これをインストールしようとすると関連するその他のパッケージを次々と自動的に呼び出して環境を整えてくれます。初回は少し時間がかかりますが，気長に待ちましょう。大学のPC室や計算機サーバなどには，すでにインストールが終わっているのでその作業は必要ありません。}。
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/04_usingR/screen16.png}
-    \caption{PackageタブからInstallをクリック}
-    \label{fig::usingR_pkgInstall}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/04_usingR/screen16.png}
+	\caption{PackageタブからInstallをクリック}
+	\label{fig::usingR_pkgInstall}
 \end{figure}
 
 
@@ -302,16 +302,16 @@ Rで扱う変数、関数、データセットなどにはすべて，名前が�
 	A
 \end{lstlisting}
 \begin{description}
-    \item[1行目] コメント
-    \item[2行目] Aと名付けたものに数字の2を代入する。代入の記号は小なり(\verb|<|)とハイフン(\verb|-|)の二文字でできていて，矢印記号$\leftarrow$を表しています。RStudioの機能で，Macの場合はoptionとマイナス記号，Windowsの場合はAltキーとマイナスを同時に押すと入力できます。。
-    \item[3行目] Bと名付けたものに数字の3を代入しています。
-    \item[4行目] オブジェクトAとオブジェクトBを足し合わせています。
-    \item[5行目] オブジェクトAの中身を表示させろ(中身はなんだっけ)，という意味です。
+	\item[1行目] コメント
+	\item[2行目] Aと名付けたものに数字の2を代入する。代入の記号は小なり(\verb|<|)とハイフン(\verb|-|)の二文字でできていて，矢印記号$\leftarrow$を表しています。RStudioの機能で，Macの場合はoptionとマイナス記号，Windowsの場合はAltキーとマイナスを同時に押すと入力できます。。
+	\item[3行目] Bと名付けたものに数字の3を代入しています。
+	\item[4行目] オブジェクトAとオブジェクトBを足し合わせています。
+	\item[5行目] オブジェクトAの中身を表示させろ(中身はなんだっけ)，という意味です。
 \end{description}
 
 実行結果は\texttt{Rの出力\ref{RS:out05_02}}のようになるでしょう。
 \begin{Rscreen}{オブジェクトに代入する}{out05_02}
-    \begin{verbatim}
+	\begin{verbatim}
 > # オブジェクト
 > A <- 2
 > B <- 3
@@ -337,10 +337,10 @@ A + B
 また，Rは終了すると，それまでの作業を保存しますから，同じプロジェクトをもう一度開くと以前の記憶が蘇ります。これが便利なのですが実は少し厄介で，学生さんが「自分の環境ではできた」といっても私の手元で再現できない(からレポートやり直し)ということがあります。きっと記録されているスクリプトの外で，なんらかの作業がなされているのです。清書できたスクリプトは，Rの頭の中を空っぽにしてから再チェックすると良いでしょう。また，\verb|Tools > Global Option|から，Workspaceの``Restore .RData into workspace at a startup''(起動時に.RDataからワークスペースの情報を復元する)のチェックを外し，``Save workspace to .RData on exit''(終了時に.RDataにワークスペースの情報を保存する)を``never''(絶対そんなことしない)にしておくことで，いつでもクリーンな環境から始められます(図\ref{fig::05_07})。
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/03_introR/Screen7.png}
-    \caption{クリーンな環境をいつでも保つための設定}
-    \label{fig::05_07}
+	\centering
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/03_introR/Screen7.png}
+	\caption{クリーンな環境をいつでも保つための設定}
+	\label{fig::05_07}
 \end{figure}
 
 \subsubsection{オブジェクトの型1・ベクトル}
@@ -353,10 +353,10 @@ A + B
 \end{lstlisting}
 
 \begin{description}
-    \item[1行目] \texttt{obj1}オブジェクトに``1:10''を代入
-    \item[2行目] \texttt{obj1}オブジェクトに2を加える
-    \item[3行目] \texttt{obj2}オブジェクトに``c(2,3,4,1,2,3,4,5,6,7)''を代入
-    \item[4行目] \texttt{obj1}オブジェクトに\texttt{obj2}オブジェクトを加える
+	\item[1行目] \texttt{obj1}オブジェクトに``1:10''を代入
+	\item[2行目] \texttt{obj1}オブジェクトに2を加える
+	\item[3行目] \texttt{obj2}オブジェクトに``c(2,3,4,1,2,3,4,5,6,7)''を代入
+	\item[4行目] \texttt{obj1}オブジェクトに\texttt{obj2}オブジェクトを加える
 \end{description}
 
 一行目で代入している``1:10'' はR独特の表記法で，コロンで繋いだ数字は連続した数字を意味します。ここでは1から10までの連続した数字，すなわち$1,2,3,4,5,6,7,8,9,10$です。このように数字のセットを一度に扱うことができます。このオブジェクトに2を加えるというのは，各要素に2を加えることと同じですので，そのような結果が出力されていますよね。
@@ -377,14 +377,14 @@ A + B
 	obj3$name
 \end{lstlisting}
 \begin{description}
-    \item[1行目] \texttt{obj3}オブジェクトに代入するのは\texttt{list}であることを，\texttt{list}関数を使って明示しています。この関数の中身は複数行にわたり，括弧が閉じられるのは6行目になりますので，そこまでで1つの命令文だということになります。
-    \item[2行目] nameという名前のついたベクトルを作ります。
-    \item[3行目] genderという名前のついたベクトルを作ります。
-    \item[4行目] heightという名前のついたベクトルを作ります。
-    \item[5行目] weightという名前のついたベクトルを作ります。要素が1つでも，要素1のベクトルとRは解釈します。
-    \item[6行目] 1行目から続く\texttt{list}関数の終わり。リストの中に含まれるベクトルは間まで区切られていること，対応する括弧がきちんと閉じられていること，が重要です。
-    \item[7行目] オブジェクトの中身はなあに，ということで中身を表示させています。
-    \item[8行目] \texttt{obj3}オブジェクトのname要素だけにアクセスしてみました(要素を見せて，と命じている)。
+	\item[1行目] \texttt{obj3}オブジェクトに代入するのは\texttt{list}であることを，\texttt{list}関数を使って明示しています。この関数の中身は複数行にわたり，括弧が閉じられるのは6行目になりますので，そこまでで1つの命令文だということになります。
+	\item[2行目] nameという名前のついたベクトルを作ります。
+	\item[3行目] genderという名前のついたベクトルを作ります。
+	\item[4行目] heightという名前のついたベクトルを作ります。
+	\item[5行目] weightという名前のついたベクトルを作ります。要素が1つでも，要素1のベクトルとRは解釈します。
+	\item[6行目] 1行目から続く\texttt{list}関数の終わり。リストの中に含まれるベクトルは間まで区切られていること，対応する括弧がきちんと閉じられていること，が重要です。
+	\item[7行目] オブジェクトの中身はなあに，ということで中身を表示させています。
+	\item[8行目] \texttt{obj3}オブジェクトのname要素だけにアクセスしてみました(要素を見せて，と命じている)。
 \end{description}
 
 出力された画面を見て，何が起きているかを確認してみてください。コードの2から6行目に当たるところでは，コンソールの左端が\verb|>|ではなく\verb|+|になっていると思います。これは前の行から続いて入力されている，つまり入力がまだ終わっていないことを意味する記号になっています。また7,8行目については，表示させる指示をしているので，その結果が返ってきているはずです。
@@ -405,18 +405,18 @@ A + B
 	df$name
 \end{lstlisting}
 \begin{description}
-    \item[1行目] \texttt{df}オブジェクトに代入するのは\texttt{data.frame}であることを，\texttt{data.frame}関数を使って明示しています。
-    \item[2行目] nameという名前のついたベクトルを作ります。
-    \item[3行目] genderという名前のついたベクトルを作ります。
-    \item[4行目] heightという名前のついたベクトルを作ります。要素数を合わせます。
-    \item[5行目] weightという名前のついたベクトルを作ります。要素数を合わせます。
-    \item[6行目] 1行目から続く\texttt{data.frame}関数の終わり。ここに含まれるベクトルは間まで区切られていること，対応する括弧がきちんと閉じられていること，が重要です。
-    \item[7行目] オブジェクトの中身はなあに，ということで中身を表示させています。
-    \item[8行目] \texttt{df}オブジェクトのname要素だけにアクセスしてみました(要素を見せて，と命じている)。
+	\item[1行目] \texttt{df}オブジェクトに代入するのは\texttt{data.frame}であることを，\texttt{data.frame}関数を使って明示しています。
+	\item[2行目] nameという名前のついたベクトルを作ります。
+	\item[3行目] genderという名前のついたベクトルを作ります。
+	\item[4行目] heightという名前のついたベクトルを作ります。要素数を合わせます。
+	\item[5行目] weightという名前のついたベクトルを作ります。要素数を合わせます。
+	\item[6行目] 1行目から続く\texttt{data.frame}関数の終わり。ここに含まれるベクトルは間まで区切られていること，対応する括弧がきちんと閉じられていること，が重要です。
+	\item[7行目] オブジェクトの中身はなあに，ということで中身を表示させています。
+	\item[8行目] \texttt{df}オブジェクトのname要素だけにアクセスしてみました(要素を見せて，と命じている)。
 \end{description}
 コンソールには\texttt{Rの出力\ref{RS:out05_03}}のように表されていると思います。
 \begin{Rscreen}{オブジェクトに代入する}{out05_03}
-    \begin{verbatim}
+	\begin{verbatim}
 > df <- data.frame(
 	+     name = c("Taro", "Hanako", "Ken"),
 	+     gender = c("male", "female", "male"),

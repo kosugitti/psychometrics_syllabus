@@ -33,15 +33,15 @@
 改めて，因子分析モデルについて確認しておきましょう。
 正方行列を相関行列$\bm{R}$とし，$\lambda_1 \bm{xx'} = \bm{aa'}$となるようにベクトルの大きさが整えられているとすれば，次のように表現できるのでした。
 \begin{equation}
-   \bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
+	\bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
 \end{equation}
 このことから，相関行列を固有値分解すれば共通因子負荷量が得られることがわかります。しかしこれには1つ問題があります。この式の最後の項目，$\bm{d} \bm{d}'$がわからないのです。行列の形で書くと因子分析モデルは次のようになります。
 \[
-   \bm{R} = \bm{AA'}+\bm{D^2}
+	\bm{R} = \bm{AA'}+\bm{D^2}
 \]
 ここで$\bm{D}$は対角項に$d_j^2$をもつ対角行列です。共通因子を得るために分解するべき行列は，次のようになります。
 \[
-   \bm{R}\dagger = \bm{R}-\bm{D^2} = \bm{AA'}
+	\bm{R}\dagger = \bm{R}-\bm{D^2} = \bm{AA'}
 \]
 $\bm{R}$は相関行列であり，その対角は$1.0$ですが，分解すべき行列$\bm{R}\dagger$は対角項に$1-d_j^2=h_j^2$が入った行列でなければなりません。それを固有値分解してはじめて，共通因子成分が得られるわけです。そしてこの$d_j^2$の大きさは，事前にわかっていないので，計算の最初にはなんとかしてこれを埋める必要があります。これを\keytermL{共通性の推定問題}{きょうつうせいのすいていもんだい}といいます。
 
@@ -81,10 +81,10 @@ help(bfi)
 
 \paragraph{コード解説}
 \begin{description}
-   \item[1行目] 環境の初期化
-   \item[2-3行目] パッケージの読み込み
-   \item[4-5行目] サンプルデータ\texttt{bfi}を使う。性別，教育，年齢の情報は因子分析には使わないので除外する。
-   \item[6行目] データセットのヘルプを表示
+	\item[1行目] 環境の初期化
+	\item[2-3行目] パッケージの読み込み
+	\item[4-5行目] サンプルデータ\texttt{bfi}を使う。性別，教育，年齢の情報は因子分析には使わないので除外する。
+	\item[6行目] データセットのヘルプを表示
 \end{description}
 
 ヘルプ画面にあるように，これは25のパーソナリティについての調査項目からなる，2800人分のデータです。A(Agreeableness，同調性)，C(Conscientiousness，几帳面さ)，E(Extraversion，外向性)，N(Neuroticism，神経質さ)，O(Opennness，開放性)というBig 5の各要素に対応した項目が5つずつあります。加えて性別(\texttt{gender})，最終学歴(\texttt{education})，年齢(\texttt{age})といった3つの変数も入っています。今回使うのは，5つの因子それぞれに対応すると考えられる各5つの項目，計25項目分です。
@@ -98,15 +98,15 @@ fa.parallel(dat)
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-   \item[1-2行目] データの相関行列を計算し，表示させる
-   \item[4行目] 相関行列の固有値分解を実行
-   \item[5行目] 並行分析の実行
+	\item[1-2行目] データの相関行列を計算し，表示させる
+	\item[4行目] 相関行列の固有値分解を実行
+	\item[5行目] 並行分析の実行
 \end{description}
 
 因子分析は相関行列から分析を始めますので，まずその計算をしました。オプション\texttt{use="pairwise"}は欠損値が含まれるデータセットに対し，ペアで残っている箇所は使って分析するという指定です\footnote{これがなかったら，欠損値があるので計算できません，で終わります。}。4行目で固有値分解をしてみました。結果として出力\ref{RS:out10_01}のようなものが示されています。
 
 \begin{Rscreen}{固有値の推移}{out10_01}
-   \begin{verbatim}
+	\begin{verbatim}
 eigen() decomposition
 $values
  [1] 5.0369025 2.7440855 2.1076322 1.8318415 1.5356864 1.1131589 0.8462367 0.8114075
@@ -124,10 +124,10 @@ $values
 続く\texttt{fa.parallel}関数は並行分析を行う関数で，同時に\keytermL{スクリープロット}{すくりーぷろっと}も表示してくれます(図\ref{fig10_01})。
 
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/10_FA/Rplot10_01.png}
-   \caption{スクリープロットと並行分析}
-   \label{fig10_01}
+	\centering
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/10_FA/Rplot10_01.png}
+	\caption{スクリープロットと並行分析}
+	\label{fig10_01}
 \end{figure}
 この図は先ほど算出されたような固有値\footnote{正確には$\bm{R}\dagger$の固有値です。}を大きい順に並べ，線で繋いだものが示されています。青い線が実データ，赤い点線が乱数によるにデータサイズが同じだけの偽データです。基準2に該当する1.0のところで線が引かれていて，これよりも大きい固有値を持つのが3つあることがわかります。まだ，第1固有値から第2固有値にかけて大きな傾斜があります($4.26063957\to  1.91279965$)。最初のうちはまあ当然として，第5と第6の間も少し大きなギャップがあるようです($0.70938377  \to0.25749866$)。それ以降はだらだらと数値が減衰していますね。このような大きなギャップのところは，大きな意味の違いがあると考えてもいいでしょう。基準1の観点からいくと，第5固有値までを共通因子とし，第6因子以降は誤差としてまとめてしまってもいいでしょう。
 また，並行分析の観点では，赤い線よりも上にある青いラインは有意味ということですから，6因子構造がいい，ということになりますね。
@@ -153,64 +153,64 @@ $values
 因子分析は，相関行列という項目間関係が作り出す空間に，その基礎となる軸を見出すものでした。これを図\ref{fig::x10_FAcoord1}のように表現してみます。
 項目同士はその相関関係から空間を作っていますが，ここでは2因子，F1とF2という軸をもとに座標のように書いています。項目同士が近くにあるのは，相関あっていることを意味します\footnote{原点からのベクトルと考えたときに，2つの項目ベクトルが作る角度$\theta$のコサインを取った$\cos \theta$が相関係数になります。}。ここで項目1の座標を見ると，第一因子(F1)に0.3，第二因子(F2)に0.6とありますが，これが項目1の因子に対する因子負荷量ということになります。
 \begin{figure}[ht]
-   \centering
-   \begin{tikzpicture}[
-         nodestyle/.style={
-               fill=black,
-               circle,
-               minimum height=4pt,
-               inner sep=0pt,
-            }
-      ]
-      \draw[thick,->](-4,0) -- (4,0) node[right]{$F1$};%x軸
-      \draw[thick,->](0,-4) -- (0,4) node[above]{$F2$};%y軸
-      \node[nodestyle] (item1) at (1.5,3.1) [label=item1] {};
-      \node[nodestyle] (item2) at (2.1,2.8) [label=item2] {};
-      \node[nodestyle] (item3) at (2.2,2.1) [label=item3] {};
-      \node[nodestyle] (item4) at (1.5,-2.0) [label=item4] {};
-      \node[nodestyle] (item5) at (1.5,-2.5) [label=item5] {};
-      \node[nodestyle] (item6) at (-1.5,-2.8) [label=item6] {};
-      \draw[dashed] (item1) -- (1.5,0) node[below]{$0.3$};
-      \draw[dashed] (item1) -- (0,3.1) node[left]{$0.6$};
-   \end{tikzpicture}
-   \caption{項目の空間にある基底}
-   \label{fig::x10_FAcoord1}
+	\centering
+	\begin{tikzpicture}[
+			nodestyle/.style={
+					fill=black,
+					circle,
+					minimum height=4pt,
+					inner sep=0pt,
+				}
+		]
+		\draw[thick,->](-4,0) -- (4,0) node[right]{$F1$};%x軸
+		\draw[thick,->](0,-4) -- (0,4) node[above]{$F2$};%y軸
+		\node[nodestyle] (item1) at (1.5,3.1) [label=item1] {};
+		\node[nodestyle] (item2) at (2.1,2.8) [label=item2] {};
+		\node[nodestyle] (item3) at (2.2,2.1) [label=item3] {};
+		\node[nodestyle] (item4) at (1.5,-2.0) [label=item4] {};
+		\node[nodestyle] (item5) at (1.5,-2.5) [label=item5] {};
+		\node[nodestyle] (item6) at (-1.5,-2.8) [label=item6] {};
+		\draw[dashed] (item1) -- (1.5,0) node[below]{$0.3$};
+		\draw[dashed] (item1) -- (0,3.1) node[left]{$0.6$};
+	\end{tikzpicture}
+	\caption{項目の空間にある基底}
+	\label{fig::x10_FAcoord1}
 \end{figure}
 
 因子分析では\keytermL{因子負荷量}{いんしふかりょう}をもとに，「この項目と関係の深い因子はどれか」「因子はどういう項目から構成されているか」ということを考えていくのですが，項目1は第一，第二因子それぞれにちょっとずつ関係していることがわかります。そのほかの項目も，2つの因子に負荷していますがなかなか決め手がない，というところですね。
 
 そこで座標を回転させます。どの項目がどの因子に関係しているのかを，よりはっきりさせるように軸をグルリと回すのが因子軸回転の目的です。
 \begin{figure}[ht]
-   \centering
-   \begin{tikzpicture}[
-         nodestyle/.style={
-               fill=black,
-               circle,
-               minimum height=4pt,
-               inner sep=0pt,
-            }
-      ]
-      \draw[->](-4,0) -- (4,0) node[right]{$F1$};%x軸
-      \draw[->](0,-4) -- (0,4) node[above]{$F2$};%y軸
-      \node[nodestyle] (item1) at (1.5,3.1) [] {};
-      \node[nodestyle] (item2) at (2.1,2.8) [] {};
-      \node[nodestyle] (item3) at (2.2,2.1) [label=item3] {};
-      \node[nodestyle] (item4) at (1.5,-2.0) [label=item4] {};
-      \node[nodestyle] (item5) at (1.5,-2.5) [label=item5] {};
-      \node[nodestyle] (item6) at (-1.5,-2.8) [label=item6] {};
-      \draw[->,thick](-2,-3.464) -- (2,3.464) node[above right]{$F1^\prime$};%回転後
-      \draw[->,thick](3.464,-2) -- (-3.464,2) node[above left]{$F2^\prime$};%回転後
-      \draw[dashed](0,0) -- (3/2,3*1.732/2);
-      \draw [->](1.5,0) arc [start angle = 0, end angle = 60, radius = 1.5];
-      \draw [->](0,1.5) arc [start angle = 90, end angle = 150, radius = 1.5];
-      \coordinate (o) at (0,0);
-      \coordinate (F1x) at (2,3.464);
-      \coordinate (F2x) at (-3.464,2);
-      \draw[dashed] (item1) -- ($(o)!(item1)!(F1x)$){};
-      \draw[dashed] (item1) -- ($(o)!(item1)!(F2x)$){};
-   \end{tikzpicture}
-   \caption{因子軸の回転。60度回転させてみました。}
-   \label{fig::x10_FAcoord2}
+	\centering
+	\begin{tikzpicture}[
+			nodestyle/.style={
+					fill=black,
+					circle,
+					minimum height=4pt,
+					inner sep=0pt,
+				}
+		]
+		\draw[->](-4,0) -- (4,0) node[right]{$F1$};%x軸
+		\draw[->](0,-4) -- (0,4) node[above]{$F2$};%y軸
+		\node[nodestyle] (item1) at (1.5,3.1) [] {};
+		\node[nodestyle] (item2) at (2.1,2.8) [] {};
+		\node[nodestyle] (item3) at (2.2,2.1) [label=item3] {};
+		\node[nodestyle] (item4) at (1.5,-2.0) [label=item4] {};
+		\node[nodestyle] (item5) at (1.5,-2.5) [label=item5] {};
+		\node[nodestyle] (item6) at (-1.5,-2.8) [label=item6] {};
+		\draw[->,thick](-2,-3.464) -- (2,3.464) node[above right]{$F1^\prime$};%回転後
+		\draw[->,thick](3.464,-2) -- (-3.464,2) node[above left]{$F2^\prime$};%回転後
+		\draw[dashed](0,0) -- (3/2,3*1.732/2);
+		\draw [->](1.5,0) arc [start angle = 0, end angle = 60, radius = 1.5];
+		\draw [->](0,1.5) arc [start angle = 90, end angle = 150, radius = 1.5];
+		\coordinate (o) at (0,0);
+		\coordinate (F1x) at (2,3.464);
+		\coordinate (F2x) at (-3.464,2);
+		\draw[dashed] (item1) -- ($(o)!(item1)!(F1x)$){};
+		\draw[dashed] (item1) -- ($(o)!(item1)!(F2x)$){};
+	\end{tikzpicture}
+	\caption{因子軸の回転。60度回転させてみました。}
+	\label{fig::x10_FAcoord2}
 \end{figure}
 図\ref{fig::x10_FAcoord2}のように回転させますと，回転後の軸($F1^\prime,F2^\prime$)に下ろした垂線が座標，すなわち因子負荷量になりますから，項目1は第一因子($F1^\prime$)に0.9，第二因子($F2^\prime$)に$-0.07$になりました。こうしてみると，項目1は第一因子と非常に深く関係しているし，第二因子とはほとんど関係がない，とみることができます。ほかの項目も一方の因子に大きく負荷し，他方の因子にほとんど負荷していないようになりますから，どの因子がどういう項目と関係するかを評価するのにメリハリが効いてやりやすくなります。このように，利用しやすく座標を変えるのが因子軸の回転，という技なのです。
 
@@ -218,35 +218,35 @@ $values
 
 しかし，因子軸の回転の目的は，わかりやすくするためなのですから，いっそ図\ref{fig::x10_FAcoord3}のように，角度をつけた方がさらにうまくメリハリをつけることができますね。この図では，項目4,5が明らかに第二因子に影響している，ということが見て取れるようになりました。
 \begin{figure}[ht]
-   \centering
-   \begin{tikzpicture}[
-         nodestyle/.style={
-               fill=black,
-               circle,
-               minimum height=4pt,
-               inner sep=0pt,
-            }
-      ]
-      \draw[->](-4,0) -- (4,0) node[right]{$F1$};%x軸
-      \draw[->](0,-4) -- (0,4) node[above]{$F2$};%y軸
-      \node[nodestyle] (item1) at (1.5,3.1) [] {};
-      \node[nodestyle] (item2) at (2.1,2.8) [] {};
-      \node[nodestyle] (item3) at (2.2,2.1) [label=item3] {};
-      \node[nodestyle] (item4) at (1.5,-2.0) [label=item4] {};
-      \node[nodestyle] (item5) at (1.5,-2.5) [label=item5] {};
-      \node[nodestyle] (item6) at (-1.5,-2.8) [label=item6] {};
-      \draw[->,thick](-2,-3.464) -- (2,3.464) node[above right]{$F1^\prime$};%回転後
-      \draw[->,thick](1.72,-3.61) -- (-1.72,3.61) node[above left]{$F2^\prime$};%回転後
-      \draw[dashed](0,0) -- (3/2,3*1.732/2);
-      \draw [->](1.5,0) arc [start angle = 0, end angle = 60, radius = 1.5];
-      \draw [->](0,1.5) arc [start angle = 90, end angle = 115, radius = 1.5];
-      \draw [thick](0.25,0.433) arc[start angle = 60, end angle = 115,radius = 0.5];
-      \coordinate (o) at (0,0);
-      \coordinate (F1x) at (2,3.464);
-      \coordinate (F2x) at (-3.464,2);
-   \end{tikzpicture}
-   \caption{角度をつけて回転させる斜交回転の例。角度があるとは，因子同士が相関するということ。}
-   \label{fig::x10_FAcoord3}
+	\centering
+	\begin{tikzpicture}[
+			nodestyle/.style={
+					fill=black,
+					circle,
+					minimum height=4pt,
+					inner sep=0pt,
+				}
+		]
+		\draw[->](-4,0) -- (4,0) node[right]{$F1$};%x軸
+		\draw[->](0,-4) -- (0,4) node[above]{$F2$};%y軸
+		\node[nodestyle] (item1) at (1.5,3.1) [] {};
+		\node[nodestyle] (item2) at (2.1,2.8) [] {};
+		\node[nodestyle] (item3) at (2.2,2.1) [label=item3] {};
+		\node[nodestyle] (item4) at (1.5,-2.0) [label=item4] {};
+		\node[nodestyle] (item5) at (1.5,-2.5) [label=item5] {};
+		\node[nodestyle] (item6) at (-1.5,-2.8) [label=item6] {};
+		\draw[->,thick](-2,-3.464) -- (2,3.464) node[above right]{$F1^\prime$};%回転後
+		\draw[->,thick](1.72,-3.61) -- (-1.72,3.61) node[above left]{$F2^\prime$};%回転後
+		\draw[dashed](0,0) -- (3/2,3*1.732/2);
+		\draw [->](1.5,0) arc [start angle = 0, end angle = 60, radius = 1.5];
+		\draw [->](0,1.5) arc [start angle = 90, end angle = 115, radius = 1.5];
+		\draw [thick](0.25,0.433) arc[start angle = 60, end angle = 115,radius = 0.5];
+		\coordinate (o) at (0,0);
+		\coordinate (F1x) at (2,3.464);
+		\coordinate (F2x) at (-3.464,2);
+	\end{tikzpicture}
+	\caption{角度をつけて回転させる斜交回転の例。角度があるとは，因子同士が相関するということ。}
+	\label{fig::x10_FAcoord3}
 \end{figure}
 
 このように，因子軸が直角で交わっていない場合の回転方法を\keyterm{斜交回転}{しゃこうかいてん}{oblique rotation}といいます。因子軸の回転は一般に，斜交回転した方がメリハリが効いて因子を解釈しやすくなります。斜交回転したとき算出される因子同士の相関を考えて，これが十分小さい，すなわち直角とほぼ見做せる程度だとおもわれたら直交回転を行う，とするのが良いでしょう。
@@ -256,12 +256,12 @@ $values
 \[ \bm{R}= \bm{AA'}+\bm{D}^2 \]
 ここで$\bm{AA'}$に単位行列$\bm{I}$を挟んでも，$\bm{AA'}=\bm{AIA'}$で結果は変わりませんね。ここで$\bm{I} = \bm{TT'}$となるような行列$\bm{T}$があっても同じです。たとえば2因子構造の時に，次のような行列$\bm{T}$を考えたとすると，$\bm{TT'}=\bm{I}$であることがわかります。
 \[
-   \bm{T} = \begin{pmatrix} cos \theta & -sin \theta \\ sin \theta & cos\theta \end{pmatrix}
+	\bm{T} = \begin{pmatrix} cos \theta & -sin \theta \\ sin \theta & cos\theta \end{pmatrix}
 \]
 \[
-   \bm{TT'}=\begin{pmatrix} cos \theta & -sin \theta \\ sin \theta & cos\theta \end{pmatrix}
-   \begin{pmatrix} cos \theta & sin \theta \\ -sin \theta & cos\theta \end{pmatrix}
-   =\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} =\bm{I}
+	\bm{TT'}=\begin{pmatrix} cos \theta & -sin \theta \\ sin \theta & cos\theta \end{pmatrix}
+	\begin{pmatrix} cos \theta & sin \theta \\ -sin \theta & cos\theta \end{pmatrix}
+	=\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} =\bm{I}
 \]
 このような$\bm{T}$は回転行列と言われます。原点を中心に，座標を角度$\theta$で回転させるからです。$\theta$の値は任意なので，因子負荷行列は，$\theta$に応じて無数にあることになります。であれば，使い勝手の良い角度で回転してやればいいとも言えるわけです。
 
@@ -277,7 +277,7 @@ $values
 出力\ref{RS:out10_02}に因子負荷行列を表示しました。あの$\bm{A}$が計算されていますよ！
 
 \begin{Rscreen}{因子負荷行列}{out10_02}
-   \begin{verbatim}
+	\begin{verbatim}
 Factor Analysis using method =  ml
 Call: fa(r = dat, nfactors = 5, rotate = "geominQ", fm = "ml")
 Standardized loadings (pattern matrix) based upon correlation matrix
@@ -315,7 +315,7 @@ O4   24  0.11  0.33  0.13 -0.02  0.39 0.26 0.74 2.4
 出力\ref{RS:out10_03}にはその他の情報として，各因子の因子負荷行列の二乗和(\verb|SSloadings|)，分散説明率(\verb|Proportion Var|)，累積分散説明率(\verb|Cumulative Var|)，全体を1とした時の説明比率(\verb|Proportion Explained|)，その累積(\verb|Cumulative Proportion|)が表示されています。回転するまえは固有値と\keytermL{因子負荷量}{いんしふかりょう}の二乗和が合致するのですが，回転した後の場合はそうはならないので，これらをみてどれぐらい説明できているかを考えます。とくに類遺跡分散説明率が，今回は5因子で41\%しかありません。59\%をゴミとして捨てたようなものですから，これでよかったのかな，と思案するところです。
 
 \begin{Rscreen}{因子分析結果2}{out10_03}
-   \begin{verbatim}
+	\begin{verbatim}
 ML2  ML1  ML5  ML3  ML4
 SS loadings           2.50 2.24 2.05 1.95 1.61
 Proportion Var        0.10 0.09 0.08 0.08 0.06
@@ -328,7 +328,7 @@ Cumulative Proportion 0.24 0.46 0.66 0.84 1.00
 その下出力\ref{RS:out10_04}には，因子間相関が表示されています。これをみると，第2因子(ML1)と第3因子(ML5)との間に$-0.34$という中程度の負の相関がみられます。直交回転はこれを0として解釈してしまいますから，スッキリはするのですがデータには適合してないところかもしれません。このように，分析する時はまず斜交回転を行い，因子間相関がなべて低い場合は直交で分析をやり直す，というステップを経ます。
 
 \begin{Rscreen}{因子分析結果3}{out10_04}
-   \begin{verbatim}
+	\begin{verbatim}
  With factor correlations of 
       ML2   ML1   ML5   ML3   ML4
 ML2  1.00  0.11  0.06 -0.12  0.06

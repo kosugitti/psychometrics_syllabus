@@ -1,0 +1,4 @@
+\begin{lstlisting}[language=c++,label={code:23_10},caption={線形モデルとして実行}]
+result.lm2 <- lm(value ~ temp*maker,data=Example2)
+summary(result.lm2)
+\end{lstlisting}

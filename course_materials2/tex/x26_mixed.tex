@@ -12,11 +12,11 @@
 \section{混合分布モデル}
 図\ref{fig:26_01}を見てください。これは野球選手データからTigersの年俸をヒストグラムにしたものです。年俸のデータはそのままだと左に歪んでいるので，対数をとったものを表示しています。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/Rplot26_01.png}
-      \caption{Tigersの選手年俸(対数)の分布}
-      \label{fig:26_01}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/Rplot26_01.png}
+		\caption{Tigersの選手年俸(対数)の分布}
+		\label{fig:26_01}
+	\end{center}
 \end{figure}
 ヒストグラムを見ると，どうも2つの山があるように見えますね。赤いラインは密度のカーブを書いたものですが，これはどう見ても2つのピークを持っています。
 このようなデータに対して，正規分布のモデルを当てはめるのはおかしなことです。\keytermL{正規分布}{せいきぶんぷ}はご存知の通りベルカーブ，すなわちピークは1つ(単峰)で，両裾になだらかに下がっていくものですから，このデータと違う形になっていることは間違いありません。
@@ -37,11 +37,11 @@
 
 こうした分類，クラスタリングの手法はいくつかあって，大きく分けると\keyterm{階層的クラスタリング}{かいそうてきくらすたりんぐ}{hierarchal clustering}と\keytermL{非階層的クラスタリング}{ひかいそうてきくらすたりんぐ}の二種類に分かれます。階層的というのはHLMの発想と同じで，クラスターが積み重なっていくようなイメージです。たとえば要素$\{a,b,c,d,e\}$をクラスタリングする時，距離が近いものを使ってまず$\{a\},\{b,c\},\{d,e\}$と分割したとします。次に$\{b,c\}$を1つの新しいデータ点だと考えて，$a$と$\{b,c\}$，$\{b,c\}$と$\{d,e\}$の距離を考え，近い方をさらに次のクラスターにまとめます。すなわち$\{a,\{b,c\}\},\{d,e\}$というようにです。それをさらに上位階層でまとめ$\{a,\{b,c\},\{d,e\}\}$とすべてが1つのクラスターにまとめられたら終わり，とより包括的なクラスターへ，より上位のクラスターへとまとめていくのが階層的クラスタリングという手法です。この方法で分類した例を図\ref{fig:26_02}に示します。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/Rplot26_02.png}
-      \caption{Tigersの選手を年俸で階層的クラスタリング(ウォード法による)}
-      \label{fig:26_02}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/Rplot26_02.png}
+		\caption{Tigersの選手を年俸で階層的クラスタリング(ウォード法による)}
+		\label{fig:26_02}
+	\end{center}
 \end{figure}
 階層的クラスタリングは，階層が上がる時にクラスター化されたもの同士の距離をどう考えるかによって，いくつかの方法があります。先ほどの例ではまず$\{b,c\}$が1つのクラスターになりましたが，これを$A$とすると，$a$と$A$の距離をどう考えるか，がいろいろあるわけです。大文字の$A$の方は，2つの要素から合成されたもの($A=\{b,c\})$ですから，$a$と$b$の距離を取るのか，$a$と$c$の距離を取るのか，はたまた$b,c$の平均的な値と$a$との距離を取るのか等々，基準が必要なわけです。複数の要素を持つクラスター同士の距離の考え方として，その最大値を取る\textbf{最大距離法}，最小値を取る\textbf{最小距離法}だけでなく，データの重心を取る\textbf{セントロイド法}，平均を取る\textbf{平均法}，クラスター内分散とクラスター間分散の差が最小となるように取る\keyterm{ウォード法}{うぉーどほう}{Ward's method}などがあります\footnote{厳密に書くと，クラスターPに含まれる要素と重心との距離の二乗和を$E(P)$とすると，二つのクラスターP,Qを併合して作られる新しいクラスターTを考えた時，$E(T)-E(P)-E(Q)$をP,Qの距離と考える方法です。}\footnote{Rでは標準関数\verb|hclust|で階層的クラスター分析ができ，ウォード法を使うときは\verb|method='ward.D2'|とします。この\verb|.D2|にはいわれがあって，かつては\verb|ward.D|でウォード法の指定ができたのですが，この関数にバグが含まれていることが判明，修正版を\verb|ward.D2|としたのです。Rは無償のフリーソフトウェアですから，バグが含まれているなんてやっぱり使い物にならない！という批判もあるのですが，オープンなソフトウェアであるからこそソースコードが誰にでも見られて指摘することができ，よくなっていくものでもあります。バグがあったこと，それを自浄作用でフィックスしたことを記録するために，\verb|2|を残すことになりました。プロプライエタリな商用ソフトの場合，間違いがあってもこっそり修正して，同じ関数名で提供されてしまえば，ユーザは分析が間違っていたことに気づくことすらできません。科学技術に関するソフトウェアはオープンであるべきだ，というRの思想がここに現れていると言えるでしょう。}。最後のウォード法は弁別後の結果がわかりやすいため，よく用いられます。
 
@@ -54,11 +54,11 @@
 \subsection{混合分布モデルの考え方}
 混合分布モデルの考え方は，アルクラスターに含まれるかどうかが確率的に決まるというものです。たとえばコイントスをして，表が出たらクラスターA，裏が出たらクラスターB，というように分類するようなものです。コイントスはベルヌーイ分布に下がいますから，確率$\theta$でクラスターA，確率$1-\theta$でクラスターB，と言っていることと同じです(図\ref{fig:26_03})。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/slide26_01.png}
-      \caption{二つの正規分布からデータが出てくるモデル}
-      \label{fig:26_03}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/slide26_01.png}
+		\caption{二つの正規分布からデータが出てくるモデル}
+		\label{fig:26_03}
+	\end{center}
 \end{figure}
 
 もちろん3つ以上のクラスターに分類することもあるでしょう。この場合は\keytermL{カテゴリカル分布}{かてごりかるぶんぷ}(セクション\ref{DDist}，Pp.\pageref{DDist}を参照)に従う確率変数$z$を考えることになります。
@@ -67,11 +67,11 @@
 個々のデータ$Y_i$の出自は，$z[i] \sim Categorical(\lambda_{i})$で決まり，データ$Y_i \sim N(\mu_{z[i]},\sigma_{z[i]})$からきている，と考えることになります(図\ref{fig:26_04})。
 
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/slide26_02.png}
-      \caption{K個の正規分布からデータが出てくるモデル}
-      \label{fig:26_04}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/slide26_02.png}
+		\caption{K個の正規分布からデータが出てくるモデル}
+		\label{fig:26_04}
+	\end{center}
 \end{figure}
 データ生成メカニズムの設計図は図\ref{fig:26_03}，\ref{fig:26_04}の通りです。具体的なプログラミングに進む前に，イメージをしっかり掴んでおきましょう。
 これらの設計図の一番上にある，どのクラスターからデータが出てくるかを確率的に決めるというところがポイントです。ですがこのモデルを実装できるようになれば，データ発生の条件分岐を確率モデルで表現できるようになるのです。
@@ -180,13 +180,13 @@ generated quantities{
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-   \item[dataブロック] クラスター数K，データ長L，アウトカム変数Yを宣言しています。
-   \item[parametersブロック] 合計が1になるKの長さを持つベクトルである，\verb|simplex|型ベクトルを，データ数だけ用意します。また，K個の正規分布からデータが出てきているのですから，平均と標準偏差もK個用意します。ここで大事なポイントとして，平均$\mu$が\verb|ordered|型としてあるところです。このベクトルは，要素$\mu_1>\mu_2>\cdots>\mu_k$と，要素が大きさの順に並んでいることです。このような制約をかけておかないと，K個の正規分布がどの位置にあるのか判然としな苦なるという問題が生じます。たとえばあるチェインで$\mu_1>\mu_2$となっていて，データ$X_k$が1番目の正規分布から出てきていると考えられたとしましょう。しかし別のチェインで$\mu_1<\mu_2$となっていれば，$X_k$は平均値が大きい方から出てきているのですから，こちらのチェインでは2番目の正規分布から出てきたものとして，MCMCサンプルが進むことになります。複数のチェインから得られたMCMCサンプルは最終的に統合されますから，このようになっていると$X_k$は正規分布1からも2からも同じように出てきていることになります。各チェインでは正しくサンプリングできているのですが，チェインごとに分布のラベルが違うので，統合すると訳がわからなくなる，この問題をとくに\keyterm{ラベルスイッチング}{らべるすいっちんぐ}{Label Switching}問題といい，混合分布モデルではよく生じる問題なのです。そこで分布の位置母数に順番の制約を入れて，ラベルの変動を止める必要があります。
-   \item[transformed parametersブロック] 長さKのベクトルをデータの数Lだけ用意した\verb|lp|変数を作りました。これはlog-probabilityの略でこのような名前にしましたが，任意の名前で結構です。l行目のデータがクラスターkに含まれる可能性は，$\theta_{lk} \times N(Y[l]\mid\mu_k,\sigma_k)$ですから，それの対数をとった形で表現しています。
-   \item[modelブロック] モデル尤度のところは，対数$\to$ $\exp$関数で確率の形 $\to$ ベクトルの要素をすべて足し合わせる $\to$ $\log$をとって対数尤度にする，という計算をまとめて\verb|log_sum_exp|関数で行い，それをすべて\verb|target|に追加していくという方法で書いています。事前分布のところは普通のサンプリング記法で書きました。ちなみに$\mu,\sigma$はそれぞれK個ずつありますが，Stanは添字の省略を許してくれます。
-   \item[generated quantitiesブロック] 久しぶりに生成量ブロックの登場です。ここでは分析結果を使って，l行目のデータが結局何番目の正規分布から出てきたのかを逆算して出しています。まず，対数尤度で表現されているK個の要素を持つベクトルを，確率の形に計算したものを\verb|preb_class|変数にしています。ここで使われている\verb|softmax|という関数は，
-      \[ softmax(x) = \frac{exp(x)}{\sum_{k=1}^K exp(x_k)}\]
-      という計算をするものです。分母はベクトルの総和で分子がその要素ですから，要するに各クラスに入る確率を表すベクトルになっている訳です。これを使って\verb|pred_class|変数を作っています。今回のデータから予想される所属クラスなので，K面サイコロを振った出目という形で表現します。\verb|categorical_rng|はカテゴリカル分布からの乱数発生で，その発生確率が先ほどの\verb|prob_class|になっているので，この乱数で出た目が予測されるクラスということです。
+	\item[dataブロック] クラスター数K，データ長L，アウトカム変数Yを宣言しています。
+	\item[parametersブロック] 合計が1になるKの長さを持つベクトルである，\verb|simplex|型ベクトルを，データ数だけ用意します。また，K個の正規分布からデータが出てきているのですから，平均と標準偏差もK個用意します。ここで大事なポイントとして，平均$\mu$が\verb|ordered|型としてあるところです。このベクトルは，要素$\mu_1>\mu_2>\cdots>\mu_k$と，要素が大きさの順に並んでいることです。このような制約をかけておかないと，K個の正規分布がどの位置にあるのか判然としな苦なるという問題が生じます。たとえばあるチェインで$\mu_1>\mu_2$となっていて，データ$X_k$が1番目の正規分布から出てきていると考えられたとしましょう。しかし別のチェインで$\mu_1<\mu_2$となっていれば，$X_k$は平均値が大きい方から出てきているのですから，こちらのチェインでは2番目の正規分布から出てきたものとして，MCMCサンプルが進むことになります。複数のチェインから得られたMCMCサンプルは最終的に統合されますから，このようになっていると$X_k$は正規分布1からも2からも同じように出てきていることになります。各チェインでは正しくサンプリングできているのですが，チェインごとに分布のラベルが違うので，統合すると訳がわからなくなる，この問題をとくに\keyterm{ラベルスイッチング}{らべるすいっちんぐ}{Label Switching}問題といい，混合分布モデルではよく生じる問題なのです。そこで分布の位置母数に順番の制約を入れて，ラベルの変動を止める必要があります。
+	\item[transformed parametersブロック] 長さKのベクトルをデータの数Lだけ用意した\verb|lp|変数を作りました。これはlog-probabilityの略でこのような名前にしましたが，任意の名前で結構です。l行目のデータがクラスターkに含まれる可能性は，$\theta_{lk} \times N(Y[l]\mid\mu_k,\sigma_k)$ですから，それの対数をとった形で表現しています。
+	\item[modelブロック] モデル尤度のところは，対数$\to$ $\exp$関数で確率の形 $\to$ ベクトルの要素をすべて足し合わせる $\to$ $\log$をとって対数尤度にする，という計算をまとめて\verb|log_sum_exp|関数で行い，それをすべて\verb|target|に追加していくという方法で書いています。事前分布のところは普通のサンプリング記法で書きました。ちなみに$\mu,\sigma$はそれぞれK個ずつありますが，Stanは添字の省略を許してくれます。
+	\item[generated quantitiesブロック] 久しぶりに生成量ブロックの登場です。ここでは分析結果を使って，l行目のデータが結局何番目の正規分布から出てきたのかを逆算して出しています。まず，対数尤度で表現されているK個の要素を持つベクトルを，確率の形に計算したものを\verb|preb_class|変数にしています。ここで使われている\verb|softmax|という関数は，
+	      \[ softmax(x) = \frac{exp(x)}{\sum_{k=1}^K exp(x_k)}\]
+	      という計算をするものです。分母はベクトルの総和で分子がその要素ですから，要するに各クラスに入る確率を表すベクトルになっている訳です。これを使って\verb|pred_class|変数を作っています。今回のデータから予想される所属クラスなので，K面サイコロを振った出目という形で表現します。\verb|categorical_rng|はカテゴリカル分布からの乱数発生で，その発生確率が先ほどの\verb|prob_class|になっているので，この乱数で出た目が予測されるクラスということです。
 \end{description}
 これを実行するためのRコードをコード\ref{code:26_01}に用意しました。
 \begin{lstlisting}[language=c++,label={code:26_01},caption={混合分布モデルのコード}]
@@ -206,24 +206,24 @@ fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4)
 
 \paragraph{コード解説}
 \begin{description}
-   \item[1行目] データファイル\verb|baseballDecade.csv|を読み込みます。
-   \item[2-8行目] 分析用のデータに加工しています。
-      \begin{description}
-         \item[3行目] フィルターをかけてデータを野手だけのものにします。
-         \item[4行目] フィルターをさらにかけて，50試合場出ている選手に限定します。
-         \item[5行目] チームがTigersの選手だけに絞っています。
-         \item[6行目] 年俸のデータは歪んでいるので，対数をとって正規分布の形に近似させました\footnote{データを変形させずに確率分布の方で対応するのがよい，と常々話をしてきましたが，ここではデータを変形させています。実は左に歪んだような分布は対数正規分布というのがあり，そこからのデータ生成を考えても良いのですが，対数正規分布はデータの対数が従う正規分布というだけなので，データの方を変えてしまった方が説明しやすいのです。比率や度数など，データの生成メカニズムがそもそも違うばあいは，データを変換せずに使うのが正しいやり方です。}。
-         \item[7行目] 使う変数だけに絞っています。
-         \item[8行目] 行番号を\verb|ID|という変数名にして追加しました
-      \end{description}
-   \item[10行目] データセットを作っています。
-   \item[11行目] cmdstanでコンパイルしています。rstanパッケージを使う場合はrstanのコンパイル関数を使ってください。
-   \item[12行目] cmdstanのサンプリング関数です。rstanパッケージを使う場合はrstanのサンプリング関数を使ってください。
+	\item[1行目] データファイル\verb|baseballDecade.csv|を読み込みます。
+	\item[2-8行目] 分析用のデータに加工しています。
+	      \begin{description}
+		      \item[3行目] フィルターをかけてデータを野手だけのものにします。
+		      \item[4行目] フィルターをさらにかけて，50試合場出ている選手に限定します。
+		      \item[5行目] チームがTigersの選手だけに絞っています。
+		      \item[6行目] 年俸のデータは歪んでいるので，対数をとって正規分布の形に近似させました\footnote{データを変形させずに確率分布の方で対応するのがよい，と常々話をしてきましたが，ここではデータを変形させています。実は左に歪んだような分布は対数正規分布というのがあり，そこからのデータ生成を考えても良いのですが，対数正規分布はデータの対数が従う正規分布というだけなので，データの方を変えてしまった方が説明しやすいのです。比率や度数など，データの生成メカニズムがそもそも違うばあいは，データを変換せずに使うのが正しいやり方です。}。
+		      \item[7行目] 使う変数だけに絞っています。
+		      \item[8行目] 行番号を\verb|ID|という変数名にして追加しました
+	      \end{description}
+	\item[10行目] データセットを作っています。
+	\item[11行目] cmdstanでコンパイルしています。rstanパッケージを使う場合はrstanのコンパイル関数を使ってください。
+	\item[12行目] cmdstanのサンプリング関数です。rstanパッケージを使う場合はrstanのサンプリング関数を使ってください。
 \end{description}
 
 推定した結果を見てみましょう。私の環境では出力\ref{MCMCout:out26_01}のようになりました。
 \begin{MCMCout}{}{out26_01}
-\begin{verbatim}
+	\begin{verbatim}
 # A tibble: 4 × 7
   name           EAP       MED       MAP        SD       L95       U95
   <chr>    <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!>
@@ -236,11 +236,11 @@ fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4)
 対数をとった時の平均値が$7.624$と$9.702$ですから，指数関数を入れて読み直せば$\exp(7.624)=2046.733$,$\exp(9.702)=16350.28x$となります。2000万円クラスの選手と，1億6500万円クラスの選手の2つのグループに分かれることが見て取れますね。
 事後予測分布から，所得平均の高い「超一流」選手と「一般的」な選手とに分けて分布を色分けしてみました(図\ref{fig:26_10})。データから，この選手がどちらのクラスに所属しているかも想像できるところがおもしろいですね。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/Rplot26_06.png}
-      \caption{選手のクラスタリング}
-      \label{fig:26_10}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/Rplot26_06.png}
+		\caption{選手のクラスタリング}
+		\label{fig:26_10}
+	\end{center}
 \end{figure}
 
 
@@ -249,11 +249,11 @@ fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4)
 \label{ZIpoisson}
 さて，異なる分布の混ぜ合わせ，離散確率分布による条件分岐の例として，もう1つ別の例を示しましょう。次の図\ref{fig:26_05}を見てください。
 \begin{figure}[hb]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/Rplot26_03.png}
-      \caption{投手のセーブ数}
-      \label{fig:26_05}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/Rplot26_03.png}
+		\caption{投手のセーブ数}
+		\label{fig:26_05}
+	\end{center}
 \end{figure}
 
 これは投手のセーブ数の度数分布です。野球は9回のターン制で，1回の最初から投げる投手は先発投手と言います。先発投手が9回まで投げ切れればいいのですが，疲労も溜まるし戦術によっては投手の打席に代打を投入することもあります。投手が降板した場合は，次の投手が代わって続きから投げますが，「勝っている試合で後半まできたので，最後の1，2回は確実に勝ち逃げできるようにしたい」というときに投入されるのが抑え(クローザー)と呼ばれる投手です。最近のプロ野球は分業が進んでいますから，先発投手が完投することは少なく，100球程度で交代し，中継ぎ--抑えと投手リレーしていくのが一般的な戦術です。さて，先発投手は最初から出てきて6，7回まで投げますから(途中でボロボロに打たれたり怪我で降板などがなければ，ですが)，毎日のように登板することはなく，一度登板すると3，4日休んで次の試合にでる，ということになります。日本プロ野球は年間140試合近くありますが，通年で2-30回も登板することはありません。一方，抑えの投手は最後の8，9回を投げる程度で，しかも負けている試合などでは出番がありません。必然的に中4日の休憩なども入りませんから，試合数はたくさん出ることができます。そして抑えに成功するとセーブポイントというのがつきますが，このセーブポイントは優秀なクローザーであれば年間数十ポイント取ることができる訳です。
@@ -263,31 +263,31 @@ fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4)
 このセーブポイント，0以上の整数を取りますからポアソン分布に従うと考えられるのですが，ポアソン分布のパラメータ$\lambda$をどう変えても(図\ref{fig:26_06})，こんな形にはなりません。
 
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/Rplot26_04.png}
-      \caption{さまざまなポアソン分布。$\lambda$は1.5，3，4.5，10.5で描画}
-      \label{fig:26_06}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/Rplot26_04.png}
+		\caption{さまざまなポアソン分布。$\lambda$は1.5，3，4.5，10.5で描画}
+		\label{fig:26_06}
+	\end{center}
 \end{figure}
 そこで混合分布です。まずセーブ数が0かどうかを考えます。セーブ数0というのは，そもそもクローザーではないか，クローザーなのに0セーブポイントのへっぽこか，の二択です。セーブ数が0でない限り，ポアソン分布からセーブ数が生成される，と考えるのです。設計図のイメージは図\ref{fig:26_07}の通りです。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/slide26_03.png}
-      \caption{ポアソン分布との混ぜ合わせ}
-      \label{fig:26_07}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/slide26_03.png}
+		\caption{ポアソン分布との混ぜ合わせ}
+		\label{fig:26_07}
+	\end{center}
 \end{figure}
 
 このモデルがちょっと特殊なのは，ご覧の通り0というデータの値一箇所に極端な偏りがあるところです。この分布のことを\keyterm{ゼロ過剰ポアソン}{ぜろかじょう}{Zero-Inflated Poisson}といいます。
 
 注意してほしいのですが，ポアソン分布から0の度数が出てくることもあり得ます。逆に考えると，データ$Y_i=0$であれば，これはクローザーでないからそうなっているのか，クローザーなのにヘッポコでセーブ数がつかなかったのかのどちらか，という判断をしなければならないということです。つまり，データからの分岐を考えることになります。クローザーかどうかは確率$\theta$で決まるとして，$\theta$ならクローザー，$1-\theta$ならクローザーじゃないとすると，
 \begin{equation}
-   \left\{ \begin{array}{cc} \mbox{データが0ではない} & \to \theta \times Poisson(Y_i\mid\lambda)                    \\
-             \mbox{データが0だ}            & \to 1-\theta \mbox{ or } \theta \times Poisson(0\mid\lambda)\end{array} \right.
+	\left\{ \begin{array}{cc} \mbox{データが0ではない} & \to \theta \times Poisson(Y_i\mid\lambda)                    \\
+             \mbox{データが0だ}         & \to 1-\theta \mbox{ or } \theta \times Poisson(0\mid\lambda)\end{array} \right.
 \end{equation}
 このデータが0のときに生成メカニズムが条件分岐していますから，ここに\verb|log_sum_exp|関数を入れる必要があります。
 \begin{equation*}
-   \verb|log_sum_exp| \begin{pmatrix} \log(1-\theta) \\ \log(\theta) + \verb|poisson_lpmf|(0\mid\lambda)\end{pmatrix}
+	\verb|log_sum_exp| \begin{pmatrix} \log(1-\theta) \\ \log(\theta) + \verb|poisson_lpmf|(0\mid\lambda)\end{pmatrix}
 \end{equation*}
 このことを念頭において，コードを書いてみましょう(コード\ref{stan::26_04})。
 \begin{lstlisting}[language=C++,label={stan::26_04},caption={ゼロ過剰ポアソン分布}]
@@ -313,9 +313,9 @@ model{
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-   \item[dataブロック] データ長L，アウトカム変数Yを宣言しています。
-   \item[parametersブロック] クローザーかどうかを決める$\theta$と，ポアソン分布のパラメータ$\lambda$がパラメータです。
-   \item[modelブロック] データの中で，プログラミング言語としての\verb|if|文による条件分岐が出てきています\footnote{プログラミングでの条件分岐については第\ref{x16_Programming}講，セクション\ref{if_statement}，Pp.\pageref{if_statement}でやりましたね。忘れた人は戻って再確認しましょう。}。データが0であれば，クローザーでないか，ポアソン分布からゼロが出ているかです。そうでなければ，確率$\theta$経由でのポアソン分布です。
+	\item[dataブロック] データ長L，アウトカム変数Yを宣言しています。
+	\item[parametersブロック] クローザーかどうかを決める$\theta$と，ポアソン分布のパラメータ$\lambda$がパラメータです。
+	\item[modelブロック] データの中で，プログラミング言語としての\verb|if|文による条件分岐が出てきています\footnote{プログラミングでの条件分岐については第\ref{x16_Programming}講，セクション\ref{if_statement}，Pp.\pageref{if_statement}でやりましたね。忘れた人は戻って再確認しましょう。}。データが0であれば，クローザーでないか，ポアソン分布からゼロが出ているかです。そうでなければ，確率$\theta$経由でのポアソン分布です。
 \end{description}
 
 これを実行するためのRコードはコード\ref{code:26_02}のようになります。
@@ -336,7 +336,7 @@ fit <- model$sample(
 
 推定した結果を見てみましょう。私の環境では出力\ref{MCMCout:out26_02}のようになりました。
 \begin{MCMCout}{}{out26_02}
-\begin{verbatim}
+	\begin{verbatim}
 # A tibble: 2 × 7
   name         EAP       MED       MAP        SD       L95       U95
   <chr>  <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!>
@@ -347,11 +347,11 @@ fit <- model$sample(
 これを見ると，6割の確率でクローザー判定され，クローザーであれば$\lambda=14.7$ぐらいのポアソン分布でデータが生成されるということですね。
 事後予測分布のように，この確率モデルで出てくるデータを図\ref{fig:26_08}に示してみました。単一の分布では表現できないモデル化ができているのではないでしょうか。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/Rplot26_05.png}
-      \caption{ゼロ過剰ポアソン分布による当てはめ。上がロウデータ，下が事後予測分布}
-      \label{fig:26_08}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/Rplot26_05.png}
+		\caption{ゼロ過剰ポアソン分布による当てはめ。上がロウデータ，下が事後予測分布}
+		\label{fig:26_08}
+	\end{center}
 \end{figure}
 もっとも，今回は1，2回セーブポイントがついている人のところをうまく表現できませんでした。しかしコードを書き換えることで，セーブ数0の先発投手と，本職のクローザーに加え，セーブ数が一桁ぐらいの中継ぎ投手の三種類に分割する，ということもできるでしょう。
 
@@ -393,11 +393,11 @@ model{
 
 データの分布や特徴を考えて，それにあった分析モデルを作っていくのは，モデラーとしての階段を一歩登ったことになります。図\ref{fig:26_09}には統計分析家の成長ステップの模式図を描いてみました\footnote{この図は東北大学大学院文学研究科の浜田宏先生が，専修大学社会知性開発研究センター主催の研究会(2019.2.26開催，於専修大学サテライトキャンパス)にてご講演いただいた際の，資料をもとに作図したものです。}。最初はデータの記述や線形モデルの当てはめなど，得られたデータに振り回されるような形でモデルを作り上げてきましたが，今回のように分布を混ぜ合わせると，さらにその表現力が豊かになることが実感できたのではないでしょうか。図にあるように，確率モデルのパラメータが心理事象の(数学的)記述から導出され，それがデータと合致する可動かで検証するようになれれば，さらにもう一段階研究のレベルが上がることになるでしょう。最終的には，心理学理論の方から新しい確率分布が導出される日が来るかもしれませんね。
 \begin{figure}[ht]
-   \begin{center}
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/slide26_04.png}
-      \caption{統計モデラーの道。浜田宏先生(東北大学)のアイデアをもとにイラスト化したもの}
-      \label{fig:26_09}
-   \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/26_mixed/slide26_04.png}
+		\caption{統計モデラーの道。浜田宏先生(東北大学)のアイデアをもとにイラスト化したもの}
+		\label{fig:26_09}
+	\end{center}
 \end{figure}
 \section{課題}以下のモデルを分析するR/Stanコードを提出してください。結果の解釈などを，スクリプトのコメントアウトや別添ファイルなどで提供してもらえるとなお良いです。もちろんRmdファイルでの提出であれば完璧です。なお提出されたコード単体でバグがなく動くことが確認できないものは，未提出扱いになります。コードの書き方などわからないところがあれば，曜日別TAか小杉までメールで連絡し，指導を受けてください。
 

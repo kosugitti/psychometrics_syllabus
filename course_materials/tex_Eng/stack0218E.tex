@@ -59,12 +59,12 @@ The expected value of the random variable $X$ is denoted by $E(X)$, and it is ca
 ここで$x_i$は確率変数がとりうる値，$p_i$はその値が出てくる確率です。そしてすべての可能性を足し合わせ($\sum$)ます。
 サイコロの期待値は次の通りです。
 \[1\times\frac{1}{6}+
-   2\times\frac{1}{6}+
-   3\times\frac{1}{6}+
-   4\times\frac{1}{6}+
-   5\times\frac{1}{6}+
-   6\times\frac{1}{6}
-   =3.5\]
+	2\times\frac{1}{6}+
+	3\times\frac{1}{6}+
+	4\times\frac{1}{6}+
+	5\times\frac{1}{6}+
+	6\times\frac{1}{6}
+	=3.5\]
 % 実際に3.5という出目があるわけではありませんが，平均はこうなるということです。このように，確率分布の平均値は実現値$\times$その確率をすべて足し合わせたもの，と思っておいてください。
 Although there isn't actually a roll of 3.5, this is what the average would be. This way, please think of the average value of a probability distribution as the sum of all actual values times their probabilities.
 % たとえば，これがわかれば宝くじの期待値がわかります。2004年のサマージャンボ宝くじ，1ユニット，1000万通り当たりの当選金は表\ref{takarakuji}のようになります。
@@ -87,11 +87,11 @@ When you calculate the expected value based on this, it becomes as follows.
 You subtract the expected value from the actual outcome, square that, and multiply it by the probability, then sum it all up, right? In the case of a dice, it would be as follows.
 
 \[
-   (1-3.5)^2\frac{1}{6}+
-   (2-3.5)^2\frac{1}{6}+
-   \cdots+
-   (5-3.5)^2\frac{1}{6}+
-   (6-3.5)^2\frac{1}{6} = 2.9166...
+	(1-3.5)^2\frac{1}{6}+
+	(2-3.5)^2\frac{1}{6}+
+	\cdots+
+	(5-3.5)^2\frac{1}{6}+
+	(6-3.5)^2\frac{1}{6} = 2.9166...
 \]
 
 % 連続分布の場合は足し算でなく積分をすることになりますが，基本的な発想は同じです。
@@ -142,10 +142,10 @@ To calculate correctly, of course, you just need to calculate from the shape of 
 
 たとえばRでは10万点の正規分布に従う乱数を発生させる，ということも一瞬でできます。乱数は規則性がないように出てくる設計になっているので，毎回得られる数字は異なりますが，それを集計するとある確率分布に従っていることがはっきりわかってきます(図\ref{fig::08_11})。
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/08_CorrelationCausation/Rplot08_06.png}
-   \caption{乱数が増えると正規分布の形に近づく。左上から順に100,1000,10000,100000点の乱数を発生させて描いたヒストグラム}
-   \label{fig::08_11}
+	\centering
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/08_CorrelationCausation/Rplot08_06.png}
+	\caption{乱数が増えると正規分布の形に近づく。左上から順に100,1000,10000,100000点の乱数を発生させて描いたヒストグラム}
+	\label{fig::08_11}
 \end{figure}
 
 このように，発生させる乱数の個数が多くなると，理論的な形(今回は標準正規分布)の近似として十分利用できることになります。
@@ -159,13 +159,13 @@ To calculate correctly, of course, you just need to calculate from the shape of 
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-   \item[1行目] 平均0，標準偏差1の正規乱数を10万個発生させ，Xに保存する。
-   \item[2行目] \texttt{length}関数はベクトルの長さを返す関数。オブジェクト\texttt{X}のなかでも，条件\verb|X>0.3 & X<1.0|に合致するものだけを抜き出し，その長さを算出。
-   \item[3行目] 条件に該当するデータの個数を10万で割ることで相対頻度にする。相対頻度は確率の数字として解釈できる。
+	\item[1行目] 平均0，標準偏差1の正規乱数を10万個発生させ，Xに保存する。
+	\item[2行目] \texttt{length}関数はベクトルの長さを返す関数。オブジェクト\texttt{X}のなかでも，条件\verb|X>0.3 & X<1.0|に合致するものだけを抜き出し，その長さを算出。
+	\item[3行目] 条件に該当するデータの個数を10万で割ることで相対頻度にする。相対頻度は確率の数字として解釈できる。
 \end{description}
 
 \begin{Rscreen}{乱数を使った近似}{out08_02}
-   \begin{verbatim}
+	\begin{verbatim}
 > X <- rnorm(n = 100000 , mean = 0 , sd = 1)
 > length(X[X>0.3 & X<1.0])
 [1] 22371

@@ -38,30 +38,30 @@
 
 行ベクトルは次のように表します。
 \begin{equation*}
-    \bm{a}=
-    \begin{pmatrix}
-        a_1 & a_2 & \cdots & a_m
-    \end{pmatrix}
+	\bm{a}=
+	\begin{pmatrix}
+		a_1 & a_2 & \cdots & a_m
+	\end{pmatrix}
 \end{equation*}
 
 列ベクトルは次のように表します。
 \begin{equation*}
-    \bm{b}=
-    \begin{pmatrix}
-        b_1 \\ b_2\\ \vdots \\ b_m
-    \end{pmatrix}
+	\bm{b}=
+	\begin{pmatrix}
+		b_1 \\ b_2\\ \vdots \\ b_m
+	\end{pmatrix}
 \end{equation*}
 
 具体的には，$a_1$とか$b_2$のところには数字が入っています。つまり次のような形です。
 \begin{equation*}
-    \bm{a}=
-    \begin{pmatrix}
-        1 & 3 & 5
-    \end{pmatrix},
-    \bm{b}=
-    \begin{pmatrix}
-        2 \\ 4\\ 6\\ 12 \\ 8
-    \end{pmatrix}
+	\bm{a}=
+	\begin{pmatrix}
+		1 & 3 & 5
+	\end{pmatrix},
+	\bm{b}=
+	\begin{pmatrix}
+		2 \\ 4\\ 6\\ 12 \\ 8
+	\end{pmatrix}
 \end{equation*}
 
 とくに断りがなければ，本書でベクトルといえば基本は列ベクトルであると思ってください。
@@ -70,11 +70,11 @@
 ちなみに行は$\to$の方向，列は$\downarrow$の方向です。行という漢字の四画目，列という漢字の最後の一画が方向を表している，と覚えるといいかもしれません\footnote{行の最後の一画，列の最初の一画と逆に覚えないように!}。ちなみに英語で行はRow，列はColumnで，Rの下を伸ばしたり，Lが縦長なのでそれを意識したりして，方向を覚えるといいかもしれません(図\ref{fig::01_01})。
 
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.5\linewidth,keepaspectratio]{../images/LA01/RowColumn.png}
-        \caption{行と列，その覚え方}
-        \label{fig::01_01}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.5\linewidth,keepaspectratio]{../images/LA01/RowColumn.png}
+		\caption{行と列，その覚え方}
+		\label{fig::01_01}
+	\end{center}
 \end{figure}
 
 また，ベクトルやこの後出てくる行列を表すアルファベットは，$a$や$B$のようにただのアルファベットではなく，$\bm{a}$，$\bm{B}$のように\ruby{太字体}{ボールド}で表します。字が太くなっているときはベクトルや行列，すなわち複数の数字から構成されたものだな，と思って見るようにしてください。ちなみに手書きでノートなどに書くときは，どこかの一画を二重線にするなどして表現することが多いです。
@@ -88,15 +88,15 @@
 \keyterm{行列}{ぎょうれつ}{matrix}とは数を長方形に並べたものです。行列として並べられた数を成分といい，成分の横の並びを行，縦の並びを列と呼びます。
 
 \begin{equation*}
-    \bm{A}=
-    \begin{pmatrix}
-        a_{11} & a_{12} & \cdots & a_{1j} & \cdots & a_{1m} \\
-        a_{21} & \ddots &        & \vdots &        & a_{2m} \\
-        \vdots &        & \ddots & \vdots &        & \vdots \\
-        a_{i1} & \cdots & \cdots & a_{ij} &        & \vdots \\
-        \vdots &        &        &        & \ddots & \vdots \\
-        a_{n1} & a_{n2} & \cdots & \cdots & \cdots & a_{nm} \\
-    \end{pmatrix}
+	\bm{A}=
+	\begin{pmatrix}
+		a_{11} & a_{12} & \cdots & a_{1j} & \cdots & a_{1m} \\
+		a_{21} & \ddots &        & \vdots &        & a_{2m} \\
+		\vdots &        & \ddots & \vdots &        & \vdots \\
+		a_{i1} & \cdots & \cdots & a_{ij} &        & \vdots \\
+		\vdots &        &        &        & \ddots & \vdots \\
+		a_{n1} & a_{n2} & \cdots & \cdots & \cdots & a_{nm} \\
+	\end{pmatrix}
 \end{equation*}
 
 
@@ -108,12 +108,12 @@
 
 
 \begin{equation*}
-    \bm{A} =
-    \begin{pmatrix}
-        1 & 2 & 3 \\
-        4 & 5 & 6 \\
-        7 & 8 & 9
-    \end{pmatrix}
+	\bm{A} =
+	\begin{pmatrix}
+		1 & 2 & 3 \\
+		4 & 5 & 6 \\
+		7 & 8 & 9
+	\end{pmatrix}
 \end{equation*}
 
 \paragraph{対称行列}
@@ -121,55 +121,55 @@
 正方行列の中でも，$i$行$j$列目の値が$j$行$i$列目の値と同じである行列($a_{ij}=a_{ji}$)のことを\keyterm{対称行列}{たいしょうぎょうれつ}{Symmetric Matrix}といいます。
 
 \begin{equation*}
-    \bm{A} =
-    \begin{pmatrix}
-        1 & 2 & 3 \\
-        2 & 5 & 6 \\
-        3 & 6 & 9
-    \end{pmatrix}
+	\bm{A} =
+	\begin{pmatrix}
+		1 & 2 & 3 \\
+		2 & 5 & 6 \\
+		3 & 6 & 9
+	\end{pmatrix}
 \end{equation*}
 
 この(正方)対称行列の形は，データ解析の計算途中でよくでてきます。たとえば3つの変数$x_1,x_2,x_3$について，その相関係数を考えたいとしましょう。相関係数は2つの数字の組み合わせですから，$x_1$と$x_2$，$x_1$と$x_3$，$x_2$と$x_3$について計算でき，それぞれ$r_{12},r_{13},r_{23}$と表したとします。$i$と$j$の相関係数$r_{ij}$は，$j$と$i$の相関係数と同じ($r_{ij}=r_{ji}$)であり，また$r_{jj}=1.0$なのは定義から明らかです。これを行列で表すと次のようになります。
 
 \begin{equation*}
-    \bm{R} =
-    \begin{pmatrix}
-        1      & r_{12} & r_{13} \\
-        r_{21} & 1      & r_{23} \\
-        r_{31} & r_{32} & 1
-    \end{pmatrix}=
-    \begin{pmatrix}
-        1      & r_{12} & r_{13} \\
-        r_{12} & 1      & r_{23} \\
-        r_{13} & r_{23} & 1
-    \end{pmatrix}
+	\bm{R} =
+	\begin{pmatrix}
+		1      & r_{12} & r_{13} \\
+		r_{21} & 1      & r_{23} \\
+		r_{31} & r_{32} & 1
+	\end{pmatrix}=
+	\begin{pmatrix}
+		1      & r_{12} & r_{13} \\
+		r_{12} & 1      & r_{23} \\
+		r_{13} & r_{23} & 1
+	\end{pmatrix}
 \end{equation*}
 
 $r_{ij}=r_{ji}$ですから，対称行列になっています。この行列をとくに\keyterm{相関行列}{そうかんぎょうれつ}{Correlation Matrix}といいます。また相関係数は標準化された共分散でもありました。標準化するまえの相関行列は，\keyterm{分散共分散行列}{ぶんさんきょうぶんさんぎょうれつ}{Covariance Matrix}と言います。その名前の通り，自分自身との共分散が分散になるわけですから，右上から右下にかけての対角線上にある要素(これをとくに\keyterm{対角}{たいかく}{diagonal}要素といいます)が分散であり，それ以外が共分散になっている行列です。
 
 \begin{equation*}
-    \bm{V} =
-    \begin{pmatrix}
-        s_1^2  & s_{12} & s_{13} \\
-        s_{21} & s_2^2  & s_{23} \\
-        s_{31} & s_{32} & s_3^2
-    \end{pmatrix}
+	\bm{V} =
+	\begin{pmatrix}
+		s_1^2  & s_{12} & s_{13} \\
+		s_{21} & s_2^2  & s_{23} \\
+		s_{31} & s_{32} & s_3^2
+	\end{pmatrix}
 \end{equation*}
 
 \paragraph{対角行列と単位行列}
 正方行列の中でもとくに対角要素にのみ値があって，それ以外はすべて$0$になっている行列のことを\keyterm{対角行列}{たいかくぎょうれつ}{diagonal matrix}といいます。
 \begin{equation*}
-    \begin{pmatrix}
-        a_{11}          &        & \text{\huge{0}} \\
-                        & \ddots &                 \\
-        \text{\huge{0}} &        & a_{nn}
-    \end{pmatrix}
-    \text{あるいは}
-    \begin{pmatrix}
-        a_{11} &        & \bm{O} \\
-               & \ddots &        \\
-        \bm{O} &        & a_{nn}
-    \end{pmatrix}
+	\begin{pmatrix}
+		a_{11}          &        & \text{\huge{0}} \\
+		                & \ddots &                 \\
+		\text{\huge{0}} &        & a_{nn}
+	\end{pmatrix}
+	\text{あるいは}
+	\begin{pmatrix}
+		a_{11} &        & \bm{O} \\
+		       & \ddots &        \\
+		\bm{O} &        & a_{nn}
+	\end{pmatrix}
 \end{equation*}
 
 ここで表されているように，対角要素以外は全てゼロですから，ゼロを大きく太字で書いたり，オーを使って$\bm{O}$としてここは空っぽだよ，ということを意味することがあります。
@@ -179,18 +179,18 @@ $\bm{E}$で表されます。
 
 
 \begin{equation*}
-    \bm{I} =
-    \begin{pmatrix}
-        1      & 0      & \cdots & 0      \\
-        0      & 1      & \cdots & 0      \\
-        \vdots & \vdots & \ddots & \vdots \\
-        0      & 0      & \cdots & 1      \\
-    \end{pmatrix} =
-    \begin{pmatrix}
-        1      &        & \bm{O} \\
-               & \ddots          \\
-        \bm{O} &        & 1
-    \end{pmatrix}
+	\bm{I} =
+	\begin{pmatrix}
+		1      & 0      & \cdots & 0      \\
+		0      & 1      & \cdots & 0      \\
+		\vdots & \vdots & \ddots & \vdots \\
+		0      & 0      & \cdots & 1      \\
+	\end{pmatrix} =
+	\begin{pmatrix}
+		1      &        & \bm{O} \\
+		       & \ddots          \\
+		\bm{O} &        & 1
+	\end{pmatrix}
 \end{equation*}
 
 
@@ -200,26 +200,26 @@ $\bm{E}$で表されます。
 さらに，正方行列の特殊なケースで，対角より上，あるいは下の要素がすべて$0$になっている行列を\keytermL{上三角行列}{うえさんかくぎょうれつ}，\keytermL{下三角行列}{したさんかくぎょうれつ}といいます。
 
 \begin{equation*}
-    \begin{pmatrix}
-        a_{11} & \cdots & a_{1n} \\
-               & \ddots & \vdots \\
-        \bm{O} &        & a_{nn}
-    \end{pmatrix}\text{または}
-    \begin{pmatrix}
-        a_{11} &        & \bm{O} \\
-        \vdots & \ddots &        \\
-        a_{n1} & \cdots & a_{nn}
-    \end{pmatrix}
+	\begin{pmatrix}
+		a_{11} & \cdots & a_{1n} \\
+		       & \ddots & \vdots \\
+		\bm{O} &        & a_{nn}
+	\end{pmatrix}\text{または}
+	\begin{pmatrix}
+		a_{11} &        & \bm{O} \\
+		\vdots & \ddots &        \\
+		a_{n1} & \cdots & a_{nn}
+	\end{pmatrix}
 \end{equation*}
 
 \paragraph{ゼロ行列}
 全ての要素が$0$であるような行列は，ゼロ行列$\bm{O}$と言います。
 \[ \bm{O} = \begin{pmatrix}
-        0      & 0      & \cdots & 0      \\
-        0      & 0      & \cdots & 0      \\
-        \vdots & \vdots & \ddots & \vdots \\
-        0      & 0      & \cdots & 0
-    \end{pmatrix}
+		0      & 0      & \cdots & 0      \\
+		0      & 0      & \cdots & 0      \\
+		\vdots & \vdots & \ddots & \vdots \\
+		0      & 0      & \cdots & 0
+	\end{pmatrix}
 \]
 
 \section{行列の四則演算}
@@ -239,76 +239,76 @@ $\bm{E}$で表されます。
 
 
 \begin{equation*}
-    \bm{A}+\bm{B} =
-    \begin{pmatrix}
-        a_{11}+b_{11} & a_{12}+b_{12} & \cdots & a_{1m}+b_{1m} \\
-        a_{21}+b_{21} & a_{22}+b_{22} & \cdots & a_{2m}+b_{2m} \\
-        \vdots        & \vdots        & \ddots & \vdots        \\
-        a_{n1}+b_{n1} & a_{n2}+b_{n2} & \cdots & a_{nm}+b_{nm} \\
-    \end{pmatrix}
+	\bm{A}+\bm{B} =
+	\begin{pmatrix}
+		a_{11}+b_{11} & a_{12}+b_{12} & \cdots & a_{1m}+b_{1m} \\
+		a_{21}+b_{21} & a_{22}+b_{22} & \cdots & a_{2m}+b_{2m} \\
+		\vdots        & \vdots        & \ddots & \vdots        \\
+		a_{n1}+b_{n1} & a_{n2}+b_{n2} & \cdots & a_{nm}+b_{nm} \\
+	\end{pmatrix}
 \end{equation*}
 
 数値例をみておきましょう。
 \begin{equation*}
-    \begin{pmatrix}
-        1 & 2 \\
-        3 & 4
-    \end{pmatrix}
-    +
-    \begin{pmatrix}
-        5 & 6 \\
-        7 & 8
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        1+5 & 2+6 \\
-        3+7 & 4+8
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        6  & 8  \\
-        10 & 12
-    \end{pmatrix}
+	\begin{pmatrix}
+		1 & 2 \\
+		3 & 4
+	\end{pmatrix}
+	+
+	\begin{pmatrix}
+		5 & 6 \\
+		7 & 8
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1+5 & 2+6 \\
+		3+7 & 4+8
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		6  & 8  \\
+		10 & 12
+	\end{pmatrix}
 \end{equation*}
 ベクトルでも同様です。
 \begin{equation*}
-    \begin{pmatrix}
-        1 \\
-        4
-    \end{pmatrix}
-    -
-    \begin{pmatrix}
-        5 \\
-        8
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        1-5 \\
-        4-8
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        -4 \\
-        -4
-    \end{pmatrix}
+	\begin{pmatrix}
+		1 \\
+		4
+	\end{pmatrix}
+	-
+	\begin{pmatrix}
+		5 \\
+		8
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1-5 \\
+		4-8
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		-4 \\
+		-4
+	\end{pmatrix}
 \end{equation*}
 \begin{equation*}
-    \begin{pmatrix}
-        2 &
-        3
-    \end{pmatrix}
-    +
-    \begin{pmatrix}
-        1 & 6
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        2-1 & 3-6
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        1 & -3
-    \end{pmatrix}
+	\begin{pmatrix}
+		2 &
+		3
+	\end{pmatrix}
+	+
+	\begin{pmatrix}
+		1 & 6
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		2-1 & 3-6
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1 & -3
+	\end{pmatrix}
 \end{equation*}
 これからわかるように，行列の加法，減法は大きさの等しい行列でないと成り立ちません。サイズが違うものを足そうとすると，演算できない箇所が出てしまうのです。このように行列では，\underline{「計算できない」という状態になること}がありえます。行列のサイズに注意が必要，ということがお分かりいただけるかと思います。
 \paragraph{行列とスカラーの積}
@@ -319,89 +319,89 @@ $\bm{E}$で表されます。
 
 
 \begin{equation*}
-    \lambda \bm{A} = \bm{A} \lambda =
-    \begin{pmatrix}
-        \lambda a_{11} & \lambda a_{12} & \cdots & \lambda a_{1m} \\
-        \lambda a_{21} & \lambda a_{22} & \cdots & \lambda a_{2m} \\
-        \vdots         & \vdots         & \ddots & \vdots         \\
-        \lambda a_{n1} & \lambda a_{n2} & \cdots & \lambda a_{nm} \\
-    \end{pmatrix}
+	\lambda \bm{A} = \bm{A} \lambda =
+	\begin{pmatrix}
+		\lambda a_{11} & \lambda a_{12} & \cdots & \lambda a_{1m} \\
+		\lambda a_{21} & \lambda a_{22} & \cdots & \lambda a_{2m} \\
+		\vdots         & \vdots         & \ddots & \vdots         \\
+		\lambda a_{n1} & \lambda a_{n2} & \cdots & \lambda a_{nm} \\
+	\end{pmatrix}
 \end{equation*}
 
 
 数値例でも確認しておきます。
 
 \begin{equation*}
-    2 \times
-    \begin{pmatrix}
-        1 & 2 \\
-        3 & 4
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        2 \times 1 & 2 \times 2 \\
-        2 \times 3 & 2 \times 4
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        2 & 4 \\
-        6 & 8
-    \end{pmatrix}
+	2 \times
+	\begin{pmatrix}
+		1 & 2 \\
+		3 & 4
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		2 \times 1 & 2 \times 2 \\
+		2 \times 3 & 2 \times 4
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		2 & 4 \\
+		6 & 8
+	\end{pmatrix}
 \end{equation*}
 
 ベクトルに対しても同様です。
 \begin{equation*}
-    2 \times
-    \begin{pmatrix}
-        1 \\
-        3
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        2 \times 1 \\
-        2 \times 3
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        2 \\
-        6
-    \end{pmatrix}
+	2 \times
+	\begin{pmatrix}
+		1 \\
+		3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		2 \times 1 \\
+		2 \times 3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		2 \\
+		6
+	\end{pmatrix}
 \end{equation*}
 
 \begin{equation*}
-    3 \times
-    \begin{pmatrix}
-        2 & 4
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        3 \times 2 & 3 \times 4
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        6 & 12
-    \end{pmatrix}
+	3 \times
+	\begin{pmatrix}
+		2 & 4
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		3 \times 2 & 3 \times 4
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		6 & 12
+	\end{pmatrix}
 \end{equation*}
 
 ここまでの話から，交換，結合，分配などの演算法則が成り立つことがわかります。
 
 \begin{center}
-    \begin{tabular}{cr}
-        $\bm{A} + \bm{B}  = \bm{B} + \bm{A}$                               & 交換法則 \\
-        $(\bm{A} + \bm{B})+\bm{C}  = \bm{A} + (\bm{B}+\bm{C})$             & 結合法則 \\
-        $(\alpha + \beta)\bm{A} = \alpha\bm{A} + \beta\bm{A}$              & 分配法則 \\
-        $\lambda(\bm{A}+\bm{B}) = \lambda\bm{A} + \lambda\bm{B}$           & 分配法則 \\
-        $\lambda(\bm{AB}) = (\lambda\bm{A}\bm{B}) = \bm{A}(\lambda\bm{B})$ & 交換法則 \\
-    \end{tabular}
+	\begin{tabular}{cr}
+		$\bm{A} + \bm{B}  = \bm{B} + \bm{A}$                               & 交換法則 \\
+		$(\bm{A} + \bm{B})+\bm{C}  = \bm{A} + (\bm{B}+\bm{C})$             & 結合法則 \\
+		$(\alpha + \beta)\bm{A} = \alpha\bm{A} + \beta\bm{A}$              & 分配法則 \\
+		$\lambda(\bm{A}+\bm{B}) = \lambda\bm{A} + \lambda\bm{B}$           & 分配法則 \\
+		$\lambda(\bm{AB}) = (\lambda\bm{A}\bm{B}) = \bm{A}(\lambda\bm{B})$ & 交換法則 \\
+	\end{tabular}
 \end{center}
 
 これらは特に証明しませんが，計算のパターンとして頭に留めておいてください。
 
 \begin{reidai}{}{}
 
-    $\bm{A} = \begin{pmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6\end{pmatrix}$，
-    $\bm{B} = \begin{pmatrix} 2 & 1 \\ 4 & 1 \\ 0 & 2\end{pmatrix}$
-    であるとき，$2\bm{A} -3 \bm{B}$を計算してみましょう。
+	$\bm{A} = \begin{pmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6\end{pmatrix}$，
+	$\bm{B} = \begin{pmatrix} 2 & 1 \\ 4 & 1 \\ 0 & 2\end{pmatrix}$
+	であるとき，$2\bm{A} -3 \bm{B}$を計算してみましょう。
 
 \end{reidai}
 
@@ -419,89 +419,89 @@ $\bm{AB}=\bm{C}$とするとき，$\bm{A}$の$i$行目と$\bm{B}$の$j$列目の
 
 さてこの計算，要素の位置を想像しながら考えてみましょう。
 \[
-    \begin{pmatrix}
-        a_{11}                  & a_{12}                  & \cdots                  & a_{1k}                  \\
-        \vdots                  & \vdots                  &                         & \vdots                  \\
-        \textcolor{red}{a_{i1}} & \textcolor{red}{a_{i2}} & \textcolor{red}{\cdots} & \textcolor{red}{a_{ik}} \\
-        \vdots                  & \vdots                  &                         & \vdots                  \\
-        a_{m1}                  & a_{m2}                  & \cdots                  & a_{mk}
-    \end{pmatrix}
-    \begin{pmatrix}
-        b_{11} & b_{12} & \cdots & \textcolor{blue}{b_{1j}} & \cdots & b_{1n} \\
-        b_{21} & b_{22} & \cdots & \textcolor{blue}{b_{2j}} & \cdots & b_{2n} \\
-        \vdots & \vdots &        & \textcolor{blue}{\vdots} &        & \vdots \\
-        b_{k1} & b_{k2} & \cdots & \textcolor{blue}{b_{kj}} & \cdots & b_{kn} \\
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        c_{11} & c_{12} & \cdots & c_{1j}                      & \cdots & c_{1n} \\
-        c_{21} & c_{22} & \cdots & c_{2j}                      & \cdots & c_{2n} \\
-        \vdots & \vdots & \cdots & \vdots                      & \cdots & \vdots \\
-        c_{i1} & c_{i2} & \cdots & \textcolor{purple!}{c_{ij}} & \cdots & c_{in} \\
-        \vdots & \vdots & \cdots & \vdots                      & \cdots & \vdots \\
-        c_{m1} & c_{m2} & \cdots & c_{mj}                      & \cdots & c_{mn} \\
-    \end{pmatrix}
+	\begin{pmatrix}
+		a_{11}                  & a_{12}                  & \cdots                  & a_{1k}                  \\
+		\vdots                  & \vdots                  &                         & \vdots                  \\
+		\textcolor{red}{a_{i1}} & \textcolor{red}{a_{i2}} & \textcolor{red}{\cdots} & \textcolor{red}{a_{ik}} \\
+		\vdots                  & \vdots                  &                         & \vdots                  \\
+		a_{m1}                  & a_{m2}                  & \cdots                  & a_{mk}
+	\end{pmatrix}
+	\begin{pmatrix}
+		b_{11} & b_{12} & \cdots & \textcolor{blue}{b_{1j}} & \cdots & b_{1n} \\
+		b_{21} & b_{22} & \cdots & \textcolor{blue}{b_{2j}} & \cdots & b_{2n} \\
+		\vdots & \vdots &        & \textcolor{blue}{\vdots} &        & \vdots \\
+		b_{k1} & b_{k2} & \cdots & \textcolor{blue}{b_{kj}} & \cdots & b_{kn} \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		c_{11} & c_{12} & \cdots & c_{1j}                      & \cdots & c_{1n} \\
+		c_{21} & c_{22} & \cdots & c_{2j}                      & \cdots & c_{2n} \\
+		\vdots & \vdots & \cdots & \vdots                      & \cdots & \vdots \\
+		c_{i1} & c_{i2} & \cdots & \textcolor{purple!}{c_{ij}} & \cdots & c_{in} \\
+		\vdots & \vdots & \cdots & \vdots                      & \cdots & \vdots \\
+		c_{m1} & c_{m2} & \cdots & c_{mj}                      & \cdots & c_{mn} \\
+	\end{pmatrix}
 \]
 
 積の結果の各要素が，前の行列の行，後ろの行列の列の積和から算出されると考えることになります。
 
 記号ではピンとこないと思いますので，話を簡単にするために，1列あるいは1行だけの行列，すなわち列ベクトル，行ベクトルの積から考えましょう。
 \[
-    \begin{pmatrix} a & b & c \end{pmatrix}\begin{pmatrix} d\\e\\f \end{pmatrix} = ad + be + cf
+	\begin{pmatrix} a & b & c \end{pmatrix}\begin{pmatrix} d\\e\\f \end{pmatrix} = ad + be + cf
 \]
 数値例も確認しておきます。
 \[
-    \begin{pmatrix}
-        1 & 2 & 1
-    \end{pmatrix}
-    \begin{pmatrix}
-        3 \\4\\2
-    \end{pmatrix}
-    =1\times 3 + 2 \times 4 + 1 \times 2 = 13
+	\begin{pmatrix}
+		1 & 2 & 1
+	\end{pmatrix}
+	\begin{pmatrix}
+		3 \\4\\2
+	\end{pmatrix}
+	=1\times 3 + 2 \times 4 + 1 \times 2 = 13
 \]
 ここで注意して欲しいのは，両方のベクトルのサイズが同じ($1\times n$ベクトルと，$n \times 1$ベクトル，いずれもサイズは$n$)ということです。サイズが違うと，演算が対応しない要素が出てくるので，計算できなくなるのです。
 また，ベクトルとベクトルを掛け合わせた結果が$1 \times 1$の行列になりますね\footnote{実は$1\times 1$の行列をスカラーと言っていいか問題があります。本当は両者は違うものと考えるべきなのですが，計算上は違いがないのでスカラーとみなすのが一般的です。}。
 
 列ベクトルと行ベクトルの積は次のようになります。
 \[
-    \bm{a} \bm{b} =
-    \begin{pmatrix}
-        a_1    \\
-        a_2    \\
-        \vdots \\
-        a_n    \\
-    \end{pmatrix}
-    \begin{pmatrix}
-        b_1 & b_2 & \cdots & b_n \\
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        a_1 b_1 & a_1 b_2 & \cdots & a_1 b_n \\
-        a_2 b_1 & a_2 b_2 & \cdots & a_2 b_n \\
-        \vdots  & \vdots  &        & \vdots  \\
-        a_n b_1 & a_2 b_2 & \cdots & a_n b_n \\
-    \end{pmatrix}
+	\bm{a} \bm{b} =
+	\begin{pmatrix}
+		a_1    \\
+		a_2    \\
+		\vdots \\
+		a_n    \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		b_1 & b_2 & \cdots & b_n \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		a_1 b_1 & a_1 b_2 & \cdots & a_1 b_n \\
+		a_2 b_1 & a_2 b_2 & \cdots & a_2 b_n \\
+		\vdots  & \vdots  &        & \vdots  \\
+		a_n b_1 & a_2 b_2 & \cdots & a_n b_n \\
+	\end{pmatrix}
 \]
 数値例です。
 \[
-    \begin{pmatrix}
-        1 \\2\\1
-    \end{pmatrix}
-    \begin{pmatrix}
-        3 & 4 & 2
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        1 \times 3 & 1 \times 4 & 1 \times 2 \\
-        2 \times 3 & 2 \times 4 & 2 \times 2 \\
-        1 \times 3 & 1 \times 4 & 1 \times 2 \\
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        3 & 4 & 2 \\
-        6 & 8 & 4 \\
-        3 & 4 & 2 \\
-    \end{pmatrix}
+	\begin{pmatrix}
+		1 \\2\\1
+	\end{pmatrix}
+	\begin{pmatrix}
+		3 & 4 & 2
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1 \times 3 & 1 \times 4 & 1 \times 2 \\
+		2 \times 3 & 2 \times 4 & 2 \times 2 \\
+		1 \times 3 & 1 \times 4 & 1 \times 2 \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		3 & 4 & 2 \\
+		6 & 8 & 4 \\
+		3 & 4 & 2 \\
+	\end{pmatrix}
 \]
 今度は行列になりました。かける順番が変わるとサイズが変わる(ここでは，上の例では$1\times 1$のサイズ，下の例では$n \times n$のサイズ)ことに注意してください。スカラーの計算では順番を入れ替えても，たとえば$2 \times 3=3\times 2$のように同じ答えになりましたが，行列の場合は必ずしもそうはならないのです($\bm{AB} \neq \bm{BA}$)。
 
@@ -510,9 +510,9 @@ $\bm{AB}=\bm{C}$とするとき，$\bm{A}$の$i$行目と$\bm{B}$の$j$列目の
 
 \begin{reidai}{}{}
 
-    $\bm{a} = \begin{pmatrix} 1  \\ 3 \\ 5 \end{pmatrix}$，
-    $\bm{b} = \begin{pmatrix} 2 & 4 & 1\end{pmatrix}$
-    であるとき，$\bm{ab}$および$\bm{ba}$を計算してみましょう。
+	$\bm{a} = \begin{pmatrix} 1  \\ 3 \\ 5 \end{pmatrix}$，
+	$\bm{b} = \begin{pmatrix} 2 & 4 & 1\end{pmatrix}$
+	であるとき，$\bm{ab}$および$\bm{ba}$を計算してみましょう。
 
 \end{reidai}
 
@@ -523,114 +523,114 @@ $\bm{AB}=\bm{C}$とするとき，$\bm{A}$の$i$行目と$\bm{B}$の$j$列目の
 まず行列に列ベクトルを右からかける例を見てみましょう。結果は列ベクトルになります。
 
 \begin{equation*}
-    \bm{A} \bm{b} =
-    \begin{pmatrix}
-        a_{11} & a_{12} & \cdots & a_{1m} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        a_{n1} & a_{n2} & \cdots & a_{nm} \\
-    \end{pmatrix}
-    \begin{pmatrix}
-        b_1    \\
-        b_2    \\
-        \vdots \\
-        b_m    \\
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        \sum_{j=1}^{m} a_{1j}b_{j} \\
-        \sum_{j=1}^{m} a_{2j}b_{j} \\
-        \vdots                     \\
-        \sum_{j=1}^{m} a_{nj}b_{j} \\
-    \end{pmatrix}
+	\bm{A} \bm{b} =
+	\begin{pmatrix}
+		a_{11} & a_{12} & \cdots & a_{1m} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{n1} & a_{n2} & \cdots & a_{nm} \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		b_1    \\
+		b_2    \\
+		\vdots \\
+		b_m    \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\sum_{j=1}^{m} a_{1j}b_{j} \\
+		\sum_{j=1}^{m} a_{2j}b_{j} \\
+		\vdots                     \\
+		\sum_{j=1}^{m} a_{nj}b_{j} \\
+	\end{pmatrix}
 \end{equation*}
 
 
 ここでも掛け算なのに足し算のプロセスが入ってきています。注意深く記号を読んでみてください。数値例でも確認しておきます。
 
 \begin{equation*}
-    \begin{pmatrix}
-        1 & 2 \\ 3 & 4
-    \end{pmatrix}
-    \begin{pmatrix}
-        2 \\1
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        1 \times 2 + 2 \times 1 \\
-        3 \times 2 + 4 \times 1
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        4 \\10
-    \end{pmatrix}
+	\begin{pmatrix}
+		1 & 2 \\ 3 & 4
+	\end{pmatrix}
+	\begin{pmatrix}
+		2 \\1
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1 \times 2 + 2 \times 1 \\
+		3 \times 2 + 4 \times 1
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		4 \\10
+	\end{pmatrix}
 \end{equation*}
 
 
 今度は行列に行ベクトルを左からかけましょう。結果は行ベクトルになります。
 
 \begin{equation*}
-    \bm{c} \bm{A} =
-    \begin{pmatrix}
-        c_1 & c_2 & \cdots & c_n \\
-    \end{pmatrix}
-    \begin{pmatrix}
-        a_{11} & a_{12} & \cdots & a_{1m} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        a_{n1} & a_{n2} & \cdots & a_{nm} \\
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        \displaystyle{\sum_{j=1}^{n}a_{j1}c_{j}} & \displaystyle{\sum_{j=1}^{n} a_{j2}c_{j}} & \cdots & \displaystyle{\sum_{j=1}^{n} a_{jm}c_{j}} \\
-    \end{pmatrix}
+	\bm{c} \bm{A} =
+	\begin{pmatrix}
+		c_1 & c_2 & \cdots & c_n \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		a_{11} & a_{12} & \cdots & a_{1m} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{n1} & a_{n2} & \cdots & a_{nm} \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\displaystyle{\sum_{j=1}^{n}a_{j1}c_{j}} & \displaystyle{\sum_{j=1}^{n} a_{j2}c_{j}} & \cdots & \displaystyle{\sum_{j=1}^{n} a_{jm}c_{j}} \\
+	\end{pmatrix}
 \end{equation*}
 
 \begin{equation*}
-    \begin{pmatrix}
-        1 & 3
-    \end{pmatrix}
-    \begin{pmatrix}
-        1 & 0 \\
-        2 & 3
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        1 \times 1 + 2 \times 3 & 1\times 0+3 \times 3
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        7 & 9
-    \end{pmatrix}
+	\begin{pmatrix}
+		1 & 3
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 & 0 \\
+		2 & 3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1 \times 1 + 2 \times 3 & 1\times 0+3 \times 3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		7 & 9
+	\end{pmatrix}
 \end{equation*}
 
 \begin{reidai}{}{}
 
-    $\bm{a} = \begin{pmatrix} 1  \\ 3 \\ 5 \end{pmatrix}$，
-    $\bm{b} = \begin{pmatrix} 2 & 4 & 1\end{pmatrix}$,
-    $\bm{C} = \begin{pmatrix} 2 & 0 & 1 \\ 3 & 1 & 1 \\ 2 & 4 & 2 \end{pmatrix}$
-    であるとき，$\bm{Ca}$および$\bm{bC}$，そして$\bm{bCa}$を計算してみましょう。
+	$\bm{a} = \begin{pmatrix} 1  \\ 3 \\ 5 \end{pmatrix}$，
+	$\bm{b} = \begin{pmatrix} 2 & 4 & 1\end{pmatrix}$,
+	$\bm{C} = \begin{pmatrix} 2 & 0 & 1 \\ 3 & 1 & 1 \\ 2 & 4 & 2 \end{pmatrix}$
+	であるとき，$\bm{Ca}$および$\bm{bC}$，そして$\bm{bCa}$を計算してみましょう。
 
 \end{reidai}
 
 \paragraph{行列と行列の積}
 最後に行列と行列の積にもどって考えてみましょう。行列$\bm{A}$と$\bm{B}$の積が成立するのは，前者の列数と後者の行数とが等しいときに限られます。行列$\bm{A}$のサイズが$m \times k$，行列$\bm{B}$のサイズが$k \times n$とすると，その積は$n \times m$の行列になります。計算手続きは，次のようになります，
 \begin{equation*}
-    \bm{A} \bm{B} =
-    \begin{pmatrix}
-        a_{11} & a_{12} & \cdots & a_{1k} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        a_{m1} & a_{m2} & \cdots & a_{mk} \\
-    \end{pmatrix}
-    \begin{pmatrix}
-        b_{11} & b_{12} & \cdots & b_{1n} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        b_{k1} & b_{k2} & \cdots & b_{kn} \\
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        \sum_{j=1}^{k} a_{1j} b_{j1} & \cdots & \sum_{j=1}^{k} a_{1j} b_{jn} \\
-        \vdots                       & \ddots & \vdots                       \\
-        \sum_{j=1}^{k} a_{mj} b_{j1} & \cdots & \sum_{j=1}^{k} a_{mj} b_{jn} \\
-    \end{pmatrix}
+	\bm{A} \bm{B} =
+	\begin{pmatrix}
+		a_{11} & a_{12} & \cdots & a_{1k} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{m1} & a_{m2} & \cdots & a_{mk} \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		b_{11} & b_{12} & \cdots & b_{1n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		b_{k1} & b_{k2} & \cdots & b_{kn} \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\sum_{j=1}^{k} a_{1j} b_{j1} & \cdots & \sum_{j=1}^{k} a_{1j} b_{jn} \\
+		\vdots                       & \ddots & \vdots                       \\
+		\sum_{j=1}^{k} a_{mj} b_{j1} & \cdots & \sum_{j=1}^{k} a_{mj} b_{jn} \\
+	\end{pmatrix}
 \end{equation*}
 
 
@@ -640,88 +640,88 @@ $\bm{AB}=\bm{C}$とするとき，$\bm{A}$の$i$行目と$\bm{B}$の$j$列目の
 1つは積によって得られる\textbf{結果の行列サイズを意識すること}です。先ほど，前の行列の列数と，後ろの行列の行数が同じでないと計算ができないといいました。つまり，$n \times k$行列と$k \times m$行列でないと計算できない($k$が同じ)ということです。また，結果は$n \times m$行列になります。前の行列の行数，後ろの行列の列数が結果のサイズです。ここに注目しておくと，計算を始める前に，計算が可能かどうかと結果の行列サイズは想像がつくのです(図\ref{fig::06_01})。計算の前に行列のサイズを見積もっておくと，計算間違いの可能性が少し減るかと思います。
 
 \begin{figure}[ht]
-    \begin{center}
-        \begin{tikzpicture}
-            \node[scale=5] (A) at (1,3) {\bm{A}};
-            \node[scale=5] (B) at (4,3) {\bm{B}};
-            \node[scale=5] (C) at (8,3) {\bm{C}};
-            \node[scale=5] (T) at (2.5,3) {$\times$};
-            \node[scale=5] (E) at (6,3) {$=$};
-            \node[circle, fill=cyan!10, text centered](a1) at (0.5,1.8) {$m$};
-            \node[circle, fill=red!10, text centered](a2) at (1.5,1.8) {$k$};
-            \node[circle, fill=red!10, text centered](a3) at (3.5,1.8) {$k$};
-            \node[circle, fill=cyan!10, text centered](a4) at (4.5,1.8) {$n$};
-            \node[circle, fill=cyan!10, text centered](a5) at (7.5,1.8) {$m$};
-            \node[circle, fill=cyan!10, text centered](a6) at (8.5,1.8) {$n$};
-            \draw[dashed,red] (a2) to [out=-60,in=240] (a3);
-            \node[below] at (2.5,1) {内側は同じ};
-            \coordinate (b1) at (2.5,0);
-            \draw[blue,<->] (a5) to [out=-85,in=265] (a6);
-            \draw[blue,<-] (a1) to [out=-85,in=180] (b1);
-            \draw[blue,->] (b1) to [out=0,in=265] (a4);
-            \node[below] at (8,-0.5) {外側は結果のサイズになる};
-            \draw[dashed,blue] (b1) to [out=-45,in=245](8,1.28);
-        \end{tikzpicture}
-        \begin{tikzpicture}
-            % \draw [help lines] (0,0) grid (20,20);%(0,0)から(10,4)までの"細線の方眼"
-            \draw (0,0) rectangle (2,4);
-            \draw (3,2) rectangle (6,4);
-            \draw (7,0) rectangle (10,4);
-            \coordinate (a) at (0,0);
-            \coordinate (b) at (2,4);
-            \coordinate (c) at (3,2);
-            \coordinate (d) at (6,4);
-            \coordinate (e) at (7,0);
-            \coordinate (f) at (10,4);
-            \node [left=0pt of a] {$m$};
-            \node [above=0pt of b] {$k$};
-            \node [left=0pt of c] {$k$};
-            \node [above=0pt of d] {$n$};
-            \node [left=0pt of e] {$m$};
-            \node [above=0pt of f] {$n$};
-            \node [below right=9pt of b] {$\times$};
-            \node [below right=9pt of d] {$=$};
-            \node (A) at (1,2) {$\bm{A}$};
-            \node (B) at (4.5,3) {$\bm{B}$};
-            \node (C) at (8.5,2) {$\bm{C}$};
-        \end{tikzpicture}
-        \caption{行列のサイズを把握する}
-        \label{fig::06_01}
-    \end{center}
+	\begin{center}
+		\begin{tikzpicture}
+			\node[scale=5] (A) at (1,3) {\bm{A}};
+			\node[scale=5] (B) at (4,3) {\bm{B}};
+			\node[scale=5] (C) at (8,3) {\bm{C}};
+			\node[scale=5] (T) at (2.5,3) {$\times$};
+			\node[scale=5] (E) at (6,3) {$=$};
+			\node[circle, fill=cyan!10, text centered](a1) at (0.5,1.8) {$m$};
+			\node[circle, fill=red!10, text centered](a2) at (1.5,1.8) {$k$};
+			\node[circle, fill=red!10, text centered](a3) at (3.5,1.8) {$k$};
+			\node[circle, fill=cyan!10, text centered](a4) at (4.5,1.8) {$n$};
+			\node[circle, fill=cyan!10, text centered](a5) at (7.5,1.8) {$m$};
+			\node[circle, fill=cyan!10, text centered](a6) at (8.5,1.8) {$n$};
+			\draw[dashed,red] (a2) to [out=-60,in=240] (a3);
+			\node[below] at (2.5,1) {内側は同じ};
+			\coordinate (b1) at (2.5,0);
+			\draw[blue,<->] (a5) to [out=-85,in=265] (a6);
+			\draw[blue,<-] (a1) to [out=-85,in=180] (b1);
+			\draw[blue,->] (b1) to [out=0,in=265] (a4);
+			\node[below] at (8,-0.5) {外側は結果のサイズになる};
+			\draw[dashed,blue] (b1) to [out=-45,in=245](8,1.28);
+		\end{tikzpicture}
+		\begin{tikzpicture}
+			% \draw [help lines] (0,0) grid (20,20);%(0,0)から(10,4)までの"細線の方眼"
+			\draw (0,0) rectangle (2,4);
+			\draw (3,2) rectangle (6,4);
+			\draw (7,0) rectangle (10,4);
+			\coordinate (a) at (0,0);
+			\coordinate (b) at (2,4);
+			\coordinate (c) at (3,2);
+			\coordinate (d) at (6,4);
+			\coordinate (e) at (7,0);
+			\coordinate (f) at (10,4);
+			\node [left=0pt of a] {$m$};
+			\node [above=0pt of b] {$k$};
+			\node [left=0pt of c] {$k$};
+			\node [above=0pt of d] {$n$};
+			\node [left=0pt of e] {$m$};
+			\node [above=0pt of f] {$n$};
+			\node [below right=9pt of b] {$\times$};
+			\node [below right=9pt of d] {$=$};
+			\node (A) at (1,2) {$\bm{A}$};
+			\node (B) at (4.5,3) {$\bm{B}$};
+			\node (C) at (8.5,2) {$\bm{C}$};
+		\end{tikzpicture}
+		\caption{行列のサイズを把握する}
+		\label{fig::06_01}
+	\end{center}
 \end{figure}
 
 また，実際に計算する際は，\textbf{前の行列に横の，後ろの行列に縦の補助線を入れる}とわかりやすいかもしれません。こうすることで，間違えて計算を進めることがないようになるからです。
 
 \begin{equation*}
-    \left(
-    \begin{array}{cc}
-        1 & 2 \\\hline
-        3 & 4 \\\hline
-        5 & 6 \\
-    \end{array}
-    \right)
-    \left(
-    \begin{array}{c|c|c}
-        0 & 1 & 1 \\
-        1 & 0 & 1
-    \end{array}
-    \right)
-    =
-    $$
-    $$
-    \left(
-    \begin{array}{ccc}
-        1 \times 0 + 2 \times 1 & 1 \times 1 + 2 \times 0 & 1 \times 1+2\times 1 \\
-        3 \times 0 + 4 \times 1 & 3 \times 1 + 4 \times 0 & 3 \times 1+4\times 1 \\
-        5 \times 0 + 6 \times 1 & 5 \times 1 + 6 \times 0 & 5 \times 1+6\times 1 \\
-    \end{array}
-    \right)
-    =
-    \begin{pmatrix}
-        2 & 1 & 3  \\
-        4 & 3 & 7  \\
-        6 & 5 & 11
-    \end{pmatrix}
+	\left(
+	\begin{array}{cc}
+		1 & 2 \\\hline
+		3 & 4 \\\hline
+		5 & 6 \\
+	\end{array}
+	\right)
+	\left(
+	\begin{array}{c|c|c}
+		0 & 1 & 1 \\
+		1 & 0 & 1
+	\end{array}
+	\right)
+	=
+	$$
+	$$
+	\left(
+	\begin{array}{ccc}
+		1 \times 0 + 2 \times 1 & 1 \times 1 + 2 \times 0 & 1 \times 1+2\times 1 \\
+		3 \times 0 + 4 \times 1 & 3 \times 1 + 4 \times 0 & 3 \times 1+4\times 1 \\
+		5 \times 0 + 6 \times 1 & 5 \times 1 + 6 \times 0 & 5 \times 1+6\times 1 \\
+	\end{array}
+	\right)
+	=
+	\begin{pmatrix}
+		2 & 1 & 3  \\
+		4 & 3 & 7  \\
+		6 & 5 & 11
+	\end{pmatrix}
 \end{equation*}
 
 
@@ -729,14 +729,14 @@ $\bm{AB}=\bm{C}$とするとき，$\bm{A}$の$i$行目と$\bm{B}$の$j$列目の
 $c$を実数，$\bm{A},\bm{B},\bm{C}$を行列とするとき，
 
 \begin{center}
-    \begin{tabular}{lr}
-        $c\bm{A} = \bm{A}c$                          &      \\
-        $(c\bm{A})\bm{B} = c(\bm{AB})$               &      \\
-        $(\bm{AB})\bm{C} = \bm{A}(\bm{BC})$          & 結合法則 \\
-        $(\bm{A}+\bm{B})\bm{C} = \bm{AC} + \bm{BC} $ & 分配法則 \\
-        $\bm{A}(\bm{B}+\bm{C}) = \bm{AB} + \bm{AC} $ & 分配法則 \\
-        一般に交換法則は成立しない                                &      \\
-    \end{tabular}
+	\begin{tabular}{lr}
+		$c\bm{A} = \bm{A}c$                          &      \\
+		$(c\bm{A})\bm{B} = c(\bm{AB})$               &      \\
+		$(\bm{AB})\bm{C} = \bm{A}(\bm{BC})$          & 結合法則 \\
+		$(\bm{A}+\bm{B})\bm{C} = \bm{AC} + \bm{BC} $ & 分配法則 \\
+		$\bm{A}(\bm{B}+\bm{C}) = \bm{AB} + \bm{AC} $ & 分配法則 \\
+		一般に交換法則は成立しない                                &      \\
+	\end{tabular}
 \end{center}
 
 また，$\bm{AA} = \bm{A}^2$と書きます。3乗は$\bm{AAA}=\bm{A}^3$です。同様に累乗は$\bm{A}^n$のように書くことができます。
@@ -745,11 +745,11 @@ $c$を実数，$\bm{A},\bm{B},\bm{C}$を行列とするとき，
 これらの行列の計算はスカラーの計算ほど身体化されてないことと思います。慣れて自動的にできるようになるには，練習を繰り返すしかありません。少し練習してみましょう。
 
 \begin{reidai}{}{}
-    次の計算をそれぞれやってみましょう。\\
-    (1) \[   \begin{pmatrix} 1 & 3 \\ 2 & 4 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}                               \]    \\
-    (2) \[   \begin{pmatrix} -3 & 2 \\ 5 & 5 \end{pmatrix} \begin{pmatrix}1& 3 & 4\\ 2 & 0 & 1\end{pmatrix}                            \]    \\
-    (3) \[    \begin{pmatrix} 1 & 2 & 1 \\ 3 & 1 & 2 \\ 0 & -2 & 3 \end{pmatrix}\begin{pmatrix}2 & 1 \\ 3 & 0 \\ -1 & -1 \end{pmatrix}  \] \\
-    (4)\[    \begin{pmatrix}  1 & 5 & -1 \\ -2 & 3 & -1 \\ 3 & 0 & 3 \end{pmatrix}\begin{pmatrix}  -2 & 1 & 0 \\ 3 & 0 & 1 \\ 0 & 3 & 4       \end{pmatrix} \]
+	次の計算をそれぞれやってみましょう。\\
+	(1) \[   \begin{pmatrix} 1 & 3 \\ 2 & 4 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}                               \]    \\
+	(2) \[   \begin{pmatrix} -3 & 2 \\ 5 & 5 \end{pmatrix} \begin{pmatrix}1& 3 & 4\\ 2 & 0 & 1\end{pmatrix}                            \]    \\
+	(3) \[    \begin{pmatrix} 1 & 2 & 1 \\ 3 & 1 & 2 \\ 0 & -2 & 3 \end{pmatrix}\begin{pmatrix}2 & 1 \\ 3 & 0 \\ -1 & -1 \end{pmatrix}  \] \\
+	(4)\[    \begin{pmatrix}  1 & 5 & -1 \\ -2 & 3 & -1 \\ 3 & 0 & 3 \end{pmatrix}\begin{pmatrix}  -2 & 1 & 0 \\ 3 & 0 & 1 \\ 0 & 3 & 4       \end{pmatrix} \]
 \end{reidai}
 
 
@@ -763,69 +763,69 @@ $c$を実数，$\bm{A},\bm{B},\bm{C}$を行列とするとき，
 大きさ$n \times m$の行列$\bm{A}$における$i$行$j$列成分を$j$行$i$列成分とする$m \times n$行列のことを，元の行列$\bm{A}$の転置とよび，$\bm{A}'$や$\bm{A}^T$と表します。行列を転ばせたようなイメージです。
 
 \begin{equation*}
-    \bm{A}=
-    \begin{pmatrix}
-        a_{11} & a_{12} & \cdots & a_{1m} \\
-        a_{21} & a_{22} & \cdots & a_{2m} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        a_{n1} & a_{n2} & \cdots & a_{nm} \\
-    \end{pmatrix}
-    \mbox{のとき，}
-    \bm{A}'=
-    \begin{pmatrix}
-        a_{11} & a_{21} & \cdots & a_{n1} \\
-        a_{12} & a_{22} & \cdots & a_{n2} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        a_{1m} & a_{2m} & \cdots & a_{nm} \\
-    \end{pmatrix}
+	\bm{A}=
+	\begin{pmatrix}
+		a_{11} & a_{12} & \cdots & a_{1m} \\
+		a_{21} & a_{22} & \cdots & a_{2m} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{n1} & a_{n2} & \cdots & a_{nm} \\
+	\end{pmatrix}
+	\mbox{のとき，}
+	\bm{A}'=
+	\begin{pmatrix}
+		a_{11} & a_{21} & \cdots & a_{n1} \\
+		a_{12} & a_{22} & \cdots & a_{n2} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{1m} & a_{2m} & \cdots & a_{nm} \\
+	\end{pmatrix}
 \end{equation*}
 
 
 ベクトルも転置でき，行ベクトルを転置すると列ベクトルに，列ベクトルを転置すると行ベクトルになります。
 
 \begin{equation*}
-    \bm{a} =
-    \begin{pmatrix}
-        a_1 & a_2 & \cdots & a_n
-    \end{pmatrix}
-    \mbox{のとき，}
-    \bm{a}'=
-    \begin{pmatrix}
-        a_1    \\
-        a_2    \\
-        \vdots \\
-        a_n
-    \end{pmatrix}
+	\bm{a} =
+	\begin{pmatrix}
+		a_1 & a_2 & \cdots & a_n
+	\end{pmatrix}
+	\mbox{のとき，}
+	\bm{a}'=
+	\begin{pmatrix}
+		a_1    \\
+		a_2    \\
+		\vdots \\
+		a_n
+	\end{pmatrix}
 \end{equation*}
 
 また，転置には以下のような性質があります。
 \begin{enumerate}
-    \item $(\bm{A} ')' = \bm{A}$
-    \item $(\bm{A} + \bm{B} )' = \bm{A}' + \bm{B}'$
-    \item $(\bm{A} \bm{B})'=\bm{B}'\bm{A}'$
-    \item $(c\bm{A})'=c\bm{A}'$
+	\item $(\bm{A} ')' = \bm{A}$
+	\item $(\bm{A} + \bm{B} )' = \bm{A}' + \bm{B}'$
+	\item $(\bm{A} \bm{B})'=\bm{B}'\bm{A}'$
+	\item $(c\bm{A})'=c\bm{A}'$
 \end{enumerate}
 
 最初のものは「転置の転置は元通り」ということです。これは想像に難くないですね。次に転置の分配とでも言いましょうか，足したものを転置したのはそれぞれを転置して足してもよい，ということです。
 第3のものは少しわかりにくいかもしれません。掛けたものを転置するときは，転置したものの順番を入れ替えてかけたものと同じ，ということです。
 確認しておきましょう。$\bm{A} = \begin{pmatrix} a& b\\ c &d \end{pmatrix}$，$\bm{B} = \begin{pmatrix} e & f \\ g & h \end{pmatrix}$として，
 \[
-    (\bm{A} \bm{B})' =
-    \left( \begin{pmatrix} a& b \\ c & d \end{pmatrix} \begin{pmatrix} e & f \\ g & h \end{pmatrix} \right )' =
-    \begin{pmatrix} ae+bg & af+bh \\ ce+dg & cf + gh \end{pmatrix}' =
-    \begin{pmatrix} ae+bg & ce+dg \\ af+bh & cf+gh \end{pmatrix}
+	(\bm{A} \bm{B})' =
+	\left( \begin{pmatrix} a& b \\ c & d \end{pmatrix} \begin{pmatrix} e & f \\ g & h \end{pmatrix} \right )' =
+	\begin{pmatrix} ae+bg & af+bh \\ ce+dg & cf + gh \end{pmatrix}' =
+	\begin{pmatrix} ae+bg & ce+dg \\ af+bh & cf+gh \end{pmatrix}
 \]
 ここで$\bm{A}'\bm{B}'$としてしまうと，
 \[
-    \bm{A}' \bm{B}' =
-    \begin{pmatrix} a & c \\ b &d \end{pmatrix} \begin{pmatrix} e & g \\ f & h \end{pmatrix} =
-    \begin{pmatrix} ae+cf & ag+ch \\ be+df & bg+dh \end{pmatrix}
+	\bm{A}' \bm{B}' =
+	\begin{pmatrix} a & c \\ b &d \end{pmatrix} \begin{pmatrix} e & g \\ f & h \end{pmatrix} =
+	\begin{pmatrix} ae+cf & ag+ch \\ be+df & bg+dh \end{pmatrix}
 \]
 となり，左辺と等しくありません($(\bm{AB})'\neq \bm{A}'\bm{B}'$)。前後を入れ替えると合致します。
 \[
-    \bm{B}' \bm{A}' =
-    \begin{pmatrix} e & g \\ f & h \end{pmatrix} \begin{pmatrix} a & c \\ b & d \end{pmatrix} =
-    \begin{pmatrix} ae+bg & ce+gd \\ af+bh & cf + dh \end{pmatrix}
+	\bm{B}' \bm{A}' =
+	\begin{pmatrix} e & g \\ f & h \end{pmatrix} \begin{pmatrix} a & c \\ b & d \end{pmatrix} =
+	\begin{pmatrix} ae+bg & ce+gd \\ af+bh & cf + dh \end{pmatrix}
 \]
 ここだけ注意しておいていただければ，後はスムーズに計算できるのではないでしょうか。
 
@@ -843,7 +843,7 @@ $c$を実数，$\bm{A},\bm{B},\bm{C}$を行列とするとき，
 行列が大きくなった場合，複数に分割して表現するとわかりやすいことがあります。これを行列の\keytermL{分割}{ぶんかつ}とか，分割されたものを\keytermL{小行列}{しょうぎょうれつ}と呼ぶことがあります。表記法は次のようなものが一般的です。
 
 \[
-    \bm{A} = \begin{bmatrix} P & Q \\ R & S \end{bmatrix} = \left[ \begin{array}{c|c} P & Q \\ \hline R & S \end{array} \right]
+	\bm{A} = \begin{bmatrix} P & Q \\ R & S \end{bmatrix} = \left[ \begin{array}{c|c} P & Q \\ \hline R & S \end{array} \right]
 \]
 
 例えば2つの分割行列，
@@ -856,42 +856,42 @@ $c$を実数，$\bm{A},\bm{B},\bm{C}$を行列とするとき，
 
 行列をベクトルに分割することもあって，例えば行列$\bm{A} = [ a_{ij} ] $ を行ごとに，
 \[
-    \begin{array}{ccc}
-        \bm{a}^{1} & = & \left[ a_{11}, a_{12}, \cdots, a_{1m} \right] \\
-        \bm{a}^{2} & = & \left[ a_{21}, a_{22}, \cdots, a_{2m} \right] \\
-        \vdots     &   & \vdots                                        \\
-        \bm{a}^{n} & = & \left[ a_{n1}, a_{n2}, \cdots, a_{nm} \right] \\
-    \end{array}
+	\begin{array}{ccc}
+		\bm{a}^{1} & = & \left[ a_{11}, a_{12}, \cdots, a_{1m} \right] \\
+		\bm{a}^{2} & = & \left[ a_{21}, a_{22}, \cdots, a_{2m} \right] \\
+		\vdots     &   & \vdots                                        \\
+		\bm{a}^{n} & = & \left[ a_{n1}, a_{n2}, \cdots, a_{nm} \right] \\
+	\end{array}
 \]
 
 として，
 \[
-    \bm{A} = \begin{bmatrix} \bm{a}^1 \\ \bm{a}^2 \\ \vdots \\ \bm{a}^n \end{bmatrix}
+	\bm{A} = \begin{bmatrix} \bm{a}^1 \\ \bm{a}^2 \\ \vdots \\ \bm{a}^n \end{bmatrix}
 \]
 とすることもありますし，列ごとに
 \[
-    \bm{a}_1 = \begin{bmatrix} a_{11}\\ a_{21} \\ \vdots \\ a_{n1} \end{bmatrix} ,
-    \bm{a}_2 = \begin{bmatrix} a_{12}\\ a_{22} \\ \vdots \\ a_{n2} \end{bmatrix} ,
-    \cdots
-    \bm{a}_m = \begin{bmatrix} a_{1m}\\ a_{2m} \\ \vdots \\ a_{nm} \end{bmatrix} ,
+	\bm{a}_1 = \begin{bmatrix} a_{11}\\ a_{21} \\ \vdots \\ a_{n1} \end{bmatrix} ,
+	\bm{a}_2 = \begin{bmatrix} a_{12}\\ a_{22} \\ \vdots \\ a_{n2} \end{bmatrix} ,
+	\cdots
+	\bm{a}_m = \begin{bmatrix} a_{1m}\\ a_{2m} \\ \vdots \\ a_{nm} \end{bmatrix} ,
 \]
 として，
 \[
-    \bm{A} = \begin{bmatrix} \bm{a}_1, \bm{a}_2, \cdots, \bm{a}_m\end{bmatrix}
+	\bm{A} = \begin{bmatrix} \bm{a}_1, \bm{a}_2, \cdots, \bm{a}_m\end{bmatrix}
 \]
 とすることもあります。
 
 特に単位行列を列ベクトルに分割すると，
 \[
-    \bm{I} = \begin{bmatrix} \bm{e}_1, \bm{e}_2, \cdots, \bm{e}_n \end{bmatrix}
+	\bm{I} = \begin{bmatrix} \bm{e}_1, \bm{e}_2, \cdots, \bm{e}_n \end{bmatrix}
 \]
 となり，この時それぞれの列ベクトルは
 
 \[
-    \bm{e}_1 = \begin{bmatrix} 1\\ 0 \\ \vdots \\ 0 \end{bmatrix} ,
-    \bm{e}_2 = \begin{bmatrix} 0\\ 1 \\ \vdots \\ 0 \end{bmatrix} ,
-    \cdots
-    \bm{e}_m = \begin{bmatrix} 0\\ 0 \\ \vdots \\ 1 \end{bmatrix} ,
+	\bm{e}_1 = \begin{bmatrix} 1\\ 0 \\ \vdots \\ 0 \end{bmatrix} ,
+	\bm{e}_2 = \begin{bmatrix} 0\\ 1 \\ \vdots \\ 0 \end{bmatrix} ,
+	\cdots
+	\bm{e}_m = \begin{bmatrix} 0\\ 0 \\ \vdots \\ 1 \end{bmatrix} ,
 \]
 となります。このようなベクトルは\keytermL{基本ベクトル}{きほんべくとる}とも呼ばれ，行列を空間で考えるときの基本となる座標ベクトルだと考えられます。
 
@@ -899,48 +899,48 @@ $c$を実数，$\bm{A},\bm{B},\bm{C}$を行列とするとき，
 
 \textit{列分割と列ベクトルの積}
 \[
-    \bm{Ax} = \begin{bmatrix} \bm{a}_1,\bm{a}_2, \cdots,\bm{a}_n \end{bmatrix}\begin{bmatrix} x_1 \\x_2 \\ \vdots \\ x_n \end{bmatrix} = x_1\bm{a}_1 + x_2\bm{a}_2 +\cdots+ x_n\bm{a}_n
+	\bm{Ax} = \begin{bmatrix} \bm{a}_1,\bm{a}_2, \cdots,\bm{a}_n \end{bmatrix}\begin{bmatrix} x_1 \\x_2 \\ \vdots \\ x_n \end{bmatrix} = x_1\bm{a}_1 + x_2\bm{a}_2 +\cdots+ x_n\bm{a}_n
 \]
 \textit{行列と列分割の積}
 \[
-    \bm{AB} = \bm{A}\begin{bmatrix} \bm{b}_1,\bm{b}_2,\cdots,\bm{b}_m \end{bmatrix} = \begin{bmatrix}\bm{Ab}_1,\bm{Ab}_2,\cdots,\bm{Ab}_m\end{bmatrix}
+	\bm{AB} = \bm{A}\begin{bmatrix} \bm{b}_1,\bm{b}_2,\cdots,\bm{b}_m \end{bmatrix} = \begin{bmatrix}\bm{Ab}_1,\bm{Ab}_2,\cdots,\bm{Ab}_m\end{bmatrix}
 \]
 \textit{行列と行分割の積}
 \[
-    \bm{AB} = \begin{bmatrix} \bm{a}^1\\ \bm{a}^2 \\ \vdots \\ \bm{a}^n \end{bmatrix}\bm{B} = \begin{bmatrix}\bm{a}^1\bm{B} \\\bm{a}^2\bm{B} \\ \vdots \\\bm{a}^n\bm{B} \end{bmatrix}
+	\bm{AB} = \begin{bmatrix} \bm{a}^1\\ \bm{a}^2 \\ \vdots \\ \bm{a}^n \end{bmatrix}\bm{B} = \begin{bmatrix}\bm{a}^1\bm{B} \\\bm{a}^2\bm{B} \\ \vdots \\\bm{a}^n\bm{B} \end{bmatrix}
 \]
 \textit{行分割と列分割の積}
 \[
-    \bm{AB} = \begin{bmatrix} \bm{a}^1\\ \bm{a}^2 \\ \vdots \\ \bm{a}^n \end{bmatrix}\begin{bmatrix}\bm{b}_1,\bm{b}_2,\cdots,\bm{b}_m\end{bmatrix} =
-    \begin{bmatrix} \bm{a}^1\bm{b}_1 & \bm{a}^1\bm{b}_2 & \cdots & \bm{a}^1\bm{b}_m \\
+	\bm{AB} = \begin{bmatrix} \bm{a}^1\\ \bm{a}^2 \\ \vdots \\ \bm{a}^n \end{bmatrix}\begin{bmatrix}\bm{b}_1,\bm{b}_2,\cdots,\bm{b}_m\end{bmatrix} =
+	\begin{bmatrix} \bm{a}^1\bm{b}_1 & \bm{a}^1\bm{b}_2 & \cdots & \bm{a}^1\bm{b}_m \\
                 \bm{a}^2\bm{b}_1 & \bm{a}^2\bm{b}_2 &        & \bm{a}^2\bm{b}_m \\
                 \vdots           & \vdots           &        & \vdots           \\
                 \bm{a}^n\bm{b}_1 & \bm{a}^n\bm{b}_2 &        & \bm{a}^n\bm{b}_m
-    \end{bmatrix}
+	\end{bmatrix}
 \]
 
 この章では，行列の基本的な定義，名称，演算，操作について説明しました。次回はこれを使ってデータをどのように表現するかをみていきます。
 \section{練習問題}
 行列$\bm{A}=\begin{pmatrix}1 & 3 \\2 & 4\end{pmatrix},\bm{B}=\begin{pmatrix}3&1&5\\2&4&6\end{pmatrix},\bm{C}=\begin{pmatrix}4&1\\2&3\end{pmatrix}$，列ベクトル$\bm{x}=\begin{pmatrix}1\\2\\3\end{pmatrix}$,行ベクトル$\bm{y}=\begin{pmatrix}2&8\end{pmatrix}$とするとき，次の計算をしなさい。なお，計算が定義されていないものについては「計算できない」と回答しなさい。
 \begin{enumerate}
-    \item $\bm{A}+\bm{B}$
-    \item $\bm{A}-\bm{C}$
-    \item $\bm{AB}$
-    \item $\bm{AC}$
-    \item $\bm{A}^2$
-    \item $tr\bm{C}$
-    \item $\bm{B}'\bm{B}$
-    \item $\bm{BB}'$
-    \item $\bm{B}\bm{I}_3$
-    \item $\bm{B}'\bm{A}$
-    \item $\bm{A}\bm{y}'$
-    \item $\bm{A}\bm{I}_2\bm{C}$
-    \item $\bm{A}\bm{C}\bm{I}_2$
-    \item $\bm{xy}$
-    \item $\bm{xB}$
-    \item $\bm{x}'\bm{B}'$
-    \item $\bm{yx}$
-    \item $\bm{yBx}$
+	\item $\bm{A}+\bm{B}$
+	\item $\bm{A}-\bm{C}$
+	\item $\bm{AB}$
+	\item $\bm{AC}$
+	\item $\bm{A}^2$
+	\item $tr\bm{C}$
+	\item $\bm{B}'\bm{B}$
+	\item $\bm{BB}'$
+	\item $\bm{B}\bm{I}_3$
+	\item $\bm{B}'\bm{A}$
+	\item $\bm{A}\bm{y}'$
+	\item $\bm{A}\bm{I}_2\bm{C}$
+	\item $\bm{A}\bm{C}\bm{I}_2$
+	\item $\bm{xy}$
+	\item $\bm{xB}$
+	\item $\bm{x}'\bm{B}'$
+	\item $\bm{yx}$
+	\item $\bm{yBx}$
 \end{enumerate}
 
 \end{document}

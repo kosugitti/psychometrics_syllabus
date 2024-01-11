@@ -116,55 +116,55 @@ To be specific, when the data $\bm{Y}=Y_1,Y_2,Y_3$ is coming from a Bernoulli di
 % となるわけです。ここで$bernoulli(Y|\theta)$の縦棒$\mid$は，$\theta$が与えられた時の$Y$の出る確率，という条件付き確率の記号になります。
 So it turns out. Here, the vertical bar $| in $bernoulli(Y|\theta)$ represents the conditional probability symbol of the occurrence of $Y$ when $\theta$ is given.
 
-% プログラミング的には，$Y_1,Y_2,\cdots,Y_n$は\verb|for(i in 1:N){ ~ }|という形で1からNまでの繰り返し計算を意味しますから，コード\ref{stan::26_01}や\ref{stan::26_02}でやっていることは，各データ点についての対数尤度を足し合わせて行っている作業そのものを意味しています。
-In terms of programming, $Y_1,Y_2,\cdots,Y_n$ means repeating calculations from 1 to N in the form of \verb|for(i in 1:N){ ~ }|. So, what we are doing in code \ref{stan::26_01} and \ref{stan::26_02} is summing the log likelihoods for each data point, which is exactly what we are doing.
+	% プログラミング的には，$Y_1,Y_2,\cdots,Y_n$は\verb|for(i in 1:N){ ~ }|という形で1からNまでの繰り返し計算を意味しますから，コード\ref{stan::26_01}や\ref{stan::26_02}でやっていることは，各データ点についての対数尤度を足し合わせて行っている作業そのものを意味しています。
+	In terms of programming, $Y_1,Y_2,\cdots,Y_n$ means repeating calculations from 1 to N in the form of \verb|for(i in 1:N){ ~ }|. So, what we are doing in code \ref{stan::26_01} and \ref{stan::26_02} is summing the log likelihoods for each data point, which is exactly what we are doing.
 
-% ここでターゲット記法にある\verb|+=|ですが，これはプログラミング独特の表記方法で，数学表記ではありません。プログラミングでは代入を使って，たとえば変数Aに1を加えたものを新しいAとする(上書きする)，ということを\verb|A = A + 1|と表記できます。この\verb|+=|はこうした上書きを一言で書く記号で，このAの例だと\verb|A += 1|とすれば1を加えて上書き，と同じ意味になります。
-Here we have \verb|+=| in the target notation, which is a unique way of representing in programming, not a mathematical notation. In programming, you can use assignment to express, for example, adding one to a variable A and making it the new A (overwriting it) as \verb|A = A + 1|. This \verb|+=| is a symbol that expresses such overwriting, and in the case of this A example, \verb|A += 1| means adding one and overwriting, which has the same meaning.
-% これを踏まえてターゲット記法を見ると，\verb#target += normal_lpdf( Y[i] | mu, sigma)#ですから，\verb#target = target + normal_lpdf( Y[i] | mu, sigma)#としていることと同じです。つまり，対数尤度を足しあげて行ってね，ということを明示的に書いていることになります。\verb|target|は足し合わされたもの，というだけで「目標はこれ」を意味するぐらいの予約語だと思ってください。
-Considering this and looking at the target notation, \verb#target += normal_lpdf( Y[i] | mu, sigma)#, it's the same as writing \verb#target = target + normal_lpdf( Y[i] | mu, sigma)#. In other words, it explicitly writes that you should add up the log-likelihood. Please think of \verb|target| as a reserved word that means 'the summed up ones', or something like 'this is the goal'.
+	% ここでターゲット記法にある\verb|+=|ですが，これはプログラミング独特の表記方法で，数学表記ではありません。プログラミングでは代入を使って，たとえば変数Aに1を加えたものを新しいAとする(上書きする)，ということを\verb|A = A + 1|と表記できます。この\verb|+=|はこうした上書きを一言で書く記号で，このAの例だと\verb|A += 1|とすれば1を加えて上書き，と同じ意味になります。
+	Here we have \verb|+=| in the target notation, which is a unique way of representing in programming, not a mathematical notation. In programming, you can use assignment to express, for example, adding one to a variable A and making it the new A (overwriting it) as \verb|A = A + 1|. This \verb|+=| is a symbol that expresses such overwriting, and in the case of this A example, \verb|A += 1| means adding one and overwriting, which has the same meaning.
+	% これを踏まえてターゲット記法を見ると，\verb#target += normal_lpdf( Y[i] | mu, sigma)#ですから，\verb#target = target + normal_lpdf( Y[i] | mu, sigma)#としていることと同じです。つまり，対数尤度を足しあげて行ってね，ということを明示的に書いていることになります。\verb|target|は足し合わされたもの，というだけで「目標はこれ」を意味するぐらいの予約語だと思ってください。
+	Considering this and looking at the target notation, \verb#target += normal_lpdf( Y[i] | mu, sigma)#, it's the same as writing \verb#target = target + normal_lpdf( Y[i] | mu, sigma)#. In other words, it explicitly writes that you should add up the log-likelihood. Please think of \verb|target| as a reserved word that means 'the summed up ones', or something like 'this is the goal'.
 
-% サンプリング記法とターゲット記法は，書き方が違えど同じ働きをするのですからどちらでもいいじゃないか，と思うかもしれませんが，ターゲット記法でないと表現できないようなことがあるので，このような代替手法が用意されているのだと思ってください。ターゲット記法でないと表現できないようなこと，というのはもちろん今回の，分布を混ぜ合わせる時がそれです\footnote{そのほかにもターゲット記法は，サンプリング記法では省略されている事後対数確率も記録するという特徴があり，ブリッジサンプリングによる事後対数尤度の計算などにはこちらの表記が必要になってきます。もっとも非常に専門的なことなので，ここでは条件分岐の際に必要な記法，と割り切っていただいても構いません。}。
-You might think that the sampling notation and the target notation, which do different jobs despite their different notations, are equally good. However, there are certain things that can only be expressed by target notation, so please consider this as an alternative method. The case where target notation is necessary for expressing things, of course, refers to the current situation of mixing distributions\footnote{In addition, the target notation also has a feature of recording posterior log probabilities that are omitted in the sampling notation, which becomes necessary for calculations such as posterior log likelihood by bridge sampling. This is a very specialized topic, so you may just consider it as a notation needed for conditional branching at this point.}.
-% \subsection{周辺化消去}
-\subsection{Elimination of Peripheralization}
-% さてここまでさまざまな問題を解決してくれたStanですが，Stanには離散型のパラメータを扱うことができない，という欠点があります\footnote{JAGSという確率的プログラミング言語でしたら，これは可能です。}。
-Now, Stan has helped us solve various problems up to this point, but it has a disadvantage that it can't handle discrete parameters\footnote{This is possible with a probabilistic programming language called JAGS.}.
-% 今回は$z[i] \sim Categorical(\lambda_{i})$と，どの目が出たかというパラメータが離散的ですから，このままではコード化できません。ではどうするか。仕方がないので，「起こりうる可能性をすべて数え上げて考える」という方法を取ることにします。
-This time, since the parameter $z[i] \sim Categorical(\lambda_{i})$ indicating which outcome occurred is discrete, it cannot be coded as it is. So what do we do? There's no other way but to adopt a method of "enumerating and considering all possible outcomes".
-% 最終的な事後分布は対数尤度関数を足し合わせたものになりますから，条件分岐したルートすべてについて対数尤度関数を考えて，それを足し合わせてやれば良いのです。
-The final posterior distribution is the sum of the log-likelihood functions, so all you have to do is consider the log-likelihood function for all the conditioned branched routes and add them up.
+	% サンプリング記法とターゲット記法は，書き方が違えど同じ働きをするのですからどちらでもいいじゃないか，と思うかもしれませんが，ターゲット記法でないと表現できないようなことがあるので，このような代替手法が用意されているのだと思ってください。ターゲット記法でないと表現できないようなこと，というのはもちろん今回の，分布を混ぜ合わせる時がそれです\footnote{そのほかにもターゲット記法は，サンプリング記法では省略されている事後対数確率も記録するという特徴があり，ブリッジサンプリングによる事後対数尤度の計算などにはこちらの表記が必要になってきます。もっとも非常に専門的なことなので，ここでは条件分岐の際に必要な記法，と割り切っていただいても構いません。}。
+	You might think that the sampling notation and the target notation, which do different jobs despite their different notations, are equally good. However, there are certain things that can only be expressed by target notation, so please consider this as an alternative method. The case where target notation is necessary for expressing things, of course, refers to the current situation of mixing distributions\footnote{In addition, the target notation also has a feature of recording posterior log probabilities that are omitted in the sampling notation, which becomes necessary for calculations such as posterior log likelihood by bridge sampling. This is a very specialized topic, so you may just consider it as a notation needed for conditional branching at this point.}.
+	% \subsection{周辺化消去}
+	\subsection{Elimination of Peripheralization}
+	% さてここまでさまざまな問題を解決してくれたStanですが，Stanには離散型のパラメータを扱うことができない，という欠点があります\footnote{JAGSという確率的プログラミング言語でしたら，これは可能です。}。
+	Now, Stan has helped us solve various problems up to this point, but it has a disadvantage that it can't handle discrete parameters\footnote{This is possible with a probabilistic programming language called JAGS.}.
+	% 今回は$z[i] \sim Categorical(\lambda_{i})$と，どの目が出たかというパラメータが離散的ですから，このままではコード化できません。ではどうするか。仕方がないので，「起こりうる可能性をすべて数え上げて考える」という方法を取ることにします。
+	This time, since the parameter $z[i] \sim Categorical(\lambda_{i})$ indicating which outcome occurred is discrete, it cannot be coded as it is. So what do we do? There's no other way but to adopt a method of "enumerating and considering all possible outcomes".
+	% 最終的な事後分布は対数尤度関数を足し合わせたものになりますから，条件分岐したルートすべてについて対数尤度関数を考えて，それを足し合わせてやれば良いのです。
+	The final posterior distribution is the sum of the log-likelihood functions, so all you have to do is consider the log-likelihood function for all the conditioned branched routes and add them up.
 
-% 簡単な例として図\ref{fig:26_03}にあるような，2つの正規分布モデルを考えてみましょう。コイントスで表が出れば$N(Y_i \mid \mu_1,\sigma_1)$，裏が出れば$N(Y_i \mid \mu_2,\sigma_2)$のルートに行けば良いのです。表が出る確率は$\theta$ですから，表が出るルートを通ってデータ$Y_i$が出てくる確率は$\theta \times N(Y_i\mu_1,\sigma_1)$になります。同じく裏が出るルートを通ってデータが出てくる確率は，$(1-\theta) \times N(Y_i \mid \mu_2,\sigma_2)$ということになります。
-Let's consider two normal distribution models as a simple example, as shown in Figure \ref{fig:26_03}. If a coin flip results in heads, you should follow the $N(Y_i\mid\mu_1,\sigma_1)$ path, and if it results in tails, you should follow the $N(Y_i\mid\mu_2,\sigma_2)$ path. The probability of getting heads is $\theta$, so the probability of getting data $Y_i$ by following the path when heads is obtained is $\theta \times N(Y_i\mid\mu_1,\sigma_1)$. Similarly, the probability of getting data by following the path when tails are obtained is $(1-\theta)\times N(Y_i\mid\mu_2,\sigma_2)$.
+	% 簡単な例として図\ref{fig:26_03}にあるような，2つの正規分布モデルを考えてみましょう。コイントスで表が出れば$N(Y_i \mid \mu_1,\sigma_1)$，裏が出れば$N(Y_i \mid \mu_2,\sigma_2)$のルートに行けば良いのです。表が出る確率は$\theta$ですから，表が出るルートを通ってデータ$Y_i$が出てくる確率は$\theta \times N(Y_i\mu_1,\sigma_1)$になります。同じく裏が出るルートを通ってデータが出てくる確率は，$(1-\theta) \times N(Y_i \mid \mu_2,\sigma_2)$ということになります。
+	Let's consider two normal distribution models as a simple example, as shown in Figure \ref{fig:26_03}. If a coin flip results in heads, you should follow the $N(Y_i\mid\mu_1,\sigma_1)$ path, and if it results in tails, you should follow the $N(Y_i\mid\mu_2,\sigma_2)$ path. The probability of getting heads is $\theta$, so the probability of getting data $Y_i$ by following the path when heads is obtained is $\theta \times N(Y_i\mid\mu_1,\sigma_1)$. Similarly, the probability of getting data by following the path when tails are obtained is $(1-\theta)\times N(Y_i\mid\mu_2,\sigma_2)$.
 
 
-% ですから，最終的にデータ$Y_i$が出てくる確率は$\theta \times N(Y_i \mid \mu_1,\sigma_1) + (1-\theta) \times N(Y_i\mid\mu_2,\sigma_2)$だ，ということができるわけです。
-Therefore, the probability of ultimately getting the data $Y_i$ can be expressed as $\theta \times N(Y_i \mid \mu_1,\sigma_1) + (1-\theta) \times N(Y_i\mid\mu_2,\sigma_2)$.
+	% ですから，最終的にデータ$Y_i$が出てくる確率は$\theta \times N(Y_i \mid \mu_1,\sigma_1) + (1-\theta) \times N(Y_i\mid\mu_2,\sigma_2)$だ，ということができるわけです。
+	Therefore, the probability of ultimately getting the data $Y_i$ can be expressed as $\theta \times N(Y_i \mid \mu_1,\sigma_1) + (1-\theta) \times N(Y_i\mid\mu_2,\sigma_2)$.
 
-% さて，これらは確率をそのまま使った表現になっていますが，Stanの中では対数で考えるのでした。つまり表が出るルートの対数尤度は
-Now, these are expressions that use probability as it is, but in Stan, we think in terms of logarithms. In other words, the log-likelihood of the route where the table appears is
-\[ \log(\theta) + \log(N(Y_i\mid\mu_1,\sigma_1)) \]
-ですし，裏が出るルートもまた同様に$\log$をとって考える必要があります。対数を取ると積が和になるので，$\times \to +$に変わっていることに注意してください。
+	% さて，これらは確率をそのまま使った表現になっていますが，Stanの中では対数で考えるのでした。つまり表が出るルートの対数尤度は
+	Now, these are expressions that use probability as it is, but in Stan, we think in terms of logarithms. In other words, the log-likelihood of the route where the table appears is
+	\[ \log(\theta) + \log(N(Y_i\mid\mu_1,\sigma_1)) \]
+	ですし，裏が出るルートもまた同様に$\log$をとって考える必要があります。対数を取ると積が和になるので，$\times \to +$に変わっていることに注意してください。
 
-ところがこの表ルート，裏ルートは足し合わせないといけません。対数をとったものを直接足し合わせるわけにはいきませんから，対数尤度をただの尤度に戻す，つまり$\log$の逆関数である$\exp$関数を通す必要があります。ややこしいですが，
-\[ \exp\left( \log(\theta) + \log(N(Y_i\mid\mu_1,\sigma_1)) \right) + \exp\left( \log(1-\theta) + \log(N(Y_i\mid\mu_2,\sigma_2)) \right) \]
-% が尤度であり，これの対数をとったものを\verb|target|に加える必要があるのです。
-This is the likelihood, and you need to add the logarithm of this to \verb|target|.
+	ところがこの表ルート，裏ルートは足し合わせないといけません。対数をとったものを直接足し合わせるわけにはいきませんから，対数尤度をただの尤度に戻す，つまり$\log$の逆関数である$\exp$関数を通す必要があります。ややこしいですが，
+	\[ \exp\left( \log(\theta) + \log(N(Y_i\mid\mu_1,\sigma_1)) \right) + \exp\left( \log(1-\theta) + \log(N(Y_i\mid\mu_2,\sigma_2)) \right) \]
+	% が尤度であり，これの対数をとったものを\verb|target|に加える必要があるのです。
+	This is the likelihood, and you need to add the logarithm of this to \verb|target|.
 
-% このように，$\exp$を通して，足し合わせ($\sum$)て，さらにその$\log$をとるという作業をひとまとめにした関数が，Stanにはあります。それが\verb|log_sum_exp|関数です。
-Thus, through $\exp$, a function that encompasses the operations of addition ($\sum$) and further taking its $\log$, we have this function in Stan. This function is the \verb|log_sum_exp| function.
-% この関数は，\verb|log_sum_exp(x,y)|とすると$\log(\exp(x)+\exp(y))$という操作をします。この関数に渡すものがベクトルであれば，
-This function, \verb|log_sum_exp(x,y)|, performs an operation called $\log(\exp(x)+\exp(y))$. If the values passed to this function are vectors,
+	% このように，$\exp$を通して，足し合わせ($\sum$)て，さらにその$\log$をとるという作業をひとまとめにした関数が，Stanにはあります。それが\verb|log_sum_exp|関数です。
+	Thus, through $\exp$, a function that encompasses the operations of addition ($\sum$) and further taking its $\log$, we have this function in Stan. This function is the \verb|log_sum_exp| function.
+	% この関数は，\verb|log_sum_exp(x,y)|とすると$\log(\exp(x)+\exp(y))$という操作をします。この関数に渡すものがベクトルであれば，
+	This function, \verb|log_sum_exp(x,y)|, performs an operation called $\log(\exp(x)+\exp(y))$. If the values passed to this function are vectors,
 
-\[ \verb|log_sum_exp|\left( \begin{pmatrix} x_1\\x_2\\ \vdots \\ x_n \end{pmatrix} \right) = \log\left(\sum_{i=1}^n exp(x_i) \right) \]
+	\[ \verb|log_sum_exp|\left( \begin{pmatrix} x_1\\x_2\\ \vdots \\ x_n \end{pmatrix} \right) = \log\left(\sum_{i=1}^n exp(x_i) \right) \]
 
-という操作をすることになります。
+	という操作をすることになります。
 
-これを使って混合分布モデルの実装をしていきましょう。
-\subsection{混合分布モデルのコード}
-先ほどの，阪神タイガースにおける選手の年俸分布を2つの正規分布から出てきているもの，と考えてコード化したものは，Code\ref{stan::26_03}のようになります。
-\begin{lstlisting}[language=C++,label={stan::26_03},caption={混合正規モデル}]
+	これを使って混合分布モデルの実装をしていきましょう。
+	\subsection{混合分布モデルのコード}
+	先ほどの，阪神タイガースにおける選手の年俸分布を2つの正規分布から出てきているもの，と考えてコード化したものは，Code\ref{stan::26_03}のようになります。
+	\begin{lstlisting}[language=C++,label={stan::26_03},caption={混合正規モデル}]
 data {
   int<lower=1> K;
   int<lower=1> L;
@@ -203,71 +203,71 @@ generated quantities{
   }
 }
 \end{lstlisting}
-\paragraph{コード解説}
-\begin{description}
-   \item[dataブロック] クラスター数K，データ長L，アウトカム変数Yを宣言しています。
-   \item[parametersブロック] 合計が1になるKの長さを持つベクトルである，\verb|simplex|型ベクトルを，データ数だけ用意します。また，K個の正規分布からデータが出てきているのですから，平均と標準偏差もK個用意します。ここで大事なポイントとして，平均$\mu$が\verb|ordered|型としてあるところです。このベクトルは，要素$\mu_1>\mu_2>\cdots>\mu_k$と，要素が大きさの順に並んでいることです。このような制約をかけておかないと，K個の正規分布がどの位置にあるのか判然としな苦なるという問題が生じます。たとえばあるチェインで$\mu_1>\mu_2$となっていて，データ$X_k$が1番目の正規分布から出てきていると考えられたとしましょう。しかし別のチェインで$\mu_1<\mu_2$となっていれば，$X_k$は平均値が大きい方から出てきているのですから，こちらのチェインでは2番目の正規分布から出てきたものとして，MCMCサンプルが進むことになります。複数のチェインから得られたMCMCサンプルは最終的に統合されますから，このようになっていると$X_k$は正規分布1からも2からも同じように出てきていることになります。各チェインでは正しくサンプリングできているのですが，チェインごとに分布のラベルが違うので，統合すると訳がわからなくなる，この問題をとくに\keyterm{ラベルスイッチング}{らべるすいっちんぐ}{Label Switching}問題といい，混合分布モデルではよく生じる問題なのです。そこで分布の位置母数に順番の制約を入れて，ラベルの変動を止める必要があります。
-   \item[transformed parametersブロック] 長さKのベクトルをデータの数Lだけ用意した\verb|lp|変数を作りました。これはlog-probabilityの略でこのような名前にしましたが，任意の名前で結構です。l行目のデータがクラスターkに含まれる可能性は，$\theta_{lk} \times N(Y[l]\mid\mu_k,\sigma_k)$ですから，それの対数をとった形で表現しています。
-   \item[modelブロック] モデル尤度のところは，対数$\to$ $\exp$関数で確率の形 $\to$ ベクトルの要素をすべて足し合わせる $\to$ $\log$をとって対数尤度にする，という計算をまとめて\verb|log_sum_exp|関数で行い，それをすべて\verb|target|に追加していくという方法で書いています。事前分布のところは普通のサンプリング記法で書きました。ちなみに$\mu,\sigma$はそれぞれK個ずつありますが，Stanは添字の省略を許してくれます。
-   \item[generated quantitiesブロック] 久しぶりに生成量ブロックの登場です。ここでは分析結果を使って，l行目のデータが結局何番目の正規分布から出てきたのかを逆算して出しています。まず，対数尤度で表現されているK個の要素を持つベクトルを，確率の形に計算したものを\verb|preb_class|変数にしています。ここで使われている\verb|softmax|という関数は，
-      \[ softmax(x) = \frac{exp(x)}{\sum_{k=1}^K exp(x_k)}\]
-%       という計算をするものです。分母はベクトルの総和で分子がその要素ですから，要するに各クラスに入る確率を表すベクトルになっている訳です。これを使って\verb|pred_class|変数を作っています。今回のデータから予想される所属クラスなので，K面サイコロを振った出目という形で表現します。\verb|categorical_rng|はカテゴリカル分布からの乱数発生で，その発生確率が先ほどの\verb|prob_class|になっているので，この乱数で出た目が予測されるクラスということです。
-This performs calculations. The denominator is the sum of the vectors and the numerator is its element, which essentially a vector representing the probability of entering each class. Using this, we create a variable called \verb|pred_class|. As it is a predict class based on the current data, it is expressed as the outcome of rolling a K-faced die. \verb|categorical_rng| is a random number generation from a categorical distribution, and since the generation probability is the above mentioned \verb|prob_class|, the predicted class is determined by this random number.
-\end{description}
-% これを実行するためのRコードをコード\ref{code:26_01}に用意しました。
-I have prepared R code in Code\ref{code:26_01} to execute this.
-\input{x26_mixed_escape_07}
+	\paragraph{コード解説}
+	\begin{description}
+		\item[dataブロック] クラスター数K，データ長L，アウトカム変数Yを宣言しています。
+		\item[parametersブロック] 合計が1になるKの長さを持つベクトルである，\verb|simplex|型ベクトルを，データ数だけ用意します。また，K個の正規分布からデータが出てきているのですから，平均と標準偏差もK個用意します。ここで大事なポイントとして，平均$\mu$が\verb|ordered|型としてあるところです。このベクトルは，要素$\mu_1>\mu_2>\cdots>\mu_k$と，要素が大きさの順に並んでいることです。このような制約をかけておかないと，K個の正規分布がどの位置にあるのか判然としな苦なるという問題が生じます。たとえばあるチェインで$\mu_1>\mu_2$となっていて，データ$X_k$が1番目の正規分布から出てきていると考えられたとしましょう。しかし別のチェインで$\mu_1<\mu_2$となっていれば，$X_k$は平均値が大きい方から出てきているのですから，こちらのチェインでは2番目の正規分布から出てきたものとして，MCMCサンプルが進むことになります。複数のチェインから得られたMCMCサンプルは最終的に統合されますから，このようになっていると$X_k$は正規分布1からも2からも同じように出てきていることになります。各チェインでは正しくサンプリングできているのですが，チェインごとに分布のラベルが違うので，統合すると訳がわからなくなる，この問題をとくに\keyterm{ラベルスイッチング}{らべるすいっちんぐ}{Label Switching}問題といい，混合分布モデルではよく生じる問題なのです。そこで分布の位置母数に順番の制約を入れて，ラベルの変動を止める必要があります。
+		\item[transformed parametersブロック] 長さKのベクトルをデータの数Lだけ用意した\verb|lp|変数を作りました。これはlog-probabilityの略でこのような名前にしましたが，任意の名前で結構です。l行目のデータがクラスターkに含まれる可能性は，$\theta_{lk} \times N(Y[l]\mid\mu_k,\sigma_k)$ですから，それの対数をとった形で表現しています。
+		\item[modelブロック] モデル尤度のところは，対数$\to$ $\exp$関数で確率の形 $\to$ ベクトルの要素をすべて足し合わせる $\to$ $\log$をとって対数尤度にする，という計算をまとめて\verb|log_sum_exp|関数で行い，それをすべて\verb|target|に追加していくという方法で書いています。事前分布のところは普通のサンプリング記法で書きました。ちなみに$\mu,\sigma$はそれぞれK個ずつありますが，Stanは添字の省略を許してくれます。
+		\item[generated quantitiesブロック] 久しぶりに生成量ブロックの登場です。ここでは分析結果を使って，l行目のデータが結局何番目の正規分布から出てきたのかを逆算して出しています。まず，対数尤度で表現されているK個の要素を持つベクトルを，確率の形に計算したものを\verb|preb_class|変数にしています。ここで使われている\verb|softmax|という関数は，
+		      \[ softmax(x) = \frac{exp(x)}{\sum_{k=1}^K exp(x_k)}\]
+		      %       という計算をするものです。分母はベクトルの総和で分子がその要素ですから，要するに各クラスに入る確率を表すベクトルになっている訳です。これを使って\verb|pred_class|変数を作っています。今回のデータから予想される所属クラスなので，K面サイコロを振った出目という形で表現します。\verb|categorical_rng|はカテゴリカル分布からの乱数発生で，その発生確率が先ほどの\verb|prob_class|になっているので，この乱数で出た目が予測されるクラスということです。
+		      This performs calculations. The denominator is the sum of the vectors and the numerator is its element, which essentially a vector representing the probability of entering each class. Using this, we create a variable called \verb|pred_class|. As it is a predict class based on the current data, it is expressed as the outcome of rolling a K-faced die. \verb|categorical_rng| is a random number generation from a categorical distribution, and since the generation probability is the above mentioned \verb|prob_class|, the predicted class is determined by this random number.
+	\end{description}
+	% これを実行するためのRコードをコード\ref{code:26_01}に用意しました。
+	I have prepared R code in Code\ref{code:26_01} to execute this.
+	\input{x26_mixed_escape_07}
 
-% \paragraph{コード解説}
-\paragraph{Code Explanation}
-\input{x26_mixed_escape_08}
-%    \item[10行目] データセットを作っています。
-   \item[10th line] We are creating a dataset.
+	% \paragraph{コード解説}
+	\paragraph{Code Explanation}
+	\input{x26_mixed_escape_08}
+	%    \item[10行目] データセットを作っています。
+	\item[10th line] We are creating a dataset.
 
-%    \item[11行目] cmdstanでコンパイルしています。rstanパッケージを使う場合はrstanのコンパイル関数を使ってください。
-   \item[Line 11] Compiling with cmdstan. If you are using the rstan package, please use the compilation function of rstan.
-%    \item[12行目] cmdstanのサンプリング関数です。rstanパッケージを使う場合はrstanのサンプリング関数を使ってください。
-   \item[Line 12] This is a sampling function of cmdstan. If you use the rstan package, please use the sampling function of rstan.
-\end{description}
+	%    \item[11行目] cmdstanでコンパイルしています。rstanパッケージを使う場合はrstanのコンパイル関数を使ってください。
+	\item[Line 11] Compiling with cmdstan. If you are using the rstan package, please use the compilation function of rstan.
+	%    \item[12行目] cmdstanのサンプリング関数です。rstanパッケージを使う場合はrstanのサンプリング関数を使ってください。
+	\item[Line 12] This is a sampling function of cmdstan. If you use the rstan package, please use the sampling function of rstan.
+	\end{description}
 
-% 推定した結果を見てみましょう。私の環境では出力\ref{MCMCout:out26_01}のようになりました。
-Let's take a look at the estimated results. In my environment, it turned out as shown in output \ref{MCMCout:out26_01}.
-\input{x26_mixed_escape_09}
-% 対数をとった時の平均値が$7.624$と$9.702$ですから，指数関数を入れて読み直せば$\exp(7.624)=2046.733$,$\exp(9.702)=16350.28x$となります。2000万円クラスの選手と，1億6500万円クラスの選手の2つのグループに分かれることが見て取れますね。
-The average values when taking the logarithm are $7.624$ and $9.702$, so if you re-read it with an exponential function, it becomes $\exp(7.624)=2046.733$, $\exp(9.702)=16350.28x$. We can see that it is divided into two groups, players in the 20 million yen class and players in the 165 million yen class.
-% 事後予測分布から，所得平均の高い「超一流」選手と「一般的」な選手とに分けて分布を色分けしてみました(図\ref{fig:26_10})。データから，この選手がどちらのクラスに所属しているかも想像できるところがおもしろいですね。
-I have color-coded the distribution by separating the players with high average incomes, the 'super elite', from the 'typical' players, based on the post-prediction distribution (Figure \ref{fig:26_10}). It's interesting that we can guess which class this player belongs to from the data.
-\input{x26_mixed_escape_10}
-
-
-
-% \section{ゼロ過剰ポアソン分布モデル}
-\section{Zero-Inflated Poisson Distribution Model}
-\label{ZIpoisson}
-% さて，異なる分布の混ぜ合わせ，離散確率分布による条件分岐の例として，もう1つ別の例を示しましょう。次の図\ref{fig:26_05}を見てください。
-Now, let's show another example of a mixture of different distributions and conditional branching by a discrete probability distribution. Please refer to the following Figure \ref{fig:26_05}.
-\input{x26_mixed_escape_11}
-
-% これは投手のセーブ数の度数分布です。野球は9回のターン制で，1回の最初から投げる投手は先発投手と言います。先発投手が9回まで投げ切れればいいのですが，疲労も溜まるし戦術によっては投手の打席に代打を投入することもあります。投手が降板した場合は，次の投手が代わって続きから投げますが，「勝っている試合で後半まできたので，最後の1，2回は確実に勝ち逃げできるようにしたい」というときに投入されるのが抑え(クローザー)と呼ばれる投手です。最近のプロ野球は分業が進んでいますから，先発投手が完投することは少なく，100球程度で交代し，中継ぎ--抑えと投手リレーしていくのが一般的な戦術です。さて，先発投手は最初から出てきて6，7回まで投げますから(途中でボロボロに打たれたり怪我で降板などがなければ，ですが)，毎日のように登板することはなく，一度登板すると3，4日休んで次の試合にでる，ということになります。日本プロ野球は年間140試合近くありますが，通年で2-30回も登板することはありません。一方，抑えの投手は最後の8，9回を投げる程度で，しかも負けている試合などでは出番がありません。必然的に中4日の休憩なども入りませんから，試合数はたくさん出ることができます。そして抑えに成功するとセーブポイントというのがつきますが，このセーブポイントは優秀なクローザーであれば年間数十ポイント取ることができる訳です。
-This is a frequency distribution of the number of saves by a pitcher. Baseball is played in nine rounds, and the pitcher who throws from the beginning of the first round is known as the starting pitcher. It would be great if the starting pitcher could pitch until the ninth round, but fatigue builds up and there are times when a pinch hitter is brought in for the pitcher's slot for tactics. When the pitcher is relieved, the next pitcher takes over from there, but when it's a case of; "We're winning the game so far, so we want to make sure we can safely pull away in the last one or two innings", that's when a pitcher called a closer is brought in. Pro baseball today is highly specialized, so it's less common for starting pitchers to throw complete games and they usually switch after about 100 pitches, and the typical strategy is a chain of starting pitcher - relief pitcher - closer. Now, the starting pitcher, who starts from the beginning and throws until the 6th or 7th inning (assuming they're not hit hard or injured midway), won't pitch every day, and once they pitch, they'll take a 3 or 4 day rest before the next game. There are nearly 140 games in a season of Japanese professional baseball, but it's unusual to pitch even 20-30 times a year. On the other hand, closers throw the last 8th or 9th inning, and they don't even get a turn in a losing game. They won't necessarily get a four-day rest, so they can play many games. When they succeed as a closer, they earn what's called save points, and that means a skilled closer can earn dozens of points a year.
-
-% さて，図\ref{fig:26_05}にあるようにこのセーブポイントを見てみますと，ほとんどの投手がゼロになっています。以下データをみますと，1セーブが53人，2セーブが26人・・・となって，20〜40セーブある投手が10人弱ずつぐらいいる，という分布をしています。これは先ほども言った分業制のせいで，先発投手にセーブポイントがつくことはありませんし，先発投手は1チームに10人弱ぐらいは揃えているでしょうから，投手全体で見るとセーブポイントは0の人が多いのです。
-Now, when we look at this save point shown in Figure \ref{fig:26_05}, almost all of the pitchers are zero. Looking at the data below, we see that there are 53 people with one save, 26 people with two saves... and about 10 people with 20 to 40 saves, showing this distribution. This is due to the specialization system I mentioned earlier, so starting pitchers don't get save points, and since each team will have about ten starting pitchers, most pitchers will have zero save points when we look at them as a whole.
-
-% このセーブポイント，0以上の整数を取りますからポアソン分布に従うと考えられるのですが，ポアソン分布のパラメータ$\lambda$をどう変えても(図\ref{fig:26_06})，こんな形にはなりません。
-This save point can take any non-negative integer, so it can be thought to follow a Poisson distribution. However, no matter how we change the parameter $\lambda$ of the Poisson distribution (figure \ref{fig:26_06}), it does not take this shape.
+	% 推定した結果を見てみましょう。私の環境では出力\ref{MCMCout:out26_01}のようになりました。
+	Let's take a look at the estimated results. In my environment, it turned out as shown in output \ref{MCMCout:out26_01}.
+	\input{x26_mixed_escape_09}
+	% 対数をとった時の平均値が$7.624$と$9.702$ですから，指数関数を入れて読み直せば$\exp(7.624)=2046.733$,$\exp(9.702)=16350.28x$となります。2000万円クラスの選手と，1億6500万円クラスの選手の2つのグループに分かれることが見て取れますね。
+	The average values when taking the logarithm are $7.624$ and $9.702$, so if you re-read it with an exponential function, it becomes $\exp(7.624)=2046.733$, $\exp(9.702)=16350.28x$. We can see that it is divided into two groups, players in the 20 million yen class and players in the 165 million yen class.
+	% 事後予測分布から，所得平均の高い「超一流」選手と「一般的」な選手とに分けて分布を色分けしてみました(図\ref{fig:26_10})。データから，この選手がどちらのクラスに所属しているかも想像できるところがおもしろいですね。
+	I have color-coded the distribution by separating the players with high average incomes, the 'super elite', from the 'typical' players, based on the post-prediction distribution (Figure \ref{fig:26_10}). It's interesting that we can guess which class this player belongs to from the data.
+	\input{x26_mixed_escape_10}
 
 
-\input{x26_mixed_escape_12}
-% そこで混合分布です。まずセーブ数が0かどうかを考えます。セーブ数0というのは，そもそもクローザーではないか，クローザーなのに0セーブポイントのへっぽこか，の二択です。セーブ数が0でない限り，ポアソン分布からセーブ数が生成される，と考えるのです。設計図のイメージは図\ref{fig:26_07}の通りです。
-So, this is a mixed distribution. First, let's consider whether the save number is zero or not. Having a save number of zero means either the player is not a closer at all, or they are a closer but a total dud with zero save points, it boils down to these two possibilities. As long as the save number is not zero, it is generated from a Poisson distribution, that's our assumption. The image of the blueprint is as shown in Figure \ref{fig:26_07}.
-\input{x26_mixed_escape_13}
 
-% このモデルがちょっと特殊なのは，ご覧の通り0というデータの値一箇所に極端な偏りがあるところです。この分布のことを\keyterm{ゼロ過剰ポアソン}{ぜろかじょう}{Zero-Inflated Poisson}といいます。
-The unique feature of this model, as you can see, is the extreme bias at a data value of 0. We refer to this distribution as the "Zero-Inflated Poisson".
+	% \section{ゼロ過剰ポアソン分布モデル}
+	\section{Zero-Inflated Poisson Distribution Model}
+	\label{ZIpoisson}
+	% さて，異なる分布の混ぜ合わせ，離散確率分布による条件分岐の例として，もう1つ別の例を示しましょう。次の図\ref{fig:26_05}を見てください。
+	Now, let's show another example of a mixture of different distributions and conditional branching by a discrete probability distribution. Please refer to the following Figure \ref{fig:26_05}.
+	\input{x26_mixed_escape_11}
 
-% 注意してほしいのですが，ポアソン分布から0の度数が出てくることもあり得ます。逆に考えると，データ$Y_i=0$であれば，これはクローザーでないからそうなっているのか，クローザーなのにヘッポコでセーブ数がつかなかったのかのどちらか，という判断をしなければならないということです。つまり，データからの分岐を考えることになります。クローザーかどうかは確率$\theta$で決まるとして，$\theta$ならクローザー，$1-\theta$ならクローザーじゃないとすると，
-Please note that a frequency of 0 can come out from a Poisson distribution. Conversely, if the data $Y_i=0$, it means we have to decide whether it's because they're not a closer or they're a closer but were not good enough to improve the save total. In other words, we need to think about branching from the data. If it's determined by the probability $\theta$ whether it's a closer or not, let's say it's a closer for $\theta$ and not a closer for $1-\theta$.
+	% これは投手のセーブ数の度数分布です。野球は9回のターン制で，1回の最初から投げる投手は先発投手と言います。先発投手が9回まで投げ切れればいいのですが，疲労も溜まるし戦術によっては投手の打席に代打を投入することもあります。投手が降板した場合は，次の投手が代わって続きから投げますが，「勝っている試合で後半まできたので，最後の1，2回は確実に勝ち逃げできるようにしたい」というときに投入されるのが抑え(クローザー)と呼ばれる投手です。最近のプロ野球は分業が進んでいますから，先発投手が完投することは少なく，100球程度で交代し，中継ぎ--抑えと投手リレーしていくのが一般的な戦術です。さて，先発投手は最初から出てきて6，7回まで投げますから(途中でボロボロに打たれたり怪我で降板などがなければ，ですが)，毎日のように登板することはなく，一度登板すると3，4日休んで次の試合にでる，ということになります。日本プロ野球は年間140試合近くありますが，通年で2-30回も登板することはありません。一方，抑えの投手は最後の8，9回を投げる程度で，しかも負けている試合などでは出番がありません。必然的に中4日の休憩なども入りませんから，試合数はたくさん出ることができます。そして抑えに成功するとセーブポイントというのがつきますが，このセーブポイントは優秀なクローザーであれば年間数十ポイント取ることができる訳です。
+	This is a frequency distribution of the number of saves by a pitcher. Baseball is played in nine rounds, and the pitcher who throws from the beginning of the first round is known as the starting pitcher. It would be great if the starting pitcher could pitch until the ninth round, but fatigue builds up and there are times when a pinch hitter is brought in for the pitcher's slot for tactics. When the pitcher is relieved, the next pitcher takes over from there, but when it's a case of; "We're winning the game so far, so we want to make sure we can safely pull away in the last one or two innings", that's when a pitcher called a closer is brought in. Pro baseball today is highly specialized, so it's less common for starting pitchers to throw complete games and they usually switch after about 100 pitches, and the typical strategy is a chain of starting pitcher - relief pitcher - closer. Now, the starting pitcher, who starts from the beginning and throws until the 6th or 7th inning (assuming they're not hit hard or injured midway), won't pitch every day, and once they pitch, they'll take a 3 or 4 day rest before the next game. There are nearly 140 games in a season of Japanese professional baseball, but it's unusual to pitch even 20-30 times a year. On the other hand, closers throw the last 8th or 9th inning, and they don't even get a turn in a losing game. They won't necessarily get a four-day rest, so they can play many games. When they succeed as a closer, they earn what's called save points, and that means a skilled closer can earn dozens of points a year.
+
+	% さて，図\ref{fig:26_05}にあるようにこのセーブポイントを見てみますと，ほとんどの投手がゼロになっています。以下データをみますと，1セーブが53人，2セーブが26人・・・となって，20〜40セーブある投手が10人弱ずつぐらいいる，という分布をしています。これは先ほども言った分業制のせいで，先発投手にセーブポイントがつくことはありませんし，先発投手は1チームに10人弱ぐらいは揃えているでしょうから，投手全体で見るとセーブポイントは0の人が多いのです。
+	Now, when we look at this save point shown in Figure \ref{fig:26_05}, almost all of the pitchers are zero. Looking at the data below, we see that there are 53 people with one save, 26 people with two saves... and about 10 people with 20 to 40 saves, showing this distribution. This is due to the specialization system I mentioned earlier, so starting pitchers don't get save points, and since each team will have about ten starting pitchers, most pitchers will have zero save points when we look at them as a whole.
+
+	% このセーブポイント，0以上の整数を取りますからポアソン分布に従うと考えられるのですが，ポアソン分布のパラメータ$\lambda$をどう変えても(図\ref{fig:26_06})，こんな形にはなりません。
+	This save point can take any non-negative integer, so it can be thought to follow a Poisson distribution. However, no matter how we change the parameter $\lambda$ of the Poisson distribution (figure \ref{fig:26_06}), it does not take this shape.
+
+
+	\input{x26_mixed_escape_12}
+	% そこで混合分布です。まずセーブ数が0かどうかを考えます。セーブ数0というのは，そもそもクローザーではないか，クローザーなのに0セーブポイントのへっぽこか，の二択です。セーブ数が0でない限り，ポアソン分布からセーブ数が生成される，と考えるのです。設計図のイメージは図\ref{fig:26_07}の通りです。
+	So, this is a mixed distribution. First, let's consider whether the save number is zero or not. Having a save number of zero means either the player is not a closer at all, or they are a closer but a total dud with zero save points, it boils down to these two possibilities. As long as the save number is not zero, it is generated from a Poisson distribution, that's our assumption. The image of the blueprint is as shown in Figure \ref{fig:26_07}.
+	\input{x26_mixed_escape_13}
+
+	% このモデルがちょっと特殊なのは，ご覧の通り0というデータの値一箇所に極端な偏りがあるところです。この分布のことを\keyterm{ゼロ過剰ポアソン}{ぜろかじょう}{Zero-Inflated Poisson}といいます。
+	The unique feature of this model, as you can see, is the extreme bias at a data value of 0. We refer to this distribution as the "Zero-Inflated Poisson".
+
+	% 注意してほしいのですが，ポアソン分布から0の度数が出てくることもあり得ます。逆に考えると，データ$Y_i=0$であれば，これはクローザーでないからそうなっているのか，クローザーなのにヘッポコでセーブ数がつかなかったのかのどちらか，という判断をしなければならないということです。つまり，データからの分岐を考えることになります。クローザーかどうかは確率$\theta$で決まるとして，$\theta$ならクローザー，$1-\theta$ならクローザーじゃないとすると，
+	Please note that a frequency of 0 can come out from a Poisson distribution. Conversely, if the data $Y_i=0$, it means we have to decide whether it's because they're not a closer or they're a closer but were not good enough to improve the save total. In other words, we need to think about branching from the data. If it's determined by the probability $\theta$ whether it's a closer or not, let's say it's a closer for $\theta$ and not a closer for $1-\theta$.
 \input{x26_mixed_escape_14}
 % このデータが0のときに生成メカニズムが条件分岐していますから，ここに\verb|log_sum_exp|関数を入れる必要があります。
 The generation mechanism branches when this data is zero, so you need to put the \verb|log_sum_exp| function here.

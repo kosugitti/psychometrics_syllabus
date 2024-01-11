@@ -25,11 +25,11 @@
 
 さて，学力のような潜在変数が標準正規分布に従うと仮定しましょう。この分布の形はどこの確率点がどれぐらいの確率密度を持っているか，あるいはある確率点以上・以下の面積が全体の何\%かを表すものですが，縦軸をある点以下の累積確率に書き直してみましょう(図\ref{fig::04_01})。図\ref{fig::04_01}の上の図がいわゆる正規分布の分布の形，確率密度関数です。下の図はこれを累積確率に書き換えたものになっています。累積確率は0\%から始まって，最終的に100\%にまでどのように増えていくかを示した図になります。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,keepaspectratio,clip]{../images/04_irt/Rplot04_01.png}
-        \caption{正規分布の確率密度関数(上)と累積確率関数(下)}
-        \label{fig::04_01}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,keepaspectratio,clip]{../images/04_irt/Rplot04_01.png}
+		\caption{正規分布の確率密度関数(上)と累積確率関数(下)}
+		\label{fig::04_01}
+	\end{center}
 \end{figure}
 
 累積正規確率は，テスト理論と密接な関係があります。というのも，学力が正規分布すると考えるなら，累積正規分布の形はあるテスト項目の\keyterm{通過率}{つうかりつ}{pass ratio}と同じ形になると考えられるからです。
@@ -37,11 +37,11 @@
 通過率とは，あるテスト項目に正答する人の割合のことです。ここで複数の項目からなる，あるテストをしたとしましょう。正答数を数えてその人の成績とすると，よくできたテストであれば成績は正規分布に従います。さらに，ある項目と成績との相関(\keyterm{IT相関}{ITそうかん}{Item-Total correlations})は高いはずですね。つまりその項目に正答することが，テスト全体の成績と高く関係しているので，その項目はテスト全体が測ろうとしているものを反映していると考えられるからです。また，成績をもとに被験者集団を5群に分けたとしましょう。「成績上位群(HH)」，「成績やや上位(MH)」，「成績中程度(M)」，「成績やや下位(ML)」，「成績下位(LL)」です。このとき，各群の平均通過率を考えると，図\ref{fig::04_02}左上図のようになるのが理想的です。つまり，成績が高い人たちの通過率は高く，成績が低い人達の通過率は低くなるはずですね。同じ図の右上は，LL群でも半分ぐらいが通過し，その後の群は過半数，ほとんどが通過するようになっています。これは，この項目が簡単すぎたことを意味しています。簡単すぎる問題は，それはそれで被験者の特徴が弁別できないという意味で悪い項目です。逆に図の左下にあるのは，HH群でも半分以下の通過率しかありません。つまり難しすぎる問題です。ほとんどの人が間違えてしまうわけですから，これも良い試験問題とは言えないでしょう。右下に至っては逆転していて，どうやったらこういう項目が作れるのか却ってわからないほどですが，学力の低い人だけが正答できて，学力の高い人は正答しない項目ということになります。もちろんこんな項目はよくないわけで，IT相関で負の相関が出ているわけですから，テストの文脈でいうなら「そのテストで測っていない何か別の能力を測っている」と考えるしかありません。
 
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_02.png}
-        \caption{群ごとの平均通過率。左上が良いパターン。右上は簡単すぎる，左下は難しすぎる項目。右下は逆転していて良くない項目。}
-        \label{fig::04_02}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_02.png}
+		\caption{群ごとの平均通過率。左上が良いパターン。右上は簡単すぎる，左下は難しすぎる項目。右下は逆転していて良くない項目。}
+		\label{fig::04_02}
+	\end{center}
 \end{figure}
 
 ともあれ，このようなやり方で項目の良し悪しを見ていくことができます。また，図\ref{fig::04_02}は5段階ですが，7段階，9段階とよりきめ細かくしていくと，理想的な形は累積正規分布により近づいていきます。新しいテスト理論による項目分析はこの累積正規分布の形を基本とし，これを拡張することで各項目の特徴を描いていくことになります。
@@ -64,11 +64,11 @@
 
 ここで$b$という変数が入ってきました。これが\keyterm{困難度}{こんなんど}{difficulty}を表す指標です。$b=0$のときは標準正規分布と同じ形になりますが，$b=1$ならばこの式は右に，$b=-1$ならば左に動きます。つまり$b>0$であれば難しく，$b<0$であれば簡単であることを表現していることになります。図\ref{fig::04_03}に困難度が$b=-1,0,+1$の時の曲線を書いてみましたので確認してください。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_03.png}
-        \caption{困難度母数の入ったロジスティック曲線。1PLロジスティックモデルともいう。点線が$b=0$の標準的曲線。赤が$b=-1$，青が$b=+1$の例}
-        \label{fig::04_03}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_03.png}
+		\caption{困難度母数の入ったロジスティック曲線。1PLロジスティックモデルともいう。点線が$b=0$の標準的曲線。赤が$b=-1$，青が$b=+1$の例}
+		\label{fig::04_03}
+	\end{center}
 \end{figure}
 このように困難度を表現するパラメータを追加したモデルを\keyterm{1パラメータ・ロジスティックモデル}{1ぱらめーたろじすてぃっくもでる}{One Parameter Logistic model}と言います。実際のテストの回答パターンにたいし，各項目にこの曲線を当てはめて困難度を推定することで，項目を評価できるようになります。このように項目の特徴を描く曲線のことを\keyterm{項目特性曲線}{こうもくとくせいきょくせん}{Item Characteristic Curve, ICC}といいます。
 
@@ -77,11 +77,11 @@
 ここで$a$という母数(パラメータ)が入ってきました。これは$a=1$だともとのモデルのままなのですが，これが小さくなると曲線が傾き，大きくなると曲線のカーブが強くなります(図\ref{fig::04_04})。曲線が緩やかになると(図\ref{fig::04_03}の赤線)，$\theta$の違いに対して通過率の変化が乏しくなります。言い換えると感度が悪くなるわけです。逆に曲線の立ち上がりが強くなると(図\ref{fig::04_04}の青線)，$\theta$ がある一定のところを超えるかどうかで正答率がグッと変化することになります。つまりこのパラメータは，回答者の能力$\theta$を分類する力の強さを表しているのです。このパラメータのことをとくに\keyterm{識別力}{しきべつりょく}{discriminant}と呼びます。
 
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_04.png}
-        \caption{識別力母数の入ったロジスティック曲線。2PLロジスティックモデルともいう。点線が$a=1$の標準的曲線。赤が$a=0.5$，青が$a=1.5$の例}
-        \label{fig::04_04}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_04.png}
+		\caption{識別力母数の入ったロジスティック曲線。2PLロジスティックモデルともいう。点線が$a=1$の標準的曲線。赤が$a=0.5$，青が$a=1.5$の例}
+		\label{fig::04_04}
+	\end{center}
 \end{figure}
 
 一般にはここまで紹介した2PLモデルがよく用いられます。他にも3，4，5つとパラメータが増えたモデルもありますが\footnote{詳しくは\url{http://antlers.rd.dnc.ac.jp/~shojima/exmk/jindex.htm}を参照してください。3つめのパラメータはあて推量母数，4つ目は上方漸近母数，5つ目は非対称母数と呼ばれています。}，もとのロジスティック曲線に特徴を付け足していったもので，曲線をずらしたり，曲げたりしながらもとのデータにうまく当てはまるようにしつつ，その特徴を解釈できるように工夫しています。
@@ -98,30 +98,30 @@
 他にも項目\texttt{I0017}は困難度が2.17，識別力は0.69です。困難度が最も高いグラフで，図の曲線は一番右にあるラインになっています。ただ識別力がやや低いので，曲線はよりなだらかになっていますね。困難度が高いので，$\theta=0$でも7.24\%しか正答できません。難しい！$\theta=2$で45.10\%ですから，かなり能力の高い人でも半分は間違えるような問題です。ちなみにこれは標本分散の期待値が母分散からどれぐらいずれるのかを計算する問題でした。
 
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_05.png}
-        \caption{実際のテストに2PLモデルを適用した例}
-        \label{fig::04_05}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_05.png}
+		\caption{実際のテストに2PLモデルを適用した例}
+		\label{fig::04_05}
+	\end{center}
 \end{figure}
 
 % latex table generated in R 4.0.4 by xtable 1.8-4 package
 % Wed Mar 17 09:22:06 2021
 \begin{table}[ht]
-    \centering
-    \caption{各項目の困難度と識別力}
-    \label{tbl::04_01}
-    \begin{tabular}{rlrr}
-        \hline
-          & 項目ID & 困難度 & 識別力 \\
-        \hline
-        1 & I0013  & -1.02  & 1.05   \\
-        2 & I0017  & 2.17   & 0.69   \\
-        3 & I0022  & -1.92  & 1.30   \\
-        4 & I0041  & -0.79  & 0.62   \\
-        5 & M0605  & 0.68   & 1.15   \\
-        \hline
-    \end{tabular}
+	\centering
+	\caption{各項目の困難度と識別力}
+	\label{tbl::04_01}
+	\begin{tabular}{rlrr}
+		\hline
+		  & 項目ID  & 困難度   & 識別力  \\
+		\hline
+		1 & I0013 & -1.02 & 1.05 \\
+		2 & I0017 & 2.17  & 0.69 \\
+		3 & I0022 & -1.92 & 1.30 \\
+		4 & I0041 & -0.79 & 0.62 \\
+		5 & M0605 & 0.68  & 1.15 \\
+		\hline
+	\end{tabular}
 \end{table}
 
 \section{被験者母数の推定}
@@ -131,31 +131,31 @@
 たとえばこのICCにおいて，$\theta$が0.5のときの通過率は86.05\%ですが，言い換えればこの項目に正解した人が$\theta=0.5$である可能性も高そうです。$\theta=-2$の通過率は14.71\%ぐらいですから，能力がこんなに低いとは思えませんし，1つの項目の話でしかないですが，希望的観測をするなら$\theta$がもっと高い可能性もあるでしょう\footnote{$\theta$のありそうな「確率」とは言ってないことに注意してください。すぐにわかることですが，このICCの下の面積を積分しても1.0にはなりませんのでこれは確率ではなく，\keyterm{尤度}{ゆうど}{likelihood}のほうなのです！}。
 
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_06.png}
-        \caption{実際のテスト項目\texttt{I0013}に正答した人の能力がありそうな領域}
-        \label{fig::04_06}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_06.png}
+		\caption{実際のテスト項目\texttt{I0013}に正答した人の能力がありそうな領域}
+		\label{fig::04_06}
+	\end{center}
 \end{figure}
 
 次に，困難度のより高い項目である\texttt{I0017}には\textbf{誤答}したとしましょう。その人は，\texttt{I0017}のICCの下の領域には\textbf{ない}はずです。項目\texttt{I0013}のICCの下で，かつ，項目\texttt{I0017}のICCの上にあるはずなので，図\ref{fig::04_07}のように塗りつぶされた領域の中に入ります。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_07.png}
-        \caption{つぎのテスト項目\texttt{I0013}には誤答した人の能力がありそうな領域}
-        \label{fig::04_07}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_07.png}
+		\caption{つぎのテスト項目\texttt{I0013}には誤答した人の能力がありそうな領域}
+		\label{fig::04_07}
+	\end{center}
 \end{figure}
 
 この2つの曲線の間にある，濃く彩られた領域の幅が，回答者の能力値がありそうな程度を表しているのです。図\ref{fig::04_07}には$\theta=0$の可能性の大きさを矢印で示してありますが，$\theta$の値はここだけに限らずこの曲線の幅のどこかです。ただ$\theta=2$や$\theta=-2$よりは$\theta=0$のほうが，より「ありそう」な値だということがわかります。
 
 ここでさらに同じ人に，項目\texttt{M0605}の質問をして，この人がそれにも正解したとしましょう。この人の能力$\theta$のありそうな範囲はさらに絞り込むことができます(図\ref{fig::04_08})。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_08.png}
-        \caption{さらにテスト項目\texttt{M0605}には正答した人の能力がありそうな領域}
-        \label{fig::04_08}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/04_irt/Rplot04_08.png}
+		\caption{さらにテスト項目\texttt{M0605}には正答した人の能力がありそうな領域}
+		\label{fig::04_08}
+	\end{center}
 \end{figure}
 項目\texttt{I0013}よりは難しい質問に正解したわけですから，$\theta=0$の可能性はグッと小さくなり，それよりも$\theta=2$ぐらいの方がありそうだ，ということになってきます。このように，1つ1つの項目からこの人の能力$\theta$がどのあたりにありそうか，というのを絞っていき，テストに含まれる項目全部を使えば，かなり狭い領域で「この辺りにあるはずだ」と推定できるでしょう。
 

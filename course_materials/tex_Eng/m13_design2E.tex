@@ -53,19 +53,19 @@ Think of $X_{ij}$ as representing who is assigned to which factor when $i$ is th
 
 
 \[
-   \label{eq13_04}
-   \left \{
-   \begin{array}{cccccc}
-      y_1    & = & b_0 + b_1 X_{11} + b_2 X_{12} + e_1        & = & b_0 + b_1 + b_2 + e_1    & \mbox{Hotで銘柄A}  \\
-      \vdots &   & \vdots                                     &   & \vdots                   &                    \\
-      y_4    & = & b_0 + b_1 X_{41} + b_2 X_{42} + e_4        & = & b_0 + b_1 - b_2 + e_4    & \mbox{Hotで銘柄B}  \\
-      \vdots &   & \vdots                                     &   & \vdots                   &                    \\
-      y_7    & = & b_0 + b_1 X_{71} + b_2 X_{72} + e_7        & = & b_0 - b_1 + b_2 + e_7    & \mbox{Coldで銘柄A} \\
-      \vdots &   & \vdots                                     &   & \vdots                   &                    \\
-      y_{10} & = & b_0 + b_1 X_{10,1} + b_2 X_{10,2} + e_{10} & = & b_0 - b_1 - b_2 + e_{10} & \mbox{Coldで銘柄B} \\
-      \vdots &   & \vdots                                     &   & \vdots                   &                    \\
-   \end{array}
-   \right.
+	\label{eq13_04}
+	\left \{
+	\begin{array}{cccccc}
+		y_1    & = & b_0 + b_1 X_{11} + b_2 X_{12} + e_1        & = & b_0 + b_1 + b_2 + e_1    & \mbox{Hotで銘柄A}  \\
+		\vdots &   & \vdots                                     &   & \vdots                   &                 \\
+		y_4    & = & b_0 + b_1 X_{41} + b_2 X_{42} + e_4        & = & b_0 + b_1 - b_2 + e_4    & \mbox{Hotで銘柄B}  \\
+		\vdots &   & \vdots                                     &   & \vdots                   &                 \\
+		y_7    & = & b_0 + b_1 X_{71} + b_2 X_{72} + e_7        & = & b_0 - b_1 + b_2 + e_7    & \mbox{Coldで銘柄A} \\
+		\vdots &   & \vdots                                     &   & \vdots                   &                 \\
+		y_{10} & = & b_0 + b_1 X_{10,1} + b_2 X_{10,2} + e_{10} & = & b_0 - b_1 - b_2 + e_{10} & \mbox{Coldで銘柄B} \\
+		\vdots &   & \vdots                                     &   & \vdots                   &                 \\
+	\end{array}
+	\right.
 \]
 
 % ここで$X_{ij}$は符号だけを表している名義尺度水準であることを確認しておいてください。
@@ -119,27 +119,27 @@ Now that we have understood these effects, let's build up the addition. We add e
 \subsection{交互作用の算出}
 実は，同様のことは他の組み合わせのところでも生じます。群平均からの差分が誤差なのだ，と考えれば良いはずですが，群平均が理論通りにならないのです。具体的に，表\ref{tbl::13_02}に計算してみました。効果の総和と群平均，理論的には合致するはずです。これはどうしたことでしょう。
 \begin{table}[ht]
-   \centering
-   \caption{二要因のデータ例}
-   \begin{tabular}{rrrccr}
-      \hline
-      全体平均 & 温度の効果 & メーカーの効果 & 効果を足し合わせると    & 群平均は              & 評価 \\
-      \hline
-      9.75     & -0.25      & +0.75          & \multirow{3}{*} {10.25} & \multirow{3}{*}{12.0} & 13   \\
-      9.75     & -0.25      & +0.75          &                         &                       & 11   \\
-      9.75     & -0.25      & +0.75          &                         &                       & 12   \\ \hline
-      9.75     & -0.25      & -0.75          & \multirow{3}{*} {8.75}  & \multirow{3}{*}{7.0}  & 7    \\
-      9.75     & -0.25      & -0.75          &                         &                       & 6    \\
-      9.75     & -0.25      & -0.75          &                         &                       & 8    \\ \hline
-      9.75     & +0.25      & +0.75          & \multirow{3}{*} {10.75} & \multirow{3}{*}{9.0}  & 9    \\
-      9.75     & +0.25      & +0.75          &                         &                       & 9    \\
-      9.75     & +0.25      & +0.75          &                         &                       & 9    \\ \hline
-      9.75     & +0.25      & -0.75          & \multirow{3}{*} {9.25}  & \multirow{3}{*}{11.0} & 13   \\
-      9.75     & +0.25      & -0.75          &                         &                       & 11   \\
-      9.75     & +0.25      & -0.75          &                         &                       & 9    \\
-      \hline
-   \end{tabular}
-   \label{tbl::13_02}
+	\centering
+	\caption{二要因のデータ例}
+	\begin{tabular}{rrrccr}
+		\hline
+		全体平均 & 温度の効果 & メーカーの効果 & 効果を足し合わせると              & 群平均は                  & 評価 \\
+		\hline
+		9.75 & -0.25 & +0.75   & \multirow{3}{*} {10.25} & \multirow{3}{*}{12.0} & 13 \\
+		9.75 & -0.25 & +0.75   &                         &                       & 11 \\
+		9.75 & -0.25 & +0.75   &                         &                       & 12 \\ \hline
+		9.75 & -0.25 & -0.75   & \multirow{3}{*} {8.75}  & \multirow{3}{*}{7.0}  & 7  \\
+		9.75 & -0.25 & -0.75   &                         &                       & 6  \\
+		9.75 & -0.25 & -0.75   &                         &                       & 8  \\ \hline
+		9.75 & +0.25 & +0.75   & \multirow{3}{*} {10.75} & \multirow{3}{*}{9.0}  & 9  \\
+		9.75 & +0.25 & +0.75   &                         &                       & 9  \\
+		9.75 & +0.25 & +0.75   &                         &                       & 9  \\ \hline
+		9.75 & +0.25 & -0.75   & \multirow{3}{*} {9.25}  & \multirow{3}{*}{11.0} & 13 \\
+		9.75 & +0.25 & -0.75   &                         &                       & 11 \\
+		9.75 & +0.25 & -0.75   &                         &                       & 9  \\
+		\hline
+	\end{tabular}
+	\label{tbl::13_02}
 \end{table}
 
 銘柄A($+0.75$)のホットコーヒー($-0.25$)が10.25で，群平均が12.0ということは，$12.0-10.25=+1.75$の差分があります。これも実は，考慮すべき効果のひとつなのです。これは「Aをホットで」という組み合わせの時に\textbf{のみ}生じる組み合わせの効果で，とくに\keyterm{交互作用}{こうごさよう}{interaction}といいます\footnote{余談ですが，統計的な文脈ではinteractionを「交互作用」と訳します。社会心理学などの文脈では，「相互作用」と訳されます。}。
@@ -147,8 +147,8 @@ Now that we have understood these effects, let's build up the addition. We add e
 交互作用とはこのように，水準同士の組み合わせによって生じる特別な効果のことを指します。交互作用に対して，これまでみてきた群の平均は\keyterm{主効果}{しゅこうか}{main effect}と呼んで区別します。式\ref{eq13_03}にあった線形モデルは，次の式\ref{eq13_04}のように交互作用項も含めたものにアップデートしなければなりません。
 
 \begin{equation}
-   \label{eq13_05}
-   y_i = b_0 + b_1 X_{i1}+ b_2 X_{i2} + b_3 X_{i3} + e_{i}
+	\label{eq13_05}
+	y_i = b_0 + b_1 X_{i1}+ b_2 X_{i2} + b_3 X_{i3} + e_{i}
 \end{equation}
 
 この交互作用は，式\ref{eq13_05}にもあるように，主効果とは別の独立した影響源です。ですから，主効果がなくても，交互作用だけある，ということがあり得ます。今回の例で言えば，温度の違いや銘柄の違いははっきりしないが，銘柄Bは温めるととんでもなくうまくなる，といった場合ですね。
@@ -160,19 +160,19 @@ Now that we have understood these effects, let's build up the addition. We add e
 銘柄A($+0.75$)のCold条件($-0.25$)の効果が全体平均に加わると$8.75$で，群平均が$7.0$ですから，ここには$-1.75$の交互作用効果が出ています。同様に銘柄BのHot条件には$-1.75$，銘柄BのCold条件には$+1.75$ですから，4つの要素を足すとキャンセルしあって合計$0$になっていますね。これを踏まえて，式\ref{eq13_04}をアップデートしましょう。
 
 \[
-   \label{eq13_06}
-   \left\{
-   \begin{array}{cccccc}
-      y_1    & =      & b_0 + b_1 X_{11} + b_2 X_{12} + b_3 X_{13}+ e_1          & = & b_0 + b_1 + b_2  + b_3 + e_1   & \mbox{Hotで銘柄A}  \\
-      \vdots &        & \vdots                                                   &   & \vdots                                              \\
-      y_4    & =      & b_0 + b_1 X_{41} + b_2 X_{42} + b_3 X_{43}+ e_4          & = & b_0 + b_1 - b_2 - b_3 + e_4    & \mbox{Hotで銘柄B}  \\
-      \vdots &        & \vdots                                                   &   & \vdots                                              \\
-      y_7    & =      & b_0 + b_1 X_{71} + b_2 X_{72} + b_3 X_{73}+ e_7          & = & b_0 - b_1 + b_2 - b_3 + e_7    & \mbox{Coldで銘柄A} \\
-      \vdots & \vdots & \vdots                                                                                                             \\
-      y_{10} & =      & b_0 + b_1 X_{10,1} + b_2 X_{10,2} + b_3 X_{10,3}+ e_{10} & = & b_0 - b_1 - b_2+ b_3  + e_{10} & \mbox{Coldで銘柄B} \\
-      \vdots &        & \vdots                                                   &   & \vdots                         &                    \\
-   \end{array}
-   \right .
+	\label{eq13_06}
+	\left\{
+	\begin{array}{cccccc}
+		y_1    & =      & b_0 + b_1 X_{11} + b_2 X_{12} + b_3 X_{13}+ e_1          & = & b_0 + b_1 + b_2  + b_3 + e_1   & \mbox{Hotで銘柄A}  \\
+		\vdots &        & \vdots                                                   &   & \vdots                                           \\
+		y_4    & =      & b_0 + b_1 X_{41} + b_2 X_{42} + b_3 X_{43}+ e_4          & = & b_0 + b_1 - b_2 - b_3 + e_4    & \mbox{Hotで銘柄B}  \\
+		\vdots &        & \vdots                                                   &   & \vdots                                           \\
+		y_7    & =      & b_0 + b_1 X_{71} + b_2 X_{72} + b_3 X_{73}+ e_7          & = & b_0 - b_1 + b_2 - b_3 + e_7    & \mbox{Coldで銘柄A} \\
+		\vdots & \vdots & \vdots                                                                                                          \\
+		y_{10} & =      & b_0 + b_1 X_{10,1} + b_2 X_{10,2} + b_3 X_{10,3}+ e_{10} & = & b_0 - b_1 - b_2+ b_3  + e_{10} & \mbox{Coldで銘柄B} \\
+		\vdots &        & \vdots                                                   &   & \vdots                         &                 \\
+	\end{array}
+	\right .
 \]
 
 % 交互作用項($b_3$)のもつ符号は，プラスとマイナスが上から順に$+,-,-,+$となっています。どうしてこういうことになっているのかについて，説明を追加しておきましょう。
@@ -236,17 +236,17 @@ In this coffee tasting example, the size of the main effect was stronger than th
 % ところで今回，要因の組み合わせによる影響，つまり交互作用を考えようという話でした。今回は2要因の例でしたが，3要因になるとさらにその組み合わせは増えます。下に要因計画ごとの要素の組み合わせを書いてみました。
 By the way, this time, we were discussing the effects of combinations of factors, or interactions. The example this time involved two factors, but if it were three factors, the combinations would increase even more. Below, I have written down the combinations of elements for each factor planning.
 \[
-   \begin{array}{llll}
-      \mbox{一要因群間計画} & \mbox{全体変動} & = & \mbox{要因A} + \mbox{誤差}                                                                        \\
-      \mbox{一要因群内計画} & \mbox{全体変動} & = & \mbox{要因A} + \mbox{個人差} + \mbox{誤差}                                                        \\
-      \mbox{二要因群間計画} & \mbox{全体変動} & = & \mbox{要因A} + \mbox{要因B} +\mbox{交互作用AB} +\mbox{誤差}                                       \\
-      \mbox{三要因群間計画} & \mbox{全体変動} & = & \mbox{要因A} + \mbox{要因B} + \mbox{要因C}+\mbox{交互作用AB} +\mbox{交互作用AC}+\mbox{交互作用BC} \\
-                            &                 &   & +\mbox{交互作用ABC}  +\mbox{誤差}                                                                 \\
-      \mbox{四要因群間計画} & \mbox{全体変動} & = & \mbox{要因A} + \mbox{要因B} + \mbox{要因C} + \mbox{要因D}                                         \\
-                            &                 &   & + \mbox{交互作用AB} +\mbox{交互作用AC} +\mbox{交互作用AD}+\mbox{交互作用BC}                       \\
-                            &                 &   & +\mbox{交互作用BD} +\mbox{交互作用CD}+\mbox{交互作用ABC}+\mbox{交互作用ABD}                       \\
-                            &                 &   & +\mbox{交互作用BCD} +\mbox{交互作用ABCD} +\mbox{誤差}                                             \\
-   \end{array}
+	\begin{array}{llll}
+		\mbox{一要因群間計画} & \mbox{全体変動} & = & \mbox{要因A} + \mbox{誤差}                                                          \\
+		\mbox{一要因群内計画} & \mbox{全体変動} & = & \mbox{要因A} + \mbox{個人差} + \mbox{誤差}                                             \\
+		\mbox{二要因群間計画} & \mbox{全体変動} & = & \mbox{要因A} + \mbox{要因B} +\mbox{交互作用AB} +\mbox{誤差}                               \\
+		\mbox{三要因群間計画} & \mbox{全体変動} & = & \mbox{要因A} + \mbox{要因B} + \mbox{要因C}+\mbox{交互作用AB} +\mbox{交互作用AC}+\mbox{交互作用BC} \\
+		               &             &   & +\mbox{交互作用ABC}  +\mbox{誤差}                                                     \\
+		\mbox{四要因群間計画} & \mbox{全体変動} & = & \mbox{要因A} + \mbox{要因B} + \mbox{要因C} + \mbox{要因D}                               \\
+		               &             &   & + \mbox{交互作用AB} +\mbox{交互作用AC} +\mbox{交互作用AD}+\mbox{交互作用BC}                     \\
+		               &             &   & +\mbox{交互作用BD} +\mbox{交互作用CD}+\mbox{交互作用ABC}+\mbox{交互作用ABD}                     \\
+		               &             &   & +\mbox{交互作用BCD} +\mbox{交互作用ABCD} +\mbox{誤差}                                     \\
+	\end{array}
 \]
 % 3要因になると，3つの主効果(効果A,B,C)に加え，組み合わせの効果がAB,AC,BCの一次の交互作用だけでなく，ABC3つ揃った時の二次の交互作用も考える必要があります。4要因についても書いてみましたが，もう訳が分からないレベルです。
 When there are 3 factors, in addition to the three main effects (effects A, B, C), we need to consider not only the combined effects AB, AC, BC, which are the first-order interactions, but also the second-order interaction when ABC are combined. I also wrote about the 4 factors, but I no longer understand it at that level.

@@ -1,0 +1,196 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+% \chapter{Rをつかっての行列計算}
+\chapter{Matrix Calculation Using R}
+\label{x09_matrixOnR}
+% \section{Rによる行列計算}
+\section{Matrix Calculation by R}
+
+% 今回は統計環境Rをつかって，演習によってこれまで習ったことを整理していきましょう。
+Let's use the statistical environment R this time, and organize what we have learned so far through exercises.
+% \subsection{環境の準備(確認)}
+\subsection{Preparation (Verification) of the Environment}
+% まずは環境の準備です。すでにRやRStudioのインストールは終わっているものとして話を進めます\footnote{まだだよー！という人はRStudio インストールといったキーワードで検索すると，親切にも案内してくれているサイトに色々出会えるでしょう。}。次の3つのステップをたどって，実行の準備をしてください。
+First, let's prepare the environment. We'll proceed on the assumption that you've already installed R and RStudio \footnote{For those who haven't done it yet, try searching for keywords such as "RStudio Installation", you'll find many sites kindly guiding you through the process}. Please follow the next three steps to get ready for implementation.
+% \paragraph{RStudioの起動}RStudioを起動してください。パッケージのインストールをするときなど，管理人権限が必要になるケースがあります。
+\paragraph{Starting RStudio} Please start RStudio. There may be cases, such as when installing packages, where you need administrative privileges.
+% \paragraph{プロジェクトを開く}\label{UnderProject}RStudioを使う時の基本は，プロジェクトによる管理です。分析するデータ、テーマ、内容によってプロジェクトを切り替えながら使います。メニューバーから\verb|File > New Project|と進んでください。すると「New Directory」「Existing Directory」「Version Control」の選択肢が出てきます。New Directoryは新しいディレクトリ(=フォルダ)を作ってそこで関連ファイルをまとめますよ，という意味です。Existing Directoryはすでに存在するディレクトリ(=フォルダ)をまとめる場所にしますよ，という意味です。みなさんの環境に応じて使い分けてください。すでにプロジェクトが存在する場合は，プロジェクトを開く(FIle$\to$Open Project)から選択します。RStudioの右上などで，プロジェクトが開いていることを確認しましょう。
+\paragraph{Open a Project}\label{UnderProject}The basis of using RStudio is managing by projects. We use it by switching projects depending on the data to be analyzed, the theme, and the content. Please proceed from the menu bar to \verb|File > New Project|. Then you will have a choice of "New Directory", "Existing Directory", or "Version Control". "New Directory" means creating a new directory (=folder) to organize related files. "Existing Directory" means making an already existing directory (=folder) the place where you organize. Please use them according to your environment. If a project already exists, select it from "Open a Project" (FIle$\to$Open Project). Confirm that the project is open in the upper right corner of RStudio, etc.
+% \paragraph{Rスクリプトを開く}今日のコードを書くためのRスクリプトファイルを準備します。File > NewFile > R Scriptと進み，何も書いてないRスクリプトの画面を表示させてください。真っ白いファイルが開いたら問題ありません。
+\paragraph{Open the R script} Prepare the R script file for writing today's code. Proceed through File > NewFile > R Script, and display the screen of the R script in which nothing is written yet. There is no problem if a completely blank file is opened.
+
+% これでスクリプトのところにコードを書いていく準備ができました。
+With this, you are now ready to write the code in the script section.
+% \subsection{Rにおけるデータの型}
+\subsection{Types of Data in R}
+% 統計環境RはExcelやNumbersやCalcsなど\footnote{ExcelはMicrosoft Officeに含まれる表計算ソフト。NumbersはAppleのMacやiPad，iPhoneで使える表計算ソフト，CalcsはLibre Officeというフリーソフトウェアの表計算ソフトです。}の表計算ソフトとは違って，データを行列・ベクトルとして扱うことができます。たとえば次のコードを実行してみてください。
+The statistical environment R, unlike spreadsheet software like Excel, Numbers, or Calcs\footnote{Excel is spreadsheet software included in Microsoft Office. Numbers is spreadsheet software that can be used on Apple's Mac, iPad, and iPhone, and Calcs is spreadsheet software from the free software Libre Office.}, can handle data as matrices/vectors. For example, please try running the following code.
+
+\input{x09_matrix_onR_escape_01}
+
+% \paragraph{コード解説}
+\paragraph{Code Explanation}
+\input{x09_matrix_onR_escape_02}
+
+% それぞれのオブジェクトに格納されているものを確認してみましょう。何がどうなっているかわかるでしょうか
+Let's check what is stored in each object. Do you understand what is happening?
+% (出力\ref{RS:out09_01})。
+(Output\ref{RS:out09_01}).
+
+\input{x09_matrix_onR_escape_03}
+
+% Rのオブジェクトには色々な型がありますが，基本はベクトルです。数字のセットとして扱うのです。このときのRのベクトルに行・列の区別はありません。
+There are various types of objects in R, but the basic one is a vector. It is treated as a set of numbers. There is no distinction between rows and columns in this R vector.
+% 行列であることを明示するためには，\texttt{matrix}という関数を当てはめることになります。ベクトルに行，列の意味を持たせたければ，\texttt{matrix}型で一列あるいは一行の行列である，という指定をしてください。
+To explicitly indicate that it is a matrix, you have to apply the function called \texttt{matrix}. If you want to give vectors the meaning of rows and columns, please specify that it is a matrix of one column or one row of type \texttt{matrix}.
+
+% これまで，あるいは他の授業で学んだことのあるRのオブジェクトの形としては，\texttt{list}型が多かったのではないかと思います。\texttt{list}という形は，要素がベクトルでも数字でも文字列でもなんでもかまわない，というものでした。これを矩形(長方形)に整え，変数名としての列名や，行番号としての行名をもっているものが\texttt{data.frame}型です。\texttt{data.frame}型は\texttt{list}型の特殊系なわけです。\texttt{matrix}型は矩形のオブジェクトではありますが，\texttt{data.frame}型とは違います。\texttt{matrix}型にも列名，行名をつけることはできますが，行列であると明示してあるように，計算するときは行列演算の対象になるのです。\texttt{data.frame}型は行列の四則演算はできません。
+So far, or in other classes, I think the type of R objects you've most frequently learnt might have been the \texttt{list} type. The \texttt{list} type is something where the elements don't matter whether they are vectors, numbers, or strings. By organizing it into a rectangular (rectangular) shape, and having column names as variable names and row names as row numbers, we get the \texttt{data.frame} type. The \texttt{data.frame} type is a special kind of \texttt{list} type. The \texttt{matrix} type, although it has a rectangular object, is different from the \texttt{data.frame} type. You can also assign column names and row names to the \texttt{matrix} type, but it's intended for matrix operations when calculating, as explicitly stated that it's a matrix. The \texttt{data.frame} type cannot perform four arithmetic operations of matrices.
+
+% また一点注意が必要なこととして，Rはベクトルの再利用をするということです。次の一行(\texttt{code:\ref{code:09_02}})を実行して中身を見てみましょう。
+Another thing to note is that R can reuse vectors. Let's execute the next line (code:\ref{code:09_02}) and see what's inside.
+
+\input{x09_matrix_onR_escape_04}
+% \paragraph{コード解説}
+\paragraph{Code Explanation}
+\input{x09_matrix_onR_escape_05}
+
+\input{x09_matrix_onR_escape_06}
+
+% オブジェクトAの要素数は9です。しかし行列$\bm{E}$を作る時に，3行6列，すなわち18の要素が必要であることを要求しました。そうするとRは(勝手にand/or親切にも？ )Aを再利用して足りないところを埋めてしまいます。今回はちょうど2回使えば埋まりましたので，エラーや警告もなくそのまま通っています。つくられた$\bm{E}$の要素を確認し，再利用されていることをみてください。ちなみに$\bm{G}$は3行4列，すなわち12の要素が必要であることを要求しました。そうするとRは警告を出して，再利用が途中で途切れますよと言ってくれます。とはいえ警告に過ぎないのでそのまま計算を続けることができ，作られた$\bm{G}$には$1,2,3,4,5,6,7,8,9,1,2,3$と2周目の最初の3要素だけ使われています\footnote{そんなことよりオブジェクトがA,B,CときてるんだからEのつぎはFだろ，と思う人もいるかもしれません。Fでもいいのですが，実は大文字の\texttt{F}と\texttt{T}はそれぞれ\texttt{FALSE/TRUE}の略語であり予約後語です。上書きして使うこともできますが，なるべく避けたほうがいいでしょう。ちなみにRStudioなどでこれら一文字を使うと予約語になっているので表示の時にハイライトされます。}。
+The number of elements in object A is 9. However, when creating the matrix $\bm{E}$, it requires 18 elements, that is, 3 rows and 6 columns. Then R (arbitrarily and/or kindly?) reuses A to fill in the gaps. In this case, it was just enough to use it twice, so it passed without any errors or warnings. Please check the elements of the created $\bm{E}$ and see that they are being reused. By the way, $\bm{G}$ required 12 elements, that is, 3 rows and 4 columns. Then R gives a warning that the reuse will be interrupted in the middle. However, it is just a warning, so you can continue the calculation, and the created $\bm{G}$ used only the first 3 elements of the second round, $1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3$\footnote{ You might think that since the objects are A, B, C, the next one after E should be F. F is fine, but in fact, the uppercase \texttt{F} and \texttt{T} are abbreviations for \texttt{FALSE/TRUE} and reserved words, respectively. You can overwrite and use them, but it's better to avoid them if you can. By the way, if you use these single characters in RStudio, they are highlighted because they are reserved words.}.
+
+% このようにRは，可能な時には良かれと思って勝手に再利用してしまいますから，注意してくださいね。
+In this way, R can arbitrarily recycle when it thinks it is appropriate, so please be careful.
+% \subsection{行列方と行列の演算}
+\subsection{Matrix method and Matrix operation}
+% それではRを使っての行列計算を進めましょう。
+Let's proceed with matrix calculations using R.
+
+% 加法減法はサイズが同じでないとできない，という制約はありますが，計算記号などに違いはありません。
+Although there is a constraint that addition and subtraction cannot be done unless the sizes are the same, there is no difference in calculation symbols.
+% 乗法は，スカラーとベクトル，スカラーと行列であれば普通に記述していただいて結構です。
+Multiplication can be normally described with a scalar and a vector, or a scalar and a matrix.
+
+\input{x09_matrix_onR_escape_07}
+% \paragraph{コード解説}
+\paragraph{Code Explanation}
+\input{x09_matrix_onR_escape_08}
+
+% 出力結果はここでは提示しませんが，皆さんそれぞれ計算できているか確認しておいてください。
+Although the output result is not shown here, please check if each of you can calculate it.
+
+% 続いて行列の乗法ですが，サイズが変わるような行列としての計算の場合はとくに\verb|%*%|という記号を使うことになります。ただのアスタリスク\verb|*|ではなく，それを\verb|%|で囲むことで行列の積になっていることを表現しているのです。
+Next is matrix multiplication. In calculations where the matrix size changes, we use the symbol \verb|%*%|. It's not just an asterisk \verb|*|, it's surrounded by \verb|%| to denote that it's a matrix product.
+% また行列の行列を反転させるのは，\keytermL{転置}{てんち}という操作になりますが，これは\texttt{t()}という関数を使います。
+Flipping the matrix of a matrix is an operation called "transpose", which uses a function called "t()".
+% 行列の積を計算する例を\texttt{code:\ref{code:09_03b}}に示しました。計算結果が出力されますので，どういう計算をしているか一行ずつ確認しながら進めてください。
+An example of calculating the product of matrices is shown in \texttt{code:\ref{code:09_03b}}. The results of the calculations will be output, so please proceed while checking what calculations are being done line by line.
+
+\input{x09_matrix_onR_escape_09}
+% \paragraph{コード解説}
+\paragraph{Code Explanation}
+\input{x09_matrix_onR_escape_10}
+
+% 続いて\keytermL{逆行列}{ぎゃくぎょうれつ}の例を見てみましょう。逆行列の計算は，手計算でやると大変なのですが，Rでは関数\texttt{solve())}を使うと計算できます。
+Let's take a look at an example of the inverse matrix next. Calculating the inverse matrix is difficult when done by hand, but with R, you can calculate it using the solve() function.
+
+\input{x09_matrix_onR_escape_11}
+% \paragraph{コード解説}
+\paragraph{Code Explanation}
+\input{x09_matrix_onR_escape_12}
+
+% 逆行列はかけると単位行列になるので，スカラーでいうところの逆数を意味します。逆数をかけると1になるように，行列の場合は逆行列をかけると単位行列$\bm{I}$になるのでした。
+The inverse matrix becomes a unit matrix when multiplied, meaning the reciprocal in terms of scalar. Just as multiplying by the reciprocal gives 1, for matrices, multiplying by the inverse matrix turns it into the unit matrix $\bm{I}$.
+% これの何が嬉しいかというと，行列が連立方程式の係数を表していた場合，逆行列をかけることで連立方程式が解けるのでした(セクション\ref{MatrixAndEauqtion}，Pp.\pageref{MatrixAndEauqtion}参照)。
+The pleasing thing about it is that if a matrix represented the coefficients of a system of simultaneous equations, we could solve the system by multiplying by the inverse matrix (Refer to Section \ref{MatrixAndEauqtion}, Pp.\pageref{MatrixAndEauqtion}).
+% 次の連立方程式を使って，実際に計算してみましょう。
+Let's actually try to calculate using the following system of equations.
+
+\[
+	\left \{
+	\begin{array}{lcl}
+		x-2y-5z  & = & 3 \\
+		5x+4y+3z & = & 1 \\
+		3x+y-3z  & = & 6
+	\end{array}
+	\right .
+\]
+
+\input{x09_matrix_onR_escape_13}
+\input{x09_matrix_onR_escape_14}
+
+% 元の方程式との対応を確認しながら，「行列ってすごい，便利！」と思っていただければ幸いです。
+I hope you come to appreciate the convenience and ingenuity of matrices as you confirm their correspondence with the original equations.
+
+% \section{データの行列表現}
+\section{Tabular Representation of Data}
+% さて連立方程式が解けるのは嬉しいのですが，データ解析に直結するかと言われたら少し違いますね。データの記述統計量など，数的処理をする時に行列を使う便利さを体感してみましょう。
+Well, it's nice to be able to solve simultaneous equations, but it's slightly different when asked if it directly connects to data analysis. Let's experience the convenience of using matrices when dealing with numerical processes, such as descriptive statistics of data.
+
+\input{x09_matrix_onR_escape_15}
+
+% 表\ref{tbl::09_01}に示したのは，データ解析基礎でも扱った2000年代の野球選手のデータです\footnote{伴走サイト\url{https://kosugitti.github.io/psychometrtics_syllabus/}より，サンプルデータにある「野球選手のデータ 10 年度分」を選んでください。ファイルはUTF-8形式で保存されています。}。それをプロジェクトフォルダに置き，\texttt{code:\ref{code:09_05}}のコードを実行してください。
+Table \ref{tbl::09_01} shows the data of baseball players from the 2000s, which was also covered in the Basics of Data Analysis \footnote{From the companion site \url{https://kosugitti.github.io/psychometrtics_syllabus/}, please select "10 years data of baseball players" in the sample data. The file is saved in UTF-8 format.}. Please place it in the project folder and execute the code \texttt{code:\ref{code:09_05}}.
+
+\input{x09_matrix_onR_escape_16}
+\input{x09_matrix_onR_escape_17}
+\end{description}
+
+% ともかくこれで\texttt{dataset}オブジェクトは行列型の，335行3列の行列になっています。
+Anyway, with this, the \texttt{dataset} object has become a matrix type, a 335 rows and 3 columns matrix.
+% 今から行う計算は，第\ref{x07_matrixModel}講でやったように，データ行列$\bm{X}$から，平均ベクトル$\bm{m}$，平均偏差行列$\bm{V}$，分散共分散行列$\bm{S}$，標準偏差を対角に持つ行列$\bm{Q}$，標準化スコア行列$\bm{Z}$，相関行列$\bm{R}$を作る，という手順です。数式とコードを示しますので，確認しながら進めてください。
+The calculation we are going to do now, as we did in lecture \ref{x07_matrixModel}, is the process of creating the mean vector $\bm{m}$, the mean deviation matrix $\bm{V}$, the variance covariance matrix $\bm{S}$, the matrix $\bm{Q}$ with standard deviation on the diagonal, the standardized score matrix $\bm{Z}$, and the correlation matrix $\bm{R}$ from the data matrix $\bm{X}$. The formulas and code will be shown, so please proceed while checking.
+
+\input{x09_matrix_onR_escape_18}
+\input{x09_matrix_onR_escape_19}
+\input{x09_matrix_onR_escape_20}
+\input{x09_matrix_onR_escape_21}
+\input{x09_matrix_onR_escape_22}
+
+\input{x09_matrix_onR_escape_23}
+\input{x09_matrix_onR_escape_24}
+
+% \textbf{この一連のスクリプトは，行列のサイズが変わっても適用できます}。1つの式表現で，どんなデータサイズでも一般的に表現できているところが行列表記のすごいところです。
+This series of scripts can be applied regardless of the matrix size. The great thing about matrix notation is that it can generally represent any data size in a single expression.
+% 最終的に\texttt{cor}関数があるのなら，こんな手間をかけなくてもいいじゃないかと思うかもしれません。しかし理屈を知っていて使うことと，理屈を知らずに使うことは違いますからね。
+You might wonder, if there is a \texttt{cor} function, why bother with all this trouble. However, there's a difference between using something knowing the theory behind it, and using it without understanding how it works.
+
+% \section{Rによる固有値計算}
+\section{Eigenvalue Calculation by R}
+% つづいて行列計算のとくにおもしろいところ，固有値計算をしたいと思います。
+I would like to proceed with the particularly interesting part of matrix computation, which is eigenvalue calculation.
+
+% 固有値の計算は，小さなサイズであれば手計算でもできますが，大きなサイズになるとn次連立方程式を解くことになるのでとても大変です。解の公式で解くということもできませんので，近似計算手続きが必要です。その方法としてパワー法，ヤコビ法，ハウスホルダー法などいろいろ考えられていますが，数値計算の細かい理論に入っていくのは少し寄り道が過ぎますので割愛して，Rの関数を使って計算しましょう。
+The calculation of eigenvalues can be done by hand for small sizes, but it can be very difficult for larger sizes because you have to solve n-th degree simultaneous equations. Since it can't be solved using a formula for solutions, an approximation calculation procedure is necessary. Various methods such as the power method, Jacobi method, and Householder method have been considered, but delving into the detailed theory of numerical computation is a bit of a detour, so let's omit that and calculate using a function in R.
+
+% 先ほど計算した相関行列$\bm{R}$を使ってこれを確認します。
+We will confirm this using the correlation matrix $\bm{R}$ we calculated earlier.
+
+\input{x09_matrix_onR_escape_25}
+
+% 固有値分解をする関数は\texttt{eigen}です。計算結果を\texttt{eig}オブジェクトに入れ，固有値\verb|values|と固有ベクトル\verb|vector|を表示させてみました(出力\ref{RS:out09_03})。
+The function to perform eigenvector decomposition is \texttt{eigen}. The calculation result was stored in the \texttt{eig} object, and the eigenvalues \verb|values| and the eigenvectors \verb|vector| were displayed (Output \ref{RS:out09_03}).
+% 固有値が大きい方から$1.7043160,0.9486112,0.3470728$となっています。ここでは変数が3つあって，それぞれの情報の大きさは相関行列で標準化されていて$1.0$です。この行列がもっている$3.0$の分散を，$1.7 : 0.9 : 0.3$に再分配したことになります。ちなみに固有値の総和\verb|sum(eig$values)|は，行列のトレース\verb| sum(diag(R))|と等しくなっていることが確認できます。
+The eigenvalues are in descending order of $1.7043160, 0.9486112, 0.3470728$. Here, there are three variables, and the size of each piece of information is standardized in the correlation matrix to $1.0$. This matrix has redistributed the variance of $3.0$ to $1.7: 0.9: 0.3. By the way, you can confirm that the sum of the eigenvalues \verb|sum(eig$values)| is equal to the trace of the matrix \verb| sum(diag(R))|.
+
+% また，固有ベクトルはそれぞれの固有値に対して計算されます。各列が各固有値に対応しており，第一固有値1.7に対応する固有ベクトルは$(0.68,0.68,0.26)$です。固有ベクトルは向きだけあって大きさがありませんから，この数字はノルムすなわち二乗和したものが1になるようにして算出されているのがわかります。
+Moreover, eigenvectors are calculated for each eigenvalue. Each column corresponds to each eigenvalue, and the eigenvector corresponding to the first eigenvalue 1.7 is $(0.68,0.68,0.26)$. Since eigenvectors only have direction and not magnitude, you can see that these numbers are calculated so that their norms, or the square sums, become 1.
+\input{x09_matrix_onR_escape_26}
+
+% このような数値計算を駆使して，因子分析や回帰分析が実際に計算されているのですね。
+Numerical computations like these are actually used to calculate factor analysis and regression analysis.
+% 当然ですが，手計算よりも機械で計算させた方が圧倒的に早いですね。計算機の発展スピードのおかげで，今は何万，何十万というデータでも扱うことができる用意なりました。
+Of course, it is overwhelmingly faster to have machines calculate than to calculate by hand. Thanks to the rapid development of computers, we are now able to handle tens of thousands, hundreds of thousands of data.
+% またデータのサイズが変わってもスクリプトを変える必要がありません。
+You don't need to modify the script even if the size of the data changes.
+
+% こうした原理を知っておくと，ビッグデータなど恐るるに足らず，というところではないでしょうか。
+Knowing these principles, aren't we fearless, even toward things like big data?
+
+% \section{課題}
+\section{Tasks}
+\input{x09_matrix_onR_escape_27}

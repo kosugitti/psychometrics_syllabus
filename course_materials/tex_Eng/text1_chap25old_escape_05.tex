@@ -5,7 +5,7 @@ X <- rnorm(100000,mean=0,sd=1)
 length(X[X>1])/100000
 # Verification
 1-pnorm(1,mean=0,sd=1)
-\end{lstlisting} 
+\end{lstlisting}
 
 The first comment reads "Approximation", which refers to the code that follows, where `rnorm` function is used to generate a random set of 100000 numbers following a normal distribution with mean 0 and standard deviation 1, stored in the variable `X`. The following line of code counts how many of these numbers are greater than 1, and then divides that value by the number of total values (100000), to get an approximation of the probability of generating a value greater than 1 from this distribution.
 

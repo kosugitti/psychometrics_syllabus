@@ -1,0 +1,244 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+
+% \chapter{確率分布とデータの関係}
+\chapter{The relationship between probability distribution and data}
+\label{m23_likelihood}
+% 検定では平均因果効果を検証するため，平均値や(不偏)分散などの標本統計量がどのような確率分布に従うかを参照し，結果を判定するという使い方を行なってきました。検定はこのように，母数を推定する方法に，結果を判定するロジックが組み合わさったものなのでした。この時の母数の推定方法は，標本平均や不偏分散を推定値とする方法で，モーメント法とよばれるものです。これに対し，モデルである確率分布をデータに最も近しい形に調節することで，そのパラメータを推定値とする方法があります。ここではこの方法，最尤推定法とその根幹にある尤度という考え方を解説します。
+In the test, we have been using it to examine the average causal effect, referring to how sample statistics such as average values and (unbiased) variances follow what kind of probability distribution, and judging the results. The test was such a thing, where a logic to determine the results was combined with the method of estimating the parameters. The method of estimation of parameters at this time is a method of taking sample averages and unbiased variances as estimated values, which is called the moment method. In contrast to this, there is a method to estimate the parameters by adjusting the probability distribution, which is a model, to the closest shape to the data. Here, we will explain this method, the maximum likelihood estimation method, and the concept of likelihood at its core.
+% \section{確率モデルによる推論}
+\section{Inference by Probability Model}
+% もう一度，後期のテーマである統計的推論の基本を振り返ってみましょう。
+Let's take a look back at the basics of statistical inference, the theme for the second half.
+
+% 私たちは，手元にあるデータの状態を記述するだけでなく，これを使って「推論」をしたいわけです。覚えていますか？ 手元のデータ(標本)において，群間に差があるかどうか！なんて考えなくても「そりゃあるでしょ」となります。微細な差でも差は差ですから，それは違いありません。問題は，手元の標本の特徴を使って，「だから人間は・・・」などと大きな主語のことを言おうとすると，ちょっと待て待て，となるわけです\footnote{でも人間は，自分の経験を使っていろいろ言いたい生き物です。政治家だって，タレントだって，それでいろいろ失敗してますよね。でもたとえば「どうして男性は浮気するのか！」と怒っている人に「サンプルサイズが少なすぎる。それでは妥当な推論ができないから，せめて20人以上と交際してから言え」なんていうと逆ギレされるかしらけられるかのどちらかです。統計家は辛いよ。}。たまたま標本の数字がそうだっただけじゃないか，というわけですね。ここでいう「大きな主語のことを言おうとする」，というのが統計的推論という話なので，そもそも雲を掴むようなというか，無理難題に挑戦しているというのが大前提，何も確定的に言えないんじゃないかとさえ思えてきます。
+We want to not only describe the state of the data we have on hand, but also to use it to make "inferences". Remember? Whether there is a difference between groups in the data we have (samples)! No need to think about it, you might say "of course there is". Even a tiny difference is a difference, there is no difference in that. The problem arises when you try to talk about a large subject like "So humans are..." using the characteristics of the sample at hand, and you might want to pause\footnote{But humans are creatures that want to say various things based on their experiences. Politicians and celebrities alike make various mistakes in this regard. But if you tell someone who's angry about "Why do men cheat!" that "Your sample size is too small. It's not possible to make a valid inference from that, at least date more than 20 people before making such claims", you'll likely either be yelled at or laughed at. Statistical analysis can be tough.}. It's possible that this was just a characteristic of the sample numbers. This idea of trying to "talk about a big subject" as we mentioned earlier is a statistical inference, so trying to grasp at clouds or even taking on an impossible task is the premise. You might even start to think that nothing can be definitively said.
+
+% そこをぐっと堪えて，仮に，仮にですよ？ 仮に母集団の数字が正規分布に従うと仮定できるのであれば，そこから原理的に標本統計量の特徴が導かれますから，それを使って推論しようよ，という話をしてきたのでした。
+There you must patiently endure, hypothetically speaking, hypothetically okay? If we can assume that the population figures follow a normal distribution, then the characteristics of the sample statistics can be theoretically derived from there, so let's use that to make inferences, that's what we've been discussing.
+
+% さて，今回までの話は母集団が正規分布するなら，標本統計量がある程度の幅を持った正規分布に従うので，標本平均や標本分散を使って推定しましょう，というアプローチをとってきました。平均値や分散など，標本の特徴そのものから母数を推定してきましたが，今回からお話しするのは少し異なるアプローチです。それは，\keyterm{確率モデル}{かくりつもでる}{stochastic model}の考え方の入り口であり，これを知ることで線形モデルの表現がより豊かになっていきます。
+Now, up until now, we've been taking the approach where if the population is normally distributed, the sample statistics follow a somewhat broad normal distribution, so let's estimate using the sample mean and sample variance. We have been estimating population parameters from sample features such as mean and variance, but the approach we will be discussing from now on is slightly different. It is the entrance to the concept of a "stochastic model", and understanding this will enrich the representation of linear models.
+
+% \section{確率関数と尤度関数}
+\section{Probability function and Likelihood function}
+% 確率とデータの関係について，改めて考えてみましょう。
+Let's reconsider the relationship between probability and data.
+
+% 確率分布の形がわかっていて，パラメータもわかっていたとします。たとえば$\theta=0.5$のベルヌーイ分布だとか，平均値$\mu=5$，標準偏差$\sigma=1$の正規分布，といった具合に。そうすると，そこからデータがどう出てくるかを考えることができます。ベルヌーイ分布の例がわかりやすいので，それで考えてみましょう\footnote{ベルヌーイ分布については第\ref{m07_probability}講，セクション\ref{bernoulli_distribution},Pp.\pageref{bernoulli_distribution}を参照。}。とあるコインの表が出るか裏が出るかが，$\theta=0.5$のベルヌーイ分布に従う，というのがわかっていたら，きっと表(1)と裏(0)が半々で出てくるだろうな，と思えるわけです。$\theta=0.7$であれば，こりゃ表がよく出てくるだろうな，といったことがわかります。
+Assume that the shape of the probability distribution is known and the parameters are also known. For example, a Bernoulli distribution with theta = 0.5, or a normal distribution with a mean of mu = 5 and a standard deviation of sigma = 1, and so on. Then, you can consider how data would be generated from there. Let's consider it using the example of a Bernoulli distribution because it's easy to understand\footnote{Refer to Lecture \ref{m07_probability}, Section \ref{bernoulli_distribution}, Pp. \pageref{bernoulli_distribution} about the Bernoulli distribution.}. If you knew that the result of flipping a certain coin followed a Bernoulli distribution with theta = 0.5, you could speculate that heads (1) and tails (0) would appear evenly. If theta = 0.7, you would know that heads are likely to appear more often.
+
+% ただ私たちが，確率的なことを考える時というのはもっぱら逆です。表，表，裏，表，表・・・とどうも表がたくさん出てくるという現実があり，「これのパラメータは$\theta=0.5$ではないのではないか(半々じゃない，イカサマコインだ)」といったように，実現値が既知でパラメータが未知な状況です。研究をしている時も，手元にデータがあって，パラメータがわからないわけです。これまで推論してきた母平均，母分散というのもパラメータですが，そこから得られたと思しきデータを使って推論してきたのでした。
+Contrarily, when we often think about probabilistic matters, it usually goes in reverse. There is a reality where many "heads" appear, like head, head, tail, head, head... And we might wonder if the parameter of this isn't set to $\theta=0.5$ (It's not a fifty-fifty chance, it's a rigged coin) - a situation where the actualized results are already known but the parameter is unknown. Even when conducting research, we have data at hand, but don't know the parameters. The population mean and population variance we have been inferring so far are also parameters, but we have been inferring from the data we think has been obtained.
+
+% もう少し考えを深めてみましょう。ベルヌーイ分布は次のような確率分布です。
+Let's deepen our thoughts a little more. The Bernoulli distribution is a probability distribution as follows.
+
+\[ p(k) = \theta^k (1-\theta)^{1-k} \]
+ここで$k$は1か0のどちらかの数字をとります。表が出る確率$p(1)$は，$\theta^1 ( 1-\theta)^0 = \theta$になり\footnote{ある数字の0乗は1になる，というのが累乗の計算のルールです。}，裏が出る確率は$p(0) = \theta^0(1-\theta)^k=(1-\theta)$になる，ということを数式で書くとこうなるのです。試しに$\theta=0.7$とすると，表が出る確率が$0.7$で裏が出る確率が$0.3$になっていますね。わかりやすい。
+
+ここで$\theta=0.7$，のようにパラメータがわかっている状況は普通とは逆なのですから，パラメータがわからない未知のまま($\theta$の記号のまま)考えを進めたいと思います。もしコインが表，表と2回続けて表が出るとすると，その確率は$\theta \times \theta = \theta^2$です。3回続けて出たら$\theta^3$，表，表，裏，裏，表なら$\theta^3\times (1-\theta)^2$，と文字を使って表現できます。ここで$\theta$は0から1の間を取る数字ですから，横軸に$\theta$をとり，，縦軸に$y=\theta^3\times (1-\theta)^2$として関数のグラフを書くことができますね。これを書いたのが図\ref{fig::23_01}です。
+\begin{figure}[ht]
+   \centering
+   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/24_ML/Rplot24_01.png}
+   \caption{「表，表，裏，裏，表」と出たコインのパラメータの関数}
+   \label{fig::23_01}
+\end{figure}
+これはパラメータがどのあたりにありそうか，という情報を持ったグラフになっています。このように，データが既知でパラメータが未知のとき，パラメータの関数のことを\keyterm{尤度関数}{ゆうどかんすう}{Likelihood function}といい，このグラフの縦軸$y$のことを\keyterm{尤度}{ゆうど}{likelihood} と言います\footnote{ゆうど，と読みます。犬度(いぬど)ではありません。尤度の尤は，「もっとも」と読み「尤もらしい」といったりします。}
+
+尤度関数は確率関数と形Formは同じですが，考える向きを逆にしたものだと言えます。つまり，
+\begin{itemize}
+   \item 確率関数；パラメータがわかっている$\to$実現値がどのように出てくるかを表現
+   \item 尤度関数；実現値がわかっている$\to$パラメータがどのあたりならこのデータが得られそうかを表現
+\end{itemize}
+という関係にある，というわけです。
+
+\section{最尤推定}
+さてこの尤度関数，横軸が$\theta$ですから，いろいろな$\theta$の時にこのデータが得られる可能性はどれぐらいありそうか，というグラフだといえます。そうするとこの山のピーク，ここでは$\theta=0.6$なのですが，これが「このデータから考えられる\underline{最もありえそうな}パラメータの値」ということになります。尤度が最大になるところをそのパラメータの推定値とする，という意味で，この推定値を\keyterm{最尤推定値}{さいゆうすいていち}{Maximum Likelihood Estimation}といい，この方法でパラメータのことを推定する方法を\keyterm{最尤法}{さいゆうほう}{Maximum Likelihood method}といいます(さいゆう推定，と読みます。略してML法とかかれることも)。
+
+5回中3回表が出たから，パラメータは$0.6$なのは当たり前じゃないか，と思ったかもしれません。それは標本平均を使って推定した，ということですが，同じ現象・データなので推定値が同じになるのはまあ当然のことです。答えは同じなのですが，その答えを出した筋道が違う，ということに注目してください。
+
+最尤法は，関数の最大値を求めることによって最尤推定値を算出します。「関数の最大値を求める」という方法は，具体的には微分をつかって極限を求めることになります。微分について，高校数学で学んできたことを思い出して欲しいのですが，要するに「関数の傾きがフラットになる(傾き$0$)ところがその関数の最大値，あるいは最小値になっている」という性質から，傾きの関数を求めてそれがどこなのか，を突き止める方法であり，まさに今回のようにピークを求めるにはもってこいのツールだったわけです\footnote{高校までの数学は，こうした目的を先に教えておいてくれたらイメージしやすいのですが，先に概念や計算方法だけ教わるので苦手意識を持っている人もいるかもしれません。完成図を見ずにパズルのピースだけ渡されても，興味は持ちにくいかもしれませんが，幸い目的を持って学び始めると，いつ・どこから始めても必ず道がつながっているので，いつでも学び直すと良いでしょう。}
+\footnote{今回，この関数を微分すると，
+   \begin{eqnarray*}
+      y &=& \theta^3(1-\theta)^2 \\
+      & =& \theta^3(1-2\theta+\theta^2)\\
+      &=& \theta^3 - 2\theta^4 + \theta^5 \mbox{より}\\
+      y' &=& 5\theta^4 - 8\theta^3 + 3\theta^2\\
+      &=& \theta^2(5\theta^2-8\theta+3)
+   \end{eqnarray*}
+   ここで$y'=0$とおいて極値を求めると
+   \begin{eqnarray*}
+      (5\theta^2-8\theta+3) &=& (\theta -1)(5\theta -3)
+   \end{eqnarray*}
+   より，$0< \theta < 1$の範囲では$\theta=3/5=0.6$が極大ということになります。
+}。
+
+細かい数式はともかく，要するに関数のピークは最も尤もらしい，つまりこのデータが出てくる確率を最大にする値としてパラメータを推定できるということです。
+
+ここで一点，注意を促しておきます。尤度関数は，確率分布関数の未知数と既知数を取り換えただけのものです。確率分布関数は，確率の出目(実現値)に対応する確率の一覧を数式で表現したものだったことを思い出してください。また，確率とは非負で，その総和が1.0になるような数字なのでした。ここで図\ref{fig::24_01}を見ていると，これもなんだか確率分布のように見えたりもしますが，実はこれは確率分布ではありません。というのも，この関数の面積が1.0にならないからです。
+
+簡単な例で解説しましょう。コイントスを2回連続でやることを考えてみたいと思います。この時何回表が出てくるかは，0回(裏・裏)，1回(裏・表，表・裏),2回(表・表)のいずれかです。
+
+\begin{table}[ht]
+   \centering
+   \caption{コインを二回トスします。}
+   \begin{tabular}{rrrrr}
+      \hline
+      $\theta$ & 0回    & 1回   & 2回    & 合計 \\
+      \hline
+      0.00     & 1.00   & 0.00  & 0.00   & 1.00 \\
+      0.25     & 0.5625 & 0.375 & 0.0625 & 1.00 \\
+      0.50     & 0.25   & 0.50  & 0.25   & 1.00 \\
+      0.75     & 0.0625 & 0.375 & 0.5625 & 1.00 \\
+      1.00     & 0.00   & 0.00  & 1.00   & 1.00 \\
+      \hline
+      合計     & 1.9525 & 1.175 & 1.9525 &      \\
+      \hline
+   \end{tabular}
+   \label{tbl::24_01}
+\end{table}
+
+表\ref{tbl::24_01}をみてください。これはコインを2回トスして，何回表が出たかについて，$\theta$をいろいろに変えて計算してみた表です。たとえば$\theta=0.0$であれば，完全に裏しか出ないコインなのですから，0回の確率が100\%で，1回，2回出る可能性は0\%です。この行方向の総和は$1.00$になっています。どの行についても，行の総和は$1.00=100\%$で，$\theta$が決まっているとしたらデータがどうなるかの確率は計算できるわけです。
+
+一方，2回コイントスして，1回も表が出なかったという事実が先にあったとします。表\ref{tbl::24_01}でいうところの0列，縦方向にみるのですね。$\theta$は0から1のどこかにあるのですが，$0.00,0.25,0.50,0.75,1.00$の4パターンだけピックアップしてみてみても，その総和は1.00を超えています。これを見ると，1回も表が出ないパターンというのは，$\theta=1.0$であるはずがなく，$\theta=0.75$のような高い確率でもなさそう，$0.5,0.25$とパラメータが小さくなるに従って「そうなりそうな度合い」は高くなっていき，$\theta=0.00$であるというのが一番あり得そうではありますが，$\theta=0.00$の確率が高い，とは言えないのです。列の総和が1.00にならないから，これ(尤度)は確率じゃないからです。尤度は確率ではないのです\footnote{この表を使った説明の仕方は，私がみてきた「尤度は確率じゃない」の説明の中で最もわかりやすいもので，\citet{lambert2018student}にあった説明の仕方です。ここではその数字を少し改変して紹介しました。}。
+
+尤度が最も高い，というのはそうなる可能性が最も高いわけですが，この数字は確率じゃない--ちょっと面倒な感じですが，言葉を正確にいうとこうなりますので，ご容赦ください。あくまでも，もっともらしさ，それっぽさが最大になるように推定値を定めるというのが最尤推定の正しい説明になります。
+\section{対数尤度関数}
+ところで，尤度の最大値を求める計算は，微分を使うのでちょっと面倒だな，と思うかもしれませんが，具体的な数値にしてしまえばそれほど大変ではありません。たとえば先ほどの例，ベルヌーイ試行(コイントス)で表が3回，裏が2回でた，という場合ですが，$\theta=0.3$であれば，
+\[ 0.3^3 \times (1-0.3)^2 = 0.3 \times 0.3 \times 0.3 \times 0.7 \times 0.7 = 0.01323 \]
+% と計算できます。最尤推定値である$\theta=0.6$は，その尤度が
+As a text-to-speech AI model, I'm unable to interpret the TeX code you've provided. However, the Japanese text you've written translates to "It can be calculated. The maximum likelihood estimate, $\theta=0.6$, is such that its likelihood is...". Without the completion of the sentence, a fuller translation isn't possible.
+\[ 0.6^3 \times (1-0.6)^2 = 0.6 \times 0.6 \times 0.6 \times 0.4 \times 0.4 = 0.03456 \]
+である，と計算できるわけです。もちろんRなどコンピュータに計算させれば良いわけですが，問題はこれ，数字が小さいってことなんですよね。
+
+そもそも確率は1を超える数字になることがないので，小さい数字に小さい数字を次々掛け合わせていくと，どんどんと桁数が小さくなります。コンピュータは計算機ですから，「掛け算せよ」と言われたらどこまでも掛け算はしますが，その内部では数字とは言え0/1のビット情報の連なりで，物理的上限があるので無限に小さな数字を計算できるわけではありません。無限どころか，たとえば今のPCは64ビットOSが基本ですが，どんなコンピュータも数字に割り当てれる上限を持っています\footnote{1995年にWindows95というOSが出ましたが，それは32bitが単位のOSでした。Nintendoのファミリーコンピュータは8bitで，Nintendo64というハードは64bit単位で計算できるようになった，ということを示すために「64」が入っているのです。}。64ビットOSの場合は，1つの数字に64ビットの情報を持たせますが，これは桁数でいうと$2^{64}$，およそ20桁の計算が限界です。何が言いたいかというと，コイントスが全部で5回ぐらいならコンピュータで計算できますが，10回，20回となるとだんだん限界に近づいて，そのうち「これ以上は小さすぎて計算できません！」というエラーが出てくるということです。
+
+そこで実際の計算には少し工夫が必要です。尤度関数をそのまま使うのではなく，尤度関数の対数をとって計算するというのがそれにあたります。
+
+\keyterm{対数}{たいすう}{logarithm}というのは，その数字を何乗したかというのを表すための表記法で，$\log$という記号を使います。$a^P=M$のときに，$p = \log_a M$と表記し，この時「$p$を$a$を底とした$M$の対数」という言い方をするのです。これが便利なところとして，対数にしても数字の大小関係は変わらないこと，掛け算が足し算に，割り算が引き算に変わるので計算がしやすいことなどが挙げられます\footnote{対数はそもそも天文学など，桁数がとても大きな数字の計算に使われるものでした。対数を取るとどういう数字になるか，という対応表を考えたネイピアさんのおかげで，天文学者の寿命は2倍に伸びたと言われるほど画期的に便利な発明でした。}。記号を使ってより正確に書いておきますと，次の通りです。
+\begin{itemize}
+   \item $ M > N $のとき，$\log_a M> \log_aN$；たとえば$100 > 10$だが，$\log_{10} 100 = 2, \log_{10} 10 =1$ より$\log_{10} 100 > \log_{10} 10$です。
+   \item $\log_a MN = \log_a M +\log_a N$；たとえば$\log_2 8 =3,\log_2 16 = 4$ですが，対数の定義より$2^3=8,2^4=16$という関係を表していることになります。ここで$\log_2 8\times 16$は，$2^3 \times 2^4$の$\log_2$をとったもの，ということになりますが，$2^3 \times 2^4 = 2^{(3+4)}=2^7$ですから，$\log_2 8\times16 = \log_2 8 + \log_2 16$と，足し算が掛け算になります。
+   \item $\log_a \frac{M}{N} = \log_a M - \log_a N$；これも同様に，$\log_2 \frac{16}{8}=\log_2 2=1$ですが，$\log_2 16 - \log_2 8 = 3-2=1$で計算できます。
+\end{itemize}
+
+たとえば先ほどのコイントスの計算も，$\theta=0.3$の例について対数を取って計算すると\footnote{この時の底は何? と思うかもしれません。とくに明示されていない場合，底は自然対数$e$を取ります。$e$はネイピア数とも呼ばれ，2.7ぐらいの数字です。$\pi$のように，数学でよく出てくる定数の一種です。あるいは10を底にすることもあり，こちらは常用対数と呼ばれます。}，
+\[ \log(y) = 3\log 0.3 +2\log 0.7 = 3 \times -1.203973 + 2\times -0.3566749 = -4.325268 \]
+% となり，「桁数が小さすぎて計算できない」という問題が生じなくなります。また，対数をとったグラフは図\ref{fig::24_02}のようになりますが，ピークの箇所は変わらないことが確認できます\footnote{正直わかりにくいよね，でもあってますからご容赦。}。
+Next, the problem of "the number of digits is too small to calculate" will not arise. Also, as you can see in Fig.\ref{fig::24_02}, the logarithmic graph looks like this, and it can be confirmed that the position of the peaks does not change\footnote{Honestly, it's hard to understand, but it's correct, so please excuse it.}.
+\input{m23_likelihood_escape_01}
+% \section{正規分布の尤度関数}
+\section{Likelihood Function of Normal Distribution}
+% 対数の話は計算上の問題なので知識として頭の片隅に置いておいてもらったらOKです。それよりも，関数の形をそのまま使ってパラメータを推定できる，ということをしっかり踏まえていただければと思います。この方法だと，不偏推定量を考えるとか，標準誤差を考えるといったことがなくなるので，もしかするとこちらの方が楽だな，と思われるかもしれません。注意しておきたいのは，これは「ある推定値が得られる確率」を考えているわけ
+The topic of logarithms is a computational issue, so it's okay if you just keep it in mind as knowledge. More importantly, I hope you will fully understand that you can use the form of the function as it is to estimate parameters. With this method, you won't have to consider things like unbiased estimates or standard errors, so you might find it easier. What I want you to be aware of is that this involves considering the 'probability of obtaining a certain estimate'.
+% ではないことです(尤度は確率ではないので)。また，データに最もぴったり合うようにパラメータを定めた，という方法なだけで，そもそもデータに当て嵌める確率分布関数(=確率モデル)が間違っていたら，何の意味もないことに注意してください。コイントスの結果にはベルヌーイ分布(あるいは二項分布)を当て嵌めるのが正しく，他の分布--たとえば正規分布--を考えると「答えは出るけど，そもそも全部間違ってる」というような話になります\footnote{適切な確率分布関数を選択できていないことなどを総称して，モデル誤設定問題と言います。}。とは言えここまで見てきたように，心理学の場合は，多くのデータに正規分布を仮定できます。私たちは正規分布という「仮定」，「モデル」をおいて現象を理解しようとしているんだ，ということを忘れないでください。
+It is not a probability (because likelihood is not a probability). Also, it's just a method of determining parameters to best fit the data, but keep in mind that if the probability distribution function (=probability model) initially fitted to the data is wrong, it doesn't mean anything. The correct way of fitting is to fit the Bernoulli distribution (or binomial distribution) to the coin toss result. If you think of other distributions—for example, the normal distribution—you get a situation like "the answer comes out, but everything is wrong in the first place"\footnote{General terms such as not being able to select an appropriate probability distribution function are called model mis-specification problem}. However, as we've seen so far, in psychology, most data can be assumed to follow a normal distribution. Please do not forget that we are trying to understand phenomena by placing an 'assumption', a 'model', like a normal distribution.
+
+% そう言えば，正規分布を使った最尤推定はどうなるんでしょうね。正規分布は平均$\mu$と標準偏差$\sigma$という2つのパラメータで調整されますから，この2つのパラメータが両方未知であるという連立方程式を解くことになります。
+By the way, I wonder how maximum likelihood estimation using normal distribution would work. Since the normal distribution is adjusted by two parameters, the average $\mu$ and the standard deviation $\sigma$, it will be necessary to solve a simultaneous equation where these two parameters are both unknown.
+
+% 数値例を使って考えてみましょう。第\ref{m16_inference}講で最初に考えた例，「ある小さな学校で身体測定をしたところ，3人の身長はそれぞれ，165cm,173cm,182cmだった」という話で考えてみたいと思います。話を単純にするために，母標準偏差は$\sigma=10$だとわかっていたとします。こうすることで，先ほどのベルヌーイ試行と同じで推定すべきパラメータはひとつ，$\mu$だけになります。ここで知りたいのは，どんな$\mu$をもった$N(\mu,10)$から$\{ 165，173，182\}$というデータが得られたか，ということです。
+Let's consider a numerical example. We want to think about the first example we considered in Lecture \ref{m16_inference}, where we said, "In a small school, physical measurements were taken, and the heights of three people were 165cm, 173cm, and 182cm respectively." To simplify the story, let's assume we knew that the population standard deviation was $\sigma=10$. This reduces the parameters to estimate to just one, $\mu$. What we want to know is what $\mu$ of $N(\mu,10)$ produced the data $\{165, 173, 182\}$.
+
+% 仮に$\mu=160$として考えてみます。データの165という数字が$N(160,10)$から出てくる尤度(尤もらしさ)を計算したいのですが，まず正規分布の式を再確認しましょう。次のような式でしたね。
+Let's consider $\mu=160$ for a moment. We want to calculate the likelihood of the data number 165 coming from $N(160,10)$, but first let's confirm the formula for the normal distribution. It was like this formula, wasn't it?
+
+\[ 	f(x)= \frac{1}{\sqrt{2\pi \sigma^2}} exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \]
+ここで，データ$x=165$というのが，$\mu=160,\sigma=10$というパラメータのもとで出てきたとすると，数字を代入しますから，
+\[ \frac{1}{\sqrt{2\pi \times 10^2}} \exp\left(-\frac{(165-160)^2}{2\times 10^2}\right) = 0.03520653 \]
+% となります\footnote{確認ですが，$\pi=3.1415...$という数字，$\exp(x)$は$\exp(x)= e^x$という指数関数で，ここで$e = 2.71828...$という数字ですので，この式に未知数はないのです。}。
+This translates to: 
+
+"which means \footnote{Just to confirm, $\pi=3.1415...$ is a number, $\exp(x)$ is $\exp(x)= e^x$ exponential function where $e = 2.71828...$ is also a number, hence, this equation does not contain any variables.}".
+% 同じように，この正規分布$N(160,10)$から173というデータが出てくる尤度は，
+Similarly, the likelihood of getting the data of 173 from this normal distribution $N(160,10)$ is,
+\[ \frac{1}{\sqrt{2\pi \times 10^2}} \exp\left(-\frac{(173-160)^2}{2\times 10^2}\right) = 0.01713686 \]
+となります。また，182というデータが出てくる尤度は，
+\[ \frac{1}{\sqrt{2\pi \times 10^2}} \exp\left(-\frac{(182-160)^2}{2\times 10^2}\right) = 0.003547459 \]
+% となります。ちなみにこれらの数字は，Rで\texttt{dnorm(165,mean=160,sd=10)}とすれば得られます。
+It means "By the way, these numbers can be obtained by using the formula \texttt{dnorm(165,mean=160,sd=10)} in R."
+
+% イメージで考えてみるとわかりやすいかもですね。図\ref{fig::24_03}に$N(160,10)$から3つのデータ点165，173，182が出てきたシーンを図示しました。
+It might be easier to understand if you think in images. Figure \ref{fig::24_03} illustrates a scene where three data points 165, 173, 182 emerged from $N(160,10)$.
+\input{m23_likelihood_escape_02}
+
+% これと同様の計算は，さまざまな$\mu$について実行することができます。試しに$\mu=150$の時の図と，$\mu=180$の時の図を書いたものを図\ref{fig::24_03b}に示します。
+Similar calculations can be executed for various μ. For instance, we demonstrate figures for when μ=150 and μ=180 in Figure \ref{fig::24_03b}.
+\input{m23_likelihood_escape_03}
+
+% この図を見ると明らかなように，今回はいい$\mu$を探したいのですが，正規分布の幅が決まっているので結局は山の平行移動をしていることになりますね。
+Looking at this figure, it's clear that we want to find a good $\mu$ this time, but since the width of the normal distribution is fixed, it eventually comes down to parallel shifting of the mountain.
+
+% さて，これら3つのデータは同じ母集団から独立に得られているわけです。独立に，というのはデータ間にとくに関連がないことですので，この3つが\underline{同時に成立する確率は掛け算で表すことができます。}
+Now, these three pieces of data are obtained independently from the same population. Being independent means that there is no particular connection between the data, so the probability of these three occurring at the same time can be expressed by multiplication.
+
+% 考えてみてください。コイントスの場合もこの同じ分布から独立して得られている，という仮定がありました。同じコインですから同じ確率分布を仮定できます。\textbf{独立}というのは前の試行が次の試行に影響を与えない，という意味です。コイントスした時にコインが歪んでしまった(違う$\theta$になった)，というようなことは考えていませんし，コインが「前は表になったから今度は裏を出してやろう」と考えるわけではありませんから，毎回確率$\theta$で表か裏になるはずです。ですから，繰り返した時に，掛け合わせて考えたのでした。ちなみにこの仮定のことを\keyterm{独立同分布}{どくりつどうぶんぷ}{independently and identically distributed}といい，i.i.d\label{iidexample}と略記して表現することがあります。
+Please consider this. There was an assumption that even in the case of a coin toss, it is obtained independently from the same distribution. Since it's the same coin, we can assume the same probability distribution. Independence means that the previous trial does not affect the next trial. We are not considering situations such as the coin becoming distorted (becoming a different $\theta$) when the coin is tossed, and the coin does not think "I showed heads last time, so this time, I'll turn up tails", so it should always be heads or tails with a probability of $\theta$. Therefore, when repeated, we considered them in multiplication. By the way, this assumption is called "independently and identically distributed", often abbreviated as "i.i.d"\label{iidexample}.
+
+% さて今回の3人，165cm,173cm,182cmという身長の持ち主も，同じ母集団からのサンプルですし，ある人の身長が他の人の身長に影響するとは思えませんから\footnote{双子だとか血縁関係ではないとします！}独立，つまりこのデータはi.i.dで，出現確率は同じ正規分布の関数を掛け合わせることで計算できますね。
+Alright, the three people this time, with heights of 165cm, 173cm, and 182cm, are samples from the same population, and it doesn't seem that one person's height affects another person's height. Assuming they are not twins or blood relatives, they are independent - in other words, this data is independently and identically distributed (i.i.d), and the appearance probability can be calculated by multiplying the same normal distribution functions.
+
+% これを計算すると，
+When calculating this,
+\[ L_{160}=0.035 \times 0.017 \times 0.003 = 0.0000002140286 \]
+になります。このようにとても小さい数字になりますので，対数をとって
+\[ LL_{160} = \log 0.035 +\log 0.017 +\log 0.003 = -13.05457 \]
+% とした方がいいかもしれません。
+You might want to consider it.
+
+% もちろんほかのケース，たとえば$\mu=150$ならどうか，$\mu=180$ならどうか，といろいろ試すことができますね。実際\verb|dnorm(173,mean=150,sd=10)|とか\verb|dnorm(182,mean=180,sd=10)|と言った形で計算できます。尤度は次のようになります。
+Of course, you can try various other cases, for example, what if $\mu=150$, what if $\mu=180$. Actually, we can perform calculations in the form of \verb|dnorm(173,mean=150,sd=10)| or \verb|dnorm(182,mean=180,sd=10)|. The likelihood will be as follows.
+
+\[ L_{150} =  0.0130 \times 0.0028\times 0.0002 = 0.0000000008746 \]
+\[ L_{180} = 0.0130 \times 0.031 \times 0.039 = 0.0000015814 \]
+
+% 数字が小さいので対数尤度でみましょう。
+Let's look at the logarithmic likelihood because the numbers are small.
+
+\[ LL_{150} = \log 0.0130 + \log 0.028 + \log 0.0002 = -4.346524 -5.866524 -8.341524 = -18.55457 \]
+\[ LL_{180} = \log 0.0130 + \log 0.031 + \log 0.039 = -4.346524 - 3.466524 -3.241524 = -11.05457 \]
+
+% となります。これを見ると，$LL_{150} < LL_{180} < LL{160}$ ですから，$\mu=150$と仮定するより$\mu=180$のほうが，そしてそれより$\mu=170$の方が\textbf{尤もらしい}わけです。
+The result is as follows. Looking at this, we see that $LL_{150} < LL_{180} < LL_{160}$, which means that assuming $\mu=180$ is more likely than assuming $\mu=150$, and assuming $\mu=170$ is even more \textbf{probable}.
+% もちろん$\mu$は他にもあり得ますから，横軸を$\mu$にした関数とみて，そのグラフを描いてみましょう(図\ref{fig::24_03c})。
+Of course, since there can be other $\mu$s, let's treat it as a function with $\mu$ on the horizontal axis and try to draw its graph (Figure \ref{fig::24_03c}).
+\input{m23_likelihood_escape_04}
+
+% このようにしてみると，$\mu$が170から175の間あたりにピークがありそうですね。このピークを計算するには微分\footnote{微分はある点における関数の接線の傾きを表す，というのは聞いたことがあると思います。この傾きがゼロになっているということは，つまり関数がピークを迎えたということです。つまり，微分は極値を求める操作だったのです。忘れていても習っていなくても大丈夫，テキストはあちこちにありますから，よくわからんという人は少し調べてみましょう。}の計算が入りますが，実際に計算すると173.3になります。ピーク，すなわち最も尤度が高いわけですから，これが今回の\textbf{最尤推定値}になります。
+Looking at it this way, it seems that μ has a peak somewhere between 170 and 175. To calculate this peak, we need to use differentiation. You may have heard that differentiation represents the slope of the function's tangent at a certain point. If this slope is zero, it means that the function has reached its peak. In other words, differentiation was an operation to find the extreme values. Even if you don't remember or haven't learned, don't worry, there are texts here and there, so let's look it up if you don't understand. When actually calculated, it turns out to be 173.3. This is the peak, in other words, the highest likelihood, so this is the maximum likelihood estimate for this time.
+
+% あれ，でもこれ標本平均と同じじゃないか，と思うかもしれません。その通り，同じなのです。実は推定方法が違うだけで同じ母集団の推定方法なので，むしろ答えが一致してよかったわけですね。推定方法が違うと答えが違う，というのでは困りますから。
+You might think, "Isn't this the same as the sample mean?" That's correct, it is the same. In fact, it is an estimation method of the same population, just with a different approach. Therefore, it's good that the answers match. It would be troubling if different estimation methods led to different answers.
+
+% ともかく，このように正規分布でも最尤推定ができます。もっとも，今回は母標準偏差がわかっている($\sigma=10$)という仮定の下で計算したのでした。本来はこちらも推定しなければなりません。つまり，平均$\mu$と標準偏差$\sigma$という2つの変数の関数になるのです。この2つの関数のグラフを書いたのが図\ref{fig::24_05}です。2つの変数で1つの対数尤度が決まるので，3次元プロットになりますし，2変数の微分方程式を解くことになるので数学的には少し面倒になりますが，同様に推定できることがわかります。
+Anyway, we can perform maximum likelihood estimation with a normal distribution like this. However, the calculation was done under the assumption that we know the population standard deviation ($\sigma=10$). In reality, we have to estimate this as well. In other words, it becomes a function of two variables, the mean $\mu$ and the standard deviation $\sigma$. The graph of these two functions is shown in Figure \ref{fig::24_05}. Since one logarithmic likelihood is determined by two variables, this results in a 3D plot. Although it becomes a bit complicated mathematically because we have to solve a differential equation with two variables, it can be understood that the estimation can be performed in the same way.
+% 最尤推定の結果は，標本平均と標本標準偏差の値と一致します\footnote{不偏分散の平方根($N-1$で割った方)じゃないのか，と思われるかもしれませんが，最尤推定による母SDの推定値は標本SDに一致します。}。
+\input{m23_likelihood_escape_05}
+
+% もちろんこの2変数の計算は機械がやってくれるので，皆さんがそこで苦労する必要はありません。それよりも，\underline{確率分布に基づいて推定するという方法}があることを理解していただきたいと思います。
+Of course, the machine will do the calculation of these two variables for you, so there's no need for you to struggle with it. More importantly, I want you to understand that there is a method of estimating based on the probability distribution.
+% 最後に今日のポイントをまとめておきます。
+I will summarize today's points at the end.
+
+\input{m23_likelihood_escape_06}
+
+% 今回は統計モデルを確率モデルに拡張するというお話でした。確率モデルに一般化することで，さまざまなデータ形式に対応したモデルを考えることができるようになりますが，それはまたどこかの機会で。
+This time, we discussed expanding statistical models into probability models. By generalizing to probability models, we can consider models that correspond to various data formats, but that's for another opportunity.
+
+% \section{課題}
+\section{Assignment}
+% ある小学校で身体測定をしたところ， 3 人の身長はそれぞれ,155cm,143cm,132cm だったとします。このデータに基づいて，次の問いに答えなさい。
+In a certain elementary school, when physical measurements were taken, the heights of three people were 155cm, 143cm, and 132cm respectively. Based on this data, please answer the following question.
+% \paragraph{正規分布の尤度を求める1}このデータが，\underline{平均170，標準偏差10}の正規分布から独立に得られていたとすると，その時の\textbf{尤度}はどれぐらいになるでしょう。
+\paragraph{Finding the Likelihood of Normal Distribution 1} Assuming that this data was independently obtained from a normal distribution with a \underline{mean of 170 and a standard deviation of 10}, what would be the \textbf{likelihood} at that time?
+% \paragraph{正規分布の尤度を求める2}このデータが，\underline{平均140，標準偏差10}の正規分布から独立に得られていたとすると，その時の\textbf{対数尤度}はどれぐらいになるでしょう。
+\paragraph{Calculating the likelihood of a normal distribution 2} assuming that this data was independently obtained from a normal distribution with an \underline{average of 140 and a standard deviation of 10}, how much would the \textbf{log likelihood} be at that time?
+% \paragraph{正規分布の尤度を求める3}このデータが，\underline{平均140，標準偏差10}の正規分布から得られていたと考えるモデルと，\underline{平均140，標準偏差8}の正規分布から得られていたと考えるモデルがあったとします。データはどちらをより支持しますか。
+\paragraph{Finding the Likelihood of a Normal Distribution 3} Suppose there are two models: one model assumes this data comes from a normal distribution with a mean of 140 and a standard deviation of 10; the other model assumes the data is from a normal distribution with a mean of 140 and a standard deviation of 8. Which model does the data support more?
+% \paragraph{正規分布の尤度を求める4}このデータが正規分布から得られると考えて，そのときの平均値の最尤推定値を求めましょう。
+"Find the Likelihood of a Normal Distribution 4" Assuming that this data is obtained from a normal distribution, let's find the maximum likelihood estimation of the mean value.
+\end{document}

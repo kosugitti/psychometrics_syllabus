@@ -42,7 +42,7 @@ The next section, \texttt{R's Output\ref{RS:out11_02}}, shows the distribution o
 \input{x11_IRTonR_escape_05}
 
 % 次のセクション\texttt{Rの出力\ref{RS:out11_03}}には，\keyterm{点双列相関係数}{てんそうれつそうかんけいすう}{Point Biserial correlation}が計算されています。この相関係数は2値と連続値の相関係数であり，ここでは各変数(二値)と合計得点(0から10)の相関係数を計算しています。この合計得点の計算方法には，その変数自身を含める場合(Included)と含めない場合(Excluded)の二種類があります。具体的に説明したほうがわかりやすいでしょう。たとえば変数\texttt{V1}についていうと，「その変数自身を含める場合」の合計得点とは$V1+V2+V3+V4+V5+V6+V7+V8+V9+V10$で計算しています。「含めない場合」は$V2+V3+\cdots+V10$とするわけです。含める場合の相関係数が0.5207，含めない場合の相関係数が0.2480です。当然自身が含まれているほうが合計得点に深く関わっているので相関係数が高くなります。裏を返せば，含める場合と含めない場合の相関係数に大きな差があるとき，その変数はテスト全体に大きく貢献する重要な変数だといえるでしょう。
-The next section, titled \texttt{R's output\ref{RS:out11_03}}, calculates the \keyterm{Point Biserial correlation coefficient}{}. This correlation coefficient is a correlation coefficient between binary and continuous values. Here, we calculate correlation coefficients for each variable (binary) and total scores (from 0 to 10). There are two types of total score calculation methods: 'Included', which includes the variable itself, and 'Excluded', which does not. 
+The next section, titled \texttt{R's output\ref{RS:out11_03}}, calculates the \keyterm{Point Biserial correlation coefficient}{}. This correlation coefficient is a correlation coefficient between binary and continuous values. Here, we calculate correlation coefficients for each variable (binary) and total scores (from 0 to 10). There are two types of total score calculation methods: 'Included', which includes the variable itself, and 'Excluded', which does not.
 
 Let me explain more specifically. For example, for the variable \texttt{V1}, the total score 'including the variable itself' is calculated as $V1+V2+V3+V4+V5+V6+V7+V8+V9+V10$, whereas 'excluding the variable itself' is $V2+V3+\cdots+V10$. The correlation coefficient for the 'included' case is 0.5207, while that for the 'excluded' case is 0.2480. Naturally, the correlation coefficient is higher when the variable itself is included, as it is deeply involved in the total score. Conversely, when there is a significant difference between the correlation coefficients for the 'included' and 'excluded' cases, it can be said that the variable makes a significant contribution to the overall test.
 \input{x11_IRTonR_escape_06}
@@ -95,16 +95,16 @@ plot(result.1pl,type="IIC",items = 0)
 
 \paragraph{コード解説}
 \begin{description}
-   \item[1行目] 1PLモデル(ラッシュモデル)の実行
-   \item[2行目] 結果の出力
-   \item[3行目] \keyterm{項目特性曲線}{こうもくとくせいきょくせん}{Item Characteristic Curve}のプロット。\texttt{plot}関数のオプションで表示する情報をICCと指定。
-   \item[4行目] \keyterm{項目情報曲線}{こうもくじょうほうきょくせん}{Item Information Curve}のプロット。\texttt{plot}関数のオプションで表示する情報をIICと指定。
-   \item[5行目] \keyterm{テスト情報曲線}{てすとじょうほうきょくせん}{Test Information Curve}のプロット。\texttt{plot}関数のオプションで表示する項目番号をゼロにするとTICになる。
+	\item[1行目] 1PLモデル(ラッシュモデル)の実行
+	\item[2行目] 結果の出力
+	\item[3行目] \keyterm{項目特性曲線}{こうもくとくせいきょくせん}{Item Characteristic Curve}のプロット。\texttt{plot}関数のオプションで表示する情報をICCと指定。
+	\item[4行目] \keyterm{項目情報曲線}{こうもくじょうほうきょくせん}{Item Information Curve}のプロット。\texttt{plot}関数のオプションで表示する情報をIICと指定。
+	\item[5行目] \keyterm{テスト情報曲線}{てすとじょうほうきょくせん}{Test Information Curve}のプロット。\texttt{plot}関数のオプションで表示する項目番号をゼロにするとTICになる。
 \end{description}
 
 2行目で結果の出力を行っていますが，出力\ref{RS:out11_06}のように表されます。
 \begin{Rscreen}{2PLモデルの結果出力}{out11_06}
-   \begin{verbatim}
+	\begin{verbatim}
 Call:
 rasch(data = dat)
 
@@ -118,10 +118,10 @@ Log.Lik: -2468.743
 \end{Rscreen}
 1PLモデルで表現する項目の違いは\keytermL{困難度母数}{こんなんどぼすう}だけですから，この数字(\texttt{Dffclt})が小されければ簡単な項目，大きければ難しい項目だったことがわかります。たとえば\texttt{V2}の困難度母数は$b_2=-2.208$ですが，記述統計のところで見た正答率(88.6\%)を考えると，簡単な問題だったことがわかりますね。\keyterm{識別力母数}{しきべつりょくぼすう}は\texttt{Dscrmn}として1.126と推定されています。これは項目を通じて一定です。このことは図\ref{fig::11_01}の左にあるICCをみて，すべての曲線の傾きが同じことで確認できます。
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/11_IRTonR/Rplot11_01.png}
-   \caption{1PLのさまざまなプロット。左からICC,IIC,TIC}
-   \label{fig::11_01}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/11_IRTonR/Rplot11_01.png}
+	\caption{1PLのさまざまなプロット。左からICC,IIC,TIC}
+	\label{fig::11_01}
 \end{figure}
 
 図\ref{fig::11_01}の左が数値的出力結果を図示したものです。これを見た方がわかりやすいかもしれません。x軸は$\theta$，つまり測定する潜在変数の値になっており，テストで言えばある人の学力$\theta_i$があったときに，各問いにどれぐらいの確率で正答するかを表していることになります。これをみると\texttt{V2}がもっとも簡単で，\texttt{V8}が最も難しかったテストであることがわかります。
@@ -142,16 +142,16 @@ plot(result.2pl,type="IIC",items = 0)
 
 \paragraph{コード解説}
 \begin{description}
-   \item[1行目] 1PLモデル(ラッシュモデル)の実行
-   \item[2行目] 結果の出力
-   \item[3行目] \keyterm{項目特性曲線}{こうもくとくせいきょくせん}{Item Characteristic Curve}のプロット
-   \item[4行目] \keyterm{項目情報曲線}{こうもくじょうほうきょくせん}{Item Information Curve}のプロット
-   \item[5行目] \keyterm{テスト情報曲線}{てすとじょうほうきょくせん}{Test Information Curve}のプロット
+	\item[1行目] 1PLモデル(ラッシュモデル)の実行
+	\item[2行目] 結果の出力
+	\item[3行目] \keyterm{項目特性曲線}{こうもくとくせいきょくせん}{Item Characteristic Curve}のプロット
+	\item[4行目] \keyterm{項目情報曲線}{こうもくじょうほうきょくせん}{Item Information Curve}のプロット
+	\item[5行目] \keyterm{テスト情報曲線}{てすとじょうほうきょくせん}{Test Information Curve}のプロット
 \end{description}
 
 2行目で結果の出力を行っていますが，出力\ref{RS:out11_15}のように表されます。
 \begin{Rscreen}{2PLモデルの結果出力}{out11_15}
-   \begin{verbatim}
+	\begin{verbatim}
 Call:
 ltm(formula = dat ~ z1)
 
@@ -178,10 +178,10 @@ Log.Lik: -2446.104
 
 プロットによる出力も見ておきましょう(図\ref{fig::11_02})。識別力母数が入ったことで，ICCの傾きが項目によってさまざまになりますし，IICやTICの見た目もすっかり変わってしまいましたが，読み取り方は同じです。
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/11_IRTonR/Rplot11_02.png}
-   \caption{2PLのさまざまなプロット。左からICC,IIC,TIC}
-   \label{fig::11_02}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/11_IRTonR/Rplot11_02.png}
+	\caption{2PLのさまざまなプロット。左からICC,IIC,TIC}
+	\label{fig::11_02}
 \end{figure}
 
 
@@ -200,7 +200,7 @@ plot(result.3pl,type="IIC",items = 0)
 
 コードは一行目の関数以外ほとんど同じですので，逐一解説は致しませんが，出力のところを見ておきましょう(出力\ref{RS:out11_07})。
 \begin{Rscreen}{3PLモデルの結果出力}{out11_07}
-   \begin{verbatim}
+	\begin{verbatim}
 Call:
 tpm(data = dat)
 
@@ -225,10 +225,10 @@ Log.Lik: -2431.371
 3PLモデルは困難度，識別力に加えて\keytermL{当て推量母数}{あてすいりょうぼすう}が計算されます。これはICCの形(図\ref{fig::11_03}の左)を見ればわかりますが，曲線全体が底上げされたようになっているものがあります。この最低ラインの高さが当て推量母数の大きさです。図や数値から，\texttt{V2}のそれが大きい数字であることが読み取れます。ICCは$\theta$の関数である正答率ですが，これが$\theta$の値にかかわらず一定の値を取るということは，どれだけ能力が低くてもその確率で正答してしまうことを意味しています。なので「適当に推測して答えを当てられる大きさ」という意味で当て推量母数と呼ばれているのです。
 
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/11_IRTonR/Rplot11_03.png}
-   \caption{3PLのさまざまなプロット。左からICC,IIC,TIC}
-   \label{fig::11_03}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/11_IRTonR/Rplot11_03.png}
+	\caption{3PLのさまざまなプロット。左からICC,IIC,TIC}
+	\label{fig::11_03}
 \end{figure}
 
 今回当て推量母数を含めて考えたことで，IICやTICがまた大きく変化しました。この数字が高すぎるV2は，テストとしてはあまり良い項目ではなかったのかもしれません。また，モデルの適合度としては3PLモデルが最もよかったのですが，2PLモデルとそれほど大きく違うわけでもありません。
@@ -260,15 +260,15 @@ plot(result.grm, type = "IIC", items = 0)
 
 \paragraph{コード解説}
 \begin{description}
-   \item[1行目] \texttt{psych}パッケージを読み込む。サンプルデータ\texttt{bfi}を用いるためです。
-   \item[2-4行目] データの加工。\texttt{bfi}データから，性別，最終学歴，年齢などの情報を取り除き，またNで始まる変数だけ選出(\texttt{select})しています。
-   \item[5行目] 段階反応モデルの実行。
-   \item[6行目] 結果の出力。
-   \item[7行目] 項目1についてのICC，厳密には\keyterm{項目反応カテゴリ特性曲線}{こうもくはんのうかてごりとくせいきょくせん}{Item Response Category Characteristic Curve}と呼びます。
-   \item[8行目] 項目1についてのIICを表示させています。
-   \item[9行目] 項目4についてのICCを表示させています。
-   \item[10行目] 項目4についてのICCを表示させています。
-      \item[11行目]項目群についてのTICを表示させています。
+	\item[1行目] \texttt{psych}パッケージを読み込む。サンプルデータ\texttt{bfi}を用いるためです。
+	\item[2-4行目] データの加工。\texttt{bfi}データから，性別，最終学歴，年齢などの情報を取り除き，またNで始まる変数だけ選出(\texttt{select})しています。
+	\item[5行目] 段階反応モデルの実行。
+	\item[6行目] 結果の出力。
+	\item[7行目] 項目1についてのICC，厳密には\keyterm{項目反応カテゴリ特性曲線}{こうもくはんのうかてごりとくせいきょくせん}{Item Response Category Characteristic Curve}と呼びます。
+	\item[8行目] 項目1についてのIICを表示させています。
+	\item[9行目] 項目4についてのICCを表示させています。
+	\item[10行目] 項目4についてのICCを表示させています。
+	\item[11行目]項目群についてのTICを表示させています。
 \end{description}
 
 \texttt{code:\ref{code:11_05}}の6行目で，分析結果の数値的出力をさせていますので，それをみておきましょう(出力\ref{RS:out11_25})。
@@ -276,7 +276,7 @@ plot(result.grm, type = "IIC", items = 0)
 ここで，\texttt{Dscrmn}とあるのは識別力母数ですが，困難度母数に対応するのが\texttt{Extrmt1}から\texttt{Extrmt5}にあたります。この尺度は6件法ですので，反応カテゴリが変わる切れ目，すなわち\keytermL{閾値}{いきち}が5つあるのです。これらが2PLモデルでいうところの困難度に対応すると言ってもいいでしょう。
 
 \begin{Rscreen}{GRMモデルの結果出力}{out11_25}
-   \begin{verbatim}
+	\begin{verbatim}
 Call:
 grm(data = dat)
 
@@ -295,10 +295,10 @@ Log.Lik: -21721.91
 数値を見ていてもピンとこないかもしれませんので，図でこの各項目の特徴を確認しておきましょう。変数\texttt{N1}と\texttt{N4}のIRCCCを図\ref{fig::11_04}に示しました。この図に表されている複数の曲線が，$\theta$に対応した各カテゴリに反応する確率を表しています。図の左，\texttt{N1}は綺麗なカーブが描かれており，各カテゴリのピークが見て取れますが，\texttt{N4}は反応カテゴリ3の山が埋もれてしまっていることがみてとれます。この項目については，6段階ではなく5段階で反応を求めるのがよかったのかもしれません\footnote{ちなみに\texttt{N1}は「すぐ怒る(Get angry easily)」，\texttt{N4}は「割と凹む(Often feel blue)」です。日本語訳は小杉の意訳で定訳ではありません。あしからず。}。
 
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/11_IRTonR/Rplot11_04.png}
-   \caption{GRMのIRCCC}
-   \label{fig::11_04}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/11_IRTonR/Rplot11_04.png}
+	\caption{GRMのIRCCC}
+	\label{fig::11_04}
 \end{figure}
 
 原理的には難しいことのように感じますが，コードを書いて実践する分にはほとんど苦労がなく，二値モデルと同じように考えることができます。コードにはIICやTICを描くものもありますが，1PL,2PL,3PLモデルと変わらない感じで多段階モデルが実行できますね。
@@ -319,9 +319,9 @@ print(result.fa, sort = T, cut = 0.3)
 
 \paragraph{コード解説}
 \begin{description}
-   \item[1行目] サンプルデータ\texttt{bfi}の加工をしています。
-   \item[2行目] ポリ個リック相関係数に基づく因子分析の実行
-   \item[3行目] 結果の出力。
+	\item[1行目] サンプルデータ\texttt{bfi}の加工をしています。
+	\item[2行目] ポリ個リック相関係数に基づく因子分析の実行
+	\item[3行目] 結果の出力。
 \end{description}
 
 コードの2行目を見ていただくとわかる通り，ただの\texttt{fa}関数ではなく\texttt{fa.poly}としただけで，あとは因子分析と同じです。この\texttt{.poly}のところがポリコリック相関係数を使うよう指定しているところで，これで実質的に測定尺度水準が順序尺度水準であると想定した因子分析をしたことになっています。

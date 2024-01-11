@@ -44,10 +44,10 @@ StanのコードはRのコードの中に書くこともできますが，別の
 RStudioでFile > New Fileとして新しいファイルを開くときに，Stanファイルとして開くことが可能です。Stanファイルとして開くと，初心者向けの配慮からか，最初からちょっとしたコードがすでに書かれています。コードの書き方を示すサンプルコードなのですが，実際にこのコードを使って何かすることはありませんので，中身は全部削除してしまいましょう。それでもRStudioはその画面がStanファイルのものだということは認識していますから，そこで書いたファイルはStanファイルとして扱ってくれます。ここでまちがって新しくR Scriptで開いてしまった，というときに，保存するときだけ\verb|.stan|をつけておけばいいか，という対応をすると失敗します。RStudioでは拡張子をあえて表示していませんので，ファイル名として\verb|hoge.stan|と書くと実際には\verb|hoge.stan.R|というファイル名になっています。拡張子は最後のピリオドで判断されますので，これはRファイルなのです。このミスを防ぐために，ファイル名にピリオドは使わないこと，ファイルの種類を変える時はエディタ画面の右下でファイル種別を選択してください(図\ref{fig::pp_02})。
 
 \begin{figure}[ht]
-  \centering
-  \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/prepare/fileStyle.png}
-  \caption{ファイル種別の変更}
-  \label{fig::pp_02}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/prepare/fileStyle.png}
+	\caption{ファイル種別の変更}
+	\label{fig::pp_02}
 \end{figure}
 
 RStudioを使ってStanを書くと便利なことがいくつかあります。ひとつは強調表示機能で，ブロックや関数名などStanで使うことが決まっている専門用語は色やフォントが変わって表示されます。\verb|transformed parameters|のように長い専門用語を書くときはミススペルが心配ですが，書いた後で強調されなければスペルミスがある，ということがわかります。もうひとつの利点は文法チェックの機能です。コンパイル型なので，Stanに書かれた命令文は実行前に一括で翻訳されますが，スペルミスや型の違いなど，文法的に間違っているところがあればこれも自動的にチェックして警告記号がでます。またStanファイルが開かれているペインの左上に\verb|Check|というボタンがあり，これを押すことでファイル全体の文法チェックをしてくれます。もし文法上の問題がなければ，「hogehoge.stan is syntactically correct.(hogehoge.stanというファイルは文法的には正しいですよ)」というメッセージがコンソールに表示されます。逆にいうと，これが表示されないというときは何か間違っているので，コンパイルに進む前に修正しましょう。
@@ -60,10 +60,10 @@ RStudioを使ってStanを書くと便利なことがいくつかあります。
 
 
 \begin{figure}[ht]
-  \centering
-  \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/prepare/R_stan.png}
-  \caption{R/RStudioとStanファイルのやり取り}
-  \label{fig::pp_01}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/prepare/R_stan.png}
+	\caption{R/RStudioとStanファイルのやり取り}
+	\label{fig::pp_01}
 \end{figure}
 \subsection{2つのルート}
 ここではRからStanを呼び出す2つのルート，具体的には\verb|rstan|パッケージと\verb|cmdstanr|パッケージについて説明します。
@@ -119,10 +119,10 @@ Windowsは多数派のOSですが，OSメーカはソフトウェア会社でハ
 
 基本言語環境はPythonで提供されており，Jupyter Notebookを使いますが，次のアドレス(に含まれるコード)を使えば言語環境をRに変えて利用することができます。
 \begin{center}
-  \url{https://colab.research.google.com/notebook#create=true&language=r}
+	\url{https://colab.research.google.com/notebook#create=true&language=r}
 \end{center}
 
-ここでウィンドウにRのコードを入力し，実行していきます。\texttt{cmdstanr}や\texttt{rstan}もインストールできます。 
+ここでウィンドウにRのコードを入力し，実行していきます。\texttt{cmdstanr}や\texttt{rstan}もインストールできます。
 インストールに際して，\verb|install.packages("rstan")|のように入力することもできますが，この方法ですとインストールに随分と時間がかかります。
 そこで少し例外的ですが，システムコマンドを直接利用して，\verb|system("apt install -y r-cran-rstan")|のようにすることで，大幅にスピードを短縮することができます。
 
@@ -159,9 +159,9 @@ array[3] vector[7] mu;
 
 さて，今現在はStan2.26と3.32の間，過渡期になります。ですから，どちらのコードで書いてもエラーにはなりません。ただし，(ここからが少し面倒なのですが)
 \begin{itemize}
-  \item RStudioのコードチェック機能は新しいコードの書き方に対応しておらず\footnote{RStudioのバージョン2022.07.2 Build 576で確認しました。}，新しい書き方をするとエディタ上でエラーの警告(赤いバッテンがつきます)が出ますし，チェックボタンを押してもSYNTAX ERRORが出ます。
-  \item \verb|rstan|パッケージは使っているStanが古いこともあって，新しい書き方のコードをコンパイルしようとするとエラーになります。RStudioと同じ，SYNTAX ERRORが出ます。
-  \item \verb|cmdstanr|パッケージは逆に，新しいStanの書き方を推奨していますので，「その書き方は古いよ」という警告を出してきます。Declaration of arrays by placing brackets after a variable name is deprecated and will be removed in Stan 2.32.0. Instead use the array keyword before the type. This can be changed automatically using the auto-format flag to stanc.という警告がでますが，これは「配列のカッコを変数の後ろに置く書き方はもうダメで，Stan2.32以降は無くなります。型の前にarrayと書くようにしてください。これはauto-formatフラグを立てることで自動的に変更するようになります。」という意味です。
+	\item RStudioのコードチェック機能は新しいコードの書き方に対応しておらず\footnote{RStudioのバージョン2022.07.2 Build 576で確認しました。}，新しい書き方をするとエディタ上でエラーの警告(赤いバッテンがつきます)が出ますし，チェックボタンを押してもSYNTAX ERRORが出ます。
+	\item \verb|rstan|パッケージは使っているStanが古いこともあって，新しい書き方のコードをコンパイルしようとするとエラーになります。RStudioと同じ，SYNTAX ERRORが出ます。
+	\item \verb|cmdstanr|パッケージは逆に，新しいStanの書き方を推奨していますので，「その書き方は古いよ」という警告を出してきます。Declaration of arrays by placing brackets after a variable name is deprecated and will be removed in Stan 2.32.0. Instead use the array keyword before the type. This can be changed automatically using the auto-format flag to stanc.という警告がでますが，これは「配列のカッコを変数の後ろに置く書き方はもうダメで，Stan2.32以降は無くなります。型の前にarrayと書くようにしてください。これはauto-formatフラグを立てることで自動的に変更するようになります。」という意味です。
 \end{itemize}
 
 つまり，本書は\verb|cmdstanr|を推奨していますが，そうするとRStudioのエディタ上ではエラーが出て文法チェックができず，コンパイルした後でいざサンプリング，というときにエラーが出たりします。チェックをするには，コンパイルしたオブジェクトを使ってサンプリングをする前に，\verb|model$check_syntax()|関数を実行する必要があります。
@@ -200,7 +200,7 @@ fit <- model$sample(
 同じモデルをそれぞれのパッケージで出力させて，違いを見てみましょう。まずは\verb|rstan|パッケージの出力から。
 
 \begin{SCrstan}{rstanパッケージの出力}{outRstan}
-\begin{verbatim}
+	\begin{verbatim}
   Inference for Stan model: ttest01.
   4 chains, each with iter=6000; warmup=1000; thin=1; 
   post-warmup draws per chain=5000, total post-warmup draws=20000.
@@ -220,14 +220,14 @@ fit <- model$sample(
 
 \verb|rstan|パッケージが出力しているのは次のような情報です。
 \begin{itemize}
-  \item モデル名，チェイン数，反復回数，最終的に得られたMCMCサンプル数(draws)などの説明
-  \item パラメータの事後分布の記述統計量，すなわちベイズ推定による事後分布の情報。順に平均値(\verb|mean|)，平均値の標準誤差(\verb|se_mean|)，標準偏差(\verb|sd|)，2.5\%,25\%,50\%,75\%,97.5\%パーセンタイル。
-  \item MCMCサンプルについての特徴量。有効サンプルサイズ(\verb|n_eff|)とRhat(\verb|Rhat|)
-  \item サンプリングに関するあとがき
+	\item モデル名，チェイン数，反復回数，最終的に得られたMCMCサンプル数(draws)などの説明
+	\item パラメータの事後分布の記述統計量，すなわちベイズ推定による事後分布の情報。順に平均値(\verb|mean|)，平均値の標準誤差(\verb|se_mean|)，標準偏差(\verb|sd|)，2.5\%,25\%,50\%,75\%,97.5\%パーセンタイル。
+	\item MCMCサンプルについての特徴量。有効サンプルサイズ(\verb|n_eff|)とRhat(\verb|Rhat|)
+	\item サンプリングに関するあとがき
 \end{itemize}
 それぞれの内容についてはあとの章で説明するとして，続けて\verb|cmdstanr|パッケージの出力をみてみます。
 \begin{SCcmd}{cmdstanrパッケージの出力}{outCMDstan}
-\begin{verbatim}
+	\begin{verbatim}
   variable   mean median   sd  mad     q5    q95 rhat ess_bulk ess_tail
   lp__ -51.56 -51.20 1.34 1.07 -54.18 -50.12 1.00     7799    10071
   mu1   59.99  60.00 5.63 5.47  50.82  69.16 1.00    16325    12764
@@ -274,15 +274,15 @@ MCMCtoDF <- function(fit) {
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-  \item[1行目] 関数を作る宣言。引数として\verb|stanfit|オブジェクトをとります。
-  \item[2行目] 引数で引き受けたオブジェクトを加工していきます。
-  \item[3行目] まずはMCMCサンプルを抜き出します。
-  \item[4行目] data.frame型にします。
-  \item[5行目] tibble型にします。別にしなくてもいいんですが，著者の好みです。
-  \item[6行目] 行番号を表す変数\verb|iter|を作ります。
-  \item[7行目] 変数の中から\verb|lp__|を除外します。
-  \item[8行目] 行番号変数は残して，tidyなデータにし，\verb|MCMCsample|というオブジェクトに保存します
-  \item[9行目] 戻り値として\verb|MCMCsample|を返します。
+	\item[1行目] 関数を作る宣言。引数として\verb|stanfit|オブジェクトをとります。
+	\item[2行目] 引数で引き受けたオブジェクトを加工していきます。
+	\item[3行目] まずはMCMCサンプルを抜き出します。
+	\item[4行目] data.frame型にします。
+	\item[5行目] tibble型にします。別にしなくてもいいんですが，著者の好みです。
+	\item[6行目] 行番号を表す変数\verb|iter|を作ります。
+	\item[7行目] 変数の中から\verb|lp__|を除外します。
+	\item[8行目] 行番号変数は残して，tidyなデータにし，\verb|MCMCsample|というオブジェクトに保存します
+	\item[9行目] 戻り値として\verb|MCMCsample|を返します。
 \end{description}
 
 
@@ -302,21 +302,21 @@ MCMCtoDF <- function(fit) {
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-  \item[1行目] 関数を作る宣言。引数として\verb|stanfit|オブジェクトをとります。
-  \item[2行目] 引数で引き受けたオブジェクトに\verb|draws|関数を作用させ，サンプルだけ取り出します。
-  \item[3行目] 取り出したサンプルをデータフレーム型にする\verb|posterior|パッケージの\verb|as_draws_df|関数を適用します。
-  \item[4行目] tibble型にします。別にしなくてもいいんですが，著者の好みです。
-  \item[5行目] 変数の中から\verb|lp__|や他の隠し変数を除外します。
-  \item[6行目] 行番号を表す変数\verb|iter|を作ります。
-  \item[7行目] 行番号変数は残して，tidyなデータにし，\verb|MCMCsample|というオブジェクトに保存します
-  \item[8行目] 戻り値として\verb|MCMCsample|を返します。
+	\item[1行目] 関数を作る宣言。引数として\verb|stanfit|オブジェクトをとります。
+	\item[2行目] 引数で引き受けたオブジェクトに\verb|draws|関数を作用させ，サンプルだけ取り出します。
+	\item[3行目] 取り出したサンプルをデータフレーム型にする\verb|posterior|パッケージの\verb|as_draws_df|関数を適用します。
+	\item[4行目] tibble型にします。別にしなくてもいいんですが，著者の好みです。
+	\item[5行目] 変数の中から\verb|lp__|や他の隠し変数を除外します。
+	\item[6行目] 行番号を表す変数\verb|iter|を作ります。
+	\item[7行目] 行番号変数は残して，tidyなデータにし，\verb|MCMCsample|というオブジェクトに保存します
+	\item[8行目] 戻り値として\verb|MCMCsample|を返します。
 \end{description}
 
 
 \paragraph{MCMCtoDF関数の結果}
 出力結果は，どちらも同じく以下のような形式になります。
 \begin{Rscreen}{MCMCサンプルをデータセットにしたもの}{outPREP_01}
-  \begin{verbatim}
+	\begin{verbatim}
 # A tibble: 60,000 × 3
     iter name  value
    <int> <chr> <dbl>
@@ -371,16 +371,16 @@ MCMCsummary <- function(MCMCsample) {
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-  \item[1行目] 関数を作る宣言。引数として\verb|MCMCtoDF|関数の戻り値をとります。
-  \item[2行目] 引数で引き受けたオブジェクトを加工していきます。
-  \item[3行目] 変数名でデータをグループ化します。
-  \item[4-10行目] 記述統計の計算を通じて，EAP,MED,MAP,SD,95\%区間を返します。
-  \item[11]行目 出力する数値データは，少数下3桁まで表示させるようにします。
+	\item[1行目] 関数を作る宣言。引数として\verb|MCMCtoDF|関数の戻り値をとります。
+	\item[2行目] 引数で引き受けたオブジェクトを加工していきます。
+	\item[3行目] 変数名でデータをグループ化します。
+	\item[4-10行目] 記述統計の計算を通じて，EAP,MED,MAP,SD,95\%区間を返します。
+	\item[11]行目 出力する数値データは，少数下3桁まで表示させるようにします。
 \end{description}
 
 この関数は，先ほどの\verb|MCMCtoDF|とセットで使い,次のような結果を得ます。
 \begin{Rscreen}{MCMCsummaryの結果}{outPREP_02}
-  \begin{verbatim}
+	\begin{verbatim}
 > fit %>% MCMCtoDF() %>% MCMCsummary()
 # A tibble: 3 × 7
   name        EAP       MED       MAP        SD       L95       U95

@@ -1,0 +1,26 @@
+\begin{table}[b]
+    \begin{center}
+        \caption{サンプルデータファイルの構造}
+        \begin{tabular}{ccl}
+            変数名        & 型   & 内容                     \\\hline
+            Year       & 文字列 & 何年度のデータか               \\
+            Name       & 文字列 & 選手名                    \\
+            team       & 文字列 & チーム名                   \\
+            salary     & 数字  & 年報(推定)                 \\
+            bloodType  & 文字列 & 血液型。A,B,O,AB型の4分類      \\
+            height     & 数字  & 選手の身長                  \\
+            weight     & 数字  & 選手の体重                  \\
+            UniformNum & 数字  & 背番号                    \\
+            position   & 文字列 & 守備位置。投手，捕手，内野手，外野手の4分類 \\
+            Games      & 数字  & 出場試合数                  \\
+            AtBats     & 数字  & 打席に立った回数。打数            \\
+            Hit        & 数字  & ヒットを打った回数              \\
+            HR         & 数字  & ホームランを打った回数            \\
+            Win        & 数字  & 勝ち投手になった回数。投手のみ        \\
+            Lose       & 数字  & 負け投手になった回数。投手のみ        \\
+            Save       & 数字  & セーブ数。投手のみ              \\
+            Hold       & 数字  & ホールド数。投手のみ             \\\hline
+        \end{tabular}
+        \label{BaseballDecade}
+    \end{center}
+\end{table}

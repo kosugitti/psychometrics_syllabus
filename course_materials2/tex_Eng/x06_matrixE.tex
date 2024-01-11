@@ -256,23 +256,23 @@ So what will become convenient? This has to do with solving equations.
 For example, let's suppose we have a system of equations like the following.
 
 \[
-    \left \{
-    \begin{array}{lcl}
-        x-2y-5z  & = & 3 \\
-        5x+4y+3z & = & 1 \\
-        3x+y-3z  & = & 6
-    \end{array}
-    \right .
+	\left \{
+	\begin{array}{lcl}
+		x-2y-5z  & = & 3 \\
+		5x+4y+3z & = & 1 \\
+		3x+y-3z  & = & 6
+	\end{array}
+	\right .
 \]
 % これは行列で表現すると，次のようになります。
 When expressed as a matrix, it becomes as follows.
 \[
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} 1 & -2 & -5 \\
                 5 & 4  & 3  \\
                 3 & 1  & -3\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
 \]
 
 % この左辺を行列とベクトルの式の計算ルールにのっとって展開してみてください。ちゃんと最初の連立方程式の左辺になることがわかると思います。かけて足して，という面倒な計算ルールは，連立方程式を簡単に表記するためのものだったのですね。
@@ -281,12 +281,12 @@ Please try to expand this left side according to the calculation rules of matric
 % 最終的にはこの方程式を解いて，次のように答えを求めます。
 Ultimately, solve this equation then find the answer as follows.
 \[
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} 1 & -2 & -5 \\
                 5 & 4  & 3  \\
                 3 & 1  & -3\end{pmatrix}
-    \begin{pmatrix} x=-1 \\ y=3 \\ z=-2 \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
+	\begin{pmatrix} x=-1 \\ y=3 \\ z=-2 \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
 \]
 
 
@@ -298,32 +298,32 @@ One such solution, the elimination method, is to multiply one equation by a cert
 % まず，第一の式を5倍，あるいは3倍して，第二，第三の式からxの項を消去します。
 First, multiply the first equation by 5 or 3, then eliminate the x term from the second and third equations.
 \[ \left \{
-    \begin{array}{rcl}
-        x-2y-5z  & = & 3  \\
-        -14y-28z & = & 14 \\
-        -7y-12z  & = & 3
-    \end{array}
-    \right .
+	\begin{array}{rcl}
+		x-2y-5z  & = & 3  \\
+		-14y-28z & = & 14 \\
+		-7y-12z  & = & 3
+	\end{array}
+	\right .
 \]
 % 第二の式の係数を簡単にしておきましょう。
 Let's simplify the coefficient of the second equation.
 \[ \left \{
-    \begin{array}{rcl}
-        x-2y-5z & = & 3  \\
-        y+2z    & = & -1 \\
-        -7y-12z & = & 3
-    \end{array}
-    \right .
+	\begin{array}{rcl}
+		x-2y-5z & = & 3  \\
+		y+2z    & = & -1 \\
+		-7y-12z & = & 3
+	\end{array}
+	\right .
 \]
 % 第二の式を7倍して，第三の式からyを消去します。
 Multiply the second equation by 7, and eliminate y from the third equation.
 \[ \left \{
-    \begin{array}{rcl}
-        x-2y-5z & = & 3  \\
-        y+2z    & = & -1 \\
-        2z      & = & -4
-    \end{array}
-    \right .
+	\begin{array}{rcl}
+		x-2y-5z & = & 3  \\
+		y+2z    & = & -1 \\
+		2z      & = & -4
+	\end{array}
+	\right .
 \]
 % あとはこれの3行目から$z=-2$が得られ，芋づる式に$x=-1$，$y=3$が得られました。
 From the third line of this, $z=-2$ was obtained, and $x=-1$, $y=3$ were obtained in a chain reaction.
@@ -335,24 +335,24 @@ This operation involves applying the elimination method, which eliminates charac
 % \paragraph{第一段階}
 Sorry, but you didn't provide any Japanese text for me to translate. Could you please provide the text you want to be translated?
 \[
-    \begin{pmatrix} 1 & -2 & -5  \\
+	\begin{pmatrix} 1 & -2 & -5  \\
                 0 & 1  & 2   \\
                 0 & -7 & -12\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\ -1 \\ 3 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\ -1 \\ 3 \end{pmatrix}
 \]
 
 % \paragraph{第二段階}
 You didn't provide any Japanese text. Could you please provide the text you want to be translated?
 
 \[
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} 1 & -2 & -5 \\
                 0 & 1  & 2  \\
                 0 & 0  & 2\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\ -1 \\ -4 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\ -1 \\ -4 \end{pmatrix}
 \]
 
 % さらにこの方法を改良した，ガウス−ジョルダンの消去法というものがあります。この手法による係数の変化を，行列表記で見ていくことにします。
@@ -361,48 +361,48 @@ Moreover, there is a method called Gauss-Jordan elimination, which is an improve
 % まず第一段目は同じです。
 Firstly, the first paragraph is the same.
 \[
-    \begin{pmatrix} 1 & -2 & -5  \\
+	\begin{pmatrix} 1 & -2 & -5  \\
                 0 & 1  & 2   \\
                 0 & -7 & -12\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\ -1 \\ 3 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\ -1 \\ 3 \end{pmatrix}
 \]
 % 次に，第二の方程式を用いて第一と第三の式から$y$の係数を消してしまいます。
 Next, use the second equation to eliminate the coefficient of $y$ from the first and third equations.
 \[
-    \begin{pmatrix} 1 & 0 & -1 \\
+	\begin{pmatrix} 1 & 0 & -1 \\
                 0 & 1 & 2  \\
                 0 & 0 & -2\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 1 \\ -1 \\ 4 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 1 \\ -1 \\ 4 \end{pmatrix}
 \]
 % 最後に，第三の式の$z$の係数を1にして，第一，第二式の$z$の係数を消してしまいましょう。
 Finally, let's make the coefficient of $z$ in the third equation 1 and eliminate the coefficient of $z$ in the first and second equations.
 \[
-    \begin{pmatrix} 1 & 0 & 0 \\
+	\begin{pmatrix} 1 & 0 & 0 \\
                 0 & 1 & 0 \\
                 0 & 0 & 1\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} -1 \\ 3 \\ -2 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} -1 \\ 3 \\ -2 \end{pmatrix}
 \]
 
 % 最後の形を見ると，左辺は単位行列になっていますから，
 Looking at the final form, the left side has become a unit matrix, so
 \[
-    \begin{pmatrix}
-        x \\
-        y \\
-        z
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        -1 \\
-        3  \\
-        -2
-    \end{pmatrix}
+	\begin{pmatrix}
+		x \\
+		y \\
+		z
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		-1 \\
+		3  \\
+		-2
+	\end{pmatrix}
 \]
 % と解が求められたことがわかります。
 It has been understood that the solution was required.
@@ -415,28 +415,28 @@ Now, let's denote the coefficient matrix as $\bm{A}$. If its inverse matrix $\bm
 % 実際に見て見ましょう。
 Let's actually take a look.
 \[
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} 1 & -2 & -5 \\
                 5 & 4  & 3  \\
                 3 & 1  & -3\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
 \]
 % この連立方程式に対して，次のような操作をします。
 We will perform the following operations on this system of equations.
 \[
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} 1 & -2 & -5 \\
                 5 & 4  & 3  \\
                 3 & 1  & -3\end{pmatrix}^{-1}
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} 1 & -2 & -5 \\
                 5 & 4  & 3  \\
                 3 & 1  & -3\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 1 & -2 & -5 \\
                 5 & 4  & 3  \\
                 3 & 1  & -3\end{pmatrix}^{-1}
-    \begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
+	\begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
 \]
 
 % とします\footnote{数値的には
@@ -460,12 +460,12 @@ Sorry, but you didn't provide any Japanese text to be translated. Please provide
 % という行列です}。すると左辺は単位行列になりますから，次のように計算すれば一気に答えが求まることになるのです。
 This translates to: "This is the matrix. Then, since the left side becomes the unit matrix, if you calculate as follows, you will get the answer all at once."
 \[
-    \begin{pmatrix} 1 & 0 & 0 \\
+	\begin{pmatrix} 1 & 0 & 0 \\
                 0 & 1 & 0 \\
                 0 & 0 & 1\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} -1 \\ 3 \\ -2 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} -1 \\ 3 \\ -2 \end{pmatrix}
 \]
 % つまり，連立方程式を解くという問題が，係数行列の逆行列を求める問題になります。また，逆行列は存在しないこともある，ということでしたが，その場合その連立方程式は解けない，ということになります。
 In other words, the problem of solving a system of equations becomes the problem of finding the inverse matrix of the coefficient matrix. It was also mentioned that the inverse matrix may not exist. In that case, it means that the system of equations cannot be solved.
@@ -479,7 +479,7 @@ In other words, the problem of solving a system of equations becomes the problem
 % \paragraph{連立方程式を解く}次の連立方程式を解きなさい。
 \paragraph{Solving Simultaneous Equations}Please solve the following simultaneous equations.
 \[
-    \left\{\begin{array}{rr}x-2 y+3 z= & 1 \\ 3 x+y-5 z= & -4 \\ -2 x+6 y-9 z= & -2\end{array}\right.
+	\left\{\begin{array}{rr}x-2 y+3 z= & 1 \\ 3 x+y-5 z= & -4 \\ -2 x+6 y-9 z= & -2\end{array}\right.
 \]
 
 \end{document}

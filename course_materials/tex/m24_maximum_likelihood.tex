@@ -42,67 +42,67 @@
 ということになります。ここで$ \beta_0 + \beta_1 x_i$のところは確率的に変わるものではない，ということを思い出してください。
 
 \[
-   y_i =
-   \tcboxmath[
-      enhanced,         % これは必須
-      frame hidden,     % 枠を消す. これも enhanced 必須
-      colback=cyan!10,
-      overlay={
-            \node[below,blue] at (frame.south) {確率的でないところ};
-         }
-   ]{
-      \beta_0 \quad +\quad \beta_1 x_i
-   }
-   +
-   \tcboxmath[
-      enhanced,         % これは必須
-      frame hidden,     % 枠を消す. これも enhanced 必須
-      colback=red!10,
-      overlay={
-            \node[below,red] at (frame.south) {確率的};
-         }
-   ]{
-      e_i
-   }
+	y_i =
+	\tcboxmath[
+		enhanced,         % これは必須
+		frame hidden,     % 枠を消す. これも enhanced 必須
+		colback=cyan!10,
+		overlay={
+				\node[below,blue] at (frame.south) {確率的でないところ};
+			}
+	]{
+		\beta_0 \quad +\quad \beta_1 x_i
+	}
+	+
+	\tcboxmath[
+		enhanced,         % これは必須
+		frame hidden,     % 枠を消す. これも enhanced 必須
+		colback=red!10,
+		overlay={
+				\node[below,red] at (frame.south) {確率的};
+			}
+	]{
+		e_i
+	}
 \]
 
 \vspace{0.5cm}
 誤差$e_i$は平均0を中心に確率的に散らばりますが，その前のところは確率的ではありませんので，これを組み合わせた式全体としては，最後に確率的な散らばりがひっついているような形になります。数式ではありませんが，イメージでいうとこんな感じ。
 \begin{center}
-   \begin{tikzpicture}[xscale = 0.8, yscale = 4]
-      \coordinate (A) at (-2,0);
-      \draw (A) node[left] {$y_i = \beta_0 + \beta_1 x_i + $};
-      \draw [domain=-2:2] plot(\x, {exp((-(\x)^2)/2)/(sqrt(2*pi))-0.1});
-      \draw [dashed] (0,0.4)--(0,-0.05);
-      \draw (-2,-0.05)--(2,-0.05);
-      \node (zero) at (0,-0.05)[below]{$0$};
-   \end{tikzpicture}
+	\begin{tikzpicture}[xscale = 0.8, yscale = 4]
+		\coordinate (A) at (-2,0);
+		\draw (A) node[left] {$y_i = \beta_0 + \beta_1 x_i + $};
+		\draw [domain=-2:2] plot(\x, {exp((-(\x)^2)/2)/(sqrt(2*pi))-0.1});
+		\draw [dashed] (0,0.4)--(0,-0.05);
+		\draw (-2,-0.05)--(2,-0.05);
+		\node (zero) at (0,-0.05)[below]{$0$};
+	\end{tikzpicture}
 \end{center}
 
 さて，この「確率的でないところ」が確率分布の中に入り込むとしたら，誤差$e_i$の平均値を一定の量，$\beta_0 + \beta_1 x_i$分だけ動かすことになります。
 回帰直線が表しているのは，誤差のない予測の線でもあります。実際のデータはそれに誤差が伴って生じます。確率モデルになった線形モデルは，図\ref{fig::24_01}のようなイメージで考えるといいかもしれません。
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/24_ML/Rplot24_06.png}
-   \caption{予測直線にまとわりつく誤差}
-   \label{fig::24_01}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/24_ML/Rplot24_06.png}
+	\caption{予測直線にまとわりつく誤差}
+	\label{fig::24_01}
 \end{figure}
 
 ここで正規分布がもつ2つのパラメータ，$\mu$と$\sigma$は，それぞれ\textbf{位置}と\textbf{幅}を表しているわけですが，確率的でないところはこの位置をズラすような作用をすることになります。
 
 大事なところなので，もう一度式で確認しながら説明します。まず今回のモデルに含まれる情報は次のとおりです。
 \begin{eqnarray}
-   \hat{y}_i = \beta_0 + \beta_1 x_i \label{eq24_01}\\
-   y_i = \hat{y}_i + e_i \label{eq24_02}\\
-   e_i \sim N(0,\sigma)\label{eq24_03}
+	\hat{y}_i = \beta_0 + \beta_1 x_i \label{eq24_01}\\
+	y_i = \hat{y}_i + e_i \label{eq24_02}\\
+	e_i \sim N(0,\sigma)\label{eq24_03}
 \end{eqnarray}
 ここで式\ref{eq24_01}と\ref{eq24_02}を合わせて，
 \begin{equation}
-   \begin{array}{ccc}
-      y_i & =    & \beta_0 + \beta_1 x_i +e_i \\
-      e_i & \sim & N(0,\sigma)
-   \end{array}
-   \label{eq24_04}
+	\begin{array}{ccc}
+		y_i & =    & \beta_0 + \beta_1 x_i +e_i \\
+		e_i & \sim & N(0,\sigma)
+	\end{array}
+	\label{eq24_04}
 \end{equation}
 とします。ここで$e_i$の中心は$0$で，それに$\beta_0 + \beta_1 x_i$が加わるのですから，
 \[ y_i \sim N(\beta_0 + \beta_1 x_i, \sigma) \]
@@ -110,46 +110,46 @@
 
 あるいは，式\ref{eq24_02}と\ref{eq24_03}から先に，
 \begin{eqnarray}
-   \hat{y}_i &=& \beta_0 + \beta_1 x_i \label{eq24_05}\\
-   y_i &\sim& N(\hat{y}_i,\sigma) \label{eq24_06}
+	\hat{y}_i &=& \beta_0 + \beta_1 x_i \label{eq24_05}\\
+	y_i &\sim& N(\hat{y}_i,\sigma) \label{eq24_06}
 \end{eqnarray}
 と考えて，この式\ref{eq24_06}の$\hat{y}_i$に式\ref{eq24_05}を代入しても，
 \[ y_i \sim N(\beta_0 + \beta_1x_i, \sigma) \]
 が得られます。どちらのルートでも結構ですから，自分のわかりやすい方で理解してください。一覧の流れを図\ref{m24_two_way_root}にまとめてみました。
 \begin{figure}[ht]
-   \centering
-   \begin{tikzpicture}
-      \coordinate (A) at (1,1);
-      \coordinate (B) at (2,2);
-      \coordinate (C) at (5,2);
-      \coordinate (D) at (7,1);
-      \coordinate (E) at (1,3);
-      \coordinate (F) at (7,3);
-      \coordinate (G) at (1,5);
-      \coordinate (H) at (7,5);
-      \coordinate (I) at (1,7);
-      \coordinate (J) at (2.5,6.5);
-      \coordinate (K) at (5,6.5);
-      \coordinate (L) at (7,7);
-      \draw[->] (B)--(C);
-      \draw[->] (G)--(E);
-      \draw[->] (H)--(F);
-      \draw[->] (J)--(K);
-      \node (I1) at (0.3,6.5) {$\hat{y}_i  = \beta_0 + \beta_1x_i \ldots$(1)};
-      \node (I2) at (0.54,6)  {${y}_i  = \hat{y}_i + e_i \ldots$(2)};
-      \node (I3) at (0.5,5.5)  {$e_i \sim N(0,\sigma) \ldots$(3)};
-      \node (L1) at (7,6)  {$e_i \sim N(0,\sigma)$};
-      \node (L2) at (7,6.5) {${y}_i  = \beta_0 + \beta_1x_i + e_i$};
-      \node (A1) at (0.5,2.5) {$\hat{y}_i  = \beta_0 + \beta_1x_i$};
-      \node (A2) at (0.5,2) {$y_i \sim N(\hat{y}_i,\sigma)$};
-      \node (D1) at (7,2) {$y_i \sim N(\beta_0 + \beta_1 x_i,\sigma)$};
-      \node (P1) at (3.5,6.5)[above] {(2)に(1)を代入};
-      \node (P2) at (1,4)[left] {(2)に(3)を代入};
-      \node (P3) at (7,4)[right] {};
-      \node (P4) at (3.5,2)[below] {};
-   \end{tikzpicture}
-   \caption{確率モデルと予測モデルの合体}
-   \label{m24_two_way_root}
+	\centering
+	\begin{tikzpicture}
+		\coordinate (A) at (1,1);
+		\coordinate (B) at (2,2);
+		\coordinate (C) at (5,2);
+		\coordinate (D) at (7,1);
+		\coordinate (E) at (1,3);
+		\coordinate (F) at (7,3);
+		\coordinate (G) at (1,5);
+		\coordinate (H) at (7,5);
+		\coordinate (I) at (1,7);
+		\coordinate (J) at (2.5,6.5);
+		\coordinate (K) at (5,6.5);
+		\coordinate (L) at (7,7);
+		\draw[->] (B)--(C);
+		\draw[->] (G)--(E);
+		\draw[->] (H)--(F);
+		\draw[->] (J)--(K);
+		\node (I1) at (0.3,6.5) {$\hat{y}_i  = \beta_0 + \beta_1x_i \ldots$(1)};
+		\node (I2) at (0.54,6)  {${y}_i  = \hat{y}_i + e_i \ldots$(2)};
+		\node (I3) at (0.5,5.5)  {$e_i \sim N(0,\sigma) \ldots$(3)};
+		\node (L1) at (7,6)  {$e_i \sim N(0,\sigma)$};
+		\node (L2) at (7,6.5) {${y}_i  = \beta_0 + \beta_1x_i + e_i$};
+		\node (A1) at (0.5,2.5) {$\hat{y}_i  = \beta_0 + \beta_1x_i$};
+		\node (A2) at (0.5,2) {$y_i \sim N(\hat{y}_i,\sigma)$};
+		\node (D1) at (7,2) {$y_i \sim N(\beta_0 + \beta_1 x_i,\sigma)$};
+		\node (P1) at (3.5,6.5)[above] {(2)に(1)を代入};
+		\node (P2) at (1,4)[left] {(2)に(3)を代入};
+		\node (P3) at (7,4)[right] {};
+		\node (P4) at (3.5,2)[below] {};
+	\end{tikzpicture}
+	\caption{確率モデルと予測モデルの合体}
+	\label{m24_two_way_root}
 \end{figure}
 
 
@@ -209,7 +209,7 @@ result.LM
 \end{lstlisting}
 結果は出力\ref{RS:out24_01}のようになります。
 \begin{Rscreen}{比較した結果}{out24_01}
-   \begin{verbatim}
+	\begin{verbatim}
 > # 最小二乗法の推定
 > result.LS <- lsfit(x = batter$height, y = batter$weight)
 > result.LS$coefficients
@@ -253,10 +253,10 @@ F-statistic: 226.9 on 1 and 327 DF,  p-value: < 2.2e-16
 \section{課題}
 \paragraph{回帰分析の結果を読み取る}出力\ref{RS:out24_01}の読み取り方について，正しい記述をすべて選んでください。
 \begin{itemize}
-   \item 回帰係数が$1.166$である確率は$p<0.05$なので，滅多に得られる数字ではないから統計的に意味がない。
-   \item 回帰係数の有意性検定が示しているのは，傾きが0であるという帰無仮説のもとで今回の係数$1.166$が得られる確率が小さい($p<0.05$)ということだから，統計的に意味がある。
-   \item 今回のデータから考えると，回帰係数を$1.166$としたときに尤度が最も高くなる。
-   \item 今回のデータから考えると，回帰係数を$1.166$としたときに残差の総量(二乗和)が最も小さくなる。
-   \item 今回のデータから考えると，回帰係数が$1.166$となる確率は95\%以上である。
+	\item 回帰係数が$1.166$である確率は$p<0.05$なので，滅多に得られる数字ではないから統計的に意味がない。
+	\item 回帰係数の有意性検定が示しているのは，傾きが0であるという帰無仮説のもとで今回の係数$1.166$が得られる確率が小さい($p<0.05$)ということだから，統計的に意味がある。
+	\item 今回のデータから考えると，回帰係数を$1.166$としたときに尤度が最も高くなる。
+	\item 今回のデータから考えると，回帰係数を$1.166$としたときに残差の総量(二乗和)が最も小さくなる。
+	\item 今回のデータから考えると，回帰係数が$1.166$となる確率は95\%以上である。
 \end{itemize}
 \end{document}

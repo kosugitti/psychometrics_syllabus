@@ -1,0 +1,10 @@
+\begin{lstlisting}[language=c++,label={code:13_01},caption={重回帰モデル}]
+model1 <- "
+x4 ~ x5 + x6
+"
+result1 <- sem(model1, data = HolzingerSwineford1939)
+summary(result1, fit.measures = T)
+# 比較
+result1.1 <- lm(x4 ~ x5 + x6, data = HolzingerSwineford1939)
+summary(result1.1)
+\end{lstlisting}

@@ -70,11 +70,11 @@ This is represented by the \keyterm {Item Information Curve} {こうもくじょ
 ここで$p_j(\theta)$はその項目$j$の$\theta$における正答率(通過率)，$q_j(\theta)$は誤答率を表しています。能力が平均的，すなわち$\theta=0$のときは，$0.5 \times 0.5$になる平均的な困難度($b=0$)の設問が最も大きな値になる，というわけですね。
 図\ref{fig::05_01}にいくつかのICCとそれに対応するIICを描きましたので，確認してください。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_01.png}
-        \caption{項目特徴曲線(ICC,上図)と項目情報曲線(IIC,下図)の例。左から順に$a_1=0.8,b_1=-1$の識別力が弱く簡単な項目，$a_2=1,b=1$のやや困難な項目，$a_3=1.2,b_3=2$の識別力が高く困難な項目。}
-        \label{fig::05_01}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_01.png}
+		\caption{項目特徴曲線(ICC,上図)と項目情報曲線(IIC,下図)の例。左から順に$a_1=0.8,b_1=-1$の識別力が弱く簡単な項目，$a_2=1,b=1$のやや困難な項目，$a_3=1.2,b_3=2$の識別力が高く困難な項目。}
+		\label{fig::05_01}
+	\end{center}
 \end{figure}
 IICのピークは，対応するICCの$\theta=0.5$のところにあること，識別力はピークの尖り具合に関わっていることを確認してください。
 
@@ -83,11 +83,11 @@ IICのピークは，対応するICCの$\theta=0.5$のところにあること�
 
 またIICはある項目から得られる情報のことを意味しますが，テストに含まれているすべての情報関数を足し合わせることで，そのテストから得られる情報の大きさを関数として評価できます。すなわちテスト全体の情報量$I_T(\theta)$は，$I_T(\theta)=\sum_{j=1}^M I_j(\theta)$であり，この関数のことを\keyterm{テスト情報関数}{てすとじょうほうかんすう}{Test Infromation Curve}といいます。図\ref{fig::05_01}の3つの項目からなるTICを示したのが図\ref{fig::05_02}です。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_02.png}
-        \caption{テスト情報関数(黒の実線部)。理解を進めるために各IICを薄い点線で表現した。}
-        \label{fig::05_02}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_02.png}
+		\caption{テスト情報関数(黒の実線部)。理解を進めるために各IICを薄い点線で表現した。}
+		\label{fig::05_02}
+	\end{center}
 \end{figure}
 これを見ると，この3つの項目からなるテストは$\theta=2$より少し低いレベルを測定するときに最も鋭敏に働くということがわかります。このように，項目母数がわかっていれば事前にテストの特徴をどのあたりに持ってくるかを決定でき，自由自在にテストをデザインできるようになるわけです。
 

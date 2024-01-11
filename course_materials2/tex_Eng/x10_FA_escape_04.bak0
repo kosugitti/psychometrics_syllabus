@@ -1,0 +1,6 @@
+\begin{lstlisting}[language=c++,label={code:10_02},caption={データの構造を見る}]
+corMat <- cor(dat,use="pairwise") 
+corMat
+eigen(corMat)
+fa.parallel(dat)
+\end{lstlisting}

@@ -1,0 +1,11 @@
+\begin{table}[ht]
+    \centering
+    \caption{確率分布とリンク関数の関係}
+    \begin{tabular}{cccc}
+        確率分布       & 逆リンク関数                                    & リンク関数                                                        & Stanの専用関数         \\\hline
+        正規分布       & $\mu = \beta_0 + \beta_1 X$                     & $\beta_0 + \beta_1X=\mu$                                          & \verb|normal|          \\
+        ベルヌーイ分布 & $\theta = \frac{1}{1+exp(-(\beta_0+\beta_1X))}$ & $\beta_0 + \beta_1 X = \log\left(\frac{\theta}{1-\theta}\right) $ & \verb|bernoulli_logit| \\
+        ポアソン分布   & $\lambda = \exp(\beta_0 + \beta_1 X)$           & $\beta_0 + \beta_1X = \log(\lambda)$                              & \verb|poisson_log|     \\\hline
+    \end{tabular}
+    \label{tbl::25_01}
+\end{table}

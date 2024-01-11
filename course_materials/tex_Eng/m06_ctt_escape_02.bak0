@@ -1,0 +1,7 @@
+\begin{align*}
+     & Var(X)  =  \frac{1}{n}\sum_{i=1}^n (X_i - \bar{X})^2                                                                                              & \mbox{定義より}                \\
+     & = \frac{1}{n}\sum_{i=1}^n  ((t_i + e_i) - (\bar{t} + \bar{e}))^2                                                                                  & \mbox{Xをテスト理論のモデルに} \\
+     & = \frac{1}{n}\sum_{i=1}^n (  (t_i - \bar{t}) + (e_i - \bar{e}) )^2                                                                                & \mbox{同じ記号でまとめる}      \\
+     & = \frac{1}{n}\sum_{i=1}^n (  (t_i - \bar{t})^2 + 2(t_i - \bar{t})(e_i - \bar{e}) + (e_i - \bar{e})^2  )                                           & \mbox{展開する}                \\
+     & = \frac{1}{n}\sum_{i=1}^n (t_i - \bar{t})^2 +\frac{1}{n}\sum_{i=1}^n 2(t_i - \bar{t})(e_i - \bar{e})  + \frac{1}{n}\sum_{i=1}^n (e_i - \bar{e})^2 & \mbox{$\sum$を分配}            \\
+\end{align*}

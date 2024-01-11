@@ -1,0 +1,8 @@
+\begin{lstlisting}[language=c++,label={code:10_01},caption={サンプルデータを使う}]
+rm(list=ls())
+library(tidyverse)
+library(psych)
+dat <- psych::bfi %>% dplyr::select(-gender,-education,-age)
+dat
+help(bfi)
+\end{lstlisting}

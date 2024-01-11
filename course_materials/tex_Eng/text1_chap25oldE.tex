@@ -66,9 +66,9 @@ The goal of Bayesian statistics is to create a posterior distribution. In simple
 The Monte Carlo method is a random number generation technique. Random numbers are numbers without a regular pattern, but it's quite difficult to create them. If humans simply write numbers from 0-9, they unconsciously create a non-uniform pattern\footnote{There is a saying called a 'false 538', which suggests that when humans try to create numbers spontaneously, they tend to produce a lot of 5s, 3s, and 8s. I can't find any evidence (sources) for this, so I don't know if it's true or not...}. You might think that computers (like R) have random numbers, but computers are essentially calculators and are completely rational. While it might seem as though they operate on random numbers, in reality, they have an algorithm embedded in them to create numbers that appear random. Therefore, they are actually generating pseudorandom numbers. The random numbers created by a computer, of course, have less regularity than the random numbers humans casually come up with, but fundamentally... (Text truncated.)
 \input{text1_chap25old_escape_03}
 % というステップを反復($t=1,2,3\ldots$)することで生成するのです。こうした乱数列ができれば，それを正規分布の形だとか二項分布の形に当てはめて出力することは簡単なのです。このステップ・バイ・ステップの計算法としてある確率分布に従う乱数発生技術があり，これがマルコフ過程とひっついてできたのがMCMC法ということになります\footnote{余談ですが，スマホアプリなどで「ガチャを引く」というのも内部では乱数が生成されていて擬似的に「偶然あたりが出た」のを装っているに過ぎません。私はゲームなどをする時，擬似乱数に思いを馳せ「どこかの誰かに遊ばされている」と思うとやる気がなくなるので，ガチャを引くようなシーンは興醒めしてしまいます。やはりマルチプレイヤーゲームのように，人間が背後にいたほうがよっぽど意外な行動が見られますし，ゲームよりもリアルの世界の方が擬似的でない本物の偶然を楽しむことができておもしろいと思います。皆さんはどうお考えですか。}。
-Through repeating these steps ($t=1,2,3\ldots$), random sequences are generated. Once these sequences are created, it's easy to output them in the form of normal distribution or binomial distribution. There is a step-by-step calculation method for generating random sequences that follows a certain probability distribution, and this is combined with the Markov process to create the MCMC method. 
+Through repeating these steps ($t=1,2,3\ldots$), random sequences are generated. Once these sequences are created, it's easy to output them in the form of normal distribution or binomial distribution. There is a step-by-step calculation method for generating random sequences that follows a certain probability distribution, and this is combined with the Markov process to create the MCMC method.
 
-In footnote, it is worth mentioning that when you "pull gacha" in smartphone apps, random numbers are generated internally, and it merely poses as if you "accidentally hit it". When I play games, I lose motivation when I think about pseudo-random numbers, feeling “someone somewhere is messing with me,” and scenes like pulling gacha turn me off. After all, like in multiplayer games where human presence is behind, you can definitely witness surprising behaviors, and I think it’s more interesting and enjoyable to experience truly unexpected events in the real world rather than in games. What do you think? 
+In footnote, it is worth mentioning that when you "pull gacha" in smartphone apps, random numbers are generated internally, and it merely poses as if you "accidentally hit it". When I play games, I lose motivation when I think about pseudo-random numbers, feeling “someone somewhere is messing with me,” and scenes like pulling gacha turn me off. After all, like in multiplayer games where human presence is behind, you can definitely witness surprising behaviors, and I think it’s more interesting and enjoyable to experience truly unexpected events in the real world rather than in games. What do you think?
 
 (Note: 'Gacha' is a term originated from Japanese online games, referring to a mechanism that incentivizes players to spend real-world money to receive randomized virtual items.)
 
@@ -104,13 +104,13 @@ length(X[X>1])/100000
 1-pnorm(1,mean=0,sd=1)
 \end{lstlisting}
 \begin{description}
-   \item[1行目] 平均$0$，標準偏差$1$の標準正規分布に従う乱数を10万点生成して\texttt{X}に代入
-   \item[2行目] \texttt{X}のうち\texttt{X>1}の条件を満たす要素の長さ(\texttt{length})=個数を10万で割る
-   \item[4行目] 理論値による検算。確率点1までの累積確率を総面積1から引くことで，該当箇所の面積を求める
+	\item[1行目] 平均$0$，標準偏差$1$の標準正規分布に従う乱数を10万点生成して\texttt{X}に代入
+	\item[2行目] \texttt{X}のうち\texttt{X>1}の条件を満たす要素の長さ(\texttt{length})=個数を10万で割る
+	\item[4行目] 理論値による検算。確率点1までの累積確率を総面積1から引くことで，該当箇所の面積を求める
 \end{description}
 
 \begin{Rscreen}{乱数による近似}{out25_01}
-   \begin{verbatim}
+	\begin{verbatim}
 > X <- rnorm(100000,mean=0,sd=1)
 > length(X[X>1])/100000
 [1] 0.15886

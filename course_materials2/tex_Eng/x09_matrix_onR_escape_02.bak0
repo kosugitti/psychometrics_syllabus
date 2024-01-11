@@ -1,0 +1,6 @@
+\begin{description}
+	\item[1行目] \texttt{1:9}をオブジェクトAに代入しています。ここでコロン\verb|:|は連続した数字を表しており，\texttt{c(1,2,3,4,5,6,7,8,9)}と同じ意味です。
+	\item[2行目] 要素$3,4,5$からなるベクトルを作ってBに代入しています。\texttt{c()}は結合する(combine)という関数です。
+	\item[3行目] 9つの要素があるベクトルを持ったオブジェクトAを\texttt{matrix}型に変更しています。その時の列数は3(\texttt{ncol=3})です。
+	\item[4行目] 同じくオブジェクトAを\texttt{matrix}型に変換，列数は3ですが\texttt{byrow = T}で「行ごとに並べる」スイッチをオン(TRUE)にしています。
+\end{description}

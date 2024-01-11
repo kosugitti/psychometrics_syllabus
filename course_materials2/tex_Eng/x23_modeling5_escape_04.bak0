@@ -1,0 +1,15 @@
+\begin{lstlisting}[language=c++,label={code:22_01},caption={多項分布のパラメータ推定}]
+# rstanの場合
+model <- rstan::stan_model("categorical1.stan")
+fit <- sampling(model,
+  data = list(K = 3, X = c(51, 45, 27))
+)
+# cmdstanrの場合
+model <- cmdstanr::cmdstan_model("categorical1.stan")
+fit <- model$sample(
+  data = list(K = 3, X = c(51, 45, 27)),
+  chains = 4,
+  parallel_chains = 4,
+  refresh = 500
+)
+\end{lstlisting}

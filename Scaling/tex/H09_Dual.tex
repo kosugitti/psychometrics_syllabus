@@ -21,17 +21,17 @@
 
 これについて，ごくシンプルかつ具体的な例をあげてみましょう。血圧と頭痛の頻度について調査したとします。血圧は高い，普通，低いの3段階。頭痛の頻度は「ない」，「たまに」，「ときどき」，「いつも」の4段階です。表\ref{tbl::14_01}のような結果を見ると，この集計表に直線的な関係は確かになさそうですね。でも関係ないわけではない，と思いませんか。
 \begin{table}[ht]
-    \begin{center}
-        \caption{血圧と頭痛}
-        \begin{tabular}{c|cccc}
-            血圧 & ない & たまに & ときどき & いつも \\
-            \hline
-            高い & 0  & 0   & 3    & 2   \\
-            普通 & 5  & 0   & 0    & 0   \\
-            低い & 0  & 2   & 3    & 1   \\
-        \end{tabular}
-        \label{tbl::14_01}
-    \end{center}
+	\begin{center}
+		\caption{血圧と頭痛}
+		\begin{tabular}{c|cccc}
+			血圧 & ない & たまに & ときどき & いつも \\
+			\hline
+			高い & 0  & 0   & 3    & 2   \\
+			普通 & 5  & 0   & 0    & 0   \\
+			低い & 0  & 2   & 3    & 1   \\
+		\end{tabular}
+		\label{tbl::14_01}
+	\end{center}
 \end{table}
 
 このような場合は，「血圧が高い人か低い人は，頭痛がある」という傾向が見て取れるはずです。しかしこのデータ，機械的に血圧が高いを1，普通を2，低いを3とし，同様に頭痛もない〜いつもを1,2,3,4として相関係数を計算すると，$r=0.165$になります。相関関係では傾向をうまく読み取れていないのです。
@@ -43,17 +43,17 @@
 これは血圧の順番を「高い」「低い」「普通」に並べ替えたものです。
 また，頭痛の順番も「いつも」と「ときどき」をひっくり返しました。
 \begin{table}[ht]
-    \begin{center}
-        \caption{並び替えられた「血圧と頭痛」}
-        \begin{tabular}{c|cccc}
-            血圧 & ない & たまに & いつも & ときどき \\
-            \hline
-            高い & 0  & 0   & 2   & 3    \\
-            低い & 0  & 2   & 1   & 3    \\
-            普通 & 5  & 0   & 0   & 0    \\
-        \end{tabular}
-        \label{tbl::14_02}
-    \end{center}
+	\begin{center}
+		\caption{並び替えられた「血圧と頭痛」}
+		\begin{tabular}{c|cccc}
+			血圧 & ない & たまに & いつも & ときどき \\
+			\hline
+			高い & 0  & 0   & 2   & 3    \\
+			低い & 0  & 2   & 1   & 3    \\
+			普通 & 5  & 0   & 0   & 0    \\
+		\end{tabular}
+		\label{tbl::14_02}
+	\end{center}
 \end{table}
 順番を並び替えてしまったというのは，尺度水準的には数字を無視して「高い」「低い」「普通」というカテゴリーとして扱ったということになります。つまり\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}レベルにまで落として考えたのです。
 
@@ -73,16 +73,16 @@
 林はさまざまな研究成果を挙げており，論文ごとにデータに必要な分析方法を開発するというようなスタイルでした。その膨大な研究業績を，弟子である飽戸弘\footnote{飽戸 弘(あくと ひろし，1935年3月14日 - )は，日本の社会学者，東京大学名誉教授。専門は，社会心理学，コミュニケーション論。Wikipediaより。}が分類して，同じような分析方法ごとにI類，$\2$類，$\3$類，$\4$類，と呼んでいきました。
 
 \begin{table}[ht]
-    \caption{林の数量化}
-    \begin{tabular}{c|c|c|c|c}
-        手法    & 外的基準 & データ     & 目的           & 関連する手法       \\
-        \hline
-        数量化I類 & 量的変数 & 質的変数    & 外的基準の予測      & 重回帰分析        \\
-        数量化$\2$ 類 & 質的変数 & 質的変数    & 外的基準の判別      & 判別分析         \\
-        数量化$\3$類 & なし   & 質的変数    & 変数間の関係の要約と記述 & 主成分分析・正準相関分析 \\
-        数量化$\4$類 & なし   & 対象間の類似度 & 対象間の関係の要約と記述 & 多次元尺度法       \\
-    \end{tabular}
-    \label{tbl::14_03}
+	\caption{林の数量化}
+	\begin{tabular}{c|c|c|c|c}
+		手法        & 外的基準 & データ     & 目的           & 関連する手法       \\
+		\hline
+		数量化I類     & 量的変数 & 質的変数    & 外的基準の予測      & 重回帰分析        \\
+		数量化$\2$ 類 & 質的変数 & 質的変数    & 外的基準の判別      & 判別分析         \\
+		数量化$\3$類  & なし   & 質的変数    & 変数間の関係の要約と記述 & 主成分分析・正準相関分析 \\
+		数量化$\4$類  & なし   & 対象間の類似度 & 対象間の関係の要約と記述 & 多次元尺度法       \\
+	\end{tabular}
+	\label{tbl::14_03}
 \end{table}
 
 表\ref{tbl::14_03}にあるように，基本的には質的変数，すなわち名義尺度水準や\keytermL{順序尺度水準}{じゅんじょしゃくどすいじゅん}のデータが得られたときに，それを解釈するためにはどのような数値を割り振ってやれば良いか，という発想から生まれたものになっています。
@@ -94,33 +94,33 @@
 これをカテゴリカル変数と見なしてデータセットにした例が表\ref{tbl::14_05}です。IDは分析対象ではありませんから横に置くとして，Q1が2列に増えています。ID=1の人は男性なのですが，この人はQ1:Male=1かつQ1:Female=0というようにコード化されています。同様に，Q2には「どちらとも言えない」を選択しているのですが，これを3とするのではなく\texttt{00100}と5列にわたってコード化しているのです。このようにすることで，すべての変数をカテゴリーとして扱うことができるようになります。
 
 \begin{table}[ht]
-    \begin{minipage}[t]{.30\textwidth}
-        \begin{center}
-            \caption{一般的なデータセット}
-            \begin{tabular}{cccc}
-                ID       & Q1       & Q2       & $\cdots$ \\\hline
-                1        & 1        & 3        & $\cdots$ \\
-                2        & 2        & 4        & $\cdots$ \\
-                $\vdots$ & $\vdots$ & $\vdots$ &          \\\hline
-            \end{tabular}
-        \end{center}
-        \label{tbl::14_04}
-    \end{minipage}
-    %
-    \hfill
-    %
-    \begin{minipage}[t]{.60\textwidth}
-        \begin{center}
-            \caption{カテゴリカル化したデータセット}
-            \begin{tabular}{ccccccc}
-                ID       & Q1:M      & Q1:F     & Q2:5 & Q2:4 & Q2:3 & $\cdots$ \\\hline
-                1        & 1         & 0        & 0    & 0    & 1    & $\cdots$ \\
-                2        & 0         & 1        & 0    & 1    & 0    & $\cdots$ \\
-                $\vdots$ & $\vdots $ & $\vdots$ &                               \\\hline
-            \end{tabular}
-        \end{center}
-        \label{tbl::14_05}
-    \end{minipage}
+	\begin{minipage}[t]{.30\textwidth}
+		\begin{center}
+			\caption{一般的なデータセット}
+			\begin{tabular}{cccc}
+				ID       & Q1       & Q2       & $\cdots$ \\\hline
+				1        & 1        & 3        & $\cdots$ \\
+				2        & 2        & 4        & $\cdots$ \\
+				$\vdots$ & $\vdots$ & $\vdots$ &          \\\hline
+			\end{tabular}
+		\end{center}
+		\label{tbl::14_04}
+	\end{minipage}
+	%
+	\hfill
+	%
+	\begin{minipage}[t]{.60\textwidth}
+		\begin{center}
+			\caption{カテゴリカル化したデータセット}
+			\begin{tabular}{ccccccc}
+				ID       & Q1:M      & Q1:F     & Q2:5 & Q2:4 & Q2:3 & $\cdots$ \\\hline
+				1        & 1         & 0        & 0    & 0    & 1    & $\cdots$ \\
+				2        & 0         & 1        & 0    & 1    & 0    & $\cdots$ \\
+				$\vdots$ & $\vdots $ & $\vdots$ &                               \\\hline
+			\end{tabular}
+		\end{center}
+		\label{tbl::14_05}
+	\end{minipage}
 \end{table}
 
 また表\ref{tbl::14_01}を並べ替えた時のように，こうした名義尺度のデータの線形性が最大になるように，行だけでなく，列も並べ替えます。データの中で線形性が最大になるように，反応カテゴリ\textbf{と}回答者に数字を割り振るのです。
@@ -131,73 +131,73 @@
 \subsection{交互平均法}
 具体的に，どのようなアルゴリズムで行・列に対する重みをつけるか見てみましょう。例えば，以下のような分割表が得られたとします（表\ref{DAexample}）。
 \begin{table}[ht]
-    \begin{center}
-        \caption{データ例}
-        \begin{tabular}{c|ccc|c}
-            血圧 & 頭痛なし & たまに頭痛 & 頭痛あり & 計  \\
-            \hline
-            低い & 9    & 2     & 3    & 14 \\
-            普通 & 3    & 1     & 4    & 8  \\
-            高い & 6    & 2     & 5    & 13 \\
-            \hline
-            計  & 18   & 5     & 12   & 35 \\
-        \end{tabular}
-        \label{DAexample}
-    \end{center}
+	\begin{center}
+		\caption{データ例}
+		\begin{tabular}{c|ccc|c}
+			血圧 & 頭痛なし & たまに頭痛 & 頭痛あり & 計  \\
+			\hline
+			低い & 9    & 2     & 3    & 14 \\
+			普通 & 3    & 1     & 4    & 8  \\
+			高い & 6    & 2     & 5    & 13 \\
+			\hline
+			計  & 18   & 5     & 12   & 35 \\
+		\end{tabular}
+		\label{DAexample}
+	\end{center}
 \end{table}
 ここで各カテゴリに値を割り振る手続きは，次のような手順で行います。
 \begin{enumerate}
-    \item 行方向の「なし($X_{1}$)」を1点，「たまに($X_{2}$)」を0点，「あり($X_{3}$)」を-1点と仮におく。
-    \item 列方向の「低い($Y_{1}$)」，「普通($Y_{2}$)」，「高い($Y_{3}$)」を算出する。すなわち，
-          $$Y_{1}=\frac{1 \times 9 + 0 \times 2 + (-1) \times 3 }{14} = 0.4285$$
-          $$Y_{2}=\frac{1 \times 3 + 0 \times 1 + (-1) \times 4 }{8} = -0.125$$
-          $$Y_{3}=\frac{1 \times 6 + 0 \times 2 + (-1) \times 5 }{13} = 0.0769$$
-    \item Yの平均値を0にする。すなわち，
-          $$ \bar{Y} = \frac{14 \times Y_{1} + 8 \times Y_{2} + 13 \times Y_{3}}{35}=0.1714$$
-          $$Y_{1} = Y_{1} - \bar{Y} = 0.4285 - 0.1714 = 0.2571$$
-          $$Y_{2} = Y_{2} - \bar{Y} = -0.125 - 0.1714 = -0.2964$$
-          $$Y_{3} = Y_{3} - \bar{Y} = 0.0769 - 0.1714 = -0.0945$$
-    \item Yの大きさを整える。すなわち，絶対値最大の要素で割って，全体が1を超えないようにする。
-          $$Y_{1} = Y_{1} / maxY = 0.2571 / |-0.2964| = 0.8674 $$
-          $$Y_{2} = Y_{2} / maxY = -0.2964 / |-0.2964| = -1.000 $$
-          $$Y_{3} = Y_{3} / maxY = -0.0945 / |-0.2964| = -0.3188 $$
-    \item これらの重みを使って，今度は行の重みを算出する。
-          $$X_{1}=\frac{Y_{1} \times 9 + Y_{2} \times 3 + Y_{3} \times 6 }{18} = 0.1608$$
-          $$X_{2}=\frac{Y_{1} \times 2 + Y_{2} \times 1 + Y_{3} \times 2 }{5} = 0.0194$$
-          $$X_{3}=\frac{Y_{1} \times 3 + Y_{2} \times 4 + Y_{3} \times 5 }{12} = -0.2493$$
-    \item Xの平均値を0にする。
-          $$ \bar{X} = \frac{18 \times X_{1} + 5 \times X_{2} + 12 \times X_{3}}{35}=-3.806e-17$$
-          $$X_{1} = X_{1} - \bar{X} = 0.1608$$
-          $$X_{2} = X_{2} - \bar{X} = -0.0194$$
-          $$X_{3} = X_{3} - \bar{X} = -0.2493$$
-    \item Xの大きさを整える。
-          $$X_{1} = X_{1} / maxX = 0.6450 $$
-          $$X_{2} = X_{2} / maxX = 0.0780 $$
-          $$X_{3} = X_{3} / maxX = -1.000 $$
-    \item 2〜7を収束するまで繰り返す。収束判定は，
-          $$ \delta_{Y} = \sum Y_{i}^{t+1} - Y_{i}^{t} $$
-          $$ \delta_{X} = \sum X_{i}^{t+1} - X_{i}^{t} $$
-          $$ として，\delta_{X} < \epsilon　且つ　\delta_{Y} < \epsilon $$
+	\item 行方向の「なし($X_{1}$)」を1点，「たまに($X_{2}$)」を0点，「あり($X_{3}$)」を-1点と仮におく。
+	\item 列方向の「低い($Y_{1}$)」，「普通($Y_{2}$)」，「高い($Y_{3}$)」を算出する。すなわち，
+	      $$Y_{1}=\frac{1 \times 9 + 0 \times 2 + (-1) \times 3 }{14} = 0.4285$$
+	      $$Y_{2}=\frac{1 \times 3 + 0 \times 1 + (-1) \times 4 }{8} = -0.125$$
+	      $$Y_{3}=\frac{1 \times 6 + 0 \times 2 + (-1) \times 5 }{13} = 0.0769$$
+	\item Yの平均値を0にする。すなわち，
+	      $$ \bar{Y} = \frac{14 \times Y_{1} + 8 \times Y_{2} + 13 \times Y_{3}}{35}=0.1714$$
+	      $$Y_{1} = Y_{1} - \bar{Y} = 0.4285 - 0.1714 = 0.2571$$
+	      $$Y_{2} = Y_{2} - \bar{Y} = -0.125 - 0.1714 = -0.2964$$
+	      $$Y_{3} = Y_{3} - \bar{Y} = 0.0769 - 0.1714 = -0.0945$$
+	\item Yの大きさを整える。すなわち，絶対値最大の要素で割って，全体が1を超えないようにする。
+	      $$Y_{1} = Y_{1} / maxY = 0.2571 / |-0.2964| = 0.8674 $$
+	      $$Y_{2} = Y_{2} / maxY = -0.2964 / |-0.2964| = -1.000 $$
+	      $$Y_{3} = Y_{3} / maxY = -0.0945 / |-0.2964| = -0.3188 $$
+	\item これらの重みを使って，今度は行の重みを算出する。
+	      $$X_{1}=\frac{Y_{1} \times 9 + Y_{2} \times 3 + Y_{3} \times 6 }{18} = 0.1608$$
+	      $$X_{2}=\frac{Y_{1} \times 2 + Y_{2} \times 1 + Y_{3} \times 2 }{5} = 0.0194$$
+	      $$X_{3}=\frac{Y_{1} \times 3 + Y_{2} \times 4 + Y_{3} \times 5 }{12} = -0.2493$$
+	\item Xの平均値を0にする。
+	      $$ \bar{X} = \frac{18 \times X_{1} + 5 \times X_{2} + 12 \times X_{3}}{35}=-3.806e-17$$
+	      $$X_{1} = X_{1} - \bar{X} = 0.1608$$
+	      $$X_{2} = X_{2} - \bar{X} = -0.0194$$
+	      $$X_{3} = X_{3} - \bar{X} = -0.2493$$
+	\item Xの大きさを整える。
+	      $$X_{1} = X_{1} / maxX = 0.6450 $$
+	      $$X_{2} = X_{2} / maxX = 0.0780 $$
+	      $$X_{3} = X_{3} / maxX = -1.000 $$
+	\item 2〜7を収束するまで繰り返す。収束判定は，
+	      $$ \delta_{Y} = \sum Y_{i}^{t+1} - Y_{i}^{t} $$
+	      $$ \delta_{X} = \sum X_{i}^{t+1} - X_{i}^{t} $$
+	      $$ として，\delta_{X} < \epsilon　且つ　\delta_{Y} < \epsilon $$
 \end{enumerate}
 
 このように，適当な数字から始めても交互に平均(項目の中心)を合わせていくことによって，最終的に次のような最適な重みが得られます。
 \[
-    X=
-    \left(
-    \begin{array}{c}
-            0.644 \\
-            0.081 \\
-            -1.00 \\
-        \end{array}
-    \right)
-    ,Y=
-    \left(
-    \begin{array}{c}
-            0.851 \\
-            -1.00 \\
-            -0.301
-        \end{array}
-    \right)
+	X=
+	\left(
+	\begin{array}{c}
+			0.644 \\
+			0.081 \\
+			-1.00 \\
+		\end{array}
+	\right)
+	,Y=
+	\left(
+	\begin{array}{c}
+			0.851 \\
+			-1.00 \\
+			-0.301
+		\end{array}
+	\right)
 \]
 
 これが交互平均法による重み付けアルゴリズムです。
@@ -227,40 +227,40 @@
 \subsection{数量化$\3$類とコレスポンデンス分析}
 数量化$\3$類とコレスポンデンス分析は，分析のもとになる分割表の考え方の違いに求めることができます。例えば，「はい」と「いいえ」で回答が得られる項目が3つあったとしましょう。このとき，数量化$\3$類が分析対象にする行列は，「はい」を1，「いいえ」を0とした分割表であり，表\ref{hayashi}のような表し方になります。
 \begin{table}[ht]
-    \begin{center}
-        \caption{数量化が分析する行列}
-        \begin{tabular}{c|ccc|c}
-            被験者 & 項目1 & 項目2 & 項目3 & 合計 \\
-            \hline
-            S1  & 1   & 0   & 1   & 2  \\
-            S2  & 0   & 0   & 1   & 1  \\
-            S3  & 1   & 1   & 0   & 2  \\
-            S4  & 1   & 0   & 1   & 2  \\
-            S5  & 1   & 1   & 1   & 3  \\
-            \hline
-                & 4   & 2   & 4   &    \\
-        \end{tabular}
-        \label{hayashi}
-    \end{center}
+	\begin{center}
+		\caption{数量化が分析する行列}
+		\begin{tabular}{c|ccc|c}
+			被験者 & 項目1 & 項目2 & 項目3 & 合計 \\
+			\hline
+			S1  & 1   & 0   & 1   & 2  \\
+			S2  & 0   & 0   & 1   & 1  \\
+			S3  & 1   & 1   & 0   & 2  \\
+			S4  & 1   & 0   & 1   & 2  \\
+			S5  & 1   & 1   & 1   & 3  \\
+			\hline
+			    & 4   & 2   & 4   &    \\
+		\end{tabular}
+		\label{hayashi}
+	\end{center}
 \end{table}
 
 これに対して，コレスポンデンス分析と双対尺度法が分析対象とする行列は，表\ref{corepon}のように考えます。
 \begin{table}[ht]
-    \begin{center}
-        \caption{コレスポンデンス分析，および双対尺度法が分析する行列}
-        \begin{tabular}{c|cccccc|c}
-            被験者 & 項目1(Yes) & 項目1(No) & 項目2(Yes) & 項目2(No) & 項目3(Yes) & 項目3(No) & 合計 \\
-            \hline
-            S1  & 1        & 0       & 0        & 1       & 1        & 0        & 3  \\
-            S2  & 0        & 1       & 0        & 1       & 1        & 0        & 3  \\
-            S3  & 1        & 0       & 1        & 0       & 0        & 1        & 3  \\
-            S4  & 1        & 0       & 0        & 1       & 1        & 0        & 3  \\
-            S5  & 1        & 0       & 1        & 0       & 1        & 0        & 3  \\
-            \hline
-                & 4        & 1       & 2        & 3       & 4        & 1        &    \\
-        \end{tabular}
-        \label{corepon}
-    \end{center}
+	\begin{center}
+		\caption{コレスポンデンス分析，および双対尺度法が分析する行列}
+		\begin{tabular}{c|cccccc|c}
+			被験者 & 項目1(Yes) & 項目1(No) & 項目2(Yes) & 項目2(No) & 項目3(Yes) & 項目3(No) & 合計 \\
+			\hline
+			S1  & 1        & 0       & 0        & 1       & 1        & 0       & 3  \\
+			S2  & 0        & 1       & 0        & 1       & 1        & 0       & 3  \\
+			S3  & 1        & 0       & 1        & 0       & 0        & 1       & 3  \\
+			S4  & 1        & 0       & 0        & 1       & 1        & 0       & 3  \\
+			S5  & 1        & 0       & 1        & 0       & 1        & 0       & 3  \\
+			\hline
+			    & 4        & 1       & 2        & 3       & 4        & 1       &    \\
+		\end{tabular}
+		\label{corepon}
+	\end{center}
 \end{table}
 
 情報量としては同じですが，YesでなければNoであるとするか，Yesがある/Noがあるという形で示すかの違いでしかありません。この分析するもととなる行列の違いがあるだけで，それを特異値分解して行・列の両方に重みを与える点では同じ分析手法であるといえます。
@@ -271,8 +271,8 @@
 分割表で表される行と列がどれぐらい関係しあっているか，あるいは独立であるかを見るための指標として，$\chi^2$値があります。
 双対尺度法は，この$\chi^2$値を次のように分解していくモデルでもあります。
 \begin{equation}
-    \chi^{2}=\chi_{1}^{2}+\chi_{2}^{2}+\chi_{3}^{2}+\ldots
-    \label{chi}
+	\chi^{2}=\chi_{1}^{2}+\chi_{2}^{2}+\chi_{3}^{2}+\ldots
+	\label{chi}
 \end{equation}
 
 主成分分析が固有値分解したように，双対尺度法は特異値分解を使って分解していくのですが，これを要素レベルで見ていくと次のようになります。
@@ -281,8 +281,8 @@
 となります。これは各セルの期待値を計算していることになります。$\chi^2$値は，これを各セルについて計算して，期待値と観測値のずれの総和，すなわち各セルの分散の大きさのようなものとして表していることになります。
 \[ \chi^2 = \sum_{i=1}^m \sum_{j=1}^n \frac{(f_{ij}-f^{\ast}_{ij})^2}{f^{\ast}_{ij}} \]
 双対尺度法は得位置分解を使って，行と列に最適な重みを計算するのですが，要素レベルで見ると次のような分解になります。
-\[    
-    f_{ij}=\underbrace{\underbrace{\underbrace{\frac{f_{i.}f_{.j}}{f_{t}}( 1}_{第0次近似}+\rho_{1}y_{1i}x_{1j}}_{第1次近似}+\rho_{2}y_{2i}x_{2j}}_{第2次近似}+\ldots+\rho_{k}y_{ki}x_{kj})
+\[
+	f_{ij}=\underbrace{\underbrace{\underbrace{\frac{f_{i.}f_{.j}}{f_{t}}( 1}_{第0次近似}+\rho_{1}y_{1i}x_{1j}}_{第1次近似}+\rho_{2}y_{2i}x_{2j}}_{第2次近似}+\ldots+\rho_{k}y_{ki}x_{kj})
 \]
 第0次近似は期待値の成分であり，これは行と列が独立な場合の大きさですから分析に際しては意味がなく，無意味解といわれたりします。分析をして意味があるのは次の第1次近似からであり，このとき$y_{1i}$は$y$列の第1ウェイト，$x_{1j}$は$j$行の第1ウェイトといいます。また$\rho$を特異値といい，この二乗$\rho^2$が固有値とよばれます。特異値や固有値はその次元の重要度を表すというのは，因子分析の時と同じですね。
 
@@ -290,14 +290,14 @@
 
 さて双対の関係とは，行$Y$と列$X$の重みとして分解した式(\ref{soutui})にみられる，次の関係です。
 \begin{equation}
-    \label{soutui}
-    \left \{
-    \begin{array}{ccc}
-        Y_{i} & = & \displaystyle{\frac{1}{\rho}\frac{\sum f_{ij}X_{j}}{f_{i.}}} \\
-        \\
-        X_{j} & = & \displaystyle{\frac{1}{\rho}\frac{\sum f_{ij}Y_{i}}{f_{.j}}} \\
-    \end{array}
-    \right.
+	\label{soutui}
+	\left \{
+	\begin{array}{ccc}
+		Y_{i} & = & \displaystyle{\frac{1}{\rho}\frac{\sum f_{ij}X_{j}}{f_{i.}}} \\
+		\\
+		X_{j} & = & \displaystyle{\frac{1}{\rho}\frac{\sum f_{ij}Y_{i}}{f_{.j}}} \\
+	\end{array}
+	\right.
 \end{equation}
 
 この双対の関係が意味するのは，$Y$のベクトルが張る空間と$X$のベクトルが張る空間は等しくなく，一方が他方に射影されるためには特異値をもちいて変換しなければならない，ということです。たとえばある回答者Y1が，X1,X2,X3という３つの項目を選択した場合，X空間に射影されるYの重みづけられた座標は，Xが作る三角形の重心に来ることになります。
@@ -315,36 +315,36 @@
 例えば好きな政党を順に番号をつけてもらうといった，順序データがあったとしましょう（表\ref{jun}）。
 この順序データを双対尺度法で分析するには，少し工夫するだけでOKです。
 \begin{table}[ht]
-    \begin{center}
-        \caption{順序データの場合}
-        \begin{tabular}{c|ccccc|c}
-            被験者    & 自民党    & 民主党    & 公明党    & 自由党    & 社民党    & 合計     \\
-            \hline
-            S1     & 1      & 2      & 4      & 5      & 3      & 15     \\
-            S2     & 2      & 1      & 3      & 4      & 5      & 15     \\
-            \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
-        \end{tabular}
-        \label{jun}
-    \end{center}
+	\begin{center}
+		\caption{順序データの場合}
+		\begin{tabular}{c|ccccc|c}
+			被験者    & 自民党    & 民主党    & 公明党    & 自由党    & 社民党    & 合計     \\
+			\hline
+			S1     & 1      & 2      & 4      & 5      & 3      & 15     \\
+			S2     & 2      & 1      & 3      & 4      & 5      & 15     \\
+			\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+		\end{tabular}
+		\label{jun}
+	\end{center}
 \end{table}
 
 双対尺度法で分析するには，この順序関係が入った表を，\keyterm{ドミナンス表}{どみなんすひょう}{dominance table}に変換してから計算を行うことになります。ドミナンス表とは，$R_{ij}$を被験者$i$の項目$j$に対する順位とすると
 \begin{equation}
-    d_{ij}=n+1-2R_{ij}
+	d_{ij}=n+1-2R_{ij}
 \end{equation}
 で表される数値が入った表のことです。これは，ある項目が他の残りの項目それぞれと比べて順位が上であれば+1，下であれば-1である数値で，いわば他の項目と何勝何敗であったかを表す数値になっています。双対尺度法では変数同士の相対的な結びつきの強さがロウデータになりますから，このように変換することで相対的な関係の強さに置き換えるわけです。今回の例では，ドミナンス表は以下のようになります(表\ref{dominance}）。
 \begin{table}[ht]
-    \begin{center}
-        \caption{ドミナンス表}
-        \begin{tabular}{c|ccccc|c}
-            被験者    & 自民党    & 民主党    & 公明党    & 自由党    & 社民党    & 合計     \\
-            \hline
-            S1     & 4      & 2      & -2     & -4     & 0      & 0      \\
-            S2     & 2      & 4      & 0      & -2     & -4     & 0      \\
-            \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
-        \end{tabular}
-        \label{dominance}
-    \end{center}
+	\begin{center}
+		\caption{ドミナンス表}
+		\begin{tabular}{c|ccccc|c}
+			被験者    & 自民党    & 民主党    & 公明党    & 自由党    & 社民党    & 合計     \\
+			\hline
+			S1     & 4      & 2      & -2     & -4     & 0      & 0      \\
+			S2     & 2      & 4      & 0      & -2     & -4     & 0      \\
+			\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+		\end{tabular}
+		\label{dominance}
+	\end{center}
 \end{table}
 
 あとはこれを特異値分解して，行・列の両方に重みを与えることになります。このようなドミナンス数の考え方は，例えば一対比較法のデータにも応用できます。一対比較法とは，例えばA,B,Cの３つのカテゴリがあった場合に，AとBを比較してどちらが優位であったか，AとCは，BとCは，というように一対一での優劣(似ている，似ていないとか，好ましい，好ましくないなど比較の次元は問いません)を競いあったデータのことです。このようなデータであっても，双対尺度法を使えば変数同士の尺度化，回答者の同時プロットも可能にします。
@@ -359,60 +359,60 @@
 \[    [\bm{F1},\bm{F2},\bm{F2},\bm{F2},\bm{F2},\bm{F2}] = [\bm{F1},5\bm{F2}] \]
 のようにすることもできます。これは，項目2を5回繰り返したもので，データとしては表\ref{FCexam}になっていることとおなじです。
 \begin{table}[ht]
-    \begin{center}
-        \caption{繰り返された表}
-        \begin{tabular}{cc|cc}
-            x1 & x2 & x3 & x4 \\
-            \hline
-            1  & 0  & 5  & 0  \\
-            1  & 0  & 0  & 5  \\
-            0  & 1  & 0  & 5  \\
-            0  & 1  & 5  & 0  \\
-        \end{tabular}
-        \label{FCexam}
-    \end{center}
+	\begin{center}
+		\caption{繰り返された表}
+		\begin{tabular}{cc|cc}
+			x1 & x2 & x3 & x4 \\
+			\hline
+			1  & 0  & 5  & 0  \\
+			1  & 0  & 0  & 5  \\
+			0  & 1  & 0  & 5  \\
+			0  & 1  & 5  & 0  \\
+		\end{tabular}
+		\label{FCexam}
+	\end{center}
 \end{table}
 
 一般に，ある項目$j$を$k$回繰り返したとすると，それは項目$j$に重み$k$を掛け合わせたことと同じになります。では繰り返しを5回ではなく，10回，20回・・・・とどんどん増やしていくとしましょう。
 そして増やした行列それぞれに対して双対尺度法を繰り返すとどうなるでしょうか。当然のことながら，今回の例ではF2についての反応，カテゴリでいうx3,x4の重要度が増していくことになりますから，構成される空間はF2が第一次元に強く強く関係していきます。
 繰り返しが$\infty$に近づくにつれ，F2が双対尺度法で得られる第一次元の解に与える寄与率が1.00に近くなっていくわけです。これを言い換えれば，F2の軸を基準にして，他の項目がそれに合うように強制的に分類して行くことでもあります(図\ref{FC})。実際には無限の重みをつける必要はなく，十数倍の重みづけで十分です
 \begin{figure}[ht]
-    \begin{center}
-        \begin{tikzpicture}
-            \draw[very thick] (-5,0)--(5,0); %x軸
-            \draw[-] (0,-5)--(0,5); %y軸
-            \coordinate (X1) at (3,2);
-            \coordinate (X2) at (-3,-2);
-            \coordinate (X3) at (3,-2);
-            \coordinate (X4) at (-3,2);
-            \fill (X1) circle [radius=2pt];
-            \fill (X2) circle [radius=2pt];
-            \fill (X3) circle [radius=2pt];
-            \fill (X4) circle [radius=2pt];
-            \node[above right] at (X1) {$X_1$};
-            \node[above] at (X2) {$X_2$};
-            \node[below] at (X3) {$X_3$};
-            \node[above] at (X4) {$X_4$};
-            \coordinate (F1) at (1,3.5);
-            \coordinate (F2) at (-1,-3);
-            \coordinate (F3) at (4,0);
-            \coordinate (F4) at (-4,0);
-            \fill[red] (F1) circle [radius=2pt];
-            \fill[red] (F2) circle [radius=2pt];
-            \fill[blue] (F3) circle [radius=3pt];
-            \fill[blue] (F4) circle [radius=3pt];
-            \node[above] at (F1) {$X_1^{\infty}$};
-            \node[above] at (F2) {$X_2^{\infty}$};
-            \node[above right] at (F3) {$X_3^{\infty}$};
-            \node[below] at (F4) {$X_4^{\infty}$};
-            \draw[->,>=Latex,dashed,very thick,bend right = 30] (X1) to (F1);
-            \draw[->,>=Latex,dashed,very thick,bend right = 30] (X2) to (F2);
-            \draw[->,>=Latex,dashed,very thick,bend right = 30] (X3) to (F3);
-            \draw[->,>=Latex,dashed,very thick,bend right = 30] (X4) to (F4);
-        \end{tikzpicture}
-        \caption{強制分類法による布置}
-        \label{FC}
-    \end{center}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[very thick] (-5,0)--(5,0); %x軸
+			\draw[-] (0,-5)--(0,5); %y軸
+			\coordinate (X1) at (3,2);
+			\coordinate (X2) at (-3,-2);
+			\coordinate (X3) at (3,-2);
+			\coordinate (X4) at (-3,2);
+			\fill (X1) circle [radius=2pt];
+			\fill (X2) circle [radius=2pt];
+			\fill (X3) circle [radius=2pt];
+			\fill (X4) circle [radius=2pt];
+			\node[above right] at (X1) {$X_1$};
+			\node[above] at (X2) {$X_2$};
+			\node[below] at (X3) {$X_3$};
+			\node[above] at (X4) {$X_4$};
+			\coordinate (F1) at (1,3.5);
+			\coordinate (F2) at (-1,-3);
+			\coordinate (F3) at (4,0);
+			\coordinate (F4) at (-4,0);
+			\fill[red] (F1) circle [radius=2pt];
+			\fill[red] (F2) circle [radius=2pt];
+			\fill[blue] (F3) circle [radius=3pt];
+			\fill[blue] (F4) circle [radius=3pt];
+			\node[above] at (F1) {$X_1^{\infty}$};
+			\node[above] at (F2) {$X_2^{\infty}$};
+			\node[above right] at (F3) {$X_3^{\infty}$};
+			\node[below] at (F4) {$X_4^{\infty}$};
+			\draw[->,>=Latex,dashed,very thick,bend right = 30] (X1) to (F1);
+			\draw[->,>=Latex,dashed,very thick,bend right = 30] (X2) to (F2);
+			\draw[->,>=Latex,dashed,very thick,bend right = 30] (X3) to (F3);
+			\draw[->,>=Latex,dashed,very thick,bend right = 30] (X4) to (F4);
+		\end{tikzpicture}
+		\caption{強制分類法による布置}
+		\label{FC}
+	\end{center}
 \end{figure}
 
 強制分類法は，何か明確な外的基準があるときに，そこを基準にして周りを見てみようという分析方法です。因子分析のように，目に見えない軸を取り出して「この軸は何だろう」と悩むのではなく，分析者の分析視点を明確にして「この観点から考えれば，対象はこのようにプロットされます」と論じる方が責任の所在がはっきりして良いかもしれません。応用例として，学術的な分類法や法的な基準があるような領域で，専門家と非専門家の評定がどの程度ずれているかといったことを考えるときに，専門家の判断パターンを基準に重みづけをし，非専門家がどのようなずれを生じさせるのかを考えるといった可能性が考えられます。
@@ -427,11 +427,11 @@ $$ d_{ii*} = \sqrt{\sum_{k=1}^K \rho_k^2(y_{ik}-y_{i*k})^2}$$
 $$ d_{jj*} = \sqrt{\sum_{k=1}^K \rho_k^2(x_{jk}-x_{j*k})^2}$$
 で求めることができます。これらを距離行列$\bm{D}_{yy} = \{ d_{ii*} \},\bm{D}_{xx} = \{ d_{jj*} \}, \bm{D}_{xy} = d_{ij}, \bm{D}_{yx} = d_{ji} $からなる行列としてまとめれば，次のようになります。
 \begin{equation}
-    \bm{D} =
-    \begin{bmatrix}
-        \bm{D}_{yy} & \bm{D}_{yx} \\
-        \bm{D}_{xy} & \bm{D}_{xx}
-    \end{bmatrix}
+	\bm{D} =
+	\begin{bmatrix}
+		\bm{D}_{yy} & \bm{D}_{yx} \\
+		\bm{D}_{xy} & \bm{D}_{xx}
+	\end{bmatrix}
 \end{equation}
 これは行の空間，列の空間，行と列の空間(と列と行の空間)の全てが含まれた，大きなデータセットです。一方から他方の関係を考えるだけでなく，全ての組み合わせを含んだ行列です。この行列を分析することを\keyterm{全情報分析}{ぜんじょうほうぶんせき}{Total Infromation Analysis}といいます。この行列は距離行列ですから，クラスター分析などで類似性をみつける分類などが考えられます。
 

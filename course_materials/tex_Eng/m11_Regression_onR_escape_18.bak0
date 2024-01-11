@@ -1,0 +1,27 @@
+The TeX code contains statistical analysis output in Japanese. Here is the translation:
+
+\begin{Rscreen}{Regression analysis output}{out11_03}
+   \begin{verbatim}
+Call:
+lm(formula = salary ~ HR + Hit, data = batter2)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-22581  -2394  -1025    264  40723 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1620.46     575.40   2.816  0.00516 ** 
+HR            659.15     104.09   6.333 7.98e-10 ***
+Hit            53.88      16.61   3.245  0.00130 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 7761 on 326 degrees of freedom
+Multiple R-squared:  0.378,	Adjusted R-squared:  0.3742 
+F-statistic: 99.06 on 2 and 326 DF,  p-value: < 2.2e-16
+
+\end{verbatim}
+\end{Rscreen}
+
+The output includes the call to the linear regression model with the salary variable being regressed on HR and Hit variables from the batter2 dataset. The residuals, coefficients, standard errors, t-values and p-values are also reported along with the adjusted R-squared and F-statistic.

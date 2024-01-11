@@ -16,34 +16,34 @@
 具体的な数値例をみてみましょう。
 
 \[
-    \bm{A} = \begin{pmatrix}
-        1 & 6 \\ 2 & 5
-    \end{pmatrix}
-    ,\bm{x} = \begin{pmatrix}
-        1 \\ 1
-    \end{pmatrix}
+	\bm{A} = \begin{pmatrix}
+		1 & 6 \\ 2 & 5
+	\end{pmatrix}
+	,\bm{x} = \begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
 \]
 
 を例にします。この時次の関係が成り立ちます。
 
 \[
-    \bm{Ax} =
-    \begin {pmatrix}
-    1 & 6 \\
-    2 & 5 \\
-    \end{pmatrix}
-    \begin{pmatrix}
-        1 \\ 1
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        7 \\ 7
-    \end{pmatrix}
-    =7
-    \begin{pmatrix}
-        1 \\ 1
-    \end{pmatrix}
-    =7 \bm{x}
+	\bm{Ax} =
+	\begin {pmatrix}
+	1 & 6 \\
+	2 & 5 \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		7 \\ 7
+	\end{pmatrix}
+	=7
+	\begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
+	=7 \bm{x}
 \]
 
 確かに成立する組み合わせがありますね。この行列$\bm{A}$に対して，7が固有値，$(1,1)$が固有ベクトルになっています。
@@ -73,7 +73,7 @@
 \[ \bm{AX} = \bm{X \Lambda} \]
 と書くことができます。ここで$\bm{\Lambda}$は
 \[ \bm{\Lambda} =
-    \begin{pmatrix} \lambda_1 & 0         & \cdots & 0         \\
+	\begin{pmatrix} \lambda_1 & 0         & \cdots & 0         \\
                 0         & \lambda_2 & \cdots & 0         \\
                 \vdots    & \vdots    & \ddots & \vdots    \\
                 0         & 0         & \cdots & \lambda_n\end{pmatrix}
@@ -89,37 +89,37 @@
 ここであらためて要素に注目すると，行列$\bm{A}$が次のように分解されていることがわかります。
 
 \[
-    \bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
+	\bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
 \]
 となります。
 
 この分解例は$2 \times 2$の簡単な例で確認しておきましょう。
 たとえば$\bm{A} = \begin{pmatrix}\begin{pmatrix}a\\b\end{pmatrix},\begin{pmatrix}c\\d\end{pmatrix}\end{pmatrix}=\begin{pmatrix} a & c \\b & d\end{pmatrix}$という行列と，対角行列$\bm{\Psi} = \begin{pmatrix}\alpha & 0 \\ 0 & \beta \end{pmatrix}$があったとして，$\bm{A\Psi A}'$の計算をしてみたいと思います。
-\[ 
-    \begin{array}{lll}
-    \bm{A\Psi A}' &=& \begin{pmatrix} a & c\\ b & d \end{pmatrix}\begin{pmatrix}\alpha & 0\\ 0&\beta \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
-    &&\\
-    &=& \begin{pmatrix} \alpha a & \beta c \\ \alpha b & \beta d \end{pmatrix}
-    \begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
-    &&\\
-    &=& \begin{pmatrix} \alpha aa + \beta cc & \alpha ab + \beta cd \\
-        \alpha ab + \beta cd & \alpha bb + \beta dd \end{pmatrix}\\
-        &\\
-    &=& \alpha \begin{pmatrix} aa & ab\\ ab & bb \end{pmatrix} + 
-    \beta \begin{pmatrix}cc & cd \\ cd & dd \end{pmatrix}\\
-    &\\
-    &=& \alpha \begin{pmatrix}a\\b\end{pmatrix}\begin{pmatrix}a &b\end{pmatrix} +
-    \beta \begin{pmatrix} c\\d \end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}
-    \end{array}
+\[
+	\begin{array}{lll}
+		\bm{A\Psi A}' & = & \begin{pmatrix} a & c\\ b & d \end{pmatrix}\begin{pmatrix}\alpha & 0\\ 0&\beta \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix} \\
+		              &   &                                                                                                                                        \\
+		              & = & \begin{pmatrix} \alpha a & \beta c \\ \alpha b & \beta d \end{pmatrix}
+		\begin{pmatrix}a & b\\ c & d \end{pmatrix}                                                                                                                 \\
+		              &   &                                                                                                                                        \\
+		              & = & \begin{pmatrix} \alpha aa + \beta cc & \alpha ab + \beta cd \\
+                \alpha ab + \beta cd & \alpha bb + \beta dd\end{pmatrix}                                                                            \\
+		              &                                                                                                                                            \\
+		              & = & \alpha \begin{pmatrix} aa & ab\\ ab & bb \end{pmatrix} +
+		\beta \begin{pmatrix}cc & cd \\ cd & dd \end{pmatrix}                                                                                                      \\
+		              &                                                                                                                                            \\
+		              & = & \alpha \begin{pmatrix}a\\b\end{pmatrix}\begin{pmatrix}a &b\end{pmatrix} +
+		\beta \begin{pmatrix} c\\d \end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}
+	\end{array}
 \]
 
 と，このようにスカラーとベクトルの積和の形に書き換えられるのですね\footnote{ただし，この計算が可能なのは分解する元の行列が実対称行列だからです。実対称行列は固有値と固有ベクトルで対角化可能であることが証明できます。実対称行列の固有値は全て十数ですし，固有値が全て実数であれば適当な直交行列をつかって対角化でき，実対称行列の固有ベクトルは互いに独立するのでこれらを使って直交行列を作ることができるからです。これらの性質については線形代数のテキストなどの証明を参照してください。また計算プロセスからもわかるように，同じ要素を持つ列ベクトルと行ベクトルの積ですから，結果は対称になってしまうからです。}。
 
 さて，これらをまとめて考えると，
 \begin{enumerate}
-    \item 固有値分解は行列を列ベクトルとその転置ベクトルの積の形に分解する。
-    \item 固有値の総和は元の行列の対角要素の総和である。
-    \item 元の行列の対角要素は各項目の分散を表している。
+	\item 固有値分解は行列を列ベクトルとその転置ベクトルの積の形に分解する。
+	\item 固有値の総和は元の行列の対角要素の総和である。
+	\item 元の行列の対角要素は各項目の分散を表している。
 \end{enumerate}
 ということですから，固有ベクトルは全体の情報量をそのままに重要度の大きさに並べ替えたもの，固有値分解は行列をその要素の重要度ごとに分解していくことである，といえます。
 これこそ\keytermL{因子分析}{いんしぶんせき}で取り出そうとしている因子であり，固有値の大きさはその因子の重要度として，共通次元の判別(どこまで共通次元とみなすか)に使われるのです。
@@ -171,7 +171,7 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 
 ある正方行列から固有値$\lambda$と固有ベクトル$\bm{a}$が得られたとします。このベクトル$\bm{a}$のすべての要素を定数$c$倍したベクトル$\bm{b}=c\bm{a}$を考えると，これもやはり同じ関係が成り立ちます。
 \begin{equation}
-    \bm{A}\bm{b}=  \lambda c \bm{a} =\lambda \bm{b}
+	\bm{A}\bm{b}=  \lambda c \bm{a} =\lambda \bm{b}
 \end{equation}
 先ほどの計算でも明らかになりましたが，固有ベクトルの値は絶対的なものではなく，要素間の相対的大きさを反映しているに過ぎないのでしたね。
 
@@ -179,40 +179,40 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 
 固有値と固有ベクトルの話の最初にあった，$\bm{Ax}=\lambda\bm{x}$というのを見直してみましょう。$\bm{x}$がなんらかの座標を表していると考えると，それに正方行列をかけるとはどういう意味でしょうか。次の計算式を見てください。
 \begin{equation}
-    \bm{Ax}=
-    \begin{pmatrix}
-        2 & 0 \\
-        0 & 3
-    \end{pmatrix}
-    \begin{pmatrix}
-        1 \\
-        2
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        2 \\
-        6
-    \end{pmatrix}
+	\bm{Ax}=
+	\begin{pmatrix}
+		2 & 0 \\
+		0 & 3
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\
+		2
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		2 \\
+		6
+	\end{pmatrix}
 \end{equation}
 
 これをみると，座標$\bm{x}=\begin{pmatrix}1\\2\end{pmatrix}$に$\bm{A}$をかけたことで，座標が$\begin{pmatrix}2\\6\end{pmatrix}$に変わった，と見ることもできますね。このように，ある座標が別の座標に移ることをとくに「変換」と呼びます\footnote{より一般的にいうと，以下のようになります。:集合$X$の各元$x$に集合$Y$の元$f(x)$を対応させる対応$f$のことを, 集合$X$から集合$Y$への写像(mapping)，関数(function)，あるいは変換(transformation)という。}。つまり\textbf{正方行列はなんらかの変換を施すもの}だ，と考えることができます。
 
 今回の例では，行列$\bm{A}$には次のような性質があります。
 \begin{equation}
-    \begin{pmatrix}
-        2 & 0 \\
-        0 & 3
-    \end{pmatrix}
-    \begin{pmatrix}
-        1 \\
-        0
-    \end{pmatrix}
-    = 2 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+	\begin{pmatrix}
+		2 & 0 \\
+		0 & 3
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\
+		0
+	\end{pmatrix}
+	= 2 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
 \end{equation}
 
 \begin{equation}
-    \begin{pmatrix} 2 & 0\\ 0 & 3 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
-    = 3 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+	\begin{pmatrix} 2 & 0\\ 0 & 3 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+	= 3 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
 \end{equation}
 
 そう，お気づきのように，これは固有値・固有ベクトルです。この行列の固有値・固有ベクトルはそれぞれ$\lambda_1=2,\bm{x}_1=(1,0)$，$\lambda_2=3,\bm{x}_2=(0,1)$であることがわかります。この固有値，固有ベクトルの組み合わせをじっとみていると，おもしろい特徴がわかって来ます。
@@ -230,15 +230,15 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 \section{因子分析の数学的理解}
 さあ因子分析に戻って考えてみましょう。因子分析のモデルは次のようなものでした。
 \begin{equation}
-    \bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
+	\bm{R} = \bm{A} \bm{A} ' + \bm{D}^2
 \end{equation}
 
 ここで，左辺の正方行列を相関行列$\bm{R}$とし，$\lambda \bm{xx'} = \bm{aa'}$となるようにベクトルの大きさを整えてみましょう。これは$\lambda$を分解してベクトルの中に溶け込ませるようなものですから，$\bm{a} = \sqrt{\lambda}\bm{x}$とすればよいでしょう。すると相関行列は次のように分解できます。
 \begin{equation}
-    \bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
+	\bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
 \end{equation}
 \begin{equation}
-    \bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
+	\bm{R}=\bm{a}_1\bm{a}_1'+\bm{a}_2\bm{a}_2'+\cdots +\bm{a}_m\bm{a}_m'+\bm{d} \bm{d}'
 \end{equation}
 
 ここでは共通因子の数が$m$個だとわかっている体で分解していますが，基本的にはサイズ$N$の行列からは$N$個の固有値がずらーっと並ぶわけです。それをどこかで「共通しているのはここまで」と判断し，残りは誤差であるとしてまとめて$\bm{dd'}$にしているだけですね。このように数学的にはここからが共通因子，ここからが独自因子といった区別をすることなく，最後のひとかけらまで固有値分解を行なっているのですが，その次元の重要度でもって共通因子と誤差因子に(研究者が恣意的に)分割しているのが因子分析のやっていることなのです。
@@ -250,12 +250,12 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 ところで因子分析モデルの$\bm{A}$，因子負荷行列ですが，これは共通因子の固有ベクトルをセットで扱ったものです。つまり，$\bm{A} = \bm{a_1,a_2,\cdots,a_m}$と縦ベクトルを並べたものになっています。エレメントワイズで表現すると次のようになります。
 
 \[
-    \bm{A} = \left (
-    \begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1N} \end{pmatrix},
-    \begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2N} \end{pmatrix},
-    \cdots,
-    \begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots\\ a_{mN} \end{pmatrix},
-    \right )
+	\bm{A} = \left (
+	\begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1N} \end{pmatrix},
+	\begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2N} \end{pmatrix},
+	\cdots,
+	\begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots\\ a_{mN} \end{pmatrix},
+	\right )
 \]
 
 ここで$\bm{AA'}$の間に単位行列$\bm{I}$ を挟んでも，別に結果は変わりませんよね。単位行列はかけても変わらないのが特徴ですから，$\bm{AA'}=\bm{AIA}$です。ここでの$\bm{I}$のサイズは$m \times m$であることに注意しつつ聞いてください。

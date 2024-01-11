@@ -1,0 +1,478 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+\chapter{一般化線形モデル}
+\VerbatimFootnotes
+\label{x24_linearModel}
+\section{一般線形モデル}
+ここまで検定と線形モデルが同じ形をしていることについては，何度か指摘してきました。
+検定モデルは，
+\[ Y_{i} = \beta_0 + \beta_1 X_{i} + \varepsilon_{i}\]
+という形をしており，ここでとくに$X_{i}$が統制群に属するか，実験群に属するかを0/1で表現したものであったことを再確認しておきましょう。たとえば二水準モデルの場合，統制群の場合$X_i=0$ですから，データは$Y_i = \beta_0 + 0\times \beta_1+ \varepsilon_{i} = \beta_0+ \varepsilon_{i}$であり全体平均に誤差がついただけの値になります。実験群の場合は$Y_i = \beta_0 + 1 \times \beta_1 + \varepsilon_{i}= \beta_0 + \beta_1+ \varepsilon_{i}$になりますから，この$\beta_1$の部分が効果の大きさを表しているのでした。
+
+水準数が増えても同じことです。3水準モデルの場合はベクトルを使って表記した方がわかりやすいので，データセットを$\bm{Y}$と表すと，
+\begin{equation}
+   \bm{Y}=\bm{X\beta}+\bm{\varepsilon}
+   \label{chap24eq1}
+\end{equation}
+であり，詳しく書くと
+\[
+   \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}
+   =
+   \begin{pmatrix} 1      & 1      & 0      \\
+                1      & 0      & 1      \\
+                \vdots & \vdots & \vdots \\
+                1      & -1     & -1\end{pmatrix}
+   \begin{pmatrix} \beta_0 \\ \beta_1 \\ \beta_2 \end{pmatrix}
+   +
+   \begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \vdots \\ \varepsilon_n \end{pmatrix}
+\]
+のようになります\footnote{$\beta_3 = 0 - (\beta_1 + \beta_2)$となっていることに注意。}。ここで行列$\bm{X}$はその群に属しているかどうか(その群の効果が発動するかどうか)を0/1で表している\keyterm{デザイン行列}{でざいんぎょうれつ}{design matrix}であり，有無という状態に一対一対応した\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}の数字です。説明変数が名義尺度水準になっているだけで，これが間隔尺度水準以上の\textbf{量的な}データであれば，\keyterm{回帰分析}{かいきぶんせき}{regression analysis}になるわけです。回帰分析は一般に，
+\[ Y_i = \beta_0 + \beta_1 X_{i1} +  \beta_2 X_{i2} + \cdots + \varepsilon \]
+あるいはベクトルで書くと
+\begin{equation}
+   \bm{Y}=\bm{X\beta}+\bm{\varepsilon}
+   \label{chap24eq2}
+\end{equation}
+となります。この通り式で書くと\ref{chap24eq1}と\ref{chap24eq2}にはなんら違いがないことがわかりますね。
+
+このように\textbf{要因計画と線形モデルは同じである}，ということを含意して，これをまとめて\keyterm{一般線形モデル}{いっぱんせんけいもでる}{General Linear Model}と言います\footnote{一般，というのは同じだという意味があって，辞書には「私は彼女と同じい罪を犯したも一般だ」といった用法が載っています。}。
+
+\subsection{回帰分析の確率モデル}
+ところで，この一般線形モデルでは誤差が正規分布に従うという仮定を置いていました。すなわち，$\varepsilon \sim N(0,\sigma)$というわけです\footnote{誤差の平均はゼロであるのは，偶然誤差の仮定から必然的です。}。線形モデルの部分，すなわち$\hat{Y}_i = \beta_0 + \beta_1 X_i$のところは確率的ではありませんから，データ全体では次のようになっていることになります。
+
+\[
+   y_i =
+   \tcboxmath[
+      enhanced,         % これは必須
+      frame hidden,     % 枠を消す. これも enhanced 必須
+      colback=cyan!10,
+      overlay={
+            \node[below,blue] at (frame.south) {確率的でないところ};
+         }
+   ]{
+      \beta_0 \quad +\quad \beta_1 x_i
+   }
+   +
+   \tcboxmath[
+      enhanced,         % これは必須
+      frame hidden,     % 枠を消す. これも enhanced 必須
+      colback=red!10,
+      overlay={
+            \node[below,red] at (frame.south) {確率的};
+         }
+   ]{
+      e_i
+   }
+\]
+
+\vspace{0.5cm}
+
+誤差$e_i$は平均0を中心に確率的に散らばりますが，その前のところは確率的ではありませんので，これを組み合わせた式全体としては，最後に確率的な散らばりがひっついているような形になります。数式ではありませんが，イメージでいうと次のような形でしょうか。
+\begin{center}
+   \begin{tikzpicture}[xscale = 0.8, yscale = 4]
+      \coordinate (A) at (-2,0);
+      \draw (A) node[left] {$y_i = \beta_0 + \beta_1 x_i + $};
+      \draw [domain=-2:2] plot(\x, {exp((-(\x)^2)/2)/(sqrt(2*pi))-0.1});
+      \draw [dashed] (0,0.4)--(0,-0.05);
+      \draw (-2,-0.05)--(2,-0.05);
+      \node (zero) at (0,-0.05)[below]{$0$};
+   \end{tikzpicture}
+\end{center}
+
+このことから，モデル全体の確率的挙動は，
+\begin{equation}
+   Y_i \sim N(\beta_0 + \beta_1 X_i, \sigma)
+\end{equation}
+ということになります。これが正規分布の確率モデル的表現です。一般線形モデルですから，説明変数$X$が連続的でも離散的でも同じモデルです。また，この正規分布は平均とSDでその形状が定められるのでした。平均は分布の位置を表すので，別名\keyterm{位置母数}{いちぼすう}{location parameter}といいます。ちなみにSDのことは別名\keyterm{尺度母数}{しゃくどぼすう}{scale parameter}と呼ぶことがあります。一般線形モデルは平均的な位置を線形で予測して，データはそれに付随した誤差が幅$\sigma$でぶれる，と考えます。そういう意味では，図\ref{fig:24_08}のように，回帰線にそって誤差分布があり，結果として実現値が得られているイメージ図のほうがわかりやすいかもしれません。
+
+\begin{figure}[ht]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/24_linearModel/Rplot24_06.png}
+      \caption{回帰線に伴う誤差分布}
+      \label{fig:24_08}
+   \end{center}
+\end{figure}
+
+
+これを確認した上で，では回帰分析をベイズ的に推定するコードを書いてみましょう。設計図も一応準備しておきます。
+図\ref{fig:24_01}では，$\mu$が$\beta_0+\beta_1 X_i$で作られているので，矢印のところは$\sim$ではなく$=$になっています。また，未知数$\beta_0,\beta_1$については平均0，SD100のとても幅の広い正規分布を置いています。一様分布でもいいのですが，原理的に$\pm \infty$までの幅があり，どこか1つの値に収束するだろう＝単峰性があるだろう，ということで正規分布を選んでいます。誤差SD$\sigma$については，半コーシー分布\footnote{正の値しか取らないように，コーシー分布を0のところで半分に折り畳んだ形にした分布です。Stan上では\verb|lower=0|の制限をかけることで正の範囲からしかサンプリングしない，ということで表現します。}
+\begin{figure}[ht]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/24_linearModel/Slide24_01.png}
+      \caption{線形モデルの設計図}
+      \label{fig:24_01}
+   \end{center}
+\end{figure}
+設計図をそのままコードに起こせば一丁上がりです。事後予測分布も生成するコードを書いてみました。
+\begin{lstlisting}[language=C++,label={stan::24_01},caption={線形モデルのStanコード}]
+data{
+  int N;
+  array[N] real X;
+  array[N] int Y;
+}
+
+parameters{
+  real beta0;
+  real beta1;
+  real<lower=0> sig;
+}
+
+transformed parameters{
+   array[N] real mu;
+   for(i in 1:N){
+      mu[i] = beta0 + beta1 * X[i];
+   }
+}
+
+model{
+  // model
+  for(i in 1:N){
+    Y[i] ~ normal(mu[i],sig);
+  }
+  // prior
+  beta0 ~ normal(0,100);
+  beta1 ~ normal(0,100);
+  sig ~ cauchy(0,5);
+}
+
+generated quantities{
+  real predX[N];
+  for(i in 1:N){
+    predX[i] = normal_rng(mu[i],sig);
+  }
+}
+
+\end{lstlisting}
+
+これがどのような挙動をするのか，実際のデータセットを使って検証してみましょう。
+サンプルデータとして，\texttt{baseball2020.csv}を使います。このデータセットはプロ野球データFreak\footnote{\url{https://baseball-data.com/}}さんから取ってきたものです\footnote{データセットはシラバスのサイトでも提供していますし，著者の個人サイト(\url{https://kosugitti.github.io/kosugitti10/index.html})にはスクレイピングのコードを公開しています。}。
+
+この野球データセットにはさまざまな情報が含まれていますが，身長と体重のデータだけ取り出して回帰分析をしてみましょう。身長を体重から予測することにします。ここで身長は正規分布に従っていると考えられますから，一般線形モデルが適切ですね。データの散布図を書いて，線形関係にありそうかどうか確認しておきます(図\ref{fig:24_02}。
+
+\begin{figure}[ht]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/24_linearModel/Rplot24_01.png}
+      \caption{身長を体重で回帰するモデル}
+      \label{fig:24_02}
+   \end{center}
+\end{figure}
+
+そこそこ相関がありそうですね。では回帰モデルを当てはめてみましょう。
+\begin{lstlisting}[language=c++,label={code:24_01},caption={一般線形モデルを実行するコード}]
+dat <- read_csv("baseballDecade.csv") %>% filter(Year=="2020年度")
+dataSet <- list(N = NROW(dat), Y = dat$height, X = dat$weight)
+## cmdstanrで実行する場合
+modelC <- cmdstan_model("LM.stan")
+fit <- modelC$sample(
+  data = dataSet,
+  chains = 4,
+  parallel_chains = 4,
+  iter_warmup = 1000,
+  iter_sampling = 2000
+)
+## 実行後のファイルをstanfit形式に置き換えておく
+fit.stanfit <- fit$output_files() %>% rstan::read_stan_csv()
+## 事後予測を取り出す
+predY <- rstan::extract(fit.stanfit)$predY
+# 事後予測分布の描画
+bayesplot::ppc_dens_overlay(y = dataSet$Y, yrep = predY[1:10, ])
+bayesplot::ppc_intervals(
+    y = dataSet$Y,
+    yrep = predY,
+    x = dataSet$X,
+    prob = 0.5,
+    prob_outer = 0.95
+)
+\end{lstlisting}
+\paragraph{コード解説}
+\begin{description}
+   \item[1行目] データを読みこみます。
+   \item[2行目] stanに与えるデータセットをリストで作ります。
+   \item[3-11行目] \texttt{cmdstanr}でコンパイルする例です。\texttt{rstan}パッケージを使っていただいても構いません
+   \item[13行目] 実行後のファイルをstanfit形式に置き換えています。\texttt{rstan}パッケージを使っている人はこの行を実行する必要がありません。
+   \item[15行目] 事後予測分布の一部です。予測値はMCMCサンプル数(ここでは8000点)$\times$サンプルサイズ(野球選手959人)ありますが，このうち最初の10人についての実際のデータ\verb|y|と予測値\verb|yrep|を重ねて表示しています。全員分表示させると非常にサイズが大きくて重たいからです。
+   \item[16-22行目] データの散布図に予測値とその50\%および95\%確信区間をプロットしました。
+\end{description}
+
+今回の分析結果を単純に表示するなら，次のようになります(出力\ref{SCcmd:out24_01})。
+\begin{SCcmd}{ベイズ推定の結果}{out24_01}
+   \begin{verbatim}
+variable   mean median   sd  mad     q5    q95 rhat ess_bulk ess_tail
+beta0 144.43 144.42 1.46 1.46 141.97 146.83 1.00     2344     2554
+beta1   0.43   0.43 0.02 0.02   0.40   0.46 1.00     2339     2507
+sig     4.57   4.57 0.11 0.10   4.40   4.75 1.00     3171     2952\end{verbatim}
+\end{SCcmd}
+これまで習ってきた\keyterm{最尤法}{さいゆうほう}{Maximum Likelihood method}の結果と出力の違いを比較しましょう(出力\ref{RS:out24_02})。
+\begin{Rscreen}{ML推定の結果}{out24_02}
+   \begin{verbatim}
+Call:
+lm(formula = height ~ weight, data = dat)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-16.3680  -2.8245  -0.0963   3.0368  14.9037 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 144.45986    1.44682   99.85   <2e-16 ***
+weight        0.42775    0.01693   25.27   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4.573 on 957 degrees of freedom
+Multiple R-squared:  0.4002,	Adjusted R-squared:  0.3996 
+F-statistic: 638.6 on 1 and 957 DF,  p-value: < 2.2e-16\end{verbatim}
+\end{Rscreen}
+最尤法では，切片が144.45986，傾きが0.42775という\keytermL{点推定}{てんすいてい}だけが表示される形になっていますが，MCMCを使ったベイズ推定では切片の平均(\keytermL{EAP推定値}{EAP})が144.43，中央値(\keytermL{MED推定値}{MED})が144.42，95\%確信区間が[141.97,146.83]となっています。同じく傾きの平均が0.43，中央値も0.43，95\%区間が[0.40,0.46]となっています。結果が分布として得られますから，初めから幅を持った推定になっていることが確認できます。
+
+事後予測分布(図\ref{fig:24_03})をみると，いくつか予測幅から外れているデータ点はありますが，概ね回帰線の範囲に捉えられており，線形モデルの当てはまりがそこそこ良いことが確認できます。
+事後予測分布が元データとよく当てはまるということは，データ生成メカニズムとして正規分布や線形モデルを想定したわれわれのモデルが悪くないんだ，と解釈していいでしょう。
+\begin{figure}[ht]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/24_linearModel/Rplot24_02.png}
+      \caption{事後予測分布}
+      \label{fig:24_03}
+   \end{center}
+\end{figure}
+
+\section{データに合わせた確率分布}
+今回は身長が従属変数，体重が独立変数でした。ここで独立変数を\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}のもの，すなわち離散変数だと考えると要因計画のようになります。Stanのコードは書き換える必要がありますが，線形モデルとして表現できるところは同じです\footnote{実際，Rの最尤推定関数の\verb|lm|は，説明変数が\verb|factor|型であれば関数を書き換えることなく，分散分析のような結果出力をしてくれるのでした。}。
+
+では\textbf{従属変数}を離散変数に置き換えたらどうなるでしょうか。
+野球のデータの例で考えます。野球は野手と投手に大きく分けることができます。投手は野手と違って毎日登板するということはありませんから，当然のことながら出場試合数は野手と比べ物になりません\footnote{メジャーリーガーの大谷選手は特殊すぎるケースです。投手は一試合で100球程度投げますが，当然徐々に握力が弱くなり，身体的な疲労も翌日，翌々日まで残り続けるものなのだそうです。彼は投げた次の日にDHで打席に立ちますから，とんでもないことです。}。
+図\ref{fig:24_04}には，年収5000万円を超える一流の選手たちに限定し，試合数で野手か投手かを予測するような分析ができないかと，回帰直線を引いたものを示してあります。
+\begin{figure}[ht]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/24_linearModel/Rplot24_03.png}
+      \caption{離散変数が目的変数だとおかしなことになる}
+      \label{fig:24_04}
+   \end{center}
+\end{figure}
+この直線はどうみても，データにうまく当てはまっているとは言えませんね。
+
+従属変数が離散的，とくに今回は野手か投手か，という二択の問題になっていますから，データとしては0/1しかないわけです。この二種類の数字が正規分布から出てくると考えるのは，流石におかしなことになってしまうでしょう。
+
+そこで前回学んだ\keytermL{離散確率分布}{りさんかくりつぶんぷ}の登場です。データが二値しか取らないというのは，コインの表と裏のようなものですから\keyterm{ベルヌーイ分布}{べるぬーいぶんぷ}{Bernoulli Distribution}に従うと考えるのが自然です。ベルヌーイ分布はパラメータ$\theta$で表(1)が，$1-\theta$で裏(0)がでるというように，パラメータが1つで，このパラメータがそもそも「表が出る確率」を表しているわけです。
+今回は野手であれば1，投手であれば0というように考えることにしましょう。野手か投手かを表す変数で，野手になる確率$\theta$が試合数によって変わる(予測できる)ということを考えるのです。
+この予測の仕方については，「試合数が多いのは野手である確率が高い」という線形的な関係が考えられますから，$\theta_i = \beta_0 + \beta_1 X_i$という式を考えることにします。ここで$X_i$は試合数を表す変数ですね。
+
+ところがここで，注意すべきことが1つあります。$\theta$は野手になる(表が出る)確率ですから，0から1の範囲の数字しか取れません。プロ野球の試合数は1試合から140試合ぐらいありますので，この数字をそのまま伸ばしたり($\beta_1$倍)ずらしたり($\beta_0$を加える)しても，0から1の範囲に収めるのは難しそうです。しかも上手くその範囲に収めたとしても，そもそも直線なのでどうあってもデータと合致しないことになるでしょう。そこで，この数字をロジスティック関数で変換することを考えます。
+
+ロジスティック関数とは次のような式で表されるものです。
+\[ y = \frac{1}{1+\exp(-x)} \]
+ここで$\exp(x)=e^x$であり，正規分布の式の中にも出てくる関数です\footnote{$e$はネイピア数とも呼ばれる自然対数の底，約2.7182...の実数です。}。関数の形は図にするとよくわかります(図\ref{fig:24_05})\footnote{すでに第\ref{x04_IRT}講で出てきた関数ですが，あの時は累積正規分布に近似する関数として紹介していました。今回は$\pm \infty$の範囲の数字を0から1に変換するものとして改めて紹介しています。なお，今回は累積正規分布への近似を目的としているわけではないので，係数1.7は外してあります。}。
+
+\begin{figure}[ht]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/24_linearModel/Rplot24_04.png}
+      \caption{ロジスティック関数}
+      \label{fig:24_05}
+   \end{center}
+\end{figure}
+
+このS字カーブは，xがどのように変わってもyは必ず0から1の範囲に入りますので，今回の目的にもってこいです。つまり，今回「野手か投手か」を判断する結果変数$Y_i$は，次のような分布に従っていると考えます。
+
+\[ Y_i \sim Bernoulli(\theta) = Bernoulli(logistic(\beta_0 + \beta_1 X_i)) \]
+
+これを使ってモデルを書いてみましょう。まずは設計図です(図\ref{fig:24_06})
+\begin{figure}[ht]
+   \begin{center}
+      \includegraphics[width=0.75\linewidth,keepaspectratio]{../images/24_linearModel/slide24_02.png}
+      \caption{ロジスティック回帰分析の設計図}
+      \label{fig:24_06}
+   \end{center}
+\end{figure}
+
+ここまで書ければ，Stanコードに起こすことも簡単ですね。Stanには\verb|inv_logit|という関数がありますのでそれを使うと良いでしょう。
+\begin{lstlisting}[language=c++,label={stan::24_02},caption={ロジスティック回帰分析のコード}]
+data{
+  int N;
+  array[N] int<lower=0,upper=1> Y;
+  array[N] real X;
+}
+
+parameters{
+  real beta0;
+  real beta1;
+}
+
+transformed parameters{
+  real theta[N];
+  for(i in 1:N){
+    theta[i] = inv_logit(beta0 + beta1 * X[i]);
+  }
+}
+
+model{
+  // model
+  for(i in 1:N){
+    Y[i] ~ bernoulli(theta[i]);
+  }
+  // prior
+  beta0 ~ normal(0,100);
+  beta1 ~ normal(0,100);
+}
+
+\end{lstlisting}
+
+Code\ref{stan::24_02}がこのモデルになります。ベルヌーイ分布を使っているのでベルヌーイ回帰と読んでもいいのですが，一般には\keyterm{ロジスティック回帰}{ろじすてぃっくかいき}{logistic regression}と呼ばれています。
+これに適切なデータセットを与えて(Rコード\ref{code:24_02})，推定した結果が出力\ref{SCrstan:out24_03}になります。
+
+\begin{lstlisting}[language=c++,label={code:24_02},caption={ロジスティック回帰分析を実行するRコード}]
+dat2 <- dat %>%
+  dplyr::mutate(Pitcher = if_else(position == "投手", 0, 1)) %>%
+  dplyr::filter(salary > 5000) %>%
+  dplyr::select(Games, Pitcher) %>%
+  na.omit()
+
+model <- cmdstanr::cmdstan_model("cmdstan/logistic.stan")
+dataSet <- list(N = NROW(dat2), Y = dat2$Pitcher, X = dat2$Games)
+
+fit.logistic <- model$sample(
+  data = dataSet,
+  chains = 4,
+  parallel_chains = 4,
+  iter_warmup = 1000,
+  iter_sampling = 5000
+)
+
+## 簡易表示
+fit.logistic$print(c("beta0", "beta1"))
+\end{lstlisting}
+\paragraph{コード解説}
+\begin{description}
+   \item[1-5行目] 先ほど読み込んだデータに\verb|Pitcher|変数を作ります。これは投手であれば0，野手であれば1になる変数です。その後，サラリーが5000万円以上のデータにし，変数\verb|Game, Pitcher|と必要なものだけ抜き出します。最後に\verb|na.omit|で欠損値のあるデータは除外しました
+   \item[7行目] \texttt{cmdstanr}でコンパイルする例です。\texttt{rstan}パッケージを使う場合は適宜変更してください。
+   \item[8行目] stanに与えるデータセットをリストで作ります。
+   \item[10-13行目] サンプリングするコードです。
+   \item[19行目] 結果の出力です。出力\ref{SCrstan:out24_03}のように得られます。
+\end{description}
+
+\begin{SCrstan}{ロジスティック回帰分析の結果}{out24_03}
+\begin{verbatim}
+ variable  mean median   sd  mad    q5   q95 rhat ess_bulk ess_tail
+    beta0 -2.77  -2.75 0.40 0.41 -3.47 -2.13 1.00     4978     5537
+    beta1  0.05   0.05 0.01 0.01  0.04  0.07 1.00     4832     5417
+\end{verbatim}
+\end{SCrstan}
+出力結果はグラフにした方がわかりやすいでしょう。図\ref{fig:24_06b}にあるように，上下の黒い点がデータ点，真ん中を通るS字カーブが回帰線になります。
+回帰線は\keytermL{MAP推定値}{MAPすいていち}で描きましたが，50\%，95\%の幅であり得る可能性の範囲についても薄く書き足しています。これを見ると，ちょうど50試合目ぐらいの時にカーブがY軸0.5，すなわち表裏半々の点を通りますから，50試合以上出ている人はより野手と判断されがち，と考えれば良いでしょう。
+\begin{figure}[ht]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/24_linearModel/Rplot24_05.png}
+      \caption{ロジスティック回帰分析の結果}
+      \label{fig:24_06b}
+   \end{center}
+\end{figure}
+
+さて，このように従属変数が離散的である場合に，離散確率分布をつかって線形モデルを当てはめることができるのをみてきました。
+図\ref{fig:24_06b}に示されているように，出力される関数はS字のカーブ型をしていますが，予測モデルとしては\textbf{線形}です。今回$\theta_i = \beta_0 + \beta_1 X_i$としたように，$\theta$は線形モデルであり，予測変数$X_i$が線型結合されているので，これも広い意味で線形モデルになるわけです。
+線型結合したものを，そのまま確率分布に入れることができなかったので，変数を変換してモデルの中に組み込むという工夫が必要でした。この変換関数のことをとくに\keyterm{リンク関数}{りんくかんすう}{Link function}と言います。線型結合とパラメータの形をつなげる(linkする)関数だからです。
+
+このように，リンク関数をかませてさまざまな確率分布に対応させる線形モデルを総称して，\keyterm{一般化線形モデル}{いっぱんかせんけいもでる}{Genrealized Linear Model;GLM}といいます。この章の初めに出てきた\keytermL{一般線形モデル}{いっぱんせんけいもでる}とは違いますので注意してくださいね。日本語では「化」があるかないか，英語では```{\itshape --ed}がつくかどうかだけの違いですが，一般線形モデルが正規分布一般だったものに対し，それ以外の確率分布にまで一般化したのがこちらです。
+
+ちなみに今回はベイズ推定で一般化線形モデルを実践してみましたが，最尤法による推定も可能です。可能ではあるのですが，ベイズ推定の方が拡張性が高いこと，確率モデルとしてまとめて理解しやすいと筆者は考えています。
+\citet{Kubo2012}は線形モデルの発展段階を推定法とともに，図\ref{fig:24_07}のように表しています。一般線形モデルは\keytermL{最小二乗法}{さいしょうにじょうほう}による推定でも十分だったのですが，確率モデルとして考えたときに\keytermL{最尤法}{さいゆうほう}による推定が必要になってきました。さらに複数の分布を混ぜるような\keyterm{一般化線形混合モデル}{いっぱんかせんけいこんごうもでる}{Generalized Mixed Linear Model}にまで発展すると，最尤法でカバーしきれないところが出てきました(網掛けが部分的になっていることでそれを表しています)。分布の上に分布がくるような，幾重にも層が厚くなるモデルのことを階層モデルと言いますが，そうなってくるともはや最尤法では推定できません。ここで「形はわからなくても乱数は発生させられる」という\keytermL{MCMC}{MCMC}の方法が出てきます。MCMCはすでに説明した通り($\to$Pp.\pageref{MCMC})，乱数による事後分布の近似法です。この方法はベイズ統計学に基づいた方法ですから，\keytermL{ベイズ推定}{べいずすいてい}ともいわれるわけです。ベイズ推定は最尤推定の結果と解釈の仕方が少し異なりますから，そこに注意する必要がありますが，ほぼ無敵の推定法と言ってもいいでしょう。
+
+\begin{figure}[ht]
+   \begin{center}
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{../images/24_linearModel/slide24_03.png}
+      \caption{\citet{Kubo2012}による線形モデルの発展の図}
+      \label{fig:24_07}
+   \end{center}
+\end{figure}
+
+
+
+\section{リンク関数とパラメータの解釈}
+さてここでもう一度，先ほどのロジスティック回帰分析の結果をみてみましょう。EAP推定値でいくと，$\beta_0 = -2.77,\beta_1=0.05$でしたから，$\hat{Y}_i = -2.77 + 0.05X_i$という関係だったことがわかります。
+
+ところで一般線形モデルのうちは，この傾きは説明変数が一単位増えた時に，従属変数がどれぐらい増えるのかを表す数字でした。これが正規分布に従うモデルであれば，出場試合数が一試合増えれば野手に0.05ポイント近づく，という考え方をするのでした。しかし今回は事情が違います。この$\hat{Y}_i$はこのあと，$\frac{1}{1+exp(-\theta_i)}$と変換されてしまいますので，$X_i$が$X_i+1$になった値も変換されて確率の数字に変わっていくはずです。
+ここで少し，数式的な展開を追って何が起こっているか考えてみましょう。
+
+まずは\keytermL{ロジスティック関数}{ろじすてぃっくかんすう}の表記を，少し改めます。同じことなのですが，$\exp(x) = e^x$に書き改めて
+\[ \frac{1}{1+\exp(-x)} = \frac{1}{1+e^{-x}} = \frac{1}{1+\frac{1}{e^x}} \]
+とします\footnote{指数計算のルールで，マイナス乗は逆数になります。$a^{-n}=\frac{1}{a}$です。}。
+ここで最後の形に$\frac{e^x}{e^x}$をかけまして，
+\[ \frac{1}{1+\frac{1}{e^x}}=\frac{e^x}{e^x+1} \]
+としましょう。さらに，$\hat{Y} = \beta_0 + \beta_1 X$で，ベルヌーイ分布のパラメータ$\theta$はこれによって変換されたものを代入することになりますから，
+\begin{eqnarray*}
+   \theta &=& \frac{e^{\hat{Y}}}{e^{\hat{Y}}+1} \\
+   &&\\
+   (e^{\hat{Y}}+1)\theta & = & e^{\hat{Y}} \\
+   \theta e^{\hat{Y}} + \theta &=& e^{\hat{Y}} \\
+   \theta & = & e^{\hat{Y}} - \theta e^{\hat{Y}} \\
+   \theta & = & e^{\hat{Y}}(1-\theta) \\
+   \frac{\theta}{1-\theta} &=& e^{\hat{Y}}\\
+   &&\\
+   \log\left(\frac{\theta}{1-\theta}\right) &=& \hat{Y}
+\end{eqnarray*}
+という関係が成り立ちます\footnote{最後の一行は，指数の反対が対数で，$\log_e^x=a$は$e^a=x$をあらわしていますから，指数を取るために両辺に$\log$をかけています。}。つまり，
+\[ \log\left(\frac{\theta}{1-\theta}\right) =  \beta_0 + \beta_1 X \]
+ということですね。
+
+この式の右辺は線形モデルです。左辺は\keyterm{ロジット関数}{ろじっとかんすう}{logit function}と呼ばれるものです。線形モデルはロジット関数を意味し，ベルヌーイ分布のパラメータ$\theta$は確率を表す数字でした。ですから係数の解釈は，線形モデルの方で一単位増えたことは，ロジット関数が一単位増えたことを意味するわけです。ちょっとややこしいですが，線形モデルを確率のパラメータにするには，ロジット関数の逆をすることですから，\textbf{ロジスティック関数は逆ロジット関数}とも呼ばれています。そう言えば，Stanの関数も\verb|inv_logit|でしたね\footnote{\texttt{inv}はinverse,「逆」の意味です。}。
+\begin{itemize}
+   \item 確率の数字$\to$線形モデルにつなげる；ロジット関数；$\log \left( \frac{\theta}{1-\theta} \right) $
+   \item 線形モデル$\to$確率の範囲に収める；ロジスティック関数あるいは逆ロジット関数；$\frac{1}{1+exp(-x)}$
+\end{itemize}
+
+また，線形モデルが表していたのは確率の比ですが，それの対数($\log$)をとったものでした。
+対数の中身は確率$\theta$と確率$1-\theta$の比率ですから，裏が出る確率に比べて何倍表が出やすいか，といったことを表しているのです。これをとくに\keyterm{オッズ}{おっず}{Odds}と言います。賭け事の勝率などを表す言葉ですね。オッズの対数がロジットです。ロジットが正の数であれば分子の方が分母より大きい，つまりより表が出やすいことになり，負の数であれば分母の方がより大きい，つまり裏の方が出やすいということになります。
+
+さて話は戻って，線形モデルで説明変数が一単位増えた時のことを考えてみましょう。わかりやすくするために，増える前を$A$，増えた後を$B$とします。
+\[ A = \frac{1}{1+exp(-(\beta_0 + \beta_1X)} \]
+\[ B = \frac{1}{1+exp(-(\beta_0 + \beta_1(X+1))} \]
+これはロジット関数を使って元に戻せますから，
+\[ \log\left( \frac{A}{1-A} \right) = \beta_0 + \beta_1 X \]
+\[ \log\left(\frac{B}{1-B} \right)= \beta_0 + \beta_1 (X+1)  = \beta_0 + \beta_1X + \beta_1\]
+ここで傾き$\beta_1$のことを考えたいのですが，$\beta_1$はこの式の関係から，
+\[ \beta_1 = \log\left(\frac{B}{1-B} \right) - \log\left( \frac{A}{1-A} \right) \]
+ということになりますね。ここで対数の差分は割り算ですから\footnote{$\log_a \frac{M}{N} = \log_a M-\log_a N$です。たとえば$8=2^3,16=2^4$ですから，$\log_2{16}{8} = \log_2 2 = 1$は$\log_2 16 - \log_2 8 = 4 - 3 = 1$と同じことです。}，
+\[ \beta_1 = \log\left( \frac{ \frac{B}{1-B} }{ \frac{A}{1-A} } \right) \]
+となります。右辺が非常にややこしい形をしていますので，$\log$を外してあげましょう。
+\[ \exp(\beta_1) =  \frac{B}{1-B}  \Big/  \frac{A}{1-A}  \]
+右辺はAのオッズに対するBのオッズになりました。オッズの比なのでこれを\keyterm{オッズ比}{おっずひ}{Odds ratio}と言います。左辺はロジスティック回帰分析の係数を\verb|exp|関数に入れたものですが，これが説明変数の増加前のオッズと増加後のオッズの比率です。つまり一単位増加した時にどれぐらい生じやすくなるかの比の上昇率が，$\exp(\beta_1)$だというわけです。
+
+ややこしいですね！具体的な数字で考えてみますと，今回$\beta_1=0.05$だったわけですから，$\exp(0.05)=1.051271$です。つまり，一試合多く出ている選手はそうでない選手に比べて，1.05倍野手と判断される確率が高い，ということになります。
+
+\section{まとめ}
+今日の話を簡単にまとめておきます。
+\begin{itemize}
+   \item 一般線形モデルは，正規分布を使った線形モデルで，説明変数が連続変数でも離散変数でも同じ形で表すことができることを示している。
+   \item 一般線形モデルの回帰係数をベイズ推定するモデルは，正規分布の位置母数に線形モデルを入れるだけ。
+   \item 従属変数が離散変数になると，確率モデルは離散確率分布を使う必要がある。そのためには，説明変数の線型結合をリンク関数を使って変形し，適切な形にして推定する必要がある。これを一般化線形モデルといいます。
+   \item 従属変数がベルヌーイ分布に従う例として，ロジット関数をリンク関数としたロジスティック回帰分析の実例をやってみました。
+   \item 一般化線形モデルの場合は説明変数がリンク関数で変換されているから，そのまま解釈するのではなく，変換の意味を理解しながら注意深く解釈しよう。
+\end{itemize}
+一般化線形モデルを導入したことで，要するにリンク関数がわかっていれば色々な確率分布が使えるんだな，ということが見えてきたのではないでしょうか。
+
+これは従属変数の形に関わることですので，心理学的実践の上でも注意が必要です。
+たとえば「記憶のトレーニングをすると思い出せる単語の数が増える」といった研究をする時，従属変数は「思い出した単語の数」になると思いますが，実験群と統制群とでこれを\keytermL{t検定}{tけんてい}する，というのが間違っていることはもうお分かりですね。「思い出した数」のようにカウントできる数字はマイナスになることはなく，0以上の正の整数しか取りません。これは正規分布ではなく，\keyterm{ポアソン分布}{ぽあそんぶんぷ}{poisson distribution}に従うことになります。
+またたとえば「記憶のトレーニングをすると，50の単語リストのうち思い出せる単語の割合が増える」と言った研究をする時，従属変数は今度は「思い出せた率」ということになると思います。これを実験群と統制群でt検定する，というのが間違っているのも明らかですね。「思い出せた率」という比率のデータは0から1の範囲の実数で，正規分布ではないからです。これは前回やりました\keyterm{二項分布}{にこうぶんぷ}{binomial distribution}に従うことになります。
+
+ポアソン分布に従うような変数の場合は，リンク関数として対数関数$\log$が用いられます(逆リンク関数は指数関数$\exp$)。また二項分布に従う変数の場合はリンク関数としてロジット関数(逆リンク関数はロジスティック関数)を用います。
+何気ない「度数」「比率」のようなデータを分析しようという時に，とりあえず数字が得られているから正規分布でいいや，と考えるのは間違いです。データの性質に応じたモデルを描くように心がけましょう。
+
+\section{課題}
+野球選手のデータの中で，とくに野手に限って考えます。
+
+年俸の高い選手は，成績が良いから高い契約金が得られるのでしょう。言い換えると，年俸で成績がある程度予測できるかもしれません。
+そこで打率を従属変数に，年俸を独立変数にした一般化線形モデルを考えたいと思います。
+選手によっては試合への出場回数が違いますので，打席数$N$で安打数が$K$本である，という情報を用いましょう。これは二項分布に従うモデルということになります。
+
+また，独立変数の年俸(変数\verb|saraly|)は個人差が非常に大きいので，標準化してから使うようにしましょう。
+元のデータを加工するコードは提供しますので，二項分布に従う一般線形モデルのStanコードを書いてください。
+また結果から，年俸が1単位上昇するとどういうことが言えるでしょうか。併せて報告してください。
+
+考察を導くための計算をするR/Stanコードとともに，回答を提出してください。Rmdファイルでの提出が望ましいですが，メモやコメントアウト，Wordファイル，Googleドキュメントなどでの提出も可とします。なお提出されたコード単体でバグがなく動くことが確認できないものは，未提出扱いになります。コードの書き方などわからないところがあれば，曜日別TAか小杉までメールで連絡し，指導を受けてください。
+
+\paragraph{ヒント}
+打席数と安打数とのデータがありますから，打率は計算したら出るように思えます。しかしここでは，打率を直接データとして与えるわけではありません。安打数が打席数に伴う二項分布から出現したものとし，打率は推定するべきパラメータとして考えます。
+その打率に線形モデルの構造を入れるようにしてください。
+
+打率を安打数と打席数から計算するのは，確率変数の実現値から計算する標本平均を使うことと同じです。つまり，標本平均が母平均の推定値になるという\keytermL{モーメント法}{もーめんとほう}によるアプローチなのです。この方法では，シーズン初日，一打席だけ出場して1本ヒットを打つと，打率100\%だというのと同じです。あるいはその初打席でヒットが出なければ，その人は打率0\%なのでしょうか？本当にそんなことを信じている人はいませんよね。つまり1回の実現値だけで全体の推定値とするには偏りがある，ということはわかっているわけです。モーメント法による推定，あるいは\keytermL{頻度主義統計学}{ひんどしゅぎとうけいがく}による考え方では，無限回の試行の平均値，無限に打席に立ち続けた時に収束していく先の値として確率が定義されています。これに対して\keytermL{ベイズ統計学}{ベイズ統計学}では，確実さの指標として確率を用いますから，初打席の結果がどうであれ「本当はこんなもんじゃないよな」という事前分布との組み合わせで，真の打率を推定することになります。
+\end{document}

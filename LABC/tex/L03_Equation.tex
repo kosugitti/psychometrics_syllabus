@@ -13,34 +13,34 @@
 たとえば，以下のような連立方程式があったとしましょう。
 
 \[
-    \left \{
-    \begin{array}{lcl}
-        x-2y-5z  & = & 3 \\
-        5x+4y+3z & = & 1 \\
-        3x+y-3z  & = & 6
-    \end{array}
-    \right .
+	\left \{
+	\begin{array}{lcl}
+		x-2y-5z  & = & 3 \\
+		5x+4y+3z & = & 1 \\
+		3x+y-3z  & = & 6
+	\end{array}
+	\right .
 \]
 これは行列で表現すると，次のようになります。
 \[
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} 1 & -2 & -5 \\
                 5 & 4  & 3  \\
                 3 & 1  & -3\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
 \]
 
 この左辺を行列とベクトルの式の計算ルールに則って展開してみてください。ちゃんと最初の連立方程式の左辺になることがわかると思います。かけて足して，という面倒な計算ルールは，連立方程式を簡単に表記するためのものだったのですね。
 
 最終的にはこの方程式を解いて，次のように答えを求めます。
 \[
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} 1 & -2 & -5 \\
                 5 & 4  & 3  \\
                 3 & 1  & -3\end{pmatrix}
-    \begin{pmatrix} -1 \\ 3 \\ -2 \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
+	\begin{pmatrix} -1 \\ 3 \\ -2 \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
 \]
 
 \section{連立方程式を解こう}
@@ -48,30 +48,30 @@
 さて，ではこの方程式の解はどのようにして求めたのでしょうか。改めてその計算方法を見てみましょう。解を導く方法の1つ，消去法は，ひとつの方程式を何倍かして，他の方程式に加えることにより，方程式をどんどん簡単にしていくというものです。
 まず，第一の式を5倍，あるいは3倍して，第二，第三の式からxの項を消去します。
 \[ \left \{
-    \begin{array}{rcl}
-        x-2y-5z  & = & 3  \\
-        -14y-28z & = & 14 \\
-        -7y-12z  & = & 3
-    \end{array}
-    \right .
+	\begin{array}{rcl}
+		x-2y-5z  & = & 3  \\
+		-14y-28z & = & 14 \\
+		-7y-12z  & = & 3
+	\end{array}
+	\right .
 \]
 第二の式の係数を簡単にしておきましょう。
 \[ \left \{
-    \begin{array}{rcl}
-        x-2y-5z & = & 3  \\
-        y+2z    & = & -1 \\
-        -7y-12z & = & 3
-    \end{array}
-    \right .
+	\begin{array}{rcl}
+		x-2y-5z & = & 3  \\
+		y+2z    & = & -1 \\
+		-7y-12z & = & 3
+	\end{array}
+	\right .
 \]
 第二の式を7倍して，第三の式からyを消去します。
 \[ \left \{
-    \begin{array}{rcl}
-        x-2y-5z & = & 3  \\
-        y+2z    & = & -1 \\
-        2z      & = & -4
-    \end{array}
-    \right .
+	\begin{array}{rcl}
+		x-2y-5z & = & 3  \\
+		y+2z    & = & -1 \\
+		2z      & = & -4
+	\end{array}
+	\right .
 \]
 あとはこれの3行目から$z=-2$が得られ，芋づる式に$x=-1$，$y=3$が得られます。
 
@@ -80,71 +80,71 @@
 
 \paragraph{第一段階}；一行目の式を使って，二行目以降の一列目の数字をゼロにする。
 \[
-    \begin{pmatrix} 1 & -2 & -5  \\
+	\begin{pmatrix} 1 & -2 & -5  \\
                 0 & 1  & 2   \\
                 0 & -7 & -12\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\ -1 \\ 3 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\ -1 \\ 3 \end{pmatrix}
 \]
 
 \paragraph{第二段階}；二行目の数字を使って，三行目二列目の数字をゼロにする。
 
 \[
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} 1 & -2 & -5 \\
                 0 & 1  & 2  \\
                 0 & 0  & 2\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\ -1 \\ -4 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\ -1 \\ -4 \end{pmatrix}
 \]
 
 \paragraph{第三段階}；三行目の関係から，対角要素を1にする。
 
 \[
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} 1 & -2 & -5 \\
                 0 & 1  & 2  \\
                 0 & 0  & 1\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\ -1 \\ -2 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\ -1 \\ -2 \end{pmatrix}
 \]
 
 \paragraph{第四段階}；三行目の関係を使って二行三列目の数字をゼロにする。
 
 \[
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} 1 & -2 & -5 \\
                 0 & 1  & 0  \\
                 0 & 0  & 1\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\  3 \\ -2 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\  3 \\ -2 \end{pmatrix}
 \]
 
 \paragraph{第五段階}；二，三行目の関係を使って，一行二，三列目の数字をゼロにする。
 
 \[
-    \begin{pmatrix} 1 & 0 & 0 \\
+	\begin{pmatrix} 1 & 0 & 0 \\
                 0 & 1 & 0 \\
                 0 & 0 & 1\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} -1 \\  3 \\ -2 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} -1 \\  3 \\ -2 \end{pmatrix}
 \]
 
 最後の形を見ればお分かりと思いますが，連立方程式を解くこととは，\underline{係数の行列を単位行列に置き換える}ことと同じなのです!
 
 \begin{reidai}{}{}
-    次の連立方程式をときましょう。
-    \[
-        \left \{
-        \begin{array}{lcl}
-            2x+3y-5z & = & 3 \\
-            x+3y-2z  & = & 5 \\
-            3x+2y-4z & = & 3
-        \end{array}
-        \right .
-    \]
+	次の連立方程式をときましょう。
+	\[
+		\left \{
+		\begin{array}{lcl}
+			2x+3y-5z & = & 3 \\
+			x+3y-2z  & = & 5 \\
+			3x+2y-4z & = & 3
+		\end{array}
+		\right .
+	\]
 \end{reidai}
 
 
@@ -152,9 +152,9 @@
 \subsection{行の基本変形}
 行列の行に関して，次の操作を\keytermL{行基本変形}{ぎょうきほんへんけい}と言います。
 \begin{enumerate}
-    \item ある行に0ではない数字を掛ける。
-    \item ある行に，他の行を何倍かしたものを加える。
-    \item 二つの行を入れ替える。
+	\item ある行に0ではない数字を掛ける。
+	\item ある行に，他の行を何倍かしたものを加える。
+	\item 二つの行を入れ替える。
 \end{enumerate}
 連立方程式を解くプロセスは，この3つの操作を駆使して行われてきたことは明らかです。これを行列の計算で表せるようにしましょう。
 
@@ -162,34 +162,34 @@
 ある行列\bm{A}の$i$行目を$c$倍したいとします。この操作を$\bm{P}_i(c)\bm{A}$とすると，$\bm{P}_i(c)$は次のように表せます。
 
 \[
-    \bm{P}_i(c) = \begin{pmatrix}
-        1 &        &   &   &   &        &   \\
-          & \ddots &   &   &   & \bm{O} &   \\
-          &        & 1 &   &   &        &   \\
-          &        &   & c &   &        &   \\
-          &        &   &   & 1 &        &   \\
-          & \bm{O} &   &   &   & \ddots &   \\
-          &        &   &   &   &        & 1 \\
-    \end{pmatrix}
+	\bm{P}_i(c) = \begin{pmatrix}
+		1 &        &   &   &   &        &   \\
+		  & \ddots &   &   &   & \bm{O} &   \\
+		  &        & 1 &   &   &        &   \\
+		  &        &   & c &   &        &   \\
+		  &        &   &   & 1 &        &   \\
+		  & \bm{O} &   &   &   & \ddots &   \\
+		  &        &   &   &   &        & 1 \\
+	\end{pmatrix}
 \]
 単位行列の$i$列目だけ$c$が入っているような行列ですね。数値例で確認しておきます。
 
 数値例として先ほどの連立方程式，
 \[
-    \begin{pmatrix} 1 & -2 & -5 \\
+	\begin{pmatrix} 1 & -2 & -5 \\
                 5 & 4  & 3  \\
                 3 & 1  & -3\end{pmatrix}
-    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-    =
-    \begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
+	\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+	=
+	\begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix}
 \]
 を行列で表し，
 \[ \bm{Ax}=\bm{b} \]
 としましょう。ここで\bm{A}は\keytermL{係数行列}{けいすうぎょうれつ}と呼ばれます。
 また，計算に際しては\bm{A}に右辺のベクトル\bm{b}を付け加えた行列，すなわち
 \[
-    [ \bm{A},\bm{b} ] =
-    \begin{pmatrix} 1 & -2 & -5 & 3\\ 5 & 4 & 3 & 1 \\3 & 1 & -3 & 6 \end{pmatrix}
+	[ \bm{A},\bm{b} ] =
+	\begin{pmatrix} 1 & -2 & -5 & 3\\ 5 & 4 & 3 & 1 \\3 & 1 & -3 & 6 \end{pmatrix}
 \]
 を考え，一気に操作してしまいましょう。この行列$ [ \bm{A},\bm{b} ] $はとくに連立1次方程式の\keytermL{拡大係数行列}{かくだいけいすうぎょうれつ}と呼ばれます。これを数値例として，行の変形を考えます。
 
@@ -198,57 +198,57 @@
 \[ \bm{A} = \begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix} \]
 の3行目を2倍する場合，
 \[
-    \bm{P}_3(2)\bm{A} =
-    \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2 \end{pmatrix}
-    \begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix}
-    =
-    \begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 6 & 2 & 8 & 2 \end{pmatrix}
+	\bm{P}_3(2)\bm{A} =
+	\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2 \end{pmatrix}
+	\begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix}
+	=
+	\begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 6 & 2 & 8 & 2 \end{pmatrix}
 \]
 \paragraph{ある行に，他の行を何倍かしたものを加える}
 ある行列\bm{A}の$i$行目に，$j$行目の$c$倍したものを加えたいと思います($j$行目は変化しない)。この操作を表す行列$\bm{P}_{ij}(c)$ は，次のように表せます。
 \[
-    \bm{P}_{ij}(c) = \begin{pmatrix}
-        1 &        &   &        &        &        &   \\
-          & \ddots &   &        &        & \bm{O} &   \\
-          &        & 1 & \cdots & c      &        &   \\
-          &        &   & \ddots & \vdots &        &   \\
-          &        &   &        & 1      &        &   \\
-          & \bm{O} &   &        &        & \ddots &   \\
-          &        &   &        &        &        & 1 \\
-    \end{pmatrix}
+	\bm{P}_{ij}(c) = \begin{pmatrix}
+		1 &        &   &        &        &        &   \\
+		  & \ddots &   &        &        & \bm{O} &   \\
+		  &        & 1 & \cdots & c      &        &   \\
+		  &        &   & \ddots & \vdots &        &   \\
+		  &        &   &        & 1      &        &   \\
+		  & \bm{O} &   &        &        & \ddots &   \\
+		  &        &   &        &        &        & 1 \\
+	\end{pmatrix}
 \]
 数値例で確認しておきます。先ほどの行列$\bm{A}$の3行目を2倍して1行目に加えるとしましょう。
 \[
-    \bm{P}_{13}(2)\bm{A} =
-    \begin{pmatrix} 1 & 0 & 2 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
-    \begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix}
-    =
-    \begin{pmatrix} 7 & 4 & 12 & 5 \\ 2 & 1 & -1 & 3 \\ 6 & 2 & 8 & 2 \end{pmatrix}
+	\bm{P}_{13}(2)\bm{A} =
+	\begin{pmatrix} 1 & 0 & 2 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+	\begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix}
+	=
+	\begin{pmatrix} 7 & 4 & 12 & 5 \\ 2 & 1 & -1 & 3 \\ 6 & 2 & 8 & 2 \end{pmatrix}
 \]
 
 \paragraph{二つの行を入れ替える}
 ある行列の$i$行目と$j$行目を入れ替える操作を考えます。これは行列が連立方程式を表していると思えば，連立して成立しているのですから式の順番を入れ替えているだけの操作です。この操作を行列で$\bm{P}_{ij}$とするなら，次のように表せます。
 \[
-    \bm{P}_{ij} =
-    \begin{pmatrix}
-        1 &        &        &        &        &        &        &        &   \\
-          & \ddots &        &        &        &        &        & \bm{O} &   \\
-          &        & 0      & \cdots & \cdots & \cdots & 1      &        &   \\
-          &        & \vdots & 1      &        &        & \vdots &        &   \\
-          &        & \vdots &        & \ddots &        & \vdots &        &   \\
-          &        & \vdots &        &        & 1      & \vdots &        &   \\
-          &        & 1      & \cdots & \cdots & \cdots & 0      &        &   \\
-          & \bm{O} &        &        &        &        &        & \ddots &   \\
-          &        &        &        &        &        &        &        & 1 \\
-    \end{pmatrix}
+	\bm{P}_{ij} =
+	\begin{pmatrix}
+		1 &        &        &        &        &        &        &        &   \\
+		  & \ddots &        &        &        &        &        & \bm{O} &   \\
+		  &        & 0      & \cdots & \cdots & \cdots & 1      &        &   \\
+		  &        & \vdots & 1      &        &        & \vdots &        &   \\
+		  &        & \vdots &        & \ddots &        & \vdots &        &   \\
+		  &        & \vdots &        &        & 1      & \vdots &        &   \\
+		  &        & 1      & \cdots & \cdots & \cdots & 0      &        &   \\
+		  & \bm{O} &        &        &        &        &        & \ddots &   \\
+		  &        &        &        &        &        &        &        & 1 \\
+	\end{pmatrix}
 \]
 これも数値例で確認しておきます。先ほどの行列$\bm{A}$の1行目と3行目を入れ替えるとしましょう。
 \[
-    \bm{P}_{13}\bm{A} =
-    \begin{pmatrix} 0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}
-    \begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix}
-    =
-    \begin{pmatrix} 3 & 1 & 4 & 1 \\ 2 & 1 & -1 & 3 \\ 1 & 2 & 4 & 3 \end{pmatrix}
+	\bm{P}_{13}\bm{A} =
+	\begin{pmatrix} 0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}
+	\begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix}
+	=
+	\begin{pmatrix} 3 & 1 & 4 & 1 \\ 2 & 1 & -1 & 3 \\ 1 & 2 & 4 & 3 \end{pmatrix}
 \]
 
 この通り，連立方程式を解くための操作もすべて行列演算で表現できることがわかりました。
@@ -258,19 +258,19 @@
 少し余談ではありますが，行の基本変形が終わったところで列の基本変形についても言及しておきましょう。
 行列の列に関して，次の操作を\keytermL{列基本変形}{ぎょうきほんへんけい}と言います。
 \begin{enumerate}
-    \item ある列に0ではない数字を掛ける。
-    \item ある列に，他の列を何倍かしたものを加える。
-    \item 二つの列を入れ替える。
+	\item ある列に0ではない数字を掛ける。
+	\item ある列に，他の列を何倍かしたものを加える。
+	\item 二つの列を入れ替える。
 \end{enumerate}
 これらの操作も基本的に行列で表現でき，興味深いことに行の時に定義した$\bm{P}_i(c), \bm{P}_{ij}(c), \bm{P}_{ij}$を変形したい行列の\underline{右側から}かけることで実現します。数値例とともに確認しておきましょう。
 \paragraph{ある列に0ではない数字を掛ける}
 先ほどの行列$\bm{A}$の3列目を2倍する場合の例です。$\bm{A}$が$3 \times 4$行列なので基本行列のサイズが変わっていることに注意してください。
 \[
-    \bm{A} \bm{P}_3(2)=
-    \begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix}
-    \begin{pmatrix} 1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 2 \end{pmatrix}
-    =
-    \begin{pmatrix} 1 & 2 & 4 & 6 \\ 2 & 1 & -1 & 6 \\ 3 & 1 & 4 & 2 \end{pmatrix}
+	\bm{A} \bm{P}_3(2)=
+	\begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix}
+	\begin{pmatrix} 1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 2 \end{pmatrix}
+	=
+	\begin{pmatrix} 1 & 2 & 4 & 6 \\ 2 & 1 & -1 & 6 \\ 3 & 1 & 4 & 2 \end{pmatrix}
 \]
 
 \paragraph{ある列に，他の列を何倍かしたものを加える}
@@ -278,20 +278,20 @@
 
 先ほどの行列$\bm{A}$の1列目を2倍して3列目に加えるとしましょう。
 \[
-    \bm{A} \bm{P}_{13}(2)=
-    \begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix}
-    \begin{pmatrix} 1 & 0 & 2 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1\end{pmatrix}
-    =
-    \begin{pmatrix} 1 & 2 & 6 & 3 \\ 2 & 1 & 3 & 3 \\ 3 & 1 & 10 & 1 \end{pmatrix}
+	\bm{A} \bm{P}_{13}(2)=
+	\begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix}
+	\begin{pmatrix} 1 & 0 & 2 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1\end{pmatrix}
+	=
+	\begin{pmatrix} 1 & 2 & 6 & 3 \\ 2 & 1 & 3 & 3 \\ 3 & 1 & 10 & 1 \end{pmatrix}
 \]
 \paragraph{二つの列を入れ替える}
 先ほどの行列$\bm{A}$の1列目と3列目を入れ替えるとしましょう。
 \[
-    \bm{P}_{13}\bm{A} =
-    \begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix}
-    \begin{pmatrix} 0 & 0 & 1& 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}
-    =
-    \begin{pmatrix} 4 & 2 & 1 & 3 \\ -1 & 1 & 2 & 3 \\ 4 & 1 & 3 & 1 \end{pmatrix}
+	\bm{P}_{13}\bm{A} =
+	\begin{pmatrix} 1 & 2 & 4 & 3 \\ 2 & 1 & -1 & 3 \\ 3 & 1 & 4 & 1 \end{pmatrix}
+	\begin{pmatrix} 0 & 0 & 1& 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}
+	=
+	\begin{pmatrix} 4 & 2 & 1 & 3 \\ -1 & 1 & 2 & 3 \\ 4 & 1 & 3 & 1 \end{pmatrix}
 \]
 
 \subsection{連立方程式を基本行列で解こう}
@@ -302,58 +302,58 @@
 \paragraph{第一段階}；一行目の式を使って，一列目の非対角要素をゼロにする。
 
 \begin{center}
-    \begin{tabular}{ll}
-        $
-            \begin{pmatrix}
-                1 & -2 & -5 & 3   \\
-                0 & 14 & 28 & -14 \\
-                0 & 7  & 12 & -3
-            \end{pmatrix}
-        $
-         &
-        \begin{tabular}{l}
-            1.\bm{Ab}の1行目を$-5$倍して2行目に加える，すなわち$\bm{P}_{21}(-5)$ \\
-            2.\bm{Ab}の1行目を$-3$倍して3行目に加える，すなわち$\bm{P}_{31}(-3)$
-        \end{tabular} \\
-    \end{tabular}
+	\begin{tabular}{ll}
+		$
+			\begin{pmatrix}
+				1 & -2 & -5 & 3   \\
+				0 & 14 & 28 & -14 \\
+				0 & 7  & 12 & -3
+			\end{pmatrix}
+		$
+		 &
+		\begin{tabular}{l}
+			1.\bm{Ab}の1行目を$-5$倍して2行目に加える，すなわち$\bm{P}_{21}(-5)$ \\
+			2.\bm{Ab}の1行目を$-3$倍して3行目に加える，すなわち$\bm{P}_{31}(-3)$
+		\end{tabular} \\
+	\end{tabular}
 \end{center}
 
 \paragraph{第二段階}；二行目の数字を使って，二列目の非対角要素をゼロにする。
 \begin{center}
-    \begin{tabular}{ll}
-        $
-            \begin{pmatrix}
-                1 & 0 & -1 & 1  \\
-                0 & 1 & 2  & -1 \\
-                0 & 0 & 12 & -3
-            \end{pmatrix}
-        $
-         &
-        \begin{tabular}{l}
-            3.\bm{Ab}の2行目を1/14倍する。すなわち$\bm{P}_{2}(\frac{1}{14})$ \\
-            4.\bm{Ab}の2行目を2倍して1行目に加える。すなわち$\bm{P}_{12}(2)$       \\
-            5.\bm{Ab}の2行目を-7倍して3行目に加える。すなわち$\bm{P}_{32}(-7)$     \\
-        \end{tabular}
-    \end{tabular}
+	\begin{tabular}{ll}
+		$
+			\begin{pmatrix}
+				1 & 0 & -1 & 1  \\
+				0 & 1 & 2  & -1 \\
+				0 & 0 & 12 & -3
+			\end{pmatrix}
+		$
+		 &
+		\begin{tabular}{l}
+			3.\bm{Ab}の2行目を1/14倍する。すなわち$\bm{P}_{2}(\frac{1}{14})$ \\
+			4.\bm{Ab}の2行目を2倍して1行目に加える。すなわち$\bm{P}_{12}(2)$       \\
+			5.\bm{Ab}の2行目を-7倍して3行目に加える。すなわち$\bm{P}_{32}(-7)$     \\
+		\end{tabular}
+	\end{tabular}
 \end{center}
 
 \paragraph{第三段階}；三行目の数字を使って，三列目の非対角要素をゼロにする。
 \begin{center}
-    \begin{tabular}{ll}
-        $
-            \begin{pmatrix}
-                1 & 0 & 0 & -1 \\
-                0 & 1 & 0 & 3  \\
-                0 & 0 & 1 & -2
-            \end{pmatrix}
-        $
-         &
-        \begin{tabular}{l}
-            6.\bm{Ab}の3行目を$-1/2$倍する。すなわち$\bm{P}_{3}(-\frac{1}{2})$ \\
-            7.\bm{Ab}の3行目を1倍して1行目に加える。すなわち$\bm{P}_{13}(1)$         \\
-            8.\bm{Ab}の3行目を$-2$倍して2行目に加える。すなわち$\bm{P}_{23}(-2)$     \\
-        \end{tabular}
-    \end{tabular}
+	\begin{tabular}{ll}
+		$
+			\begin{pmatrix}
+				1 & 0 & 0 & -1 \\
+				0 & 1 & 0 & 3  \\
+				0 & 0 & 1 & -2
+			\end{pmatrix}
+		$
+		 &
+		\begin{tabular}{l}
+			6.\bm{Ab}の3行目を$-1/2$倍する。すなわち$\bm{P}_{3}(-\frac{1}{2})$ \\
+			7.\bm{Ab}の3行目を1倍して1行目に加える。すなわち$\bm{P}_{13}(1)$         \\
+			8.\bm{Ab}の3行目を$-2$倍して2行目に加える。すなわち$\bm{P}_{23}(-2)$     \\
+		\end{tabular}
+	\end{tabular}
 \end{center}
 
 基本行列による操作は8ステップありました。すべてを網羅的につなげて書くと，
@@ -396,8 +396,8 @@
 \[ \begin{pmatrix}1&-2&-5\\5&4&3\\3&1&-3\end{pmatrix}\frac{1}{28}\begin{pmatrix}15&11&-14\\-24&-12&28\\7&7&-14\end{pmatrix} = \begin{pmatrix}1 & 0 & 0\\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix}\]
 となっています。
 \begin{reidai}{}{}
-    次の行列の逆行列を，掃き出し法のログを単位行列に作用させて求めてみましょう。\\
-    $\begin{pmatrix}1&0&1\\2&1&5\\0&1&1\end{pmatrix}$
+	次の行列の逆行列を，掃き出し法のログを単位行列に作用させて求めてみましょう。\\
+	$\begin{pmatrix}1&0&1\\2&1&5\\0&1&1\end{pmatrix}$
 \end{reidai}
 \section{連立方程式を判定する}
 \subsection{逆行列}
@@ -407,9 +407,9 @@
 
 逆行列の性質として次のものが知られています。正方行列$\bm{A},\bm{B}$がいずれも正則であるとすると，$\bm{A}^{-1}$，$\bm{AB}$，$\bm{A}'$はいずれも正則で，以下の関係が成り立ちます。
 \begin{enumerate}
-    \item $(\bm{A^{-1}})^{-1} = \bm{A}$
-    \item $(\bm{AB})^{-1} = \bm{B}^{-1}\bm{A}^{-1}$
-    \item $(\bm{A}^\prime )^{-1} = (\bm{A}^{-1})^{\prime}$
+	\item $(\bm{A^{-1}})^{-1} = \bm{A}$
+	\item $(\bm{AB})^{-1} = \bm{B}^{-1}\bm{A}^{-1}$
+	\item $(\bm{A}^\prime )^{-1} = (\bm{A}^{-1})^{\prime}$
 \end{enumerate}
 
 さて，方程式が解けるというのは逆行列が存在することだ，といいました。逆行列の計算は，方程式の変数が幾つになったとしても，基本行列を使って係数行列を操作するログを取っていけばよいのですが，$2 \times 2$の行列に限っていえば逆行列を簡単に求める公式があります。
@@ -429,14 +429,14 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 行列式は一般に$n$次正方行列に対して求めることができますが，サイズが大きくなるとこのような公式で計算できないので，その方法について本書では割愛しています。大事なのは，この行列式は$n$次連立方程式に解があるかどうかの判定に用いられるものだ，ということです。サイズが大きくなっても，$|\bm{A}|=0$であれば逆行列が存在しないといえます。これは$2 \times 2$の場合を考えて貰えばわかりますが，$|\bm{A}|=0$とすると分母$0$での割り算になるので，計算が成立しないからです。
 
 \begin{reidai}{}{}
-    次の行列について，逆行列を持つかどうか判定し，もつならそれを示してください。
-    \\
-    \\
-    \begin{tabular}{p{3cm}p{3cm}p{3cm}}
-        1.$\begin{pmatrix} 2 & 4 \\ 1 & 3\end{pmatrix}$  &
-        2.$\begin{pmatrix}2 & -6 \\ -1 & 3\end{pmatrix}$ &
-        3.$\begin{pmatrix}4 & -6 \\ -2 & 3\end{pmatrix}$
-    \end{tabular}
+	次の行列について，逆行列を持つかどうか判定し，もつならそれを示してください。
+	\\
+	\\
+	\begin{tabular}{p{3cm}p{3cm}p{3cm}}
+		1.$\begin{pmatrix} 2 & 4 \\ 1 & 3\end{pmatrix}$  &
+		2.$\begin{pmatrix}2 & -6 \\ -1 & 3\end{pmatrix}$ &
+		3.$\begin{pmatrix}4 & -6 \\ -2 & 3\end{pmatrix}$
+	\end{tabular}
 \end{reidai}
 
 \subsubsection{逆行列の性質}
@@ -459,25 +459,25 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 \label{StairAndRank}
 連立1次方程式が次のようにあったとします。
 \[
-    \begin{array}{ccc}
-        a_{11}x_1 + a_{12}x_2 + \cdots + a_{1m}x_m & = & b_1    \\
-        a_{21}x_1 + a_{22}x_2 + \cdots + a_{2m}x_m & = & b_2    \\
-        \vdots                                     & = & \vdots \\
-        a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nm}x_m & = & b_n    \\
-    \end{array}
+	\begin{array}{ccc}
+		a_{11}x_1 + a_{12}x_2 + \cdots + a_{1m}x_m & = & b_1    \\
+		a_{21}x_1 + a_{22}x_2 + \cdots + a_{2m}x_m & = & b_2    \\
+		\vdots                                     & = & \vdots \\
+		a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nm}x_m & = & b_n    \\
+	\end{array}
 \]
 
 ここで$n=m$と断っていないことに注意してください。つまり，変数の数と方程式の数が違う可能性も含めて記述しています。
 さて係数，未知数，定数が作る行列を考えて，次のように表します。
 \[
-    \bm{A} = \begin{pmatrix}
-        a_{11} & a_{12} & \cdots & a_{1m} \\
-        a_{21} & a_{22} & \cdots & a_{2m} \\
-        \vdots & \vdots &        & \vdots \\
-        a_{n1} & a_{n2} & \cdots & a_{nm}
-    \end{pmatrix},
-    \bm{x} = \begin{pmatrix} x_1 \\  x_2 \\ \vdots \\ x_m \end{pmatrix},
-    \bm{b} = \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{pmatrix}
+	\bm{A} = \begin{pmatrix}
+		a_{11} & a_{12} & \cdots & a_{1m} \\
+		a_{21} & a_{22} & \cdots & a_{2m} \\
+		\vdots & \vdots &        & \vdots \\
+		a_{n1} & a_{n2} & \cdots & a_{nm}
+	\end{pmatrix},
+	\bm{x} = \begin{pmatrix} x_1 \\  x_2 \\ \vdots \\ x_m \end{pmatrix},
+	\bm{b} = \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{pmatrix}
 \]
 こうすると，連立方程式は
 \[ \bm{Ax} = \bm{b} \]
@@ -485,27 +485,27 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 
 さて，行列の基本変形を繰り返すと，係数行列\bm{A}を特別な形の行列に変えていくことを考えます。どう特別かというと，
 \begin{enumerate}
-    \item ある$k(1 \le k \le n)$について1行目から$k$行目まではどれもゼロベクトルでないし，残りの$n-k$行は全てゼロベクトルである。
-    \item 第$i$行$(1 \le i \le k)$の成分を左から順にみて，最初に出てくる0でない数字は1で，出てくる場所が$q_i$列目だったとすると，$q_1 < q_2 < \cdots < q_k$である。
-    \item 第$q_i$列は基本ベクトル$e_i$である。
+	\item ある$k(1 \le k \le n)$について1行目から$k$行目まではどれもゼロベクトルでないし，残りの$n-k$行は全てゼロベクトルである。
+	\item 第$i$行$(1 \le i \le k)$の成分を左から順にみて，最初に出てくる0でない数字は1で，出てくる場所が$q_i$列目だったとすると，$q_1 < q_2 < \cdots < q_k$である。
+	\item 第$q_i$列は基本ベクトル$e_i$である。
 \end{enumerate}
 という性質を持っているのです。言葉でするとややこしいですが，要するに矩形行列の左下がゼロでいっぱいになっており，最初に$1$の要素が出てくるところは基本ベクトルになっているわけですから，次のような形をしている行列です。
 
 \[
-    \begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
-        \rowcolor{cyan!15}1 & 0 & a_{13} & 0 \\
-        0 & \rowcolor{cyan!15}1 & a_{23} & 0 \\
-        0 & 0 & 0 & \rowcolor{cyan!15}1 \\
-        0 & 0 & 0 & 0
-    \end{pNiceArray}
+	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
+		\rowcolor{cyan!15}1 & 0 & a_{13} & 0 \\
+		0 & \rowcolor{cyan!15}1 & a_{23} & 0 \\
+		0 & 0 & 0 & \rowcolor{cyan!15}1 \\
+		0 & 0 & 0 & 0
+	\end{pNiceArray}
 \]
 この行列をよく見ると，上記の「特別な形のルール」は守っています。
 \begin{itemize}
-    \item 1行目は1列目に1があります。そしてその下は全部ゼロ，つまり1列目のベクトルは$\scriptsize\begin{pmatrix}1 \\ 0 \\ 0\\ 0 \end{pmatrix}$と基本ベクトルになっています。
-    \item 2行目は2列目に1があって，左から見て2列目までは0，2列目だけ見ると基本ベクトルという形。
-    \item 3行目は4列目まで1が出てきません。そこまで0が続いていて，1が出てきた列は基本ベクトルになっています。
-    \item 4行目は1がないので特にどの条件にも違反していません。
-    \item 左列から見ていって，1が出てくる順番は1,2,3...とそろっています。
+	\item 1行目は1列目に1があります。そしてその下は全部ゼロ，つまり1列目のベクトルは$\scriptsize\begin{pmatrix}1 \\ 0 \\ 0\\ 0 \end{pmatrix}$と基本ベクトルになっています。
+	\item 2行目は2列目に1があって，左から見て2列目までは0，2列目だけ見ると基本ベクトルという形。
+	\item 3行目は4列目まで1が出てきません。そこまで0が続いていて，1が出てきた列は基本ベクトルになっています。
+	\item 4行目は1がないので特にどの条件にも違反していません。
+	\item 左列から見ていって，1が出てくる順番は1,2,3...とそろっています。
 \end{itemize}
 
 このように，左から見て1が出るまで段段になっていること，下はゼロでうめつくされているもので，このような行列を\keytermL{階段行列}{かいだんぎょうれつ}といいます\footnote{階段行列のなかでも最初に1が出てくるときに基本ベクトルとして出てきており，これを特に簡約化された階段行列，Reduced row echelon formといって区別することもあります。ここでは\citet{Murakami20160301}に習って簡約化されたものを階段行列としています。いずれにせよ本書の目的では，簡約化された形での利用しかしませんので。}。0で階段を作っているように見えるからですね。この例の場合は3段ありますが，このような階段行列におけるゼロベクトルでない行の数のことを，この行列の\keyterm{階数}{かいすう}{rank}といい，$rank(\bm{A})$で表します。
@@ -513,28 +513,28 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 いくつか階段行列の例を見ておきましょう。次に挙げるのはいずれも階段行列です。
 
 \[
-    \begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
-        \rowcolor{cyan!15}1 & 0 & 0 & -1 \\
-        0 & \rowcolor{cyan!15}1 & 0 & 2\\
-        0 & 0 & \rowcolor{cyan!15}1 & 1\\
-    \end{pNiceArray},
-    \begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
-        \rowcolor{cyan!15}1 & 0 & 4 & 3 \\
-        0 & \rowcolor{cyan!15}1 & 5 & 2  \\
-    \end{pNiceArray},
-    \begin{pNiceArray}{>{\strut}ccc}[margin, extra-margin=2pt,colortbl-like]
-        \rowcolor{cyan!15}1 & 0 & 0 \\
-        0 & \rowcolor{cyan!15}1 & 0 \\
-        0 & 0 & \rowcolor{cyan!15}1 \\
-        0 & 0 & 0 \\
-        0 & 0 & 0 \\
-    \end{pNiceArray},
-    \begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
-        \rowcolor{cyan!15}1 & 0 & 6 & 0 \\
-        0 & \rowcolor{cyan!15}1 & 8 & 0 \\
-        0 & 0 & 0 & \rowcolor{cyan!15}1 \\
-        0 & 0 & 0 & 0
-    \end{pNiceArray}
+	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
+		\rowcolor{cyan!15}1 & 0 & 0 & -1 \\
+		0 & \rowcolor{cyan!15}1 & 0 & 2\\
+		0 & 0 & \rowcolor{cyan!15}1 & 1\\
+	\end{pNiceArray},
+	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
+		\rowcolor{cyan!15}1 & 0 & 4 & 3 \\
+		0 & \rowcolor{cyan!15}1 & 5 & 2  \\
+	\end{pNiceArray},
+	\begin{pNiceArray}{>{\strut}ccc}[margin, extra-margin=2pt,colortbl-like]
+		\rowcolor{cyan!15}1 & 0 & 0 \\
+		0 & \rowcolor{cyan!15}1 & 0 \\
+		0 & 0 & \rowcolor{cyan!15}1 \\
+		0 & 0 & 0 \\
+		0 & 0 & 0 \\
+	\end{pNiceArray},
+	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
+		\rowcolor{cyan!15}1 & 0 & 6 & 0 \\
+		0 & \rowcolor{cyan!15}1 & 8 & 0 \\
+		0 & 0 & 0 & \rowcolor{cyan!15}1 \\
+		0 & 0 & 0 & 0
+	\end{pNiceArray}
 \]
 
 任意の行列$\bm{A}$は，適当な基本変形を何回か繰り返すことによって，必ず階段行列$\bm{B}$に変形できることがわかっています。具体例は既に連立方程式の解のところで見た通りです。単位行列$\bm{I}$は階段行列であり，連立方程式の係数行列$\bm{A}$と右辺の定数$\bm{b}$をあわせた拡大係数行列について係数部分を単位行列にすること，つまり拡大係数行列を階段行列にすることが，方程式を解くということだったのは明らかです。そして\underline{拡大係数行列の階数と，係数行列の階数が一致すること}が，方程式において解が求められるということと同じ意味になりますね。すなわち，
@@ -548,122 +548,122 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 まずは拡大係数行列の階数が係数行列の階数より大きかった場合です。これは方程式の形で表してみればすぐにわかります。
 
 \[
-    \begin{pNiceArray}{>{\strut}ccc}[margin, extra-margin=2pt,colortbl-like]
-        \rowcolor{cyan!15}1 & 0 & 0 \\
-        0 & \rowcolor{cyan!15}1 & 0 \\
-        0 & 0 & 0\\
-    \end{pNiceArray}
-    \begin{pmatrix} x\\y\\z \end{pmatrix}=
-    \begin{pmatrix} 2 \\ 3 \\ 5 \end{pmatrix}
+	\begin{pNiceArray}{>{\strut}ccc}[margin, extra-margin=2pt,colortbl-like]
+		\rowcolor{cyan!15}1 & 0 & 0 \\
+		0 & \rowcolor{cyan!15}1 & 0 \\
+		0 & 0 & 0\\
+	\end{pNiceArray}
+	\begin{pmatrix} x\\y\\z \end{pmatrix}=
+	\begin{pmatrix} 2 \\ 3 \\ 5 \end{pmatrix}
 \]
 つまり係数行列の階数は2です($rank(\bm{A})=2$)。拡大係数行列の階数はどうなるでしょうか。
 \[
-    \begin{pmatrix} 1 & 0 & 0 & 2 \\ 0 & 1 & 0 & 3 \\ 0 & 0 & 0 & 5 \end{pmatrix}
-    \xrightarrow[\text{$\bm{P}_{13}(-2/5)\bm{P}_{23}(-2/5)$として}]{}
-    \begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
-        \rowcolor{cyan!15}1 & 0 & 0 & 0 \\
-        0 & \rowcolor{cyan!15}1 & 0 & 0 \\
-        0 & 0 & 0 & \rowcolor{cyan!15}1 \\
-    \end{pNiceArray}
+	\begin{pmatrix} 1 & 0 & 0 & 2 \\ 0 & 1 & 0 & 3 \\ 0 & 0 & 0 & 5 \end{pmatrix}
+	\xrightarrow[\text{$\bm{P}_{13}(-2/5)\bm{P}_{23}(-2/5)$として}]{}
+	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
+		\rowcolor{cyan!15}1 & 0 & 0 & 0 \\
+		0 & \rowcolor{cyan!15}1 & 0 & 0 \\
+		0 & 0 & 0 & \rowcolor{cyan!15}1 \\
+	\end{pNiceArray}
 \]
 この通り$rank([\bm{A,b}])=3$で，係数だけの行列の階数$rank(\bm{A})$より大きくなっています。
 ところがこの場合，もともとの方程式をよくみると，
 \[
-    \left \{
-    \begin{array}{ccc}
-        x          & = & 2 \\
-        y          & = & 3 \\
-        0 \times z & = & 5
-    \end{array}
-    \right.
+	\left \{
+	\begin{array}{ccc}
+		x          & = & 2 \\
+		y          & = & 3 \\
+		0 \times z & = & 5
+	\end{array}
+	\right.
 \]
 となっていますから，方程式として成立していないですね。これでは解なし，となってしまうのも当然です。
 \paragraph{$ rank([\bm{A},\bm{b}]) = rank(\bm{A}) = m$の場合}
 階数が一致していて，未知数の数と同じであれば一組の解が求まるのはもうお分かりだと思いますが，たとえば3つの未知数にたいして4つ以上の連立方程式がある場合はどうなるでしょうか。階数の観点からみてみましょう。次のような連立方程式があったとします。
 
 \[
-    \left \{
-    \begin{array}{ccccc}
-        x  & +y  & -z  & = & 4 \\
-        x  & +3y & +5z & = & 2 \\
-        -x & +2y & +3z & = & 0 \\
-        2x & +y  & +2z & = & 2
-    \end{array}
-    \right .
+	\left \{
+	\begin{array}{ccccc}
+		x  & +y  & -z  & = & 4 \\
+		x  & +3y & +5z & = & 2 \\
+		-x & +2y & +3z & = & 0 \\
+		2x & +y  & +2z & = & 2
+	\end{array}
+	\right .
 \]
 拡大係数行列は次のようになります。
 \[
-    [\bm{A},\bm{b}] =
-    \begin{pmatrix}
-        1  & 1 & -1 & 4 \\
-        1  & 3 & 5  & 2 \\
-        -1 & 2 & 3  & 0 \\
-        2  & 1 & 2  & 2
-    \end{pmatrix}
+	[\bm{A},\bm{b}] =
+	\begin{pmatrix}
+		1  & 1 & -1 & 4 \\
+		1  & 3 & 5  & 2 \\
+		-1 & 2 & 3  & 0 \\
+		2  & 1 & 2  & 2
+	\end{pmatrix}
 \]
 
 
 これに基本操作をしていきます。
 \begin{center}
-    \begin{tabular}{c|c}
-        $[\bm{A},\bm{b}]$
-         &
-        $
-            \begin{pmatrix}
-                1  & 1 & -1 & 4 \\
-                1  & 3 & 5  & 2 \\
-                -1 & 2 & 3  & 0 \\
-                2  & 1 & 2  & 2
-            \end{pmatrix}
-        $
-        \\\hline
-        \begin{tabular}{l}
-            $\bm{P}_{21}(-1)$ \\
-            $\bm{P}_{31}(1)$  \\
-            $\bm{P}_{41}(-2)$ \\
-        \end{tabular}
-         &
-        $
-            \begin{pmatrix}
-                1 & 1  & -1 & 4  \\
-                0 & 2  & 6  & -2 \\
-                0 & 3  & 2  & 4  \\
-                0 & -1 & 4  & -6
-            \end{pmatrix}
-        $
-        \\\hline
-        \begin{tabular}{l}
-            $\bm{P}_{2}(1/2)$ \\
-            $\bm{P}_{12}(-1)$ \\
-            $\bm{P}_{32}(-3)$ \\
-            $\bm{P}_{42}(1)$  \\
-        \end{tabular}
-         &
-        $
-            \begin{pmatrix}
-                1 & 0 & -4 & 5  \\
-                0 & 1 & 3  & -1 \\
-                0 & 0 & -7 & 7  \\
-                0 & 0 & 7  & -7
-            \end{pmatrix}
-        $
-        \\\hline
-        \begin{tabular}{l}
-            $\bm{P}_{3}(-1/7)$ \\
-            $\bm{P}_{23}(-3)$  \\
-            $\bm{P}_{43}(-7)$  \\
-        \end{tabular}
-         &
-        $
-            \begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
-                \rowcolor{cyan!15}1 & 0 & 0 & 1 \\
-                0 & \rowcolor{cyan!15}1 & 0 & 2 \\
-                0 & 0 & \rowcolor{cyan!15}1 &-1\\
-                0 & 0 & 0 & 0
-            \end{pNiceArray}
-        $
-        \\\hline
-    \end{tabular}
+	\begin{tabular}{c|c}
+		$[\bm{A},\bm{b}]$
+		 &
+		$
+			\begin{pmatrix}
+				1  & 1 & -1 & 4 \\
+				1  & 3 & 5  & 2 \\
+				-1 & 2 & 3  & 0 \\
+				2  & 1 & 2  & 2
+			\end{pmatrix}
+		$
+		\\\hline
+		\begin{tabular}{l}
+			$\bm{P}_{21}(-1)$ \\
+			$\bm{P}_{31}(1)$  \\
+			$\bm{P}_{41}(-2)$ \\
+		\end{tabular}
+		 &
+		$
+			\begin{pmatrix}
+				1 & 1  & -1 & 4  \\
+				0 & 2  & 6  & -2 \\
+				0 & 3  & 2  & 4  \\
+				0 & -1 & 4  & -6
+			\end{pmatrix}
+		$
+		\\\hline
+		\begin{tabular}{l}
+			$\bm{P}_{2}(1/2)$ \\
+			$\bm{P}_{12}(-1)$ \\
+			$\bm{P}_{32}(-3)$ \\
+			$\bm{P}_{42}(1)$  \\
+		\end{tabular}
+		 &
+		$
+			\begin{pmatrix}
+				1 & 0 & -4 & 5  \\
+				0 & 1 & 3  & -1 \\
+				0 & 0 & -7 & 7  \\
+				0 & 0 & 7  & -7
+			\end{pmatrix}
+		$
+		\\\hline
+		\begin{tabular}{l}
+			$\bm{P}_{3}(-1/7)$ \\
+			$\bm{P}_{23}(-3)$  \\
+			$\bm{P}_{43}(-7)$  \\
+		\end{tabular}
+		 &
+		$
+			\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
+				\rowcolor{cyan!15}1 & 0 & 0 & 1 \\
+				0 & \rowcolor{cyan!15}1 & 0 & 2 \\
+				0 & 0 & \rowcolor{cyan!15}1 &-1\\
+				0 & 0 & 0 & 0
+			\end{pNiceArray}
+		$
+		\\\hline
+	\end{tabular}
 \end{center}
 このように，第3段階で操作が終わってしまいました。拡大係数行列の階数が3，係数行列の階数も3であり，両者が一致するので解が得られます。しかし最後の一行はなんの情報もない行になってしまいました。つまり，元の連立方程式には，一本分冗長な式が含まれていたということです。
 
@@ -671,110 +671,110 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 最後に，係数行列と拡大係数行列の階数は同じだけど未知数がそれより大きい場合。次のような例で見てみましょう。
 
 \[
-    \left \{
-    \begin{array}{cccccc}
-        x  & +2y & +3z & -w & = & 10 \\
-        x  & +y  & -2z & +w & = & -2 \\
-        2x & -2y & -z  & -w & = & -1
-    \end{array}
-    \right .
+	\left \{
+	\begin{array}{cccccc}
+		x  & +2y & +3z & -w & = & 10 \\
+		x  & +y  & -2z & +w & = & -2 \\
+		2x & -2y & -z  & -w & = & -1
+	\end{array}
+	\right .
 \]
 拡大係数行列にしてみます。
 
 \[
-    [\bm{A},\bm{b}] =
-    \begin{pmatrix}
-        1 & 2  & 3  & -1 & 10 \\
-        1 & 1  & -2 & 1  & -2 \\
-        2 & -2 & -1 & -1 & -1
-    \end{pmatrix}
+	[\bm{A},\bm{b}] =
+	\begin{pmatrix}
+		1 & 2  & 3  & -1 & 10 \\
+		1 & 1  & -2 & 1  & -2 \\
+		2 & -2 & -1 & -1 & -1
+	\end{pmatrix}
 \]
 
 階段行列を目指していきましょう。
 \begin{center}
-    \begin{tabular}{c|c}
-        $[\bm{A},\bm{b}]$
-         &
-        $
-            [\bm{A},\bm{b}] =
-            \begin{pmatrix}
-                1 & 2  & 3  & -1 & 10 \\
-                1 & 1  & -2 & 1  & -2 \\
-                2 & -2 & -1 & -1 & -1
-            \end{pmatrix}
-        $
-        \\\hline
-        \begin{tabular}{l}
-            $\bm{P}_{21}(-1)$ \\
-            $\bm{P}_{31}(-2)$ \\
-        \end{tabular}
-         &
-        $
-            \begin{pmatrix}
-                1 & 2  & 3  & -1 & 10  \\
-                0 & -1 & -5 & 2  & -12 \\
-                0 & -2 & -7 & 1  & -21 \\
-            \end{pmatrix}
-        $
-        \\\hline
-        \begin{tabular}{l}
-            $\bm{P}_{2}(-1)$  \\
-            $\bm{P}_{12}(-2)$ \\
-            $\bm{P}_{32}(2)$  \\
-        \end{tabular}
-         &
-        $
-            \begin{pmatrix}
-                1 & 0 & -7 & 3  & -14 \\
-                0 & 1 & 5  & -2 & 12  \\
-                0 & 0 & 3  & -3 & 3   \\
-            \end{pmatrix}
-        $
-        \\\hline
-        \begin{tabular}{l}
-            $\bm{P}_{3}(1/3)$ \\
-            $\bm{P}_{13}(-7)$ \\
-            $\bm{P}_{23}(-5)$ \\
-        \end{tabular}
-         &
-        $
-            \begin{pNiceArray}{>{\strut}ccccc}[margin, extra-margin=2pt,colortbl-like]
-                \rowcolor{cyan!15}1 & 0 & 0 & -4 & -7 \\
-                0 & \rowcolor{cyan!15}1 & 0 & 3 & 7 \\
-                0 & 0 & \rowcolor{cyan!15}1 &-1 & 1\\
-            \end{pNiceArray}
-        $
-        \\\hline
-    \end{tabular}
+	\begin{tabular}{c|c}
+		$[\bm{A},\bm{b}]$
+		 &
+		$
+			[\bm{A},\bm{b}] =
+			\begin{pmatrix}
+				1 & 2  & 3  & -1 & 10 \\
+				1 & 1  & -2 & 1  & -2 \\
+				2 & -2 & -1 & -1 & -1
+			\end{pmatrix}
+		$
+		\\\hline
+		\begin{tabular}{l}
+			$\bm{P}_{21}(-1)$ \\
+			$\bm{P}_{31}(-2)$ \\
+		\end{tabular}
+		 &
+		$
+			\begin{pmatrix}
+				1 & 2  & 3  & -1 & 10  \\
+				0 & -1 & -5 & 2  & -12 \\
+				0 & -2 & -7 & 1  & -21 \\
+			\end{pmatrix}
+		$
+		\\\hline
+		\begin{tabular}{l}
+			$\bm{P}_{2}(-1)$  \\
+			$\bm{P}_{12}(-2)$ \\
+			$\bm{P}_{32}(2)$  \\
+		\end{tabular}
+		 &
+		$
+			\begin{pmatrix}
+				1 & 0 & -7 & 3  & -14 \\
+				0 & 1 & 5  & -2 & 12  \\
+				0 & 0 & 3  & -3 & 3   \\
+			\end{pmatrix}
+		$
+		\\\hline
+		\begin{tabular}{l}
+			$\bm{P}_{3}(1/3)$ \\
+			$\bm{P}_{13}(-7)$ \\
+			$\bm{P}_{23}(-5)$ \\
+		\end{tabular}
+		 &
+		$
+			\begin{pNiceArray}{>{\strut}ccccc}[margin, extra-margin=2pt,colortbl-like]
+				\rowcolor{cyan!15}1 & 0 & 0 & -4 & -7 \\
+				0 & \rowcolor{cyan!15}1 & 0 & 3 & 7 \\
+				0 & 0 & \rowcolor{cyan!15}1 &-1 & 1\\
+			\end{pNiceArray}
+		$
+		\\\hline
+	\end{tabular}
 \end{center}
 これを方程式の形に戻して表現すると，
 \[
-    \left \{
-    \begin{array}{cccccc}
-        x &   &   & -4w & = & -7 \\
-          & y &   & +3w & = & 7  \\
-          &   & z & -w  & = & 1
-    \end{array}
-    \right .
+	\left \{
+	\begin{array}{cccccc}
+		x &   &   & -4w & = & -7 \\
+		  & y &   & +3w & = & 7  \\
+		  &   & z & -w  & = & 1
+	\end{array}
+	\right .
 \]
 となります。これは結局，
 \[
-    \left \{
-    \begin{array}{ccc}
-        x & = & 4w + 7  \\
-        y & = & -3w + 7 \\
-        z & = & w + 1   \\
-    \end{array}
-    \right .
+	\left \{
+	\begin{array}{ccc}
+		x & = & 4w + 7  \\
+		y & = & -3w + 7 \\
+		z & = & w + 1   \\
+	\end{array}
+	\right .
 \]
 であり，wが何になるか定めないと答えが出てきません。このように，変数1つ分の自由ができてしまいます。無数の解をもつというのはこのように，未知数の数のほうが拡大係数行列の階数よりも大きい場合なのです。この未知数の数$m$と係数行列の階数の差分，$m - rank(\bm{A})$のことを\textbf{解の自由度}と言います。
 
 ここまでのことをまとめると，以下のようになります。\label{StairAndRank2}
 \begin{itemize}
-    \item 係数行列$\bm{A}$の階数$<$ 拡大係数行列$[\bm{A},\bm{b}]$であれば，解はない。
-    \item 係数行列$\bm{A}$の階数$=$ 拡大係数行列$[\bm{A},\bm{b}]=$未知数の数$m$であれば，1組の解がある。
-    \item 係数行列$\bm{A}$の階数$=$ 拡大係数行列$[\bm{A},\bm{b}]<$未知数の数$m$であれば，無数の解がある。
-    \item 解の自由度$k$は，$k = m - rank(\bm{A})$である。
+	\item 係数行列$\bm{A}$の階数$<$ 拡大係数行列$[\bm{A},\bm{b}]$であれば，解はない。
+	\item 係数行列$\bm{A}$の階数$=$ 拡大係数行列$[\bm{A},\bm{b}]=$未知数の数$m$であれば，1組の解がある。
+	\item 係数行列$\bm{A}$の階数$=$ 拡大係数行列$[\bm{A},\bm{b}]<$未知数の数$m$であれば，無数の解がある。
+	\item 解の自由度$k$は，$k = m - rank(\bm{A})$である。
 \end{itemize}
 
 
@@ -787,16 +787,16 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 
 そもそもは，2つの方程式が同じ解を持つかどうか，という問いです。次のような2つの式があったとします。
 \[
-    \begin{array}{ccccc}
-        f(x,y) & = & ax + by & = & 0 \\
-        g(x,y) & = & cx + dy & = & 0
-    \end{array}
+	\begin{array}{ccccc}
+		f(x,y) & = & ax + by & = & 0 \\
+		g(x,y) & = & cx + dy & = & 0
+	\end{array}
 \]
 
 これは今までやってきた行列の形で表現すると，次のようになります。
 
 \[ \begin{pmatrix} a & b \\c & d \end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix} =
-    \begin{pmatrix}0\\0\end{pmatrix}\]
+	\begin{pmatrix}0\\0\end{pmatrix}\]
 つまり
 \[ \bm{Ax} = \bm{0} \]
 ですね。
@@ -807,23 +807,23 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 
 たとえば
 \[
-    \left \{
-    \begin{array}{lll}
-        2x+y  & = & 0 \\
-        6x+3y & = & 0
-    \end{array}
-    \right.
+	\left \{
+	\begin{array}{lll}
+		2x+y  & = & 0 \\
+		6x+3y & = & 0
+	\end{array}
+	\right.
 \]
 を考えると，$x = -\frac{1}{2}y$がどちらにも成立しています。つまり，2つの式が同じ解をもちます。
 
 しかしたとえば，
 \[
-    \left \{
-    \begin{array}{lll}
-        2x+y  & = & 0 \\
-        3x+3y & = & 0
-    \end{array}
-    \right.
+	\left \{
+	\begin{array}{lll}
+		2x+y  & = & 0 \\
+		3x+3y & = & 0
+	\end{array}
+	\right.
 \]
 を考えると，上の式は$x = -\frac{1}{2}y$ですが，下の式は$x=-y$ですから，同じ解をもちません。
 
@@ -849,8 +849,8 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 終結式$R=0$が成立すれば自明でない共通の解があるかどうかが判別できる，いやさこれは係数行列を考えてその解が出るかどうかを決定する式(行列式\textit{determinant})を考えよう，これがあれば逆行列が考えられて方程式の答えが出てくる，というのが行列誕生の歴史的経緯です。
 \label{doujiRenrituIchiji}
 \begin{itemize}
-    \item $\bm{Ax}=\bm{0}$が自明な解$\bm{x}=\bm{0}$のみを持つための必要十分条件は，$rank(\bm{A})=m$
-    \item $\bm{Ax}=\bm{0}$が自明でない解を持つ(無数の解をもつ)ための必要十分条件は，$rank(\bm{A})<m$
+	\item $\bm{Ax}=\bm{0}$が自明な解$\bm{x}=\bm{0}$のみを持つための必要十分条件は，$rank(\bm{A})=m$
+	\item $\bm{Ax}=\bm{0}$が自明でない解を持つ(無数の解をもつ)ための必要十分条件は，$rank(\bm{A})<m$
 \end{itemize}
 ということができます。
 

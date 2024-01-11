@@ -60,20 +60,20 @@ When you expand this area that is squared, it becomes as follows.
 
 そう，標準化ですね。それぞれのデータをzスコアに計算しなおせばよいのです。変数$x$をzスコアにしたものを$z_x$と表すとして，これの共分散を考えましょう。変数$x$と$y$の相関係数は$r_{xy}$と表します。
 \begin{align*}
-    r_{xy} & =  \frac{1}{N}\sum_{i=1}^N (z_{x_i} - \bar{z_x})(z_{y_i} - \bar{z_y})            & \mbox{zスコアの平均は$0$}     \\
-           & = \frac{1}{N}\sum_{i=1}^N z_{x_i} z_{y_i}                                        & \mbox{zスコアの式に戻そう}      \\
-           & = \frac{1}{N}\sum_{i=1}^N \frac{(x_i - \bar{x})}{s_x} \frac{(y_i -\bar{y})}{s_y} & \mbox{$i$は分子にしか関係ないから} \\
-           & = \frac{\frac{1}{N}\sum_{i=1}^N (x_i - \bar{x})(y_i -\bar{y})}{s_xs_y}           & \mbox{分子が共分散だ}         \\
-           & = \frac{s_{xy}}{s_xs_y}                                                          &                        \\
+	r_{xy} & =  \frac{1}{N}\sum_{i=1}^N (z_{x_i} - \bar{z_x})(z_{y_i} - \bar{z_y})            & \mbox{zスコアの平均は$0$}     \\
+	       & = \frac{1}{N}\sum_{i=1}^N z_{x_i} z_{y_i}                                        & \mbox{zスコアの式に戻そう}      \\
+	       & = \frac{1}{N}\sum_{i=1}^N \frac{(x_i - \bar{x})}{s_x} \frac{(y_i -\bar{y})}{s_y} & \mbox{$i$は分子にしか関係ないから} \\
+	       & = \frac{\frac{1}{N}\sum_{i=1}^N (x_i - \bar{x})(y_i -\bar{y})}{s_xs_y}           & \mbox{分子が共分散だ}         \\
+	       & = \frac{s_{xy}}{s_xs_y}                                                          &                        \\
 \end{align*}
 
 このように展開できました。相関係数は共分散をそれぞれの標準偏差で割ったもの，と考えれば良いわけですね。この数字は単位が違う2つの変数でも計算できますし，単位が整えられているので$-1 \le r_{xy} \le 1$の範囲に収まります。
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/05_descriptives/Rplot04_03.png}
-    \caption{さまざまな相関係数}
-    \label{fig::04_10}
+	\centering
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/05_descriptives/Rplot04_03.png}
+	\caption{さまざまな相関係数}
+	\label{fig::04_10}
 \end{figure}
 
 図\ref{fig::04_10}にはさまざまな相関係数のプロットを示しました。ちなみにさきほどの野球選手の身長と体重のデータは，相関係数$r=0.601$になります。大体の散布図のイメージを持っておいてもらうことも重要ですし，何かデータを取ったら図にする，ということを忘れないでください。
@@ -85,24 +85,24 @@ When you expand this area that is squared, it becomes as follows.
 相関係数を見て考える話に入る前に，注意喚起から。
 表\ref{tbl:m08_01}のようなデータセットがあったとしましょう\footnote{このデータセットは，Rの\verb|datasauRus|パッケージ\citep{matejka2017same}の一部です。}
 \begin{table}[ht]
-    \caption{さまざまなデータセット}
-    \label{tbl:m08_01}
-    \begin{tabular}{lrrrrrrrrr}
-        \hline
-        dataset & Mean.X & Mean.Y & SD.x   & SD.y   & Min.x  & Min.y  & Max.x  & Max.y  & Corr   \\\hline
-        circle  & 54.267 & 47.838 & 16.760 & 26.930 & 21.864 & 16.327 & 85.665 & 85.578 & -0.068 \\
-        dino    & 54.263 & 47.832 & 16.765 & 26.935 & 22.308 & 2.949  & 98.205 & 99.487 & -0.064 \\
-        star    & 54.267 & 47.840 & 16.769 & 26.930 & 27.025 & 14.366 & 86.436 & 92.215 & -0.063 \\    \hline
-    \end{tabular}
+	\caption{さまざまなデータセット}
+	\label{tbl:m08_01}
+	\begin{tabular}{lrrrrrrrrr}
+		\hline
+		dataset & Mean.X & Mean.Y & SD.x   & SD.y   & Min.x  & Min.y  & Max.x  & Max.y  & Corr   \\\hline
+		circle  & 54.267 & 47.838 & 16.760 & 26.930 & 21.864 & 16.327 & 85.665 & 85.578 & -0.068 \\
+		dino    & 54.263 & 47.832 & 16.765 & 26.935 & 22.308 & 2.949  & 98.205 & 99.487 & -0.064 \\
+		star    & 54.267 & 47.840 & 16.769 & 26.930 & 27.025 & 14.366 & 86.436 & 92.215 & -0.063 \\    \hline
+	\end{tabular}
 \end{table}
 データセット，\verb|circle|も\verb|dino|も\verb|star|も，2つの変数X,Yを持っているのですが，いずれも平均，標準偏差にほとんど違いがありません。相関係数も-0.06となっており，ほぼ無相関，関係がなさそうです。
 
 ところがどっこい，これらの変数をプロットしてみたのが図\ref{fig::m08_02}です。ご覧の通り，無関係ではなくプロットすると図が見えてきましたね。
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/08_CorrelationCausation/Rplot08_01.png}
-    \caption{プロットしてびっくり}
-    \label{fig::m08_02}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/08_CorrelationCausation/Rplot08_01.png}
+	\caption{プロットしてびっくり}
+	\label{fig::m08_02}
 \end{figure}
 
 実際のデータではこんなことはないと思いますが，これは「数字だけ見ていてもわからないよ」という警告です。たくさんのデータを手に入れると，ついつい計算機で一気に数字を出してみたくなります。実際のデータ分析をするときは(あまりにも簡単に相関係数が計算できてしまうがために)，見落とされるところでもあります。数値化は楽ですが，その分なにかを見落としているかも知れない，ということについて常に注意するようにしましょう。
@@ -113,19 +113,19 @@ When you expand this area that is squared, it becomes as follows.
 図\ref{fig::04_10}の左上には$r=-1$の例，右下には$r=+1$の例があります。このように，相関係数はその極限である$\pm1$のときに，直線になる関係であることを理解しておいてください。言い換えると，相関係数はあくまでも変数間の直線的関係を指標化したものであって，曲線的な関係の場合はうまく表現できないのです。図\ref{fig::04_11}には曲がった散布図の例を示しました。このデータの相関係数は$r=0.005$です。ほとんど関係ないですね！じゃあこのX軸の変数とY軸の変数は何の関係もない，といっていいでしょうか。たとえばこのデータ，X軸がコーヒーの温度，Y軸が美味しさだったらどうでしょう。熱すぎても冷たすぎても，コーヒーは美味しくありません。適温というのがあるのです。あるいはX軸が血圧，Y軸が健康度だったらどうでしょう。血圧も高ければ高いほど健康，低ければ低いほど不健康というわけではないですよね。これらの例にあるように，心理的なデータや整理的なデータというのは，中庸であることが重要であることがあります。その時に相関係数を算出して，それがとても低いので「血圧と健康には関係がない」と結論づけるのは間違えています。直線性を表す指標がよくない，というだけなのですから。
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/05_descriptives/Rplot04_04.png}
-    \caption{曲がった関係には向かない}
-    \label{fig::04_11}
+	\centering
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/05_descriptives/Rplot04_04.png}
+	\caption{曲がった関係には向かない}
+	\label{fig::04_11}
 \end{figure}
 
 \paragraph{落とし穴2；全体の傾向じゃないかも}
 逆に，ある2変数の相関係数が$r=0.922$でした。この2変数には強い相関があるといって良いでしょうか。待って待って，いったん落ち着いて散布図を書いてみましょう。たとえば図\ref{fig::04_12}のようなデータなのかもしれないのですから。
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,width=0.65\linewidth]{../images/05_descriptives/Rplot04_05.png}
-    \caption{外れ値がひっぱる}
-    \label{fig::04_12}
+	\centering
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/05_descriptives/Rplot04_05.png}
+	\caption{外れ値がひっぱる}
+	\label{fig::04_12}
 \end{figure}
 図\ref{fig::04_12}は，確かに相関係数は高いのですが，明らかにおかしなポジションにいるデータが1件ありますよね。平均値が外れ値に引っ張られたように，平均値をその計算新規の中に取り込んでいる相関係数も，外れ値に弱いところがあります。今回この極端な値を取る1ケースを取り除くと，相関係数は$r=0.3$にまで下がります。左の小さな群だけで見れば，むしろ関係ないと考えるべきなのです。これもデータを図にしなければ気づかない落とし穴です。
 
@@ -135,10 +135,10 @@ When you expand this area that is squared, it becomes as follows.
 さて図\ref{fig::04_13}には，X軸に入試の成績を，Y軸には入学後の成績をプロットしてみました。相関係数は全体で0.7あるのです。ところが，大学入試というのは世知辛いもので，ある点数を取らない人はそもそもその大学に入れませんよね。図でいうと，ある線(60点)より右側の黒いデータしか分析する時に手に入らないのです。この黒い点だけみて相関係数が低いから，関係ないんだと思ってしまうのは間違いです。このように，データがそもそも打ち切られている可能性にも注意が必要です。このようなデータは切断データといわれます。これは相関係数の問題というより，データの問題なのですが，データの性質をよく考えて考察しなければならないということはしっかり意識しておいていただきたいところです。
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,height=0.4\linewidth]{../images/05_descriptives/Rplot04_06.png}
-    \caption{打ち切りデータの例}
-    \label{fig::04_13}
+	\centering
+	\includegraphics[keepaspectratio,height=0.4\linewidth]{../images/05_descriptives/Rplot04_06.png}
+	\caption{打ち切りデータの例}
+	\label{fig::04_13}
 \end{figure}
 
 \paragraph{落とし穴4；データは色々な情報が混在している? }
@@ -146,10 +146,10 @@ When you expand this area that is squared, it becomes as follows.
 実はこのデータ，3つのグループのデータが混ざった全体的な傾向です。図の右側には，グループごとに色分けをしてみました。おや，これを見るとグループの中ではむしろ右下がりの分布をしていませんか？ 実はその通りで，グループAは$r_A=-0.29$，グループBは$r_B=-0.42$，グループCは$r_C=-0.35$と，いずれも負の相関をしているのです。にもかかわらず，全体で見ると正の相関をしている，ということもあるわけですね。
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[keepaspectratio,height=0.4\linewidth]{../images/05_descriptives/Rplot04_07.png}
-    \caption{階層的なデータ}
-    \label{fig::04_14}
+	\centering
+	\includegraphics[keepaspectratio,height=0.4\linewidth]{../images/05_descriptives/Rplot04_07.png}
+	\caption{階層的なデータ}
+	\label{fig::04_14}
 \end{figure}
 
 このデータ，たとえばX軸がゲームで遊ぶ時間，Y軸が学校の成績だったとしますと，全体で見るとゲームをすれば成績が上がる，という結論になってしまいますね。でも学校別(グループ別)でみるとむしろ逆，ここにあるのは3つの学校のそもそもの成績の違いが反映されているだけでした，ということもあるわけです。このように，外的な指標で群が変わることがわかっているなら，プロットする時にその情報を加えて，このような情報の混在が生じていないかをチェックする必要があります。プロットするのは当然ですが，プロットのやり方にも注意が必要なのですね。また，群ごとの違いがわかっていなくても，潜在的に何か違うグループに分かれているのかもしれません。回答者の特性を考慮して，いくつかのクラスターに分けて分析するという手法も統計的に考えられています。データを色々な角度から見る，という姿勢は忘れてはいけません\footnote{マーケティングの領域では，セグメンテーションと呼ばれることもあります。購買層ですね。クラスターというのはCOVID-19の関係で一般的な用語になりましたが，この言葉そのものに悪い意味はなく，塊という意味です。}。
@@ -160,9 +160,9 @@ When you expand this area that is squared, it becomes as follows.
 
 たとえば次の変数間には高い相関があることがわかっています\footnote{参考；\url{http://tylervigen.com/spurious-correlations}}。
 \begin{itemize}
-    \item ニコラス・ケイジ映画出演数とプール溺死数
-    \item マーガリン消費率とメイン州の離婚率
-    \item 自分のベッドシーツに絡まって死んだ人の数とチーズ消費量
+	\item ニコラス・ケイジ映画出演数とプール溺死数
+	\item マーガリン消費率とメイン州の離婚率
+	\item 自分のベッドシーツに絡まって死んだ人の数とチーズ消費量
 \end{itemize}
 
 このように，相関があるからと言って必ず意味があるわけではありません。おそらくニコラス・ケイジ(ハリウッド俳優)が頑張って映画に出たからといって，米国でのプール溺死者数が増えるわけではないし，マーガリンを塗らなければ離婚率が下がるというものでもないでしょう。ただデータを取ると，見かけ上，相関係数が高くなってしまっただけなのです。
@@ -183,27 +183,27 @@ AとB，2つの変数があって，相関関係にあるのは事実としま�
 
 相関関係以上に深い関係である，因果関係をいうためには，他にも条件が必要です。それらをまとめると次のようになります。原因変数をA,結果変数をBとすると，
 \begin{itemize}
-    \item Aが先，Bが後に生じていなければならない(時間的先行性)。
-    \item 原因とされる変数が他の多くの変数の原因になっていない。すなわち，$A \to B, A \to C, A \to D \cdots$のようになっていない(ex.朝ごはんを食べたから犯罪を犯した，とは言えない)。
-    \item A,Bの両方に共通する別の原因Z，すなわち$Z \to A, Z \to B$が存在しない(ex.親が暴力映像が好きで，わんぱくな子供に育てたかった，という共通要因の存在)。
+	\item Aが先，Bが後に生じていなければならない(時間的先行性)。
+	\item 原因とされる変数が他の多くの変数の原因になっていない。すなわち，$A \to B, A \to C, A \to D \cdots$のようになっていない(ex.朝ごはんを食べたから犯罪を犯した，とは言えない)。
+	\item A,Bの両方に共通する別の原因Z，すなわち$Z \to A, Z \to B$が存在しない(ex.親が暴力映像が好きで，わんぱくな子供に育てたかった，という共通要因の存在)。
 \end{itemize}
 といったことも考えなければなりません\footnote{事象から因果関係を主張するにはどうすればよいか，というのは哲学的な問題で，J.S.MillやD.Humeなどの思索が有名ですので，色々考えてみてください。また統計的に因果を推論する方法について，近年はさまざまな技術が開発されており，統計的にも因果関係はホットなトピックスです。}。図\ref{fig::m08_causal}に「暴力映像を見ると子供が暴力的になる」という因果関係を主張するときに，考えるべき影響力の例を挙げてみました。背後の変数(教育変数)，媒介変数(子供の性格)，逆向きの因果などの関係がすべて否定されて，始めて暴力映像を\underline{見たことが}暴力行為の原因である，と言えるのです。
 
 \begin{figure}[ht]
-    \centering
-    \begin{tikzpicture}
-        \node[draw, circle,fill=blue!20] (A) at (10,0) {暴力映像};
-        \node[draw, circle, right=2cm of A,fill=blue!20] (B) {暴力行為};
-        \node[draw, circle, left=2cm of A] (C) {教育方針};
-        \node[draw, circle, below left=15pt and 11pt of B] (D) {性格変数};
-        \draw[thick,->] (A) to (B);
-        \draw[out=45,in=135,dashed,<-] (A) to (B);
-        \draw[dashed,->] (C) to (A);
-        \draw[dashed,->] (D) to (A);
-        \draw[dashed,->] (D) to (B);
-    \end{tikzpicture}
-    \caption{因果を特定するのは難しい。点線のパスがないことを確認しなければならない。}
-    \label{fig::m08_causal}
+	\centering
+	\begin{tikzpicture}
+		\node[draw, circle,fill=blue!20] (A) at (10,0) {暴力映像};
+		\node[draw, circle, right=2cm of A,fill=blue!20] (B) {暴力行為};
+		\node[draw, circle, left=2cm of A] (C) {教育方針};
+		\node[draw, circle, below left=15pt and 11pt of B] (D) {性格変数};
+		\draw[thick,->] (A) to (B);
+		\draw[out=45,in=135,dashed,<-] (A) to (B);
+		\draw[dashed,->] (C) to (A);
+		\draw[dashed,->] (D) to (A);
+		\draw[dashed,->] (D) to (B);
+	\end{tikzpicture}
+	\caption{因果を特定するのは難しい。点線のパスがないことを確認しなければならない。}
+	\label{fig::m08_causal}
 \end{figure}
 
 
@@ -230,23 +230,23 @@ AとB，2つの変数があって，相関関係にあるのは事実としま�
 \paragraph{相関係数の算出}
 表\ref{tbl::m04_05again}は表\ref{tbl::04_05}を再掲したものですが，一列$z_x z_y$を追加しています。追加された列および，元データ$X,Y$の共分散，相関係数を計算してください。また共分散や相関係数が表中のどこに出てくるか確認してください。。なお，------部は計算しなくて結構です。
 \begin{table}[ht]
-    \centering
-    \caption{二変数$X$と$Y$}
-    \begin{tabular}{cccccccc}
-        \hline
-        ID   & X   & Y  & Xの平均偏差      & Yの平均偏差      & $z_x$ & $z_y$ & $z_x z_y$  \\
-        \hline
-        1    & 149 & 37 & -2.2        & -12.4       &       &       &            \\
-        2    & 137 & 52 &             &             &       &       &            \\
-        3    & 164 & 67 &             &             &       &       &            \\
-        4    & 159 & 43 &             &             &       &       &            \\
-        5    & 147 & 48 &             &             &       &       &            \\
-        \hline
-        平均   &     &    &             &             &       &       &            \\
-        分散   &     &    & ----------- & ----------- &       &       & ---------- \\
-        標準偏差 &     &    & ----------- & ----------- &       &       & ---------- \\\hline
-    \end{tabular}
-    \label{tbl::m04_05again}
+	\centering
+	\caption{二変数$X$と$Y$}
+	\begin{tabular}{cccccccc}
+		\hline
+		ID   & X   & Y  & Xの平均偏差      & Yの平均偏差      & $z_x$ & $z_y$ & $z_x z_y$  \\
+		\hline
+		1    & 149 & 37 & -2.2        & -12.4       &       &       &            \\
+		2    & 137 & 52 &             &             &       &       &            \\
+		3    & 164 & 67 &             &             &       &       &            \\
+		4    & 159 & 43 &             &             &       &       &            \\
+		5    & 147 & 48 &             &             &       &       &            \\
+		\hline
+		平均   &     &    &             &             &       &       &            \\
+		分散   &     &    & ----------- & ----------- &       &       & ---------- \\
+		標準偏差 &     &    & ----------- & ----------- &       &       & ---------- \\\hline
+	\end{tabular}
+	\label{tbl::m04_05again}
 \end{table}
 
 

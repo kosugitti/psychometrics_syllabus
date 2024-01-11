@@ -1,0 +1,13 @@
+\begin{lstlisting}[language=c++,label={code:11_06},caption={Creating and visualizing data for multiple regression analysis}]
+batter2 <- dat %>%
+    dplyr::filter(position != "Pitcher") %>%
+    dplyr::select(HR, Hit, salary) %>%
+    na.omit()
+g1 <- ggplot(batter2, aes(x = HR, y = salary)) +
+    geom_point()
+g1
+g2 <- ggplot(batter2, aes(x = Hit, y = salary)) +
+    geom_point()
+g2
+cor(batter2)
+\end{lstlisting}

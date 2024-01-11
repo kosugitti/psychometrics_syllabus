@@ -1,0 +1,4 @@
+\begin{lstlisting}[language=c++,label={code:05_09},caption={CSVファイルを読み込む}]
+library(tidyverse)
+dat <- read_csv("baseballDecade.csv",na = "NA")
+\end{lstlisting}

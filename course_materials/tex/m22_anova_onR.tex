@@ -13,10 +13,10 @@
 \paragraph{プロジェクトを開く}プロジェクトは前回作成した物で良いと思います。同じフォルダの中で，スクリプトファイルだけ変えれば良いでしょう。メニューからプロジェクトを開き(FIle$\to$Open Project)，RStudioの右上などで，プロジェクトが開いていることを確認しましょう($\to$図\ref{fig::20_01})。
 \paragraph{Rスクリプトを開く}今日のコードを書くためのRスクリプトファイルを準備します。\verb|File > NewFile > R Script|と進み，何も書いてないRスクリプトの画面を表示させてください。真っ白いファイルが開いたら問題ありません。
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/20_ttest/fig20_01.png}
-   \caption{プロジェクトが開いていることを確認する。上が開いていない状態。下が開いている状態。開いていると，メニューバーにフォルダが表示され，右上にプロジェクト名が表示されている。}
-   \label{fig::20_01}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/20_ttest/fig20_01.png}
+	\caption{プロジェクトが開いていることを確認する。上が開いていない状態。下が開いている状態。開いていると，メニューバーにフォルダが表示され，右上にプロジェクト名が表示されている。}
+	\label{fig::20_01}
 \end{figure}
 
 さて，準備OKですね。
@@ -26,11 +26,11 @@
 
 Rにはいろいろな数字のタイプがあります。オブジェクトにいろいろな変数を格納できますが，その格納された変数のタイプには，次のような種類があります。
 \begin{description}
-   \item[numeric] 数字。加減乗除などの対象になるもの。尺度水準で言えば\keytermL{間隔尺度水準}{かんかくしゃくどすいじゅん}か\keytermL{比率尺度水準}{ひりつしゃくどすいじゅん}にあたるもの。
-   \item[factor] ファクター型。訳して要因型ということもある。要因計画の「要因」です。この変数は数字とそれにつけるラベルとの組み合わせからなります。尺度水準で言えば\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}です。
-   \item[orderd factor] 順序付きファクター型。ファクター型の特殊系で，中についている数字に順序情報がある物。尺度水準で言えば当然\keytermL{順序尺度水準}{じゅんじょしゃくどすいじゅん}に該当します。あまり使われることはないけど。
-   \item[chr] 文字型(Character)。一見ファクター型と見分けがつかないこともあるが，こちらは内部に対応する数字があるわけでもなく，ただの文字。シングルクォーテーション，ダブルクォーテーションで括ったものが変数に渡されるとこの型になる。
-   \item[logical] 論理型。\textit{TRUE}か\textit{FALSE}の2つの値しか持たない。\textit{TRUE}は$1$に，\textit{FALSE}は$0$に対応している。名義尺度水準の特殊な型で，オプションのスイッチオン・オフなどをこれで表したりする。大文字で書く\texttt{TRUE}や\texttt{FALSE}，あるいはそれらの一文字目\texttt{T}や\texttt{F}はこの型のラベルとして予約されているので\footnote{予約語といい，他にも何もないことを表す\texttt{NULL}や，無限大を表す\texttt{Inf}，欠損値を表す\texttt{NA}などがある。数学定数\texttt{pi}も予約語の1つ。}，オブジェクト名などにしない方が良い。
+	\item[numeric] 数字。加減乗除などの対象になるもの。尺度水準で言えば\keytermL{間隔尺度水準}{かんかくしゃくどすいじゅん}か\keytermL{比率尺度水準}{ひりつしゃくどすいじゅん}にあたるもの。
+	\item[factor] ファクター型。訳して要因型ということもある。要因計画の「要因」です。この変数は数字とそれにつけるラベルとの組み合わせからなります。尺度水準で言えば\keytermL{名義尺度水準}{めいぎしゃくどすいじゅん}です。
+	\item[orderd factor] 順序付きファクター型。ファクター型の特殊系で，中についている数字に順序情報がある物。尺度水準で言えば当然\keytermL{順序尺度水準}{じゅんじょしゃくどすいじゅん}に該当します。あまり使われることはないけど。
+	\item[chr] 文字型(Character)。一見ファクター型と見分けがつかないこともあるが，こちらは内部に対応する数字があるわけでもなく，ただの文字。シングルクォーテーション，ダブルクォーテーションで括ったものが変数に渡されるとこの型になる。
+	\item[logical] 論理型。\textit{TRUE}か\textit{FALSE}の2つの値しか持たない。\textit{TRUE}は$1$に，\textit{FALSE}は$0$に対応している。名義尺度水準の特殊な型で，オプションのスイッチオン・オフなどをこれで表したりする。大文字で書く\texttt{TRUE}や\texttt{FALSE}，あるいはそれらの一文字目\texttt{T}や\texttt{F}はこの型のラベルとして予約されているので\footnote{予約語といい，他にも何もないことを表す\texttt{NULL}や，無限大を表す\texttt{Inf}，欠損値を表す\texttt{NA}などがある。数学定数\texttt{pi}も予約語の1つ。}，オブジェクト名などにしない方が良い。
 \end{description}
 これらの型を確認するには，オブジェクトの仕組みがどうなっているかを調べる必要があります。調べるのは\texttt{str}関数で，これを使うとオブジェクトの中身がわかるようになっています。
 
@@ -46,13 +46,13 @@ str(obj)
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-   \item[1-6行目] データフレームを作って\texttt{obj}オブジェクトに代入している。
-   \item[7行目] \texttt{obj}オブジェクトの構造を確認
+	\item[1-6行目] データフレームを作って\texttt{obj}オブジェクトに代入している。
+	\item[7行目] \texttt{obj}オブジェクトの構造を確認
 \end{description}
 
 さて，最後の7行目を実行すると，コンソールに次のように出力されていると思います(\texttt{Rの出力\ref{RS:out23_01}})。
 \begin{Rscreen}{データフレームの中身}{out23_01}
-   \begin{verbatim}
+	\begin{verbatim}
 > str(obj)
 'data.frame':	3 obs. of  4 variables:
  $ name  : chr  "kosugi" "yamada" "ueda"
@@ -69,7 +69,7 @@ obj$gender <- factor(obj$gender,label=c('male','female'))
 
 これの出力は\texttt{Rの出力\ref{RS:out23_02}}のようになります。
 \begin{Rscreen}{変数を因子型にした}{out23_02}
-   \begin{verbatim}
+	\begin{verbatim}
 > str(obj)
 'data.frame':	3 obs. of  4 variables:
 $ name  : chr  "kosugi" "yamada" "ueda"
@@ -102,36 +102,36 @@ source("https://bit.ly/3CFrK5b")
 
 これらのコードが実行されると，Rの環境にたくさんの関数が入っているはずです(図\ref{fig::22_01})。これらが入っていればOKです。
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/23_likelihood/screen23_01.png}
-   \caption{anovakuを読み込んだあとの環境タブ}
-   \label{fig::22_01}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/23_likelihood/screen23_01.png}
+	\caption{anovakuを読み込んだあとの環境タブ}
+	\label{fig::22_01}
 \end{figure}
 それでは実際の使い方を見ていきましょう。
 \section{一要因Between計画の実際}
 ではまず一要因Between計画の話から。例として第\ref{m21_anova}講のデータを使います。一応再掲しておきましょう(表\ref{table::23_01})。
 \begin{table}[ht]
-   \centering
-   \caption{一要因3水準Between計画のデータ}
-   \begin{tabular}{rccr}
-      \hline
-      id & condition & notation & value \\
-      \hline
-      1  & 1         & $X_{11}$ & 6     \\
-      2  & 1         & $X_{12}$ & 6     \\
-      3  & 1         & $X_{13}$ & 5     \\
-      4  & 1         & $X_{14}$ & 5     \\
-      1  & 2         & $X_{21}$ & 7     \\
-      2  & 2         & $X_{22}$ & 4     \\
-      3  & 2         & $X_{23}$ & 7     \\
-      4  & 2         & $X_{24}$ & 6     \\
-      1  & 3         & $X_{31}$ & 4     \\
-      2  & 3         & $X_{32}$ & 3     \\
-      3  & 3         & $X_{33}$ & 4     \\
-      4  & 3         & $X_{34}$ & 6     \\
-      \hline
-   \end{tabular}
-   \label{table::23_01}
+	\centering
+	\caption{一要因3水準Between計画のデータ}
+	\begin{tabular}{rccr}
+		\hline
+		id & condition & notation & value \\
+		\hline
+		1  & 1         & $X_{11}$ & 6     \\
+		2  & 1         & $X_{12}$ & 6     \\
+		3  & 1         & $X_{13}$ & 5     \\
+		4  & 1         & $X_{14}$ & 5     \\
+		1  & 2         & $X_{21}$ & 7     \\
+		2  & 2         & $X_{22}$ & 4     \\
+		3  & 2         & $X_{23}$ & 7     \\
+		4  & 2         & $X_{24}$ & 6     \\
+		1  & 3         & $X_{31}$ & 4     \\
+		2  & 3         & $X_{32}$ & 3     \\
+		3  & 3         & $X_{33}$ & 4     \\
+		4  & 3         & $X_{34}$ & 6     \\
+		\hline
+	\end{tabular}
+	\label{table::23_01}
 \end{table}
 まずはこれを線形モデルとして分析するところからです。\texttt{code:\ref{code:23_05}}のようにデータフレームを組み上げます。
 
@@ -146,8 +146,8 @@ Example1$condition <- factor(Example1$condition,
 
 \paragraph{コード解説}
 \begin{description}
-   \item[1-3行目] データフレームを作っています。IDは被験者番号ですが，群内での番号なので1から4の繰り返しを3回(\texttt{rep(1:4,3)})です。条件conditionは3種類，各4人分(\texttt{rep(1:3,each=4)})，最後の従属変数(value)は手入力するしかありません。
-   \item[5-7行目] 条件変数を要因型にしています。ラベルは統制群(control)と実験群1(exp1)，実験群2(exp2)としています。
+	\item[1-3行目] データフレームを作っています。IDは被験者番号ですが，群内での番号なので1から4の繰り返しを3回(\texttt{rep(1:4,3)})です。条件conditionは3種類，各4人分(\texttt{rep(1:3,each=4)})，最後の従属変数(value)は手入力するしかありません。
+	\item[5-7行目] 条件変数を要因型にしています。ラベルは統制群(control)と実験群1(exp1)，実験群2(exp2)としています。
 \end{description}
 
 \subsection{線形モデルとして分析}
@@ -160,7 +160,7 @@ summary(result.lm1)
 
 1行目が\texttt{lm}関数を使っていて，結果を\texttt{result.lm1}オブジェクトに入れているところです。従属変数と独立変数をチルダ\verb|~|で繋げているところ，思い出してください。2行目はこの結果の出力になります。結果は\texttt{Rの出力\ref{RS:out23_03}}のように示されているはずです。
 \begin{Rscreen}{lm関数の出力}{out23_03}
-   \begin{verbatim}
+	\begin{verbatim}
 Call:
 lm(formula = value ~ condition, data = Example1)
 
@@ -183,10 +183,10 @@ F-statistic: 2.489 on 2 and 9 DF,  p-value: 0.1379
 \end{Rscreen}
 これを見ると，切片\texttt{(Intercept)}の推定値が5.5，次に2つの説明変数の係数が書いてあります。文字が連なっているのでわかりにくいかもしれませんが，それぞれ\texttt{condition}と\texttt{exp1}の関係，\texttt{condition}と\texttt{exp2}の関係を表しています。図\ref{fig::23_02}を見ると結果の意味は分かり易いと思います。
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/23_likelihood/slide23_01.png}
-   \caption{線形モデルとして分析した結果の意味するもの}
-   \label{fig::23_02}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/23_likelihood/slide23_01.png}
+	\caption{線形モデルとして分析した結果の意味するもの}
+	\label{fig::23_02}
 \end{figure}
 
 第\ref{m21_anova}講では，線形モデルを
@@ -207,7 +207,7 @@ anova(result.lm1)
 
 
 \begin{Rscreen}{分散分表の出力}{out23_04}
-   \begin{verbatim}
+	\begin{verbatim}
 Analysis of Variance Table
 
 Response: value
@@ -229,7 +229,7 @@ anovakun(Example1[,2:3],"As",3,eps=T)
 
 \begin{Rscreen}{anovakunの出力}{out23_05}
 
-   \begin{verbatim}
+	\begin{verbatim}
 [ As-Type Design ]
 
 This output was generated by anovakun 4.8.5 under R version 4.0.2.
@@ -269,28 +269,28 @@ output is over --------------------///
 % latex table generated in R 4.0.2 by xtable 1.8-4 package
 % Fri Sep 11 14:11:29 2020
 \begin{table}[ht]
-   \centering
-   \caption{二要因のデータ例}
-   \begin{tabular}{rrllr}
-      \hline
-      通し番号 & 群での番号 & 温度   & メーカー & 評価 \\
-      \hline
-      1    & 1     & Hot  & 銘柄A  & 13 \\
-      2    & 2     & Hot  & 銘柄A  & 11 \\
-      3    & 3     & Hot  & 銘柄A  & 12 \\
-      4    & 1     & Hot  & 銘柄B  & 7  \\
-      5    & 2     & Hot  & 銘柄B  & 6  \\
-      6    & 3     & Hot  & 銘柄B  & 8  \\
-      7    & 1     & Cold & 銘柄A  & 9  \\
-      8    & 2     & Cold & 銘柄A  & 9  \\
-      9    & 3     & Cold & 銘柄A  & 9  \\
-      10   & 1     & Cold & 銘柄B  & 13 \\
-      11   & 2     & Cold & 銘柄B  & 11 \\
-      12   & 3     & Cold & 銘柄B  & 9  \\
-      \hline
-   \end{tabular}
+	\centering
+	\caption{二要因のデータ例}
+	\begin{tabular}{rrllr}
+		\hline
+		通し番号 & 群での番号 & 温度   & メーカー & 評価 \\
+		\hline
+		1    & 1     & Hot  & 銘柄A  & 13 \\
+		2    & 2     & Hot  & 銘柄A  & 11 \\
+		3    & 3     & Hot  & 銘柄A  & 12 \\
+		4    & 1     & Hot  & 銘柄B  & 7  \\
+		5    & 2     & Hot  & 銘柄B  & 6  \\
+		6    & 3     & Hot  & 銘柄B  & 8  \\
+		7    & 1     & Cold & 銘柄A  & 9  \\
+		8    & 2     & Cold & 銘柄A  & 9  \\
+		9    & 3     & Cold & 銘柄A  & 9  \\
+		10   & 1     & Cold & 銘柄B  & 13 \\
+		11   & 2     & Cold & 銘柄B  & 11 \\
+		12   & 3     & Cold & 銘柄B  & 9  \\
+		\hline
+	\end{tabular}
 
-   \label{tbl::23_02}
+	\label{tbl::23_02}
 \end{table}
 これをデータフレーム型にします。温度，メーカーは名義尺度水準なので要因型にします(\texttt{code:\ref{code:23_09}})。
 \begin{lstlisting}[language=c++,label={code:23_09},caption={データフレームにする}]
@@ -313,7 +313,7 @@ summary(result.lm2)
 ここで，説明変数が$\ast$でつなげられています。これで主効果と交互作用の両方をモデルの中に入れたことになります。結果は\texttt{Rの出力\ref{RS:out23_06}}のように表示されるはずです。
 
 \begin{Rscreen}{交互作用を入れたモデルの出力}{out23_06}
-   \begin{verbatim}
+	\begin{verbatim}
  > summary(result.lm2)
 
 Call:
@@ -350,7 +350,7 @@ anova(result.lm2)
 
 結果は\texttt{Rの出力\ref{RS:out23_07}}のようになります。
 \begin{Rscreen}{分散分析表の出力}{out23_07}
-   \begin{verbatim}
+	\begin{verbatim}
 > anova(result.lm2)
 Analysis of Variance Table
 
@@ -376,7 +376,7 @@ anovakun(Example2[,3:5],"ABs",2,2,eps = T)
 
 結果は\texttt{Rの出力\ref{RS:out23_08}}のように表示されます。
 \begin{Rscreen}{ABsタイプの出力}{out23_08}
-   \begin{verbatim}
+	\begin{verbatim}
 [ ABs-Type Design ]
 
 This output was generated by anovakun 4.8.5 under R version 4.0.2.
@@ -432,32 +432,32 @@ output is over --------------------///
 
 これらの結果を見やすくするために，図\ref{fig::23_03}に対応するところに線を引いてみました。結果と見比べて，どこに差があったか確認しておいてください。
 \begin{figure}[ht]
-   \centering
-   \includegraphics[keepaspectratio,width=0.8\linewidth]{../images/23_likelihood/slide23_02.png}
-   \caption{POST ANALYSISの検定結果の確認}
-   \label{fig::23_03}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/23_likelihood/slide23_02.png}
+	\caption{POST ANALYSISの検定結果の確認}
+	\label{fig::23_03}
 \end{figure}
 
 また，これらの結果を報告する時は，次のように書くと良いでしょう。
 \begin{quote}
-   温度と銘柄の効果を独立変数とした二要因分散分析($2 \times 2$のBetweenデザイン)をおこなったところ，交互作用が有意($F(1,8)=24.5,p=0.0011,\varepsilon^2=0.6267$)になり，事後の検定の結果，銘柄Aにおける温度の効果($F(1,8)=9.0,p=0.0171,\varepsilon^2=0.2133$)，銘柄Bにおける温度の効果($F(1,8)=16.0,p=0.0039,\varepsilon^2=0.4000$)，および温かい時の銘柄の効果($F(1,8)=25.0,p=0.0011,\varepsilon^2=0.6400$)が統計的に有意であった。
+	温度と銘柄の効果を独立変数とした二要因分散分析($2 \times 2$のBetweenデザイン)をおこなったところ，交互作用が有意($F(1,8)=24.5,p=0.0011,\varepsilon^2=0.6267$)になり，事後の検定の結果，銘柄Aにおける温度の効果($F(1,8)=9.0,p=0.0171,\varepsilon^2=0.2133$)，銘柄Bにおける温度の効果($F(1,8)=16.0,p=0.0039,\varepsilon^2=0.4000$)，および温かい時の銘柄の効果($F(1,8)=25.0,p=0.0011,\varepsilon^2=0.6400$)が統計的に有意であった。
 \end{quote}
 \section{一要因Within計画の実際}
 最後にWithin計画の例をやってみましょう。仮想データとして次のような表\ref{tbl::23_03}を使います。
 \begin{table}[ht]
-   \centering
-   \caption{Within Data Example}
-   \begin{tabular}{lrrr}
-      \hline
-      ID & Time1 & Time2 & Time3 \\
-      \hline
-      1  & 10    & 5     & 9     \\
-      2  & 9     & 4     & 5     \\
-      3  & 4     & 2     & 3     \\
-      4  & 7     & 3     & 5     \\
-      \hline
-   \end{tabular}
-   \label{tbl::23_03}
+	\centering
+	\caption{Within Data Example}
+	\begin{tabular}{lrrr}
+		\hline
+		ID & Time1 & Time2 & Time3 \\
+		\hline
+		1  & 10    & 5     & 9     \\
+		2  & 9     & 4     & 5     \\
+		3  & 4     & 2     & 3     \\
+		4  & 7     & 3     & 5     \\
+		\hline
+	\end{tabular}
+	\label{tbl::23_03}
 \end{table}
 
 これをデータフレーム型にします(\texttt{code:\ref{code:23_13}})。
@@ -478,7 +478,7 @@ anovakun(Example3[, 2:4], "sA", 3, eps = T)
 
 まず群ごとの記述統計量が計算されています。その次に\verb|<< SPHERICITY INDICES >>|とありますね。これは\keyterm{球面性の検定}{きゅうめんせいのけんてい}{sphericity test}と訳されます。$t$検定の時にWelchの補正をしたのを思い出して欲しいのですが，分散分析の時も基本的に母分散が同じである，という仮定があります。この仮定が満たされない場合は補正をしなければなりません。とくにWithin計画の場合は，全部の分散(共分散)が等しいという仮定を置くのではなく，少なくとも全方向に等しく広がっている空間であるはずだ，という仮定をおいています\footnote{Within計画の時にややこしいのは，モデルでいうと個々人に線形モデルを仮定して，個人差＝切片が異なるような階層的なモデルになっているということです。個々人の分散が同じ，というのはなかなか厳しい仮定だと思われますが，水準同士の相関関係(共分散)も考慮に入れて，分散共分散行列(対角要素に分散，非対角要素に共分散が入っている正方行列)が均質である，という仮定ぐらいはせめて保持したいわけです。水準数が増えるとこの相関関係を表現するする世界は多次元空間に広がっていくので，究極的には丸くなる，球面性の検定といわれる所以です。 }。
 \begin{Rscreen}{sAタイプのanovakun出力}{out23_09}
-   \begin{verbatim}
+	\begin{verbatim}
 [ sA-Type Design ]
 
 This output was generated by anovakun 4.8.5 under R version 4.0.2.
@@ -526,7 +526,7 @@ It was executed on Tue Sep 15 13:50:06 2020.
 これが満たされない場合は，Greenhouse-Geisserの補正やHuynh-Feldt-Lecoutreなどの補正をしなければならないが，どうでしょうね？ というのを確認するのがこの箇所です(\texttt{Rの出力\ref{RS:out23_10}})。今回は$p$が1.000で$ns$，つまりnot significant=有意に歪んでいるとは言えない，ということなので補正は不要です。もしここが有意である，つまり丸いという状況から異なっている現状があると思われるのであれば，自由度などの補正が必要で，その時\texttt{anovakun}はオプションで補正を指定できます。ともかく今回は，このまま先に進めそうです\footnote{まったく！検定の多重性が問題だとかなんとか言いながら，そもそも前提が満たされているかどうかの検定は挟まないといけないし，ここでは有意差がでると補正，出ないとOKってなんかいつもとは違う判断をしないといけない。分散分析とか帰無仮説検定というのは，とても厳密な手続きが必要なのですが，こんな感じであちこちに補正，修正などが入ってきて，正直嫌になりますよね。私は嫌なのでそういう悩みのないベイズ統計的アプローチの方がいいと思うんですが，みんなよくこんなのまじめにやってきたなあと思いますよ。}。
 \begin{Rscreen}{下位検定の出力}{out23_10}
 
-   \begin{verbatim}
+	\begin{verbatim}
 << POST ANALYSES >>
 
 < MULTIPLE COMPARISON for "A" >
@@ -562,7 +562,7 @@ output is over --------------------///
 
 結果としては，たとえば次のように報告するといいでしょう。
 \begin{quote}
-   一要因3水準の分散分析を行ったところ，$F(2,6)=16.00,p=0.0039,\varepsilon^2=0.386$で統計的に有意であり，事後検定の結果a1水準がa2水準よりも高いことが示された(Shafferの方法による多重比較)。
+	一要因3水準の分散分析を行ったところ，$F(2,6)=16.00,p=0.0039,\varepsilon^2=0.386$で統計的に有意であり，事後検定の結果a1水準がa2水準よりも高いことが示された(Shafferの方法による多重比較)。
 \end{quote}
 
 以上で解説を終わります。
@@ -576,69 +576,69 @@ output is over --------------------///
 ある学校の国語の授業で，ある教師が4つのクラスそれぞれに対して個別のテキストを使って授業を行い，同一のテストを行うことでテキストの効果があるかどうかを検証したとします。
 各クラスには10人の生徒がいて，それぞれのテスト結果が次の通りです(表\ref{L23::exe1})。次の各指示に従い，その結果について回答してください。なお，このデータセットは\texttt{chapter22exe1.csv}ファイルに入っています。
 \begin{table}[ht]
-   \centering
+	\centering
 
-   \caption{課題1}
-   \begin{tabular}{cccc}
-      \hline
-      textA & textB & textC & textD \\
-      \hline
-      56    & 49    & 40    & 48    \\
-      55    & 53    & 41    & 53    \\
-      62    & 49    & 47    & 54    \\
-      53    & 52    & 48    & 51    \\
-      53    & 52    & 43    & 51    \\
-      56    & 46    & 40    & 48    \\
-      59    & 49    & 44    & 45    \\
-      51    & 51    & 43    & 49    \\
-      57    & 54    & 43    & 51    \\
-      59    & 50    & 49    & 49    \\
-      \hline
-   \end{tabular}
-   \label{L23::exe1}
+	\caption{課題1}
+	\begin{tabular}{cccc}
+		\hline
+		textA & textB & textC & textD \\
+		\hline
+		56    & 49    & 40    & 48    \\
+		55    & 53    & 41    & 53    \\
+		62    & 49    & 47    & 54    \\
+		53    & 52    & 48    & 51    \\
+		53    & 52    & 43    & 51    \\
+		56    & 46    & 40    & 48    \\
+		59    & 49    & 44    & 45    \\
+		51    & 51    & 43    & 49    \\
+		57    & 54    & 43    & 51    \\
+		59    & 50    & 49    & 49    \\
+		\hline
+	\end{tabular}
+	\label{L23::exe1}
 \end{table}
 
 \begin{enumerate}
-   \item 回帰分析を行ってください。切片の推定値はいくらになりましたか。
-   \item 回帰分析を行った結果，テキストAにくらべてテキストBの平均値はどれぐらい違うと思われますか。
-   \item 回帰分析を行った結果，テキストAを基準とした時にテキストCに向けて引いた回帰線について，正しい記述を選びなさい。
-   \item 分散分析を実行し，その時のF値を答えてください。
-   \item 分散分析を実行し，ボンフェローニの下位検定の結果として平均値の差が認められなかったペアを答えてください。
+	\item 回帰分析を行ってください。切片の推定値はいくらになりましたか。
+	\item 回帰分析を行った結果，テキストAにくらべてテキストBの平均値はどれぐらい違うと思われますか。
+	\item 回帰分析を行った結果，テキストAを基準とした時にテキストCに向けて引いた回帰線について，正しい記述を選びなさい。
+	\item 分散分析を実行し，その時のF値を答えてください。
+	\item 分散分析を実行し，ボンフェローニの下位検定の結果として平均値の差が認められなかったペアを答えてください。
 \end{enumerate}
 
 \paragraph{課題2 Betweenデザインの分散分析}
 別の学校では，テキストをA,B,Cの3種類とし，教員$\aleph,\nabla$の2人がそれぞれのテキストを使って教えることにしました。1クラス12人，一学年6クラスを使っての実験です。
 授業後のテストの点数が表\ref{L23::exe2}のようになっています。次の各指示に従い，その結果について回答してください。なお，このデータセットは\texttt{chapter22exe2.csv}ファイルに入っています。
 \begin{table}[ht]
-   \centering
-   \caption{課題2}
-   \begin{tabular}{rrrrrr}
-      \hline
-      textA-$\aleph$ & textB-$\aleph$ & textC-$\aleph$ & textA-$\nabla$ & textB-$\nabla$ & textC-$\nabla$ \\
-      \hline
-      25             & 32             & 30             & 28             & 23             & 34             \\
-      39             & 40             & 29             & 20             & 27             & 42             \\
-      36             & 39             & 25             & 31             & 27             & 42             \\
-      31             & 29             & 23             & 19             & 26             & 37             \\
-      41             & 42             & 19             & 35             & 16             & 35             \\
-      34             & 21             & 24             & 24             & 27             & 35             \\
-      33             & 43             & 14             & 25             & 19             & 33             \\
-      31             & 26             & 19             & 34             & 21             & 41             \\
-      28             & 44             & 31             & 23             & 35             & 34             \\
-      34             & 31             & 26             & 22             & 30             & 38             \\
-      31             & 26             & 31             & 19             & 17             & 28             \\
-      32             & 29             & 30             & 23             & 27             & 33             \\
-      \hline
-   \end{tabular}
-   \label{L23::exe2}
+	\centering
+	\caption{課題2}
+	\begin{tabular}{rrrrrr}
+		\hline
+		textA-$\aleph$ & textB-$\aleph$ & textC-$\aleph$ & textA-$\nabla$ & textB-$\nabla$ & textC-$\nabla$ \\
+		\hline
+		25             & 32             & 30             & 28             & 23             & 34             \\
+		39             & 40             & 29             & 20             & 27             & 42             \\
+		36             & 39             & 25             & 31             & 27             & 42             \\
+		31             & 29             & 23             & 19             & 26             & 37             \\
+		41             & 42             & 19             & 35             & 16             & 35             \\
+		34             & 21             & 24             & 24             & 27             & 35             \\
+		33             & 43             & 14             & 25             & 19             & 33             \\
+		31             & 26             & 19             & 34             & 21             & 41             \\
+		28             & 44             & 31             & 23             & 35             & 34             \\
+		34             & 31             & 26             & 22             & 30             & 38             \\
+		31             & 26             & 31             & 19             & 17             & 28             \\
+		32             & 29             & 30             & 23             & 27             & 33             \\
+		\hline
+	\end{tabular}
+	\label{L23::exe2}
 \end{table}
 
 \begin{enumerate}
-   \item 分散分析を実行し，テキストの効果について正しく述べてある文章を選んでください。
-   \item 分散分析を実行し，教員の効果について正しく述べてある文章を選んでください。
-   \item 分散分析を実行し，交互作用の効果について正しく述べてある文章を選んでください。
-   \item 下位検定の結果，テキストAにおける教員の効果は合ったと言って良いでしょうか。正しく述べている文章を選んでください。
-   \item 下位検定の結果，教員Bが受け持ったクラスにおいて，どういう効果があったと言えるでしょうか。正しく述べている文章を選んでください。
+	\item 分散分析を実行し，テキストの効果について正しく述べてある文章を選んでください。
+	\item 分散分析を実行し，教員の効果について正しく述べてある文章を選んでください。
+	\item 分散分析を実行し，交互作用の効果について正しく述べてある文章を選んでください。
+	\item 下位検定の結果，テキストAにおける教員の効果は合ったと言って良いでしょうか。正しく述べている文章を選んでください。
+	\item 下位検定の結果，教員Bが受け持ったクラスにおいて，どういう効果があったと言えるでしょうか。正しく述べている文章を選んでください。
 \end{enumerate}
 
 \paragraph{課題3 Withinデザインの分散分析}
@@ -646,40 +646,40 @@ output is over --------------------///
 各時期のテストの点数が表\ref{L23::exe3}のようになっています。次の各指示に従い，その結果について回答してください。なお，このデータセットは\texttt{chapter22exe3.csv}ファイルに入っています。
 
 \begin{table}[ht]
-   \centering
-   \caption{課題3}
-   \begin{tabular}{r|rrrr}
-      \hline
-      id & period1 & period2 & period3 & period4 \\
-      \hline
-      1  & 39      & 38      & 42      & 52      \\
-      2  & 59      & 66      & 62      & 56      \\
-      3  & 27      & 33      & 44      & 44      \\
-      4  & 41      & 38      & 41      & 42      \\
-      5  & 46      & 46      & 44      & 51      \\
-      6  & 22      & 21      & 37      & 27      \\
-      7  & 54      & 45      & 52      & 51      \\
-      8  & 59      & 51      & 76      & 65      \\
-      9  & 49      & 55      & 59      & 66      \\
-      10 & 48      & 37      & 41      & 47      \\
-      11 & 34      & 36      & 39      & 45      \\
-      12 & 65      & 54      & 62      & 69      \\
-      13 & 51      & 42      & 43      & 43      \\
-      14 & 44      & 37      & 53      & 53      \\
-      15 & 42      & 47      & 50      & 54      \\
-      16 & 49      & 48      & 61      & 47      \\
-      17 & 48      & 39      & 62      & 49      \\
-      18 & 46      & 50      & 44      & 46      \\
-      19 & 45      & 40      & 48      & 55      \\
-      20 & 44      & 48      & 46      & 57      \\
-      \hline
-   \end{tabular}
-   \label{L23::exe3}
+	\centering
+	\caption{課題3}
+	\begin{tabular}{r|rrrr}
+		\hline
+		id & period1 & period2 & period3 & period4 \\
+		\hline
+		1  & 39      & 38      & 42      & 52      \\
+		2  & 59      & 66      & 62      & 56      \\
+		3  & 27      & 33      & 44      & 44      \\
+		4  & 41      & 38      & 41      & 42      \\
+		5  & 46      & 46      & 44      & 51      \\
+		6  & 22      & 21      & 37      & 27      \\
+		7  & 54      & 45      & 52      & 51      \\
+		8  & 59      & 51      & 76      & 65      \\
+		9  & 49      & 55      & 59      & 66      \\
+		10 & 48      & 37      & 41      & 47      \\
+		11 & 34      & 36      & 39      & 45      \\
+		12 & 65      & 54      & 62      & 69      \\
+		13 & 51      & 42      & 43      & 43      \\
+		14 & 44      & 37      & 53      & 53      \\
+		15 & 42      & 47      & 50      & 54      \\
+		16 & 49      & 48      & 61      & 47      \\
+		17 & 48      & 39      & 62      & 49      \\
+		18 & 46      & 50      & 44      & 46      \\
+		19 & 45      & 40      & 48      & 55      \\
+		20 & 44      & 48      & 46      & 57      \\
+		\hline
+	\end{tabular}
+	\label{L23::exe3}
 \end{table}
 
 \begin{enumerate}
-   \item 分散分析を実行し，時期の主効果について正しく述べている文章を選んでください。
-   \item 下位検定を見て，効果があった箇所を選んでください。
+	\item 分散分析を実行し，時期の主効果について正しく述べている文章を選んでください。
+	\item 下位検定を見て，効果があった箇所を選んでください。
 \end{enumerate}
 
 \end{document}

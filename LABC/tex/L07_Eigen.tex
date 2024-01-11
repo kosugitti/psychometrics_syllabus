@@ -15,34 +15,34 @@
 具体的な数値例をみてみましょう。
 
 \[
-    \bm{A} = \begin{pmatrix}
-        1 & 6 \\ 2 & 5
-    \end{pmatrix}
-    ,\bm{x} = \begin{pmatrix}
-        1 \\ 1
-    \end{pmatrix}
+	\bm{A} = \begin{pmatrix}
+		1 & 6 \\ 2 & 5
+	\end{pmatrix}
+	,\bm{x} = \begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
 \]
 
 を例にします。この時次の関係が成り立ちます。
 
 \[
-    \bm{Ax} =
-    \begin {pmatrix}
-    1 & 6 \\
-    2 & 5 \\
-    \end{pmatrix}
-    \begin{pmatrix}
-        1 \\ 1
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        7 \\ 7
-    \end{pmatrix}
-    =7
-    \begin{pmatrix}
-        1 \\ 1
-    \end{pmatrix}
-    =7 \bm{x}
+	\bm{Ax} =
+	\begin {pmatrix}
+	1 & 6 \\
+	2 & 5 \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		7 \\ 7
+	\end{pmatrix}
+	=7
+	\begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
+	=7 \bm{x}
 \]
 
 確かに成立する組み合わせがありますね。この行列$\bm{A}$に対して，7が固有値，$(1,1)$が固有ベクトルになっています。
@@ -88,7 +88,7 @@ $\bm{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $とすると，この式
 固有ベクトルが$(1,1)$や$(2,2)$，$(100,100)$などであっても，$\bm{Ax}=\lambda \bm{x}$の関係に影響しませんから，計算機で算出する場合などは，ベクトルのノルムを1.0に規格化するという条件を追加することが一般的です。
 
 \begin{reidai}{}{}
-    行列$\begin{pmatrix}8&1\\4&5\end{pmatrix}$の固有値・固有ベクトルを求めてみましょう。
+	行列$\begin{pmatrix}8&1\\4&5\end{pmatrix}$の固有値・固有ベクトルを求めてみましょう。
 \end{reidai}
 さてここでみたように，$2\times2$の方程式であれば手計算でも固有方程式を解くことはできるのですが，行列のサイズがどんどん大きくなると一般的に解けなくなって行くことは想像にかたくないと思います。実際我々は正方行列として，項目の情報が詰まった分散共分散行列とか相関行列を使いますから，それが2項目しかないなんてことはなくて，もっともっと大きなサイズになります。そうすると計算機を使って近似的に答えを求めて行くことになります。
 
@@ -122,38 +122,38 @@ $\bm{A}$の固有値$\lambda_1,\lambda_2,\cdots,\lambda_p$がそれぞれ異な�
 行列$\bm{A}$が実対称行列であるとし，この行列の固有値$\lambda$に対する固有ベクトルを$\bm{x}$としましょう。ここで$\lambda$や$\bm{x}$は複素数だとします。
 
 \begin{quotation}
-    複素数については本書の範疇を超えますが，少しだけその性質を紹介しておきます。$a,b$を実数，$i=\sqrt{-1}$として$a+bi$のことを複素数と言います。複素数$\alpha = a+bi$に対して$\overline{\alpha}=a-bi$を共役複素数といいます。その性質として，
-    \begin{itemize}
-        \item $\alpha$が実数\Leftrightarrow $\alpha$ = $\overline{\alpha}$
-        \item $\overline{\alpha \pm \beta} = \overline{\alpha}\pm \overline{\beta}$
-        \item $\overline{\alpha\beta} = \overline{\alpha}\overline{\beta}$
-        \item $\alpha\overline{\alpha} = a^2+b^2$
-    \end{itemize}
-    などがあります。
+	複素数については本書の範疇を超えますが，少しだけその性質を紹介しておきます。$a,b$を実数，$i=\sqrt{-1}$として$a+bi$のことを複素数と言います。複素数$\alpha = a+bi$に対して$\overline{\alpha}=a-bi$を共役複素数といいます。その性質として，
+	\begin{itemize}
+		\item $\alpha$が実数\Leftrightarrow $\alpha$ = $\overline{\alpha}$
+		\item $\overline{\alpha \pm \beta} = \overline{\alpha}\pm \overline{\beta}$
+		\item $\overline{\alpha\beta} = \overline{\alpha}\overline{\beta}$
+		\item $\alpha\overline{\alpha} = a^2+b^2$
+	\end{itemize}
+	などがあります。
 \end{quotation}
 $\bm{A}$は対称行列ですから，$\bm{A}=\bm{A}'$ですし，$\bm{A} = \overline{\bm{A}}$ でもあります。
 さてこの固有値と固有ベクトルを使って，次のような計算を考えてみましょう。
 \[
-    \begin{array}{lllr}
-        \lambda \overline{\bm{x}'}\bm{x} & = & \overline{\bm{x}'}\lambda \bm{x}           & \mbox{スカラーなので}  \\
-                                         &   &                                            &                 \\
-                                         & = & \overline{\bm{x}'}\bm{Ax}                  & \mbox{固有値の定義}   \\ & & &\\
-                                         & = & \overline{\bm{x}'}\overline{\bm{A}}\bm{x}  & \mbox{行列は実数なので} \\ & & &\\
-                                         & = & \overline{\bm{x}'}\overline{\bm{A}'}\bm{x} & \mbox{行列は対称なので} \\ & & &\\
-                                         & = & (\overline{\bm{Ax}})'\bm{x}                & \mbox{転置のルールから} \\ & & &\\
-                                         & = & (\overline{\lambda\bm{x}})'\bm{x}          & \mbox{固有値に戻す}   \\ & & &\\
-                                         & = & \overline{\lambda}\overline{\bm{x}}'\bm{x}                   \\
-    \end{array}
+	\begin{array}{lllr}
+		\lambda \overline{\bm{x}'}\bm{x} & = & \overline{\bm{x}'}\lambda \bm{x}           & \mbox{スカラーなので}  \\
+		                                 &   &                                            &                 \\
+		                                 & = & \overline{\bm{x}'}\bm{Ax}                  & \mbox{固有値の定義}   \\ & & &\\
+		                                 & = & \overline{\bm{x}'}\overline{\bm{A}}\bm{x}  & \mbox{行列は実数なので} \\ & & &\\
+		                                 & = & \overline{\bm{x}'}\overline{\bm{A}'}\bm{x} & \mbox{行列は対称なので} \\ & & &\\
+		                                 & = & (\overline{\bm{Ax}})'\bm{x}                & \mbox{転置のルールから} \\ & & &\\
+		                                 & = & (\overline{\lambda\bm{x}})'\bm{x}          & \mbox{固有値に戻す}   \\ & & &\\
+		                                 & = & \overline{\lambda}\overline{\bm{x}}'\bm{x}                   \\
+	\end{array}
 \]
 ということで，
 \[ \lambda \overline{\bm{x}'}\bm{x} = \overline{\lambda}\overline{\bm{x}}'\bm{x} \]
 という関係が得られましたが，これを移項するなどして
 \[
-    (\lambda -\bar{\lambda})\overline{\bm{x}}'\bm{x}=0.
+	(\lambda -\bar{\lambda})\overline{\bm{x}}'\bm{x}=0.
 \]
 であることがわかります。ここで、$\bm{x} \neq \mbox{\boldmath $0$}$ですから，$\overline{\bm{x}}'\bm{x}\neq 0$より$\lambda = \bar{\lambda}$であることになります。ある値$\lambda$が複素数であるとしても，その共役複素数$\bar{\lambda}$と等しいことから、$\lambda$が実数であることが示ました。
 \begin{reidai}{}{}
-    対称行列$\bm{A} = \begin{pmatrix}1 & 2 \\ 2 & 3 \end{pmatrix}$の固有値と固有ベクトルを求めましょう。固有値が実数になることを確認してください。
+	対称行列$\bm{A} = \begin{pmatrix}1 & 2 \\ 2 & 3 \end{pmatrix}$の固有値と固有ベクトルを求めましょう。固有値が実数になることを確認してください。
 \end{reidai}
 
 \paragraph{対称行列の固有ベクトルは直交する}
@@ -162,22 +162,22 @@ $\bm{A}$は対称行列ですから，$\bm{A}=\bm{A}'$ですし，$\bm{A} = \ove
 \[ \bm{Ax} = \lambda_1\bm{x},\bm{Ay} = \lambda_2\bm{y}\]
 です。先ほどの式展開とほとんど同じなのですが，
 \[
-    \begin{array}{lllr}
-        \lambda\bm{x}'\bm{y} & = & (\lambda \bm{x})']\bm{y} & \mbox{スカラーなので} \\
-                             &   &                          &                \\
-                             & = & (\bm{Ax})'\bm{y}         & \mbox{固有値の定義}  \\
-                             & = & \bm{x}'\bm{A}'\bm{y}     & \mbox{転置の計算}   \\
-                             & = & \bm{x}'\bm{Ay}           & \mbox{対称行列なので} \\
-                             & = & \bm{x}' \lambda_2\bm{y}  &                \\
-                             & = & \lambda_2 \bm{x}'\bm{y}
-    \end{array}
+	\begin{array}{lllr}
+		\lambda\bm{x}'\bm{y} & = & (\lambda \bm{x})']\bm{y} & \mbox{スカラーなので} \\
+		                     &   &                          &                \\
+		                     & = & (\bm{Ax})'\bm{y}         & \mbox{固有値の定義}  \\
+		                     & = & \bm{x}'\bm{A}'\bm{y}     & \mbox{転置の計算}   \\
+		                     & = & \bm{x}'\bm{Ay}           & \mbox{対称行列なので} \\
+		                     & = & \bm{x}' \lambda_2\bm{y}  &                \\
+		                     & = & \lambda_2 \bm{x}'\bm{y}
+	\end{array}
 \]
 となり，
 \[ (\lambda_1 - \lambda_2)\bm{x}'\bm{y} =0 \]
 が得られます。$\lambda_1 \neq \lambda_2$なので，$\bm{x}'\bm{y} = 0$，内積が0なので直交していることがわかります。固有ベクトルを求めることは，(正規)直交基底を求めることでもあるのです。
 
 \begin{reidai}{}{}
-    さきほどの対称行列$\bm{A} = \begin{pmatrix}2 & 2 \\ 2 & -1 \end{pmatrix}$の固有ベクトルが直交していることを確認してください。
+	さきほどの対称行列$\bm{A} = \begin{pmatrix}2 & 2 \\ 2 & -1 \end{pmatrix}$の固有ベクトルが直交していることを確認してください。
 \end{reidai}
 \paragraph{対角化とスペクトル分解}
 固有値と固有ベクトルがわかると，行列をおもしろい形に変えることができます。
@@ -188,7 +188,7 @@ $\bm{A}$を$n$次正方対称行列，つまり$n \times n$サイズの対称行
 \[ \bm{AX} = \bm{X\Lambda} \]
 と書くことができます。ここで$\bm{\Lambda}$は
 \[ \bm{\Lambda} =
-    \begin{pmatrix} \lambda_1 & 0         & \cdots & 0         \\
+	\begin{pmatrix} \lambda_1 & 0         & \cdots & 0         \\
                 0         & \lambda_2 & \cdots & 0         \\
                 \vdots    & \vdots    & \ddots & \vdots    \\
                 0         & 0         & \cdots & \lambda_n\end{pmatrix}
@@ -207,17 +207,17 @@ $\bm{A}$を$n$次正方対称行列，つまり$n \times n$サイズの対称行
 
 この操作の何が楽しいかというと，行列の累乗計算がずいぶんと楽になるところです。$\bm{A}^n$を考えると，
 \[ \begin{array}{lll}
-        \bm{A}^n & = & \bm{AAA}\cdots\bm{A}                                                   \\
-                 & = & \bm{X\Lambda X}'\bm{X\Lambda X}'\bm{X\Lambda X}'\cdots\bm{X\Lambda X}' \\
-                 & = & \bm{X} \bm{\Lambda\Lambda\cdots\Lambda} \bm{X}'                        \\
-                 & = & \bm{X} \bm{\Lambda}^n \bm{X}'                                          \\
-                 &   &                                                                        \\
-                 & = & \bm{X}
-        \begin{pmatrix} \lambda_1^n & 0           & \cdots & 0           \\
+		\bm{A}^n & = & \bm{AAA}\cdots\bm{A}                                                   \\
+		         & = & \bm{X\Lambda X}'\bm{X\Lambda X}'\bm{X\Lambda X}'\cdots\bm{X\Lambda X}' \\
+		         & = & \bm{X} \bm{\Lambda\Lambda\cdots\Lambda} \bm{X}'                        \\
+		         & = & \bm{X} \bm{\Lambda}^n \bm{X}'                                          \\
+		         &   &                                                                        \\
+		         & = & \bm{X}
+		\begin{pmatrix} \lambda_1^n & 0           & \cdots & 0           \\
                 0           & \lambda_2^n & \cdots & 0           \\
                 \vdots      & \vdots      & \ddots & \vdots      \\
                 0           & 0           & \cdots & \lambda_n^n\end{pmatrix}\bm{X}'
-    \end{array}
+	\end{array}
 \]
 となるからです。行列$\bm{A}$が座標の変換であったり，何らかの作用を表現した行列であるとすると，それを作用させ続けた場合を考える時に累乗計算になりますが，その行列計算が一気に求められることになります。「何らかの作用」をハミルトン演算子と見るか，ページランクとみるか\footnote{Googleの検索エンジンが採用しているページの評価法。Googleの検索システムは，ページ同士のリンク関係を行列で表現し，スペクトル分解して重要度の高いページを重みづけて表現する，というアルゴリズムをとっており，「検索したいものに効率よく辿り着ける」ことで人気を博したからです。}，隣接行列\footnote{数理社会学などでは対人的なネットワークの関係を行列で表現し，このように呼びます。ネットワーク科学一般でも用いられてる用語と言えるでしょう。}と見るかによって見える景色は違ってくるかもしれませんが，数学的には固有値問題といういみで同じなのです。興味がある人は\citet{Naganuma20110920}の電子版付録などもみてみるといいでしょう。
 
@@ -232,7 +232,7 @@ $\bm{A}$を$n$次正方対称行列，つまり$n \times n$サイズの対称行
 です。
 
 \begin{reidai}{}{}
-    さきほどの対称行列$\bm{A} = \begin{pmatrix}2 & 2 \\ 2 & -1 \end{pmatrix}$の固有値の和がトレースと一致することを確認してください。
+	さきほどの対称行列$\bm{A} = \begin{pmatrix}2 & 2 \\ 2 & -1 \end{pmatrix}$の固有値の和がトレースと一致することを確認してください。
 \end{reidai}
 
 \section{固有値と固有ベクトルの幾何学的意味}
@@ -241,7 +241,7 @@ $\bm{A}$を$n$次正方対称行列，つまり$n \times n$サイズの対称行
 
 ある正方行列から固有値$\lambda$と固有ベクトル$\bm{a}$が得られたとします。このベクトル$\bm{a}$のすべての要素を定数$c$倍したベクトル$\bm{b}=c\bm{a}$を考えると，これもやはり同じ関係が成り立ちます。
 \begin{equation}
-    \bm{A}\bm{b}=  \lambda c \bm{a} =\lambda \bm{b}
+	\bm{A}\bm{b}=  \lambda c \bm{a} =\lambda \bm{b}
 \end{equation}
 先ほどの計算でも明らかになりましたが，固有ベクトルの値は絶対的なものではなく，要素間の相対的大きさを反映しているに過ぎないのでしたね。
 
@@ -250,20 +250,20 @@ $\bm{A}$を$n$次正方対称行列，つまり$n \times n$サイズの対称行
 ここで行列の空間イメージで出てきた，「行列は座標変換装置」ということを思い出してください。
 今回の例では，行列$\bm{A}$には次のような性質があります。
 \begin{equation}
-    \begin{pmatrix}
-        2 & 0 \\
-        0 & 3
-    \end{pmatrix}
-    \begin{pmatrix}
-        1 \\
-        0
-    \end{pmatrix}
-    = 2 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+	\begin{pmatrix}
+		2 & 0 \\
+		0 & 3
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\
+		0
+	\end{pmatrix}
+	= 2 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
 \end{equation}
 
 \begin{equation}
-    \begin{pmatrix} 2 & 0\\ 0 & 3 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
-    = 3 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+	\begin{pmatrix} 2 & 0\\ 0 & 3 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+	= 3 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
 \end{equation}
 
 そう，お気づきのように，これは固有値・固有ベクトルです。この行列の固有値・固有ベクトルはそれぞれ$\lambda_1=2,\bm{x}_1=(1,0)$，$\lambda_2=3,\bm{x}_2=(0,1)$であることがわかります。この固有値，固有ベクトルの組み合わせをじっとみていると，おもしろい特徴がわかって来ます。

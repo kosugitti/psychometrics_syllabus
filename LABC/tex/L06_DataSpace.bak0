@@ -1,0 +1,537 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+\chapter{データ空間}
+\label{L06_DataSpace}
+ベクトルを空間的なイメージとして理解できたところで，これをデータ解析に応用していきましょう。
+私たちが考えたいのはデータのベクトルであり，データの空間だったわけです。これに具体的なモデルを入れて考えていきましょう。
+\section{線形回帰を行列と空間で理解する}
+セクション\ref{LinearModelForm}(Pp.\pageref{LinearModelForm})でみたように，回帰分析はデータベクトルと係数ベクトルを使って，
+\[ \bm{y} = \bm{X\beta} + \bm{e} \]
+と表せるのでした。具体例として，まずは説明変数が2つある重回帰分析を考えてみましょう。予測値$\hat{y}_i$は次のように表現できます。
+\[ \hat{y}_i= \beta_0 + \beta_1x_{1i} + \beta_2x_{2i} \]
+これを空間のイメージで考えると，右辺は説明変数$\bm{x} =(\bm{1}, \bm{x}_1,\bm{x}_2) \in \mathbb{R}^3$に係数ベクトル$\bm{\beta} = (\beta_0,\beta_1,\beta_2)' \in \mathbb{R}^3$をかけてたことによる空間が広がっていますね。$\bm{X}$が張る空間を$\bm{W(X)}$とすると，次のように表すことができます。
+\[ \bm{W(X)} =\{ \beta_0 \bm{1} + \beta_1\bm{x}_1 + \beta_2 \bm{x}_2 \mid \bm{\beta} \in \mathbb{R}^3\} \]
+
+$\bm{\hat{y}}$はこの空間の中にあるベクトルで，実際のデータベクトル$\bm{y}$はこの右辺が張る空間に射影されたものとみることができます(図\ref{RegressionModel})。
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+        \fill[cyan!10] (-3,-4)--(-1,4)--(7,4)--(6,-4)--cycle; %四角形を赤:青=30:70の色で塗る
+        \coordinate[label=above left:$o$] (o)at (0,0);
+        \coordinate (y) at (2.5,5);
+        \coordinate (x1) at (4,2.2);
+        \coordinate (x2) at (3,-3);
+        \coordinate (haty) at (2.5,0);
+        \coordinate (b1) at ($(o)!(haty)!(x1)$);
+        \coordinate (b2) at ($(o)!(haty)!(x2)$);
+        \draw[->, >=Latex,very thick] (o) -- (y);
+        \draw[->, >=Latex,thick] (o) -- (x1);
+        \draw[->, >=Latex,thick] (o) -- (x2);
+        \draw[->, >=Latex,very thick] (o) -- (haty);
+        \draw[dashed] (y) -- node[midway,right]{$\bm{e}$}(haty);
+        \draw[dashed] (haty) --(b1);
+        \draw[dashed] (haty) --(b2);
+        \node[above] at (y) {$\bm{y}$};
+        \node[below] at (haty) {$\bm{\hat{y}}$};
+        \node[right] at (x1) {$\bm{x1}$};
+        \node[right] at (x2) {$\bm{x2}$};
+        \node[above] at (b1) {$\beta_1\bm{x}_1$};
+        \node[below left] at (b2) {$\beta_2\bm{x}_2$};
+        \node[below left] at (7,4) {$\bm{W(X)}$};
+    \end{tikzpicture}
+    \caption{説明変数の空間に被説明変数ベクトルを射影する}
+    \label{RegressionModel}
+\end{figure}
+
+セクション\ref{ProjectionMatrix}(Pp.\pageref{ProjectionMatrix})でみたように，射影行列$\bm{P}$は基底ベクトルを使って$\bm{P} = \bm{A}(\bm{A}'\bm{A})^{-1}\bm{A}'$と表されるということでしたから，回帰分析の場合は
+\[ \bm{\hat{y}} = \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}' \bm{y} \]
+として求められることになります。
+
+
+ちなみに誤差$\bm{e}=\bm{y} - \bm{\hat{y}}$は，被説明変数$\bm{y}$から空間$\bm{W(X)}$に射影した時の垂線の長さです。垂線ですから，説明変数が張る空間とは直角に交わっています。すなわち，\underline{誤差は説明変数との相関がゼロ}である，という回帰分析の特徴も一気に理解することができます。
+
+また垂線ですので，被説明変数ベクトルと説明変数が張る空間との距離が最短になっていることもわかります。一応証明しておきましょうか。平面$\bm{W(X)}$上の別のベクトル$\bm{P}$を考えて$\bm{P}$と$\bm{y}$との距離を考えるとします。
+
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \coordinate (o) at (0,1);
+        \coordinate (E) at (10,2);
+        \coordinate (y) at (4,4);
+        \coordinate (haty) at ($(o)!(y)!(E)$);
+        \coordinate (P) at ($(o)!0.75!(E)$);
+        \draw[cyan!10,line width=2pt] (o) -- (E);
+        \draw[dashed] (y) --node[midway,left]{$\bm{e}$} (haty);
+        \draw[dashed] (y) --node[midway,right]{$\bm{y}-\bm{P}$} (P);
+        \node[above] at (y) {$\bm{y}$};
+        \node[below] at (haty) {$\bm{\hat{y}}$};
+        \node[below] at (P) {$\bm{P}$};
+        \node[auto] at (E) {$\bm{W(X)}$};
+    \end{tikzpicture}
+    \caption{垂線が最短距離であることを考える}
+    \label{minQ}
+\end{figure}
+距離の式を展開していくと，次のような関係が得られます。
+\[
+    \begin{array}{lll}
+        \| \bm{y} - \bm{P} \|^2 & = & \| \bm{y}-\bm{\hat{y}} + \bm{P} - \bm{\hat{y}} \|^2                                       \\
+                                & = & \|\bm{y} - \bm{\hat{y}}\|^2 + \|\bm{P}-\bm{\hat{y}}\|^2 + 2\bm{e}'(\bm{P} - \bm{\hat{y}}) \\
+                                & = & \| \bm{e} \|^2 + \|\bm{P}-\bm{\hat{y}}\|^2
+    \end{array}
+\]
+つまり，別のベクトル$\bm{P}$との距離はどうやっても$\bm{e} = \bm{y}-\bm{\hat{y}}$以上になるので，$\bm{e}$が最短だということになります。この$\bm{e}$のノルムを最小にするのが\keytermL{最小二乗法}{さいしょうにじょうほう}ですが，距離を最小にするので二乗なんだな，と考えることができます。
+
+具体的な係数ベクトル$\bm{\beta}$は，空間$\bm{W(X)}$と残差$\bm{e} = \bm{y} - \bm{\hat{y}}$が直交することから，
+\[ \bm{X}'\bm{e} = 0　\]
+\[ \bm{X}'(\bm{y} - \bm{X\beta}) = 0 \]
+\[ \bm{X}'\bm{y} - \bm{X}'\bm{X}\bm{\beta} = 0 \]
+\[ \bm{X}'\bm{X}\bm{\beta} = \bm{X}'\bm{y} \]
+となりますから，$\bm{\beta}$だけにするには$\bm{X}'\bm{X}$に逆行列があればよく，
+\[ \bm{\beta} = (\bm{X}'\bm{X})^{-1}\bm{X}'\bm{y} \]
+ということになります。そもそも$\bm{\hat{y}} = \bm{X\beta}$だったわけですから，射影行列との関係$\bm{\hat{y}} = \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}' \bm{y} $とも整合的であることがわかりますね。
+\subsection{多重共線性の問題}
+重回帰分析において\keyterm{多重共線性}{たじゅうきょうせんせい}{multicolinearity}に気をつけなければならない，というのは聞いたことがあると思います。
+
+多重共線性は，説明変数同士の相関が高いことが原因でおこることで，なんか良くないんだ，というイメージはお持ちかと思います。さて何が悪いのでしょう?
+これを考えるときに，空間的なイメージからアプローチしてみましょう。説明変数同士の相関が高いこと，というのがありましたが，相関が高いことを空間のイメージでいうと，ベクトルの$\cos \theta$が0ではないということです。相関が最高潮に高い場合は，ベクトルがぴたりと重なってしまいますから，これは一次独立でなくなり，空間が潰れてしまうことになります。
+
+今回の例では2つの説明変数が作る空間があって，そこに被説明変数ベクトルの影を落としたのでした。図\ref{RegressionModel}にもあるように，説明変数ベクトルの方向を何倍するかという，倍率が偏回帰係数になります。このとき，2つの説明変数が実は一次従属関係にあったとすると，2本のベクトルではなく1本のベクトル空間になります。そんな状況で2つの回帰係数を求めることはできないですね。
+
+重回帰分析が実践的に使われるシーンでは，2つと言わずもっと多くの説明変数が使われることがあります。$n$人分のデータ，$p$個の説明変数があったとして，行列$\bm{X}$は$n\times (p+1)$になりますが，説明変数のなかに一次従属な変数があるとこの行列$\bm{X}$のランクが$rank(\bm{X}) < (p+1)$になっていることになります\footnote{行列のランクは行数，列数の小さい方であり，一般にデータ数$n$のほうが変数の数$p$よりも大きい($p\ll n$)ので，ここでのランクは$p+1$で考えます。ちなみに$\ll$は「十分にちいさい」という意味です。}。行列の積とランクの関係から，
+\[ rank(\bm{X}'\bm{X}) \le rank(\bm{X}) \]
+ですが，$p+1 \times p+1$の正方行列$\bm{X}'\bm{X}$が逆行列を持つ条件は$rank(\bm{X}'\bm{X}) = p+1$であることで，ランク落ち$rank(\bm{X}'\bm{X}) < p+1$が生じていると逆行列が持てません。行列$(\bm{X}'\bm{X})$は射影するときに逆行列にして使いますので，ここで計算上のエラーが生じます。
+
+逆行列の計算は，行列のサイズが大きくなっていくと非常に計算が大変になって，近似的に解いていくことになります。解析的には答えがないはずの行列に対して，無理矢理近似的な数値を算出させたところで，その数字が信用できるはずもないことはおわかりいただけると思います。もちろん実際のデータで，変数同士が一次従属になることは稀です\footnote{変数を生成して説明変数に加えると，こうした問題が生じがちです。例えば身長の単位をcmからmに変えて両方とも投入してしまうといった人為的なミスというケースです。}が，尺度の合計得点と因子得点といった，相関がごく高い変数の両方を使用変数にしてしまうと，ランク落ちの様相を呈してきます。もちろん偽相関など見せかけ的に高い関係があってもいけません。
+
+\subsubsection{Rでやってみて考える}
+実際に数値例をつかってみてみればいいのですが，逆行列の計算は面倒なので，Rをつかって計算させてみたいと思います。
+Rで逆行列を求めるには，\verb|solve|という関数があるので，これを使います。
+\begin{lstlisting}[language=C++,label={Multico1},caption={フルランクの行列}]
+    A <- matrix(c(1,3,5,2,4,3,3,1,2,2,1,6,3,5,4),ncol=3)
+    M <- t(A) %*% A
+    solve(M)
+    \end{lstlisting}
+まず適当な行列$\bm{A}$を作り，$\bm{M} = \bm{A}'\bm{A}$を構成します。今回の例では，
+\[ \bm{A} = \begin{pmatrix}1 & 3 & 1\\ 3&3&6\\5&1&3\\2&2&5\\4&2&2\end{pmatrix},\bm{M} = \begin{pmatrix}55&29&60\\29&27&42\\60&42&87\end{pmatrix}\]
+であり，逆行列は
+\[ \bm{M}^{-1}=\begin{pmatrix} 0.0734 & -0.0003 & -0.0504\\-0.0003 & 0.1487 & -0.0715\\-0.0504&-0.0715&0.0808\end{pmatrix}\]
+となりました。
+
+ここでわざとランク落ちを生じさせます。$\bm{A}$の3列目を，$\bm{A}$の2列目で上書きしてしまうのです。
+\begin{lstlisting}[language=C++,label={Multico2},caption={ランク落ちの行列}]
+    A[,3] <- A[,2]
+    M <- t(A) %*% A
+    solve(M)
+    \end{lstlisting}
+こうすると，Rはエラーを返します。
+\begin{verbatim}
+    solve.default(M) でエラー: 
+    Lapack routine dgesv: システムは正確に特異です: U[3,3] = 0 
+    \end{verbatim}
+だそうです。
+
+さて，ではランク落ちかけ，という程度ならどうでしょう。$\bm{A}$の3列目を$\bm{A}$の2列目で上書きするときに，少し数字をいじってしまいます。
+\begin{lstlisting}[language=C++,label={Multico3},caption={ランクおちかけ}]
+    A[,3] <- A[,2]+rnorm(5)*0.001
+    M <- t(A) %*% A
+    solve(M)
+    \end{lstlisting}
+今回は微小な誤差を追加しましたので，行列は
+\[
+    \bm{A} =
+    \begin{pmatrix}
+        1 & 3 & 3.0005855 \\
+        3 & 3 & 3.0007095 \\
+        5 & 1 & 0.9998907 \\
+        2 & 2 & 1.9995465 \\
+        4 & 2 & 2.0006059 \\
+    \end{pmatrix},
+    \bm{M} =
+    \begin{pmatrix}
+        55.00000 & 29.00000 & 29.00368 \\
+        29.00000 & 27.00000 & 27.00408 \\
+        29.00368 & 27.00408 & 27.00816 \\
+    \end{pmatrix}
+\]
+です。ほとんど変わらない大きさですが，これの逆行列は，
+\[
+    \bm{M}^{-1} =
+    \begin{pmatrix}
+        0.0430067   & -36.95954 & 36.90777 \\
+        -36.9595434 & 1260304   & -1260074 \\
+        36.9077732  & -1260074  & 1259844  \\
+    \end{pmatrix}
+\]
+という無茶苦茶な大きさになってしまいました。
+
+
+多重共線性が問題になるシーンは，計算がうまくいっていないかも，という数値計算の話だけではありません。データ解析の多くのシーンでは，求めたい回帰係数は母集団のそれであり，毎回のサンプルごとどれぐらい変わるかということを，\keytermL{標準誤差}{ひょうじゅんごさ}で表現します。多重共線性が生じて計算上の不確実さがあると，これが標準誤差の大きさに跳ね返ってきます。
+
+図\ref{Multico}には，被説明変数が$\bm{y}$と$\bm{y}'$の2本描かれています。違うサンプルを取ったことで少し違う値が得られたというイメージです\footnote{この素晴らしい幾何学的な説明のアイデアは，\citet{Haebara200206}を参考にしました。}。説明変数ベクトルが張る空間に落とした影から，説明変数ベクトルに垂線を引いたところが係数になります。右図にあるように，説明変数同士に相関があると，ちょっと影がずれるだけで係数の符号まで変わってしまいます。このような不安定さが簡単に生じるので，多重共線性があった場合は係数が信用ならないわけです。
+
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.65]
+        \coordinate (o) at (0,0);
+        \coordinate (b1a) at (-5,5);
+        \coordinate (b1b) at (5,-5);
+        \coordinate (b2a) at (-5,-5);
+        \coordinate (b2b) at (5,5);
+        \coordinate (y1) at (0.3,4);
+        \coordinate (y2) at (-0.3,4);
+        \coordinate (yhat1) at (0.5,-3);
+        \coordinate (yhat2) at (-0.5,-3);
+        \coordinate (y1b1) at ($(b1a)!(yhat1)!(b1b)$);
+        \coordinate (y1b2) at ($(b2a)!(yhat1)!(b2b)$);
+        \coordinate (y2b1) at ($(b1a)!(yhat2)!(b1b)$);
+        \coordinate (y2b2) at ($(b2a)!(yhat2)!(b2b)$);
+        \draw[->,>=Latex,thick] (b1a)--(b1b);
+        \draw[->,>=Latex,thick] (b2a)--(b2b);
+        \draw[->,>=Latex,very thick] (o) -- (y1);
+        \draw[->,>=Latex,very thick] (o) -- (y2);
+        \draw[->,>=Latex,very thick,gray!80] (o) -- (yhat1);
+        \draw[->,>=Latex,very thick,gray!80] (o) -- (yhat2);
+        % \draw[dashed] (y1) -- (yhat1);
+        % \draw[dashed] (y2) -- (yhat2);
+        \draw[dashed] (yhat1) -- (y1b1);
+        \draw[dashed] (yhat1) -- (y1b2);
+        \draw[dashed] (yhat2) -- (y2b1);
+        \draw[dashed] (yhat2) -- (y2b2);
+        \node[below right] at (b1b) {$\bm{b}_1$};
+        \node[below right] at (b2b) {$\bm{b}_2$};
+        \node[above right] at (y1) {$\bm{y}$};
+        \node[above left] at (y2) {$\bm{y}'$};
+        \node[above right] at (y1b1) {$\beta_1\bm{x}_1$};
+        \node[above left] at (y1b2) {$\beta_2\bm{x}_2$};
+        \node[above right] at (y2b1) {$\beta_1'\bm{x}_1$};
+        \node[above left] at (y2b2) {$\beta_2'\bm{x}_2$};
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=0.65]
+        \coordinate (o) at (0,0);
+        \coordinate (b1a) at (-5,4);
+        \coordinate (b1b) at (5,-4);
+        \coordinate (b2a) at (-5,0);
+        \coordinate (b2b) at (5,-0);
+        \coordinate (y1) at (0.3,4);
+        \coordinate (y2) at (-0.3,4);
+        \coordinate (yhat1) at (0.5,-3);
+        \coordinate (yhat2) at (-0.5,-3);
+        \coordinate (y1b1) at ($(b1a)!(yhat1)!(b1b)$);
+        \coordinate (y1b2) at ($(b2a)!(yhat1)!(b2b)$);
+        \coordinate (y2b1) at ($(b1a)!(yhat2)!(b1b)$);
+        \coordinate (y2b2) at ($(b2a)!(yhat2)!(b2b)$);
+        \draw[->,>=Latex,thick] (b1a)--(b1b);
+        \draw[->,>=Latex,thick] (b2a)--(b2b);
+        \draw[->,>=Latex,very thick] (o) -- (y1);
+        \draw[->,>=Latex,very thick] (o) -- (y2);
+        \draw[->,>=Latex,very thick,gray!80] (o) -- (yhat1);
+        \draw[->,>=Latex,very thick,gray!80] (o) -- (yhat2);
+        % \draw[dashed] (y1) -- (yhat1);
+        % \draw[dashed] (y2) -- (yhat2);
+        \draw[dashed] (yhat1) -- (y1b1);
+        \draw[dashed] (yhat1) -- (y1b2);
+        \draw[dashed] (yhat2) -- (y2b1);
+        \draw[dashed] (yhat2) -- (y2b2);
+        \node[below right] at (b1b) {$\bm{b}_1$};
+        \node[below right] at (b2b) {$\bm{b}_2$};
+        \node[above right] at (y1) {$\bm{y}$};
+        \node[above left] at (y2) {$\bm{y}'$};
+        \node[above right] at (y1b1) {$\beta_1\bm{x}_1$};
+        \node[above right] at (y1b2) {$\beta_2\bm{x}_2$};
+        \node[above right] at (y2b1) {$\beta_1'\bm{x}_1$};
+        \node[below left] at (y2b2) {$\beta_2'\bm{x}_2$};
+    \end{tikzpicture}
+    \caption{左;サンプルが変わると少し係数がぶれる。右；サンプルが変わっただけで$\beta_2$の符号も変わってしまう。}
+    \label{Multico}
+\end{figure}
+
+\subsection{分散分析による空間の分解}
+線形モデルの特殊例として，分散分析を考えることができます。分散分析はデータ全体の\keyterm{平方和}{へいほうわ}{Sum of Squares}を，効果の平方和と誤差の平方和に分解するもので，誤差に比べて効果がどれだけ大きいかを判断するものです\footnote{平方和をデータの数で割れば分散になりますが，分散分析の場合は\keyterm{自由度}{じゆうど}{degrees of freedom}でわって\keyterm{平均平方}{へいきんへいほう}{Mean Squares}にし，その比がF分布に従うことから有意さの有無を判定する，というのが全体の流れでしたね。}。これを行列と空間のメタファで考えてみたいと思います。
+
+% データベクトル$\bm{y}$が平均$\mu$とその偏差$\bm{v}$ で表されるとします。
+% \[ \bm{y} = \mu \bm{1} + \bm{v} \]
+% ここで$\bm{1}$はデータベクトルと同じ長さだけ$1$が並んでいるベクトルです。データベクトルのノルムは，
+% \[ \| \bm{y} \|^2 = \bm{y}'\bm{y} =(\mu\bm{1}+\bm{v})'(\mu\bm{1}+\bm{v}) \]
+% \[ = (\mu\bm{1}' + \bm{v}')(\mu\bm{1}+\bm{v}) \]
+% \[ = \|\mu \bm{1}\|^2 + \mu\bm{1}'\bm{v} + \bm{v}'\mu\bm{1} + \|\bm{v}\|^2 \]
+% ここで$\bm{v}$は偏差なので$\bm{1}'\bm{v}$という偏差の総和はゼロになりますから，
+% \[ = \|\mu \bm{1}\|^2 + \|\bm{v}\|^2 \]
+% となるわけです。
+
+分散分析は被験者を実験デザインに割り当てて，データを取ります。この「デザインに割り当てる」というのは，デザイン行列がつくる空間にデータを射影する，と考えることができます。
+たとえば実験群・統制群それぞれに2人ずつ割り当てて，データ$\bm{y}'=\begin{pmatrix}2 & 3 & 4 & 5\end{pmatrix}$を得たとしましょう。この時のデザイン行列は，
+\[ \bm{X} = \begin{pmatrix}1&0\\1&0\\ 0&1\\0&1\end{pmatrix} \]
+と書くことができます。
+この行列$\bm{X}$が張る空間に，データ$\bm{Y}$を射影します。射影行列は
+\[ \bm{P_A} = \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}' \]
+になるのでした。
+データ全体$\mathbb{R}$は，この射影によって部分空間$\bm{W(X)}$と$\bm{W(X)}^{\perp}$に分解されます。相補性の考え方から$\bm{I}-\bm{P_A}$が$\bm{W(X)}^{\perp}$に対応しています。実験計画の場合，デザイン行列で把握しきれない変動は誤差だと考えるわけですから，$\bm{W(X)}^{\perp}$が誤差ベクトルの作る部分空間であり，そこに射影する射影行列は$\bm{P_e}=\bm{I}-\bm{P_A}$だと考えることができます。
+
+具体的な数値例で見てみます。射影行列は，
+\[ 
+    \begin{array}{lll}
+    \bm{P_A} &=& \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}' \\
+             &=& \begin{pmatrix}1&0\\1&0\\ 0&1\\0&1\end{pmatrix} \left( 
+                \begin{pmatrix} 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \end{pmatrix}
+                \begin{pmatrix} 1 & 0 \\ 1 & 0 \\ 0 & 1 \\ 0 & 1 \end{pmatrix}
+             \right)^{-1}
+             \begin{pmatrix} 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \end{pmatrix} \\
+             &&\\
+             &=&
+             \begin{pmatrix}1&0\\1&0\\ 0&1\\0&1\end{pmatrix} 
+             \begin{pmatrix}2 & 0 \\ 0 & 2 \end{pmatrix}^{-1}
+             \begin{pmatrix} 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \end{pmatrix} \\
+             &&\\
+             &=&
+             \begin{pmatrix}1&0\\1&0\\ 0&1\\0&1\end{pmatrix} 
+             \begin{pmatrix}0.5 & 0 \\ 0 & 0.5 \end{pmatrix}
+             \begin{pmatrix} 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \end{pmatrix} \\
+             &&\\
+             &=&
+             \begin{pmatrix} 0.5 & 0.5 & 0 & 0 \\ 0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & 0.5 \\ 0 & 0 & 0.5 & 0.5 \end{pmatrix}
+    \end{array}
+\]
+となります\footnote{$2\times 2$の逆行列は，セクション\ref{inverse_form},Pp.\pageref{inverse_form}を思い出してください。}。これの直交補空間への射影行列は，
+\[
+    \begin{array}{lll}
+        \bm{P_e} &=& \bm{I} - \bm{P_A}   \\
+                & = &  \begin{pmatrix} 1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\0 & 0 & 1 & 0 \\0 & 0 & 0 & 1\end{pmatrix} -
+                \begin{pmatrix} 0.5 & 0.5 & 0 & 0 \\ 0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & 0.5 \\ 0 & 0 & 0.5 & 0.5 \end{pmatrix} \\
+                &&\\
+                &=& 
+                \begin{pmatrix} 0.5 & -0.5 & 0 & 0 \\ -0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & -0.5 \\ 0 & 0 & -0.5 & 0.5 \end{pmatrix} 
+    \end{array}
+\]
+となります。
+
+データベクトルをこれらの空間に射影するとどういうことが起きるか，計算してみましょう。まずはデザイン行列の空間へ射影しましょう。
+\[
+    \bm{P_A}\bm{y} = \begin{pmatrix} 0.5 & 0.5 & 0 & 0 \\ 0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & 0.5 \\ 0 & 0 & 0.5 & 0.5 \end{pmatrix}
+    \begin{pmatrix} 2\\3\\4\\5 \end{pmatrix} =
+    \begin{pmatrix} 2.5\\2.5\\4.5\\4.5 \end{pmatrix}
+\]
+ここにあるように，実験群・統制群それぞれへの平均値が計算されました。また，$\bm{P_E}$を使った射影の結果は次のようになります。
+
+\[
+    \bm{P_E}\bm{y} = \begin{pmatrix} 0.5 & -0.5 & 0 & 0 \\ -0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0.5 & -0.5 \\ 0 & 0 & -0.5 & 0.5 \end{pmatrix} 
+    \begin{pmatrix} 2\\3\\4\\5 \end{pmatrix} =
+    \begin{pmatrix} -0.5\\0.5\\-0.5\\0.5 \end{pmatrix}
+\]
+
+これは一瞬分かりにくいかもしれませんが，それぞれの群平均からの差を表していますね。群平均からの個々の値の差を誤差と考えるわけですから，まさにその通りになっています。
+
+さて今回のデザイン行列には，全体平均(切片)が含まれていませんでしたが，デザイン行列が群平均を取り出す写像であることを考えると，その空間の中に全体平均の要素も含まれているはずです。つまり$\bm{W(X)}$はさらに分割することができて，全体平均$\bm{W(G)}$と，$\bm{W(X)}$の中にあって$\bm{W(G)}$でない部分，$\bm{W_G^{\perp}(X)}$に分解できるのです。
+
+全体平均は全て同じ大きさを持つベクトル$\bm{G}'=\begin{pmatrix}1 & 1 & 1 & 1\end{pmatrix}$が張る空間だと考えることができます。この射影行列を考えます。
+\[
+    \begin{array}{lll}
+        \bm{P_G} &=& \bm{G}(\bm{G}'\bm{G})^{-1}\bm{G}' \\
+        &=&  \begin{pmatrix} 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \end{pmatrix}
+    \end{array}
+\]
+ここにデータを射影してみると，
+\[
+    \bm{P_G}\bm{y} = \begin{pmatrix} 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \\ 0.25 & 0.25 & 0.25 & 0.25 \end{pmatrix}
+    \begin{pmatrix} 2\\3\\4\\5 \end{pmatrix} =
+    \begin{pmatrix} 3.5\\3.5\\3.5\\3.5 \end{pmatrix}
+\]
+となります。
+
+図\ref{projectionANOVA}には，空間の分解と射影行列を併記してみました。左図はデータ空間の分解で，右図はそれに対応する射影行列の分解パターンです。そこには要因の効果を取り出す射影行列$\bm{P_F}$がありますが，これは誤差を取り除いた空間から，全体平均を写像で潰した残りの空間として表現されています。
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.70]
+        \coordinate (o) at (3,3);
+        \coordinate (a) at (1.5,1.7);
+        \coordinate (a2) at (1.5,1);
+        \coordinate (b) at (4.5,1.7);
+        \coordinate (c) at (0,-0.5);
+        \coordinate (d) at (3,-0.5);
+        \node[inner xsep=20,above] at (o) {$\mathbb{R}$};
+        \node[below] at (a) {$\bm{W(X)}$};
+        \node[rectangle,below] at (b) {$\bm{W(X)^{\perp}}$};
+        \node[rectangle,below] at (c) {$\bm{W(G)}$};
+        \node[rectangle,below] at (d) {$\bm{W_G^{\perp}(X)}$};
+        \draw[-] (o)--(a);
+        \draw[-] (o)--(b);
+        \draw[-] (a2)--(c);
+        \draw[-] (a2)--(d);
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=0.70]
+        \coordinate (o) at (3,3);
+        \coordinate (a) at (1.5,1.7);
+        \coordinate (a2) at (1.5,1);
+        \coordinate (b) at (4.5,1.7);
+        \coordinate (c) at (0,-0.5);
+        \coordinate (d) at (3,-0.5);
+        \node[inner xsep=20,above] at (o) {$\bm{I}$};
+        \node[below] at (a) {$\bm{P_A}$};
+        \node[rectangle,below] at (b) {$\bm{P_e}=\bm{I}-\bm{P_A}$};
+        \node[rectangle,below] at (c) {$\bm{P_G}$};
+        \node[rectangle,below] at (d) {$\bm{P_F}=\bm{P_A}-\bm{P_G}$};
+        \draw[-] (o)--(a);
+        \draw[-] (o)--(b);
+        \draw[-] (a2)--(c);
+        \draw[-] (a2)--(d);
+    \end{tikzpicture}
+    \caption{分散分析による空間の分解}
+    \label{projectionANOVA}
+\end{figure}
+射影行列の関係から，
+\[ \bm{I} = \bm{P_G} +\bm{P_F}+\bm{P_e} \]
+であることがわかります。
+
+さて，データ全体の平方和は$\bm{y}'\bm{y}=\bm{y}'\bm{I}\bm{y}$と書くことができますから，
+\[ \bm{y}'\bm{Iy} = \bm{y}'\bm{P_Gy}+\bm{y}'\bm{P_Fy}+\bm{y}'\bm{P_ey} \]
+という分解ができることがわかります。
+
+これを踏まえて考えると，分散分析表の構成は，次のように表現できます。
+\begin{table}[ht]
+    \centering
+    \caption{射影行列による分散分析表の構成}
+    \begin{tabular}{cccc}
+        source & SS                                  & df             & MS                                   \\\hline
+        Factor & $\bm{y}'\bm{P_Fy}$                  & $tr(\bm{P_F})$ & $\bm{y}'\bm{P_Fy}$ / $tr(\bm{P_F})$  \\
+        Error  & $\bm{y}'\bm{P_ey} $                 & $tr(\bm{P_e})$ & $\bm{y}'\bm{P_ey} $ / $tr(\bm{P_e})$ \\\hline
+        Total  & $\bm{y}'\bm{Iy} - \bm{y}'\bm{P_Gy}$                                                         \\\hline
+    \end{tabular}
+    \label{projectionANOVAtable}
+\end{table}
+
+
+表\ref{projectionANOVAtable}中に，$tr(\bm{A})$というのがありますが，これは\keyterm{トレース}{とれーす}{trace}という行列の演算で，正方行列$\bm{A} ={a_{ij}}$に対して
+\[ tr(\bm{A}) = \sum a_{ii} \]
+として計算される値です。対角成分の総和ですね。
+
+分散分析は分散を分解していく，つまり足し算の形に分離変形をしていくことなのですが，空間で説明するなら部分空間への分割であるともいえるのです。
+
+またデザイン行列(セクション\ref{designMatrix}，Pp.\pageref{designMatrix})のところで制約条件について触れましたが，そのこととこの射影行列がつながってきます(Pp.\ref{Desing_constraint}の脚注にかいた伏線の回収です!)。
+デザイン行列$\bm{X}$に，はじめから切片をいれ，また制約条件を入れない書き方をしてみましょう。すなわち，
+\[
+    \bm{X} = \begin{pmatrix}1 & 1 & 0 \\1 & 1 & 0 \\1 & 0 & 1 \\1 & 0 & 1 \end{pmatrix}
+\]
+のように考えたとします。このとき，計算途中で含まれる逆行列の計算，$(\bm{X}'\bm{X})^{-1}$が計算不能になってしまうのです。この行列を掃き出し法などで計算すると分かりますが，階数が2しかないのです。つまり作れる空間は2次元までであり，切片をそのひとつと数えるのであれば，残りは効果があるかないかという要素しか残らないからです。
+
+
+\begin{reidai}{}{}
+    4人の被験者をA,B群に2人ずつ振り分けて，群間差を見る分散分析をしたいと思います。
+    データベクトル$\bm{y} = \begin{pmatrix}1&3&4&6\end{pmatrix}'$とデザイン行列の関係は，
+    \[ \begin{pmatrix}1\\3\\4\\6\\\end{pmatrix} = \begin{pmatrix}1\\1\\1\\1\\\end{pmatrix}\mu +
+        \begin{pmatrix} 1 & 0\\1 & 0 \\ 0 & 1 \\ 0 & 1\end{pmatrix}
+        \begin{pmatrix}\beta_1\\\beta_2\end{pmatrix} +
+        \begin{pmatrix}e_1\\e_2\\e_3\\e_4\end{pmatrix} \]
+    というようにかけるでしょう。ここから，$\bm{P_G},\bm{P_F},\bm{P_e}$を構成し，また分散分析表を計算してみましょう。
+\end{reidai}
+\section{分散共分散行列}
+\label{covMat}
+セクション\ref{MatrixAndDataCalcs}(Pp.\pageref{MatrixAndDataCalcs})でみたように，データ行列$\bm{X}$を変形して平均偏差行列$\bm{V}$を作ることができるのでした。例えば2変数の場合，
+\[ \bm{X} = \begin{pmatrix}x_{11} & x_{12}\\x_{12} & x_{22}\\ \vdots & \vdots \\x_{n1} & x_{n2}\\ \end{pmatrix}\]
+に対して
+\[ \bm{V} = (\bm{I} - \frac{1}{n}\bm{11}')\bm{X} \]
+\[ = \begin{pmatrix} x_{11}-\bar{x}_1 & x_{12} - \bar{x}_2 \\ x_{21}-\bar{x}_1 & x_{22} - \bar{x}_2 \\ \vdots & \vdots \\ x_{n1}-\bar{x}_1 & x_{n2} - \bar{x}_2 \end{pmatrix} \]
+という計算ができます。皆さんはすでにこれを見ると，2次元ベクトル空間のイメージができているのではないかと思います。
+各点$x_i$までの距離は$d_i^2 = (x_i - \bar{x}_1)^2 + (x_i - \bar{x}_2)^2$ですから，全ての点に対してこれを総和したもの，すなわち
+\[ \sum_i^n d_i^2 = \sum_i^n ((x_i - \bar{x}_1)^2 + (x_i - \bar{x}_2)^2) \]
+はそれぞれの分散の$n$倍を足し合わせたものだということができます。図\ref{SpaceOfDiff} にはこの全員分の分散(の$n$倍)を薄く色付けして表現しています。
+
+行列で考えると，$\frac{1}{n}\bm{V}'\bm{V}$が分散共分散行列を表しますから，
+\[ \sum_i^n d_i^2 = tr(\bm{V}'\bm{V}) \]
+とすることができます。
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.70]
+        \coordinate (o) at (0,0);
+        \coordinate (x1) at (-5,0);
+        \coordinate (x2) at (5,0);
+        \coordinate (y1) at (0,-5);
+        \coordinate (y2) at (0,5);
+        \coordinate (s1) at (3,3);
+        \coordinate (s2) at (-0.8,1.5);
+        \coordinate (s3) at (1.5,1);
+        \coordinate (s4) at (2,-1);
+        \coordinate (s5) at (-2,-3);
+        \coordinate (s6) at (-2,-1.5);
+        \fill[cyan!10] (o) circle[x radius=5,y radius=2.5,rotate=45];
+        \foreach\P in{s1,s2,s3,s4,s5,s6}\fill[black](\P) circle(0.06);
+        \draw[dashed] (s1) -- (3,0);
+        \draw[dashed] (s1) -- (0,3);
+        \draw[->,>=Latex,thick] (x1)--(x2);
+        \draw[->,>=Latex,thick] (y1)--(y2);
+        \draw(o) -- (s1);
+        \draw[dashed,very thin](o) to [out=75,in=185]node[midway,above,rotate=53]{$d_i^2$} (s1);
+        \node[below right] at (x2) {V1};
+        \node[left] at (y2) {V2};
+        \node[below] at (3,0) {$x_{i1}-\bar{x}_1$};
+        \node[left] at (0,3) {$x_{i2}-\bar{x}_2$};
+        \node[above right] at (s1) {$x_i$};
+    \end{tikzpicture}
+    \caption{平均偏差行列をつかった空間}
+    \label{SpaceOfDiff}
+\end{figure}
+
+さて，これをベクトルや行列の空間的イメージとして見ると，原点さえ同じであれば必ずしもそれぞれの変数が作る空間にこだわらなくとも，分散の総和(を$n$倍したもの)は同じであることがわかりますね。大事なのはこの空間上にあるデータの散らばりであって，座標(基底)はどのようにとっても良いことです。
+
+ここで，ある行列$\bm{T}$を考えます。これは次のような要素からなります。
+\[ \bm{T} = \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin\theta & \cos \theta \end{pmatrix} \]
+行列は座標変換装置なので，この行列も元の行列の座標を変えてしまいます。しかし，各ベクトルのノルムは$1$で，しかも2つの列ベクトルとして見ると互いに直交していることがわかります。確認してみましょう。
+\[ \begin{Vmatrix}\cos \theta \\\sin \theta \end{Vmatrix}^2 =
+    (\cos\theta)^2+(\sin\theta)^2 =\cos^2\theta +\sin^2\theta = 1\]
+\[ \begin{Vmatrix}-\sin \theta \\\cos \theta \end{Vmatrix}^2 =
+    (-\sin\theta)^2+(\cos\theta)^2 =\sin^2\theta +\cos^2\theta = 1\]
+\[ \left(\begin{pmatrix}\cos\theta\\\sin\theta\end{pmatrix},\begin{pmatrix}-\sin\theta\\\cos \theta\end{pmatrix}\right) = \cos\theta \times (-\sin \theta) +\sin \theta\times \cos \theta = 0 \]
+このように，直交している次元で，かつノルムを変えない変換をする行列のことを\keytermL{直交行列}{ちょっこうぎょうれつ}といい，特に回転角度$\theta$で座標を変えるものを\keytermL{回転行列}{かいてんぎょうれつ}といいます。
+
+直交行列はノルムが1で互いに直交しますので，$\bm{T}'\bm{T}=\bm{I}$であり，$\bm{T}$の逆行列が転置行列になっているようなものです。回転行列で考えると，逆行列はちょうど逆回転の操作に対応します。
+
+さて分散の総和(を$n$倍したもの)という特徴は変えずに，座標だけ切り替えるためにこの行列を使います。
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.70]
+        \coordinate (o) at (0,0);
+        \coordinate (x1) at (-4.045085,-2.938926);
+        \coordinate (x2) at (4.045085,2.938926);
+        \coordinate (y1) at (2.938926,-4.045085);
+        \coordinate (y2) at (-2.938926,4.045085);
+        \coordinate (s1) at (3,3);
+        \coordinate (s2) at (-0.8,1.5);
+        \coordinate (s3) at (1.5,1);
+        \coordinate (s4) at (2,-1);
+        \coordinate (s5) at (-2,-3);
+        \coordinate (s6) at (-2,-1.5);
+        \coordinate (sv1) at ($(o)!(s1)!(x1)$);
+        \coordinate (sv2) at ($(o)!(s1)!(y1)$);
+        \fill[cyan!10] (o) circle[x radius=5,y radius=2.5,rotate=45];
+        \foreach\P in{s1,s2,s3,s4,s5,s6}\fill[black](\P) circle(0.06);
+        \draw[->,>=Latex,thick] (x1)--(x2);
+        \draw[->,>=Latex,thick] (y1)--(y2);
+        \draw[dashed](sv1) -- (s1);
+        \draw[dashed](sv2) -- (s1);
+        \draw(o) -- (s1);
+        \node[below right] at (sv1) {$y_{i1}$};
+        \node[below left] at (sv2) {$y_{i2}$};
+        % \draw[dashed,very thin](o) to [out=75,in=185]node[midway,above,rotate=53]{$d_i^2$} (s1);
+        \node[below right] at (x2) {V1'};
+        \node[above right] at (y2) {V2'};
+        \node[above right] at (s1) {$x_i$};
+    \end{tikzpicture}
+    \caption{座標を回転させる}
+    \label{SpaceOfDiffroated}
+\end{figure}
+適当な角度$\theta$を決めて，もとになっている座標をグイッと回転させたところで，各データ点の原点からの距離に変化はありません。つまり，データ行列全体の持つ情報の総量は変化していないのです。新しくなった座標
+\[ \begin{pmatrix}y_{i1}\\y_{i2}\end{pmatrix} = \bm{T}\begin{pmatrix}x_{i1}\\x_{i2}\end{pmatrix} \]
+をつかって表現すると，
+\[ d_i^2 = (x_{i1}-\bar{x}_1)^2+(x_{i2}-\bar{x}_2)^2 = (y_{i1}-\bar{y}_1)^2+(y_{i2}-\bar{y}_2)^2\]
+であり，新しい第一次元の分散$(y_{i1}-\bar{y}_1)^2$がもとの第一変数の分散よりも大きく，新しい第二次元の分散$(y_{i2}-\bar{y}_2)^2$はもとの第二変数の分散よりも小さくなるように，ウェイトが再配分されているわけです。
+
+もともとは，第一変数と第二変数のどちらが大事か，ということは決まっていませんでしたから，それぞれの変数の重みは$1:1$でしたが，より強調が効いている2つの重み$w_1:w_2$の比率($w_1>w_2$)で表現しなおしたわけです。
+
+どうしてそんなことをするのかって? なぜなら新しく作る第一次元の重みが圧倒的に大きければ($0.7:0.3$とか$0.9:0.1$とか$0.99:0.01$とか...!)とか，もはや第二次元のことを無視して第一次元だけで考えても本質的には変わりませんよね。もちろん$0.99:0.01$のような超効率の良い回転はできないと思いますが(もしできるとしたらもとの2つの変数はほとんど同じ情報しか持っていないことになります)，もっとも効率が良くなるような回転を探す，というのはありそうです。
+
+実はこの「もっとも情報圧縮効率の良い軸を探す」ということが，多変量解析における潜在変数の見つけ方につながってくるのです。ということで，空間のイメージと多変量解析の世界へ進んでいくことになります。
+\end{document}

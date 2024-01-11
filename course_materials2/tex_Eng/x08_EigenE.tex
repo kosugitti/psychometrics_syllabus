@@ -20,35 +20,35 @@ When a square matrix $\bm{A}$, column vector $\bm{x}$, and scalar $\lambda$ have
 具体的な数値例をみてみましょう。
 
 \[
-    \bm{A} = \begin{pmatrix}
-        1 & 6 \\ 2 & 5
-    \end{pmatrix}
-    ,\bm{x} = \begin{pmatrix}
-        1 \\ 1
-    \end{pmatrix}
+	\bm{A} = \begin{pmatrix}
+		1 & 6 \\ 2 & 5
+	\end{pmatrix}
+	,\bm{x} = \begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
 \]
 
 % を例にします。この時次の関係が成り立ちます。
 For example, at this time the following relationship holds.
 
 \[
-    \bm{Ax} =
-    \begin {pmatrix}
-    1 & 6 \\
-    2 & 5 \\
-    \end{pmatrix}
-    \begin{pmatrix}
-        1 \\ 1
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        7 \\ 7
-    \end{pmatrix}
-    =7
-    \begin{pmatrix}
-        1 \\ 1
-    \end{pmatrix}
-    =7 \bm{x}
+	\bm{Ax} =
+	\begin {pmatrix}
+	1 & 6 \\
+	2 & 5 \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		7 \\ 7
+	\end{pmatrix}
+	=7
+	\begin{pmatrix}
+		1 \\ 1
+	\end{pmatrix}
+	=7 \bm{x}
 \]
 
 % 確かに成立する組み合わせがありますね。この行列$\bm{A}$に対して，7が固有値，$(1,1)$が固有ベクトルになっています。
@@ -85,7 +85,7 @@ However, consider the matrix $\bm{X}=\begin{pmatrix}\bm{x}_1&\bm{x}_2& \cdots & 
 \[ \bm{AX} = \bm{X \Lambda} \]
 と書くことができます。ここで$\bm{\Lambda}$は
 \[ \bm{\Lambda} =
-    \begin{pmatrix} \lambda_1 & 0         & \cdots & 0         \\
+	\begin{pmatrix} \lambda_1 & 0         & \cdots & 0         \\
                 0         & \lambda_2 & \cdots & 0         \\
                 \vdots    & \vdots    & \ddots & \vdots    \\
                 0         & 0         & \cdots & \lambda_n\end{pmatrix}
@@ -105,7 +105,7 @@ You can write it this way.
 When we refocus on the elements, we can see that the matrix $\bm{A}$ is decomposed as follows.
 
 \[
-    \bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
+	\bm{A}= \lambda_1 \bm{x}_1 \bm{x}_1' + \lambda_2 \bm{x}_2 \bm{x}_2' + \cdots \lambda_m \bm{x}_m \bm{x}_m'= \sum \lambda_{i} \bm{x}_{i} \bm{x}_i'
 \]
 % となります。
 You didn't provide any Japanese text to translate. Could you please provide the text?
@@ -114,22 +114,22 @@ You didn't provide any Japanese text to translate. Could you please provide the 
 Let's confirm with a simple example of $2 \times 2$ decomposition.
 % たとえば$\bm{A} = \begin{pmatrix}\begin{pmatrix}a\\b\end{pmatrix},\begin{pmatrix}c\\d\end{pmatrix}\end{pmatrix}=\begin{pmatrix} a & c \\b & d\end{pmatrix}$という行列と，対角行列$\bm{\Psi} = \begin{pmatrix}\alpha & 0 \\ 0 & \beta \end{pmatrix}$があったとして，$\bm{A\Psi A}'$の計算をしてみたいと思います。
 For instance, let's take a matrix $\bm{A} = \begin{pmatrix}\begin{pmatrix}a\\b\end{pmatrix},\begin{pmatrix}c\\d\end{pmatrix}\end{pmatrix}=\begin{pmatrix} a & c \\b & d\end{pmatrix}$, and a diagonal matrix $\bm{\Psi} = \begin{pmatrix}\alpha & 0 \\ 0 & \beta \end{pmatrix}$. I would like to calculate $\bm{A\Psi A}'$.
-\[ 
-    \begin{array}{lll}
-    \bm{A\Psi A}' &=& \begin{pmatrix} a & c\\ b & d \end{pmatrix}\begin{pmatrix}\alpha & 0\\ 0&\beta \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
-    &&\\
-    &=& \begin{pmatrix} \alpha a & \beta c \\ \alpha b & \beta d \end{pmatrix}
-    \begin{pmatrix}a & b\\ c & d \end{pmatrix}\\
-    &&\\
-    &=& \begin{pmatrix} \alpha aa + \beta cc & \alpha ab + \beta cd \\
-        \alpha ab + \beta cd & \alpha bb + \beta dd \end{pmatrix}\\
-        &\\
-    &=& \alpha \begin{pmatrix} aa & ab\\ ab & bb \end{pmatrix} + 
-    \beta \begin{pmatrix}cc & cd \\ cd & dd \end{pmatrix}\\
-    &\\
-    &=& \alpha \begin{pmatrix}a\\b\end{pmatrix}\begin{pmatrix}a &b\end{pmatrix} +
-    \beta \begin{pmatrix} c\\d \end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}
-    \end{array}
+\[
+	\begin{array}{lll}
+		\bm{A\Psi A}' & = & \begin{pmatrix} a & c\\ b & d \end{pmatrix}\begin{pmatrix}\alpha & 0\\ 0&\beta \end{pmatrix}\begin{pmatrix}a & b\\ c & d \end{pmatrix} \\
+		              &   &                                                                                                                                        \\
+		              & = & \begin{pmatrix} \alpha a & \beta c \\ \alpha b & \beta d \end{pmatrix}
+		\begin{pmatrix}a & b\\ c & d \end{pmatrix}                                                                                                                 \\
+		              &   &                                                                                                                                        \\
+		              & = & \begin{pmatrix} \alpha aa + \beta cc & \alpha ab + \beta cd \\
+                \alpha ab + \beta cd & \alpha bb + \beta dd\end{pmatrix}                                                                            \\
+		              &                                                                                                                                            \\
+		              & = & \alpha \begin{pmatrix} aa & ab\\ ab & bb \end{pmatrix} +
+		\beta \begin{pmatrix}cc & cd \\ cd & dd \end{pmatrix}                                                                                                      \\
+		              &                                                                                                                                            \\
+		              & = & \alpha \begin{pmatrix}a\\b\end{pmatrix}\begin{pmatrix}a &b\end{pmatrix} +
+		\beta \begin{pmatrix} c\\d \end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}
+	\end{array}
 \]
 
 % と，このようにスカラーとベクトルの積和の形に書き換えられるのですね\footnote{ただし，この計算が可能なのは分解する元の行列が実対称行列だからです。実対称行列は固有値と固有ベクトルで対角化可能であることが証明できます。実対称行列の固有値は全て十数ですし，固有値が全て実数であれば適当な直交行列をつかって対角化でき，実対称行列の固有ベクトルは互いに独立するのでこれらを使って直交行列を作ることができるからです。これらの性質については線形代数のテキストなどの証明を参照してください。また計算プロセスからもわかるように，同じ要素を持つ列ベクトルと行ベクトルの積ですから，結果は対称になってしまうからです。}。
@@ -265,12 +265,12 @@ When decomposing the correlation coefficient into eigenvalues, the sum of all th
 By the way, the $\bm{A}$ in the factor analysis model is the factor loading matrix, which deals with the eigen vectors of the common factors in a set. In other words, $\bm{A} = \bm{a_1,a_2,\cdots,a_m}$ is made up of arranging the vertical vectors. If you express it element-wise, it will be as follows.
 
 \[
-    \bm{A} = \left (
-    \begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1N} \end{pmatrix},
-    \begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2N} \end{pmatrix},
-    \cdots,
-    \begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots\\ a_{mN} \end{pmatrix},
-    \right )
+	\bm{A} = \left (
+	\begin{pmatrix}  a_{11}\\a_{12}\\\vdots\\ a_{1N} \end{pmatrix},
+	\begin{pmatrix}  a_{21}\\a_{22}\\\vdots\\ a_{2N} \end{pmatrix},
+	\cdots,
+	\begin{pmatrix}  a_{m1}\\a_{m2}\\\vdots\\ a_{mN} \end{pmatrix},
+	\right )
 \]
 
 % ここで$\bm{AA'}$の間に単位行列$\bm{I}$ を挟んでも，別に結果は変わりませんよね。単位行列はかけても変わらないのが特徴ですから，$\bm{AA'}=\bm{AIA}$です。ここでの$\bm{I}$のサイズは$m \times m$であることに注意しつつ聞いてください。

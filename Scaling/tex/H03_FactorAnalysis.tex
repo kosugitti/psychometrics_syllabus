@@ -26,8 +26,8 @@
 さて先ほどは一因子，あるいは単因子ともいいますが，測定したい特徴が1つだけのモデルでした。学力テストなどは一因子で問題ありません。国語のテストは国語の能力を，数学のテストは数学の能力を測定していれば良いのであって，数学のテストを解くのに美的センス(真美的能力)が必要というのは，むしろ困った状況ですらありますね。しかし，知能検査や性格検査の場合はそうではありません。ある行動傾向，ある形容詞，ある検査がたった1つの能力・性質・心理的要因だけを反映しているとは限りません。たとえば人に優しく振る舞うといっても，その背後に外向性があるのか，あるいはそうすると自分がよく見られるからという利己的な性格があるのか等々が考えられます。1つの項目に複数の要素(因子)が複合的に影響していることを考えるべきです。そこで因子の数が1つではなく，複数ある多因子モデルを考えることにします。多因子モデルは次のように表現されます。
 
 \begin{equation}
-    z_{ij} = a_{j1}f_{i1} + a_{j2}f_{i2}+a_{j3}f_{i3} + \cdots + a_{jm}f_{im} + d_j u_{ij}
-    \label{factor}
+	z_{ij} = a_{j1}f_{i1} + a_{j2}f_{i2}+a_{j3}f_{i3} + \cdots + a_{jm}f_{im} + d_j u_{ij}
+	\label{factor}
 \end{equation}
 
 記号の意味は単因子モデルと基本的には同じです。$z_{ij}$は個人$i$の項目$j$に対する反応を標準得点で表したものであり，$a_{jm}$は第m因子の\keytermL{因子負荷量}{いんしふかりょう}，$f_{im}$は第$m$因子の\keytermL{因子得点}{いんしとくてん}を表しています。因子の数が複数あるモデルですから，$a_{j1},a_{j2},\cdots, a_{jm}$とか$f_{i1},f_{i2},\cdots, f_{im}$のように因子の番号と項目・個人の添字の組み合わせになっていることを確認してください。最後の$e_{ij}$が$d_j u_{ij}$となっていますが，これは誤差についても他の因子と形を同じくし，項目に依存するものとそれ以外に区別しているだけです。
@@ -42,108 +42,108 @@
 
 そこで，この未知数だらけの方程式を解くために，因子について以下のような条件を置きます。
 \begin{itemize}
-    \item 共通因子の因子得点，独自因子の因子得点は，標準化されている。すなわち，いずれの因子得点も平均点は0であり，分散は1である。
-    \item 独自因子は共通因子，他の独自因子と相関しない。
+	\item 共通因子の因子得点，独自因子の因子得点は，標準化されている。すなわち，いずれの因子得点も平均点は0であり，分散は1である。
+	\item 独自因子は共通因子，他の独自因子と相関しない。
 \end{itemize}
 この他に，状況に応じて因子同士の間に相関を仮定します。
 \begin{itemize}
-    \item 共通因子同士の相関を認めないのを「直交因子モデル」，認めるのを「斜交因子モデル」と呼ぶ。
+	\item 共通因子同士の相関を認めないのを「直交因子モデル」，認めるのを「斜交因子モデル」と呼ぶ。
 \end{itemize}
 
 このような仮定を置いたら問題が解けるようになるのでしょうか？ 実はこの問題を解く鍵は，多変量データであればなんとかなるのです！
 
 2つの変数，$j$と$k$の標準得点から，
 \begin{equation}
-    r_{jk}=\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}
+	r_{jk}=\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}
 \end{equation}
 
 のように，相関係数が算出されることを思い出してください。先ほどの因子分析の基本代数式(式\ref{factor})をこの式に代入してみましょう。
 \begin{equation}
-    \begin{array}{ccl}
-        r_{jk} & = & \displaystyle{\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}}                                                                                                                  \\
-               & = & \displaystyle{\frac{1}{N} \sum_{i=1}^{N}}(a_{j1}f_{i1}+a_{j2}f_{i2}+ \ldots \ +a_{jm}f_{im}+d_{j}u_{ij})(a_{k1}f_{i1}+a_{k2}f_{i2}+ \ldots \ +a_{km}f_{im}+d_{k}u_{ik})
-    \end{array}
+	\begin{array}{ccl}
+		r_{jk} & = & \displaystyle{\frac{1}{N} \sum_{i=1}^{N} z_{ij}z_{ik}}                                                                                                                  \\
+		       & = & \displaystyle{\frac{1}{N} \sum_{i=1}^{N}}(a_{j1}f_{i1}+a_{j2}f_{i2}+ \ldots \ +a_{jm}f_{im}+d_{j}u_{ij})(a_{k1}f_{i1}+a_{k2}f_{i2}+ \ldots \ +a_{km}f_{im}+d_{k}u_{ik})
+	\end{array}
 \end{equation}
 
 これは代数の計算としてやっていくと，非常に煩雑で間違いが起きやすそうです。そこで，少し視覚化してわかりやすくしてみましょう。
 多項式の掛け算は，各項目の総当たり戦ですので，列方向に$z_{ij}$，行方向に$z_{ik}$の各要素を置いて，要素同士の組み合わせ表を作ります(図\ref{x03_multiply})。
 
 \begin{figure}[ht]
-    \[
-        \begin{array}{rl|cccccc|}
-                    &                                                       & \multicolumn{6}{c}{z_{ij}=}                                                                                                                                                                                                                                                                                                        \\
-                    &                                                       & a_{j1}f_{i1} +                                                          & a_{j2}f_{i2}+                                                            & a_{j3}f_{i3} +                                                         & \cdots\cdots +                                                          & a_{jm}f_{im} + & d_jU_{ij} \\\hline
-                    & \begin{array}{c}a_{k1}f_{i1}\\+\end{array}            & \multicolumn{1}{>{\columncolor{red!9}}c}{}                              & \multicolumn{4}{>{\columncolor{cyan!9}}c}{}                              & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                                                                                                  \\
-            z_{ik}= & \begin{array}{c}a_{k2}f_{i2}\\+\end{array}            & \multicolumn{1}{>{\columncolor{cyan!9}}c}{}                             & \multicolumn{1}{>{\columncolor{red!9}}c}{\circled{1}}    & \multicolumn{3}{>{\columncolor{cyan!9}}c}{\circled{2}} & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                         \\
-                    & \begin{array}{c}a_{k3}f_{i3}\\+\end{array}            & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}                             & \multicolumn{1}{>{\columncolor{red!9}}c}{}                               & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}                            & \multicolumn{1}{>{\columncolor{green!9}}c}{\circled{3}}                              \\
-                    & \hspace{10pt}\begin{array}{c}\vdots\\+\end{array}     & \multicolumn{3}{>{\columncolor{cyan!9}}c}{\circled{2}}  & \multicolumn{1}{>{\columncolor{red!9}}c}{}                               & \multicolumn{1}{>{\columncolor{cyan!9}}c}{}                            & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                         \\
-                    & \begin{array}{c}a_{km}f_{im}\\+\end{array}            & \multicolumn{4}{>{\columncolor{cyan!9}}c}{}                             & \multicolumn{1}{>{\columncolor{red!9}}c}{}                               & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                                                                                                  \\
-                    & \hspace{7pt}\begin{array}{c}\\ d_kU_{ik}\\ \end{array} & \multicolumn{5}{>{\columncolor{green!9}}c}{\circled{3}} & \multicolumn{1}{>{\columncolor{yellow!9}}c}{\circled{4}}                                                                                                                                                                                 \\\hline
-        \end{array}
-    \]
-    \caption{項目同士の総当たりを考える}
-    \label{x03_multiply}
+	\[
+		\begin{array}{rl|cccccc|}
+			        &                                                        & \multicolumn{6}{c}{z_{ij}=}                                                                                                                                                                                                                                        \\
+			        &                                                        & a_{j1}f_{i1} +                                          & a_{j2}f_{i2}+                                            & a_{j3}f_{i3} +                                         & \cdots\cdots +                                          & a_{jm}f_{im} + & d_jU_{ij} \\\hline
+			        & \begin{array}{c}a_{k1}f_{i1}\\+\end{array}             & \multicolumn{1}{>{\columncolor{red!9}}c}{}              & \multicolumn{4}{>{\columncolor{cyan!9}}c}{}              & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                                                                  \\
+			z_{ik}= & \begin{array}{c}a_{k2}f_{i2}\\+\end{array}             & \multicolumn{1}{>{\columncolor{cyan!9}}c}{}             & \multicolumn{1}{>{\columncolor{red!9}}c}{\circled{1}}    & \multicolumn{3}{>{\columncolor{cyan!9}}c}{\circled{2}} & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                         \\
+			        & \begin{array}{c}a_{k3}f_{i3}\\+\end{array}             & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}             & \multicolumn{1}{>{\columncolor{red!9}}c}{}               & \multicolumn{2}{>{\columncolor{cyan!9}}c}{}            & \multicolumn{1}{>{\columncolor{green!9}}c}{\circled{3}}                              \\
+			        & \hspace{10pt}\begin{array}{c}\vdots\\+\end{array}      & \multicolumn{3}{>{\columncolor{cyan!9}}c}{\circled{2}}  & \multicolumn{1}{>{\columncolor{red!9}}c}{}               & \multicolumn{1}{>{\columncolor{cyan!9}}c}{}            & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                         \\
+			        & \begin{array}{c}a_{km}f_{im}\\+\end{array}             & \multicolumn{4}{>{\columncolor{cyan!9}}c}{}             & \multicolumn{1}{>{\columncolor{red!9}}c}{}               & \multicolumn{1}{>{\columncolor{green!9}}c}{}                                                                                                  \\
+			        & \hspace{7pt}\begin{array}{c}\\ d_kU_{ik}\\ \end{array} & \multicolumn{5}{>{\columncolor{green!9}}c}{\circled{3}} & \multicolumn{1}{>{\columncolor{yellow!9}}c}{\circled{4}}                                                                                                                                                 \\\hline
+		\end{array}
+	\]
+	\caption{項目同士の総当たりを考える}
+	\label{x03_multiply}
 \end{figure}
 
 図\ref{x03_multiply}に示されたのは個人$i$についてのものであり，これが人数分ある，すなわち$\sum_{i=1}^N$をつけないといけないことに注意してください。
 さて図を軽く色分けしてあるのですが，ここにあるように計算すべき領域を4つに分けて考えていきましょう。
 \begin{description}
-    \item[\circled{1}の領域] 因子$p$と$p$の積和部分(同じ因子同士の掛け合わせ)
-    \item[\circled{2}の領域] 因子$p$と$q$の積和部分(異なる因子同士の掛け合わせ)
-    \item[\circled{3}の領域] 因子$p$($q$)と独自因子の積和部分
-    \item[\circled{4}の領域] 独自因子同士の積和部分
+	\item[\circled{1}の領域] 因子$p$と$p$の積和部分(同じ因子同士の掛け合わせ)
+	\item[\circled{2}の領域] 因子$p$と$q$の積和部分(異なる因子同士の掛け合わせ)
+	\item[\circled{3}の領域] 因子$p$($q$)と独自因子の積和部分
+	\item[\circled{4}の領域] 独自因子同士の積和部分
 \end{description}
 
 この各パートを順に計算していきましょう。まず\circled{1}ですが，たとえば第一因子については
 \begin{equation}
-    \frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2
+	\frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2
 \end{equation}
 となることがわかります。ここで，$a_{j1}$と$a_{k1}$は$N$には関係がない($\sum$は$i$が$1$から$N$まで変化することを意味しているが，係数$i$はどちらにも入っていない)ので，総和して割る意味がないことに気づきます。そうなると，必然的にこの式は，
 \begin{equation}
-    \frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{N}\sum F_{i1}^2
+	\frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{N}\sum F_{i1}^2
 \end{equation}
 となります。この$F_{i1}$は因子得点であり，上の仮定より標準化されたものだということになります。さて，標準得点と標準得点の積和平均は相関係数になることをもう一度思い出してください！そうすると，これは自分自身との相関係数を表していることになりますから，当然$F_{i1}^2=1.0$であることがわかります。
 
 結局，\circled{1}のエリアは
 \begin{equation}
-    \frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{N}\sum F_{i1}^2=a_{j1}a_{k1}
+	\frac{1}{N}\sum_{i=1}^{N}a_{j1}a_{k1}F_{i1}^2=a_{j1}a_{k1}\frac{1}{N}\sum F_{i1}^2=a_{j1}a_{k1}
 \end{equation}
 と，とてもあっさり書き下すことができるのです。
 
 つづいて\circled{2}を見てみましょう。ここは異なる因子がかけ合わさった部分ですね。落ち着いて，第一因子と第二因子を例にして考えてみましょう。この箇所で得られるのは，
 \begin{equation}
-    \frac{1}{N}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{N}\sum F_{i1}F_{i2}
+	\frac{1}{N}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{N}\sum F_{i1}F_{i2}
 \end{equation}
 ということになります。ここで，$F_{i1}$および$F_{i2}$はそれぞれ第一，第二因子における個人$i$の因子得点を意味しています。因子得点は標準化されていることをもう一度思い出すと，これは第一因子と第二因子の相関係数になります。ここで，この因子分析が直交因子モデルだと考えますと，因子同士に相関がないわけですから，数字としては$0.0$で消えてしまいます。するとこの部分は，
 
 \begin{equation}
-    \frac{1}{N}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{N}\sum F_{i1}F_{i2}=0
+	\frac{1}{N}\sum a_{j1}F_{i1} a_{k2}F_{i2} = a_{j1}a_{k2}\frac{1}{N}\sum F_{i1}F_{i2}=0
 \end{equation}
 となることがわかりました。つまり，この領域\circled{2}は，すべて$0$になってしまうのです。
 
 
 続いて\circled{3}の部分について考えてみましょう。これはある共通因子と独自因子の積和部分です。例によって標準得点同士の関係から，相関係数を算出することになりますが，独自因子は共通因子と無相関であることを考えると，
 \begin{equation}
-    \frac{1}{N}\sum a_{i1}F_{i1}d_{j}U_{ij}=a_{ik}d_{j} \frac{1}{N}\sum U_{ij}F_{i1} =0
+	\frac{1}{N}\sum a_{i1}F_{i1}d_{j}U_{ij}=a_{ik}d_{j} \frac{1}{N}\sum U_{ij}F_{i1} =0
 \end{equation}
 とこのように，この箇所もすべて$0$になってしまいます。
 
 最後の\circled{4}に至っては，独自因子と独自因子の積和ですから，これも
 \begin{equation}
-    \frac{1}{N}\sum d_{j}d_{k}U_{ij}U_{ik}=d_{j}d_{k}\frac{1}{N}\sum U_{ij}U_{ik}=0
+	\frac{1}{N}\sum d_{j}d_{k}U_{ij}U_{ik}=d_{j}d_{k}\frac{1}{N}\sum U_{ij}U_{ik}=0
 \end{equation}
 のように$0$になります。結局，消えて無くなるのがほとんどで，残るのは\textcircled{1}の部分だけであり，$r_{jk}$を考えるときはそこだけ考慮すればよいことになります。
 
 整理すると，
 \begin{equation}
-    r_{jk}=a_{j1}a_{k1}+a_{j2}a_{k2}+ \cdots +a_{jm}a_{km}
+	r_{jk}=a_{j1}a_{k1}+a_{j2}a_{k2}+ \cdots +a_{jm}a_{km}
 \end{equation}
 ということがわかります。つまり，項目$j$と項目$k$の相関係数は，項目$j$の因子負荷量と項目$k$の因子負荷量を，すべての因子について総和したものであるということです。因子分析の基本モデルから導出されるこの定理を，とくに\textbf{因子分析の第二定理}と呼びます。
 
 ここで同じ項目同士の相関を考えてみましょう。項目$j$と項目$j$の相関係数は，もちろん$1.0$になりますね。これを因子分析の基本式で表すと，次のように表現できます。
 \begin{equation}
-    \label{facteo1}
-    r_{jj}=a_{j1}^2+a_{j2}^2+ \cdots + a_{jm}^2 + d_j^2 = 1.0
+	\label{facteo1}
+	r_{jj}=a_{j1}^2+a_{j2}^2+ \cdots + a_{jm}^2 + d_j^2 = 1.0
 \end{equation}
 
 さて，この式が意味するのはなんでしょうか。意味を考えてみると，ある項目それ自身との相関係数は，因子負荷の二乗和からなっている，ということがわかります。これこそ\textbf{因子分析の第一定理}と呼ばれるものであり，解けるはずのなかった方程式を解くための鍵となる式なのです。
@@ -182,11 +182,11 @@
 
 これらの相関係数はいずれも，順序(あるいはバイナリ)変数の背後に連続体があると考え，潜在的な連続体$\times$潜在的な連続体の相関係数を連続体のカテゴリが変わる閾値とともに推定するのです(図\ref{fig::05_05})。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/Slide05_01.png}
-        \caption{ポリコリック相関係数のイメージ}
-        \label{fig::05_05}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/Slide05_01.png}
+		\caption{ポリコリック相関係数のイメージ}
+		\label{fig::05_05}
+	\end{center}
 \end{figure}
 
 こうして推定された相関係数を使って因子分析を行うと，順序尺度水準に適した因子分析を行うことができます。この方法をとくに\keyterm{カテゴリカル因子分析}{かてごりかるいんしぶんせき}{categorical factor analysis}といいます。もっともこの名前を覚えておく必要はありません。\textbf{カテゴリカル因子分析は段階反応モデルと数学的に等価である}ことがわかっています。GRMをすることはカテゴリカル因子分析をしていることと同じ，なのです。
@@ -205,24 +205,24 @@
 
 ポイントは「最終的には同じところに辿り着く」という点ですから，歴史的流れや個々のモデルの細かい数式を完全に理解していなくてもいいかもしれません。それよりは，心理学者として，あるいはテストをする側として，回答者に無理のない，それでいて必要な程度に精緻な情報が得られる適切な分析方法を選択できるようになることが重要です。
 \begin{figure}[ht]
-    \begin{tikzpicture}
-        \node[draw,align=center] (a) at (5,0)
-        {古典的テスト理論\\$X=t+e$};
-        \node(P0) at (5,0.9)[above] {見えないものを測定・数値化したい};
-        \node[draw,align=center] (b) at (0,-2.5) {探索的因子分析\\$z_{ij}=\sum a_{jm}f_{im} + d_jU_{ij}$};
-        \node[draw,align=center] (c) at (10,-2.5) {項目反応理論\\ $p_j(\theta) = \frac{1}{1+exp(-1.7a_j(\theta_i -b_j))}$};
-        \node[draw] (d) at (5,-5) {カテゴリカル因子分析};
-        \draw[->] (a) --(b);
-        \draw[->] (a) --(c);
-        \draw[->] (b) --(d);
-        \draw[->] (c) --(d);
-        \node (P1) at (1.3,-1.25)[above] {構造に興味がある};
-        \node (P2) at (8.7,-1.25)[above] {機能に興味がある};
-        \node (P3) at (2.5,-4.2)[left,align=center] {順序尺度水準へ\\得点の精緻化};
-        \node (P4) at (7.5,-4.2)[right,align=center] {多段階反応へ\\多次元に拡張};
-    \end{tikzpicture}
-    \caption{理論・モデルの流れ。左側のルートが心理学的系譜，右側のルートがテスト理論的系譜}
-    \label{fig::05_06}
+	\begin{tikzpicture}
+		\node[draw,align=center] (a) at (5,0)
+		{古典的テスト理論\\$X=t+e$};
+		\node(P0) at (5,0.9)[above] {見えないものを測定・数値化したい};
+		\node[draw,align=center] (b) at (0,-2.5) {探索的因子分析\\$z_{ij}=\sum a_{jm}f_{im} + d_jU_{ij}$};
+		\node[draw,align=center] (c) at (10,-2.5) {項目反応理論\\ $p_j(\theta) = \frac{1}{1+exp(-1.7a_j(\theta_i -b_j))}$};
+		\node[draw] (d) at (5,-5) {カテゴリカル因子分析};
+		\draw[->] (a) --(b);
+		\draw[->] (a) --(c);
+		\draw[->] (b) --(d);
+		\draw[->] (c) --(d);
+		\node (P1) at (1.3,-1.25)[above] {構造に興味がある};
+		\node (P2) at (8.7,-1.25)[above] {機能に興味がある};
+		\node (P3) at (2.5,-4.2)[left,align=center] {順序尺度水準へ\\得点の精緻化};
+		\node (P4) at (7.5,-4.2)[right,align=center] {多段階反応へ\\多次元に拡張};
+	\end{tikzpicture}
+	\caption{理論・モデルの流れ。左側のルートが心理学的系譜，右側のルートがテスト理論的系譜}
+	\label{fig::05_06}
 \end{figure}
 
 \section{調査研究の手順}

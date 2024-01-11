@@ -1,0 +1,5 @@
+\begin{lstlisting}[language=c++,label={code:20_12},caption={Finding Effect Size}]
+# Loading package
+library(effsize)
+cohen.d(value ~ condition, data = dat, hedges.correction = T)
+\end{lstlisting}

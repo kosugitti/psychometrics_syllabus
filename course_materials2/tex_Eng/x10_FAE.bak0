@@ -1,0 +1,337 @@
+\documentclass{ltjsbook}
+\usepackage{docmute} 
+\usepackage{../../myStyle} 
+
+\begin{document}
+% \chapter{Rをつかった因子分析と尺度作成法}
+\chapter{Factor Analysis and Scale Creation Using R}
+\label{x10_FA}
+% 前回に続いて，Rをつかった演習を進めましょう。今回はRを使っての因子分析および尺度作成です。
+Continuing from last time, let's proceed with exercises using R. This time is about factor analysis and scale creation using R.
+
+% \section{調査研究の手順}
+\section{Procedure for Research and Investigation}
+% まずは心理尺度作成の手順を大まかに理解しておきましょう。
+First, let's roughly understand the procedure for creating psychological scales.
+
+% \paragraph{構成概念の設定}心理尺度を作り始めるにあたって，まずは何を測りたいのかを明確にする必要があります。\keyterm{構成概念妥当性}{こうせいがいねんだとうせい}{Construct Varidity}についてのそもそも論ですね。ある概念を測定したいとして，そういう概念が本当に存在するのか，どこの誰がどのように持つ概念なのかを明確にする必要があります。たとえば文部科学省がスローガンのように掲げる\textbf{生きる力}というのを測ってみたいと思っても，それは何なのかわかりません。死んでなければ生きているのですから，生きる力はありそうに思えます。でもそういうことじゃないらしい。じゃあどういうことなのか，ということを考えて行かなければなりません。あるいは，みなさんは\textbf{いちびり}という関西弁をご存知ですか。いたずらっ子，わざと変なことをして注目を引きたい子，のような意味なのですが，このいちびり感は関西の人間にしかわからない感覚かもしれません。であれば調査対象者が限定的な，一般的ではない概念ですから，因子分析の行う多くの人の反応から共通成分を抜き出すという考え方には適さない概念です。より一般的なものに考え直す必要があるでしょう。
+\paragraph{Setting of Construct Concept} When starting to create a psychological scale, first of all, it is necessary to clarify what you want to measure. This is fundamentally about the concept of \keyterm{Construct Validity}. When you want to measure a certain concept, it is necessary to clarify whether such a concept truly exists, and who possesses what kind of concept. For example, even though you want to measure the \textbf{power to live}, a slogan-like phrase receiving attention from the Ministry of Education, Culture, Sports, Science and Technology, you don't know what it is. If you're not dead, you seem to be alive, so it seems like there's a power to live. But apparently, it's not that simple. Then you have to think about what it is. Or, do you know the Kansai dialect term \textbf{ichibiri}? It means a naughty kid, a person who intentionally does something strange to draw attention, but this ichibiri sense might only be understood by people from Kansai region. If so, it is a concept limited to specific survey respondents, thus not a general concept, and does not fit the idea of extracting common components from the reactions of many people undergoing factor analysis. Therefore, it should probably be rethought into something more generic.
+
+
+% ほかにも，心理学的な態度なのか，パーソナリティのような行動の傾向なのか，抑うつ傾向のように心身両方の問題なのか，そしてそれらが紙とペンで測定可能なものなのかどうか，改めて考えましょう。何を当たり前のことを，と思うかもしれませんが，意外とおかしな問題設定に入り込んでないとも限らないのです。また，心理尺度や心理学的な概念はすでにさまざまなものが存在します。これらを見比べて，自分の測定したい概念が他の概念とどのように同じで，どのように違うのかを論理的に考えられなければなりません。どこかにある尺度とほとんど同じであればオリジナリティが存在しないだけでなく，車輪の再発明というムダな努力をすることになります。完全にオリジナルなものを考えるのは難しいかもしれませんが，新しい概念を使うことによってこれまでの概念で説明できたことを含み，さらにこれまでの概念で説明できなかったことも説明できるようになる，という利点が必要です。これらは\keyterm{弁別的妥当性}{べんべつてきだとうせい}{distincive validity}にも関わる問題です。
+Also, let's reconsider whether these are psychological attitudes, tendencies like personality, both mental and physical problems like depressive tendencies, and whether these can be measured with pen and paper. You might think this is all obvious, but it's not guaranteed that we won't get into oddly phrased problems. Also, there are already various psychological scales and psychological concepts. When comparing these, you need to logically consider how the concept you want to measure is the same and different from other concepts. If it is almost the same as some existing scale, not only is there no originality, but you would be wasting your effort reinventing the wheel. It might be hard to come up with something completely original, but you need the benefit of being able to explain not only what previous concepts could explain, but also things they couldn't explain, by using a new concept. These are issues related to 'distinctive validity'.
+
+% \paragraph{項目の選出}測定したい概念が明確になれば，これに関わる項目を作り出す必要があります。ある態度を強く持っている人はどのような振る舞いをし，どのような振る舞いをしないのか。どのような意見に賛成し，どのような意見には反対するのか，といったことをさまざまな角度から検証します。「目に見えないものを測定する」のが心理測定であり，質問紙調査というのはこの見えない的に向かって項目という矢を射掛けるようなものです。矢の数はなるべく多く，また人は嘘をついたり間違えたりする生き物ですから多角的に聞くことで，捉えるべき本質に迫っていく必要があります。言葉を使って聞くわけですから，古すぎる・新しすぎる表現は避け，専門用語は使わずなるべく平易な言葉で聞く必要があります。ワーディング(言い回し)についても細部まで注意しましょう\footnote{たとえば「テレビやラジオをよく見聞きしますか」という質問は悪い質問です。テレビしか見ない人，ラジオしか聞かない人がどう答えていいか悩むからです。これはダブルバーレルと呼ばれる悪手ですが，ほかにも色々ありますので調査法の専門書を参考にしてみてください。}。
+\paragraph{Item Selection} Once the concept you want to measure becomes clear, you need to create items related to it. What behavior does a person with a strong attitude exhibit and what actions they do not? What opinions they support, and what do they disagree with? These things are examined from various angles. Measuring 'the invisible' is psychological measurement, and a questionnaire survey is like throwing multiple arrows called items towards this invisible target. The more arrows the better, and humans, being creatures prone to lie or make mistakes, require a multi-faceted approach to get closer to the essence we need to capture. Because you're using words to ask, you need to avoid expressions that are too old or too new, and to avoid using technical terms, ask in as simple language as possible. Pay careful attention to wording (phrasing) down to the details\footnote{For example, the question "Do you often watch TV or listen to radio?" is a poor question. It leaves people who only watch TV or only listen to radio unsure of how to respond. This is a misstep called "double-barreled", but there are many others, so please refer to a specialist book on survey methods for further guidance.}.
+
+% \paragraph{予備調査の実施}ある程度項目が集まれば，予備調査を行います。用意した項目の5倍から10倍の人を集めるのが良い，と一般的に言われています\citep{kosugi2016a}。ここでの予備調査項目は，十分考えられたものではあると思いますが，分析してみると意外と不適切な項目というのが出てくるものですので，多めに用意されていることでしょう。必然的に，予備調査の対象サイズも百人以上の大きなものになるのが一般的です。
+\paragraph{Implementation of Preliminary Survey} Once a certain number of items are gathered, a preliminary survey is conducted. It is generally said that it's good to gather about 5 to 10 times the number of people as the prepared items \citep{kosugi2016a}. The preliminary survey items prepared here are thought to be well-considered, but when analyzed, surprisingly inappropriate items might emerge, so it seems many are prepared. Inevitably, the size of the preliminary survey target is usually something large, over a hundred people.
+
+% \paragraph{探索的因子分析}この後詳しく説明しますが，ここが尺度作成に関わる分析のメインです。ここで因子数を決める(あるいは確認する)ことになり，因子的な妥当性みたり，不適切な項目は除外したりします。別の聞き方の方が良いような項目があれば，項目の入れ替えを行なって再調査することもあります。この探索的な因子分析と予備調査を繰り返して，何度行っても同じ因子構造になり，同じ項目が同じ因子に含まれるというのが確認できれば，項目セットは完成すると言えるでしょう。
+\paragraph{Exploratory Factor Analysis} We will explain this in detail later, but this is the main analysis related to scale creation. Here, you determine (or confirm) the number of factors, assess the validity of the factors, and exclude inappropriate items. If there are items that would be better asked in a different way, you may also replace the items and re-examine them. By repeating this exploratory factor analysis and preliminary survey, we can say that the item set is complete when it is confirmed that the same factor structure occurs no matter how many times it is performed, and the same items are included in the same factor.
+
+% \paragraph{項目反応理論}ある因子に関連する項目とそのデータセットを抜き出して，項目反応理論(段階反応モデル)を実行しましょう。なぜ一部を抜き出すかというと，項目反応理論モデルは1次元性を仮定したモデルであることが基本だからです。これを多次元に展開した多次元段階反応モデルもありますので，直接そちらを使っても構いません。ともかくこれを行うことで，反応段階数を確認でき，また項目情報曲線やテスト上表曲線を書くことで，この尺度がどのような領域を得意とする項目群からなるのかを記述できることになります。これに関しては次回より詳しく説明します。
+\paragraph{Item Response Theory} Let's extract related items and their dataset for a factor and implement the Item Response Theory (Stage Response Model). The reason we extract a portion is because the Item Response Theory model is fundamentally assumed to be unidimensional. There is also a multidimensional stage response model that expands on this, so you can also use that directly. Either way, by doing this, we can confirm the number of response stages, and by drawing item information curves and test surface curves, we can describe what type of areas this scale excels in based on the group of items. We will explain this in more detail next time.
+
+% \paragraph{本調査へ}最終的に項目群が確定したら，大規模な調査を行ってテストの標準化を目指します。因子構造などはほぼ確定しているはずですから，このテストを使うとどのようなデータの散らばりが得られるのかを確定するわけです。この最後のステップの目的は標準化，つまりこのテストで測定される人の平均や散らばり，分布の形状を確認することにあります。使うときに逐一分析しなくてもいいように，項目回答パターンがどれぐらいであれば，全体のどのあたりに位置するかといったプロフィールが作れるとなおいいでしょう。
+\paragraph{For this research} Once the groups of items are finally determined, a large-scale survey will be conducted with the aim of standardizing the test. Since things like the factor structure should be almost confirmed, the purpose is to determine what kind of data dispersion can be obtained using this test. The purpose of this final step is standardization, that is, to verify the mean, dispersion, and distribution shape of the people measured by this test. So that you don't have to analyze each time you use it, it would be even better if you can create a profile, like where it is located overall, if the item response pattern is about this much.
+
+% 以上が大体の流れになります。ここにあるように，予備調査を何度も繰り返して因子構造を確定し，そこから本調査を行うことで，ほぼこの尺度はどれぐらいの点数で分布するか，といったことがわかるようになります。
+The above is the general flow. As shown here, by repeatedly conducting preliminary surveys to determine the factor structure, and then conducting the main survey, we can understand things like approximately how much this scale will distribute.
+% かつては因子分析を1回実行するだけでも多大な時間がかかりましたから，心理尺度を作るというのはそれだけでライフワークになるような作業でした。幸い最近は分析のスピードが飛躍的に向上しましたので，簡単に分析してやり直すということができます。しかしだからといって，構成概念妥当性を疎かにしてはいけませんし，「やったらこうなった」というようなやり逃げ研究になるのではなく，使うための尺度を作るのだということは忘れてはいけないでしょう。
+Once, even running a single factor analysis took a great deal of time, so developing psychological scales was a task that could become a lifelong work. Fortunately, the speed of analysis has improved dramatically recently, so you can easily analyze and redo it. However, that doesn't mean you should neglect construct validity, and your research shouldn't be a hit-and-run study where you just say, "this is what happened when I did it". You must not forget that you are creating a scale for use.
+
+% \section{共通性の推定}
+\section{Estimation of Commonality}
+
+% それでは実際にデータを使ってのやり方を説明します。
+So now let me explain how to use actual data.
+% 改めて，因子分析モデルについて確認しておきましょう。
+Let's revisit and confirm the factor analysis model once again.
+% 正方行列を相関行列$\bm{R}$とし，$\lambda_1 \bm{xx'} = \bm{aa'}$となるようにベクトルの大きさが整えられているとすれば，次のように表現できるのでした。
+Assuming a square matrix as the correlation matrix $\bm{R}$, and the vector size is adjusted so that $\lambda_1 \bm{xx'} = \bm{aa'}$, it could be expressed as follows.
+\input{x10_FA_escape_01}
+% このことから，相関行列を固有値分解すれば共通因子負荷量が得られることがわかります。しかしこれには1つ問題があります。この式の最後の項目，$\bm{d} \bm{d}'$がわからないのです。行列の形で書くと因子分析モデルは次のようになります。
+From this, it follows that by eigenvalue decomposition of the correlation matrix, we can obtain common factor loadings. However, there is one problem with this. We don't know the last term of this equation, $\bm{d} \bm{d}'$. If we write the factor analysis model in matrix form, it will be as follows.
+\[
+   \bm{R} = \bm{AA'}+\bm{D^2}
+\]
+% ここで$\bm{D}$は対角項に$d_j^2$をもつ対角行列です。共通因子を得るために分解するべき行列は，次のようになります。
+Here, $\bm{D}$ is a diagonal matrix with $d_j^2$ on its diagonal elements. The matrix to be decomposed for obtaining common factors is as follows.
+
+\[
+   \bm{R}\dagger = \bm{R}-\bm{D^2} = \bm{AA'}
+\]
+% $\bm{R}$は相関行列であり，その対角は$1.0$ですが，分解すべき行列$\bm{R}\dagger$は対角項に$1-d_j^2=h_j^2$が入った行列でなければなりません。それを固有値分解してはじめて，共通因子成分が得られるわけです。そしてこの$d_j^2$の大きさは，事前にわかっていないので，計算の最初にはなんとかしてこれを埋める必要があります。これを\keytermL{共通性の推定問題}{きょうつうせいのすいていもんだい}といいます。
+$\bm{R}$ is the correlation matrix, and although its diagonal is $1.0$, the matrix $\bm{R}\dagger$ to be decomposed must have $1-d_j^2=h_j^2$ on the diagonal. Only by decomposing it into its eigenvalues can we obtain the common factor components. Further, we don't know the size of this $d_j^2$ in advance, so at the start of the calculation, we somehow need to fill this in. This is called the "commonness estimation problem".
+
+% 実際の計算においては色々な方法が考えられてきています。推定せずに1.0で分析しちゃう方法，その行における相関係数の最大値を入れる方法，その項目を他の項目から回帰分析した時の$R^2$値を入れる方法(SMC法)などです。最初の「共通性を推定しない」という方法は，\keyterm{主成分法}{しゅせいぶんほう}{principle component method}と呼ばれます。\keytermL{主成分分析}{しゅせいぶんぶんせき}という分析法と同じやり方だからです。第二，第三の方法は，ひとまずその値で計算しますが，その後固有値分解をした行列から相関行列を再構成する，つまり$\bm{R}\dagger \to \bm{AA'} \to \bm{R}\dagger_2 \to \bm{AA'} \to \cdots $という繰り返しをおこない，数字が変化しなくなるまで反復するという方法で，\keytermL{主因子法}{しゅいんしほう}と呼ばれます\footnote{反復せずに最初に推定した初期値でいく方法もあります。これは反復しない主因子法ですが，計算機能力が十分高い今では反復するのが基本であり，とくに断りなく主因子法とあれば反復して求めていると考えていいでしょう。}。この主因子法と同じ結果になるとされているのが，\keytermL{最小二乗法}{さいしょうにじょうほう}です。回帰分析の時に聞いたことのある方法ですね。それと同じ考え方で，因子数が決まっていれば，因子構造の形とデータとの誤差が最も小さくなるように共通性を推定するという方法です。原理的に主因子法と最小二乗法は同じ結果になるとされています。最小二乗法が出てきたらひょっとして，と思うかもしれませんが，そうその通りで，\keytermL{最尤法}{さいゆうほう}もあります。得られたデータが多次元正規分布からのサンプルだと考え，多次元正規分布の形にぴったりフィットするように推定パラメータを定めていく方法です。
+Various methods are considered in actual calculations. There is a method to analyze with 1.0 without estimating, a method to enter the maximum correlation coefficient in that row, and a method to enter the $R^2$ value when regressing that item from other items (SMC method). The first method, called "not estimating commonality," is called the principal component method because it is the same way as the analysis method called principal component analysis. The second and third methods calculate with that value for the time being, but then reconstruct the correlation matrix from the matrix decomposed by eigenvalues, in other words, it is a method of repeating $\bm{R}\dagger \to \bm{AA'} \to \bm{R}\dagger_2 \to \bm{AA'} \to \cdots $ until the numbers do not change. This is called the principal factor method\footnote{There is also a method to go with the initial value estimated first without repeating. This is the non-iterative principal factor method, but given the high computational capability today, it is basic to repeat, and unless otherwise specified, it is assumed that it is sought by repeating if it is referred to as the principal factor method.}. The method said to get the same result as this main factor method is the least squares method. It's a method you've heard of when doing regression analysis. In the same way of thinking, if the number of factors is determined, it is a method to estimate commonality so that the error between the shape of the factor structure and the data is minimized. In principle, it is said that the principal factor method and the least squares method give the same results. If the least squares method comes out, you might think it is, but yes, there is also a maximum likelihood method. It is a method to determine the estimated parameters so that they fit perfectly to the shape of the multivariate normal distribution, assuming that the obtained data is a sample from a multivariate normal distribution.
+
+% このように，探索的に因子分析をする場合は，共通性をどのように推定するかということを指定しなければなりません。
+In this way, when performing an exploratory factor analysis, it is necessary to specify how to estimate the commonality.
+
+% \section{因子数の決定}
+\section{Determination of the Number of Factors}
+% 先ほどの最小二乗法，最尤法の説明の時に「因子数が決まっていれば」とありました。そうです，探索的な方法の場合は，因子分析をするときに因子数を決めて，何因子の答えを出すかを定めてやらなければなりません。それには色々な方法が考えられています。
+There was the phrase "if the number of factors is determined" when explaining the least squares method and the maximum likelihood method earlier. That's right, in the case of exploratory methods, when conducting a factor analysis, you need to decide the number of factors and determine how many factor answers you will give. Various methods have been considered for this.
+% ここでは古典的な方法4つと，洗練された方法1つを紹介します。
+I will introduce four classic methods and one sophisticated method here.
+% \paragraph{スクリープロットを見る}古典的な方法その1です。「見る」と書いてあるように，目で見て判断します。\keyterm{スクリープロット}{すくりーぷろっと}{scree plot}とは，固有値を大きい順にならべ，横軸に大きさの順番，立て軸に固有値の値をとった折れ線グラフのことです。これを見て，大きな変化が見られたところを基準とし，因子の数を決めます。
+\paragraph{Viewing the Scree Plot} This is the first classical method. As mentioned, this is determined by sight. A \keyterm{Scree Plot} is a line graph in which eigenvalues are arranged in descending order, with the order of magnitude on the horizontal axis and the value of the eigenvalues on the vertical axis. By looking at this, you can determine the number of factors based on where significant changes are observed.
+% \paragraph{固有値1.0という基準}固有値を算出し，1.0以上であれば共通因子，それ未満であれば誤差因子とまとめる基準のことを言います。1.0というのは項目の分散の大きさであり，固有値はこの分散の大きさを再配分する手続きなのでした。再配分した結果，1項目分も情報がないような次元は誤差みたいなものでしょ，という判断をすることになります。
+\paragraph{Criterion of eigenvalue 1.0} This refers to the criterion of calculating eigenvalues and summarizing them as common factors if they are 1.0 or more, and as error factors if they are less than that. 1.0 refers to the size of the item's variance, and eigenvalues were the process of redistributing this size of variance. As a result of the redistribution, it is decided to consider dimensions that do not have information equal to one item as errors.
+% \paragraph{累積寄与率をみる}固有値の大きさを項目数で割ることで，1つの因子が全体分散の何\%を説明するかを算出できます。これをとくに\keyterm{寄与率}{きよりつ}{contribution ratio}といいます。これをどんどん積み重ねていって(累積)，累積寄与率が50\%を超えるところまでを共通成分とみなす，という方法です。因子分析は項目情報の圧縮をしていることでもあり，共通因子に入れないものはゴミとして捨てるようなものですが，全体の半分以上をゴミとして捨てたらいかんでしょ，という基準です。
+\paragraph{Looking at the cumulative contribution rate} By dividing the size of the eigenvalues by the number of items, you can calculate what percentage of the total variance one factor explains. This is particularly called the \keyterm{contribution ratio}. This method involves piling up these contributions cumulatively and considering the components where the cumulative contribution ratio exceeds 50% as common factors. Factor analysis is also about compressing item information, and what is not included in the common factors is something to be discarded as garbage. However, it's not right to discard more than half of the total as garbage, according to this standard.
+% \paragraph{解釈可能性を考える}因子数に迷った時は，とりあえず何パターンかで分析してみて，最も解釈しやすい数でOKにしましょう，というやり方です。なんと主観的な方法でしょうか。数学的な基準ではなく，研究者のカンに頼る方法であり，客観性や再現性の問題を考えると容認し難い方法ではありますが，実際にはよく使われているやり方です。
+\paragraph{Considering Interpretability} When you are unsure about the number of factors, one approach is to analyze in several patterns for the time being, and settle on the number that is easiest to interpret. What a subjective method. It's a method that relies on the researcher's intuition rather than mathematical standards, and while it's a method that's hard to accept when you consider issues of objectivity and reproducibility, it's a method that's actually used quite often.
+% \paragraph{並行分析による方法}ここまでの方法は幾分古く，見た目や感覚にたよるものでしたが，\keyterm{並行分析}{へいこうぶんせき}{parallel analysis}は数学的な基準で分析を行うものです。これは分析するデータセットと同じサイズの乱数を発生させ，その固有値構造とデータの固有値構造を比較するというものです。乱数で作られる構造は，心理的な反応パターンに依らないのですから，当然無意味な因子ばかりが出てきます。実際のデータに基づく相関係数が持つ構造は，心理的なパターンを反映しているのですから，それとは違う有意味なパターンになっているはずです。この有意味性，無意味性を比較して，乱数で作る因子以上の意味ある次元がでていれば，共通因子として採用するという方法です。
+\paragraph{Method by Parallel Analysis} While previous methods were somewhat antiquated, relying on appearances and senses, parallel analysis operates on mathematical criteria. This involves generating random numbers of the same size as the dataset to be analyzed, and comparing these random numbers with the eigenvalue structure of the data. The structure created by random numbers, which does not depend on psychological response models, should naturally extract meaningless factors. The structure held by correlation coefficients based on actual data should reflect psychological patterns and thus should differentiate meaningful patterns. By comparing these forms of meaningfulness and meaninglessness, if dimensions more meaningful than those made by random numbers emerge, they are adopted as common factors.
+
+% 以上，5つほど説明してきましたが，これについては実際に見てもらったほうが早いと思いますので，今から演習を始めたいと思います。
+So far, I've explained about five things, but I think it would be quicker to see it in practice, so I'd like to start the exercise now.
+
+% \section{探索的因子分析の実際}
+\section{Practicality of Exploratory Factor Analysis}
+% \subsection{環境の準備(確認)}
+\subsection{Preparation (verification) of the environment}
+% まずは環境の準備です。すでにRやRStudioのインストールは終わっているものとして話を進めます。いつもの3つのステップをたどって，実行の準備をしてください。
+First up is setting up the environment. We'll proceed on the assumption that you've already completed the R and RStudio installation. Follow the usual three steps to get ready for execution.
+% \paragraph{RStudioの起動}RStudioを起動してください。パッケージのインストールをするときなど，管理人権限が必要になるケースがあります。
+\paragraph{Launching RStudio} Please launch RStudio. There may be cases where administrative rights are needed, such as when installing packages.
+% \paragraph{プロジェクトを開く}プロジェクトは前回作成した物で良いと思います。同じフォルダの中で，スクリプトファイルだけ変えれば良いでしょう。メニューからプロジェクトを開き(FIle$\to$Open Project)，RStudioの右上などで，プロジェクトが開いていることを確認しましょう。
+\paragraph{Open the project} I think it's fine to use the project you created last time. It should be enough to just change the script file within the same folder. Open the project from the menu (FIle$\to$Open Project), and check at the top right corner of RStudio to confirm that the project is open.
+% \paragraph{Rスクリプトを開く}今日のコードを書くためのRスクリプトファイルを準備します。File > NewFile > R Scriptと進み，何も書いてないRスクリプトの画面を表示させてください。真っ白いファイルが開いたら問題ありません。
+\paragraph{Open R Script} We will prepare an R script file to write today's code. Please go to File > NewFile > R Script and display a screen with a blank R script. If a completely white file opens, there is no problem.
+
+% また今日は\texttt{psych}パッケージ\citep{psych}を用います。準備がまだの人はPackageタブからインストールするか，コンソールで\texttt{install.packages("psych")}と入力してパッケージを導入しておいてください。
+We will be using the psych package again today. For those who are not ready, please install the package from the Package tab, or enter install.packages("psych") in the console to introduce the package.
+
+% データセットも\texttt{psych}パッケージが持っているものを使います。
+We will use the dataset that the \texttt{psych} package has.
+\input{x10_FA_escape_02}
+
+% \paragraph{コード解説}
+\paragraph{Code Explanation}
+\input{x10_FA_escape_03}
+
+% ヘルプ画面にあるように，これは25のパーソナリティについての調査項目からなる，2800人分のデータです。A(Agreeableness，同調性)，C(Conscientiousness，几帳面さ)，E(Extraversion，外向性)，N(Neuroticism，神経質さ)，O(Opennness，開放性)というBig 5の各要素に対応した項目が5つずつあります。加えて性別(\texttt{gender})，最終学歴(\texttt{education})，年齢(\texttt{age})といった3つの変数も入っています。今回使うのは，5つの因子それぞれに対応すると考えられる各5つの項目，計25項目分です。
+As shown on the help screen, this is data of 2800 people made up of survey items about 25 personalities. There are five items each corresponding to the Big 5 elements of A(Agreeableness), C(Conscientiousness), E(Extraversion), N(Neuroticism), O(Opennness). In addition, it contains three variables: gender, final education (education), and age. What we will be using this time is the 25 items believed to correspond to each of the five factors.
+
+
+% \subsection{並行分析による因子数の決定}
+\subsection{Determining the Number of Factors through Parallel Analysis}
+\input{x10_FA_escape_04}
+% \paragraph{コード解説}
+\paragraph{Code Explanation}
+\input{x10_FA_escape_05}
+
+% 因子分析は相関行列から分析を始めますので，まずその計算をしました。オプション\texttt{use="pairwise"}は欠損値が含まれるデータセットに対し，ペアで残っている箇所は使って分析するという指定です\footnote{これがなかったら，欠損値があるので計算できません，で終わります。}。4行目で固有値分解をしてみました。結果として出力\ref{RS:out10_01}のようなものが示されています。
+Factor analysis starts with a correlation matrix, so I first performed that calculation. The option \texttt{use="pairwise"} is a specification to use the remaining parts in pairs for datasets that contain missing values\footnote{If this is not present, the calculation cannot be performed because there are missing values.}. On line 4, we performed an eigenvalue decomposition. The output is shown as in output \ref{RS:out10_01}.
+
+\input{x10_FA_escape_06}
+
+% この下に固有ベクトル(\verb|$values|)も続いていますが，長くなるので省略しました。ここで固有値が25個算出されていることがわかります。また，これらを総和すると25になります($tr(\bm{R})=\sum_i=1^{25} r_{ii}$)。このよううに標準化されたデータの分散を再構築し，第1固有値は5.03，すなわち項目5個分の情報を持っているようになったのです。第2固有値が2.744，第3固有値が2.107，第4固有値が1.183...と続きます。また，これを相対比率に変えると，5.03/25＝20.12ですから，第1固有値だけで全体の20\%を説明できることになります。
+The eigenvalues (\verb|$values|) also continue below, but have been omitted because the text is too long. Here, we see that 25 eigenvalues are calculated. Also, when these are summed up, they become 25 ($tr(\bm{R})=\sum_i=1^{25} r_{ii}$). In this way, the variance of the standardized data was reconstructed, and the first eigenvalue became 5.03, so it now appears to contain information for five items. The second eigenvalue is 2.744, the third eigenvalue is 2.107, the fourth eigenvalue is 1.183 and so on. Also, when this is converted into a relative ratio, 5.03/25 = 20.12, so the first eigenvalue alone can explain 20% of the whole.
+% 第2固有値は2.744ですから，2.744/25=0.1096で全体の10\%ほど，第1固有値と合わせて31.12\%の累積寄与率があることになります。累積寄与率は第5固有値までで53.02\%になりますから，25項目すべてを使わずとも5因子だけで情報の半分は説明できることになります！
+The second eigenvalue is 2.744, so 2.744/25=0.1096, which is about 10% of the total. Combined with the first eigenvalue, the cumulative contribution rate is 31.12%. The cumulative contribution rate becomes 53.02% with the fifth eigenvalue, so even without using all 25 items, half of the information can be explained with just five factors!
+
+% また，第7固有値の大きさは0.846であり，それ以降の固有値はすべて1.0未満，すなわち項目1つ分も情報を持っていない因子ということになります。であれば共通因子として掬い上げる必要はなく，少なくとも7番目以降(基準2)，あるいは6番目以降(基準3)は誤差と考えてまとめてしまってもいいかもしれませんね。
+Also, the magnitude of the 7th eigenvalue is 0.846, and all subsequent eigenvalues are less than 1.0, meaning that there is not even one item's worth of information in these factors. Therefore, there is no need to scoop them up as common factors, and it may be reasonable to consider everything from the 7th factor onwards (criteria 2), or from the 6th factor (criteria 3) as errors, and sum them up.
+
+% 続く\texttt{fa.parallel}関数は並行分析を行う関数で，同時に\keytermL{スクリープロット}{すくりーぷろっと}も表示してくれます(図\ref{fig10_01})。
+The subsequent \texttt{fa.parallel} function is a function that conducts parallel analysis, and at the same time, it also displays a \keytermL{scree plot} (Figure \ref{fig10_01}).
+
+\input{x10_FA_escape_07}
+% この図は先ほど算出されたような固有値\footnote{正確には$\bm{R}\dagger$の固有値です。}を大きい順に並べ，線で繋いだものが示されています。青い線が実データ，赤い点線が乱数によるにデータサイズが同じだけの偽データです。基準2に該当する1.0のところで線が引かれていて，これよりも大きい固有値を持つのが3つあることがわかります。まだ，第1固有値から第2固有値にかけて大きな傾斜があります($4.26063957\to  1.91279965$)。最初のうちはまあ当然として，第5と第6の間も少し大きなギャップがあるようです($0.70938377  \to0.25749866$)。それ以降はだらだらと数値が減衰していますね。このような大きなギャップのところは，大きな意味の違いがあると考えてもいいでしょう。基準1の観点からいくと，第5固有値までを共通因子とし，第6因子以降は誤差としてまとめてしまってもいいでしょう。
+This chart displays the eigenvalues\footnote{To be precise, these are the eigenvalues of $\bm{R}\dagger$.} calculated previously, ranked in descending order and connected by a line. The blue line represents the actual data, whereas the red dotted line represents false data of the same size generated by random numbers. A line is drawn at 1.0, which corresponds to criterion 2, and we can see that there are three eigenvalues larger than this. There is still a significant slope from the first eigenvalue to the second eigenvalue ($4.26063957\to  1.91279965$). Predictably, there's a gap at the beginning, but it also seems to be a little larger between the fifth and the sixth ($0.70938377  \to0.25749866$). After that, the values gradually decrease. It might be reasonable to think that these big gaps mean significant differences in meaning. From the perspective of criterion 1, it might be okay to consider up to the fifth eigenvalue as common factors and everything from the sixth factor onward as errors.
+
+% また，並行分析の観点では，赤い線よりも上にある青いラインは有意味ということですから，6因子構造がいい，ということになりますね。
+Also, from the standpoint of parallel analysis, it means that the blue line above the red line is significant, so it would be concluded that a six-factor structure is good.
+
+% このように，さまざまな基準で考えても，因子数は5か6のどちらかになって決定打に欠けます。こういうときは解釈しやすい5因子にしよう(基準4)，ということになったりします。
+Thus, even when considering various criteria, the number of factors is either five or six, lacking a decisive conclusion. In such cases, it is often decided to go with five factors as they are easier to interpret (Criterion 4).
+
+% ちなみにこの固有値構造，最終的には負の値が出ていますので，あまり良いデータとは言えません。25項目を用意していたのに，8因子以降は0以下，つまり情報がないようなものです。これは項目同士が似かよっていて，あまり違った情報を持ってこなかったということでもあります。実際のデータを分析する時は，こうした点にも注意が必要です。
+By the way, this eigenvalue structure ultimately yields negative values, so it cannot be considered good data. Although we had prepared 25 items, the ones after the 8th factor are zero or less, which means they don't have any information. This also means that the items were similar to each other and did not bring much different information. When analyzing actual data, it is necessary to pay attention to such points.
+
+% \subsection{因子分析の実行}
+\subsection{Execution of Factor Analysis}
+% それでは因子数を5と定めて因子分析を実行してみましょう。
+Let's try executing a factor analysis setting the number of factors to five.
+
+\input{x10_FA_escape_08}
+
+% これは1行目で実行し，2行目で表示しているだけですが，内容を少し説明します。
+This just runs on the first line and displays on the second line, but I'll explain a little bit about the content.
+% \texttt{psych}パッケージの持つ\texttt{fa}関数は，データの他に因子数\texttt{nfactors}，共通性の推定方法\texttt{fm}，回転方法\texttt{rotate}などをオプションで定めることができます。
+The \texttt{fa} function of the \texttt{psych} package can set options such as the number of factors \texttt{nfactors}, the method for estimating commonality \texttt{fm}, and the rotation method \texttt{rotate}, in addition to the data.
+% 共通性の推定方法は，ここではML(\keytermL{最尤法}{さいゆうほう})を選択しました。
+The method of estimating commonality was selected here as ML (Maximum Likelihood).
+% 回転方法とは\keyterm{因子軸の回転}{いんしじくのかいてん}{rotation of factor axis}について定めるところです。これについては少し説明が必要ですね。
+The method of rotation is about defining the \keyterm{rotation of the factor axis}. This requires a bit of explanation, doesn't it?
+
+% \paragraph{因子軸の回転}
+\paragraph{Rotation of the Factor Axis}
+% 因子分析は，相関行列という項目間関係が作り出す空間に，その基礎となる軸を見出すものでした。これを図\ref{fig::x10_FAcoord1}のように表現してみます。
+Factor analysis is about finding the underlying axis in the space created by the inter-item relationships called the correlation matrix. This is represented as in figure \ref{fig::x10_FAcoord1}.
+% 項目同士はその相関関係から空間を作っていますが，ここでは2因子，F1とF2という軸をもとに座標のように書いています。項目同士が近くにあるのは，相関あっていることを意味します\footnote{原点からのベクトルと考えたときに，2つの項目ベクトルが作る角度$\theta$のコサインを取った$\cos \theta$が相関係数になります。}。ここで項目1の座標を見ると，第一因子(F1)に0.3，第二因子(F2)に0.6とありますが，これが項目1の因子に対する因子負荷量ということになります。
+Items create a space from their correlation with each other, but here they are written like coordinates based on two factors, F1 and F2. The fact that items are close to each other means that they are correlated\footnote{When viewed as a vector from the origin, the cosine of the angle $\theta$ made by two item vectors, $\cos \theta$, becomes the correlation coefficient.}. Looking at the coordinates of item 1 here, it is 0.3 for the first factor (F1) and 0.6 for the second factor (F2). This represents the factor load of item 1 on each factor.
+\input{x10_FA_escape_09}
+
+% 因子分析では\keytermL{因子負荷量}{いんしふかりょう}をもとに，「この項目と関係の深い因子はどれか」「因子はどういう項目から構成されているか」ということを考えていくのですが，項目1は第一，第二因子それぞれにちょっとずつ関係していることがわかります。そのほかの項目も，2つの因子に負荷していますがなかなか決め手がない，というところですね。
+In factor analysis, based on the \keytermL{factor loading}, we consider things like "which factors are deeply related to this item" and "what items make up the factor". However, it can be seen that item 1 is a little related to both the first and second factors. As for the other items, they are also loaded on two factors, but it's quite difficult to determine.
+
+% そこで座標を回転させます。どの項目がどの因子に関係しているのかを，よりはっきりさせるように軸をグルリと回すのが因子軸回転の目的です。
+So we rotate the coordinates. The purpose of factor axis rotation is to turn the axes around to make it clearer which items are related to which factors.
+\input{x10_FA_escape_10}
+% 図\ref{fig::x10_FAcoord2}のように回転させますと，回転後の軸($F1^\prime,F2^\prime$)に下ろした垂線が座標，すなわち因子負荷量になりますから，項目1は第一因子($F1^\prime$)に0.9，第二因子($F2^\prime$)に$-0.07$になりました。こうしてみると，項目1は第一因子と非常に深く関係しているし，第二因子とはほとんど関係がない，とみることができます。ほかの項目も一方の因子に大きく負荷し，他方の因子にほとんど負荷していないようになりますから，どの因子がどういう項目と関係するかを評価するのにメリハリが効いてやりやすくなります。このように，利用しやすく座標を変えるのが因子軸の回転，という技なのです。
+As you rotate it like Figure \ref{fig::x10_FAcoord2}, the coordinates, that is, the factor loadings, become the perpendicular lines dropped on the post-rotation axes ($F1^\prime,F2^\prime$). So, item 1 becomes 0.9 for the first factor ($F1^\prime$) and -0.07 for the second factor ($F2^\prime$). Looking at it this way, you can see that item 1 is very deeply related to the first factor and has almost no relationship with the second factor. The other items also load heavily on one factor and hardly at all on the other, so it becomes easy to evaluate which factor relates to which item. This is the technique of factor axis rotation, which changes coordinates so they're easier to use.
+
+% ここで最初の因子軸$F1,F2$は直交していましたね。座標ですから当然です。直交している，すなわち因子間相関がないように回転することを\keyterm{直交回転}{ちょっこうかいてん}{orthogonal rotation}といいます。
+Here, the first factor axes $F1, F2$ were orthogonal, right? Of course, because they are coordinates. The act of rotating to make it orthogonal, in other words, to make the correlation between factors disappear, is called \keyterm{orthogonal rotation}.
+
+% しかし，因子軸の回転の目的は，わかりやすくするためなのですから，いっそ図\ref{fig::x10_FAcoord3}のように，角度をつけた方がさらにうまくメリハリをつけることができますね。この図では，項目4,5が明らかに第二因子に影響している，ということが見て取れるようになりました。
+However, the purpose of the factor axis rotation is to make it easier to understand, so it might be better to add angles as in Figure \ref{fig::x10_FAcoord3} to further highlight it. In this diagram, it's clear that items 4 and 5 are notably influenced by the second factor.
+\input{x10_FA_escape_11}
+
+% このように，因子軸が直角で交わっていない場合の回転方法を\keyterm{斜交回転}{しゃこうかいてん}{oblique rotation}といいます。因子軸の回転は一般に，斜交回転した方がメリハリが効いて因子を解釈しやすくなります。斜交回転したとき算出される因子同士の相関を考えて，これが十分小さい，すなわち直角とほぼ見做せる程度だとおもわれたら直交回転を行う，とするのが良いでしょう。
+This is called \keyterm{oblique rotation}{しゃこうかいてん}{oblique rotation} when the factor axes are not intersecting at right angles. Rotation of the factor axes is generally easier to interpret when obliquely rotated, allowing for more distinct factors. It's a good idea to think about the correlation between the factors obtained when obliquely rotating and, if this correlation is small enough, or in other words, if it can be roughly considered a right angle, then orthogonal rotation should be performed.
+
+% \paragraph{行列による説明}
+\paragraph{Explanation using matrices}
+% 因子分析の行列モデルは次のようなものでした。
+The factor analysis matrix model was as follows.
+\[ \bm{R}= \bm{AA'}+\bm{D}^2 \]
+ここで$\bm{AA'}$に単位行列$\bm{I}$を挟んでも，$\bm{AA'}=\bm{AIA'}$で結果は変わりませんね。ここで$\bm{I} = \bm{TT'}$となるような行列$\bm{T}$があっても同じです。たとえば2因子構造の時に，次のような行列$\bm{T}$を考えたとすると，$\bm{TT'}=\bm{I}$であることがわかります。
+\[
+   \bm{T} = \begin{pmatrix} cos \theta & -sin \theta \\ sin \theta & cos\theta \end{pmatrix}
+\]
+\[
+   \bm{TT'}=\begin{pmatrix} cos \theta & -sin \theta \\ sin \theta & cos\theta \end{pmatrix}
+   \begin{pmatrix} cos \theta & sin \theta \\ -sin \theta & cos\theta \end{pmatrix}
+   =\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} =\bm{I}
+\]
+% このような$\bm{T}$は回転行列と言われます。原点を中心に，座標を角度$\theta$で回転させるからです。$\theta$の値は任意なので，因子負荷行列は，$\theta$に応じて無数にあることになります。であれば，使い勝手の良い角度で回転してやればいいとも言えるわけです。
+Such $\bm{T}$ is called a rotation matrix. This is because it rotates the coordinates around the origin by an angle $\theta$. Since the value of $\theta$ is arbitrary, there are an infinite number of factor load matrices depending on $\theta$. Therefore, you could say that you can rotate it at a convenient angle.
+
+% \keytermL{直交回転}{ちょっこうかいてん}の場合は角度が直角，すなわち相関がないわけですから，数学的には回転行列が$\bm{TT'}=\bm{I}$のようになった状態を言います。一方で\keytermL{斜交回転}{しゃこうかいてん}の場合は相関があるわけですが，
+In the case of orthogonal rotation, the angle is right angle, which means there is no correlation, which mathematically refers to the state where the rotation matrix becomes $\bm{TT'}=\bm{I}$. On the other hand, in the case of oblique rotation, there is a correlation,
+
+\[ \bm{I} = \bm{T'\Phi T}\]
+
+となるように置いておけば，$\bm{R} = \bm{AT'\Phi TA'}+\bm{D}^2=\bm{BB'}+\bm{D}^2$の形が保たれているので因子分析モデルとしては違いがないわけで，このような$\bm{\Phi}$を任意に定めることができます。この時$\bm{\Phi}$は\keyterm{因子間相関}{いんしかんそうかん}{factor correlations}と呼ばれます。
+
+直交回転も斜交回転も，目的は\textbf{解釈をしやすくする}ということにあり，そのための基準はいくつか考えられます。それらの基準に応じて，たとえば直交回転では\keyterm{バリマックス回転}{ばりまっくすかいてん}{varimax rotation}，斜交回転では\keyterm{プロマックス回転}{ぷろまっくすかいてん}{promax rotation}などがあり，ここでは\keyterm{ジオミン回転}{じおみんかいてん}{geomin rotation}を選びました\footnote{ジオミン回転には直交モデルと斜交モデルがあり，それぞれ\verb|geominT,geominQ|という名前で実装されています。}。
+
+\subsection{因子分析の結果をみる}
+出力\ref{RS:out10_02}に因子負荷行列を表示しました。あの$\bm{A}$が計算されていますよ！
+
+\begin{Rscreen}{因子負荷行列}{out10_02}
+   \begin{verbatim}
+Factor Analysis using method =  ml
+Call: fa(r = dat, nfactors = 5, rotate = "geominQ", fm = "ml")
+Standardized loadings (pattern matrix) based upon correlation matrix
+   item   ML2   ML1   ML5   ML3   ML4   h2   u2 com
+N1   16  0.83 -0.07 -0.24  0.02 -0.04 0.71 0.29 1.2
+N2   17  0.80 -0.02 -0.23  0.03  0.02 0.66 0.34 1.2
+N3   18  0.68  0.15 -0.01 -0.03  0.03 0.53 0.47 1.1
+N5   20  0.48  0.26  0.15  0.01 -0.13 0.34 0.66 1.9
+N4   19  0.46  0.43  0.03 -0.12  0.09 0.48 0.52 2.2
+E2   12  0.10  0.69 -0.08  0.00 -0.04 0.55 0.45 1.1
+E1   11 -0.07  0.58 -0.07  0.12 -0.09 0.37 0.63 1.2
+E4   14  0.00 -0.55  0.33  0.00 -0.07 0.52 0.48 1.7
+E5   15  0.13 -0.43  0.03  0.25  0.22 0.40 0.60 2.4
+E3   13  0.05 -0.38  0.27 -0.02  0.30 0.44 0.56 2.8
+A3    3  0.02 -0.11  0.65  0.05  0.03 0.51 0.49 1.1
+A2    2  0.03 -0.02  0.59  0.11  0.03 0.40 0.60 1.1
+A5    5 -0.09 -0.21  0.58  0.01  0.04 0.48 0.52 1.3
+A4    4 -0.03 -0.05  0.45  0.21 -0.15 0.29 0.71 1.7
+A1    1  0.16 -0.12 -0.39  0.02 -0.03 0.15 0.85 1.6
+C2    7  0.09  0.10  0.07  0.63  0.09 0.43 0.57 1.2
+C4    9  0.18  0.06  0.05 -0.62 -0.05 0.47 0.53 1.2
+C3    8  0.01  0.06  0.09  0.56 -0.04 0.32 0.68 1.1
+C5   10  0.19  0.18  0.00 -0.55  0.08 0.43 0.57 1.5
+C1    6  0.01  0.03 -0.02  0.52  0.18 0.32 0.68 1.2
+O3   23 -0.01 -0.15  0.07 -0.01  0.62 0.47 0.53 1.1
+O1   21 -0.03 -0.10  0.01  0.04  0.53 0.32 0.68 1.1
+O5   25  0.14 -0.04  0.08 -0.03 -0.52 0.27 0.73 1.2
+O2   22  0.20  0.00  0.18 -0.07 -0.44 0.24 0.76 1.8
+O4   24  0.11  0.33  0.13 -0.02  0.39 0.26 0.74 2.4
+\end{verbatim}
+\end{Rscreen}
+出力\ref{RS:out10_02}にあるように，各行にN,E,A,C,Oの項目が並んでいます。この順番が入れ替わっているのは，表示オプションで\verb|sort=T|を入れたからで，因子負荷量の大きい順に並べ替えて表示させたからです。現に左上から右下にかけて，因子負荷量の大きさの順に並んでいますね。列としてML1,2,3,4,5とあるのは最尤法(ML)で抽出した因子の1,2,3,4,5を表しています。h2は$h^2$，u2は$1-h^2=d^2$をあらわしています(\keyterm{独自性}{どくじせい}{uniqueness}のu)。comは\keyterm{複雑性指標}{ふくざつせいしひょう}{ index of complexity}と呼ばれ，$\sum (a_j^2)^2/\sum a_j^4$で計算される指標です。共通性は高く，独自性，複雑性の低い項目がいい項目だといえるでしょう。ちなみに，出力オプションとして\verb|cut=0.3|を追加すると，因子負荷量が0.3に満たないところの表示はなくなります。どの項目がどの因子と関係あるのかがわかりやすくなるのでおすすめです。
+
+
+出力\ref{RS:out10_03}にはその他の情報として，各因子の因子負荷行列の二乗和(\verb|SSloadings|)，分散説明率(\verb|Proportion Var|)，累積分散説明率(\verb|Cumulative Var|)，全体を1とした時の説明比率(\verb|Proportion Explained|)，その累積(\verb|Cumulative Proportion|)が表示されています。回転するまえは固有値と\keytermL{因子負荷量}{いんしふかりょう}の二乗和が合致するのですが，回転した後の場合はそうはならないので，これらをみてどれぐらい説明できているかを考えます。とくに類遺跡分散説明率が，今回は5因子で41\%しかありません。59\%をゴミとして捨てたようなものですから，これでよかったのかな，と思案するところです。
+
+\begin{Rscreen}{因子分析結果2}{out10_03}
+   \begin{verbatim}
+ML2  ML1  ML5  ML3  ML4
+SS loadings           2.50 2.24 2.05 1.95 1.61
+Proportion Var        0.10 0.09 0.08 0.08 0.06
+Cumulative Var        0.10 0.19 0.27 0.35 0.41
+Proportion Explained  0.24 0.22 0.20 0.19 0.16
+Cumulative Proportion 0.24 0.46 0.66 0.84 1.00
+\end{verbatim}
+\end{Rscreen}
+
+その下出力\ref{RS:out10_04}には，因子間相関が表示されています。これをみると，第2因子(ML1)と第3因子(ML5)との間に$-0.34$という中程度の負の相関がみられます。直交回転はこれを0として解釈してしまいますから，スッキリはするのですがデータには適合してないところかもしれません。このように，分析する時はまず斜交回転を行い，因子間相関がなべて低い場合は直交で分析をやり直す，というステップを経ます。
+
+\begin{Rscreen}{因子分析結果3}{out10_04}
+   \begin{verbatim}
+ With factor correlations of 
+      ML2   ML1   ML5   ML3   ML4
+ML2  1.00  0.11  0.06 -0.12  0.06
+ML1  0.11  1.00 -0.34 -0.22 -0.16
+ML5  0.06 -0.34  1.00  0.18  0.23
+ML3 -0.12 -0.22  0.18  1.00  0.17
+ML4  0.06 -0.16  0.23  0.17  1.00
+\end{verbatim}
+\end{Rscreen}
+
+\section{因子分析の後で}
+
+因子数を定め，因子負荷量が明らかになると，ここから逆算的に\keytermL{因子得点}{いんしとくてん}を計算できます。
+\texttt{fa}関数には\texttt{scores}オプションがあり，これをつけて実行すると因子得点行列を表示させることができます。因子得点は因子数$\times$人数分(ここでは2800人分)ありますので，大変大きなサイズのデータですから注意してください。
+ともあれ，そこに含まれているのは，各因子についての個々人の相対的な関与度ということになります。
+
+\begin{lstlisting}[language=c++,label={code:10_04},caption={因子得点を算出する}]
+result <- fa(dat, nfactors = 5, fm = "ml", rotate = "geominQ", scores = T)
+result$scores
+\end{lstlisting}
+
+モデルの仮定にあった通り，因子負荷量は標準化されたスコアです。すなわち平均情報が取り払われていることに注意してください。たとえば7件法で「4.どちらでもない」を挟んで，ポジティブ・ネガティブな意味を持っていたとしても，ここでは個々人間の相対的な大小関係しか意味しないことになります。
+
+そういう意味で，絶対的なスケールの情報を残したまま得点を考えてみたいということもあるでしょう。そういう時は\keytermL{簡便的因子得点}{かんべんてきいんしとくてん}といって，因子に関係する項目の素点から平均点を算出し，個々人の得点とする方法もあります。
+最もこのやり方は，平均点の情報は保持されますが，因子分析で除去できた$d_j^2$，すなわち独自性成分を再び取り込むことになっている点に注意が必要です。次のコード\texttt{code:\ref{code:10_04}}は，簡便法による因子得点と因子分析の結果から計算された因子得点との相関係数を算出する例です。高い相関を示すところ(ML2とNで0.9475742，ML5とAで0.83845417)もありますが，低いところもありますので，どちらの方法で計算するのか，その場合の長所短所をよく理解して使うようにしましょう。
+
+\begin{lstlisting}[language=c++,label={code:10_05},caption={二種類の因子得点計算法比較}]
+dat %>% 
+    dplyr::mutate(
+        A = (A1 + A2 + A3 + A4 + A5)/5,
+        C = (C1 + C2 + C3 + C4 + C5)/5,
+        E = (E1 + E2 + E3 + E4 + E5)/5,
+        N = (N1 + N2 + N3 + N4 + N5)/5,
+        O = (O1 + O2 + O3 + O4 + O5)/5
+    ) %>% 
+    dplyr::bind_cols(.,result$scores %>% as.data.frame) %>% 
+    dplyr::select(ML1,ML2,ML3,ML4,ML5,A,C,E,N,O) %>%
+    cor(use="pairwise")
+\end{lstlisting}
+
+
+\section{さいごに}
+今回は探索的因子分析の実行例をみてみました。いかがだったでしょうか。
+計算自体にはほとんど時間がかかりませんので，色々な因子数や回転方法，抽出法を試して見るのも良いかもしれません。
+
+このように比較的簡単に計算できるようになってきましたが，大事なのはその目的と意味です。関数の名前を覚えて，機械的にXX法XXX回転で答えが出たから正しいのだ，などと思わないことです。
+因子数の決め方の時にも薄々感じていただけたかと思いますが，数学的なモデルとは裏腹に，実際にやる時は職人的ノウハウも結構必要です。スクリープロットを「みて」とか，回転法を「選んで」とか，因子得点の計算の仕方を「比較して」，といったところは人間的要素であり，やり方が変われば結果が変わる可能性があります。論文などに示されているこれらの方法，指標も，変えようと思えば変得られるところだということです。科学的真実の探究が目的であれば，良い見栄えや自分に都合の良い結果のための手法選択は無意味であることは理解してもらえるところだと思います。皆さんも決して目的を見失わず，批判的に検証できるようになってください。
+
+探索的因子分析は因子を見つけ出すことができます。が，それは決して人間の心の何かを取り出したわけではないのです。人間がそもそも持っている心の状態を取り出したのではなく\footnote{因子分析をすると「因子を抽出した」と論文などに記載される場合がありますが，このようにあたかも先にあるエッセンスを抜き出したのだ，という表現は適切ではないと批判されることもあります。}，人間に「項目群」「紙とペン」という刺激を与え，反応を強いたのです。その結果，「項目群にみられる相関行列に潜む次元」が見いだせただけであり，それが人間の持つ特性だと考えるのは，あくまでの研究者の主観的主張にすぎません。実際にあり得る話ですが，「学校生活は嫌ですか」「学校は楽しくないと思うことがありますか」「学校の友達とは遊びたくないと思うことがありますか」といったネガティブな項目を山のように投げかけ，因子分析することで「学校を嫌う項目群＝因子」を抽出し，子供は学校が嫌いなのだという結論を出すのがおかしいことなのはわかりますよね。項目群のなかにネガティブなものしかなければ，因子もそれに応じたものしか出ません。そして因子得点が相対的なものでしかないので，素点を見ずに「学校嫌い得点が高い，低い」として議論を進めても仕方がないのです。そうした場合は簡便的因子得点を計算して，平均点がちゃんと中点「4.どちらでもない」を挟んでいるかどうかで嫌っているかどうかを判断しなければなりません。このように，自分で項目に埋め込んだ呪いを自分で取り出して見つけ出したと騒ぐ，\keytermL{てっちゃんの手品}{てっちゃんのてじな}にならないようにすることは，常に心がけなければならないのです\footnote{てっちゃんの手品については，\citet{kosugi2018}を参照してください。}。
+
+こうした批判的観点を持つためには，数理的にはどういうことをやっていて，どこからが人為的な問題なのかをしっかり把握しておくことが役に立つでしょう。
+
+\section{課題}
+今日の授業でおこなったすべての次の計算をするRコードを提出してください。ファイル形式はRスクリプトかRmdとします。なお提出されたコード単体でバグがなく動くことが確認できないものは，未提出扱いになります。コードの書き方などわからないところがあれば，曜日別TAか小杉までメールで連絡し，指導を受けてください。
+\end{document}

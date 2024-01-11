@@ -44,11 +44,11 @@ IRTの考え方からいうと，どんな項目でも何らかの情報を提�
 ここで$p_j(\theta)$はその項目$j$の$\theta$における正答率(通過率)，$q_j(\theta)$は誤答率を表しています。能力が平均的，すなわち$\theta=0$のときは，$0.5 \times 0.5$になる平均的な困難度($b=0$)の設問が最も大きな値になる，というわけですね。
 図\ref{fig::05_01}にいくつかのICCとそれに対応するIICを描きましたので，確認してください。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_01.png}
-        \caption{項目特徴曲線(ICC,上図)と項目情報曲線(IIC,下図)の例。左から順に$a_1=0.8,b_1=-1$の識別力が弱く簡単な項目，$a_2=1,b=1$のやや困難な項目，$a_3=1.2,b_3=2$の識別力が高く困難な項目。}
-        \label{fig::05_01}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_01.png}
+		\caption{項目特徴曲線(ICC,上図)と項目情報曲線(IIC,下図)の例。左から順に$a_1=0.8,b_1=-1$の識別力が弱く簡単な項目，$a_2=1,b=1$のやや困難な項目，$a_3=1.2,b_3=2$の識別力が高く困難な項目。}
+		\label{fig::05_01}
+	\end{center}
 \end{figure}
 IICのピークは，対応するICCの$\theta=0.5$のところにあること，識別力はピークの尖り具合に関わっていることを確認してください。
 
@@ -57,11 +57,11 @@ IICのピークは，対応するICCの$\theta=0.5$のところにあること�
 
 またIICはある項目から得られる情報のことを意味しますが，テストに含まれているすべての情報関数を足し合わせることで，そのテストから得られる情報の大きさを関数として評価できます。すなわちテスト全体の情報量$I_T(\theta)$は，$I_T(\theta)=\sum_{j=1}^M I_j(\theta)$であり，この関数のことを\keyterm{テスト情報関数}{てすとじょうほうかんすう}{Test Infromation Curve}といいます。図\ref{fig::05_01}の3つの項目からなるTICを示したのが図\ref{fig::05_02}です。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_02.png}
-        \caption{テスト情報関数(黒の実線部)。理解を進めるために各IICを薄い点線で表現した。}
-        \label{fig::05_02}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_02.png}
+		\caption{テスト情報関数(黒の実線部)。理解を進めるために各IICを薄い点線で表現した。}
+		\label{fig::05_02}
+	\end{center}
 \end{figure}
 これを見ると，この3つの項目からなるテストは$\theta=2$より少し低いレベルを測定するときに最も鋭敏に働くということがわかります。このように，項目母数がわかっていれば事前にテストの特徴をどのあたりに持ってくるかを決定でき，自由自在にテストをデザインできるようになるわけです。
 
@@ -103,11 +103,11 @@ GRMの考え方の基本は，段階反応の背後には正規分布する連�
 ここにあるように，段階数が増えたとしても$k$番目のカテゴリ以上に反応する確率から，$k+1$番目に反応する確率を引いてやれば，$k$番目のカテゴリに反応する確率が得られます。この計算をして描かれる曲線のことを\keyterm{項目反応カテゴリ特性曲線}{こうもくはんのうかてごりとくせいきょくせん}{Item Response Category Charactaristic Curve; IRCCC}，あるいは単に\keyterm{カテゴリ確率曲線}{かてごりかくりつきょくせん}{Category Probability Curve}と呼ばれます。IRCCCは図\ref{fig::05_03}の下段に示されています。
 
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_03.png}
-        \caption{正規分布と閾値(上図)とIRCCC(下図)}
-        \label{fig::05_03}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_03.png}
+		\caption{正規分布と閾値(上図)とIRCCC(下図)}
+		\label{fig::05_03}
+	\end{center}
 \end{figure}
 
 IRCCCを，$\theta$の値がマイナスからプラスの方向に動かしながら見ていってください。最初は当然「当てはまらない」に反応する確率が一番高いのですが，それが徐々に下がっていきます。「どちらでもない」の反応確率は徐々に増えていき，閾値$b_{j1}$で「当てはまらない」と逆転しピークを迎えることになります。その頃「当てはまる」も徐々増えていき，閾値$b_{j2}$でピークが逆転する，というようになります。ピークは逆転されても，他の確率が0になっているわけではなく，可能性は残っています。
@@ -121,11 +121,11 @@ IRCCCを，$\theta$の値がマイナスからプラスの方向に動かしな�
 
 このように5段階，7段階を設定して回答者に無理やり回答を求めても，分析するとカテゴリのピークが潰れていることがあります。回答者の反応しやすいカテゴリ数を丁寧に設計してやることが重要です。もちろん無分別に尺度値をつけて，そのまま分析するのはもっとも不適切な方法です。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_04.png}
-        \caption{適切な反応段階をデザインする}
-        \label{fig::05_04}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Rplot05_04.png}
+		\caption{適切な反応段階をデザインする}
+		\label{fig::05_04}
+	\end{center}
 \end{figure}
 
 
@@ -145,11 +145,11 @@ IRCCCを，$\theta$の値がマイナスからプラスの方向に動かしな�
 
 これらの相関係数はいずれも，順序(あるいはバイナリ)変数の背後に連続体があると考え，潜在的な連続体$\times$潜在的な連続体の相関係数を連続体のカテゴリが変わる閾値とともに推定するのです(図\ref{fig::05_05})。
 \begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Slide05_01.png}
-        \caption{ポリコリック相関係数のイメージ}
-        \label{fig::05_05}
-    \end{center}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/05_GRM/Slide05_01.png}
+		\caption{ポリコリック相関係数のイメージ}
+		\label{fig::05_05}
+	\end{center}
 \end{figure}
 
 こうして推定された相関係数を使って因子分析を行うと，順序尺度水準に適した因子分析を行うことができます。この方法をとくに\keyterm{カテゴリカル因子分析}{かてごりかるいんしぶんせき}{categorical factor analysis}といいます。もっともこの名前を覚えておく必要はありません。\textbf{カテゴリカル因子分析は段階反応モデルと数学的に等価である}ことがわかっています。GRMをすることはカテゴリカル因子分析をしていることと同じ，なのです。
@@ -168,24 +168,24 @@ IRCCCを，$\theta$の値がマイナスからプラスの方向に動かしな�
 
 ポイントは「最終的には同じところに辿り着く」という点ですから，歴史的流れや個々のモデルの細かい数式を完全に理解していなくてもいいかもしれません。それよりは，心理学者として，あるいはテストをする側として，回答者に無理のない，それでいて必要な程度に精緻な情報が得られる適切な分析方法を選択できるようになることが重要です。
 \begin{figure}[ht]
-    \begin{tikzpicture}
-        \node[draw,align=center] (a) at (5,0)
-        {古典的テスト理論\\$X=t+e$};
-        \node(P0) at (5,0.9)[above] {見えないものを測定・数値化したい};
-        \node[draw,align=center] (b) at (0,-2.5) {探索的因子分析\\$z_{ij}=\sum a_{jm}f_{im} + d_jU_{ij}$};
-        \node[draw,align=center] (c) at (10,-2.5) {項目反応理論\\ $p_j(\theta) = \frac{1}{1+exp(-1.7a_j(\theta_i -b_j))}$};
-        \node[draw] (d) at (5,-5) {カテゴリカル因子分析};
-        \draw[->] (a) --(b);
-        \draw[->] (a) --(c);
-        \draw[->] (b) --(d);
-        \draw[->] (c) --(d);
-        \node (P1) at (1.3,-1.25)[above] {構造に興味がある};
-        \node (P2) at (8.7,-1.25)[above] {機能に興味がある};
-        \node (P3) at (2.5,-4.2)[left,align=center] {順序尺度水準へ\\得点の精緻化};
-        \node (P4) at (7.5,-4.2)[right,align=center] {多段階反応へ\\多次元に拡張};
-    \end{tikzpicture}
-    \caption{理論・モデルの流れ。左側のルートが心理学的系譜，右側のルートがテスト理論的系譜}
-    \label{fig::05_06}
+	\begin{tikzpicture}
+		\node[draw,align=center] (a) at (5,0)
+		{古典的テスト理論\\$X=t+e$};
+		\node(P0) at (5,0.9)[above] {見えないものを測定・数値化したい};
+		\node[draw,align=center] (b) at (0,-2.5) {探索的因子分析\\$z_{ij}=\sum a_{jm}f_{im} + d_jU_{ij}$};
+		\node[draw,align=center] (c) at (10,-2.5) {項目反応理論\\ $p_j(\theta) = \frac{1}{1+exp(-1.7a_j(\theta_i -b_j))}$};
+		\node[draw] (d) at (5,-5) {カテゴリカル因子分析};
+		\draw[->] (a) --(b);
+		\draw[->] (a) --(c);
+		\draw[->] (b) --(d);
+		\draw[->] (c) --(d);
+		\node (P1) at (1.3,-1.25)[above] {構造に興味がある};
+		\node (P2) at (8.7,-1.25)[above] {機能に興味がある};
+		\node (P3) at (2.5,-4.2)[left,align=center] {順序尺度水準へ\\得点の精緻化};
+		\node (P4) at (7.5,-4.2)[right,align=center] {多段階反応へ\\多次元に拡張};
+	\end{tikzpicture}
+	\caption{理論・モデルの流れ。左側のルートが心理学的系譜，右側のルートがテスト理論的系譜}
+	\label{fig::05_06}
 \end{figure}
 
 \section{課題}

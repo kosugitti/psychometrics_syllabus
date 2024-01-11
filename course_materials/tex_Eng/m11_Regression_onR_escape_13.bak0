@@ -1,0 +1,22 @@
+\begin{Rscreen}{回帰分析の出力結果}{out11_04}
+   \begin{verbatim}
+Call:
+lm(formula = salary ~ HR + Hit, data = batter2z)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.3016 -0.2440 -0.1045  0.0269  4.1507 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -1.006e-16  4.361e-02   0.000   1.0000    
+HR           4.298e-01  6.786e-02   6.333 7.98e-10 ***
+Hit          2.202e-01  6.786e-02   3.245   0.0013 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.7911 on 326 degrees of freedom
+Multiple R-squared:  0.378,	Adjusted R-squared:  0.3742 
+F-statistic: 99.06 on 2 and 326 DF,  p-value: < 2.2e-16
+\end{verbatim}
+\end{Rscreen}
