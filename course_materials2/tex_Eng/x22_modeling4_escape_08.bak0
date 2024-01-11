@@ -1,5 +1,0 @@
-\begin{description}
-    \item[dataブロック] 1.データ全体の長さ\verb|L|，2.被験者の数\verb|N|，3.被験者ID\verb|IDindex|，4.そのデータがどの水準なのかを示す識別子\verb|Condition|，5.実際の値\verb|val|を与えています。最後の3つはデータ長と同じサイズです。
-    \item[transformed dataブロック] データを変形する\verb|transformed data|ブロックの登場です。ここではペアとしての情報がある\verb|vector|型にした変数を作っています。その変数\verb|pairX|は，N人分の情報があり，それぞれ要素番号1,2がベクトルの要素に対応しています。ここでも入れ子になった識別子を使っていて，\verb|pairX[IDindex[l],Condition[l]]|はl行目の個人\verb|IDindex[l]|，l行目の条件\verb|Condition[l]|から，たとえば \verb|IDindex[l]＝15|，\verb|Condition[l]=2|であれば15番目の人の事後の値\verb|pairX[15,2]|を値として代入する，ということをしています。
-    \item[modelブロック] 作った\verb|pairedX|というベクトルに対して多次元正規分布からのデータを与えています。
-\end{description}

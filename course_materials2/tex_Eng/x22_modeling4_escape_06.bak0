@@ -1,9 +1,0 @@
-\begin{description}
-    \item[2行目] 真値の設定をして，行列Xを作っています。
-    \item[3行目] Xを加工して，\verb|tidy_data|という変数に作り替えます。加工のプロセスは下記の通りです。
-    \item[4行目] \verb|data.frame|型を経て\verb|tibble|型に変形します\footnote{\verb|tibble|型にする必要は別にありません。著者の趣味です。\verb|tibble|型は\verb|data.frame|型の拡張版で表示した時に変数の型などがわかりやすいという利点があります。\verb|matrix|型からいきなり\verb|tibble|型に変更すると警告が出るので，いったん\verb|data.frame|型を経由しました。}。
-    \item[5行目] この段階で，変数名が\verb|V1,V2|となっていますが，わかりやすくするために\verb|pre,post|に書き換えました。
-    \item[6行目] 行番号を\verb|ID|という変数名を持つものに変えています。
-    \item[7行目] \verb|ID|をキーに，横長だったデータを縦長に(tidyに)変換する関数です。
-    \item[8行目] 縦長になった変数(Code::\ref{code:22_04}はこの段階の出力です)から，\verb|name|変数の値が\verb|pre|であるものを1に，そうでないものを2にした新しい変数\verb|cond|を作りました。
-\end{description}

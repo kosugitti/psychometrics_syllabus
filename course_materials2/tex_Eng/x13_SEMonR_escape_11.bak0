@@ -1,6 +1,0 @@
-\begin{description}
-  \item[1-7行目] モデルの記述。visual, textual, speedの3因子をつくり，textualはvisualとspeedから説明されるモデル。さらにspeed因子は学年によっても説明される。
-  \item[8行目] 関数による推定
-  \item[9行目] 結果の出力。適合度指標と標準化係数の出力オプションをつけて。
-  \item[10-12行目] 分析結果の\keytermL{修正指数}{しゅうせいしすう}を出力。ただし指標\verb|mi|の大きい順に並べ替えるために11行目で出力を\texttt{tibble}型にし，\texttt{arrange}関数で並べ替えている。
-\end{description}

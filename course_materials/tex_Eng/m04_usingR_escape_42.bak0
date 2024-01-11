@@ -1,7 +1,0 @@
-\begin{lstlisting}[language=c++,label={code:usingR_pivot_longer},caption={ロング型にする関数}]
-dat.long <- dat %>%
-  select(Year, Name, position) %>%
-  rownames_to_column("ID") %>%
-  pivot_longer(-ID) %>%
-  print() 
-\end{lstlisting}

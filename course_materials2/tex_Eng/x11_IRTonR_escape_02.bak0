@@ -1,7 +1,0 @@
-\begin{lstlisting}[language=c++,label={code:11_01},caption={データの読み込みから記述統計量の計算まで}]
-    rm(list=ls())
-    library(tidyverse)
-    library(ltm)
-    dat <- read_csv("IRTsample.csv")
-    ltm::descript(dat)
-\end{lstlisting}

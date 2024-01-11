@@ -1,8 +1,0 @@
-\begin{lstlisting}[language=c++,label={code:24_01},caption={二つの推定法の比較}]
-# 最小二乗法の推定
-result.LS <- lsfit(x = batter$height, y = batter$weight)
-result.LS$coefficients
-# 最尤推定
-result.LM <- lm(weight ~ height, data = batter)
-result.LM
-\end{lstlisting}

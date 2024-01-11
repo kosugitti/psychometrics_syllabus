@@ -1,5 +1,0 @@
-\begin{lstlisting}[language=c++,label={code:08_02},caption={Using random numbers for approximation}]
-    X <- rnorm(n = 100000 , mean = 0 , sd = 1)
-    length(X[X>0.3 & X<1.0])
-    length(X[X>0.3 & X<1.0])/100000
-\end{lstlisting}

@@ -1,6 +1,0 @@
-\begin{lstlisting}[language=C++,label={code:18_05},caption={rstanパッケージによるオプション指定}]
-fit1rstan <- sampling(model,
-  data = list(Y = x),
-  chains = 4, iter = 5000, warmup = 1000
-)
-\end{lstlisting}

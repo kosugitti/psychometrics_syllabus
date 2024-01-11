@@ -1,6 +1,0 @@
-\begin{description}
-    \item[dataブロック] データは整然データの形で渡します。データの長さL，説明変数X，被説明変数Yの他に，群の数G，どの群に属するのかを表すインデックス変数G[L]を用意しています。
-    \item[parametersブロック] 群の数だけ係数$\beta_0,\beta_1$が必要です。加えて，これら切片と傾きの平均値$\gamma$と散らばり$\tau$を用意しています。
-    \item[transformed parametersブロック] \verb|poisson_log|を使ってもいいのですが，話をわかりやすくするためにいったん$\lambda_{ij}$を作っています。係数\verb|beta0[g]|のグループを表す\verb|g|のところは，L行目のデータの所属先を表すインデックス，\verb|Gindex[l]|で代入しています。\verb|beta1|についても同様です。
-    \item[modelブロック] データの各行は，行ごとの線形モデルで推定されますのでスッキリしたものです。\verb|beta0[g]|や\verb|beta1[g]|はハイパーパラメータを持つ上位の正規分布にカバーされています。パラメータの事前分布は設計図通りです。
-\end{description}

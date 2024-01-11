@@ -1,7 +1,0 @@
-\begin{lstlisting}[language=c++,label={code:17_04},caption={確率分布の可視化1}]
-x <- seq(-4, 4, 0.05)
-plot(x, dnorm(x))
-library(tidyverse)
-ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
-  stat_function(fun = dnorm)
-\end{lstlisting}

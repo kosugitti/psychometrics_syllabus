@@ -1,5 +1,0 @@
-\begin{lstlisting}[language=C++,label={code:PRE_06MAP},caption={MAP推定する関数のコード}]
-map_estimation <- function(z) {
-  density(z)$x[which.max(density(z)$y)]
-}
-\end{lstlisting}

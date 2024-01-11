@@ -1,9 +1,0 @@
-\begin{align*}
-     & s_x^2  =  \frac{1}{N}\sum(x_i - \bar{x})^2                                          & \mbox{定義より}                      \\
-     & =  \frac{1}{N}\sum(x_i - \bar{x})(x_i - \bar{x})                                    & \mbox{}                              \\
-     & =  \frac{1}{N}\sum(x_i ^ 2 - 2x_i\bar{x} + \bar{x}^2)                               & \mbox(後ろのカッコを展開)            \\
-     & =  \frac{1}{N}\sum x_i^2 - \frac{1}{N}\sum(2x_i\bar{x}) + \frac{1}{N}\sum \bar{x}^2 & \mbox{$\sum$記号の分配}              \\
-     & =  \frac{1}{N}\sum x_i^2 - 2\bar{x}\frac{1}{N}\sum x_i + \frac{1}{N} N\bar{x}^2     & \mbox{$i$が変化するところだけにつく} \\
-     & =  \frac{1}{N}\sum x_i^2 -2\bar{x}^2  + \bar{x}^2                                   & \mbox{}                              \\
-     & =  \frac{1}{N}\sum x_i^2 -\bar{x}^2
-\end{align*}
