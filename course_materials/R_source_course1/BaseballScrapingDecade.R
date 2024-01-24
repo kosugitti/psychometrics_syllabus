@@ -12,7 +12,7 @@ address2 <- "https://baseball-data.com/stats/"
 tID <- c("c", "t", "yb", "g", "d", "s", "h", "l", "e", "bs", "f", "m")
 # tID <- "c"
 ## 収集年度
-YEARS <- 11:20
+YEARS <- 11:23
 # YEARS <- 11:12
 
 ## 基本となるURL
@@ -162,5 +162,6 @@ dat1 %>%
   filter(!is.na(UniformNum)) %>%
   filter(!is.na(Games)) -> baseball
 
-write_csv(baseball, file = "BaseballDecade.csv")
+write_csv(baseball, file = "Baseball22.csv")
 # rm(list=ls())
+

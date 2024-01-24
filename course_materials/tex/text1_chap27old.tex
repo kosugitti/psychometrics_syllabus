@@ -7,7 +7,7 @@
 \chapter{Rによるベイズ推定}
 \label{chapter27}
 ベイズ推定が良さそうだと思っても，実際に手元で計算できなければ絵に描いた餅。ということで最後にベイズ推定の実践例を説明します。
-簡単なモデルであれば確率分布の計算から解析的に答えを出すことはできますが，今後のことも考えてMCMC法による方法を説明します。これはRの\texttt{brms}パッケージ\citep{brmsCite1,brmsCite2}で提供されています。
+簡単なモデルであれば確率分布の計算から解析的に答えを出すことはできますが，今後のことも考えてMCMC法による方法を説明します。これはRの\texttt{brms}パッケージ\parencite{brmsCite1,brmsCite2}で提供されています。
 Rパッケージの\texttt{brms}を使うと，一般線形モデルが簡単に実装できます。関数名が\texttt{lm}から\texttt{brm}に変わるだけで，MCMCをつかった線形モデルのベイズ推定を行うことができ，またその結果の可視化も簡単に行えます。\texttt{lm}関数と同じく，説明変数を離散型(factor型)にしておくと，要因の効果の大きさが推定でき，\texttt{brms}パッケージの\verb|conditional_effects|関数を使うと要因ごとに周辺化された結果も図示されます。
 \section{環境の準備}
 まずは環境の準備です。いつもの通り，次の3つのステップを経てください。
@@ -16,7 +16,7 @@ Rパッケージの\texttt{brms}を使うと，一般線形モデルが簡単に
 \paragraph{Rスクリプトを開く}今日のコードを書くためのRスクリプトファイルを準備します。File > NewFile > R Scriptと進み，何も書いてないRスクリプトの画面を表示させてください。真っ白いファイルが開いたら問題ありません。
 
 続いて，ベイズ推定用のパッケージを準備します。\texttt{brms}パッケージ\footnote{ベイズで(Bayesian),回帰モデルを(Regression Mode)実行する，Stanを使ってね(using Stan)，という意味です。Stanとは確率的プログラミング言語といい，要するに乱数発生器を作ってくれるソフトウェアのことです。}をインストールするのですが，このパッケージをインストールする\textbf{前に}，このパッケージが必要とするコンパイラを用意する必要があります。
-詳しくは \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}のサイトに説明がありますが\footnote{「RStan Getting Started (Japanese)」でググると出てきます。}\footnote{\citet{Baba201907}にも導入についての詳しい説明があります。}，Windowsユーザの場合はまず，\texttt{code:\ref{code:27_01}}を実行してください。
+詳しくは \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}のサイトに説明がありますが\footnote{「RStan Getting Started (Japanese)」でググると出てきます。}\footnote{\textcite{Baba201907}にも導入についての詳しい説明があります。}，Windowsユーザの場合はまず，\texttt{code:\ref{code:27_01}}を実行してください。
 \begin{lstlisting}[language=c++,label={code:27_01},caption={必要なツールをインストールする}]
 pkgbuild::has_build_tools(debug = TRUE)
 \end{lstlisting}
@@ -146,7 +146,7 @@ scale reduction factor on split chains (at convergence, Rhat = 1).
 	\caption{ベイズ法による回帰係数の推定}
 	\label{fig::27_01}
 \end{figure}
-この図の左側にあるのが，事後分布の形です。推定値である288.37や93.86は分布の平均値(EAP推定値)で，この分布のピーク(MAP推定値)ではないことに注意してください。MAP推定値が欲しい場合は，別途\texttt{bayestestR}パッケージ\citep{bayestestR}を導入し，\verb|map_estimate|関数を実行する必要があります(\texttt{code:\ref{code:27_05}})。
+この図の左側にあるのが，事後分布の形です。推定値である288.37や93.86は分布の平均値(EAP推定値)で，この分布のピーク(MAP推定値)ではないことに注意してください。MAP推定値が欲しい場合は，別途\texttt{bayestestR}パッケージ\parencite{bayestestR}を導入し，\verb|map_estimate|関数を実行する必要があります(\texttt{code:\ref{code:27_05}})。
 
 \begin{lstlisting}[language=c++,label={code:27_05},caption={結果の表示}]
 install.packages(bayestestR)

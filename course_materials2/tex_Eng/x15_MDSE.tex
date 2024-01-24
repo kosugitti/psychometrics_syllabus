@@ -36,8 +36,8 @@ There is a data set called \texttt{eurodist} in R that provides information on t
 % 元のデータは$21 \times 21$のサイズです。表から，たとえばアテネ(Athens)とバルセロナ(Barcelona)の距離が3313km，と言うことが読み取れます。表の右上が空白になっていますが，これは\keytermL{距離行列}{きょりぎょうれつ}が\keytermL{対称行列}{たいしょうぎょうれつ}なので，ムダな情報を表示しないようにしているからです。アテネとバルセロナの距離は，バルセロナとアテネの距離に等しいですからね。
 The original data is of size $21 \times 21$. From the table, we can read, for example, that the distance between Athens and Barcelona is 3313km. The top right part of the table is blank, because this is a distance matrix, which is a symmetrical matrix, so we avoid displaying redundant information. After all, the distance from Athens to Barcelona is equal to the distance from Barcelona to Athens.
 
-% さて距離行列はこのように，\keytermL{正方行列}{せいほうぎょうれつ}ですから，\keytermL{固有値分解}{こゆうちぶんかい}をすることで\keytermL{基底}{きてい}を求めることができます。基底は座標を形成する基本単位ですから，それを使って各変数の位置にあたる座標を計算できます\footnote{厳密には距離行列$\bm{D}$そのものではなく，それを二重中心化した行列の固有値分解になりますが，本質的には変わりません。詳しくは\citet{Okada19940115}などを参照のこと。}。このように距離行列から座標を求めて，変数をプロットすることで変数間関係を可視化する手法のことを\keyterm{多次元尺度構成法}{たじげんしゃくどこうせいほう}{Multi-Dimensional Scaling: MDS}と言います。
-Now, the distance matrix is a \keytermL{square matrix}{せいほうぎょうれつ}, so you can find the \keytermL{basis}{きてい} by \keytermL{eigenvalue decomposition}{こゆうちぶんかい}. Since the basis forms the basic unit of the coordinates, you can calculate the coordinates corresponding to the position of each variable using it\footnote{Strictly speaking, it's not the distance matrix $\bm{D}$ itself, but the eigenvalue decomposition of the double centered matrix, although essentially it doesn't change. For more details, please refer to \citet{Okada19940115} and the like.}. This method of finding the coordinates from the distance matrix and plotting the variables to visualize the relationship between the variables is called \keyterm{Multidimensional Scaling: MDS}{たじげんしゃくどこうせいほう}.
+% さて距離行列はこのように，\keytermL{正方行列}{せいほうぎょうれつ}ですから，\keytermL{固有値分解}{こゆうちぶんかい}をすることで\keytermL{基底}{きてい}を求めることができます。基底は座標を形成する基本単位ですから，それを使って各変数の位置にあたる座標を計算できます\footnote{厳密には距離行列$\bm{D}$そのものではなく，それを二重中心化した行列の固有値分解になりますが，本質的には変わりません。詳しくは\textcite{Okada19940115}などを参照のこと。}。このように距離行列から座標を求めて，変数をプロットすることで変数間関係を可視化する手法のことを\keyterm{多次元尺度構成法}{たじげんしゃくどこうせいほう}{Multi-Dimensional Scaling: MDS}と言います。
+Now, the distance matrix is a \keytermL{square matrix}{せいほうぎょうれつ}, so you can find the \keytermL{basis}{きてい} by \keytermL{eigenvalue decomposition}{こゆうちぶんかい}. Since the basis forms the basic unit of the coordinates, you can calculate the coordinates corresponding to the position of each variable using it\footnote{Strictly speaking, it's not the distance matrix $\bm{D}$ itself, but the eigenvalue decomposition of the double centered matrix, although essentially it doesn't change. For more details, please refer to \textcite{Okada19940115} and the like.}. This method of finding the coordinates from the distance matrix and plotting the variables to visualize the relationship between the variables is called \keyterm{Multidimensional Scaling: MDS}{たじげんしゃくどこうせいほう}.
 
 % 試しに\texttt{eurodist}データをMDSで2次元プロットしてみましょう。
 Let's try to plot the \texttt{eurodist} data in 2D using MDS as a test.
@@ -89,8 +89,8 @@ Distance is also a similarity, so depending on what you consider as distance, va
 For example, consider a rating scale in which an evaluation is made on n items. Let $x_{ij}$ be the rating value of target $j$ on the $i$th item.
 % $d(j,k) = \sqrt{\sum_{i=1}^N (x_{ij}-x_{ik})^2 }$とすれば対象の類似度が計算できます。
 If you define $d(j,k) = \sqrt{\sum_{i=1}^N (x_{ij}-x_{ik})^2 }$, you can calculate the similarity of the target.
-% ほかにも何らかの刺激A,Bについて，AかBかの判断をさせた時に混同してしまった混同率や，単語と単語の連想価，刺激の汎化勾配，反応潜時，ソシオメトリックなデータなど，いろいろなものが「類似しているかどうか」の指標として使えます\footnote{これらデータの例に関しては\citet{Takane198002}のPp.14--27を参照してください。}。尺度評定よりも，具体的な2つの刺激が似ているかどうかの反応の方がやりやすい，というのは誰しも実感としてわかることではないかと思います。
-When making a judgment on some stimuli A or B, various things such as the confusion rate at which they got confused, the associative value of words, the generalization gradient of stimuli, reaction latency, sociometric data, etc., can be used as indicators of whether they are "similar or not"\footnote{For examples of these data, please refer to Pp.14-27 of \citet{Takane198002}.}. I think everyone can intuitively understand that it's easier to respond to whether two specific stimuli are similar or not, rather than making a scale evaluation.
+% ほかにも何らかの刺激A,Bについて，AかBかの判断をさせた時に混同してしまった混同率や，単語と単語の連想価，刺激の汎化勾配，反応潜時，ソシオメトリックなデータなど，いろいろなものが「類似しているかどうか」の指標として使えます\footnote{これらデータの例に関しては\textcite{Takane198002}のPp.14--27を参照してください。}。尺度評定よりも，具体的な2つの刺激が似ているかどうかの反応の方がやりやすい，というのは誰しも実感としてわかることではないかと思います。
+When making a judgment on some stimuli A or B, various things such as the confusion rate at which they got confused, the associative value of words, the generalization gradient of stimuli, reaction latency, sociometric data, etc., can be used as indicators of whether they are "similar or not"\footnote{For examples of these data, please refer to Pp.14-27 of \textcite{Takane198002}.}. I think everyone can intuitively understand that it's easier to respond to whether two specific stimuli are similar or not, rather than making a scale evaluation.
 
 % 類似度のデータが得られれば，それを距離と見做してMDSにかければ，変数間の関係を地図に描くことができるわけです。このように応用可能な領域が非常に広いことも，MDSの利点であると言えるでしょう。
 If similarity data can be obtained, by treating it as a distance and applying it to MDS, we can map the relationship between variables. The fact that it can be applied to a very wide range of fields can also be said to be an advantage of MDS.
@@ -154,8 +154,8 @@ Lines 13-14: Except for the performer name as a variable, we are creating a dist
 The resulting distance matrix is as shown in Table \ref{tbl:x15_distMat}. Please confirm that the distance between the Mole Rider and the Langjatai matches the value we calculated earlier. Since this is a \keytermL{symmetric matrix}{せいほうたいしょうぎょうれつ}, only the lower triangle is displayed. Also, the diagonal is set to $0$. This is because the distance to oneself is zero.
 
 \input{x15_MDS_escape_10}
-% あとはこの距離行列を\verb|isoMDS|関数に渡すだけです。\verb|isoMDS|関数は引数として，何次元の解を求めるかを設定できます。地理データであれば2,3次元から作られていることは明らかですが，この評価が何次元かは事前にわかりません。何次元にするかの指標として，\citet{kruskal1964}は\verb|Stress|と呼ばれる値を次のように定義しました。
-All that's left is to pass this distance matrix to the \verb|isoMDS| function. The \verb|isoMDS| function allows you to set how many dimensions you want the solution to be. It's clear that geographical data is made from 2 or 3 dimensions, but we don't know in advance how many dimensions this evaluation will be. As a measure of how many dimensions to use, \citet{kruskal1964} defined a value called \verb|Stress| as follows.
+% あとはこの距離行列を\verb|isoMDS|関数に渡すだけです。\verb|isoMDS|関数は引数として，何次元の解を求めるかを設定できます。地理データであれば2,3次元から作られていることは明らかですが，この評価が何次元かは事前にわかりません。何次元にするかの指標として，\textcite{kruskal1964}は\verb|Stress|と呼ばれる値を次のように定義しました。
+All that's left is to pass this distance matrix to the \verb|isoMDS| function. The \verb|isoMDS| function allows you to set how many dimensions you want the solution to be. It's clear that geographical data is made from 2 or 3 dimensions, but we don't know in advance how many dimensions this evaluation will be. As a measure of how many dimensions to use, \textcite{kruskal1964} defined a value called \verb|Stress| as follows.
 
 \[ Stress = \sqrt{\frac{\sum(d_{ij} - \delta_{ij}^2)}{\sum d_{ij}^2}} \]
 
@@ -171,7 +171,7 @@ All that's left is to pass this distance matrix to the \verb|isoMDS| function. T
 \end{figure}
 
 まるで因子分析の\keytermL{スクリープロット}{すくりーぷろっと}のようですね。横軸に次元数，縦軸にStress値を置いた折れ線グラフですが，当然のことながら反映させるMDS空間の次元数が増えるとデータとの距離が縮んでいきます。
-\citet{kruskal1964multidimensional}の基準によれば，Stress値は表\ref{tbl:x15_stress}のように評価できます。この基準でいくと，今回は2次元で4.9\%(0.0049534)ですから，2次元解でOKとしましょう。
+\textcite{kruskal1964multidimensional}の基準によれば，Stress値は表\ref{tbl:x15_stress}のように評価できます。この基準でいくと，今回は2次元で4.9\%(0.0049534)ですから，2次元解でOKとしましょう。
 
 \begin{table}[ht]
 	\centering
@@ -213,8 +213,8 @@ For example, in the case of the previous M-1, my score was as shown in Table \re
 % この評定値を使って著者の理想点を書き足したのが図\ref{fig::15_04}です。低く評価したランジャタイからは遠く，高く評価したハライチやオズワルドに近いところに著者の理想的な笑いの点があり，錦鯉やインディアンスも近くにありますから，今回の優勝にはまぁ納得，と言ったことがわかります。皆さんも自分の理想の点を書き加えてみませんか?
 The figure \ref{fig::15_04} is augmented with the author's ideal point using this evaluation value. The author's ideal comedy point is located at a distance from the low-rated Rangatai and close to the highly-rated Haraiti and Oswald. The Koi Carp and Indians are also nearby, so we can understand that we are reasonably convinced with this victory. Why don't you all try adding your own ideal points?
 \input{x15_MDS_escape_12}
-% \paragraph{Abelson Map}これは\citep{abelson1954technique}の考えた手法で，これもprefmapと同じく布置される対象に別の力(選好度でもなんでもよい)があると考え，地図空間上に力の場をプロットして等高線を引くことで表現するモデルです。
-\paragraph{Abelson Map} This is a technique devised by \citep {abelson1954technique}, and like prefmap, it assumes that the object being arranged has another force (preference or anything is ok), and plots the force field on the map space, drawing contour lines to express the model.
+% \paragraph{Abelson Map}これは\parencite{abelson1954technique}の考えた手法で，これもprefmapと同じく布置される対象に別の力(選好度でもなんでもよい)があると考え，地図空間上に力の場をプロットして等高線を引くことで表現するモデルです。
+\paragraph{Abelson Map} This is a technique devised by \parencite {abelson1954technique}, and like prefmap, it assumes that the object being arranged has another force (preference or anything is ok), and plots the force field on the map space, drawing contour lines to express the model.
 
 % この方法では，各点Pにかかる力$V(P)$を次のように定式化します。
 In this method, we formulate the force $V(P)$ acting on each point P as follows.
@@ -233,9 +233,9 @@ In this method, we formulate the force $V(P)$ acting on each point P as follows.
 
 力のメタファーにすぎないと言われたらそうですが，このように色々なものを可視化できるのもMDSの面白いところです。
 
-\paragraph{非対称多次元尺度構成法}距離データは対称でなければならない，というものの，たとえば好きな人に振り向いてもらえない＝片想いとか，都市間の人口の流入・流出，国際貿易の赤字・黒字などを考えると，対称間の関係が対称出ないことは少なくないわけです。そうした非対称な関係を，図に加えようと言うのが非対称MDSです。非対称情報を対象部分+歪対象部分に分割し，この対称でない要素を図の中に書き加えるモデルが一般的で，プロットする対象の周りに縁や楕円で表現するとか，矢印で表現するとか，vonMises分布と呼ばれる\keytermL{確率分布}{かくりつぶんぷ}で表現するとか，さきほどのAbelson Mapで高さとして表現するなどのモデルがあります。より数学的なモデルとして，プロットする空間を複素空間にするモデルもあります。詳しくは\citet{Chino2012}を参考にしてください。
+\paragraph{非対称多次元尺度構成法}距離データは対称でなければならない，というものの，たとえば好きな人に振り向いてもらえない＝片想いとか，都市間の人口の流入・流出，国際貿易の赤字・黒字などを考えると，対称間の関係が対称出ないことは少なくないわけです。そうした非対称な関係を，図に加えようと言うのが非対称MDSです。非対称情報を対象部分+歪対象部分に分割し，この対称でない要素を図の中に書き加えるモデルが一般的で，プロットする対象の周りに縁や楕円で表現するとか，矢印で表現するとか，vonMises分布と呼ばれる\keytermL{確率分布}{かくりつぶんぷ}で表現するとか，さきほどのAbelson Mapで高さとして表現するなどのモデルがあります。より数学的なモデルとして，プロットする空間を複素空間にするモデルもあります。詳しくは\textcite{Chino2012}を参考にしてください。
 
-\paragraph{多次元展開法}リッカート法は心理尺度でもっともよく使われる方法で，「非常に当てはまる」から「まったく当てはまらない」までの段階的な反応を被験者に求める方法です。これは\keytermL{段階反応モデル}{だんかいはんのうもでる}で分析されることからも明らかなように，項目に対する反応段階が順番的に強くなっていくことを仮定しています。しかし，実際に被験者が丸をつけるときは，「自分の感覚にもっとも近いカテゴリーを選ぶ」ということをしているはずです。つまり，被験者と反応カテゴリーの距離が，尺度に反映されているはずなのです。この考え方から，尺度に対する反応を距離とし，項目とそれに回答した被験者の両方をプロットする地図を書く方法があります。Coombsが考えた\keyterm{多次元展開法}{たじげんてんかいほう}{Multi-dimensional unfolding method}と呼ばれる手法がそれで，この手法から態度測定の尺度化を考えることもできます。発想としては数量化理論に近く，また\citet{shimizu2018}はこれを確率モデルに展開しています。
+\paragraph{多次元展開法}リッカート法は心理尺度でもっともよく使われる方法で，「非常に当てはまる」から「まったく当てはまらない」までの段階的な反応を被験者に求める方法です。これは\keytermL{段階反応モデル}{だんかいはんのうもでる}で分析されることからも明らかなように，項目に対する反応段階が順番的に強くなっていくことを仮定しています。しかし，実際に被験者が丸をつけるときは，「自分の感覚にもっとも近いカテゴリーを選ぶ」ということをしているはずです。つまり，被験者と反応カテゴリーの距離が，尺度に反映されているはずなのです。この考え方から，尺度に対する反応を距離とし，項目とそれに回答した被験者の両方をプロットする地図を書く方法があります。Coombsが考えた\keyterm{多次元展開法}{たじげんてんかいほう}{Multi-dimensional unfolding method}と呼ばれる手法がそれで，この手法から態度測定の尺度化を考えることもできます。発想としては数量化理論に近く，また\textcite{shimizu2018}はこれを確率モデルに展開しています。
 
 ここであげたいくつかの例にあるように，多次元尺度法もさまざまな角度から人の判断や反応から，\keyterm{尺度}{しゃくど}{scale}を作る方法です。多次元尺度構成法は因子分析モデルよりも制約や仮定が少なく，より直接的に心理的反応をモデル化しようとしています。
 

@@ -10,7 +10,7 @@ cp ${filename}.tex ${filename}.old
 ## LateX Main
 rm error.log
 lualatex tmp
-upbibtex tmp
+biber tmp
 lualatex tmp
 lualatex tmp
 upmendex -r -c -g -s ../../indexStyle.ist tmp

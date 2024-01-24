@@ -71,7 +71,7 @@ Buttons are displayed in chunks to set up or execute temporarily (Figure \ref{fi
 
 \input{m04_usingR_escape_06}
 
-% うまくできましたでしょうか。コードや設定に間違いがあればknitは中断してしまいますが，エラーメッセージを読んで対応しましょう。RMarkdownについて，詳しくは\citet{Takahashi201805}が一冊を使って解説していますし，\citet{Kinosady2021}や\citet{kosugi2019}なども参考になります\footnote{専修大学の国里ゼミと小杉ゼミでは，卒論をRmarkdownで書くことを推奨しています。再現性の観点から便利であることはもちろん，文書の規定に合わせたり引用文献リストを自動生成させたりする，専修大学専用パッケージ\texttt{senshuRmd}を共同開発しており，これを利用します。}。
+% うまくできましたでしょうか。コードや設定に間違いがあればknitは中断してしまいますが，エラーメッセージを読んで対応しましょう。RMarkdownについて，詳しくは\textcite{Takahashi201805}が一冊を使って解説していますし，\textcite{Kinosady2021}や\textcite{kosugi2019}なども参考になります\footnote{専修大学の国里ゼミと小杉ゼミでは，卒論をRmarkdownで書くことを推奨しています。再現性の観点から便利であることはもちろん，文書の規定に合わせたり引用文献リストを自動生成させたりする，専修大学専用パッケージ\texttt{senshuRmd}を共同開発しており，これを利用します。}。
 Were you able to do it well? If there is an error in the code or settings, knitting will be interrupted, but you should read the error message and respond. For more information about RMarkdown, Takahashi201805 explains it using an entire book, and Kinosady2021 and Kosugi2019 are also helpful. In the Kunisato and Kosugi seminars at Senshu University, it is recommended to write the thesis in Rmarkdown. From the perspective of reproducibility, it is of course convenient, and we are jointly developing the Senshu University-specific package senshuRmd, which is used to conform to document regulations and automatically generate citation lists.
 
 
@@ -135,8 +135,8 @@ The process of manipulating created data to make it easier to analyze is called 
 \label{dataHandling}
 % ここではデータハンドリングの話をします。データハンドリングとは，データを加工するという意味です。進んだ統計的な分析などをする場合も，まずは元のデータを分析しやすい形に整える作業が必要なのです。
 We're going to talk about data handling here. Data handling means the processing of data. Even when doing advanced statistical analysis, you first need to arrange the original data into a form that is easy to analyze.
-% 面白いもので，このデータハンドリングだけについて書かれた本もあります。\citet{Kinosady2021}がそうで，どんなデータをどのように分析するか，について触れることなく，どのようにデータを加工するか，加工しやすくするための準備をするか，ということに特化しています。手元に一冊置いておきたいおすすめの一冊です。
-Interestingly, there are books written solely about this data handling. One of them is \citet{Kinosady2021}, it specializes in how to process data, how to prepare for easy processing, without touching on what kind of data to analyze and how. It's a recommended book that you'll want to keep on hand.
+% 面白いもので，このデータハンドリングだけについて書かれた本もあります。\textcite{Kinosady2021}がそうで，どんなデータをどのように分析するか，について触れることなく，どのようにデータを加工するか，加工しやすくするための準備をするか，ということに特化しています。手元に一冊置いておきたいおすすめの一冊です。
+Interestingly, there are books written solely about this data handling. One of them is \textcite{Kinosady2021}, it specializes in how to process data, how to prepare for easy processing, without touching on what kind of data to analyze and how. It's a recommended book that you'll want to keep on hand.
 
 % ここではよく使われる基本的な関数を抜粋して，ご紹介します。
 Here, we introduce some commonly used basic functions.
@@ -227,11 +227,11 @@ Lastly, let me introduce you to the syntax of the graph to be drawn.
 
 % \subsection{グラフの描画}
 \subsection{Drawing of Graphs}
-% セクション\ref{dataVisualization}，Pp.\pageref{dataVisualization}でも触れましたが，\textbf{データは図にする}のが基本中の基本ですし，この図をプログラミングすることが客観性，再現性の観点からも重要です。適切な図からは適切な情報の読み取りができますし，人為的でなくても不適切な図から間違った印象を受け取ることもありますから，なぜ・どういうつもりで図にするかを明文化できるようにしておきましょう。このことについての専門書，\citet{Kieran2018}の第1章は，知覚心理学や認知心理学の観点からグラフの書き方について論じられています。是非一度読んでみてください。
-As mentioned in Section \ref{dataVisualization}, on Pp.\pageref{dataVisualization}, the basic rule is to \textbf{visualise data}. Programming these figures is also important from the perspective of objectivity and reproducibility. Appropriate information can be extracted from the appropriate figures, and even if it's not intentional, incorrect impressions can be obtained from inappropriate figures. Therefore, always be clear about why and how you are visualising the data. The Chapter 1 of the book by \citet{Kieran2018}, discusses how to draw graphs from the perspective of perceptual psychology and cognitive psychology. I strongly recommend you to read it.
+% セクション\ref{dataVisualization}，Pp.\pageref{dataVisualization}でも触れましたが，\textbf{データは図にする}のが基本中の基本ですし，この図をプログラミングすることが客観性，再現性の観点からも重要です。適切な図からは適切な情報の読み取りができますし，人為的でなくても不適切な図から間違った印象を受け取ることもありますから，なぜ・どういうつもりで図にするかを明文化できるようにしておきましょう。このことについての専門書，\textcite{Kieran2018}の第1章は，知覚心理学や認知心理学の観点からグラフの書き方について論じられています。是非一度読んでみてください。
+As mentioned in Section \ref{dataVisualization}, on Pp.\pageref{dataVisualization}, the basic rule is to \textbf{visualise data}. Programming these figures is also important from the perspective of objectivity and reproducibility. Appropriate information can be extracted from the appropriate figures, and even if it's not intentional, incorrect impressions can be obtained from inappropriate figures. Therefore, always be clear about why and how you are visualising the data. The Chapter 1 of the book by \textcite{Kieran2018}, discusses how to draw graphs from the perspective of perceptual psychology and cognitive psychology. I strongly recommend you to read it.
 
-% ここでは\keyterm{可視化の文法}{かしかのぶんぽう}{Grammar of Graphics}にしたがって作図をする，\texttt{ggplot2}パッケージ\citep{ggplot2}を使いながら説明します。
-Here, we will explain using the \texttt{ggplot2} package\citep{ggplot2} to create drawings according to the \keyterm{Grammar of Graphics}.
+% ここでは\keyterm{可視化の文法}{かしかのぶんぽう}{Grammar of Graphics}にしたがって作図をする，\texttt{ggplot2}パッケージ\parencite{ggplot2}を使いながら説明します。
+Here, we will explain using the \texttt{ggplot2} package\parencite{ggplot2} to create drawings according to the \keyterm{Grammar of Graphics}.
 % \paragraph{可視化の文法}
 \paragraph{Grammar of Visualization}
 % 可視化の文法に沿った作図のコードは，次のように考えていきます。
@@ -348,8 +348,8 @@ Thus, it can be said that the basic premise of data entry is to create a single 
 % このようにして作られたデータファイルは，UTF-8の文字コードによるcsv形式で保存するのが基本です($\to$付録\ref{computer}，\ref{suffix}節，Pp.\pageref{suffix}参照)。ファイルを保存する時に，ファイル形式をしっかり指定し，拡張子も\texttt{.csv}にしましょう。csvファイルはASCIIファイルですし，文字コードも世界基準のUTF-8にしておけばどのPCからでもみることができます。ある一企業が開発した特定のOS，特定のアプリケーションを持っていなければデータを見ることができない，というのは科学的研究の観点からは不適切なのです。
 The data files created in this way should basically be saved in csv format with UTF-8 character code (see ($\to$ Appendices \ref{computer}, \ref{suffix}, Pp.\pageref{suffix}). When saving the file, make sure to specify the file format and set the extension to \texttt{.csv}. csv files are ASCII files, and if the character code is set to the global standard UTF-8, anyone can view it from any PC. It is inappropriate from the perspective of scientific research to be unable to view data unless you have a specific OS or application developed by a particular company.
 
-% ちなみに2020年12月，総務省により機械判読可能なデータの表記方法の統一ルールが策定されました\citep{soumu}。それには次のようなチェック項目が含まれています。
-By the way, in December 2020, the Ministry of Internal Affairs and Communications established a unified rule for the notation of machine-readable data \citep{soumu}. It includes the following check items.
+% ちなみに2020年12月，総務省により機械判読可能なデータの表記方法の統一ルールが策定されました\parencite{soumu}。それには次のようなチェック項目が含まれています。
+By the way, in December 2020, the Ministry of Internal Affairs and Communications established a unified rule for the notation of machine-readable data \parencite{soumu}. It includes the following check items.
 \input{m04_usingR_escape_38}
 % みなさんも自分でデータを作るときは，こうした基準に沿うように心がけてください。
 Please keep in mind to adhere to these standards when creating your own data.
@@ -380,8 +380,8 @@ We call data in the form of Table \ref{tbl::usingR_tidy} as \keytermL{long forma
 % このような形にしておくと，情報の欠落(欠損値)があった時の対応が楽に行えたり，レコードの選択がやりやすくなるなどの利点があります。
 When organized in this way, there are benefits such as making it easier to handle missing information (missing values), or making the selection of records easier.
 
-% このような分析しやすいデータの形について，\citet{Hadley2014}が提唱したのが\keyterm{整然データ}{せいぜんでーた}{Tidy Data}という考え方です。整然データとは，次の4つの特徴を持ったデータ形式のことです。
-The concept that \citet{Hadley2014} proposed for such analyzable data forms is the idea of \keyterm{Tidy Data}. Tidy Data is a data format that has the following four characteristics.
+% このような分析しやすいデータの形について，\textcite{Hadley2014}が提唱したのが\keyterm{整然データ}{せいぜんでーた}{Tidy Data}という考え方です。整然データとは，次の4つの特徴を持ったデータ形式のことです。
+The concept that \textcite{Hadley2014} proposed for such analyzable data forms is the idea of \keyterm{Tidy Data}. Tidy Data is a data format that has the following four characteristics.
 \input{m04_usingR_escape_41}
 % さきほどの天気の例では，時間，場所，天候という3つの情報が表に含まれていますが，これが一行の中にまとまっているのが整然データです。
 In the earlier example of the weather, the table contains three pieces of information, time, location, and weather conditions. This is structured data, which is all consolidated into one row.
@@ -419,7 +419,7 @@ Okay, once we have created data of the long format, let's also take a look at th
 This is only one line of code, but it has various arguments to be considered. Firstly, the variable that will be used for horizontal positioning should be specified with \verb|id_cols|. This is because items with the same ID will be arranged horizontally. Next, we need to specify the column from which the variable name and the value will come.
 
 
-% \verb|pivot_longer|や\verb|pivot_wider|関数の基本的な使い方はこれだけですが，変数を作る時に変数名を加工したりとか，空白セルができてしまう場合はどのように処理するかといった設定もできます。詳しくは\citet{Kinosady2021}の3章などを参照してください。
-This is the basic usage of the \verb|pivot_longer| and \verb|pivot_wider| functions. However, you can also set how to process when creating variables, such as modifying variable names or when blank cells are created. For more information, please refer to Chapter 3 of \citet{Kinosady2021}.
+% \verb|pivot_longer|や\verb|pivot_wider|関数の基本的な使い方はこれだけですが，変数を作る時に変数名を加工したりとか，空白セルができてしまう場合はどのように処理するかといった設定もできます。詳しくは\textcite{Kinosady2021}の3章などを参照してください。
+This is the basic usage of the \verb|pivot_longer| and \verb|pivot_wider| functions. However, you can also set how to process when creating variables, such as modifying variable names or when blank cells are created. For more information, please refer to Chapter 3 of \textcite{Kinosady2021}.
 
 \end{document}

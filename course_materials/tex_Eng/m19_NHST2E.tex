@@ -116,8 +116,8 @@ On the other hand, accepting the null hypothesis even when there is an effect (i
 \label{alphaInfration}
 % 先ほど，5\%水準という\keytermL{有意水準}{ゆういすいじゅん}は$\alpha$を設定したことと同義だという話をしました。つまり効果がないのに効果があると言ってしまう，うっかりミスを防いでおこうという方針で判断基準を設計しておきましょうということです。
 Earlier, we discussed that the 5% level is synonymous with setting α. In other words, it's about designing a judgment criterion as a policy to prevent careless mistakes, like claiming there's an effect when there isn't.
-% それを踏まえた上で，次のような話を考えてみてください\footnote{この例え話は\citet{BA33892274}からの引用です。}。
-With that in mind, please consider the following scenario (This analogy is quoted from \citet{BA33892274}).
+% それを踏まえた上で，次のような話を考えてみてください\footnote{この例え話は\textcite{BA33892274}からの引用です。}。
+With that in mind, please consider the following scenario (This analogy is quoted from \textcite{BA33892274}).
 \input{m19_NHST2_escape_05}
 
 % 何だか怪しいレストラン，いかがわしいソムリエですね。こんな店が実在していたら行きたくないですが，もちろんこれは架空の話で，20本に1本のダメなワインがあるというのは，帰無仮説検定における5\%の有意水準のメタファーになっています。
@@ -190,8 +190,8 @@ In any case, it's an obviously desirable property that "if the difference is rea
 And finally, one more. Among the two types of errors mentioned earlier, there is a term called "power" which indicates to what extent we can accurately detect real differences. The probability of making a careless mistake, or a Type II error, is $\beta$, so the power is $1-\beta$. The larger this is, the more accurately we can accept the alternative hypothesis.
 
 \input{m19_NHST2_escape_06}
-% このように，帰無仮説検定において判定に関係してくるのは有意水準，サンプルサイズ，効果量，検定力の4つであり，これらのうち3つが決まると残りの1つの要素は計算で決まります\citep{Mizumoto2010}。また有意水準$\alpha$は一般に5\%を使いますし，検定力$1-\beta$も0.8ぐらいにするのがよい，というのが通例になっています。であれば，効果量に応じてサンプルサイズを決めることができるわけです。小さな効果しかなさそうなものであればサンプルサイズはたくさん必要ですし，逆もまた真です。ただ，「サンプルサイズは大いに越したことないだろう」というのは間違いで，そうすると実質的にはごくわずかな違いであっても，検定で検出してしまうことになるからです。
-In this way, the four factors involved in a decision in a null hypothesis test are the significance level, sample size, effect size, and test power, and if three of these are determined, the remaining one will be calculated \citep{Mizumoto2010}. The significance level $\alpha$ is generally used at 5% and the power level $1-\beta$ is good to be about 0.8, which is the convention. Therefore, the sample size can be determined according to the effect size. If it seems to have only a small effect, a large sample size is necessary, and vice versa. However, it is a mistake to think that "the larger the sample size, the better," because this would result in a test detecting even a very slight difference in practice.
+% このように，帰無仮説検定において判定に関係してくるのは有意水準，サンプルサイズ，効果量，検定力の4つであり，これらのうち3つが決まると残りの1つの要素は計算で決まります\parencite{Mizumoto2010}。また有意水準$\alpha$は一般に5\%を使いますし，検定力$1-\beta$も0.8ぐらいにするのがよい，というのが通例になっています。であれば，効果量に応じてサンプルサイズを決めることができるわけです。小さな効果しかなさそうなものであればサンプルサイズはたくさん必要ですし，逆もまた真です。ただ，「サンプルサイズは大いに越したことないだろう」というのは間違いで，そうすると実質的にはごくわずかな違いであっても，検定で検出してしまうことになるからです。
+In this way, the four factors involved in a decision in a null hypothesis test are the significance level, sample size, effect size, and test power, and if three of these are determined, the remaining one will be calculated \parencite{Mizumoto2010}. The significance level $\alpha$ is generally used at 5% and the power level $1-\beta$ is good to be about 0.8, which is the convention. Therefore, the sample size can be determined according to the effect size. If it seems to have only a small effect, a large sample size is necessary, and vice versa. However, it is a mistake to think that "the larger the sample size, the better," because this would result in a test detecting even a very slight difference in practice.
 % もっとも，研究を始める前に効果量がどれぐらいなのかを事前に知るのは難しいところです。効果がどの程度あるかがわからないので，研究しようというシーンが多いでしょう。それでも先行研究があれば，そこにはすでにサンプルサイズも，実際のデータによる効果量も計算できるわけですから，効果量がどれくらいある研究なのかを計算することは可能です。
 Indeed, one of the challenges is knowing in advance how big the effect size will be before starting research. There may be many cases where research is being pursued because the extent of the effect is unknown. Even so, if there is preceding research, that research already contains both a sample size and an effect size calculable from actual data, so it is possible to calculate what kind of research has what kind of effect size.
 

@@ -21,8 +21,8 @@ The Item Response Theory is a model related to test theory, so let's use binary 
 % このように，テスト理論で使うデータは0/1の二値データで，1が正答，0が誤答を表しています。
 Thus, the data used in test theory is binary data with 0/1, where 1 represents a correct answer and 0 represents an incorrect answer.
 
-% これらのデータを使ってRで分析をします。IRTを実行するパッケージとして，\texttt{ltm}\citep{ltm}や\texttt{irtoys}\citep{partchev2017package}などがあります。ここでは\texttt{ltm}パッケージの方を使っていきましょう。
-We will perform the analysis in R using these data. There are packages to execute IRT, such as \texttt{ltm}\citep{ltm} and \texttt{irtoys}\citep{partchev2017package}. Let's use the \texttt{ltm} package here.
+% これらのデータを使ってRで分析をします。IRTを実行するパッケージとして，\texttt{ltm}\parencite{ltm}や\texttt{irtoys}\parencite{partchev2017package}などがあります。ここでは\texttt{ltm}パッケージの方を使っていきましょう。
+We will perform the analysis in R using these data. There are packages to execute IRT, such as \texttt{ltm}\parencite{ltm} and \texttt{irtoys}\parencite{partchev2017package}. Let's use the \texttt{ltm} package here.
 
 % 分析に先立って，データの記述統計量を確認しておきます。\texttt{code:\ref{code:11_01}}を実行してください。
 Before proceeding with the analysis, let's confirm the descriptive statistics of the data. Please execute the code:\ref{code:11_01}.
@@ -328,7 +328,7 @@ print(result.fa, sort = T, cut = 0.3)
 
 カテゴリカル因子分析は，段階反応モデルと数学的に等価であることが知られています。出自が違いますので，分析の数字や出力方法に違いがありますが\footnote{たとえば因子分析の文脈では，因子負荷量を提示して単純構造を目指すのに対し，項目反応理論の文脈ではIRCCCを描いたりTICを描いたりして各反応カテゴリの特徴を精査します。}，実質的には同じことをしていると理解してください。また，Rではたった数文字追加するだけで適切な分析方法になるのですから，使わない手はないと思います。
 
-カテゴリカル因子分析は，因子分析の文脈から順序尺度水準の項目を扱えるように，と発展してきたものです，これに対して，項目反応理論の文脈から心理尺度を扱えるように，と発展してきたルートもあります。これは\keyterm{多次元項目反応理論}{たじげんこうもくはんのうりろん}{multi-dimensional item response theory}と呼ばれるもので，これを提供するRパッケージもあります。それが\texttt{mirt}パッケージ\citep{mirt}です。最後にこれを使ったコードの例を示しておきます。この計算には時間がかかりますが，完全情報最尤推定によって項目反応理論で算出するような，精度の高い\keytermL{因子得点}{いんしとくてん}を得ることができるのは利点だと言えるでしょう。
+カテゴリカル因子分析は，因子分析の文脈から順序尺度水準の項目を扱えるように，と発展してきたものです，これに対して，項目反応理論の文脈から心理尺度を扱えるように，と発展してきたルートもあります。これは\keyterm{多次元項目反応理論}{たじげんこうもくはんのうりろん}{multi-dimensional item response theory}と呼ばれるもので，これを提供するRパッケージもあります。それが\texttt{mirt}パッケージ\parencite{mirt}です。最後にこれを使ったコードの例を示しておきます。この計算には時間がかかりますが，完全情報最尤推定によって項目反応理論で算出するような，精度の高い\keytermL{因子得点}{いんしとくてん}を得ることができるのは利点だと言えるでしょう。
 
 \begin{lstlisting}[language=c++,label={code:11_06b},caption={mirtの実行}]
 library(mirt)

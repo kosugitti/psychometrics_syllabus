@@ -1,9 +1,9 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2024.1.10)  11 JAN 2024 12:17
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2024.1.15)  24 JAN 2024 21:00
  restricted system commands enabled.
 **tmp
 (./tmp.tex
 LaTeX2e <2023-11-01>
-L3 programming layer <2023-12-11>
+L3 programming layer <2024-01-04>
 Lua module: luaotfload 2023-08-31 3.26 Lua based OpenType font support
 Lua module: lualibs 2023-07-13 2.76 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2023-07-13 2.76 ConTeXt Lua libraries -- extended c
@@ -328,10 +328,10 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 Package: lltjcore 2023-02-26 Patch to LaTeX2e Kernel for LuaTeX-ja
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2023-12-11 L3 programming layer (loader) 
+Package: expl3 2024-01-04 L3 programming layer (loader) 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
-File: l3backend-luatex.def 2023-11-09 L3 backend support: PDF output (LuaTeX)
+File: l3backend-luatex.def 2024-01-04 L3 backend support: PDF output (LuaTeX)
 \l__color_backend_stack_int=\count195
 Inserting `l3color' in `luaotfload.parse_color'.
 \l__pdf_internal_box=\box55
@@ -420,13 +420,284 @@ ings
 )
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/patches/lltjp-stfloats.
 sty)) (../../myStyle.sty
-(/usr/local/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
-Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip51
-\bibsep=\skip52
-LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count276
+(/usr/local/texlive/2023/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2023/03/05 v3.19 programmable bibliographies (PK/MW)
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
+(/usr/local/texlive/2023/texmf-dist/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count276
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+(/usr/local/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
+(/usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\c@tabx@nest=\count277
+\c@listtotal=\count278
+\c@listcount=\count279
+\c@liststart=\count280
+\c@liststop=\count281
+\c@citecount=\count282
+\c@citetotal=\count283
+\c@multicitecount=\count284
+\c@multicitetotal=\count285
+\c@instcount=\count286
+\c@maxnames=\count287
+\c@minnames=\count288
+\c@maxitems=\count289
+\c@minitems=\count290
+\c@citecounter=\count291
+\c@maxcitecounter=\count292
+\c@savedcitecounter=\count293
+\c@uniquelist=\count294
+\c@uniquename=\count295
+\c@refsection=\count296
+\c@refsegment=\count297
+\c@maxextratitle=\count298
+\c@maxextratitleyear=\count299
+\c@maxextraname=\count300
+\c@maxextradate=\count301
+\c@maxextraalpha=\count302
+\c@abbrvpenalty=\count303
+\c@highnamepenalty=\count304
+\c@lownamepenalty=\count305
+\c@maxparens=\count306
+\c@parenlevel=\count307
+\blx@tempcnta=\count308
+\blx@tempcntb=\count309
+\blx@tempcntc=\count310
+\c@blx@maxsection=\count311
+\blx@maxsegment@0=\count312
+\blx@notetype=\count313
+\blx@parenlevel@text=\count314
+\blx@parenlevel@foot=\count315
+\blx@sectionciteorder@0=\count316
+\blx@sectionciteorderinternal@0=\count317
+\blx@entrysetcounter=\count318
+\blx@biblioinstance=\count319
+\labelnumberwidth=\skip51
+\labelalphawidth=\skip52
+\biblabelsep=\skip53
+\bibitemsep=\skip54
+\bibnamesep=\skip55
+\bibinitsep=\skip56
+\bibparsep=\skip57
+\bibhang=\skip58
+\blx@bcfin=\read2
+\blx@bcfout=\write3
+\blx@langwohyphens=\language3
+\c@mincomprange=\count320
+\c@maxcomprange=\count321
+\c@mincompwidth=\count322
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/biblatex/blx-dm.def
+File: blx-dm.def 2023/03/05 v3.19 biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file '../../jpa.dbx' found.
+
+(../../jpa.dbx
+File: jpa.dbx 2022/06/22 v9.16 APA biblatex style data model
+)
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count323
+\c@savedafterword=\count324
+\c@annotator=\count325
+\c@savedannotator=\count326
+\c@author=\count327
+\c@savedauthor=\count328
+\c@bookauthor=\count329
+\c@savedbookauthor=\count330
+\c@commentator=\count331
+\c@savedcommentator=\count332
+\c@editor=\count333
+\c@savededitor=\count334
+\c@editora=\count335
+\c@savededitora=\count336
+\c@editorb=\count337
+\c@savededitorb=\count338
+\c@editorc=\count339
+\c@savededitorc=\count340
+\c@foreword=\count341
+\c@savedforeword=\count342
+\c@holder=\count343
+\c@savedholder=\count344
+\c@introduction=\count345
+\c@savedintroduction=\count346
+\c@namea=\count347
+\c@savednamea=\count348
+\c@nameb=\count349
+\c@savednameb=\count350
+\c@namec=\count351
+\c@savednamec=\count352
+\c@translator=\count353
+\c@savedtranslator=\count354
+\c@shortauthor=\count355
+\c@savedshortauthor=\count356
+\c@shorteditor=\count357
+\c@savedshorteditor=\count358
+\c@origauthor=\count359
+\c@savedorigauthor=\count360
+\c@translatora=\count361
+\c@savedtranslatora=\count362
+\c@labelname=\count363
+\c@savedlabelname=\count364
+\c@institution=\count365
+\c@savedinstitution=\count366
+\c@lista=\count367
+\c@savedlista=\count368
+\c@listb=\count369
+\c@savedlistb=\count370
+\c@listc=\count371
+\c@savedlistc=\count372
+\c@listd=\count373
+\c@savedlistd=\count374
+\c@liste=\count375
+\c@savedliste=\count376
+\c@listf=\count377
+\c@savedlistf=\count378
+\c@location=\count379
+\c@savedlocation=\count380
+\c@organization=\count381
+\c@savedorganization=\count382
+\c@origlocation=\count383
+\c@savedoriglocation=\count384
+\c@origpublisher=\count385
+\c@savedorigpublisher=\count386
+\c@publisher=\count387
+\c@savedpublisher=\count388
+\c@language=\count389
+\c@savedlanguage=\count390
+\c@origlanguage=\count391
+\c@savedoriglanguage=\count392
+\c@pageref=\count393
+\c@savedpageref=\count394
+\shorthandwidth=\skip59
+\shortjournalwidth=\skip60
+\shortserieswidth=\skip61
+\shorttitlewidth=\skip62
+\shortauthorwidth=\skip63
+\shorteditorwidth=\skip64
+\origauthorwidth=\skip65
+\translatorawidth=\skip66
+\locallabelnumberwidth=\skip67
+\locallabelalphawidth=\skip68
+\localshorthandwidth=\skip69
+\localshortjournalwidth=\skip70
+\localshortserieswidth=\skip71
+\localshorttitlewidth=\skip72
+\localshortauthorwidth=\skip73
+\localshorteditorwidth=\skip74
+\localorigauthorwidth=\skip75
+\localtranslatorawidth=\skip76
+Package biblatex Info: Trying to load enhanced support for Unicode engines...
+Package biblatex Info: ... file 'blx-unicode.def' found.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/biblatex/blx-unicode.def)
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2023/03/05 v3.19 biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/biblatex/biblatex.def
+File: biblatex.def 2023/03/05 v3.19 biblatex compatibility (PK/MW)
+\c@textcitecount=\count395
+\c@textcitetotal=\count396
+\c@textcitemaxnames=\count397
+\c@biburlbigbreakpenalty=\count398
+\c@biburlbreakpenalty=\count399
+\c@biburlnumpenalty=\count400
+\c@biburlucpenalty=\count401
+\c@biburllcpenalty=\count402
+\biburlbigskip=\muskip17
+\biburlnumskip=\muskip18
+\biburlucskip=\muskip19
+\biburllcskip=\muskip20
+\c@smartand=\count403
+)
+Package biblatex Info: Trying to load bibliography style '../../jpa'...
+Package biblatex Info: ... file '../../jpa.bbx' found.
+
+(../../jpa.bbx
+File: jpa.bbx 2022/11/24 v0.1 日本心理学会 2022年版文献スタイル
+Package biblatex Info: Trying to load bibliography style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.bbx' found.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/biblatex/bbx/authoryear.bbx
+File: authoryear.bbx 2023/03/05 v3.19 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
+File: standard.bbx 2023/03/05 v3.19 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count404
+\c@bbx:relatedtotal=\count405
+))
+\maxprtnames=\count406
+)
+Package biblatex Info: Trying to load citation style '../../jpa'...
+Package biblatex Info: ... file '../../jpa.cbx' found.
+
+(../../jpa.cbx
+File: jpa.cbx 2022/11/30 v1.0 JPA biblatex citation style
+Package biblatex Info: Trying to load citation style 'authoryear-comp'...
+Package biblatex Info: ... file 'authoryear-comp.cbx' found.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/biblatex/cbx/authoryear-comp.cbx
+File: authoryear-comp.cbx 2023/03/05 v3.19 biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\footcites'.
+Package biblatex Info: Redefining '\footcitetexts'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Delimiter 'nameyeardelim' in context '' already defined,
+ overwriting.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+)
+Package biblatex Info: LuaTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
+Package biblatex Info: Document encoding is UTF8 ....
+Package biblatex Info: ... and expl3
+(biblatex)             2024-01-04 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
+(/usr/local/texlive/2023/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2023-10-10 L3 Experimental document command parser
+)
+Package: blx-case-expl3 2023/03/05 v3.19 expl3 case changing code for biblatex
+))
 (/usr/local/texlive/2023/texmf-dist/tex/latex/bxpapersize/bxpapersize.sty
 Package: bxpapersize 2022/04/28 v0.6
 
@@ -451,9 +722,9 @@ package with kernel methods
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
-\Gm@cnth=\count277
-\Gm@cntv=\count278
-\c@Gm@tempcnt=\count279
+\Gm@cnth=\count407
+\Gm@cntv=\count408
+\c@Gm@tempcnt=\count409
 \Gm@bindingoffset=\dimen165
 \Gm@wd@mp=\dimen166
 \Gm@odd@mp=\dimen167
@@ -466,7 +737,7 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2023/05/13 v2.17o AMS math features
-\@mathmargin=\skip53
+\@mathmargin=\skip77
 
 For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -484,14 +755,14 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count280
+\inf@bad=\count410
 LaTeX Info: Redefining \frac on input line 236.
-\uproot@=\count281
-\leftroot@=\count282
+\uproot@=\count411
+\leftroot@=\count412
 LaTeX Info: Redefining \overline on input line 399.
 LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count283
-\DOTSCASE@=\count284
+\classnum@=\count413
+\DOTSCASE@=\count414
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -504,20 +775,20 @@ LaTeX Info: Redefining \Bigg on input line 725.
 \big@size=\dimen175
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count285
+\macc@depth=\count415
 LaTeX Info: Redefining \bmod on input line 905.
 LaTeX Info: Redefining \pmod on input line 910.
 LaTeX Info: Redefining \smash on input line 940.
 LaTeX Info: Redefining \relbar on input line 970.
 LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count286
-\dotsspace@=\muskip16
-\c@parentequation=\count287
-\dspbrk@lvl=\count288
+\c@MaxMatrixCols=\count416
+\dotsspace@=\muskip21
+\c@parentequation=\count417
+\dspbrk@lvl=\count418
 \tag@help=\toks29
-\row@=\count289
-\column@=\count290
-\maxfields@=\count291
+\row@=\count419
+\column@=\count420
+\maxfields@=\count421
 \andhelp@=\toks30
 \eqnshift@=\dimen176
 \alignsep@=\dimen177
@@ -526,8 +797,8 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \totwidth@=\dimen180
 \lineht@=\dimen181
 \@envbody=\toks31
-\multlinegap=\skip54
-\multlinetaggap=\skip55
+\multlinegap=\skip78
+\multlinetaggap=\skip79
 \mathdisplay@stack=\toks32
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
@@ -543,10 +814,6 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(/usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip17
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -569,28 +836,21 @@ File: luatex.def 2022/09/22 v1.2d Graphics/color driver for luatex
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2023/05/20 line numbers on paragraphs v5.3
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-))
-\linenopenalty=\count292
+\linenopenalty=\count422
 \output=\toks33
-\linenoprevgraf=\count293
+\linenoprevgraf=\count423
 \linenumbersep=\dimen184
 \linenumberwidth=\dimen185
-\c@linenumber=\count294
-\c@pagewiselinenumber=\count295
-\c@LN@truepage=\count296
-\c@internallinenumber=\count297
-\c@internallinenumbers=\count298
+\c@linenumber=\count424
+\c@pagewiselinenumber=\count425
+\c@LN@truepage=\count426
+\c@internallinenumber=\count427
+\c@internallinenumbers=\count428
 \quotelinenumbersep=\dimen186
 \bframerule=\dimen187
 \bframesep=\dimen188
 \bframebox=\box71
-\linenoamsmath@ams@eqpen=\count299
+\linenoamsmath@ams@eqpen=\count429
 LaTeX Info: Redefining \\ on input line 3180.
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
@@ -618,28 +878,25 @@ Inserting `luatexja.ruby.np_info_last_minute' in `luatexja.jfmglue.whatsit_last_
 minute'.) (/usr/local/texlive/2023/texmf-dist/tex/latex/epsdice/epsdice.sty
 Package: epsdice 2007/02/15 by Thomas Heim (v. 2.1)
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
-)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/epsdice/epsdice.cfg)
-\c@eps@face=\count300
+\c@eps@face=\count430
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2023/11/06 4.5b verbatim text (tvz,hv)
-\FV@CodeLineNo=\count301
-\FV@InFile=\read2
+\FV@CodeLineNo=\count431
+\FV@InFile=\read3
 \FV@TabBox=\box72
-\c@FancyVerbLine=\count302
-\FV@StepNumber=\count303
-\FV@OutFile=\write3
+\c@FancyVerbLine=\count432
+\FV@StepNumber=\count433
+\FV@OutFile=\write4
 )
 (/usr/local/texlive/2023/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box73
 \UL@hyphenbox=\box74
-\UL@skip=\skip56
+\UL@skip=\skip80
 \UL@hook=\toks34
 \UL@height=\dimen189
-\UL@pe=\count304
+\UL@pe=\count434
 \UL@pixel=\dimen190
 \ULC@box=\box75
 Package: ulem 2019/11/18
@@ -661,16 +918,16 @@ Package: pdfpages 2022/12/19 v0.5x Insert pages of external PDF documents (AM)
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count305
-\calc@Bcount=\count306
+\calc@Acount=\count435
+\calc@Bcount=\count436
 \calc@Adimen=\dimen192
 \calc@Bdimen=\dimen193
-\calc@Askip=\skip57
-\calc@Bskip=\skip58
+\calc@Askip=\skip81
+\calc@Bskip=\skip82
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count307
-\calc@Cskip=\skip59
+\calc@Ccount=\count437
+\calc@Cskip=\skip83
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
@@ -706,28 +963,28 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pdfpages/ppluatex.def
 File: ppluatex.def 2022/12/19 v0.5x Pdfpages driver for LuaTeX (AM)
 )
-\pdfpages@includegraphics@status=\count308
+\pdfpages@includegraphics@status=\count438
 \AM@pagebox=\box76
 \AM@global@opts=\toks35
-\AM@pagecnt=\count309
+\AM@pagecnt=\count439
 \AM@toc@title=\toks36
 \AM@lof@heading=\toks37
-\c@AM@survey=\count310
+\c@AM@survey=\count440
 \AM@templatesizebox=\box77
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen199
 \WF@size=\dimen256
-\c@WF@wrappedlines=\count311
+\c@WF@wrappedlines=\count441
 \WF@box=\box78
 \WF@everypar=\toks38
 Package: wrapfig 2003/01/31  v 3.6
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip60
-\multirow@cntb=\count312
-\multirow@dima=\skip61
+\multirow@colwidth=\skip84
+\multirow@cntb=\count442
+\multirow@dima=\skip85
 \bigstrutjot=\dimen257
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
@@ -769,16 +1026,16 @@ tered.code.tex
 \pgf@yc=\dimen267
 \pgf@xd=\dimen268
 \pgf@yd=\dimen269
-\w@pgf@writea=\write4
-\r@pgf@reada=\read3
-\c@pgf@counta=\count313
-\c@pgf@countb=\count314
-\c@pgf@countc=\count315
-\c@pgf@countd=\count316
+\w@pgf@writea=\write5
+\r@pgf@reada=\read4
+\c@pgf@counta=\count443
+\c@pgf@countb=\count444
+\c@pgf@countc=\count445
+\c@pgf@countd=\count446
 \t@pgf@toka=\toks43
 \t@pgf@tokb=\toks44
 \t@pgf@tokc=\toks45
-\pgf@sys@id@count=\count317
+\pgf@sys@id@count=\count447
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
@@ -796,8 +1053,8 @@ File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
 code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count318
-\pgfsyssoftpath@bigbuffer@items=\count319
+\pgfsyssoftpath@smallbuffer@items=\count448
+\pgfsyssoftpath@bigbuffer@items=\count449
 )
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
 code.tex
@@ -809,7 +1066,7 @@ Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen270
-\pgfmath@count=\count320
+\pgfmath@count=\count450
 \pgfmath@box=\box80
 \pgfmath@toks=\toks46
 \pgfmath@stack@operand=\toks47
@@ -835,7 +1092,7 @@ code.tex)
 erarithmetics.code.tex)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count321
+\c@pgfmathroundto@lastzeros=\count451
 )) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
 de.tex
@@ -873,7 +1130,7 @@ File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box81
 \pgf@hbox=\box82
 \pgf@layerbox@main=\box83
-\pgf@picture@serial@count=\count322
+\pgf@picture@serial@count=\count452
 )
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
 ate.code.tex
@@ -908,8 +1165,8 @@ File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 e.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@max=\dimen294
-\pgf@sys@shading@range@num=\count323
-\pgf@shadingcount=\count324
+\pgf@sys@shading@range@num=\count453
+\pgf@shadingcount=\count454
 )
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
 e.tex
@@ -974,7 +1231,7 @@ Package: tikz 2023-01-15 v3.1.10 (3.1.10)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
 dlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count325
+\pgf@plot@mark@count=\count455
 \pgfplotmarksize=\dimen299
 )
 \tikz@lastx=\dimen300
@@ -989,19 +1246,19 @@ File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@figbox@bg=\box87
 \tikz@tempbox=\box88
 \tikz@tempbox@bg=\box89
-\tikztreelevel=\count326
-\tikznumberofchildren=\count327
-\tikznumberofcurrentchild=\count328
-\tikz@fig@count=\count329
+\tikztreelevel=\count456
+\tikznumberofchildren=\count457
+\tikznumberofcurrentchild=\count458
+\tikz@fig@count=\count459
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
 e.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count330
-\pgfmatrixcurrentcolumn=\count331
-\pgf@matrix@numberofcolumns=\count332
+\pgfmatrixcurrentrow=\count460
+\pgfmatrixcurrentcolumn=\count461
+\pgf@matrix@numberofcolumns=\count462
 )
-\tikz@expandcount=\count333
+\tikz@expandcount=\count463
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
@@ -1025,7 +1282,7 @@ s/tikzlibraryintersections.code.tex
 ctions.code.tex
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.cod
 e.tex)
-\pgf@intersect@solutions=\count334
+\pgf@intersect@solutions=\count464
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarycalc.code.tex
@@ -1115,7 +1372,7 @@ File: tikzlibrary3d.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/lltjext.sty
 Package: lltjext 2022-08-24 v1.2k-ltj-14 Macros for vertical writing
-\ltj@ext@dir=\count335
+\ltj@ext@dir=\count465
 \@floatbox=\box110
 \floatwidth=\dimen313
 \floatheight=\dimen314
@@ -1125,25 +1382,25 @@ Package: lltjext 2022-08-24 v1.2k-ltj-14 Macros for vertical writing
 \@captionbox=\box111
 LaTeX Info: Redefining \parbox on input line 362.
 \@picwd=\dimen318
-\rensujiskip=\skip62
+\rensujiskip=\skip86
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
-\LTleft=\skip63
-\LTright=\skip64
-\LTpre=\skip65
-\LTpost=\skip66
-\LTchunksize=\count336
+\LTleft=\skip87
+\LTright=\skip88
+\LTpre=\skip89
+\LTpost=\skip90
+\LTchunksize=\count466
 \LTcapwidth=\dimen319
 \LT@head=\box112
 \LT@firsthead=\box113
 \LT@foot=\box114
 \LT@lastfoot=\box115
 \LT@gbox=\box116
-\LT@cols=\count337
-\LT@rows=\count338
-\c@LT@tables=\count339
-\c@LT@chunks=\count340
+\LT@cols=\count467
+\LT@rows=\count468
+\c@LT@tables=\count469
+\c@LT@chunks=\count470
 \LT@p@ftn=\toks51
 )
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/addons/luatexja-fontspe
@@ -1153,25 +1410,22 @@ Package: luatexja-fontspec 2020-09-14 fontspec support of LuaTeX-ja
 (/usr/local/texlive/2023/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
 Package: l3keys2e 2023-10-10 LaTeX2e option processing using LaTeX3 keys
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec.sty
-(/usr/local/texlive/2023/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2023-10-10 L3 Experimental document command parser
-)
 Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
 Lua module: fontspec 2022/01/15 2.8a Font selection for XeLaTeX and LuaLaTeX
 (/usr/local/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 Package: fontspec-luatex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaT
 eX
-\l__fontspec_script_int=\count341
-\l__fontspec_language_int=\count342
-\l__fontspec_strnum_int=\count343
-\l__fontspec_tmp_int=\count344
-\l__fontspec_tmpa_int=\count345
-\l__fontspec_tmpb_int=\count346
-\l__fontspec_tmpc_int=\count347
-\l__fontspec_em_int=\count348
-\l__fontspec_emdef_int=\count349
-\l__fontspec_strong_int=\count350
-\l__fontspec_strongdef_int=\count351
+\l__fontspec_script_int=\count471
+\l__fontspec_language_int=\count472
+\l__fontspec_strnum_int=\count473
+\l__fontspec_tmp_int=\count474
+\l__fontspec_tmpa_int=\count475
+\l__fontspec_tmpb_int=\count476
+\l__fontspec_tmpc_int=\count477
+\l__fontspec_em_int=\count478
+\l__fontspec_emdef_int=\count479
+\l__fontspec_strong_int=\count480
+\l__fontspec_strongdef_int=\count481
 \l__fontspec_tmpa_dim=\dimen320
 \l__fontspec_tmpb_dim=\dimen321
 \l__fontspec_tmpc_dim=\dimen322
@@ -1195,10 +1449,10 @@ sty)
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/addons/luatexja-fontspe
 c-27c.sty
 Package: luatexja-fontspec-27c 2020-04-04 fontspec support of LuaTeX-ja
-\g__ltj_fontspec_altnumber_int=\count352
+\g__ltj_fontspec_altnumber_int=\count482
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/latex/nicematrix/nicematrix.sty
-Package: nicematrix 2023/12/13 v6.26b Enhanced arrays with the help of PGF/TikZ
+Package: nicematrix 2024/01/02 v6.26c Enhanced arrays with the help of PGF/TikZ
 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/array.sty
@@ -1207,28 +1461,28 @@ Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
 \ar@mcellbox=\box117
 \extrarowheight=\dimen324
 \NC@list=\toks52
-\extratabsurround=\skip67
-\backup@length=\skip68
+\extratabsurround=\skip91
+\backup@length=\skip92
 \ar@cellbox=\box118
 )
-\g__nicematrix_env_int=\count353
-\g__nicematrix_NiceMatrixBlock_int=\count354
-\g__nicematrix_notes_caption_int=\count355
+\g__nicematrix_env_int=\count483
+\g__nicematrix_NiceMatrixBlock_int=\count484
+\g__nicematrix_notes_caption_int=\count485
 \l__nicematrix_columns_width_dim=\dimen325
 \l__nicematrix_col_width_dim=\dimen326
-\g__nicematrix_row_total_int=\count356
-\g__nicematrix_col_total_int=\count357
-\g__nicematrix_last_row_node_int=\count358
-\l__nicematrix_key_nb_rows_int=\count359
+\g__nicematrix_row_total_int=\count486
+\g__nicematrix_col_total_int=\count487
+\g__nicematrix_last_row_node_int=\count488
+\l__nicematrix_key_nb_rows_int=\count489
 \g__nicematrix_blocks_wd_dim=\dimen327
 \g__nicematrix_blocks_ht_dim=\dimen328
 \g__nicematrix_blocks_dp_dim=\dimen329
 \l__nicematrix_width_dim=\dimen330
 \l__nicematrix_tabular_width_dim=\dimen331
 \l__nicematrix_rule_width_dim=\dimen332
-\l__nicematrix_old_iRow_int=\count360
-\l__nicematrix_old_jCol_int=\count361
-\g__nicematrix_total_X_weight_int=\count362
+\l__nicematrix_old_iRow_int=\count490
+\l__nicematrix_old_jCol_int=\count491
+\g__nicematrix_total_X_weight_int=\count492
 \l__nicematrix_X_columns_dim=\dimen333
 \l__nicematrix_x_initial_dim=\dimen334
 \l__nicematrix_y_initial_dim=\dimen335
@@ -1238,29 +1492,29 @@ Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
 \l__nicematrix_tmpd_dim=\dimen339
 \g__nicematrix_width_last_col_dim=\dimen340
 \g__nicematrix_width_first_col_dim=\dimen341
-\l__nicematrix_row_min_int=\count363
-\l__nicematrix_row_max_int=\count364
-\l__nicematrix_col_min_int=\count365
-\l__nicematrix_col_max_int=\count366
-\l__nicematrix_start_int=\count367
-\l__nicematrix_end_int=\count368
-\l__nicematrix_local_start_int=\count369
-\l__nicematrix_local_end_int=\count370
-\g__nicematrix_static_num_of_col_int=\count371
+\l__nicematrix_row_min_int=\count493
+\l__nicematrix_row_max_int=\count494
+\l__nicematrix_col_min_int=\count495
+\l__nicematrix_col_max_int=\count496
+\l__nicematrix_start_int=\count497
+\l__nicematrix_end_int=\count498
+\l__nicematrix_local_start_int=\count499
+\l__nicematrix_local_end_int=\count500
+\g__nicematrix_static_num_of_col_int=\count501
 \l__nicematrix_rounded_corners_dim=\dimen342
 \l__nicematrix_tab_rounded_corners_dim=\dimen343
 \l__nicematrix_offset_dim=\dimen344
 \l__nicematrix_line_width_dim=\dimen345
-\g__nicematrix_block_box_int=\count372
+\g__nicematrix_block_box_int=\count502
 \l__nicematrix_submatrix_extra_height_dim=\dimen346
 \l__nicematrix_submatrix_left_xshift_dim=\dimen347
 \l__nicematrix_submatrix_right_xshift_dim=\dimen348
-\l__nicematrix_first_row_int=\count373
-\l__nicematrix_first_col_int=\count374
-\l__nicematrix_last_row_int=\count375
-\l__nicematrix_last_col_int=\count376
-\c@tabularnote=\count377
-\c@nicematrix_draft=\count378
+\l__nicematrix_first_row_int=\count503
+\l__nicematrix_first_col_int=\count504
+\l__nicematrix_last_row_int=\count505
+\l__nicematrix_last_col_int=\count506
+\c@tabularnote=\count507
+\c@nicematrix_draft=\count508
 \l__nicematrix_cell_space_top_limit_dim=\dimen349
 \l__nicematrix_cell_space_bottom_limit_dim=\dimen350
 \l__nicematrix_xdots_inter_dim=\dimen351
@@ -1273,8 +1527,8 @@ Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
 \l__nicematrix_extra_left_margin_dim=\dimen358
 \l__nicematrix_extra_right_margin_dim=\dimen359
 \c__nicematrix_max_l_dim=\dimen360
-\l__nicematrix_position_int=\count379
-\l__nicematrix_multiplicity_int=\count380
+\l__nicematrix_position_int=\count509
+\l__nicematrix_multiplicity_int=\count510
 \l__nicematrix_brace_yshift_dim=\dimen361
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/booktabs/booktabs.sty
@@ -1289,21 +1543,21 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen369
 \cmidrulekern=\dimen370
 \defaultaddspace=\dimen371
-\@cmidla=\count381
-\@cmidlb=\count382
+\@cmidla=\count511
+\@cmidlb=\count512
 \@aboverulesep=\dimen372
 \@belowrulesep=\dimen373
-\@thisruleclass=\count383
-\@lastruleclass=\count384
+\@thisruleclass=\count513
+\@lastruleclass=\count514
 \@thisrulewidth=\dimen374
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/accents/accents.sty
 Package: accents 2006/05/12 v1.4 Math Accent Tools
 \cc@skew=\dimen375
 \cc@wd=\dimen376
-\cc@code=\count385
-\cc@group=\count386
-\cc@skewchar=\count387
+\cc@code=\count515
+\cc@group=\count516
+\cc@skewchar=\count517
 )
 luaotfload | cache : Lookup cache loaded from /Users/napier3/Library/texlive/202
 3/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache: 
@@ -1342,49 +1596,49 @@ JFM=prop}].
 (fontspec)             series/shapes:
 (fontspec)              
 
-LaTeX Font Info:    Redeclaring symbol font `mincho' on input line 43.
+LaTeX Font Info:    Redeclaring symbol font `mincho' on input line 46.
 LaTeX Font Info:    Overwriting symbol font `mincho' in version `normal'
 (Font)                  JY3/mc/m/n --> JY3/BIZUDPMinchoMedium(0)/m/n on input l
-ine 43.
+ine 46.
 LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 (Font)                  JY3/gt/m/n --> JY3/BIZUDPMinchoMedium(0)/m/n on input l
-ine 43.
+ine 46.
 LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 (Font)                  JY3/BIZUDPMinchoMedium(0)/m/n --> JY3/BIZUDPMinchoMediu
-m(0)/b/n on input line 43.
+m(0)/b/n on input line 46.
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 43.
+(Font)              scaled to size 9.24713pt on input line 46.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 43.
+(Font)              scaled to size 9.24713pt on input line 46.
 
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/jfm-prop.lua)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
 \everycr=\toks53
-\minrowclearance=\skip69
-\rownum=\count388
+\minrowclearance=\skip93
+\rownum=\count518
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
 Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count389
+\lst@mode=\count519
 \lst@gtempboxa=\box119
 \lst@token=\toks54
-\lst@length=\count390
+\lst@length=\count520
 \lst@currlwidth=\dimen377
-\lst@column=\count391
-\lst@pos=\count392
+\lst@column=\count521
+\lst@pos=\count522
 \lst@lostspace=\dimen378
 \lst@width=\dimen379
-\lst@newlines=\count393
-\lst@lineno=\count394
+\lst@newlines=\count523
+\lst@lineno=\count524
 \lst@maxwidth=\dimen380
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\c@lstnumber=\count395
-\lst@skipnumbers=\count396
+\c@lstnumber=\count525
+\lst@skipnumbers=\count526
 \lst@framebox=\box120
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/listings.cfg
@@ -1398,14 +1652,14 @@ sty
 Package: luatexbase-cctb 2015/10/04 v1.3 luatexbase interface to LuaTeX (legacy
  subpackage) 
 )
-\ltj@lst@japanese@min=\count397
+\ltj@lst@japanese@min=\count527
 \CatcodeTableLTJlistings=\catcodetable17
 \ltj@lst@frame@lslimit=\dimen381
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
 \lst@WFtoken=\toks55
-\lst@WF=\write5
+\lst@WF=\write6
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
@@ -1439,18 +1693,18 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count398
+\c@section@level=\count528
 )
 \@linkdim=\dimen382
-\Hy@linkcounter=\count399
-\Hy@pagecounter=\count400
+\Hy@linkcounter=\count529
+\Hy@pagecounter=\count530
  (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2023-11-26 v7.01g Hyperref: PDFDocEncoding definition (HO)
 )
 (/usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count401
+\Hy@SavedSpaceFactor=\count531
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2023-11-26 v7.01g Hyperref: PDF Unicode definition (HO)
@@ -1462,7 +1716,7 @@ Package hyperref Info: Plain pages OFF on input line 4196.
 Package hyperref Info: Backreferencing OFF on input line 4201.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4448.
-\c@Hy@tempcnt=\count402
+\c@Hy@tempcnt=\count532
 LaTeX Info: Redefining \url on input line 4786.
 \XeTeXLinkMargin=\dimen383
 
@@ -1473,7 +1727,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count403
+\Fld@menulength=\count533
 \Field@Width=\dimen384
 \Fld@charsize=\dimen385
 Package hyperref Info: Hyper figures OFF on input line 6065.
@@ -1483,9 +1737,9 @@ Package hyperref Info: backreferencing OFF on input line 6080.
 Package hyperref Info: Link coloring OFF on input line 6085.
 Package hyperref Info: Link coloring with OCG OFF on input line 6090.
 Package hyperref Info: PDF/A mode OFF on input line 6095.
-\Hy@abspage=\count404
-\c@Item=\count405
-\c@Hfootnote=\count406
+\Hy@abspage=\count534
+\c@Item=\count535
+\c@Hfootnote=\count536
 )
 Package hyperref Info: Driver (autodetected): hluatex.
 
@@ -1497,8 +1751,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-\Fld@listcount=\count407
-\c@bookmark@seq@number=\count408
+\Fld@listcount=\count537
+\c@bookmark@seq@number=\count538
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
@@ -1509,20 +1763,20 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 )
-\Hy@SectionHShift=\skip70
+\Hy@SectionHShift=\skip94
 )
-Package hyperref Info: Option `setpagesize' set `false' on input line 78.
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 78.
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 78.
-Package hyperref Info: Option `colorlinks' set `true' on input line 78.
+Package hyperref Info: Option `setpagesize' set `false' on input line 81.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 81.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 81.
+Package hyperref Info: Option `colorlinks' set `true' on input line 81.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2023/09/26 version 6.1.0 text color boxes
+Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks56
 \verbatim@line=\toks57
-\verbatim@in@stream=\read4
+\verbatim@in@stream=\read5
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
@@ -1534,26 +1788,28 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@upperbox=\box122
 \tcb@lowerbox=\box123
 \tcb@phantombox=\box124
-\c@tcbbreakpart=\count409
-\c@tcblayer=\count410
-\c@tcolorbox@number=\count411
-\tcb@temp=\box125
+\c@tcbbreakpart=\count539
+\c@tcblayer=\count540
+\c@tcolorbox@number=\count541
+\l__tcobox_tmpa_box=\box125
+\l__tcobox_tmpa_dim=\dimen386
 \tcb@temp=\box126
 \tcb@temp=\box127
 \tcb@temp=\box128
+\tcb@temp=\box129
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
-Library (tcolorbox): 'tcbbreakable.code.tex' version '6.1.0'
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.2.0'
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pdfcol/pdfcol.sty
 Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
 )
 Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
-\tcb@testbox=\box129
-\tcb@totalupperbox=\box130
-\tcb@totallowerbox=\box131
+\tcb@testbox=\box130
+\tcb@totalupperbox=\box131
+\tcb@totallowerbox=\box132
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
-Library (tcolorbox): 'tcbskins.code.tex' version '6.1.0'
+Library (tcolorbox): 'tcbskins.code.tex' version '6.2.0'
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
 Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
 
@@ -1563,51 +1819,54 @@ Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.co
 de.tex
 File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
-\l__tikzfill_img_box=\box132
+\l__tikzfill_img_box=\box133
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
-Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.1.0'
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.2.0'
 )) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
-Library (tcolorbox): 'tcbtheorems.code.tex' version '6.1.0'
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.2.0'
 )
-\c@tcb@cnt@Rscreen=\count412
-\c@tcb@cnt@SCrstan=\count413
-\c@tcb@cnt@SCcmd=\count414
-\c@tcb@cnt@MCMCout=\count415
-\c@tcb@cnt@reidai=\count416
-\c@tcb@cnt@hinto=\count417
+\c@tcb@cnt@Rscreen=\count542
+\c@tcb@cnt@SCrstan=\count543
+\c@tcb@cnt@SCcmd=\count544
+\c@tcb@cnt@MCMCout=\count545
+\c@tcb@cnt@reidai=\count546
+\c@tcb@cnt@hinto=\count547
  (/usr/local/texlive/2023/texmf-dist/tex/latex/capt-of/capt-of.sty
 Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
 )
-\c@tcb@cnt@FAQ=\count418
+\c@tcb@cnt@FAQ=\count548
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
 )
-\@indexfile=\write6
+\@indexfile=\write7
 
-\openout6 = tmp.idx
+\openout7 = tmp.idx
 
 Writing index file tmp.idx
 (/usr/local/texlive/2023/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 
-\f@nch@headwidth=\skip71
-\f@nch@O@elh=\skip72
-\f@nch@O@erh=\skip73
-\f@nch@O@olh=\skip74
-\f@nch@O@orh=\skip75
-\f@nch@O@elf=\skip76
-\f@nch@O@erf=\skip77
-\f@nch@O@olf=\skip78
-\f@nch@O@orf=\skip79
+\f@nch@headwidth=\skip95
+\f@nch@O@elh=\skip96
+\f@nch@O@erh=\skip97
+\f@nch@O@olh=\skip98
+\f@nch@O@orh=\skip99
+\f@nch@O@elf=\skip100
+\f@nch@O@erf=\skip101
+\f@nch@O@olf=\skip102
+\f@nch@O@orf=\skip103
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/latex/docmute/docmute.sty
 Package: docmute 2012/03/22 v1.4 Input stand-alone documents
 )
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/patches/lltjp-array.sty
 Package: lltjp-array 2019-07-18 Patch to array for LuaTeX-ja
-) (./tmp.aux (./m01_introduction.aux) (./m02_Numbers.aux) (./m03_introR.aux)
+)
+\@quotelevel=\count549
+\@quotereset=\count550
+ (./tmp.aux (./m01_introduction.aux) (./m02_Numbers.aux) (./m03_introR.aux)
 (./m04_usingR.aux) (./m05_descriptives.aux) (./m06_ctt.aux)
 (./m07_probability.aux) (./m08_CorrelationCausation.aux) (./m09_Regression.aux) (./m10_MultipleRegression.aux) (./m11_Regression_onR.aux) (./m12_design1.aux)
 (./m13_design2.aux) (./m14_design3.aux) (./m15_FirstSemester.aux)
@@ -1648,6 +1907,24 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2023/03/05 v3.19 biblatex localization (PK/MW)
+)
+Package biblatex Info: LuaTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+
+\openout3 = tmp.bcf
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'tmp.bbl' found.
+
+(./tmp.bbl)
+Package biblatex Info: Reference section=0 on input line 6.
+Package biblatex Info: Reference segment=0 on input line 6.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -1685,16 +1962,16 @@ LaTeX Font Info:    ... okay on input line 6.
 
 (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count419
-\scratchdimen=\dimen386
-\scratchbox=\box133
-\nofMPsegments=\count420
-\nofMParguments=\count421
+\scratchcounter=\count551
+\scratchdimen=\dimen387
+\scratchbox=\box134
+\nofMPsegments=\count552
+\nofMParguments=\count553
 \everyMPshowfont=\toks58
-\MPscratchCnt=\count422
-\MPscratchDim=\dimen387
-\MPnumerator=\count423
-\makeMPintoPDFobject=\count424
+\MPscratchCnt=\count554
+\MPscratchDim=\dimen388
+\MPnumerator=\count555
+\makeMPintoPDFobject=\count556
 \everyMPtoPDFconversion=\toks59
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1770,10 +2047,10 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 6.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 6.
-\c__nicematrix_shift_Ldots_last_row_dim=\dimen388
-\c__nicematrix_shift_exterior_Vdots_dim=\dimen389
-\c__nicematrix_innersep_middle_dim=\dimen390
-\c@lstlisting=\count425
+\c__nicematrix_shift_Ldots_last_row_dim=\dimen389
+\c__nicematrix_shift_exterior_Vdots_dim=\dimen390
+\c__nicematrix_innersep_middle_dim=\dimen391
+\c@lstlisting=\count557
  (/usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks60
@@ -1781,10 +2058,10 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 )
 Package hyperref Info: Link coloring ON on input line 6.
  (./tmp.out) (./tmp.out)
-\@outlinefile=\write7
+\@outlinefile=\write8
 
-\openout7 = tmp.out
-\docmute@nestinglevel=\count426
+\openout8 = tmp.out
+\docmute@nestinglevel=\count558
 
 warning  (file ../images/cover1.pdf) (pdf inclusion): PDF inclusion: found PDF v
 ersion '1.6', but at most version '1.5' allowed
@@ -1830,10 +2107,7 @@ Package luatex.def Info: ../images/cover1.pdf , page1 used on input line 7.
 [1
 
 <../images/cover1.pdf>] (../../common_contents/copyright.tex(load cache: extra_l
-mmono10-regular.luc)
-LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 13.
-(load cache: extra_lmroman7-regular.luc)(load cache: extra_lmroman5-regular.luc)
+mroman7-regular.luc)(load cache: extra_lmroman5-regular.luc)
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 6.47299pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
@@ -1898,6 +2172,8 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (load cache: extra_lmsans12-regular.luc)
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
 (Font)              scaled to size 11.09656pt on input line 2.
+LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
+(Font)              scaled to size 9.24713pt on input line 8.
 (load cache: extra_lmsans10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 6.47299pt on input line 16.
@@ -1910,9 +2186,6 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 8.32242pt on input line 26.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 8.32242pt on input line 26.
-(load cache: extra_lmmono8-regular.luc)
-LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 62.
 )
 warning  (pdf backend): ignoring duplicate destination with the name 'page.2'
 [2] [3] [4
@@ -1932,9 +2205,9 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
 (Font)              scaled to size 9.24713pt on input line 86.
  [5] [6] [7] [8] [9] [10])
-\tf@toc=\write8
+\tf@toc=\write9
 
-\openout8 = tmp.toc
+\openout9 = tmp.toc
  [11] [12
 
 ]
@@ -1960,7 +2233,7 @@ LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
 
 
 ] [16] [17] [18]
-<../images/01_introduction/psychology_base.png, id=1307, 550.055pt x 152.57pt>
+<../images/01_introduction/psychology_base.png, id=1285, 550.055pt x 152.57pt>
 File: ../images/01_introduction/psychology_base.png Graphic file (type png)
 <use ../images/01_introduction/psychology_base.png>
 Package luatex.def Info: ../images/01_introduction/psychology_base.png  used on
@@ -1971,7 +2244,7 @@ Package luatex.def Info: ../images/01_introduction/psychology_base.png  used on
 \openout2 = m02_Numbers.aux
  (./m02_Numbers.tex
 第2章
-<../images/02_Numbers/slide03_01.png, id=1333, 771.88374pt x 273.02pt>
+<../images/02_Numbers/slide03_01.png, id=1312, 771.88374pt x 273.02pt>
 File: ../images/02_Numbers/slide03_01.png Graphic file (type png)
 <use ../images/02_Numbers/slide03_01.png>
 Package luatex.def Info: ../images/02_Numbers/slide03_01.png  used on input lin
@@ -1983,13 +2256,13 @@ e 16.
 
 
 <../images/02_Numbers/slide03_01.png>]
-<../images/02_Numbers/slide03_02.png, id=1347, 725.71124pt x 364.36125pt>
+<../images/02_Numbers/slide03_02.png, id=1326, 725.71124pt x 364.36125pt>
 File: ../images/02_Numbers/slide03_02.png Graphic file (type png)
 <use ../images/02_Numbers/slide03_02.png>
 Package luatex.def Info: ../images/02_Numbers/slide03_02.png  used on input lin
 e 25.
 (luatex.def)             Requested size: 334.60422pt x 167.99738pt.
-<../images/02_Numbers/slide03_03.png, id=1350, 732.7375pt x 442.65375pt>
+<../images/02_Numbers/slide03_03.png, id=1329, 732.7375pt x 442.65375pt>
 File: ../images/02_Numbers/slide03_03.png Graphic file (type png)
 <use ../images/02_Numbers/slide03_03.png>
 Package luatex.def Info: ../images/02_Numbers/slide03_03.png  used on input lin
@@ -1997,14 +2270,15 @@ e 36.
 (luatex.def)             Requested size: 334.60422pt x 202.13722pt.
  [22<../images/02_Numbers/slide03_02.png>] [23<../images/02_Numbers/slide03_03.p
 ng>]
-<../images/02_Numbers/slide03_04.png, id=1377, 376.40625pt x 454.69875pt>
+<../images/02_Numbers/slide03_04.png, id=1356, 376.40625pt x 454.69875pt>
 File: ../images/02_Numbers/slide03_04.png Graphic file (type png)
 <use ../images/02_Numbers/slide03_04.png>
 Package luatex.def Info: ../images/02_Numbers/slide03_04.png  used on input lin
 e 61.
 (luatex.def)             Requested size: 209.12683pt x 252.63138pt.
- [24<../images/02_Numbers/slide03_04.png>] [25] [26]
-<../images/02_Numbers/slide03_05.png, id=1423, 845.1575pt x 198.7425pt>
+ [24<../images/02_Numbers/slide03_04.png>] [25](load cache: extra_lmmono10-regul
+ar.luc) [26]
+<../images/02_Numbers/slide03_05.png, id=1398, 845.1575pt x 198.7425pt>
 File: ../images/02_Numbers/slide03_05.png Graphic file (type png)
 <use ../images/02_Numbers/slide03_05.png>
 Package luatex.def Info: ../images/02_Numbers/slide03_05.png  used on input lin
@@ -2016,19 +2290,19 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
 (Font)              scaled to size 7.3977pt on input line 119.
  [27<../images/02_Numbers/slide03_05.png>] [28] [29]
-<../images/02_Numbers/ggplot_sample_01.png, id=1473, 867.24pt x 867.24pt>
+<../images/02_Numbers/ggplot_sample_01.png, id=1440, 867.24pt x 867.24pt>
 File: ../images/02_Numbers/ggplot_sample_01.png Graphic file (type png)
 <use ../images/02_Numbers/ggplot_sample_01.png>
 Package luatex.def Info: ../images/02_Numbers/ggplot_sample_01.png  used on inp
 ut line 162.
 (luatex.def)             Requested size: 334.60422pt x 334.60963pt.
-<../images/02_Numbers/ggplot_sample_02.png, id=1474, 867.24pt x 433.62pt>
+<../images/02_Numbers/ggplot_sample_02.png, id=1441, 867.24pt x 433.62pt>
 File: ../images/02_Numbers/ggplot_sample_02.png Graphic file (type png)
 <use ../images/02_Numbers/ggplot_sample_02.png>
 Package luatex.def Info: ../images/02_Numbers/ggplot_sample_02.png  used on inp
 ut line 169.
 (luatex.def)             Requested size: 334.60422pt x 167.30481pt.
-<../images/02_Numbers/ggplot_sample_03.png, id=1475, 867.24pt x 433.62pt>
+<../images/02_Numbers/ggplot_sample_03.png, id=1442, 867.24pt x 433.62pt>
 File: ../images/02_Numbers/ggplot_sample_03.png Graphic file (type png)
 <use ../images/02_Numbers/ggplot_sample_03.png>
 Package luatex.def Info: ../images/02_Numbers/ggplot_sample_03.png  used on inp
@@ -2036,8 +2310,11 @@ ut line 175.
 (luatex.def)             Requested size: 334.60422pt x 167.30481pt.
 
 [30<../images/02_Numbers/ggplot_sample_01.png><../images/02_Numbers/ggplot_sampl
-e_02.png>] [31<../images/02_Numbers/ggplot_sample_03.png>]
-<../images/02_Numbers/ggplot_sample_04.png, id=1506, 867.24pt x 433.62pt>
+e_02.png>](load cache: extra_lmmono8-regular.luc)
+LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
+(Font)              scaled to size 7.3977pt on input line 186.
+ [31<../images/02_Numbers/ggplot_sample_03.png>]
+<../images/02_Numbers/ggplot_sample_04.png, id=1468, 867.24pt x 433.62pt>
 File: ../images/02_Numbers/ggplot_sample_04.png Graphic file (type png)
 <use ../images/02_Numbers/ggplot_sample_04.png>
 Package luatex.def Info: ../images/02_Numbers/ggplot_sample_04.png  used on inp
@@ -2073,25 +2350,25 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'. [33])
 
 
 ]
-<../images/03_introR/computer_02.png, id=1605, 1753.55125pt x 1580.90625pt>
+<../images/03_introR/computer_02.png, id=1560, 1753.55125pt x 1580.90625pt>
 File: ../images/03_introR/computer_02.png Graphic file (type png)
 <use ../images/03_introR/computer_02.png>
 Package luatex.def Info: ../images/03_introR/computer_02.png  used on input lin
 e 30.
 (luatex.def)             Requested size: 334.60422pt x 301.65381pt.
-<../images/03_introR/computer_03.png, id=1606, 1069.9975pt x 874.26625pt>
+<../images/03_introR/computer_03.png, id=1561, 1069.9975pt x 874.26625pt>
 File: ../images/03_introR/computer_03.png Graphic file (type png)
 <use ../images/03_introR/computer_03.png>
 Package luatex.def Info: ../images/03_introR/computer_03.png  used on input lin
 e 37.
 (luatex.def)             Requested size: 334.60422pt x 273.39429pt.
-<../images/03_introR/computer_04.png, id=1610, 653.44125pt x 373.395pt>
+<../images/03_introR/computer_04.png, id=1565, 653.44125pt x 373.395pt>
 File: ../images/03_introR/computer_04.png Graphic file (type png)
 <use ../images/03_introR/computer_04.png>
 Package luatex.def Info: ../images/03_introR/computer_04.png  used on input lin
 e 45.
 (luatex.def)             Requested size: 334.60422pt x 191.19809pt.
-<../images/03_introR/computer_05.png, id=1612, 845.1575pt x 328.22626pt>
+<../images/03_introR/computer_05.png, id=1567, 845.1575pt x 328.22626pt>
 File: ../images/03_introR/computer_05.png Graphic file (type png)
 <use ../images/03_introR/computer_05.png>
 Package luatex.def Info: ../images/03_introR/computer_05.png  used on input lin
@@ -2100,19 +2377,19 @@ e 52.
  [36<../images/03_introR/computer_02.png>] [37<../images/03_introR/computer_03.p
 ng>] [38<../images/03_introR/computer_04.png><../images/03_introR/computer_05.pn
 g>] [39]
-<../images/03_introR/Screen1.png, id=1675, 1466.47874pt x 1024.82875pt>
+<../images/03_introR/Screen1.png, id=1626, 1466.47874pt x 1024.82875pt>
 File: ../images/03_introR/Screen1.png Graphic file (type png)
 <use ../images/03_introR/Screen1.png>
 Package luatex.def Info: ../images/03_introR/Screen1.png  used on input line 95
 .
 (luatex.def)             Requested size: 313.69025pt x 219.20798pt.
-<../images/03_introR/Screen2.png, id=1676, 1353.055pt x 935.495pt>
+<../images/03_introR/Screen2.png, id=1627, 1353.055pt x 935.495pt>
 File: ../images/03_introR/Screen2.png Graphic file (type png)
 <use ../images/03_introR/Screen2.png>
 Package luatex.def Info: ../images/03_introR/Screen2.png  used on input line 10
 2.
 (luatex.def)             Requested size: 313.69025pt x 216.88654pt.
-<../images/03_introR/Screen3.png, id=1677, 1466.47874pt x 1024.82875pt>
+<../images/03_introR/Screen3.png, id=1628, 1466.47874pt x 1024.82875pt>
 File: ../images/03_introR/Screen3.png Graphic file (type png)
 <use ../images/03_introR/Screen3.png>
 Package luatex.def Info: ../images/03_introR/Screen3.png  used on input line 10
@@ -2133,20 +2410,20 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/03_introR/Screen4.png, id=1704, 771.88374pt x 998.73125pt>
+<../images/03_introR/Screen4.png, id=1656, 771.88374pt x 998.73125pt>
 File: ../images/03_introR/Screen4.png Graphic file (type png)
 <use ../images/03_introR/Screen4.png>
 Package luatex.def Info: ../images/03_introR/Screen4.png  used on input line 15
 8.
 (luatex.def)             Requested size: 271.86234pt x 351.75565pt.
  [42] [43<../images/03_introR/Screen4.png>] [44]
-<../images/03_introR/Screen5.png, id=1747, 550.055pt x 398.48875pt>
+<../images/03_introR/Screen5.png, id=1699, 550.055pt x 398.48875pt>
 File: ../images/03_introR/Screen5.png Graphic file (type png)
 <use ../images/03_introR/Screen5.png>
 Package luatex.def Info: ../images/03_introR/Screen5.png  used on input line 21
 1.
 (luatex.def)             Requested size: 271.86234pt x 196.95764pt.
-<../images/03_introR/Screen6.png, id=1750, 1806.75pt x 870.25125pt>
+<../images/03_introR/Screen6.png, id=1702, 1806.75pt x 870.25125pt>
 File: ../images/03_introR/Screen6.png Graphic file (type png)
 <use ../images/03_introR/Screen6.png>
 Package luatex.def Info: ../images/03_introR/Screen6.png  used on input line 21
@@ -2157,17 +2434,16 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/04_usingR/screen16.png, id=1792, 1230.5975pt x 610.28pt>
+<../images/04_usingR/screen16.png, id=1741, 1230.5975pt x 610.28pt>
 File: ../images/04_usingR/screen16.png Graphic file (type png)
 <use ../images/04_usingR/screen16.png>
 Package luatex.def Info: ../images/04_usingR/screen16.png  used on input line 2
 66.
 (luatex.def)             Requested size: 334.60422pt x 165.9325pt.
- [47]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
+Removing  `ltj.listings_unicode' from `process_input_buffer'. [47]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
@@ -2177,7 +2453,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'. [49]
-<../images/03_introR/Screen7.png, id=1846, 562.1pt x 580.1675pt>
+<../images/03_introR/Screen7.png, id=1791, 562.1pt x 580.1675pt>
 File: ../images/03_introR/Screen7.png Graphic file (type png)
 <use ../images/03_introR/Screen7.png>
 Package luatex.def Info: ../images/03_introR/Screen7.png  used on input line 34
@@ -2199,13 +2475,13 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'. [52] [53]) [54]
 \openout2 = m04_usingR.aux
  (./m04_usingR.tex
 第4章
-<../images/04_usingR/Screen8.png, id=1929, 510.90875pt x 449.68pt>
+<../images/04_usingR/Screen8.png, id=1870, 510.90875pt x 449.68pt>
 File: ../images/04_usingR/Screen8.png Graphic file (type png)
 <use ../images/04_usingR/Screen8.png>
 Package luatex.def Info: ../images/04_usingR/Screen8.png  used on input line 20
 .
 (luatex.def)             Requested size: 271.86234pt x 239.27615pt.
-<../images/04_usingR/Screen9.png, id=1930, 1232.605pt x 1006.76125pt>
+<../images/04_usingR/Screen9.png, id=1871, 1232.605pt x 1006.76125pt>
 File: ../images/04_usingR/Screen9.png Graphic file (type png)
 <use ../images/04_usingR/Screen9.png>
 Package luatex.def Info: ../images/04_usingR/Screen9.png  used on input line 27
@@ -2217,7 +2493,7 @@ Package luatex.def Info: ../images/04_usingR/Screen9.png  used on input line 27
 
 
 ] [56<../images/04_usingR/Screen8.png><../images/04_usingR/Screen9.png>]
-<../images/04_usingR/Screen10.png, id=1952, 1432.35126pt x 1193.45876pt>
+<../images/04_usingR/Screen10.png, id=1894, 1432.35126pt x 1193.45876pt>
 File: ../images/04_usingR/Screen10.png Graphic file (type png)
 <use ../images/04_usingR/Screen10.png>
 Package luatex.def Info: ../images/04_usingR/Screen10.png  used on input line 4
@@ -2229,13 +2505,13 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/04_usingR/Screen11.png, id=1973, 902.37125pt x 407.5225pt>
+<../images/04_usingR/Screen11.png, id=1915, 902.37125pt x 407.5225pt>
 File: ../images/04_usingR/Screen11.png Graphic file (type png)
 <use ../images/04_usingR/Screen11.png>
 Package luatex.def Info: ../images/04_usingR/Screen11.png  used on input line 9
 2.
 (luatex.def)             Requested size: 313.69025pt x 141.66495pt.
-<../images/04_usingR/Screen12.png, id=1974, 796.9775pt x 355.3275pt>
+<../images/04_usingR/Screen12.png, id=1916, 796.9775pt x 355.3275pt>
 File: ../images/04_usingR/Screen12.png Graphic file (type png)
 <use ../images/04_usingR/Screen12.png>
 Package luatex.def Info: ../images/04_usingR/Screen12.png  used on input line 9
@@ -2259,7 +2535,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/04_usingR/Slide11_01.png, id=2106, 1133.23375pt x 743.77875pt>
+<../images/04_usingR/Slide11_01.png, id=2039, 1133.23375pt x 743.77875pt>
 File: ../images/04_usingR/Slide11_01.png Graphic file (type png)
 <use ../images/04_usingR/Slide11_01.png>
 Package luatex.def Info: ../images/04_usingR/Slide11_01.png  used on input line
@@ -2283,7 +2559,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/04_usingR/Rplot05_01.png, id=2169, 867.24pt x 578.16pt>
+<../images/04_usingR/Rplot05_01.png, id=2098, 867.24pt x 578.16pt>
 File: ../images/04_usingR/Rplot05_01.png Graphic file (type png)
 <use ../images/04_usingR/Rplot05_01.png>
 Package luatex.def Info: ../images/04_usingR/Rplot05_01.png  used on input line
@@ -2302,7 +2578,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/04_usingR/Rplot05_02.png, id=2213, 867.24pt x 578.16pt>
+<../images/04_usingR/Rplot05_02.png, id=2142, 867.24pt x 578.16pt>
 File: ../images/04_usingR/Rplot05_02.png Graphic file (type png)
 <use ../images/04_usingR/Rplot05_02.png>
 Package luatex.def Info: ../images/04_usingR/Rplot05_02.png  used on input line
@@ -2310,14 +2586,14 @@ Package luatex.def Info: ../images/04_usingR/Rplot05_02.png  used on input line
 (luatex.def)             Requested size: 418.25368pt x 278.83694pt.
 
 [69]
-<../images/04_usingR/Screen13.png, id=2233, 969.6225pt x 569.12625pt>
+<../images/04_usingR/Screen13.png, id=2161, 969.6225pt x 569.12625pt>
 File: ../images/04_usingR/Screen13.png Graphic file (type png)
 <use ../images/04_usingR/Screen13.png>
 Package luatex.def Info: ../images/04_usingR/Screen13.png  used on input line 4
 62.
 (luatex.def)             Requested size: 418.25368pt x 245.50108pt.
  [70<../images/04_usingR/Rplot05_02.png>] [71<../images/04_usingR/Screen13.png>]
-<../images/04_usingR/Screen14.png, id=2254, 502.87875pt x 478.78876pt>
+<../images/04_usingR/Screen14.png, id=2182, 502.87875pt x 478.78876pt>
 File: ../images/04_usingR/Screen14.png Graphic file (type png)
 <use ../images/04_usingR/Screen14.png>
 Package luatex.def Info: ../images/04_usingR/Screen14.png  used on input line 4
@@ -2346,33 +2622,33 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.) [76]
 
 
 ]
-<../images/05_descriptives/slide04_01.png, id=2330, 1196.47pt x 445.665pt>
+<../images/05_descriptives/slide04_01.png, id=2251, 1196.47pt x 445.665pt>
 File: ../images/05_descriptives/slide04_01.png Graphic file (type png)
 <use ../images/05_descriptives/slide04_01.png>
 Package luatex.def Info: ../images/05_descriptives/slide04_01.png  used on inpu
 t line 37.
 (luatex.def)             Requested size: 334.60422pt x 124.63574pt.
  [78<../images/05_descriptives/slide04_01.png>] [79]
-<../images/05_descriptives/slide04_02.png, id=2364, 629.35126pt x 387.4475pt>
+<../images/05_descriptives/slide04_02.png, id=2284, 629.35126pt x 387.4475pt>
 File: ../images/05_descriptives/slide04_02.png Graphic file (type png)
 <use ../images/05_descriptives/slide04_02.png>
 Package luatex.def Info: ../images/05_descriptives/slide04_02.png  used on inpu
 t line 86.
 (luatex.def)             Requested size: 334.60422pt x 205.9906pt.
-<../images/05_descriptives/slide04_03.png, id=2367, 1282.7925pt x 536.0025pt>
+<../images/05_descriptives/slide04_03.png, id=2287, 1282.7925pt x 536.0025pt>
 File: ../images/05_descriptives/slide04_03.png Graphic file (type png)
 <use ../images/05_descriptives/slide04_03.png>
 Package luatex.def Info: ../images/05_descriptives/slide04_03.png  used on inpu
 t line 94.
 (luatex.def)             Requested size: 334.60422pt x 139.80719pt.
  [80<../images/05_descriptives/slide04_02.png>]
-<../images/05_descriptives/Rplot04_01.png, id=2380, 4818.0pt x 2409.0pt>
+<../images/05_descriptives/Rplot04_01.png, id=2300, 4818.0pt x 2409.0pt>
 File: ../images/05_descriptives/Rplot04_01.png Graphic file (type png)
 <use ../images/05_descriptives/Rplot04_01.png>
 Package luatex.def Info: ../images/05_descriptives/Rplot04_01.png  used on inpu
 t line 130.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
-<../images/05_descriptives/slide04_05.png, id=2382, 736.7525pt x 383.4325pt>
+<../images/05_descriptives/slide04_05.png, id=2302, 736.7525pt x 383.4325pt>
 File: ../images/05_descriptives/slide04_05.png Graphic file (type png)
 <use ../images/05_descriptives/slide04_05.png>
 Package luatex.def Info: ../images/05_descriptives/slide04_05.png  used on inpu
@@ -2381,13 +2657,13 @@ t line 141.
  [81<../images/05_descriptives/slide04_03.png>]
 [82<../images/05_descriptives/Rplot04_01.png><../images/05_descriptives/slide04_
 05.png>] [83]
-<../images/05_descriptives/slide04_06.png, id=2411, 685.56125pt x 250.9375pt>
+<../images/05_descriptives/slide04_06.png, id=2331, 685.56125pt x 250.9375pt>
 File: ../images/05_descriptives/slide04_06.png Graphic file (type png)
 <use ../images/05_descriptives/slide04_06.png>
 Package luatex.def Info: ../images/05_descriptives/slide04_06.png  used on inpu
 t line 201.
 (luatex.def)             Requested size: 334.60422pt x 122.47798pt.
-<../images/05_descriptives/slide04_07.png, id=2415, 696.6025pt x 206.7725pt>
+<../images/05_descriptives/slide04_07.png, id=2335, 696.6025pt x 206.7725pt>
 File: ../images/05_descriptives/slide04_07.png Graphic file (type png)
 <use ../images/05_descriptives/slide04_07.png>
 Package luatex.def Info: ../images/05_descriptives/slide04_07.png  used on inpu
@@ -2395,7 +2671,7 @@ t line 212.
 (luatex.def)             Requested size: 334.60422pt x 99.31908pt.
  [84<../images/05_descriptives/slide04_06.png>] [85<../images/05_descriptives/sl
 ide04_07.png>]
-<../images/05_descriptives/slide04_08.png, id=2438, 631.35875pt x 561.09625pt>
+<../images/05_descriptives/slide04_08.png, id=2359, 631.35875pt x 561.09625pt>
 File: ../images/05_descriptives/slide04_08.png Graphic file (type png)
 <use ../images/05_descriptives/slide04_08.png>
 Package luatex.def Info: ../images/05_descriptives/slide04_08.png  used on inpu
@@ -2403,7 +2679,7 @@ t line 244.
 (luatex.def)             Requested size: 334.60422pt x 297.37103pt.
  [86<../images/05_descriptives/slide04_08.png>]
 [87]
-<../images/05_descriptives/m05_01.png, id=2463, 578.16pt x 289.08pt>
+<../images/05_descriptives/m05_01.png, id=2380, 578.16pt x 289.08pt>
 File: ../images/05_descriptives/m05_01.png Graphic file (type png)
 <use ../images/05_descriptives/m05_01.png>
 Package luatex.def Info: ../images/05_descriptives/m05_01.png  used on input li
@@ -2419,7 +2695,7 @@ ne 277.
 ]
 第6章
 [91] [92] [93] [94] [95] [96] [97] [98] [99]
-<../images/06_ctt/slide06_01.png, id=2585, 1379.1525pt x 370.38374pt>
+<../images/06_ctt/slide06_01.png, id=2483, 1379.1525pt x 370.38374pt>
 File: ../images/06_ctt/slide06_01.png Graphic file (type png)
 <use ../images/06_ctt/slide06_01.png>
 Package luatex.def Info: ../images/06_ctt/slide06_01.png  used on input line 16
@@ -2435,19 +2711,19 @@ Package luatex.def Info: ../images/06_ctt/slide06_01.png  used on input line 16
 ]
 第7章
 [103] [104]
-<../images/07_probability/slide07_05.png, id=2642, 1120.185pt x 380.42125pt>
+<../images/07_probability/slide07_05.png, id=2536, 1120.185pt x 380.42125pt>
 File: ../images/07_probability/slide07_05.png Graphic file (type png)
 <use ../images/07_probability/slide07_05.png>
 Package luatex.def Info: ../images/07_probability/slide07_05.png  used on input
  line 63.
 (luatex.def)             Requested size: 334.60422pt x 113.63383pt.
-<../images/07_probability/Rplot07_01.png, id=2644, 7227.0pt x 4818.0pt>
+<../images/07_probability/Rplot07_01.png, id=2538, 7227.0pt x 4818.0pt>
 File: ../images/07_probability/Rplot07_01.png Graphic file (type png)
 <use ../images/07_probability/Rplot07_01.png>
 Package luatex.def Info: ../images/07_probability/Rplot07_01.png  used on input
  line 75.
 (luatex.def)             Requested size: 271.86234pt x 181.21858pt.
-<../images/07_probability/Rplot07_02.png, id=2646, 7227.0pt x 4818.0pt>
+<../images/07_probability/Rplot07_02.png, id=2540, 7227.0pt x 4818.0pt>
 File: ../images/07_probability/Rplot07_02.png Graphic file (type png)
 <use ../images/07_probability/Rplot07_02.png>
 Package luatex.def Info: ../images/07_probability/Rplot07_02.png  used on input
@@ -2461,20 +2737,20 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/it' will be
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/it' will be
 (Font)              scaled to size 9.24713pt on input line 181.
  [109]
-<../images/07_probability/Rplot07_04.png, id=2701, 7227.0pt x 4818.0pt>
+<../images/07_probability/Rplot07_04.png, id=2595, 7227.0pt x 4818.0pt>
 File: ../images/07_probability/Rplot07_04.png Graphic file (type png)
 <use ../images/07_probability/Rplot07_04.png>
 Package luatex.def Info: ../images/07_probability/Rplot07_04.png  used on input
  line 204.
 (luatex.def)             Requested size: 271.86234pt x 181.21858pt.
  [110<../images/07_probability/Rplot07_04.png>]
-<../images/07_probability/Slide08_01.png, id=2719, 628.3475pt x 522.95375pt>
+<../images/07_probability/Slide08_01.png, id=2611, 628.3475pt x 522.95375pt>
 File: ../images/07_probability/Slide08_01.png Graphic file (type png)
 <use ../images/07_probability/Slide08_01.png>
 Package luatex.def Info: ../images/07_probability/Slide08_01.png  used on input
  line 226.
 (luatex.def)             Requested size: 271.86234pt x 226.26216pt.
-<../images/07_probability/Slide08_02.png, id=2720, 610.28pt x 430.60875pt>
+<../images/07_probability/Slide08_02.png, id=2612, 610.28pt x 430.60875pt>
 File: ../images/07_probability/Slide08_02.png Graphic file (type png)
 <use ../images/07_probability/Slide08_02.png>
 Package luatex.def Info: ../images/07_probability/Slide08_02.png  used on input
@@ -2482,7 +2758,7 @@ Package luatex.def Info: ../images/07_probability/Slide08_02.png  used on input
 (luatex.def)             Requested size: 271.86234pt x 191.82726pt.
  [111] [112<../images/07_probability/Slide08_01.png><../images/07_probability/Sl
 ide08_02.png>]
-<../images/07_probability/GaltonBoard.png, id=2739, 374.39874pt x 592.2125pt>
+<../images/07_probability/GaltonBoard.png, id=2630, 374.39874pt x 592.2125pt>
 File: ../images/07_probability/GaltonBoard.png Graphic file (type png)
 <use ../images/07_probability/GaltonBoard.png>
 Package luatex.def Info: ../images/07_probability/GaltonBoard.png  used on inpu
@@ -2490,20 +2766,20 @@ t line 254.
 (luatex.def)             Requested size: 132.20694pt x 209.12683pt.
 
 [113<../images/07_probability/GaltonBoard.png>]
-<../images/07_probability/Slide08_03.png, id=2751, 675.52374pt x 749.80125pt>
+<../images/07_probability/Slide08_03.png, id=2642, 675.52374pt x 749.80125pt>
 File: ../images/07_probability/Slide08_03.png Graphic file (type png)
 <use ../images/07_probability/Slide08_03.png>
 Package luatex.def Info: ../images/07_probability/Slide08_03.png  used on input
  line 274.
 (luatex.def)             Requested size: 271.86234pt x 301.75719pt.
-<../images/07_probability/Slide08_04b.png, id=2756, 1135.24126pt x 704.6325pt>
+<../images/07_probability/Slide08_04b.png, id=2645, 1135.24126pt x 704.6325pt>
 File: ../images/07_probability/Slide08_04b.png Graphic file (type png)
 <use ../images/07_probability/Slide08_04b.png>
 Package luatex.def Info: ../images/07_probability/Slide08_04b.png  used on inpu
 t line 287.
 (luatex.def)             Requested size: 355.51817pt x 220.6702pt.
  [114<../images/07_probability/Slide08_03.png>]
-<../images/07_probability/Rplot08_01.png, id=2773, 7227.0pt x 4818.0pt>
+<../images/07_probability/Rplot08_01.png, id=2657, 7227.0pt x 4818.0pt>
 File: ../images/07_probability/Rplot08_01.png Graphic file (type png)
 <use ../images/07_probability/Rplot08_01.png>
 Package luatex.def Info: ../images/07_probability/Rplot08_01.png  used on input
@@ -2511,7 +2787,7 @@ Package luatex.def Info: ../images/07_probability/Rplot08_01.png  used on input
 (luatex.def)             Requested size: 271.86234pt x 181.21858pt.
  [115<../images/07_probability/Slide08_04b.png>] [116<../images/07_probability/R
 plot08_01.png>]
-<../images/07_probability/Slide07_06.png, id=2802, 1155.31625pt x 648.4225pt>
+<../images/07_probability/Slide07_06.png, id=2686, 1155.31625pt x 648.4225pt>
 File: ../images/07_probability/Slide07_06.png Graphic file (type png)
 <use ../images/07_probability/Slide07_06.png>
 Package luatex.def Info: ../images/07_probability/Slide07_06.png  used on input
@@ -2523,7 +2799,7 @@ Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'. [117<../images/07_
 probability/Slide07_06.png>]
 [118] [119] [120]
-<../images/07_probability/Slide08_05.png, id=2878, 701.62125pt x 524.96124pt>
+<../images/07_probability/Slide08_05.png, id=2756, 701.62125pt x 524.96124pt>
 File: ../images/07_probability/Slide08_05.png Graphic file (type png)
 <use ../images/07_probability/Slide08_05.png>
 Package luatex.def Info: ../images/07_probability/Slide08_05.png  used on input
@@ -2539,7 +2815,7 @@ warning  (pdf backend): ignoring duplicate destination with the name 'Hfootnote.
 warning  (pdf backend): ignoring duplicate destination with the name 'Hfootnote.
 132'
 <../images/07_probability/Slide08_05.png>]
-<../images/07_probability/Rplot08_04.png, id=2903, 4818.0pt x 3613.5pt>
+<../images/07_probability/Rplot08_04.png, id=2779, 4818.0pt x 3613.5pt>
 File: ../images/07_probability/Rplot08_04.png Graphic file (type png)
 <use ../images/07_probability/Rplot08_04.png>
 Package luatex.def Info: ../images/07_probability/Rplot08_04.png  used on input
@@ -2554,7 +2830,7 @@ Overfull \hbox (28.12642pt too wide) in paragraph at lines 512--579
 \openout2 = m08_CorrelationCausation.aux
  (./m08_CorrelationCausation.tex
 第8章
-<../images/05_descriptives/Rplot04_02.png, id=2914, 7227.0pt x 7227.0pt>
+<../images/05_descriptives/Rplot04_02.png, id=2790, 7227.0pt x 7227.0pt>
 File: ../images/05_descriptives/Rplot04_02.png Graphic file (type png)
 <use ../images/05_descriptives/Rplot04_02.png>
 Package luatex.def Info: ../images/05_descriptives/Rplot04_02.png  used on inpu
@@ -2566,41 +2842,41 @@ t line 17.
 
 
 <../images/05_descriptives/Rplot04_02.png>] [126] [127]
-<../images/05_descriptives/Rplot04_03.png, id=2948, 7227.0pt x 7227.0pt>
+<../images/05_descriptives/Rplot04_03.png, id=2824, 7227.0pt x 7227.0pt>
 File: ../images/05_descriptives/Rplot04_03.png Graphic file (type png)
 <use ../images/05_descriptives/Rplot04_03.png>
 Package luatex.def Info: ../images/05_descriptives/Rplot04_03.png  used on inpu
 t line 80.
 (luatex.def)             Requested size: 271.86234pt x 271.82787pt.
  [128<../images/05_descriptives/Rplot04_03.png>]
-<../images/08_CorrelationCausation/Rplot08_01.png, id=2963, 867.24pt x 289.08pt
+<../images/08_CorrelationCausation/Rplot08_01.png, id=2837, 867.24pt x 289.08pt
 >
 File: ../images/08_CorrelationCausation/Rplot08_01.png Graphic file (type png)
 <use ../images/08_CorrelationCausation/Rplot08_01.png>
 Package luatex.def Info: ../images/08_CorrelationCausation/Rplot08_01.png  used
  on input line 109.
 (luatex.def)             Requested size: 334.60422pt x 111.53653pt.
-<../images/05_descriptives/Rplot04_04.png, id=2966, 7227.0pt x 7227.0pt>
+<../images/05_descriptives/Rplot04_04.png, id=2840, 7227.0pt x 7227.0pt>
 File: ../images/05_descriptives/Rplot04_04.png Graphic file (type png)
 <use ../images/05_descriptives/Rplot04_04.png>
 Package luatex.def Info: ../images/05_descriptives/Rplot04_04.png  used on inpu
 t line 123.
 (luatex.def)             Requested size: 271.86234pt x 271.82787pt.
-<../images/05_descriptives/Rplot04_05.png, id=2968, 7227.0pt x 7227.0pt>
+<../images/05_descriptives/Rplot04_05.png, id=2842, 7227.0pt x 7227.0pt>
 File: ../images/05_descriptives/Rplot04_05.png Graphic file (type png)
 <use ../images/05_descriptives/Rplot04_05.png>
 Package luatex.def Info: ../images/05_descriptives/Rplot04_05.png  used on inpu
 t line 132.
 (luatex.def)             Requested size: 271.86234pt x 271.82787pt.
  [129<../images/08_CorrelationCausation/Rplot08_01.png>]
-<../images/05_descriptives/Rplot04_06.png, id=2983, 7227.0pt x 7227.0pt>
+<../images/05_descriptives/Rplot04_06.png, id=2856, 7227.0pt x 7227.0pt>
 File: ../images/05_descriptives/Rplot04_06.png Graphic file (type png)
 <use ../images/05_descriptives/Rplot04_06.png>
 Package luatex.def Info: ../images/05_descriptives/Rplot04_06.png  used on inpu
 t line 145.
 (luatex.def)             Requested size: 167.28717pt x 167.2989pt.
  [130<../images/05_descriptives/Rplot04_04.png>]
-<../images/05_descriptives/Rplot04_07.png, id=2995, 7227.0pt x 3613.5pt>
+<../images/05_descriptives/Rplot04_07.png, id=2868, 7227.0pt x 3613.5pt>
 File: ../images/05_descriptives/Rplot04_07.png Graphic file (type png)
 <use ../images/05_descriptives/Rplot04_07.png>
 Package luatex.def Info: ../images/05_descriptives/Rplot04_07.png  used on inpu
@@ -2613,7 +2889,7 @@ t line 156.
 
 (./m09_Regression.tex
 第9章
-<../images/09_Regression/Rplot09_01.png, id=3074, 4818.0pt x 3613.5pt>
+<../images/09_Regression/Rplot09_01.png, id=2939, 4818.0pt x 3613.5pt>
 File: ../images/09_Regression/Rplot09_01.png Graphic file (type png)
 <use ../images/09_Regression/Rplot09_01.png>
 Package luatex.def Info: ../images/09_Regression/Rplot09_01.png  used on input 
@@ -2625,21 +2901,21 @@ line 54.
 
 
 ] [138<../images/09_Regression/Rplot09_01.png>]
-<../images/09_Regression/Rplot09_02.png, id=3090, 4818.0pt x 3613.5pt>
+<../images/09_Regression/Rplot09_02.png, id=2955, 4818.0pt x 3613.5pt>
 File: ../images/09_Regression/Rplot09_02.png Graphic file (type png)
 <use ../images/09_Regression/Rplot09_02.png>
 Package luatex.def Info: ../images/09_Regression/Rplot09_02.png  used on input 
 line 83.
 (luatex.def)             Requested size: 271.86234pt x 203.84334pt.
  [139<../images/09_Regression/Rplot09_02.png>]
-<../images/09_Regression/Slide09_01.png, id=3104, 1155.31625pt x 656.4525pt>
+<../images/09_Regression/Slide09_01.png, id=2969, 1155.31625pt x 656.4525pt>
 File: ../images/09_Regression/Slide09_01.png Graphic file (type png)
 <use ../images/09_Regression/Slide09_01.png>
 Package luatex.def Info: ../images/09_Regression/Slide09_01.png  used on input 
 line 109.
 (luatex.def)             Requested size: 271.86234pt x 154.46669pt.
  [140]
-<../images/09_Regression/Slide09_02.png, id=3112, 788.9475pt x 825.0825pt>
+<../images/09_Regression/Slide09_02.png, id=2977, 788.9475pt x 825.0825pt>
 File: ../images/09_Regression/Slide09_02.png Graphic file (type png)
 <use ../images/09_Regression/Slide09_02.png>
 Package luatex.def Info: ../images/09_Regression/Slide09_02.png  used on input 
@@ -2651,7 +2927,7 @@ e09_02.png>] [143]) [144]
 
 (./m10_MultipleRegression.tex
 第10章
-<../images/10_MultipleRegression/Rplot10_01.png, id=3155, 1204.5pt x 803.0pt>
+<../images/10_MultipleRegression/Rplot10_01.png, id=3011, 1204.5pt x 803.0pt>
 File: ../images/10_MultipleRegression/Rplot10_01.png Graphic file (type png)
 <use ../images/10_MultipleRegression/Rplot10_01.png>
 Package luatex.def Info: ../images/10_MultipleRegression/Rplot10_01.png  used o
@@ -2663,21 +2939,21 @@ n input line 29.
 
 
 ] [146<../images/10_MultipleRegression/Rplot10_01.png>]
-<../images/10_MultipleRegression/Rplot10_02.png, id=3174, 4818.0pt x 3613.5pt>
+<../images/10_MultipleRegression/Rplot10_02.png, id=3030, 4818.0pt x 3613.5pt>
 File: ../images/10_MultipleRegression/Rplot10_02.png Graphic file (type png)
 <use ../images/10_MultipleRegression/Rplot10_02.png>
 Package luatex.def Info: ../images/10_MultipleRegression/Rplot10_02.png  used o
 n input line 68.
 (luatex.def)             Requested size: 271.86234pt x 203.84334pt.
  [147<../images/10_MultipleRegression/Rplot10_02.png>]
-<../images/10_MultipleRegression/Rplot10_03.png, id=3189, 4818.0pt x 4818.0pt>
+<../images/10_MultipleRegression/Rplot10_03.png, id=3045, 4818.0pt x 4818.0pt>
 File: ../images/10_MultipleRegression/Rplot10_03.png Graphic file (type png)
 <use ../images/10_MultipleRegression/Rplot10_03.png>
 Package luatex.def Info: ../images/10_MultipleRegression/Rplot10_03.png  used o
 n input line 128.
 (luatex.def)             Requested size: 313.69025pt x 313.6221pt.
  [148]
-<../images/10_MultipleRegression/Slide10_01.png, id=3202, 1086.0575pt x 355.327
+<../images/10_MultipleRegression/Slide10_01.png, id=3056, 1086.0575pt x 355.327
 5pt>
 File: ../images/10_MultipleRegression/Slide10_01.png Graphic file (type png)
 <use ../images/10_MultipleRegression/Slide10_01.png>
@@ -2686,14 +2962,14 @@ n input line 139.
 (luatex.def)             Requested size: 313.69025pt x 102.63026pt.
  [149<../images/10_MultipleRegression/Rplot10_03.png><../images/10_MultipleRegre
 ssion/Slide10_01.png>]
-<../images/10_MultipleRegression/Slide10_02.png, id=3214, 1121.18875pt x 328.22
+<../images/10_MultipleRegression/Slide10_02.png, id=3068, 1121.18875pt x 328.22
 626pt>
 File: ../images/10_MultipleRegression/Slide10_02.png Graphic file (type png)
 <use ../images/10_MultipleRegression/Slide10_02.png>
 Package luatex.def Info: ../images/10_MultipleRegression/Slide10_02.png  used o
 n input line 148.
 (luatex.def)             Requested size: 313.69025pt x 91.8326pt.
-<../images/10_MultipleRegression/Slide10_03.png, id=3216, 1165.35374pt x 421.57
+<../images/10_MultipleRegression/Slide10_03.png, id=3070, 1165.35374pt x 421.57
 5pt>
 File: ../images/10_MultipleRegression/Slide10_03.png Graphic file (type png)
 <use ../images/10_MultipleRegression/Slide10_03.png>
@@ -2702,14 +2978,14 @@ n input line 159.
 (luatex.def)             Requested size: 313.69025pt x 113.4794pt.
  [150<../images/10_MultipleRegression/Slide10_02.png><../images/10_MultipleRegre
 ssion/Slide10_03.png>]
-<../images/10_MultipleRegression/Slide10_04.png, id=3228, 1158.3275pt x 436.631
+<../images/10_MultipleRegression/Slide10_04.png, id=3082, 1158.3275pt x 436.631
 26pt>
 File: ../images/10_MultipleRegression/Slide10_04.png Graphic file (type png)
 <use ../images/10_MultipleRegression/Slide10_04.png>
 Package luatex.def Info: ../images/10_MultipleRegression/Slide10_04.png  used o
 n input line 172.
 (luatex.def)             Requested size: 313.69025pt x 118.24512pt.
-<../images/10_MultipleRegression/Slide10_05.png, id=3230, 427.5975pt x 414.5487
+<../images/10_MultipleRegression/Slide10_05.png, id=3084, 427.5975pt x 414.5487
 5pt>
 File: ../images/10_MultipleRegression/Slide10_05.png Graphic file (type png)
 <use ../images/10_MultipleRegression/Slide10_05.png>
@@ -2718,7 +2994,7 @@ n input line 180.
 (luatex.def)             Requested size: 313.69025pt x 304.1172pt.
  [151<../images/10_MultipleRegression/Slide10_04.png>] [152<../images/10_Multipl
 eRegression/Slide10_05.png>] [153] [154]
-<../images/10_MultipleRegression/Rplot10_04.png, id=3261, 4818.0pt x 3613.5pt>
+<../images/10_MultipleRegression/Rplot10_04.png, id=3115, 4818.0pt x 3613.5pt>
 File: ../images/10_MultipleRegression/Rplot10_04.png Graphic file (type png)
 <use ../images/10_MultipleRegression/Rplot10_04.png>
 Package luatex.def Info: ../images/10_MultipleRegression/Rplot10_04.png  used o
@@ -2743,7 +3019,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'. [158]
-<../images/11_MultipleRegressionOnR/Rplot11_01.png, id=3324, 433.62pt x 433.62p
+<../images/11_MultipleRegressionOnR/Rplot11_01.png, id=3178, 433.62pt x 433.62p
 t>
 File: ../images/11_MultipleRegressionOnR/Rplot11_01.png Graphic file (type png)
 
@@ -2769,7 +3045,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/11_MultipleRegressionOnR/Rplot11_02.png, id=3380, 578.16pt x 433.62p
+<../images/11_MultipleRegressionOnR/Rplot11_02.png, id=3232, 578.16pt x 433.62p
 t>
 File: ../images/11_MultipleRegressionOnR/Rplot11_02.png Graphic file (type png)
 
@@ -2796,26 +3072,26 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 ]
 第12章
 [169] [170]
-<../images/12_design1/slide12_01.png, id=3470, 1167.36125pt x 413.545pt>
+<../images/12_design1/slide12_01.png, id=3322, 1167.36125pt x 413.545pt>
 File: ../images/12_design1/slide12_01.png Graphic file (type png)
 <use ../images/12_design1/slide12_01.png>
 Package luatex.def Info: ../images/12_design1/slide12_01.png  used on input lin
 e 41.
 (luatex.def)             Requested size: 334.60422pt x 118.53673pt.
  [171<../images/12_design1/slide12_01.png>]
-<../images/12_design1/slide12_02.png, id=3482, 996.72375pt x 369.38pt>
+<../images/12_design1/slide12_02.png, id=3334, 996.72375pt x 369.38pt>
 File: ../images/12_design1/slide12_02.png Graphic file (type png)
 <use ../images/12_design1/slide12_02.png>
 Package luatex.def Info: ../images/12_design1/slide12_02.png  used on input lin
 e 70.
 (luatex.def)             Requested size: 334.60422pt x 123.9981pt.
-<../images/12_design1/slide12_03.png, id=3484, 994.71625pt x 353.32pt>
+<../images/12_design1/slide12_03.png, id=3336, 994.71625pt x 353.32pt>
 File: ../images/12_design1/slide12_03.png Graphic file (type png)
 <use ../images/12_design1/slide12_03.png>
 Package luatex.def Info: ../images/12_design1/slide12_03.png  used on input lin
 e 81.
 (luatex.def)             Requested size: 334.60422pt x 118.84949pt.
-<../images/12_design1/slide12_04.png, id=3486, 1013.7875pt x 417.56pt>
+<../images/12_design1/slide12_04.png, id=3338, 1013.7875pt x 417.56pt>
 File: ../images/12_design1/slide12_04.png Graphic file (type png)
 <use ../images/12_design1/slide12_04.png>
 Package luatex.def Info: ../images/12_design1/slide12_04.png  used on input lin
@@ -2823,13 +3099,13 @@ e 91.
 (luatex.def)             Requested size: 334.60422pt x 137.81433pt.
  [172<../images/12_design1/slide12_02.png>] [173<../images/12_design1/slide12_03
 .png><../images/12_design1/slide12_04.png>] [174] [175] [176]
-<../images/12_design1/slide12_05.png, id=3527, 730.73pt x 356.33125pt>
+<../images/12_design1/slide12_05.png, id=3379, 730.73pt x 356.33125pt>
 File: ../images/12_design1/slide12_05.png Graphic file (type png)
 <use ../images/12_design1/slide12_05.png>
 Package luatex.def Info: ../images/12_design1/slide12_05.png  used on input lin
 e 208.
 (luatex.def)             Requested size: 334.60422pt x 163.16403pt.
-<../images/21_anova/slide21_08.png, id=3530, 1199.48125pt x 591.20876pt>
+<../images/21_anova/slide21_08.png, id=3382, 1199.48125pt x 591.20876pt>
 File: ../images/21_anova/slide21_08.png Graphic file (type png)
 <use ../images/21_anova/slide21_08.png>
 Package luatex.def Info: ../images/21_anova/slide21_08.png  used on input line 
@@ -2845,14 +3121,14 @@ png>] [179]
 
 ]
 第13章
-<../images/22_anovaOnR/Rplot22_01.png, id=3560, 3613.5pt x 2409.0pt>
+<../images/22_anovaOnR/Rplot22_01.png, id=3412, 3613.5pt x 2409.0pt>
 File: ../images/22_anovaOnR/Rplot22_01.png Graphic file (type png)
 <use ../images/22_anovaOnR/Rplot22_01.png>
 Package luatex.def Info: ../images/22_anovaOnR/Rplot22_01.png  used on input li
 ne 26.
 (luatex.def)             Requested size: 334.60422pt x 223.04956pt.
 [181<../images/22_anovaOnR/Rplot22_01.png>] [182] [183]
-<../images/22_anovaOnR/Rplot22_02.png, id=3594, 578.16pt x 289.08pt>
+<../images/22_anovaOnR/Rplot22_02.png, id=3446, 578.16pt x 289.08pt>
 File: ../images/22_anovaOnR/Rplot22_02.png Graphic file (type png)
 <use ../images/22_anovaOnR/Rplot22_02.png>
 Package luatex.def Info: ../images/22_anovaOnR/Rplot22_02.png  used on input li
@@ -2864,27 +3140,27 @@ Overfull \hbox (4.80785pt too wide) detected at line 187
  []
 
 [185]
-<../images/13_design2/slide13_01.png, id=3619, 944.52875pt x 608.2725pt>
+<../images/13_design2/slide13_01.png, id=3471, 944.52875pt x 608.2725pt>
 File: ../images/13_design2/slide13_01.png Graphic file (type png)
 <use ../images/13_design2/slide13_01.png>
 Package luatex.def Info: ../images/13_design2/slide13_01.png  used on input lin
 e 200.
 (luatex.def)             Requested size: 94.10643pt x 60.59877pt.
-<../images/13_design2/slide13_02.png, id=3620, 966.61125pt x 613.29124pt>
+<../images/13_design2/slide13_02.png, id=3472, 966.61125pt x 613.29124pt>
 File: ../images/13_design2/slide13_02.png Graphic file (type png)
 <use ../images/13_design2/slide13_02.png>
 Package luatex.def Info: ../images/13_design2/slide13_02.png  used on input lin
 e 207.
 (luatex.def)             Requested size: 94.10643pt x 59.7044pt.
  [186<../images/13_design2/slide13_01.png><../images/13_design2/slide13_02.png>]
-<../images/22_anovaOnR/Rplot22_05.png, id=3634, 578.16pt x 289.08pt>
+<../images/22_anovaOnR/Rplot22_05.png, id=3486, 578.16pt x 289.08pt>
 File: ../images/22_anovaOnR/Rplot22_05.png Graphic file (type png)
 <use ../images/22_anovaOnR/Rplot22_05.png>
 Package luatex.def Info: ../images/22_anovaOnR/Rplot22_05.png  used on input li
 ne 248.
 (luatex.def)             Requested size: 334.60422pt x 167.3004pt.
  [187<../images/22_anovaOnR/Rplot22_05.png>]
-<../images/22_anovaOnR/Rplot22_04.png, id=3645, 578.16pt x 289.08pt>
+<../images/22_anovaOnR/Rplot22_04.png, id=3497, 578.16pt x 289.08pt>
 File: ../images/22_anovaOnR/Rplot22_04.png Graphic file (type png)
 <use ../images/22_anovaOnR/Rplot22_04.png>
 Package luatex.def Info: ../images/22_anovaOnR/Rplot22_04.png  used on input li
@@ -2899,7 +3175,7 @@ Overfull \hbox (38.92163pt too wide) detected at line 401
 \openout2 = m14_design3.aux
  (./m14_design3.tex
 第14章
-<../images/22_anovaOnR/Rplot22_03.png, id=3684, 3613.5pt x 2409.0pt>
+<../images/22_anovaOnR/Rplot22_03.png, id=3536, 3613.5pt x 2409.0pt>
 File: ../images/22_anovaOnR/Rplot22_03.png Graphic file (type png)
 <use ../images/22_anovaOnR/Rplot22_03.png>
 Package luatex.def Info: ../images/22_anovaOnR/Rplot22_03.png  used on input li
@@ -2911,7 +3187,7 @@ ne 38.
 
 
 ]
-<../images/14_design3/slide14_01.png, id=3693, 1254.6875pt x 789.95125pt>
+<../images/14_design3/slide14_01.png, id=3545, 1254.6875pt x 789.95125pt>
 File: ../images/14_design3/slide14_01.png Graphic file (type png)
 <use ../images/14_design3/slide14_01.png>
 Package luatex.def Info: ../images/14_design3/slide14_01.png  used on input lin
@@ -2919,14 +3195,14 @@ e 68.
 (luatex.def)             Requested size: 334.60422pt x 210.66199pt.
  [192<../images/22_anovaOnR/Rplot22_03.png>] [193<../images/14_design3/slide14_0
 1.png>]
-<../images/22_anovaOnR/slide22_04.png, id=3716, 925.4575pt x 343.2825pt>
+<../images/22_anovaOnR/slide22_04.png, id=3568, 925.4575pt x 343.2825pt>
 File: ../images/22_anovaOnR/slide22_04.png Graphic file (type png)
 <use ../images/22_anovaOnR/slide22_04.png>
 Package luatex.def Info: ../images/22_anovaOnR/slide22_04.png  used on input li
 ne 141.
 (luatex.def)             Requested size: 334.60422pt x 124.11588pt.
  [194<../images/22_anovaOnR/slide22_04.png>] [195] [196] [197]
-<../images/14_design3/slide14_02.png, id=3746, 612.2875pt x 183.68625pt>
+<../images/14_design3/slide14_02.png, id=3598, 612.2875pt x 183.68625pt>
 File: ../images/14_design3/slide14_02.png Graphic file (type png)
 <use ../images/14_design3/slide14_02.png>
 Package luatex.def Info: ../images/14_design3/slide14_02.png  used on input lin
@@ -2934,7 +3210,7 @@ e 308.
 (luatex.def)             Requested size: 209.12683pt x 62.73837pt.
 
 [198<../images/14_design3/slide14_02.png>]
-<../images/14_design3/slide14_03.png, id=3754, 764.8575pt x 149.55875pt>
+<../images/14_design3/slide14_03.png, id=3606, 764.8575pt x 149.55875pt>
 File: ../images/14_design3/slide14_03.png Graphic file (type png)
 <use ../images/14_design3/slide14_03.png>
 Package luatex.def Info: ../images/14_design3/slide14_03.png  used on input lin
@@ -2957,7 +3233,7 @@ e 330.
 \openout2 = m16_inference.aux
  (./m16_inference.tex
 第16章
-<../images/16_inference/slide16_01.png, id=3793, 1027.84pt x 770.88pt>
+<../images/16_inference/slide16_01.png, id=3645, 1027.84pt x 770.88pt>
 File: ../images/16_inference/slide16_01.png Graphic file (type png)
 <use ../images/16_inference/slide16_01.png>
 Package luatex.def Info: ../images/16_inference/slide16_01.png  used on input l
@@ -2967,13 +3243,13 @@ ine 38.
 
 
 ] [206<../images/16_inference/slide16_01.png>]
-<../images/16_inference/slide16_02.png, id=3811, 1027.84pt x 770.88pt>
+<../images/16_inference/slide16_02.png, id=3663, 1027.84pt x 770.88pt>
 File: ../images/16_inference/slide16_02.png Graphic file (type png)
 <use ../images/16_inference/slide16_02.png>
 Package luatex.def Info: ../images/16_inference/slide16_02.png  used on input l
 ine 62.
 (luatex.def)             Requested size: 334.59297pt x 250.95476pt.
-<dice.pdf, id=3813, 258.9675pt x 86.3225pt>
+<dice.pdf, id=3665, 258.9675pt x 86.3225pt>
 File: dice.pdf Graphic file (type pdf)
 <use dice.pdf>
 Package luatex.def Info: dice.pdf  used on input line 68.
@@ -2984,20 +3260,20 @@ Package luatex.def Info: dice.pdf  used on input line 68.
 (luatex.def)             Requested size: 6.03389pt x 6.034pt.
  [207<../images/16_inference/slide16_02.png>] [208</usr/local/texlive/2023/texmf
 -dist/tex/latex/epsdice/dice.pdf>]
-<../images/16_inference/Rplot16_01.png, id=3842, 4818.0pt x 2409.0pt>
+<../images/16_inference/Rplot16_01.png, id=3692, 4818.0pt x 2409.0pt>
 File: ../images/16_inference/Rplot16_01.png Graphic file (type png)
 <use ../images/16_inference/Rplot16_01.png>
 Package luatex.def Info: ../images/16_inference/Rplot16_01.png  used on input l
 ine 128.
 (luatex.def)             Requested size: 334.57434pt x 167.2989pt.
  [209] [210<../images/16_inference/Rplot16_01.png>] [211]
-<../images/16_inference/slide16_03.png, id=3877, 1141.26375pt x 927.465pt>
+<../images/16_inference/slide16_03.png, id=3726, 1141.26375pt x 927.465pt>
 File: ../images/16_inference/slide16_03.png Graphic file (type png)
 <use ../images/16_inference/slide16_03.png>
 Package luatex.def Info: ../images/16_inference/slide16_03.png  used on input l
 ine 221.
 (luatex.def)             Requested size: 308.80707pt x 250.95476pt.
-<../images/16_inference/Rplot16_03.png, id=3879, 4818.0pt x 2409.0pt>
+<../images/16_inference/Rplot16_03.png, id=3728, 4818.0pt x 2409.0pt>
 File: ../images/16_inference/Rplot16_03.png Graphic file (type png)
 <use ../images/16_inference/Rplot16_03.png>
 Package luatex.def Info: ../images/16_inference/Rplot16_03.png  used on input l
@@ -3014,28 +3290,28 @@ ine 230.
 
 ]
 第17章
-<../images/16_inference/Rplot16_04.png, id=3901, 4818.0pt x 2409.0pt>
+<../images/16_inference/Rplot16_04.png, id=3749, 4818.0pt x 2409.0pt>
 File: ../images/16_inference/Rplot16_04.png Graphic file (type png)
 <use ../images/16_inference/Rplot16_04.png>
 Package luatex.def Info: ../images/16_inference/Rplot16_04.png  used on input l
 ine 22.
 (luatex.def)             Requested size: 334.57434pt x 167.2989pt.
 [215]
-<../images/16_inference/Rplot16_05.png, id=3912, 4818.0pt x 2409.0pt>
+<../images/16_inference/Rplot16_05.png, id=3761, 4818.0pt x 2409.0pt>
 File: ../images/16_inference/Rplot16_05.png Graphic file (type png)
 <use ../images/16_inference/Rplot16_05.png>
 Package luatex.def Info: ../images/16_inference/Rplot16_05.png  used on input l
 ine 53.
 (luatex.def)             Requested size: 334.57434pt x 167.2989pt.
  [216<../images/16_inference/Rplot16_04.png>]
-<../images/17_estimation_and_test/slide17_1.png, id=3928, 1104.125pt x 836.1237
+<../images/17_estimation_and_test/slide17_1.png, id=3777, 1104.125pt x 836.1237
 5pt>
 File: ../images/17_estimation_and_test/slide17_1.png Graphic file (type png)
 <use ../images/17_estimation_and_test/slide17_1.png>
 Package luatex.def Info: ../images/17_estimation_and_test/slide17_1.png  used o
 n input line 75.
 (luatex.def)             Requested size: 331.39168pt x 250.95476pt.
-<../images/17_estimation_and_test/slide17_2.png, id=3932, 1264.725pt x 445.665p
+<../images/17_estimation_and_test/slide17_2.png, id=3781, 1264.725pt x 445.665p
 t>
 File: ../images/17_estimation_and_test/slide17_2.png Graphic file (type png)
 <use ../images/17_estimation_and_test/slide17_2.png>
@@ -3057,14 +3333,14 @@ Overfull \hbox (6.53514pt too wide) detected at line 128
 [] [] \OT1/cmr/m/n/10 = 36\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 5394
  []
 
-<../images/17_estimation_and_test/Rplot17_1.png, id=3967, 4818.0pt x 2409.0pt>
+<../images/17_estimation_and_test/Rplot17_1.png, id=3816, 4818.0pt x 2409.0pt>
 File: ../images/17_estimation_and_test/Rplot17_1.png Graphic file (type png)
 <use ../images/17_estimation_and_test/Rplot17_1.png>
 Package luatex.def Info: ../images/17_estimation_and_test/Rplot17_1.png  used o
 n input line 138.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
 [220]
-<../images/17_estimation_and_test/slide17_3.png, id=3982, 1192.455pt x 436.6312
+<../images/17_estimation_and_test/slide17_3.png, id=3831, 1192.455pt x 436.6312
 6pt>
 File: ../images/17_estimation_and_test/slide17_3.png Graphic file (type png)
 <use ../images/17_estimation_and_test/slide17_3.png>
@@ -3072,7 +3348,7 @@ Package luatex.def Info: ../images/17_estimation_and_test/slide17_3.png  used o
 n input line 165.
 (luatex.def)             Requested size: 334.60422pt x 122.51575pt.
  [221<../images/17_estimation_and_test/Rplot17_1.png>]
-<../images/17_estimation_and_test/slide17_4.png, id=3992, 1278.7775pt x 941.517
+<../images/17_estimation_and_test/slide17_4.png, id=3841, 1278.7775pt x 941.517
 5pt>
 File: ../images/17_estimation_and_test/slide17_4.png Graphic file (type png)
 <use ../images/17_estimation_and_test/slide17_4.png>
@@ -3081,7 +3357,7 @@ n input line 177.
 (luatex.def)             Requested size: 340.84518pt x 250.95476pt.
  [222<../images/17_estimation_and_test/slide17_3.png><../images/17_estimation_an
 d_test/slide17_4.png>]
-<../images/17_estimation_and_test/slide17_5.png, id=4005, 997.7275pt x 509.905p
+<../images/17_estimation_and_test/slide17_5.png, id=3854, 997.7275pt x 509.905p
 t>
 File: ../images/17_estimation_and_test/slide17_5.png Graphic file (type png)
 <use ../images/17_estimation_and_test/slide17_5.png>
@@ -3099,28 +3375,28 @@ n input line 186.
 
 
 ] [226] [227] [228]
-<../images/18_NHST/slide18_02.png, id=4092, 1019.81pt x 473.77pt>
+<../images/18_NHST/slide18_02.png, id=3930, 1019.81pt x 473.77pt>
 File: ../images/18_NHST/slide18_02.png Graphic file (type png)
 <use ../images/18_NHST/slide18_02.png>
 Package luatex.def Info: ../images/18_NHST/slide18_02.png  used on input line 1
 24.
 (luatex.def)             Requested size: 334.60422pt x 155.44817pt.
  [229<../images/18_NHST/slide18_02.png>]
-<../images/18_NHST/slide18_03.png, id=4111, 1028.84375pt x 392.46625pt>
+<../images/18_NHST/slide18_03.png, id=3949, 1028.84375pt x 392.46625pt>
 File: ../images/18_NHST/slide18_03.png Graphic file (type png)
 <use ../images/18_NHST/slide18_03.png>
 Package luatex.def Info: ../images/18_NHST/slide18_03.png  used on input line 1
 45.
 (luatex.def)             Requested size: 334.60422pt x 127.63983pt.
  [230<../images/18_NHST/slide18_03.png>]
-<../images/18_NHST/Rplot18_01.png, id=4128, 3011.25pt x 3011.25pt>
+<../images/18_NHST/Rplot18_01.png, id=3962, 3011.25pt x 3011.25pt>
 File: ../images/18_NHST/Rplot18_01.png Graphic file (type png)
 <use ../images/18_NHST/Rplot18_01.png>
 Package luatex.def Info: ../images/18_NHST/Rplot18_01.png  used on input line 1
 72.
 (luatex.def)             Requested size: 334.60422pt x 334.59273pt.
  [231] [232<../images/18_NHST/Rplot18_01.png>]
-<../images/18_NHST/slide18_04.png, id=4155, 1026.83624pt x 416.55624pt>
+<../images/18_NHST/slide18_04.png, id=3986, 1026.83624pt x 416.55624pt>
 File: ../images/18_NHST/slide18_04.png Graphic file (type png)
 <use ../images/18_NHST/slide18_04.png>
 Package luatex.def Info: ../images/18_NHST/slide18_04.png  used on input line 2
@@ -3136,21 +3412,21 @@ Package luatex.def Info: ../images/18_NHST/slide18_04.png  used on input line 2
 
 
 ] [236]
-<../images/18_NHST/Rplot18_02.png, id=4205, 4818.0pt x 2409.0pt>
+<../images/18_NHST/Rplot18_02.png, id=4037, 4818.0pt x 2409.0pt>
 File: ../images/18_NHST/Rplot18_02.png Graphic file (type png)
 <use ../images/18_NHST/Rplot18_02.png>
 Package luatex.def Info: ../images/18_NHST/Rplot18_02.png  used on input line 4
 5.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
  [237<../images/18_NHST/Rplot18_02.png>]
-<../images/18_NHST/slide18_01.png, id=4213, 1443.3925pt x 818.05624pt>
+<../images/18_NHST/slide18_01.png, id=4045, 1443.3925pt x 818.05624pt>
 File: ../images/18_NHST/slide18_01.png Graphic file (type png)
 <use ../images/18_NHST/slide18_01.png>
 Package luatex.def Info: ../images/18_NHST/slide18_01.png  used on input line 8
 4.
 (luatex.def)             Requested size: 334.60422pt x 189.6344pt.
  [238] [239<../images/18_NHST/slide18_01.png>] [240]
-<../images/19_NHST2/Slide19_03.png, id=4244, 512.91624pt x 314.17375pt>
+<../images/19_NHST2/Slide19_03.png, id=4073, 512.91624pt x 314.17375pt>
 File: ../images/19_NHST2/Slide19_03.png Graphic file (type png)
 <use ../images/19_NHST2/Slide19_03.png>
 Package luatex.def Info: ../images/19_NHST2/Slide19_03.png  used on input line 
@@ -3166,7 +3442,7 @@ Package luatex.def Info: ../images/19_NHST2/Slide19_03.png  used on input line
 
 ]
 第20章
-<../images/19_NHST2/slide19_01.png, id=4276, 824.07875pt x 462.72874pt>
+<../images/19_NHST2/slide19_01.png, id=4101, 824.07875pt x 462.72874pt>
 File: ../images/19_NHST2/slide19_01.png Graphic file (type png)
 <use ../images/19_NHST2/slide19_01.png>
 Package luatex.def Info: ../images/19_NHST2/slide19_01.png  used on input line 
@@ -3179,7 +3455,7 @@ Package luatex.def Info: ../images/17_estimation_and_test/slide17_4.png  used o
 n input line 107.
 (luatex.def)             Requested size: 334.60422pt x 246.3547pt.
  [248] [249] [250]
-<../images/19_NHST2/slide19_02.png, id=4337, 1186.4325pt x 789.95125pt>
+<../images/19_NHST2/slide19_02.png, id=4163, 1186.4325pt x 789.95125pt>
 File: ../images/19_NHST2/slide19_02.png Graphic file (type png)
 <use ../images/19_NHST2/slide19_02.png>
 Package luatex.def Info: ../images/19_NHST2/slide19_02.png  used on input line 
@@ -3242,7 +3518,7 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'. [259]) [260]
  (./m
 21_anova.tex
 第21章
-<../images/21_anova/slide21_01.png, id=4515, 1333.98375pt x 845.1575pt>
+<../images/21_anova/slide21_01.png, id=4338, 1333.98375pt x 845.1575pt>
 File: ../images/21_anova/slide21_01.png Graphic file (type png)
 <use ../images/21_anova/slide21_01.png>
 Package luatex.def Info: ../images/21_anova/slide21_01.png  used on input line 
@@ -3254,7 +3530,7 @@ Package luatex.def Info: ../images/21_anova/slide21_01.png  used on input line
 
 
 ]
-<../images/21_anova/slide21_03.png, id=4531, 1314.9125pt x 745.78625pt>
+<../images/21_anova/slide21_03.png, id=4354, 1314.9125pt x 745.78625pt>
 File: ../images/21_anova/slide21_03.png Graphic file (type png)
 <use ../images/21_anova/slide21_03.png>
 Package luatex.def Info: ../images/21_anova/slide21_03.png  used on input line 
@@ -3262,21 +3538,21 @@ Package luatex.def Info: ../images/21_anova/slide21_03.png  used on input line
 (luatex.def)             Requested size: 334.60422pt x 189.769pt.
  [262<../images/21_anova/slide21_01.png>] [263<../images/21_anova/slide21_03.png
 >]
-<../images/21_anova/slide21_05.png, id=4551, 1350.04375pt x 658.46pt>
+<../images/21_anova/slide21_05.png, id=4374, 1350.04375pt x 658.46pt>
 File: ../images/21_anova/slide21_05.png Graphic file (type png)
 <use ../images/21_anova/slide21_05.png>
 Package luatex.def Info: ../images/21_anova/slide21_05.png  used on input line 
 134.
 (luatex.def)             Requested size: 334.60422pt x 163.19792pt.
  [264<../images/21_anova/slide21_05.png>]
-<../images/21_anova/slide21_06.png, id=4567, 1151.30125pt x 839.135pt>
+<../images/21_anova/slide21_06.png, id=4390, 1151.30125pt x 839.135pt>
 File: ../images/21_anova/slide21_06.png Graphic file (type png)
 <use ../images/21_anova/slide21_06.png>
 Package luatex.def Info: ../images/21_anova/slide21_06.png  used on input line 
 189.
 (luatex.def)             Requested size: 334.60422pt x 243.88069pt.
  [265] [266<../images/21_anova/slide21_06.png>]
-<../images/21_anova/slide21_07.png, id=4588, 1133.23375pt x 788.9475pt>
+<../images/21_anova/slide21_07.png, id=4410, 1133.23375pt x 788.9475pt>
 File: ../images/21_anova/slide21_07.png Graphic file (type png)
 <use ../images/21_anova/slide21_07.png>
 Package luatex.def Info: ../images/21_anova/slide21_07.png  used on input line 
@@ -3300,7 +3576,7 @@ Overfull \hbox (33.06357pt too wide) in paragraph at lines 295--315
 
 ]
 第22章
-<../images/20_ttest/fig20_01.png, id=4691, 1218.5525pt x 513.92pt>
+<../images/20_ttest/fig20_01.png, id=4510, 1218.5525pt x 513.92pt>
 File: ../images/20_ttest/fig20_01.png Graphic file (type png)
 <use ../images/20_ttest/fig20_01.png>
 Package luatex.def Info: ../images/20_ttest/fig20_01.png  used on input line 17
@@ -3323,7 +3599,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/23_likelihood/screen23_01.png, id=4745, 1234.6125pt x 551.05875pt>
+<../images/23_likelihood/screen23_01.png, id=4564, 1234.6125pt x 551.05875pt>
 File: ../images/23_likelihood/screen23_01.png Graphic file (type png)
 <use ../images/23_likelihood/screen23_01.png>
 Package luatex.def Info: ../images/23_likelihood/screen23_01.png  used on input
@@ -3338,7 +3614,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'. [281]
-<../images/23_likelihood/slide23_01.png, id=4784, 1312.905pt x 815.045pt>
+<../images/23_likelihood/slide23_01.png, id=4603, 1312.905pt x 815.045pt>
 File: ../images/23_likelihood/slide23_01.png Graphic file (type png)
 <use ../images/23_likelihood/slide23_01.png>
 Package luatex.def Info: ../images/23_likelihood/slide23_01.png  used on input 
@@ -3370,7 +3646,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'. [287] [288]
-<../images/23_likelihood/slide23_02.png, id=4878, 978.65625pt x 645.41125pt>
+<../images/23_likelihood/slide23_02.png, id=4695, 978.65625pt x 645.41125pt>
 File: ../images/23_likelihood/slide23_02.png Graphic file (type png)
 <use ../images/23_likelihood/slide23_02.png>
 Package luatex.def Info: ../images/23_likelihood/slide23_02.png  used on input 
@@ -3395,27 +3671,27 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 ]
 第23章
 [297]
-<../images/24_ML/Rplot24_01.png, id=4980, 2409.0pt x 1204.5pt>
+<../images/24_ML/Rplot24_01.png, id=4797, 2409.0pt x 1204.5pt>
 File: ../images/24_ML/Rplot24_01.png Graphic file (type png)
 <use ../images/24_ML/Rplot24_01.png>
 Package luatex.def Info: ../images/24_ML/Rplot24_01.png  used on input line 33.
 
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
  [298<../images/24_ML/Rplot24_01.png>] [299] [300]
-<../images/24_ML/Rplot24_02.png, id=5022, 2409.0pt x 1204.5pt>
+<../images/24_ML/Rplot24_02.png, id=4836, 2409.0pt x 1204.5pt>
 File: ../images/24_ML/Rplot24_02.png Graphic file (type png)
 <use ../images/24_ML/Rplot24_02.png>
 Package luatex.def Info: ../images/24_ML/Rplot24_02.png  used on input line 120
 .
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
  [301] [302<../images/24_ML/Rplot24_02.png>]
-<../images/23_likelihood/Rplot_ml1.png, id=5045, 867.24pt x 433.62pt>
+<../images/23_likelihood/Rplot_ml1.png, id=4858, 867.24pt x 433.62pt>
 File: ../images/23_likelihood/Rplot_ml1.png Graphic file (type png)
 <use ../images/23_likelihood/Rplot_ml1.png>
 Package luatex.def Info: ../images/23_likelihood/Rplot_ml1.png  used on input l
 ine 147.
 (luatex.def)             Requested size: 334.60422pt x 167.30481pt.
-<../images/23_likelihood/Rplot_ml2.png, id=5047, 867.24pt x 433.62pt>
+<../images/23_likelihood/Rplot_ml2.png, id=4860, 867.24pt x 433.62pt>
 File: ../images/23_likelihood/Rplot_ml2.png Graphic file (type png)
 <use ../images/23_likelihood/Rplot_ml2.png>
 Package luatex.def Info: ../images/23_likelihood/Rplot_ml2.png  used on input l
@@ -3423,14 +3699,14 @@ ine 155.
 (luatex.def)             Requested size: 334.60422pt x 167.30481pt.
  [303<../images/23_likelihood/Rplot_ml1.png><../images/23_likelihood/Rplot_ml2.p
 ng>]
-<../images/23_likelihood/Rplot_ml3.png, id=5058, 867.24pt x 433.62pt>
+<../images/23_likelihood/Rplot_ml3.png, id=4871, 867.24pt x 433.62pt>
 File: ../images/23_likelihood/Rplot_ml3.png Graphic file (type png)
 <use ../images/23_likelihood/Rplot_ml3.png>
 Package luatex.def Info: ../images/23_likelihood/Rplot_ml3.png  used on input l
 ine 188.
 (luatex.def)             Requested size: 334.60422pt x 167.30481pt.
  [304]
-<../images/24_ML/Rplot24_04.png, id=5069, 803.0pt x 702.625pt>
+<../images/24_ML/Rplot24_04.png, id=4882, 803.0pt x 702.625pt>
 File: ../images/24_ML/Rplot24_04.png Graphic file (type png)
 <use ../images/24_ML/Rplot24_04.png>
 Package luatex.def Info: ../images/24_ML/Rplot24_04.png  used on input line 201
@@ -3447,7 +3723,7 @@ Package luatex.def Info: ../images/24_ML/Rplot24_04.png  used on input line 201
 
 
 ]
-<../images/24_ML/Rplot24_06.png, id=5099, 1156.32pt x 650.43pt>
+<../images/24_ML/Rplot24_06.png, id=4913, 1156.32pt x 650.43pt>
 File: ../images/24_ML/Rplot24_06.png Graphic file (type png)
 <use ../images/24_ML/Rplot24_06.png>
 Package luatex.def Info: ../images/24_ML/Rplot24_06.png  used on input line 86.
@@ -3468,7 +3744,7 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'. [312]) [313]
 ]
 第25章
 [315] [316] [317] [318] [319]
-<../images/25_bayesian/slide25_06.png, id=5227, 1255.69125pt x 854.19125pt>
+<../images/25_bayesian/slide25_06.png, id=5037, 1255.69125pt x 854.19125pt>
 File: ../images/25_bayesian/slide25_06.png Graphic file (type png)
 <use ../images/25_bayesian/slide25_06.png>
 Package luatex.def Info: ../images/25_bayesian/slide25_06.png  used on input li
@@ -3484,20 +3760,20 @@ ne 164.
 
 ]
 第26章
-<../images/25_bayesian/slide25_01.png, id=5275, 1341.01pt x 763.85374pt>
+<../images/25_bayesian/slide25_01.png, id=5082, 1341.01pt x 763.85374pt>
 File: ../images/25_bayesian/slide25_01.png Graphic file (type png)
 <use ../images/25_bayesian/slide25_01.png>
 Package luatex.def Info: ../images/25_bayesian/slide25_01.png  used on input li
 ne 32.
 (luatex.def)             Requested size: 334.60422pt x 190.58998pt.
 [325] [326<../images/25_bayesian/slide25_01.png>]
-<../images/25_bayesian/slide25_02.png, id=5305, 1082.0425pt x 683.55376pt>
+<../images/25_bayesian/slide25_02.png, id=5107, 1082.0425pt x 683.55376pt>
 File: ../images/25_bayesian/slide25_02.png Graphic file (type png)
 <use ../images/25_bayesian/slide25_02.png>
 Package luatex.def Info: ../images/25_bayesian/slide25_02.png  used on input li
 ne 66.
 (luatex.def)             Requested size: 334.60422pt x 211.37796pt.
-<../images/25_bayesian/slide25_03.png, id=5307, 1196.47pt x 666.49pt>
+<../images/25_bayesian/slide25_03.png, id=5109, 1196.47pt x 666.49pt>
 File: ../images/25_bayesian/slide25_03.png Graphic file (type png)
 <use ../images/25_bayesian/slide25_03.png>
 Package luatex.def Info: ../images/25_bayesian/slide25_03.png  used on input li
@@ -3505,47 +3781,47 @@ ne 74.
 (luatex.def)             Requested size: 334.60422pt x 186.39218pt.
  [327] [328<../images/25_bayesian/slide25_02.png><../images/25_bayesian/slide25_
 03.png>]
-<../images/25_bayesian/slide25_04.png, id=5328, 669.50125pt x 453.695pt>
+<../images/25_bayesian/slide25_04.png, id=5130, 669.50125pt x 453.695pt>
 File: ../images/25_bayesian/slide25_04.png Graphic file (type png)
 <use ../images/25_bayesian/slide25_04.png>
 Package luatex.def Info: ../images/25_bayesian/slide25_04.png  used on input li
 ne 85.
 (luatex.def)             Requested size: 334.60422pt x 226.75694pt.
-<../images/26_bayesian2/slide26_07.png, id=5331, 832.10875pt x 592.2125pt>
+<../images/26_bayesian2/slide26_07.png, id=5133, 832.10875pt x 592.2125pt>
 File: ../images/26_bayesian2/slide26_07.png Graphic file (type png)
 <use ../images/26_bayesian2/slide26_07.png>
 Package luatex.def Info: ../images/26_bayesian2/slide26_07.png  used on input l
 ine 102.
 (luatex.def)             Requested size: 334.60422pt x 238.13686pt.
  [329<../images/25_bayesian/slide25_04.png>]
-<../images/26_bayesian2/Rplot26_01.png, id=5345, 1156.32pt x 650.43pt>
+<../images/26_bayesian2/Rplot26_01.png, id=5145, 1156.32pt x 650.43pt>
 File: ../images/26_bayesian2/Rplot26_01.png Graphic file (type png)
 <use ../images/26_bayesian2/Rplot26_01.png>
 Package luatex.def Info: ../images/26_bayesian2/Rplot26_01.png  used on input l
 ine 114.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
  [330<../images/26_bayesian2/slide26_07.png>]
-<../images/26_bayesian2/slide26_01.png, id=5358, 1027.84pt x 770.88pt>
+<../images/26_bayesian2/slide26_01.png, id=5157, 1027.84pt x 770.88pt>
 File: ../images/26_bayesian2/slide26_01.png Graphic file (type png)
 <use ../images/26_bayesian2/slide26_01.png>
 Package luatex.def Info: ../images/26_bayesian2/slide26_01.png  used on input l
 ine 131.
 (luatex.def)             Requested size: 334.60422pt x 250.95648pt.
  [331<../images/26_bayesian2/Rplot26_01.png>]
-<../images/26_bayesian2/slide26_02.png, id=5369, 1027.84pt x 770.88pt>
+<../images/26_bayesian2/slide26_02.png, id=5168, 1027.84pt x 770.88pt>
 File: ../images/26_bayesian2/slide26_02.png Graphic file (type png)
 <use ../images/26_bayesian2/slide26_02.png>
 Package luatex.def Info: ../images/26_bayesian2/slide26_02.png  used on input l
 ine 140.
 (luatex.def)             Requested size: 334.60422pt x 250.95648pt.
-<../images/26_bayesian2/slide26_03.png, id=5372, 1027.84pt x 770.88pt>
+<../images/26_bayesian2/slide26_03.png, id=5171, 1027.84pt x 770.88pt>
 File: ../images/26_bayesian2/slide26_03.png Graphic file (type png)
 <use ../images/26_bayesian2/slide26_03.png>
 Package luatex.def Info: ../images/26_bayesian2/slide26_03.png  used on input l
 ine 151.
 (luatex.def)             Requested size: 334.60422pt x 250.95648pt.
  [332<../images/26_bayesian2/slide26_01.png>]
-<../images/26_bayesian2/slide26_04.png, id=5390, 1253.68375pt x 693.59125pt>
+<../images/26_bayesian2/slide26_04.png, id=5186, 1253.68375pt x 693.59125pt>
 File: ../images/26_bayesian2/slide26_04.png Graphic file (type png)
 <use ../images/26_bayesian2/slide26_04.png>
 Package luatex.def Info: ../images/26_bayesian2/slide26_04.png  used on input l
@@ -3563,14 +3839,14 @@ _03.png><../images/26_bayesian2/slide26_04.png>]) [335]
 ]
 第27章
 [337] [338]
-<../images/26_bayesian2/slide26_06.png, id=5442, 1076.02pt x 601.24625pt>
+<../images/26_bayesian2/slide26_06.png, id=5236, 1076.02pt x 601.24625pt>
 File: ../images/26_bayesian2/slide26_06.png Graphic file (type png)
 <use ../images/26_bayesian2/slide26_06.png>
 Package luatex.def Info: ../images/26_bayesian2/slide26_06.png  used on input l
 ine 54.
 (luatex.def)             Requested size: 334.60422pt x 186.96239pt.
  [339] [340<../images/26_bayesian2/slide26_06.png>]
-<../images/27_bayesian3/Krschke2018.png, id=5462, 969.6225pt x 621.32124pt>
+<../images/27_bayesian3/Krschke2018.png, id=5251, 969.6225pt x 621.32124pt>
 File: ../images/27_bayesian3/Krschke2018.png Graphic file (type png)
 <use ../images/27_bayesian3/Krschke2018.png>
 Package luatex.def Info: ../images/27_bayesian3/Krschke2018.png  used on input 
@@ -3587,13 +3863,13 @@ jasp.tex [346
 ]
 第28章
 [347]
-<../images/28_JASP/slide28_01.png, id=5526, 985.6825pt x 299.1175pt>
+<../images/28_JASP/slide28_01.png, id=5304, 985.6825pt x 299.1175pt>
 File: ../images/28_JASP/slide28_01.png Graphic file (type png)
 <use ../images/28_JASP/slide28_01.png>
 Package luatex.def Info: ../images/28_JASP/slide28_01.png  used on input line 3
 3.
 (luatex.def)             Requested size: 334.60422pt x 101.53885pt.
-<../images/07_probability/Rplot08_06.png, id=5531, 4818.0pt x 3613.5pt>
+<../images/07_probability/Rplot08_06.png, id=5309, 4818.0pt x 3613.5pt>
 File: ../images/07_probability/Rplot08_06.png Graphic file (type png)
 <use ../images/07_probability/Rplot08_06.png>
 Package luatex.def Info: ../images/07_probability/Rplot08_06.png  used on input
@@ -3601,91 +3877,91 @@ Package luatex.def Info: ../images/07_probability/Rplot08_06.png  used on input
 (luatex.def)             Requested size: 271.86234pt x 203.84334pt.
  [348<../images/28_JASP/slide28_01.png>] [349<../images/07_probability/Rplot08_0
 6.png>]
-<../images/28_JASP/Rplot28_01.png, id=5553, 650.43pt x 650.43pt>
+<../images/28_JASP/Rplot28_01.png, id=5331, 650.43pt x 650.43pt>
 File: ../images/28_JASP/Rplot28_01.png Graphic file (type png)
 <use ../images/28_JASP/Rplot28_01.png>
 Package luatex.def Info: ../images/28_JASP/Rplot28_01.png  used on input line 6
 0.
 (luatex.def)             Requested size: 271.86234pt x 271.86867pt.
-<../images/28_JASP/slide28_02.png, id=5563, 997.7275pt x 745.78625pt>
+<../images/28_JASP/slide28_02.png, id=5335, 997.7275pt x 745.78625pt>
 File: ../images/28_JASP/slide28_02.png Graphic file (type png)
 <use ../images/28_JASP/slide28_02.png>
 Package luatex.def Info: ../images/28_JASP/slide28_02.png  used on input line 7
 0.
 (luatex.def)             Requested size: 271.86234pt x 203.2085pt.
  [350<../images/28_JASP/Rplot28_01.png>]
-<../images/28_JASP/JASP_web01.png, id=5586, 699.61375pt x 593.21625pt>
+<../images/28_JASP/JASP_web01.png, id=5347, 699.61375pt x 593.21625pt>
 File: ../images/28_JASP/JASP_web01.png Graphic file (type png)
 <use ../images/28_JASP/JASP_web01.png>
 Package luatex.def Info: ../images/28_JASP/JASP_web01.png  used on input line 8
 5.
 (luatex.def)             Requested size: 271.86234pt x 230.52065pt.
-<../images/28_JASP/JASP_web02.png, id=5588, 700.6175pt x 450.68375pt>
+<../images/28_JASP/JASP_web02.png, id=5349, 700.6175pt x 450.68375pt>
 File: ../images/28_JASP/JASP_web02.png Graphic file (type png)
 <use ../images/28_JASP/JASP_web02.png>
 Package luatex.def Info: ../images/28_JASP/JASP_web02.png  used on input line 9
 3.
 (luatex.def)             Requested size: 271.86234pt x 174.87883pt.
-<../images/28_JASP/JASP_wakeup.png, id=5589, 1365.1pt x 911.405pt>
+<../images/28_JASP/JASP_wakeup.png, id=5350, 1365.1pt x 911.405pt>
 File: ../images/28_JASP/JASP_wakeup.png Graphic file (type png)
 <use ../images/28_JASP/JASP_wakeup.png>
 Package luatex.def Info: ../images/28_JASP/JASP_wakeup.png  used on input line 
 100.
 (luatex.def)             Requested size: 271.86234pt x 181.49898pt.
  [351<../images/28_JASP/slide28_02.png>]
-<../images/28_JASP/JASP_01.png, id=5609, 1365.1pt x 911.405pt>
+<../images/28_JASP/JASP_01.png, id=5367, 1365.1pt x 911.405pt>
 File: ../images/28_JASP/JASP_01.png Graphic file (type png)
 <use ../images/28_JASP/JASP_01.png>
 Package luatex.def Info: ../images/28_JASP/JASP_01.png  used on input line 111.
 
 (luatex.def)             Requested size: 313.69025pt x 209.42404pt.
-<../images/28_JASP/JASP_02.png, id=5611, 1365.1pt x 911.405pt>
+<../images/28_JASP/JASP_02.png, id=5369, 1365.1pt x 911.405pt>
 File: ../images/28_JASP/JASP_02.png Graphic file (type png)
 <use ../images/28_JASP/JASP_02.png>
 Package luatex.def Info: ../images/28_JASP/JASP_02.png  used on input line 118.
 
 (luatex.def)             Requested size: 313.69025pt x 209.42404pt.
  [352<../images/28_JASP/JASP_web01.png><../images/28_JASP/JASP_web02.png>]
-<../images/28_JASP/JASP_03.png, id=5624, 1532.72626pt x 938.50626pt>
+<../images/28_JASP/JASP_03.png, id=5382, 1532.72626pt x 938.50626pt>
 File: ../images/28_JASP/JASP_03.png Graphic file (type png)
 <use ../images/28_JASP/JASP_03.png>
 Package luatex.def Info: ../images/28_JASP/JASP_03.png  used on input line 130.
 
 (luatex.def)             Requested size: 334.60422pt x 204.88245pt.
-<../images/28_JASP/JASP_04.png, id=5626, 1532.72626pt x 938.50626pt>
+<../images/28_JASP/JASP_04.png, id=5384, 1532.72626pt x 938.50626pt>
 File: ../images/28_JASP/JASP_04.png Graphic file (type png)
 <use ../images/28_JASP/JASP_04.png>
 Package luatex.def Info: ../images/28_JASP/JASP_04.png  used on input line 139.
 
 (luatex.def)             Requested size: 313.69025pt x 192.06566pt.
  [353<../images/28_JASP/JASP_wakeup.png><../images/28_JASP/JASP_01.png>]
-<../images/28_JASP/JASP_plot01.png, id=5638, 1146.2825pt x 464.73625pt>
+<../images/28_JASP/JASP_plot01.png, id=5395, 1146.2825pt x 464.73625pt>
 File: ../images/28_JASP/JASP_plot01.png Graphic file (type png)
 <use ../images/28_JASP/JASP_plot01.png>
 Package luatex.def Info: ../images/28_JASP/JASP_plot01.png  used on input line 
 146.
 (luatex.def)             Requested size: 334.60422pt x 135.65646pt.
-<../images/28_JASP/JASP_plot02.png, id=5642, 324.21124pt x 370.38374pt>
+<../images/28_JASP/JASP_plot02.png, id=5399, 324.21124pt x 370.38374pt>
 File: ../images/28_JASP/JASP_plot02.png Graphic file (type png)
 <use ../images/28_JASP/JASP_plot02.png>
 Package luatex.def Info: ../images/28_JASP/JASP_plot02.png  used on input line 
 155.
 (luatex.def)             Requested size: 209.12683pt x 238.9098pt.
  [354<../images/28_JASP/JASP_02.png><../images/28_JASP/JASP_03.png>]
-<../images/28_JASP/JASP_05.png, id=5655, 387.4475pt x 208.78pt>
+<../images/28_JASP/JASP_05.png, id=5412, 387.4475pt x 208.78pt>
 File: ../images/28_JASP/JASP_05.png Graphic file (type png)
 <use ../images/28_JASP/JASP_05.png>
 Package luatex.def Info: ../images/28_JASP/JASP_05.png  used on input line 165.
 
 (luatex.def)             Requested size: 271.86234pt x 146.4986pt.
-<../images/28_JASP/JASP_06.png, id=5659, 398.48875pt x 329.23pt>
+<../images/28_JASP/JASP_06.png, id=5416, 398.48875pt x 329.23pt>
 File: ../images/28_JASP/JASP_06.png Graphic file (type png)
 <use ../images/28_JASP/JASP_06.png>
 Package luatex.def Info: ../images/28_JASP/JASP_06.png  used on input line 173.
 
 (luatex.def)             Requested size: 271.86234pt x 224.62195pt.
  [355<../images/28_JASP/JASP_04.png><../images/28_JASP/JASP_plot01.png>]
-<../images/28_JASP/JASP_cor1.png, id=5672, 619.31375pt x 679.53876pt>
+<../images/28_JASP/JASP_cor1.png, id=5429, 619.31375pt x 679.53876pt>
 File: ../images/28_JASP/JASP_cor1.png Graphic file (type png)
 <use ../images/28_JASP/JASP_cor1.png>
 Package luatex.def Info: ../images/28_JASP/JASP_cor1.png  used on input line 18
@@ -3693,21 +3969,21 @@ Package luatex.def Info: ../images/28_JASP/JASP_cor1.png  used on input line 18
 (luatex.def)             Requested size: 209.12683pt x 229.46405pt.
  [356<../images/28_JASP/JASP_plot02.png><../images/28_JASP/JASP_05.png>] [357<..
 /images/28_JASP/JASP_06.png><../images/28_JASP/JASP_cor1.png>]
-<../images/28_JASP/JASP_ttest.png, id=5689, 622.325pt x 712.6625pt>
+<../images/28_JASP/JASP_ttest.png, id=5446, 622.325pt x 712.6625pt>
 File: ../images/28_JASP/JASP_ttest.png Graphic file (type png)
 <use ../images/28_JASP/JASP_ttest.png>
 Package luatex.def Info: ../images/28_JASP/JASP_ttest.png  used on input line 2
 08.
 (luatex.def)             Requested size: 209.12683pt x 239.4856pt.
  [358<../images/28_JASP/JASP_ttest.png>]
-<../images/28_JASP/JASP_ttestPlot.png, id=5705, 531.9072pt x 401.5pt>
+<../images/28_JASP/JASP_ttestPlot.png, id=5462, 531.9072pt x 401.5pt>
 File: ../images/28_JASP/JASP_ttestPlot.png Graphic file (type png)
 <use ../images/28_JASP/JASP_ttestPlot.png>
 Package luatex.def Info: ../images/28_JASP/JASP_ttestPlot.png  used on input li
 ne 299.
 (luatex.def)             Requested size: 209.12683pt x 157.85864pt.
  [359]
-<../images/28_JASP/JASP_ttestBF.png, id=5716, 531.9072pt x 401.5pt>
+<../images/28_JASP/JASP_ttestBF.png, id=5473, 531.9072pt x 401.5pt>
 File: ../images/28_JASP/JASP_ttestBF.png Graphic file (type png)
 <use ../images/28_JASP/JASP_ttestBF.png>
 Package luatex.def Info: ../images/28_JASP/JASP_ttestBF.png  used on input line
@@ -3739,7 +4015,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'. [366]
-<../images/27_bayesian3/Rplot27_01.png, id=5823, 4818.0pt x 2409.0pt>
+<../images/27_bayesian3/Rplot27_01.png, id=5571, 4818.0pt x 2409.0pt>
 File: ../images/27_bayesian3/Rplot27_01.png Graphic file (type png)
 <use ../images/27_bayesian3/Rplot27_01.png>
 Package luatex.def Info: ../images/27_bayesian3/Rplot27_01.png  used on input l
@@ -3750,14 +4026,14 @@ Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'. [367<../images/27_
 bayesian3/Rplot27_01.png>]
-<../images/27_bayesian3/slide27_02.png, id=5840, 1016.79875pt x 738.76pt>
+<../images/27_bayesian3/slide27_02.png, id=5586, 1016.79875pt x 738.76pt>
 File: ../images/27_bayesian3/slide27_02.png Graphic file (type png)
 <use ../images/27_bayesian3/slide27_02.png>
 Package luatex.def Info: ../images/27_bayesian3/slide27_02.png  used on input l
 ine 180.
 (luatex.def)             Requested size: 334.60422pt x 243.10391pt.
  [368]
-<../images/27_bayesian3/slide27_01.png, id=5853, 1245.65375pt x 930.47626pt>
+<../images/27_bayesian3/slide27_01.png, id=5599, 1245.65375pt x 930.47626pt>
 File: ../images/27_bayesian3/slide27_01.png Graphic file (type png)
 <use ../images/27_bayesian3/slide27_01.png>
 Package luatex.def Info: ../images/27_bayesian3/slide27_01.png  used on input l
@@ -3774,7 +4050,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<../images/27_bayesian3/slide27_03.png, id=5895, 1038.88126pt x 928.46875pt>
+<../images/27_bayesian3/slide27_03.png, id=5641, 1038.88126pt x 928.46875pt>
 File: ../images/27_bayesian3/slide27_03.png Graphic file (type png)
 <use ../images/27_bayesian3/slide27_03.png>
 Package luatex.def Info: ../images/27_bayesian3/slide27_03.png  used on input l
@@ -3805,7 +4081,7 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.)
 ]
 付録A
 [381] [382]
-<../../common_contents/figures/computer_01.png, id=6017, 1177.39874pt x 559.088
+<../../common_contents/figures/computer_01.png, id=5758, 1177.39874pt x 559.088
 75pt>
 File: ../../common_contents/figures/computer_01.png Graphic file (type png)
 <use ../../common_contents/figures/computer_01.png>
@@ -3814,7 +4090,7 @@ Package luatex.def Info: ../../common_contents/figures/computer_01.png  used on
 (luatex.def)             Requested size: 334.60422pt x 158.8898pt.
  [383] [384<../../common_contents/figures/computer_01.png>] [385]
 [386] [387]
-<../../common_contents/figures/computer_06.png, id=6076, 837.1275pt x 476.78125
+<../../common_contents/figures/computer_06.png, id=5816, 837.1275pt x 476.78125
 pt>
 File: ../../common_contents/figures/computer_06.png Graphic file (type png)
 <use ../../common_contents/figures/computer_06.png>
@@ -3836,7 +4112,7 @@ Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'. [390]
 [391]) (../../common_contents/FAQ.tex [392]
 付録B
-<../../common_contents/figures/RstudioFileEditor.png, id=6139, 569.12625pt x 50
+<../../common_contents/figures/RstudioFileEditor.png, id=5879, 569.12625pt x 50
 8.90125pt>
 File: ../../common_contents/figures/RstudioFileEditor.png Graphic file (type pn
 g)
@@ -3847,7 +4123,7 @@ sed on input line 22.
 [393
 
 ]
-<../../common_contents/figures/RmdFile.png, id=6152, 892.33376pt x 721.69624pt>
+<../../common_contents/figures/RmdFile.png, id=5892, 892.33376pt x 721.69624pt>
 
 File: ../../common_contents/figures/RmdFile.png Graphic file (type png)
 <use ../../common_contents/figures/RmdFile.png>
@@ -3855,14 +4131,14 @@ Package luatex.def Info: ../../common_contents/figures/RmdFile.png  used on inp
 ut line 35.
 (luatex.def)             Requested size: 334.60422pt x 270.62442pt.
  [394<../../common_contents/figures/RstudioFileEditor.png>]
-<../../common_contents/figures/InsertChunk.png, id=6168, 1068.99374pt x 365.365
+<../../common_contents/figures/InsertChunk.png, id=5908, 1068.99374pt x 365.365
 pt>
 File: ../../common_contents/figures/InsertChunk.png Graphic file (type png)
 <use ../../common_contents/figures/InsertChunk.png>
 Package luatex.def Info: ../../common_contents/figures/InsertChunk.png  used on
  input line 47.
 (luatex.def)             Requested size: 334.60422pt x 114.36024pt.
-<../../common_contents/figures/RmdKnit.png, id=6171, 1128.215pt x 311.1625pt>
+<../../common_contents/figures/RmdKnit.png, id=5911, 1128.215pt x 311.1625pt>
 File: ../../common_contents/figures/RmdKnit.png Graphic file (type png)
 <use ../../common_contents/figures/RmdKnit.png>
 Package luatex.def Info: ../../common_contents/figures/RmdKnit.png  used on inp
@@ -3875,7 +4151,7 @@ Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'. [396<../../common_
 contents/figures/RmdKnit.png>] [397]
-<../../common_contents/figures/FAQ01.png, id=6199, 1674.255pt x 1255.69125pt>
+<../../common_contents/figures/FAQ01.png, id=5940, 1674.255pt x 1255.69125pt>
 File: ../../common_contents/figures/FAQ01.png Graphic file (type png)
 <use ../../common_contents/figures/FAQ01.png>
 Package luatex.def Info: ../../common_contents/figures/FAQ01.png  used on input
@@ -3905,7 +4181,7 @@ Overfull \hbox (44.15285pt too wide) in paragraph at lines 34--65
  [][] 
  []
 
-<../../common_contents/figures/JapaneseKeyChange.png, id=6268, 282.05376pt x 26
+<../../common_contents/figures/JapaneseKeyChange.png, id=6008, 282.05376pt x 26
 4.99pt>
 File: ../../common_contents/figures/JapaneseKeyChange.png Graphic file (type pn
 g)
@@ -3913,14 +4189,14 @@ g)
 Package luatex.def Info: ../../common_contents/figures/JapaneseKeyChange.png  u
 sed on input line 73.
 (luatex.def)             Requested size: 113.81102pt x 106.9241pt.
-<../../common_contents/figures/JPkeyAssign.png, id=6269, 925.4575pt x 517.935pt
+<../../common_contents/figures/JPkeyAssign.png, id=6009, 925.4575pt x 517.935pt
 >
 File: ../../common_contents/figures/JPkeyAssign.png Graphic file (type png)
 <use ../../common_contents/figures/JPkeyAssign.png>
 Package luatex.def Info: ../../common_contents/figures/JPkeyAssign.png  used on
  input line 79.
 (luatex.def)             Requested size: 334.60422pt x 187.26256pt.
-<../../common_contents/figures/usKeyAssign.png, id=6270, 837.1275pt x 545.03625
+<../../common_contents/figures/usKeyAssign.png, id=6010, 837.1275pt x 545.03625
 pt>
 File: ../../common_contents/figures/usKeyAssign.png Graphic file (type png)
 <use ../../common_contents/figures/usKeyAssign.png>
@@ -3933,31 +4209,83 @@ mmon_contents/figures/JPkeyAssign.png><../../common_contents/figures/usKeyAssign
 
 ]
 付録E
-(../../syllabus/s01_Introduction.tex [411]) (../../syllabus/s02_Numbers.tex
-[412] [413]) (../../syllabus/s03_introR.tex [414])
-(../../syllabus/s04_usingR.tex [415] [416])
-(../../syllabus/s05_descriptives.tex [417] [418]) (../../syllabus/s06_ctt.tex
-[419] [420]) (../../syllabus/s07_probability.tex [421])
-(../../syllabus/s08_CorrelationCausation.tex [422] [423])
-(../../syllabus/s09_Regression.tex [424])
-(../../syllabus/s10_MultipleRegression.tex [425] [426])
-(../../syllabus/s11_Regression_onR.tex [427] [428])
-(../../syllabus/s12_design1.tex [429]) (../../syllabus/s13_design2.tex [430]
-[431]) (../../syllabus/s14_design3.tex [432])
-(../../syllabus/s15_FirstSemester.tex [433]) (../../syllabus/s16_inference.tex
-[434] [435]) (../../syllabus/s17_estimation_and_test.tex [436])
-(../../syllabus/s18_NHST.tex [437] [438]) (../../syllabus/s19_NHST2.tex
-[439]) (../../syllabus/s20_ttest.tex [440] [441]) (../../syllabus/s21_anova.tex
-[442] [443]) (../../syllabus/s22_anova_onR.tex [444])
-(../../syllabus/s23_likelihood.tex [445])
-(../../syllabus/s24_maximum_likelihood.tex [446] [447])
-(../../syllabus/s25_bayesian.tex [448]) (../../syllabus/s26_bayesian2.tex
-[449] [450]) (../../syllabus/s27_bayesian3.tex [451])
-(../../syllabus/s28_jasp.tex [452] [453]) (../../syllabus/s29_brms.tex [454])
-(../../syllabus/s30_SecondSemester.tex [455]) (./tmp.bbl [456] [457
+(../../syllabus/tex/s01_Introduction.tex [411])
+(../../syllabus/tex/s02_Numbers.tex [412] [413])
+(../../syllabus/tex/s03_introR.tex [414]) (../../syllabus/tex/s04_usingR.tex
+[415] [416]) (../../syllabus/tex/s05_descriptives.tex [417] [418])
+(../../syllabus/tex/s06_ctt.tex [419] [420])
+(../../syllabus/tex/s07_probability.tex [421])
+(../../syllabus/tex/s08_CorrelationCausation.tex [422] [423])
+(../../syllabus/tex/s09_Regression.tex [424])
+(../../syllabus/tex/s10_MultipleRegression.tex [425] [426])
+(../../syllabus/tex/s11_Regression_onR.tex [427] [428])
+(../../syllabus/tex/s12_design1.tex [429]) (../../syllabus/tex/s13_design2.tex
+[430] [431]) (../../syllabus/tex/s14_design3.tex [432])
+(../../syllabus/tex/s15_FirstSemester.tex [433])
+(../../syllabus/tex/s16_inference.tex [434] [435])
+(../../syllabus/tex/s17_estimation_and_test.tex [436])
+(../../syllabus/tex/s18_NHST.tex [437] [438]) (../../syllabus/tex/s19_NHST2.tex
+[439]) (../../syllabus/tex/s20_ttest.tex [440] [441])
+(../../syllabus/tex/s21_anova.tex [442] [443])
+(../../syllabus/tex/s22_anova_onR.tex [444])
+(../../syllabus/tex/s23_likelihood.tex [445])
+(../../syllabus/tex/s24_maximum_likelihood.tex [446] [447])
+(../../syllabus/tex/s25_bayesian.tex [448])
+(../../syllabus/tex/s26_bayesian2.tex [449] [450])
+(../../syllabus/tex/s27_bayesian3.tex [451]) (../../syllabus/tex/s28_jasp.tex
+[452] [453]) (../../syllabus/tex/s29_brms.tex [454])
+(../../syllabus/tex/s30_SecondSemester.tex [455]) [456]
+Overfull \hbox (27.48686pt too wide) in paragraph at lines 98--98
+[][]\JY3/BIZUDPMinchoMedium(0)/m/n/10 馬 場\TU/lmr/m/n/10 , \JY3/BIZUDPMincho
+Medium(0)/m/n/10 真\TU/lmr/m/n/10 . (2019). |   []   |   []   |   []   |   [].
+ []
 
-] [458]
-[459] [460]) (./tmp.ind [461]
+
+Overfull \hbox (70.87119pt too wide) in paragraph at lines 98--98
+[][]\JY3/BIZUDPMinchoMedium(0)/m/n/10 石 田\TU/lmr/m/n/10 , \JY3/BIZUDPMincho
+Medium(0)/m/n/10 基\TU/lmr/m/n/10 . & \JY3/BIZUDPMinchoMedium(0)/m/n/10 石 
+田\TU/lmr/m/n/10 , \JY3/BIZUDPMinchoMedium(0)/m/n/10 和\TU/lmr/m/n/10 . (2019)
+. |   []   |   []
+ []
+
+[457
+
+]
+Overfull \hbox (13.3615pt too wide) in paragraph at lines 98--98
+[][]\JY3/BIZUDPMinchoMedium(0)/m/n/10 熊 谷\TU/lmr/m/n/10 , \JY3/BIZUDPMincho
+Medium(0)/m/n/10 龍\TU/lmr/m/n/10 . & \JY3/BIZUDPMinchoMedium(0)/m/n/10 荘 
+島\TU/lmr/m/n/10 , \JY3/BIZUDPMinchoMedium(0)/m/n/10 宏\TU/lmr/m/n/10 . (2015)
+. |   []   |   [].
+ []
+
+
+Overfull \hbox (167.6862pt too wide) in paragraph at lines 98--98
+[][]\JY3/BIZUDPMinchoMedium(0)/m/n/10 松 村\TU/lmr/m/n/10 , \JY3/BIZUDPMincho
+Medium(0)/m/n/10 優\TU/lmr/m/n/10 ., \JY3/BIZUDPMinchoMedium(0)/m/n/10 湯 
+谷\TU/lmr/m/n/10 , \JY3/BIZUDPMinchoMedium(0)/m/n/10 啓\TU/lmr/m/n/10 ., \JY3
+/BIZUDPMinchoMedium(0)/m/n/10 紀 ノ 定\TU/lmr/m/n/10 , \JY3/BIZUDPMinchoMedi
+um(0)/m/n/10 保\TU/lmr/m/n/10 ., & \JY3/BIZUDPMinchoMedium(0)/m/n/10 前 田\T
+U/lmr/m/n/10 , \JY3/BIZUDPMinchoMedium(0)/m/n/10 和\TU/lmr/m/n/10 . (2021). | 
+  []   |   [].
+ []
+
+[458]
+Overfull \hbox (4.19008pt too wide) in paragraph at lines 98--98
+[][]\JY3/BIZUDPMinchoMedium(0)/m/n/10 奥 村\TU/lmr/m/n/10 , \JY3/BIZUDPMincho
+Medium(0)/m/n/10 晴\TU/lmr/m/n/10 ., \JY3/BIZUDPMinchoMedium(0)/m/n/10 瓜 
+生\TU/lmr/m/n/10 , \JY3/BIZUDPMinchoMedium(0)/m/n/10 真\TU/lmr/m/n/10 ., & \J
+Y3/BIZUDPMinchoMedium(0)/m/n/10 牧 山\TU/lmr/m/n/10 , \JY3/BIZUDPMinchoMedium
+(0)/m/n/10 幸\TU/lmr/m/n/10 . (2018). |   []
+ []
+
+
+Overfull \hbox (25.77483pt too wide) in paragraph at lines 98--98
+[][]\JY3/BIZUDPMinchoMedium(0)/m/n/10 安 井\TU/lmr/m/n/10 , \JY3/BIZUDPMincho
+Medium(0)/m/n/10 翔\TU/lmr/m/n/10 .  \JY3/BIZUDPMinchoMedium(0)/m/n/10 株 
+式 会 社 ホ ク ソ エ ム \TU/lmr/m/n/10 (Ed.) (2019). |   [].
+ []
+
+[459] (./tmp.ind [460]
 LaTeX Font Info:    Font shape `JT3/gt/b/n' in size <8> not available
 (Font)              Font shape `JT3/gt/m/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
@@ -3975,13 +4303,14 @@ LaTeX Font Info:    Font shape `JY3/gt/b/n' in size <12> not available
 (Font)              Font shape `JY3/gt/m/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (Font)              scaled to size 11.09656pt on input line 2.
- [462
+ [461
 
 
-] [463] [464]) (./tmp.aux
-(./m01_introduction.aux) (./m02_Numbers.aux) (./m03_introR.aux)
-(./m04_usingR.aux) (./m05_descriptives.aux) (./m06_ctt.aux)
-(./m07_probability.aux) (./m08_CorrelationCausation.aux) (./m09_Regression.aux) (./m10_MultipleRegression.aux) (./m11_Regression_onR.aux) (./m12_design1.aux)
+] [462] [463]) (./tmp.aux (./m01_introduction.aux)
+(./m02_Numbers.aux) (./m03_introR.aux) (./m04_usingR.aux)
+(./m05_descriptives.aux) (./m06_ctt.aux) (./m07_probability.aux)
+(./m08_CorrelationCausation.aux) (./m09_Regression.aux)
+(./m10_MultipleRegression.aux) (./m11_Regression_onR.aux) (./m12_design1.aux)
 (./m13_design2.aux) (./m14_design3.aux) (./m15_FirstSemester.aux)
 (./m16_inference.aux) (./m17_estimation_and_test.aux) (./m18_NHST.aux)
 (./m19_NHST2.aux) (./m20_ttest.aux) (./m21_anova.aux) (./m22_anova_onR.aux)
@@ -3990,7 +4319,7 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (./m30_SecondSemester.aux))
  ***********
 LaTeX2e <2023-11-01>
-L3 programming layer <2023-12-11>
+L3 programming layer <2024-01-04>
  ***********
 
 
@@ -4001,19 +4330,22 @@ Package rerunfilecheck Warning: File `tmp.out' has changed.
 Package rerunfilecheck Info: Checksums for `tmp.out':
 (rerunfilecheck)             Before: C7A349CE2EB959ABE9C1C2E33F093E0F;31681
 (rerunfilecheck)             After:  EDDD48ADAE127DEEF1AE70BA3A155B39;31751.
+Package logreq Info: Writing requests to 'tmp.run.xml'.
+
+\openout1 = tmp.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 48650 strings out of 476506
- 597245,1977958 words of node,token memory allocated
- 133079 words of node memory still in use:
-   11 hlist, 2 vlist, 5 rule, 466 glue, 4 kern, 1 glyph, 59088 attribute, 70 glu
-e_spec, 5382 attribute_list, 4 write, 14 user_defined, 34 pdf_action nodes
-   avail lists: 1:39,2:77851,3:1791,4:9761,5:2419,6:492,7:16018,8:82,9:9418,10:4
-9,11:200
- 65688 multiletter control sequences out of 65536+600000
+ 55855 strings out of 476497
+ 597239,2848258 words of node,token memory allocated
+ 132304 words of node memory still in use:
+   11 hlist, 2 vlist, 5 rule, 467 glue, 4 kern, 1 glyph, 58780 attribute, 78 glu
+e_spec, 5354 attribute_list, 4 write, 14 user_defined, 9 pdf_action nodes
+   avail lists: 1:61,2:78494,3:1796,4:10093,5:2515,6:492,7:16336,8:87,9:9418,10:
+49,11:278
+ 72815 multiletter control sequences out of 65536+600000
  153 fonts using 107481711 bytes
- 125i,18n,128p,4285b,1169s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 125i,18n,128p,4285b,1952s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 warning  (pdf backend): unreferenced destination with name 'Hfootnote.131'
 
@@ -4027,21 +4359,21 @@ tf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman10-italic
 .otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.
 otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.o
 tf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.
-otf></Library/Fonts/BIZ-UDGothicB.ttc></usr/local/texlive/2023/texmf-dist/fonts/
-opentype/public/lm/lmromanslant10-regular.otf></usr/local/texlive/2023/texmf-dis
-t/fonts/opentype/public/lm/lmroman8-regular.otf></usr/local/texlive/2023/texmf-d
-ist/fonts/opentype/public/lm/lmsans8-regular.otf></usr/local/texlive/2023/texmf-
-dist/fonts/opentype/public/lm/lmsans17-regular.otf></usr/local/texlive/2023/texm
-f-dist/fonts/opentype/public/lm/lmsans12-regular.otf></usr/local/texlive/2023/te
-xmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></usr/local/texlive/2023/te
-xmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></usr/local/texlive/2023/
-texmf-dist/fonts/opentype/public/lm/lmmono8-regular.otf></usr/local/texlive/2023
-/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></usr/local/texlive/20
-23/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texlive/
-2023/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf></usr/local/texliv
-e/2023/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf></u
-sr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf>
-</usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.ot
+otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmmono8-regular
+.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmmono10-regul
+ar.otf></Library/Fonts/BIZ-UDGothicB.ttc></usr/local/texlive/2023/texmf-dist/fon
+ts/opentype/public/lm/lmromanslant10-regular.otf></usr/local/texlive/2023/texmf-
+dist/fonts/opentype/public/lm/lmsans8-regular.otf></usr/local/texlive/2023/texmf
+-dist/fonts/opentype/public/lm/lmsans17-regular.otf></usr/local/texlive/2023/tex
+mf-dist/fonts/opentype/public/lm/lmsans12-regular.otf></usr/local/texlive/2023/t
+exmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></usr/local/texlive/2023/t
+exmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></usr/local/texlive/2023
+/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></usr/local/texlive/20
+23/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></usr/local/texlive/
+2023/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texliv
+e/2023/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf></usr/local/texl
+ive/2023/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf><
+/usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.ot
 f></Library/Fonts/BIZ-UDMinchoM.ttc></usr/local/texlive/2023/texmf-dist/fonts/op
 entype/public/lm/lmroman10-regular.otf></usr/local/texlive/2023/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/t
@@ -4064,10 +4396,10 @@ local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/loc
 al/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/
 texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
 live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on tmp.pdf (466 pages, 62090702 bytes).
+Output written on tmp.pdf (465 pages, 62050608 bytes).
 
-PDF statistics: 8171 PDF objects out of 8907 (max. 8388607)
- 7181 compressed objects within 72 object streams
- 2565 named destinations out of 2984 (max. 131072)
+PDF statistics: 7523 PDF objects out of 8907 (max. 8388607)
+ 6546 compressed objects within 66 object streams
+ 2564 named destinations out of 2984 (max. 131072)
  1788 words of extra memory for PDF output out of 10000 (max. 100000000)
 

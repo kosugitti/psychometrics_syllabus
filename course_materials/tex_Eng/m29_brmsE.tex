@@ -13,7 +13,7 @@ Of course, I'm not denying that, but one drawback of GUI is the difficulty in sh
 
 % さて，Rでベイズ推定できるのかと言えば，当然それは可能です。今回はその方法について，演習的にやっていきましょう。と言っても，ベイズ対応のパッケージを使うだけなのですが。
 Well, when it comes to whether it's possible to perform Bayesian estimation in R, of course it is. This time, let's go through the process in a practical manner. Even though all we are doing is using a Bayesian-friendly package.
-% 簡単なモデルであれば確率分布の計算から解析的に答えを出すことはできますが，今後のことも考えてMCMC法による方法を説明します。これはRの\texttt{brms}パッケージ\citep{brmsCite1,brmsCite2}で提供されています。
+% 簡単なモデルであれば確率分布の計算から解析的に答えを出すことはできますが，今後のことも考えてMCMC法による方法を説明します。これはRの\texttt{brms}パッケージ\parencite{brmsCite1,brmsCite2}で提供されています。
 Even with a simple model, it is possible to derive results analytically from the calculation of probability distribution, but considering the future, I will explain the method by MCMC. This is provided in the R package brms.
 % Rパッケージの\texttt{brms}を使うと，一般線形モデルが簡単に実装できます。関数名が\texttt{lm}から\texttt{brm}に変わるだけで，MCMCをつかった線形モデルのベイズ推定を行うことができ，またその結果の可視化も簡単に行えます。\texttt{lm}関数と同じく，説明変数を離散型(factor型)にしておくと，要因の効果の大きさが推定でき，\texttt{brms}パッケージの\verb|conditional_effects|関数を使うと要因ごとに周辺化された結果も図示されます。
 Using the R package \texttt{brms}, you can easily implement general linear models. Simply by changing the function name from \texttt{lm} to \texttt{brm}, you can perform Bayesian estimation of linear models using MCMC, and it's also easy to visualize the results. Like the \texttt{lm} function, if you set the explanatory variables to discrete (factor-type), the effect size of the factor can be estimated, and by using the \verb|conditional_effects| function of the \texttt{brms} package, the marginalized results for each factor are also shown in the graph.
@@ -30,8 +30,8 @@ First, we need to prepare the environment. As always, please follow these three 
 
 % 続いて，ベイズ推定用のパッケージを準備します。\texttt{brms}パッケージ\footnote{ベイズで(Bayesian),回帰モデルを(Regression Mode)実行する，Stanを使ってね(using Stan)，という意味です。Stanとは\keyterm{確率的プログラミング言語}{かくりつてきぷろぐらみんぐげんご}{stocastic programming language}の一種で，要するに乱数発生器を作ってくれるソフトウェアのことです。}をインストールするのですが，このパッケージをインストールする\textbf{前に}，このパッケージが必要とするコンパイラを用意する必要があります。
 Next, we will prepare a package for Bayesian estimation. The \texttt{brms} package\footnote{It means to perform Bayesian, regression model, using Stan. Stan is a type of probabilistic programming language, essentially a software that generates random numbers.} is installed, but \textbf{before} installing this package, you need to prepare the compiler that this package requires.
-% 詳しくは \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}のサイトに説明がありますが\footnote{「RStan Getting Started (Japanese)」でググると出てきます。}\footnote{\citet{Baba201907}にも導入についての詳しい説明があります。}，Windowsユーザの場合はまず，\texttt{code:\ref{code:27_01}}を実行してください。
-There are detailed explanations on the \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)} site\footnote{It will appear if you Google "RStan Getting Started (Japanese)".}\footnote{There is also a detailed introduction in \citet{Baba201907}.}, but if you are a Windows user, first, please execute \texttt{code:\ref{code:27_01}}.
+% 詳しくは \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)}のサイトに説明がありますが\footnote{「RStan Getting Started (Japanese)」でググると出てきます。}\footnote{\textcite{Baba201907}にも導入についての詳しい説明があります。}，Windowsユーザの場合はまず，\texttt{code:\ref{code:27_01}}を実行してください。
+There are detailed explanations on the \url{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)} site\footnote{It will appear if you Google "RStan Getting Started (Japanese)".}\footnote{There is also a detailed introduction in \textcite{Baba201907}.}, but if you are a Windows user, first, please execute \texttt{code:\ref{code:27_01}}.
 \input{m29_brms_escape_01}
 
 % コンパイラであるRtoolsが環境にない場合には，ポップアップウィンドウが出てきてRtoolsをインストールするか聞いてくるでしょう。Yesをクリックして1分ぐらいインストールが終わるのを待って下さい。
@@ -101,7 +101,7 @@ The output of R\ref{RS:out27_02} is the basic information of the results. You wi
 % このことをわかりやすく表示するために，\texttt{plot(fit.brm)}としてみましょう。図\ref{fig::29_01}のように，分析結果がプロットされます。
 To display this in an easy-to-understand way, let's try \texttt{plot(fit.brm)}. As shown in Figure \ref{fig::29_01}, the analysis results are plotted.
 \input{m29_brms_escape_08}
-% この図の左側にあるのが，事後分布の形です。推定値である288.37や93.86は分布の平均値(\keytermL{EAP推定値}{EAPすいていち})で，この分布のピーク(MAP推定値)ではないことに注意してください。MAP推定値が欲しい場合は，別途\texttt{bayestestR}パッケージ\citep{bayestestR}を導入し，\verb|map_estimate|関数を実行する必要があります(\texttt{code:\ref{code:27_05}})。
+% この図の左側にあるのが，事後分布の形です。推定値である288.37や93.86は分布の平均値(\keytermL{EAP推定値}{EAPすいていち})で，この分布のピーク(MAP推定値)ではないことに注意してください。MAP推定値が欲しい場合は，別途\texttt{bayestestR}パッケージ\parencite{bayestestR}を導入し，\verb|map_estimate|関数を実行する必要があります(\texttt{code:\ref{code:27_05}})。
 The shape on the left side of this diagram is that of the posterior distribution. The estimates 288.37 and 93.86 are mean values of the distribution (EAP estimates), not the peak of the distribution (MAP estimates). Please note this. If you want the MAP estimates, you need to separately install the `bayestestR` package and run the \verb|map_estimate| function (See code:\ref{code:27_05}).
 
 \input{m29_brms_escape_09}

@@ -69,7 +69,7 @@ Conversely, from this relationship, the covariance, $\sigma_{jk}$, can be repres
 これをStanで表現するときには，変数を\verb|vector|型で表現しておく必要があります。今回の場合は\verb|vector[2] mu;|などとします。これで\verb|mu|という変数が2つセットで準備されることになります。
 これまで同じ変数名で複数のデータを持つ場合，たとえば\verb|real mu[2]|のようにしていましたが，なぜ今回もこの形式，つまり\textbf{配列}にしないのか，と思われるかもしれません。配列でも2つの数字を扱ったりすることは可能なのですが，ベクトル型にしておく利点が別にあります。ベクトルにはベクトルを使った演算がありますが，Stanにはベクトルや行列専用の関数がありますので，変数をベクトルで宣言しておいてやるとこれらの関数を使って高速化できるのです。
 
-またStanには，\verb|matrix|型という行列の型もあります。\verb|matrix[N,M] X;|のように宣言してやると，サイズ$N \times M$の行列変数Xが1つ用意されます。\verb|matrix[N,M] X[L];|のように宣言すると，サイズ$N \times M$の行列変数XをL個用意することになります。他にも特殊な型として，\verb|cov_matrix|型とか\verb|corr_matrix|型などがあります。これらは正方行列ですから，サイズの指定は1つでよく，たとえば\verb|cov_matrix[2]|とすれば$2 \times 2$の正方行列を用意したことになります。Stanにおける変数や配列の型について，\citet{Matsuura201610}を参考にまとめたものを表\ref{tbl:22_01}に，イメージ図を図\ref{fig:22_03},\ref{fig:22_04},\ref{fig:22_05}に示します。
+またStanには，\verb|matrix|型という行列の型もあります。\verb|matrix[N,M] X;|のように宣言してやると，サイズ$N \times M$の行列変数Xが1つ用意されます。\verb|matrix[N,M] X[L];|のように宣言すると，サイズ$N \times M$の行列変数XをL個用意することになります。他にも特殊な型として，\verb|cov_matrix|型とか\verb|corr_matrix|型などがあります。これらは正方行列ですから，サイズの指定は1つでよく，たとえば\verb|cov_matrix[2]|とすれば$2 \times 2$の正方行列を用意したことになります。Stanにおける変数や配列の型について，\textcite{Matsuura201610}を参考にまとめたものを表\ref{tbl:22_01}に，イメージ図を図\ref{fig:22_03},\ref{fig:22_04},\ref{fig:22_05}に示します。
 
 \begin{table}[ht]
 	\centering

@@ -1,0 +1,75 @@
+\documentclass[dvipsnames]{ltjsbook}
+\usepackage{../../myStyle}
+%% バッチ処理をするので\lheadは必ず4行目にあること
+\lhead{version 2.0.2}
+\usepackage{docmute}
+\begin{document}
+\includepdf[noautoscale=false,pages=-]{../images/cover2.pdf}
+\input{../../common_contents/copyright} % copyright page
+
+\VerbatimFootnotes
+\title{心理学データ解析応用1}
+\author{小杉　考司}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+
+
+\input{preface2} % preface
+
+\tableofcontents
+
+% 行番号開始
+\linenumbers
+% 各章
+\part{心理学データ解析応用1}
+\include{x01_introduction}
+\include{x02_scaling}
+\include{x03_testTheory}
+\include{x04_IRT}
+\include{x05_GRM}
+\include{x06_matrix}
+\include{x07_matrixModel}
+\include{x08_Eigen}
+\include{x09_matrix_onR}
+\include{x10_FA}
+\include{x11_IRTonR}
+\include{x12_SEM}
+\include{x13_SEMonR}
+\include{x14_DualScaling}
+\include{x15_MDS}
+\appendix
+% \input{../../common_contents/FAQ} % FAQ page
+% \input{../../Scaling/tex/H01_ProofOfLikert}
+% \input{../../common_contents/Computer}
+% \input{../../common_contents/Greeks}
+% \input{../../common_contents/keyboards}
+% \chapter{本講義に対応する詳細シラバス}
+% \input{../../syllabus2/tex/a01_introduction}
+% \input{../../syllabus2/tex/a02_scaling}
+% \input{../../syllabus2/tex/a03_testTheory}
+% \input{../../syllabus2/tex/a04_IRT}
+% \input{../../syllabus2/tex/a05_GRM}
+% \input{../../syllabus2/tex/a06_matrix}
+% \input{../../syllabus2/tex/a07_matrixModel}
+% \input{../../syllabus2/tex/a08_Eigen}
+% \input{../../syllabus2/tex/a09_matrix_onR}
+% \input{../../syllabus2/tex/a10_FA}
+% \input{../../syllabus2/tex/a11_IRTonR}
+% \input{../../syllabus2/tex/a12_SEM}
+% \input{../../syllabus2/tex/a13_SEMonR}
+% \input{../../syllabus2/tex/a14_DualuScaling}
+% \input{../../syllabus2/tex/a15_MDS}
+% 行番号終了
+\nolinenumbers
+% 引用文献
+\addcontentsline{toc}{chapter}{引用文献}
+% \bibliographystyle{../../jecon_jpa}
+% \bibliography{../../sbib}
+\printbibliography[title=引用文献]
+
+% 索引
+\addcontentsline{toc}{chapter}{索引}
+\printindex
+
+\end{document}

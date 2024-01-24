@@ -55,7 +55,7 @@ echo "広大集中講義テキストの最新バージョンは"$newVer "です�
 ## LateX Main
 rm error.log
 lualatex tmp
-upbibtex tmp
+biber tmp
 lualatex tmp
 lualatex tmp
 upmendex -r -c -g -s ../../indexStyle.ist tmp
