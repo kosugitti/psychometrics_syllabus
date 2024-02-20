@@ -120,6 +120,7 @@ rm *.ilg
 rm *.idx
 rm *.ind
 rm *.run.xml
+rm *.bcf
 cd ..
 
 ########################## Show Message

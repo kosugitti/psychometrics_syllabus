@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2024.1.31)  7 FEB 2024 09:23
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2024.2.9)  15 FEB 2024 09:54
  restricted system commands enabled.
 **syllabus2b.tex
 (./syllabus2b.tex
@@ -8,7 +8,7 @@ Lua module: luaotfload 2023-08-31 3.26 Lua based OpenType font support
 Lua module: lualibs 2023-07-13 2.76 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2023-07-13 2.76 ConTeXt Lua libraries -- extended c
 ollection.
-luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2023
+luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2023
 /texmf-var/luatex-cache/generic/names".
 luaotfload | init : Loading fontloader "fontloader-2023-08-19.lua" from kpse-res
 olved path "/usr/local/texlive/2023/texmf-dist/tex/luatex/luaotfload/fontloader-
@@ -20,7 +20,7 @@ Inserting `luaotfload.node_processor' in `hpack_filter'.
 Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
 Inserting `luaotfload.define_font' in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 2
-luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2023
+luaotfload | conf : Root cache directory is "/Users/hermite/Library/texlive/2023
 /texmf-var/luatex-cache/generic/names".
 Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
 Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
@@ -309,7 +309,7 @@ LaTeX Info: Redefining \fontshapeforce on input line 955.
 )
 (/usr/local/texlive/2023/texmf-dist/tex/luatex/luatexja/patches/lltjdefs.sty
 Package: lltjdefs 2022-01-23 Default font settings of LuaTeX-ja
-luaotfload | db : Font names database loaded from /Users/napier3/Library/texlive
+luaotfload | db : Font names database loaded from /Users/hermite/Library/texlive
 /2023/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache: e
 xtra_lmroman10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
@@ -1559,7 +1559,7 @@ Package: accents 2006/05/12 v1.4 Math Accent Tools
 \cc@group=\count515
 \cc@skewchar=\count516
 )
-luaotfload | cache : Lookup cache loaded from /Users/napier3/Library/texlive/202
+luaotfload | cache : Lookup cache loaded from /Users/hermite/Library/texlive/202
 3/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache: 
 extra_biz-udmincho-medium.luc)
 
@@ -1860,10 +1860,9 @@ Package: lltjp-array 2019-07-18 Patch to array for LuaTeX-ja
 )
 \@quotelevel=\count548
 \@quotereset=\count549
-
-No file syllabus2b.aux.
-
+ (./syllabus2b.aux)
 \openout1 = syllabus2b.aux
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
@@ -1875,6 +1874,7 @@ LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 5.
 LaTeX Font Info:    Trying loading font information for TS1+cmr on input line 5
 .
+
 (/usr/local/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -1906,11 +1906,12 @@ Package biblatex Info: Automatic encoding selection.
 
 \openout3 = syllabus2b.bcf
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'syllabus2b.bbl' not found.
+Package biblatex Info: ... file 'syllabus2b.bbl' found.
 
-No file syllabus2b.bbl.
+(./syllabus2b.bbl)
 Package biblatex Info: Reference section=0 on input line 5.
 Package biblatex Info: Reference segment=0 on input line 5.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
 *geometry* verbose mode - [ preamble ] result:
@@ -2042,6 +2043,8 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@posthook=\toks61
 )
 Package hyperref Info: Link coloring ON on input line 5.
+
+(./syllabus2b.out) (./syllabus2b.out)
 \@outlinefile=\write8
 
 \openout8 = syllabus2b.out
@@ -2090,7 +2093,7 @@ LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (Font)              scaled to size 13.31586pt on input line 11.
 (load cache: extra_lmsans12-regular.luc)
-No file syllabus2b.toc.
+(./syllabus2b.toc)
 \tf@toc=\write9
 
 \openout9 = syllabus2b.toc
@@ -2098,181 +2101,74 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
 (Font)              scaled to size 9.24713pt on input line 12.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
 (Font)              scaled to size 9.24713pt on input line 12.
-[1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+ [1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
 (Font)              scaled to size 11.09656pt on input line 27.
-
-(./a16_Programming1.tex(load cache: extra_lmromanslant10-regular.luc)
+ (./a16_Programming1.tex(load cache: extra_lmromanslant10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/sl' will be
 (Font)              scaled to size 9.24713pt on input line 6.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/sl' will be
 (Font)              scaled to size 9.24713pt on input line 6.
  [2] [3]) (./a17_Programming2.tex(load cache: extra_lmmono10-regular.luc) [4])
-(./a18_Random1.tex
-
-LaTeX Warning: Citation 'Lee201709' on page 5 undefined on input line 8.
-
-(load cache: extra_lmroman7-regular.luc)(load cache: extra_lmroman5-regular.luc)
+(./a18_Random1.tex(load cache: extra_lmroman7-regular.luc)(load cache: extra_lmr
+oman5-regular.luc)
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 6.47299pt on input line 10.
+(Font)              scaled to size 6.47299pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 4.62357pt on input line 10.
+(Font)              scaled to size 4.62357pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 6.47299pt on input line 10.
+(Font)              scaled to size 6.47299pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 4.62357pt on input line 10.
-
-LaTeX Warning: Citation 'Lee201709' on page 5 undefined on input line 10.
-
-
-LaTeX Warning: Citation 'Maeda2017' on page 5 undefined on input line 17.
-
-[5]
-
-LaTeX Warning: Citation 'Maeda2017' on page 6 undefined on input line 24.
-
-
-LaTeX Warning: Citation 'Lee201709' on page 6 undefined on input line 30.
-
-) (./a19_Random2.tex [6]
-
-LaTeX Warning: Citation 'Yamada2004' on page 7 undefined on input line 14.
-
-[7]) (./a20_Random3.tex
-
-LaTeX Warning: Citation 'Lee201709' on page 8 undefined on input line 19.
-
-
-LaTeX Warning: Citation 'Toyoda201606' on page 8 undefined on input line 25.
-
-[8]
-
-LaTeX Warning: Citation 'Matsuura201610' on page 9 undefined on input line 31.
-
-) (./a21_Random4.tex [9]) (./a22_Random5.tex [10]) (./a23_Random6.tex [11]
-
-LaTeX Warning: Citation 'Matsuura201610' on page 12 undefined on input line 12.
-
-
-
-LaTeX Warning: Citation 'Yamauchi201001' on page 12 undefined on input line 19.
-
-
-
-LaTeX Warning: Citation 'Toyoda201606' on page 12 undefined on input line 26.
-
-
-LaTeX Warning: Citation 'Lee201709' on page 12 undefined on input line 32.
-
-[12]) (./a24_Stan.tex [13]) (./a25_modeling1.tex
-
-LaTeX Warning: Citation 'Kubo2012' on page 14 undefined on input line 4.
-
-[14]) (./a26_modeling2.tex [15]
-
-LaTeX Warning: Citation 'Matsuura201610' on page 16 undefined on input line 14.
-
-
-
-LaTeX Warning: Citation 'Matsuura201610' on page 16 undefined on input line 19.
-
-
-
-LaTeX Warning: Citation 'Matsuura201610' on page 16 undefined on input line 23.
-
-
-) (./a27_modeling3.tex [16]
-
-LaTeX Warning: Citation 'Maeda2017' on page 17 undefined on input line 11.
-
-
-LaTeX Warning: Citation 'Hamada201912' on page 17 undefined on input line 15.
-
-[17]) (./a28_IRTonBayes.tex [18]) (./a29_ChangePoint.tex
-
-LaTeX Warning: Citation 'Lee201709' on page 19 undefined on input line 15.
-
-
-LaTeX Warning: Citation 'Matsuura201610' on page 19 undefined on input line 15.
-
-
-[19]
-
-LaTeX Warning: Reference `lesson2_26' on page 20 undefined on input line 30.
-
-) (./a30_SSpace.tex [20]
-
-LaTeX Warning: Citation 'Matsuura201610' on page 21 undefined on input line 17.
-
-
-
-LaTeX Warning: Citation 'Baba201907' on page 21 undefined on input line 17.
-
-)
-
-LaTeX Warning: Empty bibliography on input line 60.
-
-[21] (./syllabus2b.aux)
+(Font)              scaled to size 4.62357pt on input line 13.
+ [5]) (./a19_Random2.tex [6]) (./a20_Random3.tex [7] [8])
+(./a21_Random4.tex [9]) (./a22_Random5.tex [10]) (./a23_Random6.tex [11])
+(./a24_Stan.tex [12]) (./a25_modeling1.tex [13]) (./a26_modeling2.tex [14]
+[15]) (./a27_modeling3.tex [16]) (./a28_IRTonBayes.tex [17])
+(./a29_ChangePoint.tex [18]) (./a30_SSpace.tex [19] [20]) [21]
+(./syllabus2b.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `syllabus2b.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `syllabus2b.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  F48F791CADE823BEBADFECC69C65B5A1;3136.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                syllabus2b
-(biblatex)                and rerun LaTeX afterwards.
-
+Package rerunfilecheck Info: File `syllabus2b.out' has not changed.
+(rerunfilecheck)             Checksum: 820A57AB87EB23054ED40BD8EFA9E7AA;2951.
 Package logreq Info: Writing requests to 'syllabus2b.run.xml'.
 
 \openout1 = syllabus2b.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 47190 strings out of 476553
+ 47346 strings out of 476553
  156562,2373549 words of node,token memory allocated
- 1162 words of node memory still in use:
-   10 hlist, 2 vlist, 5 rule, 2 glue, 4 kern, 1 glyph, 204 attribute, 76 glue_sp
+ 1167 words of node memory still in use:
+   10 hlist, 2 vlist, 5 rule, 2 glue, 4 kern, 1 glyph, 204 attribute, 77 glue_sp
 ec, 28 attribute_list, 2 write, 13 user_defined nodes
-   avail lists: 1:25,2:46074,3:472,4:339,5:119,6:54,7:6080,8:3,9:558,10:36,11:22
-
- 67750 multiletter control sequences out of 65536+600000
+   avail lists: 1:49,2:45995,3:458,4:427,5:142,6:83,7:6121,8:36,9:1126,10:41,11:
+40
+ 67870 multiletter control sequences out of 65536+600000
  110 fonts using 77582711 bytes
- 125i,12n,128p,1774b,1319s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 125i,12n,128p,1774b,1758s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.ot
 f></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.
 otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmromanslant10-
-regular.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmsans1
-0-regular.otf></Library/Fonts/BIZ-UDGothicB.ttc></usr/local/texlive/2023/texmf-d
-ist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2023/texm
+regular.otf></Library/Fonts/BIZ-UDGothicB.ttc></usr/local/texlive/2023/texmf-dis
+t/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2023/texmf-
+dist/fonts/opentype/public/lm/lmsans10-regular.otf></usr/local/texlive/2023/texm
 f-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf></usr/local/te
 xlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></usr/local
 /texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman17-regular.otf></Librar
 y/Fonts/BIZ-UDMinchoM.ttc></usr/local/texlive/2023/texmf-dist/fonts/opentype/pub
 lic/lm/lmroman10-bold.otf></usr/local/texlive/2023/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb>
-Output written on syllabus2b.pdf (21 pages, 678372 bytes).
+msfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb>
+Output written on syllabus2b.pdf (21 pages, 698794 bytes).
 
-PDF statistics: 348 PDF objects out of 1000 (max. 8388607)
- 286 compressed objects within 3 object streams
- 174 named destinations out of 1000 (max. 131072)
- 16 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 434 PDF objects out of 1000 (max. 8388607)
+ 370 compressed objects within 4 object streams
+ 185 named destinations out of 1000 (max. 131072)
+ 144 words of extra memory for PDF output out of 10000 (max. 100000000)
 
