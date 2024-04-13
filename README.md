@@ -65,6 +65,7 @@
 - [心理学データ解析応用2 市販テキスト；数値シミュレーションで読み解く統計の仕組み(Amazon)](https://amzn.to/4b4GMlA)
 
 
+
 ### Kindle Direct Publishing
 
 教材を全て印刷するのは手間がかかると思われる方のために、Amazonでペーパーバック版を提供しています。
@@ -121,7 +122,7 @@
 - [第 14 回；状態空間モデル(rstan)](codes/Dkiso2/14_stateSpace_Rstan.R)
 - [第 14 回；状態空間モデル(cmdstan)](codes/Dkiso2/14_stateSpace_Cmdstan.R) -->
 
-## 非常勤など
+## そのほかのコンテンツ
 
 ### 2022 夏 数学ワークショップ＃１
 
@@ -135,6 +136,14 @@
 授業で用いた資料をアップしております(2023/05/11 update!)。
 
 - [心理教育測定法](Scaling.pdf)
+
+## 付録のまとめ
+
+パソコンのファイル概念，キーボード配列など，テキストの付録に含まれる内容だけをまとめたものを作りました。
+ここだけでも，どこかの誰かの補助教材になればと思って公開しています。
+「ついでにこの辺も教えておいてよ！」ということがあればご連絡ください。暇があれば書き足します。
+
+-[電子計算機えとせとら](common_contents.pdf)
 
 
 ## 旧版アーカイブ
@@ -151,3 +160,10 @@
 [Written by Kosugitti](https://researchmap.jp/kosugitti)
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" /></a><br />この 作品 は <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">クリエイティブ・コモンズ 表示 - 改変禁止 4.0 国際 ライセンス</a>の下に提供されています。
+
+## 連絡先
+
++ ここでのコンテンツについて，修正等の連絡は，当[GithubレポジトリのIssue](https://github.com/kosugitti/psychometrics_syllabus/issues)からお願いします。みんなで相談したいことがあれば，[Discussions](https://github.com/kosugitti/psychometrics_syllabus/discussions)もご利用ください。
++ 著者の連絡先は kosugitti _at_ gmail.com までお願いします。(_at_ を@に変えてください)。
++ 授業に関する連絡先は，classkosugitti _at_ gmail.com までお願いします。(_at_ を@に変えてください)。
+

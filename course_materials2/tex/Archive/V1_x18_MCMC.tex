@@ -298,7 +298,7 @@ fit1rstan <- sampling(model,
 \section{MCMCの結果の解釈}
 さあ長々と話をしてきましたが，どうやらRhatや有効サンプルサイズにも問題がなかったので，MCMCは事後分布からの適切な代表値を産んでいたと考えられますから，その結果を考えてみましょうか。
 
-ここで，前の章(セクション\ref{preparedFunctions},Pp.\pageref{preparedFunctions})で準備した関数を使ってみましょう\footnote{伴走サイト\url{https://kosugitti.github.io/psychometrtics_syllabus/}からは，これらのRコードをダウンロードできます。Stanファイルは自分で準備し，読み込み先やファイル名などは適宜変更してください。}。これらをコード\ref{code:18_07}のように使うと結果が得られます。私の結果では出力\ref{MCMCout:out18_01}のようになりました。
+ここで，前の章(セクション\ref{preparedFunctions},Pp.\pageref{preparedFunctions})で準備した関数を使ってみましょう\footnote{伴走サイト\url{https://kosugitti.github.io/psychometrics_syllabus/}からは，これらのRコードをダウンロードできます。Stanファイルは自分で準備し，読み込み先やファイル名などは適宜変更してください。}。これらをコード\ref{code:18_07}のように使うと結果が得られます。私の結果では出力\ref{MCMCout:out18_01}のようになりました。
 
 \begin{lstlisting}[language=C++,label={code:18_07},caption={stanの結果を準備し関数に与える}]
 fit %>% MCMCtoDF() %>% MCMCsummary()

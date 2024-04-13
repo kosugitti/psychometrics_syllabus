@@ -1,0 +1,46 @@
+\documentclass[dvipsnames]{ltjsbook}
+\usepackage{../../myStyle}
+%% バッチ処理をするので\lheadは必ず4行目にあること
+\usepackage{docmute}
+\begin{document}
+\includepdf[noautoscale=false,pages=-]{Common.png}
+\VerbatimFootnotes
+\input{../copyright} % copyright page
+\title{電子計算機えとせとら}
+\author{小杉　考司}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+
+こちらは心理統計教育教材のサイト(\url{https://kosugitti.github.io/psychometrics_syllabus/})で提供されているテキストに共通してつけられる「付録」です。
+
+パソコンなどの電子計算機は，統計を学ぶ時の強力なパートナーであり，基本的な文房具の一種です。
+筆者は1976年の生まれですから，まだパソコンのことを「マイコン」と呼んでいた時代からの付き合いです。1980年代の電子計算機は，今から考えると本当に冗談のような演算力，記憶力でした。
+その発展のスピードは目覚ましく，最近パソコンを触り始めた人にとっては，スマートフォンやタブレットに比べてパソコンは不便で難しいものに映るかもしれません。
+これは少し悲しい話で，最近はどんどん初心者にわかりやすくしようとするあまり，その内部で何が行われているかを隠すことになってしまっているからです。しっかり理解して使うためには，歴史的な経緯やその内部で何が行われているかについて，概略でもいいので知っておく必要があります。そして得てしてその手の知識は，知っている人からしたら「何を今更」というような内容なので，教えるモチベーションもノウハウも育たないのです。
+
+この資料は，筆者のくだらない思い出話も多々含まれていますが，キーボード配列やギリシア文字の読み方といった，周辺知識からなっています。
+補助教材としてご利用いただければと思います。
+
+\begin{flushright}
+	\date{\today}\\
+	小杉考司
+\end{flushright}
+
+
+\tableofcontents
+
+
+\input{../Computer}
+\input{../Greeks}
+\input{../keyboards}
+
+
+\addcontentsline{toc}{chapter}{引用文献}
+% 引用文献
+\printbibliography[title=引用文献]
+% 索引
+\addcontentsline{toc}{chapter}{索引}
+
+\printindex
+\end{document}
