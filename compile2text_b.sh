@@ -159,5 +159,5 @@ echo 'データ解析応用のテキスト(後期)を改定しました。'
 
 today=$(LANG="ja_JP.UTF-8" date)
 git add --all
-git commit -m $today
+git commit -m "$today"
 git push

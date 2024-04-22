@@ -93,3 +93,8 @@ echo $(date)
 echo '線形代数のテキストを改定しました。'
 cat LA_versions1.md
 cat LABC/tex/error.log
+
+today=$(LANG="ja_JP.UTF-8" date)
+git add --all
+git commit -m "$today"
+git push

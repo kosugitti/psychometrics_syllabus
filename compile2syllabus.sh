@@ -130,3 +130,9 @@ cat Syllabus_versions2a.md
 cat Syllabus_versions2b.md
 cat syllabus2/error2a.log
 cat syllabus2/error2b.log
+
+
+today=$(LANG="ja_JP.UTF-8" date)
+git add --all
+git commit -m "$today"
+git push

@@ -50,5 +50,5 @@ cat course_materials2/tex/errorK.log
 
 today=$(LANG="ja_JP.UTF-8" date)
 git add --all
-git commit -m $today
+git commit -m "$today"
 git push
