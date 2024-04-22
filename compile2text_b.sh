@@ -156,3 +156,8 @@ cat Book_versions2b.md
 cat course_materials2/tex/error2.log
 echo $(date)
 echo 'データ解析応用のテキスト(後期)を改定しました。'
+
+today=$(LANG="ja_JP.UTF-8" date)
+git add --all
+git commit -m $today
+git push

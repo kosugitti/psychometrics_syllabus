@@ -47,3 +47,8 @@ cd ..
 echo $(date)
 echo 'データ解析応用の出版用PDFを作成しました。出版用PDFには後書きと奥付があり，著作権表示が異なります。'
 cat course_materials2/tex/errorK.log
+
+today=$(LANG="ja_JP.UTF-8" date)
+git add --all
+git commit -m $today
+git push

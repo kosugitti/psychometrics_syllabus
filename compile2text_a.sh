@@ -79,3 +79,8 @@ echo $(date)
 echo 'データ解析応用のテキスト(前期)を改定しました。'
 cat Book_versions2a.md
 cat course_materials2/tex/error1.log
+
+today=$(LANG="ja_JP.UTF-8" date)
+git add --all
+git commit -m $today
+git push
