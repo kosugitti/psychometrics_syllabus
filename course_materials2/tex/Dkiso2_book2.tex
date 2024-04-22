@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 2.0.5}
+\lhead{version 2.0.11}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/cover2b.pdf}
@@ -23,7 +23,7 @@
 \linenumbers
 % 各章
 \include{x16_Programming1}
-\include{x17_Programming2}
+\include{prepareStan}
 \include{x24_Stan}
 \include{x25_modeling1}
 \include{x26_modeling2}
@@ -34,7 +34,7 @@
 \appendix
 \input{../../common_contents/FAQ} % FAQ page
 \input{../../Scaling/tex/H01_ProofOfLikert}
-% \input{../../common_contents/Computer}
+\input{../../common_contents/Computer}
 \input{../../common_contents/Greeks}
 \input{../../common_contents/keyboards}
 \chapter{本講義に対応する詳細シラバス}

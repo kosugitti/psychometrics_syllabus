@@ -32,7 +32,7 @@ cat ${filname}.tex
 echo "コンパイルを始めます"
 cp ${filename}.tex tmp.tex
 
-echo "応用シラバス2Aの最新バージョンは"$newVer "です。" >| ../Syllabus_versions2a.md
+echo "応用シラバス2Aの最新バージョンは"$newVer "です。" >| ../../Syllabus_versions2a.md
 
 ## LateX Main
 rm error.log
@@ -85,7 +85,7 @@ cat ${filname}.tex
 echo "コンパイルを始めます"
 cp ${filename}.tex tmp.tex
 
-echo "応用シラバス2Bの最新バージョンは"$newVer "です。" >| ../Syllabus_versions2b.md
+echo "応用シラバス2Bの最新バージョンは"$newVer "です。" >| ../../Syllabus_versions2b.md
 
 ## LateX Main
 rm error.log

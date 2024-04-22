@@ -26,7 +26,7 @@ newVer=${major}.${minor}.${plusOne}
 newval=`echo $val | sed -e "s/$version/$newVer/"`
 #echo $val | sed -e "s/$val/$newval/"
 echo "New version"$newVer
-echo "応用テキストの現在のバージョンは次の通りです。"
+echo "応用テキスト(前期)の現在のバージョンは次の通りです。"
 cat ${filename}.tex
 echo "かきかえます"
 cat ${filename}.tex | (rm ${filename}.tex; sed "s/$val/$newval/" > ${filename}.tex)
@@ -35,11 +35,11 @@ cat ${filname}.tex
 echo "コンパイルを始めます"
 cp ${filename}.tex tmp.tex
 
-echo "応用テキストの最新バージョンは"$newVer "です。" >| ../../Book_versions2.md
+echo "応用テキスト(前期)の最新バージョンは"$newVer "です。" >| ../../Book_versions2a.md
 
 
 ## LateX Main
-rm error.log
+rm error1.log
 lualatex tmp
 biber tmp
 lualatex tmp
@@ -66,6 +66,7 @@ rm *.out
 rm *.fls
 rm *.fdb_latexmk
 rm *.synctex.gz
+rm *.run.xml
 rm *.ltjruby
 rm *.ilg
 rm *.idx
@@ -101,7 +102,7 @@ newVer=${major}.${minor}.${plusOne}
 newval=`echo $val | sed -e "s/$version/$newVer/"`
 #echo $val | sed -e "s/$val/$newval/"
 echo "New version"$newVer
-echo "応用テキストの現在のバージョンは次の通りです。"
+echo "応用テキスト(後期)の現在のバージョンは次の通りです。"
 cat ${filename}.tex
 echo "かきかえます"
 cat ${filename}.tex | (rm ${filename}.tex; sed "s/$val/$newval/" > ${filename}.tex)
@@ -110,11 +111,11 @@ cat ${filname}.tex
 echo "コンパイルを始めます"
 cp ${filename}.tex tmp.tex
 
-echo "応用テキストの最新バージョンは"$newVer "です。" >| ../../Book_versions2.md
+echo "応用テキスト(後期)の最新バージョンは"$newVer "です。" >| ../../Book_versions2b.md
 
 
 ## LateX Main
-rm error.log
+rm error2.log
 lualatex tmp
 biber tmp
 lualatex tmp
@@ -141,6 +142,7 @@ rm *.out
 rm *.fls
 rm *.fdb_latexmk
 rm *.synctex.gz
+rm *.run.xml
 rm *.ltjruby
 rm *.ilg
 rm *.idx
@@ -149,5 +151,7 @@ rm *.ind
 cd ..
 cd ..
 
-cat Book_versions2.md
-cat course_materials2/tex/error.log
+cat Book_versions2a.md
+cat course_materials2/tex/error1.log
+cat Book_versions2b.md
+cat course_materials2/tex/error2.log

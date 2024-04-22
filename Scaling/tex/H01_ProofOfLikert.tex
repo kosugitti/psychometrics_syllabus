@@ -80,22 +80,19 @@ Likert法では，態度が標準正規分布すると仮定するのでした�
 	\end{aligned}
 \]
 となり，積分の下限は$-a^2/2$,上限は$-b^2/2$になりますから，以下のように展開できます。
-\[
-	\begin{aligned}
-		(与式) & =-\frac{1}{\sqrt{2\pi}}\int_{-a^2/2}^{-b^2/2}e^u du                                                  \\
-		     &                                                                                                      \\
-		     & \mbox{$\int e^u du$は$e^u$なので}                                                                        \\
-		     &                                                                                                      \\
-		     & =-\frac{1}{\sqrt{2\pi}}\left[e^u\right]_{-a^2/2}^{-b^2/2}                                            \\
-		     &                                                                                                      \\
-		     & =-\frac{1}{\sqrt{2\pi}}e^{(-\frac{b^2}{2})} -\left(-\frac{1}{\sqrt{2\pi}}e^{(-\frac{a^2}{2})}\right)
-		     &                                                                                                      \\
-		     & =\frac{1}{\sqrt{2\pi}}e^{(-\frac{a^2}{2})}-\frac{1}{\sqrt{2\pi}}e^{(-\frac{b^2}{2})}                 \\
-		     & \mbox{$y= \frac{1}{\sqrt{2\pi}}e^{(-\frac{z^2}{2})}$であることから，}                                        \\
-		     & = y_a - y_b                                                                                          \\
-		     & = y_{z_{c-1}} - y_{z_c}
-	\end{aligned}
-\]
+
+	\begin{align*}
+		(与式) & =-\frac{1}{\sqrt{2\pi}}\int_{-a^2/2}^{-b^2/2}e^u du &\\
+		     & & \mbox{$\int e^u du$は$e^u$なので}\\
+		     & =-\frac{1}{\sqrt{2\pi}}\left[e^u\right]_{-a^2/2}^{-b^2/2}&\\
+		     & & \\
+		     & =-\frac{1}{\sqrt{2\pi}}e^{(-\frac{b^2}{2})} -\left(-\frac{1}{\sqrt{2\pi}}e^{(-\frac{a^2}{2})}\right) &  \\
+		     & =\frac{1}{\sqrt{2\pi}}e^{(-\frac{a^2}{2})}-\frac{1}{\sqrt{2\pi}}e^{(-\frac{b^2}{2})} & \\
+		     && \mbox{$y= \frac{1}{\sqrt{2\pi}}e^{(-\frac{z^2}{2})}$であることから，} \\
+		     & = y_a - y_b  & \\
+		     & = y_{z_{c-1}} - y_{z_c} &
+	\end{align*}
+
 以上のことから，リッカート法において標準正規分布をもとに尺度得点を決めるには，
 \[ Z_c = \frac{(y_{z_{c-1}} - y_{z_c})}{\int_{z_{c-1}}^{z_c}f(z)dz} = \frac{(y_{z_{c-1}} - y_{z_c})}{p_c} \]
 とすれば良いことになります。

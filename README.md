@@ -45,14 +45,16 @@
 誤字脱字の修正はパッチバージョン、段落や章の追加・変更、全体の構成変更はマイナーリビジョン、そして大きな方針転換などはメジャーリビジョンとして表されます。
 
 {% include_relative Syllabus_versions1.md %}
-{% include_relative Syllabus_versions2.md %}
+{% include_relative Syllabus_versions2a.md %}
+{% include_relative Syllabus_versions2b.md %}
 {% include_relative Book_versions1.md %}
 {% include_relative Book_versions2.md %}
 
 ### シラバス
 
-- [心理学データ解析基礎 1(心理学統計法)/心理学データ解析 2](syllabus.pdf)
-<!-- - [心理学データ解析応用 1/心理学データ解析応用 2](syllabus2.pdf) -->
+- [心理学データ解析基礎 1&2](syllabus.pdf)
+- [心理学データ解析応用 1](syllabus2a.pdf) 
+- [心理学データ解析応用 2](syllabus2b.pdf) 
 
 ### テキスト
 
@@ -63,7 +65,7 @@
 - [心理学データ解析応用1 授業資料](Dkiso2_book1.pdf)
 - [心理学データ解析応用2 授業資料](Dkiso2_book2.pdf)
 - [心理学データ解析応用2 市販テキスト；数値シミュレーションで読み解く統計の仕組み(Amazon)](https://amzn.to/4b4GMlA)
-
+- [心理学データ解析応用 旧バージョン授業資料](Dkiso2_book_ver1.pdf)
 
 
 ### Kindle Direct Publishing
@@ -71,6 +73,7 @@
 教材を全て印刷するのは手間がかかると思われる方のために、Amazonでペーパーバック版を提供しています。
 
 - [心理学データ解析基礎: R と JASP で学ぶ楽しい心理統計の世界](https://amzn.to/3tuDKn0)
+
 
 ## 授業で用いるデータやRのコード
 
