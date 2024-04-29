@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.4.2)  15 APR 2024 14:05
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.4.13)  30 APR 2024 08:03
  restricted system commands enabled.
 **tmp
 (./tmp.tex
@@ -8,8 +8,8 @@ Lua module: luaotfload 2024-02-14 3.28 Lua based OpenType font support
 Lua module: lualibs 2023-07-13 2.76 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2023-07-13 2.76 ConTeXt Lua libraries -- extended c
 ollection.
-luaotfload | conf : Root cache directory is "/Users/kosugitti/Library/texlive/20
-24/texmf-var/luatex-cache/generic/names".
+luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2024
+/texmf-var/luatex-cache/generic/names".
 luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-res
 olved path "/usr/local/texlive/2024/texmf-dist/tex/luatex/luaotfload/fontloader-
 2023-12-28.lua".
@@ -20,8 +20,8 @@ Inserting `luaotfload.node_processor' in `hpack_filter'.
 Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
 Inserting `luaotfload.define_font' in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 2
-luaotfload | conf : Root cache directory is "/Users/kosugitti/Library/texlive/20
-24/texmf-var/luatex-cache/generic/names".
+luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2024
+/texmf-var/luatex-cache/generic/names".
 Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
 Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
 Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
@@ -309,9 +309,9 @@ LaTeX Info: Redefining \fontshapeforce on input line 955.
 )
 (/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/patches/lltjdefs.sty
 Package: lltjdefs 2022-01-23 Default font settings of LuaTeX-ja
-luaotfload | db : Font names database loaded from /Users/kosugitti/Library/texli
-ve/2024/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache:
- extra_lmroman10-regular.luc)
+luaotfload | db : Font names database loaded from /Users/napier3/Library/texlive
+/2024/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache: e
+xtra_lmroman10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
 (Font)              scaled to size 9.24713pt on input line 79.
 
@@ -829,7 +829,7 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 Package graphics Info: Driver file: luatex.def on input line 107.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/luatex.def
-File: luatex.def 2022/09/22 v1.2d Graphics/color driver for luatex
+File: luatex.def 2024/04/13 v1.2e Graphics/color driver for luatex
 ))
 \Gin@req@height=\dimen182
 \Gin@req@width=\dimen183
@@ -1559,9 +1559,9 @@ Package: accents 2006/05/12 v1.4 Math Accent Tools
 \cc@group=\count516
 \cc@skewchar=\count517
 )
-luaotfload | cache : Lookup cache loaded from /Users/kosugitti/Library/texlive/2
-024/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache
-: extra_biz-udmincho-medium.luc)
+luaotfload | cache : Lookup cache loaded from /Users/napier3/Library/texlive/202
+4/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache: 
+extra_biz-udmincho-medium.luc)
 
 Package fontspec Info: BIZUDMinchoMedium scale = 0.924715.
 
@@ -2183,13 +2183,10 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 
 
 
-]
-
-LaTeX Warning: Citation '' on page 6 undefined on input line 36.
-
-) [6]
+]) [6]
 \openout2 = a03_testTheory.aux
- (./a03_testTheory.tex [7
+
+(./a03_testTheory.tex [7
 
 
 
@@ -2201,12 +2198,12 @@ LaTeX Warning: Citation '' on page 6 undefined on input line 36.
 
 ]) [10]
 \openout2 = a05_GRM.aux
- (./a05_GRM.tex
-[11
+ (./a05_GRM.tex [11
 
 
 
-]) [12]
+])
+[12]
 \openout2 = a06_matrix.aux
  (./a06_matrix.tex) [13
 
@@ -2290,14 +2287,14 @@ Package logreq Info: Writing requests to 'tmp.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 47924 strings out of 476435
+ 47925 strings out of 476435
  156557,2373549 words of node,token memory allocated
  1219 words of node memory still in use:
    10 hlist, 2 vlist, 5 rule, 2 glue, 4 kern, 1 glyph, 228 attribute, 77 glue_sp
 ec, 30 attribute_list, 2 write, 13 user_defined nodes
-   avail lists: 1:49,2:44075,3:565,4:409,5:152,6:72,7:5981,8:5,9:833,10:42,11:74
+   avail lists: 1:54,2:44088,3:565,4:410,5:152,6:73,7:5983,8:5,9:831,10:42,11:74
 
- 68370 multiletter control sequences out of 65536+600000
+ 68371 multiletter control sequences out of 65536+600000
  110 fonts using 77582711 bytes
  125i,11n,133p,1869b,1766s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.ot
@@ -2315,7 +2312,7 @@ lic/lm/lmroman10-bold.otf></usr/local/texlive/2024/texmf-dist/fonts/type1/public
 msfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb>
-Output written on tmp.pdf (31 pages, 721641 bytes).
+Output written on tmp.pdf (31 pages, 721276 bytes).
 
 PDF statistics: 476 PDF objects out of 1000 (max. 8388607)
  401 compressed objects within 5 object streams
