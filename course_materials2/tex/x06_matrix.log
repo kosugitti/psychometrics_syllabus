@@ -1,7 +1,7 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.6.17)  17 JUN 2024 12:39
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.6.17)  17 JUN 2024 12:37
  restricted system commands enabled.
-**x03_testTheory.tex
-(./x03_testTheory.tex
+**x06_matrix.tex
+(./x06_matrix.tex
 LaTeX2e <2024-06-01> patch level 1
 L3 programming layer <2024-05-27>
 Lua module: luaotfload 2024-02-14 3.28 Lua based OpenType font support
@@ -1922,9 +1922,9 @@ Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
 )
 \@indexfile=\write7
 
-\openout7 = x03_testTheory.idx
+\openout7 = x06_matrix.idx
 
-Writing index file x03_testTheory.idx
+Writing index file x06_matrix.idx
 (/usr/local/texlive/2024/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2024/04/23 v4.2 Extensive control of page headers and footers
 
@@ -1944,9 +1944,9 @@ Package: lltjp-array 2019-07-18 Patch to array for LuaTeX-ja
 \@quotelevel=\count556
 \@quotereset=\count557
 
-No file x03_testTheory.aux.
+No file x06_matrix.aux.
 
-\openout1 = x03_testTheory.aux
+\openout1 = x06_matrix.aux
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
@@ -1987,11 +1987,11 @@ Package biblatex Info: LuaTeX detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
 
-\openout3 = x03_testTheory.bcf
+\openout3 = x06_matrix.bcf
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'x03_testTheory.bbl' not found.
+Package biblatex Info: ... file 'x06_matrix.bbl' not found.
 
-No file x03_testTheory.bbl.
+No file x06_matrix.bbl.
 Package biblatex Info: Reference section=0 on input line 5.
 Package biblatex Info: Reference segment=0 on input line 5.
 *geometry* driver: auto-detecting
@@ -2135,7 +2135,7 @@ Package: inputenc 2024/02/08 v1.3d Input encoding file
 Package hyperref Info: Link coloring ON on input line 5.
 \@outlinefile=\write8
 
-\openout8 = x03_testTheory.out
+\openout8 = x06_matrix.out
 \docmute@nestinglevel=\count565
 
 第1章
@@ -2153,139 +2153,129 @@ LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
 (Font)              scaled to size 23.00687pt on input line 6.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (Font)              scaled to size 23.00687pt on input line 6.
-(load cache: extra_lmroman12-regular.luc)
-LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 9.
-LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 9.
-LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 9.
-LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 9.
-(load cache: extra_lmsans12-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 9.24713pt on input line 11.
+(Font)              scaled to size 9.24713pt on input line 12.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 9.24713pt on input line 11.
-LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 13.
-LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 13.
-LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 13.
-LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 13.
+(Font)              scaled to size 9.24713pt on input line 12.
 (load cache: extra_lmroman7-regular.luc)(load cache: extra_lmroman5-regular.luc)
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 6.47299pt on input line 16.
+(Font)              scaled to size 6.47299pt on input line 15.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 4.62357pt on input line 16.
-LaTeX Font Info:    Trying loading font information for U+msa on input line 16.
+(Font)              scaled to size 4.62357pt on input line 15.
+LaTeX Font Info:    Trying loading font information for U+msa on input line 15.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying loading font information for U+msb on input line 16.
+LaTeX Font Info:    Trying loading font information for U+msb on input line 15.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 6.47299pt on input line 16.
+(Font)              scaled to size 6.47299pt on input line 15.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 4.62357pt on input line 16.
+(Font)              scaled to size 4.62357pt on input line 15.
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 6.47299pt on input line 23.
+(Font)              scaled to size 6.47299pt on input line 15.
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 23.
+(Font)              scaled to size 7.3977pt on input line 15.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 23.
+(Font)              scaled to size 7.3977pt on input line 15.
 (load cache: extra_lmroman6-regular.luc)
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 5.54828pt on input line 23.
+(Font)              scaled to size 5.54828pt on input line 15.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 23.
+(Font)              scaled to size 7.3977pt on input line 15.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 5.54828pt on input line 23.
+(Font)              scaled to size 5.54828pt on input line 15.
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 5.54828pt on input line 23.
+(Font)              scaled to size 5.54828pt on input line 15.
 
+
+LaTeX Warning: Citation 'kosugi2018' on page 1 undefined on input line 15.
+
+(load cache: extra_lmroman8-bold.luc)
+LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
+(Font)              scaled to size 7.3977pt on input line 15.
+LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
+(Font)              scaled to size 7.3977pt on input line 15.
+
+LaTeX Warning: Citation 'Murakami20160301' on page 1 undefined on input line 15
+.
+
+
+LaTeX Warning: Citation 'Nagata20050401' on page 1 undefined on input line 15.
+
+
+LaTeX Warning: Citation 'Okada200804' on page 1 undefined on input line 15.
+
+(load cache: extra_lmroman12-regular.luc)
+LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
+(Font)              scaled to size 13.31586pt on input line 18.
+LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
+(Font)              scaled to size 13.31586pt on input line 18.
+LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
+(Font)              scaled to size 13.31586pt on input line 18.
+LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
+(Font)              scaled to size 13.31586pt on input line 18.
+(load cache: extra_lmsans12-regular.luc)
+LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
+(Font)              scaled to size 9.24713pt on input line 22.
+(load cache: extra_lmsans10-regular.luc)
 
 [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
-](load cache: extra_lmroman8-bold.luc)
-LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 7.3977pt on input line 43.
-LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 7.3977pt on input line 43.
-
+]
 
 (load cache: extra_lmromanslant10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/sl' will be
-(Font)              scaled to size 9.24713pt on input line 53.
+(Font)              scaled to size 9.24713pt on input line 97.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/sl' will be
-(Font)              scaled to size 9.24713pt on input line 53.
+(Font)              scaled to size 9.24713pt on input line 97.
 [2]
 
 [3]
 
 [4]
 
-LaTeX Warning: Citation 'Oshio2020' on page 5 undefined on input line 97.
+LaTeX Warning: Reference `fig::06_01' on page 5 undefined on input line 406.
 
+<../images/06_matrix/Slide06_01.png, id=61, 416.2752pt x 364.7226pt>
+File: ../images/06_matrix/Slide06_01.png Graphic file (type png)
+<use ../images/06_matrix/Slide06_01.png>
+Package luatex.def Info: ../images/06_matrix/Slide06_01.png  used on input line
+ 410.
+(luatex.def)             Requested size: 334.60422pt x 293.1809pt.
+(load cache: extra_lmroman9-regular.luc)
+LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
+(Font)              scaled to size 8.32242pt on input line 411.
+LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
+(Font)              scaled to size 8.32242pt on input line 411.
 
 
 [5]
 
-LaTeX Warning: Citation 'kosugi2018' on page 6 undefined on input line 113.
-
-
-LaTeX Warning: Reference `factor' on page 6 undefined on input line 134.
-
-
-Overfull \hbox (18.15721pt too wide) detected at line 140
-[][][][]
- []
-
-
-LaTeX Warning: Reference `x03_multiply' on page 6 undefined on input line 143.
-
-(load cache: extra_lmroman9-regular.luc)
+[6<../images/06_matrix/Slide06_01.png>]
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 158.
+(Font)              scaled to size 11.09656pt on input line 528.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 158.
-
-
-[6]
-
-LaTeX Warning: Reference `x03_multiply' on page 7 undefined on input line 162.
-
+(Font)              scaled to size 11.09656pt on input line 528.
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 165.
-(load cache: extra_lmsans10-regular.luc)
+(Font)              scaled to size 11.09656pt on input line 528.
+LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
+(Font)              scaled to size 11.09656pt on input line 528.
+
 
 [7]
-LaTeX Font Info:    Trying loading font information for OMS+lmr on input line 2
-09.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmr.fd
-File: omslmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying loading font information for OMS+lmsy on input line 
-209.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd
-File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 209.
-
 
 [8]
 
-[9] (./x03_testTheory.aux)
+[9]
+
+[10] (./x06_matrix.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 1
 L3 programming layer <2024-05-27>
@@ -2298,63 +2288,65 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
-Package rerunfilecheck Warning: File `x03_testTheory.out' has changed.
+Package rerunfilecheck Warning: File `x06_matrix.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
-Package rerunfilecheck Info: Checksums for `x03_testTheory.out':
+Package rerunfilecheck Info: Checksums for `x06_matrix.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  F786473750BF6D3C934E5B56ABD728B7;679.
+(rerunfilecheck)             After:  DDBC4098EC69A4DCCE4D3F62F323653E;671.
 
 Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                x03_testTheory
+(biblatex)                x06_matrix
 (biblatex)                and rerun LaTeX afterwards.
 
-Package logreq Info: Writing requests to 'x03_testTheory.run.xml'.
+Package logreq Info: Writing requests to 'x06_matrix.run.xml'.
 
-\openout1 = x03_testTheory.run.xml
+\openout1 = x06_matrix.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 47219 strings out of 475931
- 195709,2373549 words of node,token memory allocated
- 2265 words of node memory still in use:
-   11 hlist, 2 vlist, 5 rule, 9 glue, 4 kern, 1 glyph, 686 attribute, 75 glue_sp
-ec, 69 attribute_list, 2 write, 14 user_defined nodes
-   avail lists: 1:36,2:57950,3:892,4:771,5:458,6:46,7:7763,8:86,9:1340,10:48,11:
-54
- 68578 multiletter control sequences out of 65536+600000
- 110 fonts using 89537815 bytes
- 125i,16n,135p,1878b,1371s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local
-/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf></usr/loc
-al/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></usr/l
-ocal/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></usr
-/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf></usr/
-local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.ot
-f></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.
-otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman7-regula
-r.otf></Library/Fonts/BIZ-UDGothicB.ttc></usr/local/texlive/2024/texmf-dist/font
-s/opentype/public/lm/lmroman10-regular.otf></Library/Fonts/BIZ-UDMinchoM.ttc></u
-sr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.otf><
-/usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmsans17-regular.otf
-></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGo
-thic-Medium.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmr
-oman10-bold.otf></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.p
-fb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></us
-r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/lo
-cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on x03_testTheory.pdf (9 pages, 632515 bytes).
+ 47150 strings out of 475931
+ 195704,2373549 words of node,token memory allocated
+ 2438 words of node memory still in use:
+   10 hlist, 2 vlist, 5 rule, 6 glue, 4 kern, 1 glyph, 780 attribute, 76 glue_sp
+ec, 76 attribute_list, 2 write, 13 user_defined nodes
+   avail lists: 1:20,2:49041,3:460,4:777,5:513,6:45,7:7013,8:25,9:1644,10:37,11:
+24
+ 68509 multiletter control sequences out of 65536+600000
+ 108 fonts using 89412759 bytes
+ 125i,12n,135p,1874b,1407s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.ot
+f></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.
+otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmromanslant10-
+regular.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman
+8-regular.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmrom
+an8-bold.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroma
+n6-regular.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmsa
+ns12-regular.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lm
+roman7-regular.otf></Library/Fonts/BIZ-UDGothicB.ttc></usr/local/texlive/2024/te
+xmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></Library/Fonts/BIZ-UDMi
+nchoM.ttc></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmsans17-
+regular.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/haranoaji/
+HaranoAjiGothic-Medium.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/pu
+blic/lm/lmroman10-bold.otf></usr/local/texlive/2024/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/
+amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.p
+fb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on x06_matrix.pdf (10 pages, 754626 bytes).
 
-PDF statistics: 241 PDF objects out of 1000 (max. 8388607)
- 175 compressed objects within 2 object streams
- 44 named destinations out of 1000 (max. 131072)
- 16 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 261 PDF objects out of 1000 (max. 8388607)
+ 188 compressed objects within 2 object streams
+ 51 named destinations out of 1000 (max. 131072)
+ 26 words of extra memory for PDF output out of 10000 (max. 100000000)
 
