@@ -132,7 +132,7 @@ For instance, let's take a matrix $\bm{A} = \begin{pmatrix}\begin{pmatrix}a\\b\e
 	\end{array}
 \]
 
-% と，このようにスカラーとベクトルの積和の形に書き換えられるのですね\footnote{ただし，この計算が可能なのは分解する元の行列が実対称行列だからです。実対称行列は固有値と固有ベクトルで対角化可能であることが証明できます。実対称行列の固有値は全て十数ですし，固有値が全て実数であれば適当な直交行列をつかって対角化でき，実対称行列の固有ベクトルは互いに独立するのでこれらを使って直交行列を作ることができるからです。これらの性質については線形代数のテキストなどの証明を参照してください。また計算プロセスからもわかるように，同じ要素を持つ列ベクトルと行ベクトルの積ですから，結果は対称になってしまうからです。}。
+% と，このようにスカラーとベクトルの積和の形に書き換えられるのですね\footnote{ただし，この計算が可能なのは分解する元の行列が実対称行列だからです。実対称行列は固有値と固有ベクトルで対角化可能であることが証明できます。実対称行列の固有値は全て実数ですし，固有値が全て実数であれば適当な直交行列をつかって対角化でき，実対称行列の固有ベクトルは互いに独立するのでこれらを使って直交行列を作ることができるからです。これらの性質については線形代数のテキストなどの証明を参照してください。また計算プロセスからもわかるように，同じ要素を持つ列ベクトルと行ベクトルの積ですから，結果は対称になってしまうからです。}。
 And thus, we can rewrite it in the form of the product sum of a scalar and a vector\footnote{However, the reason we can perform this calculation is because the matrix we are decomposing is a real symmetric matrix. It can be proven that real symmetric matrices can be diagonalized by eigenvalues ​​and eigenvectors. All the eigenvalues ​​of the real symmetric matrix are real numbers, and if all eigenvalues ​​are real numbers, it can be diagonalized by using an appropriate orthogonal matrix, because the eigenvectors of the real symmetric matrix are independent of each other, so you can use these to create an orthogonal matrix. Please refer to the proofs in textbooks on linear algebra, etc. for these properties. Also, as can be seen from the calculation process, since this is the product of a column vector and a row vector with the same elements, the result becomes symmetric.}.
 
 
@@ -249,7 +249,6 @@ Now let's get back to factor analysis. The model of factor analysis was as follo
 
 % ここで，左辺の正方行列を相関行列$\bm{R}$とし，$\lambda \bm{xx'} = \bm{aa'}$となるようにベクトルの大きさを整えてみましょう。これは$\lambda$を分解してベクトルの中に溶け込ませるようなものですから，$\bm{a} = \sqrt{\lambda}\bm{x}$とすればよいでしょう。すると相関行列は次のように分解できます。
 Here, let's assume that the square matrix on the left side is the correlation matrix $\bm{R}$ and adjust the magnitude of the vector so that $\lambda \bm{xx'} = \bm{aa'}$. Since this involves decomposing $\lambda$ and blending it into the vector, it's appropriate to use $\bm{a} = \sqrt{\lambda}\bm{x}$. Then, the correlation matrix can be decomposed as follows.
-\input{x08_Eigen_escape_07}
 \input{x08_Eigen_escape_08}
 
 % ここでは共通因子の数が$m$個だとわかっている体で分解していますが，基本的にはサイズ$N$の行列からは$N$個の固有値がずらーっと並ぶわけです。それをどこかで「共通しているのはここまで」と判断し，残りは誤差であるとしてまとめて$\bm{dd'}$にしているだけですね。このように数学的にはここからが共通因子，ここからが独自因子といった区別をすることなく，最後のひとかけらまで固有値分解を行なっているのですが，その次元の重要度でもって共通因子と誤差因子に(研究者が恣意的に)分割しているのが因子分析のやっていることなのです。
