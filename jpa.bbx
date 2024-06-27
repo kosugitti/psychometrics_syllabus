@@ -555,13 +555,19 @@
   }%
 }
 
+% origdate フィールドのフォーマットを定義
+\DeclareFieldFormat{origyear}{%
+  \mkbibparens{#1}%
+}
 %%% 翻訳書（origauthor使用の場合） %%%
 \newbibmacro*{translatedbook}{%
   \ifthenelse{\boolean{japanese}}{% 日本語文献
-    \ifnameundef{origauthor}{}{%
+  \ifnameundef{origauthor}{}{%
       \renewcommand{\revsdnamepunct}{\addcomma\space}%
       \printnames[family-given]{origauthor}\setunit{\addperiod\addspace}%
-      \usebibmacro{date+extradate}\adddot\space%
+      % \usebibmacro{date+extradate}\adddot\space%
+      \printfield{origyear}\adddot\space%
+      \setunit{\adddot\addspace}%
       \printfield[emph]{origtitle}\setunit*{\adddot\space}%
       \printlist{origpublisher}\setunit*{\adddot\space}%
       \printtext{\\(}%
@@ -584,7 +590,7 @@
   }{% 外国語文献
     % 原著者名
     \ifnameundef{author}{}{%
-      \usebibmacro{author+year}\setunit{\addperiod\addspace}}%
+    \usebibmacro{author+year}\setunit{\addperiod\addspace}}%
     % 原編集者名
     \ifnameundef{editor}{}{%
       \usebibmacro{editor+year}\setunit{\addperiod\addspace}}%
