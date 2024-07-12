@@ -85,7 +85,7 @@ I will introduce four classic methods and one sophisticated method here.
 \paragraph{Looking at the cumulative contribution rate} By dividing the size of the eigenvalues by the number of items, you can calculate what percentage of the total variance one factor explains. This is particularly called the \keyterm{contribution ratio}. This method involves piling up these contributions cumulatively and considering the components where the cumulative contribution ratio exceeds 50% as common factors. Factor analysis is also about compressing item information, and what is not included in the common factors is something to be discarded as garbage. However, it's not right to discard more than half of the total as garbage, according to this standard.
 % \paragraph{解釈可能性を考える}因子数に迷った時は，とりあえず何パターンかで分析してみて，最も解釈しやすい数でOKにしましょう，というやり方です。なんと主観的な方法でしょうか。数学的な基準ではなく，研究者のカンに頼る方法であり，客観性や再現性の問題を考えると容認し難い方法ではありますが，実際にはよく使われているやり方です。
 \paragraph{Considering Interpretability} When you are unsure about the number of factors, one approach is to analyze in several patterns for the time being, and settle on the number that is easiest to interpret. What a subjective method. It's a method that relies on the researcher's intuition rather than mathematical standards, and while it's a method that's hard to accept when you consider issues of objectivity and reproducibility, it's a method that's actually used quite often.
-% \paragraph{並行分析による方法}ここまでの方法は幾分古く，見た目や感覚にたよるものでしたが，\keyterm{並行分析}{へいこうぶんせき}{parallel analysis}は数学的な基準で分析を行うものです。これは分析するデータセットと同じサイズの乱数を発生させ，その固有値構造とデータの固有値構造を比較するというものです。乱数で作られる構造は，心理的な反応パターンに依らないのですから，当然無意味な因子ばかりが出てきます。実際のデータに基づく相関係数が持つ構造は，心理的なパターンを反映しているのですから，それとは違う有意味なパターンになっているはずです。この有意味性，無意味性を比較して，乱数で作る因子以上の意味ある次元がでていれば，共通因子として採用するという方法です。
+% \paragraph{平行分析による方法}ここまでの方法は幾分古く，見た目や感覚にたよるものでしたが，\keyterm{平行分析}{へいこうぶんせき}{parallel analysis}は数学的な基準で分析を行うものです。これは分析するデータセットと同じサイズの乱数を発生させ，その固有値構造とデータの固有値構造を比較するというものです。乱数で作られる構造は，心理的な反応パターンに依らないのですから，当然無意味な因子ばかりが出てきます。実際のデータに基づく相関係数が持つ構造は，心理的なパターンを反映しているのですから，それとは違う有意味なパターンになっているはずです。この有意味性，無意味性を比較して，乱数で作る因子以上の意味ある次元がでていれば，共通因子として採用するという方法です。
 \paragraph{Method by Parallel Analysis} While previous methods were somewhat antiquated, relying on appearances and senses, parallel analysis operates on mathematical criteria. This involves generating random numbers of the same size as the dataset to be analyzed, and comparing these random numbers with the eigenvalue structure of the data. The structure created by random numbers, which does not depend on psychological response models, should naturally extract meaningless factors. The structure held by correlation coefficients based on actual data should reflect psychological patterns and thus should differentiate meaningful patterns. By comparing these forms of meaningfulness and meaninglessness, if dimensions more meaningful than those made by random numbers emerge, they are adopted as common factors.
 
 % 以上，5つほど説明してきましたが，これについては実際に見てもらったほうが早いと思いますので，今から演習を始めたいと思います。
@@ -119,7 +119,7 @@ We will use the dataset that the \texttt{psych} package has.
 As shown on the help screen, this is data of 2800 people made up of survey items about 25 personalities. There are five items each corresponding to the Big 5 elements of A(Agreeableness), C(Conscientiousness), E(Extraversion), N(Neuroticism), O(Opennness). In addition, it contains three variables: gender, final education (education), and age. What we will be using this time is the 25 items believed to correspond to each of the five factors.
 
 
-% \subsection{並行分析による因子数の決定}
+% \subsection{平行分析による因子数の決定}
 \subsection{Determining the Number of Factors through Parallel Analysis}
 \input{x10_FA_escape_04}
 % \paragraph{コード解説}
@@ -139,14 +139,14 @@ The second eigenvalue is 2.744, so 2.744/25=0.1096, which is about 10% of the to
 % また，第7固有値の大きさは0.846であり，それ以降の固有値はすべて1.0未満，すなわち項目1つ分も情報を持っていない因子ということになります。であれば共通因子として掬い上げる必要はなく，少なくとも7番目以降(基準2)，あるいは6番目以降(基準3)は誤差と考えてまとめてしまってもいいかもしれませんね。
 Also, the magnitude of the 7th eigenvalue is 0.846, and all subsequent eigenvalues are less than 1.0, meaning that there is not even one item's worth of information in these factors. Therefore, there is no need to scoop them up as common factors, and it may be reasonable to consider everything from the 7th factor onwards (criteria 2), or from the 6th factor (criteria 3) as errors, and sum them up.
 
-% 続く\texttt{fa.parallel}関数は並行分析を行う関数で，同時に\keytermL{スクリープロット}{すくりーぷろっと}も表示してくれます(図\ref{fig10_01})。
+% 続く\texttt{fa.parallel}関数は平行分析を行う関数で，同時に\keytermL{スクリープロット}{すくりーぷろっと}も表示してくれます(図\ref{fig10_01})。
 The subsequent \texttt{fa.parallel} function is a function that conducts parallel analysis, and at the same time, it also displays a \keytermL{scree plot} (Figure \ref{fig10_01}).
 
 \input{x10_FA_escape_07}
 % この図は先ほど算出されたような固有値\footnote{正確には$\bm{R}\dagger$の固有値です。}を大きい順に並べ，線で繋いだものが示されています。青い線が実データ，赤い点線が乱数によるにデータサイズが同じだけの偽データです。基準2に該当する1.0のところで線が引かれていて，これよりも大きい固有値を持つのが3つあることがわかります。まだ，第1固有値から第2固有値にかけて大きな傾斜があります($4.26063957\to  1.91279965$)。最初のうちはまあ当然として，第5と第6の間も少し大きなギャップがあるようです($0.70938377  \to0.25749866$)。それ以降はだらだらと数値が減衰していますね。このような大きなギャップのところは，大きな意味の違いがあると考えてもいいでしょう。基準1の観点からいくと，第5固有値までを共通因子とし，第6因子以降は誤差としてまとめてしまってもいいでしょう。
 This chart displays the eigenvalues\footnote{To be precise, these are the eigenvalues of $\bm{R}\dagger$.} calculated previously, ranked in descending order and connected by a line. The blue line represents the actual data, whereas the red dotted line represents false data of the same size generated by random numbers. A line is drawn at 1.0, which corresponds to criterion 2, and we can see that there are three eigenvalues larger than this. There is still a significant slope from the first eigenvalue to the second eigenvalue ($4.26063957\to  1.91279965$). Predictably, there's a gap at the beginning, but it also seems to be a little larger between the fifth and the sixth ($0.70938377  \to0.25749866$). After that, the values gradually decrease. It might be reasonable to think that these big gaps mean significant differences in meaning. From the perspective of criterion 1, it might be okay to consider up to the fifth eigenvalue as common factors and everything from the sixth factor onward as errors.
 
-% また，並行分析の観点では，赤い線よりも上にある青いラインは有意味ということですから，6因子構造がいい，ということになりますね。
+% また，平行分析の観点では，赤い線よりも上にある青いラインは有意味ということですから，6因子構造がいい，ということになりますね。
 Also, from the standpoint of parallel analysis, it means that the blue line above the red line is significant, so it would be concluded that a six-factor structure is good.
 
 % このように，さまざまな基準で考えても，因子数は5か6のどちらかになって決定打に欠けます。こういうときは解釈しやすい5因子にしよう(基準4)，ということになったりします。
