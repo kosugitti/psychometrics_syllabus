@@ -1,15 +1,15 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.30)  1 AUG 2024 09:09
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.9.19)  1 OCT 2024 12:00
  restricted system commands enabled.
 **tmp
 (./tmp.tex
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-05-27>
+L3 programming layer <2024-08-30>
 Lua module: luaotfload 2024-02-14 3.28 Lua based OpenType font support
 Lua module: lualibs 2023-07-13 2.76 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2023-07-13 2.76 ConTeXt Lua libraries -- extended c
 ollection.
-luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2024
-/texmf-var/luatex-cache/generic/names".
+luaotfload | conf : Root cache directory is "/Users/pythagoras/Library/texlive/2
+024/texmf-var/luatex-cache/generic/names".
 luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-res
 olved path "/usr/local/texlive/2024/texmf-dist/tex/luatex/luaotfload/fontloader-
 2023-12-28.lua".
@@ -20,8 +20,8 @@ Inserting `luaotfload.node_processor' in `hpack_filter'.
 Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
 Inserting `luaotfload.define_font' in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 2
-luaotfload | conf : Root cache directory is "/Users/napier3/Library/texlive/2024
-/texmf-var/luatex-cache/generic/names".
+luaotfload | conf : Root cache directory is "/Users/pythagoras/Library/texlive/2
+024/texmf-var/luatex-cache/generic/names".
 Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
 Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
 Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
@@ -41,9 +41,9 @@ Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
 Inserting `tracingstacklevels' in `input_level_string'. (/usr/local/texlive/202
 4/texmf-dist/tex/luatex/luatexja/ltjsbook.cls
-Document Class: ltjsbook 2022/09/12 ltjsclasses 
+Document Class: ltjsbook 2023/07/26 ltjsclasses 
 (/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/luatexja.sty
-Package: luatexja 2024-07-14 Japanese Typesetting with Lua(La)TeX
+Package: luatexja 2024-09-09 Japanese Typesetting with Lua(La)TeX
 
 (/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/luatexja-core.sty
 Package: luatexja-core 2023-04-06 Core of LuaTeX-ja
@@ -150,7 +150,7 @@ Inserting `ltj.direction' in `vpack_filter'.
 Inserting `ltj.direction' in `pre_output_filter'.
 Inserting `ltj.lineskip' in `post_linebreak_filter'.
 Inserting `ltj.lineskip' in `append_to_vlist_filter'.
-Lua module: luatexja.jfont 2023-04-06 Loader for Japanese fonts
+Lua module: luatexja.jfont 2024-07-25 Loader for Japanese fonts
 Removing  `luaotfload.define_font' from `define_font'.
 Inserting `luatexja.font_callback' in `define_font'.
 Removing  `luaotfload.aux.set_sscale_dimens' from `luaotfload.patch_font'.
@@ -195,7 +195,7 @@ Inserting `ltj.create_dir_whatsit' in `hpack_filter'.
 Removing  `luaotfload.node_processor' from `pre_linebreak_filter'.
 Inserting `ltj.set_stack_level' in `pre_linebreak_filter'.
 Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
-Lua module: luatexja.jfmglue 2022-08-29 Insertion process of JFM glues, [x]kanji
+Lua module: luatexja.jfmglue 2024-09-01 Insertion process of JFM glues, [x]kanji
 skip and others
 Inserting `luatexja.beginpar.np_info' in `luatexja.jfmglue.whatsit_getinfo'.
 Inserting `luatexja.beginpar.np_info_after' in `luatexja.jfmglue.whatsit_after'.
@@ -309,9 +309,9 @@ LaTeX Info: Redefining \fontshapeforce on input line 789.
 )
 (/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/patches/lltjdefs.sty
 Package: lltjdefs 2024-05-16 Default font settings of LuaTeX-ja
-luaotfload | db : Font names database loaded from /Users/napier3/Library/texlive
-/2024/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache: e
-xtra_lmroman10-regular.luc)
+luaotfload | db : Font names database loaded from /Users/pythagoras/Library/texl
+ive/2024/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz(load cache
+: extra_lmroman10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
 (Font)              scaled to size 9.24713pt on input line 69.
 
@@ -328,7 +328,7 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 Package: lltjcore 2023-02-26 Patch to LaTeX2e Kernel for LuaTeX-ja
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-05-27 L3 programming layer (loader) 
+Package: expl3 2024-08-30 L3 programming layer (loader) 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2024-05-08 L3 backend support: PDF output (LuaTeX)
@@ -354,7 +354,7 @@ Inserting `l3color' in `luaotfload.parse_color'.
 \@@paperheight=\dimen156
 \@@paperwidth=\dimen157
 \@@topmargin=\dimen158
-LaTeX Info: Redefining \underline on input line 283.
+LaTeX Info: Redefining \underline on input line 284.
 )
 (/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/patches/lltjp-atbegshi.
 sty
@@ -688,13 +688,13 @@ Package biblatex Info: LuaTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Document encoding is UTF8 ....
 Package biblatex Info: ... and expl3
-(biblatex)             2024-05-27 L3 programming layer (loader) 
+(biblatex)             2024-08-30 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2024-05-08 L3 Experimental document command parser
+Package: xparse 2024-08-16 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2024/03/21 v3.20 expl3 case changing code for biblatex
 ))
@@ -858,15 +858,15 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 (/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/addons/luatexja-ruby.st
 y
-Package: luatexja-ruby 2023-10-08 v0.62
+Package: luatexja-ruby 2024-09-09 v0.7
 \ltj@rubyattr=\attribute25
-Lua module: luatexja.ruby 2022-12-31 Ruby annotation
+Lua module: luatexja.ruby 2024-09-06 Ruby annotation
 Custom whatsit ruby_pre = 7
 Custom whatsit ruby_post = 8
 Inserting `ltj.ruby.pre' in `pre_linebreak_filter'.
-Inserting `ltj.ruby.pre' in `hpack_filter'.
-Inserting `ltj.ruby.post_break' in `post_linebreak_filter'.
-Inserting `ltj.ruby.post_hbox' in `hpack_filter'.
+Module luatexbase Info: Uninstalling kernel luatexbase code on input line 14
+Inserting `ltj.ruby.post_break' in `pre_append_to_vlist_filter'.
+Inserting `ltj.ruby' in `hpack_filter'.
 Removing  `luatexja.beginpar.np_info' from `luatexja.jfmglue.whatsit_getinfo'.
 Inserting `luatexja.ruby.np_info' in `luatexja.jfmglue.whatsit_getinfo'.
 Inserting `luatexja.beginpar.np_info' in `luatexja.jfmglue.whatsit_getinfo'.
@@ -914,7 +914,7 @@ Package bm Info: No bold for \U/msb/m/n, using \pmb.
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-Package: pdfpages 2024/05/29 v0.6a Insert pages of external PDF documents (AM)
+Package: pdfpages 2024/08/20 v0.6b Insert pages of external PDF documents (AM)
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
@@ -961,7 +961,7 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 \AM@fboxrule=\dimen199
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/pdfpages/ppluatex.def
-File: ppluatex.def 2024/05/29 v0.6a Pdfpages driver for LuaTeX (AM)
+File: ppluatex.def 2024/08/20 v0.6b Pdfpages driver for LuaTeX (AM)
 )
 \pdfpages@includegraphics@status=\count445
 \AM@pagebox=\box77
@@ -1371,7 +1371,7 @@ s/tikzlibrary3d.code.tex
 File: tikzlibrary3d.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/lltjext.sty
-Package: lltjext 2024-05-16 v1.2k-ltj-15 Macros for vertical writing
+Package: lltjext 2024-07-23 v1.2k-ltj-16 Macros for vertical writing
 \ltj@ext@dir=\count472
 \@floatbox=\box111
 \floatwidth=\dimen314
@@ -1420,7 +1420,7 @@ c.sty
 Package: luatexja-fontspec 2024-05-14 fontspec support of LuaTeX-ja
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2024-05-08 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec.sty
 Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
 Lua module: fontspec 2024/05/11 2.9e Font selection for XeLaTeX and LuaLaTeX
@@ -1464,7 +1464,7 @@ Package: luatexja-fontspec-29e 2024-05-27 fontspec support of LuaTeX-ja
 \g__ltj_fontspec_altnumber_int=\count489
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/nicematrix/nicematrix.sty
-Package: nicematrix 2024/06/29 v6.28b Enhanced arrays with the help of PGF/TikZ
+Package: nicematrix 2024/08/22 v6.28c Enhanced arrays with the help of PGF/TikZ
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
@@ -1578,9 +1578,9 @@ Package: accents 2006/05/12 v1.4 Math Accent Tools
 \cc@group=\count524
 \cc@skewchar=\count525
 )
-luaotfload | cache : Lookup cache loaded from /Users/napier3/Library/texlive/202
-4/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache: 
-extra_biz-udmincho-medium.luc)
+luaotfload | cache : Lookup cache loaded from /Users/pythagoras/Library/texlive/
+2024/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cach
+e: extra_biz-udmincho-medium.luc)
 
 Package fontspec Info: 
 (fontspec)             BIZ UDMincho Medium scale = 0.924715.
@@ -1944,7 +1944,7 @@ rs
 Package: docmute 2012/03/22 v1.4 Input stand-alone documents
 )
 (/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/patches/lltjp-array.sty
-Package: lltjp-array 2024-06-10 Patch to array for LuaTeX-ja
+Package: lltjp-array 2024-07-21 Patch to array for LuaTeX-ja
 )
 \@quotelevel=\count557
 \@quotereset=\count558
@@ -3217,7 +3217,7 @@ Package luatex.def Info: ../images/07_probability/Rplot08_04.png  used on input
 
 [127<../images/07_probability/Rplot08_04.png>]
 Overfull \hbox (28.12642pt too wide) in paragraph at lines 512--579
-[][]
+[][][]
  []
 
 )
@@ -4230,7 +4230,7 @@ Package luatex.def Info: ../images/21_anova/slide21_07.png  used on input line
 
 [275<../images/21_anova/slide21_07.png>]
 Overfull \hbox (33.06357pt too wide) in paragraph at lines 295--315
- [][] 
+ [][][] 
  []
 
 
@@ -5113,7 +5113,7 @@ LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/it' will be
 付録D
 (load cache: extra_lmmono12-regular.luc)
 Overfull \hbox (44.15285pt too wide) in paragraph at lines 34--65
- [][] 
+ [][][] 
  []
 
 <../../common_contents/figures/JapaneseKeyChange.png, id=6120, 282.05376pt x 26
@@ -5299,7 +5299,7 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (./m30_SecondSemester.aux))
  ***********
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-05-27>
+L3 programming layer <2024-08-30>
  ***********
 
 
@@ -5319,14 +5319,14 @@ Package logreq Info: Writing requests to 'tmp.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 56059 strings out of 475915
- 597271,2848258 words of node,token memory allocated
+ 56072 strings out of 475910
+ 597273,2848258 words of node,token memory allocated
  133699 words of node memory still in use:
    11 hlist, 2 vlist, 5 rule, 482 glue, 4 kern, 1 glyph, 59374 attribute, 78 glu
 e_spec, 5408 attribute_list, 4 write, 14 user_defined, 8 pdf_action nodes
-   avail lists: 1:51,2:77981,3:1706,4:6362,5:2515,6:492,7:16364,8:82,9:5786,10:4
+   avail lists: 1:52,2:77996,3:1706,4:6362,5:2515,6:492,7:16364,8:82,9:5786,10:4
 9,11:226
- 73527 multiletter control sequences out of 65536+600000
+ 73545 multiletter control sequences out of 65536+600000
  153 fonts using 107481711 bytes
  125i,18n,135p,4285b,1977s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
@@ -5379,7 +5379,7 @@ local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/loc
 al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/
 texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
 live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on tmp.pdf (476 pages, 62087745 bytes).
+Output written on tmp.pdf (476 pages, 62087823 bytes).
 
 PDF statistics: 7649 PDF objects out of 8907 (max. 8388607)
  6658 compressed objects within 67 object streams
