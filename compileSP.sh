@@ -15,13 +15,12 @@ for texfile in *.tex; do
     cp ${filename}.tex tmp.tex
 
     ## LaTeX Main
-    lualatex tmp
-    biber tmp
-    lualatex tmp
-    lualatex tmp
-    upmendex -r -c -g -s ../../indexStyle.ist tmp
-    lualatex tmp
-    rm tmp.*
+    lualatex ${filename}.tex 
+    biber ${filename}
+    lualatex ${filename}.tex 
+    lualatex ${filename}.tex 
+    upmendex -r -c -g -s ../../indexStyle.ist ${filename}
+    lualatex ${filename}.tex 
 done
 
 # 全体を上の階層に
