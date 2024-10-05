@@ -145,7 +145,7 @@
 
 2024年度秋学期　東京大学文学部で開かれた「社会心理学特殊講義」について，講義録を文字起こしした資料を作っています。
 
-- [社会心理学特殊講義](SocialPsychology/SocialPsychology_text.pdf)
+- [社会心理学特殊講義](SocialPsychology_SP.pdf)
 
 ## 付録のまとめ
 

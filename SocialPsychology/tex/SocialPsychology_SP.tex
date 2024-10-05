@@ -1,0 +1,30 @@
+\documentclass[dvipsnames]{ltjsbook}
+\usepackage{../../myStyle}
+\usepackage{docmute}
+\begin{document}
+\includepdf[noautoscale=false,pages=-]{../images/coverSP.pdf}
+\VerbatimFootnotes
+\input{../../common_contents/copyright} % copyright page
+\title{社会心理学特殊講義；社会心理学とは何か}
+\author{小杉　考司}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+
+
+% \input{preface1} % preface
+
+\tableofcontents
+
+% 各章
+\include{sp01_introduction}
+
+
+\addcontentsline{toc}{chapter}{引用文献}
+% 引用文献
+\printbibliography[title=引用文献]
+% % 索引
+% \addcontentsline{toc}{chapter}{索引}
+% \printindex
+
+\end{document}
