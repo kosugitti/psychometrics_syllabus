@@ -28,7 +28,16 @@ mv SocialPsychology_SP.pdf ../../SocialPsychology_SP.pdf
 
 ## cleanup
 
-rm *.ind
+rm *.aux
+rm *.bbl
+rm *.bcf
+rm *.blg
+rm *.idx
+rm *.ilg
+rm *.ltjruby
+rm *.out
+rm *.run.xml
+rm *.toc
 cd ..
 cd ..
 
