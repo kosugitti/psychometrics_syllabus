@@ -1,0 +1,26 @@
+# インデックス付けの制御設定
+
+# インデックス付けを禁止する環境
+skip_environments:
+  - abstract
+  - theorem
+  - proof
+  - quote
+  - verse
+  - description
+
+# インデックス付けを禁止するコマンド内
+skip_commands:
+  - section
+  - subsection
+  - subsubsection
+  - chapter
+  - title
+  - part
+  - footnote
+  - caption
+
+# インデックス付けを許可する環境（skip_environmentsより優先）
+allow_environments:
+  - document
+  - definition
