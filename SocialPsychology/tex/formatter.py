@@ -63,24 +63,44 @@ def process_text(text, ref_dict, logger, filename):
     """テキストを処理"""
     logger.info(f"ファイル '{filename}' の処理を開始")
     
-    # 括弧の変換を記録
-    original_len = len(text)
-    text_tmp = text.replace('（', '(').replace('）', ')')
-    brackets_count = original_len - len(text_tmp)
-    if brackets_count > 0:
-        logger.info(f"  - 全角括弧を {brackets_count // 2} 箇所変換しました")
-    text = text_tmp
+    # TeXコマンドのパターン
+    # \command{...} や \command[...]{...} の形式を検出
+    command_pattern = re.compile(r'\\(?:section|subsection|title|chapter|part)\*?(?:\[.*?\])?\{([^}]*)\}')
     
-    # 句読点の変換を記録
-    comma_count = text.count('、')
+    # テキストを分割して処理
+    current_pos = 0
+    result_parts = []
+    
+    for match in command_pattern.finditer(text):
+        # コマンドの前までのテキストを通常処理
+        if current_pos < match.start():
+            normal_text = text[current_pos:match.start()]
+            processed_text = process_normal_text(normal_text, ref_dict, logger)
+            result_parts.append(processed_text)
+        
+        # コマンド全体を取得
+        command_full = match.group(0)
+        result_parts.append(command_full)
+        
+        current_pos = match.end()
+    
+    # 最後の部分を処理
+    if current_pos < len(text):
+        final_text = text[current_pos:]
+        processed_final = process_normal_text(final_text, ref_dict, logger)
+        result_parts.append(processed_final)
+    
+    return ''.join(result_parts)
+
+def process_normal_text(text, ref_dict, logger):
+    """通常のテキスト部分を処理"""
+    # 括弧の変換
+    text = text.replace('（', '(').replace('）', ')')
+    
+    # 句読点の変換
     text = text.replace('、', '，')
-    if comma_count > 0:
-        logger.info(f"  - 読点「、」を {comma_count} 箇所変換しました")
     
-    # リファレンスの処理を記録
-    ref_counts = {}
-    
-    # テキストを単語単位で分割して処理
+    # リファレンスの処理
     words = []
     current_pos = 0
     
@@ -90,14 +110,8 @@ def process_text(text, ref_dict, logger, filename):
         for key in sorted(ref_dict.keys(), key=len, reverse=True):
             if text.startswith(key, current_pos):
                 # キーと一致する部分を見つけた場合
-                if key not in ref_counts:
-                    ref_counts[key] = 0
-                ref_counts[key] += 1
-                
-                # インデックスラベルを作成
                 new_text = create_index_label(key, key, ref_dict[key])
                 words.append(new_text)
-                
                 current_pos += len(key)
                 found_match = True
                 break
@@ -107,14 +121,8 @@ def process_text(text, ref_dict, logger, filename):
             words.append(text[current_pos])
             current_pos += 1
     
-    # 処理結果をログに記録
-    for key, count in ref_counts.items():
-        logger.info(f"  - '{key}' を {count} 箇所インデックス化しました")
-    
-    if not ref_counts:
-        logger.info("  - インデックス化された参照はありませんでした")
-    
     return ''.join(words)
+
 
 def setup_output_directory(current_dir, logger):
     """出力ディレクトリの設定"""
