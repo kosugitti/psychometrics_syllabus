@@ -17,9 +17,9 @@ for texfile in *.tex; do
     ## LaTeX Main
     lualatex ${filename}.tex 
     biber ${filename}
+    upmendex -r -c -g -s ../../indexStyle.ist ${filename} nameidx.idx -o nameidx.ind
+    upmendex -r -c -g -s ../../indexStyle.ist ${filename} termidx.idx -o termidx.ind    
     lualatex ${filename}.tex 
-    lualatex ${filename}.tex 
-    upmendex -r -c -g -s ../../indexStyle.ist ${filename}
     lualatex ${filename}.tex 
 done
 

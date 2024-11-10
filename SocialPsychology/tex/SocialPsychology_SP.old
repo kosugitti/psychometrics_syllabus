@@ -1,6 +1,10 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 \usepackage{docmute}
+\usepackage{imakeidx}
+\makeindex[name=nameidx, title=人名索引]
+\makeindex[name=termidx, title=専門用語索引]
+
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/coverSP.pdf}
 \VerbatimFootnotes
@@ -18,17 +22,19 @@
 
 % 各章
 \include{sp01_introduction}
-\include{sp02_science}
-\include{sp03_humanities}
-\include{sp04_History01}
-\include{sp05_History02}
-\include{sp06_History03}
+% \include{sp02_science}
+% \include{sp03_humanities}
+% \include{sp04_History01}
+% \include{sp05_History02}
+% \include{sp06_History03}
 
 \addcontentsline{toc}{chapter}{引用文献}
 % 引用文献
 \printbibliography[title=引用文献]
-% % 索引
-% \addcontentsline{toc}{chapter}{索引}
-% \printindex
+
+% 索引
+\printindex[nameidx]
+\printindex[termidx]
+
 
 \end{document}
