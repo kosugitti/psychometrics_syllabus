@@ -1,6 +1,6 @@
 rm(list = ls())
 library(tidyverse)
-source("http://riseki.php.xdomain.jp/index.php?plugin=attach&refer=ANOVA君&openfile=anovakun_486.txt")
+source("https://riseki.cloudfree.jp/?plugin=attach&refer=ANOVA%E5%90%9B&openfile=anovakun_489.txt")
 
 
 # Between -----------------------------------------------------------------
