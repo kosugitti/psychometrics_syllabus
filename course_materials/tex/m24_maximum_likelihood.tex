@@ -164,13 +164,13 @@
 
 
 正規分布の式をちゃんと書くと，$x$という値が出てくる確率密度は
-\[ p(x) = \frac{1}{\sqrt{2\pi \sigma}}exp\left( - \frac{(x-\mu)^2}{2\sigma^2}\right)\]
+\[ p(x) = \frac{1}{\sqrt{2\pi \sigma^2}}exp\left( - \frac{(x-\mu)^2}{2\sigma^2}\right)\]
 となります。この平均$\mu$のところに$\beta_0 + \beta_1 x_i$という数式を入れることになります。
 
 すでに入り組んだ形をしているので，イメージしづらいところがあるかもしれませんが，あるデータ$y_i$が得られる確率密度は
-\[ p(y_i) = \frac{1}{\sqrt{2\pi \sigma}}exp\left( -\frac{(y_i-\mu)^2}{2\sigma^2}\right)\]
+\[ p(y_i) = \frac{1}{\sqrt{2\pi \sigma^2}}exp\left( -\frac{(y_i-\mu)^2}{2\sigma^2}\right)\]
 ですから，$\mu=\hat{y_i} = \beta_0 + \beta_1 x_i$を代入して
-\[ p(y_i) = \frac{1}{\sqrt{2\pi \sigma}}exp\left( -\frac{(y_i-\beta_0 - \beta_1 x_i)^2}{2\sigma^2}\right)\]
+\[ p(y_i) = \frac{1}{\sqrt{2\pi \sigma^2}}exp\left( -\frac{(y_i-\beta_0 - \beta_1 x_i)^2}{2\sigma^2}\right)\]
 となります。
 
 データは$i = 1,2,\cdots,N$とあり，それらが同じ母集団から独立に得られている，と考えます(i.i.d.)。つまり手元に同時にこれらのデータが出揃うときの尤度$L$は，上記の確率密度($p(y_i)$)を全部掛け合わせたもの\footnote{コインが表，表，裏，と出たら$\theta \times \theta \times (1-\theta)$と欠けたことを思い出して！}，と考えることができますね。
@@ -178,18 +178,30 @@ $i$を$1$から$n$まで足し合わせることを総和する，といって$x
 \[ x_1 \times x_2 \times \cdots x_N = \prod_{i=1}^N x_i \]
 と書きます。ここでの記号$\prod$は\ruby{総積}{プロダクト}と言いますが，これを使って尤度$L(Y_i)$を表現すると，次のようになります。
 
-\[ L(y_i | \beta_0,\beta_1,\sigma) = \prod_{i=1}^N \frac{1}{\sqrt{2\pi \sigma}}exp\left(- \frac{(y_i-\beta_0 - \beta_1 x_i)^2}{2\sigma^2}\right)\]
+\[ L(y_i | \beta_0,\beta_1,\sigma) = \prod_{i=1}^N \frac{1}{\sqrt{2\pi \sigma^2}}exp\left(- \frac{(y_i-\beta_0 - \beta_1 x_i)^2}{2\sigma^2}\right)\]
 
 ここで$L(y_i | \beta_0,\beta_1,\sigma) $という書き方の，$\mid$は何かというと，この縦線の右側にある$\beta_0,\beta_1,\sigma$が与えられた場合の，という条件付き確率の書き方を借りた\keyterm{尤度}{ゆうど}{Likelihood}を表しています。
 
 さてこれは確率(密度)の掛け算になりますから，すごく小さな数字になって実際の計算は大変です。そこで前回習ったように，尤度そのものではなく\keyterm{対数尤度}{たいすうゆうど}{log-likelihood}をとって，その最大値を求めるということにしたいと思います。対数をとると掛け算は足し算に変わりますから，$\prod \to \sum$に記号が変わりまして，対数尤度の関数は次のようになります。
 
-\[ \log L(y_i | \beta_0,\beta_1,\sigma) = \sum_{i=1}^N \log \left[ \frac{1}{\sqrt{2\pi \sigma}}exp\left( -\frac{(y_i-\beta_0 - \beta_1 x_i)^2}{2\sigma^2}\right)\right]\]
 
 非常に面倒な形をしていますね！しかもこれは$\beta_0,\beta_1,\sigma$という3つの変数が同時に関わりますから，連立微分方程式を解くことになります。
-でももちろん大丈夫。この面倒な計算は，Rがやってくれますから私たちはなんの心配もする必要はありません。
 
-しかもこの最尤推定の結果得られる$\beta_0,\beta_1$の値は，\underline{最小二乗法の結果と一致}します。
+ここからは少しテクい話になりますが，この式を展開していきましょう。$\frac{1}{\sqrt{2\pi\sigma^2}}=(2\pi\sigma^2)^{-1/2}$であることに注意して対数尤度を書き直すと，
+
+\begin{align*}
+\log L &= \log\prod_{i=1}^n (2\pi\sigma^2)^{-1/2}\exp\left(-\frac{(y_i-(\beta_0+\beta_1x_i))^2}{2\sigma^2}\right) \\
+&= \sum_{i=1}^n \log\left[(2\pi\sigma^2)^{-1/2}\exp\left(-\frac{(y_i-(\beta_0+\beta_1x_i))^2}{2\sigma^2}\right)\right] \\
+&= \sum_{i=1}^n \left[\log(2\pi\sigma^2)^{-1/2} + \log\exp\left(-\frac{(y_i-(\beta_0+\beta_1x_i))^2}{2\sigma^2}\right)\right] \\
+&= \sum_{i=1}^n \left[-\frac{1}{2}\log(2\pi\sigma^2) - \frac{(y_i-(\beta_0+\beta_1x_i))^2}{2\sigma^2}\right]\\
+&= \sum_{i=1}^n \left[-\frac{1}{2}\log(2\pi) - \frac{1}{2}\log(\sigma^2) - \frac{(y_i-(\beta_0+\beta_1x_i))^2}{2\sigma^2}\right]\\
+&= \frac{n}{2} \log(2\pi) - \frac{n}{2} \log(\sigma^2) - \frac{1}{2\sigma^2} \sum_{i=1}^{n} (y_i-(\beta_0+\beta_1x_i))^2
+\end{align*}
+
+こうしてみると，$\frac{n}{2} \log(2\pi)$は定数ですし，$\frac{n}{2} \log(\sigma^2) $は推定すべきパラメータ$\sigma^2$で，データによって変わるところではありません。
+第3項の$\sum_{i=1}^{n} (y_i-(\beta_0+\beta_1x_i))^2$がデータによって変わるところで，これを最小化することを考える必要がありますが，これは最小二乗法で考えるべきポイントと同じですね。ですから，この最尤推定の結果得られる$\beta_0,\beta_1$の値は，\underline{最小二乗法の結果と一致}します。
+
+もちろんこの面倒な計算は，Rがやってくれますから私たちはなんの心配もする必要はありません。
 ですから，実質的にはただの回帰分析をすれば良いのです。
 
 \subsection{実践例}
