@@ -95,3 +95,7 @@ result.LS$coefficients
 # 最尤推定
 result.LM <- lm(weight ~ height, data = batter)
 summary(result.LM)
+
+par(mfrow = c(2, 2)) # 2x2の配置にする
+plot(result.LM)
+
