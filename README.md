@@ -95,9 +95,9 @@
 - [分散分析課題用データセット 2](codes/SampleData/chapter22exe2.csv)
 - [分散分析課題用データセット 3](codes/SampleData/chapter22exe3.csv)
 
-<!-- ### 心理学データ解析応用 -->
+### 心理学データ解析応用
 
-<!-- - [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
+ - [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
 - [事前準備；cmdstanr の確認用コード](codes/Dkiso2/00_Appendix1_cmdstanr.R)
 - [第 01 回；プログラミングの基礎](codes/Dkiso2/01_BasicProgramming.R)
 - [第 02 回；プログラミングの基礎](codes/Dkiso2/02_randomVariables.R)
@@ -124,7 +124,7 @@
 - [第 13 回；変化点検出・折線回帰(rstan)](codes/Dkiso2/13_changePoint_Rstan.R)
 - [第 13 回；変化点検出・折線回帰(cmdstan)](codes/Dkiso2/13_changePoint_Cmdstan.R)
 - [第 14 回；状態空間モデル(rstan)](codes/Dkiso2/14_stateSpace_Rstan.R)
-- [第 14 回；状態空間モデル(cmdstan)](codes/Dkiso2/14_stateSpace_Cmdstan.R) -->
+- [第 14 回；状態空間モデル(cmdstan)](codes/Dkiso2/14_stateSpace_Cmdstan.R) 
 
 ## そのほかのコンテンツ
 
