@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.15)  15 DEC 2024 14:22
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.15)  24 DEC 2024 16:55
  restricted system commands enabled.
 **SocialPsychology_SP.tex
 (./SocialPsychology_SP.tex
@@ -952,9 +952,6 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 ))
 \AM@pagewidth=\dimen197
 \AM@pageheight=\dimen198
@@ -2034,7 +2031,12 @@ Package: lltjp-array 2024-07-21 Patch to array for LuaTeX-ja
 )
 \@quotelevel=\count569
 \@quotereset=\count570
- (./SocialPsychology_SP.aux (./sp01_introduction.aux) (./sp02_science.aux)
+
+
+LaTeX Warning: Unused global option(s):
+    [a5].
+
+(./SocialPsychology_SP.aux (./sp01_introduction.aux) (./sp02_science.aux)
 (./sp03_humanities.aux) (./sp04_History01.aux) (./sp05_History02.aux
 
 LaTeX Warning: Label `illusions' multiply defined.
@@ -2044,7 +2046,7 @@ LaTeX Warning: Label `illusions' multiply defined.
 
 LaTeX Warning: Label `sp09_system' multiply defined.
 
-))
+) (./sp11_sysytem04.aux))
 \openout1 = SocialPsychology_SP.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -2073,7 +2075,8 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
 )
 Package biblatex Info: LuaTeX detected.
@@ -2245,7 +2248,7 @@ Package hyperref Info: Link coloring ON on input line 8.
 
 warning  (file ../images/coverSP.pdf) (pdf inclusion): PDF inclusion: found PDF 
 version '1.7', but at most version '1.5' allowed
-<../images/coverSP.pdf, id=268, 1061.33295pt x 1693.61641pt>
+<../images/coverSP.pdf, id=296, 1061.33295pt x 1693.61641pt>
 File: ../images/coverSP.pdf Graphic file (type pdf)
 <use ../images/coverSP.pdf>
 Package luatex.def Info: ../images/coverSP.pdf  used on input line 9.
@@ -2263,7 +2266,7 @@ version '1.7', but at most version '1.5' allowed
 
 warning  (file ../images/coverSP.pdf) (pdf inclusion): PDF inclusion: found PDF 
 version '1.7', but at most version '1.5' allowed
-<../images/coverSP.pdf, id=271, page=1, 1061.33295pt x 1693.61641pt>
+<../images/coverSP.pdf, id=299, page=1, 1061.33295pt x 1693.61641pt>
 File: ../images/coverSP.pdf Graphic file (type pdf)
 <use ../images/coverSP.pdf, page 1>
 Package luatex.def Info: ../images/coverSP.pdf , page1 used on input line 9.
@@ -2372,15 +2375,22 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
 (Font)              scaled to size 9.24713pt on input line 64.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
 (Font)              scaled to size 9.24713pt on input line 64.
-[3])
+[3]
+
+[4])
 \tf@toc=\write11
 
 \openout11 = SocialPsychology_SP.toc
 
 
-[4]
+[5]
 \openout2 = sp01_introduction.aux
  (./sp01_introduction.tex
+
+[6
+
+
+]
 第1章
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 19.17854pt on input line 6.
@@ -2400,10 +2410,7 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (Font)              scaled to size 13.31586pt on input line 9.
 (load cache: extra_lmsans12-regular.luc)
 
-[5
-
-
-]
+[7]
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 6.47299pt on input line 34.
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
@@ -2411,10 +2418,6 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 5.54828pt on input line 34.
 
-
-[6]
-
-[7]
 
 [8]
 
@@ -2436,13 +2439,17 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 
 [17]
 
-[18
-
-]
+[18]
 
 [19]
 
-[20]
+[20
+
+]
+
+[21]
+
+[22]
 Overfull \hbox (26.80896pt too wide) in paragraph at lines 232--232
 [][]\TU/lmr/m/n/10 M.A. \JY3/BIZUDPMinchoMedium(0)/m/n/10 ホ ッ グ \TU/lmr/m
 /n/10 & D. \JY3/BIZUDPMinchoMedium(0)/m/n/10 エ イ ブ ラ ム ス \TU/lmr/m/
@@ -2451,15 +2458,15 @@ n/10 (1995). |   [] |   []
 
 
 
-[21]
-
-[22])
-
 [23]
+
+[24])
+
+[25]
 \openout2 = sp02_science.aux
  (./sp02_science.tex
 
-[24
+[26
 
 
 
@@ -2468,48 +2475,48 @@ n/10 (1995). |   [] |   []
 第2章
 
 
-[25]
+[27]
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
 (Font)              scaled to size 11.09656pt on input line 34.
 
 
-[26]
-
-[27]
-
 [28]
-
-LaTeX Warning: Citation 'Watson1913' on page 29 undefined on input line 62.
-
-
 
 [29]
 
 [30]
 
+LaTeX Warning: Citation 'Watson1913' on page 31 undefined on input line 62.
+
+
+
 [31]
 
-[32](load cache: extra_lmroman7-italic.luc)
-LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/it' will be
-(Font)              scaled to size 6.47299pt on input line 136.
-LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/it' will be
-(Font)              scaled to size 6.47299pt on input line 136.
-LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/it' will be
-(Font)              scaled to size 5.54828pt on input line 136.
-LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/it' will be
-(Font)              scaled to size 5.54828pt on input line 136.
-
+[32]
 
 [33]
 
-[34]
+[34](load cache: extra_lmroman7-italic.luc)
+LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/it' will be
+(Font)              scaled to size 6.47299pt on input line 136.
+LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/it' will be
+(Font)              scaled to size 6.47299pt on input line 136.
+LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/it' will be
+(Font)              scaled to size 5.54828pt on input line 136.
+LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/it' will be
+(Font)              scaled to size 5.54828pt on input line 136.
+
 
 [35]
 
 [36]
 
 [37]
-<../images/02_newton_hoihens.png, id=713, 993.7125pt x 433.62pt>
+
+[38]
+
+[39]
+<../images/02_newton_hoihens.png, id=760, 993.7125pt x 433.62pt>
 File: ../images/02_newton_hoihens.png Graphic file (type png)
 <use ../images/02_newton_hoihens.png>
 Package luatex.def Info: ../images/02_newton_hoihens.png  used on input line 20
@@ -2522,27 +2529,27 @@ LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 8.32242pt on input line 209.
 
 
-[38<../images/02_newton_hoihens.png>]
-<../images/02_sima.png, id=724, 744.7825pt x 728.7225pt>
+[40<../images/02_newton_hoihens.png>]
+<../images/02_sima.png, id=771, 744.7825pt x 728.7225pt>
 File: ../images/02_sima.png Graphic file (type png)
 <use ../images/02_sima.png>
 Package luatex.def Info: ../images/02_sima.png  used on input line 218.
 (luatex.def)             Requested size: 341.97906pt x 334.60422pt.
 
 
-[39<../images/02_sima.png>]
+[41<../images/02_sima.png>]
 
-[40]
-
-[41]
-
-[42
-
-]
+[42]
 
 [43]
 
-[44]
+[44
+
+]
+
+[45]
+
+[46]
 Overfull \hbox (26.80896pt too wide) in paragraph at lines 251--251
 [][]\TU/lmr/m/n/10 M.A. \JY3/BIZUDPMinchoMedium(0)/m/n/10 ホ ッ グ \TU/lmr/m
 /n/10 & D. \JY3/BIZUDPMinchoMedium(0)/m/n/10 エ イ ブ ラ ム ス \TU/lmr/m/
@@ -2551,15 +2558,15 @@ n/10 (1995). |   [] |   []
 
 
 
-[45]
-
-[46])
-
 [47]
+
+[48])
+
+[49]
 \openout2 = sp03_humanities.aux
  (./sp03_humanities.tex
 
-[48
+[50
 
 
 
@@ -2568,40 +2575,40 @@ n/10 (1995). |   [] |   []
 第3章
 
 
-[49]
-
-[50]
-
 [51]
 
 [52]
-<../images/03_kant.png, id=829, 315.1775pt x 318.18875pt>
+
+[53]
+
+[54]
+<../images/03_kant.png, id=875, 315.1775pt x 318.18875pt>
 File: ../images/03_kant.png Graphic file (type png)
 <use ../images/03_kant.png>
 Package luatex.def Info: ../images/03_kant.png  used on input line 52.
 (luatex.def)             Requested size: 83.64944pt x 84.44585pt.
 
 
-[53<../images/03_kant.png>]
+[55<../images/03_kant.png>]
 
-[54]
-<../images/03_constructs.png, id=845, 895.345pt x 575.14874pt>
+[56]
+<../images/03_constructs.png, id=891, 895.345pt x 575.14874pt>
 File: ../images/03_constructs.png Graphic file (type png)
 <use ../images/03_constructs.png>
 Package luatex.def Info: ../images/03_constructs.png  used on input line 78.
 (luatex.def)             Requested size: 334.60422pt x 214.94305pt.
 
 
-[55<../images/03_constructs.png>]
+[57<../images/03_constructs.png>]
 
-[56]
-<../images/03_subject_object.png, id=868, 579.16376pt x 483.8075pt>
+[58]
+<../images/03_subject_object.png, id=914, 579.16376pt x 483.8075pt>
 File: ../images/03_subject_object.png Graphic file (type png)
 <use ../images/03_subject_object.png>
 Package luatex.def Info: ../images/03_subject_object.png  used on input line 10
 1.
 (luatex.def)             Requested size: 334.60422pt x 279.51596pt.
-<../images/03_socialReality.png, id=870, 518.93875pt x 531.9875pt>
+<../images/03_socialReality.png, id=916, 518.93875pt x 531.9875pt>
 File: ../images/03_socialReality.png Graphic file (type png)
 <use ../images/03_socialReality.png>
 Package luatex.def Info: ../images/03_socialReality.png  used on input line 110
@@ -2609,8 +2616,8 @@ Package luatex.def Info: ../images/03_socialReality.png  used on input line 110
 (luatex.def)             Requested size: 334.60422pt x 343.03596pt.
 
 
-[57<../images/03_subject_object.png>]
-<../images/03_reality_roop.png, id=880, 544.0325pt x 253.94875pt>
+[59<../images/03_subject_object.png>]
+<../images/03_reality_roop.png, id=927, 544.0325pt x 253.94875pt>
 File: ../images/03_reality_roop.png Graphic file (type png)
 <use ../images/03_reality_roop.png>
 Package luatex.def Info: ../images/03_reality_roop.png  used on input line 120.
@@ -2618,18 +2625,18 @@ Package luatex.def Info: ../images/03_reality_roop.png  used on input line 120.
 (luatex.def)             Requested size: 292.77629pt x 136.66916pt.
 
 
-[58<../images/03_socialReality.png>]
+[60<../images/03_socialReality.png>]
 
-[59<../images/03_reality_roop.png>]
-
-[60]
-
-[61]
+[61<../images/03_reality_roop.png>]
 
 [62]
 
 [63]
-<../images/03_modern_philosophy.png, id=928, 845.19765pt x 597.31155pt>
+
+[64]
+
+[65]
+<../images/03_modern_philosophy.png, id=975, 845.19765pt x 597.31155pt>
 File: ../images/03_modern_philosophy.png Graphic file (type png)
 <use ../images/03_modern_philosophy.png>
 Package luatex.def Info: ../images/03_modern_philosophy.png  used on input line
@@ -2637,25 +2644,25 @@ Package luatex.def Info: ../images/03_modern_philosophy.png  used on input line
 (luatex.def)             Requested size: 418.25368pt x 295.58354pt.
 
 
-[64<../images/03_modern_philosophy.png>]
+[66<../images/03_modern_philosophy.png>]
 
-[65
+[67
 Missing character: There is no ː (U+02D0) in font [lmroman8-regular]:+tlig;!
 Missing character: There is no ː (U+02D0) in font [lmroman8-regular]:+tlig;!
 Missing character: There is no ɐ (U+0250) in font [lmroman8-regular]:+tlig;!
 ]
 
-[66]
-
-[67]
-
-[68
-
-]
+[68]
 
 [69]
 
-[70]
+[70
+
+]
+
+[71]
+
+[72]
 Overfull \hbox (26.80896pt too wide) in paragraph at lines 243--243
 [][]\TU/lmr/m/n/10 M.A. \JY3/BIZUDPMinchoMedium(0)/m/n/10 ホ ッ グ \TU/lmr/m
 /n/10 & D. \JY3/BIZUDPMinchoMedium(0)/m/n/10 エ イ ブ ラ ム ス \TU/lmr/m/
@@ -2664,15 +2671,15 @@ n/10 (1995). |   [] |   []
 
 
 
-[71]
-
-[72])
-
 [73]
+
+[74])
+
+[75]
 \openout2 = sp04_History01.aux
  (./sp04_History01.tex
 
-[74
+[76
 
 
 
@@ -2681,29 +2688,25 @@ n/10 (1995). |   [] |   []
 第4章
 
 
-[75]
-
-[76]
-
 [77]
 
 [78]
 
 [79]
-<../images/04Wittgenstein.png, id=1071, 910.40125pt x 422.57875pt>
+
+[80]
+
+[81]
+<../images/04Wittgenstein.png, id=1117, 910.40125pt x 422.57875pt>
 File: ../images/04Wittgenstein.png Graphic file (type png)
 <use ../images/04Wittgenstein.png>
 Package luatex.def Info: ../images/04Wittgenstein.png  used on input line 94.
 (luatex.def)             Requested size: 418.25368pt x 194.14355pt.
 
 
-[80]
-
-[81<../images/04Wittgenstein.png>]
-
 [82]
 
-[83]
+[83<../images/04Wittgenstein.png>]
 
 [84]
 
@@ -2716,28 +2719,32 @@ Package luatex.def Info: ../images/04Wittgenstein.png  used on input line 94.
 [88]
 
 [89]
-<../images/04Freud.png, id=1138, 483.8075pt x 569.12625pt>
+
+[90]
+
+[91]
+<../images/04Freud.png, id=1185, 483.8075pt x 569.12625pt>
 File: ../images/04Freud.png Graphic file (type png)
 <use ../images/04Freud.png>
 Package luatex.def Info: ../images/04Freud.png  used on input line 273.
 (luatex.def)             Requested size: 209.12683pt x 246.00478pt.
 
 
-[90]
-
-[91<../images/04Freud.png>]
-
 [92]
 
-[93]
+[93<../images/04Freud.png>]
 
-[94
-
-]
+[94]
 
 [95]
 
-[96]
+[96
+
+]
+
+[97]
+
+[98]
 Overfull \hbox (26.80896pt too wide) in paragraph at lines 317--317
 [][]\TU/lmr/m/n/10 M.A. \JY3/BIZUDPMinchoMedium(0)/m/n/10 ホ ッ グ \TU/lmr/m
 /n/10 & D. \JY3/BIZUDPMinchoMedium(0)/m/n/10 エ イ ブ ラ ム ス \TU/lmr/m/
@@ -2746,15 +2753,15 @@ n/10 (1995). |   [] |   []
 
 
 
-[97]
-
-[98])
-
 [99]
+
+[100])
+
+[101]
 \openout2 = sp05_History02.aux
  (./sp05_History02.tex
 
-[100
+[102
 
 
 
@@ -2763,33 +2770,29 @@ n/10 (1995). |   [] |   []
 第5章
 
 
-[101]
+[103]
 
-[102]
-<../images/05_illusion.png, id=1236, 991.705pt x 269.005pt>
+[104]
+<../images/05_illusion.png, id=1282, 991.705pt x 269.005pt>
 File: ../images/05_illusion.png Graphic file (type png)
 <use ../images/05_illusion.png>
 Package luatex.def Info: ../images/05_illusion.png  used on input line 49.
 (luatex.def)             Requested size: 418.25368pt x 113.45335pt.
 
 
-[103<../images/05_illusion.png>]
+[105<../images/05_illusion.png>]
 
-[104]
+[106]
 
-[105]
-<../images/05_Sociometry.png, id=1285, 877.2775pt x 390.45876pt>
+[107]
+<../images/05_Sociometry.png, id=1331, 877.2775pt x 390.45876pt>
 File: ../images/05_Sociometry.png Graphic file (type png)
 <use ../images/05_Sociometry.png>
 Package luatex.def Info: ../images/05_Sociometry.png  used on input line 82.
 (luatex.def)             Requested size: 418.25368pt x 186.16095pt.
 
 
-[106<../images/05_Sociometry.png>]
-
-[107]
-
-[108]
+[108<../images/05_Sociometry.png>]
 
 [109]
 
@@ -2798,40 +2801,44 @@ Package luatex.def Info: ../images/05_Sociometry.png  used on input line 82.
 [111]
 
 [112]
-<../images/05_inbalance.png, id=1342, 679.53876pt x 723.70375pt>
+
+[113]
+
+[114]
+<../images/05_inbalance.png, id=1388, 679.53876pt x 723.70375pt>
 File: ../images/05_inbalance.png Graphic file (type png)
 <use ../images/05_inbalance.png>
 Package luatex.def Info: ../images/05_inbalance.png  used on input line 188.
 (luatex.def)             Requested size: 209.12683pt x 222.7115pt.
 
 
-[113]
-
-[114<../images/05_inbalance.png>]
-
 [115]
-<../images/05_fieldtheory.png, id=1377, 756.8275pt x 261.97874pt>
+
+[116<../images/05_inbalance.png>]
+
+[117]
+<../images/05_fieldtheory.png, id=1424, 756.8275pt x 261.97874pt>
 File: ../images/05_fieldtheory.png Graphic file (type png)
 <use ../images/05_fieldtheory.png>
 Package luatex.def Info: ../images/05_fieldtheory.png  used on input line 243.
 (luatex.def)             Requested size: 292.77629pt x 101.34381pt.
 
 
-[116]
-
-[117<../images/05_fieldtheory.png>]
-
 [118]
 
-[119]
+[119<../images/05_fieldtheory.png>]
 
 [120]
 
-[121
+[121]
+
+[122]
+
+[123
 
 ]
 
-[122]
+[124]
 Overfull \hbox (26.80896pt too wide) in paragraph at lines 303--303
 [][]\TU/lmr/m/n/10 M.A. \JY3/BIZUDPMinchoMedium(0)/m/n/10 ホ ッ グ \TU/lmr/m
 /n/10 & D. \JY3/BIZUDPMinchoMedium(0)/m/n/10 エ イ ブ ラ ム ス \TU/lmr/m/
@@ -2840,15 +2847,15 @@ n/10 (1995). |   [] |   []
 
 
 
-[123]
-
-[124])
-
 [125]
+
+[126])
+
+[127]
 \openout2 = sp06_History03.aux
  (./sp06_History03.tex
 
-[126
+[128
 
 
 
@@ -2857,27 +2864,23 @@ n/10 (1995). |   [] |   []
 第6章
 
 
-[127]
-
-[128]
-
 [129]
 
 [130]
-<../images/06_Maslow.png, id=1480, 726.715pt x 479.7925pt>
+
+[131]
+
+[132]
+<../images/06_Maslow.png, id=1527, 726.715pt x 479.7925pt>
 File: ../images/06_Maslow.png Graphic file (type png)
 <use ../images/06_Maslow.png>
 Package luatex.def Info: ../images/06_Maslow.png  used on input line 97.
 (luatex.def)             Requested size: 292.77629pt x 193.29726pt.
 
 
-[131]
-
-[132<../images/06_Maslow.png>]
-
 [133]
 
-[134]
+[134<../images/06_Maslow.png>]
 
 [135]
 
@@ -2895,11 +2898,15 @@ Package luatex.def Info: ../images/06_Maslow.png  used on input line 97.
 
 [142]
 
-[143
+[143]
+
+[144]
+
+[145
 
 ]
 
-[144]
+[146]
 Overfull \hbox (26.80896pt too wide) in paragraph at lines 263--263
 [][]\TU/lmr/m/n/10 M.A. \JY3/BIZUDPMinchoMedium(0)/m/n/10 ホ ッ グ \TU/lmr/m
 /n/10 & D. \JY3/BIZUDPMinchoMedium(0)/m/n/10 エ イ ブ ラ ム ス \TU/lmr/m/
@@ -2908,15 +2915,15 @@ n/10 (1995). |   [] |   []
 
 
 
-[145]
-
-[146])
-
 [147]
+
+[148])
+
+[149]
 \openout2 = sp07_currentSocialPsychology.aux
  (./sp07_currentSocialPsychology.tex
 
-[148
+[150
 
 
 
@@ -2924,10 +2931,6 @@ n/10 (1995). |   [] |   []
 ]
 第7章
 
-
-[149]
-
-[150]
 
 [151]
 
@@ -2950,7 +2953,11 @@ n/10 (1995). |   [] |   []
 [160]
 
 [161]
-<../images/07_circles_of_hell.png, id=1712, 1800.7275pt x 1379.1525pt>
+
+[162]
+
+[163]
+<../images/07_circles_of_hell.png, id=1759, 1800.7275pt x 1379.1525pt>
 File: ../images/07_circles_of_hell.png Graphic file (type png)
 <use ../images/07_circles_of_hell.png>
 Package luatex.def Info: ../images/07_circles_of_hell.png  used on input line 2
@@ -2958,40 +2965,40 @@ Package luatex.def Info: ../images/07_circles_of_hell.png  used on input line 2
 (luatex.def)             Requested size: 292.77629pt x 224.22537pt.
 
 
-[162<../images/07_circles_of_hell.png>]
-
-[163]
-
-[164]
+[164<../images/07_circles_of_hell.png>]
 
 [165]
-<../images/07_effectSize.png, id=1739, 885.3075pt x 563.10374pt>
+
+[166]
+
+[167]
+<../images/07_effectSize.png, id=1786, 885.3075pt x 563.10374pt>
 File: ../images/07_effectSize.png Graphic file (type png)
 <use ../images/07_effectSize.png>
 Package luatex.def Info: ../images/07_effectSize.png  used on input line 312.
 (luatex.def)             Requested size: 292.77629pt x 186.22005pt.
-<../images/07_sampleSize.png, id=1740, 880.28876pt x 567.11874pt>
+<../images/07_sampleSize.png, id=1787, 880.28876pt x 567.11874pt>
 File: ../images/07_sampleSize.png Graphic file (type png)
 <use ../images/07_sampleSize.png>
 Package luatex.def Info: ../images/07_sampleSize.png  used on input line 319.
 (luatex.def)             Requested size: 292.77629pt x 188.6122pt.
 
 
-[166<../images/07_effectSize.png>]
+[168<../images/07_effectSize.png>]
 
-[167<../images/07_sampleSize.png>]
+[169<../images/07_sampleSize.png>]
 
-[168]
-
-[169]
-
-[170
-
-]
+[170]
 
 [171]
 
-[172]
+[172
+
+]
+
+[173]
+
+[174]
 Overfull \hbox (26.80896pt too wide) in paragraph at lines 359--359
 [][]\TU/lmr/m/n/10 M.A. \JY3/BIZUDPMinchoMedium(0)/m/n/10 ホ ッ グ \TU/lmr/m
 /n/10 & D. \JY3/BIZUDPMinchoMedium(0)/m/n/10 エ イ ブ ラ ム ス \TU/lmr/m/
@@ -3000,15 +3007,15 @@ n/10 (1995). |   [] |   []
 
 
 
-[173]
-
-[174])
-
 [175]
+
+[176])
+
+[177]
 \openout2 = sp08_sysytem01.aux
  (./sp08_sysytem01.tex
 
-[176
+[178
 
 
 
@@ -3016,10 +3023,6 @@ n/10 (1995). |   [] |   []
 ]
 第8章
 
-
-[177]
-
-[178]
 
 [179]
 
@@ -3036,30 +3039,34 @@ n/10 (1995). |   [] |   []
 [185]
 
 [186]
-<../images/08_feedback.png, id=1887, 613.29124pt x 312.16624pt>
+
+[187]
+
+[188]
+<../images/08_feedback.png, id=1933, 613.29124pt x 312.16624pt>
 File: ../images/08_feedback.png Graphic file (type png)
 <use ../images/08_feedback.png>
 Package luatex.def Info: ../images/08_feedback.png  used on input line 222.
 (luatex.def)             Requested size: 292.77629pt x 149.02357pt.
 
 
-[187]
-
-[188<../images/08_feedback.png>]
-
 [189]
 
-[190]
+[190<../images/08_feedback.png>]
 
 [191]
 
 [192]
 
-[193
+[193]
+
+[194]
+
+[195
 
 ]
 
-[194]
+[196]
 Overfull \hbox (26.80896pt too wide) in paragraph at lines 295--295
 [][]\TU/lmr/m/n/10 M.A. \JY3/BIZUDPMinchoMedium(0)/m/n/10 ホ ッ グ \TU/lmr/m
 /n/10 & D. \JY3/BIZUDPMinchoMedium(0)/m/n/10 エ イ ブ ラ ム ス \TU/lmr/m/
@@ -3068,22 +3075,22 @@ n/10 (1995). |   [] |   []
 
 
 
-[195]
-
-[196])
-
 [197]
+
+[198])
+
+[199]
 \openout2 = sp09_sysytem02.aux
  (./sp09_sysytem02.tex
 
-[198
+[200
 
 
 
 
 ]
 第9章
-<../images/09_BZ.jpg, id=1983, 277.96153pt x 85.05623pt>
+<../images/09_BZ.jpg, id=2031, 277.96153pt x 85.05623pt>
 File: ../images/09_BZ.jpg Graphic file (type jpg)
 <use ../images/09_BZ.jpg>
 Package luatex.def Info: ../images/09_BZ.jpg  used on input line 15.
@@ -3092,11 +3099,7 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (Font)              scaled to size 8.32242pt on input line 17.
 
 
-[199<../images/09_BZ.jpg>]
-
-[200]
-
-[201]
+[201<../images/09_BZ.jpg>]
 
 [202]
 
@@ -3113,7 +3116,11 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 [208]
 
 [209]
-<../images/09_Autopoiesis01.png, id=2052, 750.805pt x 465.74pt>
+
+[210]
+
+[211]
+<../images/09_Autopoiesis01.png, id=2098, 750.805pt x 465.74pt>
 File: ../images/09_Autopoiesis01.png Graphic file (type png)
 <use ../images/09_Autopoiesis01.png>
 Package luatex.def Info: ../images/09_Autopoiesis01.png  used on input line 219
@@ -3121,33 +3128,33 @@ Package luatex.def Info: ../images/09_Autopoiesis01.png  used on input line 219
 (luatex.def)             Requested size: 292.77629pt x 181.61655pt.
 
 
-[210<../images/09_Autopoiesis01.png>]
-<../images/09_cupling.png, id=2060, 536.0025pt x 467.7475pt>
+[212<../images/09_Autopoiesis01.png>]
+<../images/09_cupling.png, id=2106, 536.0025pt x 467.7475pt>
 File: ../images/09_cupling.png Graphic file (type png)
 <use ../images/09_cupling.png>
 Package luatex.def Info: ../images/09_cupling.png  used on input line 251.
 (luatex.def)             Requested size: 292.77629pt x 255.49187pt.
 
 
-[211]
+[213]
 
-[212<../images/09_cupling.png>]
-<../images/09_coupling2.png, id=2073, 755.82375pt x 468.75125pt>
+[214<../images/09_cupling.png>]
+<../images/09_coupling2.png, id=2120, 755.82375pt x 468.75125pt>
 File: ../images/09_coupling2.png Graphic file (type png)
 <use ../images/09_coupling2.png>
 Package luatex.def Info: ../images/09_coupling2.png  used on input line 274.
 (luatex.def)             Requested size: 292.77629pt x 181.57484pt.
 
 
-[213<../images/09_coupling2.png>]
+[215<../images/09_coupling2.png>]
 
-[214]
+[216]
 
-[215
+[217
 
 ]
 
-[216]
+[218]
 Overfull \hbox (26.80896pt too wide) in paragraph at lines 302--302
 [][]\TU/lmr/m/n/10 M.A. \JY3/BIZUDPMinchoMedium(0)/m/n/10 ホ ッ グ \TU/lmr/m
 /n/10 & D. \JY3/BIZUDPMinchoMedium(0)/m/n/10 エ イ ブ ラ ム ス \TU/lmr/m/
@@ -3156,15 +3163,15 @@ n/10 (1995). |   [] |   []
 
 
 
-[217]
-
-[218])
-
 [219]
+
+[220])
+
+[221]
 \openout2 = sp10_sysytem03.aux
  (./sp10_sysytem03.tex
 
-[220
+[222
 
 
 
@@ -3172,10 +3179,6 @@ n/10 (1995). |   [] |   []
 ]
 第10章
 
-
-[221]
-
-[222]
 
 [223]
 
@@ -3188,56 +3191,60 @@ n/10 (1995). |   [] |   []
 [227]
 
 [228]
-<../images/10_LifeGame.png, id=2199, 752.8125pt x 377.41pt>
+
+[229]
+
+[230]
+<../images/10_LifeGame.png, id=2247, 752.8125pt x 377.41pt>
 File: ../images/10_LifeGame.png Graphic file (type png)
 <use ../images/10_LifeGame.png>
 Package luatex.def Info: ../images/10_LifeGame.png  used on input line 166.
 (luatex.def)             Requested size: 292.77629pt x 146.78043pt.
-<../images/10_Glider.png, id=2201, 1232.605pt x 257.96375pt>
+<../images/10_Glider.png, id=2249, 1232.605pt x 257.96375pt>
 File: ../images/10_Glider.png Graphic file (type png)
 <use ../images/10_Glider.png>
 Package luatex.def Info: ../images/10_Glider.png  used on input line 176.
 (luatex.def)             Requested size: 292.77629pt x 61.27095pt.
 
 
-[229<../images/10_LifeGame.png><../images/10_Glider.png>]
+[231<../images/10_LifeGame.png><../images/10_Glider.png>]
 
-[230]
-<../images/10_1dimCA.png, id=2227, 1262.7175pt x 118.4425pt>
+[232]
+<../images/10_1dimCA.png, id=2273, 1262.7175pt x 118.4425pt>
 File: ../images/10_1dimCA.png Graphic file (type png)
 <use ../images/10_1dimCA.png>
 Package luatex.def Info: ../images/10_1dimCA.png  used on input line 207.
 (luatex.def)             Requested size: 292.77629pt x 27.46169pt.
-<../images/10_CA4pattern.png, id=2228, 1367.1075pt x 733.74126pt>
+<../images/10_CA4pattern.png, id=2274, 1367.1075pt x 733.74126pt>
 File: ../images/10_CA4pattern.png Graphic file (type png)
 <use ../images/10_CA4pattern.png>
 Package luatex.def Info: ../images/10_CA4pattern.png  used on input line 225.
 (luatex.def)             Requested size: 292.77629pt x 157.13551pt.
 
 
-[231<../images/10_1dimCA.png><../images/10_CA4pattern.png>]
-<../images/10_LangtonLoop.png, id=2242, 433.62pt x 308.15125pt>
+[233<../images/10_1dimCA.png><../images/10_CA4pattern.png>]
+<../images/10_LangtonLoop.png, id=2288, 433.62pt x 308.15125pt>
 File: ../images/10_LangtonLoop.png Graphic file (type png)
 <use ../images/10_LangtonLoop.png>
 Package luatex.def Info: ../images/10_LangtonLoop.png  used on input line 239.
 (luatex.def)             Requested size: 292.77629pt x 208.06833pt.
 
 
-[232<../images/10_LangtonLoop.png>]
-
-[233]
-
-[234]
+[234<../images/10_LangtonLoop.png>]
 
 [235]
 
 [236]
 
-[237
+[237]
+
+[238]
+
+[239
 
 ]
 
-[238]
+[240]
 Overfull \hbox (26.80896pt too wide) in paragraph at lines 324--324
 [][]\TU/lmr/m/n/10 M.A. \JY3/BIZUDPMinchoMedium(0)/m/n/10 ホ ッ グ \TU/lmr/m
 /n/10 & D. \JY3/BIZUDPMinchoMedium(0)/m/n/10 エ イ ブ ラ ム ス \TU/lmr/m/
@@ -3246,28 +3253,138 @@ n/10 (1995). |   [] |   []
 
 
 
-[239]
-
-[240])
-
 [241]
 
-[242
+[242])
+
+[243]
+\openout2 = sp11_sysytem04.aux
+ (./sp11_sysytem04.tex
+
+[244
 
 
 
-] (./nameidx.ind [243
+
+]
+第11章
+
+
+[245]
+
+[246]
+<../images/11_LewinNet.png, id=2381, 1241.63875pt x 338.26375pt>
+File: ../images/11_LewinNet.png Graphic file (type png)
+<use ../images/11_LewinNet.png>
+Package luatex.def Info: ../images/11_LewinNet.png  used on input line 59.
+(luatex.def)             Requested size: 292.77629pt x 79.76038pt.
+
+
+[247<../images/11_LewinNet.png>]
+<../images/11_network_words.png, id=2392, 488.82625pt x 350.30875pt>
+File: ../images/11_network_words.png Graphic file (type png)
+<use ../images/11_network_words.png>
+Package luatex.def Info: ../images/11_network_words.png  used on input line 80.
+
+(luatex.def)             Requested size: 125.47737pt x 89.9182pt.
+<../images/11_Loop.png, id=2394, 536.0025pt x 185.69376pt>
+File: ../images/11_Loop.png Graphic file (type png)
+<use ../images/11_Loop.png>
+Package luatex.def Info: ../images/11_Loop.png  used on input line 93.
+(luatex.def)             Requested size: 209.12683pt x 72.4486pt.
+
+
+[248<../images/11_network_words.png>]
+
+[249<../images/11_Loop.png>]
+<../images/11_singleSOCION.png, id=2415, 690.58pt x 272.01625pt>
+File: ../images/11_singleSOCION.png Graphic file (type png)
+<use ../images/11_singleSOCION.png>
+Package luatex.def Info: ../images/11_singleSOCION.png  used on input line 128.
+
+(luatex.def)             Requested size: 292.77629pt x 115.3252pt.
+
+
+[250<../images/11_singleSOCION.png>]
+
+[251]
+
+[252]
+<../images/11_socion_tikz.png, id=2434, 863.225pt x 859.21pt>
+File: ../images/11_socion_tikz.png Graphic file (type png)
+<use ../images/11_socion_tikz.png>
+Package luatex.def Info: ../images/11_socion_tikz.png  used on input line 186.
+(luatex.def)             Requested size: 292.77629pt x 291.40646pt.
+
+
+[253]
+
+[254<../images/11_socion_tikz.png>]
+
+[255]
+
+[256]
+
+[257]
+<../images/11_matrix.png, id=2468, 770.88pt x 288.07625pt>
+File: ../images/11_matrix.png Graphic file (type png)
+<use ../images/11_matrix.png>
+Package luatex.def Info: ../images/11_matrix.png  used on input line 276.
+(luatex.def)             Requested size: 292.77629pt x 109.40855pt.
+<../images/11_expanded_matrix.png, id=2469, 1408.26125pt x 890.32625pt>
+File: ../images/11_expanded_matrix.png Graphic file (type png)
+<use ../images/11_expanded_matrix.png>
+Package luatex.def Info: ../images/11_expanded_matrix.png  used on input line 2
+89.
+(luatex.def)             Requested size: 292.77629pt x 185.08568pt.
+
+
+[258<../images/11_matrix.png>]
+
+[259<../images/11_expanded_matrix.png>]
+
+[260]
+
+[261]
+
+[262]
+
+[263
+
+]
+
+[264]
+Overfull \hbox (26.80896pt too wide) in paragraph at lines 372--372
+[][]\TU/lmr/m/n/10 M.A. \JY3/BIZUDPMinchoMedium(0)/m/n/10 ホ ッ グ \TU/lmr/m
+/n/10 & D. \JY3/BIZUDPMinchoMedium(0)/m/n/10 エ イ ブ ラ ム ス \TU/lmr/m/
+n/10 (1995). |   [] |   []
+ []
+
+
+
+[265]
+
+[266])
+
+[267]
+
+[268
+
+
+
+] (./nameidx.ind [269
 
 ])
 
-[244] (./termidx.ind [245
+[270] (./termidx.ind [271
 
 
 ])
 
-[246] (./SocialPsychology_SP.aux (./sp01_introduction.aux) (./sp02_science.aux) (./sp03_humanities.aux) (./sp04_History01.aux) (./sp05_History02.aux)
+[272] (./SocialPsychology_SP.aux (./sp01_introduction.aux) (./sp02_science.aux) (./sp03_humanities.aux) (./sp04_History01.aux) (./sp05_History02.aux)
 (./sp06_History03.aux) (./sp07_currentSocialPsychology.aux)
-(./sp08_sysytem01.aux) (./sp09_sysytem02.aux) (./sp10_sysytem03.aux))
+(./sp08_sysytem01.aux) (./sp09_sysytem02.aux) (./sp10_sysytem03.aux)
+(./sp11_sysytem04.aux))
  ***********
 LaTeX2e <2024-11-01>
 L3 programming layer <2024-11-02>
@@ -3277,21 +3394,21 @@ L3 programming layer <2024-11-02>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `SocialPsychology_SP.out' has not changed.
-(rerunfilecheck)             Checksum: 5FC2313E6583317818E7A8B59CCA592A;10936.
+(rerunfilecheck)             Checksum: EC3C956431A826FEF04960B0744DEA32;12356.
 Package logreq Info: Writing requests to 'SocialPsychology_SP.run.xml'.
 
 \openout1 = SocialPsychology_SP.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 50414 strings out of 475664
- 305782,2373549 words of node,token memory allocated
- 9098 words of node memory still in use:
-   11 hlist, 2 vlist, 5 rule, 145 glue, 4 kern, 1 glyph, 3208 attribute, 80 glue
-_spec, 280 attribute_list, 2 write, 14 user_defined, 65 pdf_action nodes
-   avail lists: 1:59,2:84503,3:855,4:806,5:649,6:130,7:11009,8:91,9:891,10:49,11
+ 50629 strings out of 475664
+ 305788,2373549 words of node,token memory allocated
+ 9540 words of node memory still in use:
+   11 hlist, 2 vlist, 5 rule, 151 glue, 4 kern, 1 glyph, 3376 attribute, 80 glue
+_spec, 294 attribute_list, 2 write, 14 user_defined, 71 pdf_action nodes
+   avail lists: 1:60,2:84437,3:855,4:868,5:654,6:135,7:11115,8:92,9:997,10:49,11
 :224
- 71078 multiletter control sequences out of 65536+600000
+ 71201 multiletter control sequences out of 65536+600000
  133 fonts using 101339103 bytes
  125i,17n,135p,5450b,1988s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Library/Fonts/BIZ-UDGothicB.ttc></usr/local/texlive/2024/texmf-dist/fonts/open
@@ -3312,18 +3429,19 @@ Library/Fonts/BIZ-UDMinchoM.ttc></usr/local/texlive/2024/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
-.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on SocialPsychology_SP.pdf (248 pages, 9579441 bytes).
+amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pf
+b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
+r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on SocialPsychology_SP.pdf (274 pages, 10436195 bytes).
 
-PDF statistics: 2501 PDF objects out of 2984 (max. 8388607)
- 2110 compressed objects within 22 object streams
- 669 named destinations out of 1000 (max. 131072)
- 536 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 2737 PDF objects out of 2984 (max. 8388607)
+ 2303 compressed objects within 24 object streams
+ 728 named destinations out of 1000 (max. 131072)
+ 592 words of extra memory for PDF output out of 10000 (max. 100000000)
 
