@@ -1,9 +1,9 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.15)  9 JAN 2025 08:18
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2025.1.10)  13 JAN 2025 10:25
  restricted system commands enabled.
 **tmp
 (./tmp.tex
-LaTeX2e <2024-11-01>
-L3 programming layer <2024-11-02>
+LaTeX2e <2024-11-01> patch level 1
+L3 programming layer <2024-12-25>
 Lua module: luaotfload 2024-02-14 v3.28 Lua based OpenType font support
 Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended 
@@ -69,7 +69,7 @@ Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 
 (/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
+Package: iftex 2024/12/12 v1.0g TeX engine tests
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
@@ -328,7 +328,7 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 Package: lltjcore 2023-02-26 Patch to LaTeX2e Kernel for LuaTeX-ja
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-11-02 L3 programming layer (loader) 
+Package: expl3 2024-12-25 L3 programming layer (loader) 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2024-05-08 L3 backend support: PDF output (LuaTeX)
@@ -688,7 +688,7 @@ Package biblatex Info: LuaTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Document encoding is UTF8 ....
 Package biblatex Info: ... and expl3
-(biblatex)             2024-11-02 L3 programming layer (loader) 
+(biblatex)             2024-12-25 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
 
@@ -1464,8 +1464,7 @@ Package: luatexja-fontspec-29e 2024-05-27 fontspec support of LuaTeX-ja
 \g__ltj_fontspec_altnumber_int=\count491
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/nicematrix/nicematrix.sty
-Package: nicematrix 2024/11/12 v6.29b Enhanced arrays with the help of PGF/TikZ
-
+Package: nicematrix 2024/12/16 v7.0a Enhanced arrays with the help of PGF/TikZ
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
 Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
@@ -1930,17 +1929,23 @@ Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
 
 Writing index file tmp.idx
 (/usr/local/texlive/2024/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-Package: fancyhdr 2024/07/23 v4.3.1 Extensive control of page headers and foote
-rs
+Package: fancyhdr 2025/01/06 v5.1 Extensive control of page headers and footers
+
 \f@nch@headwidth=\skip96
-\f@nch@O@elh=\skip97
-\f@nch@O@erh=\skip98
-\f@nch@O@olh=\skip99
-\f@nch@O@orh=\skip100
-\f@nch@O@elf=\skip101
-\f@nch@O@erf=\skip102
-\f@nch@O@olf=\skip103
-\f@nch@O@orf=\skip104
+\f@nch@offset@elh=\skip97
+\f@nch@offset@erh=\skip98
+\f@nch@offset@olh=\skip99
+\f@nch@offset@orh=\skip100
+\f@nch@offset@elf=\skip101
+\f@nch@offset@erf=\skip102
+\f@nch@offset@olf=\skip103
+\f@nch@offset@orf=\skip104
+\f@nch@height=\skip105
+\f@nch@footalignment=\skip106
+\f@nch@widthL=\skip107
+\f@nch@widthC=\skip108
+\f@nch@widthR=\skip109
+\@temptokenb=\toks58
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/docmute/docmute.sty
 Package: docmute 2012/03/22 v1.4 Input stand-alone documents
@@ -2048,12 +2053,12 @@ Package biblatex Info: Reference segment=0 on input line 6.
 \scratchbox=\box135
 \nofMPsegments=\count562
 \nofMParguments=\count563
-\everyMPshowfont=\toks58
+\everyMPshowfont=\toks59
 \MPscratchCnt=\count564
 \MPscratchDim=\dimen397
 \MPnumerator=\count565
 \makeMPintoPDFobject=\count566
-\everyMPtoPDFconversion=\toks59
+\everyMPtoPDFconversion=\toks60
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -2142,8 +2147,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 \c@lstlisting=\count567
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
-\inpenc@prehook=\toks60
-\inpenc@posthook=\toks61
+\inpenc@prehook=\toks61
+\inpenc@posthook=\toks62
 )
 Package hyperref Info: Link coloring ON on input line 6.
  (./tmp.out)
@@ -5312,8 +5317,8 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (./m26_bayesian2.aux) (./m27_bayesian3.aux) (./m28_jasp.aux) (./m29_brms.aux)
 (./m30_SecondSemester.aux))
  ***********
-LaTeX2e <2024-11-01>
-L3 programming layer <2024-11-02>
+LaTeX2e <2024-11-01> patch level 1
+L3 programming layer <2024-12-25>
  ***********
 
 
@@ -5336,14 +5341,14 @@ Package logreq Info: Writing requests to 'tmp.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 56195 strings out of 475664
- 597273,2848258 words of node,token memory allocated
- 134083 words of node memory still in use:
-   11 hlist, 2 vlist, 5 rule, 482 glue, 4 kern, 1 glyph, 59550 attribute, 78 glu
+ 56336 strings out of 475518
+ 597282,2848258 words of node,token memory allocated
+ 134088 words of node memory still in use:
+   11 hlist, 2 vlist, 5 rule, 482 glue, 4 kern, 1 glyph, 59550 attribute, 79 glu
 e_spec, 5424 attribute_list, 4 write, 14 user_defined, 8 pdf_action nodes
-   avail lists: 1:54,2:77804,3:1706,4:6363,5:2523,6:492,7:16364,8:82,9:5786,10:4
+   avail lists: 1:41,2:77924,3:1706,4:6362,5:2523,6:492,7:16364,8:82,9:5786,10:4
 9,11:226
- 73892 multiletter control sequences out of 65536+600000
+ 74169 multiletter control sequences out of 65536+600000
  153 fonts using 107481711 bytes
  125i,18n,135p,4285b,1977s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
@@ -5396,7 +5401,7 @@ local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/loc
 al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/
 texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
 live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on tmp.pdf (478 pages, 62238387 bytes).
+Output written on tmp.pdf (478 pages, 62238718 bytes).
 
 PDF statistics: 7675 PDF objects out of 8907 (max. 8388607)
  6681 compressed objects within 67 object streams
