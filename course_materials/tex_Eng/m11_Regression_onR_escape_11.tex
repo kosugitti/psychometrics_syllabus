@@ -1,6 +1,0 @@
-\begin{lstlisting}[language=c++,label={code:11_08},caption={標準化したデータで重回帰分析を実行}]
-batter2z <- scale(batter2) %>% as.data.frame()
-summary(batter2z)
-result2z <- lm(salary ~ HR + Hit, data = batter2z)
-summary(result2z)
-\end{lstlisting}

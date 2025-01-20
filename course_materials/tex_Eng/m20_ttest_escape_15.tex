@@ -1,8 +1,0 @@
-\begin{lstlisting}[language=c++,label={code:20_10},caption={Specified by formula}]
-X <- c(25, 15, 24, 17, 22)
-Y <- c(31, 28, 30, 19, 18)
-dat <- data.frame(condition = c(rep(1, 5), rep(2, 5)), value = c(X, Y))
-dat$condition <- factor(dat$condition, 
-                        labels =  c("control","experimental"))
-t.test(value ~ condition, data = dat)
-\end{lstlisting}

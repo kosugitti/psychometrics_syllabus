@@ -4,7 +4,7 @@
 ## 2024/1/23よりBiBLateXに乗り換える
 
 ## changePath
-path="course_materials2/tex"
+path="Psychometrics/v1_2/course_materials2/tex"
 filename="Dkiso2_book1"
 cd $path
 ## backup

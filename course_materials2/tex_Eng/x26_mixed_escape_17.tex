@@ -1,5 +1,0 @@
-\begin{description}
-	\item[dataブロック] データ長L，アウトカム変数Yを宣言しています。
-	\item[parametersブロック] クローザーかどうかを決める$\theta$と，ポアソン分布のパラメータ$\lambda$がパラメータです。
-	\item[modelブロック] データの中で，プログラミング言語としての\verb|if|文による条件分岐が出てきています\footnote{プログラミングでの条件分岐については第\ref{x16_Programming}講，セクション\ref{if_statement}，Pp.\pageref{if_statement}でやりましたね。忘れた人は戻って再確認しましょう。}。データが0であれば，クローザーでないか，ポアソン分布からゼロが出ているかです。そうでなければ，確率$\theta$経由でのポアソン分布です。
-\end{description}

@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 #####################################################################text 2
 ## changePath
-path="course_materials2/tex"
+path="Psychometrics/v1_2/course_materials2/tex"
 filename="Dkiso2_book_kdp"
 cd $path
 ## backup
