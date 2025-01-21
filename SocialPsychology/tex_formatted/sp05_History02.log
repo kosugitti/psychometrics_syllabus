@@ -1,9 +1,9 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.15)  24 DEC 2024 16:58
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2025.1.10)  21 JAN 2025 21:40
  restricted system commands enabled.
 **sp05_History02.tex
 (./sp05_History02.tex
-LaTeX2e <2024-11-01>
-L3 programming layer <2024-11-02>
+LaTeX2e <2024-11-01> patch level 1
+L3 programming layer <2024-12-25>
 Lua module: luaotfload 2024-02-14 v3.28 Lua based OpenType font support
 Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended 
@@ -69,7 +69,7 @@ Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 
 (/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
+Package: iftex 2024/12/12 v1.0g TeX engine tests
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
@@ -328,7 +328,7 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 Package: lltjcore 2023-02-26 Patch to LaTeX2e Kernel for LuaTeX-ja
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-11-02 L3 programming layer (loader) 
+Package: expl3 2024-12-25 L3 programming layer (loader) 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2024-05-08 L3 backend support: PDF output (LuaTeX)
@@ -691,7 +691,7 @@ Package biblatex Info: LuaTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Document encoding is UTF8 ....
 Package biblatex Info: ... and expl3
-(biblatex)             2024-11-02 L3 programming layer (loader) 
+(biblatex)             2024-12-25 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
 
@@ -1464,8 +1464,7 @@ Package: luatexja-fontspec-29e 2024-05-27 fontspec support of LuaTeX-ja
 \g__ltj_fontspec_altnumber_int=\count491
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/nicematrix/nicematrix.sty
-Package: nicematrix 2024/11/12 v6.29b Enhanced arrays with the help of PGF/TikZ
-
+Package: nicematrix 2024/12/16 v7.0a Enhanced arrays with the help of PGF/TikZ
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
 Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
@@ -1930,17 +1929,23 @@ Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
 
 Writing index file sp05_History02.idx
 (/usr/local/texlive/2024/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-Package: fancyhdr 2024/07/23 v4.3.1 Extensive control of page headers and foote
-rs
+Package: fancyhdr 2025/01/06 v5.1 Extensive control of page headers and footers
+
 \f@nch@headwidth=\skip96
-\f@nch@O@elh=\skip97
-\f@nch@O@erh=\skip98
-\f@nch@O@olh=\skip99
-\f@nch@O@orh=\skip100
-\f@nch@O@elf=\skip101
-\f@nch@O@erf=\skip102
-\f@nch@O@olf=\skip103
-\f@nch@O@orf=\skip104
+\f@nch@offset@elh=\skip97
+\f@nch@offset@erh=\skip98
+\f@nch@offset@olh=\skip99
+\f@nch@offset@orh=\skip100
+\f@nch@offset@elf=\skip101
+\f@nch@offset@erf=\skip102
+\f@nch@offset@olf=\skip103
+\f@nch@offset@orf=\skip104
+\f@nch@height=\skip105
+\f@nch@footalignment=\skip106
+\f@nch@widthL=\skip107
+\f@nch@widthC=\skip108
+\f@nch@widthR=\skip109
+\@temptokenb=\toks58
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/patches/lltjp-array.sty
 Package: lltjp-array 2024-07-21 Patch to array for LuaTeX-ja
@@ -2037,12 +2042,12 @@ Package biblatex Info: Reference segment=0 on input line 5.
 \scratchbox=\box135
 \nofMPsegments=\count562
 \nofMParguments=\count563
-\everyMPshowfont=\toks58
+\everyMPshowfont=\toks59
 \MPscratchCnt=\count564
 \MPscratchDim=\dimen397
 \MPnumerator=\count565
 \makeMPintoPDFobject=\count566
-\everyMPtoPDFconversion=\toks59
+\everyMPtoPDFconversion=\toks60
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -2131,8 +2136,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 \c@lstlisting=\count567
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
-\inpenc@prehook=\toks60
-\inpenc@posthook=\toks61
+\inpenc@prehook=\toks61
+\inpenc@posthook=\toks62
 )
 Package hyperref Info: Link coloring ON on input line 5.
 
@@ -2178,9 +2183,9 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 
 
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 9.24713pt on input line 25.
+(Font)              scaled to size 9.24713pt on input line 29.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 9.24713pt on input line 25.
+(Font)              scaled to size 9.24713pt on input line 29.
 [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -2188,9 +2193,9 @@ LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
 
 (load cache: extra_lmromanslant10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/sl' will be
-(Font)              scaled to size 9.24713pt on input line 40.
+(Font)              scaled to size 9.24713pt on input line 41.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/sl' will be
-(Font)              scaled to size 9.24713pt on input line 40.
+(Font)              scaled to size 9.24713pt on input line 41.
 [2]
 <../images/05_illusion.png, id=58, 991.705pt x 269.005pt>
 File: ../images/05_illusion.png Graphic file (type png)
@@ -2202,18 +2207,14 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 8.32242pt on input line 50.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 8.32242pt on input line 50.
-
-
-[3<../images/05_illusion.png>](load cache: extra_lmroman7-regular.luc)(load cach
-e: extra_lmroman5-regular.luc)
+(load cache: extra_lmroman7-regular.luc)(load cache: extra_lmroman5-regular.luc)
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 6.47299pt on input line 56.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 4.62357pt on input line 56.
 LaTeX Font Info:    Trying loading font information for U+msa on input line 56.
 
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying loading font information for U+msb on input line 56.
@@ -2243,17 +2244,19 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 5.54828pt on input line 56.
 
 
+[3<../images/05_illusion.png>]
+
 [4]
 
 [5]
-
-[6]
-<../images/05_Sociometry.png, id=117, 877.2775pt x 390.45876pt>
+<../images/05_Sociometry.png, id=111, 877.2775pt x 390.45876pt>
 File: ../images/05_Sociometry.png Graphic file (type png)
 <use ../images/05_Sociometry.png>
 Package luatex.def Info: ../images/05_Sociometry.png  used on input line 82.
 (luatex.def)             Requested size: 418.25368pt x 186.16095pt.
 
+
+[6]
 
 [7<../images/05_Sociometry.png>]
 
@@ -2268,28 +2271,28 @@ Package luatex.def Info: ../images/05_Sociometry.png  used on input line 82.
 [12]
 
 [13]
-<../images/05_inbalance.png, id=176, 679.53876pt x 723.70375pt>
+<../images/05_inbalance.png, id=178, 679.53876pt x 723.70375pt>
 File: ../images/05_inbalance.png Graphic file (type png)
 <use ../images/05_inbalance.png>
 Package luatex.def Info: ../images/05_inbalance.png  used on input line 188.
 (luatex.def)             Requested size: 209.12683pt x 222.7115pt.
 
 
-[14]
+[14<../images/05_inbalance.png>]
 
-[15<../images/05_inbalance.png>]
+[15]
 
 [16]
-
-[17]
-<../images/05_fieldtheory.png, id=214, 756.8275pt x 261.97874pt>
+<../images/05_fieldtheory.png, id=211, 756.8275pt x 261.97874pt>
 File: ../images/05_fieldtheory.png Graphic file (type png)
 <use ../images/05_fieldtheory.png>
 Package luatex.def Info: ../images/05_fieldtheory.png  used on input line 243.
 (luatex.def)             Requested size: 292.77629pt x 101.34381pt.
 
 
-[18<../images/05_fieldtheory.png>]
+[17<../images/05_fieldtheory.png>]
+
+[18]
 
 [19]
 
@@ -2297,19 +2300,19 @@ Package luatex.def Info: ../images/05_fieldtheory.png  used on input line 243.
 
 [21]
 
-[22]
+[22
+
+]
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 23.00687pt on input line 303.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 23.00687pt on input line 303.
 
 
-[23
-
-] (./sp05_History02.aux)
+[23] (./sp05_History02.aux)
  ***********
-LaTeX2e <2024-11-01>
-L3 programming layer <2024-11-02>
+LaTeX2e <2024-11-01> patch level 1
+L3 programming layer <2024-12-25>
  ***********
 
 
@@ -2323,16 +2326,16 @@ Package logreq Info: Writing requests to 'sp05_History02.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 47461 strings out of 475664
- 244635,2373549 words of node,token memory allocated
- 2133 words of node memory still in use:
-   10 hlist, 2 vlist, 5 rule, 30 glue, 4 kern, 1 glyph, 564 attribute, 75 glue_s
+ 47602 strings out of 475518
+ 305792,2373549 words of node,token memory allocated
+ 2145 words of node memory still in use:
+   10 hlist, 2 vlist, 5 rule, 31 glue, 4 kern, 1 glyph, 564 attribute, 76 glue_s
 pec, 58 attribute_list, 2 write, 13 user_defined nodes
-   avail lists: 1:38,2:75192,3:776,4:456,5:468,6:45,7:10114,8:38,9:598,10:49,11:
+   avail lists: 1:37,2:87515,3:812,4:483,5:468,6:46,7:11041,8:38,9:598,10:49,11:
 126
- 69016 multiletter control sequences out of 65536+600000
+ 69293 multiletter control sequences out of 65536+600000
  107 fonts using 89281071 bytes
- 125i,12n,135p,3693b,1971s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 125i,12n,135p,3573b,1971s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.ot
 f></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.
 otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman7-regula
@@ -2347,10 +2350,10 @@ aranoAjiGothic-Medium.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/pub
 lic/lm/lmroman10-bold.otf></usr/local/texlive/2024/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmr10.pfb>
-Output written on sp05_History02.pdf (23 pages, 1048768 bytes).
+Output written on sp05_History02.pdf (23 pages, 1047387 bytes).
 
-PDF statistics: 340 PDF objects out of 1000 (max. 8388607)
- 266 compressed objects within 3 object streams
+PDF statistics: 341 PDF objects out of 1000 (max. 8388607)
+ 267 compressed objects within 3 object streams
  83 named destinations out of 1000 (max. 131072)
  80 words of extra memory for PDF output out of 10000 (max. 100000000)
 
