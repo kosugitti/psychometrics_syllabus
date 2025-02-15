@@ -1,11 +1,11 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 2.1.5}
+\lhead{version 2.1.6}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/cover2b.pdf}
-\input{../../common_contents/copyright} % copyright page
+\input{../../../common_contents/copyright} % copyright page
 
 \VerbatimFootnotes
 \title{心理学データ解析応用2}
@@ -34,7 +34,7 @@
 \include{x31_SSpace}
 \appendix
 \input{../../common_contents/FAQ} % FAQ page
-\input{../../Scaling/tex/H01_ProofOfLikert}
+% \input{../../Scaling/tex/H01_ProofOfLikert}
 \input{../../common_contents/Computer}
 \input{../../common_contents/Greeks}
 \input{../../common_contents/keyboards}

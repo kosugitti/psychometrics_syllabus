@@ -5,7 +5,7 @@
 
 ## changePath
 path="Psychometrics/v1_2/course_materials2/tex"
-filename="Dkiso2_book1"
+filename="Dkiso2_book2"
 cd $path
 ## backup
 cp ${filename}.tex ${filename}.old
@@ -26,7 +26,7 @@ newVer=${major}.${minor}.${plusOne}
 newval=`echo $val | sed -e "s/$version/$newVer/"`
 #echo $val | sed -e "s/$val/$newval/"
 echo "New version"$newVer
-echo "応用テキスト(前期)の現在のバージョンは次の通りです。"
+echo "応用テキスト(後期)の現在のバージョンは次の通りです。"
 cat ${filename}.tex
 echo "かきかえます"
 cat ${filename}.tex | (rm ${filename}.tex; sed "s/$val/$newval/" > ${filename}.tex)
@@ -35,7 +35,7 @@ cat ${filname}.tex
 echo "コンパイルを始めます"
 cp ${filename}.tex tmp.tex
 
-echo "応用テキスト(前期)の最新バージョンは"$newVer "です。" >| ../../Book_versions2a.md
+echo "応用テキスト(後期)の最新バージョンは"$newVer "です。" >| ../../Book_versions2a.md
 
 
 ## LateX Main

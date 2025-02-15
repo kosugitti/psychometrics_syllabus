@@ -1,0 +1,68 @@
+\documentclass[dvipsnames]{ltjsbook}
+\usepackage{../../../../myStyle}
+%% バッチ処理をするので\lheadは必ず4行目にあること
+\lhead{version 2.1.7}
+\usepackage{docmute}
+\begin{document}
+\includepdf[noautoscale=false,pages=-]{../images/cover2b.pdf}
+\input{../../../common_contents/copyright} % copyright page
+
+\VerbatimFootnotes
+\title{心理学データ解析応用2}
+\author{小杉　考司}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+
+
+\input{preface2b} % preface
+
+\tableofcontents
+
+% 行番号開始
+\linenumbers
+% 各章
+\include{x16_Programming1}
+\include{prepareStan}
+\include{x24_Stan}
+\include{x25_modeling1}
+\include{x26_modeling2}
+\include{x27_modeling3}
+\include{x28_mixed}
+\include{x29_IRTonBayes}
+\include{x30_ChangePoint}
+\include{x31_SSpace}
+\appendix
+\input{../../common_contents/FAQ} % FAQ page
+% \input{../../Scaling/tex/H01_ProofOfLikert}
+\input{../../common_contents/Computer}
+\input{../../common_contents/Greeks}
+\input{../../common_contents/keyboards}
+\chapter{本講義に対応する詳細シラバス}
+\input{../../syllabus2/tex/a16_Programming1}
+\input{../../syllabus2/tex/a17_Programming2}
+\input{../../syllabus2/tex/a18_Random1}
+\input{../../syllabus2/tex/a19_Random2}
+\input{../../syllabus2/tex/a20_Random3}
+\input{../../syllabus2/tex/a21_Random4}
+\input{../../syllabus2/tex/a22_Random5}
+\input{../../syllabus2/tex/a23_Random6}
+\input{../../syllabus2/tex/a24_Stan}
+\input{../../syllabus2/tex/a25_modeling1}
+\input{../../syllabus2/tex/a26_modeling2}
+\input{../../syllabus2/tex/a27_modeling3}
+\input{../../syllabus2/tex/a28_IRTonBayes}
+\input{../../syllabus2/tex/a29_ChangePoint}
+\input{../../syllabus2/tex/a30_SSpace}
+% 行番号終了
+\nolinenumbers
+% 引用文献
+\addcontentsline{toc}{chapter}{引用文献}
+% \bibliographystyle{../../jecon_jpa}
+% \bibliography{../../sbib}
+\printbibliography[title=引用文献]
+% 索引
+\addcontentsline{toc}{chapter}{索引}
+\printindex
+
+\end{document}
