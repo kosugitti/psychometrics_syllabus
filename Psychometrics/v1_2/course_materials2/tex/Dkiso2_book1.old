@@ -1,11 +1,11 @@
 \documentclass[dvipsnames]{ltjsbook}
-\usepackage{../../myStyle}
+\usepackage{../../../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 2.0.41}
+\lhead{version 2.0.42}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/cover2a.pdf}
-\input{../../common_contents/copyright} % copyright page
+\input{../../../common_contents/copyright} % copyright page
 
 \VerbatimFootnotes
 \title{心理学データ解析応用1}
@@ -39,11 +39,11 @@
 \include{x14_DualScaling}
 \include{x15_MDS}
 \appendix
-\input{../../common_contents/FAQ} % FAQ page
-\input{../../Scaling/tex/H01_ProofOfLikert}
-\input{../../common_contents/Computer}
-\input{../../common_contents/Greeks}
-\input{../../common_contents/keyboards}
+\input{../../../common_contents/FAQ} % FAQ page
+\input{../../../Scaling/tex/H01_ProofOfLikert}
+\input{../../../common_contents/Computer}
+\input{../../../common_contents/Greeks}
+\input{../../../common_contents/keyboards}
 \chapter{本講義に対応する詳細シラバス}
 \input{../../syllabus2/tex/a01_introduction}
 \input{../../syllabus2/tex/a02_scaling}
