@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
-\usepackage{../../myStyle}
+\usepackage{../../../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 2.1.4}
+\lhead{version 2.1.5}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{../images/cover2b.pdf}
@@ -28,9 +28,10 @@
 \include{x25_modeling1}
 \include{x26_modeling2}
 \include{x27_modeling3}
-\include{x28_IRTonBayes}
-\include{x29_ChangePoint}
-\include{x30_SSpace}
+\include{x28_mixed}
+\include{x29_IRTonBayes}
+\include{x30_ChangePoint}
+\include{x31_SSpace}
 \appendix
 \input{../../common_contents/FAQ} % FAQ page
 \input{../../Scaling/tex/H01_ProofOfLikert}
