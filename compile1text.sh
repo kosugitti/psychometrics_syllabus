@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 #####################################################################text1
 ## changePath
-path="Psychometrics/contents_basic/tex/"
+path="Psychometrics/contents_basic/"
 filename="BasicBook3"
 cd $path
 ## backup
