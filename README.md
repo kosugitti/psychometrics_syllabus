@@ -3,8 +3,6 @@
 専修大学人間科学部心理学科では、「心理学データ解析基礎」を1年次の必修科目とし、「心理学データ解析応用」を2年次の選択科目としています。
 このページではこれらの授業に準拠した，授業の進行方針文書と，それに対応した心理学の統計学習に関する教材を提供しています。
 
-[The English version of this website ](Readme_ENG.html)
-
 ## シラバスの設計方針
 
 ### 基礎編
@@ -53,7 +51,7 @@
 
 ### シラバス
 
-- [心理学データ解析基礎 1&2](syllabus.pdf)
+- [心理学データ解析基礎](syllabus_basic.pdf)**2025年度,Ver3にアップデートしました！**
 - [心理学データ解析応用 1](syllabus2a.pdf) 
 - [心理学データ解析応用 2](syllabus2b.pdf) 
 
@@ -97,7 +95,7 @@
 
 ### 心理学データ解析応用
 
- - [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
+- [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
 - [事前準備；cmdstanr の確認用コード](codes/Dkiso2/00_Appendix1_cmdstanr.R)
 - [第 01 回；プログラミングの基礎](codes/Dkiso2/01_BasicProgramming.R)
 - [第 02 回；プログラミングの基礎](codes/Dkiso2/02_randomVariables.R)

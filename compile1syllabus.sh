@@ -49,8 +49,8 @@ grep 'Citation' tmp.log >> error.log
 grep 'Overfull' tmp.log >> error.log
 
 ## cleanup
-mv tmp.pdf ../${filename}.pdf
-mv tmp.log ../${filename}.log
+mv tmp.pdf ../../${filename}.pdf
+mv tmp.log ../../${filename}.log
 rm tmp.*
 rm *.aux
 rm *.dvi
@@ -73,10 +73,6 @@ cd ..
 echo $(date)
 echo 'データ解析基礎のシラバスを改定しました。'
 cat Syllabus_versions1.md
-cat Book_versions1.md
-cat course_materials/tex/error.log
-cat syllabus/error.log
-
 
 today=$(LANG="ja_JP.UTF-8" date)
 git add --all
