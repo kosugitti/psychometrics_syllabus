@@ -40,14 +40,14 @@ HS <- "https://baseball-data.com/ranking-salary/t/"
 read_html(HS) %>% html_table()
 
 read_html(HS) %>%
-  html_node(xpath = '//*[@id="tbl"]') %>%
-  html_table()
+    html_node(xpath = '//*[@id="tbl"]') %>%
+    html_table()
 
 read_html(HS) %>%
-  html_node(xpath = '//*[@id="tbl"]') %>%
-  html_table() %>%
-  data.frame() %>%
-  str()
+    html_node(xpath = '//*[@id="tbl"]') %>%
+    html_table() %>%
+    data.frame() %>%
+    str()
 
 
 # チームごとのデータを取っていく ---------------------------------------------------------
@@ -57,64 +57,64 @@ dat2 <- data.frame()
 dat3 <- data.frame()
 
 for (i in 1:NROW(tID)) {
-  # プレイヤーデータ
-  url1 <- paste0(address1, tID[i], "/")
-  tmp.dat <- read_html(url1) %>%
-    html_table() %>%
-    as.data.frame()
-  tmp.dat$team <- tID[i]
-  dat1 <- rbind(dat1, tmp.dat)
-  # 打者成績
-  url2 <- paste0(address2, "hitter-", tID[i], "/")
-  tmp.dat <- read_html(url2) %>%
-    html_table() %>%
-    as.data.frame() %>%
-    slice(1:(n() - 1))
-  tmp.dat$team <- tID[i]
-  dat2 <- rbind(dat2, tmp.dat)
-  # 投手成績
-  url3 <- paste0(address2, "pitcher-", tID[i], "/")
-  tmp.dat <- read_html(url3) %>%
-    html_table() %>%
-    as.data.frame() %>%
-    slice(1:(n() - 1))
-  tmp.dat$team <- tID[i]
-  dat3 <- rbind(dat3, tmp.dat)
+    # プレイヤーデータ
+    url1 <- paste0(address1, tID[i], "/")
+    tmp.dat <- read_html(url1) %>%
+        html_table() %>%
+        as.data.frame()
+    tmp.dat$team <- tID[i]
+    dat1 <- rbind(dat1, tmp.dat)
+    # 打者成績
+    url2 <- paste0(address2, "hitter-", tID[i], "/")
+    tmp.dat <- read_html(url2) %>%
+        html_table() %>%
+        as.data.frame() %>%
+        slice(1:(n() - 1))
+    tmp.dat$team <- tID[i]
+    dat2 <- rbind(dat2, tmp.dat)
+    # 投手成績
+    url3 <- paste0(address2, "pitcher-", tID[i], "/")
+    tmp.dat <- read_html(url3) %>%
+        html_table() %>%
+        as.data.frame() %>%
+        slice(1:(n() - 1))
+    tmp.dat$team <- tID[i]
+    dat3 <- rbind(dat3, tmp.dat)
 }
 
 
 # プレイヤーデータ整形 ----------------------------------------------------------------------
 
 dat1 %>%
-  as_tibble() %>%
-  transmute(
-    Name = .$選手名,
-    team = as.factor(.$team),
-    salary = str_replace(.$年俸.推定., "万円", "") %>% str_replace(",", "") %>% as.numeric(),
-    position = .$守備,
-    years = str_replace(.$年数, "年", "") %>% as.numeric(),
-    height = str_replace(.$身長, "cm", "") %>% as.numeric(),
-    weight = str_replace(.$体重, "kg", "") %>% as.numeric(),
-    bloodType = as.factor(.$血液型),
-    throw.by = str_sub(.$投打, start = 1, end = 1) %>% as.factor(),
-    batting.by = str_sub(.$投打, start = 2, end = 2) %>% as.factor(),
-    birth.place = .$出身地,
-    birth.day = as.Date(.$生年月日)
-  ) -> dat1
+    as_tibble() %>%
+    transmute(
+        Name = .$選手名,
+        team = as.factor(.$team),
+        salary = str_replace(.$年俸.推定., "万円", "") %>% str_replace(",", "") %>% as.numeric(),
+        position = .$守備,
+        years = str_replace(.$年数, "年", "") %>% as.numeric(),
+        height = str_replace(.$身長, "cm", "") %>% as.numeric(),
+        weight = str_replace(.$体重, "kg", "") %>% as.numeric(),
+        bloodType = as.factor(.$血液型),
+        throw.by = str_sub(.$投打, start = 1, end = 1) %>% as.factor(),
+        batting.by = str_sub(.$投打, start = 2, end = 2) %>% as.factor(),
+        birth.place = .$出身地,
+        birth.day = as.Date(.$生年月日)
+    ) -> dat1
 
 # 野手データ整形 ----------------------------------------------------------------------
 
 dat2 %>%
-  as_tibble() %>%
-  mutate_at(c(3:20), funs(as.numeric(.))) %>%
-  mutate(team = as.factor(team)) -> dat2
+    as_tibble() %>%
+    mutate_at(c(3:20), funs(as.numeric(.))) %>%
+    mutate(team = as.factor(team)) -> dat2
 
 # 投手データ整形 ----------------------------------------------------------------------
 
 dat3 %>%
-  as_tibble() %>%
-  mutate_at(c(3:20), funs(as.numeric(.))) %>%
-  mutate(team = as.factor(team)) -> dat3
+    as_tibble() %>%
+    mutate_at(c(3:20), funs(as.numeric(.))) %>%
+    mutate(team = as.factor(team)) -> dat3
 
 
 
@@ -122,41 +122,41 @@ dat3 %>%
 
 
 dat1 %>%
-  full_join(., full_join(dat2, dat3, by = c("選手名", "team", "試合", "背番号")),
-    by = c("Name" = "選手名", "team")
-  ) %>%
-  mutate(
-    "Name" = as.factor(Name),
-    "team" = as.factor(team),
-    "position" = as.factor(position),
-    "birth.place" = as.factor(birth.place)
-  ) %>%
-  mutate(team = fct_recode(team,
-    "Tigers" = "t", "Carp" = "c", "Giants" = "g", "DeNA" = "yb",
-    "Dragons" = "d", "Swallows" = "s", "Softbank" = "h", "Lions" = "l",
-    "Eagles" = "e", "Orix" = "bs", "Fighters" = "f", "Lotte" = "m"
-  )) %>%
-  rename(
-    セーブ = セlブ,
-    ホールド = ホlルド
-  ) %>%
-  # 基本情報がない選手は削除
-  filter(!is.na(salary)) %>%
-  rename(
-    UniformNum = 背番号,
-    Games = 試合,
-    Hit = 安打,
-    AtBats = 打数,
-    HR = 本塁打,
-    Win = 勝利,
-    Lose = 敗北,
-    Save = セーブ,
-    Hold = ホールド
-  ) %>% 
-  dplyr::select(
-    Name, team, salary, bloodType, AtBats,
-    position, Games, height, weight,
-    Hit, HR, Win, Lose, Save, Hold
-  ) -> baseball
-write_csv(baseball, file = "baseball2020.csv")
+    full_join(., full_join(dat2, dat3, by = c("選手名", "team", "試合", "背番号")),
+        by = c("Name" = "選手名", "team")
+    ) %>%
+    mutate(
+        "Name" = as.factor(Name),
+        "team" = as.factor(team),
+        "position" = as.factor(position),
+        "birth.place" = as.factor(birth.place)
+    ) %>%
+    mutate(team = fct_recode(team,
+        "Tigers" = "t", "Carp" = "c", "Giants" = "g", "DeNA" = "yb",
+        "Dragons" = "d", "Swallows" = "s", "Softbank" = "h", "Lions" = "l",
+        "Eagles" = "e", "Orix" = "bs", "Fighters" = "f", "Lotte" = "m"
+    )) %>%
+    rename(
+        セーブ = セlブ,
+        ホールド = ホlルド
+    ) %>%
+    # 基本情報がない選手は削除
+    filter(!is.na(salary)) %>%
+    rename(
+        UniformNum = 背番号,
+        Games = 試合,
+        Hit = 安打,
+        AtBats = 打数,
+        HR = 本塁打,
+        Win = 勝利,
+        Lose = 敗北,
+        Save = セーブ,
+        Hold = ホールド
+    ) %>%
+    dplyr::select(
+        Name, team, salary, bloodType, AtBats,
+        position, Games, height, weight,
+        Hit, HR, Win, Lose, Save, Hold
+    ) -> baseball
+# write_csv(baseball, file = "baseball2020.csv")
 # rm(list=ls())

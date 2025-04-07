@@ -195,7 +195,7 @@ dat.tmp <- dat %>%
   dplyr::mutate(Qid = str_extract(name, pattern = "\\d+") %>% as.numeric()) %>%
   dplyr::select(Pid, Qid, value)
 
-# わざと欠損値を与える
+# わざと欠測値を与える
 dat.tmp$value[1] <- NA
 dat.tmp$value[11:13] <- NA
 # 確認

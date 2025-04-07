@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 #####################################################################text1
 ## changePath
-path="Psychometrics/v1_2/syllabus/tex"
+path="Psychometrics/v3/syllabus/tex"
 filename="syllabus"
 cd $path
 ## backup

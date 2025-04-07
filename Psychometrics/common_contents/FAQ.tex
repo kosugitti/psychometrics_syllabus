@@ -198,7 +198,7 @@ file(filename, "r", encoding = encoding) でエラー:
 	ファイルを読み込みにいく先がURL，すなわちインターネット上になっています。ANOVA君のファイルを一度手元のPCのフォルダにダウンロードし，そのローカルのファイルの位置を指定して読み込むようにしてください。
 \end{FAQ}
 
-\begin{FAQ}{効果量として Hedges の g を算出してください。という指示について実行するとｇではなくdが出てしまうようなのですが、どうすればよいでしょうか。コードは次の通りです。}{}
+\begin{FAQ}{効果量として Hedges の g を算出してください。という指示について実行するとｇではなくdが出てしまうようなのですが，どうすればよいでしょうか。コードは次の通りです。}{}
 	\begin{verbatim}
 cohen.d(value ~ condition, data = dat, hedges.crrection = T)
 \end{verbatim}
@@ -208,14 +208,14 @@ cohen.d(value ~ condition, data = dat, hedges.crrection = T)
 
 % \begin{FAQ}{Rスクリプトをrmdファイルに変換する方法がわかりません。}{}
 % \tcblower{\large A.}
-% Rスクリプトを直接Rmdに変換する術はありません。Rmdファイルを作って、Rスクリプトはチャンクの中に書き込みます。Rmdやチャンクについてはセクション\ref{Rmarkdown},Pp.\pageref{Rmarkdown}を参照してください。
+% Rスクリプトを直接Rmdに変換する術はありません。Rmdファイルを作って，Rスクリプトはチャンクの中に書き込みます。Rmdやチャンクについてはセクション\ref{Rmarkdown},Pp.\pageref{Rmarkdown}を参照してください。
 % \end{FAQ}
 
 \begin{FAQ}{描画の際に次のような注意が出てきます。これはどういう意味ですか。}{}
 	\begin{verbatim}Removed 671 rows containing missing values (geom_point).\end{verbatim}
 	\tcblower{\large A.}
-	「671件の行で欠損値が含まれています」ということです。つまりデータセットの中に欠損値(観測されていない，数値が入っていない行）が671件あったので，それは表示できませんでしたよ，という意味です。
-	警告が嫌だということであれば，データセットの中で欠けているものを除外する必要があります。Rの関数では，\verb|na.omit|で欠損値を除外することができます。
+	「671件の行で欠測値が含まれています」ということです。つまりデータセットの中に欠測値(観測されていない，数値が入っていない行)が671件あったので，それは表示できませんでしたよ，という意味です。
+	警告が嫌だということであれば，データセットの中で欠けているものを除外する必要があります。Rの関数では，\verb|na.omit|で欠測値を除外することができます。
 \end{FAQ}
 
 \begin{FAQ}{lm関数を実行するコードでオブジェクトがないと言われます。}{}

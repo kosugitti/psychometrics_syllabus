@@ -125,5 +125,5 @@ baseball <- read_csv("baseball2020.csv") %>%
   dplyr::mutate(team = as.factor(team)) %>%
   ## チーム変数の名前を数字に置き換え
   dplyr::mutate(team2 = as.numeric(team)) %>%
-  ## 欠損値の削除
+  ## 欠測値の削除
   na.omit()
