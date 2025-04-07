@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 #####################################################################text1
 ## changePath
-path="Psychmetrics/v1_2/course_materials/tex"
-filename="Dkiso1_book"
+path="Psychometrics/contents_basic/tex/"
+filename="BasicBook3"
 cd $path
 ## backup
 cp ${filename}.tex ${filename}.old
