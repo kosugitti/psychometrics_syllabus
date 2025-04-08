@@ -1,6 +1,6 @@
 \documentclass{ltjsbook}
 \usepackage{docmute} 
-\usepackage{../myStyle} 
+\usepackage{../../myStyle} 
 
 \begin{document}
 \chapter{電子計算機の基礎}
@@ -44,7 +44,7 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/02_PCs/computer_01.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/02_PCs/computer_01.png}
 	\caption{コンピュータのハードウェアとソフトウェアの関係}
 	\label{fig::PC_01}
 \end{figure}
@@ -218,14 +218,15 @@ dat <- read_csv("..\kiso2\sample2.csv")
 \end{table}
 
 一般的な日本語キー配列の場合，1つのキーに4つの文字・記号が割り当てられていますが，英語入力モードの場合はキーの左側，日本語入力モードはキーの右側を見ることになります。キーを押すと下の段の文字が入力されますが，シフトキーを押しながらキーを押すことで上の段の文字が入力されることになります(図\ref{JPkeyChange})。
-
-これを踏まえて，日本語キーについては\ref{jpKeyAssign}，USキーについては図\ref{usKeyAssign}に代表的な記号とキー配列の位置を示しました。入力に困った場合は一度図を見て確認してください\footnote{USキー配列はキートップに一種類の文字しかなく，美しい配置なのでおすすめです。}。
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=4cm]{figures/02_PCs/JapaneseKeyChange.png}
 	\caption{日本語キーで入力する場合}
 	\label{JPkeyChange}
 \end{figure}
+
+これを踏まえて，日本語キーについては\ref{jpKeyAssign}，USキーについては図\ref{usKeyAssign}に代表的な記号とキー配列の位置を示しました。入力に困った場合は一度図を見て確認してください\footnote{USキー配列はキートップに一種類の文字しかなく，美しい配置なのでおすすめです。}。
+
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/02_PCs/JPkeyAssign.png}
@@ -245,9 +246,10 @@ dat <- read_csv("..\kiso2\sample2.csv")
 ショートカットキーとは，特定の操作を行うためのキーの組み合わせのことを指します。たとえば，\verb|Ctrl|キーと\verb|C|キーを同時に押すことで，選択したテキストをコピーすることができます。このように，ショートカットキーを使うことで，マウスを使わずに素早く操作を行うことができます。
 
 これらのショートカットキーを使うことで，マウスを使わずに素早く操作を行うことができます。特にプログラミングをする場合は，キーボードを使うことが多くなりますので，ショートカットキーを覚えておくと便利です。
-\begin{table}[ht]
+\begin{table}[h]
 	\centering
-	\begin{tabular}{|c|c|c|}
+	\caption{よく使うショートカットキー}
+	\begin{tabular}{c|c|c}
 		\hline
 		\textbf{操作} & \textbf{Windows} & \textbf{Mac} \\
 		\hline
@@ -260,7 +262,6 @@ dat <- read_csv("..\kiso2\sample2.csv")
 		取り消し & Ctrl + Z & Command + Z \\
 		\hline
 	\end{tabular}
-	\caption{よく使うショートカットキー}
 	\label{tab:shortcuts}
 \end{table}
 

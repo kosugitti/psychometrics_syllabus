@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 3.0.6}
+\lhead{version 3.0.7}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{figures/cover1.pdf}
@@ -56,10 +56,8 @@
 
 % 行番号終了
 \appendix
-% \input{../../common_contents/Computer}
 \input{../common_contents/FAQ} % FAQ page
-% \input{../common_contents/Greeks}
-% \input{../common_contents/keyboards}
+\input{../common_contents/Greeks}
 
 \nolinenumbers
 
