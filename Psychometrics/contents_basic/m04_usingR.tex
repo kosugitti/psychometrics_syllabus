@@ -17,14 +17,14 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/04_usingR/Screen8.png}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{images/04_usingR/Screen8.png}
 	\caption{R Markdownからの最終出力を選択する}
 	\label{fig::05_08}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/04_usingR/Screen9.png}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{images/04_usingR/Screen9.png}
 	\caption{R Markdownからの最終出力を選択する}
 	\label{fig::05_09}
 \end{figure}
@@ -38,7 +38,7 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/04_usingR/Screen10.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/04_usingR/Screen10.png}
 	\caption{R MarkdownファイルとKnitされたものの比較}
 	\label{fig::05_10}
 \end{figure}
@@ -90,14 +90,14 @@ output: html_document
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.75\linewidth]{../images/04_usingR/Screen11.png}
+	\includegraphics[keepaspectratio,width=0.75\linewidth]{images/04_usingR/Screen11.png}
 	\caption{Rチャンクを挿入するボタン}
 	\label{fig::05_11}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.75\linewidth]{../images/04_usingR/Screen12.png}
+	\includegraphics[keepaspectratio,width=0.75\linewidth]{images/04_usingR/Screen12.png}
 	\caption{チャンクの設定や実行}
 	\label{fig::05_12}
 \end{figure}
@@ -305,7 +305,7 @@ dat %>% filter(position == "捕手" | position == "内野手" |
 ここまで列選択\texttt{select}と行選択\texttt{filter}について説明しました。両者の違いをイメージで理解しておいてください(図\ref{fig::11_02})。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/04_usingR/Slide11_01.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/04_usingR/Slide11_01.png}
 	\caption{\texttt{filter}(左)と\texttt{select}(右)の違い}
 	\label{fig::11_02}
 \end{figure}
@@ -379,7 +379,7 @@ g3
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=\linewidth]{../images/04_usingR/Rplot05_01.png}
+	\includegraphics[keepaspectratio,width=\linewidth]{images/04_usingR/Rplot05_01.png}
 	\caption{ggplotによる描画。左上は\texttt{code:\ref{code:05_10}}，右上は\texttt{code:\ref{code:05_11}}，
 		左下は\texttt{code:\ref{code:05_12}}，右下は\texttt{code:\ref{code:05_13}}の結果}
 	\label{fig::05_15}
@@ -463,7 +463,7 @@ g2 + geom_boxplot()
 \paragraph{図を書いてみる2}\verb|dat|オブジェクトを使って図\ref{fig::05_16}と同じ図を書いてください。データは2020年度のものだけ使っています。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=\linewidth]{../images/04_usingR/Rplot05_02.png}
+	\includegraphics[keepaspectratio,width=\linewidth]{images/04_usingR/Rplot05_02.png}
 	\caption{課題の図}
 	\label{fig::05_16}
 \end{figure}
@@ -480,7 +480,7 @@ g2 + geom_boxplot()
 
 例えば図\ref{fig::05_13}は，悪いデータファイル作成の例です。これをまずはじっくり眺めて，どこがまずいのか考えてみてください。少なくとも7つの点で問題があります。
 \begin{center}
-	\includegraphics[keepaspectratio,width=\linewidth]{../images/04_usingR/Screen13.png}
+	\includegraphics[keepaspectratio,width=\linewidth]{images/04_usingR/Screen13.png}
 	\captionof{figure}{分析に不向きなデータファイル}
 	\label{fig::05_13}
 \end{center}
@@ -502,7 +502,7 @@ g2 + geom_boxplot()
 
 今回の問題点を修正したのが図\ref{fig::05_14}のようなデータセットです。単一のデータセットで完結しています。また1つの列に一種類の変数，不要な情報はなく，過剰な情報もないデータセットになっているのがわかるかと思います。なお，変数3のところに\texttt{NA}とあるのは\texttt{No Answer}の略で\keyterm{欠測値}{けっそんち}{missing value}を意味しています。これは読み込む時に，欠測値をどのような文字にしているか，という指定ができますので問題になりません。
 \begin{center}
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/04_usingR/Screen14.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/04_usingR/Screen14.png}
 	\captionof{figure}{分析に適したデータファイル}
 	\label{fig::05_14}
 \end{center}

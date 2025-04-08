@@ -30,7 +30,7 @@
 ここで$\theta=0.7$，のようにパラメータがわかっている状況は普通とは逆なのですから，パラメータがわからない未知のまま($\theta$の記号のまま)考えを進めたいと思います。もしコインが表，表と2回続けて表が出るとすると，その確率は$\theta \times \theta = \theta^2$です。3回続けて出たら$\theta^3$，表，表，裏，裏，表なら$\theta^3\times (1-\theta)^2$，と文字を使って表現できます。ここで$\theta$は0から1の間を取る数字ですから，横軸に$\theta$をとり，，縦軸に$y=\theta^3\times (1-\theta)^2$として関数のグラフを書くことができますね。これを書いたのが図\ref{fig::23_01}です。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/24_ML/Rplot24_01.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/24_ML/Rplot24_01.png}
 	\caption{「表，表，裏，裏，表」と出たコインのパラメータの関数}
 	\label{fig::23_01}
 \end{figure}
@@ -117,7 +117,7 @@
 となり，「桁数が小さすぎて計算できない」という問題が生じなくなります。また，対数をとったグラフは図\ref{fig::24_02}のようになりますが，ピークの箇所は変わらないことが確認できます\footnote{正直わかりにくいよね，でもあってますからご容赦。}。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/24_ML/Rplot24_02.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/24_ML/Rplot24_02.png}
 	\caption{「表，表，裏，裏，表」と出たコインのパラメータの関数について対数をとったもの。縦軸は対数尤度}
 	\label{fig::24_02}
 \end{figure}
@@ -144,7 +144,7 @@
 イメージで考えてみるとわかりやすいかもですね。図\ref{fig::24_03}に$N(160,10)$から3つのデータ点165，173，182が出てきたシーンを図示しました。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/23_likelihood/Rplot_ml1.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/23_likelihood/Rplot_ml1.png}
 	\caption{$N(160,10)$から$165,173,182$というデータが出てくる}
 	\label{fig::24_03}
 \end{figure}
@@ -152,7 +152,7 @@
 これと同様の計算は，さまざまな$\mu$について実行することができます。試しに$\mu=150$の時の図と，$\mu=180$の時の図を書いたものを図\ref{fig::24_03b}に示します。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/23_likelihood/Rplot_ml2.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/23_likelihood/Rplot_ml2.png}
 	\caption{上の図は$N(150,10)$，下の図は$N(180,10)$の例}
 	\label{fig::24_03b}
 \end{figure}
@@ -185,7 +185,7 @@
 もちろん$\mu$は他にもあり得ますから，横軸を$\mu$にした関数とみて，そのグラフを描いてみましょう(図\ref{fig::24_03c})。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/23_likelihood/Rplot_ml3.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/23_likelihood/Rplot_ml3.png}
 	\caption{さまざまな$\mu$における尤度(上図)と対数尤度(下図)}
 	\label{fig::24_03c}
 \end{figure}
@@ -198,7 +198,7 @@
 % 最尤推定の結果は，標本平均と標本標準偏差の値と一致します\footnote{不偏分散の平方根($N-1$で割った方)じゃないのか，と思われるかもしれませんが，最尤推定による母SDの推定値は標本SDに一致します。}。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/24_ML/Rplot24_04.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/24_ML/Rplot24_04.png}
 	\caption{平均と標準偏差による2変数関数としての正規分布の対数尤度}
 	\label{fig::24_05}
 \end{figure}

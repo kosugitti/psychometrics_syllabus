@@ -60,7 +60,7 @@
 離散的な確率変数の例をさらにみていきましょう。サイコロを例にとります。サイコロの出目は離散的ですからね。サイコロを100回投げてその出目を記録し，グラフにしたのが図\ref{fig::07_05}です。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/07_probability/slide07_05.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/07_probability/slide07_05.png}
 	\caption{サイコロの確率分布}
 	\label{fig::07_05}
 \end{figure}
@@ -72,14 +72,14 @@
 次に連続変数の場合を考えてみましょう。先ほどと同じく，今度は1000人の身長を測定したデータを例にします。身長は連続量だと考えることができます。図\ref{fig::07_06}にそのヒストグラムを書いてみました。このヒストグラムは1階級が5cm幅で，各階級に何人いるかの数字も同時に書いています。このように階級ごとに区切ったものは，先のサイコロの例と同じように相対頻度にできますから，たとえば160-165cmの階級の確率質量は0.165，という言い方をしてもいいかもしれません。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/07_probability/Rplot07_01.png}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{images/07_probability/Rplot07_01.png}
 	\caption{身長の確率分布。bin幅は5cm}
 	\label{fig::07_06}
 \end{figure}
 しかし「5cmで区切る」ということに深い意味はなく，これが別に2.5cmでも1cmでもいいわけです。たとえば同じデータを2.5cm間隔で区切りで書き直したのが図\ref{fig::07_07}になります。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/07_probability/Rplot07_02.png}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{images/07_probability/Rplot07_02.png}
 	\caption{身長の確率分布。bin幅は2.5cm}
 	\label{fig::07_07}
 \end{figure}
@@ -201,7 +201,7 @@ $n$回中$k$回成功する\footnote{表が出る，でもいいのですが0/1�
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/07_probability/Rplot07_04.png}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{images/07_probability/Rplot07_04.png}
 	\caption{二項分布の例。最上段は$n=5,\theta=0.2$,中段は$n=10,\theta=0.5$,下段は$n=30,\theta=0.8$}
 	\label{fig::07_08}
 \end{figure}
@@ -223,7 +223,7 @@ $n$回中$k$回成功する\footnote{表が出る，でもいいのですが0/1�
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/07_probability/Slide08_01.png}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{images/07_probability/Slide08_01.png}
 	\caption{色々な大きさの誤差が重なり合う。時には同じ大きさで相殺し合うことも。}
 	\label{fig::08_01}
 \end{figure}
@@ -233,7 +233,7 @@ $n$回中$k$回成功する\footnote{表が出る，でもいいのですが0/1�
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/07_probability/Slide08_02.png}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{images/07_probability/Slide08_02.png}
 	\caption{積み重ねて考えるので順番を入れ替えても良い}
 	\label{fig::08_02}
 \end{figure}
@@ -251,7 +251,7 @@ $n$回中$k$回成功する\footnote{表が出る，でもいいのですが0/1�
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,height=0.5\linewidth]{../images/07_probability/GaltonBoard.png}
+	\includegraphics[keepaspectratio,height=0.5\linewidth]{images/07_probability/GaltonBoard.png}
 	\caption{二項分布と正規分布の関係を表すゴルトンボード。図はWikipediaの「ゴルトンボード」の項より。}
 	\label{fig::08_03}
 \end{figure}
@@ -271,7 +271,7 @@ $n$回中$k$回成功する\footnote{表が出る，でもいいのですが0/1�
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/07_probability/Slide08_03.png}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{images/07_probability/Slide08_03.png}
 	\caption{正規分布で重要なのは位置と幅}
 	\label{fig::08_04}
 \end{figure}
@@ -284,7 +284,7 @@ $n$回中$k$回成功する\footnote{表が出る，でもいいのですが0/1�
 正規分布カーブのように飛ぶ時は，二箇所で操縦桿が水平になるシーンが出てくるはず。そこを結ぶとカーブの幅が定義できます。この幅の長さが標準偏差2つ分に該当します。平均を挟んで，左右に標準偏差1つ分ずつでてくるわけですね\footnote{数学的には，この点は変曲点と呼ばれます。関数を微分すると変化量がわかります。距離(と時間)から速度がわかるようなものですね。変化量をさらに微分すると加速度がわかります。この加速度に対応するのが操縦桿の位置です。この加速度がゼロになるところは，関数を2階微分したものがゼロになる点として算出できます。}。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.85\linewidth]{../images/07_probability/Slide08_04b.png}
+	\includegraphics[keepaspectratio,width=0.85\linewidth]{images/07_probability/Slide08_04b.png}
 	\caption{正規分布の幅を測る位置。\textcite{Naganuma2201611}を参考に作図しました。}
 	\label{fig::08_05}
 \end{figure}
@@ -305,7 +305,7 @@ $n$回中$k$回成功する\footnote{表が出る，でもいいのですが0/1�
 最もなだらかなラインは$\mu=1,\sigma=3$にして描きました。ほとんど横ばいのような形ではありますが，これでも左右対称で山形の正規分布の一種です。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/07_probability/Rplot08_01.png}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{images/07_probability/Rplot08_01.png}
 	\caption{さまざまな幅・位置の正規分布}
 	\label{fig::08_06}
 \end{figure}
@@ -349,7 +349,7 @@ Rは基本的な確率分布関数を最初から持っており，これを呼�
 図\ref{fig::08_10}に\texttt{dXXX，pXXX，qXXX}が何を表すかを図示しました。確率密度$d$は関数の高さを意味します。累積確率$p$は下限から指定した確率点(x座標，$q$で表す)までの面積を意味します。また，下限からの面積が$p$になる時のx軸上の座標$q$を求めることもできます。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/07_probability/Slide07_06.png}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{images/07_probability/Slide07_06.png}
 	\caption{\texttt{dXXX，pXXX，qXXX}の示すところを確認しよう}
 	\label{fig::08_10}
 \end{figure}
@@ -475,7 +475,7 @@ Rは基本的な確率分布関数を最初から持っており，これを呼�
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=\linewidth]{../images/07_probability/Slide08_05.png}
+	\includegraphics[keepaspectratio,width=\linewidth]{images/07_probability/Slide08_05.png}
 	\caption{正規分布の確率密度関数導出の経緯}
 	\label{fig::08_07}
 \end{figure}
@@ -497,7 +497,7 @@ Rは基本的な確率分布関数を最初から持っており，これを呼�
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{../images/07_probability/Rplot08_04.png}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{images/07_probability/Rplot08_04.png}
 	\caption{数表の見方。上の段が$P(0\le Z \le z)$，下の段は$P(Z\ge z)$ のイメージ図}
 	\label{fig::08_09}
 \end{figure}

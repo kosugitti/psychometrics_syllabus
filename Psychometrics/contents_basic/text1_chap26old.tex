@@ -35,11 +35,11 @@
 \[ Y_i =  \beta_0 + \beta_1 X_i+ e_i \]
 ということになります。ここで$ \beta_0 + \beta_1 X_i$のところは確率的に変わるものではなく，定数であることに注意します。
 \begin{center}
-	\includegraphics[keepaspectratio,width=0.5\linewidth]{../images/text26/eq26_01.png}
+	\includegraphics[keepaspectratio,width=0.5\linewidth]{images/text26/eq26_01.png}
 \end{center}
 誤差$e_i$は平均0を中心に確率的に散らばりますが，その前のところは確率的ではありませんので，これを組み合わせた式全体としては，最後に確率的な散らばりがひっついているような形になります。
 \begin{center}
-	\includegraphics[keepaspectratio,width=5cm]{../images/text26/eq26_02.png}
+	\includegraphics[keepaspectratio,width=5cm]{images/text26/eq26_02.png}
 \end{center}
 
 さて，この「確率的でないところ」が確率分布の中に入り込むとしたら，誤差$e_i$の平均値を$\beta_0 + \beta_1 X_i$だけズラすような作用をすることになります。すなわちデータ全体で，
@@ -67,7 +67,7 @@
 ベイズ推定の場合も，尤度は基本的に同じです。違うのはわからないものを確率で表現する，というところにあります。この時の未知数はと言えば，$\beta_0, \beta_1, \sigma$の3つですから，これに対して何らかの事前分布(無情報か弱情報か，あるいは先行研究に基づくものでも)を仮定してやると，事後分布が計算できるということになります。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/text26/slide26_05.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/text26/slide26_05.png}
 	\caption{ベイズ推定の方法}
 	\label{fig::26_05}
 \end{figure}

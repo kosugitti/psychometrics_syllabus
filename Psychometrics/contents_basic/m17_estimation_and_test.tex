@@ -19,7 +19,7 @@
 母分散の推定値として，平均の時と同じように，標本分散をあてがうというのは1つのアイデアです。ですが，残念ながらこの方法だとうまく推定できません。図\ref{fig::16_5}をみてください。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,height=0.4\linewidth]{../images/16_inference/Rplot16_04.png}
+	\includegraphics[keepaspectratio,height=0.4\linewidth]{images/16_inference/Rplot16_04.png}
 	\caption{サンプリングを繰り返し，標本分散の平均を求めると，母分散から少しずれる}
 	\label{fig::16_5}
 \end{figure}
@@ -50,7 +50,7 @@
 先ほどのシミュレーションを，不偏分散の式を使って行ったのが図\ref{fig::16_6}です。補正してある不偏分散だと，母分散に近づいているのがわかりますね。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,height=0.4\linewidth]{../images/16_inference/Rplot16_05.png}
+	\includegraphics[keepaspectratio,height=0.4\linewidth]{images/16_inference/Rplot16_05.png}
 	\caption{サンプリングを繰り返し，標本分散と不偏分散の期待値を求めたもの}
 	\label{fig::16_6}
 \end{figure}
@@ -72,7 +72,7 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,height=0.6\linewidth]{../images/17_estimation_and_test/slide17_1.png}
+	\includegraphics[keepaspectratio,height=0.6\linewidth]{images/17_estimation_and_test/slide17_1.png}
 	\caption{推測統計学の枠組みで考えることに注意。以前(セクション\ref{UsefulNormal})は上の図のように，推測するのではなくて母集団そのものの中に一個人のスコアを位置付けて，相対的な位置を考えよう，という話でした。今回は下のように，母集団が正規分布だと仮定して，そこから得られた標本のことについて考えています。個々のデータは標本の中にあります。また今回考えるのは標本統計量で，それが標本分布に従うのでした。}
 	\label{fig::17_01}
 \end{figure}
@@ -86,7 +86,7 @@
 となります。この$Z$は標準正規分布に従いますから，母平均がどのあたりにあるかを正規分布を使って推測できます(図\ref{fig::17_02})。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/17_estimation_and_test/slide17_2.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/17_estimation_and_test/slide17_2.png}
 	\caption{標本統計量の従う分布も正規分布。幅は母分散とサンプルサイズに依存します。}
 	\label{fig::17_02}
 \end{figure}
@@ -135,7 +135,7 @@
 この$t$分布，標準正規分布と違ってパラメータとして自由度$\nu$(ギリシア文字で「ニュー」と読みます。\footnote{ニューガンダムのニューです。ニューガンダムについては「逆襲のシャア」を観てください。ジークジオン。})というものを使います\footnote{正規分布のパラメータは平均$\mu$と標準偏差$\sigma$でした。$t$分布の平均は$0$で，自由度$\nu$は標準偏差に当たるような散らばりの指標だと思っていただければ結構です。}。$t$分布の形状は標準正規分布に近く，自由度が大きくなればほぼ標準正規分布と同じ形になるのがわかると思います(図\ref{fig::17_03})。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/17_estimation_and_test/Rplot17_1.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/17_estimation_and_test/Rplot17_1.png}
 	\caption{標本統計量の従う分布も正規分布。幅は母分散とサンプルサイズに依存します。}
 	\label{fig::17_03}
 \end{figure}
@@ -162,7 +162,7 @@ $\bar{X}$を移項して，
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/17_estimation_and_test/slide17_3.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/17_estimation_and_test/slide17_3.png}
 	\caption{RCTによる心理学研究のアプローチ}
 	\label{fig::17_04}
 \end{figure}
@@ -174,7 +174,7 @@ $\bar{X}$を移項して，
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,height=0.6\linewidth]{../images/17_estimation_and_test/slide17_4.png}
+	\includegraphics[keepaspectratio,height=0.6\linewidth]{images/17_estimation_and_test/slide17_4.png}
 	\caption{RCTと推測統計を合わせて考える。標本平均に差があるのは当たり前で，問題は母平均に差があると言って良いかどうか，である。}
 	\label{fig::17_05}
 \end{figure}
@@ -183,7 +183,7 @@ $\bar{X}$を移項して，
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/17_estimation_and_test/slide17_5.png}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/17_estimation_and_test/slide17_5.png}
 	\caption{信頼区間(青い双方向矢印)と合わせて考える。左右2つの実験で，点推定値の差(緑の双方向矢印)は同じであるが，左の実験では信頼区間が広く，右の実験では信頼区間が狭い。この場合，右の実験は差があると言っても良さそうだが，左の実験は差があるとは言いにくい。}
 	\label{fig::17_06}
 \end{figure}
