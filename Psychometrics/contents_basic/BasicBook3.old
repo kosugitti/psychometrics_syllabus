@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 3.0.10}
+\lhead{version 3.0.11}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{figures/cover1v3.pdf}
@@ -22,10 +22,10 @@
 \linenumbers
 % 各章
 \part{心理学データ解析基礎1A(心理学統計法)}
-\include{b01_introduction}
-\include{b02_PCs}
-% \include{m03_introR}
-% \include{m04_usingR}
+\include{cb01_introduction}
+\include{cb02_PCs}
+\include{cb03_introR}
+\include{cb04_Number_and_Data}
 % \include{m05_descriptives}
 % \include{m06_ctt}
 % \include{m07_probability}
