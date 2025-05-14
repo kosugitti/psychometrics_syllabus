@@ -153,7 +153,7 @@
 さて，最後に統計ソフトRでは数値や尺度水準をどのように扱えるのかをみてみましょう。
 サンプルデータとして\verb|BaseballDecade.csv|というデータセットを使います\footnote{このデータセットはこの資料を提供しているサイト，\url{https://kosugitti.github.io/psychometrics_syllabus/}からダウンロードできます。}。サンプルデータをこの授業のプロジェクトフォルダに保存し，次のコードで読み込んでみましょう。
 
-\begin{lstlisting}[language=c++,label={code:4_01},caption={データの読み込みから記述統計量の計算まで}]
+\begin{lstlisting}[language=c++,label={code:4_01},caption={データの読み込み}]
 rm(list = ls())
 dat <- read.csv("BaseballDecade.csv",na.strings = "NA")
 str(dat)

@@ -1,6 +1,20 @@
 rm(list = ls())
-set.seed(123) # 再現性のために乱数シードを固定
+dat <- read.csv("BaseballDecade.csv", na.strings = "NA")
+str(dat)
 
+
+dat$bloodType <- factor(dat$bloodType)
+str(dat$bloodType)
+levels(dat$bloodType)
+
+dat$Year <- factor(dat$Year, ordered = TRUE)
+str(dat$Year)
+levels(dat$Year)
+
+# 仮想データ -------------------------------------------------------------------
+
+
+set.seed(123) # 再現性のために乱数シードを固定
 # 仮想データを作成
 participants <- data.frame(
   id = 1:20, # 参加者ID（名義尺度）
