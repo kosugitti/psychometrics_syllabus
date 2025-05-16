@@ -22,6 +22,8 @@ hist(dat$height, main = "身長のヒストグラム", xlab = "身長(cm)")
 par(mfrow = c(1, 1))
 boxplot(dat$weight)
 
+dat$position <- as.factor(dat$position)
+table(dat$position)
 
 library(tidyverse)
 dat <- read_csv("BaseballDecade.csv", na = "NA")
