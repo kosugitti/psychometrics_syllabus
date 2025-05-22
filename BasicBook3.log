@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.5.18)  22 MAY 2025 12:39
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.5.18)  22 MAY 2025 12:45
  restricted system commands enabled.
 **tmp
 (./tmp.tex
@@ -1685,11 +1685,11 @@ Package biblatex Info: Automatic encoding selection.
 
 \openout3 = tmp.bcf
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'tmp.bbl' not found.
-
-No file tmp.bbl.
+Package biblatex Info: ... file 'tmp.bbl' found.
+ (./tmp.bbl)
 Package biblatex Info: Reference section=0 on input line 6.
 Package biblatex Info: Reference segment=0 on input line 6.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
 *geometry* verbose mode - [ preamble ] result:
@@ -1827,12 +1827,12 @@ Package hyperref Info: Link coloring ON on input line 6.
 
 \openout8 = tmp.out
 \docmute@nestinglevel=\count584
-<figures/cover1v3.pdf, id=211, 1061.33296pt x 1693.61642pt>
+<figures/cover1v3.pdf, id=212, 1061.33296pt x 1693.61642pt>
 File: figures/cover1v3.pdf Graphic file (type pdf)
 <use figures/cover1v3.pdf>
 Package luatex.def Info: figures/cover1v3.pdf  used on input line 7.
 (luatex.def)             Requested size: 1061.33038pt x 1693.6123pt.
-<figures/cover1v3.pdf, id=213, page=1, 1061.33296pt x 1693.61642pt>
+<figures/cover1v3.pdf, id=214, page=1, 1061.33296pt x 1693.61642pt>
 File: figures/cover1v3.pdf Graphic file (type pdf)
 <use figures/cover1v3.pdf, page 1>
 Package luatex.def Info: figures/cover1v3.pdf , page1 used on input line 7.
@@ -1984,63 +1984,35 @@ LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
  (./cb01_introduction.tex
 第1章
 
-LaTeX Warning: Citation 'Michimata200903' on page 7 undefined on input line 25.
-
-
 
 [7
 
 
-]
-
-LaTeX Warning: Citation 'Shimoyama2001' on page 8 undefined on input line 45.
-
-(load cache: extra_lmroman9-regular.luc)
+](load cache: extra_lmroman9-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 8.32242pt on input line 49.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 8.32242pt on input line 49.
-
-LaTeX Warning: Citation 'Shimoyama2001' on page 8 undefined on input line 49.
-
-(load cache: extra_lmroman9-bold.luc)
-LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 8.32242pt on input line 49.
-LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 8.32242pt on input line 49.
-
-LaTeX Warning: Citation 'Shimoyama2001' on page 8 undefined on input line 49.
-
 
 
 [8]
 
 [9]
 
-LaTeX Warning: Citation 'IkeuchiR2014' on page 10 undefined on input line 84.
-
-(load cache: extra_lmroman8-bold.luc)
-LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 7.3977pt on input line 84.
-LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 7.3977pt on input line 84.
-
-LaTeX Warning: Citation 'Hebizo2016' on page 10 undefined on input line 84.
-
-
-LaTeX Warning: Citation 'Descartes' on page 10 undefined on input line 89.
-
-
-
 [10]
-<figures/01_introduction/psychology_base.png, id=379, 550.055pt x 152.57pt>
+<figures/01_introduction/psychology_base.png, id=378, 550.055pt x 152.57pt>
 File: figures/01_introduction/psychology_base.png Graphic file (type png)
 <use figures/01_introduction/psychology_base.png>
 Package luatex.def Info: figures/01_introduction/psychology_base.png  used on input line 115.
 (luatex.def)             Requested size: 271.86234pt x 75.40947pt.
 
 
-[11<./figures/01_introduction/psychology_base.png>]
+[11<./figures/01_introduction/psychology_base.png>](load cache: extra_lmroman8-bold.luc)
+LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
+(Font)              scaled to size 7.3977pt on input line 135.
+LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
+(Font)              scaled to size 7.3977pt on input line 135.
+
 
 LaTeX Warning: Reference `m06_ctt' on page 12 undefined on input line 135.
 
@@ -2059,15 +2031,7 @@ LaTeX Warning: Reference `m06_ctt' on page 12 undefined on input line 135.
 
 ]
 
-LaTeX Warning: Citation 'UserIlluision2002' on page 14 undefined on input line 34.
-
-
-
 [14]
-
-LaTeX Warning: Citation 'Isaacson2012' on page 15 undefined on input line 39.
-
-
 
 [15]
 <figures/02_PCs/computer_01.png, id=434, 1177.39874pt x 559.08875pt>
@@ -2167,9 +2131,6 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 ]
 第3章
 
-LaTeX Warning: Citation 'HAD' on page 29 undefined on input line 13.
-
-
 
 [29]
 
@@ -2249,10 +2210,6 @@ Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 
-LaTeX Warning: Citation 'tidyverse' on page 39 undefined on input line 239.
-
-
-
 [39]
 File: figures/03_useR/screen6.png Graphic file (type png)
 <use figures/03_useR/screen6.png>
@@ -2299,10 +2256,6 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 [44]
 
 [45]
-
-LaTeX Warning: Citation 'Ikeda2016' on page 46 undefined on input line 431.
-
-
 
 [46])
 
@@ -2354,19 +2307,9 @@ Package luatex.def Info: figures/02_Numbers/constructs.png  used on input line 5
 (luatex.def)             Requested size: 292.77629pt x 188.98483pt.
 
 
-LaTeX Warning: Citation 'Suenaga1987' on page 52 undefined on input line 57.
-
-
-LaTeX Warning: Citation 'Suenaga1987' on page 52 undefined on input line 57.
-
-
-
 [52<./figures/02_Numbers/constructs.png>]
 
 [53]
-
-LaTeX Warning: Citation 'stevens1946' on page 54 undefined on input line 93.
-
 
 LaTeX Warning: Reference `chap3sec2' on page 54 undefined on input line 104.
 
@@ -2384,16 +2327,6 @@ Package luatex.def Info: figures/02_Numbers/slide03_05.png  used on input line 1
 
 
 [55<./figures/02_Numbers/slide03_05.png>]
-
-LaTeX Warning: Citation 'stevens1946' on page 56 undefined on input line 130.
-
-
-LaTeX Warning: Citation 'stevens1946' on page 56 undefined on input line 130.
-
-
-LaTeX Warning: Citation 'Yoshino2007' on page 56 undefined on input line 130.
-
-
 
 [56]
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
@@ -2472,10 +2405,6 @@ File: figures/05_descriptives/slide04_06.png Graphic file (type png)
 <use figures/05_descriptives/slide04_06.png>
 Package luatex.def Info: figures/05_descriptives/slide04_06.png  used on input line 201.
 (luatex.def)             Requested size: 334.60422pt x 122.47798pt.
-
-
-LaTeX Warning: Citation 'TDE2022' on page 68 undefined on input line 207.
-
 
 
 [68<./figures/05_descriptives/slide04_06.png>]
@@ -2565,20 +2494,9 @@ Package luatex.def Info: figures/04_usingR/Screen14.png  used on input line 436.
 
 [75]
 
-LaTeX Warning: Citation 'soumu' on page 76 undefined on input line 445.
-
-
-
 [76<./figures/04_usingR/Screen14.png>]
 
 [77]
-
-LaTeX Warning: Citation 'Hadley2014' on page 78 undefined on input line 506.
-
-
-LaTeX Warning: Citation 'Kinosady2021' on page 78 undefined on input line 523.
-
-
 
 [78]
 Overfull \hbox (66.80504pt too wide) in paragraph at lines 538--538
@@ -2673,11 +2591,7 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
-Removing  `ltj.listings_unicode' from `process_input_buffer'.
-
-LaTeX Warning: Citation 'Kinosady2021' on page 85 undefined on input line 745.
-
-)
+Removing  `ltj.listings_unicode' from `process_input_buffer'.)
 
 [85]
 \openout2 = ch06_Corr.aux
@@ -2708,7 +2622,7 @@ Package luatex.def Info: figures/06_Corr/scatter_plot.png  used on input line 87
 <figures/06_Corr/slide04_08.png, id=1446, 631.35875pt x 561.09625pt>
 File: figures/06_Corr/slide04_08.png Graphic file (type png)
 <use figures/06_Corr/slide04_08.png>
-Package luatex.def Info: figures/06_Corr/slide04_08.png  used on input line 164.
+Package luatex.def Info: figures/06_Corr/slide04_08.png  used on input line 162.
 (luatex.def)             Requested size: 334.60422pt x 297.37103pt.
 
 
@@ -2718,7 +2632,7 @@ Package luatex.def Info: figures/06_Corr/slide04_08.png  used on input line 164.
 <figures/05_descriptives/Rplot04_03.png, id=1461, 7227.0pt x 7227.0pt>
 File: figures/05_descriptives/Rplot04_03.png Graphic file (type png)
 <use figures/05_descriptives/Rplot04_03.png>
-Package luatex.def Info: figures/05_descriptives/Rplot04_03.png  used on input line 194.
+Package luatex.def Info: figures/05_descriptives/Rplot04_03.png  used on input line 192.
 (luatex.def)             Requested size: 271.86234pt x 271.82787pt.
 
 
@@ -2746,7 +2660,7 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 <figures/06_Corr/Scatter_base.png, id=1512, 865.73438pt x 590.95781pt>
 File: figures/06_Corr/Scatter_base.png Graphic file (type png)
 <use figures/06_Corr/Scatter_base.png>
-Package luatex.def Info: figures/06_Corr/Scatter_base.png  used on input line 307.
+Package luatex.def Info: figures/06_Corr/Scatter_base.png  used on input line 305.
 (luatex.def)             Requested size: 334.60422pt x 228.39864pt.
 Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
@@ -2755,7 +2669,7 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'.
 <figures/06_Corr/Scatter_ggplot2.png, id=1514, 865.73438pt x 590.95781pt>
 File: figures/06_Corr/Scatter_ggplot2.png Graphic file (type png)
 <use figures/06_Corr/Scatter_ggplot2.png>
-Package luatex.def Info: figures/06_Corr/Scatter_ggplot2.png  used on input line 335.
+Package luatex.def Info: figures/06_Corr/Scatter_ggplot2.png  used on input line 333.
 (luatex.def)             Requested size: 334.60422pt x 228.39864pt.
 
 
@@ -2790,13 +2704,10 @@ Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
 
 [100]
-
-LaTeX Warning: Citation 'matejka2017same' on page 101 undefined on input line 480.
-
 <figures/06_Corr/datasaurs.png, id=1608, 867.24pt x 289.08pt>
 File: figures/06_Corr/datasaurs.png Graphic file (type png)
 <use figures/06_Corr/datasaurs.png>
-Package luatex.def Info: figures/06_Corr/datasaurs.png  used on input line 497.
+Package luatex.def Info: figures/06_Corr/datasaurs.png  used on input line 495.
 (luatex.def)             Requested size: 334.60422pt x 111.53653pt.
 
 
@@ -2804,12 +2715,12 @@ Package luatex.def Info: figures/06_Corr/datasaurs.png  used on input line 497.
 <figures/05_descriptives/Rplot04_04.png, id=1619, 7227.0pt x 7227.0pt>
 File: figures/05_descriptives/Rplot04_04.png Graphic file (type png)
 <use figures/05_descriptives/Rplot04_04.png>
-Package luatex.def Info: figures/05_descriptives/Rplot04_04.png  used on input line 511.
+Package luatex.def Info: figures/05_descriptives/Rplot04_04.png  used on input line 509.
 (luatex.def)             Requested size: 271.86234pt x 271.82787pt.
 <figures/05_descriptives/Rplot04_05.png, id=1621, 7227.0pt x 7227.0pt>
 File: figures/05_descriptives/Rplot04_05.png Graphic file (type png)
 <use figures/05_descriptives/Rplot04_05.png>
-Package luatex.def Info: figures/05_descriptives/Rplot04_05.png  used on input line 520.
+Package luatex.def Info: figures/05_descriptives/Rplot04_05.png  used on input line 518.
 (luatex.def)             Requested size: 271.86234pt x 271.82787pt.
 
 
@@ -2817,12 +2728,12 @@ Package luatex.def Info: figures/05_descriptives/Rplot04_05.png  used on input l
 <figures/05_descriptives/Rplot04_06.png, id=1634, 7227.0pt x 7227.0pt>
 File: figures/05_descriptives/Rplot04_06.png Graphic file (type png)
 <use figures/05_descriptives/Rplot04_06.png>
-Package luatex.def Info: figures/05_descriptives/Rplot04_06.png  used on input line 533.
+Package luatex.def Info: figures/05_descriptives/Rplot04_06.png  used on input line 531.
 (luatex.def)             Requested size: 167.28717pt x 167.2989pt.
 <figures/05_descriptives/Rplot04_07.png, id=1636, 7227.0pt x 3613.5pt>
 File: figures/05_descriptives/Rplot04_07.png Graphic file (type png)
 <use figures/05_descriptives/Rplot04_07.png>
-Package luatex.def Info: figures/05_descriptives/Rplot04_07.png  used on input line 544.
+Package luatex.def Info: figures/05_descriptives/Rplot04_07.png  used on input line 542.
 (luatex.def)             Requested size: 334.57434pt x 167.2989pt.
 
 
@@ -2922,11 +2833,15 @@ LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/it' will be
 付録B
 )
 
-LaTeX Warning: Empty bibliography on input line 66.
-
-(./tmp.ind
-
 [121]
+
+[122
+
+]
+
+[123] (./tmp.ind
+
+[124]
 LaTeX Font Info:    Font shape `JT3/gt/b/n' in size <8> not available
 (Font)              Font shape `JT3/gt/m/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
@@ -2948,7 +2863,7 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 
 
 
-[122
+[125
 
 
 ]) (./tmp.aux (./cb01_introduction.aux) (./cb02_PCs.aux) (./cb03_introR.aux) (./cb04_Number_and_Data.aux) (./ch05_descriptives.aux) (./ch06_Corr.aux))
@@ -2969,32 +2884,27 @@ Package rerunfilecheck Warning: File `tmp.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `tmp.out':
-(rerunfilecheck)             Before: 85C91C736004521AFA7477B76C744C27;7527
-(rerunfilecheck)             After:  A3D2DA999B839C7A184391B32AF20716;7592.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                tmp
-(biblatex)                and rerun LaTeX afterwards.
-
+(rerunfilecheck)             Before: 1EF109F337BE97941AE64D79B9FAD4C0;7530
+(rerunfilecheck)             After:  7CE4AE5D7D4EDBF9A28BFC0606C6D3BB;7598.
 Package logreq Info: Writing requests to 'tmp.run.xml'.
 
 \openout1 = tmp.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 50708 strings out of 471907
- 382250,2373549 words of node,token memory allocated
- 32619 words of node memory still in use:
-   11 hlist, 2 vlist, 5 rule, 152 glue, 4 kern, 1 glyph, 14118 attribute, 78 glue_spec, 1294 attribute_list, 4 write, 14 user_defined, 3 pdf_action nodes
-   avail lists: 1:29,2:90487,3:1900,4:6725,5:858,6:229,7:9900,8:78,9:6073,10:55,11:78
- 75061 multiletter control sequences out of 65536+600000
- 144 fonts using 106923159 bytes
- 119i,18n,126p,4268b,1883s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-italic.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono12-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman9-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></Library/Fonts/BIZ-UDGothicB.ttc></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans8-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans17-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></Library/Fonts/BIZ-UDMinchoM.ttc></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on tmp.pdf (124 pages, 17965945 bytes).
+ 50870 strings out of 471907
+ 382245,2373549 words of node,token memory allocated
+ 32487 words of node memory still in use:
+   11 hlist, 2 vlist, 5 rule, 152 glue, 4 kern, 1 glyph, 14052 attribute, 78 glue_spec, 1288 attribute_list, 4 write, 14 user_defined, 5 pdf_action nodes
+   avail lists: 1:27,2:90482,3:1900,4:6725,5:859,6:229,7:10025,8:78,9:6073,10:55,11:168
+ 75196 multiletter control sequences out of 65536+600000
+ 142 fonts using 104581319 bytes
+ 119i,18n,126p,4268b,1978s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-italic.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono12-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></Library/Fonts/BIZ-UDGothicB.ttc></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans8-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans17-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></Library/Fonts/BIZ-UDMinchoM.ttc></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on tmp.pdf (127 pages, 17977001 bytes).
 
-PDF statistics: 2105 PDF objects out of 2487 (max. 8388607)
- 1787 compressed objects within 18 object streams
- 719 named destinations out of 1000 (max. 131072)
+PDF statistics: 2137 PDF objects out of 2487 (max. 8388607)
+ 1818 compressed objects within 19 object streams
+ 741 named destinations out of 1000 (max. 131072)
  424 words of extra memory for PDF output out of 10000 (max. 100000000)
 
