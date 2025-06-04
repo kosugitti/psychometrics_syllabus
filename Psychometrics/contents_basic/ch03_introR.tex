@@ -5,7 +5,7 @@
 \begin{document}
 \VerbatimFootnotes
 \chapter{統計環境Rの導入}
-\label{b03_useR}
+\label{03_useR}
 前回は電子計算機の概略を説明しました。
 今回は電子計算機，特にパソコンを使って実際に統計処理をしていくことにします。
 
@@ -62,7 +62,7 @@ RやRStudioの環境構築については，その方法を検索すればさま
 それでは今から，RStudioを使った統計処理の演習を始めましょう。少し不便かもしれませんが，この資料を見ながら，\textbf{必ず自分でコードを入力しながら}進めていってください。テキストと同じ結果が手元で再現できることを確認しながら進むことは，再現できることの重要性の確認になります。また，最初のうちは打ち間違えなどで思うように動かないことも頻発するでしょうが，その経験を繰り返すことで徐々に使い慣れていきます。失敗の経験はテキストの文中に書き込まれていませんから，読むだけでは身につきません。また，読み進んで気が向いたところだけ実行するときは，その前のデータや内容を参照している場合にエラーになるので，結局元に戻ってやり直すことになります。最初のうちは写経して作法を身につけることも重要なのです。最初の基礎的な訓練\footnote{キーボードの入力に慣れていない人は，ブラインドタッチの練習をすることをお勧めします。キー入力は今後も活用できる社会人の基本スキルですので，なるべく早く習得しておいた方が人生が楽しくなります。ブラインドタッチの練習には，寿司打などのサイト\url{http://typingx0.net/sushida/play.html}で遊びながら学べていいですよ。ちなみに今やってみたら，私の成績は「高級10,000円コース【普通】で、★6,700円分 お得でした！（速度：6.1key/秒、ミス：55key） 」でした。}ができていると，徐々に大きなプロジェクト\footnote{卒論は4年間の集大成になる個人プロジェクトです。}を動かすことができるようになりますので頑張って！
 
 \subsection{RStudioの機能と画面}
-最初にRStudioを起動すると，図\ref{fig::05_01}のような画面になっていると思います\footnote{こちらはMacOS11.1，RStudioは1.4.1103，Rは4.0.3の環境におけるスクリーンショットです(撮影時2021年2月2日)。2025年4月16日の段階では，MacOS15.4，RStudio 2024.12.1 Build 563 "Kousa Dogwood" Release，R version 4.4.3です。OSが違うとか，バージョンが違う，サーバ版を使っているとかで細部が異なっている可能性がありますが，ほとんど変わらないと思います。。}。ここでメニューから\verb| File > NewFile > RScript |と進むと(図\ref{fig::05_02})，画面に白いページの領域が追加されます(図\ref{fig::05_03})。
+最初にRStudioを起動すると，図\ref{fig::03_01}のような画面になっていると思います\footnote{こちらはMacOS11.1，RStudioは1.4.1103，Rは4.0.3の環境におけるスクリーンショットです(撮影時2021年2月2日)。2025年4月16日の段階では，MacOS15.4，RStudio 2024.12.1 Build 563 "Kousa Dogwood" Release，R version 4.4.3です。OSが違うとか，バージョンが違う，サーバ版を使っているとかで細部が異なっている可能性がありますが，ほとんど変わらないと思います。。}。ここでメニューから\verb| File > NewFile > RScript |と進むと(図\ref{fig::03_02})，画面に白いページの領域が追加されます(図\ref{fig::03_03})。
 
 大きくみると画面が四分割されたようになります。この4つの領域を基本として話を進めていきます\footnote{RStudio version1.4から，列を追加することができるようになりましたので，必ずしも四分割で使わなければならないというわけではありません。どこに何があるのかを把握していればOKです。ちなみに列を増やしたり配置を変えたりするのは，\verb|Tool > Global Option > Pane Layout|から可能です。}。
 
@@ -70,21 +70,21 @@ RやRStudioの環境構築については，その方法を検索すればさま
 	\centering
 	\includegraphics[keepaspectratio,width=0.75\linewidth]{figures/03_introR/Screen1.png}
 	\caption{RStudio起動初期の画面}
-	\label{fig::05_01}
+	\label{fig::03_01}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.75\linewidth]{figures/03_introR/Screen2.png}
 	\caption{新しくスクリプトファイルを開く}
-	\label{fig::05_02}
+	\label{fig::03_02}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.75\linewidth]{figures/03_introR/Screen3.png}
 	\caption{RStudioの画面}
-	\label{fig::05_03}
+	\label{fig::03_03}
 \end{figure}
 
 \paragraph{コンソール・ペイン}
@@ -110,9 +110,9 @@ RStudioはRを取り込んで使いやすくする環境を提供するもの，
 
 実際にコマンドを1つ1つ書いていくときには，書き間違えたり違う方法を試したくなったりするので，書いたり消したりしながら進むのが普通です。ですが最終的には清書したものだけを残すようにしましょう。下書きの要素もすべて記録していると，あとで何がどうなったかわからなくなります。また，何度か繰り返しているうちに「何にどのような操作をしたか」がわかっているようでわからなくなることがあります。最終的には，1つのスクリプトファイルを一行目から順に実行していけば，すべての作業が再現できるようにする，ということが重要です。途中で別のレシピを参照したり，記録されていない操作を挟むのはやめましょう。
 
-さてでは，このスクリプトペインに\texttt{code:\ref{code:05_01}}を書いてみてださい\footnote{この資料では指示がわかりやすくなるように行番号を含めて表示していますが，実際は行番号を入力する必要はありません。}。
+さてでは，このスクリプトペインに\texttt{code:\ref{code:03_01}}を書いてみてださい\footnote{この資料では指示がわかりやすくなるように行番号を含めて表示していますが，実際は行番号を入力する必要はありません。}。
 
-\begin{lstlisting}[language=c++,label={code:05_01},caption={四則演算のコード}]
+\begin{lstlisting}[language=c++,label={code:03_01},caption={四則演算のコード}]
 	# 四則演算
 	1+2
 	2-4
@@ -133,10 +133,10 @@ RStudioはRを取り込んで使いやすくする環境を提供するもの，
 	\centering
 	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/03_introR/screen4.png}
 	\caption{スクリプトを実行する}
-	\label{fig::05_04}
+	\label{fig::03_04}
 \end{figure}
 
-これらのボタンを押すと，コードがコンソールに送られて実行結果が返ってきます(図\ref{fig::05_04})。コンソールに示されているものは，この資料では次のような囲みで表現します(\texttt{Rの出力\ref{RS:out05_01}})が，さて，みなさんの環境で同じ結果が得られましだでしょうか。
+これらのボタンを押すと，コードがコンソールに送られて実行結果が返ってきます(図\ref{fig::03_04})。コンソールに示されているものは，この資料では次のような囲みで表現します(\texttt{Rの出力\ref{RS:out05_01}})が，さて，みなさんの環境で同じ結果が得られましだでしょうか。
 \begin{Rscreen}{四則演算}{out05_01}
 	\begin{verbatim}
 > # 四則演算
@@ -186,17 +186,17 @@ RStudioを使う時の基本は，プロジェクトによる管理です。分�
 	\centering
 	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/03_introR/Screen5.png}
 	\caption{プロジェクトを作る場所を選ぶ}
-	\label{fig::05_05}
+	\label{fig::03_05}
 \end{figure}
 
-図\ref{fig::05_05}には\verb|New Directory > New Project|と進んだ次のウィンドウを示しています。黒く塗りつぶしているところは私の個人的なPC環境の内容が反映されるので誤魔化しているのですが，みなさんの環境にあった場所(DocumentとかDesktopと言った場所)を選び，上の空白になっているところに新しいプロジェクト名(たとえば\text{toukei}など\footnote{半角英数のみで作るべきです。})を入力してOKとします。するとしばらくすると，画面が変わるはずです。一見同じ状態のようにも見えますが，実はところどころ違いがあります。気がつきましたか？
+図\ref{fig::03_05}には\verb|New Directory > New Project|と進んだ次のウィンドウを示しています。黒く塗りつぶしているところは私の個人的なPC環境の内容が反映されるので誤魔化しているのですが，みなさんの環境にあった場所(DocumentとかDesktopと言った場所)を選び，上の空白になっているところに新しいプロジェクト名(たとえば\text{toukei}など\footnote{半角英数のみで作るべきです。})を入力してOKとします。するとしばらくすると，画面が変わるはずです。一見同じ状態のようにも見えますが，実はところどころ違いがあります。気がつきましたか？
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/03_introR/screen6.png}
 	\caption{プロジェクトで開いている場合}
-	\label{fig::05_06}
+	\label{fig::03_06}
 \end{figure}
-図\ref{fig::05_06}にはプロジェクトを開いている時のRStudio画面を示しています。赤く丸で囲っているところが，プロジェクトを開いていない時との違いがある箇所です\footnote{MacOSの例なのでWindows版では上のバーのところなど，違いもあります。}。これをみると，コンソールペインやFileペインの場所に，今指定したフォルダの位置が示されていることがわかります\footnote{この例では\verb|C:\Users\napier\Desktop\toukei|です。napierは私のPCの名前，toukeiはプロジェクト名です。}。このプロジェクトが開いているフォルダに移動していることが重要で，このフォルダの中が今作業している場所として認識されるので，このフォルダの中にあるファイルにはファイル名だけでアクセスできるようになります。プロジェクトが違ったり，プロジェクトの起動をしていなかったりすると，作業している場所\footnote{ワーキングディレクトリといいます。詳しくは付録の\ref{setLocation}を参照。}が変わりますので，注意が必要です\footnote{実際に授業をしていて，ファイルへのアクセスエラーで相談を受ける原因第2位です。第1位はファイルエンコードの問題です。}。
+図\ref{fig::03_06}にはプロジェクトを開いている時のRStudio画面を示しています。赤く丸で囲っているところが，プロジェクトを開いていない時との違いがある箇所です\footnote{MacOSの例なのでWindows版では上のバーのところなど，違いもあります。}。これをみると，コンソールペインやFileペインの場所に，今指定したフォルダの位置が示されていることがわかります\footnote{この例では\verb|C:\Users\napier\Desktop\toukei|です。napierは私のPCの名前，toukeiはプロジェクト名です。}。このプロジェクトが開いているフォルダに移動していることが重要で，このフォルダの中が今作業している場所として認識されるので，このフォルダの中にあるファイルにはファイル名だけでアクセスできるようになります。プロジェクトが違ったり，プロジェクトの起動をしていなかったりすると，作業している場所\footnote{ワーキングディレクトリといいます。詳しくは付録の\ref{setLocation}を参照。}が変わりますので，注意が必要です\footnote{実際に授業をしていて，ファイルへのアクセスエラーで相談を受ける原因第2位です。第1位はファイルエンコードの問題です。}。
 
 \subsection{エラーはヒントです。怖がらないで}
 \label{DontBeAfraid}
@@ -225,7 +225,7 @@ RStudioを使う時の基本は，プロジェクトによる管理です。分�
 このように，関数名で命令を指定し，その対象は小かっこ\verb|()|で囲って渡すというやり方をします。$f(x)$ということですね。括弧の中に入るものは\keyterm{引数}{ひきすう}{argument}といい，今回のように目的となる数字を渡すこともありますが，そのほか関数を動かす上でのオプションを指定することもあります。また，1つの引数だけではなく，複数の数字を渡したり，複数のオプションを指定することもあります。
 
 たとえば関数がどのように動くか知りたいという時，ヘルプを開くのも関数で行います。\texttt{code:\ref{code:05_02}}を実行すると，Helpペインにその説明が出てくるので確認してみてください。
-\begin{lstlisting}[language=c++,label={code:05_02},caption={ヘルプのコード}]
+\begin{lstlisting}[language=c++,label={code:03_02},caption={ヘルプのコード}]
 	# ヘルプも関数
 	help(sqrt)
 \end{lstlisting}
@@ -246,8 +246,8 @@ Rは豊富なパッケージが利用できることがその特徴で\footnote{
 \end{figure}
 
 
-このインストールは，RStudioのパッケージペインからも実行できますが，\texttt{code:\ref{code:05_02b}}のようにコードを使って実行することも可能です。
-\begin{lstlisting}[language=c++,label={code:05_02b},caption={コードからインストールする}]
+このインストールは，RStudioのパッケージペインからも実行できますが，\texttt{code:\ref{code:03_02b}}のようにコードを使って実行することも可能です。
+\begin{lstlisting}[language=c++,label={code:03_02b},caption={コードからインストールする}]
 install.packages("tidyverse")
 \end{lstlisting}
 
@@ -270,8 +270,8 @@ install.packages("tidyverse")
 
 
 \subsection{オブジェクトの利用}
-Rで扱う変数，関数，データセットなどにはすべて，名前がついています。なまえがついた「それ」のことをオブジェクトと呼びます\footnote{適当な日本語訳がありません。objectはもの，対象という抽象的な意味なので，カタカナでオブジェクトとするしかないのです。}。\texttt{code:\ref{code:05_03}}を書いてみてください。
-\begin{lstlisting}[language=c++,label={code:05_03},caption={オブジェクトに代入}]
+Rで扱う変数，関数，データセットなどにはすべて，名前がついています。なまえがついた「それ」のことをオブジェクトと呼びます\footnote{適当な日本語訳がありません。objectはもの，対象という抽象的な意味なので，カタカナでオブジェクトとするしかないのです。}。\texttt{code:\ref{code:03_03}}を書いてみてください。
+\begin{lstlisting}[language=c++,label={code:03_03},caption={オブジェクトに代入}]
 	# オブジェクト
 	A <- 2
 	B <- 3
@@ -302,8 +302,8 @@ Rで扱う変数，関数，データセットなどにはすべて，名前が�
 
 このようにオブジェクト名だけで計算を進めることが可能です。オブジェクト名はなんでもいいのですが，\texttt{TRUE, FALSE, NA}などRが特別な意味を持たせている言葉や，\texttt{pi}などの数学的意味がある言葉は予約語といって既に使われているので，そのままの方がいいでしょう。かといって，A, B,Cといった無味乾燥な記号でもわかりにくいので，その時々に応じて任意の名前をつけてあげてください。
 
-ちなみにこの「オブジェクトに代入」は基本的に上書きされるというルールです。さきほどのコードに続いて\texttt{code:\ref{code:05_04}}を書いてみてください。
-\begin{lstlisting}[language=c++,label={code:05_04},caption={オブジェクトは上書き}]
+ちなみにこの「オブジェクトに代入」は基本的に上書きされるというルールです。さきほどのコードに続いて\texttt{code:\ref{code:03_04}}を書いてみてください。
+\begin{lstlisting}[language=c++,label={code:03_04},caption={オブジェクトは上書き}]
 A <- 4
 A + B
 \end{lstlisting}
@@ -311,18 +311,18 @@ A + B
 
 環境をクリアにするには，Environmentタブのバーにある箒のアイコンをクリックします。これでRの頭の中が空っぽになります。あるいは\texttt{rm(list=ls())}というコードを実行するとクリアされます。スクリプトの一行目にこれを書いておくことをお勧めします。
 
-また，Rは終了すると，それまでの作業を保存しますから，同じプロジェクトをもう一度開くと以前の記憶が蘇ります。これが便利なのですが実は少し厄介で，学生さんが「自分の環境ではできた」といっても私の手元で再現できない(からレポートやり直し)ということがあります。きっと記録されているスクリプトの外で，なんらかの作業がなされているのです。清書できたスクリプトは，Rの頭の中を空っぽにしてから再チェックすると良いでしょう。また，\verb|Tools > Global Option|から，Workspaceの``Restore .RData into workspace at a startup''(起動時に.RDataからワークスペースの情報を復元する)のチェックを外し，``Save workspace to .RData on exit''(終了時に.RDataにワークスペースの情報を保存する)を``never''(絶対そんなことしない)にしておくことで，いつでもクリーンな環境から始められます(図\ref{fig::05_07})。
+また，Rは終了すると，それまでの作業を保存しますから，同じプロジェクトをもう一度開くと以前の記憶が蘇ります。これが便利なのですが実は少し厄介で，学生さんが「自分の環境ではできた」といっても私の手元で再現できない(からレポートやり直し)ということがあります。きっと記録されているスクリプトの外で，なんらかの作業がなされているのです。清書できたスクリプトは，Rの頭の中を空っぽにしてから再チェックすると良いでしょう。また，\verb|Tools > Global Option|から，Workspaceの``Restore .RData into workspace at a startup''(起動時に.RDataからワークスペースの情報を復元する)のチェックを外し，``Save workspace to .RData on exit''(終了時に.RDataにワークスペースの情報を保存する)を``never''(絶対そんなことしない)にしておくことで，いつでもクリーンな環境から始められます(図\ref{fig::03_07})。
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/03_introR/screen7.png}
 	\caption{クリーンな環境をいつでも保つための設定}
-	\label{fig::05_07}
+	\label{fig::03_07}
 \end{figure}
 
 \subsubsection{オブジェクトの型1・ベクトル}
-\texttt{code:\ref{code:05_05}}を実行してみましょう。
-\begin{lstlisting}[language=c++,label={code:05_05},caption={ベクトル処理}]
+\texttt{code:\ref{code:03_05}}を実行してみましょう。
+\begin{lstlisting}[language=c++,label={code:03_05},caption={ベクトル処理}]
 	obj1 <- 1:10
 	obj1 + 2
 	obj2 <- c(2,3,4,1,2,3,4,5,6,7)
@@ -342,8 +342,8 @@ A + B
 このように，数字をセットで扱うことができるのが電卓とは違うところです。統計ではたくさんのデータを扱うわけですから，この機能は基本中の基本になります。ちなみに，数字のセットのことは数学でベクトルというのでした。今回のオブジェクトは数字をベクトルとして保管していることになります。
 
 \subsubsection{オブジェクトの型2・リスト}
-データセットは数字だけではなく，文字列などを含むことがあります。そうした対象をまとめて扱うのが\keyterm{リスト}{りすと}{list}という形式です。つづいて\texttt{code:\ref{code:05_06}}を実行してみましょう。
-\begin{lstlisting}[language=c++,label={code:05_06},caption={リスト型}]
+データセットは数字だけではなく，文字列などを含むことがあります。そうした対象をまとめて扱うのが\keyterm{リスト}{りすと}{list}という形式です。つづいて\texttt{code:\ref{code:03_06}}を実行してみましょう。
+\begin{lstlisting}[language=c++,label={code:03_06},caption={リスト型}]
 	obj3 <- list(
 		name = c("Taro", "Hanako", "Ken"),
 		gender = c("male", "female", "male"),
@@ -371,7 +371,7 @@ A + B
 ところでこれがデータセットだとすると奇妙ですね。名前や性別は3つありますが，身長は2つ，体重は1つしかデータがありません。普通こんなことはなくて，1つのケースについて複数の変数があるので，縦に個体$\times$横に変数の長方形型をしているデータセットが一般的になるはずです。リスト形式は各要素の長さに関係なく，なんでもまとめて置けるので便利なのですが，データ分析においては長方形であるという形の制約があって良いはずです。この制約を持ったリスト形式のことを\keyterm{データフレーム}{でーたふれーむ}{data.frame}型と言いいます。
 \subsubsection{オブジェクトの型3・データフレーム型}
 データフレーム型にするには，\texttt{data.frame}という関数を使います。\texttt{code:\ref{code:05_07}}を実行してください。
-\begin{lstlisting}[language=c++,label={code:05_07},caption={データフレーム型}]
+\begin{lstlisting}[language=c++,label={code:03_07},caption={データフレーム型}]
 	df <- data.frame(
 		name = c("Taro", "Hanako", "Ken"),
 		gender = c("male", "female", "male"),
