@@ -11,7 +11,7 @@
 
 今回もこれまで同様，野球選手のデータを読み込んで使います。次の3行を実行してください。
 
-\begin{lstlisting}[language=c++,label={code:11_01},caption={環境の初期化とパッケージ，ファイルの読み込み}]
+\begin{lstlisting}[language=c++,label={code:11_01},caption={データの読み込みと記述統計の確認}]
 rm(list=ls())
 library(tidyverse)
 dat <- read_csv("baseballDecade.csv", na="NA", 
@@ -33,7 +33,7 @@ summary(dat)
 データが手に入ったとき，最初にすることは可視化です。\textbf{データは図にする}という約束は忘れないでくださいね。
 今回はさまざまな変数があるのですが，ここで打者の身長と体重のデータだけ抜き出して図にしてみたいと思います。
 
-\begin{lstlisting}[language=c++,label={code:11_02},caption={環境の初期化とパッケージ，ファイルの読み込み}]
+\begin{lstlisting}[language=c++,label={code:11_02},caption={散布図の作成}]
 batter <- dat %>%
   dplyr::filter(position != "投手") %>%
   dplyr::select(height, weight)
@@ -44,7 +44,7 @@ g
 \paragraph{コード解説}
 \begin{description}
 	\item[1-3行目] \texttt{batter}というオブジェクトを作っています。これは\texttt{dat}オブジェクトを加工して作るのですが，詳しくはこの後で説明します。
-	\item[4行目] \texttt{batter}オブジェクトを使って，x軸を\texttt{height}変数，y軸を\texttt{weight}変数をするキャンパスを指定します。
+	\item[4行目] \texttt{batter}オブジェクトを使って，x軸を\texttt{height}変数，y軸を\texttt{weight}変数とするキャンパスを指定します。
 	\item[5行目] キャンパスに点を打つように\verb|geom_point|します。
 	\item[6行目] 描画オブジェクト\texttt{g}を表示します。
 \end{description}
@@ -74,7 +74,7 @@ g
 \end{description}
 
 \section{線形回帰の実行}
-それではここから回帰分析を行います。回帰分析は線形関数を当てはめるので\keyterm{線形モデル}{せんけいもでる}{linerar model}と呼ばれますが，これの頭文字をとった\texttt{lm}関数が線形回帰モデルです。次の\texttt{code:\ref{code:11_04}}を実行してみましょう。
+それではここから回帰分析を行います。回帰分析は線形関数を当てはめるので\keyterm{線形モデル}{せんけいもでる}{linear model}と呼ばれますが，これの頭文字をとった\texttt{lm}関数が線形回帰モデルです。次の\texttt{code:\ref{code:11_04}}を実行してみましょう。
 \begin{lstlisting}[language=c++,label={code:11_04},caption={回帰分析の実行}]
     result <- lm(weight ~ height, data= batter)
     summary(result)
@@ -195,7 +195,7 @@ cor(batter)
 	\item[6行目] \verb|batter|オブジェクトの相関係数を計算しています。
 \end{description}
 
-\begin{Rscreen}{回帰分析の出力結果}{out11_02}
+\begin{Rscreen}{残差と予測値の確認}{out11_02}
 	\begin{verbatim}
 # A tibble: 329 × 4
    height weight residuals  yhat
@@ -211,8 +211,38 @@ cor(batter)
 これを見ると，たとえば1行目のデータは身長171cm体重72kgの選手であり，回帰式$-124.91755 + 1.16670 \times height$を使った計算結果は74.6ということがわかります。74.6という予測値$\hat{y_1}$は，実際の値$y_1$と比べて2.59ずれていますので，$\hat{y_1}-y_1$で-2.59となっています。以下同様で，329人分のデータそれぞれについて予測値と残差が計算できました。
 
 今度は要約統計量を見てみましょう。残差$e_i$の平均が0になっていることがわかりますね。また，予測値$\hat{y}$と目的変数$y$の平均値がぴったり一致しています。一致するのです。データ全体の平均に沿うように，目的変数をずらしたり(切片を足す)伸ばしたり(係数をかける)することによって，中心合わせをするからですね。
+\begin{Rscreen}{残差と予測値の要約統計量}{out11_02}
+\begin{verbatim}
+	height          weight         residuals             yhat       
+	Min.   :163.0   Min.   : 64.00   Min.   :-20.9217   Min.   : 65.25  
+	1st Qu.:176.0   1st Qu.: 78.00   1st Qu.: -4.9213   1st Qu.: 80.42  
+	Median :179.0   Median : 83.00   Median : -0.4214   Median : 83.92  
+	Mean   :179.3   Mean   : 84.26   Mean   :  0.0000   Mean   : 84.26  
+	3rd Qu.:182.0   3rd Qu.: 90.00   3rd Qu.:  4.0783   3rd Qu.: 87.42  
+	Max.   :201.0   Max.   :122.00   Max.   : 28.9118   Max.   :109.59  
+\end{verbatim}
+\end{Rscreen}
 
-さらにプロットを見てみましょう。これは\texttt{ggplot}を使っての出力ではなくRオリジナルの出力例ですが(そのせいか少し色気のない出力ですが)，これを見て幾つか気づく点があると思います。
+
+さらにプロットを見てみましょう(図\ref{fig::11_02})。これは\texttt{ggplot}を使っての出力ではなくRオリジナルの出力例ですが(そのせいか少し色気のない出力ですが)，これを見て幾つか気づく点があると思います。
+\begin{figure}[ht]
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/09_Regression_onR/PlotMultipleReg.png}
+	\caption{予測値や残差を含んだ散布図}
+	\label{fig::11_02}
+\end{figure}
+
+\begin{Rscreen}{残差と予測値の相関関係}{out11_03}
+\begin{verbatim}
+	> cor(batter)
+	height    weight     residuals         yhat
+height     1.000000e+00 0.6400162 -6.168902e-17 1.000000e+00
+weight     6.400162e-01 1.0000000  7.683614e-01 6.400162e-01
+residuals -6.168902e-17 0.7683614  1.000000e+00 1.521511e-16
+yhat       1.000000e+00 0.6400162  1.521511e-16 1.000000e+00
+\end{verbatim}
+\end{Rscreen}
+
 1つは\verb|height|と\verb|yhat|の組み合わせが直線になっているところですね。次の\verb|cor|関数でも，対応するところが1.0になっています。これは当然で，身長データを伸ばしてずらしたのが予測値であり，この両者はいわば一対一対応，100\%の相関関係にあることがわかります。また，説明変数\verb|height|と残差\verb|residuals|の組み合わせは丸に近く，相関係数はほぼ0.0です\footnote{いやいや，何か数字があるよとツッコミが入りそうですね。計算結果のところには$5.029090e-17$という表示があるかと思います。この表現は，桁数があまりにも大きいので普通の十進法で表現できなかった場合に出てくるもので，$e+$のところが10の累乗を表しています。今回は$e-17$ですから，$10^{-17}=0.000000000000000001$というごく小さな値を，$5.029090$にかけた値が答えとなっています。数学的にはちょうど$0.0$になることが証明できるのですが，機械の計算は丸め誤差などがあるので少しずれが生じます。が実質的にゼロだということです。}。説明変数と残差の間に相関関係があるというのは，原理的におかしなことですよね。説明変数は従属変数をできるだけ説明しようとしていて，その残りが残差なのですから，残差のところに説明変数と関係する要素があるとすれば，それは残差ではなく従属変数のまだ説明できる箇所だということになってしまうからです。
 
 同様に，残差\verb|residuals|と予測値\verb|yhat|の相関関係もほぼ0.0になっています。これも原理的には$0.0$になるのです。回帰分析は説明変数によって，説明できる部分(予測値)と説明できない部分(残差)にきっちり分離するのですから，分離されたもの同士に関係が残っているはずがないのです。数理的な導出は\textcite{kosugi2018}のP.127--135を見て貰えばわかりますが，データを見ることで一目瞭然だと思います。
@@ -301,7 +331,7 @@ summary(result2z)
 	\item[1行目]\texttt{batter2z}というオブジェクトを作っています。これは\texttt{batter2}オブジェクトを\verb|scale|関数で標準化することで作れるのですが，\verb|scale|関数は出来上がったものがデータを表す\texttt{data.frame}型になっていませんので，\verb|%>%|でつないで\verb|as.data.frame|という関数でデータの形にしています。
 	\item[2行目] 出来上がった\texttt{batter2z}というオブジェクトの記述統計量をみています。平均値が0.0になっていることなどから，標準化されていることが確認できます。
 	\item[3行目]  \texttt{batter2z}オブジェクトで同じように重回帰分析をしています。
-	\item[11行目] 結果を出力させています。
+	\item[4行目] 結果を出力させています。
 \end{description}
 
 \begin{Rscreen}{回帰分析の出力結果}{out11_04}
@@ -331,7 +361,7 @@ F-statistic: 99.06 on 2 and 326 DF,  p-value: < 2.2e-16
 
 \[ \hat{y} = 0.4298 HR + 0.2202 Hit \]
 
-これを見比べると，ホームランよりもヒットのほうが年俸の上昇には強い影響を与えているようですね。
+これを見比べると，ヒットよりもホームランのほうが年俸の上昇には強い影響を与えているようですね。
 ここでの回帰式では切片を記入しませんでした。推定値は$1.006e-16$であり，これは$e-16=10^{-16}$がかけられていますからほぼゼロになっています。原理的にも$0$であるはずなので，ここでは書きませんでした。
 また$R^2$が標準化しなかったときと変わっていないことも確認できますね。相対的な関係には影響しないので，このようになります。
 
@@ -342,93 +372,23 @@ F-statistic: 99.06 on 2 and 326 DF,  p-value: < 2.2e-16
 
 \paragraph{課題1：単回帰分析}
 今度は体重を説明変数，身長を目的変数として単回帰分析を実行してください。
-
-\begin{lstlisting}[language=c++,label={code:ex_01},caption={データの準備と単回帰分析}]
-rm(list=ls())
-library(tidyverse)
-dat <- read_csv("baseballDecade.csv", na="NA", 
-        locale=locale(encoding="utf8")) %>% 
-        filter(Year=="2020年度")
-
-# 身長と体重のデータを抜き出す
-batter <- dat %>%
-  dplyr::filter(position != "投手") %>%
-  dplyr::select(height, weight)
-
-# 散布図の作成
-g <- ggplot(batter, aes(x = weight, y = height))
-g <- g + geom_point()
-g
-
-# 単回帰分析の実行
-result1 <- lm(height ~ weight, data = batter)
-summary(result1)
-\end{lstlisting}
-
-\paragraph{確認事項}：
 \begin{itemize}
-    \item 回帰式を$\hat{y} = a + bx$の形で書いてください
-    \item 体重が1kg重くなると，身長は何cm高くなると予測されますか？
+    \item 回帰式を$\hat{y} = b_0 + b_1x$の形で書いてください
+    \item 体重が1kg重いと，身長は何cm高いと予測されますか？
     \item $R^2$値はいくつですか？
-\end{itemize}
-
-\paragraph{subsection}{課題2：回帰診断プロットの確認}
-\begin{lstlisting}[language=c++,label={code:ex_02},caption={回帰診断プロットの作成}]
-plot(result1)
-\end{lstlisting}
-
-\paragraph{確認事項}：
-\begin{itemize}
     \item Q-Qプロットで残差は正規分布に従っているように見えますか？
     \item 残差vs予測値プロットで赤い線は概ね水平ですか？
 \end{itemize}
 
-\paragraph{課題3：重回帰分析}
-年俸を説明変数として，本塁打と安打を目的変数とする重回帰分析を実行してください。
+\paragraph{課題2：重回帰分析}
+本塁打と安打を説明変数，体重を目的変数とする重回帰分析を実行してください。
+また，説明変数と目的変数全てを標準化したデータでも重回帰分析を行ってください。
 
-\begin{lstlisting}[language=c++,label={code:ex_03},caption={重回帰分析用データの準備と実行}]
-# 年俸，本塁打，安打のデータを準備
-batter2 <- dat %>%
-  dplyr::filter(position != "投手") %>%
-  dplyr::select(salary, HR, Hit) %>%
-  na.omit()
-
-# 散布図行列の作成
-plot(batter2)
-
-# 重回帰分析の実行（年俸で本塁打を予測）
-result2 <- lm(HR ~ salary, data = batter2)
-summary(result2)
-
-# 重回帰分析の実行（年俸で安打を予測）
-result3 <- lm(Hit ~ salary, data = batter2)
-summary(result3)
-\end{lstlisting}
-
-\paragraph{確認事項}：
 \begin{itemize}
-    \item 年俸で本塁打を予測する回帰式を書いてください
-    \item 年俸で安打を予測する回帰式を書いてください
-    \item どちらのモデルの$R^2$値が高いですか？
-\end{itemize}
-
-\paragraph{課題4：標準化偏回帰係数の確認}
-\begin{lstlisting}[language=c++,label={code:ex_04},caption={標準化データでの重回帰分析}]
-# データを標準化
-batter2_std <- scale(batter2) %>% as.data.frame()
-
-# 標準化されたデータで重回帰分析
-result_std1 <- lm(HR ~ salary, data = batter2_std)
-result_std2 <- lm(Hit ~ salary, data = batter2_std)
-
-summary(result_std1)
-summary(result_std2)
-\end{lstlisting}
-
-\paragraph{確認事項}：
-\begin{itemize}
-    \item 標準化前後で$R^2$値は変化しましたか？
-    \item 標準化偏回帰係数はそれぞれいくつですか？
+    \item 安打の非標準化偏回帰係数はいくつですか
+    \item 本塁打の標準化偏回帰係数はいくつですか
+    \item 標準化したモデルでの切片はいくつですか
+    \item 標準化前後の$R^2$値はどうなりますか
 \end{itemize}
 
 \end{document}
