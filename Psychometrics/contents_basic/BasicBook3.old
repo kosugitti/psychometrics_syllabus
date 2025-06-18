@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 3.0.34}
+\lhead{version 3.0.35}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{figures/cover1v3.pdf}
@@ -31,6 +31,7 @@
 \include{ch07_Regression}
 \include{ch08_MultipleRegression}
 \include{ch09_Regression_onR}
+\include{ch10_Probability}
 % \include{m07_probability}
 % \include{m08_CorrelationCausation}
 % \include{m09_Regression}

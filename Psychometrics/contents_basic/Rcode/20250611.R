@@ -1,22 +1,24 @@
-rm(list=ls())
+rm(list = ls())
 library(tidyverse)
-dat <- read_csv("baseballDecade.csv", na="NA", 
-                locale=locale(encoding="utf8")) %>% 
-  filter(Year=="2020年度")
+dat <- read_csv("baseballDecade.csv",
+  na = "NA",
+  locale = locale(encoding = "utf8")
+) %>%
+  filter(Year == "2020年度")
 
 batter <- dat %>%
   dplyr::filter(position != "投手") %>%
   dplyr::select(height, weight)
 g <- ggplot(batter, aes(x = height, y = weight))
-g <-  g + geom_point()
+g <- g + geom_point()
 g
 
 g <- g + geom_smooth(method = "lm", se = FALSE)
 g
 
-ggsave(filename = "../figures/09_Regression_onR/scatter_batter1.png")
+# ggsave(filename = "../figures/09_Regression_onR/scatter_batter1.png")
 
-result <- lm(weight ~ height, data= batter)
+result <- lm(weight ~ height, data = batter)
 summary(result)
 plot(result)
 
@@ -38,7 +40,7 @@ plot(batter2)
 cor(batter2)
 
 library(patchwork)
-g1+g2
+g1 + g2
 
 result2 <- lm(salary ~ HR + Hit, data = batter2)
 summary(result2)
@@ -49,11 +51,13 @@ result2z <- lm(salary ~ HR + Hit, data = batter2z)
 summary(result2z)
 
 # 課題 --------------------------------------------------------------
-rm(list=ls())
+rm(list = ls())
 library(tidyverse)
-dat <- read_csv("baseballDecade.csv", na="NA", 
-                locale=locale(encoding="utf8")) %>% 
-  filter(Year=="2020年度")
+dat <- read_csv("baseballDecade.csv",
+  na = "NA",
+  locale = locale(encoding = "utf8")
+) %>%
+  filter(Year == "2020年度")
 
 # 身長と体重のデータを抜き出す
 batter <- dat %>%
