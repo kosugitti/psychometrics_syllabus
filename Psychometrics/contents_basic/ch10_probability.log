@@ -1,8 +1,8 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.6.8)  18 JUN 2025 09:11
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.6.18)  18 JUN 2025 09:42
  restricted system commands enabled.
 **ch10_probability.tex
 (./ch10_probability.tex
-LaTeX2e <2025-06-01>
+LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-05-26>
 Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
 Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
@@ -2272,31 +2272,7 @@ Package: lltjp-array 2024-07-21 Patch to array for LuaTeX-ja
 )
 \@quotelevel=\count577
 \@quotereset=\count578
- (./ch10_probability.aux
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.33 ...54}{figure.10.6}\protected@file@percent }e
-                                                  spaces 積み重ねて考え..
-.
-? 
-! Extra }, or forgotten \endgroup.
-l.33 ...ので順番を入れ替えても良い}
-                                                  }{10}{figure.1.6}\protecte...
-? 
-! Extra }, or forgotten \endgroup.
-l.33 ...ので順番を入れ替えても良い}}
-                                                  {10}{figure.1.6}\protected...
-? 
-! Extra }, or forgotten \endgroup.
-l.33 ...}{10}{figure.1.6}\protected@file@percent }
-                                                  
-? 
-)
+ (./ch10_probability.aux)
 \openout1 = ch10_probability.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -2325,7 +2301,8 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
 )
 Package biblatex Info: LuaTeX detected.
@@ -2486,26 +2463,6 @@ Package hyperref Info: Link coloring ON on input line 5.
 \openout8 = ch10_probability.out
 \docmute@nestinglevel=\count586
 
-
-(load cache: extra_lmromanslant10-regular.luc)
-LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/sl' will be
-(Font)              scaled to size 9.6222pt on input line 7.
-LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/sl' will be
-(Font)              scaled to size 9.6222pt on input line 7.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 15.0pt, for example:
-(fancyhdr)                \setlength{\headheight}{15.0pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
-
-[1
-
-{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-[2
-
-]
 第 1 章
 (load cache: extra_lmroman17-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
@@ -2568,8 +2525,16 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 5.77332pt on input line 32.
 
 
-[3]
+[1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
+
+]
+
+(load cache: extra_lmromanslant10-regular.luc)
+LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/sl' will be
+(Font)              scaled to size 9.6222pt on input line 49.
+LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/sl' will be
+(Font)              scaled to size 9.6222pt on input line 49.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.0pt, for example:
@@ -2577,7 +2542,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[4]
+[2]
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 11.54663pt on input line 55.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
@@ -2586,19 +2551,19 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
 (Font)              scaled to size 11.54663pt on input line 55.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
 (Font)              scaled to size 11.54663pt on input line 55.
-<figures/10_Probability/dice_prob.png, id=106, 1120.185pt x 380.42125pt>
+<figures/10_Probability/dice_prob.png, id=114, 1120.185pt x 380.42125pt>
 File: figures/10_Probability/dice_prob.png Graphic file (type png)
 <use figures/10_Probability/dice_prob.png>
 Package luatex.def Info: figures/10_Probability/dice_prob.png  used on input li
 ne 59.
 (luatex.def)             Requested size: 334.60422pt x 113.63383pt.
-<figures/10_Probability/hist_dist.png, id=108, 7227.0pt x 4818.0pt>
+<figures/10_Probability/hist_dist.png, id=116, 7227.0pt x 4818.0pt>
 File: figures/10_Probability/hist_dist.png Graphic file (type png)
 <use figures/10_Probability/hist_dist.png>
 Package luatex.def Info: figures/10_Probability/hist_dist.png  used on input li
 ne 71.
 (luatex.def)             Requested size: 271.86234pt x 181.21858pt.
-<figures/10_Probability/hist_dist2.png, id=110, 7227.0pt x 4818.0pt>
+<figures/10_Probability/hist_dist2.png, id=118, 7227.0pt x 4818.0pt>
 File: figures/10_Probability/hist_dist2.png Graphic file (type png)
 <use figures/10_Probability/hist_dist2.png>
 Package luatex.def Info: figures/10_Probability/hist_dist2.png  used on input l
@@ -2613,7 +2578,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[5<./figures/10_Probability/dice_prob.png>]
+[3<./figures/10_Probability/dice_prob.png>]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2622,7 +2587,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[6<./figures/10_Probability/hist_dist.png><./figures/10_Probability/hist_dist2.p
+[4<./figures/10_Probability/hist_dist.png><./figures/10_Probability/hist_dist2.p
 ng>]
 
 
@@ -2632,7 +2597,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[7]
+[5]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2641,7 +2606,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[8](load cache: extra_lmroman10-italic.luc)
+[6](load cache: extra_lmroman10-italic.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/it' will be
 (Font)              scaled to size 9.6222pt on input line 177.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/it' will be
@@ -2655,8 +2620,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[9]
-<figures/10_Probability/binomial.png, id=168, 7227.0pt x 4818.0pt>
+[7]
+<figures/10_Probability/binomial.png, id=172, 7227.0pt x 4818.0pt>
 File: figures/10_Probability/binomial.png Graphic file (type png)
 <use figures/10_Probability/binomial.png>
 Package luatex.def Info: figures/10_Probability/binomial.png  used on input lin
@@ -2664,7 +2629,7 @@ e 200.
 (luatex.def)             Requested size: 271.86234pt x 181.21858pt.
 
 
-LaTeX Warning: Citation 'Minaka2018' on page 10 undefined on input line 208.
+LaTeX Warning: Citation 'Minaka2018' on page 8 undefined on input line 208.
 
 
 
@@ -2675,14 +2640,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[10<./figures/10_Probability/binomial.png>]
-<figures/10_Probability/random1.png, id=185, 628.3475pt x 522.95375pt>
+[8<./figures/10_Probability/binomial.png>]
+<figures/10_Probability/random1.png, id=188, 628.3475pt x 522.95375pt>
 File: figures/10_Probability/random1.png Graphic file (type png)
 <use figures/10_Probability/random1.png>
 Package luatex.def Info: figures/10_Probability/random1.png  used on input line
  222.
 (luatex.def)             Requested size: 271.86234pt x 226.26216pt.
-<figures/10_Probability/random2.png, id=186, 610.28pt x 430.60875pt>
+<figures/10_Probability/random2.png, id=189, 610.28pt x 430.60875pt>
 File: figures/10_Probability/random2.png Graphic file (type png)
 <use figures/10_Probability/random2.png>
 Package luatex.def Info: figures/10_Probability/random2.png  used on input line
@@ -2697,8 +2662,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[11<./figures/10_Probability/random1.png>]
-<figures/10_Probability/GaltonBoard.png, id=197, 374.39874pt x 592.2125pt>
+[9<./figures/10_Probability/random1.png>]
+<figures/10_Probability/GaltonBoard.png, id=198, 374.39874pt x 592.2125pt>
 File: figures/10_Probability/GaltonBoard.png Graphic file (type png)
 <use figures/10_Probability/GaltonBoard.png>
 Package luatex.def Info: figures/10_Probability/GaltonBoard.png  used on input 
@@ -2713,8 +2678,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[12<./figures/10_Probability/random2.png>]
-<figures/10_Probability/random3.png, id=209, 675.52374pt x 749.80125pt>
+[10<./figures/10_Probability/random2.png>]
+<figures/10_Probability/random3.png, id=210, 675.52374pt x 749.80125pt>
 File: figures/10_Probability/random3.png Graphic file (type png)
 <use figures/10_Probability/random3.png>
 Package luatex.def Info: figures/10_Probability/random3.png  used on input line
@@ -2722,17 +2687,17 @@ Package luatex.def Info: figures/10_Probability/random3.png  used on input line
 (luatex.def)             Requested size: 271.86234pt x 301.75719pt.
 
 
-LaTeX Warning: Citation 'Naganuma2201611' on page 13 undefined on input line 27
+LaTeX Warning: Citation 'Naganuma2201611' on page 11 undefined on input line 27
 8.
 
-<figures/10_Probability/pilot.png, id=212, 1135.24126pt x 704.6325pt>
+<figures/10_Probability/pilot.png, id=213, 1135.24126pt x 704.6325pt>
 File: figures/10_Probability/pilot.png Graphic file (type png)
 <use figures/10_Probability/pilot.png>
 Package luatex.def Info: figures/10_Probability/pilot.png  used on input line 2
 83.
 (luatex.def)             Requested size: 355.51817pt x 220.6702pt.
 
-LaTeX Warning: Citation 'Naganuma2201611' on page 13 undefined on input line 28
+LaTeX Warning: Citation 'Naganuma2201611' on page 11 undefined on input line 28
 4.
 
 
@@ -2744,7 +2709,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[13<./figures/10_Probability/GaltonBoard.png>](load cache: extra_lmroman8-bold.l
+[11<./figures/10_Probability/GaltonBoard.png>](load cache: extra_lmroman8-bold.l
 uc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
 (Font)              scaled to size 7.69775pt on input line 292.
@@ -2759,8 +2724,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[14<./figures/10_Probability/random3.png>]
-<figures/10_Probability/normal1.png, id=235, 1097.5404pt x 520.1031pt>
+[12<./figures/10_Probability/random3.png>]
+<figures/10_Probability/normal1.png, id=237, 1097.5404pt x 520.1031pt>
 File: figures/10_Probability/normal1.png Graphic file (type png)
 <use figures/10_Probability/normal1.png>
 Package luatex.def Info: figures/10_Probability/normal1.png  used on input line
@@ -2775,20 +2740,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[15<./figures/10_Probability/pilot.png><./figures/10_Probability/normal1.png>]
+[13<./figures/10_Probability/pilot.png><./figures/10_Probability/normal1.png>]
 
-LaTeX Warning: Reference `10::number_table' on page 16 undefined on input line 
-325.
-
-
-LaTeX Warning: Reference `NumberTable' on page 16 undefined on input line 325.
+LaTeX Warning: Reference `NumberTable' on page 14 undefined on input line 325.
 
 (load cache: extra_lmmono10-regular.luc)(load cache: extra_lmmono8-regular.luc)
 Overfull \hbox (1.76521pt too wide) in paragraph at lines 333--341
  [][][] 
  []
 
-<figures/10_Probability/prob_func.png, id=247, 1155.31625pt x 648.4225pt>
+<figures/10_Probability/prob_func.png, id=250, 1155.31625pt x 648.4225pt>
 File: figures/10_Probability/prob_func.png Graphic file (type png)
 <use figures/10_Probability/prob_func.png>
 Package luatex.def Info: figures/10_Probability/prob_func.png  used on input li
@@ -2822,7 +2783,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
 
-[16]
+[14]
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
 (Font)              scaled to size 9.6222pt on input line 362.
 (load cache: extra_lmsans10-regular.luc)(load cache: extra_lmsans10-bold.luc)
@@ -2840,4 +2801,201 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (Font)              scaled to size 8.65997pt on input line 362.
 
 
-LaTeX Warning: Reference `10:
+LaTeX Warning: Reference `fig::07_05' on page 15 undefined on input line 386.
+
+
+LaTeX Warning: Reference `m28_jasp' on page 15 undefined on input line 388.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.0pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.0pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
+
+[15<./figures/10_Probability/prob_func.png>]
+
+LaTeX Warning: Reference `zScore' on page 16 undefined on input line 405.
+
+
+LaTeX Warning: Reference `zScore' on page 16 undefined on input line 405.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.0pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.0pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
+
+[16]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.0pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.0pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
+
+[17]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.0pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.0pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
+
+[18]
+
+LaTeX Warning: Citation 'Maor_Eli2019-01-10' on page 19 undefined on input line
+ 500.
+
+
+LaTeX Warning: Citation 'Nishiuchi201712' on page 19 undefined on input line 50
+4.
+
+
+LaTeX Warning: Citation 'Naganuma2201611' on page 19 undefined on input line 50
+4.
+
+<figures/10_Probability/normal_form.png, id=347, 701.62125pt x 524.96124pt>
+File: figures/10_Probability/normal_form.png Graphic file (type png)
+<use figures/10_Probability/normal_form.png>
+Package luatex.def Info: figures/10_Probability/normal_form.png  used on input 
+line 510.
+(luatex.def)             Requested size: 418.25368pt x 312.95258pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.0pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.0pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
+
+[19
+warning  (pdf backend): ignoring duplicate destination with the name 'Hfootnote.
+22'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'Hfootnote.
+22'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'Hfootnote.
+22'
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.0pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.0pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
+
+[20<./figures/10_Probability/normal_form.png>]
+<figures/10_Probability/normal_area.png, id=369, 4818.0pt x 3613.5pt>
+File: figures/10_Probability/normal_area.png Graphic file (type png)
+<use figures/10_Probability/normal_area.png>
+Package luatex.def Info: figures/10_Probability/normal_area.png  used on input 
+line 532.
+(luatex.def)             Requested size: 271.86234pt x 203.84334pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.0pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.0pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
+
+[21<./figures/10_Probability/normal_area.png>]
+Overfull \hbox (28.12642pt too wide) in paragraph at lines 544--611
+[][][]
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.0pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.0pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.0pt}.
+
+[22] (./ch10_probability.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-05-26>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+Package rerunfilecheck Info: File `ch10_probability.out' has not changed.
+(rerunfilecheck)             Checksum: 5155884CCD9536A4B678ADBFDBABE0BB;2739.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                ch10_probability
+(biblatex)                and rerun LaTeX afterwards.
+
+Package logreq Info: Writing requests to 'ch10_probability.run.xml'.
+
+\openout1 = ch10_probability.run.xml
+)
+
+Here is how much of LuaTeX's memory you used:
+ 47935 strings out of 470203
+ 477830,2373549 words of node,token memory allocated
+ 3555 words of node memory still in use:
+   10 hlist, 2 vlist, 5 rule, 31 glue, 4 kern, 1 glyph, 1214 attribute, 76 glue_
+spec, 113 attribute_list, 2 write, 13 user_defined nodes
+   avail lists: 1:18,2:134859,3:558,4:1958,5:1904,6:58,7:16309,8:63,9:5148,10:50
+,11:19
+ 74866 multiletter control sequences out of 65536+600000
+ 112 fonts using 83628855 bytes
+ 119i,12n,126p,2249b,1469s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+warning  (pdf backend): unreferenced destination with name 'Hfootnote.21'
+
+warning  (pdf backend): unreferenced destination with name 'Hfootnote.20'
+
+warning  (pdf backend): unreferenced destination with name 'Hfootnote.19'
+</usr/local/texlive/2025/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGot
+hic-Medium.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsa
+ns10-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmon
+o8-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmo
+no9-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmm
+ono10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/l
+mroman8-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lm
+roman10-italic.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/
+lmroman8-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/l
+m/lmroman6-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public
+/lm/lmroman7-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/publ
+ic/lm/lmromanslant10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opent
+ype/public/lm/lmroman10-bold.otf></Library/Fonts/BIZ-UDMinchoM.ttc></usr/local/t
+exlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf></Library/Fon
+ts/BIZ-UDGothicB.ttc></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/l
+m/lmroman10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/ams
+fonts/cmextra/cmex8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pf
+b></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></
+usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
+r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/l
+ocal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/loca
+l/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on ch10_probability.pdf (22 pages, 3735967 bytes).
+
+PDF statistics: 530 PDF objects out of 1000 (max. 8388607)
+ 414 compressed objects within 5 object streams
+ 125 named destinations out of 1000 (max. 131072)
+ 168 words of extra memory for PDF output out of 10000 (max. 100000000)
+

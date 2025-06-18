@@ -4,7 +4,7 @@
 
 \begin{document}
 \VerbatimFootnotes
-\chapter{誤差と確率}
+\chapter{確率と確率分布}
 \label{ch10_probability}
 今回は確率のお話です。
 
@@ -375,7 +375,7 @@ Rは基本的な確率分布関数を最初から持っており，これを呼�
 1つずつ確認しましょう。
 \texttt{dnorm(x = 0, mean = 0, sd = 1)}は$\mu=0,\sigma=1$の正規分布における，確率点0の確率密度，すなわち正規分布曲線の高さを示しています。
 
-\texttt{pnorm(q = 1.0, mean = 0, sd = 1)}は$\mu=0,\sigma=1$の正規分布において，確率点1.0までの面積を求めています。0.841ですから84.1\%ですね。これは数式で言うところの$\int_{-\infty}^{1.0} f(x)dx$を計算した結果，数表でいうところの$P(0\le Z \le 1.0)=0.341$に対応しています\footnote{数表は確率点0からの差分で表現しますので，$-\infty$から$0$までのちょうど半分の確率を足して，$0.5+0.341=0.841$になります。詳しくはセクション\ref{10::number_table}，Pp.\pageref{NumberTable}参照。}。
+\texttt{pnorm(q = 1.0, mean = 0, sd = 1)}は$\mu=0,\sigma=1$の正規分布において，確率点1.0までの面積を求めています。0.841ですから84.1\%ですね。これは数式で言うところの$\int_{-\infty}^{1.0} f(x)dx$を計算した結果，数表でいうところの$P(0\le Z \le 1.0)=0.341$に対応しています\footnote{数表は確率点0からの差分で表現しますので，$-\infty$から$0$までのちょうど半分の確率を足して，$0.5+0.341=0.841$になります。詳しくはセクション\ref{10::number_table}，Pp.\pageref{10::number_table}参照。}。
 
 \texttt{qnorm(p = 0.618, mean = 0, sd = 1)}は$\mu=0,\sigma=1$の正規分布において，$-\infty$からの面積が$p=0.841$になるときの確率点を答える関数です。先ほどの関数とは逆の操作ですね。ちょうど1.0になるべきなのですが，0.998563なのでほぼ1.0ということでよしとしてください。
 
@@ -420,165 +420,61 @@ Rは基本的な確率分布関数を最初から持っており，これを呼�
 
 
 \section{課題}
+\paragraph{問題1} サイコロを1回投げて6の目が出る確率は1/6である。このサイコロを5回投げて，ちょうど2回6の目が出る確率はどれか。
 
-以下の問題に答えなさい。各問題について，最も適切な選択肢を1つ選べ。
-
-\subsection{基礎理解問題}
-
-\textbf{問題1} 確率と呼ばれる数字が満たすべき条件として\textbf{正しくない}ものはどれか。
-
-\begin{enumerate}[label=(\alph*)]
-\item 確率の値は非負である
-\item 全標本空間におけるすべての事象の確率の合計は1.0である
-\item 任意の2つの相互に排他的な事象について，どちらか一方が発生する確率は個々の確率の和である
-\item 確率の値は必ず0.5以下でなければならない
-\end{enumerate}
-
-\textbf{問題2} 離散分布と連続分布に関する記述として正しいものはどれか。
-
-\begin{enumerate}[label=(\alph*)]
-\item 離散分布では確率密度，連続分布では確率質量を用いる
-\item 離散分布では確率質量，連続分布では確率密度を用いる
-\item 離散分布と連続分布の両方で確率質量を用いる
-\item 離散分布と連続分布の両方で確率密度を用いる
-\end{enumerate}
-
-\textbf{問題3} 連続分布において「ある一点の確率はゼロである」理由として正しいものはどれか。
-
-\begin{enumerate}[label=(\alph*)]
-\item 連続分布では確率を計算できないため
-\item 確率密度を極限まで小さな区間で考えるため
-\item 確率は常に区間を伴って考えるため
-\item 測定精度に限界があるため
-\end{enumerate}
-
-\textbf{問題4} ベルヌーイ分布$\mathrm{Bernoulli}(0.3)$の期待値はどれか。
-
-\begin{enumerate}[label=(\alph*)]
-\item 0.09
-\item 0.21
-\item 0.3
-\item 0.7
-\end{enumerate}
-
-\textbf{問題5} 正規分布$N(\mu,\sigma)$の表記において，$\mu$と$\sigma$はそれぞれ何を表すか。
-
-\begin{enumerate}[label=(\alph*)]
-\item $\mu$：標準偏差，$\sigma$：平均
-\item $\mu$：平均，$\sigma$：分散
-\item $\mu$：平均，$\sigma$：標準偏差
-\item $\mu$：分散，$\sigma$：標準偏差
-\end{enumerate}
-
-\textbf{問題6} 標準正規分布$N(0,1)$の特徴として正しいものはどれか。
-
-\begin{enumerate}[label=(\alph*)]
-\item 平均が1，標準偏差が0
-\item 平均が0，標準偏差が1
-\item 平均が0，分散が0
-\item 平均が1，分散が1
-\end{enumerate}
-
-\textbf{問題7} 二項分布から正規分布が導かれる過程について，最も適切な説明はどれか。
-
-\begin{enumerate}[label=(\alph*)]
-\item 試行回数nが大きくなると二項分布は正規分布に近づく
-\item 成功確率θが0.5に近いと二項分布は正規分布になる
-\item 二項分布と正規分布は全く異なる分布である
-\item 正規分布から二項分布が導かれる
-\end{enumerate}
-
-\subsection{応用問題}
-
-\textbf{問題8} 心理テストの得点が正規分布$N(100,15)$に従うとき，得点120以上の受験者の割合を求めるために最初に行うべき計算はどれか。
-
-\begin{enumerate}[label=(\alph*)]
-\item $z = \frac{120-100}{15}$
-\item $z = \frac{100-120}{15}$
-\item $z = \frac{120}{100-15}$
-\item $z = \frac{120+100}{15}$
-\end{enumerate}
-
-\textbf{問題9} 偏差値65の学生が10000人中上位何\%に入るかを求める際に使用する分布はどれか。
-
-\begin{enumerate}[label=(\alph*)]
-\item 一様分布
-\item 二項分布
-\item 標準正規分布
-\item ベルヌーイ分布
-\end{enumerate}
-
-\textbf{問題10} 製品の重量が$N(500,10)$に従い，規格が480g以上520g以下のとき，良品率を求めるために計算すべき確率はどれか。
-
-\begin{enumerate}[label=(\alph*)]
-\item P(X ≤ 480) + P(X ≥ 520)
-\item P(X ≤ 520) - P(X ≤ 480)
-\item P(X ≥ 480) - P(X ≥ 520)
-\item P(X = 500)
-\end{enumerate}
-
-\textbf{問題11} コイントス（成功確率0.5）を100回行ったときの成功回数の分布を正規分布で近似する場合，その平均と標準偏差はそれぞれいくつか。
-
-\begin{enumerate}[label=(\alph*)]
-\item 平均50，標準偏差25
-\item 平均50，標準偏差5
-\item 平均25，標準偏差5
-\item 平均100，標準偏差10
-\end{enumerate}
-
-\subsection{計算問題}
-
-\textbf{問題12} サイコロを1回投げて6の目が出る確率は1/6である。このサイコロを5回投げて，ちょうど2回6の目が出る確率はどれか。
-
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}
 \item $\frac{1}{6^2} \times \frac{5}{6^3}$
 \item $\binom{5}{2} \times \left(\frac{1}{6}\right)^2 \times \left(\frac{5}{6}\right)^3$
 \item $\frac{2}{5} \times \frac{1}{6}$
 \item $\frac{1}{6} \times \frac{1}{6}$
 \end{enumerate}
 
-\textbf{問題13} 標準正規分布$N(0,1)$において，$P(Z \leq 1.0) = 0.8413$である。$P(-1.0 \leq Z \leq 1.0)$はいくつか。
+\paragraph{問題2} 標準正規分布$N(0,1)$において，$P(Z \leq 1.0) = 0.8413$である。$P(-1.0 \leq Z \leq 1.0)$はいくつか。
 
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}
 \item 0.1587
 \item 0.3413
 \item 0.6826
 \item 0.8413
 \end{enumerate}
 
-\textbf{問題14} $X \sim N(50,8)$において，$P(X \leq 58)$を求めるための標準化後の$z$値はどれか。
+\paragraph{問題3} $X \sim N(50,8)$において，$P(X \leq 58)$を求めるための標準化後の$z$値はどれか。
 
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}
 \item $z = 1.0$
 \item $z = 1.5$
 \item $z = 6.25$
 \item $z = 0.145$
 \end{enumerate}
 
-\textbf{問題15} ベルヌーイ分布$\mathrm{Bernoulli}(0.4)$に従う確率変数の分散はいくつか。
-
-\begin{enumerate}[label=(\alph*)]
-\item 0.16
-\item 0.24
-\item 0.4
-\item 0.6
-\end{enumerate}
-
-\textbf{問題16} 宝くじの期待値が購入価格300円に対して143円であるとき，平均的な損失額（円）はいくつか。
-
-\begin{enumerate}[label=(\alph*)]
-\item 143
-\item 157
-\item 300
-\item 443
-\end{enumerate}
-
-\textbf{解答}
+\paragraph{問題4} 身長が平均170cm，標準偏差6cmの正規分布に従うとき，以下を計算せよ。
 \begin{enumerate}
-\item[(1)] (d) \item[(2)] (b) \item[(3)] (c) \item[(4)] (c) \item[(5)] (c) \item[(6)] (b) \item[(7)] (a) \item[(8)] (a) \item[(9)] (c) \item[(10)] (b) \item[(11)] (b) \item[(12)] (b) \item[(13)] (c) \item[(14)] (a) \item[(15)] (b) \item[(16)] (b)
+\item 身長が180cm以下の人の割合
+\item 身長が160cm以上175cm以下の人の割合
+\item 上位10\%に入るために必要な身長
 \end{enumerate}
 
+\paragraph{問題5} ある工場で製造される部品の重量が平均50g，標準偏差2gの正規分布に従うとき，以下を計算せよ。
+\begin{enumerate}
+\item 重量が52gちょうどのときの確率密度
+\item 重量が47g以上53g以下の部品の割合
+\item 不良品を5\%以下にするための重量の上限と下限（平均を中心とした対称区間）
+\end{enumerate}
 
+\paragraph{問題6} 大学入試の偏差値が平均50，標準偏差10の正規分布に従うとき，以下を計算せよ。
+\begin{enumerate}
+\item 偏差値70以上の受験生の割合
+\item 1万人が受験したとき，偏差値70以上は何人か（整数で答えよ）
+\item 偏差値40以上60以下の「普通」とされる受験生の割合
+\end{enumerate}
+
+\paragraph{問題7} 心理テストの得点が平均100，標準偏差15の正規分布に従うとする。このテストを1000人が受験したとき，以下の問いに答えよ。
+\begin{enumerate}
+\item 得点130以上の「優秀」群は何人か
+\item 得点70以下の「要支援」群は何人か  
+\item 得点85以上115以下の「標準」群は何人か
+\item 上記3群の人数の合計が1000人になることを確認せよ
+\end{enumerate}
 
 \newpage
 \section{補遺}
