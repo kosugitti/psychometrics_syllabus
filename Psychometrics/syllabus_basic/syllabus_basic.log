@@ -1,7 +1,7 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.6.24)  27 JUN 2025 14:42
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.6.24)  27 JUN 2025 13:59
  restricted system commands enabled.
-**tmp
-(./tmp.tex
+**syllabus_basic.tex
+(./syllabus_basic.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-05-26>
 Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
@@ -1753,9 +1753,9 @@ Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
 )
 \@indexfile=\write7
 
-\openout7 = tmp.idx
+\openout7 = syllabus_basic.idx
 
-Writing index file tmp.idx
+Writing index file syllabus_basic.idx
 (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@headwidth=\skip96
@@ -1778,8 +1778,8 @@ Package: lltjp-array 2024-07-21 Patch to array for LuaTeX-ja
 )
 \@quotelevel=\count575
 \@quotereset=\count576
- (./tmp.aux (./b01_Introduction.aux) (./b02_PCs.aux) (./b03_useR.aux) (./b04_Number_and_data.aux) (./b05_descriptives.aux) (./b06_Corr.aux) (./b07_regression.aux) (./b08_MultipleRegression.aux) (./b09_Regression_onR.aux) (./b10_Probability.aux) (./b11_estimation.aux) (./b12_test.aux) (./b13_NHST.aux) (./b14_NHST2.aux) (./b15_summary_exam.aux) (./b16_ttest.aux) (./b17_RCT.aux) (./b18_BetweenDesign.aux) (./b19_BetweenDesign_onR.aux) (./b20_WithinDesign.aux) (./b21_WithinDesign_onR.aux) (./b22_GLM.aux) (./b23_likelihood.aux) (./b24_reg_ml.aux) (./b25_bayesian.aux) (./b26_bayesian_regression.aux) (./b27_jasp_intro.aux) (./b28_bayes_judgement.aux) (./b29_bayesianModeling.aux) (./b30_final_exam.aux))
-\openout1 = tmp.aux
+ (./syllabus_basic.aux (./b01_Introduction.aux) (./b02_PCs.aux) (./b03_useR.aux) (./b04_Number_and_data.aux) (./b05_descriptives.aux) (./b06_Corr.aux) (./b07_regression.aux) (./b08_MultipleRegression.aux) (./b09_Regression_onR.aux) (./b10_Probability.aux) (./b11_estimation.aux) (./b12_test.aux) (./b13_NHST.aux) (./b14_NHST2.aux) (./b15_summary_exam.aux) (./b16_ttest.aux) (./b17_RCT.aux) (./b18_BetweenDesign.aux) (./b19_BetweenDesign_onR.aux) (./b20_WithinDesign.aux) (./b21_WithinDesign_onR.aux) (./b22_GLM.aux) (./b23_likelihood.aux) (./b24_reg_ml.aux) (./b25_bayesian.aux) (./b26_bayesian_regression.aux) (./b27_jasp_intro.aux) (./b28_bayes_judgement.aux) (./b29_bayesianModeling.aux) (./b30_final_exam.aux))
+\openout1 = syllabus_basic.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
@@ -1815,10 +1815,10 @@ Package biblatex Info: LuaTeX detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
 
-\openout3 = tmp.bcf
+\openout3 = syllabus_basic.bcf
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'tmp.bbl' found.
- (./tmp.bbl
+Package biblatex Info: ... file 'syllabus_basic.bbl' found.
+ (./syllabus_basic.bbl
 
 Package biblatex Warning: The following entry could not be found
 (biblatex)                in the database:
@@ -1962,10 +1962,10 @@ Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@posthook=\toks62
 )
 Package hyperref Info: Link coloring ON on input line 5.
- (./tmp.out) (./tmp.out)
+ (./syllabus_basic.out) (./syllabus_basic.out)
 \@outlinefile=\write8
 
-\openout8 = tmp.out
+\openout8 = syllabus_basic.out
 (load cache: extra_lmroman17-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
 (Font)              scaled to size 15.97903pt on input line 11.
@@ -2024,12 +2024,12 @@ LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/sl' will be
 (Font)              scaled to size 9.24713pt on input line 28.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/sl' will be
 (Font)              scaled to size 9.24713pt on input line 28.
-[2] (./tmp.toc
+[2] (./syllabus_basic.toc
 
 [3])
 \tf@toc=\write9
 
-\openout9 = tmp.toc
+\openout9 = syllabus_basic.toc
 
 
 [4]
@@ -2131,7 +2131,7 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 
 ]
 
-LaTeX Warning: Reference `b15_useR' on page 23 undefined on input line 51.
+LaTeX Warning: Reference `b03_useR' on page 23 undefined on input line 51.
 
 )
 
@@ -2315,13 +2315,7 @@ No file b25_bayesian.tex.
 
 ]
 
-LaTeX Warning: Reference `b18_Corr' on page 51 undefined on input line 38.
-
-
-LaTeX Warning: Reference `b19_regression' on page 51 undefined on input line 38.
-
-
-LaTeX Warning: Reference `b20_MultipleRegression' on page 51 undefined on input line 38.
+LaTeX Warning: Reference `b07_regression' on page 51 undefined on input line 38.
 
 )
 
@@ -2337,10 +2331,7 @@ LaTeX Warning: Reference `b20_MultipleRegression' on page 51 undefined on input 
 
 ]
 
-LaTeX Warning: Reference `b18_Corr' on page 54 undefined on input line 40.
-
-
-LaTeX Warning: Reference `b19_regression' on page 54 undefined on input line 40.
+LaTeX Warning: Reference `b07_regression' on page 54 undefined on input line 40.
 
 )
 
@@ -2385,7 +2376,7 @@ LaTeX Warning: Reference `b19_regression' on page 54 undefined on input line 40.
 
 ]
 
-[64] (./tmp.aux (./b01_Introduction.aux) (./b02_PCs.aux) (./b03_useR.aux) (./b04_Number_and_data.aux) (./b05_descriptives.aux) (./b06_Corr.aux) (./b07_regression.aux) (./b08_MultipleRegression.aux) (./b09_Regression_onR.aux) (./b10_Probability.aux) (./b11_estimation.aux) (./b12_test.aux) (./b13_NHST.aux) (./b14_NHST2.aux) (./b15_summary_exam.aux) (./b16_ttest.aux) (./b17_RCT.aux) (./b18_BetweenDesign.aux) (./b19_BetweenDesign_onR.aux) (./b20_WithinDesign.aux) (./b21_WithinDesign_onR.aux) (./b22_GLM.aux) (./b23_likelihood.aux) (./b24_reg_ml.aux) (./b25_bayesian.aux) (./b26_bayesian_regression.aux) (./b27_jasp_intro.aux) (./b28_bayes_judgement.aux) (./b29_bayesianModeling.aux) (./b30_final_exam.aux))
+[64] (./syllabus_basic.aux (./b01_Introduction.aux) (./b02_PCs.aux) (./b03_useR.aux) (./b04_Number_and_data.aux) (./b05_descriptives.aux) (./b06_Corr.aux) (./b07_regression.aux) (./b08_MultipleRegression.aux) (./b09_Regression_onR.aux) (./b10_Probability.aux) (./b11_estimation.aux) (./b12_test.aux) (./b13_NHST.aux) (./b14_NHST2.aux) (./b15_summary_exam.aux) (./b16_ttest.aux) (./b17_RCT.aux) (./b18_BetweenDesign.aux) (./b19_BetweenDesign_onR.aux) (./b20_WithinDesign.aux) (./b21_WithinDesign_onR.aux) (./b22_GLM.aux) (./b23_likelihood.aux) (./b24_reg_ml.aux) (./b25_bayesian.aux) (./b26_bayesian_regression.aux) (./b27_jasp_intro.aux) (./b28_bayes_judgement.aux) (./b29_bayesianModeling.aux) (./b30_final_exam.aux))
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-05-26>
@@ -2394,27 +2385,34 @@ L3 programming layer <2025-05-26>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `tmp.out' has not changed.
-(rerunfilecheck)             Checksum: 104E3ED256E5CAA14A59DBCBE9D64A55;3759.
-Package logreq Info: Writing requests to 'tmp.run.xml'.
 
-\openout1 = tmp.run.xml
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package rerunfilecheck Info: File `syllabus_basic.out' has not changed.
+(rerunfilecheck)             Checksum: 104E3ED256E5CAA14A59DBCBE9D64A55;3759.
+
+Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
+
+Package logreq Info: Writing requests to 'syllabus_basic.run.xml'.
+
+\openout1 = syllabus_basic.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 49427 strings out of 470203
+ 49426 strings out of 470203
  195698,2373549 words of node,token memory allocated
  1231 words of node memory still in use:
    10 hlist, 2 vlist, 5 rule, 3 glue, 4 kern, 1 glyph, 228 attribute, 78 glue_spec, 30 attribute_list, 2 write, 13 user_defined nodes
    avail lists: 1:42,2:52499,3:656,4:591,5:240,6:82,7:6741,8:43,9:792,10:43,11:104
- 75570 multiletter control sequences out of 65536+600000
+ 75568 multiletter control sequences out of 65536+600000
  110 fonts using 77582711 bytes
- 119i,11n,126p,1781b,1802s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 119i,11n,126p,1796b,1802s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman17-regular.otf></Library/Fonts/BIZ-UDMinchoM.ttc></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on tmp.pdf (64 pages, 749831 bytes).
+Output written on syllabus_basic.pdf (64 pages, 751612 bytes).
 
-PDF statistics: 926 PDF objects out of 1000 (max. 8388607)
- 809 compressed objects within 9 object streams
+PDF statistics: 931 PDF objects out of 1000 (max. 8388607)
+ 814 compressed objects within 9 object streams
  476 named destinations out of 1000 (max. 131072)
  224 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -1,7 +1,7 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.6.24)  27 JUN 2025 14:42
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.6.24)  26 JUN 2025 10:07
  restricted system commands enabled.
-**tmp
-(./tmp.tex
+**ch12_test.tex
+(./ch12_test.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-05-26>
 Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
@@ -34,8 +34,8 @@ Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
-Inserting `tracingstacklevels' in `input_level_string'. (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/luatex/luatexja/ltjsarticle.cls
-Document Class: ltjsarticle 2025-05-26 ltjsclasses 
+Inserting `tracingstacklevels' in `input_level_string'. (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/luatex/luatexja/ltjsbook.cls
+Document Class: ltjsbook 2025-05-26 ltjsclasses 
 (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/luatex/luatexja/luatexja.sty
 Package: luatexja 2025-06-14 Japanese Typesetting with Lua(La)TeX
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/luatex/luatexja/luatexja-core.sty
@@ -491,26 +491,26 @@ Package: luatexja-compat 2020-08-08 Compatibility with pTeX
 \jsc@mmm=\dimen167
 \jsc@smallskipamount=\skip49
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 417.
+(Font)              scaled to size 9.24713pt on input line 425.
 \fullwidth=\dimen168
 (load cache: extra_lmroman8-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 558.
+(Font)              scaled to size 7.3977pt on input line 574.
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 558.
+(Font)              scaled to size 7.3977pt on input line 574.
 \c@part=\count286
-\c@section=\count287
-\c@subsection=\count288
-\c@subsubsection=\count289
-\c@paragraph=\count290
-\c@subparagraph=\count291
-\@abstractbox=\box70
-\c@figure=\count292
-\c@table=\count293
+\c@chapter=\count287
+\c@section=\count288
+\c@subsection=\count289
+\c@subsubsection=\count290
+\c@paragraph=\count291
+\c@subparagraph=\count292
+\c@figure=\count293
+\c@table=\count294
 \abovecaptionskip=\skip50
 \belowcaptionskip=\skip51
-LaTeX Info: Redefining \mc on input line 1213.
-LaTeX Info: Redefining \gt on input line 1214.
+LaTeX Info: Redefining \mc on input line 1285.
+LaTeX Info: Redefining \gt on input line 1286.
 \jsc@tocl@width=\dimen169
 \@lnumwidth=\dimen170
 \bibindent=\dimen171
@@ -520,7 +520,9 @@ LaTeX Info: Redefining \TeX on input line 82.
 LaTeX Info: Redefining \LaTeX on input line 135.
 LaTeX Info: Redefining \LaTeXe on input line 188.
 )
-\heisei=\count294
+\heisei=\count295
+) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/docmute/docmute.sty
+Package: docmute 2012/03/22 v1.4 Input stand-alone documents
 ) (../../myStyle.sty (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2024/03/21 v3.20 programmable bibliographies (PK/MW)
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
@@ -529,7 +531,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 )) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count295
+\lrq@indent=\count296
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 )) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
@@ -538,49 +540,49 @@ Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@tabx@nest=\count296
-\c@listtotal=\count297
-\c@listcount=\count298
-\c@liststart=\count299
-\c@liststop=\count300
-\c@citecount=\count301
-\c@citetotal=\count302
-\c@multicitecount=\count303
-\c@multicitetotal=\count304
-\c@instcount=\count305
-\c@maxnames=\count306
-\c@minnames=\count307
-\c@maxitems=\count308
-\c@minitems=\count309
-\c@citecounter=\count310
-\c@maxcitecounter=\count311
-\c@savedcitecounter=\count312
-\c@uniquelist=\count313
-\c@uniquename=\count314
-\c@refsection=\count315
-\c@refsegment=\count316
-\c@maxextratitle=\count317
-\c@maxextratitleyear=\count318
-\c@maxextraname=\count319
-\c@maxextradate=\count320
-\c@maxextraalpha=\count321
-\c@abbrvpenalty=\count322
-\c@highnamepenalty=\count323
-\c@lownamepenalty=\count324
-\c@maxparens=\count325
-\c@parenlevel=\count326
-\blx@tempcnta=\count327
-\blx@tempcntb=\count328
-\blx@tempcntc=\count329
-\c@blx@maxsection=\count330
-\blx@maxsegment@0=\count331
-\blx@notetype=\count332
-\blx@parenlevel@text=\count333
-\blx@parenlevel@foot=\count334
-\blx@sectionciteorder@0=\count335
-\blx@sectionciteorderinternal@0=\count336
-\blx@entrysetcounter=\count337
-\blx@biblioinstance=\count338
+\c@tabx@nest=\count297
+\c@listtotal=\count298
+\c@listcount=\count299
+\c@liststart=\count300
+\c@liststop=\count301
+\c@citecount=\count302
+\c@citetotal=\count303
+\c@multicitecount=\count304
+\c@multicitetotal=\count305
+\c@instcount=\count306
+\c@maxnames=\count307
+\c@minnames=\count308
+\c@maxitems=\count309
+\c@minitems=\count310
+\c@citecounter=\count311
+\c@maxcitecounter=\count312
+\c@savedcitecounter=\count313
+\c@uniquelist=\count314
+\c@uniquename=\count315
+\c@refsection=\count316
+\c@refsegment=\count317
+\c@maxextratitle=\count318
+\c@maxextratitleyear=\count319
+\c@maxextraname=\count320
+\c@maxextradate=\count321
+\c@maxextraalpha=\count322
+\c@abbrvpenalty=\count323
+\c@highnamepenalty=\count324
+\c@lownamepenalty=\count325
+\c@maxparens=\count326
+\c@parenlevel=\count327
+\blx@tempcnta=\count328
+\blx@tempcntb=\count329
+\blx@tempcntc=\count330
+\c@blx@maxsection=\count331
+\blx@maxsegment@0=\count332
+\blx@notetype=\count333
+\blx@parenlevel@text=\count334
+\blx@parenlevel@foot=\count335
+\blx@sectionciteorder@0=\count336
+\blx@sectionciteorderinternal@0=\count337
+\blx@entrysetcounter=\count338
+\blx@biblioinstance=\count339
 \labelnumberwidth=\skip52
 \labelalphawidth=\skip53
 \biblabelsep=\skip54
@@ -592,9 +594,9 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \blx@bcfin=\read2
 \blx@bcfout=\write3
 \blx@langwohyphens=\language3
-\c@mincomprange=\count339
-\c@maxcomprange=\count340
-\c@mincompwidth=\count341
+\c@mincomprange=\count340
+\c@maxcomprange=\count341
+\c@mincompwidth=\count342
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/biblatex/blx-dm.def
@@ -607,78 +609,78 @@ File: jpa.dbx 2022/06/22 v9.16 APA biblatex style data model
 )
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count342
-\c@savedafterword=\count343
-\c@annotator=\count344
-\c@savedannotator=\count345
-\c@author=\count346
-\c@savedauthor=\count347
-\c@bookauthor=\count348
-\c@savedbookauthor=\count349
-\c@commentator=\count350
-\c@savedcommentator=\count351
-\c@editor=\count352
-\c@savededitor=\count353
-\c@editora=\count354
-\c@savededitora=\count355
-\c@editorb=\count356
-\c@savededitorb=\count357
-\c@editorc=\count358
-\c@savededitorc=\count359
-\c@foreword=\count360
-\c@savedforeword=\count361
-\c@holder=\count362
-\c@savedholder=\count363
-\c@introduction=\count364
-\c@savedintroduction=\count365
-\c@namea=\count366
-\c@savednamea=\count367
-\c@nameb=\count368
-\c@savednameb=\count369
-\c@namec=\count370
-\c@savednamec=\count371
-\c@translator=\count372
-\c@savedtranslator=\count373
-\c@shortauthor=\count374
-\c@savedshortauthor=\count375
-\c@shorteditor=\count376
-\c@savedshorteditor=\count377
-\c@origauthor=\count378
-\c@savedorigauthor=\count379
-\c@translatora=\count380
-\c@savedtranslatora=\count381
-\c@labelname=\count382
-\c@savedlabelname=\count383
-\c@institution=\count384
-\c@savedinstitution=\count385
-\c@lista=\count386
-\c@savedlista=\count387
-\c@listb=\count388
-\c@savedlistb=\count389
-\c@listc=\count390
-\c@savedlistc=\count391
-\c@listd=\count392
-\c@savedlistd=\count393
-\c@liste=\count394
-\c@savedliste=\count395
-\c@listf=\count396
-\c@savedlistf=\count397
-\c@location=\count398
-\c@savedlocation=\count399
-\c@organization=\count400
-\c@savedorganization=\count401
-\c@origlocation=\count402
-\c@savedoriglocation=\count403
-\c@origpublisher=\count404
-\c@savedorigpublisher=\count405
-\c@publisher=\count406
-\c@savedpublisher=\count407
-\c@language=\count408
-\c@savedlanguage=\count409
-\c@origlanguage=\count410
-\c@savedoriglanguage=\count411
-\c@pageref=\count412
-\c@savedpageref=\count413
+\c@afterword=\count343
+\c@savedafterword=\count344
+\c@annotator=\count345
+\c@savedannotator=\count346
+\c@author=\count347
+\c@savedauthor=\count348
+\c@bookauthor=\count349
+\c@savedbookauthor=\count350
+\c@commentator=\count351
+\c@savedcommentator=\count352
+\c@editor=\count353
+\c@savededitor=\count354
+\c@editora=\count355
+\c@savededitora=\count356
+\c@editorb=\count357
+\c@savededitorb=\count358
+\c@editorc=\count359
+\c@savededitorc=\count360
+\c@foreword=\count361
+\c@savedforeword=\count362
+\c@holder=\count363
+\c@savedholder=\count364
+\c@introduction=\count365
+\c@savedintroduction=\count366
+\c@namea=\count367
+\c@savednamea=\count368
+\c@nameb=\count369
+\c@savednameb=\count370
+\c@namec=\count371
+\c@savednamec=\count372
+\c@translator=\count373
+\c@savedtranslator=\count374
+\c@shortauthor=\count375
+\c@savedshortauthor=\count376
+\c@shorteditor=\count377
+\c@savedshorteditor=\count378
+\c@origauthor=\count379
+\c@savedorigauthor=\count380
+\c@translatora=\count381
+\c@savedtranslatora=\count382
+\c@labelname=\count383
+\c@savedlabelname=\count384
+\c@institution=\count385
+\c@savedinstitution=\count386
+\c@lista=\count387
+\c@savedlista=\count388
+\c@listb=\count389
+\c@savedlistb=\count390
+\c@listc=\count391
+\c@savedlistc=\count392
+\c@listd=\count393
+\c@savedlistd=\count394
+\c@liste=\count395
+\c@savedliste=\count396
+\c@listf=\count397
+\c@savedlistf=\count398
+\c@location=\count399
+\c@savedlocation=\count400
+\c@organization=\count401
+\c@savedorganization=\count402
+\c@origlocation=\count403
+\c@savedoriglocation=\count404
+\c@origpublisher=\count405
+\c@savedorigpublisher=\count406
+\c@publisher=\count407
+\c@savedpublisher=\count408
+\c@language=\count409
+\c@savedlanguage=\count410
+\c@origlanguage=\count411
+\c@savedoriglanguage=\count412
+\c@pageref=\count413
+\c@savedpageref=\count414
 \shorthandwidth=\skip60
 \shortjournalwidth=\skip61
 \shortserieswidth=\skip62
@@ -709,19 +711,19 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
-\c@textcitecount=\count414
-\c@textcitetotal=\count415
-\c@textcitemaxnames=\count416
-\c@biburlbigbreakpenalty=\count417
-\c@biburlbreakpenalty=\count418
-\c@biburlnumpenalty=\count419
-\c@biburlucpenalty=\count420
-\c@biburllcpenalty=\count421
+\c@textcitecount=\count415
+\c@textcitetotal=\count416
+\c@textcitemaxnames=\count417
+\c@biburlbigbreakpenalty=\count418
+\c@biburlbreakpenalty=\count419
+\c@biburlnumpenalty=\count420
+\c@biburlucpenalty=\count421
+\c@biburllcpenalty=\count422
 \biburlbigskip=\muskip18
 \biburlnumskip=\muskip19
 \biburlucskip=\muskip20
 \biburllcskip=\muskip21
-\c@smartand=\count422
+\c@smartand=\count423
 )
 Package biblatex Info: Trying to load bibliography style '../../jpa'...
 Package biblatex Info: ... file '../../jpa.bbx' found.
@@ -735,10 +737,10 @@ Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count423
-\c@bbx:relatedtotal=\count424
+\c@bbx:relatedcount=\count424
+\c@bbx:relatedtotal=\count425
 ))
-\maxprtnames=\count425
+\maxprtnames=\count426
 )
 Package biblatex Info: Trying to load citation style '../../jpa'...
 Package biblatex Info: ... file '../../jpa.cbx' found.
@@ -797,9 +799,9 @@ Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
-\Gm@cnth=\count426
-\Gm@cntv=\count427
-\c@Gm@tempcnt=\count428
+\Gm@cnth=\count427
+\Gm@cntv=\count428
+\c@Gm@tempcnt=\count429
 \Gm@bindingoffset=\dimen173
 \Gm@wd@mp=\dimen174
 \Gm@odd@mp=\dimen175
@@ -826,19 +828,19 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count429
+\inf@bad=\count430
 LaTeX Info: Redefining \frac on input line 235.
-\uproot@=\count430
-\leftroot@=\count431
+\uproot@=\count431
+\leftroot@=\count432
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count432
-\DOTSCASE@=\count433
+\classnum@=\count433
+\DOTSCASE@=\count434
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
-\Mathstrutbox@=\box71
-\strutbox@=\box72
+\Mathstrutbox@=\box70
+\strutbox@=\box71
 LaTeX Info: Redefining \big on input line 721.
 LaTeX Info: Redefining \Big on input line 722.
 LaTeX Info: Redefining \bigg on input line 723.
@@ -846,20 +848,20 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen183
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count434
+\macc@depth=\count435
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count435
+\c@MaxMatrixCols=\count436
 \dotsspace@=\muskip22
-\c@parentequation=\count436
-\dspbrk@lvl=\count437
+\c@parentequation=\count437
+\dspbrk@lvl=\count438
 \tag@help=\toks29
-\row@=\count438
-\column@=\count439
-\maxfields@=\count440
+\row@=\count439
+\column@=\count440
+\maxfields@=\count441
 \andhelp@=\toks30
 \eqnshift@=\dimen184
 \alignsep@=\dimen185
@@ -899,21 +901,21 @@ File: luatex.def 2024/04/13 v1.2e Graphics/color driver for luatex
 \Gin@req@width=\dimen191
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2025/05/13 line numbers on paragraphs v5.5
-\linenopenalty=\count441
+\linenopenalty=\count442
 \output=\toks33
-\linenoprevgraf=\count442
+\linenoprevgraf=\count443
 \linenumbersep=\dimen192
 \linenumberwidth=\dimen193
-\c@linenumber=\count443
-\c@pagewiselinenumber=\count444
-\c@LN@truepage=\count445
-\c@internallinenumber=\count446
-\c@internallinenumbers=\count447
+\c@linenumber=\count444
+\c@pagewiselinenumber=\count445
+\c@LN@truepage=\count446
+\c@internallinenumber=\count447
+\c@internallinenumbers=\count448
 \quotelinenumbersep=\dimen194
 \bframerule=\dimen195
 \bframesep=\dimen196
-\bframebox=\box73
-\@LN@amsmath@ams@eqpen=\count448
+\bframebox=\box72
+\@LN@amsmath@ams@eqpen=\count449
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/luatex/luatexja/addons/luatexja-ruby.sty
@@ -934,24 +936,24 @@ Inserting `luatexja.beginpar.np_info_after' in `luatexja.jfmglue.whatsit_after'.
 Inserting `luatexja.ruby.np_info_last_minute' in `luatexja.jfmglue.whatsit_last_minute'.) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/epsdice/epsdice.sty
 Package: epsdice 2007/02/15 by Thomas Heim (v. 2.1)
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/epsdice/epsdice.cfg)
-\c@eps@face=\count449
+\c@eps@face=\count450
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
-\FV@CodeLineNo=\count450
+\FV@CodeLineNo=\count451
 \FV@InFile=\read3
-\FV@TabBox=\box74
-\c@FancyVerbLine=\count451
-\FV@StepNumber=\count452
+\FV@TabBox=\box73
+\c@FancyVerbLine=\count452
+\FV@StepNumber=\count453
 \FV@OutFile=\write4
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box75
-\UL@hyphenbox=\box76
+\UL@box=\box74
+\UL@hyphenbox=\box75
 \UL@skip=\skip81
 \UL@hook=\toks34
 \UL@height=\dimen197
-\UL@pe=\count453
+\UL@pe=\count454
 \UL@pixel=\dimen198
-\ULC@box=\box77
+\ULC@box=\box76
 Package: ulem 2019/11/18
 \ULdepth=\dimen199
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/tools/bm.sty
@@ -968,15 +970,15 @@ LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 Package: pdfpages 2025/03/12 v0.6f Insert pages of external PDF documents (AM)
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
-\calc@Acount=\count454
-\calc@Bcount=\count455
+\calc@Acount=\count455
+\calc@Bcount=\count456
 \calc@Adimen=\dimen256
 \calc@Bdimen=\dimen257
 \calc@Askip=\skip82
 \calc@Bskip=\skip83
 LaTeX Info: Redefining \setlength on input line 86.
 LaTeX Info: Redefining \addtolength on input line 87.
-\calc@Ccount=\count456
+\calc@Ccount=\count457
 \calc@Cskip=\skip84
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
@@ -998,8 +1000,6 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 ))
 \AM@pagewidth=\dimen260
 \AM@pageheight=\dimen261
@@ -1007,25 +1007,25 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/pdfpages/ppluatex.def
 File: ppluatex.def 2025/03/12 v0.6f Pdfpages driver for LuaTeX (AM)
 )
-\pdfpages@includegraphics@status=\count457
-\AM@pagebox=\box78
+\pdfpages@includegraphics@status=\count458
+\AM@pagebox=\box77
 \AM@global@opts=\toks35
-\AM@pagecnt=\count458
+\AM@pagecnt=\count459
 \AM@toc@title=\toks36
 \AM@lof@heading=\toks37
-\c@AM@survey=\count459
-\AM@templatesizebox=\box79
+\c@AM@survey=\count460
+\AM@templatesizebox=\box78
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen263
 \WF@size=\dimen264
-\c@WF@wrappedlines=\count460
-\WF@box=\box80
+\c@WF@wrappedlines=\count461
+\WF@box=\box79
 \WF@everypar=\toks38
 Package: wrapfig 2003/01/31  v 3.6
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip85
-\multirow@cntb=\count461
+\multirow@cntb=\count462
 \multirow@dima=\skip86
 \bigstrutjot=\dimen265
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
@@ -1033,7 +1033,7 @@ Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \pgfutil@tempdima=\dimen266
 \pgfutil@tempdimb=\dimen267
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box81
+\pgfutil@abb=\box80
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
@@ -1058,14 +1058,14 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 \pgf@yd=\dimen277
 \w@pgf@writea=\write5
 \r@pgf@reada=\read4
-\c@pgf@counta=\count462
-\c@pgf@countb=\count463
-\c@pgf@countc=\count464
-\c@pgf@countd=\count465
+\c@pgf@counta=\count463
+\c@pgf@countb=\count464
+\c@pgf@countc=\count465
+\c@pgf@countd=\count466
 \t@pgf@toka=\toks43
 \t@pgf@tokb=\toks44
 \t@pgf@tokc=\toks45
-\pgf@sys@id@count=\count466
+\pgf@sys@id@count=\count467
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -1076,21 +1076,21 @@ File: pgfsys-luatex.def 2023-01-15 v3.1.10 (3.1.10)
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 ))) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count467
-\pgfsyssoftpath@bigbuffer@items=\count468
+\pgfsyssoftpath@smallbuffer@items=\count468
+\pgfsyssoftpath@bigbuffer@items=\count469
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen278
-\pgfmath@count=\count469
-\pgfmath@box=\box82
+\pgfmath@count=\count470
+\pgfmath@box=\box81
 \pgfmath@toks=\toks46
 \pgfmath@stack@operand=\toks47
 \pgfmath@stack@operation=\toks48
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count470
+\c@pgfmathroundto@lastzeros=\count471
 )) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@picminx=\dimen279
@@ -1117,10 +1117,10 @@ File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@shorten@start@additional=\dimen296
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box83
-\pgf@hbox=\box84
-\pgf@layerbox@main=\box85
-\pgf@picture@serial@count=\count471
+\pgfpic=\box82
+\pgf@hbox=\box83
+\pgf@layerbox@main=\box84
+\pgf@picture@serial@count=\count472
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgflinewidth=\dimen297
@@ -1141,13 +1141,13 @@ File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@max=\dimen302
-\pgf@sys@shading@range@num=\count472
-\pgf@shadingcount=\count473
+\pgf@sys@shading@range@num=\count473
+\pgf@shadingcount=\count474
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box86
+\pgfexternal@startupbox=\box85
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
@@ -1158,7 +1158,7 @@ File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box87
+\pgfnodeparttextbox=\box86
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
@@ -1177,7 +1177,7 @@ Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count474
+\pgf@plot@mark@count=\count475
 \pgfplotmarksize=\dimen307
 )
 \tikz@lastx=\dimen308
@@ -1188,21 +1188,21 @@ File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@lastmovetoy=\dimen313
 \tikzleveldistance=\dimen314
 \tikzsiblingdistance=\dimen315
-\tikz@figbox=\box88
-\tikz@figbox@bg=\box89
-\tikz@tempbox=\box90
-\tikz@tempbox@bg=\box91
-\tikztreelevel=\count475
-\tikznumberofchildren=\count476
-\tikznumberofcurrentchild=\count477
-\tikz@fig@count=\count478
+\tikz@figbox=\box87
+\tikz@figbox@bg=\box88
+\tikz@tempbox=\box89
+\tikz@tempbox@bg=\box90
+\tikztreelevel=\count476
+\tikznumberofchildren=\count477
+\tikznumberofcurrentchild=\count478
+\tikz@fig@count=\count479
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count479
-\pgfmatrixcurrentcolumn=\count480
-\pgf@matrix@numberofcolumns=\count481
+\pgfmatrixcurrentrow=\count480
+\pgfmatrixcurrentcolumn=\count481
+\pgf@matrix@numberofcolumns=\count482
 )
-\tikz@expandcount=\count482
+\tikz@expandcount=\count483
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
@@ -1214,7 +1214,7 @@ File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfarrowwidth=\dimen318
 \pgfarrowlinewidth=\dimen319
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryintersections.code.tex (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryintersections.code.tex (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
-\pgf@intersect@solutions=\count483
+\pgf@intersect@solutions=\count484
 )) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.code.tex
@@ -1233,33 +1233,33 @@ File: tikzlibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgflibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.arrows.code.tex
 File: tikzlibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-
-(/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows.code.tex
+ (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows.code.tex
 File: pgflibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.callouts.code.tex (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.callouts.code.tex)) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
+))
+(/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.callouts.code.tex (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.callouts.code.tex)) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
 File: tikzlibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
 File: pgflibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodepartlowerbox=\box92
-\pgfnodeparttwobox=\box93
-\pgfnodepartthreebox=\box94
-\pgfnodepartfourbox=\box95
-\pgfnodeparttwentybox=\box96
-\pgfnodepartnineteenbox=\box97
-\pgfnodeparteighteenbox=\box98
-\pgfnodepartseventeenbox=\box99
-\pgfnodepartsixteenbox=\box100
-\pgfnodepartfifteenbox=\box101
-\pgfnodepartfourteenbox=\box102
-\pgfnodepartthirteenbox=\box103
-\pgfnodeparttwelvebox=\box104
-\pgfnodepartelevenbox=\box105
-\pgfnodeparttenbox=\box106
-\pgfnodepartninebox=\box107
-\pgfnodeparteightbox=\box108
-\pgfnodepartsevenbox=\box109
-\pgfnodepartsixbox=\box110
-\pgfnodepartfivebox=\box111
+\pgfnodepartlowerbox=\box91
+\pgfnodeparttwobox=\box92
+\pgfnodepartthreebox=\box93
+\pgfnodepartfourbox=\box94
+\pgfnodeparttwentybox=\box95
+\pgfnodepartnineteenbox=\box96
+\pgfnodeparteighteenbox=\box97
+\pgfnodepartseventeenbox=\box98
+\pgfnodepartsixteenbox=\box99
+\pgfnodepartfifteenbox=\box100
+\pgfnodepartfourteenbox=\box101
+\pgfnodepartthirteenbox=\box102
+\pgfnodeparttwelvebox=\box103
+\pgfnodepartelevenbox=\box104
+\pgfnodeparttenbox=\box105
+\pgfnodepartninebox=\box106
+\pgfnodeparteightbox=\box107
+\pgfnodepartsevenbox=\box108
+\pgfnodepartsixbox=\box109
+\pgfnodepartfivebox=\box110
 ))) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
@@ -1269,14 +1269,14 @@ File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: tikzlibrary3d.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/luatex/luatexja/lltjext.sty
 Package: lltjext 2024-07-23 v1.2k-ltj-16 Macros for vertical writing
-\ltj@ext@dir=\count484
-\@floatbox=\box112
+\ltj@ext@dir=\count485
+\@floatbox=\box111
 \floatwidth=\dimen321
 \floatheight=\dimen322
 \floatruletick=\dimen323
 \captionfloatsep=\dimen324
 \captionwidth=\dimen325
-\@captionbox=\box113
+\@captionbox=\box112
 LaTeX Info: Redefining \parbox on input line 362.
 \@picwd=\dimen326
 \rensujiskip=\skip87
@@ -1286,17 +1286,17 @@ Package: longtable 2024-12-18 v4.23 Multi-page Table package (DPC)
 \LTright=\skip89
 \LTpre=\skip90
 \LTpost=\skip91
-\LTchunksize=\count485
+\LTchunksize=\count486
 \LTcapwidth=\dimen327
-\LT@head=\box114
-\LT@firsthead=\box115
-\LT@foot=\box116
-\LT@lastfoot=\box117
-\LT@gbox=\box118
-\LT@cols=\count486
-\LT@rows=\count487
-\c@LT@tables=\count488
-\c@LT@chunks=\count489
+\LT@head=\box113
+\LT@firsthead=\box114
+\LT@foot=\box115
+\LT@lastfoot=\box116
+\LT@gbox=\box117
+\LT@cols=\count487
+\LT@rows=\count488
+\c@LT@tables=\count489
+\c@LT@chunks=\count490
 \LT@p@ftn=\toks51
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/tablefootnote/tablefootnote.sty
 Package: tablefootnote 2014/01/26 v1.1c Table foot notes (HMM)
@@ -1314,17 +1314,17 @@ Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
 Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
 Lua module: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 Package: fontspec-luatex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
-\l__fontspec_script_int=\count490
-\l__fontspec_language_int=\count491
-\l__fontspec_strnum_int=\count492
-\l__fontspec_tmp_int=\count493
-\l__fontspec_tmpa_int=\count494
-\l__fontspec_tmpb_int=\count495
-\l__fontspec_tmpc_int=\count496
-\l__fontspec_em_int=\count497
-\l__fontspec_emdef_int=\count498
-\l__fontspec_strong_int=\count499
-\l__fontspec_strongdef_int=\count500
+\l__fontspec_script_int=\count491
+\l__fontspec_language_int=\count492
+\l__fontspec_strnum_int=\count493
+\l__fontspec_tmp_int=\count494
+\l__fontspec_tmpa_int=\count495
+\l__fontspec_tmpb_int=\count496
+\l__fontspec_tmpc_int=\count497
+\l__fontspec_em_int=\count498
+\l__fontspec_emdef_int=\count499
+\l__fontspec_strong_int=\count500
+\l__fontspec_strongdef_int=\count501
 \l__fontspec_tmpa_dim=\dimen328
 \l__fontspec_tmpb_dim=\dimen329
 \l__fontspec_tmpc_dim=\dimen330
@@ -1341,41 +1341,41 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 (Font)              scaled to size 9.24713pt on input line 3978.
 (load cache: extra_haranoajigothic-medium.luc))) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/luatex/luatexja/patches/lltjp-fontspec.sty) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/luatex/luatexja/addons/luatexja-fontspec-29e.sty
 Package: luatexja-fontspec-29e 2024-05-27 fontspec support of LuaTeX-ja
-\g__ltj_fontspec_altnumber_int=\count501
+\g__ltj_fontspec_altnumber_int=\count502
 )) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/nicematrix/nicematrix.sty
 Package: nicematrix 2025/06/21 v7.1d Enhanced arrays with the help of PGF/TikZ
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
 Package: array 2025/06/08 v2.6j Tabular extension package (FMi)
 \col@sep=\dimen331
-\ar@mcellbox=\box119
+\ar@mcellbox=\box118
 \extrarowheight=\dimen332
 \NC@list=\toks52
 \extratabsurround=\skip92
 \backup@length=\skip93
-\ar@cellbox=\box120
+\ar@cellbox=\box119
 )
 \l__nicematrix_tmpc_dim=\dimen333
 \l__nicematrix_tmpd_dim=\dimen334
 \l__nicematrix_tmpe_dim=\dimen335
 \l__nicematrix_tmpf_dim=\dimen336
-\l__nicematrix_tmpc_int=\count502
-\g__nicematrix_env_int=\count503
-\g__nicematrix_NiceMatrixBlock_int=\count504
-\g__nicematrix_notes_caption_int=\count505
+\l__nicematrix_tmpc_int=\count503
+\g__nicematrix_env_int=\count504
+\g__nicematrix_NiceMatrixBlock_int=\count505
+\g__nicematrix_notes_caption_int=\count506
 \l__nicematrix_columns_width_dim=\dimen337
 \l__nicematrix_col_width_dim=\dimen338
-\g__nicematrix_row_total_int=\count506
-\g__nicematrix_col_total_int=\count507
-\g__nicematrix_last_row_node_int=\count508
-\l__nicematrix_key_nb_rows_int=\count509
+\g__nicematrix_row_total_int=\count507
+\g__nicematrix_col_total_int=\count508
+\g__nicematrix_last_row_node_int=\count509
+\l__nicematrix_key_nb_rows_int=\count510
 \g__nicematrix_blocks_wd_dim=\dimen339
 \g__nicematrix_blocks_ht_dim=\dimen340
 \g__nicematrix_blocks_dp_dim=\dimen341
 \l__nicematrix_width_dim=\dimen342
 \l__nicematrix_tabular_width_dim=\dimen343
 \l__nicematrix_rule_width_dim=\dimen344
-\l__nicematrix_old_iRow_int=\count510
-\l__nicematrix_old_jCol_int=\count511
+\l__nicematrix_old_iRow_int=\count511
+\l__nicematrix_old_jCol_int=\count512
 \l__nicematrix_X_columns_dim=\dimen345
 \l__nicematrix_x_initial_dim=\dimen346
 \l__nicematrix_y_initial_dim=\dimen347
@@ -1389,40 +1389,40 @@ Package: array 2025/06/08 v2.6j Tabular extension package (FMi)
 \g__nicematrix_dp_last_row_dim=\dimen355
 \g__nicematrix_width_last_col_dim=\dimen356
 \g__nicematrix_width_first_col_dim=\dimen357
-\g__nicematrix_ddots_int=\count512
-\g__nicematrix_iddots_int=\count513
+\g__nicematrix_ddots_int=\count513
+\g__nicematrix_iddots_int=\count514
 \g__nicematrix_delta_x_one_dim=\dimen358
 \g__nicematrix_delta_y_one_dim=\dimen359
 \g__nicematrix_delta_x_two_dim=\dimen360
 \g__nicematrix_delta_y_two_dim=\dimen361
-\l__nicematrix_row_min_int=\count514
-\l__nicematrix_row_max_int=\count515
-\l__nicematrix_col_min_int=\count516
-\l__nicematrix_col_max_int=\count517
-\l__nicematrix_initial_i_int=\count518
-\l__nicematrix_initial_j_int=\count519
-\l__nicematrix_final_i_int=\count520
-\l__nicematrix_final_j_int=\count521
-\l__nicematrix_start_int=\count522
-\l__nicematrix_end_int=\count523
-\l__nicematrix_local_start_int=\count524
-\l__nicematrix_local_end_int=\count525
-\g__nicematrix_static_num_of_col_int=\count526
+\l__nicematrix_row_min_int=\count515
+\l__nicematrix_row_max_int=\count516
+\l__nicematrix_col_min_int=\count517
+\l__nicematrix_col_max_int=\count518
+\l__nicematrix_initial_i_int=\count519
+\l__nicematrix_initial_j_int=\count520
+\l__nicematrix_final_i_int=\count521
+\l__nicematrix_final_j_int=\count522
+\l__nicematrix_start_int=\count523
+\l__nicematrix_end_int=\count524
+\l__nicematrix_local_start_int=\count525
+\l__nicematrix_local_end_int=\count526
+\g__nicematrix_static_num_of_col_int=\count527
 \l__nicematrix_rounded_corners_dim=\dimen362
 \l__nicematrix_tab_rounded_corners_dim=\dimen363
 \l__nicematrix_offset_dim=\dimen364
 \l__nicematrix_line_width_dim=\dimen365
-\g__nicematrix_block_box_int=\count527
+\g__nicematrix_block_box_int=\count528
 \l__nicematrix_submatrix_extra_height_dim=\dimen366
 \l__nicematrix_submatrix_left_xshift_dim=\dimen367
 \l__nicematrix_submatrix_right_xshift_dim=\dimen368
-\l__nicematrix_first_row_int=\count528
-\l__nicematrix_first_col_int=\count529
-\l__nicematrix_last_row_int=\count530
-\l__nicematrix_last_col_int=\count531
-\c@tabularnote=\count532
-\g__nicematrix_tabularnote_int=\count533
-\c@nicematrix_draft=\count534
+\l__nicematrix_first_row_int=\count529
+\l__nicematrix_first_col_int=\count530
+\l__nicematrix_last_row_int=\count531
+\l__nicematrix_last_col_int=\count532
+\c@tabularnote=\count533
+\g__nicematrix_tabularnote_int=\count534
+\c@nicematrix_draft=\count535
 \l__nicematrix_cell_space_top_limit_dim=\dimen369
 \l__nicematrix_cell_space_bottom_limit_dim=\dimen370
 \l__nicematrix_xdots_inter_dim=\dimen371
@@ -1434,8 +1434,8 @@ Package: array 2025/06/08 v2.6j Tabular extension package (FMi)
 \l__nicematrix_extra_left_margin_dim=\dimen377
 \l__nicematrix_extra_right_margin_dim=\dimen378
 \c__nicematrix_max_l_dim=\dimen379
-\l__nicematrix_position_int=\count535
-\l__nicematrix_multiplicity_int=\count536
+\l__nicematrix_position_int=\count536
+\l__nicematrix_multiplicity_int=\count537
 \l__nicematrix_brace_yshift_dim=\dimen380
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
@@ -1449,20 +1449,20 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen388
 \cmidrulekern=\dimen389
 \defaultaddspace=\dimen390
-\@cmidla=\count537
-\@cmidlb=\count538
+\@cmidla=\count538
+\@cmidlb=\count539
 \@aboverulesep=\dimen391
 \@belowrulesep=\dimen392
-\@thisruleclass=\count539
-\@lastruleclass=\count540
+\@thisruleclass=\count540
+\@lastruleclass=\count541
 \@thisrulewidth=\dimen393
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/accents/accents.sty
 Package: accents 2006/05/12 v1.4 Math Accent Tools
 \cc@skew=\dimen394
 \cc@wd=\dimen395
-\cc@code=\count541
-\cc@group=\count542
-\cc@skewchar=\count543
+\cc@code=\count542
+\cc@group=\count543
+\cc@skewchar=\count544
 )
 luaotfload | cache : Lookup cache loaded from /Users/pythagoras/Library/TinyTeX/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(load cache: extra_biz-udmincho-medium.luc)
 
@@ -1575,29 +1575,29 @@ LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
 Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
 \everycr=\toks53
 \minrowclearance=\skip94
-\rownum=\count544
+\rownum=\count545
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
 Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count545
-\lst@gtempboxa=\box121
+\lst@mode=\count546
+\lst@gtempboxa=\box120
 \lst@token=\toks54
-\lst@length=\count546
+\lst@length=\count547
 \lst@currlwidth=\dimen396
-\lst@column=\count547
-\lst@pos=\count548
+\lst@column=\count548
+\lst@pos=\count549
 \lst@lostspace=\dimen397
 \lst@width=\dimen398
-\lst@newlines=\count549
-\lst@lineno=\count550
+\lst@newlines=\count550
+\lst@lineno=\count551
 \lst@maxwidth=\dimen399
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-\c@lstnumber=\count551
-\lst@skipnumbers=\count552
-\lst@framebox=\box122
+\c@lstnumber=\count552
+\lst@skipnumbers=\count553
+\lst@framebox=\box121
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
@@ -1605,7 +1605,7 @@ Package: listings 2024/09/23 1.10c (Carsten Heinz)
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/luatex/luatexja/patches/lltjp-listings.sty (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/luatex/luatexbase/luatexbase-cctb.sty
 Package: luatexbase-cctb 2015/10/04 v1.3 luatexbase interface to LuaTeX (legacy subpackage) 
 )
-\ltj@lst@japanese@min=\count553
+\ltj@lst@japanese@min=\count554
 \CatcodeTableLTJlistings=\catcodetable17
 \ltj@lst@frame@lslimit=\dimen400
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/listings/lstmisc.sty
@@ -1629,17 +1629,17 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count554
+\c@section@level=\count555
 )
 \@linkdim=\dimen401
-\Hy@linkcounter=\count555
-\Hy@pagecounter=\count556
+\Hy@linkcounter=\count556
+\Hy@pagecounter=\count557
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2025-06-21 v7.01n Hyperref: PDFDocEncoding definition (HO)
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count557
+\Hy@SavedSpaceFactor=\count558
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2025-06-21 v7.01n Hyperref: PDF Unicode definition (HO)
 )
@@ -1650,7 +1650,7 @@ Package hyperref Info: Plain pages OFF on input line 4196.
 Package hyperref Info: Backreferencing OFF on input line 4201.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4448.
-\c@Hy@tempcnt=\count558
+\c@Hy@tempcnt=\count559
 LaTeX Info: Redefining \url on input line 4787.
 \XeTeXLinkMargin=\dimen402
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
@@ -1658,7 +1658,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count559
+\Fld@menulength=\count560
 \Field@Width=\dimen403
 \Fld@charsize=\dimen404
 Package hyperref Info: Hyper figures OFF on input line 6066.
@@ -1668,15 +1668,15 @@ Package hyperref Info: backreferencing OFF on input line 6081.
 Package hyperref Info: Link coloring OFF on input line 6086.
 Package hyperref Info: Link coloring with OCG OFF on input line 6091.
 Package hyperref Info: PDF/A mode OFF on input line 6096.
-\Hy@abspage=\count560
-\c@Item=\count561
-\c@Hfootnote=\count562
+\Hy@abspage=\count561
+\c@Item=\count562
+\c@Hfootnote=\count563
 )
 Package hyperref Info: Driver (autodetected): hluatex.
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hluatex.def
 File: hluatex.def 2025-06-21 v7.01n Hyperref driver for luaTeX
-\Fld@listcount=\count563
-\c@bookmark@seq@number=\count564
+\Fld@listcount=\count564
+\c@bookmark@seq@number=\count565
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
@@ -1702,28 +1702,28 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\tcb@titlebox=\box123
-\tcb@upperbox=\box124
-\tcb@lowerbox=\box125
-\tcb@phantombox=\box126
-\c@tcbbreakpart=\count565
-\c@tcblayer=\count566
-\c@tcolorbox@number=\count567
-\l__tcobox_tmpa_box=\box127
+\tcb@titlebox=\box122
+\tcb@upperbox=\box123
+\tcb@lowerbox=\box124
+\tcb@phantombox=\box125
+\c@tcbbreakpart=\count566
+\c@tcblayer=\count567
+\c@tcolorbox@number=\count568
+\l__tcobox_tmpa_box=\box126
 \l__tcobox_tmpa_dim=\dimen405
+\tcb@temp=\box127
 \tcb@temp=\box128
 \tcb@temp=\box129
 \tcb@temp=\box130
-\tcb@temp=\box131
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
 Library (tcolorbox): 'tcbbreakable.code.tex' version '6.6.0'
 (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/pdfcol/pdfcol.sty
 Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
 )
 Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
-\tcb@testbox=\box132
-\tcb@totalupperbox=\box133
-\tcb@totallowerbox=\box134
+\tcb@testbox=\box131
+\tcb@totalupperbox=\box132
+\tcb@totallowerbox=\box133
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
 Library (tcolorbox): 'tcbskins.code.tex' version '6.6.0'
 (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
@@ -1732,30 +1732,30 @@ Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
 Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
 File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
-\l__tikzfill_img_box=\box135
+\l__tikzfill_img_box=\box134
 )) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
 Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.6.0'
 )) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
 Library (tcolorbox): 'tcbtheorems.code.tex' version '6.6.0'
 )
-\c@tcb@cnt@Rscreen=\count568
-\c@tcb@cnt@SCrstan=\count569
-\c@tcb@cnt@SCcmd=\count570
-\c@tcb@cnt@MCMCout=\count571
-\c@tcb@cnt@reidai=\count572
-\c@tcb@cnt@hinto=\count573
+\c@tcb@cnt@Rscreen=\count569
+\c@tcb@cnt@SCrstan=\count570
+\c@tcb@cnt@SCcmd=\count571
+\c@tcb@cnt@MCMCout=\count572
+\c@tcb@cnt@reidai=\count573
+\c@tcb@cnt@hinto=\count574
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/capt-of/capt-of.sty
 Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
 )
-\c@tcb@cnt@FAQ=\count574
+\c@tcb@cnt@FAQ=\count575
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
 )
 \@indexfile=\write7
 
-\openout7 = tmp.idx
+\openout7 = ch12_test.idx
 
-Writing index file tmp.idx
+Writing index file ch12_test.idx
 (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@headwidth=\skip96
@@ -1776,10 +1776,10 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 )) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/luatex/luatexja/patches/lltjp-array.sty
 Package: lltjp-array 2024-07-21 Patch to array for LuaTeX-ja
 )
-\@quotelevel=\count575
-\@quotereset=\count576
- (./tmp.aux (./b01_Introduction.aux) (./b02_PCs.aux) (./b03_useR.aux) (./b04_Number_and_data.aux) (./b05_descriptives.aux) (./b06_Corr.aux) (./b07_regression.aux) (./b08_MultipleRegression.aux) (./b09_Regression_onR.aux) (./b10_Probability.aux) (./b11_estimation.aux) (./b12_test.aux) (./b13_NHST.aux) (./b14_NHST2.aux) (./b15_summary_exam.aux) (./b16_ttest.aux) (./b17_RCT.aux) (./b18_BetweenDesign.aux) (./b19_BetweenDesign_onR.aux) (./b20_WithinDesign.aux) (./b21_WithinDesign_onR.aux) (./b22_GLM.aux) (./b23_likelihood.aux) (./b24_reg_ml.aux) (./b25_bayesian.aux) (./b26_bayesian_regression.aux) (./b27_jasp_intro.aux) (./b28_bayes_judgement.aux) (./b29_bayesianModeling.aux) (./b30_final_exam.aux))
-\openout1 = tmp.aux
+\@quotelevel=\count576
+\@quotereset=\count577
+ (./ch12_test.aux)
+\openout1 = ch12_test.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
@@ -1815,18 +1815,10 @@ Package biblatex Info: LuaTeX detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
 
-\openout3 = tmp.bcf
+\openout3 = ch12_test.bcf
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'tmp.bbl' found.
- (./tmp.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                aoki2021
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+Package biblatex Info: ... file 'ch12_test.bbl' found.
+ (./ch12_test.bbl)
 Package biblatex Info: Reference section=0 on input line 5.
 Package biblatex Info: Reference segment=0 on input line 5.
 
@@ -1837,21 +1829,21 @@ Package biblatex Info: Reference segment=0 on input line 5.
 * paper: <default>
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: includehead includefoot heightrounded 
-* h-part:(L,W,R)=(89.62709pt, 418.25368pt, 89.6271pt)
+* modes: includehead includefoot twoside heightrounded 
+* h-part:(L,W,R)=(71.70166pt, 418.25368pt, 107.55254pt)
 * v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
 * \textwidth=418.25368pt
-* \textheight=636.76108pt
-* \oddsidemargin=17.3571pt
-* \evensidemargin=17.3571pt
+* \textheight=668.76108pt
+* \oddsidemargin=-0.56833pt
+* \evensidemargin=35.28255pt
 * \topmargin=-1.1381pt
 * \headheight=20.0pt
-* \headsep=15.69684pt
+* \headsep=14.31049pt
 * \topskip=12.76108pt
 * \footskip=16.0pt
-* \marginparwidth=18.49426pt
+* \marginparwidth=120.2127pt
 * \marginparsep=18.49426pt
 * \columnsep=18.49426pt
 * \skip\footins=16.0pt plus 5.0pt minus 2.0pt
@@ -1859,23 +1851,23 @@ Package biblatex Info: Reference segment=0 on input line 5.
 * \voffset=0.0pt
 * \mag=1000
 * \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
+* \@twosidetrue
+* \@mparswitchtrue
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count577
+\scratchcounter=\count578
 \scratchdimen=\dimen406
-\scratchbox=\box136
-\nofMPsegments=\count578
-\nofMParguments=\count579
+\scratchbox=\box135
+\nofMPsegments=\count579
+\nofMParguments=\count580
 \everyMPshowfont=\toks59
-\MPscratchCnt=\count580
+\MPscratchCnt=\count581
 \MPscratchDim=\dimen407
-\MPnumerator=\count581
-\makeMPintoPDFobject=\count582
+\MPnumerator=\count582
+\makeMPintoPDFobject=\count583
 \everyMPtoPDFconversion=\toks60
 ) (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1955,437 +1947,190 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 \c__nicematrix_shift_Ldots_last_row_dim=\dimen408
 \c__nicematrix_shift_exterior_Vdots_dim=\dimen409
 \c__nicematrix_innersep_middle_dim=\dimen410
-\c@lstlisting=\count583
+\c@lstlisting=\count584
 (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks61
 \inpenc@posthook=\toks62
 )
 Package hyperref Info: Link coloring ON on input line 5.
- (./tmp.out) (./tmp.out)
+ (./ch12_test.out) (./ch12_test.out)
 \@outlinefile=\write8
 
-\openout8 = tmp.out
+\openout8 = ch12_test.out
+\docmute@nestinglevel=\count585
+
+第1章
 (load cache: extra_lmroman17-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 15.97903pt on input line 11.
+(Font)              scaled to size 19.17854pt on input line 6.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 15.97903pt on input line 11.
+(Font)              scaled to size 19.17854pt on input line 6.
+LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
+(Font)              scaled to size 19.17854pt on input line 6.
+LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
+(Font)              scaled to size 19.17854pt on input line 6.
+(load cache: extra_lmsans17-regular.luc)
+LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
+(Font)              scaled to size 23.00687pt on input line 6.
+LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
+(Font)              scaled to size 23.00687pt on input line 6.
 (load cache: extra_lmroman12-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 11.
+(Font)              scaled to size 13.31586pt on input line 12.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 11.
-(load cache: extra_lmroman6-regular.luc)
+(Font)              scaled to size 13.31586pt on input line 12.
+LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
+(Font)              scaled to size 13.31586pt on input line 12.
+LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
+(Font)              scaled to size 13.31586pt on input line 12.
+(load cache: extra_lmsans12-regular.luc)(load cache: extra_lmroman7-regular.luc)(load cache: extra_lmroman5-regular.luc)
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 11.
+(Font)              scaled to size 6.47299pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 5.54828pt on input line 11.
-LaTeX Font Info:    Trying loading font information for U+msa on input line 11.
- (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+(Font)              scaled to size 4.62357pt on input line 13.
+LaTeX Font Info:    Trying loading font information for U+msa on input line 13.
+(/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying loading font information for U+msb on input line 11.
+LaTeX Font Info:    Trying loading font information for U+msb on input line 13.
  (/Users/pythagoras/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 11.
+(Font)              scaled to size 6.47299pt on input line 13.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 11.
-LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 5.54828pt on input line 11.
-
-
+(Font)              scaled to size 4.62357pt on input line 13.
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 9.24713pt on input line 13.
+(Font)              scaled to size 9.24713pt on input line 15.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
-(Font)              scaled to size 9.24713pt on input line 13.
+(Font)              scaled to size 9.24713pt on input line 15.
+<figures/12_test/biased.png, id=28, 4818.0pt x 2409.0pt>
+File: figures/12_test/biased.png Graphic file (type png)
+<use figures/12_test/biased.png>
+Package luatex.def Info: figures/12_test/biased.png  used on input line 22.
+(luatex.def)             Requested size: 334.57434pt x 167.2989pt.
+(load cache: extra_lmroman9-regular.luc)
+LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
+(Font)              scaled to size 8.32242pt on input line 23.
+LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
+(Font)              scaled to size 8.32242pt on input line 23.
+
+
 [1{/Users/pythagoras/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
 
 ]
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 14.
+(Font)              scaled to size 6.47299pt on input line 34.
+LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
+(Font)              scaled to size 7.3977pt on input line 34.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 14.
-LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 14.
+(Font)              scaled to size 7.3977pt on input line 34.
+(load cache: extra_lmroman6-regular.luc)
+LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
+(Font)              scaled to size 5.54828pt on input line 34.
 LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 14.
-(load cache: extra_lmsans12-regular.luc)
+(Font)              scaled to size 7.3977pt on input line 34.
+LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
+(Font)              scaled to size 5.54828pt on input line 34.
+LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
+(Font)              scaled to size 5.54828pt on input line 34.
+(load cache: extra_lmroman8-bold.luc)
+LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/b/n' will be
+(Font)              scaled to size 7.3977pt on input line 34.
+LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/b/n' will be
+(Font)              scaled to size 7.3977pt on input line 34.
+
+
+LaTeX Warning: Reference `expectation' on page 2 undefined on input line 34.
+
+
+LaTeX Warning: Reference `expectation' on page 2 undefined on input line 34.
+
+<figures/12_test/unbiased.png, id=48, 4818.0pt x 2409.0pt>
+File: figures/12_test/unbiased.png Graphic file (type png)
+<use figures/12_test/unbiased.png>
+Package luatex.def Info: figures/12_test/unbiased.png  used on input line 53.
+(luatex.def)             Requested size: 334.57434pt x 167.2989pt.
+
+Class ltjsbook Warning: deprecated old font command `\tt' used.
+(ltjsbook)              You should note, that since 1994 LaTeX2e provides a
+(ltjsbook)              new font selection scheme called NFSS2 with several
+(ltjsbook)              new, combinable font commands. This ltjsbook
+(ltjsbook)              class has defined the old font commands like
+(ltjsbook)              `\tt' only for compatibility on input line 59.
+
+(load cache: extra_lmmono10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 15.
-LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 21.
-(load cache: extra_lmsans10-regular.luc)
+(Font)              scaled to size 9.24713pt on input line 59.
+
 
 (load cache: extra_lmromanslant10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/sl' will be
-(Font)              scaled to size 9.24713pt on input line 28.
+(Font)              scaled to size 9.24713pt on input line 60.
 LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/sl' will be
-(Font)              scaled to size 9.24713pt on input line 28.
-[2] (./tmp.toc
+(Font)              scaled to size 9.24713pt on input line 60.
+[2<./figures/12_test/biased.png>]
 
-[3])
-\tf@toc=\write9
-
-\openout9 = tmp.toc
+LaTeX Warning: Reference `UsefulNormal' on page 3 undefined on input line 63.
 
 
-[4]
-\openout2 = b01_Introduction.aux
- (./b01_Introduction.tex(load cache: extra_lmroman7-regular.luc)(load cache: extra_lmroman5-regular.luc)
-LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 6.47299pt on input line 11.
-LaTeX Font Info:    Font shape `JY3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 4.62357pt on input line 11.
-LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 6.47299pt on input line 11.
-LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
-(Font)              scaled to size 4.62357pt on input line 11.
+LaTeX Warning: Reference `UsefulNormal' on page 3 undefined on input line 63.
 
 
-[5
+LaTeX Warning: Reference `m05_descriptives' on page 3 undefined on input line 64.
 
-])
+<figures/12_test/sampling.png, id=70, 1104.125pt x 836.12375pt>
+File: figures/12_test/sampling.png Graphic file (type png)
+<use figures/12_test/sampling.png>
+Package luatex.def Info: figures/12_test/sampling.png  used on input line 78.
+(luatex.def)             Requested size: 331.39168pt x 250.95476pt.
+
+
+[3<./figures/12_test/unbiased.png>]
+<figures/12_test/ci.png, id=83, 1264.725pt x 445.665pt>
+File: figures/12_test/ci.png Graphic file (type png)
+<use figures/12_test/ci.png>
+Package luatex.def Info: figures/12_test/ci.png  used on input line 92.
+(luatex.def)             Requested size: 334.60422pt x 117.90344pt.
+(load cache: extra_lmmono8-regular.luc)
+LaTeX Font Info:    Font shape `JT3/gt/m/n' will be
+(Font)              scaled to size 7.3977pt on input line 98.
+
+
+[4<./figures/12_test/sampling.png>]
+
+[5<./figures/12_test/ci.png>]
+Overfull \hbox (6.53514pt too wide) detected at line 131
+[] [] \OT1/cmr/m/n/10 = 36\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 5394
+ []
+
+<figures/12_test/t_dist.png, id=112, 4818.0pt x 2409.0pt>
+File: figures/12_test/t_dist.png Graphic file (type png)
+<use figures/12_test/t_dist.png>
+Package luatex.def Info: figures/12_test/t_dist.png  used on input line 141.
+(luatex.def)             Requested size: 334.60422pt x 167.28717pt.
+
 
 [6]
-\openout2 = b02_PCs.aux
- (./b02_PCs.tex
 
-[7
-
-
-
-])
-
-[8]
-\openout2 = b03_useR.aux
- (./b03_useR.tex
-
-[9
-
-
-
-])
-
-[10]
-\openout2 = b04_Number_and_data.aux
- (./b04_Number_and_data.tex
-
-[11
-
-
-
-])
-
-[12]
-\openout2 = b05_descriptives.aux
- (./b05_descriptives.tex(load cache: extra_lmmono10-regular.luc)
-
-[13
-
-
-
-])
-
-[14]
-\openout2 = b06_Corr.aux
- (./b06_Corr.tex
-
-[15
-
-
-
-])
-
-[16]
-\openout2 = b07_regression.aux
- (./b07_regression.tex
-
-[17
-
-
-
-])
-
-[18]
-\openout2 = b08_MultipleRegression.aux
- (./b08_MultipleRegression.tex
-
-[19
-
-
-
-]
-
-[20])
-
-[21]
-\openout2 = b09_Regression_onR.aux
- (./b09_Regression_onR.tex
-
-[22
-
-
-
-]
-
-LaTeX Warning: Reference `b15_useR' on page 23 undefined on input line 51.
-
-)
-
-[23]
-\openout2 = b10_Probability.aux
-
-No file b10_Probability.tex.
-
-\openout2 = b11_estimation.aux
-(./b11_estimation.tex
-LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 6.47299pt on input line 10.
-LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 10.
-LaTeX Font Info:    Font shape `JT3/BIZUDPMinchoMedium(0)/m/n' will be
-(Font)              scaled to size 5.54828pt on input line 10.
-
-
-[24
-
-
-
-
-
-
-]
-
-[25])
-
-[26]
-\openout2 = b12_test.aux
- (./b12_test.tex
-
-[27
-
-
-
-])
-
-[28]
-\openout2 = b13_NHST.aux
- (./b13_NHST.tex
-
-[29
-
-
-
-])
-
-[30]
-\openout2 = b14_NHST2.aux
- (./b14_NHST2.tex
-
-[31
-
-
-
-]
-
-[32])
-
-[33]
-\openout2 = b15_summary_exam.aux
- (./b15_summary_exam.tex
-
-[34
-
-
-
-])
-
-[35]
-\openout2 = b16_ttest.aux
- (./b16_ttest.tex
-
-[36
-
-
-
-]
-
-[37])
-
-[38]
-\openout2 = b17_RCT.aux
- (./b17_RCT.tex
-
-[39
-
-
-
-])
-
-[40]
-\openout2 = b18_BetweenDesign.aux
- (./b18_BetweenDesign.tex
-
-[41
-
-
-
-])
-
-[42]
-\openout2 = b19_BetweenDesign_onR.aux
- (./b19_BetweenDesign_onR.tex
-
-[43
-
-
-
-])
-
-[44]
-\openout2 = b20_WithinDesign.aux
- (./b20_WithinDesign.tex
-
-[45
-
-
-
-])
-
-[46]
-
-[47]
-\openout2 = b21_WithinDesign_onR.aux
- (./b21_WithinDesign_onR.tex
-
-LaTeX Warning: Citation 'aoki2021' on page 48 undefined on input line 12.
-
-
-LaTeX Warning: Citation 'aoki2021' on page 48 undefined on input line 17.
-
-
-LaTeX Warning: Citation 'aoki2021' on page 48 undefined on input line 22.
-
-
-LaTeX Warning: Citation 'aoki2021' on page 48 undefined on input line 27.
-
-
-
-[48
-
-
-
-])
-
-[49]
-\openout2 = b22_GLM.aux
-
-No file b22_GLM.tex.
-
-\openout2 = b23_likelihood.aux
-No file b23_likelihood.tex.
-
-\openout2 = b24_reg_ml.aux
-No file b24_reg_ml.tex.
-
-\openout2 = b25_bayesian.aux
-No file b25_bayesian.tex.
-
-\openout2 = b26_bayesian_regression.aux
-(./b26_bayesian_regression.tex
-
-[50
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]
-
-LaTeX Warning: Reference `b18_Corr' on page 51 undefined on input line 38.
-
-
-LaTeX Warning: Reference `b19_regression' on page 51 undefined on input line 38.
-
-
-LaTeX Warning: Reference `b20_MultipleRegression' on page 51 undefined on input line 38.
-
-)
-
-[51]
-
-[52]
-\openout2 = b27_jasp_intro.aux
- (./b27_jasp_intro.tex
-
-[53
-
-
-
-]
-
-LaTeX Warning: Reference `b18_Corr' on page 54 undefined on input line 40.
-
-
-LaTeX Warning: Reference `b19_regression' on page 54 undefined on input line 40.
-
-)
-
-[54]
-\openout2 = b28_bayes_judgement.aux
- (./b28_bayes_judgement.tex
-
-[55
-
-
-
-]
-
-[56])
-
-[57]
-\openout2 = b29_bayesianModeling.aux
- (./b29_bayesianModeling.tex
-
-[58
-
-
-
-]
-
-[59])
-
-[60]
-\openout2 = b30_final_exam.aux
- (./b30_final_exam.tex
-
-[61
-
-
-
-])
-
-[62]
-
-[63
-
-
-]
-
-[64] (./tmp.aux (./b01_Introduction.aux) (./b02_PCs.aux) (./b03_useR.aux) (./b04_Number_and_data.aux) (./b05_descriptives.aux) (./b06_Corr.aux) (./b07_regression.aux) (./b08_MultipleRegression.aux) (./b09_Regression_onR.aux) (./b10_Probability.aux) (./b11_estimation.aux) (./b12_test.aux) (./b13_NHST.aux) (./b14_NHST2.aux) (./b15_summary_exam.aux) (./b16_ttest.aux) (./b17_RCT.aux) (./b18_BetweenDesign.aux) (./b19_BetweenDesign_onR.aux) (./b20_WithinDesign.aux) (./b21_WithinDesign_onR.aux) (./b22_GLM.aux) (./b23_likelihood.aux) (./b24_reg_ml.aux) (./b25_bayesian.aux) (./b26_bayesian_regression.aux) (./b27_jasp_intro.aux) (./b28_bayes_judgement.aux) (./b29_bayesianModeling.aux) (./b30_final_exam.aux))
+[7<./figures/12_test/t_dist.png>]
+<figures/12_test/design.png, id=135, 1192.455pt x 436.63126pt>
+File: figures/12_test/design.png Graphic file (type png)
+<use figures/12_test/design.png>
+Package luatex.def Info: figures/12_test/design.png  used on input line 171.
+(luatex.def)             Requested size: 334.60422pt x 122.51575pt.
+<figures/12_test/design_test.png, id=137, 1278.7775pt x 941.5175pt>
+File: figures/12_test/design_test.png Graphic file (type png)
+<use figures/12_test/design_test.png>
+Package luatex.def Info: figures/12_test/design_test.png  used on input line 183.
+(luatex.def)             Requested size: 340.84518pt x 250.95476pt.
+
+
+[8<./figures/12_test/design.png>]
+
+[9<./figures/12_test/design_test.png>] (./ch12_test.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-05-26>
@@ -2394,27 +2139,29 @@ L3 programming layer <2025-05-26>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `tmp.out' has not changed.
-(rerunfilecheck)             Checksum: 104E3ED256E5CAA14A59DBCBE9D64A55;3759.
-Package logreq Info: Writing requests to 'tmp.run.xml'.
+Package rerunfilecheck Info: File `ch12_test.out' has not changed.
+(rerunfilecheck)             Checksum: 00853C58C363D6ACE00CB090E353E320;671.
+Package logreq Info: Writing requests to 'ch12_test.run.xml'.
 
-\openout1 = tmp.run.xml
+\openout1 = ch12_test.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 49427 strings out of 470203
- 195698,2373549 words of node,token memory allocated
- 1231 words of node memory still in use:
-   10 hlist, 2 vlist, 5 rule, 3 glue, 4 kern, 1 glyph, 228 attribute, 78 glue_spec, 30 attribute_list, 2 write, 13 user_defined nodes
-   avail lists: 1:42,2:52499,3:656,4:591,5:240,6:82,7:6741,8:43,9:792,10:43,11:104
- 75570 multiletter control sequences out of 65536+600000
- 110 fonts using 77582711 bytes
- 119i,11n,126p,1781b,1802s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman17-regular.otf></Library/Fonts/BIZ-UDMinchoM.ttc></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on tmp.pdf (64 pages, 749831 bytes).
+ 47457 strings out of 470203
+ 195699,2373549 words of node,token memory allocated
+ 2568 words of node memory still in use:
+   10 hlist, 2 vlist, 5 rule, 17 glue, 4 kern, 1 glyph, 806 attribute, 75 glue_spec, 79 attribute_list, 2 write, 13 user_defined nodes
+   avail lists: 1:23,2:55865,3:601,4:419,5:215,6:58,7:8221,8:77,9:724,10:35,11:18
+ 74507 multiletter control sequences out of 65536+600000
+ 105 fonts using 83275935 bytes
+ 119i,12n,126p,1785b,847s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-PDF statistics: 926 PDF objects out of 1000 (max. 8388607)
- 809 compressed objects within 9 object streams
- 476 named destinations out of 1000 (max. 131072)
- 224 words of extra memory for PDF output out of 10000 (max. 100000000)
+warning  (pdf backend): unreferenced destination with name 'Hfootnote.11'
+</Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf></Library/Fonts/BIZ-UDGothicB.ttc></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.otf></Library/Fonts/BIZ-UDMinchoM.ttc></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans17-regular.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/pythagoras/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on ch12_test.pdf (9 pages, 3114349 bytes).
+
+PDF statistics: 285 PDF objects out of 1000 (max. 8388607)
+ 202 compressed objects within 3 object streams
+ 39 named destinations out of 1000 (max. 131072)
+ 56 words of extra memory for PDF output out of 10000 (max. 100000000)
 
