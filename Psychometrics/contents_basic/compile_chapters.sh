@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Change to the contents_basic directory
-cd /Users/pythagoras/Library/CloudStorage/Dropbox/Git/psychometrics_syllabus/Psychometrics/contents_basic
-
 # Get all chapter files starting with ch
 files=(ch*.tex)
 
