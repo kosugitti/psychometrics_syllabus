@@ -45,13 +45,13 @@ Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくて
 
 ということで，共分散の式は分布の幅を表す標準偏差と，相関係数からできあがっていることがわかりましたね。
 \subsection{対応のあるデータの生成モデル}
-ではこれを使ってモデルの設計図を書いてみましょう。設計図は図\ref{fig::22_01}のようになるでしょう。
+ではこれを使ってモデルの設計図を書いてみましょう。設計図は図\ref{fig:22_01}のようになるでしょう。
 
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/22_modeling4/Slide22_01.png}
 		\caption{対応ある二群のデータ生成モデル設計図}
-		\label{fig::22_01}
+		\label{fig:22_01}
 	\end{center}
 \end{figure}
 
@@ -365,17 +365,17 @@ model{
 
 \[ \mu_i \sim N(\psi,\tau) \]
 
-と考えることにしましょう。これを設計図に書き込んだのが，図\ref{fig::22_02}です。
+と考えることにしましょう。これを設計図に書き込んだのが，図\ref{fig:22_02}です。
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/22_modeling4/Slide22_02.png}
 		\caption{階層的データ生成モデル}
-		\label{fig::22_02}
+		\label{fig:22_02}
 	\end{center}
 \end{figure}
 
 このように，相関があることを個人$i$に紐づけられた変数として表現し，個人差からの差分として対応のあるモデルを考えることができます。
-ここで，個人差に関係なく影響を与えている効果のことを\keyterm{固定効果}{こていこうか}{Fixed Effect}と呼び，個人差のように交換可能な要素のことを\keyterm{変量効果}{へんりょうこうか}{Random Effect}と呼びます。また図\ref{fig::22_02}に示されているように，データ生成分布の中に個人差の分布が入れ子になって含まれていますね。このようなデータは階層モデルといい，とくに今回のように線形な階層モデルは\keyterm{階層線形モデル}{かいそうせんけいもでる}{Hierarchical Linear Model}とよばれます。この展開については，次回以降にお話しすることになるでしょう。
+ここで，個人差に関係なく影響を与えている効果のことを\keyterm{固定効果}{こていこうか}{Fixed Effect}と呼び，個人差のように交換可能な要素のことを\keyterm{変量効果}{へんりょうこうか}{Random Effect}と呼びます。また図\ref{fig:22_02}に示されているように，データ生成分布の中に個人差の分布が入れ子になって含まれていますね。このようなデータは階層モデルといい，とくに今回のように線形な階層モデルは\keyterm{階層線形モデル}{かいそうせんけいもでる}{Hierarchical Linear Model}とよばれます。この展開については，次回以降にお話しすることになるでしょう。
 
 ではこのモデルを実装していきましょう。設計図に沿えばStanコードは書けるはずです。ここにはStanに与えるRのコード例を用意しましたので，自分なりのコードを書いて検証してみてください\footnote{これに限らず，コードに正しい書き方はありません。自分なりの書き方で結構です。判断すべきは正しく機能するかどうかであって，書き方はあくまでも一例にすぎません。}。
 \begin{lstlisting}[language=C++,label={code:22_04b},caption={整然データ対応番}]

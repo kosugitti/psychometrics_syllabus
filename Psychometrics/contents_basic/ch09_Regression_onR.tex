@@ -49,13 +49,13 @@ g
 	\item[6行目] 描画オブジェクト\texttt{g}を表示します。
 \end{description}
 
-結果的に図\ref{fig::09_01}のような図ができていればOKです。
+結果的に図\ref{fig:09_01}のような図ができていればOKです。
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/09_Regression_onR/scatter_batter1.png}
 	\caption{身長と体重のデータ}
-	\label{fig::09_01}
+	\label{fig:09_01}
 \end{figure}
 
 さて1-3行目の操作ですが，ここでやりたかったことは\texttt{dat}オブジェクトの中から打者のデータに限って，身長と体重の変数を抜き出すことでした。
@@ -131,13 +131,13 @@ F-statistic: 226.9 on 1 and 327 DF,  p-value: < 2.2e-16
     plot(result)
 \end{lstlisting}
 
-キーを押すたびにプロットが変わります。一枚ずつ順番にみていきましょう。最初にプロットされるのが，残差$e_i$と予測値$\hat{y_i}$の関係を表したプロットです(図\ref{fig::09_plot_lm01})。
+キーを押すたびにプロットが変わります。一枚ずつ順番にみていきましょう。最初にプロットされるのが，残差$e_i$と予測値$\hat{y_i}$の関係を表したプロットです(図\ref{fig:09_plot_lm01})。
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figures/09_Regression_onR/plot_lm01.png}
 	\caption{残差と予測値のプロット}
-	\label{fig::09_plot_lm01}
+	\label{fig:09_plot_lm01}
 \end{figure}
 
 理論的には，残差と予測値の間の相関$r_{\hat{y}e}$はゼロになるはずで，予測値で残差を予測するような回帰分析をすると傾きがゼロ，つまり水平に近い線が引かれるはずです。線型回帰の水平線や，曲線で回帰した予測線が表示されていますが，概ね水平に近く，相関がゼロになっていそうです。ただ，このプロットの縦軸は残差の大きさですから，高い領域にプロットされている幾つかの点は大きく予測が外れている，つまり外れ値である可能性があります。特徴的なケースがないか，確認しておきましょう。
@@ -148,7 +148,7 @@ F-statistic: 226.9 on 1 and 327 DF,  p-value: < 2.2e-16
 	\centering
 	\includegraphics[width=0.8\textwidth]{figures/09_Regression_onR/plot_lm02.png}
 	\caption{Q-Qプロット}
-	\label{fig::09_plot_lm02}
+	\label{fig:09_plot_lm02}
 \end{figure}
 
 ここで表示されているのは，残差の確率的な性質を確認するためのプロットです。残差は平均が0で分散が一定の\keyterm{正規分布}{せいきぶんぷ}{gaussian curve}に従うと仮定されています。正規分布については次回以降で詳しく扱いますが，今は理論的な正規分布と実際の残差の分布が合致しているかを確認する図である，と理解してください。理論的な残差の分位点を横軸に，実際の残差の値の分位点を縦軸においており，理論通りであればこの散布図は左下から右上への一直線になるはずです。今回もほとんどの点がその直線に乗っていますから，まあいいでしょう。右上の方に少し外れ値があることが気になりますが，ID番号が表示されているので，特殊なケースが何なのかをみておいてもいいかもしれません。
@@ -159,14 +159,14 @@ F-statistic: 226.9 on 1 and 327 DF,  p-value: < 2.2e-16
 	\centering
 	\includegraphics[width=0.8\textwidth]{figures/09_Regression_onR/plot_lm03.png}
 	\caption{標準化残差のスケールロケーションプロット}
-	\label{fig::09_plot_lm03}
+	\label{fig:09_plot_lm03}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figures/09_Regression_onR/plot_lm04.png}
 	\caption{レバレッジと標準化残差}
-	\label{fig::09_plot_lm04}
+	\label{fig:09_plot_lm04}
 \end{figure}
 
 今回の結果は，いくつかの外れ値はあるものの，全体的にはいい分析ができたといえそうです。
@@ -224,12 +224,12 @@ cor(batter)
 \end{Rscreen}
 
 
-さらにプロットを見てみましょう(図\ref{fig::09_02})。これは\texttt{ggplot}を使っての出力ではなくRオリジナルの出力例ですが(そのせいか少し色気のない出力ですが)，これを見て幾つか気づく点があると思います。
+さらにプロットを見てみましょう(図\ref{fig:09_02})。これは\texttt{ggplot}を使っての出力ではなくRオリジナルの出力例ですが(そのせいか少し色気のない出力ですが)，これを見て幾つか気づく点があると思います。
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/09_Regression_onR/PlotMultipleReg.png}
 	\caption{予測値や残差を含んだ散布図}
-	\label{fig::09_02}
+	\label{fig:09_02}
 \end{figure}
 
 \begin{Rscreen}{残差と予測値の相関関係}{out09_04}
@@ -267,13 +267,13 @@ cor(batter2)
 	\item[6行目] データの相関関係を数字でみています。
 \end{description}
 
-プロットを見ると，ホームランの数や安打の数が増えるほど，年俸は上がっているようです(図\ref{fig::09_03})。さすがプロ野球は実力勝負の世界，グランドには銭が埋まっているというやつです。少しデータの左端の方，つまりホームランや安打を打たない人が数多くいるため，よく打つ人に引っ張られて相関係数が大きく出ている可能性はありますし，安打と本塁打の間にも相関があるので少し気になりますが，ひとまずはこれで分析することにしましょう。
+プロットを見ると，ホームランの数や安打の数が増えるほど，年俸は上がっているようです(図\ref{fig:09_03})。さすがプロ野球は実力勝負の世界，グランドには銭が埋まっているというやつです。少しデータの左端の方，つまりホームランや安打を打たない人が数多くいるため，よく打つ人に引っ張られて相関係数が大きく出ている可能性はありますし，安打と本塁打の間にも相関があるので少し気になりますが，ひとまずはこれで分析することにしましょう。
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/09_Regression_onR/scatter_batter2.png}
 	\caption{本塁打，安打と年俸の関係}
-	\label{fig::09_03}
+	\label{fig:09_03}
 \end{figure}
 
 回帰分析のコード\texttt{code:\ref{code:09_08}}と出力\ref{RS:out09_05})は次の通りです。

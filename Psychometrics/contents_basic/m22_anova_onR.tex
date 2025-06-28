@@ -10,13 +10,13 @@
 \section{Rで分散分析を行う上でのポイント}
 それではRを起動するところから始めましょう。復習がてら，作業を始める前の最初のステップについて改めて書いておきます。
 \paragraph{RStudioの起動}RStudioを起動してください。パッケージのインストールをするときなど，管理人権限が必要になるケースがあります。
-\paragraph{プロジェクトを開く}プロジェクトは前回作成した物で良いと思います。同じフォルダの中で，スクリプトファイルだけ変えれば良いでしょう。メニューからプロジェクトを開き(FIle$\to$Open Project)，RStudioの右上などで，プロジェクトが開いていることを確認しましょう($\to$図\ref{fig::20_01})。
+\paragraph{プロジェクトを開く}プロジェクトは前回作成した物で良いと思います。同じフォルダの中で，スクリプトファイルだけ変えれば良いでしょう。メニューからプロジェクトを開き(FIle$\to$Open Project)，RStudioの右上などで，プロジェクトが開いていることを確認しましょう($\to$図\ref{fig:20_01})。
 \paragraph{Rスクリプトを開く}今日のコードを書くためのRスクリプトファイルを準備します。\verb|File > NewFile > R Script|と進み，何も書いてないRスクリプトの画面を表示させてください。真っ白いファイルが開いたら問題ありません。
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/20_ttest/fig20_01.png}
 	\caption{プロジェクトが開いていることを確認する。上が開いていない状態。下が開いている状態。開いていると，メニューバーにフォルダが表示され，右上にプロジェクト名が表示されている。}
-	\label{fig::20_01}
+	\label{fig:20_01}
 \end{figure}
 
 さて，準備OKですね。
@@ -100,12 +100,12 @@ source("anovakun_489.txt")
 source("https://shorturl.at/tsBhl")
 \end{lstlisting}
 
-これらのコードが実行されると，Rの環境にたくさんの関数が入っているはずです(図\ref{fig::22_01})。これらが入っていればOKです。
+これらのコードが実行されると，Rの環境にたくさんの関数が入っているはずです(図\ref{fig:22_01})。これらが入っていればOKです。
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/23_likelihood/screen23_01.png}
 	\caption{anovakuを読み込んだあとの環境タブ}
-	\label{fig::22_01}
+	\label{fig:22_01}
 \end{figure}
 それでは実際の使い方を見ていきましょう。
 \section{一要因Between計画の実際}
@@ -181,19 +181,19 @@ Multiple R-squared:  0.3562,	Adjusted R-squared:  0.2131
 F-statistic: 2.489 on 2 and 9 DF,  p-value: 0.1379
 \end{verbatim}
 \end{Rscreen}
-これを見ると，切片\texttt{(Intercept)}の推定値が5.5，次に2つの説明変数の係数が書いてあります。文字が連なっているのでわかりにくいかもしれませんが，それぞれ\texttt{condition}と\texttt{exp1}の関係，\texttt{condition}と\texttt{exp2}の関係を表しています。図\ref{fig::23_02}を見ると結果の意味は分かり易いと思います。
+これを見ると，切片\texttt{(Intercept)}の推定値が5.5，次に2つの説明変数の係数が書いてあります。文字が連なっているのでわかりにくいかもしれませんが，それぞれ\texttt{condition}と\texttt{exp1}の関係，\texttt{condition}と\texttt{exp2}の関係を表しています。図\ref{fig:23_02}を見ると結果の意味は分かり易いと思います。
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/23_likelihood/slide23_01.png}
 	\caption{線形モデルとして分析した結果の意味するもの}
-	\label{fig::23_02}
+	\label{fig:23_02}
 \end{figure}
 
 第\ref{m21_anova}講では，線形モデルを
 \[ X_{ij} = \beta_0 + \beta_j + \varepsilon_{ij} \]
 としていました。ここで$\beta_0$は全体平均でした。全体平均を基本として，各水準に対する効果$\beta_j$がどうなったか，というモデル化でしたが，ここでは
 \[ X_{ij} = \bar{X}_1 + \beta_j + \varepsilon_{ij} \]
-という形になっています(図\ref{fig::23_02})。本質的に違うものではありません。統制群に比べて実験群1の平均値は$+0.5$，実験群2は$-1.25$の平均値の違いがあるのだな，と思っていただければ結構です。その後ろにStd.Errorや$t$値が出ていますが，これらは推定された回帰係数の標準誤差および，係数が$0$であるという帰無仮説を棄却できるかどうかの検定結果が出ています\footnote{各群の母平均の推定値でもありますが，各群について一変数の$t$検定をしているのではなく，これら線形モデル全体として(他の説明変数に条件づけられた分布の中で)標準誤差を計算します。詳しくは\textcite{Haebara200206}のp.118を参照してください。}。
+という形になっています(図\ref{fig:23_02})。本質的に違うものではありません。統制群に比べて実験群1の平均値は$+0.5$，実験群2は$-1.25$の平均値の違いがあるのだな，と思っていただければ結構です。その後ろにStd.Errorや$t$値が出ていますが，これらは推定された回帰係数の標準誤差および，係数が$0$であるという帰無仮説を棄却できるかどうかの検定結果が出ています\footnote{各群の母平均の推定値でもありますが，各群について一変数の$t$検定をしているのではなく，これら線形モデル全体として(他の説明変数に条件づけられた分布の中で)標準誤差を計算します。詳しくは\textcite{Haebara200206}のp.118を参照してください。}。
 
 線形モデルですから，モデルの適合度(\texttt{Multiple R-squared, Adjusted R-squared})なども出ていますが，それよりも最後の一行，この線形モデル全体の検定結果が出ています。これは要因計画のもう1つの切り口，分散分析による結果と同じものです。では分散分析の視点からこの分析結果を見てみましょう。
 
@@ -430,12 +430,12 @@ output is over --------------------///
 
 続いてPOST ANALYSISとして事後の検定が表示されています。SIMPLE EFFECTS for "A x B" INTERACTIONとあるのは，「AとBの交互作用についての単純効果」という意味で(直訳！)，各水準に限定した時に他の水準の効果があったかどうかをみています。たとえば最初の行，A at b1とありますが，これは要因B(銘柄)の第一水準における要因A(温度)の効果をみていることになります。以下同様ですが，これらは分散分析の表をより細かくしてチェックしているようなものです。これを見ると，冷たい時の銘柄には差がない(B at a2)ようですが，それ以外の差は統計的に有意，と言えそうです。
 
-これらの結果を見やすくするために，図\ref{fig::23_03}に対応するところに線を引いてみました。結果と見比べて，どこに差があったか確認しておいてください。
+これらの結果を見やすくするために，図\ref{fig:23_03}に対応するところに線を引いてみました。結果と見比べて，どこに差があったか確認しておいてください。
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/23_likelihood/slide23_02.png}
 	\caption{POST ANALYSISの検定結果の確認}
-	\label{fig::23_03}
+	\label{fig:23_03}
 \end{figure}
 
 また，これらの結果を報告する時は，次のように書くと良いでしょう。

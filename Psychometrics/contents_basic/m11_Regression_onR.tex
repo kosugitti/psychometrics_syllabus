@@ -64,13 +64,13 @@ g
 	\item[6行目] 描画オブジェクト\texttt{g}を表示します。
 \end{description}
 
-結果的に図\ref{fig::11_01}のような図ができていればOKです。
+結果的に図\ref{fig:11_01}のような図ができていればOKです。
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.65\linewidth]{images/11_MultipleRegressionOnR/Rplot11_01.png}
 	\caption{身長と体重のデータ}
-	\label{fig::11_01}
+	\label{fig:11_01}
 \end{figure}
 
 さて1-3行目の操作ですが，ここでやりたかったことは\texttt{dat}オブジェクトの中から打者のデータに限って，身長と体重の変数を抜き出すことでした。
@@ -205,13 +205,13 @@ cor(batter2)
 	\item[11行目] データの相関関係を数字でみています。
 \end{description}
 
-プロットを見ると，ホームランの数や安打の数が増えるほど，年俸は上がっているようです(図\ref{fig::11_03})。さすがプロ野球は実力勝負の世界，グランドには銭が埋まっているというやつです。少しデータの左端の方，つまりホームランや安打を打たない人が数多くいるため，よく打つ人に引っ張られて相関係数が大きく出ている可能性はありますし，安打と本塁打の間にも相関があるので少し気になりますが，ひとまずはこれで分析することにしましょう。
+プロットを見ると，ホームランの数や安打の数が増えるほど，年俸は上がっているようです(図\ref{fig:11_03})。さすがプロ野球は実力勝負の世界，グランドには銭が埋まっているというやつです。少しデータの左端の方，つまりホームランや安打を打たない人が数多くいるため，よく打つ人に引っ張られて相関係数が大きく出ている可能性はありますし，安打と本塁打の間にも相関があるので少し気になりますが，ひとまずはこれで分析することにしましょう。
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{images/11_MultipleRegressionOnR/Rplot11_02.png}
 	\caption{本塁打，安打と年俸の関係}
-	\label{fig::11_03}
+	\label{fig:11_03}
 \end{figure}
 
 回帰分析のコード\texttt{code:\ref{code:11_07}}と出力\ref{RS:out11_03})は次の通りです。

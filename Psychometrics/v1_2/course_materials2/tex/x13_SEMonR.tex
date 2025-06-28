@@ -141,13 +141,13 @@ summary(result2, fit.measures = T, standardized = T)
 
 このモデル式(2-6行目)にあるように，$grade \to x6 \to x5 \to x4$という一連の影響力を分析し，一気に適合度を表現してくれています。出力結果には適合度指標のほか，すべての変数を標準化した標準化係数を出すオプションを追加しました。
 
-これを図にしたのが図\ref{fig::13_01}です。ちなみにこの図もRのパッケージで書きました。パス図を自動的に書いてくれるパッケージとして\texttt{semPlot}パッケージ\textcite{Charles2013}や\texttt{tidySEM}パッケージ\textcite{tidySEM}などを使います。ここでは\texttt{tidySEM}パッケージの\verb|graph_sem|関数を使いました。
+これを図にしたのが図\ref{fig:13_01}です。ちなみにこの図もRのパッケージで書きました。パス図を自動的に書いてくれるパッケージとして\texttt{semPlot}パッケージ\textcite{Charles2013}や\texttt{tidySEM}パッケージ\textcite{tidySEM}などを使います。ここでは\texttt{tidySEM}パッケージの\verb|graph_sem|関数を使いました。
 
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/13_SEMonR/Rplot13_01.png}
 		\caption{パス解析の図}
-		\label{fig::13_01}
+		\label{fig:13_01}
 	\end{center}
 \end{figure}
 
@@ -165,12 +165,12 @@ result3 <- sem(model3, data = HolzingerSwineford1939)
 summary(result3, fit.measures = T, standardized = T)
 \end{lstlisting}
 
-これのモデル図は図\ref{fig::13_03}のようになります\footnote{この図は\textcite{Onoshima2021}の関数を使っています。tikzを使って綺麗なモデルが描ける素晴らしい関数の提供に感謝。}。モデル上とくに指定はしてありませんが，潜在変数同士の相関係数も自動的に推定されています。パス係数は潜在変数からでてきていますから，\keytermL{因子負荷量}{いんしふかりょう}のように考えることができますね。
+これのモデル図は図\ref{fig:13_03}のようになります\footnote{この図は\textcite{Onoshima2021}の関数を使っています。tikzを使って綺麗なモデルが描ける素晴らしい関数の提供に感謝。}。モデル上とくに指定はしてありませんが，潜在変数同士の相関係数も自動的に推定されています。パス係数は潜在変数からでてきていますから，\keytermL{因子負荷量}{いんしふかりょう}のように考えることができますね。
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics{../images/13_SEMonR/SEMonR_fig02.pdf}
 		\caption{潜在変数モデル}
-		\label{fig::13_03}
+		\label{fig:13_03}
 	\end{center}
 \end{figure}
 
@@ -208,12 +208,12 @@ modificationindices(result4) %>%
 	\item[10-12行目] 分析結果の\keytermL{修正指数}{しゅうせいしすう}を出力。ただし指標\verb|mi|の大きい順に並べ替えるために11行目で出力を\texttt{tibble}型にし，\texttt{arrange}関数で並べ替えている。
 \end{description}
 
-まずは今回のモデルについても，図でみたほうがわかりやすいでしょう。結果を合わせて図\ref{fig::13_04}に示してみました。
+まずは今回のモデルについても，図でみたほうがわかりやすいでしょう。結果を合わせて図\ref{fig:13_04}に示してみました。
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics{../images/13_SEMonR/SEMonR_fig03.pdf}
 		\caption{構造方程式モデルへ}
-		\label{fig::13_04}
+		\label{fig:13_04}
 	\end{center}
 \end{figure}
 
