@@ -39,7 +39,6 @@ rm error.log
 lualatex tmp
 biber tmp
 lualatex tmp
-lualatex tmp
 upmendex -r -c -g -s ../../indexStyle.ist tmp
 lualatex tmp
 ## Tex Warning Check
