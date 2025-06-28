@@ -364,7 +364,6 @@ hist(dat$salary)
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/hist_func.png}
 	\caption{ヒストグラムの描画}
-	\label{fig::05_01}
 \end{figure}
 
 このように，ヒストグラムは単一の変数の分布を視覚的に確認する時に有用です。
@@ -569,7 +568,7 @@ dbl (11): salary, height, weight, Games, AtBats, Hit, HR, Win, Lose, Save, Hold
 さあでは\verb|tidyverse|パッケージをつかってデータハンドリングしてみましょう。
 今からいくつかの関数を紹介します。それらはレゴブロックの1ピースのようなもので，「これだけ渡されてもどうしろと」と思うかもしれませんが，これらを組み合わせると大きなことができる・・・！と思ってお付き合いください。
 \paragraph{列選択：select}
-まずは列選択の関数，\verb|select|について。先ほど読み込んだ野球データは表\ref{BaseballDecade}にあるように多くの変数があります。ここから，身長\verb|height|と体重\verb|weight|だけの変数を取り出したい，というときにこの関数を使います。
+まずは列選択の関数，\verb|select|について。先ほど読み込んだ野球データは出力\ref{check}にあるように多くの変数があります。ここから，身長\verb|height|と体重\verb|weight|だけの変数を取り出したい，というときにこの関数を使います。
 コード\ref{code:usingR_select}の結果が出力\ref{RS:usingR_select}です。
 \begin{lstlisting}[language=c++,label={code:usingR_select},caption={select関数}]
 dat %>% select(height,weight)

@@ -204,6 +204,7 @@
 さて，相関係数は間隔尺度水準以上の量的変数でないと計算できません。名義尺度水準や順序尺度水準の時はどうすれば良いかというと，それぞれの尺度水準に応じた相関係数を使います。名義尺度水準の変数同士の相関は\keyterm{カイ二乗}{かいにじょう}{chi-square}値を使います。順序尺度水準の変数同士の相関は\keyterm{スピアマンの順位相関係数}{すぴあまんのじゅんいそうかんけいすう}{Spearman's rank correlation coefficient}を使います。
 
 \subsection{$\chi^2$値}
+\label{sec:chi_square}
 カイ二乗値は，「$\chi^2$値」と書きます。これはエックス(x)ではなく，ギリシア文字のカイ($\chi$)であることに注意してください。
 
 $\chi^2$値は，クロス集計表からも計算できる，名義尺度水準の変数同士の関連の強さを表す指標です。たとえば，表\ref{tab:age_sleep}のようなクロス集計表があったとき，年齢層と睡眠障害の有無の関連を調べることができます。クロス集計表から$\chi^2$値を計算するには，次の式を使います。
@@ -288,7 +289,7 @@ $\chi^2$値は，クロス集計表からも計算できる，名義尺度水準
 
 では実際にRで計算してみましょう。まず例によって，RStudioを立ち上げ，この授業のプロジェクトフォルダを開いてください。サンプルデータがワーキングディレクトリに入っているかを確認し，新しいスクリプトファイルを立ち上げ，いつもの呪文を書きます。この段階で「何言ってるの?」とか「うまくできない！」という人はすぐにTAを呼んでください。
 
-\begin{lstlisting}[language=c++,label={code:6_01},caption={データの準備}]
+\begin{lstlisting}[language=c++,label={code:06_01},caption={データの準備}]
 # Rのプロジェクトを立ち上げ，プロジェクトフォルダを開いたうえで
 # 以下のコマンドを実行してください
 rm(list=ls())
@@ -312,7 +313,7 @@ dat <- dat[dat$Year == "2020年度",]
 \paragraph{散布図の作成（Rの基本関数）}
 まずはRの基本関数\verb|plot|を使って、身長と体重の散布図を作成してみましょう。
 
-\begin{lstlisting}[language=R,label={code:6_02a},caption={R baseによる散布図の作成}]
+\begin{lstlisting}[language=R,label={code:06_02},caption={R baseによる散布図の作成}]
 # 身長と体重の散布図（R base）
 plot(dat$height, dat$weight,
      xlab = "身長(cm)", ylab = "体重(kg)",
@@ -336,7 +337,7 @@ plot(dat$height, dat$weight,
 \paragraph{散布図の作成（ggplot2）}
 次に，tidyverseに含まれている\textbf{ggplot2}パッケージを使うと，より見栄えの良い散布図を簡単に作成できます。
 
-\begin{lstlisting}[language=R,label={code:6_02b},caption={ggplot2による散布図の作成}]
+\begin{lstlisting}[language=R,label={code:06_03},caption={ggplot2による散布図の作成}]
 # ggplot2による散布図
 ggplot(dat, aes(x = height, y = weight)) +
   geom_point() +
@@ -364,7 +365,7 @@ ggplot(dat, aes(x = height, y = weight)) +
 \paragraph{ピアソンの相関係数の計算}
 ピアソンの相関係数は、2つの連続変数間の線形関係の強さを表す指標でした。Rでは\verb|cor|関数を使うと簡単に計算できます。
 
-\begin{lstlisting}[language=R,label={code:6_03},caption={ピアソンの相関係数の計算}]
+\begin{lstlisting}[language=R,label={code:06_04},caption={ピアソンの相関係数の計算}]
 # ピアソンの相関係数の計算
 cor(dat$height, dat$weight)
 # または
@@ -383,7 +384,7 @@ cor(dat$height, dat$weight, method = "pearson")
 今度はスピアマンの順序相関係数を見てみましょう。
 
 まず，データを加工します。データの中から，年俸が高い野手TOP20人を抜き出して，年俸とホームラン本数の順序相関を見ることにします。
-\begin{lstlisting}[language=R,label={code:6_04},caption={年俸が高い野手TOP20の抽出}]
+\begin{lstlisting}[language=R,label={code:06_05},caption={年俸が高い野手TOP20の抽出}]
   # データを読み込む
   dat <- read_csv("BaseballDecade.csv")
   
@@ -411,14 +412,14 @@ cor(dat$height, dat$weight, method = "pearson")
 散布図を描けば一目瞭然ですが，歪んだデータ同士の相関をピアソンの相関で計算するのはよくないです。後で説明しますが，ピアソンの相関係数は外れ値に大行く影響されるからです。
 
 順序尺度水準として捉えて，相関係数を算出するには次のようにします。\verb|0.2858256|という値が出力されていればOKです！
-\begin{lstlisting}[language=R,label={code:6_04},caption={スピアマンの相関係数の計算}]
+\begin{lstlisting}[language=R,label={code:06_06},caption={スピアマンの相関係数の計算}]
   cor(top20_players$salary, top20_players$HR, method = "spearman")
 \end{lstlisting}
 
 \paragraph{カイ二乗値の計算}
 カイ二乗値の計算例として，チームと血液型の関係を見てみましょう。阪神タイガース，読売ジャイアンツ，広島カープの3チームの選手の血液型の分布を調べます。
 
-\begin{lstlisting}[language=R,label={code:6_05},caption={チームと血液型のクロス集計表の作成}]
+\begin{lstlisting}[language=R,label={code:06_07},caption={チームと血液型のクロス集計表の作成}]
 # 3チームと血液型変数を抜き出し、それぞれをFactor型にした上で、
 # クロス集計表をだす
 team_blood <- dat %>%
@@ -444,7 +445,7 @@ print(cross_table)
 このコードを実行すると，3チームの選手の血液型の分布を示すクロス集計表が得られます。この表から，チームによって血液型の分布が異なるかどうかを調べることができます。
 $\chi^2$値を算出するには次のようにします。
 
-\begin{lstlisting}[language=R,label={code:6_06},caption={カイ二乗値の計算}]
+\begin{lstlisting}[language=R,label={code:06_08},caption={カイ二乗値の計算}]
 chi_sq_test <- chisq.test(cross_table)
 print(chi_sq_test)
 \end{lstlisting}
@@ -458,7 +459,7 @@ print(chi_sq_test)
 このコードを実行すると，チームと血液型の関係を示す$\chi^2$値が得られます。この値が大きいほど，チームと血液型の間に関連があることを示します。
 出力は次のようになっているでしょう。
 
-\begin{Rscreen}{出力例}{chi-square}
+\begin{Rscreen}{出力例}{out06_01}
 \begin{verbatim}
 	Pearson's Chi-squared test
 
@@ -472,7 +473,7 @@ X-squared = 12.878, df = 8, p-value = 0.1161
 \paragraph{クラメールのVの計算}
 カイ二乗値は，データの大きさや分割の仕方によって値が変わってしまうため，そのままでは比較が難しいという問題があります。そこで，クラメールのVという指標が使われます。クラメールのVは0から1の範囲に収まり，値が大きいほど関連が強いことを示します。
 
-\begin{lstlisting}[language=R,label={code:6_07},caption={クラメールのVの計算}]
+\begin{lstlisting}[language=R,label={code:06_09},caption={クラメールのVの計算}]
 chi_sq_value <- chi_sq_test$statistic
 n <- sum(cross_table)  # サンプルサイズ
 r <- nrow(cross_table)  # 行数
