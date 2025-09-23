@@ -136,8 +136,8 @@ RStudioはRを取り込んで使いやすくする環境を提供するもの，
 	\label{fig:03_04}
 \end{figure}
 
-これらのボタンを押すと，コードがコンソールに送られて実行結果が返ってきます(図\ref{fig:03_04})。コンソールに示されているものは，この資料では次のような囲みで表現します(\texttt{Rの出力\ref{RS:out05_01}})が，さて，みなさんの環境で同じ結果が得られましだでしょうか。
-\begin{Rscreen}{四則演算}{out05_01}
+これらのボタンを押すと，コードがコンソールに送られて実行結果が返ってきます(図\ref{fig:03_04})。コンソールに示されているものは，この資料では次のような囲みで表現します(\texttt{Rの出力\ref{RS:out03_01}})が，さて，みなさんの環境で同じ結果が得られましだでしょうか。
+\begin{Rscreen}{四則演算}{out03_01}
 	\begin{verbatim}
 > # 四則演算
 > 1+2
@@ -242,7 +242,7 @@ Rは豊富なパッケージが利用できることがその特徴で\footnote{
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/03_introR/packages.png}
 	\caption{PackageタブからInstallをクリック}
-	\label{fig:usingR_pkgInstall}
+	\label{fig:03_07}
 \end{figure}
 
 
@@ -286,8 +286,8 @@ Rで扱う変数，関数，データセットなどにはすべて，名前が�
 	\item[5行目] オブジェクトAの中身を表示させろ(中身はなんだっけ)，という意味です。
 \end{description}
 
-実行結果は\texttt{Rの出力\ref{RS:out05_02}}のようになるでしょう。
-\begin{Rscreen}{オブジェクトに代入する}{out05_02}
+実行結果は\texttt{Rの出力\ref{RS:out03_02}}のようになるでしょう。
+\begin{Rscreen}{オブジェクトに代入する}{out03_02}
 	\begin{verbatim}
 > # オブジェクト
 > A <- 2
@@ -311,13 +311,13 @@ A + B
 
 環境をクリアにするには，Environmentタブのバーにある箒のアイコンをクリックします。これでRの頭の中が空っぽになります。あるいは\texttt{rm(list=ls())}というコードを実行するとクリアされます。スクリプトの一行目にこれを書いておくことをお勧めします。
 
-また，Rは終了すると，それまでの作業を保存しますから，同じプロジェクトをもう一度開くと以前の記憶が蘇ります。これが便利なのですが実は少し厄介で，学生さんが「自分の環境ではできた」といっても私の手元で再現できない(からレポートやり直し)ということがあります。きっと記録されているスクリプトの外で，なんらかの作業がなされているのです。清書できたスクリプトは，Rの頭の中を空っぽにしてから再チェックすると良いでしょう。また，\verb|Tools > Global Option|から，Workspaceの``Restore .RData into workspace at a startup''(起動時に.RDataからワークスペースの情報を復元する)のチェックを外し，``Save workspace to .RData on exit''(終了時に.RDataにワークスペースの情報を保存する)を``never''(絶対そんなことしない)にしておくことで，いつでもクリーンな環境から始められます(図\ref{fig:03_07})。
+また，Rは終了すると，それまでの作業を保存しますから，同じプロジェクトをもう一度開くと以前の記憶が蘇ります。これが便利なのですが実は少し厄介で，学生さんが「自分の環境ではできた」といっても私の手元で再現できない(からレポートやり直し)ということがあります。きっと記録されているスクリプトの外で，なんらかの作業がなされているのです。清書できたスクリプトは，Rの頭の中を空っぽにしてから再チェックすると良いでしょう。また，\verb|Tools > Global Option|から，Workspaceの``Restore .RData into workspace at a startup''(起動時に.RDataからワークスペースの情報を復元する)のチェックを外し，``Save workspace to .RData on exit''(終了時に.RDataにワークスペースの情報を保存する)を``never''(絶対そんなことしない)にしておくことで，いつでもクリーンな環境から始められます(図\ref{fig:03_08})。
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/03_introR/screen7.png}
 	\caption{クリーンな環境をいつでも保つための設定}
-	\label{fig:03_07}
+	\label{fig:03_08}
 \end{figure}
 
 \subsubsection{オブジェクトの型1・ベクトル}
@@ -391,8 +391,8 @@ A + B
 	\item[7行目] オブジェクトの中身はなあに，ということで中身を表示させています。
 	\item[8行目] \texttt{df}オブジェクトのname要素だけにアクセスしてみました(要素を見せて，と命じている)。
 \end{description}
-コンソールには\texttt{Rの出力\ref{RS:out05_03}}のように表されていると思います。
-\begin{Rscreen}{オブジェクトに代入する}{out05_03}
+コンソールには\texttt{Rの出力\ref{RS:out03_03}}のように表されていると思います。
+\begin{Rscreen}{オブジェクトに代入する}{out03_03}
 	\begin{verbatim}
 > df <- data.frame(
 	+     name = c("Taro", "Hanako", "Ken"),

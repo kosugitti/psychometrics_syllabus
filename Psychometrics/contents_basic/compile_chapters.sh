@@ -9,27 +9,27 @@ for file in "${files[@]}"; do
     if [[ -f "$file" ]]; then
         basename="${file%.tex}"
         echo "Processing $file..."
-        
+
         # Run lualatex, biber, lualatex, lualatex
         echo "  Running lualatex (1/4)..."
         lualatex -interaction=nonstopmode "$file" > /dev/null 2>&1
-        
-        echo "  Running biber..."
+
+        echo "  Running biber...(2/4)"
         biber "$basename" > /dev/null 2>&1
-        
-        echo "  Running lualatex (2/4)..."
-        lualatex -interaction=nonstopmode "$file" > /dev/null 2>&1
-        
+
         echo "  Running lualatex (3/4)..."
         lualatex -interaction=nonstopmode "$file" > /dev/null 2>&1
-        
+
+        echo "  Running lualatex (4/4)..."
+        lualatex -interaction=nonstopmode "$file" > /dev/null 2>&1
+
         # Clean up intermediate files
         echo "  Cleaning up intermediate files..."
         rm -f "${basename}.aux" "${basename}.bbl" "${basename}.bcf" "${basename}.blg" \
               "${basename}.idx" "${basename}.log" "${basename}.ltjruby" "${basename}.out" \
               "${basename}.run.xml" "${basename}.toc" "${basename}.fls" "${basename}.fdb_latexmk" \
               "${basename}.synctex.gz" "${basename}.nav" "${basename}.snm" "${basename}.vrb"
-        
+
         echo "  Completed $file"
     fi
 done
