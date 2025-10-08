@@ -19,18 +19,18 @@
 	\begin{tabular}{|c|c|c|c|c|c|c|}
 		\hline
 		被験者ID & 条件 & スコア & 全体平均 & 群平均 & 効果 & 誤差 \\ \hline
-		1        & A  & 12   &      &      &    &    \\ \hline
-		2        & A  & 14   &      &      &    &    \\ \hline
-		3        & A  & 16   &      &      &    &    \\ \hline
-		4        & A  & 18   &      &      &    &    \\ \hline
-		5        & B  & 10   &      &      &    &    \\ \hline
-		6        & B  & 12   &      &      &    &    \\ \hline
-		7        & B  & 14   &      &      &    &    \\ \hline
-		8        & B  & 16   &      &      &    &    \\ \hline
-		9        & C  & 16   &      &      &    &    \\ \hline
-		10       & C  & 18   &      &      &    &    \\ \hline
-		11       & C  & 20   &      &      &    &    \\ \hline
-		12       & C  & 22   &      &      &    &    \\ \hline
+		1        & \multirow{4}{*}{A}  & 12   & \multirow{12}{*}{} & \multirow{4}{*}{}  & \multirow{4}{*}{}  &    \\ \cline{1-1}\cline{3-3}\cline{7-7}
+		2        &   & 14   &  &   &   &    \\ \cline{1-1}\cline{3-3}\cline{7-7}
+		3        &   & 16   &  &   &   &    \\ \cline{1-1}\cline{3-3}\cline{7-7}
+		4        &   & 18   &  &   &   &    \\ \hline
+		5        & \multirow{4}{*}{B}  & 10   &  & \multirow{4}{*}{}  & \multirow{4}{*}{}  &    \\ \cline{1-1}\cline{3-3}\cline{7-7}
+		6        &   & 12   &  &   &   &    \\ \cline{1-1}\cline{3-3}\cline{7-7}
+		7        &   & 14   &  &   &   &    \\ \cline{1-1}\cline{3-3}\cline{7-7}
+		8        &   & 16   &  &   &   &    \\ \hline
+		9        & \multirow{4}{*}{C}  & 16   &  & \multirow{4}{*}{}  & \multirow{4}{*}{}  &    \\ \cline{1-1}\cline{3-3}\cline{7-7}
+		10       &   & 18   &  &   &   &    \\ \cline{1-1}\cline{3-3}\cline{7-7}
+		11       &   & 20   &  &   &   &    \\ \cline{1-1}\cline{3-3}\cline{7-7}
+		12       &   & 23   &  &   &   &    \\ \hline
 	\end{tabular}
 \end{table}
 
@@ -67,18 +67,18 @@
 	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 		\hline
 		ID & 要因A & 要因B & スコア & 全体平均 & Aの効果 & Bの効果 & 交互作用 & 群平均 & 誤差 \\ \hline
-		1        & $a_1$ & $b_1$ & 18   &        &          &          &        &      &    \\ \hline
-		2        & $a_1$ & $b_1$ & 20   &        &          &          &        &      &    \\ \hline
-		3        & $a_1$ & $b_1$ & 22   &        &          &          &        &      &    \\ \hline
-		4        & $a_1$ & $b_2$ & 12   &        &          &          &        &      &    \\ \hline
-		5        & $a_1$ & $b_2$ & 14   &        &          &          &        &      &    \\ \hline
-		6        & $a_1$ & $b_2$ & 16   &        &          &          &        &      &    \\ \hline
-		7        & $a_2$ & $b_1$ & 10   &        &          &          &        &      &    \\ \hline
-		8        & $a_2$ & $b_1$ & 12   &        &          &          &        &      &    \\ \hline
-		9        & $a_2$ & $b_1$ & 14   &        &          &          &        &      &    \\ \hline
-		10       & $a_2$ & $b_2$ & 16   &        &          &          &        &      &    \\ \hline
-		11       & $a_2$ & $b_2$ & 18   &        &          &          &        &      &    \\ \hline
-		12       & $a_2$ & $b_2$ & 20   &        &          &          &        &      &    \\ \hline
+		1        & \multirow{6}{*}{$a_1$} & \multirow{3}{*}{$b_1$} & 18   & \multirow{12}{*}{}  & \multirow{6}{*}{}  & \multirow{3}{*}{}  & \multirow{3}{*}{}  & \multirow{3}{*}{}  &    \\ \cline{1-1}\cline{4-4}\cline{10-10}
+		2        &  &  & 20   &   &   &   &   &   &    \\ \cline{1-1}\cline{4-4}\cline{10-10}
+		3        &  &  & 22   &   &   &   &   &   &    \\ \cline{1-1}\cline{3-4}\cline{7-10}
+		4        &  & \multirow{3}{*}{$b_2$} & 12   &   &   & \multirow{3}{*}{}  & \multirow{3}{*}{}  & \multirow{3}{*}{}  &    \\ \cline{1-1}\cline{4-4}\cline{10-10}
+		5        &  &  & 14   &   &   &   &   &   &    \\ \cline{1-1}\cline{4-4}\cline{10-10}
+		6        &  &  & 16   &   &   &   &   &   &    \\ \hline
+		7        & \multirow{6}{*}{$a_2$} & \multirow{3}{*}{$b_1$} & 10   &   & \multirow{6}{*}{}  & \multirow{3}{*}{}  & \multirow{3}{*}{}  & \multirow{3}{*}{}  &    \\ \cline{1-1}\cline{4-4}\cline{10-10}
+		8        &  &  & 12   &   &   &   &   &   &    \\ \cline{1-1}\cline{4-4}\cline{10-10}
+		9        &  &  & 14   &   &   &   &   &   &    \\ \cline{1-1}\cline{3-4}\cline{7-10}
+		10       &  & \multirow{3}{*}{$b_2$} & 16   &   &   & \multirow{3}{*}{}  & \multirow{3}{*}{}  & \multirow{3}{*}{}  &    \\ \cline{1-1}\cline{4-4}\cline{10-10}
+		11       &  &  & 18   &   &   &   &   &   &    \\ \cline{1-1}\cline{4-4}\cline{10-10}
+		12       &  &  & 20   &   &   &   &   &   &    \\ \hline
 	\end{tabular}
 \end{table}
 
