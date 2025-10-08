@@ -1,0 +1,121 @@
+\documentclass[a4paper,12pt]{ltjarticle}
+\usepackage[top=25truemm,bottom=25truemm,left=10truemm,right=10truemm]{geometry}
+\usepackage{amsmath}
+\usepackage{multirow}
+
+\begin{document}
+
+\section*{分散分析ワークシート}
+
+このワークシートでは，実験データから効果の大きさや平方和を計算する練習をします。表の空欄を埋めながら，データの散らばりがどのように分解されるかを確認しましょう。
+
+\subsection*{課題1：一要因3水準の分散分析}
+
+ある実験で，3つの条件（A，B，C）に被験者を割り当て，課題の成績を測定しました。以下の表を完成させなさい。
+
+\begin{table}[ht]
+	\centering
+	\caption{一要因3水準のデータ}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		被験者ID & 条件 & スコア & 全体平均 & 群平均 & 効果 & 誤差 \\ \hline
+		1        & A  & 12   &      &      &    &    \\ \hline
+		2        & A  & 14   &      &      &    &    \\ \hline
+		3        & A  & 16   &      &      &    &    \\ \hline
+		4        & A  & 18   &      &      &    &    \\ \hline
+		5        & B  & 10   &      &      &    &    \\ \hline
+		6        & B  & 12   &      &      &    &    \\ \hline
+		7        & B  & 14   &      &      &    &    \\ \hline
+		8        & B  & 16   &      &      &    &    \\ \hline
+		9        & C  & 16   &      &      &    &    \\ \hline
+		10       & C  & 18   &      &      &    &    \\ \hline
+		11       & C  & 20   &      &      &    &    \\ \hline
+		12       & C  & 22   &      &      &    &    \\ \hline
+	\end{tabular}
+\end{table}
+
+\textbf{計算欄：}
+\begin{itemize}
+	\item[] 条件Aの平均：\underline{\hspace{3cm}}
+	\item[] 条件Bの平均：\underline{\hspace{3cm}}
+	\item[] 条件Cの平均：\underline{\hspace{3cm}}
+	\item[] 全体平均：\underline{\hspace{3cm}}
+\end{itemize}
+
+\textbf{平方和の計算：}
+\begin{itemize}
+	\item[] 条件Aの効果：\underline{\hspace{3cm}}
+	\item[] 条件Bの効果：\underline{\hspace{3cm}}
+	\item[] 条件Cの効果：\underline{\hspace{3cm}}
+	\item[] 条件間平方和（SS\_between）：\underline{\hspace{3cm}}
+	\item[] 誤差平方和（SS\_error）：\underline{\hspace{3cm}}
+	\item[] 全体平方和（SS\_total）：\underline{\hspace{3cm}}
+\end{itemize}
+
+\textbf{確認：}SS\_total = SS\_between + SS\_error が成り立つか確認しましょう。
+
+\newpage
+
+\subsection*{課題2：二要因（2×2）の分散分析}
+
+ある実験で，2つの要因（要因A：2水準，要因B：2水準）を組み合わせた実験を行いました。以下の表を完成させなさい。
+
+\begin{table}[ht]
+	\centering
+	\caption{二要因（2×2）のデータ}
+	\small
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+		\hline
+		ID & 要因A & 要因B & スコア & 全体平均 & Aの効果 & Bの効果 & 交互作用 & 群平均 & 誤差 \\ \hline
+		1        & $a_1$ & $b_1$ & 18   &        &          &          &        &      &    \\ \hline
+		2        & $a_1$ & $b_1$ & 20   &        &          &          &        &      &    \\ \hline
+		3        & $a_1$ & $b_1$ & 22   &        &          &          &        &      &    \\ \hline
+		4        & $a_1$ & $b_2$ & 12   &        &          &          &        &      &    \\ \hline
+		5        & $a_1$ & $b_2$ & 14   &        &          &          &        &      &    \\ \hline
+		6        & $a_1$ & $b_2$ & 16   &        &          &          &        &      &    \\ \hline
+		7        & $a_2$ & $b_1$ & 10   &        &          &          &        &      &    \\ \hline
+		8        & $a_2$ & $b_1$ & 12   &        &          &          &        &      &    \\ \hline
+		9        & $a_2$ & $b_1$ & 14   &        &          &          &        &      &    \\ \hline
+		10       & $a_2$ & $b_2$ & 16   &        &          &          &        &      &    \\ \hline
+		11       & $a_2$ & $b_2$ & 18   &        &          &          &        &      &    \\ \hline
+		12       & $a_2$ & $b_2$ & 20   &        &          &          &        &      &    \\ \hline
+	\end{tabular}
+\end{table}
+
+\textbf{計算欄：}
+\begin{itemize}
+	\item[] $a_1b_1$群の平均：\underline{\hspace{3cm}}
+	\item[] $a_1b_2$群の平均：\underline{\hspace{3cm}}
+	\item[] $a_2b_1$群の平均：\underline{\hspace{3cm}}
+	\item[] $a_2b_2$群の平均：\underline{\hspace{3cm}}
+	\item[] 全体平均：\underline{\hspace{3cm}}
+\end{itemize}
+
+\textbf{主効果の計算：}
+\begin{itemize}
+	\item[] $a_1$水準の平均：\underline{\hspace{3cm}} $\rightarrow$ 要因Aの効果（$a_1$）：\underline{\hspace{3cm}}
+	\item[] $a_2$水準の平均：\underline{\hspace{3cm}} $\rightarrow$ 要因Aの効果（$a_2$）：\underline{\hspace{3cm}}
+	\item[] $b_1$水準の平均：\underline{\hspace{3cm}} $\rightarrow$ 要因Bの効果（$b_1$）：\underline{\hspace{3cm}}
+	\item[] $b_2$水準の平均：\underline{\hspace{3cm}} $\rightarrow$ 要因Bの効果（$b_2$）：\underline{\hspace{3cm}}
+\end{itemize}
+
+\textbf{交互作用の計算：}
+\begin{itemize}
+	\item[] $a_1b_1$の交互作用：\underline{\hspace{3cm}}
+	\item[] $a_1b_2$の交互作用：\underline{\hspace{3cm}}
+	\item[] $a_2b_1$の交互作用：\underline{\hspace{3cm}}
+	\item[] $a_2b_2$の交互作用：\underline{\hspace{3cm}}
+\end{itemize}
+
+\textbf{平方和の計算：}
+\begin{itemize}
+	\item[] 要因Aの平方和（SS\_A）：\underline{\hspace{3cm}}
+	\item[] 要因Bの平方和（SS\_B）：\underline{\hspace{3cm}}
+	\item[] 交互作用の平方和（SS\_AB）：\underline{\hspace{3cm}}
+	\item[] 誤差平方和（SS\_error）：\underline{\hspace{3cm}}
+	\item[] 全体平方和（SS\_total）：\underline{\hspace{3cm}}
+\end{itemize}
+
+\textbf{確認：}SS\_total = SS\_A + SS\_B + SS\_AB + SS\_error が成り立つか確認しましょう。
+
+\end{document}
