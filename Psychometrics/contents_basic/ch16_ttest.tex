@@ -317,7 +317,7 @@ sample estimates:
 \end{Rscreen}
 このやり方ですと，自由度も整数になっていますね(判定結果は変わりませんが)。
 
-\subsection{事後的な効果量の検証}
+\subsection{事後的に効果量を検証する}
 検定が終わった後ではありますが，このデータの実験は「勝ち目がある」ものだったのでしょうか。つまり，母集団における母平均の差が十分大きなものなのかどうかが気になります。母数は分かりませんが，これまでも分からないものは標本統計量で置き換えて推定してきたわけですから，データを取った後になって，これはどれぐらい効果量の大きなデータだったのか，を考えてみましょう。
 
 効果量の計算についても，Rを使って簡単に行うことができます。Rではパッケージを追加することでさまざまな統計関数が増えますが，効果量についての\textsf{effsize}パッケージ\parencite{effsize}を導入すれば，この計算も簡単にできます。効果量については第\ref{ch14_NHST2}講で触れましたので確認しておいてください。ここではより推奨される，Hedgesのgの算出の仕方を紹介します(\texttt{code:\ref{code:16_05}})。
@@ -349,47 +349,8 @@ g estimate: -0.7715342 (medium)
 	$t(7.195)=1.351,p = 0.2178$で2群の間に統計的に有意な差は認められなかった。なお，Hedgesのgで効果量を求めたところ，0.77であった。
 \end{quote}
 
-\subsection{補遺}
-付録的に2点付け加えます。時間的に余裕がある・興味がある場合はご一読ください。
-\paragraph{対応のあるt検定の効果量を計算する}対応のある$t$検定をして，その効果量を求める場合は，次のようにpairedオプションをオンにしておきます(\texttt{code:\ref{code:16_06}})。
-
-\begin{lstlisting}[language=c++,label={code:16_06},caption={cohenのd}]
-cohen.d(X,Y,paired = TRUE)
-\end{lstlisting}
-ただし，チルダを使った書き方をしている場合，\texttt{code:\ref{code:16_07}}のようにすると，出力に次のような警告が付されます(\texttt{Rの出力\ref{RS:out16_08}})。
-\begin{lstlisting}[language=c++,label={code:16_07},caption={cohenのdその2}]
-cohen.d(value ~ condition, data = dat, paired = TRUE)
-\end{lstlisting}
-
-\begin{Rscreen}{rnormの出力}{out16_08}
-	\begin{verbatim}
-Cohen's d
-
-d estimate: -0.344241 (small)
-95 percent confidence interval:
-      lower       upper 
--0.64457930 -0.04390272 
-
-    警告メッセージ: 
-cohen.d.formula(value ~ condition, data = dat, paired = TRUE) で: 
-Trying to compute paired samples Cohen's d using formula input. Results may be incorrect
- if cases do not appear in the same order for both levels of the grouping factor. Use the
-format 'value ~ treatment | Subject(id)' to specify a subject id variable.
-\end{verbatim}
-\end{Rscreen}
-この警告は，「対応のある個々人を識別する変数がデータセットに入ってないので，間違った結果になっているかもしれませんよ。次の書式を使ってください」と言ってます。これに対応するためには，\texttt{code:\ref{code:16_08}}のようにします。
-\begin{lstlisting}[language=c++,label={code:16_08},caption={対応のある場合のcohen.d}]
-X <- c(34, 25, 13, 21, 13, 26, 19, 12, 19, 19)
-Y <- c(35, 30, 16, 27, 20, 28, 16, 14, 18, 21)
-dat <- data.frame(condition = c(rep(1, 10), rep(2, 10)), value = c(X, Y))
-dat$condition <- factor(dat$condition, labels = c("pre", "post"))
-dat$ID <- rep(1:10,2)
-cohen.d(value ~ condition | Subject(ID), data = dat, paired = TRUE)
-\end{lstlisting}
-ここでのポイントは5行目にIDを識別する変数を作り\footnote{関数\texttt{rep}で\texttt{1:10}を2回繰り返しています。Rではコロンで繋げた数字は，連番を意味します。}，効果量を計算する式を警告の提案通りのフォーマットに書き換えています。
-
-\paragraph{例数設計のしかた}
-対応のない$t$検定で，効果量が0.7あるのに有意になりませんでした。これはサンプルサイズが小かったからかも，ということでしたが，では何人分のデータがあればよかったのでしょうか。\texttt{code:\ref{code:16_09}}ようにRに入力することで，そのヒントが得られます。
+\subsection{サンプルサイズの設計}
+ところで今回，対応のない$t$検定で，効果量が0.7あるのに有意になりませんでした。これはサンプルサイズが小かったからかも，ということでしたが，では何人分のデータがあればよかったのでしょうか。\texttt{code:\ref{code:16_09}}ようにRに入力することで，そのヒントが得られます。
 \begin{lstlisting}[language=c++,label={code:16_09},caption={power.t.test関数}]
 power.t.test(power = 0.8, delta = 0.7, sig.level = 0.05)
 \end{lstlisting}
@@ -431,6 +392,48 @@ NOTE: n is number in *each* group
 \end{verbatim}
 \end{Rscreen}
 ここにあるように，検定力は0.16，つまりサンプルサイズ$n=5$であれば，この研究は100回やっても「有意差あり」と正しく判断できるのは16回ほどしかなかった，ということになります。分の悪い勝負に出たというところでしょうか。
+
+第\ref{ch14_NHST2}講，\ref{sec:14_04}節(Pp.\pageref{sec:14_04})で，このような検定力分析についても触れましたが，帰無仮説検定で「有意になること」を目的にするのであればサンプルサイズを増やせば良いのです。しかしもちろん，自分に都合のいい結果になるように努力？するのは科学的な実践としては不適切ですし，サンプルをたくさん取るのは研究上の労力もかかります。多過ぎず，少なすぎず，正しく判断するためのサンプルサイズを事前に設計してから，研究を始めることが重要です。
+
+
+\subsection{補遺}
+\paragraph{対応のあるt検定の効果量を計算する}対応のある$t$検定をして，その効果量を求める場合は，次のようにpairedオプションをオンにしておきます(\texttt{code:\ref{code:16_06}})。
+
+\begin{lstlisting}[language=c++,label={code:16_06},caption={cohenのd}]
+cohen.d(X,Y,paired = TRUE)
+\end{lstlisting}
+ただし，チルダを使った書き方をしている場合，\texttt{code:\ref{code:16_07}}のようにすると，出力に次のような警告が付されます(\texttt{Rの出力\ref{RS:out16_08}})。
+\begin{lstlisting}[language=c++,label={code:16_07},caption={cohenのdその2}]
+cohen.d(value ~ condition, data = dat, paired = TRUE)
+\end{lstlisting}
+
+\begin{Rscreen}{rnormの出力}{out16_08}
+	\begin{verbatim}
+Cohen's d
+
+d estimate: -0.344241 (small)
+95 percent confidence interval:
+      lower       upper 
+-0.64457930 -0.04390272 
+
+    警告メッセージ: 
+cohen.d.formula(value ~ condition, data = dat, paired = TRUE) で: 
+Trying to compute paired samples Cohen's d using formula input. Results may be incorrect
+ if cases do not appear in the same order for both levels of the grouping factor. Use the
+format 'value ~ treatment | Subject(id)' to specify a subject id variable.
+\end{verbatim}
+\end{Rscreen}
+この警告は，「対応のある個々人を識別する変数がデータセットに入ってないので，間違った結果になっているかもしれませんよ。次の書式を使ってください」と言ってます。これに対応するためには，\texttt{code:\ref{code:16_08}}のようにします。
+\begin{lstlisting}[language=c++,label={code:16_08},caption={対応のある場合のcohen.d}]
+X <- c(34, 25, 13, 21, 13, 26, 19, 12, 19, 19)
+Y <- c(35, 30, 16, 27, 20, 28, 16, 14, 18, 21)
+dat <- data.frame(condition = c(rep(1, 10), rep(2, 10)), value = c(X, Y))
+dat$condition <- factor(dat$condition, labels = c("pre", "post"))
+dat$ID <- rep(1:10,2)
+cohen.d(value ~ condition | Subject(ID), data = dat, paired = TRUE)
+\end{lstlisting}
+ここでのポイントは5行目にIDを識別する変数を作り\footnote{関数\texttt{rep}で\texttt{1:10}を2回繰り返しています。Rではコロンで繋げた数字は，連番を意味します。}，効果量を計算する式を警告の提案通りのフォーマットに書き換えています。
+
 \section{課題}
 次の計算をするRコードが含まれるRスクリプトファイルを提出してください。
 % \paragraph{課題1 標本統計量と一標本検定}

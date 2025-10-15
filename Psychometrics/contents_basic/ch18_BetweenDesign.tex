@@ -193,23 +193,17 @@ $X_{ij}$は$i$さんが要因$j$のときにどちらに割り振られたかを
 これに対して，交互作用はセル内，各組み合わせについて生じている効果です。行方向，列方向についてはそれぞれの要因の主効果として計算されていますから，交互作用は行方向に足し合わせても$\pm 0$，列方向に足しあわせても$\pm 0$になる必要があります。そうでないと，周辺の計算が合わなくなってしまうからです。図\ref{fig:18_04}の左上，a1b1水準に交互作用効果$b_3$が生じたとすると，列方向，つまり同じ水準a1のなかで，総和がゼロにならないといけませんから，a1b2水準には$-b_3$が入ることになります。これはまた，行方向にも総和がゼロでなければなりませんから，a2b1も$-b_3$である必要があります。残る右下のa2b2は，行方向にも列方向にも総和ゼロにするためには$+b_3$でなければなりません。このようにして，交互作用の符号は周りとの関係で定まっていたのです。交互作用の大きさは，どの行方向，列方向をみても総和ゼロになっている，というのは水準数が増えても同じです。
 
 \begin{figure}[ht]
-	\begin{tabular}{cc}
-		%---- 最初の図 ---------------------------
-		\begin{minipage}[t]{0.45\hsize}
-			\centering
-			\includegraphics[keepaspectratio,width=0.5\linewidth]{figures/18_BetweenDesign/mainEffect.png}
-			\caption{主効果の計算は周辺の平均値から計算する}
-			\label{fig:18_03}
-		\end{minipage} &
-		%---- 2番目の図 --------------------------
-		\begin{minipage}[t]{0.45\hsize}
-			\centering
-			\includegraphics[keepaspectratio,width=0.5\linewidth]{figures/18_BetweenDesign/interaction.png}
-			\caption{交互作用はセルの内部で相殺するように}
-			\label{fig:18_04}
-		\end{minipage}
-		%---- 図はここまで ----------------------
-	\end{tabular}
+	\centering
+	\includegraphics[keepaspectratio,width=0.7\linewidth]{figures/18_BetweenDesign/mainEffect.png}
+	\caption{主効果の計算は周辺の平均値から計算する}
+	\label{fig:18_03}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[keepaspectratio,width=0.7\linewidth]{figures/18_BetweenDesign/interaction.png}
+	\caption{交互作用はセルの内部で相殺するように}
+	\label{fig:18_04}
 \end{figure}
 
 このように交互作用を含めて計算すると，組み合わせ水準のところまで含めて，群平均の計算が合うようになります。それでも一人ひとりのレベルまで考えてみると，やはりズレが出てしまいますが，これはどうしようもない個人差＝誤差ですので，これを計算することで誤差を算出できます。
