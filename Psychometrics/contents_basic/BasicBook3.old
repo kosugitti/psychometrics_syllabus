@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 3.0.69}
+\lhead{version 3.0.73}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{figures/cover1v3.pdf}
@@ -41,6 +41,7 @@
 \include{ch17_RCT}
 \include{ch18_BetweenDesign}
 \include{anova_worksheet}
+\include{ch19_Ftest}
 % \include{m09_Regression}
 % \include{m11_Regression_onR}
 % \include{m12_design1}
