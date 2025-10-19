@@ -314,7 +314,7 @@ $ weight: num  60 70 80
 
 \begin{lstlisting}[language=c++,label={code:19_03},caption={データの準備}]
 # データフレームを組み上げる
-Example1 <- data.frame(id = rep(1:4,3),
+Example1 <- data.frame(id = 1:12,
                        condition = rep(1:3,each=4),
                        value = c(6,6,5,5,7,4,7,6,4,3,4,6))
 # 要因型にする
@@ -324,7 +324,7 @@ Example1$condition <- factor(Example1$condition,
 
 \paragraph{コード解説}
 \begin{description}
-	\item[1-3行目] データフレームを作っています。IDは被験者番号ですが，群内での番号なので1から4の繰り返しを3回(\texttt{rep(1:4,3)})です。条件conditionは3種類，各4人分(\texttt{rep(1:3,each=4)})，最後の従属変数(value)は手入力するしかありません。
+	\item[1-3行目] データフレームを作っています。IDは被験者番号です。12人それぞれに異なる数字を振っています。条件conditionは3種類，各4人分(\texttt{rep(1:3,each=4)})，最後の従属変数(value)は手入力するしかありません。
 	\item[5-7行目] 条件変数を要因型にしています。ラベルは統制群(control)と実験群1(exp1)，実験群2(exp2)としています。
 \end{description}
 
