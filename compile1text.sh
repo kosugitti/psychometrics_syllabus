@@ -73,7 +73,25 @@ echo $(date)
 echo 'データ解析基礎のテキストを改定しました。'
 cat Book_versions1.md
 echo 'Gitにコミットします。'
+
+# Remove git lock file if it exists
+if [ -f .git/index.lock ]; then
+  echo 'Removing stale git lock file...'
+  rm -f .git/index.lock
+fi
+
+# Wait a moment for any background git processes to complete
+sleep 1
+
 today=$(LANG="ja_JP.UTF-8" date)
 git add --all
+
+# Wait for git add to complete
+sleep 1
+
 git commit -m "$today"
+
+# Wait for post-commit hooks to complete
+sleep 2
+
 git push
