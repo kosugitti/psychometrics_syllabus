@@ -196,21 +196,22 @@ print(MixedDesign)
 さてここで，\verb|tidyverse|パッケージを使うとワイド型とロング型を相互に変換できることを説明しておきます。ワイド型のデータをロング型に変換するには，\verb|pivot_longer()|関数を使います(\texttt{code:\ref{code:20_04}})。
 
 \begin{lstlisting}[language=c++,label={code:20_04},caption={ワイド型からロング型への変換}]
-MixedDesignLong <- MixedDesign %>%
+MixedDesign_long <- MixedDesign %>%
   pivot_longer(cols = c(stimuli1,stimuli2),
                names_to = "stimuli",
                values_to = "value")
-print(MixedDesignLong)
+print(MixedDesign_long)
 \end{lstlisting}
 
 \paragraph{コード解説}
 \begin{description}
-    \item[1行目] ワイド型のデータフレームをロング型に変換し，新しいデータフレーム\texttt{MixedDesignLong}に代入しています。
+    \item[1行目] ワイド型のデータフレームをロング型に変換し，新しいデータフレーム\texttt{MixedDesign\_long}に代入しています。
     \item[2-4行目] \verb|pivot_longer()|関数を使って，\texttt{stimuli1}と\texttt{stimuli2}の列をロング型に変換しています。変換後の変数名は\texttt{stimuli}，値の入る変数名は\texttt{value}としています。
     \item[5行目] 変換後のデータフレームを表示させています。
 \end{description}
 
 \begin{Rscreen}{ロング型データの出力}{out20_02}
+\begin{verbatim}
 > print(MixedDesign_long)
 # A tibble: 24 × 4
       id condition stimuli  value
@@ -396,8 +397,7 @@ Between2 %>%
 \end{description}
 
 \newpage
-\section{補遺}
-\section{線形モデルとして分析}
+\section{補遺；線形モデルとして分析}
 ここまで\texttt{anovakun}パッケージを使って分散分析を行ってきましたが，Rの基本機能である線形モデルとしても同じ分析ができます。線形モデルで表現するには，次のようにします(\texttt{code:\ref{code:20_08}})。
 \begin{lstlisting}[language=c++,label={code:20_08},caption={線形モデルとして実行}]
 result.lm <- lm(value ~ temp * maker, data = Between2)
@@ -460,5 +460,66 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 \end{Rscreen}
 
 \section{課題}
+
+ある研究者が，学習方法(対面授業 vs オンライン授業)と復習の有無(復習あり vs 復習なし)が学習成果に与える影響を調べるために，2要因の群間計画による実験を行いました。各条件に4名ずつ，合計16名の参加者を無作為に割り当て，学習後のテスト得点(100点満点)を測定しました。結果は次の通りです。
+
+\begin{center}
+\begin{tabular}{rrllr}
+\hline
+通し番号 & 群での番号 & 学習方法 & 復習 & テスト得点 \\
+\hline
+1 & 1 & 対面 & あり & 85 \\
+2 & 2 & 対面 & あり & 88 \\
+3 & 3 & 対面 & あり & 82 \\
+4 & 4 & 対面 & あり & 90 \\
+5 & 1 & 対面 & なし & 72 \\
+6 & 2 & 対面 & なし & 68 \\
+7 & 3 & 対面 & なし & 75 \\
+8 & 4 & 対面 & なし & 70 \\
+9 & 1 & オンライン & あり & 78 \\
+10 & 2 & オンライン & あり & 82 \\
+11 & 3 & オンライン & あり & 80 \\
+12 & 4 & オンライン & あり & 76 \\
+13 & 1 & オンライン & なし & 65 \\
+14 & 2 & オンライン & なし & 62 \\
+15 & 3 & オンライン & なし & 68 \\
+16 & 4 & オンライン & なし & 60 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{課題内容}
+このデータを使って，以下の課題に取り組んでください。
+
+\begin{enumerate}
+\item 上記のデータをRのデータフレームとして作成しなさい。学習方法と復習の有無は要因型(factor)にすること。
+\item \verb|anovakun|関数を使って二要因分散分析を実行しなさい。効果量($\varepsilon^2$)も表示すること。
+\item 分散分析の結果から，次の点について答えなさい：
+\begin{itemize}
+\item 学習方法の主効果は有意か
+\item 復習の有無の主効果は有意か
+\item 交互作用は有意か
+\item 最も大きな効果はどれか(効果量$\varepsilon^2$を見て判断すること)
+\end{itemize}
+\item 交互作用が有意であった場合，単純効果の検定結果を解釈しなさい。
+\item \verb|ggplot2|パッケージを使って，この結果を可視化しなさい。グラフには平均値と標準誤差を表示すること。
+\item 結果を文章でまとめなさい。APA形式に準じて，統計量($F$値，$p$値，効果量)を含めて報告すること。
+\end{enumerate}
+
+\subsection{ヒント}
+\begin{itemize}
+\item データフレームを作成する際は，\verb|data.frame()|関数と\verb|rep()|関数を活用しましょう。
+\item 要因型への変換には，\verb|factor()|関数を使います。ラベルは適切な日本語または英語を指定してください。
+\item \verb|anovakun|の要因計画の型指定は，両方とも群間要因なので\verb|"ABs"|となります。
+\item 可視化のコードは，本文中の\texttt{code:\ref{code:20_07}}を参考にしてください。
+\item グラフ作成時には，\verb|group_by()|と\verb|summarise()|を使って，各条件の平均値と標準誤差を計算します。
+\end{itemize}
+
+\subsection{発展課題}
+\begin{enumerate}
+\item 線形モデル(\verb|lm()|関数)を使っても同じ分析を行い，\verb|anovakun|の結果と比較しなさい。
+\item この実験結果から，学習効果を最大化するためにはどのような条件が望ましいと言えるか，考察しなさい。
+\item もし交互作用が有意でなかった場合，主効果の解釈はどのように変わるか考えなさい。
+\end{enumerate}
 
 \end{document}

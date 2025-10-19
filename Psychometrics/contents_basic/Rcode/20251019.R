@@ -121,3 +121,85 @@ g3 <- Between2 %>%
   theme_bw() +
   theme(text = element_text(family = "HiraginoSans-W3"))
 print(g3)
+
+
+# 課題：学習方法と復習の効果 ---------------------------------------------------
+
+# 課題1: データフレームの作成
+LearningData <- data.frame(
+  id = rep(1:4, 4),
+  method = rep(1:2, each = 8),
+  review = rep(rep(1:2, each = 4), 2),
+  score = c(85, 88, 82, 90, 72, 68, 75, 70, 78, 82, 80, 76, 65, 62, 68, 60)
+)
+
+# 要因型に変換
+LearningData$method <- factor(LearningData$method,
+  labels = c("対面", "オンライン")
+)
+LearningData$review <- factor(LearningData$review,
+  labels = c("復習あり", "復習なし")
+)
+
+# データの確認
+print(LearningData)
+
+# 課題2: anovakunで二要因分散分析を実行
+cat("\n=== 課題2: 二要因分散分析の結果 ===\n")
+anovakun(LearningData[, -1], "ABs", 2, 2, eps = T)
+
+# 課題3-4: 結果の解釈
+# 主効果と交互作用の有意性、効果量、単純効果の検定結果は
+# 上記のanovakun出力から確認できます
+
+# 課題5: ggplot2による可視化
+cat("\n=== 課題5: 結果の可視化 ===\n")
+g_learning <- LearningData %>%
+  group_by(method, review) %>%
+  summarise(
+    mean = mean(score),
+    sd = sd(score),
+    n = n(),
+    se = sd / sqrt(n),
+    .groups = "drop"
+  ) %>%
+  ggplot(aes(x = method, y = mean, fill = review)) +
+  geom_bar(
+    stat = "identity",
+    position = position_dodge(0.9),
+    width = 0.8
+  ) +
+  geom_errorbar(aes(ymin = mean - se, ymax = mean + se),
+    position = position_dodge(0.9), width = 0.25
+  ) +
+  labs(
+    title = "学習方法と復習の有無によるテスト得点の比較",
+    x = "学習方法",
+    y = "テスト得点の平均",
+    fill = "復習の有無"
+  ) +
+  theme_bw() +
+  theme(text = element_text(family = "HiraginoSans-W3"))
+
+print(g_learning)
+
+
+# 発展課題1: 線形モデルでの分析
+cat("\n=== 発展課題1: 線形モデルでの分析 ===\n")
+result_learning <- lm(score ~ method * review, data = LearningData)
+cat("\n--- summary()の結果 ---\n")
+print(summary(result_learning))
+cat("\n--- anova()の結果 ---\n")
+print(anova(result_learning))
+
+# 記述統計の確認
+cat("\n=== 各条件の記述統計 ===\n")
+LearningData %>%
+  group_by(method, review) %>%
+  summarise(
+    平均 = mean(score),
+    標準偏差 = sd(score),
+    サンプル数 = n(),
+    .groups = "drop"
+  ) %>%
+  print()
