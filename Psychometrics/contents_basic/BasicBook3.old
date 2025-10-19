@@ -1,0 +1,83 @@
+\documentclass[dvipsnames]{ltjsbook}
+\usepackage{../../myStyle}
+%% バッチ処理をするので\lheadは必ず4行目にあること
+\lhead{version 3.0.79}
+\usepackage{docmute}
+\begin{document}
+\includepdf[noautoscale=false,pages=-]{figures/cover1v3.pdf}
+\VerbatimFootnotes
+\input{../common_contents/copyright} % copyright page
+\title{心理学データ解析基礎}
+\author{小杉　考司}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+
+
+\input{preface1} % preface
+
+\tableofcontents
+
+% 行番号開始
+\linenumbers
+% 各章
+\part{心理学データ解析基礎1A(心理学統計法)}
+\include{ch01_introduction}
+\include{ch02_PCs}
+\include{ch03_introR}
+\include{ch04_Number_and_Data}
+\include{ch05_descriptives}
+\include{ch06_Corr}
+\include{ch07_Regression}
+\include{ch08_MultipleRegression}
+\include{ch09_Regression_onR}
+\include{ch10_Probability}
+\include{ch11_inference}
+\include{ch12_test}
+\include{ch13_NHST}
+\include{ch14_NHST2}
+\include{ch15_FirstSemester}
+\include{ch16_ttest}
+\include{ch17_RCT}
+\include{ch18_BetweenDesign}
+\include{anova_worksheet}
+\include{ch19_Ftest}
+\include{ch20_BetweenDesign_onR}
+% \include{m11_Regression_onR}
+% \include{m12_design1}
+% \include{m13_design2}
+% \include{m14_design3}
+% \include{m15_FirstSemester}
+\part{心理学データ解析基礎1B}
+% \include{m16_inference}
+% \include{m17_estimation_and_test}
+% \include{m18_NHST}
+% \include{m19_NHST2}
+% \include{m20_ttest}
+% \include{m21_anova}
+% \include{m22_anova_onR}
+% \include{m23_likelihood}
+% \include{m24_maximum_likelihood}
+% \include{m25_bayesian}
+% \include{m26_bayesian2}
+% \include{m27_bayesian3}
+% \include{m28_jasp}
+% \include{m29_brms}
+% \include{m30_SecondSemester}
+
+% 行番号終了
+\appendix
+\input{../common_contents/FAQ_v3} % FAQ page
+\input{../common_contents/Greeks}
+% \input{../common_contents/keyboards}
+
+\nolinenumbers
+
+\addcontentsline{toc}{chapter}{引用文献}
+% 引用文献
+\printbibliography[title=引用文献]
+% 索引
+\addcontentsline{toc}{chapter}{索引}
+
+\printindex
+\end{document}
