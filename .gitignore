@@ -5,9 +5,8 @@
 .DS_Store
 node_modules
 
-# LaTeX temporary files
+# LaTeX temporary files (but keep main output files)
 *.aux
-*.log
 *.out
 *.toc
 *.idx
@@ -20,10 +19,15 @@ node_modules
 *.run.xml
 *.blg
 *.bbl
+
+# Ignore .old files except in contents_basic
 *.old
+!Psychometrics/contents_basic/*.old
+
+# Ignore most .log files except important ones
+*.log
+!BasicBook3.log
+!Psychometrics/contents_basic/error.log
 
 # Compilation timestamps
 .compile_timestamps
-
-# Error logs
-error.log
