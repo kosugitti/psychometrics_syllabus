@@ -179,3 +179,88 @@ cat("相関係数 r(X1, X2):", cor(df_bivariate$X1, df_bivariate$X2), "\n\n")
 # 分散共分散行列
 cat("分散共分散行列:\n")
 print(cov(df_bivariate))
+
+# ====================================
+# 3変量正規分布の3Dプロット
+# ch22でWithin計画の3水準データを説明するための図
+# ====================================
+
+library(scatterplot3d)
+
+# 3変量正規分布のパラメータ設定
+set.seed(42)
+
+# 平均ベクトル（3つの水準）
+mu3 <- c(X1 = 0, X2 = 0, X3 = 0)
+
+# 分散共分散行列（3x3）
+sigma3 <- matrix(
+  c(
+    1.0, 0.6, 0.5, # X1
+    0.6, 1.0, 0.6, # X2
+    0.5, 0.6, 1.0  # X3
+  ),
+  nrow = 3, ncol = 3, byrow = TRUE
+)
+
+# 3変量正規分布からサンプリング
+data_trivariate <- mvrnorm(n = 1000, mu = mu3, Sigma = sigma3)
+
+# データフレームに変換
+df_trivariate <- as.data.frame(data_trivariate)
+colnames(df_trivariate) <- c("X1", "X2", "X3")
+
+# 図を保存
+output_path_trivariate <- if (dir.exists("../../figures/22_Within_R")) {
+  "../../figures/22_Within_R/trivariate_normal_3d.png"
+} else if (dir.exists("../figures/22_Within_R")) {
+  "../figures/22_Within_R/trivariate_normal_3d.png"
+} else {
+  dir.create("../figures/22_Within_R", showWarnings = FALSE, recursive = TRUE)
+  "../figures/22_Within_R/trivariate_normal_3d.png"
+}
+
+# PNGファイルに描画開始
+png(
+  filename = output_path_trivariate,
+  width = 1000,
+  height = 1000,
+  res = 300
+)
+
+# scatterplot3dで3D散布図を作成
+s3d <- scatterplot3d(
+  df_trivariate$X1, df_trivariate$X2, df_trivariate$X3,
+  main = "Trivariate Normal Distribution",
+  xlab = "X1 (Level 1)",
+  ylab = "X2 (Level 2)",
+  zlab = "X3 (Level 3)",
+  color = rgb(0.4, 0.6, 1.0, 0.4),
+  pch = 16,
+  cex.symbols = 0.5,
+  angle = 45,
+  xlim = c(-4, 4),
+  ylim = c(-4, 4),
+  zlim = c(-4, 4)
+)
+
+dev.off()
+
+print(paste("3D図を保存しました:", output_path_trivariate))
+
+# 3変量正規分布の統計量
+cat("\n=== 3変量正規分布の統計量 ===\n")
+cat("X1の平均:", mean(df_trivariate$X1), "\n")
+cat("X2の平均:", mean(df_trivariate$X2), "\n")
+cat("X3の平均:", mean(df_trivariate$X3), "\n\n")
+
+cat("X1の標準偏差:", sd(df_trivariate$X1), "\n")
+cat("X2の標準偏差:", sd(df_trivariate$X2), "\n")
+cat("X3の標準偏差:", sd(df_trivariate$X3), "\n\n")
+
+cat("相関係数行列:\n")
+print(cor(df_trivariate))
+cat("\n")
+
+cat("分散共分散行列:\n")
+print(cov(df_trivariate))
