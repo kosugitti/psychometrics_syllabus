@@ -123,28 +123,11 @@ ggsave("../figures/22_Within_R/interaction_plot.png",
 # 要因A（方法）を群間要因として扱う
 # ========================================
 
-# 元のデータの前半5人をm1グループ、後半5人をm2グループとして扱う
 
-# m1グループのデータ（被験者A-E）
-dat_m1 <- data.frame(
-  id = c("A", "B", "C", "D", "E"),
-  group = rep("m1", 5),
-  t1 = dat$m1_t1[1:5],
-  t2 = dat$m1_t2[1:5],
-  t3 = dat$m1_t3[1:5]
-)
 
-# m2グループのデータ（被験者F-J）
-dat_m2 <- data.frame(
-  id = c("F", "G", "H", "I", "J"),
-  group = rep("m2", 5),
-  t1 = dat$m2_t1[6:10],
-  t2 = dat$m2_t2[6:10],
-  t3 = dat$m2_t3[6:10]
-)
 
-# 2つのグループを結合
-dat_between <- rbind(dat_m1, dat_m2)
+anovakun(dat_between, "AsB", 2, 3)
+
 print(dat_between)
 
 # anovakun用のデータフレームに変換（idとgroupを除外）
