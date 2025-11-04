@@ -68,3 +68,13 @@ echo "Compilation summary:"
 echo "  Compiled: $compiled_count file(s)"
 echo "  Skipped: $skipped_count file(s)"
 echo "PDFs and TEX files remain, intermediate files removed."
+
+# Execute compile1text.sh from two directories up
+echo ""
+echo "Executing ../../compile1text.sh..."
+if [[ -f "../../compile1text.sh" ]]; then
+    bash "../../compile1text.sh"
+    echo "compile1text.sh completed."
+else
+    echo "Warning: ../../compile1text.sh not found, skipping."
+fi
