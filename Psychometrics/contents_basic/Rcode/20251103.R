@@ -1,6 +1,16 @@
 rm(list = ls())
 source("https://bit.ly/3WL8VYR")
 
+Example3 <- data.frame(
+  ID = 1:4,
+  Time1 = c(10, 9, 4, 7),
+  Time2 = c(5, 4, 2, 3),
+  Time3 = c(9, 5, 3, 5)
+)
+
+anovakun(Example3[, 2:4], "sA", 3, eps = T)
+
+
 # ========================================
 # 2変量正規分布とマージナルヒストグラム
 # ch22でWithin計画の多変量正規分布を説明するための図
@@ -89,6 +99,17 @@ library(gridExtra)
 p_top <- ggplot(x1_theory, aes(x = x, y = y)) +
   geom_line(linewidth = 1, color = "darkblue") +
   geom_area(alpha = 0.3, fill = "lightblue") +
+  # 平均値を示す縦線
+  geom_vline(xintercept = mu[1], color = "red", linewidth = 0.8, linetype = "dotted") +
+  # ギリシア文字でμ1とσ1のラベルを追加
+  annotate("text",
+    x = mu[1], y = max(x1_theory$y) * 0.8,
+    label = "mu[1]", parse = TRUE, size = 5, color = "red", hjust = 1.2
+  ) +
+  annotate("text",
+    x = mu[1] + sqrt(sigma[1, 1]), y = max(x1_theory$y) * 0.85,
+    label = "sigma[1]", parse = TRUE, size = 5, color = "darkblue"
+  ) +
   xlim(mu[1] - 4 * sqrt(sigma[1, 1]), mu[1] + 4 * sqrt(sigma[1, 1])) +
   theme_minimal() +
   theme(
@@ -103,6 +124,17 @@ p_top <- ggplot(x1_theory, aes(x = x, y = y)) +
 p_right <- ggplot(x2_theory, aes(x = x, y = y)) +
   geom_path(linewidth = 1, color = "darkblue") +
   geom_ribbon(aes(xmin = 0, xmax = x), alpha = 0.3, fill = "lightblue") +
+  # 平均値を示す横線
+  geom_hline(yintercept = mu[2], color = "red", linewidth = 0.8, linetype = "dotted") +
+  # ギリシア文字でμ2とσ2のラベルを追加
+  annotate("text",
+    x = max(x2_theory$x) * 0.7, y = mu[2],
+    label = "mu[2]", parse = TRUE, size = 5, color = "red", vjust = -0.8
+  ) +
+  annotate("text",
+    x = max(x2_theory$x) * 0.85, y = mu[2] + sqrt(sigma[2, 2]),
+    label = "sigma[2]", parse = TRUE, size = 5, color = "darkblue"
+  ) +
   ylim(mu[2] - 4 * sqrt(sigma[2, 2]), mu[2] + 4 * sqrt(sigma[2, 2])) +
   theme_minimal() +
   theme(
@@ -198,7 +230,7 @@ sigma3 <- matrix(
   c(
     1.0, 0.6, 0.5, # X1
     0.6, 1.0, 0.6, # X2
-    0.5, 0.6, 1.0  # X3
+    0.5, 0.6, 1.0 # X3
   ),
   nrow = 3, ncol = 3, byrow = TRUE
 )

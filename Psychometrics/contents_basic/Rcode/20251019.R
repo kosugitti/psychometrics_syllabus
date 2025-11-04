@@ -38,7 +38,7 @@ Between2$maker <- factor(Between2$maker,
 
 source("https://bit.ly/3WL8VYR")
 
-anovakun(Between2, "ABs", 2, 2, eps = T)
+anovakun(Between2, "ABs", 2, 2, eps = T, welch = T)
 
 
 
