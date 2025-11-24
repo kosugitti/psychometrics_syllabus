@@ -92,4 +92,4 @@ cd ..
 echo $(date)
 echo '広大集中講義のテキストを改定しました。'
 cat Hiroshima_versions.md
-cat hiroshima_scaling/tex/error.log
+cat Scaling/tex/error.log

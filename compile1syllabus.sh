@@ -67,12 +67,12 @@ rm *.idx
 rm *.ind
 
 cd ..
-
+cd ..
 
 ########################## Show Message
 echo $(date)
 echo 'データ解析基礎のシラバスを改定しました。'
-cat Syllabus_versions1.md
+cat Psychometrics/Syllabus_versions1.md
 
 today=$(LANG="ja_JP.UTF-8" date)
 git add --all
