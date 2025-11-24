@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.11.16)  25 NOV 2025 06:50
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.11.16)  25 NOV 2025 06:58
  restricted system commands enabled.
 **tmp
 (./tmp.tex
@@ -2493,39 +2493,35 @@ Package: inputenc 2024/02/08 v1.3d Input encoding file
 )
 Package hyperref Info: Link coloring ON on input line 6.
  (./tmp.out)
-(./tmp.out)
-\@outlinefile=\write8
-
-\openout8 = tmp.out
-\docmute@nestinglevel=\count585
-
-
-! Package pdfpages Error: Cannot find file `figures/cover1v3.pdf'.
-
-See the pdfpages package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 ...oscale=false,pages=-]{figures/cover1v3.pdf}
-                                                  
-? 
-! Emergency stop.
- ...                                              
-                                                  
-l.7 ...oscale=false,pages=-]{figures/cover1v3.pdf}
-                                                  
-End of file on the terminal!
-
+Runaway argument?
+{\376\377\0002\0002\000.\0004\00 
+! File ended while scanning use of \@@BOOKMARK.
+<inserted text> 
+                \par 
+l.6 \begin{document}
+                    
+? ^^XX
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, E to edit your file,
+H for help, X to quit.
+? X
 
 
 Here is how much of LuaTeX's memory you used:
- 47359 strings out of 476081
- 125244,2373549 words of node,token memory allocated 1120 words of node memory still in use:
-   9 hlist, 1 vlist, 5 rule, 1 dir, 4 kern, 1 glyph, 201 attribute, 73 glue_spec
-, 27 attribute_list, 1 if_stack, 1 write, 12 user_defined, 1 pdf_dest, 1 pdf_col
-orstack nodes
-   avail lists: 1:6,2:101,3:3,4:3,5:4,6:4,7:7,8:1,9:4,10:1,11:1
- 68616 multiletter control sequences out of 65536+600000
+ 47360 strings out of 476081
+ 125244,2373549 words of node,token memory allocated 1085 words of node memory still in use:
+   9 hlist, 1 vlist, 5 rule, 1 dir, 4 kern, 1 glyph, 189 attribute, 73 glue_spec
+, 26 attribute_list, 1 if_stack, 1 write, 12 user_defined, 1 pdf_colorstack node
+s
+   avail lists: 1:6,2:114,3:3,4:3,5:4,6:4,7:7,8:1,9:4,10:1,11:1
+ 68626 multiletter control sequences out of 65536+600000
  41 fonts using 32118351 bytes
  119i,1n,126p,2049b,847s stack positions out of 10000i,1000n,20000p,200000b,200000s
-!  ==> Fatal error occurred, no output PDF file produced!
+
+warning  (pdf backend): no pages of output.
+
+PDF statistics: 3 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 100000000)
+
