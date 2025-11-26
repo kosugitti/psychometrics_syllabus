@@ -115,7 +115,7 @@
 \end{eqnarray}
 と考えて，この式\ref{eq24_06}の$\hat{y}_i$に式\ref{eq24_05}を代入しても，
 \[ y_i \sim N(\beta_0 + \beta_1x_i, \sigma) \]
-が得られます。どちらのルートでも結構ですから，自分のわかりやすい方で理解してください。一覧の流れを図\ref{m24_two_way_root}にまとめてみました。
+が得られます。どちらのルートでも結構ですから，自分のわかりやすい方で理解してください。一覧の流れを図\ref{fig:24_two_way_root}にまとめてみました。
 \begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}
@@ -149,7 +149,7 @@
 		\node (P4) at (3.5,2)[below] {};
 	\end{tikzpicture}
 	\caption{確率モデルと予測モデルの合体}
-	\label{m24_two_way_root}
+	\label{fig:24_two_way_root}
 \end{figure}
 
 
@@ -205,12 +205,12 @@ $i$を$1$から$n$まで足し合わせることを総和する，といって$x
 ですから，実質的にはただの回帰分析をすれば良いのです。
 
 \subsection{実践例}
-数字としてはなんら変わるところはないのですが，復習も兼ねて第\ref{m09_Regression}講でやった回帰分析をもう一度見てみましょう。
+数字としてはなんら変わるところはないのですが，復習も兼ねて第\ref{ch09_Regression_onR}講でやった回帰分析をもう一度見てみましょう。
 回帰分析の関数は\verb|lm|という関数名で，Rがデフォルトで持っている関数なのでした。実はこの関数，最尤推定値を返す関数だったのです。
 そのときは\keytermL{最小二乗法}{さいしょうにじょうほう}の説明しかしていなかったのですが，関数の使い勝手のこともあって，最尤推定する関数でご紹介しておりました。
 本当の意味で，最小二乗法のアルゴリズムで回帰分析をするときは\verb|lsfit|関数というものを使います。
 
-使用例をコード\ref{code:24_01}に示しました。ここでは野球選手のデータを使って，身長から体重を予測するというモデルを実行しています\footnote{第\ref{m11_MRonR}講と同じ分析結果です。}。
+使用例をコード\ref{code:24_01}に示しました。ここでは野球選手のデータを使って，身長から体重を予測するというモデルを実行しています\footnote{第\ref{ch09_Regression_onR}講と同じ分析結果です。}。
 \begin{lstlisting}[language=c++,label={code:24_01},caption={二つの推定法の比較}]
 # 最小二乗法の推定
 result.LS <- lsfit(x = batter$height, y = batter$weight)
