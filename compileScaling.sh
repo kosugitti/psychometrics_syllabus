@@ -46,7 +46,7 @@ cat ${filename}.tex
 echo "かきかえます"
 cat ${filename}.tex | (rm ${filename}.tex; sed "s/$val/$newval/" > ${filename}.tex)
 echo "かきかえましたぞ"
-cat ${filname}.tex
+cat ${filename}.tex
 echo "コンパイルを始めます"
 cp ${filename}.tex tmp.tex
 
