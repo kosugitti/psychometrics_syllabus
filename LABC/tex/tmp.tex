@@ -1,0 +1,45 @@
+\documentclass[dvipsnames]{ltjsbook}
+\usepackage{../../myStyle}
+%% バッチ処理をするので\lheadは必ず4行目にあること
+\lhead{version 1.0.4}
+
+\usepackage{docmute}
+\begin{document}
+\includepdf[noautoscale=false,pages=-]{../images/cover4.png}
+\VerbatimFootnotes
+\input{../../common_contents/copyright} % copyright page
+\title{心理学者のための線形代数}
+\author{小杉　考司}
+\date{Last Compiled on \number\year .\number\month .\number\day}
+\maketitle
+\setcounter{tocdepth}{1}
+
+
+\input{prefaceLABC} % preface
+
+\tableofcontents
+\part{Day 1: 行列の基礎と方程式}
+\include{L01_Basic}
+\include{L02_Data}
+\include{L03_Equation}
+\part{Day 2: 行列とベクトルの空間的理解}
+\include{L04_Space}
+\include{L05_Basis}
+\include{L06_DataSpace}
+\part{Day 3: 行列と多変量解析}
+\include{L07_Eigen}
+\include{L08_FA}
+\include{L09_SEM}
+\include{L10_ASO}
+\appendix
+\include{LA01_Rcode}
+\input{../../common_contents/Greeks}
+
+\addcontentsline{toc}{chapter}{引用文献}
+% 引用文献
+\printbibliography[title=引用文献]
+% 索引
+\addcontentsline{toc}{chapter}{索引}
+
+\printindex
+\end{document}

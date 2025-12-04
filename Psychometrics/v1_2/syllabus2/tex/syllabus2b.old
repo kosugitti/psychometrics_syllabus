@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsarticle}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 2.0.11}
+\lhead{version 2.0.16}
 \begin{document}
 \title{心理学データ解析応用 2/B 詳細シラバス}
 \author{担当：小杉考司}
@@ -35,7 +35,7 @@
 	\item[統計環境Rと確率的プログラミング言語Stanによる実践] 統計環境Rと確率的プログラミング言語Stanに習熟することで実際に計算し，確認しながら分析を進めることができるようになる。
 \end{description}
 \input{a16_Programming1} % 環境の準備
-\input{a17_Programming2} % プログラミングの基礎（代入，反復，条件分岐，関数の作成)
+\input{a17_Programming2} % プログラミングの基礎(代入，反復，条件分岐，関数の作成)
 \input{a18_Random1} % 確率変数と確率分布
 \input{a19_Random2} % 乱数による近似
 \input{a20_Random3} % 一致性，不偏性，有効性，サンプルサイズ
@@ -46,9 +46,10 @@
 \input{a25_modeling1} % モデリングの目から見た検定1；2群の平均値差
 \input{a26_modeling2} % モデリングの目から見た検定2；パラメータの世界とデータの世界
 \input{a27_modeling3} % モデリングの目から見た検定3；多群の平均値差モデル
-\input{a28_IRTonBayes} % 確率的プログラミング1；項目反応理論
-\input{a29_ChangePoint} % 確率的プログラミング2；変化点と折れ線回帰
-\input{a30_SSpace} % 確率的プログラミング3；状態空間モデル
+\input{a28_mixed}
+\input{a29_IRTonBayes} % 確率的プログラミング1；項目反応理論
+\input{a30_ChangePoint} % 確率的プログラミング2；変化点と折れ線回帰
+\input{a31_SSpace} % 確率的プログラミング3；状態空間モデル
 \addcontentsline{toc}{section}{\bibname}
 
 % \bibliographystyle{../jecon_jpa}

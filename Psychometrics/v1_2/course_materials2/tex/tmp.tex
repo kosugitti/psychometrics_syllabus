@@ -1,21 +1,31 @@
 \documentclass[dvipsnames]{ltjsbook}
-\usepackage{myStyle_v12}
-%% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 2.0.47}
+\input{../../header_X1A.tex}
+\usepackage{../../myStyle}
+\geometry{twoside,inner=32truemm,outer=20truemm}
+% 章の最初のページ番号を除く呪文
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{empty}% original style: plain
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\makeatother
+
+\lhead{}
 \usepackage{docmute}
 \begin{document}
-\includepdf[noautoscale=false,pages=-]{../images/cover2a.pdf}
-\input{../../../common_contents/copyright} % copyright page
+% \includepdf[noautoscale=false,pages=-]{../images/cover2.pdf}
+% \input{../../common_contents/copyright} % copyright page
 
 \VerbatimFootnotes
-\title{心理学データ解析応用1}
+\title{心理学データ解析応用}
 \author{小杉　考司}
-\date{Last Compiled on \number\year .\number\month .\number\day}
+\date{}
 \maketitle
 \setcounter{tocdepth}{1}
 
 
-\input{preface2a} % preface
+\input{preface2} % preface
 
 \tableofcontents
 
@@ -38,12 +48,29 @@
 \include{x13_SEMonR}
 \include{x14_DualScaling}
 \include{x15_MDS}
+\part{心理学データ解析応用2}
+\include{x16_Programming}
+\include{x17_Bayesian}
+\include{prepareStan}
+\include{x18_MCMC}
+\include{x19_modeling1}
+\include{x20_modeling2}
+\include{x21_modeling3}
+\include{x22_modeling4}
+\include{x23_modeling5}
+\include{x24_linearModel}
+\include{x25_HLM}
+\include{x26_mixed}
+\include{x27_IRTonBayes}
+\include{x28_ChangePoint}
+\include{x29_SSpace}
+\include{x30_comparison}
 \appendix
-\input{../../../common_contents/FAQ} % FAQ page
-\input{../../../../Scaling/tex/H01_ProofOfLikert}
-\input{../../../common_contents/Computer}
-\input{../../../common_contents/Greeks}
-\input{../../../common_contents/keyboards}
+\input{../../common_contents/FAQ} % FAQ page
+\input{../../Scaling/tex/H01_ProofOfLikert}
+\input{../../common_contents/Computer}
+\input{../../common_contents/Greeks}
+\input{../../common_contents/keyboards}
 \chapter{本講義に対応する詳細シラバス}
 \input{../../syllabus2/tex/a01_introduction}
 \input{../../syllabus2/tex/a02_scaling}
@@ -60,16 +87,35 @@
 \input{../../syllabus2/tex/a13_SEMonR}
 \input{../../syllabus2/tex/a14_DualuScaling}
 \input{../../syllabus2/tex/a15_MDS}
+\input{../../syllabus2/tex/a16_Programming1}
+\input{../../syllabus2/tex/a17_Programming2}
+\input{../../syllabus2/tex/a18_Random1}
+\input{../../syllabus2/tex/a19_Random2}
+\input{../../syllabus2/tex/a20_Random3}
+\input{../../syllabus2/tex/a21_Random4}
+\input{../../syllabus2/tex/a22_Random5}
+\input{../../syllabus2/tex/a23_Random6}
+\input{../../syllabus2/tex/a24_Stan}
+\input{../../syllabus2/tex/a25_modeling1}
+\input{../../syllabus2/tex/a26_modeling2}
+\input{../../syllabus2/tex/a27_modeling3}
+\input{../../syllabus2/tex/a28_IRTonBayes}
+\input{../../syllabus2/tex/a29_ChangePoint}
+\input{../../syllabus2/tex/a30_SSpace}
 % 行番号終了
 \nolinenumbers
-% 引用文献
+\rhead{}
+\newpage
+\input{atogaki2}
+
 \addcontentsline{toc}{chapter}{引用文献}
 % \bibliographystyle{../../jecon_jpa}
 % \bibliography{../../sbib}
 \printbibliography[title=引用文献]
-
 % 索引
 \addcontentsline{toc}{chapter}{索引}
 \printindex
+% 奥付
+\input{masthead2}
 
 \end{document}

@@ -492,10 +492,10 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 という性質を持っているのです。言葉でするとややこしいですが，要するに矩形行列の左下がゼロでいっぱいになっており，最初に$1$の要素が出てくるところは基本ベクトルになっているわけですから，次のような形をしている行列です。
 
 \[
-	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
-		\rowcolor{cyan!15}1 & 0 & a_{13} & 0 \\
-		0 & \rowcolor{cyan!15}1 & a_{23} & 0 \\
-		0 & 0 & 0 & \rowcolor{cyan!15}1 \\
+	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt]
+		1 & 0 & a_{13} & 0 \\
+		0 & 1 & a_{23} & 0 \\
+		0 & 0 & 0 & 1 \\
 		0 & 0 & 0 & 0
 	\end{pNiceArray}
 \]
@@ -513,26 +513,26 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 いくつか階段行列の例を見ておきましょう。次に挙げるのはいずれも階段行列です。
 
 \[
-	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
-		\rowcolor{cyan!15}1 & 0 & 0 & -1 \\
-		0 & \rowcolor{cyan!15}1 & 0 & 2\\
-		0 & 0 & \rowcolor{cyan!15}1 & 1\\
+	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt]
+		1 & 0 & 0 & -1 \\
+		0 & 1 & 0 & 2\\
+		0 & 0 & 1 & 1\\
 	\end{pNiceArray},
-	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
-		\rowcolor{cyan!15}1 & 0 & 4 & 3 \\
-		0 & \rowcolor{cyan!15}1 & 5 & 2  \\
+	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt]
+		1 & 0 & 4 & 3 \\
+		0 & 1 & 5 & 2  \\
 	\end{pNiceArray},
-	\begin{pNiceArray}{>{\strut}ccc}[margin, extra-margin=2pt,colortbl-like]
-		\rowcolor{cyan!15}1 & 0 & 0 \\
-		0 & \rowcolor{cyan!15}1 & 0 \\
-		0 & 0 & \rowcolor{cyan!15}1 \\
+	\begin{pNiceArray}{>{\strut}ccc}[margin, extra-margin=2pt]
+		1 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\
 		0 & 0 & 0 \\
 		0 & 0 & 0 \\
 	\end{pNiceArray},
-	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
-		\rowcolor{cyan!15}1 & 0 & 6 & 0 \\
-		0 & \rowcolor{cyan!15}1 & 8 & 0 \\
-		0 & 0 & 0 & \rowcolor{cyan!15}1 \\
+	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt]
+		1 & 0 & 6 & 0 \\
+		0 & 1 & 8 & 0 \\
+		0 & 0 & 0 & 1 \\
 		0 & 0 & 0 & 0
 	\end{pNiceArray}
 \]
@@ -548,9 +548,9 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 まずは拡大係数行列の階数が係数行列の階数より大きかった場合です。これは方程式の形で表してみればすぐにわかります。
 
 \[
-	\begin{pNiceArray}{>{\strut}ccc}[margin, extra-margin=2pt,colortbl-like]
-		\rowcolor{cyan!15}1 & 0 & 0 \\
-		0 & \rowcolor{cyan!15}1 & 0 \\
+	\begin{pNiceArray}{>{\strut}ccc}[margin, extra-margin=2pt]
+		1 & 0 & 0 \\
+		0 & 1 & 0 \\
 		0 & 0 & 0\\
 	\end{pNiceArray}
 	\begin{pmatrix} x\\y\\z \end{pmatrix}=
@@ -560,10 +560,10 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 \[
 	\begin{pmatrix} 1 & 0 & 0 & 2 \\ 0 & 1 & 0 & 3 \\ 0 & 0 & 0 & 5 \end{pmatrix}
 	\xrightarrow[\text{$\bm{P}_{13}(-2/5)\bm{P}_{23}(-2/5)$として}]{}
-	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
-		\rowcolor{cyan!15}1 & 0 & 0 & 0 \\
-		0 & \rowcolor{cyan!15}1 & 0 & 0 \\
-		0 & 0 & 0 & \rowcolor{cyan!15}1 \\
+	\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt]
+		1 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 0 & 1 \\
 	\end{pNiceArray}
 \]
 この通り$rank([\bm{A,b}])=3$で，係数だけの行列の階数$rank(\bm{A})$より大きくなっています。
@@ -655,10 +655,10 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 		\end{tabular}
 		 &
 		$
-			\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt,colortbl-like]
-				\rowcolor{cyan!15}1 & 0 & 0 & 1 \\
-				0 & \rowcolor{cyan!15}1 & 0 & 2 \\
-				0 & 0 & \rowcolor{cyan!15}1 &-1\\
+			\begin{pNiceArray}{>{\strut}cccc}[margin, extra-margin=2pt]
+				1 & 0 & 0 & 1 \\
+				0 & 1 & 0 & 2 \\
+				0 & 0 & 1 &-1\\
 				0 & 0 & 0 & 0
 			\end{pNiceArray}
 		$
@@ -738,10 +738,10 @@ $\bm{A} = \begin{pmatrix} 1 & 2 \\ 4 & 9 \end{pmatrix}$とすると，
 		\end{tabular}
 		 &
 		$
-			\begin{pNiceArray}{>{\strut}ccccc}[margin, extra-margin=2pt,colortbl-like]
-				\rowcolor{cyan!15}1 & 0 & 0 & -4 & -7 \\
-				0 & \rowcolor{cyan!15}1 & 0 & 3 & 7 \\
-				0 & 0 & \rowcolor{cyan!15}1 &-1 & 1\\
+			\begin{pNiceArray}{>{\strut}ccccc}[margin, extra-margin=2pt]
+				1 & 0 & 0 & -4 & -7 \\
+				0 & 1 & 0 & 3 & 7 \\
+				0 & 0 & 1 &-1 & 1\\
 			\end{pNiceArray}
 		$
 		\\\hline

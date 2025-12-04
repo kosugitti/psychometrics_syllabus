@@ -434,10 +434,10 @@
 
 %%% 書籍タイトル %%%
 \DeclareFieldFormat[book,mvbook,online,thesis,inproceedings,incollection]{title}{% 外国語のタイトルは強調
-  \ifthenelse{\boolean{japanese}}{#1}{\emph{#1}}}
+  \ifthenelse{\boolean{japanese}}{#1}{{\itshape\MakeSentenceCase{#1}}}}
 
 %%% 論文タイトル %%%
-\DeclareFieldFormat[article,report,misc,inbook]{title}{#1}
+\DeclareFieldFormat[article,report,misc,inbook]{title}{\MakeSentenceCase{#1}}
 
 %%% 書籍サブタイトル %%%
 \DeclareFieldFormat[book,mvbook,online,thesis,inproceedings,incollection]{subtitle}{%
@@ -445,7 +445,7 @@
     % 日本語論文の場合
     \printtext{------}#1\printtext{------}\setunit{\addjspace}%
   }{
-    \emph{\addcolon\addspace#1}%
+    {\itshape\addcolon\addspace\MakeSentenceCase{#1}}%
   }
 }
 
@@ -455,7 +455,7 @@
     % 日本語論文の場合
     \addthinspace\printtext{------}#1\printtext{------}\setunit{\addjspace}%
   }{%
-    \addcolon\addspace#1%
+    \addcolon\addspace\MakeSentenceCase{#1}%
   }
 }
 
@@ -468,7 +468,7 @@
 
 %%% 雑誌名 %%%
 \DeclareFieldFormat[article,misc]{journaltitle}{%
-  \ifthenelse{\boolean{japanese}}{#1,}{\mkbibemph{#1}\isdot,}%
+  \ifthenelse{\boolean{japanese}}{#1,}{{\itshape #1}\isdot,}%
 }%
 
 %%% 大会発表論文集，Proceedings %%%
@@ -520,7 +520,7 @@
     \printfield{number}%
     \setunit*{\addcomma\addspace}
   }{
-    \mkbibemph{\printfield{volume}}%
+    {\itshape\printfield{volume}}%
     \iffieldundef{number}{}{%
       \setunit*{\addthinspace}
       \printtext[parens]{%
@@ -536,7 +536,7 @@
   \ifthenelse{\boolean{japanese}}{%
     \addspace\nopunct\strfield{volume}%
   }{%
-    \addspace\emph{Vol.\strfield{volume}}%
+    \addspace{\itshape Vol.\strfield{volume}}%
   }%
 }
 
@@ -638,7 +638,7 @@
       \setboolean{japanese}{true}%   元に戻す
       % \usebibmacro{date+extradate}\adddot\space%
       \printfield{origyear}\adddot\space % 原著出版年
-      \printfield[emph]{origtitle}\setunit*{\adddot\space}%
+      {\itshape\printfield{origtitle}}\setunit*{\adddot\space}%
       \printlist{origpublisher}\setunit*{\adddot\space}%
       \printtext{\\(}%
       \setboolean{japanese}{false}%

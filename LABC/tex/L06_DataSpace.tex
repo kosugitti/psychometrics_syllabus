@@ -15,7 +15,7 @@
 これを空間のイメージで考えると，右辺は説明変数$\bm{x} =(\bm{1}, \bm{x}_1,\bm{x}_2) \in \mathbb{R}^3$に係数ベクトル$\bm{\beta} = (\beta_0,\beta_1,\beta_2)' \in \mathbb{R}^3$をかけてたことによる空間が広がっていますね。$\bm{X}$が張る空間を$\bm{W(X)}$とすると，次のように表すことができます。
 \[ \bm{W(X)} =\{ \beta_0 \bm{1} + \beta_1\bm{x}_1 + \beta_2 \bm{x}_2 \mid \bm{\beta} \in \mathbb{R}^3\} \]
 
-$\bm{\hat{y}}$はこの空間の中にあるベクトルで，実際のデータベクトル$\bm{y}$はこの右辺が張る空間に射影されたものとみることができます(図\ref{RegressionModel})。
+$\hat{\bm{y}}$はこの空間の中にあるベクトルで，実際のデータベクトル$\bm{y}$はこの右辺が張る空間に射影されたものとみることができます(図\ref{RegressionModel})。
 
 \begin{figure}
 	\centering
@@ -36,7 +36,7 @@ $\bm{\hat{y}}$はこの空間の中にあるベクトルで，実際のデータ
 		\draw[dashed] (haty) --(b1);
 		\draw[dashed] (haty) --(b2);
 		\node[above] at (y) {$\bm{y}$};
-		\node[below] at (haty) {$\bm{\hat{y}}$};
+		\node[below] at (haty) {$\hat{\bm{y}}$};
 		\node[right] at (x1) {$\bm{x1}$};
 		\node[right] at (x2) {$\bm{x2}$};
 		\node[above] at (b1) {$\beta_1\bm{x}_1$};
@@ -48,11 +48,11 @@ $\bm{\hat{y}}$はこの空間の中にあるベクトルで，実際のデータ
 \end{figure}
 
 セクション\ref{ProjectionMatrix}(Pp.\pageref{ProjectionMatrix})でみたように，射影行列$\bm{P}$は基底ベクトルを使って$\bm{P} = \bm{A}(\bm{A}'\bm{A})^{-1}\bm{A}'$と表されるということでしたから，回帰分析の場合は
-\[ \bm{\hat{y}} = \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}' \bm{y} \]
+\[ \hat{\bm{y}} = \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}' \bm{y} \]
 として求められることになります。
 
 
-ちなみに誤差$\bm{e}=\bm{y} - \bm{\hat{y}}$は，被説明変数$\bm{y}$から空間$\bm{W(X)}$に射影した時の垂線の長さです。垂線ですから，説明変数が張る空間とは直角に交わっています。すなわち，\underline{誤差は説明変数との相関がゼロ}である，という回帰分析の特徴も一気に理解することができます。
+ちなみに誤差$\bm{e}=\bm{y} - \hat{\bm{y}}$は，被説明変数$\bm{y}$から空間$\bm{W(X)}$に射影した時の垂線の長さです。垂線ですから，説明変数が張る空間とは直角に交わっています。すなわち，\underline{誤差は説明変数との相関がゼロ}である，という回帰分析の特徴も一気に理解することができます。
 
 また垂線ですので，被説明変数ベクトルと説明変数が張る空間との距離が最短になっていることもわかります。一応証明しておきましょうか。平面$\bm{W(X)}$上の別のベクトル$\bm{P}$を考えて$\bm{P}$と$\bm{y}$との距離を考えるとします。
 
@@ -69,7 +69,7 @@ $\bm{\hat{y}}$はこの空間の中にあるベクトルで，実際のデータ
 		\draw[dashed] (y) --node[midway,left]{$\bm{e}$} (haty);
 		\draw[dashed] (y) --node[midway,right]{$\bm{y}-\bm{P}$} (P);
 		\node[above] at (y) {$\bm{y}$};
-		\node[below] at (haty) {$\bm{\hat{y}}$};
+		\node[below] at (haty) {$\hat{\bm{y}}$};
 		\node[below] at (P) {$\bm{P}$};
 		\node[auto] at (E) {$\bm{W(X)}$};
 	\end{tikzpicture}
@@ -79,21 +79,21 @@ $\bm{\hat{y}}$はこの空間の中にあるベクトルで，実際のデータ
 距離の式を展開していくと，次のような関係が得られます。
 \[
 	\begin{array}{lll}
-		\| \bm{y} - \bm{P} \|^2 & = & \| \bm{y}-\bm{\hat{y}} + \bm{P} - \bm{\hat{y}} \|^2                                       \\
-		                        & = & \|\bm{y} - \bm{\hat{y}}\|^2 + \|\bm{P}-\bm{\hat{y}}\|^2 + 2\bm{e}'(\bm{P} - \bm{\hat{y}}) \\
-		                        & = & \| \bm{e} \|^2 + \|\bm{P}-\bm{\hat{y}}\|^2
+		\| \bm{y} - \bm{P} \|^2 & = & \| \bm{y}-\hat{\bm{y}} + \bm{P} - \hat{\bm{y}} \|^2                                       \\
+		                        & = & \|\bm{y} - \hat{\bm{y}}\|^2 + \|\bm{P}-\hat{\bm{y}}\|^2 + 2\bm{e}'(\bm{P} - \hat{\bm{y}}) \\
+		                        & = & \| \bm{e} \|^2 + \|\bm{P}-\hat{\bm{y}}\|^2
 	\end{array}
 \]
-つまり，別のベクトル$\bm{P}$との距離はどうやっても$\bm{e} = \bm{y}-\bm{\hat{y}}$以上になるので，$\bm{e}$が最短だということになります。この$\bm{e}$のノルムを最小にするのが\keytermL{最小二乗法}{さいしょうにじょうほう}ですが，距離を最小にするので二乗なんだな，と考えることができます。
+つまり，別のベクトル$\bm{P}$との距離はどうやっても$\bm{e} = \bm{y}-\hat{\bm{y}}$以上になるので，$\bm{e}$が最短だということになります。この$\bm{e}$のノルムを最小にするのが\keytermL{最小二乗法}{さいしょうにじょうほう}ですが，距離を最小にするので二乗なんだな，と考えることができます。
 
-具体的な係数ベクトル$\bm{\beta}$は，空間$\bm{W(X)}$と残差$\bm{e} = \bm{y} - \bm{\hat{y}}$が直交することから，
+具体的な係数ベクトル$\bm{\beta}$は，空間$\bm{W(X)}$と残差$\bm{e} = \bm{y} - \hat{\bm{y}}$が直交することから，
 \[ \bm{X}'\bm{e} = 0　\]
 \[ \bm{X}'(\bm{y} - \bm{X\beta}) = 0 \]
 \[ \bm{X}'\bm{y} - \bm{X}'\bm{X}\bm{\beta} = 0 \]
 \[ \bm{X}'\bm{X}\bm{\beta} = \bm{X}'\bm{y} \]
 となりますから，$\bm{\beta}$だけにするには$\bm{X}'\bm{X}$に逆行列があればよく，
 \[ \bm{\beta} = (\bm{X}'\bm{X})^{-1}\bm{X}'\bm{y} \]
-ということになります。そもそも$\bm{\hat{y}} = \bm{X\beta}$だったわけですから，射影行列との関係$\bm{\hat{y}} = \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}' \bm{y} $とも整合的であることがわかりますね。
+ということになります。そもそも$\hat{\bm{y}} = \bm{X\beta}$だったわけですから，射影行列との関係$\hat{\bm{y}} = \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}' \bm{y} $とも整合的であることがわかりますね。
 \subsection{多重共線性の問題}
 重回帰分析において\keyterm{多重共線性}{たじゅうきょうせんせい}{multicolinearity}に気をつけなければならない，というのは聞いたことがあると思います。
 
