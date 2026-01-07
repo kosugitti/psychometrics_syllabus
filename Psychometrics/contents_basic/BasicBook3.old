@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 3.27.2}
+\lhead{version 3.27.4}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{figures/cover1v3.pdf}
@@ -52,9 +52,7 @@
 \include{ch26_bayesian_approach}
 \include{ch27_bayes_judgement}
 \include{ch28_bayesian_with_jasp}
-\include(ch29_bayesian_modeling)
-% \include{m28_jasp}
-% \include{m29_brms}
+% \include(ch29_bayesian_modeling)
 % \include{m30_SecondSemester}
 
 % 行番号終了
