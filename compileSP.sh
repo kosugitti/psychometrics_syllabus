@@ -1,10 +1,14 @@
-#!/usr/bin/bash
-#####################################################################text1
+#!/bin/bash
+#####################################################################
+## SocialPsychology コンパイルスクリプト
 ## changePath
-path="SocialPsychology/tex"
+path="SocialPsychology/tex_formatted"
 cd $path
 
+echo "$(date): 社会心理学特殊講義のコンパイルを開始します..."
+
 # 掃除
+echo "一時ファイルをクリーンアップしています..."
 rm -f *.aux
 rm -f *.bbl
 rm -f *.bcf
@@ -15,76 +19,65 @@ rm -f *.ltjruby
 rm -f *.out
 rm -f *.run.xml
 rm -f *.toc
+rm -f *.log
+rm -f *.ind
 
-# 仮想環境が存在しない場合は作成
-if [ ! -d "venv" ]; then
-    echo "仮想環境を作成しています..."
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install pandas
+# メインファイルのコンパイル
+filename="SocialPsychology_SP"
+echo "メインファイルをコンパイルします: ${filename}.tex"
+
+## backup
+cp "${filename}.tex" "${filename}.old"
+
+echo "1回目: lualatex"
+lualatex "${filename}.tex"
+
+echo "2回目: biber (参考文献処理)"
+biber "${filename}"
+
+echo "3回目: lualatex (参考文献とインデックス反映)"
+lualatex "${filename}.tex"
+
+echo "4回目: lualatex (最終調整)"
+lualatex "${filename}.tex"
+
+# PDFを上の階層にコピー
+echo "PDFファイルを配置しています..."
+cp SocialPsychology_SP.pdf ../../SocialPsychology_SP.pdf
+
+## 最終クリーンアップ
+echo "一時ファイルを削除しています..."
+rm -f *.aux
+rm -f *.bbl
+rm -f *.bcf
+rm -f *.blg
+rm -f *.idx
+rm -f *.ilg
+rm -f *.ltjruby
+rm -f *.out
+rm -f *.run.xml
+rm -f *.toc
+rm -f *.log
+rm -f *.old
+
+# 作業ディレクトリを元に戻す
+cd ../..
+
+echo "$(date): コンパイル完了"
+echo "社会心理学特殊講義のテキストをコンパイルしました。"
+echo "出力ファイル: SocialPsychology_SP.pdf"
+
+# Git操作（オプション）
+read -p "Gitにコミット・プッシュしますか？ (y/N): " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    today=$(LANG="ja_JP.UTF-8" date)
+    git add --all
+    git commit -m "SocialPsychology コンパイル完了: $today"
+    git push
+    echo "Gitにプッシュしました。"
 else
-    source venv/bin/activate
+    echo "Gitへのプッシュをスキップしました。"
 fi
 
-# スクリプトを実行
-python formatter.py
-
-# 仮想環境を無効化
-deactivate
-
-cp SocialPsychology_SP.tex ../tex_formatted/SocialPsychology_SP.tex
-
-cd ../tex_formatted
-
-# すべての *.tex ファイルをループで処理
-for texfile in *.tex
-do
-    filename="${texfile%.tex}"  # 拡張子を除いたファイル名
-
-    ## backup
-    cp "${filename}.tex" "${filename}.old"
-
-    echo "コンパイルを始めます: ${filename}.tex"
-    cp "${filename}.tex" tmp.tex
-
-    ## LaTeX Main
-    lualatex "${filename}.tex"
-    biber "${filename}"
-    
-    # SocialPsychology_SP.tex の場合のみ索引を作成
-    if [ "$filename" = "SocialPsychology_SP" ]; then
-        echo "索引を作成します: ${filename}"
-        upmendex -r -c -g -s ../../indexStyle.ist "${filename}" nameidx.idx -o nameidx.ind
-        upmendex -r -c -g -s ../../indexStyle.ist "${filename}" termidx.idx -o termidx.ind    
-    fi
-    
-    lualatex "${filename}.tex"
-    lualatex "${filename}.tex"
-done
-
-# 全体を上の階層に
-mv SocialPsychology_SP.pdf ../../SocialPsychology_SP.pdf
-
-## cleanup
-rm -f *.aux
-rm -f *.bbl
-rm -f *.bcf
-rm -f *.blg
-rm -f *.idx
-rm -f *.ilg
-rm -f *.ltjruby
-rm -f *.out
-rm -f *.run.xml
-rm -f *.toc
-rm -f tmp.tex
-
-cd ..
-cd ..
-
-echo $(date)
-echo '社会心理学特殊講義のテキストをコンパイルしました。'
-
-today=$(LANG="ja_JP.UTF-8" date)
-git add --all
-git commit -m "$today"
-git push
+echo "スクリプト実行完了。"
