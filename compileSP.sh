@@ -7,6 +7,10 @@ cd $path
 
 echo "$(date): 社会心理学特殊講義のコンパイルを開始します..."
 
+# 最新のbibファイルを取得
+echo "最新のbibファイルを取得しています..."
+cp ../../myBiber.bib ../../syllabus_bib.bib
+
 # 掃除
 echo "一時ファイルをクリーンアップしています..."
 rm -f *.aux
