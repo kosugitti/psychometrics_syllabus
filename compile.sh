@@ -256,6 +256,10 @@ compile_sp() {
 
     cd "${ROOT_DIR}/SocialPsychology/tex" || return 1
 
+    # 最新のbibファイルを取得
+    echo "最新のbibファイルを取得しています..."
+    cp ../../myBiber.bib ../../syllabus_bib.bib
+
     # 掃除
     cleanup_tex
 

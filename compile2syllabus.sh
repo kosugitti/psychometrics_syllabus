@@ -4,6 +4,11 @@
 path="Psychometrics/v1_2/syllabus2/tex"
 filename="syllabus2a"
 cd $path
+
+# 最新のbibファイルを取得
+echo "最新のbibファイルを取得しています..."
+cp ../../../../myBiber.bib ../../syllabus_bib.bib
+
 ## backup
 cp ${filename}.tex ${filename}.old
 ########### upgrade patch

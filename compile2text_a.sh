@@ -7,6 +7,11 @@
 path="Psychometrics/v1_2/course_materials2/tex"
 filename="Dkiso2_book1"
 cd $path
+
+# 最新のbibファイルを取得
+echo "最新のbibファイルを取得しています..."
+cp ../../../../myBiber.bib ../../syllabus_bib.bib
+
 ## backup
 cp ${filename}.tex ${filename}.old
 ########### upgrade patch

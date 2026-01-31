@@ -4,6 +4,11 @@
 path="course_materials/tex"
 filename="Dkiso1_book_kdp"
 cd $path
+
+# 最新のbibファイルを取得
+echo "最新のbibファイルを取得しています..."
+cp ../../myBiber.bib ../../syllabus_bib.bib
+
 ## backup
 cp ${filename}.tex ${filename}.old
 cp ${filename}.tex tmpK.tex
