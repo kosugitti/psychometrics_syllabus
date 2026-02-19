@@ -17,8 +17,8 @@
 
 1. **LaTeX コンパイル**（compile.sh を使用したビルド）
 2. **表記統一チェック**（機械的ルールの適用）
-3. **ブランチマージ**（他エージェントの作業ブランチを main にマージ）
-4. **コミット・プッシュ**（承認後の実行）
+
+**注意**: ブランチマージ・コミット・プッシュ等のGit操作はAgent4（フルート）の担当。
 
 ## 3. 作業ルール
 
@@ -48,8 +48,8 @@ compile.sh が行う処理（手動で実行する必要はない）：
 7. エラーチェック
 
 **コンパイル前にやること：**
-- 他のエージェントの作業ブランチがあれば main にマージ
-- マージコンフリクトがあれば report.md で報告
+- Agent4（フルート）がブランチマージ済みであることを確認する
+- マージが済んでいない場合は report.md で報告し、Agent4 の作業完了を待つ
 
 **コンパイル後の報告：**
 - ページ数、エラー数、警告数を report.md に記載
@@ -64,14 +64,6 @@ compile.sh が行う処理（手動で実行する必要はない）：
 | 図版サイズ | `width=...` が不統一 | プロジェクトの標準に統一 |
 | 数式環境 | `$$...$$` | 適切な数式環境に変更 |
 
-### C. コミット・プッシュ
-
-**コミット・プッシュは必ずユーザー承認を得てから実行する。**
-
-1. `git status` と `git diff` でコミット対象を確認
-2. コミットメッセージ案を report.md で提案（status: needs_approval）
-3. 承認後にコミット・プッシュを実行
-
 ### 報告形式
 
 ```
@@ -83,10 +75,6 @@ compile.sh が行う処理（手動で実行する必要はない）：
 - エラー: X件
 - 警告: X件 (Overfull/Underfull)
 - バージョン: X.Y.Z → X.Y.(Z+1)
-
-### ブランチマージ
-- agent1/basic-crossref-check → main (成功)
-- agent2/ch05-proofreading → main (成功)
 
 ### 表記ルール違反 (X件)
 - ch05 L45: `実験参加者（n=30）` → `実験参加者(n=30)` [カッコ]
@@ -151,47 +139,59 @@ cat > agents/queue/agent3/report.md << 'EOF'
 EOF
 ```
 
-## 5. Git ブランチルール
+## 5. Git ブランチルール（worktree 方式）
 
-**tex ファイルを編集する前に必ずブランチを作成する。main で直接編集しない。**
+**自分は専用の worktree ディレクトリで作業する。プロジェクトルートには絶対に git checkout しない。**
+
+タスクを受信すると、プロンプトに以下が含まれる：
+- 【作業ディレクトリ】… → 自分の worktree（ここで作業する）
+- 【プロジェクトルート（main ブランチ）】… → ユーザーの作業ディレクトリ（触らない）
+
+### モード A: 表記統一（worktree で作業）
 
 ```bash
-# 表記統一などの作業時
-git checkout main
-git pull origin main
-git checkout -b agent3/タスク名
+# 作業ディレクトリ（worktree）で実行
+git checkout -b agent3/タスク名 main
 
 # 作業・編集
 
 # 作業完了時（ブランチ上でコミット）
 git add [変更ファイル]
 git commit -m "Agent3: 変更内容の要約"
+
+# standby ブランチに戻す
+git checkout agent3/standby
 ```
 
-**コンパイル時は main ブランチで行う（他ブランチをマージしてからコンパイル）。**
+### モード B: コンパイル（プロジェクトルートで作業）
+
+コンパイルは main ブランチで行う必要があるため、プロジェクトルートに移動する：
 
 ```bash
-# コンパイル手順
-git checkout main
-git pull origin main
-# 他エージェントのブランチをマージ
-git merge agent1/xxx
-git merge agent2/xxx
-# コンパイル
+# プロジェクトルートに移動（Agent4がマージ済みであること）
+cd 【プロジェクトルート】
 bash compile.sh 1
-# コミット（承認後）
-git add -A
-git commit -m "Build: BasicBook3 vX.Y.Z"
+```
+
+**report.md の書き出し先：**
+report.md はプロジェクトルートのパスで書く（worktree のパスではない）：
+```bash
+cat > 【プロジェクトルート】/agents/queue/agent3/report.md << 'EOF'
+...
+EOF
 ```
 
 - ブランチ名: `agent3/` で始める（例: `agent3/ch05-notation`）
 - 作業完了後は report.md にブランチ名を記載する
+- **コミット・プッシュは自分ではやらない**（Agent4 の担当）
+- **プロジェクトルートで git checkout しない**（ユーザーの VSCode に影響するため）
 
 ## 6. 注意事項
 
 - 心理学・統計学の専門用語を誤修正しない
 - コンパイルは compile.sh を使う（手動 lualatex は禁止）
-- コミット・プッシュは必ずユーザー承認を得てから
+- **コミット・プッシュは自分ではやらない**（Agent4 の担当）
+- **ブランチマージも自分ではやらない**（Agent4 の担当）
 - **main ブランチで tex ファイルを直接編集しない**（表記統一は agent3/ ブランチ）
-- コンパイルは main ブランチで行う（マージ後）
+- コンパイルは main ブランチで行う（Agent4 がマージ済みであること）
 - 不明な修正は報告ファイルで質問する（status: needs_approval）

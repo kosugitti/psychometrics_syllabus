@@ -16,6 +16,21 @@ AGENT_NAME4="フルート";     AGENT_ROLE4="Form"
 
 trap 'echo ""; echo "Watcher 停止"; exit 0' INT TERM
 
+# ── ANSI カラー ──
+C_RED="\033[1;31m"
+C_YEL="\033[1;33m"
+C_GRN="\033[1;32m"
+C_CYN="\033[1;36m"
+C_BLU="\033[1;34m"
+C_MAG="\033[1;35m"
+C_DIM="\033[2m"
+C_BOLD="\033[1m"
+C_RST="\033[0m"
+
+# 背景色
+BG_BLU="\033[44m"
+BG_RST="\033[49m"
+
 # ── クロスプラットフォーム mtime 取得 ──
 get_mtime() {
   if stat -f %m "$1" >/dev/null 2>&1; then
@@ -38,11 +53,21 @@ read_details() {
 
 status_icon() {
   case "$1" in
-    needs_approval)  echo "!" ;;
-    completed)       echo "v" ;;
-    pending)         echo ">" ;;
-    error)           echo "x" ;;
-    *)               echo "-" ;;
+    needs_approval)  printf "${C_YEL}[!]${C_RST}" ;;
+    completed)       printf "${C_GRN}[v]${C_RST}" ;;
+    pending)         printf "${C_CYN}[>]${C_RST}" ;;
+    error)           printf "${C_RED}[x]${C_RST}" ;;
+    idle)            printf "${C_DIM}[-]${C_RST}" ;;
+    *)               printf "${C_DIM}[-]${C_RST}" ;;
+  esac
+}
+
+agent_color() {
+  case "$1" in
+    1) printf "${C_CYN}" ;;
+    2) printf "${C_MAG}" ;;
+    3) printf "${C_BLU}" ;;
+    4) printf "${C_GRN}" ;;
   esac
 }
 
@@ -68,9 +93,9 @@ elapsed_str() {
 # ── 画面描画 ──
 redraw() {
   clear
-  echo "========================================"
-  echo " Watch  $(date '+%H:%M:%S')"
-  echo "========================================"
+  printf "${C_BOLD}${BG_BLU} %-38s${BG_RST}${C_RST}\n" ""
+  printf "${C_BOLD}${BG_BLU}  psychometrics_syllabus  %s  ${BG_RST}${C_RST}\n" "$(date '+%H:%M:%S')"
+  printf "${C_BOLD}${BG_BLU} %-38s${BG_RST}${C_RST}\n" ""
 
   for N in 1 2 3 4; do
     eval "NAME=\$AGENT_NAME${N}"
@@ -81,47 +106,55 @@ redraw() {
     r_status=$(read_field "$QUEUE_DIR/agent${N}/report.md" "status")
     r_summary=$(read_field "$QUEUE_DIR/agent${N}/report.md" "summary")
     icon=$(status_icon "$r_status")
+    ACOL=$(agent_color "$N")
 
     # 経過時間
     eval "local ts=\$TASK_START${N}"
     elapsed=""
     if [ "${t_status}" = "pending" ] || [ "${t_status}" = "approved" ]; then
       if [ -n "$ts" ] && [ "$ts" -gt 0 ] 2>/dev/null; then
-        elapsed=" $(elapsed_str "$ts")"
+        elapsed=" ${C_DIM}$(elapsed_str "$ts")${C_RST}"
       fi
     fi
 
     echo ""
-    printf " [%s] %s(%s)%s\n" "$icon" "$NAME" "$ROLE" "$elapsed"
+    printf "  %b ${ACOL}${C_BOLD}%s${C_RST} ${C_DIM}%s${C_RST}%b\n" "$icon" "$NAME" "$ROLE" "$elapsed"
 
     # task ステータス
     if [ "$t_status" = "pending" ] || [ "$t_status" = "approved" ]; then
-      printf "     task: %s\n" "$t_status"
+      printf "     ${C_CYN}task: %s${C_RST}\n" "$t_status"
     fi
 
     # report 内容表示（idle/none 以外）
     if [ "$r_status" != "idle" ] && [ "$r_status" != "none" ] && [ -n "$r_status" ]; then
       if [ -n "$r_summary" ] && [ "$r_summary" != "待機中" ]; then
-        printf "     %s\n" "$r_summary"
+        case "$r_status" in
+          needs_approval) printf "     ${C_YEL}%s${C_RST}\n" "$r_summary" ;;
+          error)          printf "     ${C_RED}%s${C_RST}\n" "$r_summary" ;;
+          completed)      printf "     ${C_GRN}%s${C_RST}\n" "$r_summary" ;;
+          *)              printf "     %s\n" "$r_summary" ;;
+        esac
       fi
       # Details の内容を表示
       local details
       details=$(read_details "$QUEUE_DIR/agent${N}/report.md")
       if [ -n "$details" ]; then
-        echo "     ─────"
+        printf "     ${C_DIM}─────${C_RST}\n"
         echo "$details" | while IFS= read -r line; do
-          printf "     %s\n" "$line"
+          printf "     ${C_DIM}%s${C_RST}\n" "$line"
         done
       fi
     fi
   done
 
   echo ""
-  echo "── log ──"
+  printf "${C_DIM}  ──────────────────────────────────────${C_RST}\n"
+  printf "  ${C_BOLD}Events${C_RST}\n"
+  echo ""
   local count=0
   for line in "${EVENT_LOG[@]}"; do
     if [ $count -ge 6 ]; then break; fi
-    echo " $line"
+    printf "  %b\n" "$line"
     count=$((count + 1))
   done
 }
@@ -186,7 +219,12 @@ while true; do
         if [ -n "$ts" ] && [ "$ts" -gt 0 ] 2>/dev/null; then
           elapsed=" ($(elapsed_str "$ts"))"
         fi
-        add_event "${NAME}から報告${elapsed} [${R_STATUS}]"
+        case "$R_STATUS" in
+          needs_approval) add_event "${C_YEL}${NAME}から報告${elapsed} [${R_STATUS}]${C_RST}" ;;
+          error)          add_event "${C_RED}${NAME}から報告${elapsed} [${R_STATUS}]${C_RST}" ;;
+          completed)      add_event "${C_GRN}${NAME}から報告${elapsed} [${R_STATUS}]${C_RST}" ;;
+          *)              add_event "${NAME}から報告${elapsed} [${R_STATUS}]" ;;
+        esac
         printf '\a'
       fi
       CHANGED=1

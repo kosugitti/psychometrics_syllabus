@@ -23,6 +23,20 @@ for N in 1 2 3 4; do
   [ -f "agents/queue/agent${N}/report.md" ] || printf '# Report\n- status: idle\n- summary: 待機中\n' > "agents/queue/agent${N}/report.md"
 done
 
+# ── git worktree 初期化 ──
+echo "  worktree を初期化中..."
+for N in 1 2 3 4; do
+  WORKTREE=".worktrees/agent${N}"
+  STANDBY_BRANCH="agent${N}/standby"
+  if [ ! -d "$WORKTREE" ]; then
+    git branch -D "$STANDBY_BRANCH" 2>/dev/null
+    git worktree add "$WORKTREE" -b "$STANDBY_BRANCH" HEAD
+    echo "    agent${N}: worktree 作成完了"
+  else
+    echo "    agent${N}: worktree 既存"
+  fi
+done
+
 # ── 既存セッション削除 ──
 tmux kill-session -t "$SESSION" 2>/dev/null
 

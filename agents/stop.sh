@@ -27,6 +27,20 @@ EOF
 done
 echo "キューをクリアしました"
 
+# ── worktree クリーンアップ ──
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+for N in 1 2 3 4; do
+  WORKTREE="${PROJECT_DIR}/.worktrees/agent${N}"
+  if [ -d "$WORKTREE" ]; then
+    cd "$WORKTREE"
+    git checkout -- . 2>/dev/null
+    git clean -fd 2>/dev/null
+    git checkout "agent${N}/standby" 2>/dev/null
+    cd "$PROJECT_DIR"
+  fi
+done
+echo "worktree をクリーンアップしました"
+
 # バンマスに /exit を送信
 if [ -f "$PANE_IDS_FILE" ]; then
   source "$PANE_IDS_FILE"

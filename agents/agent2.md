@@ -121,26 +121,41 @@ cat > agents/queue/agent2/report.md << 'EOF'
 EOF
 ```
 
-## 5. Git ブランチルール
+## 5. Git ブランチルール（worktree 方式）
 
-**tex ファイルを編集する前に必ずブランチを作成する。main で直接編集しない。**
+**自分は専用の worktree ディレクトリで作業する。プロジェクトルートには絶対に git checkout しない。**
 
+タスクを受信すると、プロンプトに以下が含まれる：
+- 【作業ディレクトリ】… → 自分の worktree（ここで作業する）
+- 【プロジェクトルート（main ブランチ）】… → ユーザーの作業ディレクトリ（触らない）
+
+**作業フロー：**
 ```bash
-# 作業開始時
-git checkout main
-git pull origin main
-git checkout -b agent2/タスク名
+# 作業ディレクトリ（worktree）で実行
+git checkout -b agent2/タスク名 main
 
 # 作業・編集
 
 # 作業完了時（ブランチ上でコミット）
 git add [変更ファイル]
 git commit -m "Agent2: 変更内容の要約"
+
+# standby ブランチに戻す
+git checkout agent2/standby
+```
+
+**report.md の書き出し先：**
+report.md はプロジェクトルートのパスで書く（worktree のパスではない）：
+```bash
+cat > 【プロジェクトルート】/agents/queue/agent2/report.md << 'EOF'
+...
+EOF
 ```
 
 - ブランチ名: `agent2/` で始める（例: `agent2/ch05-proofreading`）
-- main へのマージは自分ではやらない（Agent3 がコンパイル時にマージする）
+- main へのマージは自分ではやらない（Agent4 がマージする）
 - 作業完了後は report.md にブランチ名を記載する
+- **プロジェクトルートで git checkout しない**（ユーザーの VSCode に影響するため）
 
 ## 6. プロジェクト固有情報
 

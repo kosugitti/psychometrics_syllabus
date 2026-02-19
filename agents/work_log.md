@@ -12,7 +12,7 @@
 - 章構成: ch01〜ch29（本文）+ ch15（前期まとめ）+ ch30（後期まとめ）
 - シラバス: `Psychometrics/syllabus_basic/syllabus_basic.tex`
 - コンパイル: ルートで `bash compile.sh 1`（lualatex + biber + upmendex の5段階）
-- 現在バージョン: 3.28.7（次回コンパイルで 3.28.8）
+- 現在バージョン: 3.28.8（2026-02-15 コンパイル済み）
 
 ---
 
@@ -41,14 +41,19 @@
 4. **コンパイル方法の調査**（Agent3・ファゴット）
    - compile.sh の構成・手順を把握
 
-#### 作業中・未完了
-
 5. **ch02 校正・推敲**（Agent2・オーボエ）
-   - ch02_PCs.tex の校閲中。本日最終章。
+   - 誤字17件、改善提案12件、計29件修正済み
+   - ブランチ: `agent2/ch02-proofreading`
 
-6. **コンパイル・コミット・プッシュ**（Agent3・ファゴット）
-   - ブランチマージ → コンパイル → コミット・プッシュの締め作業中
-   - コミット・プッシュはユーザー承認待ち
+6. **コンパイル v3.28.8**（Agent3・ファゴット）
+   - 408ページ、PDF正常生成
+   - コミット・プッシュ済み（80a0d204）
+
+7. **エージェント役割再編**（バンマス）
+   - Agent3（ファゴット）: コンパイル・表記統一に専念（Git操作を除外）
+   - Agent4（フルート）: 外部システム連携（Git操作 + Google Form）に拡張
+   - agent3.md, agent4.md, bandmaster.md, agent_runner.sh を修正
+   - Agent4 の権限: git コマンドのみ自動承認（--allowedTools）
 
 #### 備考
 - `m30_SecondSemester.tex` が contents_basic/ に残存。ch30 と重複の可能性あり。削除要検討。
