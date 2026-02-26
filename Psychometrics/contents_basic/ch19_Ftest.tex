@@ -218,7 +218,7 @@ $F$値はF分布に従います。比の分布なので，分布の形状を決�
 \begin{figure}[h]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/19_Ftest/three_levels.png}
-	\caption{表\ref{tbl:19_03}を可視化したもの。全体平均からの矢印は群効果の大きさ}
+	\caption{表\ref{tbl:19_01}を可視化したもの。全体平均からの矢印は群効果の大きさ}
 	\label{fig:19_03}
 \end{figure}
 
@@ -288,7 +288,7 @@ str(obj)
  $ weight: num  60 70 80
 \end{verbatim}
 \end{Rscreen}
-ここにあるように，\texttt{obj}オブジェクトの\texttt{name}変数はchr型で，他の3つの変数は数値型(numeric)である，というのが示されています。ここで性別\texttt{gender}を因子型にしてみましょう(\texttt{code:\ref{code:23_02}})。
+ここにあるように，\texttt{obj}オブジェクトの\texttt{name}変数はchr型で，他の3つの変数は数値型(numeric)である，というのが示されています。ここで性別\texttt{gender}を因子型にしてみましょう(\texttt{code:\ref{code:19_02}})。
 
 \begin{lstlisting}[language=c++,label={code:19_02},caption={因子型にする}]
 obj$gender <- factor(obj$gender,label=c('male','female'))
