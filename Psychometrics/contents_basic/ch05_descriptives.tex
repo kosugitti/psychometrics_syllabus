@@ -267,7 +267,8 @@ head(dat2011)
  $ Save      : int  0 0 NA NA 0 0 NA NA NA NA ...
  $ Hold      : int  0 0 NA NA 9 0 NA NA NA NA ...
 > head(dat2011)
-      Year       Name team salary bloodType height weight UniformNum position Games AtBats Hit HR Win Lose
+      Year       Name team salary bloodType height weight UniformNum
+      position Games AtBats Hit HR Win Lose
 1 2011年度 永川　勝浩 Carp  12000       O型    188     97         20     投手    19     NA  NA NA   1    2
 2 2011年度 前田　健太 Carp  12000       A型    182     73         18     投手    31     NA  NA NA  10   12
 3 2011年度 栗原　健太 Carp  12000       O型    183     95          5   内野手   144    536 157 17  NA   NA
@@ -434,15 +435,15 @@ boxplot(dat2011$salary)
 	\begin{verbatim}
 > library(tidyverse)
 ── Attaching core tidyverse packages ────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
-── Conflicts ──────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package to force all conflicts to become errors
+[v] dplyr     1.1.4     [v] readr     2.1.5
+[v] forcats   1.0.0     [v] stringr   1.5.1
+[v] ggplot2   3.5.2     [v] tibble    3.2.1
+[v] lubridate 1.9.4     [v] tidyr     1.3.1
+[v] purrr     1.0.4     
+── Conflicts ─────────── tidyverse_conflicts() ──
+[x] dplyr::filter() masks stats::filter()
+[x] dplyr::lag()    masks stats::lag()
+[i] Use the conflicted package to force all conflicts to become errors
 \end{verbatim}
 \end{Rscreen}
 ここに示されているのは，\verb|dplyr, readr, forcats, stringr, ggplot2, tibble, lubridate, tidyr, purrr|というパッケージを読み込みましたよ，ということと，読み込んだ\verb|dplyr|パッケージの\verb|filter|関数と\verb|lag|関数が他のパッケージと干渉(conflict)しているので，上書きしましたよということです。基本的に気にしなくてよい情報です\footnote{とは言え気になる人のために。パッケージは数多くありますから，あるパッケージAで使う関数と，あるパッケージで使う関数が同じ名前だった，ということがあり得るわけです。これが「名前空間の干渉」というやつで，これを解消するためには，Aパッケージの関数fだよ，Bパッケージの関数fだよ，ということを明示してやる必要があります。Rではコロンを2つ繋げて，\verb|A::f()|とすることでAパッケージの関数fを表しています。ここでは\verb|dplyr::filter()|が\verb|stats::filter()|をマスクしましたよ，ということを意味しており，パッケージの指定なしで\verb|filter()|と書くとこの後は\verb|dplyr()|パッケージの\verb|filter()|を使いますよ，ということです。このあとも\verb|stats|パッケージの\verb|filter()|を使いたい場合は，\verb|stats::filter()|とすればOKです。ちなみに\verb|stats|パッケージとは，Rを起動した段階で読み込まれている基本中の基本パッケージです。}。
@@ -454,13 +455,13 @@ boxplot(dat2011$salary)
 \begin{verbatim}
 > dat <- read_csv("BaseballDecade.csv",na = "NA")
 Rows: 6546 Columns: 17                                                                             
-── Column specification ─────────────────────────────────────────────────────────────────────────────
+── Column specification ──────────────────────
 Delimiter: ","
 chr  (6): Year, Name, team, bloodType, UniformNum, position
 dbl (11): salary, height, weight, Games, AtBats, Hit, HR, Win, Lose, Save, Hold
 
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+[i] Use `spec()` to retrieve the full column specification for this data.
+[i] Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 \end{Rscreen}
 
@@ -488,8 +489,8 @@ dat %>% select(height,weight)
  8    173     73
  9    176     80
 10    188     97
-# ℹ 6,536 more rows
-# ℹ Use `print(n = ...)` to see more rows
+# [i] 6,536 more rows
+# [i] Use `print(n = ...)` to see more rows
 \end{verbatim}
 \end{Rscreen}
 変数が2つに絞られていることが確認できますね。
@@ -517,11 +518,11 @@ dat %>% filter(Year == "2020年度")
  8 2020年度 中﨑　翔太…… Carp   14500 B型          186     99 21        
  9 2020年度 野村　祐輔…… Carp   12000 AB型         177     89 19        
 10 2020年度 松山　竜平…… Carp    8500 B型          176     96 55        
-# ℹ 654 more rows
-# ℹ 9 more variables: position <chr>, Games <dbl>, AtBats <dbl>,
+# [i] 654 more rows
+# [i] 9 more variables: position <chr>, Games <dbl>, AtBats <dbl>,
 #   Hit <dbl>, HR <dbl>, Win <dbl>, Lose <dbl>, Save <dbl>,
 #   Hold <dbl>
-# ℹ Use `print(n = ...)` to see more rows
+# [i] Use `print(n = ...)` to see more rows
 \end{verbatim}
 \end{Rscreen}
 これで出来上がったデータセットは664行$\times$17変数です。10年分で6500行ほどだったので，一年分だけ切り出すとその1/10ほどのデータサイズになるわけですね。
