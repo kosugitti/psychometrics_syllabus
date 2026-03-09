@@ -19,7 +19,7 @@
 
 それでも，共役事前分布を探すとか，グリッドサーチするとかで頑張ってきてたわけですが，現代ではここにMCMC法を実装した確率的プログラミング言語が登場し，ベイズ推定が実用的なものになりました。やったね。
 
-しかしそれでも難しそう，敷居が高いと感じる人がいるかもしれません。大丈夫，Stanのコードを書かなくてもStanを使って分析するためのRパッケージというのもあります\verb|brms|\parencite{brmsCite1,brmsCite2}や\verb|blavaaan|\parencite{blavaanCite1,blavaanCite2}などがそれで，回帰分析を書くように，従来の分析コードを書くようにして，推定方法だけMCMCを使ったベイズ推定にしてくれるパッケージがあるのです。
+しかしそれでも難しそう，敷居が高いと感じる人がいるかもしれません。大丈夫，Stanのコードを書かなくてもStanを使って分析するためのRパッケージというのもあります\verb|brms|\parencite{brmsCite1,brmsCite2}や\verb|blavaan|\parencite{blavaanCite1,blavaanCite2}などがそれで，回帰分析を書くように，従来の分析コードを書くようにして，推定方法だけMCMCを使ったベイズ推定にしてくれるパッケージがあるのです。
 
 そしてさらに，もっと簡単にベイズ分析ができるような統計パッケージがあります。さっそくそのチョー簡単な統計解析ソフト，\keytermL{JASP}{JASP}をみてみましょう。
 
@@ -123,7 +123,7 @@ JASPが持っているサンプルデータだけでなく，OSF\footnote{Open S
 \end{figure}
 
 ここで適当なサンプルデータを選んで，相関係数や回帰分析を見てみることにしましょう。
-\verb|Big5|というデータを選びました。データライブラリ$\to$4.Regression $\to$Big Five Personality Traitsと進めばデータが表示されます。これはパーソナリティ心理学の領域ではよく知られている，性格テストの結果から明らかになる性格の5次元で，解放性Openness，誠実性Conscientiousness，外向性Extraversion，協調性Agreebleness，神経症傾向Neuroticismのスコアからなります。性格に関するスコアですから，当然相関がありそうな変数ですね。
+\verb|Big5|というデータを選びました。データライブラリ$\to$4.Regression $\to$Big Five Personality Traitsと進めばデータが表示されます。これはパーソナリティ心理学の領域ではよく知られている，性格テストの結果から明らかになる性格の5次元で，解放性Openness，誠実性Conscientiousness，外向性Extraversion，協調性Agreeableness，神経症傾向Neuroticismのスコアからなります。性格に関するスコアですから，当然相関がありそうな変数ですね。
 
 普通の相関係数が欲しいだけでしたら，メニューの回帰$\to$伝統的・相関を選びます。すべての変数を右側のボックスに移動するだけで，結果のところに変数の組み合わせごとの相関係数が表示されます。
 \begin{figure}[H]

@@ -89,7 +89,7 @@ g
 \end{description}
 
 \section{線形回帰の実行}
-それではここから回帰分析を行います。回帰分析は線形関数を当てはめるので\keyterm{線形モデル}{せんけいもでる}{linerar model}と呼ばれますが，これの頭文字をとった\texttt{lm}関数が線形回帰モデルです。次の\texttt{code:\ref{code:11_04}}を実行してみましょう。
+それではここから回帰分析を行います。回帰分析は線形関数を当てはめるので\keyterm{線形モデル}{せんけいもでる}{linear model}と呼ばれますが，これの頭文字をとった\texttt{lm}関数が線形回帰モデルです。次の\texttt{code:\ref{code:11_04}}を実行してみましょう。
 \begin{lstlisting}[language=c++,label={code:11_04},caption={回帰分析の実行}]
     result <- lm(weight ~ height, data= batter)
     summary(result)
