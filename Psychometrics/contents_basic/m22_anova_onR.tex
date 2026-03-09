@@ -64,7 +64,7 @@ str(obj)
 ここにあるように，\texttt{obj}オブジェクトの\texttt{name}変数はchr型で，他の3つの変数は数値型(numeric)である，というのが示されています。ここで性別\texttt{gender}を因子型にしてみましょう(\texttt{code:\ref{code:23_02}})。
 
 \begin{lstlisting}[language=c++,label={code:23_02},caption={因子型にする}]
-obj$gender <- factor(obj$gender,label=c('male','female'))
+obj$gender <- factor(obj$gender,labels=c('male','female'))
 \end{lstlisting}
 
 これの出力は\texttt{Rの出力\ref{RS:out23_02}}のようになります。
