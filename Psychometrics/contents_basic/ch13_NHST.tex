@@ -195,7 +195,7 @@ chisq.test(cross)
 
 \paragraph{コード解説}
 \begin{description}
-    \item[1行目] \verb|matrix|関数で度数データを行列として作成します。\verb|c()|で数値を並べ，\verb|ncol=2|で2列，\verb|byrow=T|で行優先で入力します。今回はロウデータからクロス集計表を作成するので，このような形で作りましたが、実際は\verb|tables|関数などでデータから作ることが多いでしょう。
+    \item[1行目] \verb|matrix|関数で度数データを行列として作成します。\verb|c()|で数値を並べ，\verb|ncol=2|で2列，\verb|byrow=T|で行優先で入力します。今回はロウデータからクロス集計表を作成するので，このような形で作りましたが，実際は\verb|tables|関数などでデータから作ることが多いでしょう。
     \item[2行目] \verb|print|関数で作成した行列の内容を確認・表示します。
     \item[3行目] \verb|chisq.test|関数でカイ二乗検定を実行し，統計量と有意確率を算出します。
 \end{description}
