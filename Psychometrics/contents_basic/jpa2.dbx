@@ -1,0 +1,17 @@
+\ProvidesFile{jpa2.dbx}[2026/03/24 v0.1 JPA 2022 biblatex data model]
+
+%% 翻訳書の原著者名（name list）
+\DeclareDatamodelFields[type=list, datatype=name, label=true]{origauthor}
+\DeclareDatamodelEntryfields{origauthor}
+
+%% 第2翻訳者グループ（監訳者と訳者を分ける場合に使用）
+\DeclareDatamodelFields[type=list, datatype=name, label=true]{translatora}
+\DeclareDatamodelEntryfields{translatora}
+
+%% 翻訳者の種別（訳／監訳 など）
+\DeclareDatamodelFields[type=field, datatype=literal]{translatortype}
+\DeclareDatamodelEntryfields{translatortype}
+
+%% 第2翻訳者グループの種別
+\DeclareDatamodelFields[type=field, datatype=literal]{translatoratype}
+\DeclareDatamodelEntryfields{translatoratype}

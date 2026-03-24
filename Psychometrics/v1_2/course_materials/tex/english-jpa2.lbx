@@ -1,0 +1,81 @@
+\ProvidesFile{english-jpa2.lbx}[2026/03/24 v0.1 JPA 2022 English localisation]
+
+%% 英語の標準設定を継承
+\InheritBibliographyExtras{english}
+\InheritBibliographyStrings{english}
+
+%% =====================================================
+%% 文字列定義
+%% =====================================================
+\DeclareBibliographyStrings{%
+  %% 編集者表記
+  editor           = {{editor}{Ed\adddot}},
+  editors          = {{editors}{Eds\adddot}},
+  %% 翻訳者表記
+  translator       = {{translator}{Trans\adddot}},
+  translators      = {{translators}{Trans\adddot}},
+  %% and
+  andothers        = {{}{}},
+  %% pubstate
+  inpress          = {{in press}{in press}},
+}
+
+%% =====================================================
+%% Bibliography Extras（エントリ処理時に適用）
+%% =====================================================
+\DeclareBibliographyExtras{%
+  %%
+  %% --- 区切り文字 ---
+  %%
+  %% 著者名の区切り: カンマ
+  \renewcommand*{\multinamedelim}{\addcomma\space}%
+  %% 最後の著者名の前: , &（3名以上）or &（2名）
+  \DeclareDelimFormat[bib,biblist]{finalnamedelim}{%
+    \ifnum\value{liststop}>2\finalandcomma\fi
+    \addspace\&\space}%
+  %% 姓と名の区切り: カンマ
+  \renewcommand*{\revsdnamepunct}{\addcomma\space}%
+  %% ユニット区切り: ピリオド＋スペース
+  \renewcommand*{\newunitpunct}{\adddot\addspace}%
+  %% エントリ末尾: ピリオド（DOI/URLがある場合はドライバ側で抑制）
+  \renewcommand*{\finentrypunct}{\adddot}%
+  %%
+  %% --- et al. ---
+  %%
+  \def\jpa@andothersdelim{\space}%
+  \def\jpa@andotherstext{et~al.}%
+  \def\jpa@andotherstextcite{et~al.}%
+  \def\jpa@andotherscomma{,}%
+  %%
+  %% --- タイトル書式 ---
+  %%
+  %% 書籍タイトル: イタリック
+  \DeclareFieldFormat[book,mvbook,online,thesis,inproceedings,incollection]{title}{\mkbibemph{#1}}%
+  %% 論文タイトル: 立体
+  \DeclareFieldFormat[article,report,misc,inbook]{title}{#1}%
+  %% 書籍サブタイトル: コロン＋イタリック
+  \DeclareFieldFormat[book,mvbook,online,thesis,inproceedings,incollection]{subtitle}{%
+    \mkbibemph{\addcolon\addspace#1}}%
+  %% 論文サブタイトル: コロン＋立体
+  \DeclareFieldFormat[article,report,misc,inbook]{subtitle}{\addcolon\addspace#1}%
+  %% 雑誌名: イタリック
+  \DeclareFieldFormat[article,misc]{journaltitle}{\mkbibemph{#1}}%
+  %% inbook/incollection の書籍タイトル: イタリック
+  \DeclareFieldFormat[inbook,incollection]{booktitle}{\mkbibemph{#1}}%
+  \DeclareFieldFormat[inbook,incollection]{booksubtitle}{\mkbibemph{\addcolon\addspace#1}}%
+  %% 学会発表の論文集: 立体
+  \DeclareFieldFormat[inproceedings]{booktitle}{#1}%
+  %%
+  %% --- in: マクロ ---
+  %%
+  \renewbibmacro{in:}{\printtext{In}\addspace}%
+  %%
+  %% --- 名前書式フラグ ---
+  %%
+  %% 英語: 名前区切りにピリオドを使用
+  \def\jpa@namegiven@separator{\adddot\addspace}%
+  %% 英語: givennameはイニシャル化
+  \def\jpa@useinitials{1}%
+}
+
+\endinput

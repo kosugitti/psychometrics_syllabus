@@ -1,0 +1,87 @@
+\ProvidesFile{japanese-jpa2.lbx}[2026/03/24 v0.1 JPA 2022 Japanese localisation]
+
+%% 英語の設定を継承してから日本語用に上書き
+%% （babel-japanese が入っていない環境でも動作するように english を継承）
+\InheritBibliographyExtras{english}
+\InheritBibliographyStrings{english}
+
+%% =====================================================
+%% 文字列定義
+%% =====================================================
+\DeclareBibliographyStrings{%
+  %% 編集者表記
+  editor           = {{編}{編}},
+  editors          = {{編}{編}},
+  %% 翻訳者表記
+  translator       = {{訳}{訳}},
+  translators      = {{訳}{訳}},
+  %% and（日本語では使わない）
+  andothers        = {{}{}},
+  %% pubstate
+  inpress          = {{印刷中}{印刷中}},
+}
+
+%% =====================================================
+%% Bibliography Extras（エントリ処理時に適用）
+%% =====================================================
+\DeclareBibliographyExtras{%
+  %%
+  %% --- 区切り文字 ---
+  %%
+  %% 著者名の区切り: 中黒（・）
+  \renewcommand*{\multinamedelim}{・}%
+  %% 最後の著者名の前: 中黒（・）
+  \DeclareDelimFormat[bib,biblist]{finalnamedelim}{・}%
+  %% 姓と名の区切り: 半角スペース（日本語著者名: 姓 名）
+  \renewcommand*{\revsdnamepunct}{\addspace}%
+  %% ユニット区切り: なし（日本語は全角スペースで区切る）
+  \renewcommand*{\newunitpunct}{}%
+  %% エントリ末尾: なし（日本語文献はピリオドで終わらない）
+  \renewcommand*{\finentrypunct}{}%
+  %%
+  %% --- 「他」（et al. 相当） ---
+  %%
+  \def\jpa@andothersdelim{}%
+  \def\jpa@andotherstext{他}%
+  \def\jpa@andotherstextcite{他}%
+  \def\jpa@andotherscomma{}%
+  %%
+  %% --- タイトル書式 ---
+  %%
+  %% 書籍タイトル: 立体（日本語はイタリックにしない）
+  \DeclareFieldFormat[book,mvbook,online,thesis,inproceedings,incollection]{title}{#1}%
+  %% 論文タイトル: 立体
+  \DeclareFieldFormat[article,report,misc,inbook]{title}{#1}%
+  %% 書籍サブタイトル: 2倍ダッシュで囲む
+  \DeclareFieldFormat[book,mvbook,online,thesis,inproceedings,incollection]{subtitle}{%
+    \textemdash\textemdash#1\textemdash\textemdash}%
+  %% 論文サブタイトル: 2倍ダッシュで囲む
+  \DeclareFieldFormat[article,report,misc,inbook]{subtitle}{%
+    \textemdash\textemdash#1\textemdash\textemdash}%
+  %% 雑誌名: 立体（日本語はイタリックにしない）
+  \DeclareFieldFormat[article,misc]{journaltitle}{#1}%
+  %% inbook/incollection の書籍タイトル: 立体
+  \DeclareFieldFormat[inbook,incollection]{booktitle}{#1}%
+  \DeclareFieldFormat[inbook,incollection]{booksubtitle}{%
+    \textemdash\textemdash#1\textemdash\textemdash}%
+  %% 学会発表の論文集: 立体
+  \DeclareFieldFormat[inproceedings]{booktitle}{#1}%
+  %%
+  %% --- in: マクロ（日本語では「In」を表示しない） ---
+  %%
+  \renewbibmacro{in:}{}%
+  %%
+  %% --- 名前書式フラグ ---
+  %%
+  %% 日本語: 姓と名の間は半角スペース
+  \def\jpa@namegiven@separator{\addspace}%
+  %% 日本語: givennameをフル表示（イニシャル化しない）
+  \def\jpa@useinitials{0}%
+  %%
+  %% --- 全角スペース ---
+  %%
+  %% 日本語文献で区切りに使用する擬似全角スペース
+  \providecommand*{\jpa@zspace}{\hskip1\zw\relax}%
+}
+
+\endinput

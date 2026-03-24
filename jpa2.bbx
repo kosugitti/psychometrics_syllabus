@@ -1,0 +1,960 @@
+\ProvidesFile{jpa2.bbx}[2026/03/24 v0.1 JPA 2022 bibliography style]
+
+%% =====================================================
+%% 基盤スタイルの継承と言語マッピング
+%% =====================================================
+\RequireBibliographyStyle{authoryear}
+
+%% URLのフォントを本文に揃える
+\urlstyle{same}
+
+
+%% =====================================================
+%% オプション設定
+%% =====================================================
+\ExecuteBibliographyOptions{%
+  autocite    = inline,%
+  alldates    = year,%
+  maxbibnames = 99,%
+  maxcitenames= 2,%
+  minbibnames = 19,%    %% 21名以上の場合、第19著者まで表示
+  mincitenames= 1,%
+  mincrossrefs= 999,%
+  maxitems    = 999,%
+  sorting     = nyt,%   %% 姓のアルファベット順
+  urldate     = long,%
+  dateabbrev  = false,%
+}
+
+
+%% =====================================================
+%% 言語切替システム
+%%
+%% .lbx による自動ディスパッチは babel-japanese が必須のため、
+%% \AtEveryBibitem で langid を検出して設定を一括切替する方式を採用。
+%% 言語依存の設定はすべて以下の2マクロに集約される。
+%% =====================================================
+
+%% カスタムフラグ: 0=日本語, 1=英語
+\def\jpa@useinitials{1}%
+
+%% --- 全角文字定義（日本語用） ---
+\def\jpa@fullperiod{．}%    % 全角ピリオド
+\def\jpa@fullcomma{，}%     % 全角カンマ
+\def\jpa@fullspace{　}%     % 全角スペース
+
+%% --- 英語モードの設定 ---
+\newcommand*{\jpa@setEnglish}{%
+  \def\jpa@useinitials{1}%
+  %% 区切り文字
+  \renewcommand*{\revsdnamepunct}{\addcomma\space}%
+  \renewcommand*{\newunitpunct}{\adddot\addspace}%
+  \renewcommand*{\finentrypunct}{\adddot}%
+  %% 括弧: 半角
+  \renewcommand*{\bibleftparen}{(}%
+  \renewcommand*{\bibrightparen}{)}%
+  %% et al.
+  \def\jpa@andothersdelim{\space}%
+  \def\jpa@andotherstext{et~al.}%
+  \def\jpa@andotherstextcite{et~al.}%
+  \def\jpa@andotherscomma{,}%
+  %% 年後の区切り: ピリオド+スペース
+  \def\jpa@postyear{\adddot\addspace}%
+  %% 雑誌の巻号区切り: 半角カンマ
+  \def\jpa@voldelim{\addcomma\addspace}%
+  %% タイトルと雑誌名の間
+  \def\jpa@pretitle@journal{\newunit}%
+  %% in: マクロ
+  \renewbibmacro{in:}{\printtext{In}\addspace}%
+}
+
+%% --- 日本語モードの設定 ---
+\newcommand*{\jpa@setJapanese}{%
+  \def\jpa@useinitials{0}%
+  %% 区切り文字
+  \renewcommand*{\revsdnamepunct}{\addspace}%
+  \renewcommand*{\newunitpunct}{}%
+  \renewcommand*{\finentrypunct}{}%  % 日本語書籍はピリオドなしで終了
+  %% 括弧: 全角
+  \renewcommand*{\bibleftparen}{（}%
+  \renewcommand*{\bibrightparen}{）}%
+  %% 「他」
+  \def\jpa@andothersdelim{}%
+  \def\jpa@andotherstext{他}%
+  \def\jpa@andotherstextcite{他}%
+  \def\jpa@andotherscomma{}%
+  %% 年後の区切り: 全角ピリオド
+  \def\jpa@postyear{\jpa@fullperiod}%
+  %% 雑誌の巻号区切り: 全角カンマ
+  \def\jpa@voldelim{\jpa@fullcomma}%
+  %% タイトルと雑誌名の間: 全角スペース
+  \def\jpa@pretitle@journal{\jpa@fullspace}%
+  %% in: マクロ（日本語では「In」を表示しない）
+  \renewbibmacro{in:}{}%
+}
+
+%% デフォルト値
+\def\jpa@postyear{\adddot\addspace}%
+\def\jpa@voldelim{\addcomma\addspace}%
+\def\jpa@pretitle@journal{\newunit}%
+
+%% --- 名前区切り: 実行時に \jpa@useinitials を見て分岐 ---
+%% （DeclareDelimFormat は一度だけ宣言し、実行時に判定する）
+\DeclareDelimFormat{multinamedelim}{%
+  \ifnumequal{\jpa@useinitials}{0}{・}{\addcomma\space}%
+}
+\DeclareDelimFormat[bib,biblist]{finalnamedelim}{%
+  \ifnumequal{\jpa@useinitials}{0}{・}{%
+    \ifnum\value{liststop}>2\finalandcomma\fi
+    \addspace\&\space}%
+}
+
+%% --- タイトル等のフィールド書式: 実行時に判定 ---
+\DeclareFieldFormat[book,mvbook,online,thesis,inproceedings,incollection]{title}{%
+  \ifnumequal{\jpa@useinitials}{0}{#1}{\mkbibemph{#1}}}
+\DeclareFieldFormat[article,report,misc,inbook]{title}{#1}
+\DeclareFieldFormat[book,mvbook,online,thesis,inproceedings,incollection]{subtitle}{%
+  \ifnumequal{\jpa@useinitials}{0}{%
+    \textemdash\textemdash#1\textemdash\textemdash%
+  }{\mkbibemph{\addcolon\addspace#1}}}
+\DeclareFieldFormat[article,report,misc,inbook]{subtitle}{%
+  \ifnumequal{\jpa@useinitials}{0}{%
+    \textemdash\textemdash#1\textemdash\textemdash%
+  }{\addcolon\addspace#1}}
+\DeclareFieldFormat[article,misc]{journaltitle}{%
+  \ifnumequal{\jpa@useinitials}{0}{#1}{\mkbibemph{#1}}}
+\DeclareFieldFormat[inbook,incollection]{booktitle}{%
+  \ifnumequal{\jpa@useinitials}{0}{#1}{\mkbibemph{#1}}}
+\DeclareFieldFormat[inbook,incollection]{booksubtitle}{%
+  \ifnumequal{\jpa@useinitials}{0}{%
+    \textemdash\textemdash#1\textemdash\textemdash%
+  }{\mkbibemph{\addcolon\addspace#1}}}
+\DeclareFieldFormat[inproceedings]{booktitle}{#1}
+
+%% --- エントリごとの自動切替 ---
+\AtEveryBibitem{%
+  \jpa@setEnglish%  デフォルトは英語
+  \iffieldundef{langid}{}{%
+    \iffieldequalstr{langid}{japanese}{%
+      \jpa@setJapanese%
+    }{}%
+  }%
+}
+
+%% --- 初期状態: 英語 ---
+\jpa@setEnglish
+
+
+%% =====================================================
+%% ぶら下がりインデント幅（2文字分）
+%% =====================================================
+\ifx\directlua\undefined
+  \setlength{\bibhang}{2zw}
+\else
+  \setlength{\bibhang}{2\zw}
+\fi
+
+
+%% =====================================================
+%% 後方互換: language=japanese → langid=japanese への自動変換
+%% =====================================================
+\DeclareSourcemap{%
+  \maps[datatype=bibtex]{%
+    %% language フィールドが japanese なら langid にコピー
+    \map[overwrite=false]{%
+      \step[fieldsource=language, match=\regexp{^[Jj]apanese$}, final]%
+      \step[fieldset=langid, fieldvalue=japanese]%
+    }%
+  }%
+}
+
+
+%% =====================================================
+%% 著者名表示の最大数
+%% =====================================================
+\newcount\maxprtnames\maxprtnames=20%
+\DeclareBibliographyOption{maxprtnames}{%
+  \ifstrempty{#1}{}{\maxprtnames=#1}}
+
+
+%% =====================================================
+%% 著者名の表示順（日英ともに姓・名の順）
+%% =====================================================
+\DeclareNameAlias{sortname}{family-given}
+\DeclareNameAlias{author}{default}
+\DeclareNameAlias{editor}{default}
+\DeclareNameAlias{editora}{default}
+\DeclareNameAlias{translator}{default}
+\DeclareNameAlias{translatora}{default}
+
+
+%% =====================================================
+%% uniquename の抑制
+%% =====================================================
+\DeclareUniquenameTemplate{%
+  \namepart[use=true, base=true]{prefix}%
+  \namepart[base=true]{family}%
+  \namepart[base=true]{given}%
+  \namepart{suffix}%
+}
+
+
+%% =====================================================
+%% 著者名フォーマット（共通）
+%%
+%% 言語による差異は .lbx の extras が制御する:
+%%   - \multinamedelim: 著者間の区切り（・ vs ,）
+%%   - \finalnamedelim: 最終著者前の区切り（・ vs , &）
+%%   - \revsdnamepunct: 姓名間の区切り（スペース vs カンマ）
+%%   - \jpa@useinitials: イニシャル化するか（0 vs 1）
+%%
+%% 21名以上の省略ロジック:
+%%   第1〜第19著者 → ... → 最終著者
+%% =====================================================
+\DeclareNameFormat{default}{%
+  %% 21名以上の場合: 第19著者の位置で "..." を挿入
+  \ifthenelse{\value{listcount}=\maxprtnames\AND\value{listcount}<\value{listtotal}}{%
+    \ifnumequal{\jpa@useinitials}{0}%
+      {\space\ldots\space}%        % 日本語: スペース...スペース
+      {\addcomma\space\ldots\space}% % 英語: , ...
+  }{%
+    %% 第19著者より後、かつ最終著者でない場合: スキップ
+    \ifthenelse{\value{listcount}>\maxprtnames\AND\value{listcount}<\value{listtotal}}{%
+    }{%
+      %% 名前を出力
+      \ifnumequal{\jpa@useinitials}{0}{%
+        %% 日本語: 2人目以降は中黒で区切る
+        \ifthenelse{\value{listcount}=1}{}{%
+          \ifthenelse{\value{listcount}<\maxprtnames}{%
+            \printtext{・}%
+          }{}%
+        }%
+        \namepartfamily\revsdnamepunct\namepartgiven%
+      }{%
+        %% 英語: 姓, イニシャル.（biblatex標準の区切り処理を使用）
+        \usebibmacro{name:family-given}%
+          {\namepartfamily}%
+          {\namepartgiveni}%
+          {\namepartprefix}%
+          {\namepartsuffix}%
+      }%
+    }%
+  }%
+}
+
+%% given-family 順（英語 inbook の編集者表示用）
+\DeclareNameFormat{given-family}{%
+  \ifnumequal{\jpa@useinitials}{0}{%
+    %% 日本語: 姓 名
+    \namepartfamily\revsdnamepunct\namepartgiven%
+    \ifthenelse{\value{listcount}=\value{listtotal}}{}{・}%
+  }{%
+    %% 英語: イニシャル. 姓
+    \usebibmacro{name:given-family}%
+      {\namepartfamily}%
+      {\namepartgiveni}%
+      {\namepartprefix}%
+      {\namepartsuffix}%
+  }%
+}
+
+
+%% =====================================================
+%% vol, vols 文字列を空に
+%% =====================================================
+\DefineBibliographyStrings{english}{volume={}}
+\DefineBibliographyStrings{english}{volumes={}}
+
+%% 翻訳の trans. of を空に
+\DefineBibliographyStrings{english}{translationof={}}
+
+%% in: マクロのデフォルト（.lbx で上書きされる）
+\renewbibmacro{in:}{}
+
+
+%% =====================================================
+%% 著者名と年の区切り
+%% =====================================================
+%% nameyeardelim は cbx の DeclareDelimFormat で実行時判定
+
+
+%% =====================================================
+%% フィールド書式
+%% =====================================================
+
+%% ページ番号
+\DeclareFieldFormat{pages}{#1}
+
+%% DOI（エントリ末尾のピリオドを抑制、URLとして表示）
+\DeclareFieldFormat{doi}{%
+  \renewcommand*{\finentrypunct}{}%
+  \url{https://doi.org/#1}%
+}
+
+%% URL
+\DeclareFieldFormat{url}{%
+  \renewcommand*{\finentrypunct}{}%
+  from\addspace\url{#1}\nopunct%
+}
+
+%% urldate（Retrieved 日付）
+\DeclareFieldFormat{urldate}{Retrieved #1%
+  \addcomma%
+}
+
+%% origyear
+\DeclareFieldFormat{origyear}{\mkbibparens{#1}}
+
+%% edition（英語のみ追加処理 — .lbx 側では制御しきれないため bbx で定義）
+%% ドライバ内で条件分岐
+
+
+%% =====================================================
+%% ビブリオグラフィマクロ
+%% =====================================================
+
+%%% 著者名+出版年 %%%
+%%% 出力: 著者名 (年).  /  著者名 (年)．
+\newbibmacro*{author+year}{%
+  \printnames{author}%
+  \ifnameundef{author}{%
+    \setunit*{\printdelim{nonameyeardelim}}%
+  }{%
+    \addspace%
+  }%
+  \iffieldundef{pubstate}{%
+    \usebibmacro{date+extradate}%
+  }{%
+    \printfield[parens]{pubstate}%
+  }%
+  %% 年の後の区切り（日本語: ．  英語: . ）
+  \jpa@postyear%
+}
+
+%%% 著者名+タイプ（編 / Ed. など） %%%
+\newbibmacro*{author+type}{%
+  \printnames{author}%
+  \iffieldundef{authortype}{}{%
+    \usebibmacro{authortype:label}%
+  }%
+}
+
+%%% 著者のタイプラベル %%%
+\newbibmacro*{authortype:label}{%
+  \iffieldequalstr{authortype}{editor}{%
+    %% authortype=editor の場合は editortype:label と同様に処理
+    \ifnumequal{\jpa@useinitials}{0}{%
+      \printtext[parens]{編}%
+    }{%
+      \ifthenelse{\value{author}>1}{%
+        \addspace\printtext[parens]{Eds.}%
+      }{%
+        \addspace\printtext[parens]{Ed.}%
+      }%
+    }%
+  }{%
+    %% その他（監修 etc.）はそのまま表示
+    \addspace\printtext[parens]{\printfield{authortype}}%
+  }%
+}
+
+%%% 編集者のタイプラベル %%%
+\newbibmacro*{editortype:label}{%
+  \iffieldundef{editortype}{%
+    \ifnumequal{\jpa@useinitials}{0}{%
+      %% 日本語: （編）
+      \printtext[parens]{編}%
+    }{%
+      %% 英語: (Ed.) / (Eds.)
+      \ifthenelse{\value{editor}>1}{%
+        \addspace\printtext[parens]{Eds.}%
+      }{%
+        \addspace\printtext[parens]{Ed.}%
+      }%
+    }%
+  }{%
+    \addspace\printtext[parens]{\printfield{editortype}}%
+  }%
+}
+
+%%% 編集者名 %%%
+\renewbibmacro*{editor}{%
+  \printnames{editor}%
+  \usebibmacro{editortype:label}%
+}
+
+%%% 編集者名+出版年 %%%
+\newbibmacro*{editor+year}{%
+  \usebibmacro{editor}%
+  \usebibmacro{date+extradate}%
+}
+
+%%% 翻訳者 %%%
+\renewbibmacro*{translator}{%
+  \printnames{translator}%
+  \iffieldundef{translatortype}{%
+    \ifnumequal{\jpa@useinitials}{0}{%
+      \printtext[parens]{訳}%
+    }{%
+      \addspace\printtext[parens]{Trans.}%
+    }%
+  }{%
+    \addspace\printtext[parens]{\printfield{translatortype}}%
+  }%
+  \setunit{\printdelim{nameyeardelim}}%
+}
+
+%%% 第2翻訳者グループ %%%
+\newbibmacro*{translatora}{%
+  \printnames{translatora}%
+  \iffieldundef{translatoratype}{%
+    \ifnumequal{\jpa@useinitials}{0}{%
+      \printtext[parens]{訳}%
+    }{%
+      \addspace\printtext[parens]{Trans.}%
+    }%
+  }{%
+    \addspace\printtext[parens]{\printfield{translatoratype}}%
+  }%
+  \setunit{\printdelim{nameyeardelim}}%
+}
+
+%%% 巻号 %%%
+\newbibmacro*{volume+issues}{%
+  \ifboolexpr{%
+    test {\iffieldundef{volume}}%
+    and%
+    not test {\iffieldundef{number}}%
+  }{%
+    %% 巻なし、号あり → No. を付ける
+    \printfield{number}%
+    \setunit*{\jpa@voldelim}%
+  }{%
+    %% 巻あり
+    \mkbibemph{\printfield{volume}}%
+    \iffieldundef{number}{}{%
+      \setunit*{\addthinspace}%
+      \printtext[parens]{\printfield{number}}%
+    }%
+    \setunit*{\jpa@voldelim}%
+  }%
+}
+
+%%% 書籍の Vol. 処理 %%%
+\newbibmacro*{volume:book}{%
+  \ifnumequal{\jpa@useinitials}{0}{%
+    %% 日本語: 巻数のみ
+    \addspace\nopunct\strfield{volume}%
+  }{%
+    %% 英語: Vol.N（イタリック）
+    \addspace\emph{Vol.\strfield{volume}}%
+  }%
+}
+
+%%% 書籍の Vols. 処理 %%%
+\newbibmacro*{volumes}{%
+  \ifnumequal{\jpa@useinitials}{0}{%
+    \addspace\nopunct(\strfield{volumes})%
+  }{%
+    \addspace\nopunct(Vols.\nopunct\addspace\strfield{volumes})%
+  }%
+}
+
+%%% URL+取得日 %%%
+\renewbibmacro*{url+urldate}{%
+  \iffieldundef{urlyear}{}{%
+    \printurldate\setunit{\addspace}%
+  }%
+  \printfield{url}%
+}
+
+%%% bookinfo（inbook用） %%%
+\newbibmacro*{bookinfo}{%
+  \usebibmacro{in:}%
+  \ifnameundef{editor}{}{%
+    \ifnumequal{\jpa@useinitials}{0}{%
+      %% 日本語: 編集者名（編）
+      \printnames{editor}%
+      \usebibmacro{editortype:label}%
+    }{%
+      %% 英語: In A. Editor (Ed.),
+      \printnames[given-family]{editor}%
+      \usebibmacro{editortype:label}%
+      \addcomma%
+    }%
+    \setunit{\addspace}%
+  }%
+  \printfield{booktitle}%
+  \iffieldundef{booksubtitle}{}{\printfield{booksubtitle}}%
+}
+
+%%% 機関 %%%
+\newbibmacro*{type+institution}{%
+  \ifnumequal{\jpa@useinitials}{0}{%
+    \printlist{institution}\printfield{type}%
+  }{%
+    \printtext[parens]{\printfield{type}}%
+    \newunit%
+    \printlist{institution}%
+  }%
+}
+
+%%% 学会開催地 %%%
+\newbibmacro*{location}{%
+  \ifnumequal{\jpa@useinitials}{0}{%
+    \nopunct\mkbibparens{\strfirstlistitem{location}}%
+  }{%
+    \printlist{location}%
+  }%
+}
+
+
+%% =====================================================
+%% ドライバ定義
+%%
+%% 言語による差異は .lbx の extras で自動的に適用済み。
+%% ドライバ内では言語分岐しない。
+%% =====================================================
+
+%%% -----------------------------------------------
+%%% @article — 逐次刊行物（雑誌、紀要、Advance online）
+%%% マニュアル: 3.10.2(3), 3.10.3(3), 3.10.2(4)ii
+%%% -----------------------------------------------
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{begentry}%
+  %% 著者名，刊行年
+  \usebibmacro{author+year}%
+  %% 表題
+  \printfield{title}%
+  \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+  %% 誌名（日本語: 全角スペース、英語: ピリオド+スペース）
+  \jpa@pretitle@journal%
+  \printfield{journaltitle}%
+  %% 巻号・ページ（Advance online publication の場合は別処理）
+  \iffieldundef{howpublished}{%
+    \setunit*{\jpa@voldelim}%
+    \usebibmacro{volume+issues}%
+    \iffieldundef{pages}{}{\printfield{pages}\adddot}%
+  }{%
+    \ifnumequal{\jpa@useinitials}{0}%
+      {\jpa@fullspace}%
+      {\adddot\addspace}%
+    \printtext{Advance online publication}%
+  }%
+  %% DOI
+  \iffieldundef{doi}{}{%
+    \setunit*{\adddot\addspace}%
+    \renewcommand*{\finentrypunct}{}%
+    \printfield{doi}%
+  }%
+  \usebibmacro{finentry}%
+}
+
+
+%%% -----------------------------------------------
+%%% @book — 書籍（一般、版数、編集書、翻訳書）
+%%% マニュアル: 3.10.2(2), 3.10.3(2)
+%%% -----------------------------------------------
+\DeclareBibliographyDriver{book}{%
+  \usebibmacro{begentry}%
+  \iffieldundef{related}{%
+    %% related なし: 通常の書籍
+    \ifnameundef{translator}{%
+      \usebibmacro{jpa@book:normal}%
+    }{%
+      %% translator あり（origauthor方式の翻訳書）
+      \usebibmacro{jpa@book:translated}%
+    }%
+  }{%
+    %% related あり
+    \iffieldequalstr{relatedtype}{translationof}{%
+      \usebibmacro{jpa@book:translationof}%
+    }{}%
+    \iffieldequalstr{relatedtype}{mvbook}{%
+      \usebibmacro{jpa@book:series}%
+    }{}%
+  }%
+  \usebibmacro{finentry}%
+}
+
+%%% 通常の書籍 %%%
+\newbibmacro*{jpa@book:normal}{%
+  %% 著者名
+  \ifnameundef{author}{}{%
+    \printnames{author}%
+    \iffieldundef{authortype}{}{\usebibmacro{authortype:label}}%
+    \ifnameundef{editor}{%
+      \addspace\printtext[parens]{\printdateextra}%
+      \jpa@postyear%
+    }{\addspace}%
+  }%
+  %% 編集者名
+  \ifnameundef{editor}{}{%
+    \printnames{editor}%
+    \usebibmacro{editortype:label}%
+    \addspace\printtext[parens]{\printdateextra}%
+    \jpa@postyear%
+  }%
+  %% 表題
+  \printfield{title}%
+  \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+  %% 版数
+  \iffieldundef{edition}{}{%
+    \ifnumequal{\jpa@useinitials}{0}{%
+      \addspace\printfield{edition}%
+    }{%
+      \addspace\mkbibparens{\printfield{edition}}%
+    }%
+  }%
+  %% 出版社
+  \ifnumequal{\jpa@useinitials}{0}%
+    {\jpa@fullspace}%     % 日本語: 全角スペース
+    {\adddot\addspace}%   % 英語: ピリオド+スペース
+  \printlist{publisher}%
+  %% 再版情報（英語の場合）
+  \iffieldundef{origyear}{}{%
+    \newunit%
+    \renewcommand*{\finentrypunct}{}%
+    \printtext[parens]{Original work published \printorigdate%
+      \iflistundef{origpublisher}{}{%
+        \addcomma\space\printlist{origpublisher}%
+      }%
+    }%
+  }%
+}
+
+%%% 翻訳書（related方式: related=translationof） %%%
+\newbibmacro*{jpa@book:translationof}{%
+  %% related先のエントリ（原著）を展開
+  \usebibmacro{related:init}%
+  \renewcommand*{\relatedpunct}{}%
+  %% 原著情報（英語モードで展開）
+  \begingroup%
+    \jpa@setEnglish%
+    \entrydata*{\thefield{related}}{%
+      \usebibmacro{jpa@book:normal}%
+    }%
+  \endgroup%
+  \setunit{\addperiod}%
+  %% 訳書情報を括弧内に（日本語モードに戻す）
+  \jpa@setJapanese%
+  \printtext{\\(}%
+  \printnames{author}%
+  \addspace\newunit%
+  \usebibmacro{translator}%
+  \ifnameundef{translatora}{}{%
+    \usebibmacro{translatora}%
+  }%
+  \usebibmacro{date+extradate}%
+  \jpa@postyear%
+  \printfield{title}%
+  \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+  \iffieldundef{edition}{}{%
+    \ifnumequal{\jpa@useinitials}{0}{%
+      \printtext[parens]{\printfield{edition}}%
+    }{%
+      \addspace\printtext[parens]{\printfield{edition}}%
+    }%
+  }%
+  \ifnumequal{\jpa@useinitials}{0}%
+    {\jpa@fullspace}%
+    {\adddot\addspace}%
+  \printlist{publisher}%
+  \printtext{)}%
+}
+
+%%% 翻訳書（origauthor方式、後方互換） %%%
+\newbibmacro*{jpa@book:translated}{%
+  %% 現行 jpa.bbx の translatedbook マクロと同等
+  \usebibmacro{jpa@book:normal}%
+}
+
+%%% シリーズ書籍（related=mvbook） %%%
+\newbibmacro*{jpa@book:series}{%
+  \usebibmacro{jpa@book:normal}%
+}
+
+
+%%% -----------------------------------------------
+%%% @inbook — 編集書中の特定章
+%%% マニュアル: 3.10.2(2)iv, 3.10.3(2)iv
+%%% -----------------------------------------------
+\DeclareBibliographyDriver{inbook}{%
+  \usebibmacro{begentry}%
+  %% 著者名，刊行年
+  \printnames{author}%
+  \addspace\mkbibparens{\printdateextra}%
+  \jpa@postyear%
+  %% 特定章名
+  \printfield{title}%
+  \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+  %% 書籍情報（編集者＋書籍名）
+  \ifnumequal{\jpa@useinitials}{0}%
+    {\jpa@fullspace}%  % 日本語: 全角スペース
+    {\newunit}%        % 英語: ピリオド+スペース
+  \usebibmacro{bookinfo}%
+  \setunit{\addspace}%
+  %% ページ・版数
+  \printtext[parens]{%
+    \iffieldundef{edition}{}{%
+      \printfield{edition}\addcomma\space%
+    }%
+    pp.\space\printfield{pages}%
+  }%
+  \ifnumequal{\jpa@useinitials}{0}{%
+    \nopunct\jpa@fullspace%
+  }{\newunit}%
+  %% 出版社
+  \printlist{publisher}%
+  \usebibmacro{finentry}%
+}
+
+
+%%% -----------------------------------------------
+%%% @mvbook — 数巻にわたる書籍
+%%% マニュアル: 3.10.2(2)v, 3.10.3(2)v
+%%% -----------------------------------------------
+\DeclareBibliographyDriver{mvbook}{%
+  \usebibmacro{begentry}%
+  %% 著者名/編集者名，刊行年
+  \ifnameundef{author}{%
+    \usebibmacro{editor+year}%
+    \setunit{\addperiod\addspace}%
+  }{%
+    \usebibmacro{author+year}%
+    \setunit{\addperiod\addspace}%
+  }%
+  %% 表題
+  \iffieldundef{title}{%
+    \printfield{series}%
+  }{%
+    \printfield{title}%
+    \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+  }%
+  %% 巻数
+  \usebibmacro{volumes}%
+  \newunit%
+  %% 出版社
+  \printlist{publisher}%
+  \usebibmacro{finentry}%
+}
+
+
+%%% -----------------------------------------------
+%%% @incollection — 数巻の特定の1巻 / シリーズの1巻
+%%% マニュアル: 3.10.2(2)vi, 3.10.3(2)vi
+%%% -----------------------------------------------
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{begentry}%
+  %% 著者・編集者
+  \ifnameundef{author}{}{%
+    \printnames{author}%
+    \iffieldundef{authortype}{}{\usebibmacro{authortype:label}}%
+    \ifnumequal{\jpa@useinitials}{0}{}{\adddot\addspace}%
+    \mkbibparens{\printdateextra}%
+    \setunit{\addperiod\addspace}%
+  }%
+  %% 表題
+  \printfield{title}%
+  \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+  %% シリーズ編集者
+  \ifnameundef{editor}{}{%
+    \ifnumequal{\jpa@useinitials}{0}{%
+      \addspace\printnames{editor}%
+      \usebibmacro{editortype:label}\addspace%
+    }{%
+      \addspace\bibopenparen%
+      \printnames[given-family]{editor}%
+      \setunit{\addcomma\addspace}%
+      \iffieldundef{editortype}{%
+        \printtext{Series}\addspace%
+        \ifthenelse{\value{editor}>1}{\printtext{Eds.}}{\printtext{Ed.}}%
+      }{%
+        \printfield{editortype}%
+      }%
+      \bibcloseparen%
+      \setunit{\addcomma\addspace}%
+    }%
+  }%
+  %% シリーズ名
+  \ifnumequal{\jpa@useinitials}{0}{%
+    \setunit{\addspace}%
+  }{%
+    \setunit{\addperiod\addspace}%
+  }%
+  \printfield{series}%
+  %% 巻号
+  \iffieldundef{volume}{}{%
+    \ifnumequal{\jpa@useinitials}{0}{%
+      \usebibmacro{volume:book}\addspace%
+    }{%
+      \adddot\addspace\usebibmacro{volume:book}\newunit%
+    }%
+  }%
+  \iffieldundef{number}{}{%
+    \printfield{number}%
+  }%
+  %% 出版社
+  \ifnumequal{\jpa@useinitials}{0}%
+    {\jpa@fullspace}%
+    {\adddot\addspace}%
+  \printlist{publisher}%
+  \usebibmacro{finentry}%
+}
+
+
+%%% -----------------------------------------------
+%%% @online — プレプリント / ウェブ資料
+%%% マニュアル: 3.10.2(4)iii-v
+%%% -----------------------------------------------
+\DeclareBibliographyDriver{online}{%
+  \usebibmacro{begentry}%
+  %% 著者名，公開年
+  \usebibmacro{author+year}%
+  \newunit%
+  %% 表題
+  \printfield{title}%
+  \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+  %% アップロードサイト名
+  \newunit%
+  \iffieldundef{eprinttype}{}{\printfield{eprinttype}}%
+  \iflistundef{organization}{}{\printlist{organization}}%
+  %% DOI or URL
+  \newunit%
+  \iffieldundef{doi}{}{%
+    \renewcommand*{\finentrypunct}{}%
+    \printfield{doi}%
+  }%
+  \iffieldundef{url}{}{\usebibmacro{url+urldate}}%
+  \usebibmacro{finentry}%
+}
+
+
+%%% -----------------------------------------------
+%%% @thesis — 学位論文
+%%% マニュアル: 3.10.2(5)i
+%%% -----------------------------------------------
+\DeclareBibliographyDriver{thesis}{%
+  \usebibmacro{begentry}%
+  \usebibmacro{author+year}%
+  \newunit%
+  \printfield{title}%
+  \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+  \addspace%
+  \usebibmacro{type+institution}%
+  \usebibmacro{finentry}%
+}
+
+
+%%% -----------------------------------------------
+%%% @inproceedings — 学会発表
+%%% マニュアル: 3.10.2(5)ii
+%%% -----------------------------------------------
+\DeclareBibliographyDriver{inproceedings}{%
+  \usebibmacro{begentry}%
+  \usebibmacro{author+year}%
+  %% 表題
+  \printfield{title}%
+  \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+  %% 発表形式（英語のみ）
+  \iffieldundef{type}{}{%
+    \addspace\mkbibbrackets{\printfield{type}}%
+    \newunit%
+  }%
+  %% 論文集 / 大会名
+  \iffieldundef{booktitle}{}{%
+    \ifnumequal{\jpa@useinitials}{0}%
+      {\jpa@fullspace}%  % 日本語: タイトルと論文集名の間は全角スペース
+      {}%
+    \printfield{booktitle}%
+    \setunit*{\jpa@voldelim}%  % 日英対応のカンマ区切り
+  }%
+  \iffieldundef{eventtitle}{}{%
+    \printfield{eventtitle}%
+    \setunit*{\addcomma\addspace}%
+  }%
+  %% 開催地
+  \iflistundef{location}{}{\usebibmacro{location}}%
+  %% ページ
+  \iffieldundef{pages}{}{\printfield{pages}}%
+  \usebibmacro{finentry}%
+}
+
+
+%%% -----------------------------------------------
+%%% @report — 年報・年鑑
+%%% マニュアル: 3.10.3(3)iii
+%%% -----------------------------------------------
+\DeclareBibliographyDriver{report}{%
+  \usebibmacro{begentry}%
+  %% 著者名（なければ機関名）
+  \ifnameundef{author}{%
+    \printlist{institution}\addspace%
+  }{%
+    \printnames{author}\addspace%
+  }%
+  \mkbibparens{\printdateextra}\adddot\addspace%
+  %% 表題
+  \printfield{title}%
+  \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+  %% 誌名
+  \iffieldundef{journaltitle}{}{%
+    \printfield{journaltitle}\addcomma\space%
+  }%
+  %% 巻号
+  \iffieldundef{volume}{}{\printfield[emph]{volume}}%
+  \iffieldundef{number}{}{\printfield[parens]{number}}%
+  %% 機関
+  \renewcommand*{\finentrypunct}{}%
+  \addspace\printlist{institution}%
+  \usebibmacro{finentry}%
+}
+
+
+%%% -----------------------------------------------
+%%% @misc — 新聞・雑誌記事
+%%% マニュアル: 3.10.2(5)iv, 3.10.3(5)iv
+%%% -----------------------------------------------
+\DeclareBibliographyDriver{misc}{%
+  \usebibmacro{begentry}%
+  \usebibmacro{author+year}%
+  \newunit%
+  %% 表題
+  \printfield{title}%
+  \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+  %% 掲載紙（誌）
+  \ifnumequal{\jpa@useinitials}{0}%
+    {\addspace}%
+    {\newunit}%
+  \printfield{journaltitle}\addspace%
+  %% 発行日
+  \iffieldundef{howpublished}{}{%
+    \printfield{howpublished}%
+    \setunit*{\addcomma\addspace}%
+  }%
+  %% ページ
+  \iffieldundef{pages}{}{\printfield{pages}\adddot}%
+  \usebibmacro{finentry}%
+}
+
+
+%%% -----------------------------------------------
+%%% @software — ソフトウェア
+%%% -----------------------------------------------
+\DeclareBibliographyDriver{software}{%
+  \usebibmacro{begentry}%
+  \usebibmacro{author+year}%
+  \newunit%
+  \printfield{title}%
+  \iffieldundef{version}{}{%
+    \addspace\mkbibparens{\printfield{version}}%
+  }%
+  \newunit%
+  \iflistundef{publisher}{}{%
+    \printlist{publisher}\newunit%
+  }%
+  \printfield{doi}%
+  \usebibmacro{finentry}%
+}
+
+\endinput
