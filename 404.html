@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>移転しました</title>
+  <script>
+    var path = window.location.pathname.replace('/psychometrics_syllabus/', '');
+    var newBase = 'https://kosugitti.github.io/kosugi-stats/';
+    if (path.endsWith('.pdf')) {
+      var archiveFiles = ['Dkiso1_book.pdf', 'Dkiso2_book_ver1.pdf'];
+      if (archiveFiles.indexOf(path) >= 0) {
+        window.location.href = newBase + 'archive/' + path;
+      } else {
+        window.location.href = newBase + 'pdfs/' + path;
+      }
+    } else if (path.startsWith('codes/')) {
+      window.location.href = newBase + path;
+    } else {
+      window.location.href = newBase;
+    }
+  </script>
+</head>
+<body>
+  <p>このサイトは <a href="https://kosugitti.github.io/kosugi-stats/">kosugitti.github.io/kosugi-stats/</a> に移転しました。</p>
+</body>
+</html>
