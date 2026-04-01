@@ -99,7 +99,7 @@
 - [事前準備；Rstan の確認用コード](codes/Dkiso2/00_Appendix1_rstan.R)
 - [事前準備；cmdstanr の確認用コード](codes/Dkiso2/00_Appendix1_cmdstanr.R)
 - [第 01 回；プログラミングの基礎](codes/Dkiso2/01_BasicProgramming.R)
-- [第 02 回；プログラミングの基礎](codes/Dkiso2/02_randomVariables.R)
+- [第 02 回；プログラミングの基礎](codes/Dkiso2/02_RandomVariables.R)
 - [第 03 回；stan の基礎(rstan)](codes/Dkiso2/03_exampleRstan.R)
 - [第 03 回；stan の基礎(cmdstan)](codes/Dkiso2/03_exampleCmdstan.R)
 - [第 04 回；平均値の差の検定(rstan)](codes/Dkiso2/04_exampleRstan.R)
@@ -160,7 +160,7 @@ Rの基礎から始まり，シミュレーションの要素，多変量解析�
 ここだけでも，どこかの誰かの補助教材になればと思って公開しています。
 「ついでにこの辺も教えておいてよ！」ということがあればご連絡ください。暇があれば書き足します。
 
--[電子計算機えとせとら](common_contents.pdf)
+- [電子計算機えとせとら](common_contents.pdf)
 
 
 ## 旧版アーカイブ
