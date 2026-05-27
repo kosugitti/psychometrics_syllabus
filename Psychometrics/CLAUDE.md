@@ -71,5 +71,9 @@ Psychometrics/
 │   ├── b01_Introduction.tex
 │   ├── ...
 │   └── b30_final_exam.tex
+├── GoogleFormMaker/
+│   └── google-forms-mcp/             # matteoantoci/google-forms-mcp の外部 clone
 └── CLAUDE.md           # このファイル
 ```
+
+注: `GoogleFormMaker/google-forms-mcp/` は外部リポジトリの clone で，本リポジトリでは追跡しない（`.gitignore` 済，2026-05-27 整理）。マシンごとに個別に clone する運用。

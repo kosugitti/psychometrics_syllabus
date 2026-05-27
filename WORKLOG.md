@@ -102,3 +102,17 @@ ch29「ベイジアンモデリングの世界」がスケルトン（4 section 
    - 既知の TODO（別系統，今回の作業範囲外だが書かなければならないリストには載せておく）
 
 執筆ペース方針: まとまった時間が取れる夏休みを目処としつつ，普段のセッションでも空き時間に「ちょっと書く？」と水向けして 1 節ずつ進める。
+
+### コンパイルと git push
+
+- `compile1syllabus.sh` でシラバスをビルド → バージョン 3.0.17 にアップ，PDF を `syllabus_basic.pdf` に出力
+- commit `ab5b3f9e`: 27 files changed (4708/2248)。s25/s26 削除＋本セッションの全変更を含む
+- スクリプト末尾の `git add --all` で `Psychometrics/GoogleFormMaker/google-forms-mcp/`（matteoantoci/google-forms-mcp の外部 clone）が embedded git repo（mode 160000 commit pointer）として誤って index 入りした。`git clone` した側ではフォルダ空＝中身が取れない状態
+
+### embedded git repo の整理（追加対応）
+
+- 選択 A（.gitignore 追加 + index から外す）を採用
+- `.gitignore` に `Psychometrics/GoogleFormMaker/google-forms-mcp/` 追加
+- `git rm --cached Psychometrics/GoogleFormMaker/google-forms-mcp` で index から削除
+- commit `6ffb9d3c` で push 完了。今後 `git add --all` しても google-forms-mcp は記録されない
+- ローカルの実体（Newton 上のフォルダ）はそのまま残置。他マシンで MCP が必要になったらそのマシンで個別 clone する運用
