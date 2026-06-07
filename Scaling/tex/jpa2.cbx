@@ -1,4 +1,4 @@
-\ProvidesFile{jpa2.cbx}[2026/03/24 v0.1 JPA 2022 citation style]
+\ProvidesFile{jpa2.cbx}[2026/06/07 v0.2 JPA 2022 citation style]
 
 \RequireCitationStyle{authoryear-comp}
 
@@ -131,7 +131,10 @@
       {\bibcloseparen\global\boolfalse{cbx:parens}}%
       {}%
     \setunit{\textcitedelim}%
-    \printnames{labelname}%
+    %% 翻訳書は原著者名を原語表記（手びき2022 文章中引用）
+    \iffieldequalstr{relatedtype}{translationof}%
+      {\entrydata*{\thefield{related}}{\printnames{labelname}}}%
+      {\printnames{labelname}}%
     \setunit{%
       \global\booltrue{cbx:parens}%
       \printdelim{nameyeardelim}%
@@ -153,12 +156,15 @@
     \setunit{\compcitedelim}%
     \usebibmacro{cite:plabelyear+extradate}%
   }{%
-    \ifnameundef{shortauthor}%
-      {\printnames{labelname}}%
-      {\cbx@apa@ifnamesaved
-        {\printnames{shortauthor}}%
-        {\printnames[labelname]{author}%
-         \addspace\printnames[sabrackets]{shortauthor}}}%
+    %% 翻訳書は原著者名を原語表記（手びき2022 文章中引用）
+    \iffieldequalstr{relatedtype}{translationof}%
+      {\entrydata*{\thefield{related}}{\printnames{labelname}}}%
+      {\ifnameundef{shortauthor}%
+        {\printnames{labelname}}%
+        {\cbx@apa@ifnamesaved
+          {\printnames{shortauthor}}%
+          {\printnames[labelname]{author}%
+           \addspace\printnames[sabrackets]{shortauthor}}}}%
     \setunit{\printdelim{nameyeardelim}}%
     \usebibmacro{cite:plabelyear+extradate}%
     \savefield{namehash}{\cbx@lasthash}%
@@ -174,7 +180,19 @@
       {\printlabeldateextra}%
       {\printfield{pubstate}}%
   }{%
-    \printlabeldateextra%
+    \iffieldequalstr{relatedtype}{translationof}%
+      %% 翻訳書: 原著出版年␣訳者␣訳␣翻訳書出版年（手びき2022 文章中引用）
+      {\entrydata*{\thefield{related}}{\printdateextra}%
+       \ifnameundef{translator}{}{%
+         \addspace%
+         \printnames[labelname]{translator}%
+         \iffieldundef{translatortype}%
+           {\printtext{訳}}%
+           {\printfield{translatortype}}%
+       }%
+       \addspace%
+       \printlabeldateextra}%
+      {\printlabeldateextra}%
   }%
 }
 
