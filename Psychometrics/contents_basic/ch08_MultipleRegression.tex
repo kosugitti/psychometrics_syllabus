@@ -167,7 +167,7 @@ Rでチョチョイと計算できるのですが，詳しくは次回に回す�
 		\node[draw,fill=magenta!70,text=white,minimum width=2.6cm,minimum height=0.8cm] (x1) at (1.3,0) {勉強時間};
 		\node[draw,fill=magenta!70,text=white,minimum width=2.6cm,minimum height=0.8cm] (x2) at (5.2,0) {単語数};
 		\draw[->,thick] (x1.north) -- (1.3,2);
-		\draw[->,thick] (x2.north) to[out=90,in=-50] (3.9,2);
+		\draw[<->,thick] (x2.north) -- (3.9,2);
 		\node at (5.9,1.2) {\textbf{部分相関係数}};
 	\end{tikzpicture}
 	\caption{部分相関係数}
@@ -181,21 +181,21 @@ Rでチョチョイと計算できるのですが，詳しくは次回に回す�
 \begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}[font=\footnotesize]
-		\fill[blue!55] (0,2.4) rectangle (2,3.0);
-		\fill[green!55] (2,2.4) rectangle (4,3.0);
-		\draw (0,2.4) rectangle (4,3.0);
-		\draw[dotted,very thick] (2,2.4) -- (2,3.0);
-		\node at (2,3.25) {\textbf{テスト点}};
-		\node[draw,fill=magenta!70,text=white,minimum width=2.4cm,minimum height=0.8cm] (x1) at (1,0) {勉強時間};
-		\fill[magenta!55] (5,0.2) rectangle (6.5,0.8);
-		\fill[orange!75] (6.5,0.2) rectangle (8,0.8);
-		\draw (5,0.2) rectangle (8,0.8);
-		\draw[dotted,very thick] (6.5,0.2) -- (6.5,0.8);
-		\node at (6.5,1.05) {\textbf{単語数}};
-		\draw[->,thick] (x1.north) -- (1,2.4);
-		\draw[->,thick] (x1.east) -- (5,0.5);
-		\draw[<->,thick] (3,2.4) to[out=-55,in=125] (7.2,0.8);
-		\node[align=center] at (5.4,1.8) {\textbf{偏相関係数}};
+		\fill[blue!55] (1.75,2.4) rectangle (3.75,3.0);
+		\fill[green!55] (3.75,2.4) rectangle (5.75,3.0);
+		\draw (1.75,2.4) rectangle (5.75,3.0);
+		\draw[dotted,very thick] (3.75,2.4) -- (3.75,3.0);
+		\node at (3.75,3.25) {\textbf{テスト点}};
+		\node[draw,fill=magenta!70,text=white,minimum width=2.4cm,minimum height=0.8cm] (x1) at (1.5,0) {勉強時間};
+		\fill[magenta!55] (4.7,-0.4) rectangle (6.0,0.4);
+		\fill[orange!75] (6.0,-0.4) rectangle (7.3,0.4);
+		\draw (4.7,-0.4) rectangle (7.3,0.4);
+		\draw[dotted,very thick] (6.0,-0.4) -- (6.0,0.4);
+		\node at (6.0,-0.7) {\textbf{単語数}};
+		\draw[->,thick] (1.5,0.4) -- (2.4,2.4);
+		\draw[->,thick] (x1.east) -- (4.7,0);
+		\draw[<->,thick] (4.75,2.4) -- (6.6,0.4);
+		\node[align=center] at (4.9,0.85) {\textbf{偏相関係数}};
 	\end{tikzpicture}
 	\caption{偏相関係数}
 	\label{fig:08_06}
@@ -210,21 +210,21 @@ Rでチョチョイと計算できるのですが，詳しくは次回に回す�
 \begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}[font=\footnotesize]
-		\fill[blue!55] (0,2.4) rectangle (2,3.0);
-		\fill[green!55] (2,2.4) rectangle (4,3.0);
-		\draw (0,2.4) rectangle (4,3.0);
-		\draw[dotted,very thick] (2,2.4) -- (2,3.0);
-		\node at (2,3.25) {\textbf{テスト点}};
-		\node[draw,fill=magenta!70,text=white,minimum width=2.4cm,minimum height=0.8cm] (x1) at (1,0) {勉強時間};
-		\fill[magenta!55] (5,0.2) rectangle (6.5,0.8);
-		\fill[orange!75] (6.5,0.2) rectangle (8,0.8);
-		\draw (5,0.2) rectangle (8,0.8);
-		\draw[dotted,very thick] (6.5,0.2) -- (6.5,0.8);
-		\node at (6.5,1.05) {\textbf{単語数}};
-		\draw[->,thick] (x1.north) -- (1,2.4);
-		\draw[->,thick] (x1.east) -- (5,0.5);
-		\draw[->,thick] (7.2,0.8) to[out=125,in=-55] (3,2.4);
-		\node[align=center] at (5.4,1.8) {\textbf{回帰する}};
+		\fill[blue!55] (1.75,2.4) rectangle (3.75,3.0);
+		\fill[green!55] (3.75,2.4) rectangle (5.75,3.0);
+		\draw (1.75,2.4) rectangle (5.75,3.0);
+		\draw[dotted,very thick] (3.75,2.4) -- (3.75,3.0);
+		\node at (3.75,3.25) {\textbf{テスト点}};
+		\node[draw,fill=magenta!70,text=white,minimum width=2.4cm,minimum height=0.8cm] (x1) at (1.5,0) {勉強時間};
+		\fill[magenta!55] (4.7,-0.4) rectangle (6.0,0.4);
+		\fill[orange!75] (6.0,-0.4) rectangle (7.3,0.4);
+		\draw (4.7,-0.4) rectangle (7.3,0.4);
+		\draw[dotted,very thick] (6.0,-0.4) -- (6.0,0.4);
+		\node at (6.0,-0.7) {\textbf{単語数}};
+		\draw[->,thick] (1.5,0.4) -- (2.4,2.4);
+		\draw[->,thick] (x1.east) -- (4.7,0);
+		\draw[->,thick] (6.6,0.4) -- (4.75,2.4);
+		\node[align=center] at (4.9,0.85) {\textbf{回帰する}};
 	\end{tikzpicture}
 	\caption{偏回帰係数}
 	\label{fig:08_07}
