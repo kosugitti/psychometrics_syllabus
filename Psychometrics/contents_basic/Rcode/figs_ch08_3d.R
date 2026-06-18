@@ -26,11 +26,15 @@ s <- scatterplot3d(dat$x1, dat$x2, dat$y, pch = 16, angle = 50,
   cex.lab = 1.2, mar = c(3, 3, 1, 3))
 s$plane3d(fit, draw_polygon = TRUE, draw_lines = TRUE,
   polygon_args = list(col = rgb(0.6, 0.6, 0.6, 0.18), border = NA))
-co <- coef(fit); x2f <- 320; x1a <- 14; x1b <- 15
-ya <- co[1] + co[2]*x1a + co[3]*x2f
-yb <- co[1] + co[2]*x1b + co[3]*x2f
-P1 <- s$xyz.convert(x1a, x2f, ya); P2 <- s$xyz.convert(x1b, x2f, ya); P3 <- s$xyz.convert(x1b, x2f, yb)
-segments(P1$x, P1$y, P2$x, P2$y, col = "red", lwd = 3)
-segments(P2$x, P2$y, P3$x, P3$y, col = "red", lwd = 3)
-text(P3$x, P3$y, labels = "b1", col = "red", pos = 4, family = jp)
+# 単語数を一定にして勉強時間を大きめに動かし、テスト点の上昇を見せる
+co <- coef(fit); x2f <- 250; x1a <- 9; x1b <- 18
+ya <- co[1] + co[2]*x1a + co[3]*x2f      # 始点の高さ
+yb <- co[1] + co[2]*x1b + co[3]*x2f      # 移動後の高さ
+A <- s$xyz.convert(x1a, x2f, ya); B <- s$xyz.convert(x1b, x2f, ya); C <- s$xyz.convert(x1b, x2f, yb)
+segments(A$x, A$y, C$x, C$y, col = "gray30", lwd = 1.2, lty = "dashed")        # 平面上の傾き(斜辺)
+arrows(A$x, A$y, B$x, B$y, col = "red",  lwd = 3, length = 0.13)               # 勉強時間の移動(単語数は固定)
+arrows(B$x, B$y, C$x, C$y, col = "blue", lwd = 3, length = 0.13)               # テスト点の上昇
+text((A$x + B$x)/2, A$y, labels = "勉強時間を動かす\n(単語数は一定)", col = "red",  pos = 1, cex = 0.85, family = jp)
+text(C$x, (B$y + C$y)/2, labels = "テスト点の\n上昇", col = "blue", pos = 4, cex = 0.85, family = jp)
+text(C$x, C$y, labels = "傾き=b1", col = "gray20", pos = 3, cex = 0.85, family = jp)
 dev.off(); cat("saved partial_slope.png\n")
