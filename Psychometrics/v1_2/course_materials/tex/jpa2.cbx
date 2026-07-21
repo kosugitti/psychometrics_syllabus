@@ -1,6 +1,10 @@
-\ProvidesFile{jpa2.cbx}[2026/06/07 v0.2 JPA 2022 citation style]
+\ProvidesFile{jpa2.cbx}[2026/07/15 v0.3 JPA 2022 citation style]
 
 \RequireCitationStyle{authoryear-comp}
+
+%% 3名以上は第1著者＋他/et al.（発行年で曖昧回避。基底 authoryear-comp が
+%% uniquelist=true を設定するため cbx 側で明示的に無効化して上書きする）
+\ExecuteBibliographyOptions{uniquelist=false,uniquename=false}
 
 %% et al. の重複表示を防止
 \DefineBibliographyStrings{english}{andothers={}}

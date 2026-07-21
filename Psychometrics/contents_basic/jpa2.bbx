@@ -1,4 +1,4 @@
-\ProvidesFile{jpa2.bbx}[2026/03/24 v0.1 JPA 2022 bibliography style]
+\ProvidesFile{jpa2.bbx}[2026/07/15 v0.3 JPA 2022 bibliography style]
 
 %% =====================================================
 %% 基盤スタイルの継承と言語マッピング
@@ -24,6 +24,8 @@
   sorting     = nyt,%   %% 姓のアルファベット順
   urldate     = long,%
   dateabbrev  = false,%
+  uniquelist  = false,%  %% 3名以上は第1著者＋他/et al.（発行年で曖昧回避）
+  uniquename  = false,%
 }
 
 
@@ -746,6 +748,18 @@
 %%% -----------------------------------------------
 \DeclareBibliographyDriver{incollection}{%
   \usebibmacro{begentry}%
+  \iffieldundef{related}{%
+    \usebibmacro{jpa@incollection:normal}%
+  }{%
+    \iffieldequalstr{relatedtype}{translationof}%
+      {\usebibmacro{jpa@incollection:translationof}}%
+      {\usebibmacro{jpa@incollection:normal}}%
+  }%
+  \usebibmacro{finentry}%
+}
+
+%%% 通常の @incollection（数巻の特定1巻 / シリーズの1巻）%%%
+\newbibmacro*{jpa@incollection:normal}{%
   %% 著者・編集者
   \ifnameundef{author}{}{%
     \printnames{author}%
@@ -799,7 +813,52 @@
     {\jpa@fullspace}%
     {\adddot\addspace}%
   \printlist{publisher}%
-  \usebibmacro{finentry}%
+}
+
+%%% 翻訳書の一部（related方式: related=translationof）%%%
+%%% 原著の章を英語モードで展開し，訳書情報を括弧内に添える。   %%%
+\newbibmacro*{jpa@incollection:translationof}{%
+  \usebibmacro{related:init}%
+  \renewcommand*{\relatedpunct}{}%
+  %% 原著情報（英語モードで章として展開）
+  \begingroup%
+    \jpa@setEnglish%
+    \entrydata*{\thefield{related}}{%
+      \printnames{author}%
+      \addspace\mkbibparens{\printdateextra}%
+      \jpa@postyear%
+      \printfield{title}%
+      \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+      \newunit%
+      \usebibmacro{bookinfo}%
+      \iffieldundef{pages}{}{%
+        \setunit{\addspace}%
+        \printtext[parens]{pp.\space\printfield{pages}}%
+      }%
+      \newunit%
+      \printlist{publisher}%
+    }%
+  \endgroup%
+  \setunit{\addperiod\addspace}%
+  %% 訳書情報を括弧内に（日本語モードに戻す）
+  \jpa@setJapanese%
+  \printtext{\\(}%
+  \printnames{author}%
+  \addspace\newunit%
+  \usebibmacro{translator}%
+  \ifnameundef{translatora}{}{%
+    \usebibmacro{translatora}%
+  }%
+  \usebibmacro{date+extradate}%
+  \jpa@postyear%
+  \printfield{title}%
+  \iffieldundef{subtitle}{}{\printfield{subtitle}}%
+  \jpa@fullspace%
+  \printfield{booktitle}%
+  \iffieldundef{booksubtitle}{}{\printfield{booksubtitle}}%
+  \jpa@fullspace%
+  \printlist{publisher}%
+  \printtext{)}%
 }
 
 
