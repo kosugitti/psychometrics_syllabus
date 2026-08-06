@@ -4,11 +4,43 @@
 
 \begin{document}
 \VerbatimFootnotes
-\chapter{ベイズモデリングへの入り口: Stanとそのフロントエンド}
+
+\chapter{ベイズを実践する}
 \label{ch29_bayesianModeling}
 
-\section{確率的プログラミング言語とは}
+\section{ベイズを実践する方法}
+% 移設元: ch27_bayes_judgement.old  L14--14「ベイズを実践する方法」
+
+\subsection{ベイズ法が普及しなかった理由}
+% 移設元: ch27_bayes_judgement.old  L15--29「ベイズ法が普及しなかった理由」
+
+\subsection{MCMC法の登場}
+% 移設元: ch27_bayes_judgement.old  L30--73「MCMC法の登場」
+
+\subsection{確率的プログラミング言語}
+% 移設元: ch27_bayes_judgement.old  L74--86「確率的プログラミング言語」
+% 図 figures/27_bayes_judgement/HowToUseStan.png（fig:27_03）も一緒に移す
+
 \section{brmsによる実用的モデリング}
-\section{生成量と事後予測分布}
-\section{自分でStanコードを書くために}
+% ★新規執筆
+% ・lm()/glm()と同じ式記法でStanモデルが書けること
+% ・ch28のJASPでやった回帰と同じ分析をbrmsで再現する
+% ・family引数で分布を変えればGLMへ拡張できる＝メニューの制約から解放される
+
+\section{stan言語を使ったプログラミング}
+% ★新規執筆
+% ・brms::make_stancode()で自動生成コードを覗く
+% ・data / parameters / model ブロックの構造
+% ・ゼロから書くのではなく，出力を編集して自分のモデルにする
+% 実装上の注意: 配布コードのバックエンドはcmdstanrに固定する。
+%   コンパイル済みStanバイナリはマシン依存なのでリポジトリに含めない
+
+\section{生成量による新しい仮説の立て方}
+% 移設元: ch27_bayes_judgement.old  L227--248「生成量による新しい仮説の立て方」
+% 移設後に加筆: posterior_predict()での実演，優越率・被覆率を実際に計算させる
+% 3年次「ベイズ統計学」への接続とBayesRTMBの脚注もここに置く
+
+\section{課題}
+% ★新規（他章に合わせて課題節を設けるかは要判断）
+
 \end{document}

@@ -8,6 +8,11 @@ node_modules
 
 # PDF出力（PDFはkosugi-stats側で管理）
 *.pdf
+# ただし表紙PDFは出力ではなく素材なので追跡する
+# （\includepdf が参照するため，無いとビルドがエラーになる）
+!**/images/cover*.pdf
+!**/images/Cover*.pdf
+!Psychometrics/contents_basic/figures/cover*.pdf
 
 # LaTeX temporary files (but keep main output files)
 *.aux

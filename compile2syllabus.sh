@@ -1,13 +1,13 @@
 #!/usr/bin/bash
+set -euo pipefail
 #####################################################################syl 2
 ## changePath
 path="Psychometrics/v1_2/syllabus2/tex"
 filename="syllabus2a"
-cd $path
-
+cd "$path" || { echo "ディレクトリが見つかりません: $path" >&2; exit 1; }
 # 最新のbibファイルを取得
 echo "最新のbibファイルを取得しています..."
-cp ../../../../myBiber.bib ../../syllabus_bib.bib
+cp ../../../../../myBiber.bib ../../../../syllabus_bib.bib
 
 ## backup
 cp ${filename}.tex ${filename}.old
@@ -33,35 +33,33 @@ cat ${filename}.tex
 echo "かきかえます"
 cat ${filename}.tex | (rm ${filename}.tex; sed "s/$val/$newval/" > ${filename}.tex)
 echo "かきかえました"
-cat ${filname}.tex
+cat ${filename}.tex
 echo "コンパイルを始めます"
 cp ${filename}.tex tmp.tex
 
 echo "応用シラバス2Aの最新バージョンは"$newVer "です。" >| ../../Syllabus_versions2a.md
 
 ## LateX Main
-rm error.log
+rm -f error.log
 lualatex tmp
 biber tmp
 lualatex tmp
 lualatex tmp
-upmendex -r -c -g -s ../../indexStyle.ist tmp
+upmendex -r -c -g -s ../../../../indexStyle.ist tmp
 lualatex tmp
 ## Tex Warning Check
-grep 'undefined' tmp.log > error2a.log
-grep 'multiply' tmp.log >> error2a.log
-grep 'Citation' tmp.log >> error2a.log
-grep 'Overfull' tmp.log >> error2a.log
-
-
+grep 'undefined' tmp.log > error2a.log || true
+grep 'multiply' tmp.log >> error2a.log || true
+grep 'Citation' tmp.log >> error2a.log || true
+grep 'Overfull' tmp.log >> error2a.log || true
 ## cleanup
 mv tmp.pdf ../../${filename}.pdf
 mv tmp.log ../../${filename}.log
-rm tmp.*
+rm -f tmp.*
 
 ################################################ 2B
 filename="syllabus2b"
-cd $path
+cd "$path" || { echo "ディレクトリが見つかりません: $path" >&2; exit 1; }
 ## backup
 cp ${filename}.tex ${filename}.old
 ########### upgrade patch
@@ -86,46 +84,44 @@ cat ${filename}.tex
 echo "かきかえます"
 cat ${filename}.tex | (rm ${filename}.tex; sed "s/$val/$newval/" > ${filename}.tex)
 echo "かきかえました"
-cat ${filname}.tex
+cat ${filename}.tex
 echo "コンパイルを始めます"
 cp ${filename}.tex tmp.tex
 
 echo "応用シラバス2Bの最新バージョンは"$newVer "です。" >| ../../Syllabus_versions2b.md
 
 ## LateX Main
-rm error.log
+rm -f error.log
 lualatex tmp
 biber tmp
 lualatex tmp
 lualatex tmp
-upmendex -r -c -g -s ../../indexStyle.ist tmp
+upmendex -r -c -g -s ../../../../indexStyle.ist tmp
 lualatex tmp
 ## Tex Warning Check
-grep 'undefined' tmp.log > error2b.log
-grep 'multiply' tmp.log >> error2b.log
-grep 'Citation' tmp.log >> error2b.log
-grep 'Overfull' tmp.log >> error2b.log
-
-
+grep 'undefined' tmp.log > error2b.log || true
+grep 'multiply' tmp.log >> error2b.log || true
+grep 'Citation' tmp.log >> error2b.log || true
+grep 'Overfull' tmp.log >> error2b.log || true
 ## cleanup
 mv tmp.pdf ../../${filename}.pdf
 mv tmp.log ../../${filename}.log
-rm tmp.*
-rm *.aux
-rm *.dvi
-rm *.toc
-rm *.bbl
-rm *.blg
-rm *.out
-rm *.fls
-rm *.fdb_latexmk
-rm *.synctex.gz
-rm *.ltjruby
-rm *.ilg
-rm *.idx
-rm *.ind
-rm *.run.xml
-rm *.bcf
+rm -f tmp.*
+rm -f *.aux
+rm -f *.dvi
+rm -f *.toc
+rm -f *.bbl
+rm -f *.blg
+rm -f *.out
+rm -f *.fls
+rm -f *.fdb_latexmk
+rm -f *.synctex.gz
+rm -f *.ltjruby
+rm -f *.ilg
+rm -f *.idx
+rm -f *.ind
+rm -f *.run.xml
+rm -f *.bcf
 cd ..
 
 ########################## Show Message

@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+set -euo pipefail
 bash compile1text.sh
 bash compile1syllabus.sh
 bash compile2text.sh

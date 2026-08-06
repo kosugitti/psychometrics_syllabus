@@ -1,4 +1,5 @@
 #!/bin/bash
+set -uo pipefail
 #####################################################################
 # compile.sh - LaTeX統合コンパイルスクリプト
 #####################################################################
@@ -258,7 +259,7 @@ compile_sp() {
 
     # 最新のbibファイルを取得
     echo "最新のbibファイルを取得しています..."
-    cp ../../myBiber.bib ../../syllabus_bib.bib
+    cp ../../../myBiber.bib ../../syllabus_bib.bib
 
     # 掃除
     cleanup_tex

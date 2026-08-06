@@ -1,13 +1,13 @@
 #!/usr/bin/bash
+set -euo pipefail
 #####################################################################text1
 ## changePath
 path="Psychometrics/syllabus_basic"
 filename="syllabus_basic"
-cd $path
-
+cd "$path" || { echo "ディレクトリが見つかりません: $path" >&2; exit 1; }
 # 最新のbibファイルを取得
 echo "最新のbibファイルを取得しています..."
-cp ../../myBiber.bib ../../syllabus_bib.bib
+cp ../../../myBiber.bib ../../syllabus_bib.bib
 
 ## backup
 cp ${filename}.tex ${filename}.old
@@ -33,14 +33,14 @@ cat ${filename}.tex
 echo "かきかえます"
 cat ${filename}.tex | (rm ${filename}.tex; sed "s/$val/$newval/" > ${filename}.tex)
 echo "かきかえました"
-cat ${filname}.tex
+cat ${filename}.tex
 echo "コンパイルを始めます"
 cp ${filename}.tex tmp.tex
 
 echo "基礎シラバスの最新バージョンは"$newVer "です。" >| ../Syllabus_versions1.md
 
 ## LateX Main
-rm error.log
+rm -f error.log
 lualatex tmp
 biber tmp
 lualatex tmp
@@ -48,28 +48,27 @@ lualatex tmp
 upmendex -r -c -g -s ../../indexStyle.ist tmp
 lualatex tmp
 ## Tex Warning Check
-grep 'undefined' tmp.log > error.log
-grep 'multiply' tmp.log >> error.log
-grep 'Citation' tmp.log >> error.log
-grep 'Overfull' tmp.log >> error.log
-
+grep 'undefined' tmp.log > error.log || true
+grep 'multiply' tmp.log >> error.log || true
+grep 'Citation' tmp.log >> error.log || true
+grep 'Overfull' tmp.log >> error.log || true
 ## cleanup
 mv tmp.pdf ../../${filename}.pdf
 mv tmp.log ../../${filename}.log
-rm tmp.*
-rm *.aux
-rm *.dvi
-rm *.toc
-rm *.bbl
-rm *.blg
-rm *.out
-rm *.fls
-rm *.fdb_latexmk
-rm *.synctex.gz
-rm *.ltjruby
-rm *.ilg
-rm *.idx
-rm *.ind
+rm -f tmp.*
+rm -f *.aux
+rm -f *.dvi
+rm -f *.toc
+rm -f *.bbl
+rm -f *.blg
+rm -f *.out
+rm -f *.fls
+rm -f *.fdb_latexmk
+rm -f *.synctex.gz
+rm -f *.ltjruby
+rm -f *.ilg
+rm -f *.idx
+rm -f *.ind
 
 cd ..
 cd ..
