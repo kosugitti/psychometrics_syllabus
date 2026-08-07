@@ -168,9 +168,13 @@ setpagesize=false,
 % 索引
 % imakeidx を使い，通常の用語索引に加えて R・操作用語の索引(ridx)を別に持つ。
 % ridx を使わない文書では \printindex[ridx] を書かなければよい。
+% noautomatic: imakeidx が makeindex を自動実行するのを止める。
+% 自動実行されると upmendex が作った索引(五十音の見出し付き)を makeindex の
+% 出力で上書きしてしまい，日本語のソートが壊れる。索引の生成は
+% コンパイルスクリプト側の upmendex に任せる。
 \usepackage{imakeidx}
-\makeindex[title=索引]
-\makeindex[name=ridx, title=R・操作用語索引]
+\makeindex[title=索引, noautomatic]
+\makeindex[name=ridx, title=R・操作用語索引, noautomatic]
 
 % 索引スタイル
 \newcommand{\groupedheadprefix}[1]{%
