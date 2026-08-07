@@ -87,6 +87,12 @@ setpagesize=false,
 \newcommand\keyterm[3]{\textbf{#1(#3)}\index{#2@#1}}
 \newcommand\keytermL[2]{\textbf{#1}\index{#2@#1}}
 \newcommand\keytermE[1]{\textbf{#1}\index{#1}}
+% 索引に親子(subitem)で登録する版。#4=親の表示，#5=親の読み
+\newcommand\keytermsub[5]{\textbf{#1(#3)}\index{#5@#4!#2@#1}}
+\newcommand\keytermLsub[4]{\textbf{#1}\index{#4@#3!#2@#1}}
+% R・操作用語は別の索引(ridx)へ送る
+\newcommand\keytermR[3]{\textbf{#1(#3)}\index[ridx]{#2@#1}}
+\newcommand\keytermRL[2]{\textbf{#1}\index[ridx]{#2@#1}}
 
 % 枠囲いのパッケージ
 \usepackage{tcolorbox}
@@ -160,8 +166,11 @@ setpagesize=false,
 
 
 % 索引
-\usepackage{makeidx}
-\makeindex
+% imakeidx を使い，通常の用語索引に加えて R・操作用語の索引(ridx)を別に持つ。
+% ridx を使わない文書では \printindex[ridx] を書かなければよい。
+\usepackage{imakeidx}
+\makeindex[title=索引]
+\makeindex[name=ridx, title=R・操作用語索引]
 
 % 索引スタイル
 \newcommand{\groupedheadprefix}[1]{%

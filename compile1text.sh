@@ -52,6 +52,7 @@ lualatex -interaction=nonstopmode tmp || true
 biber tmp || true
 lualatex -interaction=nonstopmode tmp || true
 upmendex -r -c -g -s ../../indexStyle.ist tmp || true
+upmendex -r -c -g -s ../../indexStyle.ist ridx.idx -o ridx.ind > /dev/null 2>&1 || true
 lualatex -interaction=nonstopmode tmp || true
 ## Tex Warning Check
 grep 'undefined' tmp.log > error.log || true

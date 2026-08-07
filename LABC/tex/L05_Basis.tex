@@ -261,7 +261,7 @@ $\mathbb{R}^p$の任意の部分空間$\bm{W}$があったとき，$\mathbb{R}^p
 
 \[ \bm{y} = \bm{Ax} = x_1\bm{a}_1 + x_2\bm{a}_2 + \cdots + x_n\bm{a}_n \]
 ということですね。
-この写像されたベクトル$\bm{y}$が張る$p$次元空間全体を\keyterm{像}{ぞう}{Image}といって$Im \bm{A}$と表します。
+この写像されたベクトル$\bm{y}$が張る$p$次元空間全体を\keyterm{像}{ぞう}{image}といって$Im \bm{A}$と表します。
 \[ Im \bm{A} = \{ \bm{y} : \bm{y} =\bm{Ax} = x_1\bm{a}_1 + x_2\bm{a}_2 + \cdots + x_n\bm{a}_n,\bm{x}\in \mathbb{R}^n \} \subseteq \mathbb{R}^p \]
 この$Im \bm{A}$は行列$\bm{A}$の列ベクトルが張る空間であり，行列$\bm{A}$の階数を$k$とすると，$Im \bm{A}$の階数も$k$です。
 \[ dim(Im \bm{A}) = rank(\bm{A}) = k \]
@@ -272,7 +272,7 @@ $\bm{A}$の階数が$k$というのは，$k$個の列ベクトル$\bm{a}_1,\bm{a
 これは先ほどの例で考えればわかりやすいですね。
 $\bm{A}=\footnotesize\begin{pmatrix}1&2&5\\1&-1&-1\end{pmatrix}$は，$1\bm{a}_1+2\bm{a}_2 = \bm{a}_3$でしたから，$\bm{a}_1,\bm{a}_2$だけが$Im\bm{A}$の基底なのです。
 
-また，移した先がゼロベクトル$\bm{0}$になってしまうような元のベクトル集合のことを\keyterm{核}{かーねる}{Kernel}といいます。
+また，移した先がゼロベクトル$\bm{0}$になってしまうような元のベクトル集合のことを\keyterm{核}{かーねる}{kernel}といいます。
 \[ Ker \bm{A} = \{ \bm{x} \in \bm{V}\mid \bm{Ax}=\bm{0}\} \]
 例の行列$\bm{A}$のカーネルは，$1\bm{a}_1+2\bm{a}_2 = \bm{a}_3$という関係から，あるいは
 \[ \begin{pmatrix}1&2&5\\1&-1&-1\end{pmatrix}\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix} = \begin{pmatrix}0\\0\\0\end{pmatrix} \]

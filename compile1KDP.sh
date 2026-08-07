@@ -26,6 +26,7 @@ biber tmpK || true
 lualatex -interaction=nonstopmode tmpK || true
 lualatex -interaction=nonstopmode tmpK || true
 upmendex -r -c -g -s ../../../../indexStyle.ist tmpK || true
+upmendex -r -c -g -s ../../../../indexStyle.ist ridx.idx -o ridx.ind > /dev/null 2>&1 || true
 lualatex -interaction=nonstopmode tmpK || true
 ## Tex Warning Check
 grep 'undefined' tmpK.log > errorK.log || true

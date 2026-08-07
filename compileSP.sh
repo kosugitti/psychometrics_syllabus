@@ -19,7 +19,7 @@ echo "$(date): 社会心理学特殊講義のコンパイルを開始します..
 echo "最新のbibファイルを取得しています..."
 cp ../../../myBiber.bib ../../syllabus_bib.bib
 
-# 掃除
+# 掃除（.ind は索引の中間生成物なので開始時のみ削除する）
 echo "一時ファイルをクリーンアップしています..."
 rm -f *.aux
 rm -f *.bbl
@@ -47,7 +47,10 @@ echo "2回目: biber (参考文献処理)"
 biber "${filename}" || true
 echo "3回目: lualatex (参考文献とインデックス反映)"
 lualatex -interaction=nonstopmode "${filename}.tex" || true
-echo "4回目: lualatex (最終調整)"
+echo "4回目: upmendex (人名索引・専門用語索引)"
+upmendex -r -c -g -s ../../indexStyle.ist nameidx.idx -o nameidx.ind || true
+upmendex -r -c -g -s ../../indexStyle.ist termidx.idx -o termidx.ind || true
+echo "5回目: lualatex (最終調整)"
 lualatex -interaction=nonstopmode "${filename}.tex" || true
 # PDFを上の階層にコピー
 echo "PDFファイルを配置しています..."

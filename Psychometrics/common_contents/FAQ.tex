@@ -51,7 +51,7 @@ YMAL部分の書き方はよくわからない，という人も多いと思い�
 
 \subsection{FMC3；Rmdがknitできない}
 Rmdは文書作成に加えて，Rでの計算がセットになったファイル形式であり，文中の数字や分析結果は「書き写す」のではなく「その場で生成する」ものです。
-生成する，というのはRmdファイルを変換して，HTMLやDOCX，PDF形式のファイルにすることを指します\footnote{HTMLはHyper Text Markup Languageの略で，ブラウザで開くファイル形式です。DOCXはMicrosoft Wordのファイル形式です。PDFはPortable Document Formatの略で，データを紙に印刷した状態のようにサイズを固定して出力したファイル形式であり，OSがもつビューワーやAdobe Acrobat Readerなどで見ることができます。}。このファイル変換を\keyterm{ニット}{knit}{knit}といいます。編み物を編むようなイメージですね。このときに，タイトルをつけ，見出しのサイズを変え，Rの計算をして結果を埋め込む作業をするわけです(図\ref{Knit})。こうすることで，結果のコピペを避けること，再現性を担保することができるようになるわけです。
+生成する，というのはRmdファイルを変換して，HTMLやDOCX，PDF形式のファイルにすることを指します\footnote{HTMLはHyper Text Markup Languageの略で，ブラウザで開くファイル形式です。DOCXはMicrosoft Wordのファイル形式です。PDFはPortable Document Formatの略で，データを紙に印刷した状態のようにサイズを固定して出力したファイル形式であり，OSがもつビューワーやAdobe Acrobat Readerなどで見ることができます。}。このファイル変換を\keyterm{ニット}{にっと}{knit}といいます。編み物を編むようなイメージですね。このときに，タイトルをつけ，見出しのサイズを変え，Rの計算をして結果を埋め込む作業をするわけです(図\ref{Knit})。こうすることで，結果のコピペを避けること，再現性を担保することができるようになるわけです。
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/RmdKnit.png}

@@ -20,7 +20,7 @@
 
 を使って近似することで，項目の特徴を描写することが考えられたのでした。
 
-x軸が潜在能力$\theta$を表していると考えれば，縦軸は能力に応じた\keytermL{通過率}{つうかりつ}になると考えられます。この関数を左右に動かす位置パラメータ，$b_j$を加えたモデルが\keyterm{1パラメータ・ロジスティックモデル}{1ぱらめーたろじすてぃっくもでる}{One Parameter Logistic model}であり，次の式\ref{1PLmodel}で表現されるのでした。
+x軸が潜在能力$\theta$を表していると考えれば，縦軸は能力に応じた\keytermL{通過率}{つうかりつ}になると考えられます。この関数を左右に動かす位置パラメータ，$b_j$を加えたモデルが\keyterm{1パラメータ・ロジスティックモデル}{1ぱらめーたろじすてぃっくもでる}{one parameter logistic model}であり，次の式\ref{1PLmodel}で表現されるのでした。
 
 \begin{equation}
 	p_j(\theta) = \frac{1}{1+exp(-1.7(\theta-b_j))}
@@ -29,7 +29,7 @@ x軸が潜在能力$\theta$を表していると考えれば，縦軸は能力�
 
 ここで$p_j(\theta)$は項目$j$に対する$\theta$の通過率であり，$b_j$は\keyterm{困難度}{こんなんど}{difficulty}母数と言われるものです。
 
-さらに項目を特徴づけるために，傾きの大きさを表すパラメータ，$a_j$を加えたモデルが\keyterm{2パラメータ・ロジスティックモデル}{2ぱらめーたろじすてぃっくもでる}{Two Parameter Logistic model}です。モデル式は式\ref{2PLmodel}で表されます。
+さらに項目を特徴づけるために，傾きの大きさを表すパラメータ，$a_j$を加えたモデルが\keyterm{2パラメータ・ロジスティックモデル}{2ぱらめーたろじすてぃっくもでる}{two parameter logistic model}です。モデル式は式\ref{2PLmodel}で表されます。
 
 \begin{equation}
 	p_j(\theta) = \frac{1}{1+exp(-1.7a_j(\theta-b_j))}

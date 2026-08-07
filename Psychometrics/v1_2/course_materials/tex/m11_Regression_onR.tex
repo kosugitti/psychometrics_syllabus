@@ -7,7 +7,7 @@
 \chapter{Rをつかった回帰分析}
 \label{m11_MRonR}
 
-さてここまでは，回帰分析や\keyterm{重回帰分析}{じゅうかいきぶんせき}{Multiple Regression Analysis}の仕組みを言葉で説明してきましたが，自分で計算できなければ絵に描いた餅です。重回帰分析の回帰係数を求める方法についてはとくに説明してきませんでしたが，Rで計算する時は単回帰・重回帰の区別なく表現できるので，ここで一気に習得してしまいましょう。
+さてここまでは，回帰分析や\keyterm{重回帰分析}{じゅうかいきぶんせき}{multiple regression analysis}の仕組みを言葉で説明してきましたが，自分で計算できなければ絵に描いた餅です。重回帰分析の回帰係数を求める方法についてはとくに説明してきませんでしたが，Rで計算する時は単回帰・重回帰の区別なく表現できるので，ここで一気に習得してしまいましょう。
 
 \section{Rの環境再確認}
 第\ref{m03_introR},\ref{m04_usingR}章でRの使い方について解説してきました。思い出しながら進めていきましょう。
@@ -89,7 +89,7 @@ g
 \end{description}
 
 \section{線形回帰の実行}
-それではここから回帰分析を行います。回帰分析は線形関数を当てはめるので\keyterm{線形モデル}{せんけいもでる}{linerar model}と呼ばれますが，これの頭文字をとった\texttt{lm}関数が線形回帰モデルです。次の\texttt{code:\ref{code:11_04}}を実行してみましょう。
+それではここから回帰分析を行います。回帰分析は線形関数を当てはめるので\keyterm{線形モデル}{せんけいもでる}{linear model}と呼ばれますが，これの頭文字をとった\texttt{lm}関数が線形回帰モデルです。次の\texttt{code:\ref{code:11_04}}を実行してみましょう。
 \begin{lstlisting}[language=c++,label={code:11_04},caption={回帰分析の実行}]
     result <- lm(weight ~ height, data= batter)
     summary(result)
