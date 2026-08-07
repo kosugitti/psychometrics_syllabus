@@ -1,5 +1,80 @@
 # WORKLOG
 
+## 2026-08-07 ベイズ章群(ch25-27)の執筆・用語の全数点検・索引整備
+
+### ch25「3つめの推定法」/ ch26「分布で推定する」
+- 本文を執筆。ch25は「3つの推定方法の比較」をch26から受け取り，モンティ・ホール問題を章末補遺へ。
+- **ch25とch26で「事前分布と尤度の折衷」節が重複していた**。もともとch26の担当(ch26.oldにのみ存在)で，
+  ch25執筆時に紛れ込んだもの。ch26に残してch25から削除。`\label{fig:26_10}` と
+  `\keyterm{無情報事前分布}` の二重定義も同時に解消。シラバスもb26だけに戻した。
+- 課題を新設。ch25は文章題4問(同時確率・周辺確率・条件つき確率／有病率0.5%と10%での陽性的中率の対比)，
+  ch26は旧版のノリに合わせて2問。
+
+### 専門用語の英語表記を全数点検
+`\keyterm` 1,619箇所・616種を突き合わせ，**275種を修正**。
+- 用語自体の誤り: 四分位 quantile -> **quartile**（同じch05の別行では Inter-Quartile Range と正しい），
+  確率分布 random distribution -> probability distribution，正規化定数 normalized -> normalizing，
+  確率的プログラミング言語 stochastic -> probabilistic，弁別的妥当性 -> discriminant validity
+- ラテン語句: Maximum A Posterior -> maximum a posteriori 等（表記規約のEAP/MAPに準拠）
+- 綴り: Principle -> **Principal** Component Analysis，Marcov->Markov，Greaded->Graded，
+  Infromation->Information，Varidity->Validity，Singular balue->value ほか30種以上
+- 大文字小文字を小文字に統一。固有名詞・略号・統計記号(F-test/R-squared/Q-Q)は保持
+- confidence interval の綴り(confidential/confidencial)6箇所
+- **架空の引用キー `aoki2021` を発見・削除**。bibに一度も存在せず，2025-11-12から9か月弱
+  未定義のまま通っていた。全リポジトリを洗ったが架空文献はこれ1件のみ。
+  ほかに実在するのにキー名が違うものが3件(Wasserstein2016 / Lambert201805 / Jerry2019)。
+
+### 索引
+- 読みが英語で節を間違えていた2件を修正(ニット knit->にっと，メタ分析 meta->めた)
+- 8組を親子(subitem)化。`\keytermsub` / `\keytermLsub` をmyStyleに追加
+- **R・操作用語索引(ridx)を新設**。`\keytermR` / `\keytermRL` で17語を分離
+- SocialPsychologyは索引が空だと誤認したが，**実際は `\index[nameidx]` で555箇所・
+  `\index[termidx]` で886箇所が整備済み**だった(`\index{` で検索したため見落とした)。
+  真の原因は **compileSP.sh に upmendex が無い**ことで，PDFに反映されていなかった。2行追加して解決。
+
+### ch27
+先生が本文を執筆。校正で16箇所を修正。**コイン投げが24回と書かれていたが，脚注の
+`chisq.test(c(7,14))`・X2=2.33・p=0.1266 は21回のときの値**で，24回だと p=0.0412 で
+有意になり本文の主張が崩れる。21回に統一した。b27も細目名・BF記法($BF_{12}$)・
+解釈基準の記述を本文に合わせた。
+
+### compile系スクリプト
+- **`--push` を付けたときだけ commit/push する形に変更**(10本)。既定はコンパイルのみ
+- 前回入れた `set -e` がスクリプトを壊していた。myStyle.sty の
+  `\newtcbtheorem[number within=chapter]{Rscreen}` が chapter カウンタを持たない
+  ltjsarticle(シラバス)でエラーを出し，lualatexが終了コード1を返すため最初のパスで中断していた。
+  `\@ifundefined{c@chapter}` で分岐させて根治。あわせて全スクリプトの lualatex に
+  `-interaction=nonstopmode` を付与(従来は対話プロンプトで停止していた)
+- 表紙PDF `Scaling/images/cover3.pdf` と `SocialPsychology/images/coverSP.pdf` を作成。
+  参照されていたが存在せず pdfpages エラーが各9件出ていた。`.gitignore` の `*.pdf` に
+  食われて一度も追跡されていなかったので，表紙だけ例外を追加
+
+### 未了・次回への引き継ぎ
+- **BasicBook3.pdf の再生成が残っている**。ソースの修正は全て済み・push済みだが，
+  Dropbox配下でlualatexが `Input/output error` で落ちるためPDFを作れていない(下記)
+- **前回kosugi-statsへ配布したBasicBook3.pdfは索引が壊れている**。imakeidx が makeindex を
+  自動実行して upmendex の結果を上書きし，五十音の見出しが消えて文字コード順になっていた。
+  `noautomatic` で修正済みだが，PDFの差し替えが必要
+- ch28(JASP更新)・ch29(brms/Stanの2節が新規執筆)が残り。ch29が最優先ブロッカー
+
+### Dropbox配下でlualatexが落ちる問題（重要）
+リポジトリの実体は `~/Library/CloudStorage/Dropbox/` でDropboxのファイルプロバイダ配下。
+BasicBook3のビルドが `lualatex: Input/output error` で不定の位置(173/192/224ページ等)で落ちる。
+- ディスクを19GB->157GBに空けても解消せず(容量は原因ではない)
+- **同じソースをDropbox外(/private/tmp)にコピーすると395ページ・エラーゼロで通る**
+- 図版PNGを数百読む処理でファイルの実体化が間に合わないためと思われる。40MBのPDFを
+  繰り返し書いて同期を走らせ続けたのが引き金
+- 対処案: 再起動でファイルプロバイダを再初期化して様子を見る。駄目なら
+  コンパイルスクリプトを「Dropbox外にコピーしてビルドしPDFだけ書き戻す」形に変える
+
+### ディスクの棚卸し（副産物）
+「システムデータ483GB」の正体を特定。シミュレーション出力は3GB弱で無実だった。
+- `~/Library/Caches/Homebrew/downloads` 50GB -> `brew cleanup --prune=all` で90MBに
+- `~/Library/Caches/Wolfram/WolframScript/WolframScriptTemporary` 54GB(7/26の一時ファイル) -> 削除
+- ゴミ箱32GB -> 空にした
+- `/System/Volumes/VM` のスワップ70個70GB(7/22-26付) -> 再起動で回収予定
+空き 19.3GB -> 157GB
+
 ## 2026-07-08 現行KDP版(m系)とV3(BasicBook3/ch系)の差分棚卸し + KDP出し直し方針
 
 ### 背景
