@@ -12,12 +12,12 @@ cp ${filename}.tex ${filename}.old
 cp ${filename}.tex tmp.tex
 ## LateX Main
 rm -f error.log
-lualatex tmp
-biber tmp
-lualatex tmp
-lualatex tmp
-upmendex -r -c -g -s ../../../indexStyle.ist tmp
-lualatex tmp
+lualatex -interaction=nonstopmode tmp || true
+biber tmp || true
+lualatex -interaction=nonstopmode tmp || true
+lualatex -interaction=nonstopmode tmp || true
+upmendex -r -c -g -s ../../../indexStyle.ist tmp || true
+lualatex -interaction=nonstopmode tmp || true
 ## Tex Warning Check
 grep 'undefined' tmp.log > error.log || true
 grep 'multiply' tmp.log >> error.log || true

@@ -1,5 +1,12 @@
 #!/usr/bin/bash
 set -euo pipefail
+## --push を付けたときだけ git commit / push する（既定はコンパイルのみ）
+DO_PUSH=0
+if [ $# -gt 0 ]; then
+  for arg in "$@"; do
+    if [ "$arg" = "--push" ]; then DO_PUSH=1; fi
+  done
+fi
 #####################################################################text1
 ## changePath
 path="LABC/tex"
@@ -59,12 +66,12 @@ echo "線形代数テキストの最新バージョンは"$newVer "です。" >|
 
 ## LateX Main
 rm -f error.log
-lualatex tmp
-biber tmp
-lualatex tmp
-lualatex tmp
-upmendex -r -c -g -s ../../indexStyle.ist tmp
-lualatex tmp
+lualatex -interaction=nonstopmode tmp || true
+biber tmp || true
+lualatex -interaction=nonstopmode tmp || true
+lualatex -interaction=nonstopmode tmp || true
+upmendex -r -c -g -s ../../indexStyle.ist tmp || true
+lualatex -interaction=nonstopmode tmp || true
 ## Tex Warning Check
 grep 'undefined' tmp.log > error.log || true
 grep 'multiply' tmp.log >> error.log || true
@@ -97,7 +104,11 @@ echo '線形代数のテキストを改定しました。'
 cat LA_versions1.md
 cat LABC/tex/error.log
 
-today=$(LANG="ja_JP.UTF-8" date)
-git add --all
-git commit -m "$today"
-git push
+if [ "$DO_PUSH" -eq 1 ]; then
+  today=$(LANG="ja_JP.UTF-8" date)
+  git add --all
+  git commit -m "$today"
+  git push
+else
+  echo "コンパイルのみ実行しました。コミット・プッシュするには --push を付けてください。"
+fi

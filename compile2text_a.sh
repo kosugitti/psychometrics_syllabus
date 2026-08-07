@@ -1,5 +1,12 @@
 #!/usr/bin/bash
 set -euo pipefail
+## --push を付けたときだけ git commit / push する（既定はコンパイルのみ）
+DO_PUSH=0
+if [ $# -gt 0 ]; then
+  for arg in "$@"; do
+    if [ "$arg" = "--push" ]; then DO_PUSH=1; fi
+  done
+fi
 #####################################################################
 
 ## 2024/1/23よりBiBLateXに乗り換える
@@ -45,12 +52,12 @@ echo "応用テキスト(前期)の最新バージョンは"$newVer "です。" 
 
 ## LateX Main
 rm -f error1.log
-lualatex tmp
-biber tmp
-lualatex tmp
-lualatex tmp
-upmendex -r -c -g -s ../../../../indexStyle.ist tmp
-lualatex tmp
+lualatex -interaction=nonstopmode tmp || true
+biber tmp || true
+lualatex -interaction=nonstopmode tmp || true
+lualatex -interaction=nonstopmode tmp || true
+upmendex -r -c -g -s ../../../../indexStyle.ist tmp || true
+lualatex -interaction=nonstopmode tmp || true
 ## Tex Warning Check
 grep 'undefined' tmp.log > error1.log || true
 grep 'multiply' tmp.log >> error1.log || true
@@ -83,7 +90,11 @@ echo 'データ解析応用のテキスト(前期)を改定しました。'
 cat Book_versions2a.md
 cat course_materials2/tex/error1.log
 
-today=$(LANG="ja_JP.UTF-8" date)
-git add --all
-git commit -m "$today"
-git push
+if [ "$DO_PUSH" -eq 1 ]; then
+  today=$(LANG="ja_JP.UTF-8" date)
+  git add --all
+  git commit -m "$today"
+  git push
+else
+  echo "コンパイルのみ実行しました。コミット・プッシュするには --push を付けてください。"
+fi

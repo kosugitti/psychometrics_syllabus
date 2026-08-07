@@ -187,14 +187,12 @@ compile_book() {
     lualatex -interaction=nonstopmode "${filename}.tex" > /dev/null 2>&1
 
     echo -e "${YELLOW}[2/5] biber...${NC}"
-    biber "${filename}" > /dev/null 2>&1
-
+    biber "${filename}" > /dev/null 2>&1 || true
     echo -e "${YELLOW}[3/5] lualatex (2回目)...${NC}"
     lualatex -interaction=nonstopmode "${filename}.tex" > /dev/null 2>&1
 
     echo -e "${YELLOW}[4/5] upmendex...${NC}"
-    upmendex -r -c -g -s "${ROOT_DIR}/indexStyle.ist" "${filename}" > /dev/null 2>&1
-
+    upmendex -r -c -g -s "${ROOT_DIR}/indexStyle.ist" "${filename}" > /dev/null 2>&1 || true
     echo -e "${YELLOW}[5/5] lualatex (最終)...${NC}"
     lualatex -interaction=nonstopmode "${filename}.tex" > /dev/null 2>&1
 
@@ -288,12 +286,10 @@ compile_sp() {
     lualatex -interaction=nonstopmode "${filename}.tex" > /dev/null 2>&1
 
     echo -e "${YELLOW}[2/4] biber...${NC}"
-    biber "${filename}" > /dev/null 2>&1
-
+    biber "${filename}" > /dev/null 2>&1 || true
     echo -e "${YELLOW}[3/4] upmendex (2種類)...${NC}"
-    upmendex -r -c -g -s "${ROOT_DIR}/indexStyle.ist" nameidx.idx -o nameidx.ind > /dev/null 2>&1
-    upmendex -r -c -g -s "${ROOT_DIR}/indexStyle.ist" termidx.idx -o termidx.ind > /dev/null 2>&1
-
+    upmendex -r -c -g -s "${ROOT_DIR}/indexStyle.ist" nameidx.idx -o nameidx.ind > /dev/null 2>&1 || true
+    upmendex -r -c -g -s "${ROOT_DIR}/indexStyle.ist" termidx.idx -o termidx.ind > /dev/null 2>&1 || true
     echo -e "${YELLOW}[4/4] lualatex (最終2回)...${NC}"
     lualatex -interaction=nonstopmode "${filename}.tex" > /dev/null 2>&1
     lualatex -interaction=nonstopmode "${filename}.tex" > /dev/null 2>&1

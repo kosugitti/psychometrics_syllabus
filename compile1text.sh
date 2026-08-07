@@ -1,5 +1,12 @@
 #!/usr/bin/bash
 set -euo pipefail
+## --push を付けたときだけ git commit / push する（既定はコンパイルのみ）
+DO_PUSH=0
+if [ $# -gt 0 ]; then
+  for arg in "$@"; do
+    if [ "$arg" = "--push" ]; then DO_PUSH=1; fi
+  done
+fi
 #####################################################################text1
 ## changePath
 path="Psychometrics/contents_basic/"
@@ -41,11 +48,11 @@ echo "基礎テキストの最新バージョンは"$newVer "です。" >| ../..
 
 ## LateX Main
 rm -f error.log
-lualatex tmp
-biber tmp
-lualatex tmp
-upmendex -r -c -g -s ../../indexStyle.ist tmp
-lualatex tmp
+lualatex -interaction=nonstopmode tmp || true
+biber tmp || true
+lualatex -interaction=nonstopmode tmp || true
+upmendex -r -c -g -s ../../indexStyle.ist tmp || true
+lualatex -interaction=nonstopmode tmp || true
 ## Tex Warning Check
 grep 'undefined' tmp.log > error.log || true
 grep 'multiply' tmp.log >> error.log || true
@@ -75,26 +82,30 @@ cd ..
 echo $(date)
 echo 'データ解析基礎のテキストを改定しました。'
 cat Book_versions1.md
-echo 'Gitにコミットします。'
+if [ "$DO_PUSH" -eq 1 ]; then
+  echo 'Gitにコミットします。'
 
-# Remove git lock file if it exists
-if [ -f .git/index.lock ]; then
-  echo 'Removing stale git lock file...'
-  rm -f .git/index.lock
+  # Remove git lock file if it exists
+  if [ -f .git/index.lock ]; then
+    echo 'Removing stale git lock file...'
+    rm -f .git/index.lock
+  fi
+
+  # Wait a moment for any background git processes to complete
+  sleep 1
+
+  today=$(LANG="ja_JP.UTF-8" date)
+  git add --all
+
+  # Wait for git add to complete
+  sleep 1
+
+  git commit -m "$today"
+
+  # Wait for post-commit hooks to complete
+  sleep 2
+
+  git push
+else
+  echo "コンパイルのみ実行しました。コミット・プッシュするには --push を付けてください。"
 fi
-
-# Wait a moment for any background git processes to complete
-sleep 1
-
-today=$(LANG="ja_JP.UTF-8" date)
-git add --all
-
-# Wait for git add to complete
-sleep 1
-
-git commit -m "$today"
-
-# Wait for post-commit hooks to complete
-sleep 2
-
-git push

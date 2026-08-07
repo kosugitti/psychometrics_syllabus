@@ -1,5 +1,13 @@
 #!/bin/bash
 set -euo pipefail
+
+## --push を付けたときだけ git commit / push する（既定はコンパイルのみ）
+DO_PUSH=0
+if [ $# -gt 0 ]; then
+  for arg in "$@"; do
+    if [ "$arg" = "--push" ]; then DO_PUSH=1; fi
+  done
+fi
 #####################################################################
 ## SocialPsychology コンパイルスクリプト
 ## changePath
@@ -34,17 +42,13 @@ echo "メインファイルをコンパイルします: ${filename}.tex"
 cp "${filename}.tex" "${filename}.old"
 
 echo "1回目: lualatex"
-lualatex "${filename}.tex"
-
+lualatex -interaction=nonstopmode "${filename}.tex" || true
 echo "2回目: biber (参考文献処理)"
-biber "${filename}"
-
+biber "${filename}" || true
 echo "3回目: lualatex (参考文献とインデックス反映)"
-lualatex "${filename}.tex"
-
+lualatex -interaction=nonstopmode "${filename}.tex" || true
 echo "4回目: lualatex (最終調整)"
-lualatex "${filename}.tex"
-
+lualatex -interaction=nonstopmode "${filename}.tex" || true
 # PDFを上の階層にコピー
 echo "PDFファイルを配置しています..."
 cp SocialPsychology_SP.pdf ../../SocialPsychology_SP.pdf
@@ -71,17 +75,15 @@ echo "$(date): コンパイル完了"
 echo "社会心理学特殊講義のテキストをコンパイルしました。"
 echo "出力ファイル: SocialPsychology_SP.pdf"
 
-# Git操作（オプション）
-read -p "Gitにコミット・プッシュしますか？ (y/N): " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
+# Git操作（--push を付けたときのみ）
+if [ "$DO_PUSH" -eq 1 ]; then
     today=$(LANG="ja_JP.UTF-8" date)
     git add --all
     git commit -m "SocialPsychology コンパイル完了: $today"
     git push
     echo "Gitにプッシュしました。"
 else
-    echo "Gitへのプッシュをスキップしました。"
+    echo "コンパイルのみ実行しました。コミット・プッシュするには --push を付けてください。"
 fi
 
 echo "スクリプト実行完了。"
