@@ -1,0 +1,172 @@
+
+===== 1. データの規模 =====
+2020年度 全体: 664 行
+野手のみ    : 329 行
+
+===== 2. lm()による最尤推定(ch24の再掲) =====
+
+Call:
+lm(formula = weight ~ height, data = batter)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-20.9217  -4.9213  -0.4214   4.0783  28.9118 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -124.91755   13.89317  -8.991   <2e-16 ***
+height         1.16670    0.07746  15.063   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 7.435 on 327 degrees of freedom
+Multiple R-squared:  0.4096,	Adjusted R-squared:  0.4078 
+F-statistic: 226.9 on 1 and 327 DF,  p-value: < 2.2e-16
+
+
+===== 3. brmsによるベイズ回帰 =====
+ Family: gaussian 
+  Links: mu = identity 
+Formula: weight ~ height 
+   Data: batter (Number of observations: 329) 
+  Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+         total post-warmup draws = 4000
+
+Regression Coefficients:
+          Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+Intercept  -124.90     13.93  -152.55   -97.45 1.00     3803     2420
+height        1.17      0.08     1.01     1.32 1.00     3807     2603
+
+Further Distributional Parameters:
+      Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+sigma     7.46      0.28     6.92     8.05 1.00     3229     2706
+
+Draws were sampled using sample(hmc). For each parameter, Bulk_ESS
+and Tail_ESS are effective sample size measures, and Rhat is the potential
+scale reduction factor on split chains (at convergence, Rhat = 1).
+
+----- 事後分布の要約(bayestestR) -----
+Summary of Posterior Distribution
+
+Parameter   |  Median |            95% CI |   pd |          ROPE | % in ROPE
+----------------------------------------------------------------------------
+(Intercept) | -124.72 | [-152.55, -97.45] | 100% | [-0.97, 0.97] |        0%
+height      |    1.17 | [   1.01,   1.32] | 100% | [-0.97, 0.97] |        0%
+
+Parameter   |  Rhat | ESS (tail)
+--------------------------------
+(Intercept) | 1.000 |       2420
+height      | 1.000 |       2603
+
+===== 4. make_stancode()の出力 =====
+// generated with brms 2.23.0
+functions {
+}
+data {
+  int<lower=1> N;  // total number of observations
+  vector[N] Y;  // response variable
+  int<lower=1> K;  // number of population-level effects
+  matrix[N, K] X;  // population-level design matrix
+  int<lower=1> Kc;  // number of population-level effects after centering
+  int prior_only;  // should the likelihood be ignored?
+}
+transformed data {
+  matrix[N, Kc] Xc;  // centered version of X without an intercept
+  vector[Kc] means_X;  // column means of X before centering
+  for (i in 2:K) {
+    means_X[i - 1] = mean(X[, i]);
+    Xc[, i - 1] = X[, i] - means_X[i - 1];
+  }
+}
+parameters {
+  vector[Kc] b;  // regression coefficients
+  real Intercept;  // temporary intercept for centered predictors
+  real<lower=0> sigma;  // dispersion parameter
+}
+transformed parameters {
+  // prior contributions to the log posterior
+  real lprior = 0;
+  lprior += student_t_lpdf(Intercept | 3, 83, 8.9);
+  lprior += student_t_lpdf(sigma | 3, 0, 8.9)
+    - 1 * student_t_lccdf(0 | 3, 0, 8.9);
+}
+model {
+  // likelihood including constants
+  if (!prior_only) {
+    target += normal_id_glm_lpdf(Y | Xc, Intercept, b, sigma);
+  }
+  // priors including constants
+  target += lprior;
+}
+generated quantities {
+  // actual population-level intercept
+  real b_Intercept = Intercept - dot_product(means_X, b);
+}
+
+===== 5. make_standata()の中身 =====
+List of 6
+ $ N         : int 329
+ $ Y         : num [1:329(1d)] 72 98 91 85 84 96 74 99 90 84 ...
+ $ K         : int 2
+ $ Kc        : num 1
+ $ X         : num [1:329, 1:2] 1 1 1 1 1 1 1 1 1 1 ...
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : chr [1:329] "1" "2" "3" "4" ...
+  .. ..$ : chr [1:2] "Intercept" "height"
+  ..- attr(*, "assign")= int [1:2] 0 1
+ $ prior_only: int 0
+ - attr(*, "class")= chr [1:2] "standata" "list"
+NULL
+
+===== 6. ポアソン回帰(family=poisson) =====
+ Family: poisson 
+  Links: mu = log 
+Formula: HR ~ height + offset(log(AtBats)) 
+   Data: batter.hr (Number of observations: 326) 
+  Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+         total post-warmup draws = 4000
+
+Regression Coefficients:
+          Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+Intercept   -12.81      0.83   -14.44   -11.12 1.00     2658     2491
+height        0.05      0.00     0.04     0.06 1.00     2712     2508
+
+Draws were sampled using sample(hmc). For each parameter, Bulk_ESS
+and Tail_ESS are effective sample size measures, and Rhat is the potential
+scale reduction factor on split chains (at convergence, Rhat = 1).
+
+===== 7. 2群の比較(投手 vs 野手) =====
+# A tibble: 2 × 4
+  gun       n  mean    sd
+  <chr> <int> <dbl> <dbl>
+1 投手    335  86    8.76
+2 野手    329  84.3  9.66
+ Family: gaussian 
+  Links: mu = identity 
+Formula: weight ~ 0 + gun 
+   Data: dat2 (Number of observations: 664) 
+  Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+         total post-warmup draws = 4000
+
+Regression Coefficients:
+        Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+gun投手    86.00      0.50    85.00    86.96 1.00     3776     3017
+gun野手    84.26      0.50    83.28    85.25 1.00     3592     2740
+
+Further Distributional Parameters:
+      Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+sigma     9.23      0.25     8.75     9.70 1.00     4046     2766
+
+Draws were sampled using sample(hmc). For each parameter, Bulk_ESS
+and Tail_ESS are effective sample size measures, and Rhat is the potential
+scale reduction factor on split chains (at convergence, Rhat = 1).
+
+----- 生成量: 差delta，優越率，被覆率 -----
+差deltaのEAP: 1.739 
+差deltaの95%HDI: 0.368 3.072 
+P(delta > 0): 0.9938 
+優越率 P(投手 > 野手): 0.5545 
+被覆率(重なりの面積): 0.9233 
+
+===== 8. 図の出力 =====
+完了

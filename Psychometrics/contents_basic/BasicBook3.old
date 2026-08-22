@@ -1,7 +1,7 @@
 \documentclass[dvipsnames]{ltjsbook}
 \usepackage{../../myStyle}
 %% バッチ処理をするので\lheadは必ず4行目にあること
-\lhead{version 3.29.3}
+\lhead{version 3.29.4}
 \usepackage{docmute}
 \begin{document}
 \includepdf[noautoscale=false,pages=-]{figures/cover1v3.pdf}
@@ -68,6 +68,9 @@
 \printbibliography[title=引用文献]
 % 索引
 \addcontentsline{toc}{chapter}{索引}
-
 \printindex
+
+% R・操作用語の索引（\keytermR / \keytermRL で登録したもの）
+\addcontentsline{toc}{chapter}{R・操作用語索引}
+\printindex[ridx]
 \end{document}
