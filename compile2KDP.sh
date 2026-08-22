@@ -12,9 +12,6 @@ fi
 path="Psychometrics/v1_2/course_materials2/tex"
 filename="Dkiso2_book_kdp"
 cd "$path" || { echo "ディレクトリが見つかりません: $path" >&2; exit 1; }
-# 最新のbibファイルを取得
-echo "最新のbibファイルを取得しています..."
-cp ../../../../../myBiber.bib ../../../../syllabus_bib.bib
 
 ## backup
 cp ${filename}.tex ${filename}.old
@@ -37,19 +34,13 @@ grep 'Overfull' tmpK.log >> errorK.log || true
 mv tmpK.pdf ../../${filename}.pdf
 mv tmpK.log ../../${filename}.log
 rm -f tmpK.*
-rm -f *.aux
-rm -f *.dvi
-rm -f *.toc
-rm -f *.bbl
-rm -f *.blg
-rm -f *.out
-rm -f *.fls
-rm -f *.fdb_latexmk
-rm -f *.synctex.gz
-rm -f *.ltjruby
-rm -f *.ilg
-rm -f *.idx
-rm -f *.ind
+## 中間ファイルの掃除（gitに入れない・作業ツリーに残さない）
+rm -f *.aux *.dvi *.toc *.lot *.lof
+rm -f *.bbl *.blg *.bcf *.run.xml
+rm -f *.out *.fls *.fdb_latexmk *.synctex.gz
+rm -f *.ltjruby *.ilg *.idx *.ind
+## 章別コンパイルの副産物（本体のログは上で mv 済み）
+rm -f ch*.log ch*.pdf m*.log b*.log
 
 cd ..
 cd ..

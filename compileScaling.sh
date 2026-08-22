@@ -5,9 +5,6 @@ set -euo pipefail
 path="Scaling/tex"
 filename="Scaling"
 cd "$path" || { echo "ディレクトリが見つかりません: $path" >&2; exit 1; }
-# 最新のbibファイルを取得
-echo "最新のbibファイルを取得しています..."
-cp ../../../myBiber.bib ../../syllabus_bib.bib
 
 ## backup
 cp ${filename}.tex ${filename}.old
@@ -26,19 +23,13 @@ fi
 ## cleanup
 rm -f *.pdf
 rm -f *.log
-rm -f *.aux
-rm -f *.dvi
-rm -f *.toc
-rm -f *.bbl
-rm -f *.blg
-rm -f *.out
-rm -f *.fls
-rm -f *.fdb_latexmk
-rm -f *.synctex.gz
-rm -f *.ltjruby
-rm -f *.ilg
-rm -f *.idx
-rm -f *.ind
+## 中間ファイルの掃除（gitに入れない・作業ツリーに残さない）
+rm -f *.aux *.dvi *.toc *.lot *.lof
+rm -f *.bbl *.blg *.bcf *.run.xml
+rm -f *.out *.fls *.fdb_latexmk *.synctex.gz
+rm -f *.ltjruby *.ilg *.idx *.ind
+## 章別コンパイルの副産物（本体のログは上で mv 済み）
+rm -f ch*.log ch*.pdf m*.log b*.log
 
 
 plusOne=`expr "$patch" "+" "1"`
@@ -75,19 +66,13 @@ grep 'Overfull' tmp.log >> error.log || true
 mv tmp.pdf ../../${filename}.pdf
 mv tmp.log ../../${filename}.log
 rm -f tmp.*
-rm -f *.aux
-rm -f *.dvi
-rm -f *.toc
-rm -f *.bbl
-rm -f *.blg
-rm -f *.out
-rm -f *.fls
-rm -f *.fdb_latexmk
-rm -f *.synctex.gz
-rm -f *.ltjruby
-rm -f *.ilg
-rm -f *.idx
-rm -f *.ind
+## 中間ファイルの掃除（gitに入れない・作業ツリーに残さない）
+rm -f *.aux *.dvi *.toc *.lot *.lof
+rm -f *.bbl *.blg *.bcf *.run.xml
+rm -f *.out *.fls *.fdb_latexmk *.synctex.gz
+rm -f *.ltjruby *.ilg *.idx *.ind
+## 章別コンパイルの副産物（本体のログは上で mv 済み）
+rm -f ch*.log ch*.pdf m*.log b*.log
 
 cd ..
 cd ..

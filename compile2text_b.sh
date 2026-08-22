@@ -15,9 +15,6 @@ fi
 path="Psychometrics/v1_2/course_materials2/tex"
 filename="Dkiso2_book2"
 cd "$path" || { echo "ディレクトリが見つかりません: $path" >&2; exit 1; }
-# 最新のbibファイルを取得
-echo "最新のbibファイルを取得しています..."
-cp ../../../../../myBiber.bib ../../../../syllabus_bib.bib
 
 ## backup
 cp ${filename}.tex ${filename}.old

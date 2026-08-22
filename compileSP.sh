@@ -15,9 +15,6 @@ path="SocialPsychology/tex_formatted"
 cd "$path" || { echo "ディレクトリが見つかりません: $path" >&2; exit 1; }
 echo "$(date): 社会心理学特殊講義のコンパイルを開始します..."
 
-# 最新のbibファイルを取得
-echo "最新のbibファイルを取得しています..."
-cp ../../../myBiber.bib ../../syllabus_bib.bib
 
 # 掃除（.ind は索引の中間生成物なので開始時のみ削除する）
 echo "一時ファイルをクリーンアップしています..."
