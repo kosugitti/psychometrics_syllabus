@@ -63,7 +63,14 @@ ch25〜ch30 すべて執筆済み。全30章に本文が入った。2026-08-20�
 
 ### 3. KDP版の出し直し（V3ベースへ，夏休みの宿題）
 
-Amazon KDPで公開中の『心理学データ解析基礎』は旧 m系（`v1_2/course_materials/tex/Dkiso1_book_kdp.tex` → `m01`〜`m30`）で，誤字と旧構成が残る。修正・再編は全て V3（`contents_basic/BasicBook3.tex` → ch系）側にあり，KDPソースには未反映。V3ベースで出し直す方針（2026-07-08確定）。**ブロッカーだった ch28/ch29/ch30 は完成したので着手可能になった（2026-08-23）。**加えて KDP用体裁（奥付masthead・あとがき・twoside内外マージン・表紙）を `BasicBook3_kdp.tex` ラッパとして移植する機械作業と，巻末付録の旧シラバス s系→新 b系への差替え判断が残る。差分の詳細棚卸しは WORKLOG.md（2026-07-08）参照。
+Amazon KDPで公開中の『心理学データ解析基礎』は旧 m系（`v1_2/course_materials/tex/Dkiso1_book_kdp.tex` → `m01`〜`m30`）で，誤字と旧構成が残る。V3ベースで出し直す方針（2026-07-08確定）。
+
+**ラッパの移植は完了した（2026-08-25）。**`contents_basic/BasicBook3_kdp.tex` を作成し，PDF/X-1a出力・twoside内外マージン・章扉のノンブル抑制・行番号なし・あとがき・奥付を移植。巻末付録は**新シラバス(b系)30本**に切り替え済み。**491ページ・エラー0でビルド確認済み**。本文は BasicBook3.tex と同じ ch*.tex を読む。
+
+**方針: 3.30.0 でKDP版と配布版を揃えてスタートする。**通し読みの校正が終わってから。残る作業:
+1. バージョンを3.30.0へ。**`compile1text.sh` はパッチを+1する仕組みしか持たない**ので，マイナーを上げるには手動対応かスクリプト拡張（`--minor` / `--major`）が要る
+2. 奥付の著作権表示が `Copyright (C) 2021` のまま
+3. あとがきを2本立てに（「初版にむけたあとがき」＋新規。本文は著者が執筆）
 
 ## ファイル構成
 
@@ -98,4 +105,5 @@ Psychometrics/
 - compile系スクリプトは **`--push` を付けたときだけ** commit/push する（既定はコンパイルのみ）
 - **bibは `~/Dropbox/myBiber.bib` 一本**。`myStyle.sty` が `../../../myBiber.bib` を直接引く。独自bibの複製は作らない（2026-08-23 に統合。以前は compile が毎回 syllabus_bib.bib へコピーしていた）。`sbib.bib` は v1_2 の旧KDP版が参照しているので残置
 - **中間ファイルはcompile系スクリプトが最後に消す**。`.gitignore` にも登録済みなので、章別コンパイルの副産物（ch*.log 等）がgitに入ることはない
+- **KDP版(`BasicBook3_kdp.tex`)のビルドには `*_versions*.md` が要る**。`masthead.tex`(奥付)が `../../Book_versions1.md` と `../../Syllabus_versions1.md` を読んで版数を刷り込むため，Dropbox外でビルドするときにコピーを忘れると `File not found` で Emergency stop になる
 - **Dropbox配下では lualatex が `Input/output error` で落ちることがある**。ディスク容量の問題ではなく，ファイルプロバイダが図版PNGの実体化に追いつかないため。落ちる位置は毎回変わる。Dropbox外にコピーしてビルドすれば通る

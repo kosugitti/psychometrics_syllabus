@@ -1,0 +1,139 @@
+% ============================================================
+% BasicBook3_kdp.tex — Amazon KDP 用ラッパ（V3・ch系ベース）
+%
+% BasicBook3.tex との違いだけをここに書く。本文は同じ ch*.tex を読む。
+%   - PDF/X-1a 出力（header_X1A.tex）
+%   - twoside の内外マージン（綴じ側を広く）
+%   - 章扉のノンブルを消す
+%   - 行番号を出さない（KDPは紙面なので不要）
+%   - あとがき・奥付を追加
+%   - ヘッダのバージョン表記を出さない
+% 元にした体裁: v1_2/course_materials/tex/Dkiso1_book_kdp.tex
+% ============================================================
+\documentclass[dvipsnames]{ltjsbook}
+\input{../../header_X1A.tex}
+\usepackage{../../myStyle}
+\geometry{twoside,inner=32truemm,outer=20truemm}
+
+% 章の最初のページ番号を消す
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{empty}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\makeatother
+
+%% バッチ処理をするので\lheadは必ず4行目にあること（KDPでは版数を出さない）
+\lhead{}
+\usepackage{docmute}
+\graphicspath{{../common_contents/}{figures/}}
+
+\begin{document}
+\includepdf[noautoscale=false,pages=-]{figures/cover1v3.pdf}
+\VerbatimFootnotes
+\input{../common_contents/copyright} % copyright page
+\title{心理学データ解析基礎}
+\author{小杉　考司}
+\date{}
+\maketitle
+\setcounter{tocdepth}{1}
+
+\input{preface1} % preface
+
+\tableofcontents
+
+% 各章
+\part{心理学データ解析基礎1A(心理学統計法)}
+\include{ch01_introduction}
+\include{ch02_PCs}
+\include{ch03_introR}
+\include{ch04_Number_and_Data}
+\include{ch05_descriptives}
+\include{ch06_Corr}
+\include{ch07_Regression}
+\include{ch08_MultipleRegression}
+\include{ch09_Regression_onR}
+\include{ch10_probability}
+\include{ch11_inference}
+\include{ch12_test}
+\include{ch13_NHST}
+\include{ch14_NHST2}
+\include{ch15_FirstSemester}
+\part{心理学データ解析基礎1B}
+\include{ch16_ttest}
+\include{ch17_RCT}
+\include{ch18_BetweenDesign}
+\include{anova_worksheet}
+\include{ch19_Ftest}
+\include{ch20_BetweenDesign_onR}
+\include{ch21_WithinDesign}
+\include{ch22_WithinDesign_onR}
+\include{ch23_probabilistic_model}
+\include{ch24_linear_model}
+\include{ch25_bayesian_intro}
+\include{ch26_bayesian_approach}
+\include{ch27_bayes_judgement}
+\include{ch28_bayesian_with_jasp}
+\include{ch29_bayesian_modeling}
+\include{ch30_SecondSemester}
+
+\appendix
+\input{../common_contents/FAQ_v3} % FAQ page
+\input{../common_contents/Greeks}
+% \input{../common_contents/keyboards}
+
+
+\addcontentsline{toc}{chapter}{引用文献}
+% 引用文献
+\printbibliography[title=引用文献]
+% 索引
+\addcontentsline{toc}{chapter}{索引}
+\printindex
+
+% R・操作用語の索引（\keytermR / \keytermRL で登録したもの）
+\addcontentsline{toc}{chapter}{R・操作用語索引}
+\printindex[ridx]
+
+% 巻末付録: 詳細シラバス（新b系。旧KDP版は s系を収録していた）
+\chapter{本講義に対応する詳細シラバス}
+\input{../syllabus_basic/b01_Introduction}
+\input{../syllabus_basic/b02_PCs}
+\input{../syllabus_basic/b03_useR}
+\input{../syllabus_basic/b04_Number_and_data}
+\input{../syllabus_basic/b05_descriptives}
+\input{../syllabus_basic/b06_Corr}
+\input{../syllabus_basic/b07_regression}
+\input{../syllabus_basic/b08_MultipleRegression}
+\input{../syllabus_basic/b09_Regression_onR}
+\input{../syllabus_basic/b10_Probability}
+\input{../syllabus_basic/b11_estimation}
+\input{../syllabus_basic/b12_test}
+\input{../syllabus_basic/b13_NHST}
+\input{../syllabus_basic/b14_NHST2}
+\input{../syllabus_basic/b15_summary_exam}
+\input{../syllabus_basic/b16_ttest}
+\input{../syllabus_basic/b17_RCT}
+\input{../syllabus_basic/b18_BetweenDesign}
+\input{../syllabus_basic/b19_Ftest}
+\input{../syllabus_basic/b20_BetweenDesign_onR}
+\input{../syllabus_basic/b21_WithinDesign}
+\input{../syllabus_basic/b22_WithinDesign_onR}
+\input{../syllabus_basic/b23_probabilistic_model}
+\input{../syllabus_basic/b24_linear_model}
+\input{../syllabus_basic/b25_bayesian_intro}
+\input{../syllabus_basic/b26_bayesian_approach}
+\input{../syllabus_basic/b27_bayes_judgement}
+\input{../syllabus_basic/b28_bayesian_with_jasp}
+\input{../syllabus_basic/b29_bayesianModeling}
+\input{../syllabus_basic/b30_final_exam}
+
+
+% あとがき
+\newpage
+\rhead{}
+\input{atogaki}
+
+% 奥付
+\input{masthead}
+\end{document}
