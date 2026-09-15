@@ -190,7 +190,7 @@ generated quantities{
 \end{description}
 これを実行するためのRコードをコード\ref{code:26_01}に用意しました。
 \begin{lstlisting}[language=c++,label={code:26_01},caption={混合分布モデルのコード}]
-dat <- read_csv("baseballDecade.csv")
+dat <- read_csv("BaseballDecade.csv")
 dat.tmp <- dat %>%
   filter(position != "投手") %>%
   filter(Games > 50) %>%
@@ -206,7 +206,7 @@ fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4)
 
 \paragraph{コード解説}
 \begin{description}
-	\item[1行目] データファイル\verb|baseballDecade.csv|を読み込みます。
+	\item[1行目] データファイル\verb|BaseballDecade.csv|を読み込みます。
 	\item[2-8行目] 分析用のデータに加工しています。
 	      \begin{description}
 		      \item[3行目] フィルターをかけてデータを野手だけのものにします。

@@ -101,7 +101,7 @@ model{
 これをRで呼び出すコードはCode::\ref{code:25_01}の通りです。少しテクニカルなコードになっていますので自分で書けなくても構いませんが\footnote{コードの書き方は単一の正解というものがありません。ここに書いてあるのは著者流のやり方だというだけであって，同じ結果が出るのであれば別のコードの書き方であっても構いません。今回のこのコードはシラバスのサイトで配布しています。}，各ステップで何をしているか読めるようになっておくといいでしょう\footnote{パイプ演算子\verb|%>%|を使って変換プロセスをつなげて言ってますが，その途中でデータがどのように加工されているか知りたい場合，\verb| %>% print %>% |と\verb|print|関数を挟むといいでしょう。ステップごとのデータの変形プロセスがよくわかると思います。}。
 
 \begin{lstlisting}[language=c++,label={code:25_01},caption={ポアソン回帰のコード}]
-baseball <- read_csv("baseballDecade.csv")
+baseball <- read_csv("BaseballDecade.csv")
 
 dat <- baseball %>%
   filter(position == "投手") %>%
@@ -141,7 +141,7 @@ fit <- model_pois$sample(
 
 \paragraph{コード解説}
 \begin{description}
-	\item[1行目] ファイルからデータを読み込みます。このデータファイル\verb|baseballDecade.csv|には野手，投手の10年分のデータが入っています。
+	\item[1行目] ファイルからデータを読み込みます。このデータファイル\verb|BaseballDecade.csv|には野手，投手の10年分のデータが入っています。
 	\item[3-15行目] 最初のブロックとして，データの加工・変改を行い，それを\verb|dat|オブジェクトに格納します。
 	      \begin{description}
 		      \item[4行目] フィルターをかけて，投手だけのデータに絞り込みます。
