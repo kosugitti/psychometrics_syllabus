@@ -161,7 +161,7 @@ fit <- model_pois$sample(
 		      \item[20行目] 先ほど作った\verb|ID|はFactor型ですが，Stanでは質的な違いを表す数字だけあれば良いので，数字型に変形します。
 	      \end{description}
 	\item[22-27行目] Stanに与えるためのデータセットにするブロックです。
-	\item[29-36行目] cmdstanrでサンプリングするためのコードです。rstanの場合は\verb|sampling|関数を使うことになります。
+	\item[29-36行目] cmdstanrでサンプリングするためのコードです。
 \end{description}
 
 \begin{Rscreen}{データをグループ化変数でネストする}{out25_01}

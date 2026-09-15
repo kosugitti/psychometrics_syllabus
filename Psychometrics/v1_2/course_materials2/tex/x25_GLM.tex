@@ -139,16 +139,16 @@ model{
 }
 
 generated quantities{
-  real predX[N];
+  array[N] real predY;
   for(i in 1:N){
-    predX[i] = normal_rng(mu[i],sig);
+    predY[i] = normal_rng(mu[i],sig);
   }
 }
 
 \end{lstlisting}
 
 これがどのような挙動をするのか，実際のデータセットを使って検証してみましょう。
-サンプルデータとして，\texttt{baseball2020.csv}を使います。このデータセットはプロ野球データFreak\footnote{\url{https://baseball-data.com/}}さんから取ってきたものです\footnote{データセットはシラバスのサイトでも提供していますし，著者の個人サイト(\url{https://kosugitti.github.io/kosugitti10/index.html})にはスクレイピングのコードを公開しています。}。
+サンプルデータとして，\texttt{BaseballDecade.csv}を使います。このデータセットはプロ野球データFreak\footnote{\url{https://baseball-data.com/}}さんから取ってきたものです\footnote{データセットはシラバスのサイトでも提供していますし，著者の個人サイト(\url{https://kosugitti.github.io/kosugitti10/index.html})にはスクレイピングのコードを公開しています。}。
 
 この野球データセットにはさまざまな情報が含まれていますが，身長と体重のデータだけ取り出して回帰分析をしてみましょう。身長を体重から予測することにします。ここで身長は正規分布に従っていると考えられますから，一般線形モデルが適切ですね。データの散布図を書いて，線形関係にありそうかどうか確認しておきます(図\ref{fig:24_02}。
 
@@ -162,7 +162,7 @@ generated quantities{
 
 そこそこ相関がありそうですね。では回帰モデルを当てはめてみましょう。
 \begin{lstlisting}[language=c++,label={code:24_01},caption={一般線形モデルを実行するコード}]
-dat <- read_csv("baseballDecade.csv") %>% filter(Year=="2020年度")
+dat <- read_csv("BaseballDecade.csv") %>% filter(Year == "2020年度")
 dataSet <- list(N = NROW(dat), Y = dat$height, X = dat$weight)
 ## cmdstanrで実行する場合
 modelC <- cmdstan_model("LM.stan")
@@ -173,10 +173,8 @@ fit <- modelC$sample(
   iter_warmup = 1000,
   iter_sampling = 2000
 )
-## 実行後のファイルをstanfit形式に置き換えておく
-fit.stanfit <- fit$output_files() %>% rstan::read_stan_csv()
 ## 事後予測を取り出す
-predY <- rstan::extract(fit.stanfit)$predY
+predY <- fit$draws("predY", format = "matrix")
 # 事後予測分布の描画
 bayesplot::ppc_dens_overlay(y = dataSet$Y, yrep = predY[1:10, ])
 bayesplot::ppc_intervals(
@@ -191,19 +189,19 @@ bayesplot::ppc_intervals(
 \begin{description}
 	\item[1行目] データを読みこみます。
 	\item[2行目] stanに与えるデータセットをリストで作ります。
-	\item[3-11行目] \texttt{cmdstanr}でコンパイルする例です。\texttt{rstan}パッケージを使っていただいても構いません
-	\item[13行目] 実行後のファイルをstanfit形式に置き換えています。\texttt{rstan}パッケージを使っている人はこの行を実行する必要がありません。
-	\item[15行目] 事後予測分布の一部です。予測値はMCMCサンプル数(ここでは8000点)$\times$サンプルサイズ(野球選手959人)ありますが，このうち最初の10人についての実際のデータ\verb|y|と予測値\verb|yrep|を重ねて表示しています。全員分表示させると非常にサイズが大きくて重たいからです。
+	\item[3-11行目] \texttt{cmdstanr}でコンパイルしてサンプリングします。
+	\item[13行目] 事後予測を取り出します。\verb|fit$draws|で\verb|predY|だけを取り出し，\verb|format = "matrix"|で行列の形にしています。
+	\item[15行目] 事後予測分布の一部です。予測値はMCMCサンプル数(ここでは8000点)$\times$サンプルサイズ(野球選手664人)ありますが，このうち最初の10人についての実際のデータ\verb|y|と予測値\verb|yrep|を重ねて表示しています。全員分表示させると非常にサイズが大きくて重たいからです。
 	\item[16-22行目] データの散布図に予測値とその50\%および95\%確信区間をプロットしました。
 \end{description}
 
 今回の分析結果を単純に表示するなら，次のようになります(出力\ref{SCcmd:out24_01})。
 \begin{SCcmd}{ベイズ推定の結果}{out24_01}
 	\begin{verbatim}
-variable   mean median   sd  mad     q5    q95 rhat ess_bulk ess_tail
-beta0 144.43 144.42 1.46 1.46 141.97 146.83 1.00     2344     2554
-beta1   0.43   0.43 0.02 0.02   0.40   0.46 1.00     2339     2507
-sig     4.57   4.57 0.11 0.10   4.40   4.75 1.00     3171     2952\end{verbatim}
+ variable   mean median   sd  mad     q5    q95 rhat ess_bulk ess_tail
+    beta0 146.48 146.49 1.59 1.60 143.89 149.14 1.00     2347     2615
+    beta1   0.40   0.40 0.02 0.02   0.37   0.43 1.00     2337     2655
+    sig     4.40   4.39 0.12 0.12   4.21   4.60 1.00     2937     3104\end{verbatim}
 \end{SCcmd}
 これまで習ってきた\keyterm{最尤法}{さいゆうほう}{maximum likelihood method}の結果と出力の違いを比較しましょう(出力\ref{RS:out24_02})。
 \begin{Rscreen}{ML推定の結果}{out24_02}
@@ -212,21 +210,21 @@ Call:
 lm(formula = height ~ weight, data = dat)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--16.3680  -2.8245  -0.0963   3.0368  14.9037 
+    Min      1Q  Median      3Q     Max 
+-13.541  -2.792   0.068   2.866  15.066 
 
 Coefficients:
              Estimate Std. Error t value Pr(>|t|)    
-(Intercept) 144.45986    1.44682   99.85   <2e-16 ***
-weight        0.42775    0.01693   25.27   <2e-16 ***
+(Intercept) 146.49143    1.57882   92.79   <2e-16 ***
+weight        0.40050    0.01844   21.72   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 4.573 on 957 degrees of freedom
-Multiple R-squared:  0.4002,	Adjusted R-squared:  0.3996 
-F-statistic: 638.6 on 1 and 957 DF,  p-value: < 2.2e-16\end{verbatim}
+Residual standard error: 4.392 on 662 degrees of freedom
+Multiple R-squared:  0.4162,	Adjusted R-squared:  0.4153 
+F-statistic: 471.9 on 1 and 662 DF,  p-value: < 2.2e-16\end{verbatim}
 \end{Rscreen}
-最尤法では，切片が144.45986，傾きが0.42775という\keytermL{点推定}{てんすいてい}だけが表示される形になっていますが，MCMCを使ったベイズ推定では切片の平均(\keytermL{EAP推定値}{EAP})が144.43，中央値(\keytermL{MED推定値}{MED})が144.42，95\%確信区間が[141.97,146.83]となっています。同じく傾きの平均が0.43，中央値も0.43，95\%区間が[0.40,0.46]となっています。結果が分布として得られますから，初めから幅を持った推定になっていることが確認できます。
+最尤法では，切片が146.49143，傾きが0.40050という\keytermL{点推定}{てんすいてい}だけが表示される形になっていますが，MCMCを使ったベイズ推定では切片の平均(\keytermL{EAP推定値}{EAP})が146.48，中央値(\keytermL{MED推定値}{MED})が146.49，90\%確信区間が[143.89,149.14]となっています。同じく傾きの平均が0.40，中央値も0.40，90\%区間が[0.37,0.43]となっています。結果が分布として得られますから，初めから幅を持った推定になっていることが確認できます。
 
 事後予測分布(図\ref{fig:24_03})をみると，いくつか予測幅から外れているデータ点はありますが，概ね回帰線の範囲に捉えられており，線形モデルの当てはまりがそこそこ良いことが確認できます。
 事後予測分布が元データとよく当てはまるということは，データ生成メカニズムとして正規分布や線形モデルを想定したわれわれのモデルが悪くないんだ，と解釈していいでしょう。
@@ -300,7 +298,7 @@ parameters{
 }
 
 transformed parameters{
-  real theta[N];
+  array[N] real theta;
   for(i in 1:N){
     theta[i] = inv_logit(beta0 + beta1 * X[i]);
   }
@@ -319,7 +317,7 @@ model{
 \end{lstlisting}
 
 Code\ref{stan::24_02}がこのモデルになります。ベルヌーイ分布を使っているのでベルヌーイ回帰と読んでもいいのですが，一般には\keyterm{ロジスティック回帰}{ろじすてぃっくかいき}{logistic regression}と呼ばれています。
-これに適切なデータセットを与えて(Rコード\ref{code:24_02})，推定した結果が出力\ref{SCrstan:out24_03}になります。
+これに適切なデータセットを与えて(Rコード\ref{code:24_02})，推定した結果が出力\ref{SCcmd:out24_03}になります。
 
 \begin{lstlisting}[language=c++,label={code:24_02},caption={ロジスティック回帰分析を実行するRコード}]
 dat2 <- dat %>%
@@ -345,19 +343,19 @@ fit.logistic$print(c("beta0", "beta1"))
 \paragraph{コード解説}
 \begin{description}
 	\item[1-5行目] 先ほど読み込んだデータに\verb|Pitcher|変数を作ります。これは投手であれば0，野手であれば1になる変数です。その後，サラリーが5000万円以上のデータにし，変数\verb|Game, Pitcher|と必要なものだけ抜き出します。最後に\verb|na.omit|で欠測値のあるデータは除外しました
-	\item[7行目] \texttt{cmdstanr}でコンパイルする例です。\texttt{rstan}パッケージを使う場合は適宜変更してください。
+	\item[7行目] \texttt{cmdstanr}でコンパイルします。
 	\item[8行目] stanに与えるデータセットをリストで作ります。
 	\item[10-13行目] サンプリングするコードです。
-	\item[19行目] 結果の出力です。出力\ref{SCrstan:out24_03}のように得られます。
+	\item[19行目] 結果の出力です。出力\ref{SCcmd:out24_03}のように得られます。
 \end{description}
 
-\begin{SCrstan}{ロジスティック回帰分析の結果}{out24_03}
+\begin{SCcmd}{ロジスティック回帰分析の結果}{out24_03}
 	\begin{verbatim}
  variable  mean median   sd  mad    q5   q95 rhat ess_bulk ess_tail
-    beta0 -2.77  -2.75 0.40 0.41 -3.47 -2.13 1.00     4978     5537
-    beta1  0.05   0.05 0.01 0.01  0.04  0.07 1.00     4832     5417
+    beta0 -4.20  -4.17 0.61 0.61 -5.27 -3.25 1.00     3565     4162
+    beta1  0.09   0.09 0.01 0.01  0.07  0.11 1.00     3553     3983
 \end{verbatim}
-\end{SCrstan}
+\end{SCcmd}
 出力結果はグラフにした方がわかりやすいでしょう。図\ref{fig:24_06b}にあるように，上下の黒い点がデータ点，真ん中を通るS字カーブが回帰線になります。
 回帰線は\keytermL{MAP推定値}{MAPすいていち}で描きましたが，50\%，95\%の幅であり得る可能性の範囲についても薄く書き足しています。これを見ると，ちょうど50試合目ぐらいの時にカーブがY軸0.5，すなわち表裏半々の点を通りますから，50試合以上出ている人はより野手と判断されがち，と考えれば良いでしょう。
 \begin{figure}[ht]

@@ -217,8 +217,8 @@ fit <- model$sample(data = dataSet, chains = 4, parallel_chains = 4)
 		      \item[8行目] 行番号を\verb|ID|という変数名にして追加しました
 	      \end{description}
 	\item[10行目] データセットを作っています。
-	\item[11行目] cmdstanでコンパイルしています。rstanパッケージを使う場合はrstanのコンパイル関数を使ってください。
-	\item[12行目] cmdstanのサンプリング関数です。rstanパッケージを使う場合はrstanのサンプリング関数を使ってください。
+	\item[11行目] cmdstanrでコンパイルしています。
+	\item[12行目] cmdstanrのサンプリング関数です。
 \end{description}
 
 推定した結果を見てみましょう。私の環境では出力\ref{MCMCout:out26_01}のようになりました。
@@ -373,7 +373,7 @@ parameters{
 }
 
 transformed parameters{
-  real<lower=0> lambda[L];
+  array[L] real<lower=0> lambda;
   for(l in 1:L){
     lambda[l] = exp(beta0 + beta1 * X[l]);
   }
