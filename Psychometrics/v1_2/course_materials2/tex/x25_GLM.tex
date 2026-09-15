@@ -148,7 +148,7 @@ generated quantities{
 \end{lstlisting}
 
 これがどのような挙動をするのか，実際のデータセットを使って検証してみましょう。
-サンプルデータとして，\texttt{BaseballDecade.csv}を使います。このデータセットはプロ野球データFreak\footnote{\url{https://baseball-data.com/}}さんから取ってきたものです\footnote{データセットはシラバスのサイトでも提供していますし，著者の個人サイト(\url{https://kosugitti.github.io/kosugitti10/index.html})にはスクレイピングのコードを公開しています。}。
+サンプルデータとして，\texttt{BaseballDecade.csv}を使います。このデータセットはプロ野球データFreak\footnote{\url{https://baseball-data.com/}}さんから取ってきたものです\footnote{データセットはシラバスのサイトで提供しています。}。
 
 この野球データセットにはさまざまな情報が含まれていますが，身長と体重のデータだけ取り出して回帰分析をしてみましょう。身長を体重から予測することにします。ここで身長は正規分布に従っていると考えられますから，一般線形モデルが適切ですね。データの散布図を書いて，線形関係にありそうかどうか確認しておきます(図\ref{fig:24_02}。
 

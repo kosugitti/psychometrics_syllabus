@@ -2,11 +2,16 @@
 set -euo pipefail
 ## --push を付けたときだけ git commit / push する（既定はコンパイルのみ）
 DO_PUSH=0
+SET_VER=""
 if [ $# -gt 0 ]; then
   for arg in "$@"; do
-    if [ "$arg" = "--push" ]; then DO_PUSH=1; fi
+    case "$arg" in
+      --push) DO_PUSH=1 ;;
+      --set=*) SET_VER="${arg#--set=}" ;;
+    esac
   done
 fi
+## --set=X.Y.Z でバージョンを直接指定できる（既定はパッチを+1）
 #####################################################################
 ## 2024/1/23よりBiBLateXに乗り換える
 ## 2026/9/15より Dropbox 外の一時ディレクトリでビルドする。
@@ -37,8 +42,12 @@ if [[ ${version} =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
   patch=${BASH_REMATCH[3]}
 fi
 
-plusOne=`expr "$patch" "+" "1"`
-newVer=${major}.${minor}.${plusOne}
+if [ -n "$SET_VER" ]; then
+  newVer="$SET_VER"
+else
+  plusOne=`expr "$patch" "+" "1"`
+  newVer=${major}.${minor}.${plusOne}
+fi
 newval=`echo $val | sed -e "s/$version/$newVer/"`
 echo "New version"$newVer
 echo "応用テキスト(${label})のバージョンを ${version} から ${newVer} にあげます"
