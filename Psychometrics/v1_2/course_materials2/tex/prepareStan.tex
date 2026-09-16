@@ -37,24 +37,24 @@ PCの操作が苦手に思っている人のために付言しますが，うま
 
 Stanはコンパイラ型です。Stanのファイルを読み込んで，機械にわかるように「事後乱数生成命令文」に翻訳して実行します。確率モデルから乱数を生成するのは非常に高度な計算機能ですから，コンパイルしてまとめておくことでスピードアップの効率が断然良くなるわけです。コンパイラ型の利点はこのスピードにありますが，欠点は「命令に変更やミスがあれば翻訳し直さなければならない」というところです。あり得ない命令を出しているようであれば，コンパイルの段階で「おかしな文法だよ」とエラーを出して翻訳を止めてくれます。翻訳が通れば良いかというとそうではなく，翻訳はあくまでも文法上の手続きであって，数値や内容に間違いがあっても翻訳自体は完了させることができるのです。翻訳(コンパイル)には少し時間がかかりますから，文法上も内容上も間違いのない命令分をしっかり準備しておくことが重要になってきます。
 \subsection{ファイルのやり取りについて}
-ここで，R/RStudioをつかってStanを使う際の，ファイルのやり取りを見ておきましょう(図\ref{fig:pp_01})。
+ここで，R/RStudioをつかってStanを使う際の，ファイルのやり取りを見ておきましょう(図\ref{fig:04_02})。
 
 StanのコードはRのコードの中に書くこともできますが，別のファイルに保存しておくのがベターです。Stanファイルは拡張子を\verb|.stan|とすることが一般的です。このファイルの中身はプレーンテキストでコードを書いていますから，一般的なエディタ\footnote{エディタとはASCIIファイル，いわゆるプレーンテキストを編集するアプリケーションの総称で，OSにデフォルトで「メモ帳」などの名称で含まれています。デフォルトのアプリは文字を読み書きできるだけですので，もう少し発展的，あるいは便利な拡張機能を持っている専用のアプリを使うことが一般的です。筆者は最近もっぱらVS Codeというエディタを利用しています。他にもMacOSでしたら，「mi」というアプリを好んで使っていました。Windowsでしたら「秀丸」というアプリが有名です。Ubuntuにはgeditというアプリがデフォルトで入っていますし，歴史やユーザの多さではvimやemacsなどがあります。Linux界隈で，vim派かemacs派かの話題は，きのこたけのこ戦争ばりに激しい戦いになります。}で編集できます。RStudioのエディタ画面も必要十分なエディタ機能を持っていますので，RStudioをエディタとして利用するのがいいでしょう。
 
-RStudioでFile > New Fileとして新しいファイルを開くときに，Stanファイルとして開くことが可能です。Stanファイルとして開くと，初心者向けの配慮からか，最初からちょっとしたコードがすでに書かれています。コードの書き方を示すサンプルコードなのですが，実際にこのコードを使って何かすることはありませんので，中身は全部削除してしまいましょう。それでもRStudioはその画面がStanファイルのものだということは認識していますから，そこで書いたファイルはStanファイルとして扱ってくれます。ここでまちがって新しくR Scriptで開いてしまった，というときに，保存するときだけ\verb|.stan|をつけておけばいいか，という対応をすると失敗します。RStudioでは拡張子をあえて表示していませんので，ファイル名として\verb|hoge.stan|と書くと実際には\verb|hoge.stan.R|というファイル名になっています。拡張子は最後のピリオドで判断されますので，これはRファイルなのです。このミスを防ぐために，ファイル名にピリオドは使わないこと，ファイルの種類を変える時はエディタ画面の右下でファイル種別を選択してください(図\ref{fig:pp_02})。
+RStudioでFile > New Fileとして新しいファイルを開くときに，Stanファイルとして開くことが可能です。Stanファイルとして開くと，初心者向けの配慮からか，最初からちょっとしたコードがすでに書かれています。コードの書き方を示すサンプルコードなのですが，実際にこのコードを使って何かすることはありませんので，中身は全部削除してしまいましょう。それでもRStudioはその画面がStanファイルのものだということは認識していますから，そこで書いたファイルはStanファイルとして扱ってくれます。ここでまちがって新しくR Scriptで開いてしまった，というときに，保存するときだけ\verb|.stan|をつけておけばいいか，という対応をすると失敗します。RStudioでは拡張子をあえて表示していませんので，ファイル名として\verb|hoge.stan|と書くと実際には\verb|hoge.stan.R|というファイル名になっています。拡張子は最後のピリオドで判断されますので，これはRファイルなのです。このミスを防ぐために，ファイル名にピリオドは使わないこと，ファイルの種類を変える時はエディタ画面の右下でファイル種別を選択してください(図\ref{fig:04_01})。
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/prepare/fileStyle.png}
 	\caption{ファイル種別の変更}
-	\label{fig:pp_02}
+	\label{fig:04_01}
 \end{figure}
 
 RStudioを使ってStanを書くと便利なことがいくつかあります。ひとつは強調表示機能で，ブロックや関数名などStanで使うことが決まっている専門用語は色やフォントが変わって表示されます。\verb|transformed parameters|のように長い専門用語を書くときはミススペルが心配ですが，書いた後で強調されなければスペルミスがある，ということがわかります。もうひとつの利点は文法チェックの機能です。コンパイル型なので，Stanに書かれた命令文は実行前に一括で翻訳されますが，スペルミスや型の違いなど，文法的に間違っているところがあればこれも自動的にチェックして警告記号がでます。またStanファイルが開かれているペインの左上に\verb|Check|というボタンがあり，これを押すことでファイル全体の文法チェックをしてくれます。もし文法上の問題がなければ，「hogehoge.stan is syntactically correct.(hogehoge.stanというファイルは文法的には正しいですよ)」というメッセージがコンソールに表示されます。逆にいうと，これが表示されないというときは何か間違っているので，コンパイルに進む前に修正しましょう。
 
-さてこのようにしてStanファイルを準備します。また分析用のデータセットが外部ファイルにある場合などは，これまで同様，当該プロジェクトフォルダ内に置いておくと良いでしょう。これらはいずれも，Rのコードで呼び出して使うことになります(図\ref{fig:pp_01}の1.と2.のステップ)。Rでは，Stanファイルやデータファイルを読み込んで，これをPC内部にあるStanに渡します(図\ref{fig:pp_01}の3.のステップ)。StanはRと違う言語であり，Stan独自の計算機能で計算してくれるわけですから，RとStanの橋渡しが必要になります。Rではこれを\verb|cmdstanr| や\verb|rstan|というパッケージを経由して行います。これらのパッケージがStanを呼び出してくれるわけです\footnote{このように，Stanは独立した計算環境であり，R以外のアプリケーションから呼び出して使うことが可能です。Pythonから使いたい場合は，PyStanというパッケージ経由で，Juliaから使いたい場合はStanJl，コマンドラインから使いたい場合はcmdstanといったように，いろいろなルートがあります。}。
+さてこのようにしてStanファイルを準備します。また分析用のデータセットが外部ファイルにある場合などは，これまで同様，当該プロジェクトフォルダ内に置いておくと良いでしょう。これらはいずれも，Rのコードで呼び出して使うことになります(図\ref{fig:04_02}の1.と2.のステップ)。Rでは，Stanファイルやデータファイルを読み込んで，これをPC内部にあるStanに渡します(図\ref{fig:04_02}の3.のステップ)。StanはRと違う言語であり，Stan独自の計算機能で計算してくれるわけですから，RとStanの橋渡しが必要になります。Rではこれを\verb|cmdstanr| や\verb|rstan|というパッケージを経由して行います。これらのパッケージがStanを呼び出してくれるわけです\footnote{このように，Stanは独立した計算環境であり，R以外のアプリケーションから呼び出して使うことが可能です。Pythonから使いたい場合は，PyStanというパッケージ経由で，Juliaから使いたい場合はStanJl，コマンドラインから使いたい場合はcmdstanといったように，いろいろなルートがあります。}。
 
-データと確率モデルの関係を記したStanファイルと，データのそのものを受け取ったStanは，コンパイルしてPC内に乱数発生装置を作ります(図\ref{fig:pp_01}の4.のステップ)。事後分布の関数を書き出すのではなく，その形状とそれを代表する乱数を作る状態をもつわけです。Rの指示をうけて，そこから必要な数だけ乱数を作り出します(図\ref{fig:pp_01}の5.のステップ) 。Rはこれを受け取って，統計解析を始めるわけです。Rは統計に特化した言語ですから，集計や可視化などの作業はお手のもの。事後分布から得られた大量の乱数は，事後分布の特徴を反映した大量のデータセット，事後分布の具体例たちになっているのでした。
+データと確率モデルの関係を記したStanファイルと，データのそのものを受け取ったStanは，コンパイルしてPC内に乱数発生装置を作ります(図\ref{fig:04_02}の4.のステップ)。事後分布の関数を書き出すのではなく，その形状とそれを代表する乱数を作る状態をもつわけです。Rの指示をうけて，そこから必要な数だけ乱数を作り出します(図\ref{fig:04_02}の5.のステップ) 。Rはこれを受け取って，統計解析を始めるわけです。Rは統計に特化した言語ですから，集計や可視化などの作業はお手のもの。事後分布から得られた大量の乱数は，事後分布の特徴を反映した大量のデータセット，事後分布の具体例たちになっているのでした。
 
 分析の進め方は以上のようになります。Rでデータを整形し，Stanのファイルも別途用意して，RからStanを呼び出す，Stanか返してきたデータをRで解析する，ということです。Rの拡張子は\verb|.R|で，Stanの拡張子は\verb|.stan|，データファイルの拡張子は\verb|.csv|などでしょうか。いずれにせよ，複数の種類のファイルをやり取りしながら進めるので，相互の関係についてしっかり理解しておく必要があります。
 
@@ -63,7 +63,7 @@ RStudioを使ってStanを書くと便利なことがいくつかあります。
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/prepare/R_stan.png}
 	\caption{R/RStudioとStanファイルのやり取り}
-	\label{fig:pp_01}
+	\label{fig:04_02}
 \end{figure}
 \subsection{2つのルート}
 ここではRからStanを呼び出す2つのルート，具体的には\verb|rstan|パッケージと\verb|cmdstanr|パッケージについて説明します。
@@ -136,7 +136,7 @@ Stanの文法は，バージョン2.32で配列の宣言の仕方が変わりま
 古い資料やコードを読むときに戸惑うところですので，先に触れておきます。
 
 データXがN人分あったとします。数学的フォームでは，$X_1,X_2,X_3,\cdots, X_N$というようなものですね。これはコンピュータ上では\verb|X|と名付けられた配列，サイズ$N$というように考えます。これは，かつてStanでは次のように書くものでした。
-\begin{lstlisting}[language=C++,label={code:PRE_01},caption={Stan2.32以前の書き方}]
+\begin{lstlisting}[language=C++,label={code:04_01},caption={Stan2.32以前の書き方}]
 int n[5];
 real a[3, 4];
 real<lower=0> z[5, 4, 2];
@@ -146,17 +146,17 @@ vector[7] mu[3];
 これらは上から順に，サイズ$5$の整数変数\verb|n|,サイズ$3 \times 4$の実数変数\verb|a|，下限$0$のサイズ$5\times4\times2$の配列\verb|z|，長さ$7$のベクトル\verb|mu|が3つ，ということを意味しています\footnote{ベクトルは数字をセット，人まとめとして演算するものです。最後の変数は，7つの数字のセットが3つという意味で，7つセットで1つのまとまりですよ，ということを明示的に宣言していることになります。}。
 
 この書き方が，Stanのバージョン2.32以降は次のような書き方になりました。
-\begin{lstlisting}[language=C++,label={code:PRE_02},caption={Stan2.32以降の書き方}]
+\begin{lstlisting}[language=C++,label={code:04_02},caption={Stan2.32以降の書き方}]
 array[5] int n;
 array[3, 4] real a;
 array[5, 4, 2] real<lower=0> z;
 array[3] vector[7] mu;
 \end{lstlisting}
-このコード\ref{code:PRE_02}はさきほどのコード\ref{code:PRE_01}と同じ意味で，書き方が変わっただけです。一瞥してわかるように，サイズを先に\verb|array|という言葉で宣言しましょう，というだけですね。
+このコード\ref{code:04_02}はさきほどのコード\ref{code:04_01}と同じ意味で，書き方が変わっただけです。一瞥してわかるように，サイズを先に\verb|array|という言葉で宣言しましょう，というだけですね。
 
 気をつけてほしいのは，古い書き方はもう使えないということです。過渡期には両方が通ったのですが，現在の環境で古い書き方を試すと次のようなエラーが出て，コンパイルする前の段階ではねられます。
 
-\begin{Rscreen}{古い書き方はエラーになる}{outPRE_array}
+\begin{Rscreen}{古い書き方はエラーになる}{out:04_01}
 	\begin{verbatim}
   Ill-formed declaration. ";" expected after variable declaration.
     It looks like you are trying to use the old array syntax.
@@ -173,7 +173,7 @@ array[3] vector[7] mu;
 さて今度は，実際に走らせるときの指定の仕方と，返ってくる出力の読み方を見ていきましょう。
 \subsubsection{指示の仕方}
 まずは実行方法です。Stanでは事後分布からの乱数を生成しますが，それにあたって「乱数の数」「ウォームアップ期間の長さ」「チェインの数」などオプショナルに指定できるものがあります。これは見てもらったほうが早いでしょう。
-\begin{lstlisting}[language=C++,label={code:PRE_04cmd},caption={cmdstanrのスタイル}]
+\begin{lstlisting}[language=C++,label={code:04_03},caption={cmdstanrのスタイル}]
 fit <- model$sample(
   data = dataSet,
   chains = 4,
@@ -188,7 +188,7 @@ fit <- model$sample(
 
 \subsubsection{出力の読み方}
 続いて出力結果です。\verb|cmdstanr|パッケージで推定した結果は，次のような形で表示されます。
-\begin{SCcmd}{cmdstanrパッケージの出力}{outCMDstan}
+\begin{SCcmd}{cmdstanrパッケージの出力}{cmd:04_01}
 	\begin{verbatim}
   variable   mean median   sd  mad     q5    q95 rhat ess_bulk ess_tail
   lp__ -51.56 -51.20 1.34 1.07 -54.18 -50.12 1.00     7799    10071
@@ -213,7 +213,7 @@ fit <- model$sample(
 
 \verb|cmdstanr|パッケージでMCMCサンプルを得た場合，そのオブジェクトから乱数部分だけを抜き出す関数は\verb|draws|関数であり，これをオブジェクトに直接作用させます。これで取り出したものをデータフレーム型にして返す関数として，次のようなものを作りました。
 
-\begin{lstlisting}[language=C++,label={code:PRE_05MCMC2dfCMDstan},caption={MCMCtoDF関数(cmdstanr版)}]
+\begin{lstlisting}[language=C++,label={code:04_04},caption={MCMCtoDF関数(cmdstanr版)}]
 MCMCtoDF <- function(fit) {
   fit$draws() %>%
     posterior::as_draws_df() %>%
@@ -239,7 +239,7 @@ MCMCtoDF <- function(fit) {
 
 \paragraph{MCMCtoDF関数の結果}
 出力結果は以下のような形式になります。
-\begin{Rscreen}{MCMCサンプルをデータセットにしたもの}{outPREP_01}
+\begin{Rscreen}{MCMCサンプルをデータセットにしたもの}{out:04_02}
 	\begin{verbatim}
 # A tibble: 60,000 × 3
     iter name  value
@@ -269,7 +269,7 @@ MCMCの結果を分析するにあたっては，\verb|bayestestR|パッケー�
 
 でも大丈夫，Rの描画関数を駆使して対応することができます。MAP推定値を計算する関数は，次のように書きます\footnote{このコードは関西学院大学社会学部の清水裕士先生に教えてもらったものです。記して謝意を表します。}
 
-\begin{lstlisting}[language=C++,label={code:PRE_06MAP},caption={MAP推定する関数のコード}]
+\begin{lstlisting}[language=C++,label={code:04_05},caption={MAP推定する関数のコード}]
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
 }
@@ -278,7 +278,7 @@ map_estimation <- function(z) {
 
 \paragraph{MCMCサンプルの要約関数}
 先ほどのMAP推定する関数を含めつつ，またMCMCサンプルをデータフレームにする関数を使いつつ，MCMCサンプルの要約を表示する関数を次のように作りました。
-\begin{lstlisting}[language=C++,label={code:PRE_07summary},caption={MCMCの要約を報告するコード}]
+\begin{lstlisting}[language=C++,label={code:04_06},caption={MCMCの要約を報告するコード}]
 MCMCsummary <- function(MCMCsample) {
   MCMCsample %>%
     dplyr::group_by(name) %>%
@@ -303,7 +303,7 @@ MCMCsummary <- function(MCMCsample) {
 \end{description}
 
 この関数は，先ほどの\verb|MCMCtoDF|とセットで使い,次のような結果を得ます。
-\begin{Rscreen}{MCMCsummaryの結果}{outPREP_02}
+\begin{Rscreen}{MCMCsummaryの結果}{out:04_03}
 	\begin{verbatim}
 > fit %>% MCMCtoDF() %>% MCMCsummary()
 # A tibble: 3 × 7

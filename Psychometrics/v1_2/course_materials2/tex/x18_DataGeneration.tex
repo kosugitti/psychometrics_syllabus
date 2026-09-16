@@ -97,7 +97,7 @@ MCMC法は，ですから，どんな形の確率分布であっても乱数の�
 
 正規分布に感するRの関数は\texttt{dnorm,pnorm, qnorm ,rnorm}などがあります。この\texttt{d,p,q,r}は他の確率分布を表す関数の前につける接頭語で，\texttt{d}は確率密度，\texttt{p}は累積確率,\texttt{q}はある累積確率になるときの確率点，そして\texttt{r}が乱数発生を意味しているのでした。
 
-\begin{lstlisting}[language=c++,label={code:17_01},caption={乱数のコードの例}]
+\begin{lstlisting}[language=c++,label={code:03_01},caption={乱数のコードの例}]
 rm(list = ls())
 set.seed(12345)
 dnorm(0, mean = 0, sd = 1)
@@ -126,7 +126,7 @@ rnorm(5, mean = 0, sd = 1)
 
 では乱数を使う例をもう少し見てみましょう。次は\keyterm{ベルヌーイ分布}{べるぬーいぶんぷ}{Bernoulli distribution}について考えてみたいと思います。これはコイントスをして表が出るか，裏が出るかという0/1の離散的結果を生み出す分布です。
 残念ながらRにはベルヌーイ分布の関数はなく\footnote{\texttt{extraDistr}パッケージを用いると，\texttt{bern}という関数名でベルヌーイ分布が使えます。}，二項分布の特殊例として使うことにします。\keyterm{二項分布}{にこうぶんぷ}{binomial distribution}とは，N回コイントスをしてK回表が出る確率を表す分布ですが，これのコイントス回数が1回であればベルヌーイ分布と同じことになります。
-\begin{lstlisting}[language=c++,label={code:17_02},caption={乱数のコードの例2}]
+\begin{lstlisting}[language=c++,label={code:03_02},caption={乱数のコードの例2}]
 rbinom(10, size = 1, prob = 0.5)
 rbinom(10, size = 1, prob = 0.3)
 rbinom(10, size = 1, prob = 0.7)
@@ -145,7 +145,7 @@ rbern(10, prob = 0.5)
 ここで確認して欲しいのは，コイントスを10回するとして，確率0.5の場合はほぼ半々，0.3の場合は半分以下，0.7の場合は半分以上表($1$)が出ている，ということです\footnote{正確には二項分布なので，1が出た回数が出力されているのです。試行数(\texttt{size})を1にしているので，1回中1回表が出た＝表($1$)が出た，と解釈しても，結果的に同じことであるというだけです。}。ここで確率を幾つにするかは，われわれが自由に設定できます。また乱数を幾つ発生させるかも自由です。これらの数字を色々変えて遊んでみましょう。
 
 たとえば乱数の数を100回，1000回，10000回と増やしたとします。その結果をすべて表示するのは大変ですが，その平均値を計算してみるとどうなるでしょうか。
-\begin{lstlisting}[language=c++,label={code:17_03},caption={乱数のコードの例3}]
+\begin{lstlisting}[language=c++,label={code:03_03},caption={乱数のコードの例3}]
 N100 <- rbinom(n = 100, size = 1, prob = 0.5)
 N1000 <- rbinom(n = 1000, size = 1, prob = 0.5)
 N10000 <- rbinom(n = 10000, size = 1, prob = 0.5)
@@ -158,8 +158,8 @@ mean(N10000)
 	\item[1-3行目] 二項分布の乱数を100個，1000個，10000個発生させる。確率は0.5で。
 	\item[4-6行目] それぞれの平均値を計算する
 \end{description}
-これの実行結果は，私の環境では出力\ref{RS:out17_01}のようになりました。
-\begin{Rscreen}{乱数出力の結果}{out17_01}
+これの実行結果は，私の環境では出力\ref{RS:out:03_01}のようになりました。
+\begin{Rscreen}{乱数出力の結果}{out:03_01}
 	\begin{verbatim}
 > mean(N100)
 [1] 0.62
@@ -174,7 +174,7 @@ mean(N10000)
 ちなみに今回は平均をとりましたが，これは確率分布の\keyterm{期待値}{きたいち}{expectation}を計算したこと同じになります。
 \subsection{乱数を用いた確率分布のプロット}
 乱数を使って近似できる，という例を可視化で見てみましょう。また正規分布を例にしてみたいと思います。
-\begin{lstlisting}[language=c++,label={code:17_04},caption={確率分布の可視化1}]
+\begin{lstlisting}[language=c++,label={code:03_04},caption={確率分布の可視化1}]
 x <- seq(-4, 4, 0.05)
 plot(x, dnorm(x))
 library(tidyverse)
@@ -190,7 +190,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 \end{description}
 これは理論的な正規分布の形を図示するものです。美しいですね。でも同様のことが，乱数を使ってもできます。
 
-\begin{lstlisting}[language=c++,label={code:17_05},caption={確率分布の可視化2}]
+\begin{lstlisting}[language=c++,label={code:03_05},caption={確率分布の可視化2}]
 N <- 1000
 X <- rnorm(N, mean = 0, sd = 1) %>% as.data.frame()
 ggplot(data = X, aes(x = .)) +
@@ -212,7 +212,7 @@ ggplot(data = X, aes(x = .)) +
 
 まずは\texttt{data.frame}型にした正規乱数を使って，記述統計量を算出する例を見てみましょう。
 
-\begin{lstlisting}[language=c++,label={code:17_06},caption={確率分布の要約}]
+\begin{lstlisting}[language=c++,label={code:03_06},caption={確率分布の要約}]
 N <- 10000
 X <- rnorm(N, mean = 0, sd = 1) %>%
   as.data.frame() %>%
@@ -242,7 +242,7 @@ X %>%
 \end{description}
 
 また，確率密度が最も高くなる点を算出するための関数を自分で作ってみることにします。次のようにコードを入力してください。
-\begin{lstlisting}[language=c++,label={code:17_07},caption={確率分布の要約}]
+\begin{lstlisting}[language=c++,label={code:03_07},caption={確率分布の要約}]
 map_estimation <- function(z) {
   density(z)$x[which.max(density(z)$y)]
 }

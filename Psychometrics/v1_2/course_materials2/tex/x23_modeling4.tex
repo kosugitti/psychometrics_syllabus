@@ -45,13 +45,13 @@ Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくて
 
 ということで，共分散の式は分布の幅を表す標準偏差と，相関係数からできあがっていることがわかりましたね。
 \subsection{対応のあるデータの生成モデル}
-ではこれを使ってモデルの設計図を書いてみましょう。設計図は図\ref{fig:22_01}のようになるでしょう。
+ではこれを使ってモデルの設計図を書いてみましょう。設計図は図\ref{fig:09_01}のようになるでしょう。
 
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/22_modeling4/Slide22_01.png}
 		\caption{対応ある二群のデータ生成モデル設計図}
-		\label{fig:22_01}
+		\label{fig:09_01}
 	\end{center}
 \end{figure}
 
@@ -62,7 +62,7 @@ Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくて
 これをStanで表現するときには，変数を\verb|vector|型で表現しておく必要があります。今回の場合は\verb|vector[2] mu;|などとします。これで\verb|mu|という変数が2つセットで準備されることになります。
 これまで同じ変数名で複数のデータを持つ場合，たとえば\verb|real mu[2]|のようにしていましたが，なぜ今回もこの形式，つまり\textbf{配列}にしないのか，と思われるかもしれません。配列でも2つの数字を扱ったりすることは可能なのですが，ベクトル型にしておく利点が別にあります。ベクトルにはベクトルを使った演算がありますが，Stanにはベクトルや行列専用の関数がありますので，変数をベクトルで宣言しておいてやるとこれらの関数を使って高速化できるのです。
 
-またStanには，\verb|matrix|型という行列の型もあります。\verb|matrix[N,M] X;|のように宣言してやると，サイズ$N \times M$の行列変数Xが1つ用意されます。\verb|matrix[N,M] X[L];|のように宣言すると，サイズ$N \times M$の行列変数XをL個用意することになります。他にも特殊な型として，\verb|cov_matrix|型とか\verb|corr_matrix|型などがあります。これらは正方行列ですから，サイズの指定は1つでよく，たとえば\verb|cov_matrix[2]|とすれば$2 \times 2$の正方行列を用意したことになります。Stanにおける変数や配列の型について，\textcite{Matsuura201610}を参考にまとめたものを表\ref{tbl:22_01}に，イメージ図を図\ref{fig:22_03},\ref{fig:22_04},\ref{fig:22_05}に示します。
+またStanには，\verb|matrix|型という行列の型もあります。\verb|matrix[N,M] X;|のように宣言してやると，サイズ$N \times M$の行列変数Xが1つ用意されます。\verb|matrix[N,M] X[L];|のように宣言すると，サイズ$N \times M$の行列変数XをL個用意することになります。他にも特殊な型として，\verb|cov_matrix|型とか\verb|corr_matrix|型などがあります。これらは正方行列ですから，サイズの指定は1つでよく，たとえば\verb|cov_matrix[2]|とすれば$2 \times 2$の正方行列を用意したことになります。Stanにおける変数や配列の型について，\textcite{Matsuura201610}を参考にまとめたものを表\ref{tbl:09_01}に，イメージ図を図\ref{fig:09_02},\ref{fig:09_03},\ref{fig:09_04}に示します。
 
 \begin{table}[ht]
 	\centering
@@ -83,31 +83,31 @@ Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくて
 		特別な行列  & \verb|cov_matrix[J] X|  & サイズ$J\times J$の正方対称行列がひとつ        \\
 		特別な行列  & \verb|corr_matrix[J] X| & 対角が1のサイズ$J\times J$の正方対称行列がひとつ   \\\hline
 	\end{tabular}
-	\label{tbl:22_01}
+	\label{tbl:09_01}
 \end{table}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_03.png}
 	\caption{変数の型とサイズ(1)}
-	\label{fig:22_03}
+	\label{fig:09_02}
 \end{figure}
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_04.png}
 	\caption{変数の型とサイズ(2)}
-	\label{fig:22_04}
+	\label{fig:09_03}
 \end{figure}
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_05.png}
 	\caption{変数の型とサイズ(3)}
-	\label{fig:22_05}
+	\label{fig:09_04}
 \end{figure}
 
 
-これを踏まえて，今回の対応のある二群のコード例を見てみましょう(Code::\ref{stan::22_01})。
-\begin{lstlisting}[language=C++,label={stan::22_01},caption={対応ある二群のデータ生成モデル}]
+これを踏まえて，今回の対応のある二群のコード例を見てみましょう(Code::\ref{stan:09_01})。
+\begin{lstlisting}[language=C++,label={stan:09_01},caption={対応ある二群のデータ生成モデル}]
 data{
   int N;
   array[N] vector[2] X;
@@ -148,8 +148,8 @@ model{
 \end{description}
 
 この書き方ですと，三群に拡張した時に大変になるのは目に見えていますね。こんな時のために，ベクトルと行列用関数をつかって書いておく方法があります。
-Code::\ref{stan::22_02}には，多次元にまで拡張したコードを示しています。
-\begin{lstlisting}[language=C++,label={stan::22_02},caption={コードの一般化}]
+Code::\ref{stan:09_02}には，多次元にまで拡張したコードを示しています。
+\begin{lstlisting}[language=C++,label={stan:09_02},caption={コードの一般化}]
 data{
   int N;
   int K;
@@ -195,7 +195,7 @@ model{
 
 仮想データの作り方は，データ生成モデルの裏返しです。2群の平均値差を検証するためのデータでしたら，次のようにして作ることができます。
 
-\begin{lstlisting}[language=c++,label={code:22_03},caption={対応ある二群の仮想データ}]
+\begin{lstlisting}[language=c++,label={code:09_03},caption={対応ある二群の仮想データ}]
 mu <- c(50,50)
 sd1 <- 10
 sd2 <- 5
@@ -211,9 +211,9 @@ X <- mvrnorm(N,mu,SIG)
 # Stanに与えるデータセット
 dataSet <- list(N=N, X=X)
 \end{lstlisting}
-ここでは二群の平均をいずれも50，標準偏差を10と5にし，相関係数を0.7としたサンプルを100個作ることにしました。発生させる乱数は\verb|MASS|パッケージの\verb|mvrnorm|関数を使います。この関数は，発生させるサンプルサイズと，平均ベクトル，分散共分散行列を引数に取ります。これを使って推定させた結果の例が出力\ref{MCMCout:out22_01}になります。
+ここでは二群の平均をいずれも50，標準偏差を10と5にし，相関係数を0.7としたサンプルを100個作ることにしました。発生させる乱数は\verb|MASS|パッケージの\verb|mvrnorm|関数を使います。この関数は，発生させるサンプルサイズと，平均ベクトル，分散共分散行列を引数に取ります。これを使って推定させた結果の例が出力\ref{MCMCout:mcmc:09_01}になります。
 
-\begin{MCMCout}{}{out22_01}
+\begin{MCMCout}{}{mcmc:09_01}
 	\begin{verbatim}
   # A tibble: 9 × 7
   name           EAP       MED       MAP        SD       L95       U95
@@ -232,8 +232,8 @@ dataSet <- list(N=N, X=X)
 中央値による点推定値(MED推定値)を見ると，ほぼ真の値の通りになっていますね。
 
 ところで，今回与えたデータXは行列の形をしています。一行が2つの数字を持つペアになっているのですが，これは\keytermL{整然データ}{せいぜんでーた}の形にはなっていませんね。
-整然データであれば，次のようなデータセットになっているはずです(Rの出力\ref{RS:out22_01})。
-\begin{Rscreen}{対応ある二群の仮想データ・整然版}{out22_01}
+整然データであれば，次のようなデータセットになっているはずです(Rの出力\ref{RS:out:09_01})。
+\begin{Rscreen}{対応ある二群の仮想データ・整然版}{out:09_01}
 	\begin{verbatim}
 # A tibble: 200 × 3
       ID name  value
@@ -253,8 +253,8 @@ dataSet <- list(N=N, X=X)
 \end{Rscreen}
 このようなデータ形式に対応できるように，Stanのコードを書き直してみましょう。ポイントは，個体識別インデックスと，事前・事後を表す変数のインデックスの両方を準備する，というところにあります。
 
-まずRから与えるデータの方から考えましょう。整然データの形に並び替えるのに加えて，事前・事後といった水準を表す変数も数字で与えなければなりません。先の例Code::\ref{code:22_04}では\verb|pre|,\verb|post|となっていたところを，pre=1,post=2と置き換えた別の変数を用意しました。
-\begin{lstlisting}[language=c++,label={code:22_04},caption={対応ある二群の仮想データ・整然版}]
+まずRから与えるデータの方から考えましょう。整然データの形に並び替えるのに加えて，事前・事後といった水準を表す変数も数字で与えなければなりません。先の例Code::\ref{code:09_04}では\verb|pre|,\verb|post|となっていたところを，pre=1,post=2と置き換えた別の変数を用意しました。
+\begin{lstlisting}[language=c++,label={code:09_04},caption={対応ある二群の仮想データ・整然版}]
 ...
 X <- mvrnorm(N, mu, SIG)
 tidy_data <- X %>%
@@ -272,14 +272,14 @@ tidy_data <- X %>%
 	\item[5行目] この段階で，変数名が\verb|V1,V2|となっていますが，わかりやすくするために\verb|pre,post|に書き換えました。
 	\item[6行目] 行番号を\verb|ID|という変数名を持つものに変えています。
 	\item[7行目] \verb|ID|をキーに，横長だったデータを縦長に(tidyに)変換する関数です。
-	\item[8行目] 縦長になった変数(Code::\ref{code:22_04}はこの段階の出力です)から，\verb|name|変数の値が\verb|pre|であるものを1に，そうでないものを2にした新しい変数\verb|cond|を作りました。
+	\item[8行目] 縦長になった変数(Code::\ref{code:09_04}はこの段階の出力です)から，\verb|name|変数の値が\verb|pre|であるものを1に，そうでないものを2にした新しい変数\verb|cond|を作りました。
 \end{description}
 このコードでどういうデータセットができたのか，Rのコンソールで\verb|tidy_data|として確認すると良いでしょう。1つ1つのステップを確認したい場合は，途中で止めて一歩ずつ進むのも手です。
 
 さてStanにデータセットを与えるときは，このデータセットから1.データ全体の長さ，2.被験者の数，3.被験者ID，4.そのデータがどの水準なのかを示す識別子，5.実際の値を取り出して渡すことになります。
 続いてStanコードの例を見てみましょう。
 
-\begin{lstlisting}[language=C++,label={stan::22_03},caption={整然データ対応番}]
+\begin{lstlisting}[language=C++,label={stan:09_05},caption={整然データ対応番}]
 data{
   int L;
   int N;
@@ -337,14 +337,14 @@ model{
 		3  & 4  & 2  & 3  \\
 		4  & 7  & 3  & 5  \\\hline
 	\end{tabular}
-	\label{tbl:22_02}
+	\label{tbl:09_02}
 \end{table}
-チェックの結果が表\ref{tbl:22_02}のようになっていて，ここの数字が抑うつ度スコア(低ければ低いほど健康)だと思ってください。
+チェックの結果が表\ref{tbl:09_02}のようになっていて，ここの数字が抑うつ度スコア(低ければ低いほど健康)だと思ってください。
 記号で書く時のノーテーション(表記法)は，値$X_{ij}$が$i$さんの第$j$期のスコア，ということにしたいと思います。
 
 これを使って毎回の変化の大きさを見積もりたいと思います。前回やった，多水準モデルのことを参考に見ていきましょう。ポイントは，前回は全体平均からの差分で効果を考えていたところが，今回は個人差があるので個人ごとの平均$\mu_i$を基準におくところです。
 
-最初の人のスコア，$X_{11}=10,X_{12}=5,X_{13}=9$はそれぞれ，その人の平均$\mu_i$から考えて，$\mu_1+\delta_1,\mu_1+\delta_2,\mu_1+\delta_3$となるはずだと考えましょう。理論通りにならない誤差を含めて考えれば，先ほどの表\ref{tbl:22_02}は表\ref{tbl:22_03}のようになっているはずなのです。
+最初の人のスコア，$X_{11}=10,X_{12}=5,X_{13}=9$はそれぞれ，その人の平均$\mu_i$から考えて，$\mu_1+\delta_1,\mu_1+\delta_2,\mu_1+\delta_3$となるはずだと考えましょう。理論通りにならない誤差を含めて考えれば，先ほどの表\ref{tbl:09_02}は表\ref{tbl:09_03}のようになっているはずなのです。
 \begin{table}[ht]
 	\centering
 	\caption{介入時期とスコアのモデル式}
@@ -355,7 +355,7 @@ model{
 		3  & $X_{31}\sim N(\mu_3+\delta_1,\sigma)$ & $X_{32}\sim N(\mu_3+\delta_2,\sigma)$ & $X_{33}\sim N(\mu_3+\delta_3,\sigma)$ \\
 		4  & $X_{41}\sim N(\mu_4+\delta_1,\sigma)$ & $X_{42}\sim N(\mu_4+\delta_2,\sigma)$ & $X_{43}\sim N(\mu_4+\delta_3,\sigma)$ \\\hline
 	\end{tabular}
-	\label{tbl:22_03}
+	\label{tbl:09_03}
 \end{table}
 
 つまり，$X_{ij}\sim N(\mu_i+\delta_j,\sigma)$ですね。個人のベースライン$\mu_i$に，各時期の効果$\delta_j$が加わったものを中心に，正規分布に従う誤差を纏ってデータになる，という考え方です。
@@ -365,20 +365,20 @@ model{
 
 \[ \mu_i \sim N(\psi,\tau) \]
 
-と考えることにしましょう。これを設計図に書き込んだのが，図\ref{fig:22_02}です。
+と考えることにしましょう。これを設計図に書き込んだのが，図\ref{fig:09_05}です。
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics[width=0.8\linewidth,keepaspectratio]{../images/22_modeling4/Slide22_02.png}
 		\caption{階層的データ生成モデル}
-		\label{fig:22_02}
+		\label{fig:09_05}
 	\end{center}
 \end{figure}
 
 このように，相関があることを個人$i$に紐づけられた変数として表現し，個人差からの差分として対応のあるモデルを考えることができます。
-ここで，個人差に関係なく影響を与えている効果のことを\keyterm{固定効果}{こていこうか}{fixed effect}と呼び，個人差のように交換可能な要素のことを\keyterm{変量効果}{へんりょうこうか}{random effect}と呼びます。また図\ref{fig:22_02}に示されているように，データ生成分布の中に個人差の分布が入れ子になって含まれていますね。このようなデータは階層モデルといい，とくに今回のように線形な階層モデルは\keyterm{階層線形モデル}{かいそうせんけいもでる}{hierarchical linear model}とよばれます。この展開については，次回以降にお話しすることになるでしょう。
+ここで，個人差に関係なく影響を与えている効果のことを\keyterm{固定効果}{こていこうか}{fixed effect}と呼び，個人差のように交換可能な要素のことを\keyterm{変量効果}{へんりょうこうか}{random effect}と呼びます。また図\ref{fig:09_05}に示されているように，データ生成分布の中に個人差の分布が入れ子になって含まれていますね。このようなデータは階層モデルといい，とくに今回のように線形な階層モデルは\keyterm{階層線形モデル}{かいそうせんけいもでる}{hierarchical linear model}とよばれます。この展開については，次回以降にお話しすることになるでしょう。
 
 ではこのモデルを実装していきましょう。設計図に沿えばStanコードは書けるはずです。ここにはStanに与えるRのコード例を用意しましたので，自分なりのコードを書いて検証してみてください\footnote{これに限らず，コードに正しい書き方はありません。自分なりの書き方で結構です。判断すべきは正しく機能するかどうかであって，書き方はあくまでも一例にすぎません。}。
-\begin{lstlisting}[language=C++,label={code:22_04b},caption={整然データ対応番}]
+\begin{lstlisting}[language=C++,label={code:09_06},caption={整然データ対応番}]
 dat_raw <- data.frame(ID = 1:4,
                       period1 = c(10,9,4,7),
                       period2 = c(5,4,2,3),
@@ -393,7 +393,7 @@ tidy_dat <- dat_raw %>%
 \input{kadai_common}
 
 \paragraph{大問；対応のある群の比較}
-Code::\ref{code:22_04b}を参考にしながら，表\ref{tbl:22_02}の事例を分析します。同じ人から2回測定したデータですので，個人差を考慮したモデルを考えましょう。
+Code::\ref{code:09_06}を参考にしながら，表\ref{tbl:09_02}の事例を分析します。同じ人から2回測定したデータですので，個人差を考慮したモデルを考えましょう。
 \begin{enumerate}
 	\item 2時点を同時に扱う多変量正規モデルをStanで書いてください。本講の書き方にならい，母数は2時点の平均\verb|mu|，時点ごとの標準偏差\verb|sds|，時点間の相関\verb|rho|とすること。
 	\item このモデルでベイズ推定を実行し，2時点の平均の差(\verb|mu[2]-mu[1]|)について，EAP推定値，MAP推定値，90\%確信区間を報告してください。あわせて\verb|rho|の推定値も示すこと。

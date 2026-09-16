@@ -35,8 +35,8 @@ $$ \hat{\sigma}_{eap} = \frac{1}{M}\sum \sigma^i = \frac{1}{M}(\sigma^1+\sigma^2
 事後予測分布は，点推定値を使って計算することもできます。つまり，データが$X_{i}\sim N(\mu,\sigma)$というメカニズムで作られていて，それから推定値$\hat{\mu},\hat{\sigma}$を得たわけですから，これを使って$X_{new}\sim N(\hat{\mu},\hat{\sigma})$とすれば良いのです。これはただの乱数生成でもありますから，たとえばRで\verb|rnorm(mu,sigma)|とするときに\verb|mu|と\verb|sigma|に推定値を入れてやればいいでしょう。
 でも点推定値では決め打ちが過ぎますので，区間推定した上限と下限も入れますか？いや，それならいっそ，MCMCで得られた事後分布からの代表値を全部入れてしまえばいいのではないでしょうか。
 
-それを実現するために,\verb|generated quantities|ブロックを使うといいでしょう。コード\ref{stan::20_01}にその例を書いてみました。データやモデルは前回の二群の平均値差の検定と同じものです。
-\begin{lstlisting}[language=C++,label={stan::20_01},caption={事後予測分布を作るコード}]
+それを実現するために,\verb|generated quantities|ブロックを使うといいでしょう。コード\ref{stan:07_01}にその例を書いてみました。データやモデルは前回の二群の平均値差の検定と同じものです。
+\begin{lstlisting}[language=C++,label={stan:07_01},caption={事後予測分布を作るコード}]
 data{
     int<lower=0> N1; // Number of Subjects in Group 1
     int<lower=0> N2; // Number of Subjects in Group 2
@@ -76,23 +76,23 @@ generated quantities{
 \end{lstlisting}
 ここで，\verb|generated quantities|には，\verb|normal_rng|という関数が入っています。この\verb|_rng|は確率分布の後ろにつけて，乱数を発生させろという意味です。Rでいう\verb|r****|みたいなもんですね。
 このコードでは各群と同じサイズだけの事後予測データセットを作っています。まあ同じ$\mu$と$\sigma$からの乱数ですから，データの数だけ作ったりしなくてもいいんですがイメージしやすくするためにそうしてみました。
-この$\mu$と\verb|Xpred|を図にしてみたのが図\ref{fig:20_01}です。
+この$\mu$と\verb|Xpred|を図にしてみたのが図\ref{fig:07_01}です。
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/20_modeling2/Rplot20_01.png}
 	\caption{事後分布と事後予測分布}
-	\label{fig:20_01}
+	\label{fig:07_01}
 \end{figure}
 この図の左側は$\mu_1$の\keytermL{事後分布}{じごぶんぷ}が，右側には$X_1$の\keytermL{事後予測分布}{じごよそくぶんぷ}が描かれています。左側は\textbf{パラメータの世界}の話であり，右側は\textbf{データの世界}の話になっていることに注意してください。
 
 パラメータ$\mu_1$は，EAPで59.96,95\%CI[48.81,71.22]となっています。そこからでてくるであろうデータは，25から100弱の幅に分布していますね。平均が60であっても，SDが20弱ありますから，データのレベルではその散らばる幅が大きくなるのも当然ですよね。でもこれはとても大事なことで，我々は「群間に差があった」となるとその効果について色々考えますが，それはパラメータの話，あるいは\textbf{平均因果効果}の話であって，個々のデータではまた事情が違うのです。たとえば，男女差があると言っても平均的な男性，そうでない女性などさまざまなケースがあるように。たとえば，平均的に80\%成功する手術があると言われても，自分の身に置き換えると生きるか死ぬかは割合の問題ではないように。
 
-また，この事後予測分布の形は，もとのデータの分布の形と似ているかどうかを視覚的に確認するために使われます。図\ref{fig:20_02}に，事後予測分布ともとのデータのヒストグラムを合わせて表示してみました。事後予測分布はMCMCサンプルの数だけありますが，ここでは一部だけ取り出しています。
+また，この事後予測分布の形は，もとのデータの分布の形と似ているかどうかを視覚的に確認するために使われます。図\ref{fig:07_02}に，事後予測分布ともとのデータのヒストグラムを合わせて表示してみました。事後予測分布はMCMCサンプルの数だけありますが，ここでは一部だけ取り出しています。
 \begin{figure}[ht]
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\linewidth]{../images/20_modeling2/Rplot20_02.png}
 	\caption{データの分布と事後予測分布の視覚的な確認}
-	\label{fig:20_02}
+	\label{fig:07_02}
 \end{figure}
 これを見ることで，もとのデータと事後予測分布の形が似ているかどうかがわかります。もし模倣した機械の設定値が正しいのであれば，手元にある商品サンプルと同じような分布をするデータ分布が得られるはずですね。
 視覚的な確認ですから，見て「うーん似てるな，似てないな」というのを見て考えるだけではあります。今回はデータの数が8件と少ないので何ともイメージしにくいところですが，データが多くなるとデータの分布の形状で比較することもしやすくなるでしょう。もし分布の形が似ていなければ，購入した製造機械が違うものだったのかもしれない，ということになります。というのも実際のデータ分析の場合は，製造機械(確率分布，モデル)が正しいかどうかはわからないので，それすらも仮定，検証すべき対象だからです。
@@ -118,7 +118,7 @@ generated quantities{
 
 実際に考えてみましょう。これら「条件が成立する確率」については，成立すれば1，成立しなければ0というフラグをたててMCMCサンプルを生成し，その平均値すなわち相対頻度で考えてやれば良いのでした。
 
-\begin{lstlisting}[language=C++,label={stan::20_02},caption={優越率や閾上率を計算するコード}]
+\begin{lstlisting}[language=C++,label={stan:07_02},caption={優越率や閾上率を計算するコード}]
 data{
     int<lower=0> N1; // Number of Subjects in Group 1
     int<lower=0> N2; // Number of Subjects in Group 2
@@ -150,13 +150,13 @@ generated quantities{
     }
 }
 \end{lstlisting}
-コード\ref{stan::20_02}は，\verb|generated quantities|ブロックで2つの\verb|FLG|変数を用意しています。\verb|FLG1|が優越率，\verb|FLG2|が閾上率のために用意したものです。
+コード\ref{stan:07_02}は，\verb|generated quantities|ブロックで2つの\verb|FLG|変数を用意しています。\verb|FLG1|が優越率，\verb|FLG2|が閾上率のために用意したものです。
 このブロックで，推定されたパラメータ\verb|mu1,mu2,sig1,sig2|からそれぞれ生成される二群の「新しいデータ」を作り(\verb|Xpred1,Xpred2|)，成立するかどうかを検証します。
 \verb|FLG1|は\verb|if|文の中にあるように，\verb|Xpred1 > Xpred2|が成立すれば1，しなければ0になる数字です。
 \verb|FLG2|は，同じくその差分が一定の値\verb|C|を超えていれば成立，超えていなければ不成立というフラグです。ちなみにこの値\verb|C|は\verb|data|ブロックで外部から読み込むことにしてあります。
 
 これと前回のデータを使って推定させてみましょう。
-\begin{lstlisting}[language=c++,label={code:20_01},caption={優越率，閾上率を推定するコード}]
+\begin{lstlisting}[language=c++,label={code:07_03},caption={優越率，閾上率を推定するコード}]
 groupA <- c(30, 50, 70, 90, 60, 50, 70, 60)
 groupB <- c(20, 40, 60, 40, 40, 50, 40, 30)
 dataSet <- list(X1 = groupA, X2 = groupB, N1 = 8, N2 = 8, C = 3)
@@ -169,7 +169,7 @@ sampling2 <- modelC$sample(
 )
 \end{lstlisting}
 
-\begin{MCMCout}{}{out20_01}
+\begin{MCMCout}{}{mcmc:07_01}
 	\begin{verbatim}
 # A tibble: 8 × 7
   name         EAP       MED       MAP        SD       L95       U95
@@ -229,11 +229,11 @@ MCMCがうまく行ったかどうかは，\keytermL{Rhat}{Rhat}や\keytermL{有
 
 \subsection{二群の平均値差の例}
 ここまで扱ってきた，二群の平均値差を検証する例で考えてみましょう。
-もともとの設計図(図\ref{fig:19_01})がここでも役に立ちます。
+もともとの設計図(図\ref{fig:06_01})がここでも役に立ちます。
 データがどういうメカニズムで出てきたかを考えていたわけですから，これを使えばデータ生成を考えることができますね。乱数生成のアプローチはデータを取り始める前にも有用なのです！
 
 今回はパラメータを仮に設定してやることができます。二群の平均とその差を次のように決めてしまいましょう。
-\begin{lstlisting}[language=c++,label={code:20_02},caption={平均値差の設定}]
+\begin{lstlisting}[language=c++,label={code:07_04},caption={平均値差の設定}]
 mu1 <- 50
 diff <- 10
 mu2 <- mu1 + diff
@@ -244,14 +244,14 @@ sig2 <- 8
 第一の群の平均は\verb|mu1 <- 50|としています。第二群の平均は\verb|mu2 <- 60|というようにしてもいいのですが，差を考えるという意味を強調するためにいったん変数\verb|diff|を作って差の量を定め，それを\verb|mu1|に加えるという方法をとっています。
 2つの群は正規分布に従いますから，それぞれの標準偏差を\verb|sig1,sig2|として設定しました。
 ここから仮想データを作ります。データの生成は乱数に従うので，\verb|rnorm|関数の出番です。
-\begin{lstlisting}[language=c++,label={code:20_03},caption={仮想データの生成}]
+\begin{lstlisting}[language=c++,label={code:07_05},caption={仮想データの生成}]
 set.seed(12345)
 N <- 10
 X1 <- rnorm(N, mu1, sig1)
 X2 <- rnorm(N, mu2, sig2)
 \end{lstlisting}
 これで実際に生成された仮想データは次のようになっています。
-\begin{Rscreen}{検定の結果}{out20_02}
+\begin{Rscreen}{検定の結果}{out:07_01}
 	\begin{verbatim}
 > X1
 [1] 52.92764 53.54733 49.45348 47.73251 53.02944 40.91022 53.15049 
@@ -264,7 +264,7 @@ X2 <- rnorm(N, mu2, sig2)
 ちなみにこの2つのデータセット，平均は$\bar{X}_1=49.33528,\bar{X}_2=62.28782$となっています。理論的にはそれぞれ$50,60$であるはずなのですが，乱数による実現値なので少し誤差が出ていますね。
 これは実際の研究状況でもある話です。理論的な値と，目の前の実現値というのは必ず少しずれがあるもの。その中で，きちんと理論値を推定できるかどうかが問題なのですから。
 さて，このデータを使って分析していきましょう。
-\begin{lstlisting}[language=c++,label={code:20_04},caption={パラメータリカバリ・検証}]
+\begin{lstlisting}[language=c++,label={code:07_06},caption={パラメータリカバリ・検証}]
 ## t検定(モーメント法による推定と判定)
 t.test(X1,X2)
 ## ベイズ推定(MCMCによるベイズ推定と差の分布)
@@ -280,8 +280,8 @@ sampling2 <- modelC$sample(
 \end{lstlisting}
 
 まずはt検定の結果ですが，ここでは$t(14.797)=5.2059,p=0.0001113$で有意差ありと判定されました。実際\verb|diff <- 10|で差がある設定なのですから，正しく判定できて良かったな，というところです。
-ベイズ推定の方はどうでしょうか。結果は次のようになりました(ここでは前回のコード\ref{stan::19_04}を再利用しました)。
-\begin{MCMCout}{}{out20_02}
+ベイズ推定の方はどうでしょうか。結果は次のようになりました(ここでは前回のコード\ref{stan:06_06}を再利用しました)。
+\begin{MCMCout}{}{mcmc:07_02}
 	\begin{verbatim}
 # A tibble: 6 × 7
   name        EAP       MED       MAP        SD       L95       U95
@@ -300,7 +300,7 @@ sampling2 <- modelC$sample(
 
 このように，今回の結果をみると概ね正しく推定できていると言えるでしょう。その精度についても「どの程度誤差が生じうるものなのか」が具体的にわかったことと思います。
 しかし次のような設定の場合はどうでしょう。
-\begin{lstlisting}[language=c++,label={code:20_05},caption={仮想データの生成その2}]
+\begin{lstlisting}[language=c++,label={code:07_07},caption={仮想データの生成その2}]
 mu1 <- 50
 diff <- 18
 mu2 <- mu1 + diff
@@ -308,8 +308,8 @@ sig1 <- 10
 sig2 <- 15
 N <- 3
 \end{lstlisting}
-この設定でデータを作って，推定した結果は次のようなものです(出力\ref{MCMCout:out20_03})。
-\begin{MCMCout}{}{out20_03}
+この設定でデータを作って，推定した結果は次のようなものです(出力\ref{MCMCout:mcmc:07_03})。
+\begin{MCMCout}{}{mcmc:07_03}
 	\begin{verbatim}
 # A tibble: 6 × 7
   name        EAP       MED       MAP        SD       L95       U95
@@ -345,7 +345,7 @@ MCMCの収束は問題なく，推定値は出力されていますが，本来$
 \input{kadai_common}
 
 \paragraph{大問；フライドポテトの研究その2}
-第\ref{x19_modeling1}講と同じ，二つの店舗のポテトのデータ(表\ref{tab:20_01})を使います。ただし今回は，両群の分布の幅が同じであるという仮定を外します。
+第\ref{x19_modeling1}講と同じ，二つの店舗のポテトのデータ(表\ref{tbl:07_01})を使います。ただし今回は，両群の分布の幅が同じであるという仮定を外します。
 \begin{table}[ht]
 	\center
 	\caption{二つの店舗のポテトの長さ}
@@ -353,7 +353,7 @@ MCMCの収束は問題なく，推定値は出力されていますが，本来$
 		A & 8.4 & 11.3 & 8.1 & 11.2 & 5.8 & 6.3 & 7.1 & 10.9 & 7.1 & 6.5 & 5.0 & 3.0 & 7.2 & 6.5 & 6.4 & 6.4 & 9.3 & 8.3 \\\hline
 		B & 6.7 & 7.2  & 4.2 & 11.0 & 7.5 & 8.9 & 7.0 & 8.0  & 7.2 & 4.2 & 6.0 & 9.0 & 8.6 & 9.0 & 5.0 &     &     &     \\\hline
 	\end{tabular}
-	\label{tab:20_01}
+	\label{tbl:07_01}
 \end{table}
 \begin{enumerate}
 	\item 群ごとに異なる標準偏差を推定するモデルをStanで書いてください。母数として\verb|mu1|，\verb|mu2|，\verb|sig1|，\verb|sig2|を宣言し，あわせて\verb|generated quantities|ブロックで，それぞれの群から新しいポテトを1本取り出したときの予測値\verb|Xpred1|，\verb|Xpred2|を生成すること。

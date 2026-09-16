@@ -66,7 +66,7 @@ knitできないRmdファイルになっていないか，というのはご自�
 \subsection{FMC4；外部環境を参照してしまう}
 
 さて，Rで行う作業の中には，csvファイルを読み込むといった「外部のファイルを使う」指示もありえます。例えば次のようなコードです。
-\begin{lstlisting}[language=c++,label={code:FAQ01},caption={Rmd中のRコードが外部環境を参照してしまう}]
+\begin{lstlisting}[language=c++,label={code:faq_01},caption={Rmd中のRコードが外部環境を参照してしまう}]
 dat <- read.csv("social_effects.csv")
 dat <- read.table("clipboard")
 \end{lstlisting}

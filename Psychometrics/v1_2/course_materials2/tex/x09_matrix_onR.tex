@@ -34,9 +34,9 @@ D <- matrix(A, ncol = 3, byrow = T)
 \end{description}
 
 それぞれのオブジェクトに格納されているものを確認してみましょう。何がどうなっているかわかるでしょうか
-(出力\ref{RS:out09_01})。
+(出力\ref{RS:out:09_01})。
 
-\begin{Rscreen}{Rにおけるベクトルと行列}{out09_01}
+\begin{Rscreen}{Rにおけるベクトルと行列}{out:09_01}
 	\begin{verbatim}
 > A
 [1] 1 2 3 4 5 6 7 8 9
@@ -72,7 +72,7 @@ Rのオブジェクトには色々な型がありますが，基本はベクト�
 	\item[2行目] \texttt{1:9}をオブジェクトGに代入している。ここで列数は3，行数は4を指定している。
 \end{description}
 
-\begin{Rscreen}{ベクトルの再利用}{out09_02}
+\begin{Rscreen}{ベクトルの再利用}{out:09_02}
 	\begin{verbatim}
 > E <- matrix(A, ncol = 3, nrow = 6)
 > G <- matrix(A, ncol = 3, nrow = 4)
@@ -135,9 +135,9 @@ A * 3 + B * 2
 
 続いて行列の乗法ですが，サイズが変わるような行列としての計算の場合はとくに\verb|%*%|という記号を使うことになります。ただのアスタリスク\verb|*|ではなく，それを\verb|%|で囲むことで行列の積になっていることを表現しているのです。
 また行列の行列を反転させるのは，\keytermL{転置}{てんち}という操作になりますが，これは\texttt{t()}という関数を使います。
-行列の積を計算する例を\texttt{code:\ref{code:09_03b}}に示しました。計算結果が出力されますので，どういう計算をしているか一行ずつ確認しながら進めてください。
+行列の積を計算する例を\texttt{code:\ref{code:09_04}}に示しました。計算結果が出力されますので，どういう計算をしているか一行ずつ確認しながら進めてください。
 
-\begin{lstlisting}[language=c++,label={code:09_03b},caption={行列の積}]
+\begin{lstlisting}[language=c++,label={code:09_04},caption={行列の積}]
 a <- c(1, 2, 1)
 b <- c(3, 4, 2)
 a * b
@@ -170,7 +170,7 @@ B %*% t(C)
 
 続いて\keytermL{逆行列}{ぎゃくぎょうれつ}の例を見てみましょう。逆行列の計算は，手計算でやると大変なのですが，Rでは関数\texttt{solve())}を使うと計算できます。
 
-\begin{lstlisting}[language=c++,label={code:09_04},caption={逆行列の計算}]
+\begin{lstlisting}[language=c++,label={code:09_05},caption={逆行列の計算}]
 A <- matrix(c(2,1,5,3),ncol=2)
 solve(A)
 A %*% solve(A)
@@ -196,7 +196,7 @@ A %*% solve(A)
 	\right .
 \]
 
-\begin{lstlisting}[language=c++,label={code:09_05},caption={連立方程式を解く}]
+\begin{lstlisting}[language=c++,label={code:09_06},caption={連立方程式を解く}]
 A <- matrix(c(1,5,3,-2,4,1,-5,3,-3),ncol=3)
 b <- c(3,1,6)
 solve(A) %*% b
@@ -232,12 +232,12 @@ solve(A) %*% b
 		$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
 		\hline
 	\end{tabular}
-	\label{tbl::09_01}
+	\label{tbl:09_01}
 \end{table}
 
-表\ref{tbl::09_01}に示したのは，データ解析基礎でも扱った2000年代の野球選手のデータです\footnote{伴走サイト\url{https://stats.kosugitti.net/}より，サンプルデータにある「野球選手のデータ 10 年度分」を選んでください。ファイルはUTF-8形式で保存されています。}。それをプロジェクトフォルダに置き，\texttt{code:\ref{code:09_05}}のコードを実行してください。
+表\ref{tbl:09_01}に示したのは，データ解析基礎でも扱った2000年代の野球選手のデータです\footnote{伴走サイト\url{https://stats.kosugitti.net/}より，サンプルデータにある「野球選手のデータ 10 年度分」を選んでください。ファイルはUTF-8形式で保存されています。}。それをプロジェクトフォルダに置き，\texttt{code:\ref{code:09_06}}のコードを実行してください。
 
-\begin{lstlisting}[language=c++,label={code:09_06},caption={データファイルの読み込み}]
+\begin{lstlisting}[language=c++,label={code:09_07},caption={データファイルの読み込み}]
 library(tidyverse)
 dataset <- read_csv("BaseballDecade.csv") %>%
   dplyr::filter(Year=="2020年度") %>% 
@@ -281,7 +281,7 @@ dataset <- read_csv("BaseballDecade.csv") %>%
 	\label{corR} \bm{R} = \frac{1}{n}\bm{Z'Z}
 \end{equation}
 
-\begin{lstlisting}[language=c++,label={code:09_07},caption={データの行列演算}]
+\begin{lstlisting}[language=c++,label={code:09_08},caption={データの行列演算}]
 n <- nrow(dataset)
 one <- rep(1, n)
 m <- t(dataset) %*% one / n
@@ -316,7 +316,7 @@ cor(dataset)
 
 先ほど計算した相関行列$\bm{R}$を使ってこれを確認します。
 
-\begin{lstlisting}[language=c++,label={code:09_08},caption={相関行列の固有値分解}]
+\begin{lstlisting}[language=c++,label={code:09_09},caption={相関行列の固有値分解}]
     eig <- eigen(R)
     eig$values
     sum(eig$values)
@@ -325,11 +325,11 @@ cor(dataset)
     eig$vector[,1]^2 %>% sum
 \end{lstlisting}
 
-固有値分解をする関数は\texttt{eigen}です。計算結果を\texttt{eig}オブジェクトに入れ，固有値\verb|values|と固有ベクトル\verb|vector|を表示させてみました(出力\ref{RS:out09_03})。
+固有値分解をする関数は\texttt{eigen}です。計算結果を\texttt{eig}オブジェクトに入れ，固有値\verb|values|と固有ベクトル\verb|vector|を表示させてみました(出力\ref{RS:out:09_03})。
 固有値が大きい方から$1.7043160,0.9486112,0.3470728$となっています。ここでは変数が3つあって，それぞれの情報の大きさは相関行列で標準化されていて$1.0$です。この行列がもっている$3.0$の分散を，$1.7 : 0.9 : 0.3$に再分配したことになります。ちなみに固有値の総和\verb|sum(eig$values)|は，行列のトレース\verb| sum(diag(R))|と等しくなっていることが確認できます。
 
 また，固有ベクトルはそれぞれの固有値に対して計算されます。各列が各固有値に対応しており，第一固有値1.7に対応する固有ベクトルは$(0.68,0.68,0.26)$です。固有ベクトルは向きだけあって大きさがありませんから，この数字はノルムすなわち二乗和したものが1になるようにして算出されているのがわかります。
-\begin{Rscreen}{固有値と固有ベクトル}{out09_03}
+\begin{Rscreen}{固有値と固有ベクトル}{out:09_03}
 	\begin{verbatim}
 > eig <- eigen(R)
 > eig$values

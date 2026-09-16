@@ -38,7 +38,7 @@ x軸が潜在能力$\theta$を表していると考えれば，縦軸は能力�
 	\label{2PLmodel}
 \end{equation}
 
-$a_j$はのことをとくに\keyterm{識別力}{しきべつりょく}{discriminant}と呼ぶのでした。$a_j$の値によって傾きがどのように変わるかを，図\ref{fig:27_01}の二段目をみて確認しておきましょう。
+$a_j$はのことをとくに\keyterm{識別力}{しきべつりょく}{discriminant}と呼ぶのでした。$a_j$の値によって傾きがどのように変わるかを，図\ref{fig:14_01}の二段目をみて確認しておきましょう。
 
 最後に，3つ目のパラメータである$c_j$，\keyterm{当て推量母数}{あてすいりょうぼすう}{guessing parameter}を入れたモデルも紹介しておきます。モデルは式\ref{3PLmodel}のように表されます。
 \begin{equation}
@@ -51,30 +51,30 @@ $a_j$はのことをとくに\keyterm{識別力}{しきべつりょく}{discrimi
 	\begin{center}
 		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/27_IRTonBayes/Rplot27_01.png}
 		\caption{上から順に，1，2，3パラメータロジスティックモデル。どこがどう変わっていくか確認しておこう。}
-		\label{fig:27_01}
+		\label{fig:14_01}
 	\end{center}
 \end{figure}
 \subsection{確率モデル側から}
 さて今度は同じモデルをデータとの対応の観点から見てみましょう。
 テストのデータは0/1の二値であり，ベルヌーイ分布から出てきていると考えることができます。またロジスティックモデルはその言葉の通りロジスティック関数を使って，$-\infty$から$+\infty$まであり得る$\theta$の値を，0から1の範囲に入るように変換しているわけです。これは一般化線形モデルの文脈でいうところの，\keytermL{ロジスティック回帰}{ろじすてぃっくかいき}分析であり，\keytermL{リンク関数}{りんくかんすう}がロジット関数，\keytermL{逆リンク関数}{ぎゃくりんくかんすう}がロジスティック関数になっているモデルだと考えることができます。
 
-データ生成のモデル設計図として考えると，図\ref{fig:27_02}のようになります。パッケージを使っての分析の時は\keytermL{最尤法}{さいゆうほう}による推定結果でしたが，ここで被検者母数に\underline{標準正規分布}を，項目母数に正規分布を事前分布としておいただけで，ベイズ推定モデルに置き換えることができました。
+データ生成のモデル設計図として考えると，図\ref{fig:14_02}のようになります。パッケージを使っての分析の時は\keytermL{最尤法}{さいゆうほう}による推定結果でしたが，ここで被検者母数に\underline{標準正規分布}を，項目母数に正規分布を事前分布としておいただけで，ベイズ推定モデルに置き換えることができました。
 
 これまで利用してきた技術の応用で考えることができますから，すぐにでも実装できそうですね！
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/27_IRTonBayes/Slide27_01.png}
 		\caption{確率モデルとしての設計図。ロジスティック関数とベルヌーイ分布の組み合わせでテスト理論のモデルが表現できる。}
-		\label{fig:27_02}
+		\label{fig:14_02}
 	\end{center}
 \end{figure}
 
 \section{ロジスティックモデルでの実装}
 それでは設計図をもとにモデルをコードにしていきましょう。
 
-項目数がM，被検者数がNの$N \times M$サイズの行列でデータが与えられていると考え，行列の各要素に対して通過率$p_{ij}$を計算し，それをベルヌーイ分布に当てはめるという形で実装したのがコード\ref{stan::27_01}になります。
+項目数がM，被検者数がNの$N \times M$サイズの行列でデータが与えられていると考え，行列の各要素に対して通過率$p_{ij}$を計算し，それをベルヌーイ分布に当てはめるという形で実装したのがコード\ref{stan:14_01}になります。
 
-\begin{lstlisting}[language=C++,label={stan::27_01},caption={1PLモデル}]
+\begin{lstlisting}[language=C++,label={stan:14_01},caption={1PLモデル}]
 data{
   int<lower=0> M;
   int<lower=0> N;
@@ -108,8 +108,8 @@ model{
 \end{lstlisting}
 今回はわかりやすくするために，\verb|transformed parameters|ブロックを使いましたが，直接\verb|model|ブロックに書き込んでも構いませんし，\verb|bernoulli_logit|関数を使えばさらに高速に安定した推定結果が得られます。
 
-\verb|transformed parameters|ブロックにパラメータを追加するだけで，2PL,3PLモデルに拡張することも容易にできます。2PLモデルに拡張した例がコード\ref{stan::27_02}，3PLモデルに拡張した例がコード\ref{stan::27_03}です。
-\begin{lstlisting}[language=C++,label={stan::27_02},caption={2PLモデル}]
+\verb|transformed parameters|ブロックにパラメータを追加するだけで，2PL,3PLモデルに拡張することも容易にできます。2PLモデルに拡張した例がコード\ref{stan:14_02}，3PLモデルに拡張した例がコード\ref{stan:14_03}です。
+\begin{lstlisting}[language=C++,label={stan:14_02},caption={2PLモデル}]
 ...(前略)...
 parameters{
   array[M] real<lower=0> a;
@@ -128,7 +128,7 @@ transformed parameters{
 ...(後略)...
 \end{lstlisting}
 
-\begin{lstlisting}[language=C++,label={stan::27_03},caption={3PLモデル}]
+\begin{lstlisting}[language=C++,label={stan:14_03},caption={3PLモデル}]
 ...(前略)...
 parameters{
   array[M] real<lower=0> a;
@@ -148,8 +148,8 @@ transformed parameters{
 ...(後略)...
 \end{lstlisting}
 
-サンプルデータをつかって，このモデルで推定するためのコードがコード\ref{code:27_01}です(cmdstanrでの例)。
-\begin{lstlisting}[language=c++,label={code:27_01},caption={IRTのコード}]
+サンプルデータをつかって，このモデルで推定するためのコードがコード\ref{code:14_04}です(cmdstanrでの例)。
+\begin{lstlisting}[language=c++,label={code:14_04},caption={IRTのコード}]
 dat <- read_csv("IRTsample.csv")
 model_1pl <- cmdstan_model("oneParameter.stan")
 model_2pl <- cmdstan_model("twoParameters.stan")
@@ -160,7 +160,7 @@ fit1 <- model_1pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 fit2 <- model_2pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 fit3 <- model_3pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 \end{lstlisting}
-分析結果を見てみましょう。\keytermL{EAP推定値}{EAP}はそれぞれ表\ref{tbl::27_01}，図\ref{fig:27_03}のようになりました。
+分析結果を見てみましょう。\keytermL{EAP推定値}{EAP}はそれぞれ表\ref{tbl:14_01}，図\ref{fig:14_03}のようになりました。
 \begin{table}[ht]
 	\caption{それぞれのパラメータ推定値}
 	\centering
@@ -180,14 +180,14 @@ fit3 <- model_3pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 		10                    & -0.864                   & 1.214                    & -0.887                  & 2.547 & -0.395 & 0.298 \\
 		\hline
 	\end{tabular}
-	\label{tbl::27_01}
+	\label{tbl:14_01}
 \end{table}
 
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics[width=0.8\linewidth,keepaspectratio,clip]{../images/27_IRTonBayes/Rplot27_02.png}
 		\caption{推定値を使って描いた各モデルのICC}
-		\label{fig:27_03}
+		\label{fig:14_03}
 	\end{center}
 \end{figure}
 
@@ -197,8 +197,8 @@ fit3 <- model_3pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 ところで，このモデルをもう少し使いやすくするために，データを\keyterm{整然データ}{せいぜんでーた}{tidy data}にすることを考えてみましょう。
 というのも，今はデータを行列形で渡していますが，これだと欠測値があった場合にうまく機能しないからです。Stanはデータに欠測値を取ることができず，与えられるデータに\verb|NA|が入っていることは許されません。
 
-整然データは，1行に1つの数字が入っているようなデータで(セクション\ref{tidyDataForm}，Pp.\pageref{tidyDataForm}参照)，その行を見るだけですべての情報が手に入るようなデータです。行列型のデータは，人のIDを行ラベルで，変数のIDを列ラベルでみなければなりませんので，参照方向が1つに定められていません。具体的には次のような形のデータになります(\texttt{Rの出力\ref{RS:out27_01}})。この形式ですと，一行で誰の(\verb|Pid|)，どの問いに対する(\verb|Qid|)反応か(\verb|value|)ということがわかりますね。
-\begin{Rscreen}{整然データになったテストデータ}{out27_01}
+整然データは，1行に1つの数字が入っているようなデータで(セクション\ref{tidyDataForm}，Pp.\pageref{tidyDataForm}参照)，その行を見るだけですべての情報が手に入るようなデータです。行列型のデータは，人のIDを行ラベルで，変数のIDを列ラベルでみなければなりませんので，参照方向が1つに定められていません。具体的には次のような形のデータになります(\texttt{Rの出力\ref{RS:out:14_01}})。この形式ですと，一行で誰の(\verb|Pid|)，どの問いに対する(\verb|Qid|)反応か(\verb|value|)ということがわかりますね。
+\begin{Rscreen}{整然データになったテストデータ}{out:14_01}
 	\begin{verbatim}
 # A tibble: 20 × 3
      Pid   Qid value
@@ -220,8 +220,8 @@ fit3 <- model_3pl$sample(data = dataSet, chains = 4, parallel_chains = 4)
 \end{Rscreen}
 もし欠測値があればその行を削除してしまえば，完全データになりますから，Stanに欠測値を与えなくて済むことになります。
 
-もちろんこれに対応する形で，Stanのコードを書き換える必要があります。こんどはデータも長くなりますから，何行目に誰のど問いに対する反応が入っているかを，識別変数を使いながら指定することになります。具体的には次のようなコード例になるでしょう(コード\ref{stan::27_04})。
-\begin{lstlisting}[language=C++,label={stan::27_04},caption={Tidy Dataに対応した2PLモデル}]
+もちろんこれに対応する形で，Stanのコードを書き換える必要があります。こんどはデータも長くなりますから，何行目に誰のど問いに対する反応が入っているかを，識別変数を使いながら指定することになります。具体的には次のようなコード例になるでしょう(コード\ref{stan:14_05})。
+\begin{lstlisting}[language=C++,label={stan:14_05},caption={Tidy Dataに対応した2PLモデル}]
 data{
   int<lower=0> L;
   int<lower=0> N;
@@ -264,7 +264,7 @@ model{
 	\item[modelブロック] L行目の反応に対して，識別変数で特定された確率をつかってモデルを当てはめます。
 \end{description}
 これの結果はこれまでのモデルと変わりませんが，欠測値に対応できたはずですので，元の完全データに技と欠測値を与えて改変し，結果がどう変わるかを確認してみましょう。
-\begin{lstlisting}[language=c++,label={code:27_02},caption={tidyデータにして技と欠測値を与える}]
+\begin{lstlisting}[language=c++,label={code:14_06},caption={tidyデータにして技と欠測値を与える}]
 dat.tmp <- dat %>%
   rowid_to_column("Pid") %>%
   pivot_longer(-Pid) %>%
@@ -285,8 +285,8 @@ dat.tmp$value[11:13] <- NA
 	\item[7行目] ここでこのデータセットの1行目に欠測値\verb|NA|を上書きしています。わざと欠損させたのです。
 	\item[8行目] 同じく11行目から13行目までも欠測値に上書きしてしまいました。
 \end{description}
-こうしてできたデータセットは次のようになります(\texttt{Rの出力\ref{RS:out27_02}})。
-\begin{Rscreen}{整然データになったテストデータ}{out27_02}
+こうしてできたデータセットは次のようになります(\texttt{Rの出力\ref{RS:out:14_02}})。
+\begin{Rscreen}{整然データになったテストデータ}{out:14_02}
 	\begin{verbatim}
 # A tibble: 20 × 3
      Pid   Qid value
@@ -314,7 +314,7 @@ dat.tmp$value[11:13] <- NA
     \end{verbatim}
 \end{Rscreen}
 確かに数カ所，欠けているところができましたね。これをそのまま渡すことができませんから，欠損のあるところは削除してデータセットを作り，推定してみましょう。
-\begin{lstlisting}[language=c++,label={code:27_03},caption={データセットを作って推定する}]
+\begin{lstlisting}[language=c++,label={code:14_07},caption={データセットを作って推定する}]
 # 欠測値を消したデータセットにする
 dat.tmp <- na.omit(dat.tmp)
 
@@ -334,8 +334,8 @@ fit2.2 <- model_2pl_ver2$sample(
 欠損があっても，データを整形して欠損を取り除いた形で分析し，問題なく推定できたと思います。欠損が含まれているから，そのデータはすべて使い物にならないと考えるのではなく，データの存在するところ・利用できるところは利用しつくすという有効活用ができたと思います。
 
 最後に，推定結果を確認しておきましょう。1人目の被検者は1つ，2人目の被検者は3つの欠損がありました。つまり他の被検者は10問分の情報を持っているのに，この2人はそれぞれ9問，7問分しか情報が得られなかったことになります。
-そのことが結果の推定値にどう変わるのかというと，出力\ref{MCMCout:out27_03}の通りです。
-\begin{MCMCout}{}{out27_03}
+そのことが結果の推定値にどう変わるのかというと，出力\ref{MCMCout:mcmc:14_01}の通りです。
+\begin{MCMCout}{}{mcmc:14_01}
 	\begin{verbatim}
 # A tibble: 3 × 7
   name           EAP       MED       MAP        SD       L95       U95
