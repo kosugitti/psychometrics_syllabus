@@ -222,16 +222,28 @@ X < 1 || X > 3
 どのピースをどのように組み上げてもいいので，思い通りのものが作れるようにトレーニングをしておきましょう。
 
 \section{課題}
-\paragraph{FizzBuzz課題}
-1から15までの数列に対して，次の条件にあった出力をするプログラムを書きなさい。なお，割り算の余りを計算するRの関数は\verb|%%|，文字を出力する関数は\verb|print|です。
-\begin{itemize}
-	\item その数が3で割り切れる場合には，その数の代わりに「Fizz」を出力する
-	\item その数が5で割り切れる場合には，その数の代わりに「Buzz」を出力する
-	\item その数が3でも5でも割り切れる場合には，その数の代わりに「FizzBuzz」を出力する
-\end{itemize}
+\input{kadai_common_R}
 
-\paragraph{行列のかけ算}
-行列$\bm{A} = \begin{pmatrix}1&2&3\\4&2&0\end{pmatrix}$と$\bm{B}=\begin{pmatrix}1&5\\2&3\\3&8\end{pmatrix}$を用意し，$\bm{AB}$の掛け算をしたいとします。
-Rの行列の積を求める記号ではなく，\verb|for|文をつかって，この計算をするプログラムを書きなさい。
+\paragraph{大問；Rでプログラムを書く}
+Rの基本的な書き方を，3つの小問で確認します。すべて1つのRファイルにまとめて提出してください。
+\begin{enumerate}
+	\item 次の計算をするコードを書き，結果を表示してください。
+	      \begin{enumerate}
+		      \item $\frac{5}{6} + \frac{1}{3}$
+		      \item $9.6 \div 4$
+		      \item $2.3 + \frac{1}{2}$
+		      \item $3\times (2.2 + \frac{4}{5})$
+		      \item $(-2)^4$
+		      \item $2\sqrt{2} \times \sqrt{3}$
+		      \item $2\log_e 25$
+	      \end{enumerate}
+	\item 1から15までの数列に対して，次の条件にあった出力をするプログラムを書きなさい。なお，割り算の余りを計算するRの関数は\verb|%%|，文字を出力する関数は\verb|print|です。
+	      \begin{itemize}
+		      \item その数が3で割り切れる場合には，その数の代わりに「Fizz」を出力する
+		      \item その数が5で割り切れる場合には，その数の代わりに「Buzz」を出力する
+		      \item その数が3でも5でも割り切れる場合には，その数の代わりに「FizzBuzz」を出力する
+	      \end{itemize}
+	\item 行列$\bm{A} = \begin{pmatrix}1&2&3\\4&2&0\end{pmatrix}$と$\bm{B}=\begin{pmatrix}1&5\\2&3\\3&8\end{pmatrix}$を用意し，$\bm{AB}$の掛け算をしたいとします。Rの行列の積を求める記号(\verb|%*%|)ではなく，\verb|for|文をつかって，この計算をするプログラムを書きなさい。計算結果が\verb|%*%|による結果と一致することも確かめてください。
+\end{enumerate}
 
 \end{document}

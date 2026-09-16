@@ -390,5 +390,14 @@ tidy_dat <- dat_raw %>%
   mutate(cond = as.numeric(name))
 \end{lstlisting}
 \section{課題}
-Code::\ref{code:22_04b}を参考にしながら，表\ref{tbl:22_02}の事例を検証するためのStanコードを書いてください。作ったStanファイルやRコードを提出してください。
+\input{kadai_common}
+
+\paragraph{大問；対応のある群の比較}
+Code::\ref{code:22_04b}を参考にしながら，表\ref{tbl:22_02}の事例を分析します。同じ人から2回測定したデータですので，個人差を考慮したモデルを考えましょう。
+\begin{enumerate}
+	\item 2時点を同時に扱う多変量正規モデルをStanで書いてください。本講の書き方にならい，母数は2時点の平均\verb|mu|，時点ごとの標準偏差\verb|sds|，時点間の相関\verb|rho|とすること。
+	\item このモデルでベイズ推定を実行し，2時点の平均の差(\verb|mu[2]-mu[1]|)について，EAP推定値，MAP推定値，90\%確信区間を報告してください。あわせて\verb|rho|の推定値も示すこと。
+	\item 2時点の平均の差が0より大きい確率を求め，条件によって値が変化したといえるかどうかを判断してください。
+\end{enumerate}
+
 \end{document}
