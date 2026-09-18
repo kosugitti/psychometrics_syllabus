@@ -357,8 +357,8 @@ MCMCの収束は問題なく，推定値は出力されていますが，本来$
 \end{table}
 \begin{enumerate}
 	\item 群ごとに異なる標準偏差を推定するモデルをStanで書いてください。母数として\verb|mu1|，\verb|mu2|，\verb|sig1|，\verb|sig2|を宣言し，あわせて\verb|generated quantities|ブロックで，それぞれの群から新しいポテトを1本取り出したときの予測値\verb|Xpred1|，\verb|Xpred2|を生成すること。
-	\item このモデルでベイズ推定を実行し，\verb|sig1|と\verb|sig2|のEAP推定値と90\%確信区間を報告してください。両群の分布の幅は同じと考えてよさそうでしょうか。
-	\item 今後，店舗Aで購入するポテトが店舗Bで購入するポテトよりも長い確率を，生成量から求めてください。あわせて，2cm以上長い確率も求め，それが30\%を超えるかどうかを判定してください。
+	\item このモデルでベイズ推定を実行し，\verb|sig1|と\verb|sig2|それぞれについて，EAP推定値と90\%確信区間の下限と上限を報告してください。2つの区間が重なっているかどうかを見て，両群の分布の幅は同じと考えてよさそうかを判断すること。\verb|ans2|の要素名は\verb|sig1_eap|，\verb|sig1_lower|，\verb|sig1_upper|，\verb|sig2_eap|，\verb|sig2_lower|，\verb|sig2_upper|とすること。なおMCMCサンプルは，4チェインで1チェインあたり5000サンプル，ウォームアップを1000として得ること。
+	\item 今後，店舗Aで購入するポテト1本が，店舗Bで購入するポテト1本よりも長い確率を求めてください。母数\verb|mu1|，\verb|mu2|ではなく，生成量\verb|Xpred1|，\verb|Xpred2|を使うこと。あわせて2cm以上長い確率も求め，それが30\%を超えるかどうかを判定してください。\verb|ans3|の要素名は\verb|p_A_longer|，\verb|p_A_2cm_longer|とすること。
 \end{enumerate}
 
 \end{document}

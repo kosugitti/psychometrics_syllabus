@@ -343,8 +343,8 @@ model{
     
   // Prior
   gm ~ uniform(0,100);
-  raw_effect ~ uniform(-100,100);
-  sig ~ uniform(0,100000);
+  raw_delta ~ normal(0,100);
+  sig ~ cauchy(0,5);
 }
 \end{lstlisting}
 
@@ -374,7 +374,7 @@ mu <- gm + effect
 
 X <- rnorm(N * Lv, mu, sig)
 dat <- data.frame(
-  Idx = rep(1:Lv, N * Lv),
+  Idx = rep(1:Lv, times = N),
   value = X
 )
 
@@ -405,8 +405,8 @@ dataSet <- list(Lv = Lv, L = NROW(dat), idx = dat$Idx, X = dat$value)
 本講の最後に紹介した，整然データに対応した多群比較のモデルを自分で書き，正しく動くことを確かめます。
 \begin{enumerate}
 	\item 整然データ(1行が1観測で，群を表すインデックス変数を持つ形)を受け取るモデルをStanで書いてください。本講の書き方にならい，母数は全体平均\verb|gm|，全体からの差\verb|raw_delta|，誤差の大きさ\verb|sig|とし，\verb|transformed parameters|ブロックで群ごとの平均\verb|mu|を作ること。群の数は\verb|data|ブロックで外から与えられるようにします。
-	\item 本講のパラメータリカバリのコードを使って人工データを生成し，小問1のモデルで推定してください。各群の平均のEAP推定値を報告し，データを生成したときに設定した真の値と並べて示すこと。
-	\item 各群の平均について，真の値が90\%確信区間に入っているかどうかを判定してください。入っていない群があれば，どの群かを示すこと。
+	\item 本講のパラメータリカバリのコードを使って人工データを生成し，小問1のモデルで推定してください。ただし，データを作る前に\verb|set.seed(2026)|を実行し，全員が同じ人工データになるようにすること。5つの群それぞれについて，平均のEAP推定値を報告してください。\verb|ans2|の要素名は\verb|mu1_eap|から\verb|mu5_eap|の5つとすること。あわせて，データを生成したときの真の値も並べて示してください。
+	\item 各群の平均について，真の値が90\%確信区間に入っているかどうかを判定してください。区間に入った群の数を\verb|ans3|に入れ，要素名を\verb|n_covered|とすること。入っていない群があれば，どの群かもあわせて示してください。なおMCMCサンプルは，4チェインで1チェインあたり5000サンプル，ウォームアップを1000として得ること。
 \end{enumerate}
 
 \end{document}

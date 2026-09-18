@@ -395,9 +395,9 @@ tidy_dat <- dat_raw %>%
 \paragraph{大問；対応のある群の比較}
 Code::\ref{code:09_06}を参考にしながら，表\ref{tbl:09_02}の事例を分析します。同じ人から2回測定したデータですので，個人差を考慮したモデルを考えましょう。
 \begin{enumerate}
-	\item 2時点を同時に扱う多変量正規モデルをStanで書いてください。本講の書き方にならい，母数は2時点の平均\verb|mu|，時点ごとの標準偏差\verb|sds|，時点間の相関\verb|rho|とすること。
-	\item このモデルでベイズ推定を実行し，2時点の平均の差(\verb|mu[2]-mu[1]|)について，EAP推定値，MAP推定値，90\%確信区間を報告してください。あわせて\verb|rho|の推定値も示すこと。
-	\item 2時点の平均の差が0より大きい確率を求め，条件によって値が変化したといえるかどうかを判断してください。
+	\item 2時点を同時に扱う多変量正規モデルをStanで書いてください。表\ref{tbl:09_02}のうち\textbf{1期と2期}を使います。本講の書き方にならい，母数は2時点の平均\verb|mu|，時点ごとの標準偏差\verb|sd1|，\verb|sd2|，時点間の相関\verb|rho|とすること。
+	\item このモデルでベイズ推定を実行し，2時点の平均の差(\verb|mu[2]-mu[1]|)について，EAP推定値，MAP推定値，90\%確信区間の下限と上限を報告してください。あわせて\verb|rho|のEAP推定値と90\%確信区間の下限と上限も示すこと。\verb|ans2|の要素名は\verb|diff_eap|，\verb|diff_map|，\verb|diff_lower|，\verb|diff_upper|，\verb|rho_eap|，\verb|rho_lower|，\verb|rho_upper|とすること。なおMCMCサンプルは，4チェインで1チェインあたり5000サンプル，ウォームアップを1000として得ること。
+	\item 2時点の平均の差が0より大きい確率を求め，条件によって値が変化したといえるかどうかを判断してください。\verb|ans3|の要素名は\verb|p_diff_over0|とすること。
 \end{enumerate}
 
 \end{document}
