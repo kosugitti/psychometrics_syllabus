@@ -435,7 +435,7 @@ cohen.d(value ~ condition | Subject(ID), data = dat, paired = TRUE)
 ここでのポイントは5行目にIDを識別する変数を作り\footnote{関数\texttt{rep}で\texttt{1:10}を2回繰り返しています。Rではコロンで繋げた数字は，連番を意味します。}，効果量を計算する式を警告の提案通りのフォーマットに書き換えています。
 
 \section{課題}
-次の計算をするRコードが含まれるRスクリプトファイルを提出してください。
+この講の課題は大問2つ，小問3つです。\input{kadai_common_B}
 % \paragraph{課題1 標本統計量と一標本検定}
 % 表\ref{exe:20_1}のようなデータが得られたとして，次の各指示に従い，結果について回答してください。
 % % latex table generated in R 4.0.2 by xtable 1.8-4 package
@@ -474,7 +474,7 @@ cohen.d(value ~ condition | Subject(ID), data = dat, paired = TRUE)
 \end{table}
 
 \begin{enumerate}
-	\item 事前スコアの方が事後スコアよりも低いかどうか，5\%水準で検定してください。
+	\item 事前スコアの方が事後スコアよりも低いかどうか，5\%水準で検定してください。検定統計量，自由度，$p$値を\verb|ans1 <- c(t = , df = , p = )|に入れてください。
 \end{enumerate}
 
 \paragraph{課題2 対応のないt検定}
@@ -494,9 +494,8 @@ cohen.d(value ~ condition | Subject(ID), data = dat, paired = TRUE)
 \end{table}
 
 \begin{enumerate}
-	\item 母分散が等しいと仮定したt検定を実行してください。
-	\item 母分散が等しいという仮定をおかないt検定を実行してください。
-	\item この検定に関して，効果量としてHedgesのgを算出してください。
+	\item 母分散が等しいと仮定したt検定を実行してください。検定統計量，自由度，$p$値を\verb|ans2 <- c(t = , df = , p = )|に入れてください。
+	\item 母分散が等しいという仮定をおかないt検定を実行してください。検定統計量，自由度，$p$値を\verb|ans3 <- c(t = , df = , p = )|に入れてください。
 \end{enumerate}
 
 
