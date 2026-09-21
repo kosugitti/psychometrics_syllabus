@@ -198,7 +198,7 @@ file(filename, "r", encoding = encoding) でエラー:
 	ファイルを読み込みにいく先がURL，すなわちインターネット上になっています。ANOVA君のファイルを一度手元のPCのフォルダにダウンロードし，そのローカルのファイルの位置を指定して読み込むようにしてください。
 \end{FAQ}
 
-\begin{FAQ}{効果量として Hedges の g を算出してください。という指示について実行するとｇではなくdが出てしまうようなのですが，どうすればよいでしょうか。コードは次の通りです。}{}
+\begin{FAQ}{効果量を求めるテキストのコードを実行すると，ｇではなくdが出てしまうようなのですが，どうすればよいでしょうか。コードは次の通りです。}{}
 	\begin{verbatim}
 cohen.d(value ~ condition, data = dat, hedges.crrection = T)
 \end{verbatim}
