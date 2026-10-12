@@ -291,8 +291,8 @@ MCMCsummary <- function(MCMCsample, prob = 0.95) {
       MED = median(value),
       MAP = map_estimation(value),
       SD = sd(value),
-      L = quantile(value, prob = lower),
-      U = quantile(value, prob = upper),
+      L = unname(quantile(value, prob = lower)),
+      U = unname(quantile(value, prob = upper)),
       Rhat = posterior::rhat(matrix(value, ncol = max(chain)))
     ) %>%
     dplyr::rename(!!paste0("L", width) := L,
@@ -310,7 +310,7 @@ MCMCsummary <- function(MCMCsample, prob = 0.95) {
 	\item[5行目] 引数で引き受けたオブジェクトを加工していきます。
 	\item[6行目] 変数名，チェーン番号，ステップ番号の順に並べ替えます。15行目でチェーンごとに区切って計算するための下ごしらえです。
 	\item[7行目] 変数名でデータをグループ化します。
-	\item[8--16行目] 変数ごとに記述統計を計算します。9--12行目はEAP，MED，MAP，SDです。13行目と14行目は2--3行目で求めたパーセンタイルの値で，区間の下端\verb|L|と上端\verb|U|になります。15行目の\verb|Rhat|は収束の目安\(\hat{R}\)で，6行目で並べた値をチェーンごとに1列ずつの行列(列の数はチェーン番号の最大値＝チェーンの数)にし，\verb|posterior|パッケージの\verb|rhat|関数に渡しています。1.1を超えていたら，チェーンどうしの結果が食い違っている(収束していない)と考えます。
+	\item[8--16行目] 変数ごとに記述統計を計算します。9--12行目はEAP，MED，MAP，SDです。13行目と14行目は2--3行目で求めたパーセンタイルの値で，区間の下端\verb|L|と上端\verb|U|になります。\verb|quantile|関数は結果に「5\%」のような名前を付けて返すので，\verb|unname|関数で名前を外しています。名前が残っていると，あとで\verb|c(mu1_lower = ...)|のように答えをまとめるときにエラーになるからです。15行目の\verb|Rhat|は収束の目安\(\hat{R}\)で，6行目で並べた値をチェーンごとに1列ずつの行列(列の数はチェーン番号の最大値＝チェーンの数)にし，\verb|posterior|パッケージの\verb|rhat|関数に渡しています。1.1を超えていたら，チェーンどうしの結果が食い違っている(収束していない)と考えます。
 	\item[17--18行目] 13--14行目で仮に\verb|L|と\verb|U|としておいた列の名前を，区間の幅に合わせて\verb|L95|と\verb|U95|(90\%なら\verb|L90|と\verb|U90|)に付け替えます。\verb|rename|関数はふつう\verb|rename(新しい名前 = 古い名前)|と書きますが，ここでは新しい名前が\verb|paste0("L", width)|という計算の結果なので，そのままでは書けません。そこで2つの記号を使います。\verb|!!|(「バンバン」と読みます)は，うしろの式をその場で計算して，結果(たとえば文字列\verb|"L95"|)を差し込むという合図です。また，左側に計算の結果を置くときは\verb|=|の代わりに\verb|:=|を使う決まりになっています。つまりこの2行は，\verb|rename(L95 = L, U95 = U)|と書いたのと同じことを，幅に応じて自動でやっているのです。
 	\item[19--20行目] 出力する数値データは，小数点以下3桁まで表示させるようにします。
 \end{description}
