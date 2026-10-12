@@ -218,9 +218,9 @@ MCMCtoDF <- function(fit) {
   fit$draws() %>%
     posterior::as_draws_df() %>%
     tibble::as_tibble() %>%
-    dplyr::select(-lp__, -.draw, -.chain, -.iteration) %>%
-    tibble::rowid_to_column("iter") %>%
-    tidyr::pivot_longer(-iter) -> MCMCsample
+    dplyr::select(-lp__, -.iteration) %>%
+    dplyr::rename(iter = .draw, chain = .chain) %>%
+    tidyr::pivot_longer(-c(chain, iter)) -> MCMCsample
   return(MCMCsample)
 }
 \end{lstlisting}
@@ -228,37 +228,37 @@ MCMCtoDF <- function(fit) {
 \begin{description}
 	\item[1行目] 関数を作る宣言。引数として\verb|cmdstanr|の出力オブジェクトをとります。
 	\item[2行目] 引数で引き受けたオブジェクトに\verb|draws|関数を作用させ，サンプルだけ取り出します。
-	\item[3行目] 取り出したサンプルをデータフレーム型にする\verb|posterior|パッケージの\verb|as_draws_df|関数を適用します。
+	\item[3行目] 取り出したサンプルをデータフレーム型にする\verb|posterior|パッケージの\verb|as_draws_df|関数を適用します。このとき，チェーン番号(\verb|.chain|)，チェーンの中でのステップ番号(\verb|.iteration|)，全チェーンを通した通し番号(\verb|.draw|)という3つの隠し変数が付いてきます。
 	\item[4行目] tibble型にします。別にしなくてもいいんですが，著者の好みです。
-	\item[5行目] 変数の中から\verb|lp__|や他の隠し変数を除外します。
-	\item[6行目] 行番号を表す変数\verb|iter|を作ります。
-	\item[7行目] 行番号変数は残して，tidyなデータにし，\verb|MCMCsample|というオブジェクトに保存します
+	\item[5行目] 変数の中から\verb|lp__|(対数事後確率)と\verb|.iteration|を除外します。
+	\item[6行目] 隠し変数のうち2つを残して，わかりやすい名前に付け替えます。通し番号\verb|.draw|を\verb|iter|に，チェーン番号\verb|.chain|を\verb|chain|にします。チェーン番号を残しておくのは，後で収束の具合(\(\hat{R}\))をチェーンごとに比べて計算するためです。
+	\item[7行目] \verb|chain|と\verb|iter|の2つは残して，それ以外の変数を縦に並べたtidyなデータにし，\verb|MCMCsample|というオブジェクトに保存します。
 	\item[8行目] 戻り値として\verb|MCMCsample|を返します。
 \end{description}
 
+\verb|rstan|を使う場合は，2行目を\verb|fit %>% as.array() %>%|の2行に置き換えれば，あとは同じです。伴走サイトには\verb|cmdstanr|版と\verb|rstan|版の両方を置いてあります。
 
 \paragraph{MCMCtoDF関数の結果}
 出力結果は以下のような形式になります。
 \begin{Rscreen}{MCMCサンプルをデータセットにしたもの}{out:04_02}
 	\begin{verbatim}
-# A tibble: 60,000 × 3
-    iter name  value
-   <int> <chr> <dbl>
- 1     1 mu1    60.3
- 2     1 mu2    41.0
- 3     1 sig    12.5
- 4     2 mu1    62.9
- 5     2 mu2    37.6
- 6     2 sig    11.5
- 7     3 mu1    68.7
- 8     3 mu2    46.4
- 9     3 sig    13.7
-10     4 mu1    67.7
-# … with 59,990 more rows
-# i Use `print(n = ...)` to see more rows
+# A tibble: 60,000 × 4
+   chain  iter name  value
+   <int> <int> <chr> <dbl>
+ 1     1     1 mu1    61.7
+ 2     1     1 mu2    41.4
+ 3     1     1 sig    11.5
+ 4     1     2 mu1    63.1
+ 5     1     2 mu2    39.7
+ 6     1     2 sig    17.8
+ 7     1     3 mu1    62.8
+ 8     1     3 mu2    39.4
+ 9     1     3 sig    17.4
+10     1     4 mu1    57.1
+# i 59,990 more rows
   \end{verbatim}
 \end{Rscreen}
-ここで\verb|iter|とあるのはMCMCのステップ番号，\verb|name|とあるのが変数名，\verb|value|とあるのがその値です。tidyな形になっていますから，このまま分析や描画に用いることができます。
+ここで\verb|chain|とあるのはチェーン番号，\verb|iter|とあるのはMCMCのステップの通し番号，\verb|name|とあるのが変数名，\verb|value|とあるのがその値です。tidyな形になっていますから，このまま分析や描画に用いることができます。
 
 \subsubsection{MCMCサンプルの結果を要約する関数}
 MCMCの結果を分析するにあたっては，\verb|bayestestR|パッケージなど既存のパッケージを使うと便利でしょう。
@@ -279,42 +279,69 @@ map_estimation <- function(z) {
 \paragraph{MCMCサンプルの要約関数}
 先ほどのMAP推定する関数を含めつつ，またMCMCサンプルをデータフレームにする関数を使いつつ，MCMCサンプルの要約を表示する関数を次のように作りました。
 \begin{lstlisting}[language=C++,label={code:04_06},caption={MCMCの要約を報告するコード}]
-MCMCsummary <- function(MCMCsample) {
+MCMCsummary <- function(MCMCsample, prob = 0.95) {
+  lower <- (1 - prob) / 2
+  upper <- 1 - lower
+  width <- round(prob * 100)
   MCMCsample %>%
+    dplyr::arrange(name, chain, iter) %>%
     dplyr::group_by(name) %>%
     dplyr::summarise(
       EAP = mean(value),
       MED = median(value),
       MAP = map_estimation(value),
       SD = sd(value),
-      U95 = quantile(value, prob = 0.975),
-      L95 = quantile(value, prob = 0.025)
+      L = quantile(value, prob = lower),
+      U = quantile(value, prob = upper),
+      Rhat = posterior::rhat(matrix(value, ncol = max(chain)))
     ) %>%
-    mutate(across(where(is.numeric), ~ num(., digits = 3)))
+    dplyr::rename(!!paste0("L", width) := L,
+                  !!paste0("U", width) := U) %>%
+    dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
+                                ~ pillar::num(., digits = 3)))
 }
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-	\item[1行目] 関数を作る宣言。引数として\verb|MCMCtoDF|関数の戻り値をとります。
-	\item[2行目] 引数で引き受けたオブジェクトを加工していきます。
-	\item[3行目] 変数名でデータをグループ化します。
-	\item[4-10行目] 記述統計の計算を通じて，EAP,MED,MAP,SD,95\%区間を返します。
-	\item[11]行目 出力する数値データは，少数下3桁まで表示させるようにします。
+	\item[1行目] 関数を作る宣言。1つ目の引数は\verb|MCMCtoDF|関数の戻り値です。2つ目の引数\verb|prob|は確信区間の幅で，何も指定しなければ0.95(95\%区間)になります。90\%区間がほしければ\verb|prob = 0.90|と指定します。
+	\item[2行目] 区間の下端にあたるパーセンタイルを計算します。95\%区間なら，残りの5\%を上下に半分ずつ分けるので，下端は\(0.025\)です。
+	\item[3行目] 区間の上端にあたるパーセンタイルです。95\%区間なら\(1-0.025=0.975\)です。
+	\item[4行目] 列の名前に使うために，区間の幅を百分率の整数にします。\verb|prob = 0.95|なら95，\verb|prob = 0.90|なら90です。
+	\item[5行目] 引数で引き受けたオブジェクトを加工していきます。
+	\item[6行目] 変数名，チェーン番号，ステップ番号の順に並べ替えます。15行目でチェーンごとに区切って計算するための下ごしらえです。
+	\item[7行目] 変数名でデータをグループ化します。
+	\item[8--16行目] 変数ごとに記述統計を計算します。9--12行目はEAP，MED，MAP，SDです。13行目と14行目は2--3行目で求めたパーセンタイルの値で，区間の下端\verb|L|と上端\verb|U|になります。15行目の\verb|Rhat|は収束の目安\(\hat{R}\)で，6行目で並べた値をチェーンごとに1列ずつの行列(列の数はチェーン番号の最大値＝チェーンの数)にし，\verb|posterior|パッケージの\verb|rhat|関数に渡しています。1.1を超えていたら，チェーンどうしの結果が食い違っている(収束していない)と考えます。
+	\item[17--18行目] 13--14行目で仮に\verb|L|と\verb|U|としておいた列の名前を，区間の幅に合わせて\verb|L95|と\verb|U95|(90\%なら\verb|L90|と\verb|U90|)に付け替えます。\verb|rename|関数はふつう\verb|rename(新しい名前 = 古い名前)|と書きますが，ここでは新しい名前が\verb|paste0("L", width)|という計算の結果なので，そのままでは書けません。そこで2つの記号を使います。\verb|!!|(「バンバン」と読みます)は，うしろの式をその場で計算して，結果(たとえば文字列\verb|"L95"|)を差し込むという合図です。また，左側に計算の結果を置くときは\verb|=|の代わりに\verb|:=|を使う決まりになっています。つまりこの2行は，\verb|rename(L95 = L, U95 = U)|と書いたのと同じことを，幅に応じて自動でやっているのです。
+	\item[19--20行目] 出力する数値データは，小数点以下3桁まで表示させるようにします。
 \end{description}
 
-この関数は，先ほどの\verb|MCMCtoDF|とセットで使い,次のような結果を得ます。
+この関数は，先ほどの\verb|MCMCtoDF|とセットで使い，次のような結果を得ます。
 \begin{Rscreen}{MCMCsummaryの結果}{out:04_03}
 	\begin{verbatim}
 > fit %>% MCMCtoDF() %>% MCMCsummary()
-# A tibble: 3 × 7
-  name        EAP       MED       MAP        SD       L95       U95
-  <chr> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!>
-1 mu1      59.897    59.888    58.867     5.547    48.672    70.847
-2 mu2      39.958    39.935    39.748     5.523    28.973    50.943
-3 sig      15.519    15.062    14.646     3.074    10.877    22.788
+# A tibble: 3 × 8
+  name        EAP       MED       MAP        SD       L95       U95      Rhat
+  <chr> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!>
+1 mu1      60.010    60.035    60.575     5.574    48.909    71.017     1.000
+2 mu2      39.987    40.036    39.957     5.586    28.828    50.990     1.000
+3 sig      15.521    15.055    14.065     3.080    10.843    22.810     1.000
   \end{verbatim}
 \end{Rscreen}
 ここにあるように，各変数のEAP推定値，MED推定値，MAP推定値，95\%確信区間が表示されます\footnote{この区間はコードから明らかなように，\verb|quantile|関数で計算しています。下から2.5\%，上から2.5\%を取り除くと95\%の区間が残ることになりますが，このように分布の両端を均等に切った区間を厳密には\keyterm{等裾区間}{とうすそくかん}{equal-tailed interval; ETI}というのでした。これに対して，分布の最も信頼できる部分，かつ分布の大部分をカバーし，区間内部のすべての点が，区間外の任意の点よりも高い密度を持っているように推定するものを\keyterm{最高密度区間}{さいこうみつどくかん}{highest-density interval; HDI}と呼びます。これらは左右対称の単峰分布であれば同じになるのですが，事後分布の形がぐちゃっとしている時は必ずしもそうなりません。両者の違いについては\textcite{Maeda2017}を参考にしてください。また，HDIを出力する関数は\verb|bayestestR::hdi()|です。}。
+
+課題などで95\%以外の区間を求められたときは，\verb|prob|を指定します。90\%区間なら次のとおりで，区間の列名も\verb|L90|と\verb|U90|に変わります。
+\begin{Rscreen}{90\%区間を求める}{out:04_03b}
+	\begin{verbatim}
+> fit %>% MCMCtoDF() %>% MCMCsummary(prob = 0.90)
+# A tibble: 3 × 8
+  name        EAP       MED       MAP        SD       L90       U90      Rhat
+  <chr> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!> <num:.3!>
+1 mu1      60.010    60.035    60.575     5.574    50.969    69.043     1.000
+2 mu2      39.987    40.036    39.957     5.586    30.801    49.001     1.000
+3 sig      15.521    15.055    14.065     3.080    11.372    21.187     1.000
+  \end{verbatim}
+\end{Rscreen}
+EAPやMAPは変わらず，区間だけが狭くなっていることを確かめてください。
 
 これらの推定値や，そもそも事後分布が何をどのようなことを表しているのか，といった点については今後の授業で説明していきます。以下は結果をしれっとこの関数で表現していきますので，何をやっているのかわからなくなったらここに立ち戻ってきてください。
 
