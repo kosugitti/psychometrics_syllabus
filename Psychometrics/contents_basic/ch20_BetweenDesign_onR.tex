@@ -28,74 +28,18 @@ source("https://bit.ly/3WL8VYR")
 これらのコードが実行されると，Rの環境にたくさんの関数が入っているはずです(図\ref{fig:20_01})。これらが入っていればOKです。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/20_anovakun/anovaku_funcs.png}
 	\caption{anovakunを読み込んだあとの環境タブ}
 	\label{fig:20_01}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/20_anovakun/anovaku_funcs.png}
 \end{figure}
 それでは実際の使い方を見ていきましょう。
 
 \section{データの作りかた}
 \label{MakingData}
-\subsection{よいデータの形式とは}
-分析に先立って，データをどのように準備するかについて説明しておきます。
-みなさんは既に心理学基礎実験などで，データを使って・作って集計したり分析したりしたことがあるかもしれません。その際はデータの入力の仕方について，テキストや資料通りに進めたかもしれませんが，実際に自分で研究をするときは「どのようにデータを入力するか」も自分で考えることになります。このとき，分析しにくい形でデータを作ってしまうと，後で分析に苦労することになります。そこで，分散分析を行う際に適したデータの形について説明しておきます。
-
-データが数件しかないのであれば，これまでのように手入力することになるでしょう。しかしデータが多くなってくると，入力するところだけは表計算ソフトを使う方が便利です\footnote{データを入力するために使い，その後の分析はすべてRでやるのが得策です。表計算ソフトで平均や分散などの数値を特定のセルに計算してしまうと，それを読み込んでRで分析するときに邪魔になります。とったデータだけの生のデータ(ローデータといいます)はRで読み込み可能なCSV形式などで保存し，以降の処理はすべて記録の残るRでやるようにしましょう。}。このときに注意すべきことは，\textbf{1つのセルには1つのデータしか入れない}ということです。これからデータを色々加工していきますが，加工する前のデータはなるべくプレーンな状態であったほうが良いのです(すでに加工された食材を違う料理に利用するのは大変ですから！)。
-
-たとえば図\ref{fig:20_02}は，悪いデータファイル作成の例です。これをまずはじっくり眺めて，どこがまずいのか考えてみてください。少なくとも7つの点で問題があります。
-\begin{center}
-	\includegraphics[keepaspectratio,width=\linewidth]{figures/20_anovakun/dataSheet.png}
-	\captionof{figure}{分析に不向きなデータファイル}
-	\label{fig:20_02}
-\end{center}
-
-分析しにくいよくないデータになっているのは次の箇所です。
-\begin{enumerate}
-	\item 1行目にこの表のタイトルのようなものが入っていますが，これは分析には使わない情報なので不要です。
-	\item 1行目はセルを結合しています。データセットは\texttt{data.frame}型のように矩形であるべきなので，データのサイズを狂わせる行の存在は不適切です。
-	\item 2行目には大学名が入っているようです。AからD列はC大学，FからIはD大学のデータのようですが，1つのデータセットに複数のデータが混在しているのはよくありません。
-	\item 身長と体重，という変数名のところには1つのセルに複数の数字が入っています。カンマで区切られており，見た目にはわかりますが，機械的には(カンマのせいで)数字ではなく文字列として扱われます。データがデータになっていないのです。
-	\item 変数2の列は「非常にそう思う」という言葉の回答と，数字が入っています。1つの列の中に複数の種類のデータが含まれるので分析できません(文字と数字の集計ができない。ちなみにこの場合は文字変数として扱われます)。
-	\item 7行目に平均とありますが，データの平均はデータから計算できる量なので，Rで算出するものです。データの中に計算結果を入れておくべきではありません。
-	\item I列6行目，D大学の杉田さんに関する変数3の箇所が空欄です。これはデータが入手できなかったところかもしれませんが，これは欠測値であることを明示すべきです。
-	\item 「東京の大学」と「神奈川の大学」という複数のシートがあります。データファイルとしては1つのシートにすべての情報が入っていなければなりません。同時に分析できるデータなのであれば，一枚のシートにまとめるべきです。
-\end{enumerate}
-皆さんはいくつ気づいたでしょうか。これらの問題点を通じて言えることは「1つのデータセット，1つのセルには過不足ない情報を入れる」ということです。表を作って見せるのであればこのような入力でも良いのですが，ここでは数値データを分析することが目的なのですから，レイアウトや数字でない情報，計算してここから作れる情報は，分析に必要のない過剰な情報なのです。ちなみにアンダーラインや文字色，セルの色などは分析のときに自動的に抜け落ちます(データではない情報なので)。表計算ソフトは数字を表にして計算するソフトウェアであり，方眼用紙やレイアウトする文書とは異なることを意識しましょう。
-
-加えて分析のときに不便なのは，文字と数字の関係です。1つのセルに複数の数字が入る場合，区切り記号などをつけることが多いかと思いますが(スペースも機械にとっては文字です！)，こうした文字種・変数の種類・水準が混在しているのも情報過多ということになります。
-
-今回の問題点を修正したのが図\ref{fig:20_03}のようなデータセットです。単一のデータセットで完結しています。また1つの列に一種類の変数，不要な情報はなく，過剰な情報もないデータセットになっているのがわかるかと思います。なお，変数3のところに\texttt{NA}とあるのは\texttt{No Answer}の略で\keyterm{欠測値}{けっそくち}{missing value}を意味しています。これは読み込むときに，欠測値をどのような文字にしているか，という指定ができますので問題になりません。
-\begin{center}
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/20_anovakun/dataSheet2.png}
-	\captionof{figure}{分析に適したデータファイル}
-	\label{fig:20_03}
-\end{center}
-
-このように，データの入力の基本は，\textbf{1行に1ケースの情報が入っている，過不足のない1つのデータセットを作ること}である，と言えます。
-
-このようにして作られたデータファイルは，UTF-8の文字コードによるcsv形式で保存するのが基本です($\to$付録\ref{computer}，\ref{suffix}節，Pp.\pageref{suffix}参照)。ファイルを保存するときに，ファイル形式をしっかり指定し，拡張子も\texttt{.csv}にしましょう。csvファイルはASCIIファイルですし，文字コードも世界基準のUTF-8にしておけばどのPCからでもみることができます。ある一企業が開発した特定のOS，特定のアプリケーションを持っていなければデータを見ることができない，というのは科学的研究の観点からは不適切なのです。
-
-ちなみに2020年12月，総務省により機械判読可能なデータの表記方法の統一ルールが策定されました\parencite{soumu}。それには次のようなチェック項目が含まれています。
-\begin{description}
-	\item[チェック項目1-1] ファイル形式はExcelかCSVとなっているか
-	\item[チェック項目1-2] 1セル1データとなっているか
-	\item[チェック項目1-3] 数値データは数値属性とし，文字列を含まないこと
-	\item[チェック項目1-4] セルの結合をしていないか
-	\item[チェック項目1-5] スペースや改行等で体裁を整えていないか
-	\item[チェック項目1-6] 項目名を省略していないか
-	\item[チェック項目1-7] 数式を使用している場合は，数値データに修正しているか
-	\item[チェック項目1-8] オブジェクトを使用していないか
-	\item[チェック項目1-9] データの単位を記載しているか
-	\item[チェック項目1-10] 機種依存文字を使用していないか
-	\item[チェック項目2-1] データが分断されていないか
-	\item[チェック項目2-2] 1シートに複数の表が掲載されていないか
-\end{description}
-みなさんも自分でデータを作るときは，こうした基準に沿うように心がけてください。
-また表計算ソフトの中で，代表値を計算したりグラフを書いたりしたくなりますが，みなさんは既に統計環境を手に入れているのですから，そうした加工・可視化などはRのほうでやり，データは「誰が触っても良いプレーンな素材」として保管しておくように心がけましょう。
 
 \subsection{整然データ}
-データ入力のときに見たように，データファイルは1セルに1情報，重複や集計，オブジェクトや文字列のないデータセットであることが基本です。
-また図\ref{fig:20_03}にあるように，一行ごとに1人(1ケース，1オブザベーション，1レコードとも言います)のデータが入っており，各列が変数を表していることが一般的です。変数が増えると横に伸びていきますので，こうしたデータの入力形式を\keytermRL{ワイド型}{わいどがた}のデータということがあります。
+一般に心理学で作るデータセット，データファイルは，1セルに1情報，重複や集計，オブジェクトや文字列のないデータセットであることが基本です。
+また図\ref{fig:app_gooddata_02}にあるように，一行ごとに1人(1ケース，1オブザベーション，1レコードとも言います)のデータが入っており，各列が変数を表すようにすることが一般的です。変数が増えると横に伸びていきますので，こうしたデータの入力形式を\keytermRL{ワイド型}{わいどがた}のデータということがあります。
 
 ここで表\ref{tbl:20_01}を見てください。このデータを見ると我々は，「大阪の午後は曇りなんだな」ということがすぐにわかります。
 \begin{center}
@@ -233,7 +177,7 @@ print(MixedDesign_long)
 どのようにデータフレームが変わったか，よく確認してください。ロング型データにしておくと，後でグラフを描くときに便利です。
 
 \section{二要因Between計画の実際}
-それでは実際に\verb|anovakun|を使って，二要因計画の分散分析を実行してみましょう。データは第\ref{ch18_BetweenDesign}章で使ったものと同じです(再掲。表\ref{tbl:20_03})。コーヒーの温度(Hot vs Cold)とメーカー(銘柄A vs 銘柄B)の2要因があり，それぞれの条件で3人ずつ被験者がいて，コーヒーの味の評価を行った，というデータです。
+それでは実際に\verb|anovakun|を使って，二要因計画の分散分析を実行してみましょう。データは第\ref{ch18_BetweenDesign}講で使ったものと同じです(再掲。表\ref{tbl:20_03})。コーヒーの温度(Hot vs Cold)とメーカー(銘柄A vs 銘柄B)の2要因があり，それぞれの条件で3人ずつ被験者がいて，コーヒーの味の評価を行った，というデータです。
 
 % latex table generated in R 4.0.2 by xtable 1.8-4 package
 % Fri Sep 11 14:11:29 2020
@@ -275,7 +219,7 @@ Between2$maker <- factor(Between2$maker,labels = c("A", "B"))
 
 ではこれを\texttt{anovakun}でやってみましょう。彼(?)なら一気にすべての答えを出してくれるのです(\texttt{code:\ref{code:20_06}})。
 \begin{lstlisting}[language=c++,label={code:20_06},caption={anovakunで実行}]
-anovakun(Between2,"ABs",2,2,eps = T)
+anovakun(Between2,"ABs",2,2,eps = TRUE)
 \end{lstlisting}
 
 \verb|anovakun|関数の使い方のポイントは，要因計画の型を文字列で指定するところです。詳しくは開発者である井関先生のサイト\footnote{\url{https://riseki.cloudfree.jp/?ANOVA君/ANOVA君の使い方}}を参照してもらいたいのですが，基本的な使い方は次の通りです。
@@ -348,56 +292,7 @@ output is over --------------------///
 	温度と銘柄の効果を独立変数とした二要因分散分析($2 \times 2$のBetweenデザイン)をおこなったところ，交互作用が有意($F(1,8)=24.5,p=0.0011,\varepsilon^2=0.6267$)になり，事後の検定の結果，銘柄Aにおける温度の効果($F(1,8)=9.0,p=0.0171,\varepsilon^2=0.2133$)，銘柄Bにおける温度の効果($F(1,8)=16.0,p=0.0039,\varepsilon^2=0.4000$)，および温かい時の銘柄の効果($F(1,8)=25.0,p=0.0011,\varepsilon^2=0.6400$)が統計的に有意であった。
 \end{quote}
 
-これらの結果を見やすくするために，図\ref{fig:20_04}に可視化してみました。
-\begin{figure}[ht]
-	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/20_anovakun/anova_figures.png}
-	\caption{POST ANALYSESの検定結果の確認}
-	\label{fig:20_04}
-\end{figure}
-
-この図を書いたのは次のコードによるものです。コードの書き方は参考程度で結構ですが\footnote{このコードは生成AIのひとつ，Claude(Sonnet4.5モデル)に「Between2をつかった分散分析の結果をggplot2で可視化するコードをかけ」と指示して書かせたものです。このように生成AIを使うとRのコードも書いてくれますのでコード自体を恐れる必要はありません。人間に必要なのは適切な指示を出すこと，ゴールのビジョンを明確に持つことです。}，どのようにして可視化できるかを確認してください(\texttt{code:\ref{code:20_07}})。
-\begin{lstlisting}[language=c++,label={code:20_07},caption={可視化のコード}]
-Between2 %>%
-  group_by(temp, maker) %>%
-  summarise(
-    mean = mean(value),
-    sd = sd(value),
-    n = n(),
-    se = sd / sqrt(n),
-    .groups = "drop"
-  ) %>%
-  ggplot(aes(x = temp, y = mean, fill = maker)) +
-  geom_bar(
-    stat = "identity",
-    position = position_dodge(0.9),
-    width = 0.8
-  ) +
-  geom_errorbar(aes(ymin = mean - se, ymax = mean + se),
-    position = position_dodge(0.9), width = 0.25
-  ) +
-  labs(
-    title = "温度とメーカーによる評価値の比較",
-    x = "温度条件",
-    y = "評価値の平均",
-    fill = "メーカー"
-  ) +
-  theme_bw()
-\end{lstlisting}
-\paragraph{コード解説}
-\begin{description}
-    \item[1行目] データフレーム\texttt{Between2}をパイプでつないでいます。
-    \item[2行目] \verb|group_by()|関数で，温度(\texttt{temp})とメーカー(\texttt{maker})の組み合わせごとにグループ化しています。
-    \item[3-7行目] \verb|summarise()|関数で各グループの記述統計量を計算しています。平均値(\texttt{mean})，標準偏差(\texttt{sd})，サンプル数(\texttt{n})，標準誤差(\texttt{se})を算出し，\texttt{.groups = "drop"}でグループ化を解除しています。
-    \item[8行目] パイプで\verb|ggplot()|関数に接続し，\texttt{aes()}で見た目の設定をしています。x軸に温度，y軸に平均値，塗りつぶしの色にメーカーを割り当てています。
-    \item[9-12行目] \verb|geom_bar()|で棒グラフを描画しています。\texttt{stat = "identity"}で値をそのまま使い，\texttt{position\_dodge(0.9)}で棒を横に並べ，\texttt{width = 0.8}で棒の幅を指定しています。
-    \item[13-15行目] \verb|geom_errorbar()|でエラーバー(標準誤差)を追加しています。\texttt{ymin}と\texttt{ymax}で誤差範囲を指定し，\texttt{position\_dodge(0.9)}で棒と位置を合わせ，\texttt{width = 0.25}でエラーバーの横幅を指定しています。
-    \item[16-21行目] \verb|labs()|関数で図のタイトルと軸ラベルを設定しています。
-    \item[22行目] \verb|theme_bw()|で白黒ベースのテーマを適用し，見やすいグラフにしています。
-\end{description}
-
-\newpage
-\section{補遺；線形モデルとして分析}
+\subsection{線形モデルとして分析}
 ここまで\texttt{anovakun}関数を使って分散分析を行ってきましたが，Rの基本機能である線形モデルとしても同じ分析ができます。線形モデルで表現するには，次のようにします(\texttt{code:\ref{code:20_08}})。
 \begin{lstlisting}[language=c++,label={code:20_08},caption={線形モデルとして実行}]
 result.lm <- lm(value ~ temp * maker, data = Between2)
@@ -459,6 +354,141 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 \end{verbatim}
 \end{Rscreen}
 
+\section{分析結果の可視化}
+これらの結果を見やすくするために，図\ref{fig:20_02}に可視化してみました。
+\begin{figure}[ht]
+	\centering
+	\caption{分散分析結果の可視化1；棒グラフで平均値と標準誤差を表示}
+	\label{fig:20_02}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/20_anovakun/anova_barplot.png}
+\end{figure}
+
+いかがでしょうか。こうすると群の平均がどのように違うのか，交互作用があるのかどうかが一目でわかります。加えて，平均値の標準誤差をエラーバーとして表示しているので，群間の差がどの程度のばらつきの中で生じているのかもわかります。
+
+この図を書いたのは次のコードによるものです。コードの書き方は参考程度で結構ですが\footnote{このコードは生成AIのひとつ，Claude(Sonnet4.5モデル)に「Between2をつかった分散分析の結果をggplot2で可視化するコードをかけ」と指示して書かせたものです。このように生成AIを使うとRのコードも書いてくれますのでコード自体を恐れる必要はありません。人間に必要なのは適切な指示を出すこと，ゴールのビジョンを明確に持つことです。}，どのようにして可視化できるかを確認してください(\texttt{code:\ref{code:20_07}})。
+
+\begin{lstlisting}[language=c++,label={code:20_07},caption={可視化のコード}]
+Between2 %>%
+  group_by(temp, maker) %>%
+  summarise(
+    mean = mean(value),
+    sd = sd(value),
+    n = n(),
+    se = sd / sqrt(n),
+    .groups = "drop"
+  ) %>%
+  ggplot(aes(x = temp, y = mean, fill = maker)) +
+  geom_bar(
+    stat = "identity",
+    position = position_dodge(0.9),
+    width = 0.8
+  ) +
+  geom_errorbar(aes(ymin = mean - se, ymax = mean + se),
+    position = position_dodge(0.9), width = 0.25
+  ) +
+  labs(
+    title = "温度とメーカーによる評価値の比較",
+    x = "温度条件",
+    y = "評価値の平均",
+    fill = "メーカー"
+  ) +
+  theme_bw()
+\end{lstlisting}
+\paragraph{コード解説}
+\begin{description}
+    \item[1行目] データフレーム\texttt{Between2}をパイプでつないでいます。
+    \item[2行目] \verb|group_by()|関数で，温度(\texttt{temp})とメーカー(\texttt{maker})の組み合わせごとにグループ化しています。
+    \item[3-9行目] \verb|summarise()|関数で各グループの記述統計量を計算しています。平均値(\texttt{mean})，標準偏差(\texttt{sd})，サンプル数(\texttt{n})，標準誤差(\texttt{se})を算出し，\texttt{.groups = "drop"}でグループ化を解除しています。
+    \item[10行目] パイプで\verb|ggplot()|関数に接続し，\texttt{aes()}で見た目の設定をしています。x軸に温度，y軸に平均値を割り当て，\texttt{group = maker}でメーカーごとに点を線で結ぶようにし，\texttt{color = maker}で線と点の色をメーカーごとに分けています。
+    \item[11行目] \verb|geom_line()|で，各メーカーの平均値を結ぶ線を描画しています。\texttt{linewidth = 1}で線の太さを指定しています。
+    \item[12行目] \verb|geom_point()|で，各条件の平均値を点で描画しています。\texttt{size = 3}で点の大きさを指定しています。
+    \item[13行目] \verb|geom_errorbar()|でエラーバー(標準誤差)を追加しています。\texttt{ymin}と\texttt{ymax}で誤差範囲を指定し，\texttt{width = 0.1}でエラーバーの横幅を指定しています。
+    \item[14-19行目] \verb|labs()|関数で図のタイトルと軸ラベル，凡例の見出し(\texttt{color = "メーカー"})を設定しています。
+    \item[20行目] \verb|theme_bw()|で白黒ベースのテーマを適用し，見やすいグラフにしています。
+\end{description}
+
+単純に，ボックスプロット(箱ひげ図)で表現するのもいいかもしれませんね。好みの問題ですけど。ボックスプロットで表示する例を図\ref{fig:20_03}に示します。
+
+\begin{figure}[ht]
+	\centering
+	\caption{分散分析結果の可視化2；ボックスプロットで分布を表示}
+	\label{fig:20_03}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/20_anovakun/anova_boxplot.png}
+\end{figure}
+
+ボックスプロットは平均値に加え，データの分布や外れ値を視覚的に確認するのに便利です。また，今回は点ですべてのデータを重ねて表示しているので，どのような分布になっているのかもわかります\footnote{点をそのまま書くと，同じ値が重複して表示され見た目に違いがわからなくなりますので，左右に少し散らばるように書きました。この散らばらせるやり方をジッター(jitter)といいます。}。コードは次の通りです。
+
+\begin{lstlisting}[language=c++,label={code:20_10},caption={箱ひげ図のコード}]
+Between2 %>%
+  ggplot(aes(x = temp, y = value, fill = maker)) +
+  geom_boxplot(alpha = 0.5, outlier.shape = NA) +
+  geom_jitter(aes(color = maker), position = position_jitterdodge(jitter.width = 0.2), size = 2) +
+  labs(
+    title = "温度とメーカーによる評価値の分布",
+    x = "温度条件",
+    y = "評価値",
+    fill = "メーカー",
+    color = "メーカー"
+  ) +
+  theme_bw()
+\end{lstlisting}
+\paragraph{コード解説}
+\begin{description}
+    \item[1行目] データフレーム\texttt{Between2}をパイプでつないでいます。箱ひげ図はデータそのものの分布を描くので，平均値などを事前に計算する必要はありません。
+    \item[2行目] パイプで\verb|ggplot()|関数に接続し，\texttt{aes()}で見た目の設定をしています。x軸に温度，y軸に評価値(\texttt{value})，塗りつぶしの色にメーカーを割り当てています。
+    \item[3行目] \verb|geom_boxplot()|で箱ひげ図を描画しています。\texttt{fill}にメーカーを割り当てているので，温度条件ごとにメーカー別の箱が横に並びます。\texttt{alpha = 0.5}で塗りつぶしを半透明にし，重ねる点が見えるようにしています。\texttt{outlier.shape = NA}で外れ値の点を描かないようにしています。次の行ですべてのデータを点で描くので，外れ値が二重に描かれるのを防ぐためです。
+    \item[4行目] \verb|geom_jitter()|で，一つ一つのデータを点で描画しています。同じ値のデータが重なって見えなくならないよう，点を少しだけ横にずらして(jitter)描きます。\texttt{aes(color = maker)}で点の色をメーカーごとに分け，\texttt{position\_jitterdodge(jitter.width = 0.2)}で，点をメーカー別の箱の位置に合わせて並べたうえで横に散らしています。\texttt{size = 2}で点の大きさを指定しています。
+    \item[5-11行目] \verb|labs()|関数で図のタイトルと軸ラベル，凡例の見出しを設定しています。塗りつぶし(\texttt{fill})と点の色(\texttt{color})の両方に同じ見出し「メーカー」をつけているので，凡例が1つにまとまります。
+    \item[12行目] \verb|theme_bw()|で白黒ベースのテーマを適用し，見やすいグラフにしています。
+\end{description}
+
+
+あるいはまた，交互作用のパターンを見るためには，次のような図もいいかもしれません。図\ref{fig:20_04}は，温度を横軸に，評価値の平均を縦軸にとり，メーカーごとに線で結んだものです。横軸が連続量ではないので，本来折れ線グラフにするのは適切ではないのですが，交互作用がある場合は，線が交差するようなパターンになって直感的にはわかりやすくなります。
+
+\begin{figure}[ht]
+  \centering
+	\caption{分散分析結果の可視化3；交互作用を示すプロット}
+	\label{fig:20_04}
+  \includegraphics[keepaspectratio,width=0.8\linewidth]{figures/20_anovakun/anova_interaction.png}
+\end{figure}
+
+\begin{lstlisting}[language=c++,label={code:20_11},caption={交互作用の可視化のコード}]
+Between2 %>%
+  group_by(temp, maker) %>%
+  summarise(
+    mean = mean(value),
+    sd = sd(value),
+    n = n(),
+    se = sd / sqrt(n),
+    .groups = "drop"
+  ) %>%
+  ggplot(aes(x = temp, y = mean, group = maker, color = maker)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.1) +
+  labs(
+    title = "温度とメーカーの交互作用",
+    x = "温度条件",
+    y = "評価値の平均",
+    color = "メーカー"
+  ) +
+  theme_bw()
+\end{lstlisting}
+
+\paragraph{コード解説}
+\begin{description}
+    \item[1行目] データフレーム\texttt{Between2}をパイプでつないでいます。
+    \item[2行目] \verb|group_by()|関数で，温度(\texttt{temp})とメーカー(\texttt{maker})の組み合わせごとにグループ化しています。
+    \item[3-9行目] \verb|summarise()|関数で各グループの記述統計量を計算しています。平均値(\texttt{mean})，標準偏差(\texttt{sd})，サンプル数(\texttt{n})，標準誤差(\texttt{se})を算出し，\texttt{.groups = "drop"}でグループ化を解除しています。
+    \item[10行目] パイプで\verb|ggplot()|関数に接続し，\texttt{aes()}で見た目の設定をしています。x軸に温度，y軸に平均値を割り当て，\texttt{group = maker}でメーカーごとに点を線で結ぶようにし，\texttt{color = maker}で線と点の色をメーカーごとに分けています。
+    \item[11行目] \verb|geom_line()|で，各メーカーの平均値を結ぶ線を描画しています。\texttt{linewidth = 1}で線の太さを指定しています。
+    \item[12行目] \verb|geom_point()|で，各条件の平均値を点で描画しています。\texttt{size = 3}で点の大きさを指定しています。
+    \item[13行目] \verb|geom_errorbar()|でエラーバー(標準誤差)を追加しています。\texttt{ymin}と\texttt{ymax}で誤差範囲を指定し，\texttt{width = 0.1}でエラーバーの横幅を指定しています。
+    \item[14-19行目] \verb|labs()|関数で図のタイトルと軸ラベル，凡例の見出し(\texttt{color = "メーカー"})を設定しています。
+    \item[20行目] \verb|theme_bw()|で白黒ベースのテーマを適用し，見やすいグラフにしています。
+\end{description}
+
+
 \section{課題}
 
 ある研究者が，学習方法(対面授業 vs オンライン授業)と復習の有無(復習あり vs 復習なし)が学習成果に与える影響を調べるために，2要因の群間計画による実験を行いました。各条件に4名ずつ，合計16名の参加者を無作為に割り当て，学習後のテスト得点(100点満点)を測定しました。結果は次の通りです。
@@ -480,10 +510,10 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 10 & 2 & オンライン & あり & 82 \\
 11 & 3 & オンライン & あり & 80 \\
 12 & 4 & オンライン & あり & 76 \\
-13 & 1 & オンライン & なし & 65 \\
-14 & 2 & オンライン & なし & 62 \\
-15 & 3 & オンライン & なし & 68 \\
-16 & 4 & オンライン & なし & 60 \\
+13 & 1 & オンライン & なし & 55 \\
+14 & 2 & オンライン & なし & 52 \\
+15 & 3 & オンライン & なし & 58 \\
+16 & 4 & オンライン & なし & 50 \\
 \hline
 \end{tabular}
 \end{center}

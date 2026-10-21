@@ -55,9 +55,9 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/14_NHST2/p_value_curve.png}
 	\caption{サンプルサイズと$p$値の関係}
 	\label{fig:14_01}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/14_NHST2/p_value_curve.png}
 \end{figure}
 
 この下がり方はどこからスタートするかにかかわらず同じ形ですから，判定はサンプルサイズが増えさえすればいずれ有意になるのです。これがまた，研究の実践ではおかしな風潮を呼んでしまいます。つまり，\underline{有意にしたければ}サンプルサイズをたくさん取る＝頑張れば良いのです。
@@ -95,9 +95,9 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/14_NHST2/type12.png}
 	\caption{二種類の間違い方}
 	\label{fig:14_02}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/14_NHST2/type12.png}
 \end{figure}
 図\ref{fig:14_02}に，間違い方の組み合わせを書いてみました。帰無仮説が正しいときに帰無仮説を採択する，帰無仮説が正しくないので帰無仮説を棄却する。これができれば正しい決定ですが，「帰無仮説が正しいのに帰無仮説を棄却する」のも「帰無仮説が正しくないのに帰無仮説を採択する」のも間違いです。
 
@@ -156,9 +156,9 @@ $$d = \frac{\bar{X}_1-\bar{X}_2}{\hat{\sigma}}$$
 そして最後にもう1つ。先ほどの二種類の間違いのうち，本当に差がある場合に正しく検出できる程度，つまり\keyterm{検定力}{けんていりょく}{power}というのがありました。うっかりミスである\keytermL{タイプ2エラー}{たいぷ2えらー}を犯す確率が$\beta$ですから，検定力は$1-\beta$です。これも大きければ大きいほど，正しく対立仮説を採択できます。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/14_NHST2/conditions4.png}
 	\caption{統計的検定における四つの要素の関係}
 	\label{fig:14_03}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/14_NHST2/conditions4.png}
 \end{figure}
 このように，帰無仮説検定において判定に関係してくるのは有意水準，サンプルサイズ，効果量，検定力の4つであり，これらのうち3つが決まると残りの1つの要素は計算で決まります\parencite{Mizumoto2010}。また有意水準$\alpha$は一般に5\%を使いますし，検定力$1-\beta$も0.8ぐらいにするのがよい，というのが通例になっています。であれば，効果量に応じてサンプルサイズを決めることができるわけです。小さな効果しかなさそうなものであればサンプルサイズはたくさん必要ですし，逆もまた真です。ただ，「サンプルサイズは大きいに越したことはないだろう」というのは間違いで，そうすると実質的にはごくわずかな違いであっても，検定で検出してしまうことになるからです。
 もっとも，研究を始める前に効果量がどれぐらいなのかを事前に知るのは難しいところです。効果がどの程度あるかがわからないので，研究しようというシーンが多いでしょう。それでも先行研究があれば，そこにはすでにサンプルサイズも，実際のデータによる効果量も計算できるわけですから，効果量がどれくらいある研究なのかを計算することは可能です。

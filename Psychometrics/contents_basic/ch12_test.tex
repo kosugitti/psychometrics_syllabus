@@ -19,9 +19,9 @@
 母分散の推定値として，平均の時と同じように，標本分散をあてがうというのは1つのアイデアです。ですが，残念ながらこの方法だとうまく推定できません。図\ref{fig:12_01}をみてください。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,height=0.4\linewidth]{figures/12_test/biased.png}
 	\caption{サンプリングを繰り返し，標本分散の平均を求めると，母分散から少しずれる}
 	\label{fig:12_01}
+	\includegraphics[keepaspectratio,height=0.4\linewidth]{figures/12_test/biased.png}
 \end{figure}
 これは標本平均の時と同様に，サンプルサイズ10のサンプリングを200回繰り返し，標本分散の平均を順次とって行ったものです。これをみると・・・あれあれ，真値(母分散$\sigma^2$)の青いラインの，下側に収束して行ってるようですね。このズレのことをバイアスと言います。標本平均値は偏りのない推定量(不偏推定量)なのですが，分散は偏り(バイアス)があるのです。
 
@@ -50,9 +50,9 @@
 先ほどのシミュレーションを，不偏分散の式を使って行ったのが図\ref{fig:12_02}です。補正してある不偏分散だと，母分散に近づいているのがわかりますね。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,height=0.4\linewidth]{figures/12_test/unbiased.png}
 	\caption{サンプリングを繰り返し，標本分散と不偏分散の期待値を求めたもの}
 	\label{fig:12_02}
+	\includegraphics[keepaspectratio,height=0.4\linewidth]{figures/12_test/unbiased.png}
 \end{figure}
 
 \section{点推定と標準誤差}
@@ -75,9 +75,9 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,height=0.6\linewidth]{figures/12_test/sampling.png}
 	\caption{今度は推測統計学の枠組みで考えることに注意。母集団が正規分布だと仮定して，そこから得られた標本のことについて考えています。個々のデータは標本の中にあります。}
 	\label{fig:12_03}
+	\includegraphics[keepaspectratio,height=0.6\linewidth]{figures/12_test/sampling.png}
 \end{figure}
 
 そこで，$\mu$の代わりに標本平均$\bar{X}$を使って--標本平均は母平均の推定値として悪くないはずですから--考えてみたいと思います。
@@ -89,9 +89,9 @@
 となります。この$Z$は標準正規分布に従いますから，母平均がどのあたりにあるかを正規分布を使って推測できます(図\ref{fig:12_04})。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/12_test/ci.png}
 	\caption{標本統計量の従う分布も正規分布。幅は母分散とサンプルサイズに依存します。}
 	\label{fig:12_04}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/12_test/ci.png}
 \end{figure}
 
 たとえば95\%の幅を持って推測するとしましょう\footnote{心理学を始め，推測統計の業界ではよくこの95\%，あるいはその逆の5\%という数字が使われます。これにはなんの根拠もありません。50\%や30\%の幅で考えたって，全然問題ありません。}。
@@ -138,9 +138,9 @@
 この$t$分布，標準正規分布と違ってパラメータとして自由度$\nu$(ギリシア文字で「ニュー」と読みます\footnote{ニューガンダムのニューです。ニューガンダムについては「逆襲のシャア」を観てください。ジークジオン。})というものを使います\footnote{正規分布のパラメータは平均$\mu$と標準偏差$\sigma$でした。$t$分布の平均は$0$で，自由度$\nu$は標準偏差に当たるような散らばりの指標だと思っていただければ結構です。}。$t$分布の形状は標準正規分布に近く，自由度が大きくなればほぼ標準正規分布と同じ形になるのがわかると思います(図\ref{fig:12_05})。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/12_test/t_dist.png}
 	\caption{母分散がわからないときの標本統計量は$t$分布に従う。自由度が大きくなるほど標準正規分布に近づきます。}
 	\label{fig:12_05}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/12_test/t_dist.png}
 \end{figure}
 この自由度とはなんでしょう？ $t$分布の使い所は，母分散がわからないときに標本から計算した不偏分散で代用するというシーンだったことを思い出してください。この分散の推定量は，当然サンプルサイズによってその精度が変わります。このサンプルサイズによって推定の精度を調節しているのが，自由度というパラメータで表されているのです。しかも，この自由度は「サンプルサイズ$-1$」で計算できるという優れものです\footnote{またマイナス1がでてきたー，なんだこれ。と思う人もいるかもしれません。イメージとして，標本における分散の代わりになる指標ですから，サンプルサイズ1の時は分散の計算ができず，サンプルサイズ2から計算し始めることができる，つまりサンプルサイズ2が最初の(1番目の)$t$分布の形なので，サンプルサイズ$-1$が$t$分布のかたちなのだ，と考えてみてはいかがでしょうか。}。
 
@@ -168,9 +168,9 @@ $\bar{X}$を移項して，
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/12_test/design.png}
 	\caption{RCTによる心理学研究のアプローチ}
 	\label{fig:12_06}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/12_test/design.png}
 \end{figure}
 
 
@@ -180,9 +180,9 @@ $\bar{X}$を移項して，
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,height=0.6\linewidth]{figures/12_test/design_test.png}
 	\caption{RCTと推測統計を合わせて考える。標本平均に差があるのは当たり前で，問題は母平均に差があると言って良いかどうか，である。}
 	\label{fig:12_07}
+	\includegraphics[keepaspectratio,height=0.6\linewidth]{figures/12_test/design_test.png}
 \end{figure}
 
 データが正規分布に従うとして，t分布を使って標本統計量から母平均を計算することができるのでした。

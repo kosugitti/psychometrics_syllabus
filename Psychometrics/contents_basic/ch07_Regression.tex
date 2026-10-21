@@ -54,9 +54,9 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/07_Regressions/simple_scatter.png}
 	\caption{散布図を見てみよう}
 	\label{fig:07_01}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/07_Regressions/simple_scatter.png}
 \end{figure}
 散布図を見ると，データからなんらかの傾向が見えてきますよね。左下から右上にかけて，点が散らばっているのがわかります。
 そう，このデータには\textbf{正の相関関係}がありそうだということがわかります。
@@ -83,9 +83,9 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/07_Regressions/linerModel.png}
 	\caption{線を引くのも難しい}
 	\label{fig:07_02}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/07_Regressions/linerModel.png}
 \end{figure}
 
 図\ref{fig:07_02}の上の図は，すべての点を通る線を引いてみたのですが，当然直線にはなりません。下の図は直線ではありますが，すべての点を通っているわけではありません。しかし，目指すのは下のような直線です。すべてを説明することはできませんが，だいたい当てはまっている，そういう関係を探そうというわけです。データには誤差や個人差がありますから，そのせいで直線関係が当てはまらないところがありますが，それらを除外して理想的な関係を考えれば直線なんじゃないか，というのがここでの課題になります。
@@ -110,9 +110,9 @@
 このようにして引かれた直線$\hat{y}$は，線形結合で表された関数$b_0 + b_1 x_i$の解の集合です。$b_0,b_1$の値はわからないので今からそれを探しに行くわけですが，$x_i,y_i$の組み合わせはデータとしてわかっているのでした。たとえばJさんのデータ，記号でいうなら$x_{10},y_{10}$ですが，それはそれぞれ$x_{10}=22,y_{10}=89$となります。しかし$\hat{y_{10}}$は実際のデータのずいぶん下の方にあります(図\ref{fig:07_03})。これはJさんについてはこの関数の予測が外れていることを意味しますね。この外れている大きさを\keyterm{誤差}{ごさ}{error}あるいは\keyterm{残差}{ざんさ}{residuals}といい，記号$e_i$で表します。残差の記号$e$に個人の違いを表す添字$i$がついていることからわかるように，残差はすべてのデータについて生じます。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/07_Regressions/yhatg.png}
 	\caption{データと予測値と誤差の関係}
 	\label{fig:07_03}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/07_Regressions/yhatg.png}
 \end{figure}
 
 残差は次のように定義されます。
@@ -127,9 +127,9 @@
 \label{LeastSquare}
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/07_Regressions/bestFit.png}
 	\caption{考えうる色々な予測の線}
 	\label{fig:07_04}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/07_Regressions/bestFit.png}
 \end{figure}
 
 図\ref{fig:07_04}の上に，直線A,Bという2つの線を試しに引いてみました。直線Aのようなモデルだと，ある点は通っている＝あるデータ点については予測が実際の値に一致しているのですが，他のデータ点はすべて線(予測値の集まり)の下方向，つまり予測値が全部実際より大きい方向にズレていることになります。逆にBのモデルだと実際のデータ点はひとつを除いてすべてモデル直線(予測値の集まり)の上方向にあります。つまり予測値は全部低すぎるので，これも全体としてのズレは大きいと言わざるを得ないでしょう。
@@ -300,6 +300,8 @@ AとB，2つの変数があって，相関関係にあるのは事実としま�
 
 \begin{figure}[ht]
 	\centering
+	\caption{因果を特定するのは難しい。点線のパスがないことを確認しなければならない。}
+	\label{fig:07_05}
 	\begin{tikzpicture}
 		\node[draw, circle,fill=blue!20] (A) at (10,0) {暴力映像};
 		\node[draw, circle, right=2cm of A,fill=blue!20] (B) {暴力行為};
@@ -311,8 +313,7 @@ AとB，2つの変数があって，相関関係にあるのは事実としま�
 		\draw[dashed,->] (D) to (A);
 		\draw[dashed,->] (D) to (B);
 	\end{tikzpicture}
-	\caption{因果を特定するのは難しい。点線のパスがないことを確認しなければならない。}
-	\label{fig:07_05}
+	
 \end{figure}
 
 

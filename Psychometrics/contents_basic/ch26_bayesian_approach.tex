@@ -30,9 +30,9 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/4prior.png}
 	\caption{コイントスの出目についての四つの信念}
 	\label{fig:26_01}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/4prior.png}
 \end{figure}
 
 図\ref{fig:26_01}に，4つの確率分布を示しました。これらはベルヌーイ分布のパラメータ$\theta$についての，個人の考え方を示していると思ってください。ベルヌーイ分布はコイントスのような，二値の結果を生じさせる試行についての確率分布ですから，確率$\theta$は$0 \le \theta \le 1$の範囲にあるはずです。
@@ -63,17 +63,17 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/apply_bayes.png}
 	\caption{ベイズ推定の実際}
 	\label{fig:26_02}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/apply_bayes.png}
 \end{figure}
 
 分子が確率と確率の掛け算になっているので，イメージしにくいかもしれません。私個人のイメージでは，波の衝突のような感じだと思っています。X軸に沿って細かく数字を切り出して，逐一掛け合わせていくような方法のイメージでも良いかもしれません(図\ref{fig:26_03})。ちなみに事前分布が今回，無情報な一様分布ですので，尤度と組み合わせたところ，その高さは変わりますが全体的な形状は変化しません。このように，事前分布を一様分布にしておくと，データと確率分布の関係，尤度の形をそのまま結果に反映させることができることになります。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/prob_prod.png}
 	\caption{確率同士の掛け合わせ}
 	\label{fig:26_03}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/prob_prod.png}
 \end{figure}
 さて，この掛け合わせた結果を$P(D)$，つまりデータの確率で割らないといけないのですが，ここは無視してしまいましょう。というのも，この分母が何をやっているかを考えれば，パラメータのような変わる数(変数)が含まれていないのでここは「定数」になっていることがわかります。分子のところは尤度と事前分布を掛け合わせたものですから，数字はすごく小さいものになっているのでしょうが，最終的に左辺は事後分布という名の確率分布です。つまり，左辺は面積が1.0に規格化されており，分母は面積を1.0にするための，割り算用の定数に過ぎないということがわかります。我々はパラメータがどのあたりにあるのかが知りたいのですが，「ここにありそう」というのはそこの確率が高そうだ，ということであって，形さえわかれば縦軸の単位は別に詳しくわからなくても，横軸の位置を推測するのに苦労はない訳です。そういうわけで，分母は無視しちゃいましょう\footnote{繰り返しになりますが，実は深くベイズ推論を進めていくとこの分母というのが結構おもしろいもので，このモデルの中でデータがどれぐらい出てきそうなのか，というモデルとデータの適合度を測る目安に使えちゃうのです。がそれはまたの講釈で。}。この「形がわかればいい」というのを数学的に表すと，
 \[ P(\mbox{事後分布}) \propto \mbox{尤度}\times \mbox{事前分布}\]
@@ -82,9 +82,9 @@
 さて，図\ref{fig:26_04}にあるように，事後分布が計算できました。これが$\theta$の推定結果ということになります。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/result_bayes.png}
 	\caption{事後分布の計算}
 	\label{fig:26_04}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/result_bayes.png}
 \end{figure}
 
 これで事後分布が計算できました。
@@ -92,14 +92,14 @@
 これが結果です，と言われても，ピンと来ないかもしれません。ベイズ法は推定結果も事後分布＝確率分布として得られます。モーメント法や最尤法は，$\theta$の値がXXXです！と答えを出してはくれるのですが，ベイズ推定の場合は答えが「分布」で出ていますから，1つの値にして回答を出すことができないのです。この分布全部が答えであり，事前分布の解釈のように「この辺りにありそうだ」という信念の強さを表しているとも言えます。
 
 分布全体を見ながら「ふむふむ」でもいいのですが，分布の代表値を結果の報告に利用できます。
-たとえばこの分布関数のピーク，記述統計でいうところの最頻値を考えると，これは最も確率が高いところなので，最も尤もらしい，つまり最尤推定値と考えることができます。ちなみにこの関数の最尤推定値は\keytermsub{最大事後確率}{さいだいじごかくりつ}{maximum a posteriori}{MAP推定値}{MAPすいていち}ということで\textbf{MAP推定値}(maximum a posteriori estimate)と言われます。また，確率関数の期待値を代表値とすることもできて，それはExpected A Posterioriということで\keyterm{EAP推定値}{EAPすいていち}{expected a posteriori estimate}，と呼ばれます。またこの関数は左に歪んでいますから，平均値であるEAPはあまり代表値として相応しくないため，中央値をつかってMEDian a Posterioriということで\keyterm{MED推定値}{MEDすいていち}{median a posteriori estimate}を使ったほうがいいかもしれません。ちなみに今回のこの関数のピーク，MAP推定値は$\theta=0.4$です。0.4になる確率が最も高いのですね。
+たとえばこの分布関数のピーク，記述統計でいうところの最頻値を考えると，これは最も確率が高いところなので，最も尤もらしい，つまり最尤推定値と考えることができます。ちなみにこの関数の最尤推定値は\keytermsub{最大事後確率}{さいだいじごかくりつ}{maximum a posteriori}{MAP推定値}{MAPすいていち}ということで\textbf{MAP推定値}(maximum a posteriori estimate)と言われます。また，確率関数の期待値を代表値とすることもできて，それはExpected A Posterioriということで\keyterm{EAP推定値}{EAPすいていち}{expected a posteriori estimate}，と呼ばれます。またこの関数は右に裾を引いていますから，平均値であるEAPはあまり代表値として相応しくないため，中央値をつかってMEDian a Posterioriということで\keyterm{MED推定値}{MEDすいていち}{median a posteriori estimate}を使ったほうがいいかもしれません。ちなみに今回のこの関数のピーク，MAP推定値は$\theta=0.4$です。0.4になる確率が最も高いのですね。
 
 図\ref{fig:26_05}に分布を要約する数字を描いてみました。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/estimates.png}
 	\caption{得られた事後分布を代表する数字}
 	\label{fig:26_05}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/estimates.png}
 \end{figure}
 
 また，分布の要約ですから，幅を表す指標を使って表現することもできます。幅を表す統計量としては，\keyterm{四分位}{しぶんい}{quartile}や\keyterm{パーセンタイル}{ぱーせんたいる}{percentile}などがあります。四分位はデータを上から25\%, 50\%, 75\%のところで区切って四分割し，25\%や75\%に当たる数値で報告するものでした。なお第2四分位，すなわち50\%点は中央値と同じです。分割の場所はどこにおいても構わないので，任意のパーセント点で区切って報告するのがパーセンタイルです。33\%だろうが68\%だろうが，なんでもいいのですが，下から2.5\%，97.5\%の点を報告することで全体の95\%が含まれるので，この95\%区間を報告することも少なくありません。こうした事後分布の区間をとくに，\keyterm{確信区間}{かくしんくかん}{credible interval, C.I.}といいます。
@@ -109,9 +109,9 @@
 図\ref{fig:26_06}にETIとHDIの違いを説明する図を作りました。やや左に偏っている分布を作ったのですが，この分布の75\%ETIは$[0.0886,0.266]$で，HDIは$[0.075,0.242]$です。ETIは左右の残りの面積を均等にした幅ですから，左側の面積が少し多めに取られています。一方HDIは「その区間に入っている密度は他よりも高い」区間ですので，比較的均等な幅が得られているようです。数値的には微妙な違いですが，考え方の違いがあることに注意してください\footnote{この区間を描くために，Rで\verb|bayestestR|パッケージ\parencite{bayestestR}の\verb|eti|,\verb|hdi|関数を使いました。}。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/eti_hdi.png}
 	\caption{ETIとHDIの違い}
 	\label{fig:26_06}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/eti_hdi.png}
 \end{figure}
 
 
@@ -129,12 +129,12 @@
 \end{enumerate}
 まずは事前分布，それを事後分布に変える。これだけですね。データを得て事後分布にアップデートできれば，その事後分布を事前分布として次の分析に使うことができます。このようにデータ＝情報が得られるたびに，どんどんそれを活用して次に分析を進めていくことができるのが，ベイズ推定の大きな特徴です。
 
-事後分布は，事前分布と尤度の積によって形作られます。図\ref{fig:26_10}に3つの分析例を示しました。図\ref{fig:26_10}は縦に見ていって欲しいのですが，最上段の尤度に二段目の事前分布を掛け合わせた結果として，事後分布の形が三段目に得られる，というステップを描いています。ここでいずれもデータと確率分布の関係＝尤度は同じで，前回の例である10問中4回正答がでたというベルヌーイ尤度関数の形になっています。
+事後分布は，事前分布と尤度の積によって形作られます。図\ref{fig:26_07}に3つの分析例を示しました。図\ref{fig:26_07}は縦に見ていって欲しいのですが，最上段の尤度に二段目の事前分布を掛け合わせた結果として，事後分布の形が三段目に得られる，というステップを描いています。ここでいずれもデータと確率分布の関係＝尤度は同じで，前回の例である10問中4回正答がでたというベルヌーイ尤度関数の形になっています。
 \begin{figure}[bt]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/posterior.png}
 	\caption{事前分布と事後分布}
-	\label{fig:26_10}
+	\label{fig:26_07}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/26_bayesian_approach/posterior.png}
 \end{figure}
 二段目の事前分布ですが，一番左は「この人の能力は高そうだ(正答率が高い)」という分析前の見込みを示しています。この時，事後分布は一番左の一番下で，尤度のピーク(0.4)と事前分布のピーク(0.9ぐらい？ )の間ぐらいにピークを持っています。一番右は逆に「この人の能力は低いに違いない」という分析前の見込み，を示しています。この時の事後分布は事前分布に引っ張られて，ずいぶんと低い方向によっています。真ん中の列はその中間で，「ちょっと出来が悪いかもな」，ぐらいの信念を表しています。これも事後分布は，尤度と事前分布の中間ぐらいの形になっています。
 

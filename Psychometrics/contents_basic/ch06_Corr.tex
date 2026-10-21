@@ -84,9 +84,9 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/06_Corr/scatter_plot.png}
 	\caption{散布図の例}
 	\label{fig:06_01}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/06_Corr/scatter_plot.png}
 \end{figure}
 
 % latex table generated in R 4.5.0 by xtable 1.8-4 package
@@ -109,7 +109,7 @@
 \end{tabular}
 \end{table}
 
-図\ref{fig:06_01}に，身長と体重のデータをプロットしたものを示しました\footnote{このデータは第\ref{cb04_Number_and_Data}章や第\ref{ch05_descriptives}章で使ったものと同じ，2020年のプロ野球選手のデータセットです。データは全体で664人分になります}。データの一部は表\ref{tbl:06_04}に示した通りです。X軸のラベルにheight(身長)，Y軸のラベルにweight(体重)とありますように，2つの変数を同時にプロットしています。左下に目立つように1点色とサイズを変えた点を打ちましたが，これは表\ref{tbl:06_04}のID=1のケース，つまり 菊池涼介選手を表しています。彼は身長が171cm，体重が72kgであり，対応するX軸，Y軸をみるとちょうどその値になっていますね。このように，各点が1つのケースに対応しているのが散布図です。
+図\ref{fig:06_01}に，身長と体重のデータをプロットしたものを示しました\footnote{このデータは第\ref{cb04_Number_and_Data}講や第\ref{ch05_descriptives}講で使ったものと同じ，2020年のプロ野球選手のデータセットです。データは全体で664人分になります}。データの一部は表\ref{tbl:06_04}に示した通りです。X軸のラベルにheight(身長)，Y軸のラベルにweight(体重)とありますように，2つの変数を同時にプロットしています。左下に目立つように1点色とサイズを変えた点を打ちましたが，これは表\ref{tbl:06_04}のID=1のケース，つまり 菊池涼介選手を表しています。彼は身長が171cm，体重が72kgであり，対応するX軸，Y軸をみるとちょうどその値になっていますね。このように，各点が1つのケースに対応しているのが散布図です。
 
 これを見ると次のことがいえそうです。すなわち，身長が高い人は，体重も大きく，背が低い人は体重も小さい，ということが多い傾向がある，と。というのも，身長が高くて体重が軽い領域(グラフの右下)や，身長が低くて体重が重い領域(グラフの左上)に点が打たれていないので，そういう人はいない，と思えるからです。この図のように，散布図に打たれた点が右上がりの方向にあると，2つの変数の間になんらかの関係があるということが推察できますね。その関係がどのようなものであれ，このような関係にあると私たちは「何があるんだろう」と考えたり，「背が高いということは体重も重いだろうな」と予測したりできます。来年チームにやってくる新しい選手が，どんなポジションでどんな特技を持っているかはわからなくても，身長が200cmだということだけ分かれば，まあ体重が60kgってことはないよな，と予測できますものね。
 
@@ -162,9 +162,9 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/06_Corr/relative_position.png}
 	\caption{データの散らばりと相対的な位置}
 	\label{fig:06_02}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/06_Corr/relative_position.png}
 \end{figure}
 図\ref{fig:06_02}の最上段には英語の分布とこの人の位置が書いてあります。分布のピーク＝最も人が多いところは90点ぐらいのところにあり，この人はそれの左側ですから相対的にやや劣ることがわかります。二段目・三段目に国語と数学があり，相対的に優れていることがわかります。同時に，国語の分布はやや幅広く，数学は平均点が低く散らばりの幅も少ないことがわかります。国語は幅広ですから，この人よりも高い点数を取る人もいるようです。一方数学は幅が狭いため，この人よりも高い点数を取れる人がほとんどいません。ということは，かなり上位の数学力を持っていることになります。
 このように，相対的な位置を考えるときはこのデータがどれぐらい広がっているかを考えなければなりません。そこで平均からの偏差を標準偏差で割り，標準偏差いくつ分はずれているのかを考えましょう。この点数を$z_i$とし，次のように計算します。
@@ -194,9 +194,9 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/06_Corr/correlations.png}
 	\caption{さまざまな相関係数}
 	\label{fig:06_03}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/06_Corr/correlations.png}
 \end{figure}
 
 図\ref{fig:06_03}にはさまざまな相関係数のプロットを示しました。ちなみにさきほどの野球選手の身長と体重のデータは，相関係数$r=0.645$になります。大体の散布図のイメージを持っておいてもらうことも重要ですし，何かデータを取ったら図にする，ということを忘れないでください。
@@ -330,9 +330,9 @@ plot(dat$height, dat$weight,
 このコードを実行すると，Rの標準グラフィックでシンプルな散布図が描画されます(図\ref{fig:06_04})。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/06_Corr/Scatter_base.png}
 	\caption{身長と体重の散布図（R base）}
 	\label{fig:06_04}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/06_Corr/Scatter_base.png}
 \end{figure}
 
 \paragraph{散布図の作成（ggplot2）}
@@ -358,9 +358,9 @@ ggplot(dat, aes(x = height, y = weight)) +
 このコードを実行すると，より美しくカスタマイズしやすい散布図が得られます(図\ref{fig:06_05})。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/06_Corr/Scatter_ggplot2.png}
 	\caption{身長と体重の散布図（ggplot2）}
 	\label{fig:06_05}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/06_Corr/Scatter_ggplot2.png}
 \end{figure}
 
 \paragraph{ピアソンの相関係数の計算}
@@ -520,9 +520,9 @@ cramers_v <- sqrt(chi_sq_value / (n * (min_rc - 1)))
 ところがどっこい，これらの変数をプロットしてみたのが図\ref{fig:06_06}です。ご覧の通り，無関係ではなくプロットすると図が見えてきましたね。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/06_Corr/datasaurs.png}
 	\caption{プロットしてびっくり}
 	\label{fig:06_06}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/06_Corr/datasaurs.png}
 \end{figure}
 
 実際のデータではこんなことはないと思いますが，これは「数字だけ見ていてもわからないよ」という警告です。たくさんのデータを手に入れると，ついつい計算機で一気に数字を出してみたくなります。実際のデータ分析をするときは(あまりにも簡単に相関係数が計算できてしまうがために)，見落とされるところでもあります。数値化は楽ですが，その分なにかを見落としているかも知れない，ということについて常に注意するようにしましょう。
@@ -534,18 +534,18 @@ cramers_v <- sqrt(chi_sq_value / (n * (min_rc - 1)))
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/06_Corr/U_curve.png}
 	\caption{曲がった関係には向かない}
 	\label{fig:06_07}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/06_Corr/U_curve.png}
 \end{figure}
 
 \paragraph{落とし穴2；全体の傾向じゃないかも}
 逆に，ある2変数の相関係数が$r=0.922$でした。この2変数には強い相関があるといって良いでしょうか。待って待って，いったん落ち着いて散布図を書いてみましょう。たとえば図\ref{fig:06_08}のようなデータなのかもしれないのですから。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/06_Corr/outlier.png}
 	\caption{外れ値がひっぱる}
 	\label{fig:06_08}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/06_Corr/outlier.png}
 \end{figure}
 図\ref{fig:06_08}は，確かに相関係数は高いのですが，明らかにおかしなポジションにいるデータが1件ありますよね。平均値が外れ値に引っ張られたように，平均値をその計算過程の中に取り込んでいる相関係数も，外れ値に弱いところがあります。今回この極端な値を取る1ケースを取り除くと，相関係数は$r=0.3$にまで下がります。左の小さな群だけで見れば，むしろ関係ないと考えるべきなのです。これもデータを図にしなければ気づかない落とし穴です。
 
@@ -556,9 +556,9 @@ cramers_v <- sqrt(chi_sq_value / (n * (min_rc - 1)))
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,height=0.4\linewidth]{figures/06_Corr/setudan.png}
 	\caption{打ち切りデータの例}
 	\label{fig:06_09}
+	\includegraphics[keepaspectratio,height=0.4\linewidth]{figures/06_Corr/setudan.png}
 \end{figure}
 
 \paragraph{落とし穴4；データは色々な情報が混在している? }
@@ -567,9 +567,9 @@ cramers_v <- sqrt(chi_sq_value / (n * (min_rc - 1)))
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,height=0.4\linewidth]{figures/06_Corr/HLM.png}
 	\caption{階層的なデータ}
 	\label{fig:06_10}
+	\includegraphics[keepaspectratio,height=0.4\linewidth]{figures/06_Corr/HLM.png}
 \end{figure}
 
 このデータ，たとえばX軸がゲームで遊ぶ時間，Y軸が学校の成績だったとしますと，全体で見るとゲームをすれば成績が上がる，という結論になってしまいますね。でも学校別(グループ別)でみるとむしろ逆，ここにあるのは3つの学校のそもそもの成績の違いが反映されているだけでした，ということもあるわけです。このように，外的な指標で群が変わることがわかっているなら，プロットするときにその情報を加えて，このような情報の混在が生じていないかをチェックする必要があります。プロットするのは当然ですが，プロットのやり方にも注意が必要なのですね。また，群ごとの違いがわかっていなくても，潜在的に何か違うグループに分かれているのかもしれません。回答者の特性を考慮して，いくつかのクラスターに分けて分析するという手法も統計的に考えられています。データを色々な角度から見る，という姿勢は忘れてはいけません\footnote{マーケティングの領域では，セグメンテーションと呼ばれることもあります。購買層のことを指します。クラスターというのはCOVID-19の関係で一般的な用語になりましたが，この言葉そのものに悪い意味はなく，塊という意味です。}。

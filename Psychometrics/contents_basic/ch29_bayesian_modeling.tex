@@ -41,9 +41,9 @@ MCMC法はこのマルコフ連鎖＋モンテカルロ法です。つまり「�
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/29_bayesian_modeling/RandomSample.png}
 	\caption{正規分布の乱数を大量に発生させたもの。左上は100個，右上は1000個，左下は10,000個，右下は100,000個の乱数を生成してヒストグラムにしたもの}
 	\label{fig:29_01}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/29_bayesian_modeling/RandomSample.png}
 \end{figure}
 
 図\ref{fig:29_01}には，正規分布に従う乱数を生成させた図を示してあります。左上は100個の乱数をつくっていますが，そのヒストグラムはガタガタであんまり正規分布っぽくはありませんね。右上は1000個です。これぐらいになると，どうやら正規分布っぽい感じ，つまり中央が高くて両裾にむけた緩やかに減衰する感じが見て取れます。左下は10,000個です。ここまでくると理論的な正規分布のカーブの影が見えてきますね。右下は100,000個ですが，ここまでくるとほぼ理論的な正規分布のカーブを描いているかのようです。
@@ -71,9 +71,9 @@ MCMC法はこのマルコフ連鎖＋モンテカルロ法です。つまり「�
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/29_bayesian_modeling/marginal.png}
 	\caption{周辺分布も当該変数の集計で求められる}
 	\label{fig:29_02}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/29_bayesian_modeling/marginal.png}
 \end{figure}
 
 MCMC法による乱数で結果を確認するのは，近似にすぎないといえばそうなのですが，乱数の数を増やせば増やすほど精度は上げることができますし，最近のコンピュータの能力を使えば10万，100万の乱数を作るのも簡単ですから，実用上は十分な精度が得られます。ベイズ法が実践的な手法として普及したのは，このMCMC法の登場によるところが大きいのです。
@@ -84,9 +84,9 @@ MCMC法による乱数で結果を確認するのは，近似にすぎないと�
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/29_bayesian_modeling/HowToUseStan.png}
 	\caption{Stan言語とR言語の連携}
 	\label{fig:29_03}
+	\includegraphics[keepaspectratio,width=0.65\linewidth]{figures/29_bayesian_modeling/HowToUseStan.png}
 \end{figure}
 
 図\ref{fig:29_03}にStan言語とR言語の連携の例を示します。Stan言語でモデルを記述し，R言語からStanを呼び出してデータを渡し，MCMC法で乱数を生成してもらい，R言語で集計する，という流れです。Stan言語自体はC++\footnote{日本語ではシープラスプラス，と読まれることの多い，コンピュータ言語です。C言語というのがあったのですが，それの一歩次に行くという意味の表記です。ちなみに\verb|++|というのはC言語の表記で1を足すという操作を指します。Rで\verb|a <- a + 1|と書くことでオブジェクトaを1つ増やすことができますが，C言語ではこれを\verb|a++|と書くだけでいいのです。}で書かれているため高速に動作しますし，R言語から簡単に呼び出せるため，Rユーザーにはとても便利なツールです。
@@ -195,9 +195,9 @@ sigma     7.46      0.28     6.92     8.05 1.00     3229     2706
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/29_bayesian_modeling/posterior_regression.png}
 	\caption{brmsで推定したパラメータの事後分布。濃い部分が95\%確信区間を表す}
 	\label{fig:29_04}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/29_bayesian_modeling/posterior_regression.png}
 \end{figure}
 
 分布が手元にあると，たとえば「傾きが1.1より大きい確率はどれぐらいか」という問いに，そのまま答えることができます。4000個の乱数のうち1.1を超えているものの割合を数えればよいだけだからです。標準誤差から検定統計量を計算して，$p$値の表を引いて，といった手続きは必要ありません。

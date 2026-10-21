@@ -41,9 +41,6 @@ source("https://bit.ly/3WL8VYR")
 anovakun(Between2, "ABs", 2, 2, eps = T, welch = T)
 
 
-
-
-
 result.lm <- lm(value ~ temp * maker, data = Between2)
 summary(result.lm)
 anova(result.lm)
@@ -51,7 +48,7 @@ anova(result.lm)
 # ggplot2による可視化 -------------------------------------------------------
 
 # 基本的な棒グラフ（平均値 + エラーバー）
-Between2 %>%
+g1 <- Between2 %>%
   group_by(temp, maker) %>%
   summarise(
     mean = mean(value),
@@ -80,7 +77,7 @@ Between2 %>%
 
 
 # 図を保存
-ggsave("../figures/20_anovakun/anova_figures.png", plot = g1, width = 8, height = 6, dpi = 300)
+ggsave("../figures/20_anovakun/anova_barplot.png", plot = g1, width = 8, height = 6, dpi = 300)
 
 # 交互作用を見やすくした折れ線グラフ
 g2 <- Between2 %>%
@@ -105,6 +102,8 @@ g2 <- Between2 %>%
   theme_bw() +
   theme(text = element_text(family = "HiraginoSans-W3"))
 print(g2)
+ggsave("../figures/20_anovakun/anova_boxplot.png", plot = g2, width = 8, height = 6, dpi = 300)
+
 
 # 個別データ点も含めた可視化
 g3 <- Between2 %>%
@@ -121,6 +120,7 @@ g3 <- Between2 %>%
   theme_bw() +
   theme(text = element_text(family = "HiraginoSans-W3"))
 print(g3)
+ggsave("../figures/20_anovakun/anova_interaction.png", plot = g3, width = 8, height = 6, dpi = 300)
 
 
 # 課題：学習方法と復習の効果 ---------------------------------------------------

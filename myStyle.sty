@@ -147,6 +147,10 @@ setpagesize=false,
 % figure環境の外でのcaption
 \usepackage{capt-of}
 
+% キャプションは図表の上に置く(上置き用の間隔にする)
+\usepackage{caption}
+\captionsetup{position=top,labelsep=quad,font=small} % 区切りと文字の大きさは ltjbook の元の見た目に合わせる
+
 
 % FAQ box
 \newtcbtheorem[number within=section]{FAQ}{Q.}

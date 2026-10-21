@@ -34,9 +34,9 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/money.png}
 	\caption{5人の所持金データ}
 	\label{fig:05_01}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/money.png}
 \end{figure}
 
 \paragraph{文字と記号の導入}
@@ -83,17 +83,17 @@
 図\ref{fig:05_02}は，厚生労働省による「2023年・国民生活基礎調査」で示されたデータです\footnote{\url{https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa23/dl/03.pdf}}。これを見ると所得分布は左側に歪んでおり，平均値は524万2千円ですが，中央値は405万円，最頻値は100-200万円のクラスということになります。最頻値は一番データ点が多いところですので，「国民の平均所得は524万円です」と言われると多くの人が(この例では少なくとも62.2\%の人が)，「えっ，私の年収低すぎ・・・?」という印象を抱きます。もちろん所得分布が低い方に歪んでいる状況も悪いのですが，代表値として平均値を使うことがそもそも適切でない例ともいえます\footnote{もちろん為政者の目から見れば，平均は524万円もあるんだから日本は豊かだ，とアピールできるので良い指標なのかもしれません。数字に悪意はなく，何の数字をどのように使うのかという人の側に問題があるだけです。ちなみにこの数字は3年前の2020年当時から比べて，平均値・中央値ともに下がっています。日本は衰退しました。}。ニュース報道などでは平均値しか報道されませんが，それでは不当な印象を与えることになります。\textbf{データは図にする}ことが大事なのです。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/japanese_2023.png}
 	\caption{所得金額階級別世帯数の相対度数分布}
 	\label{fig:05_02}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/japanese_2023.png}
 \end{figure}
 
 ところで，最頻値は頻度を数えるものですから，間隔尺度水準以上の連続的な数字の場合はいくつかの区間に区切って数えることになります。図\ref{fig:05_02}の例もそうですね。ただしこの時，最頻値は区間幅の区切り方が違うと結果が変わってしまうことに注意しましょう。図\ref{fig:05_03}の2つのヒストグラムは，実は同じデータなのです。違いは区間幅binwidthのとり方で，左図は15点間隔，右図は5点間隔でグラフを書きました。最頻値はそれぞれ赤で囲ったところになりますが，左図の場合の最頻値は40-55点クラス，右図の場合は47-52点のクラスになります。最頻値の場合は，どのような区間幅でカウントするかということにも注意が必要ですね。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/binwidth.png}
 	\caption{区間幅の区切り方で結果が変わる}
 	\label{fig:05_03}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/binwidth.png}
 \end{figure}
 
 では，ここで出てきた3つの中心化傾向の指標をいったんまとめておきましょう。
@@ -127,9 +127,9 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/variance1.png}
 	\caption{2つのデータを見比べてみよう}
 	\label{fig:05_04}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/variance1.png}
 \end{figure}
 
 このデータ，A/Bグループについてそれぞれ平均値，中央値，最頻値はどうなるでしょう。何と，平均値はA群もB群も5，中央値もA/B群ともに5，最頻値もA/B群ともに5となります。中心化傾向の指標だけでは，A群とB群の違いが表現できません。こんなにも違う見た目をしているのに！
@@ -138,9 +138,9 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/variance2.png}
 	\caption{中心から各データ点が平均的にどの程度離れているか}
 	\label{fig:05_05}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/variance2.png}
 \end{figure}
 
 \paragraph{分散}
@@ -198,9 +198,9 @@ B群の分散は，次のようになります。
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/iqr.png}
 	\caption{四分位とIQR}
 	\label{fig:05_06}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/iqr.png}
 \end{figure}
 
 この第1と第3をつかった幅，つまり第3四分位数から第1四分位数を引いた数字のことを\keyterm{四分位範囲}{しぶんいはんい}{inter-quartile range; IQR}と呼びます。中央値と同じように外れ値の影響を受けにくく，また標準偏差のように元データと同じ単位ですので，理解しやすい指標です。
@@ -374,8 +374,8 @@ hist(dat2011$salary)
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/hist_func.png}
 	\caption{ヒストグラムの描画}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/hist_func.png}
 \end{figure}
 
 このように，ヒストグラムは単一の変数の分布を視覚的に確認するときに有用です。
@@ -386,12 +386,12 @@ hist(dat2011$salary)
 boxplot(dat2011$salary)
 \end{lstlisting}
 
-この箱ひげ図，別名ボックスプロットも，変数の分布を確認する表示の仕方です。もしかすると皆さんはすでに，高校までの数学で学んだことがあるかもしれません。この図示の方法は，データがどのぐらいの幅を持っているかを箱とひげで表現しています。箱の真ん中にあるのが中央値，箱の下のラインが第1四分位，上のラインが第3四分位を表すのが一般的です。ですが，髭に当たる部分については2通りの書き方があります。図\ref{fig:05_07}にあるのは同じデータですが，ひげの長さを「最大値から最小値まで」とする方法(上段)もありますし，「IQRの1.5倍まで」とする方法(下段)もあります。どちらの方法で描画されているのか，注意するようにしてください\footnote{高校数学，ひいては大学入学共通テストなどでは最大値から最小値まで表す，という記法が使われているようですが，データ分析の文脈ではIQRの1.5倍までをひげにして，それ以上の数字は外れ値として点で表す方法が一般的です。どちらが正しいとも言えないのですが，今後は後者の書き方に出会うことの方が多いと思いますので，注意を促すために書いています。}。
+この箱ひげ図，別名ボックスプロットも，変数の分布を確認する表示の仕方です。もしかすると皆さんはすでに，高校までの数学で学んだことがあるかもしれません。この図示の方法は，データがどのぐらいの幅を持っているかを箱とひげで表現しています。箱の真ん中にあるのが中央値，箱の下のラインが第1四分位，上のラインが第3四分位を表すのが一般的です。ですが，髭に当たる部分については2通りの書き方があります。図\ref{fig:05_08}にあるのは同じデータですが，ひげの長さを「最大値から最小値まで」とする方法(上段)もありますし，「IQRの1.5倍まで」とする方法(下段)もあります。どちらの方法で描画されているのか，注意するようにしてください\footnote{高校数学，ひいては大学入学共通テストなどでは最大値から最小値まで表す，という記法が使われているようですが，データ分析の文脈ではIQRの1.5倍までをひげにして，それ以上の数字は外れ値として点で表す方法が一般的です。どちらが正しいとも言えないのですが，今後は後者の書き方に出会うことの方が多いと思いますので，注意を促すために書いています。}。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/boxplot.png}
 	\caption{ボックスプロット(箱ひげ図)の2通りの書き方}
-	\label{fig:05_07}
+	\label{fig:05_08}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/boxplot.png}
 \end{figure}
 
 
@@ -545,12 +545,12 @@ dat %>% filter(position == "捕手" | position == "内野手" |
 \end{lstlisting}
 野手だけ取り出すときに\verb|!=|という記号が出てきましたが，これは$\neq$の意味です。$\neq$が入力できないので，\verb|!|で否定を表すようになっているのですね。このデータは投手のデータと野手のデータが含まれており，\texttt{position}は守備位置を表しますから，野手のデータは捕手か内野手か外野手ということになります。AかBかC,という選択を表す表現は\verb"|"という表現を使いますが，今回は長くなるので「投手でない」という条件で抜き出しました。
 
-ここまで列選択\texttt{select}と行選択\texttt{filter}について説明しました。両者の違いをイメージで理解しておいてください(図\ref{fig:05_08})。
+ここまで列選択\texttt{select}と行選択\texttt{filter}について説明しました。両者の違いをイメージで理解しておいてください(図\ref{fig:05_09})。
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/filter_select.png}
 	\caption{\texttt{filter}(左)と\texttt{select}(右)の違い}
-	\label{fig:05_08}
+	\label{fig:05_09}
+	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/05_descriptives/filter_select.png}
 \end{figure}
 
 \paragraph{変数生成；mutate}
