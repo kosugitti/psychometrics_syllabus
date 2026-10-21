@@ -1,5 +1,11 @@
 # WORKLOG
 
+## 2026-10-21(続き6) ch02 のパスの書き方をRで動く形に(テキスト3.29.14)
+
+- コード2.2・2.3の `read_csv("C:\User\...")` は R では `\U` のエラーで止まるので，区切りを `/` にした(`C:/Users/kosugitti/Documents/...`，相対パスは `../kiso2/sample2.csv`)。
+- 本文の例のフォルダ名を Windows の実際の名前に(User→Users，Document→Documents。D:ドライブの例も Documents を補った)。`..\` の説明は `../` に。
+- 「Rのコードの中ではバックスラッシュの代わりにスラッシュを使う」旨の段落を足した。
+
 ## 2026-10-21(続き5) 課題データを配布ファイルから読む形に(テキスト3.29.13)
 
 - ch16 課題1・2: データは伴走サイトの `16_kadai_data.R` を source() して読む旨を課題の冒頭に追記(ベクトル pre/post/control/experimental)。ch20 と同じ方針。
