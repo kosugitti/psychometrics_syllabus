@@ -140,7 +140,7 @@ dat <- read_csv("C:\User\kosugitti\Document\kiso1\sample.csv")
 相対パス指定で，違うフォルダにアクセスする場合には，次のようにします(code~\ref{code:02_03})。
 ここでは，\verb|Document|フォルダの中に，kiso1,kiso2フォルダがあり，kiso1フォルダの中で作業しているときにkiso2フォルダの\verb|sample2.csv|ファイルを読み込む例を書いています。
 
-\begin{lstlisting}[language=c++,label={code:02_03},caption={絶対パスで読み込む}]
+\begin{lstlisting}[language=c++,label={code:02_03},caption={別のフォルダのファイルを読み込む}]
 # 絶対パス指定
 dat <- read_csv("C:\User\kosugitti\Document\kiso2\sample2.csv")
 # 相対パス指定
