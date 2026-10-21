@@ -113,9 +113,9 @@ print(MixedDesign)
 \begin{description}
 	\item[1行目] 作業スペースをクリアしています。
     \item[2行目] \verb|tidyverse|パッケージを読み込んでいます。
-    \item[3-7行目] データフレームを作成しています。被験者ID，条件変数，刺激1，刺激2の4つの変数があります。
-    \item[8-10行目] 条件変数を要因型にしています。ラベルは統制群(control)と実験群1(exp1)，実験群2(exp2)としています。
-    \item[11行目] データフレームを表示させています。
+    \item[3-6行目] データフレームを作成しています。被験者ID，条件変数，刺激1，刺激2の4つの変数があります。
+    \item[7-9行目] 条件変数を要因型にしています。ラベルは統制群(control)と実験群1(exp1)，実験群2(exp2)としています。
+    \item[10行目] データフレームを表示させています。
 \end{description}
 
 \begin{Rscreen}{ワイド型データの出力}{out20_01}
@@ -399,12 +399,11 @@ Between2 %>%
     \item[1行目] データフレーム\texttt{Between2}をパイプでつないでいます。
     \item[2行目] \verb|group_by()|関数で，温度(\texttt{temp})とメーカー(\texttt{maker})の組み合わせごとにグループ化しています。
     \item[3-9行目] \verb|summarise()|関数で各グループの記述統計量を計算しています。平均値(\texttt{mean})，標準偏差(\texttt{sd})，サンプル数(\texttt{n})，標準誤差(\texttt{se})を算出し，\texttt{.groups = "drop"}でグループ化を解除しています。
-    \item[10行目] パイプで\verb|ggplot()|関数に接続し，\texttt{aes()}で見た目の設定をしています。x軸に温度，y軸に平均値を割り当て，\texttt{group = maker}でメーカーごとに点を線で結ぶようにし，\texttt{color = maker}で線と点の色をメーカーごとに分けています。
-    \item[11行目] \verb|geom_line()|で，各メーカーの平均値を結ぶ線を描画しています。\texttt{linewidth = 1}で線の太さを指定しています。
-    \item[12行目] \verb|geom_point()|で，各条件の平均値を点で描画しています。\texttt{size = 3}で点の大きさを指定しています。
-    \item[13行目] \verb|geom_errorbar()|でエラーバー(標準誤差)を追加しています。\texttt{ymin}と\texttt{ymax}で誤差範囲を指定し，\texttt{width = 0.1}でエラーバーの横幅を指定しています。
-    \item[14-19行目] \verb|labs()|関数で図のタイトルと軸ラベル，凡例の見出し(\texttt{color = "メーカー"})を設定しています。
-    \item[20行目] \verb|theme_bw()|で白黒ベースのテーマを適用し，見やすいグラフにしています。
+    \item[10行目] パイプで\verb|ggplot()|関数に接続し，\texttt{aes()}で見た目の設定をしています。x軸に温度，y軸に平均値を割り当て，\texttt{fill = maker}で棒の塗りつぶしの色をメーカーごとに分けています。
+    \item[11-15行目] \verb|geom_bar()|で，各条件の平均値を棒で描画しています。\texttt{stat = "identity"}で集計済みの平均値をそのまま棒の高さにし，\texttt{position = position\_dodge(0.9)}でメーカーごとの棒を横に並べ，\texttt{width = 0.8}で棒の幅を指定しています。
+    \item[16-18行目] \verb|geom_errorbar()|でエラーバー(標準誤差)を追加しています。\texttt{ymin}と\texttt{ymax}で誤差範囲を指定し，\texttt{position = position\_dodge(0.9)}で棒と同じ位置にずらし，\texttt{width = 0.25}でエラーバーの横幅を指定しています。
+    \item[19-24行目] \verb|labs()|関数で図のタイトルと軸ラベル，凡例の見出し(\texttt{fill = "メーカー"})を設定しています。
+    \item[25行目] \verb|theme_bw()|で白黒ベースのテーマを適用し，見やすいグラフにしています。
 \end{description}
 
 単純に，ボックスプロット(箱ひげ図)で表現するのもいいかもしれませんね。好みの問題ですけど。ボックスプロットで表示する例を図\ref{fig:20_03}に示します。
