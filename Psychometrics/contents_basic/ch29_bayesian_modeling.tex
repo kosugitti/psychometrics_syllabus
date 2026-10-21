@@ -112,7 +112,7 @@ brmsはRのパッケージですが，計算そのものはStanが行います�
 rm(list=ls())
 library(tidyverse)
 library(brms)
-dat <- read_csv("baseballDecade.csv", na="NA",
+dat <- read_csv("BaseballDecade.csv", na="NA",
         locale=locale(encoding="utf8")) %>%
         filter(Year=="2020年度")
 batter <- dat %>%
