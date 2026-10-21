@@ -1,5 +1,10 @@
 # WORKLOG
 
+## 2026-10-21(続き8) FAQのYMAL誤字を修正(3.29.16)
+
+- `common_contents/FAQ_v3.tex` の「YMAL」4か所を「YAML」に修正(先生の承認済み)。FAQのRmd前提の記述は今年度はそのまま＝Quarto化は次の改訂版(`R9改訂メモ.md` 第6項)。
+- コンパイルしてエラー0・%%EOF・PDFでYAML4件を確認。旧版の`common_contents/FAQ.tex`はBasicBook3で使っていないので触っていない。
+
 ## 2026-10-21(続き7) Rmd の記述を Quarto へ・誤字(テキスト3.29.15)
 
 - ch02: 「sample.csvとだとします」→「sample.csvだとします」。「RmdファイルやRスクリプトファイル」→「QuartoファイルやRスクリプトファイル」。
