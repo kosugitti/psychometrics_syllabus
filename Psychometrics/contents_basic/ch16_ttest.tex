@@ -190,14 +190,14 @@ $\hat{\sigma_{exp}}=6.221$より
 
 \[ t = \frac{20.60-25.20}{\sqrt{(4.393^2+6.221^2)/5}} = -1.3506\]
 
-となりましたので，これが自由度$(n_1-1)+(n_2-1)=n_1+n_2-2=10-2=8$の$t$分布に従うことになります。これより極端な$t$値が得られる確率は，$p=0.1068$になりました。
+となりましたので，これが自由度$(n_1-1)+(n_2-1)=n_1+n_2-2=10-2=8$の$t$分布に従うことになります。両側検定ですので，絶対値でこれより極端な$t$値が得られる確率を求めると，$p=0.2138$になりました。
 
 \paragraph{最初に定めた仮説を支持するかどうかを判断}
 判定基準5\%より大きい数字ですので，帰無仮説の下で計算したこの$t$の値は，珍しいとは言えません。
 
 報告する時は次のようになります。今回は両側検定ですので$t$値の絶対値を使います。
 \begin{quote}
-	実験群と統制群の平均値の差を検定したところ，$t(8)=1.356,p=0.214$で統計的に有意であるとは言えなかった。
+	実験群と統制群の平均値の差を検定したところ，$t(8)=1.351,p=0.214$で統計的に有意であるとは言えなかった。
 \end{quote}
 
 2群の平均値の差の検定については，このような手続きで行います。繰り返しになりますが，実際の計算は機械がやってくれるので，どのような数字がどのような意味を持っているのか，得られた結果からどのように判定するのか，という手続き的な知識をしっかりと踏まえてください。
@@ -357,7 +357,7 @@ power.t.test(power = 0.8, delta = 0.7, sig.level = 0.05)
 ここで，\texttt{delta=0.7}としたのは，標準化された平均値差が0.7あるとして，という考え方です。これは先ほどの事後的検定力分析の結果，それぐらいあったんじゃないの？ と思われたのでその値を使いました。もっと小さく見積もったり，逆にもう少し大きく見積もったりしても構いません。また，\texttt{power=0.8}としましたが，これは\keyterm{検定力}{けんていりょく}{power}で，セクション\ref{TypeI_II_Error}(Pp.\pageref{TypeI_II_Error})で出てきたものです。Type II Error，つまり差があるのにあると言えない間違い($\beta$)を20\%ぐらいに抑え，80\%の確率で当てたいとしました($1-\beta=0.8$)。また，有意水準は5\%です($\alpha=0.05$,スクリプトの中では\texttt{sig.level=0.05}としています)。
 
 さて，これの出力結果を見ると，次のように示されました(\texttt{Rの出力\ref{RS:out16_09}})。
-\begin{Rscreen}{rnormの出力}{out16_09}
+\begin{Rscreen}{power.t.testの出力}{out16_09}
 	\begin{verbatim}
 Two-sample t test power calculation 
 
@@ -397,9 +397,13 @@ NOTE: n is number in *each* group
 
 
 \subsection{補遺}
-\paragraph{対応のあるt検定の効果量を計算する}対応のある$t$検定をして，その効果量を求める場合は，次のようにpairedオプションをオンにしておきます(\texttt{code:\ref{code:16_06}})。
+\paragraph{対応のあるt検定の効果量を計算する}対応のある$t$検定をして，その効果量を求める場合は，次のようにpairedオプションをオンにしておきます(\texttt{code:\ref{code:16_06}})。\texttt{code:\ref{code:16_03}}でオブジェクト\texttt{X,Y,dat}を対応のないデータで上書きしていますので，1-4行目で表\ref{tbl:16_01}の事前・事後のデータを作り直しています。
 
 \begin{lstlisting}[language=c++,label={code:16_06},caption={cohenのd}]
+X <- c(34, 25, 13, 21, 13, 26, 19, 12, 19, 19)
+Y <- c(35, 30, 16, 27, 20, 28, 16, 14, 18, 21)
+dat <- data.frame(condition = c(rep(1, 10), rep(2, 10)), value = c(X, Y))
+dat$condition <- factor(dat$condition, labels = c("pre", "post"))
 cohen.d(X,Y,paired = TRUE)
 \end{lstlisting}
 ただし，チルダを使った書き方をしている場合，\texttt{code:\ref{code:16_07}}のようにすると，出力に次のような警告が付されます(\texttt{Rの出力\ref{RS:out16_08}})。
@@ -407,7 +411,7 @@ cohen.d(X,Y,paired = TRUE)
 cohen.d(value ~ condition, data = dat, paired = TRUE)
 \end{lstlisting}
 
-\begin{Rscreen}{rnormの出力}{out16_08}
+\begin{Rscreen}{cohen.dの警告}{out16_08}
 	\begin{verbatim}
 Cohen's d
 

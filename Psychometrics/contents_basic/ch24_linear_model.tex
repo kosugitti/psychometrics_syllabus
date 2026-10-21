@@ -239,7 +239,7 @@ L(y_i | \beta_0,\beta_1,\sigma) = \prod_{i=1}^N \frac{1}{\sqrt{2\pi \sigma^2}}ex
 そのときは\keytermL{最小二乗法}{さいしょうにじょうほう}の説明しかしていなかったのですが，関数の使い勝手のこともあって，最尤推定する関数でご紹介しておりました。
 本当の意味で，最小二乗法のアルゴリズムで回帰分析をするときは\verb|lsfit|関数というものを使います。
 
-使用例をコード\ref{code:24_01}に示しました。ここでは野球選手のデータを使って，身長から体重を予測するというモデルを実行しています\footnote{第\ref{ch09_Regression_onR}講と同じ分析結果です。}。
+使用例をコード\ref{code:24_01}に示しました。ここでは野球選手のデータを使って，身長から体重を予測するというモデルを実行しています\footnote{第\ref{ch09_Regression_onR}講と同じ分析結果です。}。データの\verb|batter|は，第\ref{ch09_Regression_onR}講の\texttt{code:\ref{code:09_01}}と\texttt{code:\ref{code:09_02}}で作ったものです。新しいスクリプトで始める場合は，先にこの2つを実行して\verb|batter|を作っておいてください。
 \begin{lstlisting}[language=c++,label={code:24_01},caption={二つの推定法の比較}]
 # 最小二乗法の推定
 result.LS <- lsfit(x = batter$height, y = batter$weight)
