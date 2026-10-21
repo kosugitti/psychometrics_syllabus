@@ -1,5 +1,11 @@
 # WORKLOG
 
+## 2026-10-21(続き7) Rmd の記述を Quarto へ・誤字(テキスト3.29.15)
+
+- ch02: 「sample.csvとだとします」→「sample.csvだとします」。「RmdファイルやRスクリプトファイル」→「QuartoファイルやRスクリプトファイル」。
+- ch09 コード9.1の1行目の解説: Rmd/knit の説明を Quarto/Render に書き直した(Render は毎回まっさらな環境で計算するので rm(list=ls()) はなくてもよい，拡張子は .qmd)。
+- 残り: 巻末の FAQ(common_contents/FAQ_v3.tex)は Rmd 前提のまま(図 RmdFile.png・RmdKnit.png を含む)。書き直すかは先生の判断待ち。
+
 ## 2026-10-21(続き6) ch02 のパスの書き方をRで動く形に(テキスト3.29.14)
 
 - コード2.2・2.3の `read_csv("C:\User\...")` は R では `\U` のエラーで止まるので，区切りを `/` にした(`C:/Users/kosugitti/Documents/...`，相対パスは `../kiso2/sample2.csv`)。
