@@ -38,5 +38,5 @@ model{
   // Prior
   gm ~ uniform(0,100);
   raw_delta ~ normal(0,100);
-  sig ~ cauchy(0,100000);
+  sig ~ cauchy(0,5);
 }
