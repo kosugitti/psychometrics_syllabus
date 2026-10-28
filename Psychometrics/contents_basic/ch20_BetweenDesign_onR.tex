@@ -189,7 +189,6 @@ output is over --------------------///
 群内要因のデータを列(横)に並べ，群間要因のデータを行(縦)に並べるのが基本です。次の例は，2要因の混合計画(間(3)$\times$内(2))のデータ例です。
 
 \begin{lstlisting}[language=c++,label={code:20_04},caption={データの準備}]
-rm(list=ls())
 library(tidyverse)
 MixedDesign <- data.frame(id = 1:12,
                        condition = rep(1:3,each=4),
@@ -202,11 +201,10 @@ print(MixedDesign)
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-	\item[1行目] 作業スペースをクリアしています。
-    \item[2行目] \verb|tidyverse|パッケージを読み込んでいます。
-    \item[3-6行目] データフレームを作成しています。被験者ID，条件変数，刺激1，刺激2の4つの変数があります。
-    \item[7-9行目] 条件変数を要因型にしています。ラベルは統制群(control)と実験群1(exp1)，実験群2(exp2)としています。
-    \item[10行目] データフレームを表示させています。
+    \item[1行目] \verb|tidyverse|パッケージを読み込んでいます。
+    \item[2-5行目] データフレームを作成しています。被験者ID，条件変数，刺激1，刺激2の4つの変数があります。
+    \item[6-8行目] 条件変数を要因型にしています。ラベルは統制群(control)と実験群1(exp1)，実験群2(exp2)としています。
+    \item[9行目] データフレームを表示させています。
 \end{description}
 
 \begin{Rscreen}{ワイド型データの出力}{out20_02}
