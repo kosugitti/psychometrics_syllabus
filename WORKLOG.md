@@ -548,3 +548,9 @@ ch29「ベイジアンモデリングの世界」がスケルトン（4 section 
 - `git rm --cached Psychometrics/GoogleFormMaker/google-forms-mcp` で index から削除
 - commit `6ffb9d3c` で push 完了。今後 `git add --all` しても google-forms-mcp は記録されない
 - ローカルの実体（Newton 上のフォルダ）はそのまま残置。他マシンで MCP が必要になったらそのマシンで個別 clone する運用
+
+## 2026-10-28 ch20(Rによる分散分析)の加筆と3.29.17/3.29.18
+- ch20に一要因3水準(anovakun "As")・型指定の表・間2×間3の下位検定(単純効果と多重比較の読み方・左右2枚の図)を加筆。可視化を2×3のデータに差し替え(図3枚は`Rcode/20261028.R`のggsaveで出力)，コード解説を記入
+- ラベルを出現順に振り直し(code 20_01〜11・tbl 20_01〜04・fig 20_01〜06・out20_01〜05。コメントアウト中の節は20_lm/20_aov)，キャプションを整理，課題節を`20_kadai.R`＋問いの形に書き換え
+- `myStyle.sty`のRscreenに`breakable`を追加(2×3の出力がページ下で切れて後半が印刷されていなかった)。Scaling・SocialPsychology・LABCにも効く
+- コード20.4の`rm(list=ls())`を削除(読み込んだanovakunが消える)。3.29.17→3.29.18でpush済み

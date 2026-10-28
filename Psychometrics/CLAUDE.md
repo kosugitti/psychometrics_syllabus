@@ -107,3 +107,4 @@ Psychometrics/
 - **中間ファイルはcompile系スクリプトが最後に消す**。`.gitignore` にも登録済みなので、章別コンパイルの副産物（ch*.log 等）がgitに入ることはない
 - **KDP版(`BasicBook3_kdp.tex`)のビルドには `*_versions*.md` が要る**。`masthead.tex`(奥付)が `../../Book_versions1.md` と `../../Syllabus_versions1.md` を読んで版数を刷り込むため，Dropbox外でビルドするときにコピーを忘れると `File not found` で Emergency stop になる
 - **Dropbox配下では lualatex が `Input/output error` で落ちることがある**。ディスク容量の問題ではなく，ファイルプロバイダが図版PNGの実体化に追いつかないため。落ちる位置は毎回変わる。Dropbox外にコピーしてビルドすれば通る
+- **Rの出力(Rscreen)の枠は `breakable`**(2026-10-28)。長い出力はページをまたいで続く。以前はページ下で黙って切れ，`Overfull \vbox ... while \output is active` が出るだけだった
