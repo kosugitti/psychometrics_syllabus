@@ -178,7 +178,7 @@ model{
 \end{lstlisting}
 \paragraph{コード解説}
 \begin{description}
-	\item[dataブロック] データのサイズKも外侮から指定できる変数とし，それを使ってサイズKのベクトルXをN個用意しています。
+	\item[dataブロック] データのサイズKも外部から指定できる変数とし，それを使ってサイズKのベクトルXをN個用意しています。
 	\item[parametersブロック] パラメータとして，平均と標準偏差をベクトルで，相関係数も行列として宣言しました。標準偏差ベクトルの範囲指定の方法に注意してください。
 	\item[transformed parametersブロック] Stanの関数\verb|quad_form_diag|を使って分散共分散行列を作成しました。この関数は，正方行列$\bm{X}$とベクトル$\bm{v}$から，$diag(\bm{v}) \bm{X} diag(\bm{v})$という計算をするものです。ここで\verb|diag|はk個の要素を対角項に持つ$k \times k$の対角行列を作ることを意味します。今回の例で具体的に説明しましょう。ここでの正方行列は相関行列で，ベクトルは標準偏差を要素に持つ\verb|sds|ですから，
 	      \[ \begin{pmatrix}\sigma_1&0\\0&\sigma_2\end{pmatrix}\begin{pmatrix}1&\rho_{12}\\\rho_{12}&1\end{pmatrix}\begin{pmatrix}\sigma_1&0\\0&\sigma_2\end{pmatrix} =
@@ -279,7 +279,7 @@ tidy_data <- X %>%
 さてStanにデータセットを与えるときは，このデータセットから1.データ全体の長さ，2.被験者の数，3.被験者ID，4.そのデータがどの水準なのかを示す識別子，5.実際の値を取り出して渡すことになります。
 続いてStanコードの例を見てみましょう。
 
-\begin{lstlisting}[language=C++,label={stan:09_05},caption={整然データ対応番}]
+\begin{lstlisting}[language=C++,label={stan:09_05},caption={整然データ対応版}]
 data{
   int L;
   int N;
@@ -378,7 +378,7 @@ model{
 ここで，個人差に関係なく影響を与えている効果のことを\keyterm{固定効果}{こていこうか}{fixed effect}と呼び，個人差のように交換可能な要素のことを\keyterm{変量効果}{へんりょうこうか}{random effect}と呼びます。また図\ref{fig:09_05}に示されているように，データ生成分布の中に個人差の分布が入れ子になって含まれていますね。このようなデータは階層モデルといい，とくに今回のように線形な階層モデルは\keyterm{階層線形モデル}{かいそうせんけいもでる}{hierarchical linear model}とよばれます。この展開については，次回以降にお話しすることになるでしょう。
 
 ではこのモデルを実装していきましょう。設計図に沿えばStanコードは書けるはずです。ここにはStanに与えるRのコード例を用意しましたので，自分なりのコードを書いて検証してみてください\footnote{これに限らず，コードに正しい書き方はありません。自分なりの書き方で結構です。判断すべきは正しく機能するかどうかであって，書き方はあくまでも一例にすぎません。}。
-\begin{lstlisting}[language=C++,label={code:09_06},caption={整然データ対応番}]
+\begin{lstlisting}[language=C++,label={code:09_06},caption={整然データ対応版}]
 dat_raw <- data.frame(ID = 1:4,
                       period1 = c(10,9,4,7),
                       period2 = c(5,4,2,3),
