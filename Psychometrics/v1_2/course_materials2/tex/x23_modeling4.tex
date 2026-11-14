@@ -170,8 +170,7 @@ transformed parameters{
 model{
   X ~ multi_normal(mu,SIG);
   //prior
-  mu[1] ~ uniform(0,100);
-  mu[2] ~ uniform(0,100);
+  mu ~ uniform(0,100);
   rho ~ lkj_corr(1);
   sds ~ cauchy(0,5);
 }
@@ -272,7 +271,7 @@ tidy_data <- X %>%
 	\item[5行目] この段階で，変数名が\verb|V1,V2|となっていますが，わかりやすくするために\verb|pre,post|に書き換えました。
 	\item[6行目] 行番号を\verb|ID|という変数名を持つものに変えています。
 	\item[7行目] \verb|ID|をキーに，横長だったデータを縦長に(tidyに)変換する関数です。
-	\item[8行目] 縦長になった変数(Code::\ref{code:09_04}はこの段階の出力です)から，\verb|name|変数の値が\verb|pre|であるものを1に，そうでないものを2にした新しい変数\verb|cond|を作りました。
+	\item[8行目] 縦長になった変数(出力\ref{RS:out:09_01}はこの段階の出力です)から，\verb|name|変数の値が\verb|pre|であるものを1に，そうでないものを2にした新しい変数\verb|cond|を作りました。
 \end{description}
 このコードでどういうデータセットができたのか，Rのコンソールで\verb|tidy_data|として確認すると良いでしょう。1つ1つのステップを確認したい場合は，途中で止めて一歩ずつ進むのも手です。
 
@@ -310,7 +309,7 @@ model{
 \begin{description}
 	\item[dataブロック] 1.データ全体の長さ\verb|L|，2.被験者の数\verb|N|，3.被験者ID\verb|IDindex|，4.そのデータがどの水準なのかを示す識別子\verb|Condition|，5.実際の値\verb|val|を与えています。最後の3つはデータ長と同じサイズです。
 	\item[transformed dataブロック] データを変形する\verb|transformed data|ブロックの登場です。ここではペアとしての情報がある\verb|vector|型にした変数を作っています。その変数\verb|pairX|は，N人分の情報があり，それぞれ要素番号1,2がベクトルの要素に対応しています。ここでも入れ子になった識別子を使っていて，\verb|pairX[IDindex[l],Condition[l]]|はl行目の個人\verb|IDindex[l]|，l行目の条件\verb|Condition[l]|から，たとえば \verb|IDindex[l]＝15|，\verb|Condition[l]=2|であれば15番目の人の事後の値\verb|pairX[15,2]|を値として代入する，ということをしています。
-	\item[modelブロック] 作った\verb|pairedX|というベクトルに対して多次元正規分布からのデータを与えています。
+	\item[modelブロック] 作った\verb|pairX|というベクトルに対して多次元正規分布からのデータを与えています。
 \end{description}
 
 少しややこしくなったように思えますが，データの構造が複雑化すると整然データの方がスッキリすることの方が一般的です。コードをよく読んで，どのような動きをするのかイメージをしっかり掴むようにしましょう。
