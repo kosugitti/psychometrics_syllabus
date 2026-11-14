@@ -1,0 +1,44 @@
+% 図9-2 変数の型とサイズ(1)  x23_modeling4.tex から \input する
+\begin{tikzpicture}[
+  cell/.style={fill=stanblue, draw=none, minimum size=4.2mm, inner sep=0pt},
+  frame/.style={draw=gray, line width=0.8pt},
+  head/.style={font=\large},
+  decl/.style={font=\ttfamily},
+  dim/.style={font=\small}]
+  \colorlet{stanblue}{blue!60!cyan}
+  % 列の位置
+  \def\xa{1.6}\def\xb{5.8}\def\xc{11.0}
+  % 見出し
+  \node[head] at (\xa,0) {型};
+  \node[head] at (\xb,0) {宣言例};
+  \node[head] at (\xc,0) {サイズ};
+  \draw[line width=1pt] (0,-0.45) -- (13.6,-0.45);
+  % 1行1要素の型
+  \foreach \y/\t/\d in {-1.0/整数/int X, -2.0/実数/real X, -3.0/範囲つき実数/real<lower=0> X}{
+    \node at (\xa,\y) {\t};
+    \node[decl] at (\xb,\y) {\d};
+    \node[cell] at (\xc,\y) {};
+    \draw[line width=0.4pt] (0,\y-0.5) -- (13.6,\y-0.5);
+  }
+  % 整数の配列(N個)
+  \node at (\xa,-4.1) {整数の配列};
+  \node[decl] at (\xb,-4.1) {array[N] int X};
+  \foreach \y in {-4.1,-4.7,-6.4} \node[cell] at (\xc,\y) {};
+  \node at (\xc,-5.45) {$\vdots$};
+  \draw[frame] (\xc-0.4,-3.75) rectangle (\xc+0.4,-6.75);
+  \node[dim, left] at (\xc-0.45,-6.6) {N};
+  \draw[line width=0.4pt] (0,-7.05) -- (13.6,-7.05);
+  % 実数の配列(N×M個)
+  \node at (\xa,-8.05) {実数の配列};
+  \node[decl] at (\xb,-8.05) {array[N,M] real X};
+  \begin{scope}[shift={(\xc-0.9,-8.05)}]
+    \foreach \x in {0,0.7,2.4} \foreach \y in {0,-0.6,-2.3} \node[cell] at (\x,\y) {};
+    \node at (1.55,0) {$\cdots$};\node at (1.55,-0.6) {$\cdots$};\node at (1.55,-2.3) {$\cdots$};
+    \node at (0,-1.35) {$\vdots$};\node at (0.7,-1.35) {$\vdots$};\node at (2.4,-1.35) {$\vdots$};
+    \node at (1.55,-1.35) {$\ddots$};
+    \draw[frame] (-0.4,0.35) rectangle (2.8,-2.65);
+    \node[dim, left] at (-0.45,-2.5) {N};
+    \node[dim, above] at (2.6,0.4) {M};
+  \end{scope}
+  \draw[line width=1pt] (0,-10.95) -- (13.6,-10.95);
+\end{tikzpicture}

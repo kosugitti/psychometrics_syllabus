@@ -1,0 +1,42 @@
+% 図9-3 変数の型とサイズ(2)  x23_modeling4.tex から \input する
+\begin{tikzpicture}[
+  head/.style={font=\large},
+  decl/.style={font=\ttfamily},
+  dim/.style={font=\small}]
+  \colorlet{stanblue}{blue!60!cyan}
+  \def\xa{1.6}\def\xb{5.8}\def\xc{11.0}
+  % 長さKの縦棒: \kbar{色}{左下x}{左下y}
+  \newcommand{\kbar}[3]{\filldraw[fill=#1, draw=white, line width=0.6pt] (#2,#3) rectangle ++(0.36,2.2);}
+  % 見出し
+  \node[head] at (\xa,0) {型};
+  \node[head] at (\xb,0) {宣言例};
+  \node[head] at (\xc,0) {サイズ};
+  \draw[line width=1pt] (0,-0.45) -- (13.6,-0.45);
+  % ベクトル1本
+  \node at (\xa,-1.0) {ベクトル};
+  \node[decl] at (\xb,-1.0) {vector[K] X};
+  \kbar{stanblue}{\xc-0.18}{-3.0}
+  \node[dim, left] at (\xc-0.2,-2.85) {K};
+  \draw[line width=0.4pt] (0,-3.3) -- (13.6,-3.3);
+  % ベクトルがN本
+  \node at (\xa,-3.85) {ベクトルの配列};
+  \node[decl] at (\xb,-3.85) {array[N] vector[K] X};
+  \foreach \x in {0,0.5,1.0,2.3} \kbar{stanblue}{\xc-1.3+\x}{-6.1}
+  \node at (\xc+0.42,-5.0) {$\cdots$};
+  \node[dim, left] at (\xc-1.32,-5.95) {K};
+  \node[dim, above] at (\xc+1.18,-3.9) {N};
+  \draw[line width=0.4pt] (0,-6.45) -- (13.6,-6.45);
+  % ベクトルがN×M本(奥行き方向にM)。奥の層から順に描いて手前で隠す
+  \node at (\xa,-7.0) {ベクトルの2次元配列};
+  \node[decl] at (\xb,-7.0) {array[N,M] vector[K] X};
+  \foreach \x in {0,0.5,1.0,2.3} \kbar{stanblue!25}{10.3+\x}{-9.65}
+  \foreach \x in {0,0.5,1.0,2.3} \kbar{stanblue!45}{9.9+\x}{-10.1}
+  \foreach \x in {0,0.5,1.0,2.3} \kbar{stanblue!70}{9.5+\x}{-10.55}
+  \foreach \x in {0,0.5,1.0,2.3} \kbar{stanblue!100}{9.1+\x}{-11.0}
+  \node at (10.82,-9.9) {$\cdots$};
+  \node[dim, left] at (9.08,-10.85) {K};
+  \node[dim, above] at (12.78,-7.45) {N};
+  \draw[-{Stealth[length=3mm]}, line width=0.8pt] (12.0,-11.15) -- (13.2,-9.8)
+    node[dim, right] {M};
+  \draw[line width=1pt] (0,-11.4) -- (13.6,-11.4);
+\end{tikzpicture}

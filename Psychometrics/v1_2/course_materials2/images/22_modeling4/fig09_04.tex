@@ -1,0 +1,44 @@
+% 図9-4 変数の型とサイズ(3)  x23_modeling4.tex から \input する
+\begin{tikzpicture}[
+  frame/.style={draw=gray, line width=0.8pt},
+  head/.style={font=\large},
+  decl/.style={font=\ttfamily},
+  dim/.style={font=\small}]
+  \def\xa{1.6}\def\xb{5.8}\def\xc{11.0}
+  % 見出し
+  \node[head] at (\xa,0) {型};
+  \node[head] at (\xb,0) {宣言例};
+  \node[head] at (\xc,0) {サイズ};
+  \draw[line width=1pt] (0,-0.45) -- (13.6,-0.45);
+  % 行列ひとつ
+  \node at (\xa,-1.0) {行列};
+  \node[decl] at (\xb,-1.0) {matrix[J,K] X};
+  \draw[frame] (\xc-1.2,-1.0) rectangle (\xc+1.2,-2.8);
+  \node[dim, left] at (\xc-1.25,-2.65) {J};
+  \node[dim, above] at (\xc+1.05,-0.95) {K};
+  \draw[line width=0.4pt] (0,-3.15) -- (13.6,-3.15);
+  % 行列がN個
+  \node at (\xa,-3.75) {行列の配列};
+  \node[decl] at (\xb,-3.75) {array[N] matrix[J,K] X};
+  \foreach \x/\lab in {9.6/X[1], 11.05/X[2], 13.0/X[N]}{
+    \draw[frame] (\x-0.5,-3.95) rectangle (\x+0.5,-5.05);
+    \node[font=\small\ttfamily] at (\x,-4.5) {\lab};
+    \node[dim, left] at (\x-0.52,-4.92) {J};
+    \node[dim, above] at (\x+0.38,-3.95) {K};
+  }
+  \node at (12.05,-4.5) {$\cdots$};
+  \draw[line width=0.4pt] (0,-5.4) -- (13.6,-5.4);
+  % 正方対称行列
+  \node at (\xa,-6.65) {特別な行列};
+  \node[decl] at (\xb,-6.65) {cov\_matrix[J] X};
+  \node at (\xa,-7.35) {特別な行列};
+  \node[decl] at (\xb,-7.35) {corr\_matrix[J] X};
+  \draw[frame] (\xc-1.6,-6.30) rectangle (\xc+0.2,-8.10);
+  \draw[line width=0.8pt] (\xc-1.6,-6.30) -- (\xc+0.2,-8.10);
+  \draw[{Stealth[length=2.2mm]}-{Stealth[length=2.2mm]}, line width=0.7pt]
+    (\xc-1.2,-7.70) .. controls (\xc-1.35,-6.65) and (\xc-0.7,-6.55) .. (\xc-0.15,-6.80);
+  \node[dim, left] at (\xc-1.65,-7.95) {J};
+  \node[dim, above] at (\xc+0.05,-6.25) {J};
+  \node[align=center] at (\xc+1.7,-7.20) {\textbf{正方対称}\\[2pt] $J\times J$\\[2pt] $X_{ij}=X_{ji}$};
+  \draw[line width=1pt] (0,-8.50) -- (13.6,-8.50);
+\end{tikzpicture}

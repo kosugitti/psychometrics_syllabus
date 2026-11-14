@@ -62,7 +62,7 @@ Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくて
 これをStanで表現するときには，変数を\verb|vector|型で表現しておく必要があります。今回の場合は\verb|vector[2] mu;|などとします。これで\verb|mu|という変数が2つセットで準備されることになります。
 これまで同じ変数名で複数のデータを持つ場合，たとえば\verb|real mu[2]|のようにしていましたが，なぜ今回もこの形式，つまり\textbf{配列}にしないのか，と思われるかもしれません。配列でも2つの数字を扱ったりすることは可能なのですが，ベクトル型にしておく利点が別にあります。ベクトルにはベクトルを使った演算がありますが，Stanにはベクトルや行列専用の関数がありますので，変数をベクトルで宣言しておいてやるとこれらの関数を使って高速化できるのです。
 
-またStanには，\verb|matrix|型という行列の型もあります。\verb|matrix[N,M] X;|のように宣言してやると，サイズ$N \times M$の行列変数Xが1つ用意されます。\verb|matrix[N,M] X[L];|のように宣言すると，サイズ$N \times M$の行列変数XをL個用意することになります。他にも特殊な型として，\verb|cov_matrix|型とか\verb|corr_matrix|型などがあります。これらは正方行列ですから，サイズの指定は1つでよく，たとえば\verb|cov_matrix[2]|とすれば$2 \times 2$の正方行列を用意したことになります。Stanにおける変数や配列の型について，\textcite{Matsuura201610}を参考にまとめたものを表\ref{tbl:09_01}に，イメージ図を図\ref{fig:09_02},\ref{fig:09_03},\ref{fig:09_04}に示します。
+またStanには，\verb|matrix|型という行列の型もあります。\verb|matrix[N,M] X;|のように宣言してやると，サイズ$N \times M$の行列変数Xが1つ用意されます。\verb|array[L] matrix[N,M] X;|のように宣言すると，サイズ$N \times M$の行列変数XをL個用意することになります。他にも特殊な型として，\verb|cov_matrix|型とか\verb|corr_matrix|型などがあります。これらは正方行列ですから，サイズの指定は1つでよく，たとえば\verb|cov_matrix[2]|とすれば$2 \times 2$の正方行列を用意したことになります。Stanにおける変数や配列の型について，\textcite{Matsuura201610}を参考にまとめたものを表\ref{tbl:09_01}に，イメージ図を図\ref{fig:09_02},\ref{fig:09_03},\ref{fig:09_04}に示します。
 
 \begin{table}[ht]
 	\centering
@@ -72,14 +72,14 @@ Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくて
 		整数     & \verb|int X|            & 整数ひとつ                            \\
 		実数     & \verb|real X|           & 実数ひとつ                            \\
 		範囲つき実数 & \verb|real<lower=0> X|  & 0より大きい数字の入るX                     \\
-		整数の配列  & \verb|int X[N]|         & N個の整数                            \\
-		実数の配列  & \verb|real X[N,M]|      & $N\times M$個の実数からなる2次元配列         \\
-		実数の配列  & \verb|real X[N,M,L]|    & $N\times M\times L$個の実数からなる3次元配列 \\
+		整数の配列  & \verb|array[N] int X|         & N個の整数                            \\
+		実数の配列  & \verb|array[N,M] real X|      & $N\times M$個の実数からなる2次元配列         \\
+		実数の配列  & \verb|array[N,M,L] real X|    & $N\times M\times L$個の実数からなる3次元配列 \\
 		ベクトル   & \verb|vector[K] X|      & 長さKのベクトルひとつ                      \\
-		ベクトル   & \verb|vector[K] X[N]|   & 長さKのベクトルがN個                      \\
-		ベクトル   & \verb|vector[K] X[N,M]| & 長さKのベクトルが$N\times M$個            \\
+		ベクトル   & \verb|array[N] vector[K] X|   & 長さKのベクトルがN個                      \\
+		ベクトル   & \verb|array[N,M] vector[K] X| & 長さKのベクトルが$N\times M$個            \\
 		行列     & \verb|matrix[J,K] X|    & サイズ$J\times K$の行列がひとつ            \\
-		行列     & \verb|matrix[J,K] X[N]| & サイズ$J\times K$の行列がN個             \\
+		行列     & \verb|array[N] matrix[J,K] X| & サイズ$J\times K$の行列がN個             \\
 		特別な行列  & \verb|cov_matrix[J] X|  & サイズ$J\times J$の正方対称行列がひとつ        \\
 		特別な行列  & \verb|corr_matrix[J] X| & 対角が1のサイズ$J\times J$の正方対称行列がひとつ   \\\hline
 	\end{tabular}
@@ -88,19 +88,19 @@ Withinモデルは別名として，\keyterm{反復測定}{はんぷくそくて
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_03.png}
+	\resizebox{\linewidth}{!}{\input{../images/22_modeling4/fig09_02}}
 	\caption{変数の型とサイズ(1)}
 	\label{fig:09_02}
 \end{figure}
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_04.png}
+	\resizebox{\linewidth}{!}{\input{../images/22_modeling4/fig09_03}}
 	\caption{変数の型とサイズ(2)}
 	\label{fig:09_03}
 \end{figure}
 \begin{figure}[ht]
 	\centering
-	\includegraphics[keepaspectratio, width=\linewidth]{../images/22_modeling4/Slide22_05.png}
+	\resizebox{\linewidth}{!}{\input{../images/22_modeling4/fig09_04}}
 	\caption{変数の型とサイズ(3)}
 	\label{fig:09_04}
 \end{figure}
