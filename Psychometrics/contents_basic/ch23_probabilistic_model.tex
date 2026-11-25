@@ -198,9 +198,10 @@
 % 最尤推定の結果は，標本平均と標本標準偏差の値と一致します\footnote{不偏分散の平方根($N-1$で割った方)じゃないのか，と思われるかもしれませんが，最尤推定による母SDの推定値は標本SDに一致します。}。
 \begin{figure}[ht]
 	\centering
-	\caption{平均と標準偏差による2変数関数としての正規分布の対数尤度}
+	\caption{平均と標準偏差による2変数関数としての正規分布の尤度(上図)と対数尤度(下図)。赤い点が最尤推定値($\mu=173.3$，$\sigma=6.94$)}
 	\label{fig:23_06}
-	\includegraphics[keepaspectratio,width=0.8\linewidth]{figures/23_Probabilistic_model/loglik_norm2.png}
+	\includegraphics[keepaspectratio,width=0.6\linewidth]{figures/23_Probabilistic_model/lik_norm2.png}\\
+	\includegraphics[keepaspectratio,width=0.6\linewidth]{figures/23_Probabilistic_model/loglik_norm2.png}
 \end{figure}
 
 もちろんこの2変数の計算は機械がやってくれるので，皆さんがそこで苦労する必要はありません。それよりも，\underline{確率分布に基づいて推定するという方法}があることを理解していただきたいと思います。

@@ -1,9 +1,9 @@
-This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.11.13)  15 NOV 2026 11:32
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.11.25)  25 NOV 2026 09:54
  restricted system commands enabled.
 **tmp
 (./tmp.tex
 LaTeX2e <2026-11-01>
-L3 programming layer <2026-09-09>
+L3 programming layer <2026-11-16>
 Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
 Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended 
@@ -43,7 +43,7 @@ Inserting `tracingstacklevels' in `input_level_string'. (/usr/local/texlive/202
 6/texmf-dist/tex/luatex/luatexja/ltjsbook.cls
 Document Class: ltjsbook 2026-10-25 ltjsclasses 
 (/usr/local/texlive/2026/texmf-dist/tex/luatex/luatexja/luatexja.sty
-Package: luatexja 2026-10-29 Japanese Typesetting with Lua(La)TeX
+Package: luatexja 2026-11-22 Japanese Typesetting with Lua(La)TeX
 
 (/usr/local/texlive/2026/texmf-dist/tex/luatex/luatexja/luatexja-core.sty
 Package: luatexja-core 2023-10-07 Core of LuaTeX-ja
@@ -69,7 +69,7 @@ Package: pdftexcmds 2026-10-28 v0.34 Utility functions of pdfTeX for LuaTeX (HO
 )
 
 (/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2024/12/12 v1.0g TeX engine tests
+Package: iftex 2026/11/17 v1.0h TeX engine tests
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
@@ -634,13 +634,13 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 (Font)                  JY3/mc/m/n --> JY3/gt/m/n on input line 78.
 )
 (/usr/local/texlive/2026/texmf-dist/tex/luatex/luatexja/patches/lltjcore.sty
-Package: lltjcore 2026-10-26 Patch to LaTeX2e Kernel for LuaTeX-ja
+Package: lltjcore 2026-11-16 Patch to LaTeX2e Kernel for LuaTeX-ja
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2026-09-09 L3 programming layer (loader) 
+Package: expl3 2026-11-16 L3 programming layer (loader) 
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/l3kernel/l3backend-luatex.def
-File: l3backend-luatex.def 2026-09-09 L3 backend support: PDF output (LuaTeX)
+File: l3backend-luatex.def 2026-11-16 L3 backend support: PDF output (LuaTeX)
 \l__color_backend_stack_int=\count284
 Inserting `l3color' in `luaotfload.parse_color'.))
 \@tombowwidth=\dimen164
@@ -723,7 +723,7 @@ LaTeX Info: Redefining \LaTeXe on input line 188.
 Package: biblatex 2026/09/24 v3.22a programmable bibliographies (PK/MW)
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+Package: kvoptions 2026-10-27 v3.17 Key value format for package options (HO)
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
@@ -987,7 +987,7 @@ Package biblatex Info: LuaTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Document encoding is UTF8 ....
 Package biblatex Info: ... and expl3
-(biblatex)             2026-09-09 L3 programming layer (loader) 
+(biblatex)             2026-11-16 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
 
@@ -1008,7 +1008,7 @@ Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 )
 (/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty
-Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+Package: ifvtex 2026/10/27 v1.7 ifvtex compatibility package
 )
 (/usr/local/texlive/2026/texmf-dist/tex/generic/ifptex/ifptex.sty
 Package: ifptex 2023/04/08 v2.2c pTeX checker
@@ -1021,7 +1021,7 @@ Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 ))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2026/11/03 v6.1 Page Geometry
+Package: geometry 2026/11/16 v6.3 Page Geometry
 \Gm@cnth=\count428
 \Gm@cntv=\count429
 \c@Gm@tempcnt=\count430
@@ -1846,7 +1846,8 @@ p;"
 
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/nicematrix/nicematrix.sty
-Package: nicematrix 2026/11/09 v7.13 Enhanced arrays with the help of PGF/TikZ
+Package: nicematrix 2026/11/18 v7.13a Enhanced arrays with the help of PGF/TikZ
+
 \l__nicematrix_tmpc_dim=\dimen335
 \l__nicematrix_tmpd_dim=\dimen336
 \l__nicematrix_tmpc_int=\count507
@@ -2154,7 +2155,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
 (/usr/local/texlive/2026/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
 ty
-Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+Package: gettitlestring 2026/10/27 v1.6a Cleanup title references (HO)
 )
 \c@section@level=\count559
 )
@@ -2503,7 +2504,7 @@ Package biblatex Info: Reference segment=0 on input line 6.
 * driver: luatex
 * paper: <default>
 * layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* layoutoffset:(h,v)=(0pt,0pt)
 * modes: includehead includefoot twoside heightrounded 
 * h-part:(L,W,R)=(71.70166pt, 418.25368pt, 107.55254pt)
 * v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
@@ -2514,16 +2515,16 @@ Package biblatex Info: Reference segment=0 on input line 6.
 * \oddsidemargin=-0.56833pt
 * \evensidemargin=35.28255pt
 * \topmargin=-1.1381pt
-* \headheight=20.0pt
+* \headheight=20pt
 * \headsep=14.31049pt
 * \topskip=12.76108pt
-* \footskip=16.0pt
+* \footskip=16pt
 * \marginparwidth=120.2127pt
 * \marginparsep=18.49426pt
 * \columnsep=18.49426pt
 * \skip\footins=16.0pt plus 5.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
+* \hoffset=0pt
+* \voffset=0pt
 * \mag=1000
 * \@twocolumnfalse
 * \@twosidetrue
@@ -4412,7 +4413,7 @@ Removing  `ltj.listings_unicode' from `process_input_buffer'. [307]
 ]
 第23章
 [311]
-<figures/23_Probabilistic_model/likelihood_bern.png, id=4782, 2409.0pt x 1204.5
+<figures/23_Probabilistic_model/likelihood_bern.png, id=4793, 2409.0pt x 1204.5
 pt>
 File: figures/23_Probabilistic_model/likelihood_bern.png Graphic file (type png
 )
@@ -4422,20 +4423,20 @@ ed on input line 35.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
  [312<./figures/23_Probabilistic_model/likelihood_bern.png>] [313]
 [314]
-<figures/23_Probabilistic_model/loglik_bern.png, id=4820, 2409.0pt x 1204.5pt>
+<figures/23_Probabilistic_model/loglik_bern.png, id=4830, 2409.0pt x 1204.5pt>
 File: figures/23_Probabilistic_model/loglik_bern.png Graphic file (type png)
 <use figures/23_Probabilistic_model/loglik_bern.png>
 Package luatex.def Info: figures/23_Probabilistic_model/loglik_bern.png  used o
 n input line 122.
 (luatex.def)             Requested size: 334.60422pt x 167.28717pt.
  [315] [316<./figures/23_Probabilistic_model/loglik_bern.png>]
-<figures/23_Probabilistic_model/N160_10.png, id=4841, 867.24pt x 433.62pt>
+<figures/23_Probabilistic_model/N160_10.png, id=4851, 867.24pt x 433.62pt>
 File: figures/23_Probabilistic_model/N160_10.png Graphic file (type png)
 <use figures/23_Probabilistic_model/N160_10.png>
 Package luatex.def Info: figures/23_Probabilistic_model/N160_10.png  used on in
 put line 149.
 (luatex.def)             Requested size: 334.60422pt x 167.30481pt.
-<figures/23_Probabilistic_model/N150_10.png, id=4843, 867.24pt x 433.62pt>
+<figures/23_Probabilistic_model/N150_10.png, id=4853, 867.24pt x 433.62pt>
 File: figures/23_Probabilistic_model/N150_10.png Graphic file (type png)
 <use figures/23_Probabilistic_model/N150_10.png>
 Package luatex.def Info: figures/23_Probabilistic_model/N150_10.png  used on in
@@ -4443,22 +4444,29 @@ put line 157.
 (luatex.def)             Requested size: 334.60422pt x 167.30481pt.
  [317<./figures/23_Probabilistic_model/N160_10.png><./figures/23_Probabilistic_m
 odel/N150_10.png>]
-<figures/23_Probabilistic_model/loglik_norm.png, id=4854, 867.24pt x 433.62pt>
+<figures/23_Probabilistic_model/loglik_norm.png, id=4864, 867.24pt x 433.62pt>
 File: figures/23_Probabilistic_model/loglik_norm.png Graphic file (type png)
 <use figures/23_Probabilistic_model/loglik_norm.png>
 Package luatex.def Info: figures/23_Probabilistic_model/loglik_norm.png  used o
 n input line 190.
 (luatex.def)             Requested size: 334.60422pt x 167.30481pt.
  [318]
-<figures/23_Probabilistic_model/loglik_norm2.png, id=4865, 803.0pt x 702.625pt>
-
+<figures/23_Probabilistic_model/lik_norm2.png, id=4875, 562.1pt x 491.8375pt>
+File: figures/23_Probabilistic_model/lik_norm2.png Graphic file (type png)
+<use figures/23_Probabilistic_model/lik_norm2.png>
+Package luatex.def Info: figures/23_Probabilistic_model/lik_norm2.png  used on 
+input line 203.
+(luatex.def)             Requested size: 250.95476pt x 219.5837pt.
+<figures/23_Probabilistic_model/loglik_norm2.png, id=4876, 562.1pt x 491.8375pt
+>
 File: figures/23_Probabilistic_model/loglik_norm2.png Graphic file (type png)
 <use figures/23_Probabilistic_model/loglik_norm2.png>
 Package luatex.def Info: figures/23_Probabilistic_model/loglik_norm2.png  used 
-on input line 203.
-(luatex.def)             Requested size: 334.60422pt x 292.78471pt.
- [319<./figures/23_Probabilistic_model/loglik_norm.png><./figures/23_Probabilist
-ic_model/loglik_norm2.png>]) [320]
+on input line 204.
+(luatex.def)             Requested size: 250.95476pt x 219.5837pt.
+ [319<./figures/23_Probabilistic_model/loglik_norm.png>]) [320<./figures/23_Prob
+abilistic_model/lik_norm2.png><./figures/23_Probabilistic_model/loglik_norm2.png
+>]
 \openout2 = ch24_linear_model.aux
  (./ch24_linear_model.tex
 第24章
@@ -4468,7 +4476,7 @@ ic_model/loglik_norm2.png>]) [320]
 
 
 ]
-<figures/24_linear_model/linear_error.png, id=4895, 1156.32pt x 650.43pt>
+<figures/24_linear_model/linear_error.png, id=4908, 1156.32pt x 650.43pt>
 File: figures/24_linear_model/linear_error.png Graphic file (type png)
 <use figures/24_linear_model/linear_error.png>
 Package luatex.def Info: figures/24_linear_model/linear_error.png  used on inpu
@@ -4484,14 +4492,14 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'.
-<figures/24_linear_model/Rplot_regression.png, id=4968, 903.375pt x 903.375pt>
+<figures/24_linear_model/Rplot_regression.png, id=4980, 903.375pt x 903.375pt>
 File: figures/24_linear_model/Rplot_regression.png Graphic file (type png)
 <use figures/24_linear_model/Rplot_regression.png>
 Package luatex.def Info: figures/24_linear_model/Rplot_regression.png  used on 
 input line 301.
 (luatex.def)             Requested size: 334.60422pt x 334.60191pt.
  [327] [328<./figures/24_linear_model/Rplot_regression.png>]
-<figures/21_Within/between_eq.png, id=4987, 469.755pt x 263.98625pt>
+<figures/21_Within/between_eq.png, id=4999, 469.755pt x 263.98625pt>
 File: figures/21_Within/between_eq.png Graphic file (type png)
 <use figures/21_Within/between_eq.png>
 Package luatex.def Info: figures/21_Within/between_eq.png  used on input line 3
@@ -4502,13 +4510,13 @@ Package luatex.def Info: figures/21_Within/between_eq.png  used on input line 3
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [329]
-<figures/21_Within/within_eq.png, id=4998, 560.0925pt x 264.99pt>
+<figures/21_Within/within_eq.png, id=5010, 560.0925pt x 264.99pt>
 File: figures/21_Within/within_eq.png Graphic file (type png)
 <use figures/21_Within/within_eq.png>
 Package luatex.def Info: figures/21_Within/within_eq.png  used on input line 38
 0.
 (luatex.def)             Requested size: 188.21288pt x 89.04816pt.
-<figures/21_Within/mixed_model.png, id=5000, 1149.29375pt x 690.58pt>
+<figures/21_Within/mixed_model.png, id=5012, 1149.29375pt x 690.58pt>
 File: figures/21_Within/mixed_model.png Graphic file (type png)
 <use figures/21_Within/mixed_model.png>
 Package luatex.def Info: figures/21_Within/mixed_model.png  used on input line 
@@ -4516,7 +4524,7 @@ Package luatex.def Info: figures/21_Within/mixed_model.png  used on input line
 (luatex.def)             Requested size: 355.51817pt x 213.61394pt.
  [330<./figures/21_Within/between_eq.png><./figures/21_Within/within_eq.png>] [
 331<./figures/21_Within/mixed_model.png>]
-<figures/24_linear_model/logistic_function.png, id=5024, 578.16pt x 361.35pt>
+<figures/24_linear_model/logistic_function.png, id=5036, 578.16pt x 361.35pt>
 File: figures/24_linear_model/logistic_function.png Graphic file (type png)
 <use figures/24_linear_model/logistic_function.png>
 Package luatex.def Info: figures/24_linear_model/logistic_function.png  used on
@@ -4533,7 +4541,7 @@ h25_bayesian_intro.tex [336
 ]
 第25章
 [337] [338] [339] [340] [341]
-<figures/25_bayesian_intro/two_types_probability.png, id=5112, 1255.69125pt x 8
+<figures/25_bayesian_intro/two_types_probability.png, id=5124, 1255.69125pt x 8
 54.19125pt>
 File: figures/25_bayesian_intro/two_types_probability.png Graphic file (type pn
 g)
@@ -4542,21 +4550,21 @@ Package luatex.def Info: figures/25_bayesian_intro/two_types_probability.png  u
 sed on input line 167.
 (luatex.def)             Requested size: 334.60422pt x 227.61086pt.
  [342<./figures/25_bayesian_intro/two_types_probability.png>]
-<figures/25_bayesian_intro/method1_moment.png, id=5125, 1027.84pt x 770.88pt>
+<figures/25_bayesian_intro/method1_moment.png, id=5138, 1027.84pt x 770.88pt>
 File: figures/25_bayesian_intro/method1_moment.png Graphic file (type png)
 <use figures/25_bayesian_intro/method1_moment.png>
 Package luatex.def Info: figures/25_bayesian_intro/method1_moment.png  used on 
 input line 187.
 (luatex.def)             Requested size: 334.60422pt x 250.95648pt.
  [343]
-<figures/25_bayesian_intro/method2_ml.png, id=5140, 1027.84pt x 770.88pt>
+<figures/25_bayesian_intro/method2_ml.png, id=5152, 1027.84pt x 770.88pt>
 File: figures/25_bayesian_intro/method2_ml.png Graphic file (type png)
 <use figures/25_bayesian_intro/method2_ml.png>
 Package luatex.def Info: figures/25_bayesian_intro/method2_ml.png  used on inpu
 t line 200.
 (luatex.def)             Requested size: 334.60422pt x 250.95648pt.
  [344<./figures/25_bayesian_intro/method1_moment.png>]
-<figures/25_bayesian_intro/method3_bayes.png, id=5151, 1027.84pt x 770.88pt>
+<figures/25_bayesian_intro/method3_bayes.png, id=5163, 1027.84pt x 770.88pt>
 File: figures/25_bayesian_intro/method3_bayes.png Graphic file (type png)
 <use figures/25_bayesian_intro/method3_bayes.png>
 Package luatex.def Info: figures/25_bayesian_intro/method3_bayes.png  used on i
@@ -4574,21 +4582,21 @@ ro/method3_bayes.png>] [347] [348]) [349]
 
 ]
 第26章
-<figures/26_bayesian_approach/4prior.png, id=5206, 1341.01pt x 763.85374pt>
+<figures/26_bayesian_approach/4prior.png, id=5218, 1341.01pt x 763.85374pt>
 File: figures/26_bayesian_approach/4prior.png Graphic file (type png)
 <use figures/26_bayesian_approach/4prior.png>
 Package luatex.def Info: figures/26_bayesian_approach/4prior.png  used on input
  line 35.
 (luatex.def)             Requested size: 334.60422pt x 190.58998pt.
 [351] [352<./figures/26_bayesian_approach/4prior.png>]
-<figures/26_bayesian_approach/apply_bayes.png, id=5231, 1082.0425pt x 683.55376
+<figures/26_bayesian_approach/apply_bayes.png, id=5243, 1082.0425pt x 683.55376
 pt>
 File: figures/26_bayesian_approach/apply_bayes.png Graphic file (type png)
 <use figures/26_bayesian_approach/apply_bayes.png>
 Package luatex.def Info: figures/26_bayesian_approach/apply_bayes.png  used on 
 input line 68.
 (luatex.def)             Requested size: 334.60422pt x 211.37796pt.
-<figures/26_bayesian_approach/prob_prod.png, id=5233, 1196.47pt x 666.49pt>
+<figures/26_bayesian_approach/prob_prod.png, id=5245, 1196.47pt x 666.49pt>
 File: figures/26_bayesian_approach/prob_prod.png Graphic file (type png)
 <use figures/26_bayesian_approach/prob_prod.png>
 Package luatex.def Info: figures/26_bayesian_approach/prob_prod.png  used on in
@@ -4596,14 +4604,14 @@ put line 76.
 (luatex.def)             Requested size: 334.60422pt x 186.39218pt.
  [353] [354<./figures/26_bayesian_approach/apply_bayes.png><./figures/26_bayesia
 n_approach/prob_prod.png>]
-<figures/26_bayesian_approach/result_bayes.png, id=5254, 669.50125pt x 453.695p
+<figures/26_bayesian_approach/result_bayes.png, id=5266, 669.50125pt x 453.695p
 t>
 File: figures/26_bayesian_approach/result_bayes.png Graphic file (type png)
 <use figures/26_bayesian_approach/result_bayes.png>
 Package luatex.def Info: figures/26_bayesian_approach/result_bayes.png  used on
  input line 87.
 (luatex.def)             Requested size: 334.60422pt x 226.75694pt.
-<figures/26_bayesian_approach/estimates.png, id=5257, 832.10875pt x 592.2125pt>
+<figures/26_bayesian_approach/estimates.png, id=5269, 832.10875pt x 592.2125pt>
 
 File: figures/26_bayesian_approach/estimates.png Graphic file (type png)
 <use figures/26_bayesian_approach/estimates.png>
@@ -4611,14 +4619,14 @@ Package luatex.def Info: figures/26_bayesian_approach/estimates.png  used on in
 put line 102.
 (luatex.def)             Requested size: 334.60422pt x 238.13686pt.
  [355<./figures/26_bayesian_approach/result_bayes.png>]
-<figures/26_bayesian_approach/eti_hdi.png, id=5268, 1156.32pt x 650.43pt>
+<figures/26_bayesian_approach/eti_hdi.png, id=5280, 1156.32pt x 650.43pt>
 File: figures/26_bayesian_approach/eti_hdi.png Graphic file (type png)
 <use figures/26_bayesian_approach/eti_hdi.png>
 Package luatex.def Info: figures/26_bayesian_approach/eti_hdi.png  used on inpu
 t line 114.
 (luatex.def)             Requested size: 334.60422pt x 188.21295pt.
  [356<./figures/26_bayesian_approach/estimates.png>]
-<figures/26_bayesian_approach/posterior.png, id=5281, 1253.68375pt x 693.59125p
+<figures/26_bayesian_approach/posterior.png, id=5293, 1253.68375pt x 693.59125p
 t>
 File: figures/26_bayesian_approach/posterior.png Graphic file (type png)
 <use figures/26_bayesian_approach/posterior.png>
@@ -4637,7 +4645,7 @@ pproach/posterior.png>]
 
 
 ] [360] [361]
-<figures/27_bayes_judgement/BayesianJudgement.png, id=5328, 1076.02pt x 601.246
+<figures/27_bayes_judgement/BayesianJudgement.png, id=5340, 1076.02pt x 601.246
 25pt>
 File: figures/27_bayes_judgement/BayesianJudgement.png Graphic file (type png)
 <use figures/27_bayes_judgement/BayesianJudgement.png>
@@ -4646,7 +4654,7 @@ Package luatex.def Info: figures/27_bayes_judgement/BayesianJudgement.png  used
 (luatex.def)             Requested size: 334.60422pt x 186.96239pt.
  [362<./figures/27_bayes_judgement/BayesianJudgement.png>]
 [363]
-<figures/27_bayes_judgement/Krschke2018.png, id=5343, 969.6225pt x 621.32124pt>
+<figures/27_bayes_judgement/Krschke2018.png, id=5355, 969.6225pt x 621.32124pt>
 
 File: figures/27_bayes_judgement/Krschke2018.png Graphic file (type png)
 <use figures/27_bayes_judgement/Krschke2018.png>
@@ -4664,21 +4672,21 @@ put line 87.
 
 
 ]
-<figures/28_bayesian_with_JASP/JASP_web01.png, id=5411, 2152.04pt x 1166.3575pt
+<figures/28_bayesian_with_JASP/JASP_web01.png, id=5423, 2152.04pt x 1166.3575pt
 >
 File: figures/28_bayesian_with_JASP/JASP_web01.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_web01.png>
 Package luatex.def Info: figures/28_bayesian_with_JASP/JASP_web01.png  used on 
 input line 39.
 (luatex.def)             Requested size: 376.42575pt x 204.00883pt.
-<figures/28_bayesian_with_JASP/JASP_web02.png, id=5414, 2085.7925pt x 1100.11pt
+<figures/28_bayesian_with_JASP/JASP_web02.png, id=5426, 2085.7925pt x 1100.11pt
 >
 File: figures/28_bayesian_with_JASP/JASP_web02.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_web02.png>
 Package luatex.def Info: figures/28_bayesian_with_JASP/JASP_web02.png  used on 
 input line 47.
 (luatex.def)             Requested size: 376.42575pt x 198.53163pt.
-<figures/28_bayesian_with_JASP/JASP_wakeup.png, id=5416, 1351.0475pt x 909.3975
+<figures/28_bayesian_with_JASP/JASP_wakeup.png, id=5428, 1351.0475pt x 909.3975
 pt>
 File: figures/28_bayesian_with_JASP/JASP_wakeup.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_wakeup.png>
@@ -4687,14 +4695,14 @@ Package luatex.def Info: figures/28_bayesian_with_JASP/JASP_wakeup.png  used on
 (luatex.def)             Requested size: 271.86234pt x 182.98637pt.
  [372<./figures/28_bayesian_with_JASP/JASP_web01.png><./figures/28_bayesian_with
 _JASP/JASP_web02.png>]
-<figures/28_bayesian_with_JASP/JASP_01.png, id=5432, 1397.22pt x 863.225pt>
+<figures/28_bayesian_with_JASP/JASP_01.png, id=5444, 1397.22pt x 863.225pt>
 File: figures/28_bayesian_with_JASP/JASP_01.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_01.png>
 Package luatex.def Info: figures/28_bayesian_with_JASP/JASP_01.png  used on inp
 ut line 65.
 (luatex.def)             Requested size: 418.25368pt x 258.4031pt.
  [373<./figures/28_bayesian_with_JASP/JASP_wakeup.png>]
-<figures/28_bayesian_with_JASP/JASP_02.png, id=5445, 1397.22pt x 863.225pt>
+<figures/28_bayesian_with_JASP/JASP_02.png, id=5457, 1397.22pt x 863.225pt>
 File: figures/28_bayesian_with_JASP/JASP_02.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_02.png>
 Package luatex.def Info: figures/28_bayesian_with_JASP/JASP_02.png  used on inp
@@ -4702,20 +4710,20 @@ ut line 72.
 (luatex.def)             Requested size: 313.69025pt x 193.79575pt.
  [374<./figures/28_bayesian_with_JASP/JASP_01.png><./figures/28_bayesian_with_JA
 SP/JASP_02.png>]
-<figures/28_bayesian_with_JASP/JASP_03.png, id=5456, 1397.22pt x 863.225pt>
+<figures/28_bayesian_with_JASP/JASP_03.png, id=5468, 1397.22pt x 863.225pt>
 File: figures/28_bayesian_with_JASP/JASP_03.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_03.png>
 Package luatex.def Info: figures/28_bayesian_with_JASP/JASP_03.png  used on inp
 ut line 87.
 (luatex.def)             Requested size: 418.25368pt x 258.4031pt.
-<figures/28_bayesian_with_JASP/JASP_04.png, id=5459, 1397.22pt x 863.225pt>
+<figures/28_bayesian_with_JASP/JASP_04.png, id=5471, 1397.22pt x 863.225pt>
 File: figures/28_bayesian_with_JASP/JASP_04.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_04.png>
 Package luatex.def Info: figures/28_bayesian_with_JASP/JASP_04.png  used on inp
 ut line 96.
 (luatex.def)             Requested size: 418.25368pt x 258.4031pt.
  [375<./figures/28_bayesian_with_JASP/JASP_03.png>]
-<figures/28_bayesian_with_JASP/JASP_plot01.png, id=5469, 527.7316pt x 659.4236p
+<figures/28_bayesian_with_JASP/JASP_plot01.png, id=5481, 527.7316pt x 659.4236p
 t>
 File: figures/28_bayesian_with_JASP/JASP_plot01.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_plot01.png>
@@ -4724,7 +4732,7 @@ Package luatex.def Info: figures/28_bayesian_with_JASP/JASP_plot01.png  used on
 (luatex.def)             Requested size: 334.60422pt x 418.1055pt.
 
 [376<./figures/28_bayesian_with_JASP/JASP_04.png>]
-<figures/28_bayesian_with_JASP/JASP_plot02.png, id=5478, 589.20125pt x 741.7712
+<figures/28_bayesian_with_JASP/JASP_plot02.png, id=5490, 589.20125pt x 741.7712
 6pt>
 File: figures/28_bayesian_with_JASP/JASP_plot02.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_plot02.png>
@@ -4732,13 +4740,13 @@ Package luatex.def Info: figures/28_bayesian_with_JASP/JASP_plot02.png  used on
  input line 112.
 (luatex.def)             Requested size: 209.12683pt x 263.27971pt.
  [377<./figures/28_bayesian_with_JASP/JASP_plot01.png>]
-<figures/28_bayesian_with_JASP/JASP_05.png, id=5488, 148.555pt x 344.28625pt>
+<figures/28_bayesian_with_JASP/JASP_05.png, id=5501, 148.555pt x 344.28625pt>
 File: figures/28_bayesian_with_JASP/JASP_05.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_05.png>
 Package luatex.def Info: figures/28_bayesian_with_JASP/JASP_05.png  used on inp
 ut line 124.
 (luatex.def)             Requested size: 83.64944pt x 193.87067pt.
-<figures/28_bayesian_with_JASP/JASP_06.png, id=5492, 1397.22pt x 863.225pt>
+<figures/28_bayesian_with_JASP/JASP_06.png, id=5505, 1397.22pt x 863.225pt>
 File: figures/28_bayesian_with_JASP/JASP_06.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_06.png>
 Package luatex.def Info: figures/28_bayesian_with_JASP/JASP_06.png  used on inp
@@ -4746,7 +4754,7 @@ ut line 133.
 (luatex.def)             Requested size: 271.86234pt x 167.9528pt.
  [378<./figures/28_bayesian_with_JASP/JASP_plot02.png><./figures/28_bayesian_wit
 h_JASP/JASP_05.png>]
-<figures/28_bayesian_with_JASP/JASP_cor1.png, id=5502, 1405.25pt x 779.91376pt>
+<figures/28_bayesian_with_JASP/JASP_cor1.png, id=5514, 1405.25pt x 779.91376pt>
 
 File: figures/28_bayesian_with_JASP/JASP_cor1.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_cor1.png>
@@ -4755,7 +4763,7 @@ nput line 144.
 (luatex.def)             Requested size: 418.25368pt x 232.13135pt.
  [379<./figures/28_bayesian_with_JASP/JASP_06.png>] [380<./figures/28_bayesian_w
 ith_JASP/JASP_cor1.png>]
-<figures/28_bayesian_with_JASP/JASP_ttest.png, id=5522, 950.55125pt x 949.5475p
+<figures/28_bayesian_with_JASP/JASP_ttest.png, id=5534, 950.55125pt x 949.5475p
 t>
 File: figures/28_bayesian_with_JASP/JASP_ttest.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_ttest.png>
@@ -4764,7 +4772,7 @@ input line 170.
 (luatex.def)             Requested size: 418.25368pt x 417.81668pt.
 
 [381<./figures/28_bayesian_with_JASP/JASP_ttest.png>] [382]
-<figures/28_bayesian_with_JASP/JASP_ttestPlot.png, id=5546, 626.34pt x 943.525p
+<figures/28_bayesian_with_JASP/JASP_ttestPlot.png, id=5558, 626.34pt x 943.525p
 t>
 File: figures/28_bayesian_with_JASP/JASP_ttestPlot.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_ttestPlot.png>
@@ -4772,7 +4780,7 @@ Package luatex.def Info: figures/28_bayesian_with_JASP/JASP_ttestPlot.png  used
  on input line 278.
 (luatex.def)             Requested size: 209.12683pt x 315.03545pt.
  [383]
-<figures/28_bayesian_with_JASP/JASP_ttestBF.png, id=5555, 610.28pt x 707.64375p
+<figures/28_bayesian_with_JASP/JASP_ttestBF.png, id=5567, 610.28pt x 707.64375p
 t>
 File: figures/28_bayesian_with_JASP/JASP_ttestBF.png Graphic file (type png)
 <use figures/28_bayesian_with_JASP/JASP_ttestBF.png>
@@ -4790,21 +4798,21 @@ esian_with_JASP/JASP_ttestBF.png>]) [386]
 
 
 ] [388]
-<figures/29_bayesian_modeling/RandomSample.png, id=5585, 4818.0pt x 3613.5pt>
+<figures/29_bayesian_modeling/RandomSample.png, id=5597, 4818.0pt x 3613.5pt>
 File: figures/29_bayesian_modeling/RandomSample.png Graphic file (type png)
 <use figures/29_bayesian_modeling/RandomSample.png>
 Package luatex.def Info: figures/29_bayesian_modeling/RandomSample.png  used on
  input line 46.
 (luatex.def)             Requested size: 271.86234pt x 203.84334pt.
  [389<./figures/29_bayesian_modeling/RandomSample.png>]
-<figures/29_bayesian_modeling/marginal.png, id=5600, 650.43pt x 650.43pt>
+<figures/29_bayesian_modeling/marginal.png, id=5612, 650.43pt x 650.43pt>
 File: figures/29_bayesian_modeling/marginal.png Graphic file (type png)
 <use figures/29_bayesian_modeling/marginal.png>
 Package luatex.def Info: figures/29_bayesian_modeling/marginal.png  used on inp
 ut line 76.
 (luatex.def)             Requested size: 271.86234pt x 271.86867pt.
  [390<./figures/29_bayesian_modeling/marginal.png>]
-<figures/29_bayesian_modeling/HowToUseStan.png, id=5608, 997.7275pt x 745.78625
+<figures/29_bayesian_modeling/HowToUseStan.png, id=5620, 997.7275pt x 745.78625
 pt>
 File: figures/29_bayesian_modeling/HowToUseStan.png Graphic file (type png)
 <use figures/29_bayesian_modeling/HowToUseStan.png>
@@ -4820,7 +4828,7 @@ Removing  `ltj.process_input_buffer' from `process_input_buffer'.
 Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'. [392] [393]
-<figures/29_bayesian_modeling/posterior_regression.png, id=5665, 341.3553pt x 3
+<figures/29_bayesian_modeling/posterior_regression.png, id=5677, 341.3553pt x 3
 41.3553pt>
 File: figures/29_bayesian_modeling/posterior_regression.png Graphic file (type 
 png)
@@ -4869,24 +4877,24 @@ condSemester.tex [404
 
 ]
 付録A
-<figures/RstudioFIleEditor.png, id=5786, 569.12625pt x 508.90125pt>
+<figures/RstudioFIleEditor.png, id=5798, 569.12625pt x 508.90125pt>
 File: figures/RstudioFIleEditor.png Graphic file (type png)
 <use figures/RstudioFIleEditor.png>
 Package luatex.def Info: figures/RstudioFIleEditor.png  used on input line 22.
 (luatex.def)             Requested size: 334.60422pt x 299.2086pt.
 [409]
-<figures/RmdFile.png, id=5800, 892.33376pt x 721.69624pt>
+<figures/RmdFile.png, id=5812, 892.33376pt x 721.69624pt>
 File: figures/RmdFile.png Graphic file (type png)
 <use figures/RmdFile.png>
 Package luatex.def Info: figures/RmdFile.png  used on input line 35.
 (luatex.def)             Requested size: 334.60422pt x 270.62442pt.
  [410<./figures/RstudioFIleEditor.png>]
-<figures/InsertChunk.png, id=5816, 1068.99374pt x 365.365pt>
+<figures/InsertChunk.png, id=5828, 1068.99374pt x 365.365pt>
 File: figures/InsertChunk.png Graphic file (type png)
 <use figures/InsertChunk.png>
 Package luatex.def Info: figures/InsertChunk.png  used on input line 47.
 (luatex.def)             Requested size: 334.60422pt x 114.36024pt.
-<figures/RmdKnit.png, id=5819, 1128.215pt x 311.1625pt>
+<figures/RmdKnit.png, id=5831, 1128.215pt x 311.1625pt>
 File: figures/RmdKnit.png Graphic file (type png)
 <use figures/RmdKnit.png>
 Package luatex.def Info: figures/RmdKnit.png  used on input line 57.
@@ -4897,7 +4905,7 @@ Inserting `ltj.listings_unicode' in `process_input_buffer'.
 Inserting `ltj.process_input_buffer' in `process_input_buffer'.
 Removing  `ltj.listings_unicode' from `process_input_buffer'. [412<./figures/Rmd
 Knit.png>] [413]
-<figures/FAQ01.png, id=5847, 1674.255pt x 1255.69125pt>
+<figures/FAQ01.png, id=5860, 1674.255pt x 1255.69125pt>
 File: figures/FAQ01.png Graphic file (type png)
 <use figures/FAQ01.png>
 Package luatex.def Info: figures/FAQ01.png  used on input line 107.
@@ -4924,7 +4932,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 11.
 See the caption package documentation for explanation.
 
-<figures/20_anovakun/dataSheet.png, id=5911, 969.6225pt x 569.12625pt>
+<figures/20_anovakun/dataSheet.png, id=5923, 969.6225pt x 569.12625pt>
 File: figures/20_anovakun/dataSheet.png Graphic file (type png)
 <use figures/20_anovakun/dataSheet.png>
 Package luatex.def Info: figures/20_anovakun/dataSheet.png  used on input line 
@@ -4936,7 +4944,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 33.
 See the caption package documentation for explanation.
 
-<figures/20_anovakun/dataSheet2.png, id=5933, 502.87875pt x 478.78876pt>
+<figures/20_anovakun/dataSheet2.png, id=5945, 502.87875pt x 478.78876pt>
 File: figures/20_anovakun/dataSheet2.png Graphic file (type png)
 <use figures/20_anovakun/dataSheet2.png>
 Package luatex.def Info: figures/20_anovakun/dataSheet2.png  used on input line
@@ -4993,7 +5001,7 @@ Package imakeidx Warning: Remember to run lualatex again after calling
 (./ch29_bayesian_modeling.aux) (./ch30_SecondSemester.aux))
  ***********
 LaTeX2e <2026-11-01>
-L3 programming layer <2026-09-09>
+L3 programming layer <2026-11-16>
  ***********
 
 
@@ -5010,16 +5018,16 @@ Package logreq Info: Writing requests to 'tmp.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 58961 strings out of 475522
+ 59034 strings out of 475466
  746595,2848258 words of node,token memory allocated
- 116747 words of node memory still in use:
-   12 hlist, 2 vlist, 5 rule, 410 glue, 4 kern, 1 glyph, 51827 attribute, 81 glu
-e_spec, 4723 attribute_list, 2 write, 15 user_defined, 7 pdf_action nodes
-   avail lists: 1:32,2:141326,3:1895,4:4817,5:2437,6:228,7:16236,8:79,9:5156,10:
+ 116891 words of node memory still in use:
+   12 hlist, 2 vlist, 5 rule, 410 glue, 4 kern, 1 glyph, 51893 attribute, 81 glu
+e_spec, 4729 attribute_list, 2 write, 15 user_defined, 7 pdf_action nodes
+   avail lists: 1:32,2:141254,3:1895,4:4817,5:2439,6:228,7:16236,8:79,9:5156,10:
 56,11:412
- 77316 multiletter control sequences out of 65536+600000
+ 77431 multiletter control sequences out of 65536+600000
  165 fonts using 110226031 bytes
- 119i,17n,135p,4258b,2207s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 119i,17n,135p,4258b,2208s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 warning  (pdf backend): unreferenced destination with name 'Hfootnote.153'
 
@@ -5063,10 +5071,10 @@ b></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
 r/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/l
 ocal/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/loca
 l/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on tmp.pdf (443 pages, 48361907 bytes).
+Output written on tmp.pdf (443 pages, 48476921 bytes).
 
-PDF statistics: 6364 PDF objects out of 7423 (max. 8388607)
- 5462 compressed objects within 55 object streams
- 2306 named destinations out of 2487 (max. 1048576)
+PDF statistics: 6376 PDF objects out of 7423 (max. 8388607)
+ 5472 compressed objects within 55 object streams
+ 2317 named destinations out of 2487 (max. 1048576)
  1540 words of extra memory for PDF output out of 10000 (max. 100000000)
 
